@@ -1375,6 +1375,25 @@
     }
   }
 
+  /* body{overflow:hidden} alone is a known cross-browser trap on
+     mobile: on some Android WebViews/embedded browsers it doesn't just
+     block background scroll, it also stops touch-scroll from reaching
+     the modal's own overflow-y:auto content. position:fixed + restoring
+     scroll position on close is the standard robust fix. */
+  var scrollLockY = 0;
+  function lockBodyScroll() {
+    scrollLockY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + scrollLockY + 'px';
+    document.body.style.width = '100%';
+  }
+  function unlockBodyScroll() {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollLockY);
+  }
+
   function openModal(id) {
     var modal = document.getElementById(id);
     var backdrop = document.getElementById('mt-backdrop');
@@ -1382,7 +1401,7 @@
     modal.removeAttribute('aria-hidden');
     modal.classList.add('open');
     if (backdrop) { backdrop.classList.add('open'); backdrop.removeAttribute('aria-hidden'); }
-    document.body.style.overflow = 'hidden';
+    lockBodyScroll();
     var first = modal.querySelector('input,select,textarea,button');
     if (first) first.focus();
   }
@@ -1394,7 +1413,7 @@
     modal.setAttribute('aria-hidden', 'true');
     modal.classList.remove('open');
     if (backdrop) { backdrop.classList.remove('open'); backdrop.setAttribute('aria-hidden', 'true'); }
-    document.body.style.overflow = '';
+    unlockBodyScroll();
   }
 
   function closeAllModals() {

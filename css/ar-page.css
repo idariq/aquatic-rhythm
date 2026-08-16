@@ -68,7 +68,7 @@ details.lang-sw[open]>summary::after{content:'▴'}
 .bnav-item.active{color:var(--accent)}
 .bnav-item.active::before{transform:translateX(-50%) scaleX(1);opacity:1}
 .bnav-icon,.bnav-item svg{width:22px;height:22px;flex-shrink:0}
-.bnav-label,.bnav-item span{font-size:.48rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;line-height:1}
+.bnav-label,.bnav-item span{font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;line-height:1}
 @media(max-width:720px){
   .bnav{display:flex}
   .nbg{display:none!important}
@@ -113,7 +113,12 @@ details.lang-sw[open]>summary::after{content:'▴'}
 .rh-sheet-kofi-svg{display:block}
 .rh-sheet-name{font-family:var(--serif);font-size:1rem;font-weight:300;color:rgba(255,255,255,.86);display:block;line-height:1.1}
 .rh-sheet-sub{font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);display:block;margin-top:.1rem}
-.rh-sheet-thread{flex:1;overflow-y:auto;padding:.9rem 1rem;display:flex;flex-direction:column;gap:.55rem;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+/* min-height:0 overrides the flex-item default (min-height:auto) so
+   this can actually shrink to fit .rh-sheet's available height instead
+   of growing past it — .rh-sheet itself is overflow:hidden (only this
+   inner thread scrolls), so without min-height:0 a long conversation
+   could silently clip instead of scroll on some mobile browsers. */
+.rh-sheet-thread{flex:1;min-height:0;overflow-y:auto;padding:.9rem 1rem;display:flex;flex-direction:column;gap:.55rem;-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior:contain}
 .rh-sheet-thread .rh-bubble{border-left:none;border-radius:14px;max-width:82%;padding:.72rem .95rem}
 .rh-sheet-thread .rh-bubble-you{align-self:flex-end;background:rgba(61,214,232,.13);border:1px solid rgba(61,214,232,.18)}
 .rh-sheet-thread .rh-bubble-rh{align-self:flex-start;background:rgba(12,26,20,.9);border:1px solid rgba(255,255,255,.07);max-width:92%}
@@ -192,17 +197,21 @@ details.lang-sw[open]>summary::after{content:'▴'}
 /* ── SETTINGS PANEL (shared across all article/tool pages) ── */
 .ar-settings-backdrop{position:fixed;inset:0;z-index:1040;background:rgba(2,8,6,.65);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);opacity:0;pointer-events:none;transition:opacity .32s}
 .ar-settings-backdrop.open{opacity:1;pointer-events:all}
-.ar-settings-panel{position:fixed;top:0;right:0;bottom:0;z-index:1050;width:min(360px,88vw);background:rgba(4,12,9,.99);border-left:1px solid rgba(61,214,232,.1);transform:translateX(100%);transition:transform .42s var(--ease);overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;will-change:transform}
+.ar-settings-panel{position:fixed;top:0;right:0;bottom:0;z-index:1050;width:min(360px,88vw);background:rgba(4,12,9,.99);border-left:1px solid rgba(61,214,232,.1);transform:translateX(100%);transition:transform .42s var(--ease);overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior:contain;display:flex;flex-direction:column;will-change:transform}
 .ar-settings-panel.open{transform:translateX(0)}
 .ar-stg-head{display:flex;align-items:center;justify-content:space-between;padding:calc(.9rem + env(safe-area-inset-top)) 1.2rem .9rem;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0;position:sticky;top:0;z-index:2;background:rgba(4,12,9,.98);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .ar-stg-head-left{display:flex;align-items:center;gap:.55rem}
 .ar-stg-head-icon{color:rgba(61,214,232,.4)}
-.ar-stg-title{font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.ar-stg-title{font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.62)}
 .ar-stg-close{width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:none;border:none;color:rgba(255,255,255,.28);cursor:pointer;border-radius:8px;transition:color .2s,background .2s;line-height:1;font-size:.85rem;font-family:var(--sans)}
 .ar-stg-close:hover{color:rgba(255,255,255,.75);background:rgba(255,255,255,.07)}
-.ar-stg-body{padding:.4rem 0 env(safe-area-inset-bottom);flex:1}
+/* min-height:0 overrides the flex-item default (min-height:auto), which
+   otherwise refuses to let this shrink below its own content height —
+   that silently breaks the parent .ar-settings-panel's overflow-y:auto
+   scrolling on some mobile browsers even though it "should" just work. */
+.ar-stg-body{padding:.4rem 0 env(safe-area-inset-bottom);flex:1;min-height:0}
 .ar-stg-section{padding:.9rem 1.2rem 0}
-.ar-stg-label{display:block;font-size:.49rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(163,196,162,.38);margin-bottom:.7rem}
+.ar-stg-label{display:block;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(163,196,162,.44);margin-bottom:.7rem}
 .ar-stg-row{display:flex;align-items:center;justify-content:space-between;padding:.58rem 0;border-bottom:1px solid rgba(255,255,255,.04);gap:.75rem;min-height:42px}
 .ar-stg-row:last-child{border-bottom:none}
 .ar-stg-row-info{min-width:0;flex:1}
@@ -213,7 +222,7 @@ details.lang-sw[open]>summary::after{content:'▴'}
 .ar-stg-toggle:checked{background:rgba(61,214,232,.26);border-color:rgba(61,214,232,.52)}
 .ar-stg-toggle:checked::after{transform:translateX(17px);background:#3DD6E8}
 .ar-stg-seg{display:flex;background:rgba(0,0,0,.28);border-radius:8px;padding:.18rem;gap:.18rem;flex-shrink:0}
-.ar-stg-seg-btn{background:none;border:none;font-size:.6rem;font-family:var(--sans);font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:.38rem .72rem;border-radius:6px;cursor:pointer;transition:background .2s,color .2s;white-space:nowrap;line-height:1}
+.ar-stg-seg-btn{background:none;border:none;font-size:.7rem;font-family:var(--sans);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:.38rem .72rem;border-radius:6px;cursor:pointer;transition:background .2s,color .2s;white-space:nowrap;line-height:1}
 .ar-stg-seg-btn.active{background:rgba(61,214,232,.14);color:rgba(61,214,232,.88)}
 .ar-stg-divider{margin:.45rem 1.2rem;height:1px;background:linear-gradient(to right,transparent,rgba(139,189,210,.1),transparent)}
 .ar-stg-num-input{width:56px;background:rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.35rem .5rem;color:rgba(235,240,236,.88);font-size:.82rem;font-family:var(--sans);text-align:center;transition:border-color .2s;-webkit-appearance:none;appearance:none}

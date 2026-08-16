@@ -20,6 +20,56 @@ const MAX_TOKENS     = 1024;
 const MAX_MSG_CHARS  = 800;
 const MAX_HISTORY    = 10;
 
+/* ── Rate limiting (defense-in-depth — NOT a substitute for the edge-level
+   Cloudflare Rate Limiting Rule documented in docs/waf-github-pages.md) ──
+   /chat is the only endpoint that calls the paid Anthropic API, so unlike
+   a plain contact form it has a real per-request cost and deserves a hard
+   cap, not just the Origin check above (which a non-browser client can
+   spoof freely — browsers can't override Origin, but curl/scripts can).
+
+   State lives in this isolate's module scope: it persists across requests
+   handled by the same isolate, but is NOT shared across Cloudflare's other
+   edge locations/isolates or preserved across isolate restarts. A request
+   spread across many colos or IPs is only slowed by this layer, not fully
+   stopped — that's what the WAF-level rule is for. This layer still
+   blocks the common case (one script hammering /chat from one IP) with no
+   extra infra to provision. */
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX_REQ   = 12;
+const rateLimitHits        = new Map(); /* ip -> { count, windowStart } */
+
+function isRateLimited(ip) {
+  const now   = Date.now();
+  const entry = rateLimitHits.get(ip);
+  if (!entry || now - entry.windowStart >= RATE_LIMIT_WINDOW_MS) {
+    rateLimitHits.set(ip, { count: 1, windowStart: now });
+    return false;
+  }
+  entry.count += 1;
+  return entry.count > RATE_LIMIT_MAX_REQ;
+}
+
+/* Opportunistic cleanup so rateLimitHits doesn't grow unbounded over an
+   isolate's lifetime — cheap enough to run on a small random fraction of
+   requests instead of wiring up a timer/alarm. */
+function pruneRateLimiter() {
+  const now = Date.now();
+  for (const [ip, entry] of rateLimitHits) {
+    if (now - entry.windowStart >= RATE_LIMIT_WINDOW_MS) rateLimitHits.delete(ip);
+  }
+}
+
+function rateLimitResponse(origin) {
+  return new Response(JSON.stringify({ error: 'Too many requests — please slow down.' }), {
+    status: 429,
+    headers: {
+      'Content-Type':                'application/json',
+      'Retry-After':                  String(RATE_LIMIT_WINDOW_MS / 1000),
+      'Access-Control-Allow-Origin':  origin || DEFAULT_ORIGIN,
+    },
+  });
+}
+
 export default {
   async fetch(request, env) {
     const allowedOrigin = env.ALLOWED_ORIGIN || DEFAULT_ORIGIN;
@@ -42,6 +92,13 @@ export default {
     }
 
     if (request.method === 'POST' && url.pathname === '/chat') {
+      /* Cloudflare sets CF-Connecting-IP itself on every edge request —
+         unlike Origin, the client cannot forge this header. */
+      const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+      if (Math.random() < 0.02) pruneRateLimiter();
+      if (isRateLimited(ip)) {
+        return rateLimitResponse(origin);
+      }
       return handleChat(request, env, origin);
     }
 
@@ -157,51 +214,19 @@ function sanitizeTankContext(raw) {
 }
 
 function buildSystemPrompt(tankContext) {
-  /* ── Tank context block (personalised, injected before knowledge base) ── */
-  let ctx = '';
-  if (tankContext) {
-    const lines = [];
-    const vol    = tankContext.volume ? tankContext.volume + (tankContext.unit || 'L') : null;
-    const age    = (tankContext.ageWeeks !== null && tankContext.ageWeeks !== undefined)
-      ? tankContext.ageWeeks + ' weeks old' : null;
-    const header = [vol, tankContext.type, age].filter(Boolean).join(', ');
-    if (header)                                         lines.push('Tank: ' + header);
-    if (tankContext.phase)                              lines.push('ARA phase: ' + tankContext.phase);
-    if (tankContext.residents?.length)                  lines.push('Residents: ' + tankContext.residents.join(', '));
-    if (tankContext.equipment?.length)                  lines.push('Equipment: ' + tankContext.equipment.join(', '));
-    if (tankContext.plants?.length)                     lines.push('Plants: ' + tankContext.plants.join(', '));
-    if (tankContext.hardscape?.length)                  lines.push('Hardscape/substrate: ' + tankContext.hardscape.join(', '));
-    if (tankContext.recentEntries?.length) {
-      lines.push('Recent log entries:');
-      tankContext.recentEntries.forEach(e => {
-        let entry = '  [' + (e.date || '?') + '] ' + (e.state || '') + ' | care: ' + (e.care || []).join(', ');
-        if (e.obs) entry += '\n    Observed: "' + e.obs + '"';
-        if (e.params) {
-          const ps = [];
-          if (e.params.ph)   ps.push('pH '   + e.params.ph);
-          if (e.params.nh3)  ps.push('NH₃ '  + e.params.nh3);
-          if (e.params.no2)  ps.push('NO₂ '  + e.params.no2);
-          if (e.params.no3)  ps.push('NO₃ '  + e.params.no3);
-          if (e.params.temp) ps.push(e.params.temp + '°C');
-          if (e.params.gh)   ps.push('GH '   + e.params.gh);
-          if (e.params.kh)   ps.push('KH '   + e.params.kh);
-          if (e.params.sg)   ps.push('SG '   + e.params.sg);
-          if (ps.length) entry += '\n    Parameters: ' + ps.join(', ');
-        }
-        lines.push(entry);
-      });
-    }
-    if (lines.length) {
-      ctx = '\n\nKeeper\'s current tank (use for personalised responses — no need to ask again):\n' + lines.join('\n');
-    }
-  }
-
   /* ── Article reference block ── */
   const articleRef = ARTICLE_INDEX
     .map(a => `• ${a.title} (/reading?id=${a.slug}) — ${a.desc}`)
     .join('\n');
 
-  return `You are Rhyssa, the aquarium companion for Aquatic Rhythm (aquaticrhythm.com). You live here — not on ChatGPT. The platform changed; you did not.
+  /* Static persona + knowledge base text — byte-identical on every request,
+     so it is sent as its own cache_control block (see `blocks` below) and
+     gets cached by Anthropic instead of re-billed as fresh input on every
+     turn. The tank context is per-keeper and changes turn to turn — it is
+     built separately by buildTankContextText() and appended AFTER this
+     block rather than mixed into it, since any dynamic text inside a
+     cached block busts the cache prefix for every request that follows. */
+  const staticPrompt = `You are Rhyssa, the aquarium companion for Aquatic Rhythm (aquaticrhythm.com). You live here — not on ChatGPT. The platform changed; you did not.
 
 ═══════════════════════════════════════
 IDENTITY
@@ -364,7 +389,7 @@ High bioload: Oscar, Discus, Angelfish. Low bioload: Ember Tetra, Neon Tetra, Ot
 Schooling fish need minimum 6: all tetras, rasboras, danios.
 Never mix male Bettas with long-finned fish or other male Bettas.
 Neocaridina shrimp: pH 6.5–7.8. Caridina (Crystal/Bee): pH 5.8–7.0 only — very sensitive.
-For full species data (60 fish, 12 invertebrates, 23 plants) direct keepers to /tools.${ctx}
+For full species data (60 fish, 12 invertebrates, 23 plants) direct keepers to /tools.
 
 ═══════════════════════════════════════
 KNOWLEDGE BASE — ARA FRAMEWORK
@@ -385,6 +410,54 @@ Example: [New Tank Syndrome](/reading?id=new-tank-syndrome)
 Use the article title as the link text — never the raw URL path. One or two articles per response maximum.
 ═══════════════════════════════════════
 ${articleRef}`;
+
+  const blocks = [
+    { type: 'text', text: staticPrompt, cache_control: { type: 'ephemeral' } },
+  ];
+
+  const ctx = buildTankContextText(tankContext);
+  if (ctx) blocks.push({ type: 'text', text: ctx });
+
+  return blocks;
+}
+
+/* Per-keeper tank state — changes turn to turn, kept out of the cached
+   static block above (see buildSystemPrompt) and appended uncached. */
+function buildTankContextText(tankContext) {
+  if (!tankContext) return '';
+  const lines = [];
+  const vol    = tankContext.volume ? tankContext.volume + (tankContext.unit || 'L') : null;
+  const age    = (tankContext.ageWeeks !== null && tankContext.ageWeeks !== undefined)
+    ? tankContext.ageWeeks + ' weeks old' : null;
+  const header = [vol, tankContext.type, age].filter(Boolean).join(', ');
+  if (header)                                         lines.push('Tank: ' + header);
+  if (tankContext.phase)                              lines.push('ARA phase: ' + tankContext.phase);
+  if (tankContext.residents?.length)                  lines.push('Residents: ' + tankContext.residents.join(', '));
+  if (tankContext.equipment?.length)                  lines.push('Equipment: ' + tankContext.equipment.join(', '));
+  if (tankContext.plants?.length)                     lines.push('Plants: ' + tankContext.plants.join(', '));
+  if (tankContext.hardscape?.length)                  lines.push('Hardscape/substrate: ' + tankContext.hardscape.join(', '));
+  if (tankContext.recentEntries?.length) {
+    lines.push('Recent log entries:');
+    tankContext.recentEntries.forEach(e => {
+      let entry = '  [' + (e.date || '?') + '] ' + (e.state || '') + ' | care: ' + (e.care || []).join(', ');
+      if (e.obs) entry += '\n    Observed: "' + e.obs + '"';
+      if (e.params) {
+        const ps = [];
+        if (e.params.ph)   ps.push('pH '   + e.params.ph);
+        if (e.params.nh3)  ps.push('NH₃ '  + e.params.nh3);
+        if (e.params.no2)  ps.push('NO₂ '  + e.params.no2);
+        if (e.params.no3)  ps.push('NO₃ '  + e.params.no3);
+        if (e.params.temp) ps.push(e.params.temp + '°C');
+        if (e.params.gh)   ps.push('GH '   + e.params.gh);
+        if (e.params.kh)   ps.push('KH '   + e.params.kh);
+        if (e.params.sg)   ps.push('SG '   + e.params.sg);
+        if (ps.length) entry += '\n    Parameters: ' + ps.join(', ');
+      }
+      lines.push(entry);
+    });
+  }
+  if (!lines.length) return '';
+  return '\n\nKeeper\'s current tank (use for personalised responses — no need to ask again):\n' + lines.join('\n');
 }
 
 function corsResponse(status, origin) {

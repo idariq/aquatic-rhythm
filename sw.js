@@ -10,24 +10,24 @@
    deployed repo; cache is only used when the network request fails.
    ============================================================ */
 
-var SHELL_CACHE   = 'ar-shell-v27';
-var ARTICLE_CACHE = 'ar-articles-v27';
+var SHELL_CACHE   = 'ar-shell-v28';
+var ARTICLE_CACHE = 'ar-articles-v28';
 
 var SHELL_URLS = [
   '/',
-  '/css/style.css?v=27',
-  '/css/ar-page.css?v=27',
-  '/js/ui.js?v=27',
-  '/js/ui-eco-toggle.js?v=27',
-  '/js/ui-reading-pathways.js?v=27',
-  '/js/ui-rhyssa-sheet.js?v=27',
-  '/js/ui-rhyssa-page.js?v=27',
-  '/js/ui-settings.js?v=27',
-  '/js/ar-page.js?v=27',
-  '/js/content-trust.js?v=27',
-  '/js/rhyssa-fab-ext.js?v=27',
-  '/js/ecosystem.js?v=27',
-  '/js/fauna.js?v=27',
+  '/css/style.css?v=28',
+  '/css/ar-page.css?v=28',
+  '/js/ui.js?v=28',
+  '/js/ui-eco-toggle.js?v=28',
+  '/js/ui-reading-pathways.js?v=28',
+  '/js/ui-rhyssa-sheet.js?v=28',
+  '/js/ui-rhyssa-page.js?v=28',
+  '/js/ui-settings.js?v=28',
+  '/js/ar-page.js?v=28',
+  '/js/content-trust.js?v=28',
+  '/js/rhyssa-fab-ext.js?v=28',
+  '/js/ecosystem.js?v=28',
+  '/js/fauna.js?v=28',
   '/favicon.png',
   '/apple-touch-icon.png',
   '/offline.html'

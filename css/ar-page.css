@@ -306,20 +306,3 @@ details.lang-sw[open]>summary::after{content:'▴'}
   .vis-timeline{padding:1.1rem 1.2rem 1rem}
   .vis-temp{padding:1.1rem 1.2rem 1rem}
 }
-
-/* ── Mobile chrome pass (matches css/style.css — see comment there for
-   full rationale) ── nav:not(.bnav) stayed position:fixed at every
-   breakpoint, so every article/tool page paid ~68px of permanently
-   pinned top chrome on top of the ~56px+ bottom nav. The bottom nav
-   already carries primary navigation at this width, so let the top bar
-   (logo + language switch + settings) scroll away with the page
-   instead. Note: each article's own top padding (`.module-wrap`,
-   defined per-file in that article's inline <style>, not here) still
-   reserves room sized for the old fixed bar — left alone in this pass
-   since tightening it means touching ~30+ individual article files,
-   which is a bigger, separate change; nothing overlaps or breaks by
-   leaving it, there's just a bit more breathing room at the top than
-   strictly necessary now. */
-@media(max-width:720px){
-  nav:not(.bnav){position:static}
-}

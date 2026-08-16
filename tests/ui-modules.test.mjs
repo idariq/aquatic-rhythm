@@ -33,6 +33,15 @@ const EXTRACTED = [
   'js/ui-settings.js'
 ];
 
+/* ui-journal.js is intentionally NOT a static <script defer> tag like the
+   others — index.html's "JOURNAL LAZY LOADER" block injects it (with
+   tank-data.js) only on first /journal navigation, and it's deliberately
+   left out of the service worker's precached shell so first-time visitors
+   who never open the journal don't pay for its 112KB+104KB up front. It
+   still gets its own IIFE/load-order checks below, just via a different
+   pattern than the eagerly-loaded modules. */
+const EAGER = EXTRACTED.filter((rel) => rel !== 'js/ui-journal.js');
+
 test('every extracted file exists and starts/ends with a top-level IIFE', () => {
   for (const rel of EXTRACTED) {
     const full = path.join(ROOT, rel);
@@ -54,20 +63,27 @@ test('every extracted file exists and starts/ends with a top-level IIFE', () => 
 
 test('index.html loads ui.js BEFORE every extracted ui-*.js module', () => {
   const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
-  const uiIdx = html.indexOf('js/ui.js"');
+  // Substring only (no trailing quote) so this survives the `?v=N`
+  // cache-busting query string that every asset now carries.
+  const uiIdx = html.indexOf('js/ui.js');
   assert.ok(uiIdx > 0, 'index.html no longer references js/ui.js');
-  for (const rel of EXTRACTED) {
-    const ref = `${rel}"`;
-    const idx = html.indexOf(ref);
+  for (const rel of EAGER) {
+    const idx = html.indexOf(rel);
     assert.ok(idx > 0, `index.html does not load ${rel}`);
     assert.ok(idx > uiIdx, `${rel} must be loaded AFTER js/ui.js (defer order matters)`);
   }
+  // ui-journal.js has no static <script> tag — confirm its lazy loader
+  // (index.html's "JOURNAL LAZY LOADER" block) is still wired up and still
+  // defined after ui.js loads.
+  const journalIdx = html.indexOf('/js/ui-journal.js');
+  assert.ok(journalIdx > 0, 'index.html no longer references js/ui-journal.js — was the lazy loader removed?');
+  assert.ok(journalIdx > uiIdx, 'ui-journal.js lazy loader must be defined after js/ui.js loads');
 });
 
 test('index.html loads eco-toggle BEFORE settings (settings reads window.__arApply*)', () => {
   const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
-  const ecoIdx = html.indexOf('js/ui-eco-toggle.js"');
-  const settingsIdx = html.indexOf('js/ui-settings.js"');
+  const ecoIdx = html.indexOf('js/ui-eco-toggle.js');
+  const settingsIdx = html.indexOf('js/ui-settings.js');
   assert.ok(ecoIdx > 0 && settingsIdx > 0);
   assert.ok(
     ecoIdx < settingsIdx,
@@ -75,15 +91,23 @@ test('index.html loads eco-toggle BEFORE settings (settings reads window.__arApp
   );
 });
 
-test('service worker shell cache lists every extracted module', () => {
+test('service worker shell cache lists every eagerly-loaded module', () => {
   const sw = fs.readFileSync(path.join(ROOT, 'sw.js'), 'utf8');
-  for (const rel of EXTRACTED) {
-    const cached = `'/${rel}'`;
+  for (const rel of EAGER) {
+    const cached = `'/${rel}`;
     assert.ok(
       sw.includes(cached),
       `sw.js shell cache is missing ${rel} — PWA users will see partial loads`
     );
   }
+  // The inverse guard: ui-journal.js should stay OUT of the precached
+  // shell (see EAGER comment above). If this starts failing because
+  // someone deliberately added it back, update this test in the same
+  // commit and explain why in a comment here.
+  assert.ok(
+    !sw.includes(`'/js/ui-journal.js`),
+    'js/ui-journal.js is in the precached shell — was lazy-loading removed? update this test if so'
+  );
 });
 
 test('ui.js shrank substantially and still parses', () => {

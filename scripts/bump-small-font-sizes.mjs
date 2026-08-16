@@ -49,21 +49,48 @@ const FLOOR = 0.65; // rem — values >= this are left alone
 const BUMP = 0.1;
 const MIN_RESULT = FLOOR; // must be >= FLOOR for idempotency — see comment above
 
+// clamp() bump uses a separate, slightly higher floor (.85rem, ~14.5px):
+// clamp() min/max bounds here are almost always used for actual
+// headings/titles that are already reasonably sized (checked: 27 of 29
+// clamp() font-sizes in css/style.css have min >=.85rem) — only ones
+// below that are genuinely small caption/subtitle text in disguise
+// (e.g. .rd-hit-sub at .7rem/.8rem, the reading-card italic subtitle).
+// Bumps both the min and max bound by the same flat amount; the
+// vw-based preferred value in the middle is left untouched, since
+// proportional viewport scaling isn't itself a readability problem —
+// only the absolute floor/ceiling it's clamped between is.
+const CLAMP_FLOOR = 0.85;
+const CLAMP_MIN_RESULT = CLAMP_FLOOR;
+
+function formatRem(n) {
+  return n.toFixed(2).replace(/0+$/, '').replace(/\.$/, '').replace(/^0\./, '.');
+}
+
 function bumpFile(relPath) {
   const filePath = path.join(ROOT, relPath);
   const src = fs.readFileSync(filePath, 'utf8');
   let changed = 0;
 
-  const patched = src.replace(/font-size:\.(\d+)rem/g, (full, digits) => {
+  let patched = src.replace(/font-size:\.(\d+)rem/g, (full, digits) => {
     const old = parseFloat('.' + digits);
     if (old >= FLOOR) return full;
     const next = Math.max(old + BUMP, MIN_RESULT);
-    // Format without trailing zeros (e.g. 0.6 -> .6, 0.72 -> .72), no
-    // leading zero (matches this codebase's existing style).
-    const nextStr = next.toFixed(2).replace(/0+$/, '').replace(/\.$/, '').replace(/^0\./, '.');
     changed++;
-    return `font-size:${nextStr}rem`;
+    return `font-size:${formatRem(next)}rem`;
   });
+
+  patched = patched.replace(
+    /font-size:clamp\((\.?\d+(?:\.\d+)?)rem,([^,]+),(\.?\d+(?:\.\d+)?)rem\)/g,
+    (full, minStr, pref, maxStr) => {
+      const min = parseFloat(minStr);
+      if (min >= CLAMP_FLOOR) return full;
+      const max = parseFloat(maxStr);
+      const nextMin = Math.max(min + BUMP, CLAMP_MIN_RESULT);
+      const nextMax = max + BUMP;
+      changed++;
+      return `font-size:clamp(${formatRem(nextMin)}rem,${pref},${formatRem(nextMax)}rem)`;
+    }
+  );
 
   if (changed > 0) {
     fs.writeFileSync(filePath, patched, 'utf8');

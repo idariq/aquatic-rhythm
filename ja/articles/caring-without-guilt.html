@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=25">
+<link rel="stylesheet" href="/css/ar-page.css?v=27">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -78,6 +78,8 @@ main{min-height:100vh;padding-top:64px}
 
 /* MODULE SYSTEM */
 .module-wrap{max-width:680px;margin:0 auto;padding:7rem clamp(1.5rem,5vw,3rem) 6rem;display:none}
+/* mobile module-wrap padding override (fix-module-wrap-mobile-padding.mjs) */
+@media(max-width:720px){.module-wrap{padding-top:clamp(1.5rem,6vh,2.5rem)}}
 .module-wrap.active{display:block}
 .module{display:none;opacity:0;transform:translateY(18px);transition:opacity .55s var(--ease),transform .55s var(--ease);min-height:60vh;padding-bottom:3rem}
 .module.active{display:block}
@@ -480,8 +482,8 @@ main{min-height:100vh;padding-top:64px}
     <p class="rh-sheet-note">AI can be wrong — for fish emergencies, consult a specialist</p>
   </div>
 </div>
-<script src="/js/content-trust.js?v=25"></script>
-<script src="/js/ar-page.js?v=25" defer></script>
+<script src="/js/content-trust.js?v=27"></script>
+<script src="/js/ar-page.js?v=27" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -489,6 +491,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=25" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=27" defer></script>
 </body>
 </html>

@@ -36,7 +36,7 @@ const FRAMEWORK_MODULE = new Set([
 const SKIP = new Set([...REDIRECT_STUBS, ...FRAMEWORK_MODULE]);
 
 // Checks
-const JARGON_BOX_RE  = /ARA\s*·\s*[A-Z]/g; // branded "ARA · [Term]" callout label pattern
+const JARGON_BOX_RE  = /hn-label">\s*(ARA\b[^<]*)</g; // any callout box labeled starting with "ARA" (·, —, "principle", "perspective", etc.)
 const PRESCRIPTIVE   = ['never replace', 'you must', 'you need to', 'you should always', 'beginners often', 'the correct approach', "the mistake is", 'proper way', 'right way', 'always do'];
 const AUTHORITY_TONE = ['beginners often make', 'the correct response is', 'the mistake is', 'you should know', 'proper way to', 'right way to', 'you need to understand'];
 
@@ -44,7 +44,7 @@ function audit(filePath) {
   const raw  = fs.readFileSync(filePath, 'utf8');
   const html = raw.toLowerCase();
 
-  const jargonBoxes = (raw.match(JARGON_BOX_RE) || []);
+  const jargonBoxes = [...raw.matchAll(JARGON_BOX_RE)].map(m => m[1].trim());
 
   // Terminology typo
   const chemRhythmCount = (html.match(/chemical rhythm/g) || []).length;

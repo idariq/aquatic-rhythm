@@ -1446,3 +1446,39 @@ body[data-active-page="companion"] #rh-backdrop{display:none!important}
 .rh-suggest-chips{display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;margin-top:.2rem;max-width:320px}
 .rh-suggest-chip{background:rgba(61,214,232,.07);border:1px solid rgba(61,214,232,.2);color:rgba(61,214,232,.75);font-size:.7rem;font-family:var(--sans);padding:.35rem .75rem;border-radius:20px;cursor:pointer;transition:background .15s,border-color .15s,color .15s;text-align:left;line-height:1.3}
 .rh-suggest-chip:hover{background:rgba(61,214,232,.14);border-color:rgba(61,214,232,.4);color:rgba(61,214,232,.95)}
+
+/* ── Mobile chrome + readability pass ──
+   Two independent, low-risk changes, scoped to <=720px only so desktop
+   is untouched:
+
+   1) The top bar (nav:not(.bnav)) used to stay position:fixed at every
+      breakpoint, so mobile always paid ~68px of permanently-pinned
+      chrome on top of the ~56px+ bottom nav (.bnav) — on a phone that's
+      a lot of a small viewport spent on navigation before any content.
+      The bottom nav already carries primary navigation (Home/Reading/
+      Tools/Log) at this width, so the top bar (logo + settings gear)
+      no longer needs to stay pinned — let it scroll away with the
+      page instead. The various .hero padding-top:68px+ rules existed
+      only to clear the old fixed top bar, so they're zeroed here too
+      (that gap is now the nav's own natural in-flow height instead).
+      #reading-progress was pinned at top:68px (just under the fixed
+      bar) — repin it to top:0 so it still reads correctly once the
+      bar has scrolled off.
+
+   2) Body copy (.card p, .intro) uses font-weight:300 + ~0.78 opacity
+      site-wide — a deliberate "moody" choice for the dark hero, but it
+      reads as dim for sustained reading on a phone screen, often
+      outdoors in daylight. Bumped weight/opacity for these two (the
+      most common reading-text classes) on mobile only; the same
+      thin+dim pattern repeats across ~15 more classes site-wide
+      (.ac p, .sl2 p, .ci p, .qi p, .rhd, .aboutblock p, etc.) — left
+      alone here since that's a bigger pass than this small fix, flagged
+      separately rather than silently rewritten. */
+@media(max-width:720px){
+  nav:not(.bnav){position:static}
+  #reading-progress{top:0}
+  .hero,.hero.home-hero,.hero:not(.home-hero){padding-top:clamp(1.5rem,6vh,2.5rem)!important}
+  p{font-weight:400!important}
+  .card p{color:rgba(255,255,255,.92)}
+  .intro{color:rgba(235,240,236,.92)}
+}

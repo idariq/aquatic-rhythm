@@ -1,7 +1,18 @@
 /**
- * Audit ARA framework alignment across all article HTML files.
- * Reports per-article scores for: rhythm domain label, prescriptive language,
- * keeper psychology depth, ARA reading vocabulary, and authority tone.
+ * Audit voice & jargon exposure across regular (non-framework) article HTML files.
+ *
+ * The ARA Framework module (ara-s1..s6, ara-full-framework) is the one place on the
+ * site where readers have opted in to learn ARA's vocabulary — full jargon belongs
+ * there and is skipped by this audit. Regular practical articles (nitrate, algae,
+ * water changes, etc.) should stand on their own: a reader should get useful advice
+ * without needing to learn named ARA constructs first. A branded "ARA · [Term]"
+ * callout box in a regular article is a jargon leak, not a feature — this audit
+ * flags it as an issue instead of requiring it (the previous version of this script
+ * did the opposite: it required at least one "ARA · [Rhythm]" label per article).
+ *
+ * Also flags prescriptive/authority-toned phrasing (the site's voice is meant to be
+ * observational, not commanding) and the "Chemical Rhythm" naming typo (the correct
+ * term, where it's used at all, is "Water Rhythm").
  *
  * Run: node scripts/audit-ara-alignment.mjs
  */
@@ -12,50 +23,40 @@ import path from 'path';
 const ROOT    = path.join(import.meta.dirname, '..');
 const ART_DIR = path.join(ROOT, 'articles');
 
-const SKIP = new Set(['four-principles-of-ara.html', 'reading-the-five-rhythms.html']);
+// Redirect stubs — no real body content to audit.
+const REDIRECT_STUBS = new Set(['four-principles-of-ara.html', 'reading-the-five-rhythms.html']);
+
+// The ARA Framework module itself — full jargon is expected and appropriate here.
+const FRAMEWORK_MODULE = new Set([
+  'ara-s1-foundation.html', 'ara-s2-five-rhythms.html', 'ara-s3-phases.html',
+  'ara-s4-alignment.html', 'ara-s5-observation.html', 'ara-s6-ethics.html',
+  'ara-full-framework.html',
+]);
+
+const SKIP = new Set([...REDIRECT_STUBS, ...FRAMEWORK_MODULE]);
 
 // Checks
-const RHYTHM_LABELS = ['ARA · Water Rhythm', 'ARA · Biological Rhythm', 'ARA · Environmental Rhythm', 'ARA · Livestock Rhythm', 'ARA · Keeper Rhythm', 'ARA · All Five Rhythms'];
-const PRESCRIPTIVE  = ['never replace', 'you must', 'you need to', 'you should always', 'beginners often', 'the correct approach', "the mistake is", 'proper way', 'right way', 'always do'];
-const KEEPER_PSYCH  = ['keeper rhythm', 'keeper psychology', 'keeper anxiety', 'ara · keeper rhythm', 'keeper capacity', 'keeper\'s rhythm'];
-const READING_VOCAB = ['signal', 'reading', 'observe', 'rhythm', 'aligned', 'drift', 'origin', 'expression'];
+const JARGON_BOX_RE  = /ARA\s*·\s*[A-Z]/g; // branded "ARA · [Term]" callout label pattern
+const PRESCRIPTIVE   = ['never replace', 'you must', 'you need to', 'you should always', 'beginners often', 'the correct approach', "the mistake is", 'proper way', 'right way', 'always do'];
 const AUTHORITY_TONE = ['beginners often make', 'the correct response is', 'the mistake is', 'you should know', 'proper way to', 'right way to', 'you need to understand'];
-const WRONG_TERM    = 'chemical rhythm';
 
 function audit(filePath) {
-  const html = fs.readFileSync(filePath, 'utf8').toLowerCase();
   const raw  = fs.readFileSync(filePath, 'utf8');
+  const html = raw.toLowerCase();
 
-  // Rhythm domain label in first 100 lines
-  const first100 = raw.split('\n').slice(0, 100).join('\n').toLowerCase();
-  const hasRhythmLabel = RHYTHM_LABELS.some(r => raw.includes(r));
-  const hasRhythmIn100 = RHYTHM_LABELS.some(r => first100.includes(r.toLowerCase()));
+  const jargonBoxes = (raw.match(JARGON_BOX_RE) || []);
 
-  // Wrong terminology
+  // Terminology typo
   const chemRhythmCount = (html.match(/chemical rhythm/g) || []).length;
 
-  // Prescriptive phrases
+  // Prescriptive / authority-toned phrases
   const prescriptiveFound = PRESCRIPTIVE.filter(p => html.includes(p));
-
-  // Keeper psychology depth
-  const keeperPsychFound = KEEPER_PSYCH.filter(k => html.includes(k));
-  const hasKeeperBlock = html.includes('ara · keeper rhythm');
-
-  // Reading vocabulary density (per 1000 chars)
-  const vocabHits = READING_VOCAB.reduce((n, v) => n + (html.match(new RegExp(v, 'g')) || []).length, 0);
-  const vocabDensity = (vocabHits / html.length * 1000).toFixed(2);
-
-  // Authority tone
   const authorityFound = AUTHORITY_TONE.filter(a => html.includes(a));
 
   return {
-    hasRhythmLabel,
-    hasRhythmIn100,
+    jargonBoxes,
     chemRhythmCount,
     prescriptiveFound,
-    hasKeeperBlock,
-    keeperPsychFound: keeperPsychFound.length,
-    vocabDensity: parseFloat(vocabDensity),
     authorityFound,
   };
 }
@@ -64,28 +65,15 @@ const files = fs.readdirSync(ART_DIR)
   .filter(f => f.endsWith('.html') && !SKIP.has(f))
   .sort();
 
-const COL = {
-  file:        16,
-  rhythm:      8,
-  r100:        6,
-  chem:        5,
-  prescr:      8,
-  keeper:      8,
-  vocab:       7,
-  authority:   10,
-};
-
+const COL = { jargon: 8, chem: 6, prescr: 8, authority: 10 };
 function pad(s, n) { return String(s).padEnd(n); }
 
-console.log('\nARA Alignment Audit\n' + '═'.repeat(80));
+console.log('\nArticle Voice & Jargon Audit (regular articles only — framework module skipped)\n' + '═'.repeat(80));
 console.log(
   pad('Article', 38) +
-  pad('Rhythm', COL.rhythm) +
-  pad('R<100', COL.r100) +
+  pad('Jargon', COL.jargon) +
   pad('Chem', COL.chem) +
   pad('Prescr', COL.prescr) +
-  pad('Keeper', COL.keeper) +
-  pad('Vocab/1k', COL.vocab) +
   pad('Authority', COL.authority)
 );
 console.log('─'.repeat(80));
@@ -97,28 +85,26 @@ for (const file of files) {
   const r  = audit(fp);
   const name = file.replace('.html', '').substring(0, 37);
 
-  const rhythmFlag   = r.hasRhythmLabel ? '✓' : '✗';
-  const r100Flag     = r.hasRhythmIn100 ? '✓' : '–';
-  const chemFlag     = r.chemRhythmCount > 0 ? `⚠${r.chemRhythmCount}` : '✓';
-  const prescrFlag   = r.prescriptiveFound.length > 0 ? `⚠${r.prescriptiveFound.length}` : '✓';
-  const keeperFlag   = r.hasKeeperBlock ? '✓' : '–';
-  const authorFlag   = r.authorityFound.length > 0 ? `⚠${r.authorityFound.length}` : '✓';
+  const jargonFlag = r.jargonBoxes.length > 0 ? `⚠${r.jargonBoxes.length}` : '✓';
+  const chemFlag   = r.chemRhythmCount > 0 ? `⚠${r.chemRhythmCount}` : '✓';
+  const prescrFlag = r.prescriptiveFound.length > 0 ? `⚠${r.prescriptiveFound.length}` : '✓';
+  const authorFlag = r.authorityFound.length > 0 ? `⚠${r.authorityFound.length}` : '✓';
 
-  if (!r.hasRhythmLabel || r.chemRhythmCount > 0 || r.prescriptiveFound.length > 0 || r.authorityFound.length > 0) {
+  if (r.jargonBoxes.length > 0 || r.chemRhythmCount > 0 || r.prescriptiveFound.length > 0 || r.authorityFound.length > 0) {
     issues++;
   }
 
   console.log(
     pad(name, 38) +
-    pad(rhythmFlag, COL.rhythm) +
-    pad(r100Flag, COL.r100) +
+    pad(jargonFlag, COL.jargon) +
     pad(chemFlag, COL.chem) +
     pad(prescrFlag, COL.prescr) +
-    pad(keeperFlag, COL.keeper) +
-    pad(r.vocabDensity, COL.vocab) +
     pad(authorFlag, COL.authority)
   );
 
+  if (r.jargonBoxes.length > 0) {
+    console.log('  Branded ARA boxes: ' + r.jargonBoxes.join(', '));
+  }
   if (r.prescriptiveFound.length > 0) {
     console.log('  Prescriptive: ' + r.prescriptiveFound.join(', '));
   }
@@ -132,4 +118,4 @@ for (const file of files) {
 
 console.log('─'.repeat(80));
 console.log(`Total files: ${files.length}  |  Files with issues: ${issues}\n`);
-console.log('Legend: ✓ pass  ✗ missing  – not present  ⚠N = N issues found');
+console.log('Legend: ✓ pass  ⚠N = N issues found. A regular article should score all ✓.');

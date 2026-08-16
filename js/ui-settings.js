@@ -19,12 +19,32 @@
   var stgAnalytics = document.getElementById('stg-analytics');
   var stgWcDays    = document.getElementById('stg-wc-days');
 
+  /* body{overflow:hidden} alone is a known cross-browser trap on
+     mobile: on some Android WebViews/embedded browsers it doesn't just
+     block background scroll, it also stops touch-scroll from reaching
+     this panel's own overflow-y:auto — the whole page becomes
+     untouchable, panel included. position:fixed + restoring scroll
+     position on close is the standard robust fix. */
+  var scrollLockY = 0;
+  function lockBodyScroll() {
+    scrollLockY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + scrollLockY + 'px';
+    document.body.style.width = '100%';
+  }
+  function unlockBodyScroll() {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollLockY);
+  }
+
   function openPanel() {
     panel.classList.add('open');
     panel.removeAttribute('aria-hidden');
     if (backdrop) { backdrop.classList.add('open'); backdrop.removeAttribute('aria-hidden'); }
     openBtn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
+    lockBodyScroll();
     try { syncToggles(); } catch (e) {}
   }
 
@@ -33,7 +53,7 @@
     panel.setAttribute('aria-hidden', 'true');
     if (backdrop) { backdrop.classList.remove('open'); backdrop.setAttribute('aria-hidden', 'true'); }
     openBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
+    unlockBodyScroll();
     openBtn.focus();
   }
 

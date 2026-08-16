@@ -522,13 +522,32 @@
     pill.textContent = parts.join(' ') || 'Tank connected';
   }
 
+  /* body{overflow:hidden} alone is a known cross-browser trap on
+     mobile: on some Android WebViews/embedded browsers it doesn't just
+     block background scroll, it also stops touch-scroll from reaching
+     the sheet's own overflow-y:auto thread. position:fixed + restoring
+     scroll position on close is the standard robust fix. */
+  var scrollLockY = 0;
+  function lockBodyScroll() {
+    scrollLockY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + scrollLockY + 'px';
+    document.body.style.width = '100%';
+  }
+  function unlockBodyScroll() {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollLockY);
+  }
+
   function openSheet() {
     sheet.classList.add('open');
     sheet.removeAttribute('aria-hidden');
     backdrop.classList.add('open');
     fab.setAttribute('aria-expanded', 'true');
     fab.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    lockBodyScroll();
     fitSheet();
     if (window.visualViewport) {
       window.visualViewport.addEventListener('resize', fitSheet);
@@ -544,7 +563,7 @@
     backdrop.classList.remove('open');
     fab.setAttribute('aria-expanded', 'false');
     fab.classList.remove('active');
-    document.body.style.overflow = '';
+    unlockBodyScroll();
     if (window.innerWidth < 721) {
       sheet.style.top    = '';
       sheet.style.bottom = '';

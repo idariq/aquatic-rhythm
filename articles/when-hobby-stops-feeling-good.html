@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=28">
+<link rel="stylesheet" href="/css/ar-page.css?v=29">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -112,6 +112,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:linear-grad
 .art-footer a:hover{color:rgba(61,214,232,.70)}
 
 .art-intro{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
+/* mobile art-intro height override (fix-art-intro-mobile-height.mjs) */
+@media(max-width:720px){.art-intro{min-height:auto;align-items:flex-start;padding-top:calc(68px + 1.75rem)}}
 .art-intro.hidden{display:none}
 .art-intro::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--abyss));pointer-events:none}
 .art-intro-inner{max-width:640px;margin:0 auto}
@@ -421,8 +423,8 @@ function updateDots() {
     <p class="rh-sheet-note">AI can be wrong — for fish emergencies, consult a specialist</p>
   </div>
 </div>
-<script src="/js/content-trust.js?v=28"></script>
-<script src="/js/ar-page.js?v=28" defer></script>
+<script src="/js/content-trust.js?v=29"></script>
+<script src="/js/ar-page.js?v=29" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -430,6 +432,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=28" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=29" defer></script>
 </body>
 </html>

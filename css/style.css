@@ -689,7 +689,7 @@ body.ar-reduce-motion #driftwood-layer{opacity:0!important;transition:opacity .5
   color:rgba(255,255,255,.98);
 }
 .nlinks a:focus-visible::after{width:100%;background:rgba(61,214,232,.95)}
-.intro{font-size:1.05rem;font-weight:400;color:rgba(235,240,236,.78);line-height:1.92}
+.intro{font-size:.85rem;font-weight:400;color:rgba(235,240,236,.78);line-height:1.92}
 .card p{font-size:.84rem;font-weight:300;color:rgba(255,255,255,.78);line-height:1.6}
 
 /* ── BOTTOM NAV (PWA / mobile) ── */

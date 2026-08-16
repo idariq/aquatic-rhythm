@@ -60,7 +60,24 @@ Buat baseline rule berikut:
   - Threshold awal: `> 30 request / 1 menit / IP`.
   - Action: **Block** atau **Managed Challenge**.
 
-> Untuk website statis ini, jika belum ada endpoint form internal, siapkan rule sebagai template dan aktifkan saat endpoint dipublikasikan.
+- `POST` ke Rhyssa AI chat proxy (`worker/index.js`, endpoint AI **berbayar** — setiap
+  request yang lolos rate-limit worker akan memicu panggilan Anthropic API sungguhan,
+  beda dari form gratis biasa di atas):
+  - Path: `api.aquaticrhythm.com/chat`.
+  - Threshold awal: `> 15 request / 1 menit / IP`.
+  - Action: **Block** (bukan Managed Challenge — ini endpoint JSON API dipanggil
+    oleh JS di browser, bukan form yang diisi manusia langsung, jadi challenge
+    interaktif tidak relevan/tidak bisa diselesaikan client di baliknya).
+  - Rule WAF ini WAJIB, bukan opsional — `worker/index.js` sendiri sudah punya
+    rate limit lunak (12 request/menit/IP, in-memory per-isolate) sebagai lapisan
+    pertama, tapi state itu tidak dibagi lintas semua lokasi edge Cloudflare
+    (colo lain / isolate baru = counter mulai dari nol lagi). Rule WAF di level
+    akun inilah satu-satunya lapisan yang benar-benar global per-IP merentas
+    seluruh edge.
+
+> Untuk jalur form/admin generik di atas yang belum dipakai, siapkan rule sebagai
+> template dan aktifkan saat endpoint dipublikasikan. Jalur `/chat` di atas
+> **sudah live** — rule-nya harus dipasang sekarang, bukan ditunda.
 
 ### 5) DDoS protection always-on
 

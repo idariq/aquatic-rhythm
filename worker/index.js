@@ -20,6 +20,56 @@ const MAX_TOKENS     = 1024;
 const MAX_MSG_CHARS  = 800;
 const MAX_HISTORY    = 10;
 
+/* ── Rate limiting (defense-in-depth — NOT a substitute for the edge-level
+   Cloudflare Rate Limiting Rule documented in docs/waf-github-pages.md) ──
+   /chat is the only endpoint that calls the paid Anthropic API, so unlike
+   a plain contact form it has a real per-request cost and deserves a hard
+   cap, not just the Origin check above (which a non-browser client can
+   spoof freely — browsers can't override Origin, but curl/scripts can).
+
+   State lives in this isolate's module scope: it persists across requests
+   handled by the same isolate, but is NOT shared across Cloudflare's other
+   edge locations/isolates or preserved across isolate restarts. A request
+   spread across many colos or IPs is only slowed by this layer, not fully
+   stopped — that's what the WAF-level rule is for. This layer still
+   blocks the common case (one script hammering /chat from one IP) with no
+   extra infra to provision. */
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX_REQ   = 12;
+const rateLimitHits        = new Map(); /* ip -> { count, windowStart } */
+
+function isRateLimited(ip) {
+  const now   = Date.now();
+  const entry = rateLimitHits.get(ip);
+  if (!entry || now - entry.windowStart >= RATE_LIMIT_WINDOW_MS) {
+    rateLimitHits.set(ip, { count: 1, windowStart: now });
+    return false;
+  }
+  entry.count += 1;
+  return entry.count > RATE_LIMIT_MAX_REQ;
+}
+
+/* Opportunistic cleanup so rateLimitHits doesn't grow unbounded over an
+   isolate's lifetime — cheap enough to run on a small random fraction of
+   requests instead of wiring up a timer/alarm. */
+function pruneRateLimiter() {
+  const now = Date.now();
+  for (const [ip, entry] of rateLimitHits) {
+    if (now - entry.windowStart >= RATE_LIMIT_WINDOW_MS) rateLimitHits.delete(ip);
+  }
+}
+
+function rateLimitResponse(origin) {
+  return new Response(JSON.stringify({ error: 'Too many requests — please slow down.' }), {
+    status: 429,
+    headers: {
+      'Content-Type':                'application/json',
+      'Retry-After':                  String(RATE_LIMIT_WINDOW_MS / 1000),
+      'Access-Control-Allow-Origin':  origin || DEFAULT_ORIGIN,
+    },
+  });
+}
+
 export default {
   async fetch(request, env) {
     const allowedOrigin = env.ALLOWED_ORIGIN || DEFAULT_ORIGIN;
@@ -42,6 +92,13 @@ export default {
     }
 
     if (request.method === 'POST' && url.pathname === '/chat') {
+      /* Cloudflare sets CF-Connecting-IP itself on every edge request —
+         unlike Origin, the client cannot forge this header. */
+      const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+      if (Math.random() < 0.02) pruneRateLimiter();
+      if (isRateLimited(ip)) {
+        return rateLimitResponse(origin);
+      }
       return handleChat(request, env, origin);
     }
 

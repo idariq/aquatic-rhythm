@@ -16,6 +16,7 @@
     "check": "npm run check:syntax && npm test && npm run lint",
     "i18n:extract": "node scripts/extract-i18n.mjs",
     "i18n:build": "node scripts/build-i18n.mjs",
+    "i18n:check": "node scripts/check-i18n-sync.mjs",
     "reading:build": "node scripts/build-reading-index.mjs",
     "sitemap:build": "node scripts/update-sitemap.mjs",
     "og:build": "node scripts/gen-og-images.mjs --all-langs --update-html"

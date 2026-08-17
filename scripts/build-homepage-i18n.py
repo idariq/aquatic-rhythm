@@ -661,6 +661,302 @@ def build_tools(h, lang, u):
     return h
 
 
+def scoped_edit(h, start_marker, end_marker, edits, label):
+    """Find start_marker...end_marker fresh in the CURRENT h (never cached
+    positions — an earlier edit's length change would silently corrupt any
+    precomputed offset), extract that slice, apply a list of (pattern, value,
+    sublabel) replace_once edits scoped to ONLY that slice, splice back."""
+    ia, ib = slice_between(h, start_marker, end_marker, label)
+    if ia is None:
+        return h
+    block = h[ia:ib]
+    for edit in edits:
+        pattern, value, sublabel = edit[0], edit[1], edit[2]
+        count_all = len(edit) > 3 and edit[3] == "all"
+        if count_all:
+            block = re.sub(pattern, lambda m, v=value: m.group(1) + v + m.group(2), block)
+        else:
+            block = t1(block, pattern, value, f"{label}/{sublabel}")
+    return h[:ia] + block + h[ib:]
+
+
+def build_journal_landing(h, lang, u):
+    """pg-journal itself — a small landing page (header + an empty container
+    that ui-journal.js fills with tank cards at runtime, untouched here)."""
+    x = u["journal"]["landing"]
+    h = replace_once(h, r'(<span class="ey">)Keeper\'s Log(<\/span>)',
+                      lambda m: m.group(1) + x["ey"] + m.group(2), "journal landing ey")
+    h = replace_once(h, r'(<h1 class="dlg"[^>]*>)Your<br>[\s\S]*?(<\/h1>)',
+                      lambda m: m.group(1) + x["h1"] + m.group(2), "journal landing h1")
+    h = replace_once(h, r'(<p class="bt sr d1"[^>]*>)[\s\S]*?(<\/p>)',
+                      lambda m: m.group(1) + x["sub"] + m.group(2), "journal landing sub")
+    return h
+
+
+def build_tank_log_dashboard(h, lang, u):
+    """The pg-tank-log dashboard — static card chrome (headers, buttons,
+    empty states, filter bar). Everything rendered by ui-journal.js at
+    runtime (actual entries, tank name/stats, computed summaries) is left
+    untouched — out of scope for this pass, see commit message."""
+    x = u["journal"]["dashboard"]
+
+    h = replace_once(h, r'(aria-label=")Back to Keeper\'s Log(")',
+                      lambda m: m.group(1) + x["back_aria"] + m.group(2), "dashboard back aria")
+    h = replace_once(h, r'(data-page="journal">[\s\S]*?<span>)Keeper\'s Log(<\/span>)',
+                      lambda m: m.group(1) + x["back_label"] + m.group(2), "dashboard back label")
+    h = replace_once(h, r'(id="jn-tank-edit" aria-label=")Edit tank(" title=")Edit tank(")',
+                      lambda m: m.group(1) + x["edit_tank"] + m.group(2) + x["edit_tank"] + m.group(3),
+                      "dashboard edit tank")
+
+    h = scoped_edit(h, 'id="jn-setup-card"', 'id="jn-inhabitants"', [
+        (r'(tl-card-eyebrow">)My Setup(<\/span>)', x["setup_eyebrow"], "eyebrow"),
+        (r'(<span>)No setup recorded yet\.(<\/span>)', x["setup_empty_text"], "empty text"),
+        (r'(jn-setup-start-btn">)Record →(<\/button>)', x["setup_start_btn"], "start btn"),
+    ], "dashboard setup card")
+    # 3-group edit (aria-label + button text together) needs its own call since
+    # scoped_edit's helper only supports 2-group (prefix, suffix) substitutions.
+    ia, ib = slice_between(h, 'id="jn-setup-card"', 'id="jn-inhabitants"', "dashboard setup edit btn")
+    if ia is not None:
+        block = h[ia:ib]
+        block = replace_once(block, r'(jn-setup-edit-btn" aria-label=")Edit setup(">)Edit(<\/button>)',
+                              lambda m: m.group(1) + x["setup_edit_aria"] + m.group(2) + x["setup_edit_btn"] + m.group(3),
+                              "dashboard setup edit btn")
+        h = h[:ia] + block + h[ib:]
+
+    ia, ib = slice_between(h, 'id="jn-inhabitants"', 'id="jn-phase-card"', "dashboard family card")
+    if ia is not None:
+        block = h[ia:ib]
+        block = t1(block, r'(tl-card-eyebrow">)Tank Family(<\/span>)', x["family_eyebrow"], "family eyebrow")
+        block = replace_once(block, r'(jn-family-edit-btn" aria-label=")Manage residents(">)Edit(<\/button>)',
+                              lambda m: m.group(1) + x["family_edit_aria"] + m.group(2) + x["family_edit_btn"] + m.group(3),
+                              "family edit btn")
+        h = h[:ia] + block + h[ib:]
+
+    ia, ib = slice_between(h, 'id="jn-phase-card"', 'id="jn-weekly-insight-card"', "dashboard phase card")
+    if ia is not None:
+        block = h[ia:ib]
+        block = t1(block, r'(tl-card-eyebrow">)ARA Phase(<\/div>)', x["phase_eyebrow"], "phase eyebrow")
+        for step_key, en_text in [("phase_step_1", "Establishing"), ("phase_step_2", "Stabilising"),
+                                   ("phase_step_3", "Optimising"), ("phase_step_4", "Sustaining")]:
+            block = t1(block, rf'(jn-phase-journey-step">){en_text}(<\/span>)', x[step_key], step_key)
+        block = t1(block, r'(id="jn-phase-note">)Write your first entry to get an ARA phase reading\.(<\/p>)',
+                   x["phase_note_default"], "phase note default")
+        block = t1(block, r'(>)Ask Rhyssa about this phase(<\/button>)', x["phase_rh_btn"], "phase rh btn")
+        h = h[:ia] + block + h[ib:]
+
+    ia, ib = slice_between(h, 'id="jn-weekly-insight-card"', 'id="jn-param-charts"', "dashboard weekly insight")
+    if ia is not None:
+        block = h[ia:ib]
+        block = t1(block, r'(tl-card-eyebrow">)Rhyssa\'s Read(<\/span>)', x["weekly_insight_eyebrow"], "insight eyebrow")
+        block = t1(block, r'(>)Discuss with Rhyssa →(<\/button>)', x["weekly_insight_btn"], "insight btn")
+        h = h[:ia] + block + h[ib:]
+
+    ia, ib = slice_between(h, 'id="jn-param-charts"', 'id="jn-entry-cta-card"', "dashboard param charts")
+    if ia is not None:
+        block = h[ia:ib]
+        block = t1(block, r'(tl-card-eyebrow">)Parameter Trends(<\/span>)', x["param_charts_eyebrow"], "param eyebrow")
+        h = h[:ia] + block + h[ib:]
+
+    ia, ib = slice_between(h, 'id="jn-entry-cta-card"', 'id="jn-no-entries"', "dashboard entry cta")
+    if ia is not None:
+        block = h[ia:ib]
+        block = t1(block, r'(id="jn-entry-cta-prompt">)What did you notice today\?(<\/p>)',
+                   x["entry_cta_prompt_default"], "entry cta prompt")
+        block = t1(block, r'(id="jn-entry-open-main">)Write today\'s entry(<\/button>)',
+                   x["entry_cta_btn"], "entry cta btn")
+        h = h[:ia] + block + h[ib:]
+
+    ia, ib = slice_between(h, 'id="jn-no-entries"', 'id="jn-has-entries"', "dashboard no entries")
+    if ia is not None:
+        block = h[ia:ib]
+        block = t1(block, r'(tl-empty-text">)No entries yet\.(<\/p>)', x["no_entries_text"], "no entries text")
+        h = h[:ia] + block + h[ib:]
+
+    ia, ib = slice_between(h, 'id="jn-has-entries"', 'id="jn-entry-list"', "dashboard has entries header")
+    if ia is not None:
+        block = h[ia:ib]
+        block = t1(block, r'(tl-card-eyebrow"[^>]*>)Entries(<\/span>)', x["entries_eyebrow"], "entries eyebrow")
+        block = t1(block, r'(id="jn-entry-open">)\+ New entry(<\/button>)', x["new_entry_btn"], "new entry btn")
+        block = t1(block, r'(id="jn-entry-search" placeholder=")Search entries…(" autocomplete)',
+                   x["search_placeholder"], "search placeholder")
+        block = t1(block, r'(aria-label=")Search entries(")', x["search_aria"], "search aria")
+        block = t1(block, r'(id="jn-filter-toggle" aria-label=")Filter entries(")',
+                   x["filter_toggle_aria"], "filter toggle aria")
+        block = t1(block, r'(jn-filter-label">)Period(<\/span>)', x["filter_period_label"], "filter period label")
+        block = t1(block, r'(data-filter-days="0">)All time(<\/button>)', x["filter_period_all"], "filter period all")
+        block = t1(block, r'(data-filter-days="7">)7 days(<\/button>)', x["filter_period_7"], "filter period 7")
+        block = t1(block, r'(data-filter-days="30">)30 days(<\/button>)', x["filter_period_30"], "filter period 30")
+        block = t1(block, r'(data-filter-days="90">)90 days(<\/button>)', x["filter_period_90"], "filter period 90")
+        block = t1(block, r'(jn-filter-label">)Rhythm(<\/span>)', x["filter_rhythm_label"], "filter rhythm label")
+        block = t1(block, r'(data-filter-state="consistent">)Consistent(<\/button>)', x["state_consistent"], "state consistent")
+        block = t1(block, r'(data-filter-state="catching-up">)Catching up(<\/button>)', x["state_catching_up"], "state catching-up")
+        block = t1(block, r'(data-filter-state="occasional">)Occasional(<\/button>)', x["state_occasional"], "state occasional")
+        block = t1(block, r'(data-filter-state="just-starting">)Just starting(<\/button>)', x["state_just_starting"], "state just-starting")
+        block = t1(block, r'(jn-filter-label">)Care done(<\/span>)', x["filter_care_label"], "filter care label")
+        block = t1(block, r'(id="jn-filter-clear"[^>]*>)Clear all filters(<\/button>)', x["filter_clear_btn"], "filter clear btn")
+        block = t1(block, r'(id="jn-filter-no-results"[^>]*>)No entries match these filters\.(<\/p>)',
+                   x["filter_no_results"], "filter no results")
+        h = h[:ia] + block + h[ib:]
+
+    ia, ib = slice_between(h, 'id="jn-load-more"', 'class="tl-secondary-actions"', "dashboard load more + secondary")
+    if ia is not None:
+        # slice_between's ia points at the id attribute itself; walk back to
+        # the start of that <button so the button's own text stays in-slice.
+        btn_start = h.rfind("<button", 0, ia)
+        block = h[btn_start:ib]
+        block = t1(block, r'(id="jn-load-more"[^>]*>)Show older entries(<\/button>)', x["load_more_btn"], "load more btn")
+        h = h[:btn_start] + block + h[ib:]
+
+    ia, ib = slice_between(h, 'class="tl-secondary-actions"', "</main>", "dashboard secondary actions")
+    if ia is not None:
+        block = h[ia:ib]
+        block = t1(block, r'(id="jn-export">)Export JSON(<\/button>)', x["export_json_btn"], "export json")
+        block = t1(block, r'(id="jn-export-csv">)Export CSV(<\/button>)', x["export_csv_btn"], "export csv")
+        block = t1(block, r'(id="jn-reset-tank">)Delete this tank(<\/button>)', x["delete_tank_btn"], "delete tank (secondary)")
+        h = h[:ia] + block + h[ib:]
+
+    return h
+
+
+def build_kofi_sheet(h, lang, u):
+    x = u["journal"]["kofi_sheet"]
+    return scoped_edit(h, 'id="kofi-sheet"', '<!-- ── MODAL: Tank Setup', [
+        (r'(id="kofi-sheet-title" class="kofi-sheet-title">)Support(<\/span>)', x["title"], "title"),
+        (r'(kofi-sheet-sub">)Optional tips — handled on Ko-fi(<\/span>)', x["sub"], "sub"),
+        (r'(kofi-sheet-linkout">)Open separately ↗(<\/a>)', x["linkout"], "linkout"),
+        (r'(id="kofi-sheet-close" aria-label=")Close support panel(")', x["close_aria"], "close aria"),
+    ], "kofi sheet")
+
+
+def build_modal_setup(h, lang, u):
+    x = u["journal"]["modal_setup"]
+    dashboard_delete_tank_btn = u["journal"]["dashboard"]["delete_tank_btn"]
+    return scoped_edit(h, 'id="mt-modal-setup"', '<!-- ── MODAL: Keeper', [
+        (r'(mt-modal-title">)Set up your tank(<\/h2>)', x["title"], "title"),
+        (r'(data-modal-close="mt-modal-setup" aria-label=")Close(")', x["close_aria"], "close aria"),
+        (r'(id="mt-preview-cat">)Choose a size or brand below(<\/span>)', x["preview_cat_default"], "preview cat default"),
+        (r'(data-stab="preset"[^>]*>)Popular(<\/button>)', x["tab_preset"], "tab preset"),
+        (r'(data-stab="brand"[^>]*>)Branded(<\/button>)', x["tab_brand"], "tab brand"),
+        (r'(data-stab="custom"[^>]*>)Custom(<\/button>)', x["tab_custom"], "tab custom"),
+        (r'(margin:0">)Measurement unit(<\/span>)', x["unit_label"], "unit label"),
+        (r'(data-dimunit="cm">)cm(<\/button>)', x["unit_cm"], "unit cm"),
+        (r'(data-dimunit="in">)inches(<\/button>)', x["unit_in"], "unit in"),
+        (r'(for="mt-dim-l">)Length(<\/label>)', x["length_label"], "length label"),
+        (r'(for="mt-dim-w">)Width(<\/label>)', x["width_label"], "width label"),
+        (r'(for="mt-dim-h">)Height(<\/label>)', x["height_label"], "height label"),
+        (r'(margin:0">)Calculated volume(<\/span>)', x["calc_vol_label"], "calc vol label"),
+        (r'(for="mt-inp-name">)Tank name(<\/label>)', x["name_label"], "name label"),
+        (r'(id="mt-inp-name"[^>]*placeholder=")e\.g\. My Living Room Tank(")', x["name_placeholder"], "name placeholder"),
+        (r'(for="mt-inp-type">)Tank type(<\/label>)', x["type_label"], "type label"),
+        (r'(value="freshwater">)Freshwater(<\/option>)', x["type_freshwater"], "type freshwater"),
+        (r'(value="planted">)Planted(<\/option>)', x["type_planted"], "type planted"),
+        (r'(value="marine">)Marine / Reef(<\/option>)', x["type_marine"], "type marine"),
+        (r'(value="brackish">)Brackish(<\/option>)', x["type_brackish"], "type brackish"),
+        (r'(value="coldwater">)Coldwater(<\/option>)', x["type_coldwater"], "type coldwater"),
+        (r'(value="paludarium">)Paludarium(<\/option>)', x["type_paludarium"], "type paludarium"),
+        (r'(for="mt-inp-date">)Set up date (<span)', x["date_label"] + " ", "date label"),
+        (rf'({re.escape(x["date_label"])} <span[^>]*>)\(optional\)(<\/span>)', x["optional"], "date optional"),
+        (r'(mt-save-btn">)Save tank(<\/button>)', x["save_btn"], "save btn"),
+        (r'(id="mt-setup-delete"[^>]*>)Delete this tank(<\/button>)', dashboard_delete_tank_btn, "delete tank (setup modal)"),
+    ], "modal setup")
+
+
+def build_modal_entry(h, lang, u):
+    x = u["journal"]["modal_entry"]
+    dx = u["journal"]["dashboard"]
+    return scoped_edit(h, 'id="mt-modal-entry"', '<!-- ── MILESTONE', [
+        (r'(mt-modal-title">)Today\'s entry(<\/h2>)', x["title"], "title"),
+        (r'(data-modal-close="mt-modal-entry" aria-label=")Close(")', x["close_aria"], "close aria"),
+        (r'(jn-form-question">)Your rhythm lately(<\/p>)', x["rhythm_question"], "rhythm question"),
+        # Same 4 rhythm-state labels as the dashboard filter chips (dx below) —
+        # reused rather than duplicated in the units schema, since the English
+        # source itself repeats the identical 4 words in both places.
+        (r'(data-state="consistent">)Consistent(<\/button>)', dx["state_consistent"], "state consistent (entry form)"),
+        (r'(data-state="catching-up">)Catching up(<\/button>)', dx["state_catching_up"], "state catching-up (entry form)"),
+        (r'(data-state="occasional">)Occasional(<\/button>)', dx["state_occasional"], "state occasional (entry form)"),
+        (r'(data-state="just-starting">)Just starting(<\/button>)', dx["state_just_starting"], "state just-starting (entry form)"),
+        (r'(for="jn-entry-obs">)What did you notice\?(<\/label>)', x["obs_question"], "obs question"),
+        (r'(id="jn-entry-obs"[^>]*placeholder=")Fish are active today\. Plants growing well\. Water looks slightly green…(")',
+         x["obs_placeholder"], "obs placeholder"),
+        (r'(jn-form-question">)What did you do\? (<span)', x["care_question"] + " ", "care question"),
+        (rf'({re.escape(x["care_question"])} <span[^>]*>)\(optional\)(<\/span>)', x["optional"], "care question optional"),
+        (r'(data-care="water_change">)Water change(<\/button>)', x["care_water_change"], "care water_change"),
+        (r'(data-care="filter">)Filter(<\/button>)', x["care_filter"], "care filter"),
+        (r'(data-care="feeding">)Feeding(<\/button>)', x["care_feeding"], "care feeding"),
+        (r'(data-care="top_up">)Topping up(<\/button>)', x["care_top_up"], "care top_up"),
+        (r'(data-care="treatment">)Treatment(<\/button>)', x["care_treatment"], "care treatment"),
+        (r'(data-care="dosing">)Dosing(<\/button>)', x["care_dosing"], "care dosing"),
+        (r'(data-care="media">)Media change(<\/button>)', x["care_media"], "care media"),
+        (r'(data-care="trimming">)Trimming(<\/button>)', x["care_trimming"], "care trimming"),
+        (r'(data-care="nothing">)Just observed(<\/button>)', x["care_nothing"], "care nothing"),
+        (r'(id="jn-care-more">)\+ 6 more(<\/button>)', x["care_more_btn"], "care more btn"),
+        (r'(for="jn-treatment-note">)Product / dose (<span)', x["treatment_label"] + " ", "treatment label"),
+        (rf'({re.escape(x["treatment_label"])} <span[^>]*>)\(optional\)(<\/span>)', x["optional"], "treatment label optional"),
+        (r'(id="jn-treatment-note"[^>]*placeholder=")e\.g\. Easy Carbo 5ml, Seachem Prime 2ml(")',
+         x["treatment_placeholder"], "treatment placeholder"),
+        (r'(jn-params-note">)Water parameters (<span)', x["params_note"] + " ", "params note"),
+        (rf'({re.escape(x["params_note"])} <span[^>]*>)\(optional\)(<\/span>)', x["optional"], "params note optional"),
+        (r'(for="jn-param-ph">)pH(<\/label>)', x["param_ph"], "param ph"),
+        (r'(for="jn-param-nh3">)NH₃ \(mg/L\)(<\/label>)', x["param_nh3"], "param nh3"),
+        (r'(for="jn-param-no2">)NO₂ \(mg/L\)(<\/label>)', x["param_no2"], "param no2"),
+        (r'(for="jn-param-no3">)NO₃ \(mg/L\)(<\/label>)', x["param_no3"], "param no3"),
+        (r'(for="jn-param-temp">)Temp \(°C\)(<\/label>)', x["param_temp"], "param temp"),
+        (r'(for="jn-param-gh">)GH \(°dH\)(<\/label>)', x["param_gh"], "param gh"),
+        (r'(for="jn-param-kh">)KH \(°dH\)(<\/label>)', x["param_kh"], "param kh"),
+        (r'(for="jn-param-sg">)Salinity / SG(<\/label>)', x["param_sg"], "param sg"),
+        (r'(style="flex:1">)Save entry(<\/button>)', x["save_entry_btn"], "save entry btn"),
+        (r'(id="jn-entry-delete-btn"[^>]*>)Delete(<\/button>)', x["delete_btn"], "delete btn"),
+    ], "modal entry")
+
+
+def build_toast_and_inhabitant(h, lang, u):
+    tx = u["journal"]["toast"]
+    x = u["journal"]["modal_inhabitant"]
+    h = replace_once(h, r'(id="jn-toast-dismiss" aria-label=")Dismiss(")',
+                      lambda m: m.group(1) + tx["dismiss_aria"] + m.group(2), "toast dismiss aria")
+    return scoped_edit(h, 'id="mt-modal-inhabitant"', '<!-- ── GEAR MODAL', [
+        (r'(mt-modal-title">)Tank Family(<\/h2>)', x["title"], "title (list view)"),
+        (r'(data-modal-close="mt-modal-inhabitant" aria-label=")Close(")', x["close_aria"], "close aria (both views)", "all"),
+        (r'(id="jn-inh-list-add"[^>]*>)\+ Add resident(<\/button>)', x["add_resident_btn"], "add resident btn"),
+        (r'(id="jn-inh-back-btn"[^>]*>)← List(<\/button>)', x["back_list_btn"], "back list btn"),
+        (r'(id="jn-inh-form-title">)Add resident(<\/h2>)', x["form_title_add"], "form title add"),
+        (r'(jn-form-question">)Category(<\/p>)', x["category_question"], "category question"),
+        (r'(data-cat="fish">)Fish(<\/button>)', x["cat_fish"], "cat fish"),
+        (r'(data-cat="plant">)Plant(<\/button>)', x["cat_plant"], "cat plant"),
+        (r'(data-cat="invertebrate">)Invertebrate(<\/button>)', x["cat_invertebrate"], "cat invertebrate"),
+        (r'(data-cat="coral">)Coral(<\/button>)', x["cat_coral"], "cat coral"),
+        (r'(data-cat="other">)Other(<\/button>)', x["cat_other"], "cat other"),
+        (r'(for="jn-inh-common">)Common name (<span)', x["common_name_label"] + " ", "common name label"),
+        (rf'({re.escape(x["common_name_label"])} <span[^>]*>)\(required\)(<\/span>)', x["required"], "common name required"),
+        (r'(id="jn-inh-common"[^>]*placeholder=")e\.g\. Neon Tetra(")', x["common_name_placeholder"], "common name placeholder"),
+        (r'(for="jn-inh-count">)Quantity(<\/label>)', x["quantity_label"], "quantity label"),
+        (r'(for="jn-inh-name">)Personal name (<span)', x["personal_name_label"] + " ", "personal name label"),
+        (rf'({re.escape(x["personal_name_label"])} <span[^>]*>)\(optional\)(<\/span>)', x["optional"], "personal name optional"),
+        (r'(id="jn-inh-name"[^>]*placeholder=")e\.g\. Nemo, Goldie…(")', x["personal_name_placeholder"], "personal name placeholder"),
+        (r'(for="jn-inh-species">)Scientific name (<span)', x["species_label"] + " ", "species label"),
+        (rf'({re.escape(x["species_label"])} <span[^>]*>)\(auto-fills on suggestion\)(<\/span>)', x["species_hint"], "species hint"),
+        (r'(id="jn-inh-species"[^>]*placeholder=")e\.g\. Paracheirodon innesi(")', x["species_placeholder"], "species placeholder"),
+        (r'(for="jn-inh-date">)Date added(<\/label>)', x["date_added_label"], "date added label"),
+        (r'(margin-bottom:\.55rem">)Status(<\/div>)', x["status_label"], "status label"),
+        (r'(data-status="active">)Active(<\/button>)', x["status_active"], "status active"),
+        (r'(data-status="rehomed">)Rehomed(<\/button>)', x["status_rehomed"], "status rehomed"),
+        (r'(data-status="passed">)Passed(<\/button>)', x["status_passed"], "status passed"),
+        (r'(margin-top:1\.2rem">)Add to tank(<\/button>)', x["add_to_tank_btn"], "add to tank btn"),
+        (r'(id="jn-inh-delete-btn"[^>]*>)Remove resident(<\/button>)', x["remove_resident_btn"], "remove resident btn"),
+    ], "modal inhabitant")
+
+
+def build_modal_gear(h, lang, u):
+    x = u["journal"]["modal_gear"]
+    return scoped_edit(h, 'id="mt-modal-gear"', '<!-- ── MODAL BACKDROP', [
+        (r'(mt-modal-title">)My Tank Setup(<\/h2>)', x["title"], "title"),
+        (r'(data-modal-close="mt-modal-gear" aria-label=")Close(")', x["close_aria"], "close aria"),
+        (r'(jn-form-section-label">)Equipment(<\/div>)', x["equipment_label"], "equipment label"),
+        (r'(jn-setup-modal-hint">)Select what you actually have in this tank\.(<\/p>)', x["equipment_hint"], "equipment hint"),
+        (r'(margin-top:1\.2rem">)Save Setup(<\/button>)', x["save_setup_btn"], "save setup btn"),
+    ], "modal gear")
+
+
 def build_shared_footer(h, lang, u):
     """Footer tagline + subfooter labels appear identically in every pg-* section
     (including the still-English pg-reading/pg-tools/pg-journal/pg-tank-log)."""
@@ -719,6 +1015,30 @@ def apply_scoped(h, start_id, end_id, transform, lang, u, label):
     return h[:ia] + new_section + h[ib:]
 
 
+def slice_between(h, start_marker, end_marker, label, from_idx=0):
+    """Generic version of apply_scoped's boundary logic — takes raw marker
+    strings (not just `<div id="pg-*">`) so it can scope arbitrarily-nested
+    sub-blocks (a single modal, a single card) that repeat the same class
+    names as their siblings. Returns (start_idx, end_idx) into h, or
+    (None, None) with a warning if either marker isn't found."""
+    ia = h.find(start_marker, from_idx)
+    if ia == -1:
+        print(f"  WARNING: start marker not found for {label}: {start_marker!r}", file=sys.stderr)
+        return None, None
+    ib = h.find(end_marker, ia + len(start_marker))
+    if ib == -1:
+        print(f"  WARNING: end marker not found for {label}: {end_marker!r}", file=sys.stderr)
+        return None, None
+    return ia, ib
+
+
+def t1(block, pattern, value, label, flags=0):
+    """replace_once shorthand for a block already scoped to a single unique
+    element — pattern must have exactly one capture-free insertion point via
+    a lambda; kept terse since build_journal has ~100 of these."""
+    return replace_once(block, pattern, lambda m, v=value: m.group(1) + v + m.group(2), label, flags=flags)
+
+
 def main():
     src = SRC.read_text(encoding="utf-8")
     for lang in LANGUAGES:
@@ -740,6 +1060,13 @@ def main():
         h = apply_scoped(h, "pg-about", "pg-reading", build_about, lang, u, "about")
         h = apply_scoped(h, "pg-reading", "pg-tools", build_reading, lang, u, "reading")
         h = apply_scoped(h, "pg-tools", "pg-journal", build_tools, lang, u, "tools")
+        h = apply_scoped(h, "pg-journal", "pg-tank-log", build_journal_landing, lang, u, "journal landing")
+        h = build_tank_log_dashboard(h, lang, u)
+        h = build_kofi_sheet(h, lang, u)
+        h = build_modal_setup(h, lang, u)
+        h = build_modal_entry(h, lang, u)
+        h = build_toast_and_inhabitant(h, lang, u)
+        h = build_modal_gear(h, lang, u)
         h = build_shared_footer(h, lang, u)
         out_dir = ROOT / lang
         out_dir.mkdir(exist_ok=True)

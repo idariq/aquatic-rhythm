@@ -294,5 +294,25 @@
       "kofi_note": "Jika panduan ini membantu ritme Anda, sumbangan opsional membantu mendanai bacaan dan alat baru — semuanya di sini tetap gratis.",
       "kofi_link": "Dukung di Ko-fi"
     }
+  },
+  "tools": {
+    "ey": "Lab &amp; Alat",
+    "h1": "Coba dulu.<br><em style=\"font-style:italic;color:rgba(61,214,232,.78)\">Sebelum Anda berkomitmen.</em>",
+    "sub": "Simulator dan perencana interaktif. Buat keputusan di layar dulu sebelum Anda buat di akuarium sebenarnya.",
+    "card1_tag": "Simulator",
+    "card1_title": "Simulator Siklus Tangki",
+    "card1_desc": "Lihat amonia, nitrit, dan nitrat merespons keputusan Anda secara real-time. Pilih cycling tanpa ikan atau dengan ikan.",
+    "card1_cta": "Buka simulator →",
+    "card2_tag": "Lab interaktif",
+    "card2_title": "Pembangun Tangki",
+    "card2_desc": "Bangun akuarium pertama Anda di layar. Tambah peralatan, jelajahi bagaimana tiap bagian mempengaruhi sistem, pahami apa yang Anda sebenarnya butuhkan.",
+    "card2_cta": "Masuk ke lab →",
+    "card3_tag": "Lab interaktif",
+    "card3_title": "Lab Tekanan Komunitas",
+    "card3_desc": "Petakan tekanan yang tumpang tindih saat mencampur spesies — suhu, kimia, ruang, predasi, ketegangan sosial, dan keamanan invertebrata. Bersifat edukatif, bukan skor kompatibilitas.",
+    "card3_cta": "Buka peta tekanan →",
+    "closing_note": "Semua alat tumbuh dari ARA — Aquatic Rhythm Alignment. Alat ini mensimulasikan dan merencanakan, tapi tidak menggantikan observasi.",
+    "closing_link": "Baca kerangka kerja ARA →",
+    "kofi_hint": "Lab butuh waktu yang stabil untuk dibangun. Jika alat di sini membantu Anda menghindari kesalahan yang mahal, sumbangan opsional membantu menjaga kelangsungannya."
   }
 }

@@ -17,8 +17,7 @@
         "subtitle": "Pokok sedang membaca sesuatu. Ketahui apa.",
         "texts": [
             "Daun sedang layu, atau menguning, atau ditumbuhi alga. Atau tiada yang tumbuh langsung — hanya penolakan yang perlahan dan degil untuk berkembang maju. Pokok nampak seolah-olah sepatutnya hidup, tapi ada sesuatu yang jelas tidak kena.",
-            "Panduan ini menerangkan apa yang pokok anda sebenarnya bertindak balas, cara membaca isyarat spesifik yang mereka tunjukkan, dan cara menyepadankan setup anda dengan apa yang anda boleh genuinly dan konsisten berikan.",
-            "Ini bukan tentang mencapai planted tank yang sempurna. Ia tentang memahami apa yang pokok perlukan, dan sama ada anda boleh menyediakannya secara konsisten — kerana ketidakkonsistenan adalah penyumbang terbesar kepada kegagalan pokok dalam hobi ini."
+            "Panduan ini menerangkan apa yang pokok anda sebenarnya bertindak balas, cara membaca isyarat spesifik yang mereka tunjukkan, dan cara menyepadankan setup anda dengan apa yang anda boleh benar-benar dan konsisten berikan."
         ],
         "metaModules": "4 modul",
         "metaTime": "Semua peringkat",
@@ -43,8 +42,6 @@
                 "<strong>Daun berlubang atau terkikis.</strong> Selalunya aktiviti ikan yang memakan pokok (goldfish, beberapa cichlid, siput) — bukan masalah pertumbuhan. Tapi boleh juga dari kekurangan kalium dalam beberapa spesies."
             ],
             "pullQuote": "Pokok yang sihat dan tumbuh dengan aktif bersaing dengan alga untuk sumber yang sama. Pokok yang bergelut tidak boleh. Alga pada daunnya adalah simptom, bukan punca.",
-            "hintLabel": null,
-            "hintText": null,
             "prevBtn": "← Intro",
             "nextBtn": "Cahaya, nutrien, dan CO2"
         },
@@ -59,10 +56,9 @@
                 "<strong>CO2</strong> adalah faktor pengehad dalam banyak planted tank. Pokok memerlukan karbon untuk pertumbuhan, dan dalam akuarium tertutup, CO2 terlarut secara semula jadi selalunya tidak mencukupi untuk tumbuhan yang menuntut tinggi. Isyarat CO2 tidak mencukupi: pertumbuhan perlahan walaupun cahaya dan nutrien kelihatan ok; daun baru kecil dan padat; pH tinggi pada penghujung tempoh cahaya dalam tank dengan CO2 semula jadi sahaja.",
                 "Hubungan antara cahaya, CO2, dan nutrien berfungsi sebagai kunci pengehad Liebig — had dalam rantaian pertumbuhan adalah apa yang menghadkan, tanpa mengira berapa banyak yang lain anda tambah. Menambah nutrien ke dalam tank yang terhad cahaya tidak membantu pertumbuhan pokok; ia hanya membaja alga. Diagnos dengan betul dahulu sebelum menambah sesuatu."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Environmental Rhythm",
+            "hintLabel": "Tempat pertama untuk periksa",
             "hintText": [
-                "Dalam ARA, Environmental Rhythm merangkumi semua yang organisma alami sebagai persekitarannya — bukan sahaja kimia air, tetapi kitaran cahaya, kestabilan suhu, ketersediaan CO2, dan struktur fizikal. Tumbuhan adalah sebahagian daripada ritma ini, bukan berasingan daripadanya. Apabila pertumbuhan tumbuhan adalah isyarat, Environmental Rhythm adalah hampir selalu tempat untuk melihat."
+                "Semua yang tumbuhan alami sebagai persekitarannya — bukan sahaja kimia air, tetapi kitaran cahaya, kestabilan suhu, ketersediaan CO2, dan struktur fizikal — membentuk cara ia membesar. Tumbuhan sebahagian daripada gambaran itu, bukan berasingan. Apabila pertumbuhan tumbuhan jadi isyarat, persekitaran fizikal hampir selalu tempat untuk periksa dulu."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Low-tech vs high-tech"
@@ -72,15 +68,15 @@
             "tag": "Low-tech vs high-tech",
             "titleHtml": "Kapasiti sebelum ambisi<br><em>dalam planted tank.</em>",
             "body": [
-                "Salah satu daripada empat prinsip ARA adalah Kapasiti sebelum Ambisi — membina sistem di sekitar apa yang penjaga boleh sediakan secara mampan, bukan di sekitar ideal yang memerlukan keadaan atau komitmen masa yang penjaga tidak miliki. Ini terpakai secara langsung kepada planted tank.",
+                "Salah satu daripada empat prinsip ARA adalah Kapasiti sebelum Ambisi — membina sistem di sekitar apa yang penjaga boleh sediakan secara mampan, bukan di sekitar ideal yang memerlukan keadaan atau komitmen masa yang penjaga tidak miliki. Ini relevan secara langsung kepada planted tank.",
                 "Planted tank low-tech (tiada injeksi CO2, cahaya rendah hingga sederhana) direka untuk pertumbuhan yang perlahan dan mampan yang tidak memerlukan dosing harian, pemantauan CO2 yang teliti, atau penyesuaian kerap. Mereka bukan pilihan bajet — mereka adalah pilihan yang selari untuk penjaga yang ritma penjagaannya bersifat manual.",
-                "Planted tank high-tech (CO2 yang diinjeksikan, cahaya tinggi, dosing nutrien kerap) memerlukan jenis kapasiti yang berbeza: infrastruktur teknikal — pengawal CO2, sistem dosing, pemantauan parameter — yang penjaga genuinly faham dan selenggara. Pokok karpet seperti HC Cuba atau Glossostigma memerlukan CO2 tinggi dan cahaya kuat; dalam setup high-tech yang dilengkapi dengan betul, kapasiti itu genuinly ada. Masalah berlaku apabila ambisi high-tech tidak disertai dengan infrastruktur teknikal yang diperlukan — bukan kerana high-tech itu sendiri tidak sesuai.",
-                "Soalan yang betul bukan 'planted tank jenis apa yang kelihatan paling cantik?' Ia adalah 'planted tank jenis apa yang sepadan dengan kapasiti sebenar saya — sama ada manual, teknikal, atau gabungan kedua-duanya?' Low-tech adalah penjajaran yang jujur untuk penjaga yang ritma kehidupannya bersifat manual. High-tech adalah penjajaran yang sama-sama jujur untuk penjaga yang telah membina infrastruktur teknikal untuk menampungnya.",
-                "Tanda bahawa setup anda melampaui kapasiti anda: anda mula melangkau dosing yang diperlukan; fotoperiod menjadi tidak konsisten; sistem pemantauan tidak diselenggara; anda mengelak dari melihat tank kerana ia mengingatkan anda tentang kerja yang perlu dilakukan. Ini bukan tanda kegagalan — ini adalah maklumat bahawa penjajaran antara ambisi setup dan kapasiti sebenar perlu diperiksa semula.",
-                "Permulaan yang sederhana adalah lebih mudah untuk disesuaikan daripada sistem yang rumit yang tidak berfungsi. Tiga jenis pokok yang tumbuh dengan baik lebih baik dari dua puluh jenis yang berjuang."
+                "Planted tank high-tech (CO2 yang diinjeksikan, cahaya tinggi, dosing nutrien kerap) memerlukan jenis kapasiti yang berbeza: infrastruktur teknikal — pengawal CO2, sistem dosing, pemantauan parameter — yang penjaga betul-betul faham dan selenggara. Pokok karpet seperti HC Cuba atau Glossostigma memerlukan CO2 tinggi dan cahaya kuat; dalam setup high-tech yang dilengkapi dengan betul, kapasiti itu memang ada. Masalah berlaku apabila ambisi high-tech tidak disertai dengan infrastruktur teknikal yang diperlukan — bukan kerana high-tech itu sendiri tidak sesuai.",
+                "Soalan yang betul bukan 'planted tank jenis apa yang kelihatan paling cantik?' tetapi 'planted tank jenis apa yang sepadan dengan kapasiti sebenar saya — sama ada manual, teknikal, atau gabungan kedua-duanya?' Low-tech ialah penjajaran yang jujur untuk penjaga yang ritma kehidupannya bersifat manual. High-tech pula penjajaran yang sama-sama jujur untuk penjaga yang telah membina infrastruktur teknikal untuk menampungnya.",
+                "Tanda bahawa setup anda melampaui kapasiti anda: anda mula melangkau dosing yang diperlukan; fotoperiod menjadi tidak konsisten; sistem pemantauan tidak diselenggara; anda mengelak dari melihat tank kerana ia mengingatkan anda tentang kerja yang perlu dilakukan. Ini bukan tanda kegagalan — ini maklumat bahawa penjajaran antara ambisi setup dan kapasiti sebenar perlu diperiksa semula.",
+                "Permulaan yang sederhana lebih mudah disesuaikan berbanding sistem yang rumit yang tidak berfungsi. Tiga jenis pokok yang tumbuh dengan baik lebih baik dari dua puluh jenis yang berjuang."
             ],
-            "pullQuote": "Soalannya bukan pokok mana yang cantik. Ia adalah pokok mana yang masih akan hidup dalam tiga bulan dengan penjagaan yang sebenarnya akan anda berikan.",
-            "hintLabel": "ARA · Keeper Rhythm",
+            "pullQuote": "Soalannya bukan pokok mana yang cantik, tetapi pokok mana yang masih akan hidup dalam tiga bulan dengan penjagaan yang sebenarnya akan anda berikan.",
+            "hintLabel": "Low-tech bukan berkompromi",
             "hintText": [
                 "Memilih low-tech apabila anda menginginkan high-tech boleh terasa seperti berkompromi. Ia bukan. Penjaga yang membina tangki low-tech stabil yang berjalan dengan baik selama tiga tahun — di mana tumbuhan hidup dan sihat serta ikan jelas berasa selesa — telah melakukan sesuatu yang lebih sukar daripada banyak binaan high-tech: mereka telah memadankan ambisi mereka secara jujur kepada kapasiti sebenar mereka. Java fern yang tumbuh perlahan dan mantap bukan kompromi. Ia tanda sistem berfungsi."
             ],
@@ -96,32 +92,21 @@
                 "Langkah 2: Buat satu perubahan. Penyesuaian impak tinggi yang paling biasa: tambah timer kalau fotoperiod tidak konsisten; laraskan fotoperiod kepada 7–8 jam; kalau pokok dalam substrate inert, mulakan suplemen nutrien cair asas; kalau tumbuhan yang menuntut dalam setup low-tech, pertimbangkan untuk menukar kepada spesies yang lebih tahan atau tambah CO2 cair.",
                 "Langkah 3: Tunggu dua minggu tanpa perubahan lain. Ini adalah bahagian yang paling sukar. Perubahan kepada pertumbuhan pokok berlaku perlahan — paling cepat dua minggu, selalunya empat hingga enam. Membuat perubahan berganda serentak bermakna anda tidak akan tahu mana yang membantu.",
                 "Langkah 4: Baca hasilnya. Daun baru yang lebih hijau, lebih besar, atau pertumbuhan lebih cepat dari node baru — perubahan anda sedang berfungsi. Tiada perubahan dalam empat minggu — jenis simptom mungkin menunjuk kepada punca yang berbeza, atau tahap perubahan tidak cukup.",
-                "Pendekatan perubahan tunggal adalah lebih perlahan dari ubah semua serentak — tapi ia adalah satu-satunya cara untuk benar-benar memahami apa yang sistem anda perlu. Planted tank yang difahami adalah planted tank yang boleh disesuaikan. Planted tank yang dibina berdasarkan andaian adalah yang membingungkan bila ia tidak berfungsi.",
+                "Pendekatan perubahan tunggal lebih perlahan berbanding ubah semua serentak — tapi ia satu-satunya cara untuk benar-benar memahami apa yang sistem anda perlu. Planted tank yang difahami boleh disesuaikan. Planted tank yang dibina berdasarkan andaian pula yang membingungkan bila ia tidak berfungsi.",
                 "Tank yang tumbuh perlahan dan stabil bukan gagal. Ia berjaya pada kadar yang sepadan dengan sistem yang ia hidup di dalamnya."
             ],
-            "pullQuote": null,
-            "hintLabel": null,
-            "hintText": null,
-            "prevBtn": "← Kembali",
-            "nextBtn": null
+            "prevBtn": "← Kembali"
         }
     ],
     "relatedLinks": [
         {
-            "href": "/articles/low-tech-planted-tank",
             "text": "Cara mulakan planted tank low-tech →"
         },
         {
-            "href": "/articles/algae-in-aquarium",
             "text": "Alga dalam akuarium →"
         },
         {
-            "href": "/articles/aquarium-maintenance-routine",
             "text": "Rutin penyelenggaraan yang berfungsi →"
-        },
-        {
-            "href": "/rhyssa",
-            "text": "Tanya Rhyssa →"
         }
     ],
     "footer": {

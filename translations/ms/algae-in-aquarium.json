@@ -12,7 +12,7 @@
         "ogDescription": "Alga bukan masalah. Ia adalah bacaan. Ketahui cara membaca isyarat Environmental Rhythm tank anda."
     },
     "intro": {
-        "eyebrow": "Bacaan · Environmental Rhythm",
+        "eyebrow": "Praktikal",
         "titleHtml": "Alga dalam Akuarium —<br><em>Apa yang Ia Sebenarnya Isyaratkan</em>",
         "subtitle": "Alga bukan masalah. Ia adalah bacaan.",
         "texts": [
@@ -31,7 +31,7 @@
             "titleHtml": "Bukan semua alga<br><em>adalah isyarat yang sama.</em>",
             "body": [
                 "Alga tumbuh dalam setiap akuarium, pada setiap peringkat pengalaman, di bawah setiap corak penjagaan. Fakta itu sahaja sepatutnya mengubah cara ia didekati. Ia bukan tanda tank kotor atau penjaga gagal. Ia tanda bahawa keadaan tertentu wujud — dan jenis alga yang berbeza menunjuk kepada keadaan yang berbeza.",
-                "<strong>Filem berhabuk perang (diatom).</strong> Hampir selalu muncul dalam tank baru dalam 4–8 minggu pertama. Ini adalah tingkah laku Early Phase yang normal — silikat dalam substrat baru dan air paip memberi makan bloom sementara. Ia biasanya hilang sendiri apabila tank matang. Mengelap mempercepatkan kesan kosmetik tetapi tidak mengubah jangka masa yang mendasarinya.",
+                "<strong>Filem berhabuk coklat (diatom).</strong> Hampir selalu muncul dalam tank baru dalam 4–8 minggu pertama. Ini adalah tingkah laku Early Phase yang normal — silikat dalam substrat baru dan air paip memberi makan bloom sementara. Ia biasanya hilang sendiri apabila tank matang. Mengelap mempercepatkan kesan kosmetik tetapi tidak mengubah jangka masa yang mendasarinya.",
                 "<strong>Alga titik hijau</strong> — titik hijau keras di cermin dan hardscape. Muncul apabila intensiti cahaya tinggi atau photoperiod terlalu lama untuk tahap nutrien dalam air. Biasa dalam tank dengan pencahayaan baik tetapi tiada atau sedikit pokok untuk bersaing berebut nutrien.",
                 "<strong>Hair algae / filamentous algae</strong> — berserabut, hijau, tersangkut pada pokok. Selalunya menunjukkan nutrien berlebihan (nitrate, phosphate) digabungkan dengan tahap CO2 yang tidak konsisten kalau ada pokok. Boleh juga tumbuh dengan cahaya tinggi dan kepadatan pokok yang rendah.",
                 "<strong>Air hijau</strong> — kekeruhan seperti sup kacang. Bloom phytoplankton, selalunya dicetuskan oleh cahaya matahari langsung mengenai tank atau kombinasi nutrien tinggi dan cahaya tinggi. Tidak berbahaya kepada ikan tetapi mengganggu secara visual.",
@@ -39,8 +39,6 @@
                 "<strong>Blue-green algae / cyanobakteria</strong> — seperti lendir, biru-hijau, dengan bau yang tersendiri. Bukan alga sebenar — ia adalah bakteria fotosintetik. Isyarat nitrate yang sangat rendah (selalunya selepas water change berat atau bioload yang sangat rendah) digabungkan dengan phosphate berlebihan, atau kawasan aliran mati."
             ],
             "pullQuote": "Soalan pertama bukan 'macam mana nak buang ini?' Ia 'jenis apa ini, dan apa yang ia sedang baca dalam tank saya?'",
-            "hintLabel": null,
-            "hintText": null,
             "prevBtn": "← Intro",
             "nextBtn": "Apa yang tank sedang beritahu anda"
         },
@@ -50,13 +48,12 @@
             "titleHtml": "Alga tumbuh di mana<br><em>keadaan membenarkannya.</em>",
             "body": [
                 "Dalam Aquatic Rhythm Alignment, kehadiran alga adalah terutamanya isyarat tentang ketidakselarian Environmental Rhythm — khususnya hubungan antara cahaya, nutrien, dan kepadatan pokok dalam sistem. Tiga perkara ini wujud dalam keseimbangan yang dinamik. Alga masuk bila keseimbangan itu terganggu: bila cahaya lebih banyak daripada yang pokok boleh guna, bila nutrien terkumpul lebih cepat daripada yang digunakan, bila keadaan cukup konsisten untuk alga bertapak tetapi cukup tidak konsisten untuk pokok tertekan.",
-                "Wawasan utama adalah bahawa alga dan pokok bersaing untuk sumber yang sama. Dalam planted tank yang seimbang baik dengan cahaya dan nutrien yang sesuai, alga jarang bertapak kerana pokok menang persaingan. Dalam tank tanpa pokok, atau dengan pokok yang bergelut, alga mengisi niche yang tersedia. Ia bukan menceroboh. Ia bertindak balas kepada apa yang ada.",
+                "Intinya: alga dan pokok sebenarnya bersaing untuk sumber yang sama. Dalam planted tank yang seimbang baik dengan cahaya dan nutrien yang sesuai, alga jarang bertapak kerana pokok menang persaingan. Dalam tank tanpa pokok, atau dengan pokok yang bergelut, alga mengisi niche yang tersedia. Ia bukan menceroboh. Ia bertindak balas kepada apa yang ada.",
                 "Soalan ketekunan juga penting. Alga yang muncul dan kemudian pudar selalunya peristiwa fasa — diatom dalam tank baru — atau drift sekali yang membetulkan dirinya. Alga yang terus kembali walaupun selepas dibuang memberitahu anda bahawa keadaan yang mendasari masih ada. Mengerik cermin tidak mengubah apa yang dalam air atau berapa lama lampu menyala. Alga membaca keadaan yang belum berubah. Jadi ia kembali."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Environmental Rhythm",
+            "hintLabel": "Keadaan latar belakang",
             "hintText": [
-                "ARA menganggap Environmental Rhythm sebagai keadaan latar belakang yang sama ada menyokong atau menjejaskan semua benda lain dalam tank. Konsistensi kitaran cahaya, kestabilan suhu, corak aliran, dan keseimbangan nutrien air semuanya adalah sebahagian daripada ritma ini. Alga yang berterusan hampir selalu tanda bahawa salah satu daripada ini tidak selari — bukan bahawa tank diselenggara dengan buruk."
+                "Konsistensi kitaran cahaya, kestabilan suhu, corak aliran, dan keseimbangan nutrien air membentuk keadaan latar belakang yang sama ada menyokong atau menjejaskan semua benda lain dlm tangki. Alga yang berterusan hampir selalu tanda salah satu daripada ini tak seimbang — bukan tangki diselenggara dengan buruk."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Apa yang sebenarnya mengubah keadaan"
@@ -72,12 +69,12 @@
                 "<strong>Tambah lebih banyak pokok</strong> — response paling ekologi yang tersedia. Lebih banyak pokok bermakna lebih banyak persaingan untuk sumber yang alga perlukan. Pokok batang yang tumbuh cepat khususnya boleh mengubah keseimbangan dengan cepat dengan menggunakan nutrien sebelum alga sempat.",
                 "<strong>Kurangkan suapan</strong> — relevan dalam tank tanpa pokok hidup. Kurang input organik bermakna kurang penumpukan nutrien. Pengurangan kecil dan konsisten lebih mudah dibaca daripada perubahan mendadak.",
                 "<strong>Perbaiki aliran untuk hapus kawasan mati</strong> — sangat relevan untuk black beard algae dan cyanobakteria, yang cenderung bertapak di kawasan di mana pergerakan air perlahan dan keadaan bertakung.",
-                "<strong>Sabar dengan diatom</strong> — filem perang dalam tank baru tidak memerlukan intervensi. Ia selesai dengan kematangan tank. Mengelap membantu secara kosmetik, tetapi bloom silikat yang mendasari berjalan pada jangka masanya sendiri. Jangan tukar berbilang perkara serentak — kalau anda kurangkan photoperiod, tambah pokok, dan tukar suapan dalam minggu yang sama, anda tidak akan tahu apa yang berkesan, dan anda mungkin ganggu sistem lebih jauh. Satu perubahan, diperhatikan dari masa ke masa, memberi anda maklum balas yang terbaca."
+                "<strong>Sabar dengan diatom</strong> — filem coklat dalam tank baru tidak memerlukan intervensi. Ia selesai dengan kematangan tank. Mengelap membantu secara kosmetik, tetapi bloom silikat yang mendasari berjalan pada jangka masanya sendiri. Jangan tukar berbilang perkara serentak — kalau anda kurangkan photoperiod, tambah pokok, dan tukar suapan dalam minggu yang sama, anda tidak akan tahu apa yang berkesan, dan anda mungkin ganggu sistem lebih jauh. Satu perubahan, diperhatikan dari masa ke masa, memberi anda maklum balas yang terbaca."
             ],
             "pullQuote": "Matlamatnya bukan tank tanpa alga. Ia tank di mana keadaan tidak lagi secara konsisten memihak kepada alga mengatasi semua benda lain yang tumbuh di sana.",
-            "hintLabel": "ARA · Asal sebelum Ekspresi",
+            "hintLabel": "Tangani puncanya, bukan sekadar apa yang nampak",
             "hintText": [
-                "Apa yang anda lihat adalah ekspresi. Ketidakselarian Environmental Rhythm yang menghasilkannya adalah asalnya. Prinsip penjajaran kelima ARA ialah Asal sebelum Ekspresi: membuang alga menangani ekspresi; melaras keadaan yang menghasilkannya menangani asalnya. Bila asal tidak berubah, ekspresi kembali — boleh dipercaya, boleh dijangka, kerana tidak ada yang sebenarnya berubah untuk sistem."
+                "Apa yang anda nampak pada kaca ialah hasil yang boleh dilihat. Ketidakseimbangan cahaya, aliran, atau nutrien yang menghasilkannya ialah punca sebenar. Membuang alga menangani apa yang anda nampak; melaras keadaan yang menghasilkannya menangani sebab ia berlaku. Bila punca tak berubah, alga kembali — boleh dipercaya, boleh dijangka, kerana tiada apa yang sebenarnya berubah untuk tangki."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Apa yang perlu dibuat sekarang"
@@ -87,30 +84,24 @@
             "tag": "Apa yang perlu dibuat sekarang",
             "titleHtml": "Kenal pasti jenisnya.<br><em>Laras satu perkara. Kemudian perhatikan.</em>",
             "body": [
-                "Jalan praktikal ke hadapan adalah mudah, walaupun ia memerlukan kesabaran berbanding kelajuan.",
+                "Caranya sebenarnya mudah — cuma perlukan kesabaran, bukan kelajuan.",
                 "Pertama, kenal pasti jenis alga yang anda ada — gunakan penerangan dalam modul satu sebagai rujukan. Kemudian padankan ia dengan ketidakselarian Environmental Rhythm yang paling mungkin: diatom menunjuk kepada umur tank; alga titik hijau dan hair algae menunjuk kepada cahaya dan nutrien; BBA menunjuk kepada turun naik CO2 atau aliran rendah; cyanobakteria menunjuk kepada nitrate yang sangat rendah atau kawasan mati. Dari situ, buat satu perubahan — pembetulan yang paling mungkin untuk jenis spesifik anda.",
                 "Kemudian tunggu dua minggu sebelum menilai. Alga tidak bertindak balas semalaman, begitu juga pembetulan. Perubahan yang kelihatan tidak membuat apa-apa selepas empat hari mungkin sudah mengubah keseimbangan; anda akan nampaknya dalam minggu kedua.",
                 "Kalau anda ada berbilang jenis yang hadir, mulakan dengan yang paling dominan. Mereka selalunya berkongsi punca yang sama — tangani itu, dan jenis sekunder selalunya berkurang sendiri.",
-                "Apa yang tidak perlu dibuat: menambah ikan pemakan alga atau siput tanpa menangani keadaan punca cenderung mewujudkan kitaran penyelenggaraan. Tambah pemakan alga, habis alga semula jadi, perlu suapan tambahan untuk mereka, alga kembali. Spesies pemakan alga boleh menjadi sebahagian yang benar-benar membantu sistem yang seimbang — tetapi mereka bukan pengganti untuk keselarian Environmental Rhythm. Mereka berfungsi paling baik apabila keadaan sudah bergerak ke arah yang betul. Modul Environmental Rhythm dalam Framework ARA merangkumi cahaya, suhu, dan aliran sebagai sistem yang berterusan — bukan sekadar keputusan setup."
+                "Apa yang jangan buat: menambah ikan pemakan alga atau siput tanpa menangani keadaan punca cenderung mewujudkan kitaran penyelenggaraan. Tambah pemakan alga, habis alga semula jadi, perlu suapan tambahan untuk mereka, alga kembali. Spesies pemakan alga boleh menjadi sebahagian yang benar-benar membantu sistem yang seimbang — tetapi mereka bukan pengganti untuk keselarian Environmental Rhythm. Mereka berfungsi paling baik apabila keadaan sudah bergerak ke arah yang betul. Modul Environmental Rhythm dalam Framework ARA merangkumi cahaya, suhu, dan aliran sebagai sistem yang berterusan — bukan sekadar keputusan setup."
             ],
-            "pullQuote": null,
-            "hintLabel": null,
-            "hintText": null,
-            "prevBtn": "← Kembali",
-            "nextBtn": null,
-            "hintLabel2": "ARA · Keeper Rhythm",
-            "hintText2": [
-                "Alga membawa lebih banyak rasa malu berbanding hampir semua masalah akuarium lain. Tangki yang bersih dan jernih dalam gambar tidak mempunyainya. Lajur nasihat menganggapnya sebagai sesuatu yang perlu dihapuskan. Pengalaman menjumpai alga rambut pada kaca atau black beard algae pada hiasan kegemaran boleh terasa seperti bukti penjagaan yang lemah — kegagalan yang kelihatan di hadapan mata. Rasa malu itu wajar diperiksa, kerana ia cenderung menghasilkan tindak balas yang paling tidak berkesan: menggosok dalam panik, pelbagai campur tangan serentak, atau perasaan bahawa hobi ini lebih susah bagi anda berbanding orang lain. Alga adalah pembacaan keadaan, bukan keputusan muktamad. Setiap tangki menghasilkan syarat untuk sejenis alga pada sesetengah ketika. Soalan yang berguna bukan \"kenapa saya ada alga\" tetapi \"apakah yang Environmental Rhythm sedang luahkan sekarang.\""
-            ]
+            "hintLabel": "Alga bukan keputusan muktamad",
+            "hintText": [
+                "Alga membawa lebih banyak rasa malu berbanding hampir semua masalah akuarium lain. Tangki yang bersih dan jernih dalam gambar tidak mempunyainya. Lajur nasihat menganggapnya sebagai sesuatu yang perlu dihapuskan. Pengalaman menjumpai alga rambut pada kaca atau black beard algae pada hiasan kegemaran boleh terasa seperti bukti penjagaan yang lemah — kegagalan yang kelihatan di hadapan mata. Rasa malu itu patut kita periksa, sebab ia selalunya cetuskan tindak balas yang paling tidak berkesan: menggosok dalam panik, pelbagai campur tangan serentak, atau rasa bahawa hobi ini lebih susah bagi anda berbanding orang lain. Alga adalah pembacaan keadaan, bukan keputusan muktamad. Setiap tangki menghasilkan syarat untuk sejenis alga pada sesetengah ketika. Soalan yang berguna bukan \"kenapa saya ada alga\" tetapi \"apa yang tak seimbang sekarang.\""
+            ],
+            "prevBtn": "← Kembali"
         }
     ],
     "relatedLinks": [
         {
-            "href": "/articles/ara-full-framework",
             "text": "Framework ARA →"
         },
         {
-            "href": "/rhyssa",
             "text": "Tanya Rhyssa →"
         }
     ],

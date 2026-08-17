@@ -36,8 +36,6 @@
                 "Jika CO2 diinjeksikan, hentikan injeksi segera. Jika Anda mencurigai kontaminan kimia (detergen, insektisida dari ruangan sebelah, obat yang overdosis), ganti air yang lebih besar mungkin diperlukan — tapi lakukan secara bertahap, bukan sekaligus."
             ],
             "pullQuote": "Dalam crash, naluri adalah untuk bertindak. Respons yang tepat adalah membaca — dan bertindak berdasarkan apa yang bacaan katakan, bukan apa yang panik sarankan.",
-            "hintLabel": null,
-            "hintText": null,
             "prevBtn": "← Intro",
             "nextBtn": "Apa yang menyebabkannya"
         },
@@ -54,9 +52,6 @@
                 "<strong>Crash penyakit.</strong> Ikan mati bergerombol dalam waktu singkat, sering dengan gejala yang terlihat — bintik, lendir, luka. Jika penyakit sudah ada di akuarium dan tidak diobati, bisa memicu kematian massal ketika ikan yang ada tertekan atau imunnya turun. Respons: isolasi ikan yang sakit, mulai pengobatan yang sesuai.",
                 "<strong>Kegagalan heater.</strong> Heater yang rusak bisa membekukan atau memasak ikan — keduanya terjadi lebih lambat dari crash kimia tapi dengan konsekuensi yang sama serius. Periksa suhu jika ada kematian yang tidak bisa dijelaskan, terutama jika ikan mati secara bertahap dari satu hari ke hari berikutnya."
             ],
-            "pullQuote": null,
-            "hintLabel": null,
-            "hintText": null,
             "prevBtn": "← Kembali",
             "nextBtn": "Apakah ia bisa pulih"
         },
@@ -70,21 +65,20 @@
                 "Faktor yang membuat pemulihan sulit: filter berjalan kering untuk waktu yang lama (koloni mati sepenuhnya, perlu siklus ulang); ikan yang tersisa dalam kondisi buruk (terus megap-megap, berbaring di substrat, tidak merespons); penyebab crash tidak bisa diidentifikasi; akuarium baru dan tidak pernah stabil sepenuhnya.",
                 "Jika koloni bakteri perlu dibentuk kembali, prosesnya memerlukan waktu seperti siklus baru — empat hingga delapan minggu. Selama itu, ikan yang ada dalam bahaya jika tetap di sistem. Pilihan yang sulit: pertahankan ikan di akuarium yang sedang dipulihkan dengan manajemen intensif (ganti air harian, pemberian makan minimum), atau pindahkan sementara ke setup lain."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Pengampunan Ekologis",
+            "hintLabel": "Kabar baiknya",
             "hintText": [
-                "Konsep pengampunan ekologis ARA berlaku langsung pada crash. Akuarium yang sudah crash bisa dibangun kembali. Kondisi masa lalu tidak menentukan kondisi masa depan. Crash adalah informasi — ia mengungkapkan apa yang penyelarasan sebelumnya tidak bisa ditopang. Membangun kembali adalah kesempatan untuk menciptakan penyelarasan yang bisa dipertahankan."
+                "Akuarium yang sudah crash bisa dibangun kembali. Kondisi masa lalu tidak menentukan kondisi masa depan. Crash adalah informasi — ia mengungkapkan apa yang persiapan sebelumnya tidak bisa topang. Membangun kembali adalah kesempatan untuk menciptakan sesuatu yang benar-benar bisa dipertahankan."
             ],
-            "hintLabel2": "ARA · Reset Fase Intentional",
+            "hintLabel2": "Crash membuat akuarium mundur",
             "hintText2": [
-                "Tidak semua transisi fase menunjukkan kegagalan. Pemelihara bisa sengaja mereset sistem — untuk menangani penyakit persisten, mengkonfigurasi ulang setup, atau memulai siklus baru setelah crash. ARA membedakan reset fase intentional dari regresi akibat gangguan: reset adalah keputusan pemelihara, bukan kegagalan sistem. Sistem melewati Fase Awal lagi, mengikuti trajektori perkembangan yang sama — tetapi pengetahuan yang terkumpul pemelihara membentuk cara siklus baru dikelola."
+                "Crash mendorong akuarium yang sudah mapan mundur ke perilaku tahap awal: parameter tidak stabil, bakteri kesulitan mengejar ketertinggalan, ikan mengalami stres akut. Berbeda dari reset yang disengaja, ini bukan keputusan pemelihara — ini terjadi begitu saja pada sistem. Menyadari ini sebagai langkah mundur — bukan keadaan darurat unik yang butuh solusi baru — sangat membantu: responsnya mengikuti logika yang sama seperti membangun siklus baru, hanya disesuaikan untuk sistem yang sudah punya sedikit biologi mapan dan pemelihara berpengalaman yang mengendalikannya."
+            ],
+            "hintLabel3": "Ketika reset itu pilihan, bukan kegagalan",
+            "hintText3": [
+                "Tidak semua transisi fase berarti kegagalan. Pemelihara bisa sengaja mereset sistem — untuk menangani penyakit persisten, mengatur ulang setup, atau memulai siklus baru setelah crash. Itu berbeda dari regresi akibat gangguan: reset adalah keputusan pemelihara, bukan kegagalan sistem. Akuarium melewati tahap awal lagi, mengikuti trajektori perkembangan yang sama — tetapi pengetahuan yang terkumpul pemelihara membentuk cara siklus baru dikelola."
             ],
             "prevBtn": "← Kembali",
-            "nextBtn": "Apa yang crash sedang beritahu",
-            "hintLabel3": "ARA · Reset Fase yang Disengaja",
-            "hintText3": [
-                "Tidak semua transisi fase menggambarkan kegagalan. Seorang penjaga mungkin sengaja mereset sistem — untuk mengobati penyakit persisten, mengonfigurasi ulang pengaturan, atau memulai siklus baru setelah crash. ARA membedakan reset fase yang disengaja dari regresi yang didorong gangguan: reset adalah keputusan penjaga, bukan kerusakan sistem. Sistem melewati Early Phase lagi, mengikuti busur pengembangan yang sama — tetapi pengetahuan penjaga yang terkumpul membentuk cara siklus baru dikelola."
-            ]
+            "nextBtn": "Apa yang crash sedang beritahu"
         },
         {
             "id": "mod-4",
@@ -97,9 +91,9 @@
                 "Crash yang dipelajari adalah crash yang membuat penghobi lebih selaras — lebih sadar terhadap aliran filter yang melambat, terhadap suhu yang merangkak naik, terhadap ikan yang kurang aktif saat waktu makan. Sistem memiliki kapasitas untuk pulih. Begitu juga penghobi."
             ],
             "pullQuote": "Crash adalah sinyal terkuat yang diberikan akuarium. Pertanyaannya bukan cara meredakannya. Pertanyaannya adalah apa yang coba ia katakan.",
-            "hintLabel": "ARA · Asal sebelum Ekspresi",
+            "hintLabel": "Telusuri penyebabnya, bukan sekadar angka",
             "hintText": [
-                "Crash itu adalah ekspresi. Ketidakselarasan yang terkumpul yang menghasilkannya — penyimpangan bertahap, sinyal yang terlewat, kemunduran perlahan — adalah asalnya. Prinsip keselarasan kelima ARA adalah Asal sebelum Ekspresi: membaca crash berarti menelusurinya kembali ke asalnya, bukan hanya menggambarkan apa yang terjadi di ujungnya. Penelusuran itulah yang membedakan akuarium yang dibangun kembali dari yang mengalami crash."
+                "Crash itu yang Anda lihat terjadi. Masalah yang terkumpul yang menghasilkannya — penyimpangan bertahap, sinyal yang terlewat, kemunduran perlahan — adalah yang sebenarnya terjadi. Membaca crash berarti menelusurinya kembali ke penyebabnya, bukan hanya menggambarkan apa yang terjadi di ujungnya. Penelusuran itulah yang membedakan akuarium yang dibangun kembali dari yang sekadar mengalami crash lagi."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Kehilangan"
@@ -113,32 +107,24 @@
                 "Rasa bersalah adalah bagian yang paling umum dan paling tidak berguna dari pengalaman crash. Kebanyakan crash terjadi bukan karena kelalaian tapi karena sistem mencapai batas yang tidak terlihat — batas yang panduan tidak mengajarkan penghobi untuk melihat. Menyalahkan diri sendiri tidak mengubah apa yang terjadi dan tidak mencegah crash berikutnya. Memahami apa yang terjadi — dan apa yang akan berbeda — adalah yang berguna.",
                 "Jika Anda mempertimbangkan untuk berhenti dari hobi ini setelah crash yang berat: itu keputusan yang sah. Tapi jika Anda melanjutkan, akuarium yang Anda miliki sekarang sudah memiliki lebih banyak fondasi biologis dari yang dimilikinya di hari pertama. Bakteri yang ada di media filter, di permukaan, di substrat — tidak hilang sepenuhnya. Sistem memiliki kapasitas untuk pulih. Dan Anda sekarang memahami lebih banyak tentang cara kerjanya dari yang Anda tahu sebelum crash."
             ],
-            "pullQuote": null,
-            "hintLabel": null,
-            "hintText": null,
-            "prevBtn": "← Kembali",
-            "nextBtn": null,
-            "hintLabel3": "ARA · Keeper Rhythm",
-            "hintText3": [
+            "hintLabel": "Pengetahuan itu tetap ada",
+            "hintText": [
                 "Jika Anda membaca ini setelah crash: fakta bahwa itu menghantam Anda keras bukan kelemahan. Itu adalah attunement yang sama yang membuat Anda menjadi penjaga yang memperhatikan hal-hal, peduli dengan hewan, dan membangun sesuatu selama berbulan-bulan. Attunement itu tidak menghilang dalam crash — itu hanya menyakitkan sekarang. Apapun yang Anda putuskan tentang tangki selanjutnya, Anda sudah tahu lebih banyak tentang sistem akuatik dari sebelumnya. Pengetahuan itu tetap ada."
-            ]
+            ],
+            "prevBtn": "← Kembali"
         }
     ],
     "relatedLinks": [
         {
-            "href": "/articles/aquarium-filter-maintenance",
             "text": "Filter Anda bukan apa yang Anda kira →"
         },
         {
-            "href": "/articles/fish-gasping-surface",
             "text": "Ikan megap-megap di permukaan →"
         },
         {
-            "href": "/articles/new-tank-syndrome",
             "text": "New Tank Syndrome →"
         },
         {
-            "href": "/rhyssa",
             "text": "Tanya Rhyssa →"
         }
     ],

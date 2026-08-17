@@ -1,120 +1,110 @@
 {
-  "_meta": {
-    "slug": "when-hobby-stops-feeling-good",
-    "lang": "ms",
-    "sourceFile": "articles/when-hobby-stops-feeling-good.html",
-    "status": "ready"
-  },
-  "head": {
-    "title": "Bila Hobi Ini Sudah Tidak Terasa Seronok — Aquatic Rhythm",
-    "description": "Burnout dalam penternakan ikan adalah nyata. Tiada yang bercakap tentangnya dengan jujur. Panduan ini menamakannya dan menawarkan tiga laluan yang jujur ke hadapan — tanpa hukuman tentang mana yang betul.",
-    "ogTitle": "Bila Hobi Ini Sudah Tidak Terasa Seronok",
-    "ogDescription": "Burnout dalam penternakan ikan adalah nyata. Tiga laluan jujur ke hadapan — tanpa hukuman tentang mana yang betul."
-  },
-  "intro": {
-    "eyebrow": "Bacaan · Renungan",
-    "titleHtml": "Bila Hobi Ini Sudah<br><em>Tidak Terasa Seronok</em>",
-    "subtitle": "Burnout dalam penternakan ikan adalah nyata. Tidak ramai yang bercakap tentangnya dengan jujur.",
-    "texts": [
-      "Pada satu ketika tank yang menjadi sumber ketenangan mula terasa seperti sumber tekanan. Penyelenggaraan yang terasa meditasi mula terasa seperti tanggungjawab. Anda mendapati diri anda tidak melihat tank apabila anda lalu di hadapannya.",
-      "Panduan ini menamakannya dengan tepat — kerana pengalaman ini nyata dan biasa, dan cara hobi ini biasanya dibincangkan tidak memberikan ruang kepadanya. Dan ia menawarkan tiga laluan yang jujur ke hadapan, tanpa hukuman tentang mana yang betul.",
-      "Penjaga yang menyediakan tank ini dan penjaga yang menyelenggarakannya hari ini mungkin adalah orang yang berbeza. Kedua-duanya layak mendapat tank yang sepadan dengan kehidupan sebenar mereka."
+    "_meta": {
+        "slug": "when-hobby-stops-feeling-good",
+        "lang": "ms",
+        "sourceFile": "articles/when-hobby-stops-feeling-good.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Bila Hobi Ini Sudah Tidak Terasa Seronok — Aquatic Rhythm",
+        "description": "Burnout dalam penternakan ikan adalah nyata. Tiada yang bercakap tentangnya dengan jujur. Panduan ini menamakannya dan menawarkan tiga laluan yang jujur ke hadapan — tanpa hukuman tentang mana yang betul.",
+        "ogTitle": "Bila Hobi Ini Sudah Tidak Terasa Seronok",
+        "ogDescription": "Burnout dalam penternakan ikan adalah nyata. Tiga laluan jujur ke hadapan — tanpa hukuman tentang mana yang betul."
+    },
+    "intro": {
+        "eyebrow": "Bacaan · Renungan",
+        "titleHtml": "Bila Hobi Ini Sudah<br><em>Tidak Terasa Seronok</em>",
+        "subtitle": "Burnout dalam penternakan ikan adalah nyata. Tidak ramai yang bercakap tentangnya dengan jujur.",
+        "texts": [
+            "Pada satu ketika tank yang menjadi sumber ketenangan mula terasa seperti sumber tekanan. Penyelenggaraan yang terasa meditasi mula terasa seperti tanggungjawab. Anda mendapati diri anda tidak melihat tank apabila anda lalu di hadapannya.",
+            "Panduan ini menamakannya dengan tepat — kerana pengalaman ini nyata dan biasa, dan cara hobi ini biasanya dibincangkan tidak memberikan ruang kepadanya. Dan ia menawarkan tiga laluan yang jujur ke hadapan, tanpa hukuman tentang mana yang betul."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "Semua peringkat",
+        "metaLevel": "~8 minit",
+        "cta": "Mula membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Beban yang membesar perlahan-lahan",
+            "titleHtml": "Beban yang membesar perlahan-lahan<br><em>selalunya tidak kelihatan sehingga ia besar.</em>",
+            "body": [
+                "Hobi ini bermula dengan sesuatu yang terasa seperti kegembiraan: menonton betta meneroka tank baru, pertama kali planted tank kelihatan betul-betul betul, kepuasan sistem yang matang dan stabil. Tapi pada satu ketika — secara beransur-ansur, atau semuanya sekaligus — perasaan itu berubah. Tank mula terasa seperti kewajipan. Penyelenggaraan yang pernah terasa meditasi mula terasa seperti tugasan.",
+                "Beban ini membesar perlahan-lahan dalam kebanyakan kes. Anda tidak bangun satu pagi dan memutuskan hobi ini sudah tidak menyenangkan. Ia satu siri peralihan kecil: water change yang anda tunda, ikan yang mati yang anda tidak cuba gantikan, parameter yang anda putuskan tidak perlu diuji minggu ini. Setiap peralihan itu kelihatan tidak penting. Gabungannya itulah maklumatnya.",
+                "Tank yang mula terasa seperti beban adalah isyarat Keeper Rhythm — bukan tentang apa yang salah dengan tank, tapi tentang apa yang telah berubah dalam hubungan anda dengannya. Dan seperti mana-mana isyarat lain dalam ARA, ia bernilai untuk dibaca sebelum bertindak balas.",
+                "Ada satu corak khusus yang patut disebut di sini, kerana inilah cara kebanyakan tangki sebenarnya runtuh. Rasa malu terhadap tangki itu — terlupa tukar air, ikan mati, serangan alga — selalunya menyebabkan kita kurang memerhati. Kurang memerhati bermakna isyarat tertinggal. Isyarat yang tertinggal membiarkan masalah bertambah teruk. Masalah yang teruk pula menambah rasa malu, yang menyebabkan kita semakin menjauh, yang bermakna semakin kurang tukar air, semakin kurang perhatian ketika memberi makan, semakin banyak isyarat tertinggal. Tangki yang mulanya menjadi sumber ketenangan, bertukar menjadi sesuatu yang dielakkan. Ini bukan kelemahan. Ini respons psikologi yang lumrah terhadap rasa bersalah — respons yang tidak mampu ditanggung oleh sistem hidup dalam tangki itu, tetapi sangat boleh difahami dari sudut penjaga di sebalik cermin itu."
+            ],
+            "pullQuote": "Tank yang mula terasa seperti tekanan ialah isyarat. Soalannya: apa yang ia sedang beritahu anda — tentang sistem, atau tentang kehidupan sekeliling sistem.",
+            "hintLabel": "Kapasiti anda bukan tetap",
+            "hintText": [
+                "Corak perhatian, masa, tenaga, dan kapasiti emosi yang anda bawa kepada tangki bukan tetap. Ia berubah mengikut musim, keadaan hidup, kesedihan, keletihan. Tangki yang boleh dikekalkan tahun lalu mungkin tidak boleh dikekalkan sekarang — bukan kerana anda telah gagal, tetapi kerana kapasiti anda telah berubah."
+            ],
+            "prevBtn": "← Intro",
+            "nextBtn": "Bila ritma anda tidak lagi sesuai"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Bila ritma anda tidak lagi sesuai",
+            "titleHtml": "Ada cara berbeza untuk<br><em>hubungan penjaga-tank menjadi tidak sejajar.</em>",
+            "body": [
+                "Ada cara berbeza untuk hubungan penjaga-tank menjadi tidak sejajar. Sesetengahnya mendadak: pekerjaan baru, bayi baru, penyakit, berpindah. Yang lain beransur-ansur: tank membesar lebih kompleks dari yang dimaksudkan, kehilangan berkumpul, kegembiraan awal pudar dan tidak digantikan oleh apa-apa.",
+                "Sesetengah penjaga mengalami ketidakselarasan kerana tank yang mereka bina mencerminkan siapa mereka empat tahun lalu — sebelum kehidupan berubah dengan cara yang mengubah berapa banyak masa dan tenaga yang tersedia. Tank itu tidak salah. Mereka tidak salah. Keadaan hidup hanya berubah.",
+                "Sesetengah penjaga mengalami ketidakselarasan kerana tank high-tech yang mereka bina memerlukan infrastruktur teknikal — pengawal CO2, sistem dosing automatik, pemantauan parameter — yang tidak mereka bina sebelum memulakan. Mendapati ini bukan bukti bahawa pilihan itu salah; ia adalah maklumat tentang apa yang penjajaran itu sebenarnya memerlukan. Soalannya adalah sama ada infrastruktur itu boleh dibina mengikut keadaan hidup sekarang — dan jika ya, penjajaran itu boleh dicapai.",
+                "Apa yang semua ini ada persamaan: ini bukan tentang betapa anda mengambil berat. Kepedulian tidak pernah dipersoalkan. Yang berubah adalah keadaan sekeliling kepedulian itu — masa, tenaga, kepentingan yang bersaing. Mengenali itu penting kerana ia menukar soalan dari 'apa yang salah dengan saya?' kepada 'sistem jenis apa yang sepadan dengan kehidupan sebenar yang saya ada sekarang?'"
+            ],
+            "pullQuote": "Penjaga yang menyediakan tank ini dan penjaga yang menyelenggarakannya hari ini mungkin orang yang berbeza. Kedua-duanya layak mendapat tank yang sepadan dengan kehidupan sebenar mereka.",
+            "prevBtn": "← Kembali",
+            "nextBtn": "Tiga laluan yang jujur"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Tiga laluan yang jujur",
+            "titleHtml": "Tidak ada satu jawapan yang betul<br><em>bila hobi berhenti terasa baik.</em>",
+            "body": [
+                "Tidak ada satu jawapan yang betul bila hobi berhenti terasa baik. ARA mengenal pasti tiga respons yang benar-benar jujur, tiada satu pun yang merupakan kegagalan.",
+                "<strong>Laluan 1: Reka bentuk semula.</strong> Tank semasa tidak sejajar — tapi penjaga masih ingin memelihara ikan. Tindakan yang tepat: reka bentuk semula sistem supaya sepadan dengan apa yang penjaga sebenarnya boleh kekalkan sekarang. Ini mungkin bermakna mengurangkan stocking, beralih kepada setup yang lebih mudah, atau menukar kepada spesies yang memerlukan kurang. Ini bukan menyerah. Ini pengakuan jujur tentang apa yang boleh disediakan, dan keputusan untuk beroperasi dalam had tersebut.",
+                "<strong>Laluan 2: Permudahkan.</strong> Kehilangan yang terkumpul atau kerumitan yang terbina telah membuat sistem sukar untuk dinikmati. Tindakan yang tepat: permudahkan secara sengaja — kurangkan kepelbagaian spesies, kurangkan keperluan penjagaan, kurangkan peralatan. Bukan mengurangkan kepada titik ketidakselesaan, tapi mengurangkan kepada titik di mana penjagaan kembali rasa seperti pilihan berbanding tanggungjawab.",
+                "<strong>Laluan 3: Pergi.</strong> Hobi ini, dalam bentuk ini, tidak lagi sepadan dengan kehidupan anda sekarang. Tindakan yang tepat: iktiraf itu dan bertindak atas pengiktirafan itu dengan kemuliaan — mencari rumah yang baik untuk ikan, membubarkan tank dengan betul, tanpa paksaan untuk meneruskan sesuatu yang tidak lagi memberikan apa yang anda perlu.",
+                "Ketiga-tiga laluan ini sah. Tiada satu pun yang menunjukkan bahawa anda tidak sesuai untuk hobi ini, atau bahawa anda tidak seharusnya memulakan. Mereka hanya mencerminkan realiti bahawa kehidupan berubah, dan sistem yang dibina untuk satu fasa kehidupan tidak semestinya sesuai untuk fasa yang lain."
+            ],
+            "hintLabel": "Ini terpakai kepada anda, bukan sekadar tangki",
+            "hintText": [
+                "Penjaga yang telah bergelut, yang terlepas water change, yang kehilangan ikan kerana punca yang boleh dicegah — penjaga itu bukan penjaga yang buruk. Mereka penjaga yang sistemnya telah hilang keseimbangan. Yang penting sekarang bukan sejarah tetapi pilihan seterusnya."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Jika anda pergi"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Jika anda pergi",
+            "titleHtml": "Ada cara untuk pergi<br><em>dengan kemuliaan.</em>",
+            "body": [
+                "Jika keputusannya untuk meninggalkan hobi — sementara atau kekal — ada cara untuk melakukannya dengan baik. Ini bernilai untuk dikatakan secara eksplisit, kerana kebanyakan sumber hobi hanya merangkumi cara menjaga tank, bukan cara menutupnya.",
+                "Panduan praktikal untuk pergi dengan kemuliaan: Pertama, cari rumah yang sesuai untuk ikan dahulu — kelab ikan tempatan, persatuan akuarium, penjaga lain yang anda kenali. Ini mengambil masa tetapi ia adalah langkah yang betul. Kedua, kurangkan tank secara beransur-ansur jika boleh — kurangkan stocking, kemudian bubarkan setelah semua ikan dipindahkan. Ketiga, jangan tinggalkan tank berjalan tanpa penyelenggaraan kerana sukar untuk dihadapi — itu lebih buruk untuk ikan daripada penutupan yang terancang.",
+                "Tentang rasa bersalah kerana pergi: kehilangan minat dalam hobi yang pernah penting bukan pengkhianatan kepada ikan anda atau kepada versi anda yang lebih awal yang memulakannya. Ia sebahagian daripada cara minat manusia beroperasi — ia berubah, berkembang, bermusim. Penjaga yang meninggalkan dengan menyelenggarakan kesejahteraan ikan mereka sehingga akhir melakukan lebih dari ramai yang kekal secara teknikal tapi tidak lagi hadir.",
+                "Dan jika anda kembali — dalam setahun, atau lima tahun, atau dua puluh — sistem mempunyai kapasiti untuk bermula semula. Pengetahuan tidak hilang. Minat yang kemunculan semula tidak perlu dipertahankan terhadap masa apabila ia tidak ada. Ia boleh diambil dari tempat ia berada."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Back to Reading"
+        }
     ],
-    "metaModules": "4 modul",
-    "metaTime": "Semua peringkat",
-    "metaLevel": "~8 minit",
-    "cta": "Mula membaca"
-  },
-  "modules": [
-    {
-      "id": "mod-1",
-      "tag": "Beban yang membesar perlahan-lahan",
-      "titleHtml": "Beban yang membesar perlahan-lahan<br><em>selalunya tidak kelihatan sehingga ia besar.</em>",
-      "body": [
-        "Hobi ini bermula dengan sesuatu yang terasa seperti kegembiraan: menonton betta meneroka tank baru, pertama kali planted tank kelihatan betul-betul betul, kepuasan sistem yang matang dan stabil. Tapi pada satu ketika — secara beransur-ansur, atau semuanya sekaligus — perasaan itu berubah. Tank mula terasa seperti kewajipan. Penyelenggaraan yang pernah terasa meditasi mula terasa seperti tugasan.",
-        "Beban ini membesar perlahan-lahan dalam kebanyakan kes. Anda tidak bangun satu pagi dan memutuskan hobi ini sudah tidak menyenangkan. Ia adalah satu siri peralihan kecil: water change yang anda tunda, ikan yang mati yang anda tidak cuba gantikan, parameter yang anda putuskan tidak perlu diuji minggu ini. Setiap peralihan itu kelihatan tidak penting. Gabungannya adalah maklumat.",
-        "Tank yang mula terasa seperti beban adalah isyarat Keeper Rhythm — bukan tentang apa yang salah dengan tank, tapi tentang apa yang telah berubah dalam hubungan anda dengannya. Dan seperti mana-mana isyarat lain dalam ARA, ia bernilai untuk dibaca sebelum bertindak balas."
-      ],
-      "pullQuote": "Tank yang mula terasa seperti tekanan adalah isyarat. Soalannya adalah apa yang ia sedang beritahu anda — tentang sistem, atau tentang kehidupan sekeliling sistem.",
-      "hintLabel": "ARA · Keeper Rhythm",
-      "hintText": [
-        "Dalam ARA, Keeper Rhythm adalah ritma ekologi kelima — corak perhatian, masa, tenaga, dan kapasiti emosi yang dibawa penjaga kepada sistem. Ia tidak tetap. Ia berubah mengikut musim, keadaan hidup, kesedihan, keletihan. Tank yang boleh dikekalkan tahun lalu mungkin tidak boleh dikekalkan sekarang — bukan kerana penjaga telah gagal, tetapi kerana ritma penjaga telah berubah."
-      ],
-      "prevBtn": "← Intro",
-      "nextBtn": "Bila ritma anda tidak lagi sesuai"
-    },
-    {
-      "id": "mod-2",
-      "tag": "Bila ritma anda tidak lagi sesuai",
-      "titleHtml": "Ada cara berbeza untuk<br><em>hubungan penjaga-tank menjadi tidak sejajar.</em>",
-      "body": [
-        "Ada cara berbeza untuk hubungan penjaga-tank menjadi tidak sejajar. Sesetengahnya mendadak: pekerjaan baru, bayi baru, penyakit, berpindah. Yang lain beransur-ansur: tank membesar lebih kompleks dari yang dimaksudkan, kehilangan berkumpul, kegembiraan awal pudar dan tidak digantikan oleh apa-apa.",
-        "Sesetengah penjaga mengalami ketidakselarasan kerana tank yang mereka bina mencerminkan siapa mereka empat tahun lalu — sebelum kehidupan berubah dengan cara yang mengubah berapa banyak masa dan tenaga yang tersedia. Tank itu tidak salah. Mereka tidak salah. Keadaan hidup hanya berubah.",
-        "Sesetengah penjaga mengalami ketidakselarasan kerana tank high-tech yang mereka bina memerlukan infrastruktur teknikal — pengawal CO2, sistem dosing automatik, pemantauan parameter — yang tidak mereka bina sebelum memulakan. Mendapati ini bukan bukti bahawa pilihan itu salah; ia adalah maklumat tentang apa yang penjajaran itu sebenarnya memerlukan. Soalannya adalah sama ada infrastruktur itu boleh dibina mengikut keadaan hidup sekarang — dan jika ya, penjajaran itu boleh dicapai.",
-        "Apa yang semua ini ada persamaan: ini bukan tentang betapa anda mengambil berat. Kepedulian tidak pernah dipersoalkan. Yang berubah adalah keadaan sekeliling kepedulian itu — masa, tenaga, kepentingan yang bersaing. Mengenali itu penting kerana ia menukar soalan dari 'apa yang salah dengan saya?' kepada 'sistem jenis apa yang sepadan dengan kehidupan sebenar yang saya ada sekarang?'"
-      ],
-      "pullQuote": "Penjaga yang menyediakan tank ini dan penjaga yang menyelenggarakannya hari ini mungkin orang yang berbeza. Kedua-duanya layak mendapat tank yang sepadan dengan kehidupan sebenar mereka.",
-      "hintLabel": null,
-      "hintText": null,
-      "prevBtn": "← Kembali",
-      "nextBtn": "Tiga laluan yang jujur"
-    },
-    {
-      "id": "mod-3",
-      "tag": "Tiga laluan yang jujur",
-      "titleHtml": "Tidak ada satu jawapan yang betul<br><em>bila hobi berhenti terasa baik.</em>",
-      "body": [
-        "Tidak ada satu jawapan yang betul bila hobi berhenti terasa baik. ARA mengenal pasti tiga respons yang genuinly jujur, tiada satu pun yang merupakan kegagalan.",
-        "<strong>Laluan 1: Reka bentuk semula.</strong> Tank semasa tidak sejajar — tapi penjaga masih ingin memelihara ikan. Respons yang selari adalah mereka bentuk semula sistem untuk sepadan dengan apa yang penjaga sebenarnya boleh kekalkan sekarang. Ini mungkin bermakna mengurangkan stocking, beralih kepada setup yang lebih mudah, atau menukar kepada spesies yang memerlukan kurang. Ini bukan menyerah. Ini adalah pengakuan jujur tentang apa yang boleh disediakan, dan keputusan untuk beroperasi dalam had tersebut.",
-        "<strong>Laluan 2: Permudahkan.</strong> Kehilangan yang terkumpul atau kerumitan yang terbina telah membuat sistem sukar untuk dinikmati. Respons yang selari adalah permudahkan secara sengaja — kurangkan kepelbagaian spesies, kurangkan keperluan penjagaan, kurangkan peralatan. Bukan mengurangkan kepada titik ketidakselesaan, tapi mengurangkan kepada titik di mana penjagaan kembali rasa seperti pilihan berbanding tanggungjawab.",
-        "<strong>Laluan 3: Pergi.</strong> Hobi ini, dalam bentuk ini, tidak lagi sepadan dengan kehidupan anda sekarang. Respons yang selari adalah mengiktiraf itu dan bertindak atas pengiktirafan itu dengan kemuliaan — mencari rumah yang baik untuk ikan, membubarkan tank dengan betul, tanpa paksaan untuk meneruskan sesuatu yang tidak lagi memberikan apa yang anda perlu.",
-        "Ketiga-tiga laluan ini adalah sah. Tiada satu pun yang menunjukkan bahawa anda tidak sesuai untuk hobi ini, atau bahawa anda tidak seharusnya memulakan. Mereka hanya mencerminkan realiti bahawa kehidupan berubah, dan sistem yang dibina untuk satu fasa kehidupan tidak semestinya sesuai untuk fasa yang lain."
-      ],
-      "pullQuote": null,
-      "hintLabel": "ARA · Pengampunan Ekologi",
-      "hintText": [
-        "Pengampunan ekologi terpakai kepada penjaga, bukan hanya tank. Penjaga yang telah bergelut, yang terlepas water change, yang kehilangan ikan kerana punca yang boleh dicegah — penjaga itu bukan penjaga yang buruk. Mereka adalah penjaga yang sistemnya telah drift melebihi penjajaran. Yang penting sekarang bukan sejarah tetapi pilihan seterusnya."
-      ],
-      "prevBtn": "← Kembali",
-      "nextBtn": "Jika anda pergi"
-    },
-    {
-      "id": "mod-4",
-      "tag": "Jika anda pergi",
-      "titleHtml": "Ada cara untuk pergi<br><em>dengan kemuliaan.</em>",
-      "body": [
-        "Jika keputusannya adalah untuk meninggalkan hobi — sementara atau kekal — ada cara untuk melakukannya dengan baik. Ini bernilai untuk dikatakan secara eksplisit, kerana kebanyakan sumber hobi hanya merangkumi cara menjaga tank, bukan cara menutupnya.",
-        "Panduan praktikal untuk pergi dengan kemuliaan: Pertama, cari rumah yang sesuai untuk ikan dahulu — kelab ikan tempatan, persatuan akuarium, penjaga lain yang anda kenali. Ini mengambil masa tetapi ia adalah langkah yang betul. Kedua, kurangkan tank secara beransur-ansur jika boleh — kurangkan stocking, kemudian bubarkan setelah semua ikan dipindahkan. Ketiga, jangan tinggalkan tank berjalan tanpa penyelenggaraan kerana sukar untuk dihadapi — itu lebih buruk untuk ikan daripada penutupan yang terancang.",
-        "Tentang rasa bersalah kerana pergi: kehilangan minat dalam hobi yang pernah penting bukan pengkhianatan kepada ikan anda atau kepada versi anda yang lebih awal yang memulakannya. Ia adalah sebahagian daripada cara minat manusia beroperasi — ia berubah, berkembang, bermusim. Penjaga yang meninggalkan dengan menyelenggarakan kesejahteraan ikan mereka sehingga akhir melakukan lebih dari ramai yang kekal secara teknikal tapi tidak lagi hadir.",
-        "Dan jika anda kembali — dalam setahun, atau lima tahun, atau dua puluh — sistem mempunyai kapasiti untuk bermula semula. Pengetahuan tidak hilang. Minat yang kemunculan semula tidak perlu dipertahankan terhadap masa apabila ia tidak ada. Ia boleh diambil dari tempat ia berada."
-      ],
-      "pullQuote": null,
-      "hintLabel": null,
-      "hintText": null,
-      "prevBtn": "← Kembali",
-      "nextBtn": null
+    "relatedLinks": [
+        {
+            "text": "Menjaga tanpa rasa bersalah →"
+        },
+        {
+            "text": "Akuarium bukan projek →"
+        },
+        {
+            "text": "Rutin penyelenggaraan yang berfungsi →"
+        },
+        {
+            "text": "Framework ARA →"
+        }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
     }
-  ],
-  "relatedLinks": [
-    {
-      "href": "/articles/caring-without-guilt",
-      "text": "Menjaga tanpa rasa bersalah →"
-    },
-    {
-      "href": "/articles/aquarium-not-a-project",
-      "text": "Akuarium bukan projek →"
-    },
-    {
-      "href": "/articles/aquarium-maintenance-routine",
-      "text": "Rutin penyelenggaraan yang berfungsi →"
-    },
-    {
-      "href": "/articles/ara-full-framework",
-      "text": "Framework ARA →"
-    }
-  ],
-  "footer": {
-    "allArticles": "← Semua artikel",
-    "araLink": "Aquatic Rhythm Alignment"
-  }
 }

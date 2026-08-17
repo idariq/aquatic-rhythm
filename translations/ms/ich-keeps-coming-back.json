@@ -12,7 +12,7 @@
         "ogDescription": "Rawatan berjaya tapi ich muncul lagi. Ketahui kenapa ia berulang dan apa yang sebenarnya perlu berubah."
     },
     "intro": {
-        "eyebrow": "Bacaan · Livestock Rhythm",
+        "eyebrow": "Praktikal",
         "titleHtml": "Ich Terus<br><em>Kembali</em>",
         "subtitle": "Rawatan berjaya. Titik hilang. Tapi beberapa minggu kemudian ia muncul balik.",
         "texts": [
@@ -30,33 +30,30 @@
             "tag": "Kenapa rawatan sahaja tidak cukup",
             "titleHtml": "Ich hilang.<br><em>Tapi keadaan yang bagi laluan masih ada.</em>",
             "body": [
-                "Ich (Ichthyophthirius multifiliis) adalah parasit yang kebanyakan penjaga berpengalaman pernah hadapi. Bahagian yang menyebalkan bukan wabak pertama — ia kembalinya. Rawatan berkesan: haba, garam, dan ubat semua membersihkan peringkat bebas renang dengan berkesan. Tapi penjaga yang mengalami ich berulang selalunya menangani gejala yang sama berulang kali tanpa menangani apa yang membuat ikan mudah diserang.",
+                "Ich (Ichthyophthirius multifiliis) ialah parasit yang kebanyakan penjaga berpengalaman pernah hadapi. Bahagian yang menyebalkan bukan wabak pertama — ia kembalinya. Rawatan berkesan: haba, garam, dan ubat semua membersihkan peringkat bebas renang dengan berkesan. Tapi penjaga yang mengalami ich berulang selalunya menangani gejala yang sama berulang kali tanpa menangani apa yang membuat ikan mudah diserang.",
                 "Ich wujud hampir di mana-mana dalam persekitaran akuarium sebagai parasit peringkat rendah. Sistem imun ikan yang sihat dan tidak tertekan biasanya mengekalkannya pada tahap yang tidak menghasilkan wabak yang nampak. Ia menjadi masalah yang kelihatan bila tekanan menekan fungsi imun ikan cukup untuk membenarkan parasit membiak lebih cepat dari pertahanan semula jadi mereka boleh menguruskannya.",
-                "Implikasi praktikal: ich berulang bukan kegagalan teknik rawatan. Ia adalah isyarat bahawa tekanan dalam tank yang membenarkan wabak pertama masih hadir. Membersihkan titik untuk kali keempat tanpa menangani tekanan itu adalah menunggu untuk kali kelima."
+                "Implikasi praktikal: ich berulang bukan kegagalan teknik rawatan. Ia ialah isyarat bahawa tekanan dalam tank yang membenarkan wabak pertama masih hadir. Membersihkan titik untuk kali keempat tanpa menangani tekanan itu sama sahaja dengan menunggu kali kelima."
             ],
             "pullQuote": "Ich tidak kembali kerana rawatan gagal. Ia kembali kerana tank yang ia hidup di dalamnya tidak berubah.",
-            "hintLabel": null,
-            "hintText": null,
             "prevBtn": "← Intro",
             "nextBtn": "Ich sebagai isyarat Livestock Rhythm"
         },
         {
             "id": "mod-2",
             "tag": "Ich sebagai isyarat Livestock Rhythm",
-            "titleHtml": "Ich adalah isyarat.<br><em>Bukan masalah itu sendiri.</em>",
+            "titleHtml": "Ich ialah isyarat.<br><em>Bukan masalah itu sendiri.</em>",
             "body": [
-                "Dalam ARA, wabak ich adalah isyarat Livestock Rhythm — cara tank menzahirkan tekanan yang sudah hadir. Isyarat bukan ich itu sendiri tetapi apa yang ich dedahkan: bahawa ikan dalam tank ini berada di bawah tekanan kronik yang mencukupi untuk membenarkan parasit yang biasanya tertekan untuk membiak.",
-                "Soalan ARA selepas wabak ich bukan hanya 'macam mana nak hilangkan titik?' Ia adalah 'tekanan apa dalam tank ini yang cukup tinggi untuk membolehkan ini berlaku, dan ia masih hadir?'",
-                "Tekanan yang paling biasa membenarkan ich muncul: perubahan suhu yang mendadak atau ketidakstabilan suhu kronik, stocking yang terlalu padat atau aggression yang berterusan, kualiti air yang teruk (ammonia atau nitrite walaupun rendah, perubahan pH), ikan baru dimasukkan tanpa quarantine membawa parasit pada tahap sub-klinikal, atau stres dari prosedur penyelenggaraan — water change dengan air yang tidak dipadankan suhu adalah penyumbang biasa yang sering terlepas pandang.",
-                "Bukan semua kes ich adalah tekanan kronik. Kadang-kadang satu kejadian yang jelas — ikan baru tanpa quarantine, pelantakan suhu yang mendadak — mencetuskan wabak tunggal. Dalam kes itu, menangani peristiwa itu adalah mencukupi. Tapi ich yang berulang — lebih dari sekali dalam tempoh enam bulan — hampir selalu menunjukkan sesuatu yang berterusan.",
-                "Cara membezakannya: ich pertama selepas menambah ikan baru yang tidak diquarantin adalah mungkin dari pengenalan parasit. Ich yang muncul tiga minggu selepas rawatan dalam tank yang stabil tanpa penambahan baru adalah hampir pasti dari tekanan yang masih hadir.",
-                "Dalam kedua-dua kes, pemerhatian adalah langkah seterusnya — bukan rawatan semula serta-merta. Merawat ich untuk kali kedua tanpa memahami kenapa ia kembali adalah mengulangi kitaran yang sama.",
-                "Ikan yang paling kerap mendapat ich pertama dalam wabak biasanya adalah yang paling tertekan — sama ada dari tekanan sosial (ikan yang sentiasa dikejar), ketidakserasian persekitaran (spesies air dingin dalam tank yang terlalu panas), atau beban penyakit sedia ada. Ikan yang mendapat ich pertama adalah bacaan, bukan kebetulan."
+                "Dalam ARA, wabak ich ialah isyarat Livestock Rhythm — cara tank menzahirkan tekanan yang sudah hadir. Isyarat bukan ich itu sendiri tetapi apa yang ich dedahkan: bahawa ikan dalam tank ini berada di bawah tekanan kronik yang mencukupi untuk membenarkan parasit yang biasanya tertekan untuk membiak.",
+                "Soalan ARA selepas wabak ich bukan hanya 'macam mana nak hilangkan titik?' Ia ialah 'tekanan apa dalam tank ini yang cukup tinggi untuk membolehkan ini berlaku, dan ia masih hadir?'",
+                "Tekanan yang paling biasa membenarkan ich muncul: perubahan suhu yang mendadak atau ketidakstabilan suhu kronik, stocking yang terlalu padat atau aggression yang berterusan, kualiti air yang teruk (ammonia atau nitrite walaupun rendah, perubahan pH), ikan baru dimasukkan tanpa quarantine membawa parasit pada tahap sub-klinikal, atau stres dari prosedur penyelenggaraan — water change dengan air yang tidak dipadankan suhu ialah penyumbang biasa yang sering terlepas pandang.",
+                "Bukan semua kes ich ialah tekanan kronik. Kadang-kadang satu kejadian yang jelas — ikan baru tanpa quarantine, pelantakan suhu yang mendadak — mencetuskan wabak tunggal. Dalam kes itu, menangani peristiwa itu sudah mencukupi. Tapi ich yang berulang — lebih dari sekali dalam tempoh enam bulan — hampir selalu menunjukkan sesuatu yang berterusan.",
+                "Cara membezakannya: ich pertama selepas menambah ikan baru yang tidak diquarantin berkemungkinan besar drpd pengenalan parasit. Ich yang muncul tiga minggu selepas rawatan dalam tank yang stabil tanpa penambahan baru hampir pasti drpd tekanan yang masih hadir.",
+                "Dalam kedua-dua kes, pemerhatian ialah langkah seterusnya — bukan rawatan semula serta-merta. Merawat ich untuk kali kedua tanpa memahami kenapa ia kembali sama sahaja dengan mengulangi kitaran yang sama.",
+                "Ikan yang paling kerap mendapat ich pertama dalam wabak biasanya ialah yang paling tertekan — sama ada dari tekanan sosial (ikan yang sentiasa dikejar), ketidakserasian persekitaran (spesies air dingin dalam tank yang terlalu panas), atau beban penyakit sedia ada. Ikan yang mendapat ich pertama ialah bacaan, bukan kebetulan."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Livestock Rhythm",
+            "hintLabel": "Apa yang wabak tu beritahu anda",
             "hintText": [
-                "Dalam ARA, Livestock Rhythm adalah corak berterusan tingkah laku ikan, warna, selera makan, dan dinamik sosial yang mencerminkan keadaan keseluruhan sistem. Ikan yang sihat sebelum wabak ich dan sihat selepas ia dibersihkan tidak memberi anda maklumat yang berguna. Ikan yang ditekan cukup untuk menunjukkan titik sedang memberitahu anda sesuatu yang ujian air tidak boleh."
+                "Tingkah laku ikan, warna, selera makan, dan dinamik sosial mencerminkan keadaan keseluruhan sistem. Ikan yang sihat sebelum wabak ich dan sihat selepas ia dibersihkan tidak memberi anda maklumat yang berguna. Ikan yang ditekan cukup untuk menunjukkan titik sedang memberitahu anda sesuatu yang ujian air tak boleh."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Mencari tekanan dominan"
@@ -66,61 +63,55 @@
             "tag": "Mencari tekanan dominan",
             "titleHtml": "Mencari apa yang<br><em>tank sebenarnya sedang beritahu.</em>",
             "body": [
-                "Langkah pertama selepas membersihkan wabak ich adalah pemerhatian, bukan perubahan segera. Senaraikan apa yang anda tahu: bila wabak muncul? Apa yang berubah dalam dua hingga empat minggu sebelumnya? Ikan baru? Makanan baru? Perubahan suhu bermusim? Perubahan suhu bilik? Water change yang besar? Pembersihan filter?",
+                "Langkah pertama selepas membersihkan wabak ich ialah pemerhatian, bukan perubahan segera. Senaraikan apa yang anda tahu: bila wabak muncul? Apa yang berubah dalam dua hingga empat minggu sebelumnya? Ikan baru? Makanan baru? Perubahan suhu bermusim? Perubahan suhu bilik? Water change yang besar? Pembersihan filter?",
                 "Setelah perubahan terbaru paling mungkin dikenal pasti, itulah tekanan dominan yang perlu ditangani. Kalau tiada perubahan yang jelas dikenal pasti, lihat kepada keadaan berterusan: berapa padat stocking? Adakah ikan tertentu sentiasa bersembunyi atau mengelak kawasan tertentu? Adakah suhu stabil sepanjang hari dan malam?",
-                "Semak kestabilan suhu terlebih dahulu — ia adalah penyumbang ich yang paling biasa diabaikan. Banyak heater berayun 2–3°C sepanjang hari, terutamanya heater lebih murah. Ikan dalam persekitaran haba yang tidak menentu hidup dalam tekanan fisiologi kronik walaupun purata suhu 'betul.'",
+                "Semak kestabilan suhu terlebih dahulu — ia ialah penyumbang ich yang paling biasa diabaikan. Banyak heater berayun 2–3°C sepanjang hari, terutamanya heater lebih murah. Ikan dalam persekitaran haba yang tidak menentu hidup dalam tekanan fisiologi kronik walaupun purata suhu 'betul.'",
                 "Semak parameter air tidak hanya selepas water change tetapi beberapa hari sebelum water change seterusnya. Ammonia dan nitrite yang membina secara perlahan antara perubahan air, walaupun tidak mencapai tahap yang sangat tinggi, boleh mengekalkan ikan dalam keadaan tertekan yang berterusan."
             ],
-            "pullQuote": "Ich bukan masalah. Ich adalah bacaan. Masalah adalah apa yang menekan ikan cukup untuk bagi laluan kepadanya.",
-            "hintLabel": "ARA · Asal sebelum Ekspresi",
+            "pullQuote": "Ich bukan masalah. Ich ialah bacaan. Masalah ialah apa yang menekan ikan cukup untuk bagi laluan kepadanya.",
+            "hintLabel": "Kesan yang dilihat, bukan puncanya",
             "hintText": [
-                "Ich yang berulang adalah ekspresi. Penekanan imun kronik yang membenarkannya bertapak adalah asalnya. Prinsip penjajaran kelima ARA ialah Asal sebelum Ekspresi: sebelum setiap kitaran rawatan baru, tanya apa dalam sistem yang menghasilkan kerentanan itu. Ekspresi dibersihkan dengan rawatan; asal memerlukan kerja yang berbeza."
+                "Ich yang berulang ialah apa yang anda nampak. Penekanan imun kronik yang membenarkannya bertapak ialah apa yang sebenarnya berlaku. Sebelum setiap kitaran rawatan baru, tanya apa dlm sistem yang menghasilkan kerentanan itu. Rawatan bersihkan apa yang anda nampak; mencari punca sebenar perlukan kerja yang berbeza."
             ],
             "prevBtn": "← Kembali",
-            "nextBtn": "Response yang selari"
+            "nextBtn": "Tindak balas yang tepat"
         },
         {
             "id": "mod-4",
-            "tag": "Response yang selari",
-            "titleHtml": "Response yang selari<br><em>kepada penyakit berulang.</em>",
+            "tag": "Tindak balas yang tepat",
+            "titleHtml": "Tindak balas yang tepat<br><em>kepada penyakit berulang.</em>",
             "body": [
-                "Response yang selari kepada ich berulang adalah berbeza dari response rawatan. Rawatan bertanya: 'macam mana nak hilangkan titik?' Response yang selari bertanya: 'apa yang tank ini perlukan untuk berhenti menghasilkan wabak?'",
-                "Urutan praktikal: Pertama, tangani wabak semasa — rawatan haba (30°C selama 10 hari) adalah berkesan dan tidak melibatkan ubat kimia; untuk tank pokok, garam dengan dos rendah boleh digunakan. Kedua, semasa rawatan, mulakan pemerhatian: catat suhu setiap hari, uji air pada pertengahan kitaran rawatan, perhatikan tingkah laku makan dan sosial. Ketiga, selepas titik hilang selama tujuh hari, kenal pasti tekanan dominan — satu perkara yang paling mungkin menjadi penyumbang. Keempat, tangani itu satu perkara sahaja dan pantau selama empat hingga lapan minggu sebelum membuat kesimpulan.",
+                "Tindak balas yang tepat kepada ich berulang berbeza daripada tindak balas rawatan semata-mata. Rawatan bertanya: 'macam mana nak hilangkan titik?' Tindak balas yang tepat pula bertanya: 'apa yang tank ini perlukan untuk berhenti menghasilkan wabak?'",
+                "Urutan praktikal: Pertama, tangani wabak semasa — rawatan haba (30°C selama 10 hari) berkesan dan tidak melibatkan ubat kimia; untuk tank pokok, garam dengan dos rendah boleh digunakan. Kedua, semasa rawatan, mulakan pemerhatian: catat suhu setiap hari, uji air pada pertengahan kitaran rawatan, perhatikan tingkah laku makan dan sosial. Ketiga, selepas titik hilang selama tujuh hari, kenal pasti tekanan dominan — satu perkara yang paling mungkin menjadi penyumbang. Keempat, tangani itu satu perkara sahaja dan pantau selama empat hingga lapan minggu sebelum membuat kesimpulan.",
                 "Perubahan yang paling berguna selepas ich berulang, mengikut urutan kekerapan ia membantu: perbaiki kestabilan suhu, kurangkan stocking atau tangani aggression, tingkatkan kekerapan atau kualiti water change, tambah quarantine untuk ikan baru akan datang.",
-                "Tank yang melepasi empat hingga enam bulan tanpa wabak ich berulang selepas menangani tekanan dominan hampir selalu adalah tank di mana satu perkara yang ketara berubah — bukan tank di mana semua perkara diselaraskan sedikit-sedikit serentak."
-            ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Pengampunan Ekologi",
-            "hintText": [
-                "Tank yang pernah mengalami ich berulang boleh menjadi tank yang stabil. Sistem imun ikan pulih apabila tekanan kronik dibuang. Pengampunan ekologi bermakna corak masa lalu tidak menentukan masa depan — tetapi hanya jika tekanan asas diubah, bukan hanya gejala yang dibersihkan. Sejarah wabak bukan penilaian akhir. Ia adalah rekod apa yang tank sedang minta."
-            ],
-            "hintLabel2": "ARA · Tetapan Semula Fasa Bertujuan",
-            "hintText2": [
-                "Tidak semua peralihan fasa menggambarkan kegagalan. Penjaga boleh mereset sistem dengan sengaja — untuk merawat penyakit berterusan, mengkonfigurasi semula persediaan, atau memulakan kitaran baru selepas crash. ARA membezakan tetapan semula fasa bertujuan daripada kemunduran akibat gangguan: tetapan semula adalah keputusan penjaga, bukan kegagalan sistem. Sistem melalui Fasa Awal sekali lagi, mengikut trajektori pembangunan yang sama — tetapi pengetahuan terkumpul penjaga membentuk cara kitaran baru diuruskan."
+                "Tank yang melepasi empat hingga enam bulan tanpa wabak ich berulang selepas menangani tekanan dominan hampir selalu tank di mana satu perkara yang ketara berubah — bukan tank di mana semua perkara diselaraskan sedikit-sedikit serentak."
             ],
             "prevBtn": "← Kembali",
-            "nextBtn": null,
-            "hintLabel4": "ARA · Tetapan Semula Fasa Bertujuan",
-            "hintText4": [
-                "Tidak semua peralihan fasa menggambarkan kegagalan. Penjaga mungkin sengaja mereset sistem — untuk merawat penyakit berterusan, mengkonfigurasi semula persediaan, atau memulakan kitaran baru selepas crash. ARA membezakan tetapan semula fasa yang bertujuan daripada kemunduran yang didorong gangguan: tetapan semula adalah keputusan penjaga, bukan kerosakan sistem. Sistem melalui Fasa Awal sekali lagi, mengikut lengkung perkembangan yang sama — tetapi pengetahuan terkumpul penjaga membentuk bagaimana kitaran baru diuruskan."
+            "hintLabel": "Renung dulu sebelum bertindak balas",
+            "hintText": [
+                "Bila ich kembali lepas anda sangka ia dah hilang, dorongan nak rawat lagi kuat memang boleh difahami — saya pun pernah rasa macam itu. Tapi kebimbangan yang kita bawa lepas wabak berulang cenderung dorong lebih banyak campur tangan, yang tambah lagi pemboleh ubah pada tangki yang dah bergelut nak serap. Tenaga kekecewaan itu sebenarnya maklumat berguna: ia beritahu anda yang sesuatu dalam sistem perlukan jenis perubahan berbeza, bukan versi lebih agresif drpd apa yang dah berlaku. Renung dulu pemerhatian itu sebelum bertindak balas."
+            ],
+            "hintLabel2": "Berita baik",
+            "hintText2": [
+                "Tangki yang pernah mengalami ich berulang boleh menjadi tangki yang stabil. Sistem imun ikan pulih apabila tekanan kronik dibuang. Corak masa lalu tak menentukan masa depan — tetapi hanya jika punca tekanan diubah, bukan sekadar gejala yang dibersihkan. Sejarah wabak bukan penilaian akhir. Ia rekod apa yang tangki tu sedang minta."
+            ],
+            "hintLabel3": "Bila reset tu pilihan, bukan kegagalan",
+            "hintText3": [
+                "Tidak semua peralihan fasa bermaksud kegagalan. Penjaga boleh reset sistem dengan sengaja — untuk merawat penyakit berterusan, susun semula persediaan, atau mulakan kitaran baru selepas crash. Itu berbeza drpd kemunduran akibat gangguan: reset ialah keputusan penjaga, bukan kegagalan sistem. Tangki melalui peringkat awal sekali lagi, mengikut trajektori pembangunan yang sama — tetapi pengetahuan terkumpul penjaga membentuk cara kitaran baru diuruskan."
             ]
         }
     ],
     "relatedLinks": [
         {
-            "href": "/articles/adding-new-fish",
             "text": "Menambah ikan baru →"
         },
         {
-            "href": "/articles/perfect-parameters-fish-dying",
             "text": "Parameter ok tapi ikan mati →"
         },
         {
-            "href": "/articles/fish-hiding-what-does-it-mean",
             "text": "Ikan saya bersembunyi →"
         },
         {
-            "href": "/rhyssa",
             "text": "Tanya Rhyssa →"
         }
     ],

@@ -37,8 +37,6 @@
                 "<strong>Keracunan amonia/nitrit</strong> — tes segera. Jika amonia melebihi 1 ppm atau nitrit terdeteksi, inilah penyebabnya. Ikan juga akan menunjukkan insang yang merah atau meradang, pernapasan cepat meski sedang istirahat, dan mungkin darting atau flashing. Respons: ganti air 25–30% segera."
             ],
             "pullQuote": "Permukaan adalah jalan terakhir ikan. Saat megap-megap sudah terlihat, akuarium sebenarnya sudah memberi sinyal sejak lama — dengan cara yang belum mencapai ambang terlihat.",
-            "hintLabel": null,
-            "hintText": null,
             "prevBtn": "← Intro",
             "nextBtn": "Oksigen, suhu, dan agitasi permukaan"
         },
@@ -51,10 +49,9 @@
                 "Beberapa faktor bisa bergabung untuk mengurangi oksigen terlarut secara bersamaan: kenaikan suhu ruangan di musim panas memanaskan air akuarium (kelarutan oksigen menurun saat suhu meningkat); blooming alga menggunakan oksigen di malam hari ketika respirasi terus berjalan tanpa fotosintesis; beban biologis meningkat (lebih banyak ikan, ikan lebih besar, lebih banyak bahan organik yang membusuk semuanya menggunakan oksigen); aliran filter melambat karena penyumbatan sebagian. Setiap faktor secara individual mungkin tidak menyebabkan megap-megap. Digabungkan, mereka bisa menurunkan oksigen terlarut di bawah ambang toleransi semua spesies sekaligus — itulah kenapa kejadian megap-megap sering tampak tiba-tiba dan membingungkan padahal faktor-faktornya sudah ada selama beberapa minggu.",
                 "Respons yang tepat dimulai sebelum megap-megap terjadi: pertahankan pergerakan permukaan yang aktif, jaga filter tetap bersih, hindari overstock relatif terhadap musim (akuarium yang baik-baik saja di musim dingin mungkin memerlukan beban dikurangi di musim panas), dan perhatikan aliran filter yang melambat sebagai indikator awal."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Environmental Rhythm",
+            "hintLabel": "Penyimpangan, bukan kejadian",
             "hintText": [
-                "Dalam ARA, oksigen terlarut adalah bagian dari Environmental Rhythm — kondisi fisik berkelanjutan yang dipertahankan akuarium. Kejadian kekurangan oksigen adalah bacaan: Environmental Rhythm sudah menyimpang melampaui toleransi Livestock Rhythm. Kejadiannya tidak tiba-tiba. Penyimpangan itulah yang terjadi perlahan."
+                "Oksigen terlarut adalah bagian dari kondisi fisik berkelanjutan yang dipertahankan akuarium. Kejadian kekurangan oksigen adalah sebuah bacaan: kondisi akuarium sudah menyimpang melampaui apa yang bisa ditoleransi ikan. Kejadiannya bukan sesuatu yang tiba-tiba. Penyimpangan itulah yang terjadi perlahan."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Respons yang tepat dan pencegahan"
@@ -68,34 +65,28 @@
                 "Jika ikan kembali ke kedalaman dan perilaku normal, penyebabnya berkaitan dengan oksigen dan Anda punya waktu untuk menyelidiki faktor-faktor yang berkontribusi. Jika tidak membaik, atau jika Anda melihat kemerahan pada insang, darting, atau lendir berlebih, curigai penyakit dan cari pendapat ahli.",
                 "Pencegahan adalah tentang membaca sistem sebelum mencapai ambang megap-megap. Periksa aliran filter setiap minggu — filter yang tersumbat sebagian adalah kontributor diam yang paling umum. Pantau suhu akuarium di musim panas. Jangan biarkan agitasi permukaan melemah tanpa menanganinya. Perhatikan tanda kelebihan CO2 (pH yang anjlok semalaman di planted tank yang diinjeksi, air yang menguning, ikan di dekat permukaan terutama pagi hari sebelum lampu menyala). Kejadian megap-megap adalah ujung dari sebuah urutan. Penghobi yang selaras membaca langkah-langkah lebih awal: aliran yang melambat, air yang memanas, beban organik yang menumpuk — dan menyesuaikan sebelum urutannya selesai."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Asal sebelum Ekspresi",
-            "hintText": [
-                "Megap-megap itu adalah ekspresi. Filter yang melambat, air yang memanas, beban organik yang menumpuk yang menghasilkannya adalah asalnya. Prinsip keselarasan kelima ARA adalah Asal sebelum Ekspresi: respons yang tepat bergerak mundur dari apa yang ditunjukkan akuarium menuju apa yang menghasilkannya. Agitasi permukaan membeli waktu; menemukan dan menyesuaikan asalnya mencegah kejadian berulang."
-            ],
             "prevBtn": "← Kembali",
-            "nextBtn": null,
-            "hintLabel2": "ARA · Asal sebelum Ekspresi",
+            "hintLabel": "Setelah panik mereda",
+            "hintText": [
+                "Momen melihat ikan megap-megap di permukaan memang benar-benar mengkhawatirkan. Rasa paniknya nyata — dan dalam kasus ini, panik itu mendorong ke arah yang benar. Bertindak dulu, baru pahami. Begitu agitasi permukaan sudah berjalan dan ikan mulai pulih, sering muncul kesadaran diam-diam tentang betapa dekatnya sistem itu dengan ambang batas. Itu layak direnungkan — bukan sebagai rasa bersalah, tapi sebagai informasi. Ada celah dalam pola pemantauan Anda. Menemukan celah itulah pekerjaan setelah kejadian."
+            ],
+            "hintLabel2": "Yang terlihat, bukan penyebabnya",
             "hintText2": [
-                "Gasping adalah ekspresinya. Filter yang melambat, air yang menghangat, beban organik yang menumpuk yang menghasilkannya adalah asal muasalnya. Prinsip penyelarasan kelima ARA adalah Origin before Expression: respons yang selaras bekerja mundur dari apa yang ditunjukkan tangki ke apa yang menghasilkannya. Agitasi permukaan membeli waktu; menemukan dan menyesuaikan asal mencegah kejadian berulang."
+                "Megap-megap itu yang Anda lihat. Filter yang melambat, air yang memanas, atau beban organik yang menumpuk yang menghasilkannya adalah yang sebenarnya terjadi. Respons yang tepat bergerak mundur dari apa yang ditunjukkan akuarium menuju apa yang menghasilkannya. Agitasi permukaan membeli waktu; menemukan dan menyesuaikan penyebab sebenarnya mencegah kejadian berulang."
             ]
         }
     ],
     "relatedLinks": [
         {
-            "href": "/articles/perfect-parameters-fish-dying",
             "text": "Parameter oke tapi ikan mati →"
         },
         {
-            "href": "/articles/new-tank-syndrome",
             "text": "New Tank Syndrome →"
         },
         {
-            "href": "/articles/aquarium-filter-maintenance",
             "text": "Filter Anda bukan apa yang Anda kira →"
         },
         {
-            "href": "/rhyssa",
             "text": "Tanya Rhyssa →"
         }
     ],

@@ -17,8 +17,7 @@
         "subtitle": "Masalah dalam sistem tertutup bukan berawal dari kegagalan moral.",
         "texts": [
             "Ikan mati dan respons pertama adalah rasa bersalah. Atau parameter bergeser dan penjaga menghabiskan lebih banyak waktu menyalahkan diri sendiri dari waktu yang digunakan untuk memahami apa yang terjadi. Atau perawatan terlewat satu minggu dan itu sudah cukup untuk memicu spiral kecemasan tentang apakah ia penjaga yang cukup baik.",
-            "Panduan ini bukan tentang membuat penjaga merasa lebih baik. Ini tentang menggantikan rasa bersalah — yang tidak menghasilkan informasi berguna — dengan observasi, yang menghasilkan.",
-            "Cara Anda merawat adalah data. Bukan penilaian tentang karakter Anda."
+            "Panduan ini bukan tentang membuat penjaga merasa lebih baik. Ini tentang menggantikan rasa bersalah — yang tidak menghasilkan informasi berguna — dengan observasi, yang menghasilkan."
         ],
         "metaModules": "5 modul",
         "metaTime": "Semua tingkat",
@@ -57,17 +56,13 @@
                 "<strong>Minimal</strong> — hanya perawatan dasar: makan, cek visual sesekali, ganti air jarang. Bisa berhasil jika sistem dirancang untuk kemandirian (setup low-tech, bioload rendah, filtrasi berlebih).",
                 "Tidak ada satu tipe yang 'benar.' Yang bermasalah adalah ketika setup dibangun untuk tipe tertentu tapi penjaga sebenarnya menjalani tipe yang lain — atau ketika penjaga menetapkan standar perawatan yang tidak pernah bisa ia penuhi secara konsisten, lalu merasa bersalah ketika standar itu terlewat."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Keeper Rhythm",
+            "pullQuote": "\"Keberlanjutan dimulai dari keselarasan yang jujur antara apa yang bisa Anda berikan dan apa yang sistem ini sungguh butuhkan. Titik awal yang jujur itulah yang jadi pijakan kerja ARA. Arah yang dituju adalah perawatan yang konsisten dan bertahap — karena itulah ritme yang paling bisa diterima oleh sistem yang hidup.\"",
+            "hintLabel": "Bukan standar, tapi deskripsi jujur",
             "hintText": [
-                "Keeper Rhythm dalam ARA bukan standar yang harus dicapai — ini adalah deskripsi jujur tentang pola yang sebenarnya bisa Anda pertahankan. Setup yang selaras adalah setup yang bisa bertahan dengan ritme yang Anda benar-benar miliki. Itu adalah titik awal. Arah yang ARA tunjuk — tanpa tekanan, tanpa rasa malu — adalah menuju perawatan yang lebih konsisten dan bertahap, karena itulah yang paling bisa diterima oleh sistem hidup."
+                "Ritme perawatan Anda bukan standar yang harus dicapai — ini deskripsi jujur tentang pola yang sebenarnya bisa Anda pertahankan. Setup yang seimbang adalah setup yang bisa bertahan dengan ritme yang Anda benar-benar miliki. Itu titik awal. Arahnya — tanpa tekanan, tanpa rasa malu — menuju perawatan yang lebih konsisten dan bertahap, karena itulah yang paling bisa diterima oleh sistem hidup."
             ],
             "prevBtn": "← Kembali",
-            "nextBtn": "Lingkaran reaksi",
-            "hintLabel2": "ARA · Protokol Perubahan Hidup",
-            "hintText2": [
-                "ARA mengakui bahwa ritme perawatan berubah ketika kehidupan berubah — pekerjaan baru, penyakit, pindahan, musim yang sulit. Ini dinamai secara eksplisit sebagai protokol perubahan hidup: ketika kapasitas penjaga yang tersedia turun secara signifikan, pertanyaannya bukan bagaimana mempertahankan standar perawatan sebelumnya dengan waktu lebih sedikit. Ini adalah bagaimana mempertahankan perawatan minimum yang efektif — ambang batas di bawahnya stabilitas sistem berisiko — sementara kehidupan penjaga menyusun ulang. Ini adalah pertanyaan kerangka kerja, bukan pertanyaan moral. Sistem yang dirancang untuk ritme penjaga yang realistis bertahan melalui periode sulit. Sistem yang dirancang untuk yang ideal sering tidak."
-            ]
+            "nextBtn": "Lingkaran reaksi"
         },
         {
             "id": "mod-3",
@@ -98,16 +93,16 @@
                 "Implikasinya bagi penjaga yang merasa bersalah karena tidak merawat 'cukup': ukuran yang lebih berguna dari kualitas perawatan bukan intensitasnya, tapi konsistensinya. Apakah sistem bisa bergantung pada Anda untuk melakukan hal-hal dasar secara teratur? Jawaban itu lebih bermakna dari seberapa sering Anda mengintervensi."
             ],
             "pullQuote": "Ganti air 15% setiap minggu menghasilkan kualitas air yang lebih stabil dari ganti air 50% setiap bulan. Sistem hidup menghargai prediktabilitas.",
-            "hintLabel": "ARA · Protokol Perubahan Hidup",
+            "hintLabel": "Ketika hidup berubah",
             "hintText": [
-                "ARA mengakui bahwa ritme perawatan berubah ketika kehidupan berubah — pekerjaan baru, penyakit, pindahan, musim yang sulit. Ini dinamai secara eksplisit sebagai protokol perubahan hidup: ketika kapasitas penjaga yang tersedia turun secara signifikan, pertanyaannya bukan bagaimana mempertahankan standar perawatan sebelumnya dengan waktu lebih sedikit. Ini adalah bagaimana mempertahankan perawatan minimum yang efektif — ambang batas di bawahnya stabilitas sistem berisiko — sementara kehidupan penjaga menyusun ulang. Ini adalah pertanyaan kerangka kerja, bukan pertanyaan moral."
+                "Ritme perawatan berubah ketika kehidupan berubah — pekerjaan baru, penyakit, pindahan, musim yang sulit. Ketika kapasitas Anda yang tersedia turun secara signifikan, pertanyaannya bukan bagaimana mempertahankan standar perawatan sebelumnya dengan waktu lebih sedikit. Ini bagaimana mempertahankan perawatan minimum yang menjaga sistem tetap stabil, sementara hidup Anda menyusun ulang. Ini pertanyaan praktis, bukan pertanyaan moral."
+            ],
+            "hintLabel2": "Dalam praktik",
+            "hintText2": [
+                "Kematangan dalam sistem datang dari waktu dan kesinambungan, bukan kesempurnaan. Tangki yang dirawat dengan tenang — meskipun tidak sempurna — selama dua tahun sering memiliki ketahanan jauh lebih besar dari yang dikelola secara intensif selama enam bulan."
             ],
             "prevBtn": "← Kembali",
-            "nextBtn": "Observasi sebagai alat diagnostik",
-            "hintLabel3": "Dalam praktik",
-            "hintText3": [
-                "Kematangan dalam sistem datang dari waktu dan kesinambungan, bukan kesempurnaan. Tangki yang dirawat dengan tenang — meskipun tidak sempurna — selama dua tahun sering memiliki ketahanan jauh lebih besar dari yang dikelola secara intensif selama enam bulan."
-            ]
+            "nextBtn": "Observasi sebagai alat diagnostik"
         },
         {
             "id": "mod-5",
@@ -119,31 +114,12 @@
                 "Penjaga yang mengembangkan kemampuan observasi yang baik mendeteksi masalah lebih awal — sebelum mereka menjadi krisis — dan bisa membuat keputusan yang lebih tepat karena mereka punya konteks, bukan hanya respons terhadap kepanikan sesaat.",
                 "Rasa bersalah menjauhkan perhatian dari sistem dan memindahkannya ke penilaian diri. Observasi membalik itu: perhatian kembali ke sistem, ke apa yang sebenarnya terjadi, ke sinyal yang mungkin sudah ada dan belum terbaca. Itu — bukan menjadi penjaga yang 'lebih baik' dalam arti abstrak — adalah langkah yang paling berguna yang bisa Anda ambil setelah sesuatu salah."
             ],
-            "pullQuote": null,
+            "pullQuote": "\"Dengan mengamati ritme, menghormati batas, dan menyelaraskan tindakan dengan kenyataan — baik ekosistem maupun manusia mendapat ruang untuk bernapas.\"",
             "hintLabel": "Penutup",
             "hintText": [
                 "Anda tidak berangkat untuk gagal. Anda berangkat untuk merawat sesuatu yang hidup. Niat itu tetap valid — bahkan pada hari-hari ketika tangki terlihat lebih buruk dari yang Anda harapkan, bahkan pada minggu-minggu ketika Anda tidak melakukan semua yang Anda rencanakan. Ketidakselarasan adalah informasi, bukan vonis. Di situlah perawatan yang jujur dimulai."
             ],
-            "prevBtn": "← Kembali",
-            "nextBtn": null
-        }
-    ],
-    "relatedLinks": [
-        {
-            "href": "/articles/aquarium-not-a-project",
-            "text": "Akuarium bukan proyek →"
-        },
-        {
-            "href": "/articles/aquarium-maintenance-routine",
-            "text": "Rutinitas perawatan yang berhasil →"
-        },
-        {
-            "href": "/articles/when-hobby-stops-feeling-good",
-            "text": "Ketika hobi berhenti terasa menyenangkan →"
-        },
-        {
-            "href": "/articles/ara-full-framework",
-            "text": "Aquatic Rhythm Alignment →"
+            "prevBtn": "← Kembali"
         }
     ],
     "footer": {

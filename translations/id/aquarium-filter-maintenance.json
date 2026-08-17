@@ -12,7 +12,7 @@
         "ogDescription": "Membersihkannya dengan cara yang salah lebih buruk dari tidak membersihkannya sama sekali. Pelajari cara membaca dan merawat Biological Rhythm akuarium Anda."
     },
     "intro": {
-        "eyebrow": "Bacaan · Biological Rhythm",
+        "eyebrow": "Pemula &amp; Menengah",
         "titleHtml": "Filter Anda Bukan<br><em>Apa yang Anda Kira</em>",
         "subtitle": "Membersihkannya dengan cara yang salah lebih buruk dari tidak membersihkannya sama sekali.",
         "texts": [
@@ -35,8 +35,6 @@
                 "Memahami ini mengubah makna 'perawatan filter.' Anda bukan sekadar membersihkan mesin. Anda mengelola ekosistem hidup yang ada di dalam plastik dan keramik. Keputusan yang Anda buat tentang kapan dan bagaimana merawatnya akan menjaga ekosistem itu — atau mengganggunya."
             ],
             "pullQuote": "Filter bukan tempat air kotor pergi. Ia tempat bakteri hidup yang membuat akuarium bisa ditinggali.",
-            "hintLabel": null,
-            "hintText": null,
             "prevBtn": "← Intro",
             "nextBtn": "Kenapa air kran bisa merusak akuarium"
         },
@@ -49,10 +47,9 @@
                 "Kerusakannya tidak selalu langsung terlihat. Jika sebagian koloni masih hidup, mungkin pulih dalam beberapa hari. Tapi selama masa pemulihan itu, kapasitas pemrosesan filter berkurang. Amonia dan nitrit naik, biasanya perlahan di awal, lalu lebih tajam saat bakteri yang tersisa terbebani oleh produksi limbah normal.",
                 "Penghobi yang mengalami masalah setelah membersihkan filter sering mengaitkannya dengan pembersihan yang dilakukan 'di waktu yang salah' atau dengan penyakit. Penyebab sebenarnya lebih sederhana: air yang digunakan untuk membersihkan telah menghancurkan biologi. Solusinya sama sederhananya: selalu bilas media filter dalam air yang diambil dari akuarium saat sesi ganti air. Air akuarium tidak mengandung klorin, suhu sesuai, dan sudah mengandung senyawa yang bakteri butuhkan. Bilasan lembut dalam ember air akuarium membuang kotoran yang terjebak tanpa mengganggu koloni."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Biological Rhythm",
+            "hintLabel": "Filter itu juga hidup",
             "hintText": [
-                "Dalam ARA, Biological Rhythm mencakup koloni bakteri di filter Anda — ia sama-sama bagian hidup dari akuarium seperti ikan dan tanaman. Mengelola filter berarti membaca kondisi koloni itu: kapan ia terbentuk dan stabil, kapan perlu dirawat, dan jenis perawatan apa yang menjaga versus mengganggu ia."
+                "Koloni bakteri di filter Anda sama-sama bagian hidup dari akuarium seperti ikan dan tanaman. Mengelola filter berarti membaca kondisi koloni itu: kapan ia sudah stabil, kapan perlu dirawat, dan jenis perawatan apa yang menjaga versus mengganggu ia."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Kapan perlu dibersihkan — dan kapan tidak"
@@ -67,8 +64,6 @@
                 "Naluri untuk membersihkan karena waktu sudah berlalu jauh kurang berguna dari membaca kondisi filter yang sebenarnya."
             ],
             "pullQuote": "Filter yang berfungsi — mengalirkan air dengan bebas, di akuarium yang stabil — sedang melakukan pekerjaannya. Dorongan untuk membersihkannya karena 'sudah lama' adalah sinyal Keeper Rhythm, bukan sinyal akuarium.",
-            "hintLabel": null,
-            "hintText": null,
             "prevBtn": "← Kembali",
             "nextBtn": "Cara membersihkan tanpa merusak akuarium"
         },
@@ -81,10 +76,9 @@
                 "Jika Anda mengganti media lama dengan yang baru (spons yang akhirnya hancur, keramik yang retak), jalankan media lama dan baru bersamaan selama empat hingga enam minggu sebelum membuang yang lama sepenuhnya. Media lama menginokulasi yang baru. Membuang media lama langsung meninggalkan yang baru kosong dan filter Anda dengan kapasitas yang jauh berkurang.",
                 "Inilah juga kenapa saran untuk 'ganti cartridge filter setiap bulan' — umum dalam instruksi filter hang-on bermerek — bisa mendestabilisasi akuarium yang sudah stabil. Cartridge itu adalah media biologis. Menggantinya setiap bulan adalah cara perlahan untuk berulang kali me-recycle sebagian akuarium."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Timing before Technique",
+            "hintLabel": "Waktu lebih penting dari teknik",
             "hintText": [
-                "Prinsip ARA tentang Timing before Technique berlaku langsung pada perawatan filter. Filter yang dibersihkan di waktu yang salah dengan teknik yang benar masih bisa merusak akuarium. Filter yang dibersihkan di waktu yang benar dengan teknik yang benar menjaga Biological Rhythm. Baca waktunya dulu."
+                "Ini berlaku langsung pada perawatan filter: filter yang dibersihkan di waktu yang salah dengan teknik yang benar masih bisa merusak akuarium. Filter yang dibersihkan di waktu yang benar dengan teknik yang benar menjaga koloni bakteri. Baca waktunya dulu."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Membaca kondisi filter"
@@ -98,34 +92,28 @@
                 "Situasi yang benar-benar memerlukan perhatian: aliran sudah berkurang secara signifikan dan spons memadat di bawah tekanan menjadi massa padat bukan bergerak; akuarium sudah diobati dengan obat yang membunuh bakteri (tes amonia 24–48 jam setelah pengobatan; kenaikan menunjukkan koloni terdampak); filter berjalan kering akibat listrik mati atau kerusakan pompa (menyalakan kembali filter yang berjalan kering mungkin memerlukan pembentukan ulang koloni — tes setiap hari selama seminggu).",
                 "Di luar ini, kebiasaan filter yang paling berguna bukan frekuensi pembersihan — itu adalah observasi. Perhatikan alirannya. Perhatikan bacaan akuarium setelah perawatan apa pun. Beri biologi ruang untuk bekerja. Biological Rhythm lebih stabil dari yang kebanyakan penghobi sadari, dan lebih rapuh dari yang kebanyakan kebiasaan pembersihan perhitungkan."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Infrastruktur Teknis",
+            "hintLabel": "Ketika perawatan malah jadi bumerang",
             "hintText": [
-                "ARA mengidentifikasi infrastruktur teknis sebagai dimensi kapasitas keempat: sejauh mana otomasi, sistem pemantauan, dan desain peralatan dapat menjalankan fungsi perawatan rutin secara andal. Peralatan yang dipahami dan dirawat dengan baik benar-benar memperluas kapasitas pemelihara. Namun, otomasi yang dipasang tanpa pemahaman sejati pemelihara menjadi sumber ketidakselarasan — ketika sistem gagal secara diam atau menyembunyikan sinyal, infrastruktur yang seharusnya mendukung sistem menghalangi pemelihara dari informasi yang mereka butuhkan."
+                "Akuarium yang crash setelah filter dibersihkan adalah salah satu pengalaman paling membingungkan dalam hobi ini — Anda sudah melakukan perawatan, Anda sudah melakukan yang seharusnya, tapi akuarium malah makin buruk. Kebingungan semacam ini cenderung memicu salah satu dari dua respons: terlalu hati-hati (sama sekali menghindari perawatan filter) atau pengulangan (membersihkan lagi, lebih keras, mencoba memperbaiki apa yang justru dirusak oleh pembersihan itu). Kedua respons ini berasal dari niat yang masuk akal, tapi keduanya sama-sama memperpanjang masalah. Biologi di dalam filter tidak terlihat, sehingga mudah untuk memperlakukan filter sebagai benda mekanis, bukan benda hidup. Menyadari bahwa crash bukan bukti tindakan yang salah, melainkan ketidaksesuaian waktu atau metode, itulah yang membuat pembersihan berikutnya berbeda."
             ],
-            "prevBtn": "← Kembali",
-            "nextBtn": null,
-            "hintLabel3": "ARA · Infrastruktur Teknis",
-            "hintText3": [
-                "ARA mengidentifikasi infrastruktur teknis sebagai dimensi kapasitas keempat: sejauh mana otomasi, sistem pemantauan, dan desain peralatan dapat melakukan fungsi perawatan rutin secara andal. Peralatan yang dipahami dengan baik dan dirawat dengan benar memang memperluas kapasitas penjaga. Namun, otomasi yang dipasang tanpa pemahaman penjaga yang tulus menjadi sumber ketidakselarasan — ketika sistem gagal secara diam-diam atau menyembunyikan sinyal, infrastruktur yang seharusnya mendukung sistem justru menghalangi penjaga dari informasi yang mereka butuhkan."
-            ]
+            "hintLabel2": "Otomasi memperluas kemampuan Anda — jika Anda paham",
+            "hintText2": [
+                "Otomasi, sistem pemantauan, dan peralatan yang dirancang baik memang bisa menambah kapasitas seorang pemelihara — tapi hanya kalau semuanya benar-benar bisa diandalkan menjalankan tugas perawatan rutin. Peralatan yang dipahami dan dirawat dengan baik sungguh-sungguh memperluas apa yang bisa dijaga oleh pemelihara. Tapi otomasi yang dipasang tanpa pemahaman sejati malah jadi beban — ketika sistem gagal diam-diam atau menyembunyikan sinyal, peralatan yang seharusnya membantu malah menghalangi Anda dari informasi yang sebenarnya Anda butuhkan."
+            ],
+            "prevBtn": "← Kembali"
         }
     ],
     "relatedLinks": [
         {
-            "href": "/articles/new-tank-syndrome",
             "text": "New Tank Syndrome →"
         },
         {
-            "href": "/articles/cycled-tank-problems",
             "text": "Masalah di akuarium matang →"
         },
         {
-            "href": "/articles/nitrate-keeps-rising",
             "text": "Kenapa nitrat terus naik? →"
         },
         {
-            "href": "/articles/ara-full-framework",
             "text": "Framework ARA →"
         }
     ],

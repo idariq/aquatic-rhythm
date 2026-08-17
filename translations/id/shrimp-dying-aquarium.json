@@ -12,7 +12,7 @@
         "ogDescription": "Udang tidak gagal secara tiba-tiba. Mereka melemah perlahan-lahan. Pelajari apa yang mereka baca dari air Anda."
     },
     "intro": {
-        "eyebrow": "Artikel · Water Rhythm",
+        "eyebrow": "Praktis",
         "titleHtml": "Kenapa Udang Saya<br><em>Mati?</em>",
         "subtitle": "Udang tidak gagal secara tiba-tiba. Mereka melemah perlahan-lahan sampai akhirnya berhenti.",
         "texts": [
@@ -34,9 +34,9 @@
                 "Ini berarti mereka merekam drift Water Rhythm lebih awal dari ikan manapun di tank yang sama. Mereka bukan rapuh — mereka presisi. Koloni udang yang stabil adalah sinyal kuat bahwa Water Rhythm selaras. Koloni yang perlahan-lahan menurun sedang membaca sesuatu yang tes Anda mungkin belum menunjukkan."
             ],
             "pullQuote": "Koloni udang yang mati bukan masalah udang yang lemah. Ini adalah sinyal Water Rhythm.",
-            "hintLabel": "ARA · Water Rhythm",
+            "hintLabel": "Udang membaca lebih dari test kit",
             "hintText": [
-                "Dalam ARA, Water Rhythm adalah kimia, kandungan mineral, suhu, dan gas terlarut air — bukan hanya amonia dan nitrit, tapi total dissolved solids (TDS), GH (general hardness), KH (carbonate hardness), stabilitas pH dari waktu ke waktu, dan fluktuasi suhu. Udang membaca semua itu, terus-menerus. Test kit membaca satu momen. Perbedaan itu penting."
+                "Kualitas air adalah kimia, kandungan mineral, suhu, dan gas terlarut air — bukan hanya amonia dan nitrit, tapi total dissolved solids (TDS), GH (general hardness), KH (carbonate hardness), stabilitas pH dari waktu ke waktu, dan fluktuasi suhu. Udang membaca semua itu, terus-menerus. Test kit membaca satu momen. Perbedaan itu penting."
             ],
             "prevBtn": "← Intro",
             "nextBtn": "Apa yang sebenarnya membunuh udang"
@@ -53,10 +53,9 @@
                 "<strong>Lonjakan amonia dan nitrit.</strong> Udang menunjukkan stres amonia lebih awal dari ikan. Udang yang mulai berenang panik di dekat permukaan sedang merespons amonia atau kejutan pH, bukan mengekspresikan kepribadian.",
                 "<strong>Masalah New Tank Syndrome.</strong> Memasukkan udang ke tank yang belum atau baru selesai siklus adalah penyebab tunggal paling umum kematian udang baru. Siklus nitrogen harus benar-benar stabil sebelum udang ditambahkan — bukan sekadar 'amonia baca nol hari ini.'"
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Dominant Stressor",
+            "hintLabel": "Cari satu hal yang berubah",
             "hintText": [
-                "Ketika koloni udang menurun, naluri adalah menguji semua hal dan mengubah semua hal sekaligus. Dalam ARA, ini adalah respons yang salah. Satu ganti air besar dengan air yang berbeda, satu pupuk baru, satu perubahan obat — salah satunya bisa menjadi dominant stressor. Cari apa yang berubah paling baru-baru ini sebelum penurunan dimulai. Biasanya di situlah jawabannya."
+                "Ketika koloni udang menurun, naluri adalah menguji semua hal dan mengubah semua hal sekaligus. Itu biasanya respons yang salah. Satu ganti air besar dengan air yang berbeda, satu pupuk baru, satu perubahan obat — salah satunya bisa menjadi penyebab tunggal. Cari apa yang berubah paling baru-baru ini sebelum penurunan dimulai. Biasanya di situlah jawabannya."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Membaca tren air, bukan momen"
@@ -71,9 +70,9 @@
                 "Udang merespons stresor dengan jeda. Mereka tidak mati seketika — mereka melemah selama beberapa minggu. Ini berarti penyebabnya hampir selalu lebih awal dari yang tampak. Keeper rhythm yang penting di sini adalah kebiasaan mencatat perubahan kecil sebelum tampak pada koloni."
             ],
             "pullQuote": "Udang tidak merespons apa yang terjadi hari ini. Mereka merespons apa yang terakumulasi selama dua minggu terakhir.",
-            "hintLabel": "ARA · Asal sebelum Ekspresi",
+            "hintLabel": "Telusuri penyebabnya, bukan sekadar angka",
             "hintText": [
-                "Koloni yang menurun adalah ekspresi. Akumulasi drift Water Rhythm — TDS creep, fluktuasi suhu, residu tembaga — yang menghasilkan penurunan itu adalah asalnya. Prinsip keselarasan kelima ARA adalah Asal sebelum Ekspresi: apa yang Anda lihat terjadi pada koloni adalah sinyal; apa yang terakumulasi selama beberapa minggu sebelumnya itulah yang perlu ditangani."
+                "Koloni yang menurun adalah yang Anda lihat. Akumulasi drift air — TDS creep, fluktuasi suhu, residu tembaga — yang menghasilkan penurunan itu adalah yang sebenarnya terjadi. Apa yang Anda lihat terjadi pada koloni adalah sinyal; apa yang terakumulasi selama beberapa minggu sebelumnya itulah yang perlu ditangani."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Stabil lebih baik dari sempurna"
@@ -87,31 +86,26 @@
                 "Dalam ARA, prinsip untuk udang adalah <em>stabil lebih baik dari sempurna</em>. Tank dengan GH sedikit di luar rentang yang direkomendasikan, tapi konsisten selama enam bulan, lebih aman untuk udang daripada tank yang mencapai GH sempurna minggu ini setelah intervensi remineralisasi besar. Udang beradaptasi dengan lingkungan yang stabil. Mereka tidak bisa beradaptasi dengan lingkungan yang terus berubah.",
                 "Ketika udang Anda sudah berkembang biak dan aktif, respons yang selaras adalah mengubah sesedikit mungkin. Tambahkan air yang sama. Lakukan ganti air kecil yang sering daripada yang besar secara berkala. Gunakan pupuk yang sama dengan dosis yang sama. Pantau TDS setiap minggu. Jika sesuatu berfungsi, respons yang selaras adalah jangan sesuaikan."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Ecological Forgiveness",
+            "hintLabel": "Penurunan yang lambat tetap sebuah informasi",
             "hintText": [
-                "Koloni udang pulih ketika dominant stressor dihilangkan dan lingkungan stabil. Jika koloni Anda telah menurun tapi yang tersisa masih aktif, tank masih memiliki ecological forgiveness. Hilangkan dominant stressor, stabilkan air, dan tunggu enam hingga delapan minggu sebelum menyimpulkan bahwa tank tidak cocok. Berkembang biak kembali mendahului semua tanda kesehatan koloni lainnya."
+                "Melihat udang menurun perlahan, satu demi satu, di tank yang tampak baik-baik saja di atas kertas — itu jenis kesulitan tersendiri. Kecepatan yang lambat membuat sulit merasa sedang membuat kemajuan, dan jarak antara hasil tes Anda dengan apa yang sebenarnya terjadi bisa terasa seperti tank tidak memberi Anda apa-apa untuk dikerjakan. Sifat bertahap dari penurunan udang itu sendiri adalah informasi: ia hampir tidak pernah menunjuk pada satu kesalahan mendadak. Ia menunjuk pada sesuatu yang sudah merayap selama berminggu-minggu. Menemukan hal itu adalah yang mengubah arahnya."
             ],
-            "prevBtn": "← Kembali",
-            "nextBtn": null,
-            "hintLabel4": "ARA · Pengampunan Ekologis",
-            "hintText4": [
-                "Koloni udang pulih ketika stresor utama dihilangkan dan lingkungan stabil. Jika koloni Anda telah menurun tetapi yang bertahan masih aktif, tangki masih memiliki ecological forgiveness tersisa. Hilangkan stresor utama, stabilkan air, dan tunggu enam hingga delapan minggu sebelum menyimpulkan bahwa tangki tidak cocok.",
+            "hintLabel2": "Kabar baiknya",
+            "hintText2": [
+                "Koloni udang pulih ketika stresor utama dihilangkan dan lingkungan stabil. Jika koloni Anda telah menurun tetapi yang bertahan masih aktif, masih ada ruang untuk pulih. Hilangkan stresor utama, stabilkan air, dan tunggu enam hingga delapan minggu sebelum menyimpulkan bahwa tangki tidak cocok.",
                 "Pembiakan kembali terjadi sebelum semua tanda kesehatan koloni lainnya."
-            ]
+            ],
+            "prevBtn": "← Kembali"
         }
     ],
     "relatedLinks": [
         {
-            "href": "/articles/perfect-parameters-fish-dying",
             "text": "Parameter ok tapi ikan mati →"
         },
         {
-            "href": "/articles/ara-full-framework",
             "text": "Framework ARA →"
         },
         {
-            "href": "/rhyssa",
             "text": "Tanya Rhyssa →"
         }
     ],

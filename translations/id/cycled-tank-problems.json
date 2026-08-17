@@ -36,13 +36,13 @@
                 "Akuarium matang punya kapasitas — kemampuan menyerap satu ganti air yang terlewat, sedikit makanan berlebih, satu gangguan kecil — dan kembali ke keseimbangan sendiri. Tapi kapasitas itu tidak tak terbatas. Penghobi yang berhasil menjaga akuarium sehat bertahun-tahun bukan yang tidak pernah membuat kesalahan. Mereka yang cukup mengenal sistemnya untuk menangkap perubahan perlahan sebelum menjadi masalah."
             ],
             "pullQuote": "Stabilitas bukan sesuatu yang Anda capai. Ia sesuatu yang Anda jaga — secara senyap, konsisten, meskipun tidak ada yang terlihat salah.",
-            "hintLabel": "ARA · Fase Berkembang",
+            "hintLabel": "Tahap berbeda, tantangan berbeda",
             "hintText": [
-                "Dalam Aquatic Rhythm Alignment, akuarium matang telah memasuki <strong>Fase Berkembang</strong> — di mana ekosistem mempertahankan dirinya versus membangun. Tantangan pada tahap ini bukan keterampilan. Itu perhatian. Kebanyakan masalah di akuarium matang bukan kegagalan penghobi. Itu adalah perubahan perlahan — ketidakselarasan yang bisa ditangkap oleh penghobi mana pun ketika mereka tahu apa yang perlu diperhatikan."
+                "Akuarium yang matang telah memasuki tahap di mana ekosistem mempertahankan dirinya dibanding membangun. Tantangan pada tahap ini bukan keterampilan. Itu perhatian. Kebanyakan masalah di akuarium matang bukan kegagalan penghobi. Itu perubahan perlahan — ketidakselarasan kecil yang bisa ditangkap oleh penghobi mana pun begitu mereka tahu apa yang perlu diperhatikan."
             ],
-            "hintLabel2": "ARA · Reset Fase Intentional",
+            "hintLabel2": "Ketika reset itu pilihan, bukan kegagalan",
             "hintText2": [
-                "Tidak semua transisi fase menunjukkan kegagalan. Pemelihara bisa sengaja mereset sistem — untuk menangani penyakit persisten, mengkonfigurasi ulang setup, atau memulai siklus baru setelah crash. ARA membedakan reset fase intentional dari regresi akibat gangguan: reset adalah keputusan pemelihara, bukan kegagalan sistem. Sistem melewati Fase Awal lagi, mengikuti trajektori perkembangan yang sama — tetapi pengetahuan yang terkumpul pemelihara membentuk cara siklus baru dikelola."
+                "Tidak semua transisi fase berarti kegagalan. Pemelihara bisa sengaja mereset sistem — untuk menangani penyakit persisten, mengatur ulang setup, atau memulai siklus baru setelah crash. Itu berbeda dari regresi akibat gangguan: reset adalah keputusan pemelihara, bukan kegagalan sistem. Akuarium melewati tahap awal lagi, mengikuti trajektori perkembangan yang sama — tetapi pengetahuan yang terkumpul pemelihara membentuk cara siklus baru dikelola."
             ],
             "hintLabel3": "Perspektif Aquatic Rhythm",
             "hintText3": [
@@ -59,7 +59,10 @@
                 "Aquatic Rhythm Alignment mengorganisir akuarium ke dalam lima ecological rhythms — lima lapisan sistem yang selalu aktif, selalu berubah, dan selalu berbicara. Masalah di akuarium matang hampir selalu bisa dilacak ke perubahan dalam satu atau lebih ritme ini.",
                 "Membaca semuanya bersama memberikan gambaran yang lebih lengkap dari tes tunggal mana pun."
             ],
-            "pullQuote": null,
+            "hintLabel": "Perspektif Aquatic Rhythm",
+            "hintText": [
+                "Kebanyakan masalah akuarium matang bukan peristiwa mendadak. Itu adalah akumulasi ketidakselarasan kecil di satu atau lebih ritme ini. Membaca sistem dengan baik berarti mengetahui ritme mana yang sedang berubah — sebelum menjadi masalah yang terlihat. Modul berikutnya melihat titik perubahan yang paling umum."
+            ],
             "rhythmGrid": [
                 {
                     "name": "Water Rhythm",
@@ -82,10 +85,6 @@
                     "desc": "Perhatian, jadwal, dan kapasitas penghobi sendiri. Ritme penghobi yang tidak teratur atau kelebihan beban menciptakan kondisi yang tidak menentu — meskipun setiap tindakan individu secara teknis benar. Ritme ini menghubungkan semua yang lain."
                 }
             ],
-            "hintLabel": "Perspektif Aquatic Rhythm",
-            "hintText": [
-                "Kebanyakan masalah akuarium matang bukan peristiwa mendadak. Itu adalah akumulasi ketidakselarasan kecil di satu atau lebih ritme ini. Membaca sistem dengan baik berarti mengetahui ritme mana yang sedang berubah — sebelum menjadi masalah yang terlihat. Modul berikutnya melihat titik perubahan yang paling umum."
-            ],
             "prevBtn": "← Kembali",
             "nextBtn": "Di mana mulai mencari"
         },
@@ -99,10 +98,13 @@
                 "Empat akar paling umum: nitrat yang sudah lama menumpuk secara diam-diam, jumlah ikan yang melebihi kemampuan sistem, kimia air yang tidak sesuai untuk ikan spesifik di akuarium, dan rutinitas perawatan yang sudah terlalu tidak teratur bagi sistem untuk pulih sepenuhnya di antara setiap sesi.",
                 "Tidak satu pun dari ini adalah kegagalan yang dramatis. Semuanya adalah perubahan perlahan — pergerakan kecil menjauh dari keseimbangan yang menumpuk diam-diam sampai terlihat. Bagian yang sulit adalah ketika Anda menyadarinya, biasanya sudah lama berkembang."
             ],
-            "pullQuote": null,
             "hintLabel": "Perspektif Aquatic Rhythm",
             "hintText": [
                 "ARA menamai ini sebagai dominant stressor — satu tekanan tunggal yang memberikan beban terbesar pada sistem pada waktu tertentu. Singkirkan itu, dan masalah lain sering mulai menyelesaikan dirinya sendiri. Keterampilannya adalah belajar menemukan akar masalah, bukan merawat setiap gejala secara terpisah. Peralihan itu — dari reaktif ke ekologis — adalah salah satu hal yang mengubah cara penghobi mengalami hobi ini."
+            ],
+            "hintLabel2": "Pola yang menyelinap perlahan-lahan",
+            "hintText2": [
+                "Satu pola khusus yang layak disebutkan pada akuarium matang: akumulasi bertahap dari penambahan kecil yang secara individu tampak baik-baik saja tapi secara kumulatif melebihi kapasitas tampung stabil sistem. Satu ikan lagi, satu kali pemberian makan lagi, satu hiasan lagi yang mengurangi aliran — tidak ada satu pun yang terasa signifikan. Tapi selama berbulan-bulan, sistem yang tadinya menangani bebannya dengan nyaman kini berada di ambang batas, dan margin kesalahan yang dulu memaafkan ketidakkonsistenan kecil sudah diam-diam menghilang. Pola ini jarang mengumumkan dirinya. Ia muncul sebagai akuarium yang dulu stabil kini tidak, tanpa satu penyebab tunggal yang jelas."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Apa yang filter sebenarnya lakukan"
@@ -117,7 +119,6 @@
                 "Ini berarti cara Anda membersihkan filter sangat penting. Membilas media di bawah keran — meskipun sebentar — memaparkan koloni pada klorin, yang membunuh bakteri dengan cepat. Mengganti semua media sekaligus membuang seluruh koloni dalam satu tindakan. Akuarium secara efektif harus siklus ulang, perlahan, sementara media baru berkembang. Anda tidak selalu langsung menyadarinya. Tapi selama beberapa minggu berikutnya, parameter akan berubah, ikan akan terlihat sedikit tidak beres, dan akarnya tidak terlihat.",
                 "Pendekatan yang benar sederhana ketika Anda memahami alasannya. Bersihkan media filter dalam air akuarium lama yang dikeluarkan saat ganti air — bukan air kran. Jangan ganti lebih dari sepertiga media sekaligus, dan tunggu setidaknya empat minggu sebelum mengganti yang lain. Ini menjaga koloni sambil mempertahankan fungsi mekanis filter."
             ],
-            "pullQuote": null,
             "hintLabel": "Tanda koloni filter mungkin terganggu",
             "hintText": [
                 "Bacaan amonia atau nitrit kecil di akuarium matang — bahkan 0,25 ppm — adalah sinyal. Begitu pula akuarium yang tiba-tiba terlihat kurang stabil, atau ikan yang pulih lebih lambat dari stres kecil dari biasanya. Ini belum tentu disebabkan oleh gangguan filter, tapi jika Anda baru-baru ini membersihkan atau mengganti media, itulah tempat pertama untuk dilihat."
@@ -139,7 +140,6 @@
                 "Rekomendasi paling umum adalah menjaga nitrat di bawah 20 ppm untuk ikan sensitif, dan di bawah 40 ppm untuk spesies yang lebih tahan. Tapi angka itu kurang penting dari tren. Akuarium di 30 ppm yang stabil lebih sehat dari yang di 25 ppm yang masih meningkat.",
                 "Ganti air sebagian secara teratur — 15 hingga 25 persen, setiap minggu — adalah cara paling andal untuk mengendalikan nitrat. Tanaman hidup membantu secara signifikan. Pemberian makan berlebih adalah salah satu cara tercepat untuk mempercepat penumpukan."
             ],
-            "pullQuote": null,
             "hintLabel": "Catatan yang menggembirakan",
             "hintText": [
                 "Jika Anda menduga nitrat sudah lebih tinggi dari seharusnya untuk sementara waktu — menurunkannya secara bertahap selama beberapa minggu (melalui ganti air kecil yang sering, bukan satu yang besar) sering akan menghasilkan perbedaan yang terlihat. Ikan yang tadinya sedikit lesu, sedikit berhati-hati, tiba-tiba terlihat lebih hidup. Mereka tidak sakit. Mereka akhirnya nyaman."
@@ -157,27 +157,25 @@
                 "Ini bukan tentang mendiagnosis penyakit. Ini tentang mengenal ikan Anda cukup baik sehingga perubahan kecil tercatat — seekor ikan yang sedikit kurang bersemangat saat waktu makan, satu yang sudah bergerak ke sudut yang biasanya tidak ia tempati, satu kelompok yang sudah mengatur ulang dirinya secara diam-diam. Ini bukan sinyal yang dramatis. Tapi itu adalah sinyal yang nyata, dan datang lebih awal dari apa yang tes mana pun akan tunjukkan.",
                 "Anda tidak perlu tahu artinya perubahan itu saat Anda menyadarinya. Menyadarinya saja sudah cukup untuk awal. Itu adalah awal dari hubungan yang berbeda dengan akuarium — satu yang didasarkan pada membaca versus bereaksi."
             ],
-            "pullQuote": "Anda tidak perlu tahu apa yang salah untuk tahu bahwa sesuatu telah berubah. Dan mengetahui sesuatu telah berubah — lebih awal — itulah sebagian besar dari apa yang perawatan akuarium yang baik sebenarnya.",
-            "hintLabel": "Perspektif Aquatic Rhythm",
-            "hintText": [
-                "ARA menamai ini sebagai ecological attunement — kualitas perhatian yang berkembang dari waktu ke waktu, melalui kehadiran bukan studi. Itu bukan sesuatu yang bisa Anda baca ke dalamnya. Tapi ia tumbuh secara alami ketika Anda menghabiskan waktu di depan akuarium bukan untuk mencari masalah — hanya melihat. Perhatikan bagaimana ikan bergerak dalam air. Sadari perubahan kecil yang belum pernah Anda perhatikan sebelumnya. Perbedaan antara memeriksa dan melihat.",
-                "Penghobi yang membangun perhatian ini tidak menghabiskan lebih banyak waktu di akuarium mereka. Mereka menghabiskan lebih sedikit — karena mereka menangkap sesuatu lebih awal, merespons dengan lebih tenang, dan telah mendapatkan kepercayaan yang cukup pada sistem untuk membiarkannya sendiri ketika berjalan dengan baik. Kepercayaan itu datang dari mengenal akuarium cukup baik untuk membacanya. Dan itu membuat hobi ini terasa sangat berbeda.",
-                "Dalam ARA, ecological rhythm kelima — <strong>Keeper Rhythm</strong> — adalah yang membentuk semua yang lain. Penghobi yang mengamati secara konsisten, mengganti air dengan konsistensi yang koheren, dan telah menentukan jadwal mereka dengan jujur sesuai kapasitas nyata mereka menciptakan stabilitas yang tidak bisa ditiru produk mana pun. Akuarium mencerminkan penghobi. Dan penghobi yang selaras, dari waktu ke waktu, memerlukan lebih sedikit intervensi — bukan lebih."
-            ],
+            "pullQuote": "Anda tidak perlu tahu apa yang salah untuk tahu bahwa sesuatu telah berubah. Dan menyadari sesuatu sudah berubah — sejak dini — itulah sebagian besar inti dari perawatan akuarium yang baik.",
             "finalCtaText": "<strong>Langkah terbaik berikutnya:</strong> Buat log 72 jam: catat 3 hal setiap hari (perilaku ikan, suhu, dan bacaan nitrat). Setelah 3 hari, periksa apakah pola tekanan berasal dari parameter, pemberian makan, atau aliran.",
             "finalCtaBtn1": "Periksa sinyal perilaku →",
             "finalCtaBtn2": "← Kembali ke Reading",
             "prevBtn": "← Kembali",
-            "nextBtn": null,
-            "hintLabel2": "ARA · Keeper Rhythm",
+            "hintLabel": "Stabil mengalahkan sempurna",
+            "hintText": [
+                "Akuarium yang dijaga pada parameter konsisten, biasa-biasa saja — bukan angka ideal, tapi yang stabil — sebenarnya mengungguli akuarium yang dikejar menuju angka sempurna yang butuh intervensi terus-menerus untuk mempertahankannya. Tujuan sistem yang sudah matang bukan optimisasi. Tujuannya adalah rutin yang koheren dan berkelanjutan. Ketidaksempurnaan kecil yang stabil biasanya jauh lebih tidak merusak dibanding angka sempurna yang naik-turun. Pemelihara yang sudah paham ini biasanya melakukan jauh lebih sedikit — dan akuariumnya jauh lebih sehat karenanya."
+            ],
+            "hintLabel2": "Perspektif Aquatic Rhythm",
             "hintText2": [
-                "Jika Anda telah sampai ke tahap dengan tangki Anda di mana Anda menghabiskan lebih sedikit waktu tetapi segalanya semakin membaik — Anda telah membangun sesuatu. Tidak setiap penjaga mencapai titik itu dengan kecepatan yang sama, dan jalurnya sering melalui beberapa putaran \"Saya memeriksa segalanya dan masih tidak tahu apa yang berubah.\" Frustrasi itu adalah bagian dari prosesnya, bukan bukti bahwa Anda melakukan sesuatu yang salah. Attunement tumbuh dari momen-momen tidak-tahu itu sama seperti dari momen-momen di mana segalanya jelas."
+                "ARA menamai ini sebagai ecological attunement — kualitas perhatian yang berkembang dari waktu ke waktu, melalui kehadiran bukan studi. Itu bukan sesuatu yang bisa Anda baca ke dalamnya. Tapi ia tumbuh secara alami ketika Anda menghabiskan waktu di depan akuarium bukan untuk mencari masalah — hanya melihat. Perhatikan bagaimana ikan bergerak dalam air. Sadari perubahan kecil yang belum pernah Anda perhatikan sebelumnya. Perbedaan antara memeriksa dan melihat.",
+                "Penghobi yang membangun perhatian ini tidak menghabiskan lebih banyak waktu di akuarium mereka. Mereka menghabiskan lebih sedikit — karena mereka menangkap sesuatu lebih awal, merespons dengan lebih tenang, dan telah mendapatkan kepercayaan yang cukup pada sistem untuk membiarkannya sendiri ketika berjalan dengan baik. Kepercayaan itu datang dari mengenal akuarium cukup baik untuk membacanya. Dan itu membuat hobi ini terasa sangat berbeda.",
+                "Dalam ARA, ecological rhythm kelima — <strong>Keeper Rhythm</strong> — adalah yang membentuk semua yang lain. Penghobi yang mengamati secara konsisten, mengganti air dengan konsistensi yang koheren, dan telah menentukan jadwal mereka dengan jujur sesuai kapasitas nyata mereka menciptakan stabilitas yang tidak bisa ditiru produk mana pun. Akuarium mencerminkan penghobi. Dan penghobi yang selaras, dari waktu ke waktu, memerlukan lebih sedikit intervensi — bukan lebih."
+            ],
+            "hintLabel3": "Seperti apa kemajuan sebenarnya",
+            "hintText3": [
+                "Jika Anda telah sampai ke tahap dengan tangki Anda di mana Anda menghabiskan lebih sedikit waktu tetapi segalanya semakin membaik — Anda telah membangun sesuatu. Tidak setiap penjaga mencapai titik itu dengan kecepatan yang sama, dan jalurnya sering melalui beberapa putaran \"saya periksa semuanya dan masih tidak tahu apa yang berubah.\" Frustrasi itu bagian dari prosesnya, bukan bukti Anda melakukan sesuatu yang salah. Kepekaan tumbuh dari momen-momen tidak-tahu itu sama seperti dari momen-momen di mana segalanya jelas."
             ]
         }
-    ],
-    "relatedLinks": [],
-    "footer": {
-        "allArticles": "← Semua artikel",
-        "araLink": "Aquatic Rhythm Alignment"
-    }
+    ]
 }

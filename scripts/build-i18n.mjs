@@ -33,6 +33,55 @@ const patchEn   = args.includes('--patch-english');
 
 const LANG_LABELS = { en: 'EN', ms: 'MS', id: 'ID', ja: 'JA' };
 
+// ── Site nav chrome (shared across every article in a language — not sourced
+// from translations/*.json since it's fixed sitewide UI, not per-article
+// content). Applied uniformly by buildArticle() below. ─────────────────────
+
+const NAV_LABELS = {
+  ms: {
+    logoAria: 'Aquatic Rhythm — penjagaan ekologi untuk akuarium kecil',
+    home: 'Laman Utama',
+    reading: 'Panduan',
+    companion: 'Rakan',
+    companionMobile: 'Rakan AI',
+    tools: 'Alat',
+    toolsMobile: 'Makmal &amp; Alat',
+    log: 'Catatan',
+    about: 'Tentang',
+    privacy: 'Dasar Privasi',
+    terms: 'Terma Penggunaan',
+    menu: 'Menu'
+  },
+  id: {
+    logoAria: 'Aquatic Rhythm — perawatan ekologis untuk akuarium kecil',
+    home: 'Beranda',
+    reading: 'Panduan',
+    companion: 'Pendamping',
+    companionMobile: 'Pendamping AI',
+    tools: 'Alat',
+    toolsMobile: 'Lab &amp; Alat',
+    log: 'Catatan',
+    about: 'Tentang',
+    privacy: 'Kebijakan Privasi',
+    terms: 'Syarat Penggunaan',
+    menu: 'Menu'
+  },
+  ja: {
+    logoAria: 'Aquatic Rhythm — 小型水槽のための生態学的なケア',
+    home: 'ホーム',
+    reading: 'ガイド',
+    companion: 'コンパニオン',
+    companionMobile: 'AIコンパニオン',
+    tools: 'ツール',
+    toolsMobile: 'ラボ&amp;ツール',
+    log: '記録',
+    about: 'サイトについて',
+    privacy: 'プライバシーポリシー',
+    terms: '利用規約',
+    menu: 'メニュー'
+  }
+};
+
 function buildLangSwitcher(slug, currentLang) {
   // Collect available lang → URL pairs
   const options = [{ lang: 'en', url: `${BASE_URL}/articles/${slug}` }];
@@ -166,6 +215,43 @@ function buildArticle(slug, lang, t) {
   if (switcher) {
     h = replaceOnce(h, /(<button class="nbg")/,
       (_, btn) => `${switcher}\n${btn}`);
+  }
+
+  // ── 4c. Site nav chrome (desktop nav, mobile nav, burger + logo aria-labels) ─
+  // Shared sitewide UI, not per-article content — translated from NAV_LABELS,
+  // not from t (the translations/*.json for this article). The "Reading" link
+  // points at the localized reading index (which exists for every language);
+  // the other nav targets (/, /companion, /tools, /journal, /about, /privacy,
+  // /terms) stay pointed at the English pages since those aren't localized yet.
+  const nav = NAV_LABELS[lang];
+  if (nav) {
+    h = replaceOnce(h, /(<a href="\/" class="nl" aria-label=")[^"]*(")/,
+      (_, a, b) => `${a}${nav.logoAria}${b}`);
+
+    h = replaceOnce(h, /(<ul class="nlinks">)[\s\S]*?(<\/ul>)/,
+      (_, a, b) => `${a}
+    <li><a href="/">${nav.home}</a></li>
+    <li><a href="/${lang}/reading">${nav.reading}</a></li>
+    <li><a href="/companion">${nav.companion}</a></li>
+    <li><a href="/tools">${nav.tools}</a></li>
+    <li><a href="/journal">${nav.log}</a></li>
+    <li><a href="/about">${nav.about}</a></li>
+  ${b}`);
+
+    h = replaceOnce(h, /(<button class="nbg" id="burger" aria-label=")[^"]*(")/,
+      (_, a, b) => `${a}${nav.menu}${b}`);
+
+    h = replaceOnce(h, /(<div class="nmob" id="nmob"[^>]*>\s*<ul>)[\s\S]*?(<\/ul>)/,
+      (_, a, b) => `${a}
+    <li><a href="/">${nav.home}</a></li>
+    <li><a href="/${lang}/reading">${nav.reading}</a></li>
+    <li><a href="/companion">${nav.companionMobile}</a></li>
+    <li><a href="/tools">${nav.toolsMobile}</a></li>
+    <li><a href="/journal">${nav.log}</a></li>
+    <li><a href="/about">${nav.about}</a></li>
+    <li><a href="/privacy">${nav.privacy}</a></li>
+    <li><a href="/terms">${nav.terms}</a></li>
+  ${b}`);
   }
 
   // ── 5. JSON-LD ────────────────────────────────────────────────────────────

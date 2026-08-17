@@ -13,7 +13,6 @@
   var jnFilter = { query: '', days: 0, care: [], state: [] };
   var jnFilteredEntries = [];
   var INH_CATS = { fish:'🐟', plant:'🌿', invertebrate:'🦐', coral:'🪸', other:'◈' };
-  var INH_CAT_LABELS = { fish:'Fish', plant:'Plant', invertebrate:'Invertebrate', coral:'Coral', other:'Other' };
 
   var FISH_SPECIES = [
     { common: 'Neon Tetra',          sci: 'Paracheirodon innesi' },
@@ -83,6 +82,572 @@
     { common: 'Kissing Gourami',     sci: 'Helostoma temminkii' },
     { common: 'Paradise Fish',       sci: 'Macropodus opercularis' }
   ];
+
+
+  /* ── i18n: runtime UI strings ──────────────────────────────────────────
+     Static HTML chrome for the journal is translated separately (see
+     scripts/build-homepage-i18n.py + translations/homepage/<lang>.json).
+     This table covers the strings THIS FILE generates at runtime (phase
+     descriptions, toasts, confirm dialogs, milestone messages, category
+     labels) — a different mechanism because there's no HTML template to
+     regex-replace here, just JS building strings directly.
+
+     Deliberately OUT of scope (left English on every language): the actual
+     `rhMsg` text sent TO Rhyssa (the chat prompt itself, not the button
+     that triggers it — translating what reaches the AI backend is a
+     product-behaviour change, not a string swap) and any data pulled from
+     window.AR_EQ / window.AR_BRAND_INFO (tank-data.js — equipment/brand
+     reference data, not UI chrome). Reused label values (phase_label_*,
+     state_*, care_*, inh_cat_*) are duplicated here from
+     translations/homepage/<lang>.json rather than loaded at runtime — this
+     site has no build step / shared JSON loader, so keeping the same
+     translated VALUE in both places is the only way to stay consistent;
+     if either changes, update both. ── */
+  var jnLang = document.documentElement.lang || 'en';
+  var JN_STRINGS = {
+    en: {
+    'phase_establish_note': 'Tank is building its foundation. Biology is still finding rhythm — give it time, avoid big changes.',
+    'phase_establish_next': 'Watch for: ammonia and nitrite dropping toward zero over the coming weeks.',
+    'phase_stabilise_note': 'The cycle is completing. Parameters are moving in the right direction — maintain routine.',
+    'phase_stabilise_next': 'Watch for: consistent zero readings and clearer water.',
+    'phase_optimise_note': 'Tank is stable. Focus on rhythm: consistent care, observing behaviour, small refinements.',
+    'phase_optimise_next': 'Watch for: how your care rhythm affects livestock behaviour and plant growth.',
+    'phase_sustain_note': 'Ecosystem is mature. Your rhythm is aligned. Maintain, observe, resist unnecessary interventions.',
+    'phase_sustain_next': 'Watch for: the quiet signs — how your tank feels, not just what it reads.',
+    'age_today': 'set up today',
+    'age_1day': '1 day old',
+    'age_days': '{n} days old',
+    'age_1month': '1 month old',
+    'age_months': '{n} months old',
+    'age_years': '{n} years old',
+    'cat_filtration': 'Filtration',
+    'cat_environment': 'Lighting & Environment',
+    'cat_substrate': 'Substrate',
+    'cat_cooling': 'Temperature & Cooling',
+    'cat_additions': 'Additions & Monitoring',
+    'cat_sterilization': 'Sterilization',
+    'cat_circulation': 'Circulation',
+    'cat_plants': 'Plants',
+    'cat_hardscape': 'Hardscape',
+    'ov_empty_title': 'Start your log',
+    'ov_empty_desc': 'Set up your first aquarium to begin writing entries, tracking your rhythm, and reading your ARA phase.',
+    'ov_empty_btn': 'Set up my aquarium',
+    'ov_add_tank': '+ Add aquarium',
+    'add_short': 'Add',
+    'no_entries_dash': 'No entries yet',
+    'entry_singular': 'entry',
+    'entry_plural': 'entries',
+    'resident_singular': 'resident',
+    'resident_plural': 'residents',
+    'my_tank_fallback': 'My Tank',
+    'tank_fallback': 'tank',
+    'open_log_for': 'Open log for {name}',
+    'add_aquarium_title': 'Add aquarium',
+    'no_residents_yet': 'No residents yet.',
+    'past_residents': 'Past residents',
+    'resident_fallback': 'Resident',
+    'edit_short': 'Edit',
+    'remove_aria': 'Remove',
+    'rehomed': 'Rehomed',
+    'passed': 'Passed',
+    'welcome_to_tank': 'Welcome to the tank, {name}.',
+    'left_the_tank': '{name} has left the tank. We remember them.',
+    'found_new_home': '{name} has found a new home.',
+    'based_on_params': 'Based on water parameters',
+    'estimated_from_rhythm': 'Estimated from keeper rhythm',
+    'no_phase_no_entries': 'Write your first entry to begin ARA phase tracking.',
+    'no_phase_no_setup': 'Add at least one resident and your tank setup date to get a reading.',
+    'no_phase_insufficient': 'Write a few more entries — or log water parameters — for an accurate ARA phase reading.',
+    'no_phase_default': 'Write your first entry to get an ARA phase reading.',
+    'week_this': 'This week',
+    'week_last': 'Last week',
+    'week_2ago': '2w ago',
+    'week_3ago': '3w ago',
+    'week_4ago': '4w ago',
+    'week_5ago': '5w ago',
+    'week_6ago': '6w ago',
+    'week_7ago': '7w ago',
+    'entry_logged': ': entry logged',
+    'no_entry': ': no entry',
+    'streak_1week': '1-week streak',
+    'streak_nweek': '{n}-week streak',
+    'milestone_4': 'Four weeks in rhythm.',
+    'milestone_8': 'Eight weeks — your tank knows you.',
+    'milestone_12': 'Twelve weeks. That\'s real consistency.',
+    'milestone_26': 'Half a year of keeping. Remarkable.',
+    'milestone_52': 'One full year. Your rhythm is the tank\'s rhythm.',
+    'milestone_fallback': '{n}-week streak.',
+    'no_charts_yet': 'Log parameters in more entries to see trends.',
+    'ask_rhyssa_trends': 'Ask Rhyssa about these trends',
+    'updated_prefix': 'Updated {date}',
+    'brand_model_default': 'Brand / model…',
+    'brand_model_custom': '✎ Enter own brand / model…',
+    'brand_model_placeholder': 'e.g. Eheim 2213, Fluval 307…',
+    'entry_modal_title_new': 'Today\'s entry',
+    'entry_modal_title_edit': 'Edit entry',
+    'inhabitant_modal_title_new': 'Add resident',
+    'inhabitant_modal_title_edit': 'Edit resident',
+    'inhabitant_submit_new': 'Add to tank',
+    'inhabitant_submit_edit': 'Save changes',
+    'edit_entry_aria': 'Edit entry',
+    'discuss_rhyssa_aria': 'Discuss with Rhyssa',
+    'ctx_prompt_establish': 'Watch for cloudy water, unusual behaviour, or ammonia smell.',
+    'ctx_prompt_stabilise': 'Are your parameters moving in the right direction this week?',
+    'ctx_prompt_optimise': 'Notice any changes in plant growth, fish behaviour, or water clarity?',
+    'ctx_prompt_sustain': 'Your ecosystem is mature — what quiet signs are you reading today?',
+    'ctx_last_water_change': 'Last water change: {n} days ago.',
+    'entry_default_prompt': 'What did you notice today?',
+    'preview_cat_default': 'Choose a size or brand below',
+    'alert_ammonia_elevated': 'Ammonia elevated in last test ({val} mg/L)',
+    'alert_nitrate_high': 'Nitrate high at {val} mg/L — water change recommended',
+    'alert_no_entry_days': 'No entry in {n} days — how\'s the tank doing?',
+    'alert_water_change_days': 'Last water change: {n} days ago',
+    'ask_rhyssa_btn': 'Ask Rhyssa',
+    'entry_removed_toast': 'Entry removed.',
+    'resident_updated_toast': 'Resident updated.',
+    'resident_removed_toast': '{name} removed from the log.',
+    'confirm_delete_tank_named': 'Delete {name} and all its data? This cannot be undone.',
+    'confirm_delete_all_data': 'Delete all log data? This cannot be undone.',
+    'confirm_delete_this_tank': 'Delete this tank and all its entries? This cannot be undone.',
+    'confirm_delete_entry': 'Delete this entry? This cannot be undone.',
+    'confirm_remove_resident': 'Remove {name} from the log?',
+    'confirm_remove_resident_entirely': 'Remove {name} from the log entirely?',
+    'this_tank_fallback': 'this tank',
+    'this_resident_fallback': 'this resident',
+    'auto_tank_name': 'My {vol} {unit} Tank',
+    'phase_label_establish': 'Establishing',
+    'phase_label_stabilise': 'Stabilising',
+    'phase_label_optimise': 'Optimising',
+    'phase_label_sustain': 'Sustaining',
+    'state_consistent': 'Consistent',
+    'state_catching-up': 'Catching up',
+    'state_occasional': 'Occasional',
+    'state_just-starting': 'Just starting',
+    'care_water_change': 'Water change',
+    'care_filter': 'Filter',
+    'care_feeding': 'Feeding',
+    'care_top_up': 'Topping up',
+    'care_treatment': 'Treatment',
+    'care_dosing': 'Dosing',
+    'care_media': 'Media change',
+    'care_trimming': 'Trimming',
+    'care_nothing': 'Just observed',
+    'inh_cat_fish': 'Fish',
+    'inh_cat_plant': 'Plant',
+    'inh_cat_invertebrate': 'Invertebrate',
+    'inh_cat_coral': 'Coral',
+    'inh_cat_other': 'Other'
+    },
+    ms: {
+    'phase_establish_note': 'Akuarium sedang membina asasnya. Biologi masih mencari ritma — beri masa, elak perubahan besar.',
+    'phase_establish_next': 'Perhati: ammonia dan nitrit menurun ke sifar dlm minggu akan datang.',
+    'phase_stabilise_note': 'Kitaran hampir selesai. Parameter bergerak ke arah yang betul — kekalkan rutin.',
+    'phase_stabilise_next': 'Perhati: bacaan sifar yang konsisten dan air lebih jernih.',
+    'phase_optimise_note': 'Akuarium stabil. Fokus pd ritma: penjagaan konsisten, memerhati tingkah laku, penambahbaikan kecil.',
+    'phase_optimise_next': 'Perhati: bagaimana ritma penjagaan anda mempengaruhi tingkah laku hidupan & pertumbuhan tumbuhan.',
+    'phase_sustain_note': 'Ekosistem sudah matang. Ritma anda selaras. Kekalkan, perhati, elak campur tangan yg tak perlu.',
+    'phase_sustain_next': 'Perhati: isyarat senyap — bagaimana akuarium anda terasa, bukan sekadar apa yang ia bacakan.',
+    'age_today': 'disediakan hari ini',
+    'age_1day': '1 hari',
+    'age_days': '{n} hari',
+    'age_1month': '1 bulan',
+    'age_months': '{n} bulan',
+    'age_years': '{n} tahun',
+    'cat_filtration': 'Penapisan',
+    'cat_environment': 'Pencahayaan & Persekitaran',
+    'cat_substrate': 'Substrat',
+    'cat_cooling': 'Suhu & Penyejukan',
+    'cat_additions': 'Tambahan & Pemantauan',
+    'cat_sterilization': 'Sterilisasi',
+    'cat_circulation': 'Peredaran Air',
+    'cat_plants': 'Tumbuhan',
+    'cat_hardscape': 'Hardscape',
+    'ov_empty_title': 'Mula log anda',
+    'ov_empty_desc': 'Sediakan akuarium pertama anda utk mula tulis entri, jejak ritma anda, dan baca fasa ARA anda.',
+    'ov_empty_btn': 'Sediakan akuarium saya',
+    'ov_add_tank': '+ Tambah akuarium',
+    'add_short': 'Tambah',
+    'no_entries_dash': 'Belum ada entri',
+    'entry_singular': 'entri',
+    'entry_plural': 'entri',
+    'resident_singular': 'penghuni',
+    'resident_plural': 'penghuni',
+    'my_tank_fallback': 'Akuarium Saya',
+    'tank_fallback': 'akuarium',
+    'open_log_for': 'Buka log utk {name}',
+    'add_aquarium_title': 'Tambah akuarium',
+    'no_residents_yet': 'Belum ada penghuni.',
+    'past_residents': 'Penghuni lama',
+    'resident_fallback': 'Penghuni',
+    'edit_short': 'Sunting',
+    'remove_aria': 'Buang',
+    'rehomed': 'Dipindahkan',
+    'passed': 'Meninggal dunia',
+    'welcome_to_tank': 'Selamat datang ke akuarium, {name}.',
+    'left_the_tank': '{name} telah meninggalkan akuarium. Kami mengenangnya.',
+    'found_new_home': '{name} telah menemui rumah baharu.',
+    'based_on_params': 'Berdasarkan parameter air',
+    'estimated_from_rhythm': 'Dianggarkan drpd ritma penjaga',
+    'no_phase_no_entries': 'Tulis entri pertama anda utk mula jejak fasa ARA.',
+    'no_phase_no_setup': 'Tambah sekurang-kurangnya satu penghuni dan tarikh persediaan akuarium anda utk dapatkan bacaan.',
+    'no_phase_insufficient': 'Tulis beberapa entri lagi — atau catat parameter air — utk bacaan fasa ARA yang tepat.',
+    'no_phase_default': 'Tulis entri pertama anda utk dapatkan bacaan fasa ARA.',
+    'week_this': 'Minggu ini',
+    'week_last': 'Minggu lepas',
+    'week_2ago': '2m lalu',
+    'week_3ago': '3m lalu',
+    'week_4ago': '4m lalu',
+    'week_5ago': '5m lalu',
+    'week_6ago': '6m lalu',
+    'week_7ago': '7m lalu',
+    'entry_logged': ': entri dicatat',
+    'no_entry': ': tiada entri',
+    'streak_1week': 'Rentetan 1 minggu',
+    'streak_nweek': 'Rentetan {n} minggu',
+    'milestone_4': 'Empat minggu dalam ritma.',
+    'milestone_8': 'Lapan minggu — akuarium anda dah kenal anda.',
+    'milestone_12': 'Dua belas minggu. Tu konsistensi sebenar.',
+    'milestone_26': 'Setengah tahun menjaga. Luar biasa.',
+    'milestone_52': 'Setahun penuh. Ritma anda ialah ritma akuarium.',
+    'milestone_fallback': 'Rentetan {n} minggu.',
+    'no_charts_yet': 'Catat parameter dlm lebih banyak entri utk lihat trend.',
+    'ask_rhyssa_trends': 'Tanya Rhyssa tentang trend ini',
+    'updated_prefix': 'Dikemas kini {date}',
+    'brand_model_default': 'Jenama / model…',
+    'brand_model_custom': '✎ Masukkan jenama / model sendiri…',
+    'brand_model_placeholder': 'cth. Eheim 2213, Fluval 307…',
+    'entry_modal_title_new': 'Entri hari ini',
+    'entry_modal_title_edit': 'Sunting entri',
+    'inhabitant_modal_title_new': 'Tambah penghuni',
+    'inhabitant_modal_title_edit': 'Sunting penghuni',
+    'inhabitant_submit_new': 'Tambah ke akuarium',
+    'inhabitant_submit_edit': 'Simpan perubahan',
+    'edit_entry_aria': 'Sunting entri',
+    'discuss_rhyssa_aria': 'Bincang dengan Rhyssa',
+    'ctx_prompt_establish': 'Perhati air keruh, tingkah laku luar biasa, atau bau ammonia.',
+    'ctx_prompt_stabilise': 'Adakah parameter anda bergerak ke arah yang betul minggu ini?',
+    'ctx_prompt_optimise': 'Perasan sebarang perubahan pada pertumbuhan tumbuhan, tingkah laku ikan, atau kejernihan air?',
+    'ctx_prompt_sustain': 'Ekosistem anda sudah matang — apakah isyarat senyap yang anda baca hari ini?',
+    'ctx_last_water_change': 'Penukaran air terakhir: {n} hari lalu.',
+    'entry_default_prompt': 'Apa yang anda perasan hari ini?',
+    'preview_cat_default': 'Pilih saiz atau jenama di bawah',
+    'alert_ammonia_elevated': 'Ammonia meningkat pada ujian terakhir ({val} mg/L)',
+    'alert_nitrate_high': 'Nitrat tinggi pada {val} mg/L — penukaran air disyorkan',
+    'alert_no_entry_days': 'Tiada entri selama {n} hari — bagaimana keadaan akuarium?',
+    'alert_water_change_days': 'Penukaran air terakhir: {n} hari lalu',
+    'ask_rhyssa_btn': 'Tanya Rhyssa',
+    'entry_removed_toast': 'Entri dibuang.',
+    'resident_updated_toast': 'Penghuni dikemas kini.',
+    'resident_removed_toast': '{name} dibuang drpd log.',
+    'confirm_delete_tank_named': 'Padam {name} dan semua datanya? Ni tak boleh dibuat asal.',
+    'confirm_delete_all_data': 'Padam semua data log? Ni tak boleh dibuat asal.',
+    'confirm_delete_this_tank': 'Padam akuarium ini dan semua entrinya? Ini tak boleh dibuat asal.',
+    'confirm_delete_entry': 'Padam entri ini? Ini tak boleh dibuat asal.',
+    'confirm_remove_resident': 'Buang {name} drpd log?',
+    'confirm_remove_resident_entirely': 'Buang {name} drpd log sepenuhnya?',
+    'this_tank_fallback': 'akuarium ini',
+    'this_resident_fallback': 'penghuni ini',
+    'auto_tank_name': 'Akuarium {vol}{unit} Saya',
+    'phase_label_establish': 'Establishing',
+    'phase_label_stabilise': 'Stabilising',
+    'phase_label_optimise': 'Optimising',
+    'phase_label_sustain': 'Sustaining',
+    'state_consistent': 'Konsisten',
+    'state_catching-up': 'Mengejar ketinggalan',
+    'state_occasional': 'Sekali-sekala',
+    'state_just-starting': 'Baru mula',
+    'care_water_change': 'Pertukaran air',
+    'care_filter': 'Penapis',
+    'care_feeding': 'Pemberian makanan',
+    'care_top_up': 'Tambah air',
+    'care_treatment': 'Rawatan',
+    'care_dosing': 'Dos bahan',
+    'care_media': 'Tukar media',
+    'care_trimming': 'Potong tumbuhan',
+    'care_nothing': 'Sekadar memerhati',
+    'inh_cat_fish': 'Ikan',
+    'inh_cat_plant': 'Tumbuhan',
+    'inh_cat_invertebrate': 'Invertebrata',
+    'inh_cat_coral': 'Karang',
+    'inh_cat_other': 'Lain-lain'
+    },
+    id: {
+    'phase_establish_note': 'Akuarium sedang membangun fondasinya. Biologinya masih mencari ritme — beri waktu, hindari perubahan besar.',
+    'phase_establish_next': 'Perhatikan: kadar amonia dan nitrit menurun menuju nol dalam beberapa minggu ke depan.',
+    'phase_stabilise_note': 'Siklus hampir selesai. Parameter bergerak ke arah yang tepat — pertahankan rutinitas.',
+    'phase_stabilise_next': 'Perhatikan: bacaan nol yang konsisten dan air yang lebih jernih.',
+    'phase_optimise_note': 'Akuarium sudah stabil. Fokus pada ritme: perawatan konsisten, mengamati perilaku, penyempurnaan kecil.',
+    'phase_optimise_next': 'Perhatikan: bagaimana ritme perawatan Anda memengaruhi perilaku penghuni dan pertumbuhan tanaman.',
+    'phase_sustain_note': 'Ekosistem sudah matang. Ritme Anda sudah selaras. Pertahankan, amati, hindari intervensi yang tidak perlu.',
+    'phase_sustain_next': 'Perhatikan: tanda-tanda halus — bagaimana akuarium Anda terasa, bukan sekadar apa yang terbaca.',
+    'age_today': 'disiapkan hari ini',
+    'age_1day': '1 hari',
+    'age_days': '{n} hari',
+    'age_1month': '1 bulan',
+    'age_months': '{n} bulan',
+    'age_years': '{n} tahun',
+    'cat_filtration': 'Filtrasi',
+    'cat_environment': 'Pencahayaan & Lingkungan',
+    'cat_substrate': 'Substrat',
+    'cat_cooling': 'Suhu & Pendinginan',
+    'cat_additions': 'Tambahan & Pemantauan',
+    'cat_sterilization': 'Sterilisasi',
+    'cat_circulation': 'Sirkulasi Air',
+    'cat_plants': 'Tanaman',
+    'cat_hardscape': 'Hardscape',
+    'ov_empty_title': 'Mulai log Anda',
+    'ov_empty_desc': 'Siapkan akuarium pertama Anda untuk mulai menulis entri, melacak ritme Anda, dan membaca fase ARA Anda.',
+    'ov_empty_btn': 'Siapkan akuarium saya',
+    'ov_add_tank': '+ Tambah akuarium',
+    'add_short': 'Tambah',
+    'no_entries_dash': 'Belum ada entri',
+    'entry_singular': 'entri',
+    'entry_plural': 'entri',
+    'resident_singular': 'penghuni',
+    'resident_plural': 'penghuni',
+    'my_tank_fallback': 'Akuarium Saya',
+    'tank_fallback': 'akuarium',
+    'open_log_for': 'Buka log untuk {name}',
+    'add_aquarium_title': 'Tambah akuarium',
+    'no_residents_yet': 'Belum ada penghuni.',
+    'past_residents': 'Penghuni sebelumnya',
+    'resident_fallback': 'Penghuni',
+    'edit_short': 'Edit',
+    'remove_aria': 'Hapus',
+    'rehomed': 'Dipindahkan',
+    'passed': 'Meninggal',
+    'welcome_to_tank': 'Selamat datang di akuarium, {name}.',
+    'left_the_tank': '{name} telah meninggalkan akuarium. Kami mengenangnya.',
+    'found_new_home': '{name} telah menemukan rumah baru.',
+    'based_on_params': 'Berdasarkan parameter air',
+    'estimated_from_rhythm': 'Diperkirakan dari ritme penjaga',
+    'no_phase_no_entries': 'Tulis entri pertama Anda untuk mulai melacak fase ARA.',
+    'no_phase_no_setup': 'Tambahkan setidaknya satu penghuni dan tanggal penyiapan akuarium Anda untuk mendapatkan bacaan.',
+    'no_phase_insufficient': 'Tulis beberapa entri lagi — atau catat parameter air — untuk bacaan fase ARA yang akurat.',
+    'no_phase_default': 'Tulis entri pertama Anda untuk mendapatkan bacaan fase ARA.',
+    'week_this': 'Minggu ini',
+    'week_last': 'Minggu lalu',
+    'week_2ago': '2mgg lalu',
+    'week_3ago': '3mgg lalu',
+    'week_4ago': '4mgg lalu',
+    'week_5ago': '5mgg lalu',
+    'week_6ago': '6mgg lalu',
+    'week_7ago': '7mgg lalu',
+    'entry_logged': ': entri dicatat',
+    'no_entry': ': tidak ada entri',
+    'streak_1week': 'Rentetan 1 minggu',
+    'streak_nweek': 'Rentetan {n} minggu',
+    'milestone_4': 'Empat minggu dalam ritme.',
+    'milestone_8': 'Delapan minggu — akuarium Anda mengenal Anda.',
+    'milestone_12': 'Dua belas minggu. Itu konsistensi sejati.',
+    'milestone_26': 'Setengah tahun memelihara. Luar biasa.',
+    'milestone_52': 'Satu tahun penuh. Ritme Anda adalah ritme akuarium.',
+    'milestone_fallback': 'Rentetan {n} minggu.',
+    'no_charts_yet': 'Catat parameter di lebih banyak entri untuk melihat tren.',
+    'ask_rhyssa_trends': 'Tanya Rhyssa tentang tren ini',
+    'updated_prefix': 'Diperbarui {date}',
+    'brand_model_default': 'Merek / model…',
+    'brand_model_custom': '✎ Masukkan merek / model sendiri…',
+    'brand_model_placeholder': 'misalnya Eheim 2213, Fluval 307…',
+    'entry_modal_title_new': 'Entri hari ini',
+    'entry_modal_title_edit': 'Edit entri',
+    'inhabitant_modal_title_new': 'Tambah penghuni',
+    'inhabitant_modal_title_edit': 'Edit penghuni',
+    'inhabitant_submit_new': 'Tambahkan ke akuarium',
+    'inhabitant_submit_edit': 'Simpan perubahan',
+    'edit_entry_aria': 'Edit entri',
+    'discuss_rhyssa_aria': 'Diskusikan dengan Rhyssa',
+    'ctx_prompt_establish': 'Perhatikan air keruh, perilaku tidak biasa, atau bau amonia.',
+    'ctx_prompt_stabilise': 'Apakah parameter Anda bergerak ke arah yang benar minggu ini?',
+    'ctx_prompt_optimise': 'Memperhatikan perubahan pada pertumbuhan tanaman, perilaku ikan, atau kejernihan air?',
+    'ctx_prompt_sustain': 'Ekosistem Anda sudah matang — tanda-tanda tenang apa yang Anda baca hari ini?',
+    'ctx_last_water_change': 'Penggantian air terakhir: {n} hari yang lalu.',
+    'entry_default_prompt': 'Apa yang Anda perhatikan hari ini?',
+    'preview_cat_default': 'Pilih ukuran atau merek di bawah',
+    'alert_ammonia_elevated': 'Amonia meningkat pada tes terakhir ({val} mg/L)',
+    'alert_nitrate_high': 'Nitrat tinggi di {val} mg/L — penggantian air disarankan',
+    'alert_no_entry_days': 'Tidak ada entri selama {n} hari — bagaimana kondisi akuarium?',
+    'alert_water_change_days': 'Penggantian air terakhir: {n} hari yang lalu',
+    'ask_rhyssa_btn': 'Tanya Rhyssa',
+    'entry_removed_toast': 'Entri dihapus.',
+    'resident_updated_toast': 'Penghuni diperbarui.',
+    'resident_removed_toast': '{name} dihapus dari log.',
+    'confirm_delete_tank_named': 'Hapus {name} beserta semua datanya? Tindakan ini tidak dapat dibatalkan.',
+    'confirm_delete_all_data': 'Hapus semua data log? Tindakan ini tidak dapat dibatalkan.',
+    'confirm_delete_this_tank': 'Hapus akuarium ini beserta semua entrinya? Tindakan ini tidak dapat dibatalkan.',
+    'confirm_delete_entry': 'Hapus entri ini? Tindakan ini tidak dapat dibatalkan.',
+    'confirm_remove_resident': 'Hapus {name} dari log?',
+    'confirm_remove_resident_entirely': 'Hapus {name} dari log sepenuhnya?',
+    'this_tank_fallback': 'akuarium ini',
+    'this_resident_fallback': 'penghuni ini',
+    'auto_tank_name': 'Akuarium {vol} {unit} Saya',
+    'phase_label_establish': 'Merintis',
+    'phase_label_stabilise': 'Menstabilkan',
+    'phase_label_optimise': 'Mengoptimalkan',
+    'phase_label_sustain': 'Mempertahankan',
+    'state_consistent': 'Konsisten',
+    'state_catching-up': 'Mengejar ketinggalan',
+    'state_occasional': 'Sesekali',
+    'state_just-starting': 'Baru mulai',
+    'care_water_change': 'Ganti air',
+    'care_filter': 'Filter',
+    'care_feeding': 'Pemberian pakan',
+    'care_top_up': 'Tambah air',
+    'care_treatment': 'Pengobatan',
+    'care_dosing': 'Dosis',
+    'care_media': 'Ganti media',
+    'care_trimming': 'Pangkas',
+    'care_nothing': 'Hanya mengamati',
+    'inh_cat_fish': 'Ikan',
+    'inh_cat_plant': 'Tanaman',
+    'inh_cat_invertebrate': 'Invertebrata',
+    'inh_cat_coral': 'Karang',
+    'inh_cat_other': 'Lainnya'
+    },
+    ja: {
+    'phase_establish_note': '水槽は基盤を築いている段階です。生物学的な部分はまだリズムを探しています——時間を与え、大きな変化は避けましょう。',
+    'phase_establish_next': '注目ポイント：今後数週間でアンモニアと亜硝酸塩がゼロに近づいていくこと。',
+    'phase_stabilise_note': 'サイクルが完了に近づいています。パラメーターは正しい方向に向かっています——いつものルーティンを続けましょう。',
+    'phase_stabilise_next': '注目ポイント：安定してゼロを示す数値と、より澄んだ水。',
+    'phase_optimise_note': '水槽は安定しています。リズムに集中しましょう：一貫したケア、行動の観察、小さな微調整。',
+    'phase_optimise_next': '注目ポイント：あなたのケアのリズムが、生体の行動や水草の成長にどう影響しているか。',
+    'phase_sustain_note': '生態系は成熟しています。あなたのリズムは合っています。維持し、観察し、不要な介入は控えましょう。',
+    'phase_sustain_next': '注目ポイント：静かなサイン——数値だけでなく、水槽がどう感じられるか。',
+    'age_today': '本日セットアップ',
+    'age_1day': '1日経過',
+    'age_days': '{n}日経過',
+    'age_1month': '1か月経過',
+    'age_months': '{n}か月経過',
+    'age_years': '{n}年経過',
+    'cat_filtration': 'ろ過',
+    'cat_environment': '照明・環境',
+    'cat_substrate': '底床',
+    'cat_cooling': '水温・冷却',
+    'cat_additions': '添加剤・計測',
+    'cat_sterilization': '殺菌',
+    'cat_circulation': '水流',
+    'cat_plants': '水草',
+    'cat_hardscape': 'ハードスケープ',
+    'ov_empty_title': 'ログを始めましょう',
+    'ov_empty_desc': '最初の水槽をセットアップして、記録を書き始め、リズムを記録し、ARAフェーズを確認しましょう。',
+    'ov_empty_btn': '水槽をセットアップする',
+    'ov_add_tank': '+ 水槽を追加',
+    'add_short': '追加',
+    'no_entries_dash': 'まだ記録がありません',
+    'entry_singular': '記録',
+    'entry_plural': '記録',
+    'resident_singular': '住人',
+    'resident_plural': '住人',
+    'my_tank_fallback': 'わたしの水槽',
+    'tank_fallback': '水槽',
+    'open_log_for': '{name}のログを開く',
+    'add_aquarium_title': '水槽を追加',
+    'no_residents_yet': 'まだ住人がいません。',
+    'past_residents': '過去の住人',
+    'resident_fallback': '住人',
+    'edit_short': '編集',
+    'remove_aria': '削除',
+    'rehomed': '譲渡済み',
+    'passed': '永眠',
+    'welcome_to_tank': '{name}、水槽へようこそ。',
+    'left_the_tank': '{name}が水槽を去りました。私たちはずっと忘れません。',
+    'found_new_home': '{name}は新しい家を見つけました。',
+    'based_on_params': '水質パラメーターに基づく',
+    'estimated_from_rhythm': '飼育者のリズムから推定',
+    'no_phase_no_entries': '最初の記録を書いて、ARAフェーズの追跡を始めましょう。',
+    'no_phase_no_setup': '住人を少なくとも1つ追加し、水槽のセットアップ日を設定すると、判定が表示されます。',
+    'no_phase_insufficient': 'もう少し記録を書くか、水質パラメーターを記録すると、より正確なARAフェーズの判定が得られます。',
+    'no_phase_default': '最初の記録を書いて、ARAフェーズの判定を確認しましょう。',
+    'week_this': '今週',
+    'week_last': '先週',
+    'week_2ago': '2週間前',
+    'week_3ago': '3週間前',
+    'week_4ago': '4週間前',
+    'week_5ago': '5週間前',
+    'week_6ago': '6週間前',
+    'week_7ago': '7週間前',
+    'entry_logged': '：記録あり',
+    'no_entry': '：記録なし',
+    'streak_1week': '1週間連続',
+    'streak_nweek': '{n}週間連続',
+    'milestone_4': '4週間、リズムが続いています。',
+    'milestone_8': '8週間——水槽があなたを覚えています。',
+    'milestone_12': '12週間。これは本物の一貫性です。',
+    'milestone_26': '半年間の飼育。見事です。',
+    'milestone_52': 'まる1年。あなたのリズムが、水槽のリズムです。',
+    'milestone_fallback': '{n}週間連続。',
+    'no_charts_yet': 'もっと多くの記録に水質パラメーターを入力すると、傾向が見えてきます。',
+    'ask_rhyssa_trends': 'この傾向についてRhyssaに聞く',
+    'updated_prefix': '{date}に更新',
+    'brand_model_default': 'ブランド／モデル…',
+    'brand_model_custom': '✎ 独自のブランド／モデルを入力…',
+    'brand_model_placeholder': '例：Eheim 2213、Fluval 307…',
+    'entry_modal_title_new': '今日の記録',
+    'entry_modal_title_edit': '記録を編集',
+    'inhabitant_modal_title_new': '住人を追加',
+    'inhabitant_modal_title_edit': '住人を編集',
+    'inhabitant_submit_new': '水槽に追加',
+    'inhabitant_submit_edit': '変更を保存',
+    'edit_entry_aria': '記録を編集',
+    'discuss_rhyssa_aria': 'Rhyssaと相談する',
+    'ctx_prompt_establish': '注目ポイント：水の濁り、いつもと違う行動、アンモニア臭がないか。',
+    'ctx_prompt_stabilise': '今週、パラメーターは正しい方向に向かっていますか？',
+    'ctx_prompt_optimise': '水草の成長、魚の行動、水の透明度に変化はありましたか？',
+    'ctx_prompt_sustain': 'あなたの生態系は成熟しています——今日、どんな静かなサインを読み取っていますか？',
+    'ctx_last_water_change': '最後の水換え：{n}日前。',
+    'entry_default_prompt': '今日は何に気づきましたか？',
+    'preview_cat_default': '下のサイズまたはブランドを選択',
+    'alert_ammonia_elevated': '前回の検査でアンモニアが上昇（{val} mg/L）',
+    'alert_nitrate_high': '硝酸塩が{val} mg/Lと高い状態——水換えをおすすめします',
+    'alert_no_entry_days': '{n}日間記録がありません——水槽の様子はいかがですか？',
+    'alert_water_change_days': '最後の水換え：{n}日前',
+    'ask_rhyssa_btn': 'Rhyssaに聞く',
+    'entry_removed_toast': '記録を削除しました。',
+    'resident_updated_toast': '住人を更新しました。',
+    'resident_removed_toast': '{name}をログから削除しました。',
+    'confirm_delete_tank_named': '{name}とそのすべてのデータを削除しますか？この操作は取り消せません。',
+    'confirm_delete_all_data': 'すべてのログデータを削除しますか？この操作は取り消せません。',
+    'confirm_delete_this_tank': 'この水槽とすべての記録を削除しますか？この操作は取り消せません。',
+    'confirm_delete_entry': 'この記録を削除しますか？この操作は取り消せません。',
+    'confirm_remove_resident': '{name}をログから削除しますか？',
+    'confirm_remove_resident_entirely': '{name}をログから完全に削除しますか？',
+    'this_tank_fallback': 'この水槽',
+    'this_resident_fallback': 'この住人',
+    'auto_tank_name': 'わたしの{vol}{unit}水槽',
+    'phase_label_establish': 'Establishing',
+    'phase_label_stabilise': 'Stabilising',
+    'phase_label_optimise': 'Optimising',
+    'phase_label_sustain': 'Sustaining',
+    'state_consistent': '一定',
+    'state_catching-up': '追いつき中',
+    'state_occasional': 'たまに',
+    'state_just-starting': '始めたばかり',
+    'care_water_change': '水換え',
+    'care_filter': 'フィルター',
+    'care_feeding': '給餌',
+    'care_top_up': '足し水',
+    'care_treatment': '治療',
+    'care_dosing': '添加剤',
+    'care_media': 'ろ材交換',
+    'care_trimming': 'トリミング',
+    'care_nothing': '観察のみ',
+    'inh_cat_fish': '魚',
+    'inh_cat_plant': '水草',
+    'inh_cat_invertebrate': '無脊椎動物',
+    'inh_cat_coral': 'サンゴ',
+    'inh_cat_other': 'その他'
+    }
+  };
+  function T(key, subs) {
+    var s = (JN_STRINGS[jnLang] && JN_STRINGS[jnLang][key]) || JN_STRINGS.en[key] || key;
+    if (subs) {
+      Object.keys(subs).forEach(function (k) {
+        s = s.split('{' + k + '}').join(subs[k]);
+      });
+    }
+    return s;
+  }
+  var INH_CAT_LABELS = { fish: T('inh_cat_fish'), plant: T('inh_cat_plant'), invertebrate: T('inh_cat_invertebrate'), coral: T('inh_cat_coral'), other: T('inh_cat_other') };
 
   function escHtml(s) {
     return String(s == null ? '' : s)
@@ -159,27 +724,27 @@
 
   var phaseInfo = {
     establish: {
-      label: 'Establishing',
-      note: 'Tank is building its foundation. Biology is still finding rhythm — give it time, avoid big changes.',
-      next: 'Watch for: ammonia and nitrite dropping toward zero over the coming weeks.',
+      label: T('phase_label_establish'),
+      note: T('phase_establish_note'),
+      next: T('phase_establish_next'),
       color: 'rgba(220,140,60,.9)'
     },
     stabilise: {
-      label: 'Stabilising',
-      note: 'The cycle is completing. Parameters are moving in the right direction — maintain routine.',
-      next: 'Watch for: consistent zero readings and clearer water.',
+      label: T('phase_label_stabilise'),
+      note: T('phase_stabilise_note'),
+      next: T('phase_stabilise_next'),
       color: 'rgba(200,190,60,.9)'
     },
     optimise: {
-      label: 'Optimising',
-      note: 'Tank is stable. Focus on rhythm: consistent care, observing behaviour, small refinements.',
-      next: 'Watch for: how your care rhythm affects livestock behaviour and plant growth.',
+      label: T('phase_label_optimise'),
+      note: T('phase_optimise_note'),
+      next: T('phase_optimise_next'),
       color: 'rgba(61,214,232,.9)'
     },
     sustain: {
-      label: 'Sustaining',
-      note: 'Ecosystem is mature. Your rhythm is aligned. Maintain, observe, resist unnecessary interventions.',
-      next: 'Watch for: the quiet signs — how your tank feels, not just what it reads.',
+      label: T('phase_label_sustain'),
+      note: T('phase_sustain_note'),
+      next: T('phase_sustain_next'),
       color: 'rgba(100,200,82,.9)'
     }
   };
@@ -189,17 +754,17 @@
     var then = new Date(dateStr);
     var now = new Date();
     var days = Math.floor((now - then) / 86400000);
-    if (days < 1) return 'set up today';
-    if (days === 1) return '1 day old';
-    if (days < 30) return days + ' days old';
+    if (days < 1) return T('age_today');
+    if (days === 1) return T('age_1day');
+    if (days < 30) return T('age_days', { n: days });
     var months = Math.floor(days / 30);
-    if (months === 1) return '1 month old';
-    if (months < 24) return months + ' months old';
-    return Math.floor(months / 12) + ' years old';
+    if (months === 1) return T('age_1month');
+    if (months < 24) return T('age_months', { n: months });
+    return T('age_years', { n: Math.floor(months / 12) });
   }
 
-  var keeperStateLabels = { 'consistent': 'Consistent', 'catching-up': 'Catching up', 'occasional': 'Occasional', 'just-starting': 'Just starting' };
-  var careLabels = { 'water_change': 'Water change', 'filter': 'Filter', 'feeding': 'Feeding', 'top_up': 'Topping up', 'treatment': 'Treatment', 'dosing': 'Dosing', 'media': 'Media change', 'trimming': 'Trimming', 'nothing': 'Just observed' };
+  var keeperStateLabels = { 'consistent': T('state_consistent'), 'catching-up': T('state_catching-up'), 'occasional': T('state_occasional'), 'just-starting': T('state_just-starting') };
+  var careLabels = { 'water_change': T('care_water_change'), 'filter': T('care_filter'), 'feeding': T('care_feeding'), 'top_up': T('care_top_up'), 'treatment': T('care_treatment'), 'dosing': T('care_dosing'), 'media': T('care_media'), 'trimming': T('care_trimming'), 'nothing': T('care_nothing') };
 
   /* ── Tank size data ── */
   var PRESETS = [
@@ -316,7 +881,7 @@
       catEl.style.color = CAT_COLORS[cat] || 'rgba(255,255,255,.3)';
     } else {
       volEl.textContent = '—';
-      catEl.textContent = 'Choose a size or brand below';
+      catEl.textContent = T('preview_cat_default');
       catEl.style.color = '';
     }
   }
@@ -335,7 +900,7 @@
       setHiddenInputs(vol, unit, 'rect');
       updatePreview(vol, unit, 'rect', [l, w, h]);
       var nameEl = document.getElementById('mt-inp-name');
-      if (nameEl && !nameEl.value) nameEl.value = 'My ' + vol + ' ' + unit + ' Tank';
+      if (nameEl && !nameEl.value) nameEl.value = T('auto_tank_name', { vol: vol, unit: unit });
     } else {
       if (outEl) outEl.textContent = '—';
     }
@@ -462,9 +1027,9 @@
         + '<div class="jn-ov-empty-icon" aria-hidden="true">'
         + '<svg width="52" height="52" viewBox="0 0 52 52" fill="none"><rect x="5" y="14" width="42" height="27" rx="2.5" stroke="rgba(61,214,232,.28)" stroke-width="1.4"/><line x1="5" y1="32" x2="47" y2="32" stroke="rgba(61,214,232,.14)" stroke-width="1"/><line x1="15" y1="24" x2="37" y2="24" stroke="rgba(61,214,232,.22)" stroke-width="1.2" stroke-linecap="round"/></svg>'
         + '</div>'
-        + '<h2 class="jn-ov-empty-title">Start your log</h2>'
-        + '<p class="jn-ov-empty-desc">Set up your first aquarium to begin writing entries, tracking your rhythm, and reading your ARA phase.</p>'
-        + '<button class="btn bf" id="jn-ov-setup-open">Set up my aquarium</button>'
+        + '<h2 class="jn-ov-empty-title">' + T('ov_empty_title') + '</h2>'
+        + '<p class="jn-ov-empty-desc">' + T('ov_empty_desc') + '</p>'
+        + '<button class="btn bf" id="jn-ov-setup-open">' + T('ov_empty_btn') + '</button>'
         + '</div>';
       return;
     }
@@ -486,22 +1051,22 @@
       var meta = [(p.volume ? p.volume + ' ' + (p.unit || 'L') : ''), p.type, age].filter(Boolean).join(' · ');
       var icon = tankTypeIconLg(p.type, p.shape);
       var activeInhs = inhs.filter(function (i) { return i.status !== 'passed' && i.status !== 'rehomed'; }).length;
-      var entryLabel = entries.length ? entries.length + (entries.length === 1 ? ' entry' : ' entries') : '';
-      return '<button class="jn-tank-card" data-tank-id="' + t.id + '" aria-label="Open log for ' + (p.name || 'tank') + '">'
+      var entryLabel = entries.length ? entries.length + ' ' + (entries.length === 1 ? T('entry_singular') : T('entry_plural')) : '';
+      return '<button class="jn-tank-card" data-tank-id="' + t.id + '" aria-label="' + T('open_log_for', { name: escHtml(p.name || T('tank_fallback')) }) + '">'
         + '<div class="jn-card-icon">' + icon + '</div>'
         + '<div class="jn-card-body">'
-        + '<h3 class="jn-card-name">' + (escHtml(p.name) || 'My Tank') + '</h3>'
+        + '<h3 class="jn-card-name">' + (escHtml(p.name) || T('my_tank_fallback')) + '</h3>'
         + '<p class="jn-card-meta">' + meta + '</p>'
         + (phData ? '<span class="jn-card-phase" style="color:' + phData.color + '">' + phData.label + '</span>'
-                  : '<span class="jn-card-phase jn-card-phase--empty">' + (entries.length ? '—' : 'No entries yet') + '</span>')
+                  : '<span class="jn-card-phase jn-card-phase--empty">' + (entries.length ? '—' : T('no_entries_dash')) + '</span>')
         + (activeInhs || entryLabel
-          ? '<span class="jn-card-stats">' + [activeInhs ? activeInhs + (activeInhs === 1 ? ' resident' : ' residents') : '', entryLabel].filter(Boolean).join(' · ') + '</span>'
+          ? '<span class="jn-card-stats">' + [activeInhs ? activeInhs + ' ' + (activeInhs === 1 ? T('resident_singular') : T('resident_plural')) : '', entryLabel].filter(Boolean).join(' · ') + '</span>'
           : '')
         + '</div>'
         + '<div class="jn-card-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'
         + '</button>';
     }).join('')
-    + '<button class="jn-card-add" id="jn-ov-add-tank">+ Add aquarium</button>';
+    + '<button class="jn-card-add" id="jn-ov-add-tank">' + T('ov_add_tank') + '</button>';
   }
 
   /* ── Tank selector renderer ── */
@@ -514,15 +1079,15 @@
     sel.innerHTML = d.tanks.map(function (t) {
       var active = t.id === d.activeTankId;
       var icon = tankTypeIcon((t.profile || {}).type, (t.profile || {}).shape);
-      var name = ((t.profile || {}).name || 'Tank');
+      var name = ((t.profile || {}).name || T('tank_fallback'));
       return '<button class="jn-tank-tab' + (active ? ' active' : '') + '" data-tank-id="' + t.id + '">'
         + '<span class="jn-ttab-icon">' + icon + '</span>'
-        + '<span class="jn-ttab-name">' + name + '</span>'
+        + '<span class="jn-ttab-name">' + escHtml(name) + '</span>'
         + '</button>';
     }).join('')
-    + '<button class="jn-tank-tab jn-tank-add" id="jn-add-tank" title="Add aquarium">'
+    + '<button class="jn-tank-tab jn-tank-add" id="jn-add-tank" title="' + T('add_aquarium_title') + '">'
     + '<span class="jn-ttab-icon" style="font-size:1.1rem;line-height:1;color:rgba(255,255,255,.3)">+</span>'
-    + '<span class="jn-ttab-name" style="color:rgba(255,255,255,.2)">Add</span>'
+    + '<span class="jn-ttab-name" style="color:rgba(255,255,255,.2)">' + T('add_short') + '</span>'
     + '</button>';
   }
 
@@ -560,8 +1125,8 @@
         + '<span class="tl-entry-date">' + escHtml(e.date) + '</span>'
         + (stateLabel ? '<span class="tl-entry-state-tag">' + stateLabel + '</span>' : '')
         + '<div class="tl-entry-actions">'
-        + (e.id ? '<button class="tl-entry-edit-btn" data-entry-id="' + e.id + '" aria-label="Edit entry">Edit</button>' : '')
-        + '<button class="rh-inline-btn tl-entry-rh-btn" data-rh-msg="' + rhMsg + '" aria-label="Discuss with Rhyssa"><svg width="10" height="10" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7.5" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="11" cy="11" r="3.5" stroke="currentColor" stroke-width="1.6" fill="none" opacity=".55"/><circle cx="11" cy="11" r="1.4" fill="currentColor" opacity=".8"/></svg>Rhyssa</button>'
+        + (e.id ? '<button class="tl-entry-edit-btn" data-entry-id="' + e.id + '" aria-label="' + T('edit_entry_aria') + '">' + T('edit_short') + '</button>' : '')
+        + '<button class="rh-inline-btn tl-entry-rh-btn" data-rh-msg="' + rhMsg + '" aria-label="' + T('discuss_rhyssa_aria') + '"><svg width="10" height="10" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7.5" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="11" cy="11" r="3.5" stroke="currentColor" stroke-width="1.6" fill="none" opacity=".55"/><circle cx="11" cy="11" r="1.4" fill="currentColor" opacity=".8"/></svg>Rhyssa</button>'
         + '</div>'
         + '</div>'
         + (e.observation ? '<p class="tl-entry-obs">' + escHtml(e.observation) + '</p>' : '')
@@ -610,13 +1175,13 @@
     if (localStorage.getItem(key)) return;
     localStorage.setItem(key, '1');
     var msgs = {
-      4:  'Four weeks in rhythm.',
-      8:  'Eight weeks — your tank knows you.',
-      12: 'Twelve weeks. That\'s real consistency.',
-      26: 'Half a year of keeping. Remarkable.',
-      52: 'One full year. Your rhythm is the tank\'s rhythm.'
+      4:  T('milestone_4'),
+      8:  T('milestone_8'),
+      12: T('milestone_12'),
+      26: T('milestone_26'),
+      52: T('milestone_52')
     };
-    showJnToast(msgs[streak] || streak + '-week streak.', 'streak');
+    showJnToast(msgs[streak] || T('milestone_fallback', { n: streak }), 'streak');
   }
 
   /* ── P3: Parameter sparklines ── */
@@ -677,9 +1242,9 @@
         + '</div>';
     }).join('');
     var rhMsg = latestParams.length ? encodeURIComponent('My latest water parameters: ' + latestParams.join(', ') + '. What do you think about these readings?') : '';
-    var rhBtn = rhMsg ? '<button class="rh-inline-btn" data-rh-msg="' + rhMsg + '" style="margin-top:.6rem"><svg width="10" height="10" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7.5" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="11" cy="11" r="3.5" stroke="currentColor" stroke-width="1.6" fill="none" opacity=".55"/><circle cx="11" cy="11" r="1.4" fill="currentColor" opacity=".8"/></svg>Ask Rhyssa about these trends</button>' : '';
+    var rhBtn = rhMsg ? '<button class="rh-inline-btn" data-rh-msg="' + rhMsg + '" style="margin-top:.6rem"><svg width="10" height="10" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7.5" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="11" cy="11" r="3.5" stroke="currentColor" stroke-width="1.6" fill="none" opacity=".55"/><circle cx="11" cy="11" r="1.4" fill="currentColor" opacity=".8"/></svg>' + T('ask_rhyssa_trends') + '</button>' : '';
     var bodyEl = document.getElementById('jn-param-charts-body');
-    if (bodyEl) bodyEl.innerHTML = (html || '<p class="jn-entry-empty">Log parameters in more entries to see trends.</p>') + rhBtn;
+    if (bodyEl) bodyEl.innerHTML = (html || '<p class="jn-entry-empty">' + T('no_charts_yet') + '</p>') + rhBtn;
   }
 
   /* ── P4: Contextual entry prompt ── */
@@ -691,17 +1256,17 @@
       var phase = assessPhaseFromParams(latest.params) ||
                   assessPhaseFromState(latest.keeperState, (data.profile || {}).setupDate);
       var phasePrompts = {
-        establish:  'Watch for cloudy water, unusual behaviour, or ammonia smell.',
-        stabilise:  'Are your parameters moving in the right direction this week?',
-        optimise:   'Notice any changes in plant growth, fish behaviour, or water clarity?',
-        sustain:    'Your ecosystem is mature — what quiet signs are you reading today?'
+        establish:  T('ctx_prompt_establish'),
+        stabilise:  T('ctx_prompt_stabilise'),
+        optimise:   T('ctx_prompt_optimise'),
+        sustain:    T('ctx_prompt_sustain')
       };
       if (phase && phasePrompts[phase]) lines.push(phasePrompts[phase]);
     }
     for (var i = 0; i < entries.length; i++) {
       if ((entries[i].care || []).indexOf('water_change') !== -1 && entries[i].date) {
         var daysSince = Math.floor((new Date() - new Date(entries[i].date)) / 86400000);
-        if (daysSince >= 7) lines.push('Last water change: ' + daysSince + ' days ago.');
+        if (daysSince >= 7) lines.push(T('ctx_last_water_change', { n: daysSince }));
         break;
       }
     }
@@ -871,22 +1436,22 @@
       var nh3 = parseFloat(latest.params.nh3);
       var no3 = parseFloat(latest.params.no3);
       if (!isNaN(nh3) && nh3 > 0.5) {
-        alerts.push({ severity: 'danger', msg: 'Ammonia elevated in last test (' + latest.params.nh3 + ' mg/L)', rhMsg: 'My ammonia was ' + latest.params.nh3 + ' mg/L on ' + (latest.date || 'the last test') + '. What should I do?' });
+        alerts.push({ severity: 'danger', msg: T('alert_ammonia_elevated', { val: latest.params.nh3 }), rhMsg: 'My ammonia was ' + latest.params.nh3 + ' mg/L on ' + (latest.date || 'the last test') + '. What should I do?' });
       }
       if (!isNaN(no3) && no3 > 40) {
-        alerts.push({ severity: 'warn', msg: 'Nitrate high at ' + latest.params.no3 + ' mg/L — water change recommended', rhMsg: 'My nitrate is ' + latest.params.no3 + ' mg/L. Should I be concerned for my tank?' });
+        alerts.push({ severity: 'warn', msg: T('alert_nitrate_high', { val: latest.params.no3 }), rhMsg: 'My nitrate is ' + latest.params.no3 + ' mg/L. Should I be concerned for my tank?' });
       }
     }
     if (latest && latest.date) {
       var daysSince = Math.floor((new Date() - new Date(latest.date)) / 86400000);
       if (daysSince >= 7) {
-        alerts.push({ severity: 'soft', msg: 'No entry in ' + daysSince + ' days — how\'s the tank doing?', rhMsg: 'I haven\'t logged anything in ' + daysSince + ' days. Just wanted to check in — tank seems okay.' });
+        alerts.push({ severity: 'soft', msg: T('alert_no_entry_days', { n: daysSince }), rhMsg: 'I haven\'t logged anything in ' + daysSince + ' days. Just wanted to check in — tank seems okay.' });
       }
     }
     for (var i = 0; i < entries.length; i++) {
       if ((entries[i].care || []).indexOf('water_change') !== -1 && entries[i].date) {
         var days = Math.floor((new Date() - new Date(entries[i].date)) / 86400000);
-        if (days > parseInt(localStorage.getItem('ar_wc_threshold') || '14', 10)) alerts.push({ severity: 'warn', msg: 'Last water change: ' + days + ' days ago', rhMsg: 'I haven\'t done a water change in ' + days + ' days. Should I be concerned for my ' + ((tank.profile && tank.profile.volume) ? tank.profile.volume + (tank.profile.unit || 'L') + ' ' : '') + 'tank?' });
+        if (days > parseInt(localStorage.getItem('ar_wc_threshold') || '14', 10)) alerts.push({ severity: 'warn', msg: T('alert_water_change_days', { n: days }), rhMsg: 'I haven\'t done a water change in ' + days + ' days. Should I be concerned for my ' + ((tank.profile && tank.profile.volume) ? tank.profile.volume + (tank.profile.unit || 'L') + ' ' : '') + 'tank?' });
         break;
       }
     }
@@ -900,7 +1465,7 @@
     if (!alerts.length) { el.innerHTML = ''; el.style.display = 'none'; return; }
     el.style.display = '';
     el.innerHTML = alerts.map(function (a) {
-      var rhBtn = '<button class="rh-inline-btn jn-alert-rh-btn" data-rh-msg="' + encodeURIComponent(a.rhMsg) + '"><svg width="11" height="11" viewBox="0 0 22 22" fill="none" aria-hidden="true" style="flex-shrink:0"><circle cx="11" cy="11" r="7.5" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="11" cy="11" r="3.5" stroke="currentColor" stroke-width="1.6" fill="none" opacity=".55"/><circle cx="11" cy="11" r="1.4" fill="currentColor" opacity=".8"/></svg>Ask Rhyssa</button>';
+      var rhBtn = '<button class="rh-inline-btn jn-alert-rh-btn" data-rh-msg="' + encodeURIComponent(a.rhMsg) + '"><svg width="11" height="11" viewBox="0 0 22 22" fill="none" aria-hidden="true" style="flex-shrink:0"><circle cx="11" cy="11" r="7.5" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="11" cy="11" r="3.5" stroke="currentColor" stroke-width="1.6" fill="none" opacity=".55"/><circle cx="11" cy="11" r="1.4" fill="currentColor" opacity=".8"/></svg>' + T('ask_rhyssa_btn') + '</button>';
       return '<div class="jn-alert-item jn-alert--' + a.severity + '"><span class="jn-alert-msg">' + a.msg + '</span>' + rhBtn + '</div>';
     }).join('');
   }
@@ -994,7 +1559,7 @@
     if (bodyEl) bodyEl.textContent = text;
     if (tsEl && ts) {
       var d = new Date(ts);
-      tsEl.textContent = 'Updated ' + d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+      tsEl.textContent = T('updated_prefix', { date: d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) });
     }
   }
 
@@ -1069,7 +1634,7 @@
       var ep = document.createElement('p');
       ep.className = 'jn-entry-empty';
       ep.style.cssText = 'font-size:.75rem;margin:.1rem 0';
-      ep.textContent = 'No residents yet.';
+      ep.textContent = T('no_residents_yet');
       bodyEl.appendChild(ep);
       return;
     }
@@ -1120,7 +1685,7 @@
       var ep = document.createElement('p');
       ep.className = 'jn-entry-empty';
       ep.style.cssText = 'font-size:.75rem;margin:.5rem 0';
-      ep.textContent = 'No residents yet.';
+      ep.textContent = T('no_residents_yet');
       bodyEl.appendChild(ep);
       return;
     }
@@ -1136,7 +1701,7 @@
 
       var nameSp = document.createElement('span');
       nameSp.className = 'jn-fam-list-name';
-      var label = inh.commonName || inh.species || (INH_CAT_LABELS[inh.category] || 'Resident');
+      var label = inh.commonName || inh.species || (INH_CAT_LABELS[inh.category] || T('resident_fallback'));
       nameSp.textContent = (inh.count > 1 ? inh.count + '× ' : '') + label;
       infoDiv.appendChild(nameSp);
 
@@ -1149,7 +1714,7 @@
       if (inh.status !== 'active') {
         var pill = document.createElement('span');
         pill.className = 'jn-inh-status-chip ' + (inh.status === 'rehomed' ? 'jn-fam-status--rehomed' : 'jn-fam-status--passed');
-        pill.textContent = inh.status === 'rehomed' ? 'Rehomed' : 'Passed';
+        pill.textContent = inh.status === 'rehomed' ? T('rehomed') : T('passed');
         pill.style.cssText = 'font-size:.5rem;letter-spacing:.05em;text-transform:uppercase;padding:.1rem .38rem;border-radius:20px;border:1px solid;display:inline-block;margin-top:.18rem;' + (inh.status === 'rehomed' ? 'color:rgba(255,200,80,.8);border-color:rgba(255,200,80,.3);background:rgba(255,200,80,.06)' : 'color:rgba(180,80,80,.7);border-color:rgba(180,80,80,.25);background:rgba(180,80,80,.05)');
         infoDiv.appendChild(pill);
       }
@@ -1161,14 +1726,14 @@
       var editBtn = document.createElement('button');
       editBtn.className = 'jn-fam-list-edit';
       editBtn.setAttribute('data-inh-id', inh.id);
-      editBtn.textContent = 'Edit';
+      editBtn.textContent = T('edit_short');
       acts.appendChild(editBtn);
 
       var delBtn = document.createElement('button');
       delBtn.className = 'jn-fam-list-del';
       delBtn.setAttribute('data-inh-id', inh.id);
       delBtn.textContent = '×';
-      delBtn.setAttribute('aria-label', 'Remove');
+      delBtn.setAttribute('aria-label', T('remove_aria'));
       acts.appendChild(delBtn);
 
       row.appendChild(acts);
@@ -1179,7 +1744,7 @@
     if (past.length) {
       var sep = document.createElement('p');
       sep.style.cssText = 'font-size:.5rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.2);margin:.6rem 0 .15rem;font-family:inherit';
-      sep.textContent = 'Past residents';
+      sep.textContent = T('past_residents');
       bodyEl.appendChild(sep);
       past.forEach(function (inh) { bodyEl.appendChild(makeListRow(inh)); });
     }
@@ -1192,17 +1757,17 @@
   }
 
   function showInhabitantToast(inh, action) {
-    var displayName = inh.name || inh.commonName || inh.species || (INH_CAT_LABELS[inh.category] || 'Resident');
+    var displayName = inh.name || inh.commonName || inh.species || (INH_CAT_LABELS[inh.category] || T('resident_fallback'));
     var count = inh.count > 1 ? inh.count + '× ' : '';
     var msg, type;
     if (action === 'added') {
-      msg  = 'Welcome to the tank, ' + count + displayName + '.';
+      msg  = T('welcome_to_tank', { name: count + displayName });
       type = 'welcome';
     } else if (action === 'passed') {
-      msg  = count + displayName + ' has left the tank. We remember them.';
+      msg  = T('left_the_tank', { name: count + displayName });
       type = 'passed';
     } else if (action === 'rehomed') {
-      msg  = count + displayName + ' has found a new home.';
+      msg  = T('found_new_home', { name: count + displayName });
       type = 'rehomed';
     } else { return; }
     showJnToast(msg, type);
@@ -1241,7 +1806,7 @@
     var p = tank.profile;
     var nameEl = document.getElementById('jn-tank-name');
     var infoEl = document.getElementById('jn-tank-info');
-    if (nameEl) nameEl.textContent = p.name || 'My Tank';
+    if (nameEl) nameEl.textContent = p.name || T('my_tank_fallback');
     if (infoEl) infoEl.textContent = [(p.volume ? p.volume + ' ' + (p.unit || 'L') : ''), p.type, tankAge(p.setupDate)].filter(Boolean).join(' · ');
 
     /* Identity hero icon */
@@ -1288,18 +1853,18 @@
         if (phaseJourneyEl) phaseJourneyEl.style.display = 'none';
         if (phaseNoteEl) phaseNoteEl.textContent = info.note;
         if (phaseNextEl) { phaseNextEl.textContent = info.next; phaseNextEl.style.display = ''; }
-        if (phaseSrcEl) { phaseSrcEl.textContent = fromParams ? 'Based on water parameters' : 'Estimated from keeper rhythm'; phaseSrcEl.style.display = ''; }
+        if (phaseSrcEl) { phaseSrcEl.textContent = fromParams ? T('based_on_params') : T('estimated_from_rhythm'); phaseSrcEl.style.display = ''; }
       } else {
         phaseNameEl.style.display = 'none';
         phaseNameEl.style.color = '';
         if (phaseJourneyEl) phaseJourneyEl.style.display = '';
         var noPhaseMsg = !entries.length
-          ? 'Write your first entry to begin ARA phase tracking.'
+          ? T('no_phase_no_entries')
           : !hasResidents && !hasSetupDate
-            ? 'Add at least one resident and your tank setup date to get a reading.'
+            ? T('no_phase_no_setup')
             : !sufficientForPhase
-              ? 'Write a few more entries — or log water parameters — for an accurate ARA phase reading.'
-              : 'Write your first entry to get an ARA phase reading.';
+              ? T('no_phase_insufficient')
+              : T('no_phase_default');
         if (phaseNoteEl) phaseNoteEl.textContent = noPhaseMsg;
         if (phaseNextEl) phaseNextEl.style.display = 'none';
         if (phaseSrcEl) phaseSrcEl.style.display = 'none';
@@ -1323,11 +1888,11 @@
     var weeks = rhythmWeeks(entries);
     var rhythmEl = document.getElementById('jn-rhythm-dots');
     if (rhythmEl) {
-      var weekLabels = ['This week', 'Last week', '2w ago', '3w ago', '4w ago', '5w ago', '6w ago', '7w ago'];
+      var weekLabels = [T('week_this'), T('week_last'), T('week_2ago'), T('week_3ago'), T('week_4ago'), T('week_5ago'), T('week_6ago'), T('week_7ago')];
       rhythmEl.innerHTML = weeks.map(function (has, i) {
         return '<div class="jn-rhythm-dot' + (has ? ' active' : '') + '"'
           + ' title="' + weekLabels[i] + '"'
-          + ' aria-label="' + weekLabels[i] + (has ? ': entry logged' : ': no entry') + '">'
+          + ' aria-label="' + weekLabels[i] + (has ? T('entry_logged') : T('no_entry')) + '">'
           + '</div>';
       }).join('');
     }
@@ -1336,7 +1901,7 @@
     var streakEl = document.getElementById('jn-streak-count');
     if (streakEl) {
       if (streak >= 1) {
-        streakEl.textContent = streak === 1 ? '1-week streak' : streak + '-week streak';
+        streakEl.textContent = streak === 1 ? T('streak_1week') : T('streak_nweek', { n: streak });
         streakEl.style.display = '';
       } else {
         streakEl.style.display = 'none';
@@ -1471,24 +2036,24 @@
     if (hasPlants && eqList) {
       var phdr = document.createElement('div');
       phdr.className = 'jn-setup-card-cat-hdr';
-      phdr.textContent = 'Plants';
+      phdr.textContent = T('cat_plants');
       eqList.appendChild(phdr);
       setup.plants.forEach(function (p) {
         var chip = document.createElement('span');
         chip.className = 'jn-setup-eq-chip';
-        chip.textContent = p.name || p.id || 'Plant';
+        chip.textContent = p.name || p.id || T('cat_plants');
         eqList.appendChild(chip);
       });
     }
     if (hasHard && eqList) {
       var hhdr = document.createElement('div');
       hhdr.className = 'jn-setup-card-cat-hdr';
-      hhdr.textContent = 'Hardscape';
+      hhdr.textContent = T('cat_hardscape');
       eqList.appendChild(hhdr);
       setup.hardscape.forEach(function (h) {
         var chip2 = document.createElement('span');
         chip2.className = 'jn-setup-eq-chip';
-        chip2.textContent = h.name || h.id || 'Hardscape';
+        chip2.textContent = h.name || h.id || T('cat_hardscape');
         eqList.appendChild(chip2);
       });
     }
@@ -1499,13 +2064,13 @@
   var _gearBrandState = {};
 
   var CAT_LABELS = {
-    filtration: 'Filtration',
-    environment: 'Lighting & Environment',
-    substrate: 'Substrate',
-    cooling: 'Temperature & Cooling',
-    additions: 'Additions & Monitoring',
-    sterilization: 'Sterilization',
-    circulation: 'Circulation'
+    filtration: T('cat_filtration'),
+    environment: T('cat_environment'),
+    substrate: T('cat_substrate'),
+    cooling: T('cat_cooling'),
+    additions: T('cat_additions'),
+    sterilization: T('cat_sterilization'),
+    circulation: T('cat_circulation')
   };
 
   function openGearModal() {
@@ -1555,7 +2120,7 @@
           sel.dataset.eq = k;
           var defaultOpt = document.createElement('option');
           defaultOpt.value = '';
-          defaultOpt.textContent = 'Brand / model…';
+          defaultOpt.textContent = T('brand_model_default');
           sel.appendChild(defaultOpt);
           var brandExamples = (eq.brands && eq.brands.examples) ? eq.brands.examples : [];
           var savedBrand = _gearBrandState[k] || '';
@@ -1570,7 +2135,7 @@
           });
           var customOpt = document.createElement('option');
           customOpt.value = '__custom__';
-          customOpt.textContent = '✎ Enter own brand / model…';
+          customOpt.textContent = T('brand_model_custom');
           if (!brandInList && (savedBrand || savedNote)) customOpt.selected = true;
           sel.appendChild(customOpt);
 
@@ -1579,7 +2144,7 @@
           var noteVisible = tog.checked && (sel.value === '__custom__' || (!brandInList && (savedBrand || savedNote)));
           note.className = 'jn-setup-eq-note' + (noteVisible ? ' visible' : '');
           note.dataset.eq = k;
-          note.placeholder = 'e.g. Eheim 2213, Fluval 307…';
+          note.placeholder = T('brand_model_placeholder');
           note.maxLength = 80;
           note.value = savedNote || (!brandInList ? savedBrand : '');
 
@@ -1691,7 +2256,7 @@
       }
       if (entry) {
         if (editingIdEl) editingIdEl.value = entryId;
-        if (titleEl) titleEl.textContent = 'Edit entry';
+        if (titleEl) titleEl.textContent = T('entry_modal_title_edit');
         if (deleteBtn) deleteBtn.style.display = '';
         var entryDate = document.getElementById('jn-entry-date');
         if (entryDate) entryDate.value = entry.date || todayStr();
@@ -1719,7 +2284,7 @@
         if (cc && cc.querySelector('.jn-care-secondary.active')) cc.classList.add('expanded');
         var ptxt = buildContextPrompt(tank || {});
         var pel = document.getElementById('jn-context-prompt');
-        if (pel) { pel.textContent = ptxt || 'What did you notice today?'; pel.style.display = ''; }
+        if (pel) { pel.textContent = ptxt || T('entry_default_prompt'); pel.style.display = ''; }
         setupObsHint();
         openModal('mt-modal-entry');
         return;
@@ -1727,13 +2292,13 @@
     }
 
     /* New entry mode */
-    if (titleEl) titleEl.textContent = 'Today\'s entry';
+    if (titleEl) titleEl.textContent = T('entry_modal_title_new');
     if (deleteBtn) deleteBtn.style.display = 'none';
     var entryDate2 = document.getElementById('jn-entry-date');
     if (entryDate2) entryDate2.value = todayStr();
     var obsEl2 = document.getElementById('jn-entry-obs');
     if (obsEl2) obsEl2.value = '';
-    var promptText = buildContextPrompt(tank || {}) || 'What did you notice today?';
+    var promptText = buildContextPrompt(tank || {}) || T('entry_default_prompt');
     var promptEl = document.getElementById('jn-context-prompt');
     if (promptEl) { promptEl.textContent = promptText; promptEl.style.display = ''; }
     setupObsHint();
@@ -1783,7 +2348,7 @@
       if (tank) { for (var ii = 0; ii < (tank.inhabitants || []).length; ii++) { if (tank.inhabitants[ii].id === inhId) { inh = tank.inhabitants[ii]; break; } } }
       if (inh) {
         if (editingEl) editingEl.value = inhId;
-        if (titleEl) titleEl.textContent = 'Edit resident';
+        if (titleEl) titleEl.textContent = T('inhabitant_modal_title_edit');
         var catChip = document.querySelector('.jn-inh-cat-chip[data-cat="' + (inh.category || 'fish') + '"]');
         document.querySelectorAll('.jn-inh-cat-chip').forEach(function (c) { c.classList.remove('active'); });
         if (catChip) catChip.classList.add('active');
@@ -1797,14 +2362,14 @@
         });
         if (deleteBtn) deleteBtn.style.display = '';
         var submitBtn = document.querySelector('#jn-form-inhabitant [type="submit"]');
-        if (submitBtn) submitBtn.textContent = 'Save changes';
+        if (submitBtn) submitBtn.textContent = T('inhabitant_submit_edit');
         showFamilyView('form');
         return;
       }
     }
-    if (titleEl) titleEl.textContent = 'Add resident';
+    if (titleEl) titleEl.textContent = T('inhabitant_modal_title_new');
     var submitBtn2 = document.querySelector('#jn-form-inhabitant [type="submit"]');
-    if (submitBtn2) submitBtn2.textContent = 'Add to tank';
+    if (submitBtn2) submitBtn2.textContent = T('inhabitant_submit_new');
     showFamilyView('form');
   }
 
@@ -1923,8 +2488,8 @@
       var tankDel = null;
       for (var ti = 0; ti < d.tanks.length; ti++) { if (d.tanks[ti].id === editId) { tankDel = d.tanks[ti]; break; } }
       if (!tankDel) return;
-      var tName = (tankDel.profile && tankDel.profile.name) || 'this tank';
-      if (!confirm('Delete ' + tName + ' and all its data? This cannot be undone.')) return;
+      var tName = (tankDel.profile && tankDel.profile.name) || T('this_tank_fallback');
+      if (!confirm(T('confirm_delete_tank_named', { name: tName }))) return;
       d.tanks = d.tanks.filter(function (t) { return t.id !== editId; });
       if (d.tanks.length) {
         d.activeTankId = d.tanks[0].id;
@@ -1959,8 +2524,8 @@
       if (!tank) return;
       var isLast = d.tanks.length <= 1;
       var msg = isLast
-        ? 'Delete all log data? This cannot be undone.'
-        : 'Delete this tank and all its entries? This cannot be undone.';
+        ? T('confirm_delete_all_data')
+        : T('confirm_delete_this_tank');
       if (confirm(msg)) {
         if (isLast) { saveData({}); }
         else {
@@ -2079,7 +2644,7 @@
     if (target.id === 'jn-entry-delete-btn') {
       var editId = document.getElementById('jn-entry-editing-id');
       if (!editId || !editId.value) return;
-      if (!confirm('Delete this entry? This cannot be undone.')) return;
+      if (!confirm(T('confirm_delete_entry'))) return;
       var d = loadData();
       var tank = getActiveTank(d);
       if (!tank) return;
@@ -2087,7 +2652,7 @@
       saveData(d);
       closeAllModals();
       renderDashboard();
-      showJnToast('Entry removed.', 'passed');
+      showJnToast(T('entry_removed_toast'), 'passed');
       return;
     }
 
@@ -2107,8 +2672,8 @@
       var delD = loadData(); var delTank = getActiveTank(delD);
       if (!delTank || !delTank.inhabitants) return;
       var delInh2 = delTank.inhabitants.find(function (i) { return i.id === famListDel.dataset.inhId; });
-      var delName2 = delInh2 ? (delInh2.commonName || delInh2.species || 'this resident') : 'this resident';
-      if (!confirm('Remove ' + delName2 + ' from the log?')) return;
+      var delName2 = delInh2 ? (delInh2.commonName || delInh2.species || T('this_resident_fallback')) : T('this_resident_fallback');
+      if (!confirm(T('confirm_remove_resident', { name: delName2 }))) return;
       delTank.inhabitants = delTank.inhabitants.filter(function (i) { return i.id !== famListDel.dataset.inhId; });
       saveData(delD);
       renderDashboard();
@@ -2158,12 +2723,12 @@
       var tank3 = getActiveTank(d3);
       if (!tank3 || !tank3.inhabitants) return;
       var delInh = tank3.inhabitants.find(function (i) { return i.id === delId; });
-      var delName = delInh ? (delInh.commonName || delInh.species || 'this resident') : 'this resident';
-      if (!confirm('Remove ' + delName + ' from the log entirely?')) return;
+      var delName = delInh ? (delInh.commonName || delInh.species || T('this_resident_fallback')) : T('this_resident_fallback');
+      if (!confirm(T('confirm_remove_resident_entirely', { name: delName }))) return;
       tank3.inhabitants = tank3.inhabitants.filter(function (i) { return i.id !== delId; });
       saveData(d3);
       renderDashboard();
-      showJnToast(delName + ' removed from the log.', 'passed');
+      showJnToast(T('resident_removed_toast', { name: delName }), 'passed');
       renderFamilyList();
       showFamilyView('list');
       return;
@@ -2176,10 +2741,13 @@
       e.preventDefault();
       var g = function (id) { var el = document.getElementById(id); return el ? el.value : ''; };
       var d = loadData();
+      var volVal = g('mt-inp-volume');
+      var unitVal = g('mt-inp-unit') || 'L';
+      var defaultName = volVal ? T('auto_tank_name', { vol: volVal, unit: unitVal }) : T('my_tank_fallback');
       var newProfile = {
-        name:      g('mt-inp-name') || 'My Tank',
-        volume:    g('mt-inp-volume'),
-        unit:      g('mt-inp-unit') || 'L',
+        name:      g('mt-inp-name') || defaultName,
+        volume:    volVal,
+        unit:      unitVal,
         shape:     g('mt-inp-shape') || 'rect',
         type:      g('mt-inp-type') || 'freshwater',
         setupDate: g('mt-inp-date')
@@ -2292,7 +2860,7 @@
         }
         saveData(d);
         renderDashboard();
-        showJnToast('Resident updated.', 'welcome');
+        showJnToast(T('resident_updated_toast'), 'welcome');
         renderFamilyList();
         showFamilyView('list');
       } else {
@@ -2399,7 +2967,7 @@
       setHiddenInputs(vol, unit, shp);
       updatePreview(vol, unit, shp, dims);
       var nameEl = document.getElementById('mt-inp-name');
-      if (nameEl) nameEl.value = 'My ' + vol + ' ' + unit + ' Tank';
+      if (nameEl) nameEl.value = T('auto_tank_name', { vol: vol, unit: unit });
       return;
     }
 

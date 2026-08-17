@@ -149,5 +149,150 @@
     "kofi_p": "Jika projek ini berguna, sumbangan pilihan di Ko-fi membantu menampung kos hosting dan masa untuk panduan serta alat. Tiada apa di sini di sebalik bayaran; sokongan sepenuhnya pilihan anda.",
     "kofi_cta": "Sokong di Ko-fi →",
     "final": "Projek bebas — maklum balas dialu-alukan. Aquatic Rhythm kekal terbuka untuk semakan selagi ruang kehidupan dan akuarium hidup terus mengajar."
+  },
+  "reading": {
+    "header": {
+      "ey": "Panduan",
+      "h1": "Baca ikut<br><em style=\"font-style:italic;color:rgba(124,168,156,.78)\">ritma anda sendiri.</em>",
+      "sub1": "Panduan ekologi ringkas — dipecah kepada blok kecil supaya anda boleh baca di telefon, berhenti seketika, dan sambung semula. Bahasa mudah dahulu; nama Latin cuma bila ia membantu.",
+      "sub2_pre": "Ekologi dan tingkah laku dlm bahasa mudah · keeper rhythm dan ARA. ",
+      "sub2_link": "Makmal &amp; alat",
+      "sub2_post": " utk simulator ada tab sendiri."
+    },
+    "misc": {
+      "interactive_tag": "Interaktif",
+      "urgent_tag": "Segera"
+    },
+    "categories": [
+      {
+        "label": "Membaca akuarium",
+        "desc": "Apa yang air, ikan, tumbuhan, dan biologi cuba beritahu anda — sebelum masalah jadi kelihatan."
+      },
+      {
+        "label": "Amalan penjaga",
+        "desc": "Ritma, kapasiti, dan hubungan jujur antara penjaga dengan akuarium."
+      }
+    ],
+    "cards": {
+      "new-tank-syndrome": {
+        "title": "Sindrom Tangki Baharu<br><em>Apa yang sebenarnya berlaku dan kenapa menunggu ialah jawapan yang betul</em>",
+        "desc": "Air keruh, ikan lesu, ammonia meningkat — panduan lembut merentas kitaran nitrogen dan kenapa \"buat lebih banyak\" selalunya menekan biologi tangki."
+      },
+      "cycled-tank-problems": {
+        "title": "Tangki Yang Dah Cycle<br><em>Bukan tangki yang siap.</em>",
+        "desc": "Kitaran dah selesai tapi masalah terus berulang. Penyelenggaraan penapis, biologi nitrat, penekan dominan, dan belajar memahami apa yang ikan anda cuba beritahu."
+      },
+      "why-is-my-aquarium-water-cloudy": {
+        "title": "Kenapa Air Akuarium Saya Keruh?<br><em>Bila air berubah, akuarium sedang bercakap.</em>",
+        "desc": "Kabus putih, warna hijau, kesan kuning — panduan memahami maksud setiap jenis air keruh, dan apa yang ARA katakan tentang bertindak balas tanpa panik."
+      },
+      "how-often-water-changes": {
+        "title": "Berapa Kerap Perlu Buat Pertukaran Air?<br><em>Ritma dahulu. Kekerapan mengikut.</em>",
+        "desc": "Tiada jawapan universal — cuma renungan jujur pada keeper rhythm anda, fasa akuarium anda, dan apa maksud sebenar keberterusan yang koheren utk sistem hidup."
+      },
+      "fish-hiding-what-does-it-mean": {
+        "title": "Ikan Saya Bersembunyi — Apa Maksudnya?<br><em>Tingkah laku ikan ialah Livestock Rhythm sedang bercakap.</em>",
+        "desc": "Sebelum anda uji air atau ubah apa-apa, fahami isyaratnya dahulu. Ikan yang bersembunyi di sudut sedang tunjukkan sesuatu yang alat ujian anda tak boleh."
+      },
+      "fish-keep-dying-new-tank": {
+        "title": "Kenapa Ikan Saya Terus Mati Dalam Tangki Baharu?<br><em>Minggu pertama ialah bahagian paling sukar drpd apa yang anda sedang bina.</em>",
+        "desc": "Kehilangan ikan awal terasa spt kegagalan. Ia hampir tak pernah begitu. Apa yang sebenarnya berlaku dlm tangki baharu, apa yang tak pernah dlm kawalan anda, dan cara utk teruskan."
+      },
+      "algae-in-aquarium": {
+        "title": "Alga Dalam Akuarium Saya<br><em>Apa yang ia sebenarnya beritahu anda.</em>",
+        "desc": "Alga bukan masalahnya — ia bacaan isyarat. Jenis berbeza menandakan ketidakselarasan Environmental Rhythm yang berbeza. Belajar mengenal pasti dan selaraskan, bukan sekadar hapuskan."
+      },
+      "perfect-parameters-fish-dying": {
+        "title": "Ikan Saya Mati — Tapi Air Nampak Elok<br><em>Alat ujian ukur satu lapisan. Ikan anda baca semuanya.</em>",
+        "desc": "Bila ammonia sifar dan ikan masih bermasalah, jawapannya hampir selalu ada pd apa yang alat ujian tak ukur. Panduan tentang penekan dominan dan memahami Livestock Rhythm."
+      },
+      "betta-fish-behaviour": {
+        "title": "Tingkah Laku Ikan Betta<br><em>Apa yang betta anda beritahu anda.</em>",
+        "desc": "Betta ialah ikan paling mudah dibaca dlm hobi ni. Kurang aktif, warna pudar, bernafas di permukaan — setiap satu ialah isyarat Livestock Rhythm dengan maksud tertentu, sebelum ia jadi kritikal."
+      },
+      "aquarium-plants-not-growing": {
+        "title": "Kenapa Tumbuhan Akuarium Saya Tak Membesar?<br><em>Tumbuhan baca persekitaran sebelum anda.</em>",
+        "desc": "Melecak, menguning, alga pd daun — tumbuhan gagal sebelum ujian air tunjukkan apa-apa. Panduan memahami apa yang tumbuhan anda sebenarnya bertindak balas, dan selaraskan persediaan anda dgn apa yang ia benar-benar mampu sokong."
+      },
+      "shrimp-dying-aquarium": {
+        "title": "Kenapa Udang Saya Mati?<br><em>Udang tak gagal secara mendadak. Ia hanyut, perlahan-lahan, sehingga berhenti.</em>",
+        "desc": "Udang ialah pembaca Water Rhythm paling sensitif dlm hobi ni. Peningkatan TDS, perubahan suhu, kesan tembaga — ia tanda hanyutan jauh sebelum alat ujian anda tunjukkan apa-apa."
+      },
+      "low-tech-planted-tank": {
+        "title": "Cara Mula Tangki Bertumbuhan Low-Tech<br><em>Low-tech bukan pilihan jimat. Ia pilihan yang jujur.</em>",
+        "desc": "Tangki bertumbuhan low-tech berjaya bila ia sepadan dgn keeper rhythm sebenar — bukan versi ideal yang dibayangkan. Pemilihan tumbuhan, konsistensi cahaya, dan mula kecil sebelum berkembang."
+      },
+      "community-fish-tank": {
+        "title": "Tangki Ikan Komuniti<br><em>Siapa yang sebenarnya serasi.</em>",
+        "desc": "Carta keserasian beritahu anda ikan mana yang tak akan saling bunuh. Ia tak beritahu ikan mana yang akan saling tekan secara perlahan. Panduan memahami dinamik komuniti melalui Livestock Rhythm."
+      },
+      "when-is-tank-ready-for-fish": {
+        "title": "Cara Tahu Bila Tangki Anda Sedia Utk Ikan<br><em>\"Dah cycle\" ialah satu angka. Sedia ialah sesuatu yang lain.</em>",
+        "desc": "Ammonia dan nitrit sifar bermakna kitaran wujud — bukan bermakna tangki sedia. Panduan memahami peralihan ke fasa Developing dan memilih ikan pertama yang betul."
+      },
+      "ich-keeps-coming-back": {
+        "title": "Ich Terus Berulang<br><em>Merawat ich tak sama dgn memahami kenapa.</em>",
+        "desc": "Ich yang berulang ialah isyarat Livestock Rhythm, bukan kegagalan rawatan. Parasit itu kembali sbb tangki kembali ke keadaan sama yang menekan ikan pd mulanya."
+      },
+      "overfeeding-aquarium": {
+        "title": "Terlebih Beri Makan & Beban Tersembunyi Tangki<br><em>Kebanyakan tangki bukan kurang makan. Kebanyakan tangki terlebih makan.</em>",
+        "desc": "Terlebih beri makan ialah punca tersembunyi di sebalik kebanyakan masalah tangki — nitrat tinggi, air keruh, alga, lonjakan ammonia. Panduan ni terangkan bagaimana lebihan makanan jadi lebihan kimia, dan bagaimana kurangkan beban organik selalunya cara paling mudah utk stabilkan tangki."
+      },
+      "aquarium-filter-maintenance": {
+        "title": "Penapis Anda Bukan Spt Yang Anda Sangka<br><em>Membersihkannya dgn cara salah lebih teruk drpd tak bersihkan langsung.</em>",
+        "desc": "Penapis bukan sekadar perangkap serpihan — ia rumah utama bakteria yang buatkan tangki cycle mungkin. Panduan ni terangkan apa yang hidup dlm penapis anda, bila dan bagaimana bersihkan dgn selamat, dan kenapa bilas menyeluruh dgn air paip antara perkara paling merosakkan yang penjaga boleh buat."
+      },
+      "fish-gasping-surface": {
+        "title": "Ikan Termengah-mengah Di Permukaan<br><em>Tangki kehabisan sesuatu. Soalannya apa.</em>",
+        "desc": "Termengah-mengah di permukaan antara isyarat kecemasan paling jelas yang tangki boleh beri — tapi simptom yang sama ada banyak punca, dan setiap satu perlukan tindak balas berbeza. Panduan ni bantu anda fahami isyarat lain sebelum bertindak."
+      },
+      "adding-new-fish": {
+        "title": "Menambah Ikan Baharu<br><em>Dua minggu pertama ialah gangguan. Itu normal.</em>",
+        "desc": "Setiap kemasukan ikan baharu ganggu tangki yang stabil. Panduan ni terangkan apa yang berlaku pd kedua-dua ikan baharu dan ekosistem sedia ada semasa tingkap gangguan itu — dan cara bezakan ketidakstabilan yang dijangka drpd sesuatu yang perlukan campur tangan."
+      },
+      "nitrate-keeps-rising": {
+        "title": "Kenapa Nitrat Terus Meningkat<br><em>Tangki yang dah cycle bukan tangki yang seimbang.</em>",
+        "desc": "Tangki boleh cycle sepenuhnya dan masih kumpul nitrat lebih laju drpd pertukaran air boleh bersihkan. Panduan ni terangkan dari mana penumpukan itu datang, apa ia tandakan sbg corak Chemical Rhythm, dan apa yang sebenarnya ubah keadaan tu — lebih drpd sekadar tukar air lebih kerap."
+      },
+      "know-your-rhythm": {
+        "title": "Kenali Ritma Anda<br><em>Sebelum anda pilih tangki.</em>",
+        "desc": "Tujuh soalan mudah tentang bagaimana anda sebenarnya menjaga tangki — sebelum isipadu, lampu, atau senarai stok.",
+        "extra_cta": "Mula renungan →",
+        "level_manual": "Semua peringkat",
+        "meta_manual": "7 soalan"
+      },
+      "caring-without-guilt": {
+        "title": "Menjaga Tanpa Rasa Bersalah<br><em>Bila fikiran penjaga sebahagian drpd ekosistem.</em>",
+        "desc": "Kenapa rasa bersalah buatkan tangki lebih teruk — dan apa yang ARA katakan tentang hubungan sebenar anda dgn sistem yang anda jaga."
+      },
+      "aquarium-maintenance-routine": {
+        "title": "Cara Bina Rutin Akuarium<br><em>Yang benar-benar sesuai dgn kehidupan anda.</em>",
+        "desc": "Jadual penyelenggaraan generik gagal sbb ia abaikan keeper rhythm. Panduan ni bantu anda cari corak yang sepadan dgn cara anda sebenarnya menjaga tangki — bukan cara anda bayangkan akan buat."
+      },
+      "when-hobby-stops-feeling-good": {
+        "title": "Bila Hobi Berhenti Terasa Baik<br><em>Burnout dlm hobi ikan hiasan itu nyata. Tiada siapa cakap tentangnya dgn jujur.</em>",
+        "desc": "Beban penyelenggaraan, kesedihan kehilangan, rasa bersalah kerana tak buat cukup. Tiga laluan jujur: reka semula, permudahkan, atau tinggalkan dgn maruah — bukan satu pun kegagalan."
+      },
+      "tank-crash-recovery": {
+        "title": "Bila Tangki Crash<br><em>Apa yang perlu buat, apa yang perlu rasa, dan apa yang perlu putuskan.</em>",
+        "desc": "Crash ialah kecemasan dan kehilangan pd masa yang sama. Panduan ni liputi triaj jam pertama, cara nilai sama ada tangki boleh pulih, dan cara proses apa yang berlaku — anggap crash sbg maklumat bukan kegagalan."
+      },
+      "aquarium-travel-vacation": {
+        "title": "Menjaga Tangki Bila Anda Bercuti<br><em>Tangki yang selaras dgn baik lebih tahan drpd yang anda sangka.</em>",
+        "desc": "Kebanyakan kebimbangan penjaga tentang percutian ialah tentang apa yang boleh salah semasa ketiadaan mereka. Panduan ni terangkan apa yang tangki stabil sebenarnya perlukan bila penjaga tiada — dan kenapa sistem yang selaras bertahan seminggu tanpa campur tangan lebih baik drpd yang kebanyakan penjaga jangka."
+      },
+      "aquarium-not-a-project": {
+        "title": "Akuarium Bukan Satu Projek<br><em>Tahu bila perlu berhenti tambah baik ialah sebahagian drpd amalan.</em>",
+        "desc": "Dorongan utk naik taraf, tambah, dan optimumkan ialah sebahagian drpd menjadi penjaga — tapi ia juga boleh jadi perkara yang paling ganggu tangki yang dah selaras dengan baik. Panduan ni terokai beza antara perubahan yang berkhidmat utk ekosistem dan perubahan yang berkhidmat utk kegelisahan penjaga."
+      }
+    },
+    "closing_cta": {
+      "intro_italic": "Panduan ini tumbuh drpd Aquatic Rhythm Alignment (ARA) — cara memahami tangki ikut fasa, ritma, dan kapasiti ekologi berbanding senarai semak produk.",
+      "btn_framework": "Terokai rangka kerja →",
+      "btn_companion": "Kenali Rhyssa →",
+      "btn_tools": "Makmal &amp; alat →",
+      "kofi_note": "Kalau panduan ni membantu ritma anda, sumbangan pilihan bantu danai bacaan dan alat baharu — semua di sini kekal percuma.",
+      "kofi_link": "Sokong di Ko-fi"
+    }
   }
 }

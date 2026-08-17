@@ -471,6 +471,134 @@ def build_about(h, lang, u):
     return h
 
 
+def article_meta_tags(lang, slug):
+    """(level_text, modules_time_text) pulled from the article's OWN already-
+    shipped translations/<lang>/<slug>.json — reused verbatim rather than
+    retranslated, so the reading-index badge can never drift from what the
+    article itself displays. Field names in the JSON are historically
+    mislabeled (metaTime actually holds the level text, metaLevel actually
+    holds the duration text) — this mirrors the EXACT mapping build-i18n.mjs
+    uses to fill the article's own <div class="art-intro-meta"> spans."""
+    p = TRANS_DIR / lang / f"{slug}.json"
+    d = json.loads(p.read_text(encoding="utf-8"))
+    intro = d["intro"]
+    level = intro.get("metaTime", "")
+    modules_time = f'{intro.get("metaModules", "")} · {intro.get("metaLevel", "")}'
+    return level, modules_time
+
+
+def build_reading(h, lang, u):
+    x = u["reading"]
+    hdr = x["header"]
+    misc = x["misc"]
+
+    h = replace_once(h, r'(<span class="ey">)Reading(<\/span>)',
+                      lambda m: m.group(1) + hdr["ey"] + m.group(2), "reading ey")
+    h = replace_once(h, r'(<h1 class="dlg rd-reading-h1"[^>]*>)[\s\S]*?(<\/h1>)',
+                      lambda m: m.group(1) + hdr["h1"] + m.group(2), "reading h1")
+    h = replace_once(h, r'(<p class="bt sr d1"[^>]*>)[\s\S]*?(<\/p>)',
+                      lambda m: m.group(1) + hdr["sub1"] + m.group(2), "reading sub1")
+    h = replace_once(h,
+        r'(<p class="bt sr d2"[^>]*>)Ecology and behaviour in plain language · keeper rhythm and ARA\. '
+        r'(<a href="/tools"[^>]*>)Labs &amp; tools(<\/a>) for simulators live on their own tab\.(<\/p>)',
+        lambda m: m.group(1) + hdr["sub2_pre"] + m.group(2) + hdr["sub2_link"] + m.group(3) + hdr["sub2_post"] + m.group(4),
+        "reading sub2")
+
+    cat_labels = iter([c["label"] for c in x["categories"]])
+    cat_descs = iter([c["desc"] for c in x["categories"]])
+    h = re.sub(r'(<span class="rd-cat-label">)[^<]*(<\/span>)',
+               lambda m: m.group(1) + next(cat_labels) + m.group(2), h)
+    h = re.sub(r'(<p class="rd-cat-desc">)[^<]*(<\/p>)',
+               lambda m: m.group(1) + next(cat_descs) + m.group(2), h)
+
+    # Cards — split into individual per-card blocks (each has a unique href,
+    # so no cross-card collision risk like the earlier terms/privacy bug) and
+    # rebuild each one independently.
+    parts = re.split(r'(?=<div class="rd-card-panel")', h)
+    for i, block in enumerate(parts):
+        href_m = re.search(r'href="/articles/([a-z0-9-]+)"', block)
+        if not href_m:
+            continue
+        slug = href_m.group(1)
+        card = x["cards"].get(slug)
+        if not card:
+            print(f"  WARNING: no reading-card translation for slug {slug}", file=sys.stderr)
+            continue
+
+        if slug == "know-your-rhythm":
+            level, modules_time = card["level_manual"], None
+        else:
+            level, modules_time = article_meta_tags(lang, slug)
+        if slug == "fish-gasping-surface" and misc["urgent_tag"] not in level:
+            # The English source appends "· Urgent" only in pg-reading's own
+            # markup (the article's own meta tag is plain "All levels"). At
+            # least one language's article JSON (ja) already bakes an urgent
+            # marker into its own metaTime field independently — guard
+            # against double-appending in that case.
+            level = f'{level} · {misc["urgent_tag"]}'
+
+        block = replace_once(block, r'(rd-tag-level">)[^<]*(<\/span>)',
+                              lambda m: m.group(1) + level + m.group(2), f"{slug} level tag")
+        if modules_time is not None:
+            block = replace_once(block, r'(<span class="rd-tag">)[^<]*(<\/span>)',
+                                  lambda m: m.group(1) + modules_time + m.group(2), f"{slug} modules/time tag")
+        else:
+            block = replace_once(block, r'(<span class="rd-tag">)[^<]*(<\/span>)',
+                                  lambda m: m.group(1) + card["meta_manual"] + m.group(2), f"{slug} manual meta tag")
+        if 'rd-tag-int">' in block:
+            block = replace_once(block, r'(rd-tag-int">)[^<]*(<\/span>)',
+                                  lambda m: m.group(1) + misc["interactive_tag"] + m.group(2), f"{slug} interactive tag")
+
+        block = replace_once(block, r'(rd-card-title">)[\s\S]*?(<\/h2>)',
+                              lambda m: m.group(1) + card["title"] + m.group(2), f"{slug} title")
+        block = replace_once(block, r'(rd-card-desc-text">)[\s\S]*?(<\/p>)',
+                              lambda m: m.group(1) + card["desc"] + m.group(2), f"{slug} desc")
+        if "extra_cta" in card:
+            block = replace_once(block, r'(rd-card-cta">)[^<]*(<\/span>)',
+                                  lambda m: m.group(1) + card["extra_cta"] + m.group(2), f"{slug} extra cta")
+
+        parts[i] = block
+    h = "".join(parts)
+
+    # Closing CTA panel (ARA blurb + 3 buttons + Ko-fi note) between the last
+    # card and the footer.
+    cc = x["closing_cta"]
+    h = replace_once(h,
+        r'(font-weight:300;color:rgba\(255,255,255,\.52\);line-height:1\.95;margin-bottom:1\.8rem">)'
+        r'These guides grow out of Aquatic Rhythm Alignment \(ARA\) — a way to read tanks by phase, '
+        r'rhythm, and ecological capacity instead of product checklists\.(<\/p>)',
+        lambda m: m.group(1) + cc["intro_italic"] + m.group(2), "closing_cta intro")
+    h = replace_once(h, r'(href="/articles/ara-full-framework"[^>]*>)Explore the framework →(<\/a>)',
+                      lambda m: m.group(1) + cc["btn_framework"] + m.group(2), "closing_cta btn_framework")
+    h = replace_once(h, r'(href="/companion"[^>]*>)Meet Rhyssa →(<\/a>)',
+                      lambda m: m.group(1) + cc["btn_companion"] + m.group(2), "closing_cta btn_companion")
+    h = replace_once(h, r'(href="/tools"[^>]*>)Labs &amp; tools →(<\/a>)',
+                      lambda m: m.group(1) + cc["btn_tools"] + m.group(2), "closing_cta btn_tools")
+    h = replace_once(h,
+        r'(<p class="rd-kofi-note sr">)If these guides help your rhythm, optional tips help fund new reading and tools — everything here stays free\. '
+        r'(<a href="https://ko-fi\.com/aquaticrhythm"[^>]*>)Support on Ko-fi(<\/a><\/p>)',
+        lambda m: m.group(1) + cc["kofi_note"] + " " + m.group(2) + cc["kofi_link"] + m.group(3),
+        "closing_cta kofi note")
+
+    # "Reading" self-link + hidden crawler-discovery link block (identical
+    # pattern/purpose to pg-home's .seo-links — see build_home() above).
+    home = u["home"]
+    h = h.replace('<a href="/reading">Reading — Aquarium Guides</a>',
+                  f'<a href="/{lang}/reading">{home["tile1_tag"]} — {home["tile1_h3"]}</a>')
+
+    def seo_link_sub(m):
+        slug = m.group(1)
+        text = m.group(2)
+        title = ready_article_title(lang, slug)
+        if title is None:
+            return m.group(0)
+        return f'<a href="/{lang}/articles/{slug}">{title}</a>'
+
+    h = re.sub(r'<a href="/articles/([a-z0-9-]+)">([^<]*)</a>', seo_link_sub, h)
+
+    return h
+
+
 def build_shared_footer(h, lang, u):
     """Footer tagline + subfooter labels appear identically in every pg-* section
     (including the still-English pg-reading/pg-tools/pg-journal/pg-tank-log)."""
@@ -548,6 +676,7 @@ def main():
         h = apply_scoped(h, "pg-terms", "pg-privacy", build_terms, lang, u, "terms")
         h = apply_scoped(h, "pg-privacy", "pg-about", build_privacy, lang, u, "privacy")
         h = apply_scoped(h, "pg-about", "pg-reading", build_about, lang, u, "about")
+        h = apply_scoped(h, "pg-reading", "pg-tools", build_reading, lang, u, "reading")
         h = build_shared_footer(h, lang, u)
         out_dir = ROOT / lang
         out_dir.mkdir(exist_ok=True)

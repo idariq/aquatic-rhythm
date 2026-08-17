@@ -149,5 +149,150 @@
     "kofi_p": "Jika proyek ini bermanfaat, donasi opsional di Ko-fi membantu menutup biaya hosting dan waktu untuk membuat panduan serta alat. Tidak ada apa pun di sini yang berbayar; dukungan sepenuhnya pilihan Anda.",
     "kofi_cta": "Dukung di Ko-fi →",
     "final": "Proyek independen — masukan sangat diterima. Aquatic Rhythm tetap terbuka untuk direvisi selama ruang kehidupan dan akuarium hidup terus mengajarkan."
+  },
+  "reading": {
+    "header": {
+      "ey": "Bacaan",
+      "h1": "Baca sesuai<br><em style=\"font-style:italic;color:rgba(124,168,156,.78)\">ritme Anda sendiri.</em>",
+      "sub1": "Panduan ekologi singkat — dipecah menjadi blok-blok kecil agar Anda bisa membaca di ponsel, berhenti sejenak, lalu lanjut lagi. Bahasa sederhana dulu; nama Latin hanya bila membantu.",
+      "sub2_pre": "Ekologi dan perilaku dalam bahasa sederhana · keeper rhythm dan ARA. ",
+      "sub2_link": "Lab &amp; alat",
+      "sub2_post": " untuk simulator ada di tab sendiri."
+    },
+    "misc": {
+      "interactive_tag": "Interaktif",
+      "urgent_tag": "Darurat"
+    },
+    "categories": [
+      {
+        "label": "Membaca akuarium",
+        "desc": "Apa yang air, ikan, tanaman, dan biologi coba sampaikan kepada Anda — sebelum masalah terlihat."
+      },
+      {
+        "label": "Praktik penjaga",
+        "desc": "Ritme, kapasitas, dan hubungan jujur antara penjaga dan akuarium."
+      }
+    ],
+    "cards": {
+      "new-tank-syndrome": {
+        "title": "Sindrom Tangki Baru<br><em>Apa yang sebenarnya terjadi dan mengapa menunggu adalah jawaban yang tepat</em>",
+        "desc": "Air keruh, ikan lesu, amonia meningkat — panduan santai menyusuri siklus nitrogen dan mengapa \"berbuat lebih banyak\" justru sering menekan biologi tangki."
+      },
+      "cycled-tank-problems": {
+        "title": "Tangki yang Sudah Cycle<br><em>Bukan tangki yang selesai.</em>",
+        "desc": "Siklusnya sudah selesai, tapi masalah terus berulang. Perawatan filter, biologi nitrat, penekan dominan, dan belajar membaca apa yang ikan Anda coba sampaikan."
+      },
+      "why-is-my-aquarium-water-cloudy": {
+        "title": "Kenapa Air Akuarium Saya Keruh?<br><em>Ketika air berubah, akuarium sedang bicara.</em>",
+        "desc": "Kabut putih, semburat hijau, corak kuning — panduan membaca arti tiap jenis air keruh, dan apa kata ARA soal merespons tanpa panik."
+      },
+      "how-often-water-changes": {
+        "title": "Seberapa Sering Harus Ganti Air?<br><em>Ritme dulu. Frekuensi mengikuti.</em>",
+        "desc": "Tidak ada jawaban universal — hanya tinjauan jujur pada keeper rhythm Anda, fase tangki Anda, dan apa arti sebenarnya kesinambungan yang koheren bagi sistem hidup."
+      },
+      "fish-hiding-what-does-it-mean": {
+        "title": "Ikan Saya Bersembunyi — Apa Artinya?<br><em>Perilaku ikan adalah Livestock Rhythm yang sedang bicara.</em>",
+        "desc": "Sebelum Anda menguji air atau mengubah apa pun, baca dulu sinyalnya. Ikan yang bersembunyi di sudut sedang menunjukkan sesuatu yang tidak bisa ditunjukkan alat uji Anda."
+      },
+      "fish-keep-dying-new-tank": {
+        "title": "Kenapa Ikan Saya Terus Mati di Tangki Baru?<br><em>Minggu-minggu pertama adalah bagian tersulit dari apa yang sedang Anda bangun.</em>",
+        "desc": "Kehilangan ikan di awal terasa seperti kegagalan. Hampir tidak pernah begitu. Apa yang sebenarnya terjadi di tangki baru, apa yang sejak awal di luar kendali Anda, dan cara melangkah maju."
+      },
+      "algae-in-aquarium": {
+        "title": "Alga di Akuarium Saya<br><em>Apa yang sebenarnya ia sampaikan.</em>",
+        "desc": "Alga bukan masalahnya — ia adalah bacaannya. Jenis yang berbeda menandakan ketidakselarasan Environmental Rhythm yang berbeda. Pelajari cara mengenali dan menyelaraskan, bukan sekadar memberantas."
+      },
+      "perfect-parameters-fish-dying": {
+        "title": "Ikan Saya Sekarat — Tapi Air Saya Terlihat Baik<br><em>Alat uji hanya mengukur satu lapisan. Ikan Anda membaca semuanya.</em>",
+        "desc": "Ketika amonia nol dan ikan masih kesulitan, jawabannya hampir selalu ada pada apa yang tidak diukur alat uji. Panduan tentang penekan dominan dan membaca Livestock Rhythm."
+      },
+      "betta-fish-behaviour": {
+        "title": "Perilaku Ikan Betta<br><em>Apa yang Betta Anda sampaikan.</em>",
+        "desc": "Betta adalah ikan paling mudah dibaca dalam hobi ini. Tidak aktif, warna memudar, bernapas di permukaan — masing-masing adalah sinyal Livestock Rhythm dengan makna spesifik, sebelum menjadi mendesak."
+      },
+      "aquarium-plants-not-growing": {
+        "title": "Kenapa Tanaman Akuarium Saya Tidak Tumbuh?<br><em>Tanaman membaca lingkungan sebelum Anda.</em>",
+        "desc": "Meleleh, menguning, alga di daun — tanaman gagal sebelum hasil uji air menunjukkan apa pun. Panduan membaca apa yang sebenarnya direspons tanaman Anda, dan menyelaraskan setup Anda dengan apa yang benar-benar bisa didukungnya."
+      },
+      "shrimp-dying-aquarium": {
+        "title": "Kenapa Udang Saya Mati?<br><em>Udang tidak gagal mendadak. Mereka hanyut, perlahan-lahan, hingga berhenti.</em>",
+        "desc": "Udang adalah pembaca Water Rhythm paling sensitif dalam hobi ini. Kenaikan TDS perlahan, fluktuasi suhu, jejak tembaga — semuanya menandakan pergeseran jauh sebelum alat uji Anda menunjukkannya."
+      },
+      "low-tech-planted-tank": {
+        "title": "Cara Memulai Tangki Bertanaman Low-Tech<br><em>Low-tech bukan pilihan hemat. Ia pilihan yang jujur.</em>",
+        "desc": "Tangki bertanaman low-tech berhasil ketika sesuai dengan ritme nyata penjaganya — bukan versi ideal yang dibayangkan. Pemilihan tanaman, konsistensi cahaya, dan memulai kecil sebelum berkembang."
+      },
+      "community-fish-tank": {
+        "title": "Tangki Ikan Komunitas<br><em>Siapa yang sebenarnya cocok.</em>",
+        "desc": "Tabel kompatibilitas memberi tahu ikan mana yang tidak akan saling membunuh. Tabel itu tidak memberi tahu ikan mana yang akan saling menekan secara perlahan. Panduan membaca dinamika komunitas melalui Livestock Rhythm."
+      },
+      "when-is-tank-ready-for-fish": {
+        "title": "Cara Tahu Kapan Tangki Anda Siap untuk Ikan<br><em>\"Cycled\" adalah sebuah angka. Siap adalah hal lain.</em>",
+        "desc": "Amonia dan nitrit nol berarti siklusnya ada — bukan berarti tangkinya siap. Panduan membaca transisi ke fase Berkembang dan memilih ikan pertama yang tepat."
+      },
+      "ich-keeps-coming-back": {
+        "title": "Ich Terus Kembali<br><em>Mengobati ich tidak sama dengan memahami penyebabnya.</em>",
+        "desc": "Ich yang berulang adalah sinyal Livestock Rhythm, bukan kegagalan pengobatan. Parasit itu kembali karena tangki kembali ke kondisi yang sama yang menekan ikan sejak awal."
+      },
+      "overfeeding-aquarium": {
+        "title": "Pemberian Makan Berlebihan dan Beban Tersembunyi Tangki<br><em>Kebanyakan tangki bukan kurang makan. Kebanyakan tangki kelebihan makan.</em>",
+        "desc": "Pemberian makan berlebihan adalah penyebab tersembunyi di balik sebagian besar masalah tangki — nitrat tinggi, air keruh, alga, lonjakan amonia. Panduan ini menjelaskan bagaimana kelebihan makanan berubah menjadi kelebihan kimia, dan bagaimana mengurangi beban organik sering menjadi cara paling sederhana untuk menstabilkan tangki."
+      },
+      "aquarium-filter-maintenance": {
+        "title": "Filter Anda Bukan Seperti yang Anda Kira<br><em>Membersihkannya dengan cara yang salah lebih buruk daripada tidak membersihkannya sama sekali.</em>",
+        "desc": "Filter bukan sekadar perangkap kotoran — ia adalah rumah utama bagi bakteri yang membuat tangki bisa cycling. Panduan ini menjelaskan apa yang hidup di dalam filter Anda, kapan dan bagaimana membersihkannya dengan aman, dan kenapa membilasnya sampai bersih dengan air keran adalah salah satu hal paling merusak yang bisa dilakukan seorang penjaga."
+      },
+      "fish-gasping-surface": {
+        "title": "Ikan Megap-megap di Permukaan<br><em>Tangki kehabisan sesuatu. Pertanyaannya, apa.</em>",
+        "desc": "Megap-megap di permukaan adalah salah satu sinyal darurat paling jelas yang bisa diberikan sebuah tangki — tapi gejala yang sama bisa punya banyak penyebab, dan masing-masing butuh respons berbeda. Panduan ini membantu Anda membaca sinyal-sinyal lain sebelum bertindak."
+      },
+      "adding-new-fish": {
+        "title": "Menambahkan Ikan Baru<br><em>Dua minggu pertama adalah gangguan. Itu normal.</em>",
+        "desc": "Setiap kedatangan ikan baru mengganggu tangki yang stabil. Panduan ini menjelaskan apa yang terjadi pada ikan baru maupun ekosistem yang sudah ada selama jendela gangguan itu — dan cara membedakan ketidakstabilan yang wajar dari sesuatu yang butuh intervensi."
+      },
+      "nitrate-keeps-rising": {
+        "title": "Kenapa Nitrat Terus Naik<br><em>Tangki yang sudah cycle bukan tangki yang seimbang.</em>",
+        "desc": "Sebuah tangki bisa sudah sepenuhnya cycle dan tetap menumpuk nitrat lebih cepat daripada yang bisa dibersihkan oleh pergantian air. Panduan ini menjelaskan dari mana penumpukan itu berasal, apa yang ditandakannya sebagai pola Chemical Rhythm, dan apa yang benar-benar bisa mengubahnya — lebih dari sekadar mengganti air lebih sering."
+      },
+      "know-your-rhythm": {
+        "title": "Kenali Ritme Anda<br><em>Sebelum Anda memilih tangki.</em>",
+        "desc": "Tujuh pertanyaan sederhana tentang bagaimana Anda sebenarnya merawat tangki — sebelum volume, lampu, atau daftar stok.",
+        "extra_cta": "Mulai refleksi →",
+        "level_manual": "Semua level",
+        "meta_manual": "7 pertanyaan"
+      },
+      "caring-without-guilt": {
+        "title": "Merawat Tanpa Rasa Bersalah<br><em>Ketika pikiran penjaga adalah bagian dari ekosistem.</em>",
+        "desc": "Kenapa rasa bersalah membuat tangki makin buruk — dan apa kata ARA tentang hubungan sebenarnya Anda dengan sistem yang Anda rawat."
+      },
+      "aquarium-maintenance-routine": {
+        "title": "Cara Membangun Rutinitas Akuarium<br><em>Yang benar-benar sesuai dengan hidup Anda.</em>",
+        "desc": "Jadwal perawatan generik gagal karena mengabaikan keeper rhythm. Panduan ini membantu Anda menemukan pola yang sesuai dengan cara Anda sebenarnya merawat tangki — bukan cara yang Anda bayangkan akan Anda lakukan."
+      },
+      "when-hobby-stops-feeling-good": {
+        "title": "Ketika Hobi Ini Berhenti Terasa Menyenangkan<br><em>Burnout dalam memelihara ikan itu nyata. Tidak ada yang membicarakannya secara jujur.</em>",
+        "desc": "Beban perawatan, kesedihan karena kehilangan, rasa bersalah karena merasa belum cukup berbuat. Tiga jalan jujur: merancang ulang, menyederhanakan, atau berhenti dengan bermartabat — tak satu pun dari itu kegagalan."
+      },
+      "tank-crash-recovery": {
+        "title": "Ketika Tangki Crash<br><em>Apa yang harus dilakukan, apa yang harus dirasakan, dan apa yang harus diputuskan.</em>",
+        "desc": "Crash adalah kondisi darurat sekaligus kehilangan pada saat yang sama. Panduan ini membahas triase jam pertama, cara menilai apakah tangki bisa pulih, dan cara memproses apa yang terjadi — memperlakukan crash sebagai informasi, bukan kegagalan."
+      },
+      "aquarium-travel-vacation": {
+        "title": "Merawat Tangki Saat Anda Bepergian<br><em>Tangki yang selaras dengan baik lebih tangguh dari yang Anda kira.</em>",
+        "desc": "Sebagian besar kecemasan penjaga soal bepergian adalah tentang apa yang bisa salah selama mereka tidak ada. Panduan ini menjelaskan apa yang sebenarnya dibutuhkan tangki yang stabil ketika penjaganya pergi — dan kenapa sistem yang selaras bertahan seminggu tanpa intervensi lebih andal daripada yang dibayangkan kebanyakan penjaga."
+      },
+      "aquarium-not-a-project": {
+        "title": "Akuarium Bukan Sebuah Proyek<br><em>Tahu kapan harus berhenti menyempurnakan adalah bagian dari praktiknya.</em>",
+        "desc": "Dorongan untuk meningkatkan, menambah, dan mengoptimalkan adalah bagian dari menjadi seorang penjaga — tapi itu juga bisa jadi hal yang paling mengganggu tangki yang sudah selaras dengan baik. Panduan ini menelusuri perbedaan antara perubahan yang melayani ekosistem dan perubahan yang melayani kegelisahan penjaga."
+      }
+    },
+    "closing_cta": {
+      "intro_italic": "Panduan ini tumbuh dari Aquatic Rhythm Alignment (ARA) — cara membaca akuarium berdasarkan fase, ritme, dan kapasitas ekologi, bukan daftar periksa produk.",
+      "btn_framework": "Jelajahi kerangka kerja →",
+      "btn_companion": "Kenalan dengan Rhyssa →",
+      "btn_tools": "Lab &amp; alat →",
+      "kofi_note": "Jika panduan ini membantu ritme Anda, sumbangan opsional membantu mendanai bacaan dan alat baru — semuanya di sini tetap gratis.",
+      "kofi_link": "Dukung di Ko-fi"
+    }
   }
 }

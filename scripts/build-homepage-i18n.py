@@ -599,6 +599,68 @@ def build_reading(h, lang, u):
     return h
 
 
+def build_tools(h, lang, u):
+    """pg-tools is a small static landing page linking OUT to 3 interactive
+    tool pages (tank-simulator, tank-builder, community-stress-lab) — none of
+    which are in the "ready" translated-article set, so their hrefs/JS stay
+    English (matching the same policy already applied to pg-home/pg-reading's
+    links to these same 3 pages). The tool pages' own interactive JS
+    (community-stress-lab.js etc.) is NOT touched by this function at all —
+    it lives on those separate pages, not embedded here."""
+    x = u["tools"]
+
+    h = replace_once(h, r'(<span class="ey">)Labs &amp; Tools(<\/span>)',
+                      lambda m: m.group(1) + x["ey"] + m.group(2), "tools ey")
+    h = replace_once(h, r'(<h1 class="dlg"[^>]*>)Try it\.<br>[\s\S]*?(<\/h1>)',
+                      lambda m: m.group(1) + x["h1"] + m.group(2), "tools h1")
+    h = replace_once(h, r'(<p class="bt sr d1"[^>]*>)[\s\S]*?(<\/p>)',
+                      lambda m: m.group(1) + x["sub"] + m.group(2), "tools sub")
+
+    # Cards — scope each replacement to its OWN card block (bounded by its
+    # unique href, up to the next tool-card's <a> or end of the grid). An
+    # earlier version used unscoped title/desc/cta regexes here: since the
+    # pattern doesn't care about the text content between the tags, an
+    # already-translated slot keeps matching just as well as an untouched
+    # one, so a plain count=1 replace_once always re-hits card 1's slot on
+    # every loop iteration instead of advancing to the next card. Verified
+    # this actually happened (card 1 ended up overwritten 3x with the last
+    # card's title; cards 2 and 3 stayed raw English) before this fix.
+    cards_meta = [(1, "tank-simulator"), (2, "tank-builder"), (3, "community-stress-lab")]
+    for i, (n, slug) in enumerate(cards_meta):
+        # Recompute positions against the CURRENT (possibly already-edited)
+        # h each iteration — hrefs never change, but everything after an
+        # edited card shifts, so stale precomputed offsets would corrupt
+        # every card after the first.
+        start = h.find(f'href="/articles/{slug}"')
+        if i + 1 < len(cards_meta):
+            end = h.find(f'href="/articles/{cards_meta[i + 1][1]}"')
+        else:
+            end = h.find('</div>\n\n      </div>', start)
+        block = h[start:end]
+
+        block = replace_once(block, r'(tool-card-tag">)[^<]*(<\/span>)',
+                              lambda m, n=n: m.group(1) + x[f"card{n}_tag"] + m.group(2), f"tools card{n} tag")
+        block = replace_once(block, r'(tool-card-title">)[^<]*(<\/h2>)',
+                              lambda m, n=n: m.group(1) + x[f"card{n}_title"] + m.group(2), f"tools card{n} title")
+        block = replace_once(block, r'(tool-card-desc">)[^<]*(<\/p>)',
+                              lambda m, n=n: m.group(1) + x[f"card{n}_desc"] + m.group(2), f"tools card{n} desc")
+        block = replace_once(block, r'(tool-card-cta">)[^<]*(<\/span>)',
+                              lambda m, n=n: m.group(1) + x[f"card{n}_cta"] + m.group(2), f"tools card{n} cta")
+
+        h = h[:start] + block + h[end:]
+
+    h = replace_once(h,
+        r'(font-size:\.94rem;color:rgba\(255,255,255,\.38\);line-height:1\.9">)'
+        r'All tools grow from ARA — Aquatic Rhythm Alignment\. They simulate and plan, but they do not replace observation\.(<\/p>)',
+        lambda m: m.group(1) + x["closing_note"] + m.group(2), "tools closing note")
+    h = replace_once(h, r'(href="/articles/ara-full-framework"[^>]*>)Read the ARA framework →(<\/a>)',
+                      lambda m: m.group(1) + x["closing_link"] + m.group(2), "tools closing link")
+    h = replace_once(h, r'(<p>)Labs take steady time to build\.[\s\S]*?maintained\.(<\/p>)',
+                      lambda m: m.group(1) + x["kofi_hint"] + m.group(2), "tools kofi hint")
+
+    return h
+
+
 def build_shared_footer(h, lang, u):
     """Footer tagline + subfooter labels appear identically in every pg-* section
     (including the still-English pg-reading/pg-tools/pg-journal/pg-tank-log)."""
@@ -677,6 +739,7 @@ def main():
         h = apply_scoped(h, "pg-privacy", "pg-about", build_privacy, lang, u, "privacy")
         h = apply_scoped(h, "pg-about", "pg-reading", build_about, lang, u, "about")
         h = apply_scoped(h, "pg-reading", "pg-tools", build_reading, lang, u, "reading")
+        h = apply_scoped(h, "pg-tools", "pg-journal", build_tools, lang, u, "tools")
         h = build_shared_footer(h, lang, u)
         out_dir = ROOT / lang
         out_dir.mkdir(exist_ok=True)

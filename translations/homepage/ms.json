@@ -294,5 +294,25 @@
       "kofi_note": "Kalau panduan ni membantu ritma anda, sumbangan pilihan bantu danai bacaan dan alat baharu — semua di sini kekal percuma.",
       "kofi_link": "Sokong di Ko-fi"
     }
+  },
+  "tools": {
+    "ey": "Makmal &amp; Alat",
+    "h1": "Cuba dahulu.<br><em style=\"font-style:italic;color:rgba(61,214,232,.78)\">Sebelum anda komited.</em>",
+    "sub": "Simulator dan perancang interaktif. Buat keputusan di skrin dahulu sebelum anda buat dlm akuarium sebenar.",
+    "card1_tag": "Simulator",
+    "card1_title": "Simulator Kitaran Tangki",
+    "card1_desc": "Lihat ammonia, nitrit, dan nitrat bertindak balas terhadap keputusan anda secara masa nyata. Pilih cycling tanpa ikan atau dengan ikan.",
+    "card1_cta": "Buka simulator →",
+    "card2_tag": "Makmal interaktif",
+    "card2_title": "Pembina Tangki",
+    "card2_desc": "Bina akuarium pertama anda di skrin. Tambah peralatan, terokai bagaimana setiap komponen mempengaruhi sistem, faham apa yang anda sebenarnya perlukan.",
+    "card2_cta": "Masuk makmal →",
+    "card3_tag": "Makmal interaktif",
+    "card3_title": "Makmal Tekanan Komuniti",
+    "card3_desc": "Peta tekanan bertindih bila mencampur spesies — suhu, kimia, ruang, pemangsaan, ketegangan sosial, dan keselamatan invertebrata. Bersifat pendidikan, bukan skor keserasian.",
+    "card3_cta": "Buka peta tekanan →",
+    "closing_note": "Semua alat tumbuh drpd ARA — Aquatic Rhythm Alignment. Ia simulasi dan rancang, tapi tak menggantikan pemerhatian.",
+    "closing_link": "Baca rangka kerja ARA →",
+    "kofi_hint": "Makmal ambil masa yang teliti utk dibina. Kalau alat di sini bantu anda elak kesilapan yang mahal, sumbangan pilihan bantu kekalkan penyelenggaraannya."
   }
 }

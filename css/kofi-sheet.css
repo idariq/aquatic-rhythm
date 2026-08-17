@@ -75,7 +75,7 @@ body.kofi-sheet-open {
 .kofi-sheet-title {
   display: block;
   font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
-  font-size: 1.05rem;
+  font-size:var(--fs-md-lg);
   font-weight: 300;
   color: rgba(255, 255, 255, 0.88);
   line-height: 1.2;
@@ -84,7 +84,7 @@ body.kofi-sheet-open {
 .kofi-sheet-sub {
   display: block;
   margin-top: 0.2rem;
-  font-size: 0.48rem;
+  font-size:var(--fs-3xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.28);
@@ -98,7 +98,7 @@ body.kofi-sheet-open {
 }
 
 .kofi-sheet-linkout {
-  font-size: 0.48rem;
+  font-size:var(--fs-3xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 600;
@@ -119,7 +119,7 @@ body.kofi-sheet-open {
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.04);
   color: rgba(255, 255, 255, 0.42);
-  font-size: 1rem;
+  font-size:var(--fs-base);
   line-height: 1;
   cursor: pointer;
   transition: color 0.2s, background 0.2s;

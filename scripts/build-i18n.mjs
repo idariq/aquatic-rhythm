@@ -277,16 +277,37 @@ function buildArticle(slug, lang, t) {
 
           const mbContent = rest.slice(mbIdx, endIdx);
           const openTag = mbOpenMatch[0];
-          const origParaCount = (mbContent.match(/<p>/g) || []).length;
-          const paras = mod.body.slice(bodyIdx, bodyIdx + origParaCount)
-            .map(p => `\n      <p>${p}</p>`).join('');
-          bodyIdx += origParaCount;
+
+          // A rhythm-grid may be nested inside mod-body (e.g. caring-without-guilt).
+          // Its own <p> tags are handled later by the dedicated rhythm-grid step, so
+          // split the mod-body content around it and count/fill paragraphs on each
+          // side separately — the grid block itself passes through untouched.
+          const rgMatch = mbContent.match(/<div class="rhythm-grid">[\s\S]*?<\/div>\s*<\/div>/);
+          let innerHtml;
+          if (rgMatch) {
+            const before = mbContent.slice(0, rgMatch.index);
+            const after = mbContent.slice(rgMatch.index + rgMatch[0].length);
+            const beforeCount = (before.match(/<p>/g) || []).length;
+            const afterCount = (after.match(/<p>/g) || []).length;
+            const beforeParas = mod.body.slice(bodyIdx, bodyIdx + beforeCount)
+              .map(p => `\n      <p>${p}</p>`).join('');
+            bodyIdx += beforeCount;
+            const afterParas = mod.body.slice(bodyIdx, bodyIdx + afterCount)
+              .map(p => `\n      <p>${p}</p>`).join('');
+            bodyIdx += afterCount;
+            innerHtml = `${beforeParas}\n      ${rgMatch[0]}${afterParas}`;
+          } else {
+            const origParaCount = (mbContent.match(/<p>/g) || []).length;
+            innerHtml = mod.body.slice(bodyIdx, bodyIdx + origParaCount)
+              .map(p => `\n      <p>${p}</p>`).join('');
+            bodyIdx += origParaCount;
+          }
 
           // Rescue any pq/hn elements nested inside this mod-body so the
           // later replacement steps can still translate them.
           const rescued = [...mbContent.matchAll(/<div class="(?:pq[^"]*|hn[^"]*)">[\s\S]*?<\/div>/g)]
             .map(m => m[0]).join('\n    ');
-          result += `${openTag}${paras}\n    </div>` + (rescued ? '\n    ' + rescued : '');
+          result += `${openTag}${innerHtml}\n    </div>` + (rescued ? '\n    ' + rescued : '');
           rest = rest.slice(endIdx);
         }
         c = result;
@@ -337,17 +358,31 @@ function buildArticle(slug, lang, t) {
         }
       }
 
-      // Rhythm grid cell names/descriptions (optional — used in cycled-tank-problems).
+      // Rhythm grid cell names/descriptions (optional — used in cycled-tank-problems
+      // and caring-without-guilt). Two HTML shapes exist in the wild:
+      //   (a) <div class="rhythm-cell-name">/<div class="rhythm-cell-desc">
+      //   (b) <div class="rhythm-cell"><h4>Name</h4><p>Desc</p></div>
       if (mod.rhythmGrid && mod.rhythmGrid.length) {
-        let nameIdx = 0, descIdx = 0;
-        c = c.replace(/(<div class="rhythm-cell-name">)[^<]*(<\/div>)/g, (_, a, b) => {
-          if (nameIdx < mod.rhythmGrid.length) return `${a}${mod.rhythmGrid[nameIdx++].name}${b}`;
-          return _;
-        });
-        c = c.replace(/(<div class="rhythm-cell-desc">)[^<]*(<\/div>)/g, (_, a, b) => {
-          if (descIdx < mod.rhythmGrid.length) return `${a}${mod.rhythmGrid[descIdx++].desc}${b}`;
-          return _;
-        });
+        if (/<div class="rhythm-cell-name">/.test(c)) {
+          let nameIdx = 0, descIdx = 0;
+          c = c.replace(/(<div class="rhythm-cell-name">)[^<]*(<\/div>)/g, (_, a, b) => {
+            if (nameIdx < mod.rhythmGrid.length) return `${a}${mod.rhythmGrid[nameIdx++].name}${b}`;
+            return _;
+          });
+          c = c.replace(/(<div class="rhythm-cell-desc">)[^<]*(<\/div>)/g, (_, a, b) => {
+            if (descIdx < mod.rhythmGrid.length) return `${a}${mod.rhythmGrid[descIdx++].desc}${b}`;
+            return _;
+          });
+        } else {
+          let cellIdx = 0;
+          c = c.replace(/(<div class="rhythm-cell">\s*<h4>)[^<]*(<\/h4>\s*<p>)[\s\S]*?(<\/p>)/g, (_, a, mid, z) => {
+            if (cellIdx < mod.rhythmGrid.length) {
+              const cell = mod.rhythmGrid[cellIdx++];
+              return `${a}${cell.name}${mid}${cell.desc}${z}`;
+            }
+            return _;
+          });
+        }
       }
 
       // Final CTA block (optional — e.g. mod-6 in cycled-tank-problems).

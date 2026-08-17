@@ -107,7 +107,9 @@ function extractArticle(html) {
           i++;
         }
         const mbContent = endIdx !== -1 ? rest.slice(mbIdx, endIdx) : rest.slice(mbIdx);
-        mod.body.push(...[...mbContent.matchAll(/<p>([\s\S]*?)<\/p>/g)].map(m => m[1]));
+        // Exclude any rhythm-grid's own <p> tags — handled separately below.
+        const mbContentNoGrid = mbContent.replace(/<div class="rhythm-grid">[\s\S]*?<\/div>\s*<\/div>/, '');
+        mod.body.push(...[...mbContentNoGrid.matchAll(/<p>([\s\S]*?)<\/p>/g)].map(m => m[1]));
         if (endIdx === -1) break;
         rest = rest.slice(endIdx);
       }
@@ -140,11 +142,16 @@ function extractArticle(html) {
       mod[`hintText${n}`] = h.text;
     });
 
-    // rhythm grid
+    // rhythm grid — two HTML shapes exist in the wild (see build-i18n.mjs comment).
     const names = [...content.matchAll(/<div class="rhythm-cell-name">([^<]*)<\/div>/g)].map(m => m[1]);
     const descs = [...content.matchAll(/<div class="rhythm-cell-desc">([^<]*)<\/div>/g)].map(m => m[1]);
     if (names.length) {
       mod.rhythmGrid = names.map((name, idx) => ({ name, desc: descs[idx] || '' }));
+    } else {
+      const cells = [...content.matchAll(/<div class="rhythm-cell">\s*<h4>([^<]*)<\/h4>\s*<p>([\s\S]*?)<\/p>/g)];
+      if (cells.length) {
+        mod.rhythmGrid = cells.map(m => ({ name: m[1], desc: m[2] }));
+      }
     }
 
     // final CTA

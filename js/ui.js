@@ -108,9 +108,73 @@
     'tank-log':  'Your aquarium\'s keeper log — ARA phase, rhythm, tank family, and private entries. Stored on your device.'
   };
 
+  /* Only routes actually translated so far (home/companion/about/privacy/terms —
+     see scripts/build-homepage-i18n.py phase 1). Untranslated routes (reading,
+     tools, journal, tank-log, ara) intentionally fall through to the English
+     titleMap/descMap above, since their in-page content is still English too —
+     title/lang should never claim a translation the content doesn't have. */
+  var titleMapByLang = {
+    ms: {
+      home: 'Aquatic Rhythm — Penjagaan Ekologi untuk Akuarium Kecil',
+      companion: 'Rhyssa — Rakan AI Akuarium',
+      about: 'Tentang — Aquatic Rhythm',
+      privacy: 'Dasar Privasi — Aquatic Rhythm',
+      terms: 'Terma Penggunaan — Aquatic Rhythm'
+    },
+    id: {
+      home: 'Aquatic Rhythm — Perawatan Ekologis untuk Akuarium Kecil',
+      companion: 'Rhyssa — Pendamping AI Akuarium',
+      about: 'Tentang — Aquatic Rhythm',
+      privacy: 'Kebijakan Privasi — Aquatic Rhythm',
+      terms: 'Syarat Penggunaan — Aquatic Rhythm'
+    },
+    ja: {
+      home: 'Aquatic Rhythm — 小型水槽のための生態学的なケア',
+      companion: 'Rhyssa — AI水槽コンパニオン',
+      about: 'サイトについて — Aquatic Rhythm',
+      privacy: 'プライバシーポリシー — Aquatic Rhythm',
+      terms: '利用規約 — Aquatic Rhythm'
+    }
+  };
+
+  var descMapByLang = {
+    ms: {
+      home: 'Aquatic Rhythm — panduan ekologi yang tenang untuk akuarium rumah. ARA (Aquatic Rhythm Alignment) ialah pemikiran di sebalik Panduan, alat, Rhyssa, dan log peribadi anda.',
+      companion: 'Rhyssa — rakan AI akuarium di Aquatic Rhythm, dibentuk oleh ARA. Berbual terus di laman ini; pautan ChatGPT pilihan bagi penjaga yang lebih suka.',
+      about: 'Kenapa Aquatic Rhythm wujud — daripada nasihat tidak konsisten kepada cara memahami akuarium kecil yang lebih tenang, berasaskan ekologi.',
+      privacy: 'Dasar Privasi untuk Aquatic Rhythm. Apa yang kami kumpul, bagaimana ia diuruskan, dan apa maknanya untuk anda.',
+      terms: 'Terma Penggunaan untuk Aquatic Rhythm dan Rhyssa. Ditulis dengan jelas, tanpa kerumitan yang tidak perlu.'
+    },
+    id: {
+      home: 'Aquatic Rhythm — panduan ekologi yang tenang untuk akuarium rumah. ARA (Aquatic Rhythm Alignment) adalah pemikiran di balik Panduan, alat, Rhyssa, dan jurnal pribadi Anda.',
+      companion: 'Rhyssa — pendamping AI akuarium di Aquatic Rhythm, dibentuk oleh ARA. Mengobrol langsung di situs ini; tautan ChatGPT opsional bagi yang lebih menyukainya.',
+      about: 'Mengapa Aquatic Rhythm ada — dari saran yang tidak konsisten menuju cara memahami akuarium kecil yang lebih tenang, berbasis ekologi.',
+      privacy: 'Kebijakan Privasi untuk Aquatic Rhythm. Apa yang kami kumpulkan, bagaimana itu ditangani, dan apa artinya bagi Anda.',
+      terms: 'Syarat Penggunaan untuk Aquatic Rhythm dan Rhyssa. Ditulis dengan jelas, tanpa kerumitan yang tidak perlu.'
+    },
+    ja: {
+      home: 'Aquatic Rhythm — 家庭用水槽のための落ち着いた生態学ガイド。ARA（Aquatic Rhythm Alignment）が、ガイド、ツール、Rhyssa、そしてあなたの個人記録の背後にある考え方。',
+      companion: 'Rhyssa — ARAによって形づくられた、Aquatic Rhythm上のAI水槽コンパニオン。このサイト内でチャットでき、希望者向けにChatGPTへのリンクもオプションで利用可能。',
+      about: 'Aquatic Rhythmが存在する理由 — ばらつきのあるアドバイスから、より落ち着いた生態学重視の小型水槽の読み解き方へ。',
+      privacy: 'Aquatic Rhythmのプライバシーポリシー。何を収集し、どう扱われ、あなたにとって何を意味するか。',
+      terms: 'Aquatic RhythmとRhyssaの利用規約。不要な複雑さを避け、平易に記述。'
+    }
+  };
+
+  var pageLang = document.documentElement.lang || 'en';
+
+  function localizedTitle(id) {
+    return (titleMapByLang[pageLang] && titleMapByLang[pageLang][id]) || titleMap[id];
+  }
+
+  function localizedDesc(id) {
+    return (descMapByLang[pageLang] && descMapByLang[pageLang][id]) || descMap[id];
+  }
+
   function updateMeta(id) {
     var desc = document.getElementById('meta-desc');
-    if (desc && descMap[id]) desc.setAttribute('content', descMap[id]);
+    var d = localizedDesc(id);
+    if (desc && d) desc.setAttribute('content', d);
   }
 
   function setMetaTag(selector, content) {
@@ -121,8 +185,8 @@
 
   /** Keeps og:* and twitter:* in sync with SPA route (crawlers and shares). */
   function updateSocialMeta(id) {
-    var title = titleMap[id];
-    var desc = descMap[id];
+    var title = localizedTitle(id);
+    var desc = localizedDesc(id);
     if (!title || !desc) return;
     var path = id === 'home' ? '/' : '/' + id;
     var url = 'https://aquaticrhythm.com' + path;
@@ -214,7 +278,7 @@
       initReadingAccordionTitles();
     }
 
-    if (titleMap[id]) document.title = titleMap[id];
+    if (localizedTitle(id)) document.title = localizedTitle(id);
     updateMeta(id);
     updateSocialMeta(id);
 
@@ -284,7 +348,7 @@
         t.classList.add('active');
         document.body.setAttribute('data-active-page', id);
         updateBottomNav(id);
-        if (titleMap[id]) document.title = titleMap[id];
+        if (localizedTitle(id)) document.title = localizedTitle(id);
         updateMeta(id);
         updateSocialMeta(id);
         try { history.replaceState({ page: id }, '', location.pathname); } catch (e) {}
@@ -292,7 +356,7 @@
         var can = document.querySelector('link[rel="canonical"]');
         if (can) can.setAttribute('href', 'https://aquaticrhythm.com' + path);
         if (typeof gtag !== 'undefined') {
-          gtag('event', 'page_view', { page_path: path, page_title: titleMap[id] || id });
+          gtag('event', 'page_view', { page_path: path, page_title: localizedTitle(id) || id });
         }
         if (window.__araModTick && id === 'ara') setTimeout(window.__araModTick, 120);
       }

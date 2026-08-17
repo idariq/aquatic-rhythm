@@ -12,7 +12,7 @@
         "ogDescription": "Membersihkannya dengan cara yang salah lebih teruk daripada tidak membersihkannya langsung. Ketahui cara baca dan jaga Biological Rhythm tank anda."
     },
     "intro": {
-        "eyebrow": "Bacaan · Biological Rhythm",
+        "eyebrow": "Pemula &amp; Pertengahan",
         "titleHtml": "Filter Anda Bukan<br><em>Apa yang Anda Fikir</em>",
         "subtitle": "Membersihkannya dengan cara yang salah lebih teruk daripada tidak membersihkannya langsung.",
         "texts": [
@@ -35,8 +35,6 @@
                 "Memahami ini mengubah maksud 'penyelenggaraan filter.' Anda bukan sekadar membersihkan mesin. Anda mengurus ekosistem hidup yang wujud di dalam plastik dan seramik. Keputusan yang anda buat tentang bila dan bagaimana untuk menyelenggarakannya sama ada memelihara ekosistem itu atau mengganggu ia."
             ],
             "pullQuote": "Filter bukan tempat air kotor pergi. Ia tempat bakteria hidup yang menjadikan tank boleh didiami.",
-            "hintLabel": null,
-            "hintText": null,
             "prevBtn": "← Intro",
             "nextBtn": "Kenapa air paip boleh rosakkan tank"
         },
@@ -49,10 +47,9 @@
                 "Kerosakan tidak selalu berlaku serta-merta. Kalau sebahagian koloni masih hidup, ia mungkin pulih dalam beberapa hari. Tapi dalam tempoh pemulihan itu, kapasiti pemprosesan filter dikurangkan. Ammonia dan nitrite naik, biasanya perlahan-lahan pada mulanya, kemudian lebih tajam apabila bakteria yang masih ada terbeban oleh pengeluaran sisa biasa.",
                 "Penjaga yang mengalami kerosakan selepas pembersihan filter selalunya mengaitkannya dengan pembersihan yang berlaku 'pada masa yang salah' atau dengan penyakit. Punca sebenarnya lebih mudah: air yang digunakan untuk pembersihan telah memusnahkan biologi. Penyelesaiannya sama mudah: sentiasa bilas filter media dalam air yang diambil dari tank semasa water change sesi tersebut. Air tank tidak berklorin, sesuai suhu, dan sudah mengandungi sebatian yang bakteria perlukan. Bilas lembut dalam baldi air tank membuang habuk yang terperangkap tanpa mengganggu koloni."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Biological Rhythm",
+            "hintLabel": "Filter tu hidup juga",
             "hintText": [
-                "Dalam ARA, Biological Rhythm merangkumi koloni bakteria dalam filter anda — ia sama-sama bahagian hidup tank seperti ikan dan pokok. Mengurus filter bermakna membaca keadaan koloni itu: bila ia ditubuhkan dan stabil, bila ia perlu diservis, dan jenis servis apa yang memelihara berbanding mengganggu ia."
+                "Koloni bakteria dlm filter anda sama-sama bahagian hidup tangki seperti ikan dan pokok. Mengurus filter bermakna membaca keadaan koloni itu: bila ia dah stabil, bila ia perlu diservis, dan jenis servis apa yang memelihara berbanding mengganggu ia."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Bila perlu dibersihkan — dan bila tidak perlu"
@@ -63,12 +60,10 @@
             "titleHtml": "Bila perlu dibersihkan —<br><em>dan bila tidak perlu.</em>",
             "body": [
                 "Masa pembersihan filter sama pentingnya dengan kaedahnya. Beberapa situasi menjadikan pembersihan filter lebih berisiko dari biasa: sejurus selepas menambah ikan baru (beban bakteria meningkat selama beberapa minggu sementara koloni menyesuaikan diri — pembersihan dalam tingkap ini membuang kapasiti pemprosesan tepat apabila lebih banyak diperlukan); semasa atau sejurus selepas rawatan penyakit (banyak ubat membunuh bakteria serta patogen — menambah pembersihan yang membuang lebih banyak kapasiti koloni menggandakan gangguan); semasa ketidakstabilan suhu (kadar pertumbuhan bakteria bergantung kepada suhu — tank yang mengalami isu heater atau perubahan suhu bermusim mungkin sudah mempunyai koloni yang tertekan).",
-                "Isyarat bahawa filter perlu diservis adalah pengurangan aliran (pam bekerja menentang media yang tersumbat) dan pemampatan span yang nampak. Ini adalah isyarat mekanikal, bukan biologi — koloni bakteria tidak mengumumkan bila ia perlu dibersihkan. Tapi filter yang mengalirkan air dengan bebas dan telah dipasang kurang dari tiga bulan hampir pasti tidak perlu dibersihkan lagi.",
+                "Isyarat filter perlu diservis: aliran berkurang (pam bekerja menentang media yang tersumbat) dan span yang nampak mampat. Ini isyarat mekanikal, bukan biologi — koloni bakteria tidak mengumumkan bila ia perlu dibersihkan. Tapi filter yang mengalirkan air dengan bebas dan telah dipasang kurang dari tiga bulan hampir pasti tidak perlu dibersihkan lagi.",
                 "Naluri untuk membersihkan kerana masa telah berlalu kurang berguna daripada membaca keadaan filter sebenar."
             ],
             "pullQuote": "Filter yang berfungsi — mengalirkan air dengan bebas, dalam tank yang stabil — sedang melakukan kerjanya. Desakan untuk membersihkannya kerana 'dah lama' adalah isyarat Keeper Rhythm, bukan isyarat tank.",
-            "hintLabel": null,
-            "hintText": null,
             "prevBtn": "← Kembali",
             "nextBtn": "Cara membersihkan tanpa rosakkan tank"
         },
@@ -81,10 +76,9 @@
                 "Kalau anda menggantikan media lama dengan media baru (span yang akhirnya reput, seramik yang pecah), jalankan media lama dan baru serentak selama empat hingga enam minggu sebelum membuang bahagian lama sepenuhnya. Media lama memasukkan bakteria ke yang baru. Membuang media lama serta-merta meninggalkan bahagian baru yang kosong dan filter anda dengan kapasiti yang jauh berkurangan.",
                 "Inilah juga sebabnya nasihat untuk 'gantikan cartridge filter setiap bulan' — biasa dalam arahan untuk filter hang-on berjenama — boleh mengdestabilkan tank yang sudah mantap. Cartridge itu adalah media biologi. Menggantikannya setiap bulan adalah cara perlahan untuk berulang kali mengcycle sebahagian tank."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Timing before Technique",
+            "hintLabel": "Masa lebih penting drpd teknik",
             "hintText": [
-                "Prinsip ARA tentang Timing before Technique terpakai secara langsung pada penyelenggaraan filter. Filter yang dibersihkan pada masa yang salah dengan teknik yang betul masih boleh rosakkan tank. Filter yang dibersihkan pada masa yang betul dengan teknik yang betul memelihara Biological Rhythm. Baca masanya dahulu."
+                "Ini relevan secara langsung pada penyelenggaraan filter: filter yang dibersihkan pada masa yang salah dengan teknik yang betul masih boleh rosakkan tangki. Filter yang dibersihkan pada masa yang betul dengan teknik yang betul memelihara koloni bakteria. Baca masanya dahulu."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Membaca keadaan filter"
@@ -94,38 +88,32 @@
             "tag": "Membaca keadaan filter",
             "titleHtml": "Membaca<br><em>keadaan filter.</em>",
             "body": [
-                "Filter yang sudah mantap dalam tank yang stabil mempunyai rupa dan rasa yang ciri: span berwarna perang dari penjajahan bakteria, media seramik mungkin mempunyai biofilm nipis, aliran kuat dan konsisten. Tiada satu pun daripada ini tanda filter kotor — ia tanda filter yang hidup. Warna perang itu adalah bakteria. Biofilm itu adalah biologi. Filter yang kelihatan seperti itu sedang berfungsi.",
+                "Filter yang sudah mantap dalam tank yang stabil mempunyai rupa dan rasa yang ciri: span berwarna coklat dari penjajahan bakteria, media seramik mungkin mempunyai biofilm nipis, aliran kuat dan konsisten. Tiada satu pun daripada ini tanda filter kotor — ia tanda filter yang hidup. Warna coklat itu bakteria. Biofilm itu biologi. Filter yang kelihatan seperti itu sedang berfungsi.",
                 "Situasi yang benar-benar memerlukan perhatian: aliran telah berkurangan dengan ketara dan span mampat di bawah tekanan menjadi jisim pepejal berbanding bergerak; tank telah dirawat dengan ubat yang membunuh bakteria (uji ammonia 24–48 jam selepas rawatan; kenaikan menunjukkan koloni terjejas); filter berjalan kering akibat kegagalan elektrik atau pam (memulakan semula filter yang berjalan kering mungkin memerlukan penubuhan semula koloni — uji setiap hari selama seminggu).",
                 "Di luar ini, tabiat filter yang paling berguna bukan kekerapan pembersihan — ia adalah pemerhatian. Perhatikan aliran. Perhatikan bacaan tank selepas sebarang penyelenggaraan. Beri biologi ruang untuk bekerja. Biological Rhythm lebih stabil daripada yang kebanyakan penjaga sedar, dan lebih rapuh daripada yang kebanyakan tabiat pembersihan ambil kira."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Infrastruktur Teknikal",
-            "hintText": [
-                "ARA mengenal pasti infrastruktur teknikal sebagai dimensi kapasiti keempat: sejauh mana automasi, sistem pemantauan, dan reka bentuk peralatan dapat menjalankan fungsi penjagaan rutin secara dipercayai. Peralatan yang difahami dan diselenggara dengan baik benar-benar meluaskan kapasiti penjaga. Namun, automasi yang dipasang tanpa pemahaman sebenar penjaga menjadi sumber ketidakselarasan — apabila sistem gagal secara senyap atau menyembunyikan isyarat, infrastruktur yang sepatutnya menyokong sistem menghalang penjaga daripada maklumat yang mereka perlukan."
-            ],
             "prevBtn": "← Kembali",
-            "nextBtn": null,
-            "hintLabel3": "ARA · Infrastruktur Teknikal",
-            "hintText3": [
-                "ARA mengenal pasti infrastruktur teknikal sebagai dimensi kapasiti keempat: sejauh mana automasi, sistem pemantauan, dan reka bentuk peralatan dapat melaksanakan fungsi penjagaan rutin secara boleh dipercayai. Peralatan yang difahami dengan baik dan diselenggara dengan betul memang meluaskan kapasiti penjaga. Namun, automasi yang dipasang tanpa pemahaman penjaga yang tulen menjadi sumber ketidakselarasan — apabila sistem gagal secara senyap atau menutup isyarat, infrastruktur yang sepatutnya menyokong sistem malah menghalang penjaga daripada maklumat yang mereka perlukan."
+            "hintLabel": "Bila penyelenggaraan jadi punca masalah",
+            "hintText": [
+                "Tangki yang crash lepas filter dibersihkan adalah salah satu pengalaman paling mengelirukan dalam hobi ini — anda dah buat penyelenggaraan, anda dah buat apa yang patut dibuat, tapi tangki jadi lebih teruk. Kekeliruan khusus ini selalunya cetuskan salah satu daripada dua tindak balas: terlalu berhati-hati (elak terus penyelenggaraan filter) atau berulang (bersihkan lagi, lebih kuat, cuba betulkan apa yang dirosakkan oleh pembersihan itu). Kedua-dua tindak balas ini datang daripada niat yang munasabah, tapi kedua-duanya sama-sama memanjangkan masalah. Biologi dalam filter tidak kelihatan, jadi mudah untuk anggap filter sebagai objek mekanikal berbanding objek hidup. Menyedari bahawa crash itu bukan bukti tindakan yang salah, tetapi ketidakpadanan masa atau kaedah, itulah yang buat pembersihan seterusnya berbeza."
+            ],
+            "hintLabel2": "Automasi lanjutkan keupayaan anda — jika anda faham",
+            "hintText2": [
+                "Automasi, sistem pemantauan, dan peralatan yang direka elok memang boleh tambah kapasiti seorang penjaga — tapi cuma kalau ia betul-betul boleh dipercayai buat kerja jagaan rutin itu. Peralatan yang difahami dan diselenggara dengan baik benar-benar meluaskan apa yang penjaga mampu sediakan. Namun automasi yang dipasang tanpa pemahaman sebenar jadi liabiliti — apabila sistem gagal secara senyap atau menyembunyikan isyarat, peralatan yang sepatutnya membantu malah menghalang anda daripada maklumat yang anda perlukan."
             ]
         }
     ],
     "relatedLinks": [
         {
-            "href": "/articles/new-tank-syndrome",
             "text": "New Tank Syndrome →"
         },
         {
-            "href": "/articles/cycled-tank-problems",
             "text": "Tank yang dah matang →"
         },
         {
-            "href": "/articles/nitrate-keeps-rising",
             "text": "Kenapa nitrate terus naik? →"
         },
         {
-            "href": "/articles/ara-full-framework",
             "text": "Framework ARA →"
         }
     ],

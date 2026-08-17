@@ -244,20 +244,22 @@ function buildArticle(slug, lang, t) {
       c = replaceOnce(c, /(<h[12] class="mod-title">)[\s\S]*?(<\/h[12]>)/,
         (_, a, b) => `${a}${mod.titleHtml}${b}`);
 
-      // mod-body paragraphs — replace ALL mod-body divs; translated content goes into
-      // the first one, subsequent divs (used for canvas context in some articles) are removed.
+      // mod-body paragraphs — a module may contain MULTIPLE mod-body divs (e.g. split
+      // around a rhythm-grid or a canvas visual). mod.body[] holds ALL paragraphs across
+      // every mod-body div in the module, in document order; each div is refilled with
+      // the next N paragraphs matching its ORIGINAL (English template) paragraph count,
+      // preserving the div's own opening tag (incl. any inline style/attrs) and position.
       // Uses depth-aware div tracking so nested divs inside mod-body (e.g. pq, hn, rhythm-grid)
       // are handled correctly and don't cause a lazy-regex to stop early.
-      // Any pq/hn elements found INSIDE mod-body are rescued and re-injected after the new
-      // mod-body so the subsequent pq/hn replacement steps can still find and translate them.
+      // Any pq/hn elements found INSIDE a mod-body are rescued and re-injected after it
+      // so the subsequent pq/hn replacement steps can still find and translate them.
       if (mod.body && mod.body.length) {
-        const paras = mod.body.map(p => `\n      <p>${p}</p>`).join('');
-        const newModBody = `<div class="mod-body">${paras}\n    </div>`;
-        let replaced = false;
         let result = '';
         let rest = c;
+        let bodyIdx = 0;
         while (rest.length > 0) {
-          const mbIdx = rest.indexOf('<div class="mod-body">');
+          const mbOpenMatch = rest.match(/<div class="mod-body"[^>]*>/);
+          const mbIdx = mbOpenMatch ? mbOpenMatch.index : -1;
           if (mbIdx === -1) { result += rest; break; }
           result += rest.slice(0, mbIdx);
           let depth = 0, i = mbIdx, endIdx = -1;
@@ -272,15 +274,19 @@ function buildArticle(slug, lang, t) {
             i++;
           }
           if (endIdx === -1) { result += rest.slice(mbIdx); break; }
-          if (!replaced) {
-            // Rescue any pq/hn elements nested inside this mod-body so the
-            // later replacement steps can still translate them.
-            const mbContent = rest.slice(mbIdx, endIdx);
-            const rescued = [...mbContent.matchAll(/<div class="(?:pq[^"]*|hn[^"]*)">[\s\S]*?<\/div>/g)]
-              .map(m => m[0]).join('\n    ');
-            result += newModBody + (rescued ? '\n    ' + rescued : '');
-            replaced = true;
-          }
+
+          const mbContent = rest.slice(mbIdx, endIdx);
+          const openTag = mbOpenMatch[0];
+          const origParaCount = (mbContent.match(/<p>/g) || []).length;
+          const paras = mod.body.slice(bodyIdx, bodyIdx + origParaCount)
+            .map(p => `\n      <p>${p}</p>`).join('');
+          bodyIdx += origParaCount;
+
+          // Rescue any pq/hn elements nested inside this mod-body so the
+          // later replacement steps can still translate them.
+          const rescued = [...mbContent.matchAll(/<div class="(?:pq[^"]*|hn[^"]*)">[\s\S]*?<\/div>/g)]
+            .map(m => m[0]).join('\n    ');
+          result += `${openTag}${paras}\n    </div>` + (rescued ? '\n    ' + rescued : '');
           rest = rest.slice(endIdx);
         }
         c = result;
@@ -386,8 +392,9 @@ function buildArticle(slug, lang, t) {
   });
 
   // ── 10. Article footer — scoped to art-footer to avoid touching nav links ──
+  // Some articles repeat an art-footer block per module, so replace ALL occurrences.
   if (t.footer) {
-    h = replaceOnce(h, /(<div class="art-footer">)([\s\S]*?)(<\/div>)/,
+    h = h.replace(/(<div class="art-footer">)([\s\S]*?)(<\/div>)/g,
       (_, open, inner, close) => {
         let f = inner;
         if (t.footer.allArticles) {

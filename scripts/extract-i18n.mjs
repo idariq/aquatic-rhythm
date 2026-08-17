@@ -1,188 +1,219 @@
 /**
- * Extracts translatable content from English article HTML into a JSON scaffold.
+ * Inverse of build-i18n.mjs's buildArticle(): extracts translation JSON
+ * fields back out of an already-localized article HTML file.
  *
  * Usage:
- *   node scripts/extract-i18n.mjs --slug adding-new-fish [--lang ms]
- *   node scripts/extract-i18n.mjs --all [--lang ms]
- *
- * Outputs translations/<lang>/<slug>.json
- * Existing files are NOT overwritten unless --force is passed.
+ *   node scripts/extract-i18n.mjs --lang ms --slug adding-new-fish
+ *   node scripts/extract-i18n.mjs --lang ms --all
+ *   node scripts/extract-i18n.mjs --all-langs
  */
-
 import fs from 'fs';
 import path from 'path';
 
-const ROOT = path.join(import.meta.dirname, '..');
-const ARTICLES_DIR = path.join(ROOT, 'articles');
-const TRANSLATIONS_DIR = path.join(ROOT, 'translations');
+const ROOT      = path.join(import.meta.dirname, '..');
+const TRANS_DIR = path.join(ROOT, 'translations');
+const LANGUAGES = ['ms', 'id', 'ja'];
 
-// Interactive tool files — skipped (handled separately when tools phase begins)
-const TOOL_SLUGS = new Set(['tank-builder', 'tank-simulator', 'community-stress-lab']);
-
-const args = process.argv.slice(2);
-const slugIdx = args.indexOf('--slug');
+const args    = process.argv.slice(2);
 const langIdx = args.indexOf('--lang');
+const slugIdx = args.indexOf('--slug');
+const langArg = langIdx !== -1 ? args[langIdx + 1] : undefined;
 const slugArg = slugIdx !== -1 ? args[slugIdx + 1] : undefined;
-const langArg = langIdx !== -1 ? args[langIdx + 1] : 'ms';
-const doAll = args.includes('--all');
-const force = args.includes('--force');
+const doAll   = args.includes('--all');
+const allLangs = args.includes('--all-langs');
 
-// ── Regex helpers ────────────────────────────────────────────────────────────
-
-function extract1(html, regex) {
-  const m = html.match(regex);
-  return m ? m[1].trim() : '';
+function getTranslatedSlugs(lang) {
+  const dir = path.join(TRANS_DIR, lang);
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .filter(f => f.endsWith('.json'))
+    .map(f => f.replace('.json', ''))
+    .filter(slug => {
+      try {
+        const t = JSON.parse(fs.readFileSync(path.join(dir, `${slug}.json`), 'utf8'));
+        return t._meta && t._meta.status === 'ready';
+      } catch { return false; }
+    });
 }
 
-function extractAll(html, regex) {
-  const results = [];
-  const g = new RegExp(regex.source, regex.flags.includes('g') ? regex.flags : regex.flags + 'g');
-  let m;
-  while ((m = g.exec(html)) !== null) results.push(m[1].trim());
-  return results;
+function firstMatch(html, re) {
+  const m = html.match(re);
+  return m ? m[1] : null;
 }
 
-// ── Article parser ────────────────────────────────────────────────────────────
+function extractArticle(html) {
+  const t = {};
 
-function parseArticle(html) {
-  // Head meta
-  const title = extract1(html, /<title>([^<]*)<\/title>/);
-  const description = extract1(html, /<meta name="description" content="([^"]*)"/);
-  const ogTitle = extract1(html, /<meta property="og:title" content="([^"]*)"/);
-  const ogDescription = extract1(html, /<meta property="og:description" content="([^"]*)"/);
+  // ── head ──
+  t.head = {
+    title:          firstMatch(html, /<title>([^<]*)<\/title>/),
+    description:    firstMatch(html, /<meta name="description" content="([^"]*)"/),
+    ogTitle:        firstMatch(html, /<meta property="og:title" content="([^"]*)"/),
+    ogDescription:  firstMatch(html, /<meta property="og:description" content="([^"]*)"/),
+  };
 
-  // Intro section
-  const eyebrow = extract1(html, /<span class="art-eyebrow">([^<]*)<\/span>/);
-  const titleHtml = extract1(html, /<h1 class="art-main-title">([\s\S]*?)<\/h1>/);
-  const subtitle = extract1(html, /<p class="art-intro-subtitle">([\s\S]*?)<\/p>/);
-  const texts = extractAll(html, /<p class="art-intro-text">([\s\S]*?)<\/p>/);
+  // ── intro ──
+  const intro = {};
+  intro.eyebrow  = firstMatch(html, /<span class="art-eyebrow">([^<]*)<\/span>/);
+  intro.titleHtml = firstMatch(html, /<h1 class="art-main-title">([\s\S]*?)<\/h1>/);
+  intro.subtitle  = firstMatch(html, /<p class="art-intro-subtitle">([\s\S]*?)<\/p>/);
 
-  // Meta spans (the three plain <span> elements inside art-intro-meta, not meta-dot spans)
-  const metaBlock = extract1(html, /<div class="art-intro-meta">([\s\S]*?)<\/div>/);
-  const metaSpans = [];
-  const metaSpanRx = /<span>([^<]*)<\/span>/g;
-  let ms;
-  while ((ms = metaSpanRx.exec(metaBlock)) !== null) metaSpans.push(ms[1].trim());
+  intro.texts = [...html.matchAll(/<p class="art-intro-text">([\s\S]*?)<\/p>/g)].map(m => m[1]);
 
-  // CTA button text (everything before the <span>→</span>)
-  const ctaM = html.match(/<button class="art-begin-btn"[^>]*>([^<]*)<span/);
-  const cta = ctaM ? ctaM[1].trim() : 'Start reading';
+  const metaBlock = firstMatch(html, /<div class="art-intro-meta">([\s\S]*?)<\/div>/);
+  if (metaBlock) {
+    const spans = [...metaBlock.matchAll(/<span>([^<]*)<\/span>/g)].map(m => m[1]);
+    intro.metaModules = spans[0] || null;
+    intro.metaTime     = spans[1] || null;
+    intro.metaLevel    = spans[2] || null;
+  }
 
-  // Module sections
+  const ctaMatch = html.match(/<button class="art-begin-btn"[^>]*>([^<]*)<span/);
+  intro.cta = ctaMatch ? ctaMatch[1].trim() : null;
+
+  t.intro = intro;
+
+  // ── modules ──
   const modules = [];
-  const sectionRx = /<section class="module" id="(mod-\d+)"[^>]*>([\s\S]*?)<\/section>/g;
-  let sm;
-  while ((sm = sectionRx.exec(html)) !== null) {
-    const [, id, content] = sm;
+  const moduleRe = /<section class="module" id="(mod-\d+)"[^>]*>([\s\S]*?)<\/section>/g;
+  let mm;
+  while ((mm = moduleRe.exec(html)) !== null) {
+    const [, id, content] = mm;
+    const mod = { id };
 
-    const tag = extract1(content, /<span class="mod-tag">([^<]*)<\/span>/);
-    // mod-1 uses <h1>, all others use <h2>
-    const modTitleHtml = extract1(content, /<h[12] class="mod-title">([\s\S]*?)<\/h[12]>/);
+    mod.tag = firstMatch(content, /<span class="mod-tag">([^<]*)<\/span>/);
+    mod.titleHtml = firstMatch(content, /<h[12] class="mod-title">([\s\S]*?)<\/h[12]>/);
 
-    // Body — directly-nested <p> inside mod-body (no nested divs in this element)
-    const bodyBlock = extract1(content, /<div class="mod-body">([\s\S]*?)<\/div>/);
-    const body = extractAll(bodyBlock, /<p>([\s\S]*?)<\/p>/);
-
-    // Pull quote (optional)
-    const pqM = content.match(/<div class="pq">\s*<p>([\s\S]*?)<\/p>/);
-    const pullQuote = pqM ? pqM[1].trim() : null;
-
-    // Hint box — label + one or more paragraphs (optional)
-    const hnLabelM = content.match(/<span class="hn-label">([^<]*)<\/span>/);
-    const hnBlock = extract1(content, /<div class="hn">([\s\S]*?)<\/div>/);
-    const hnParas = hnBlock ? extractAll(hnBlock, /<p>([\s\S]*?)<\/p>/) : [];
-    const hintLabel = hnLabelM ? hnLabelM[1].trim() : null;
-    const hintText = hnParas.length ? hnParas : null;
-
-    // Navigation buttons
-    const prevM = content.match(/<button class="btn-prev"[^>]*>([^<]*)<\/button>/);
-    const prevBtn = prevM ? prevM[1].trim() : '';
-    const nextM = content.match(/<button class="btn-next"[^>]*>([^<]*)<span/);
-    const nextBtn = nextM ? nextM[1].trim() : null;
-
-    modules.push({ id, tag, titleHtml: modTitleHtml, body, pullQuote, hintLabel, hintText, prevBtn, nextBtn });
-  }
-
-  // Related article links (btn-ar anchors at end of last module)
-  const relatedLinks = [];
-  const relRx = /<a href="([^"]*)" class="btn-ar"[^>]*>([^<]*)/g;
-  let rl;
-  while ((rl = relRx.exec(html)) !== null) {
-    relatedLinks.push({ href: rl[1], text: rl[2].trim() });
-  }
-
-  // Article footer link text — scoped to art-footer to avoid matching nav links
-  const footerBlock = extract1(html, /<div class="art-footer">([\s\S]*?)<\/div>/);
-  const allArticles = extract1(footerBlock, /<a href="\/reading">([^<]*)<\/a>/);
-  const araLink = extract1(footerBlock, /<a href="\/ara">([^<]*)<\/a>/);
-
-  return {
-    head: { title, description, ogTitle, ogDescription },
-    intro: {
-      eyebrow,
-      titleHtml,
-      subtitle,
-      texts,
-      metaModules: metaSpans[0] || '',
-      metaTime:    metaSpans[1] || '',
-      metaLevel:   metaSpans[2] || '',
-      cta
-    },
-    modules,
-    relatedLinks,
-    footer: {
-      allArticles: allArticles || '← All articles',
-      araLink:     araLink     || 'Aquatic Rhythm Alignment'
+    // mod-body paragraphs — a module may contain MULTIPLE mod-body divs (e.g. split
+    // around a rhythm-grid or a canvas visual). Extract <p> from EVERY mod-body div in
+    // the module, in document order, into one flat array — mirrors build-i18n.mjs's
+    // per-div redistribution logic (which refills each div by its own paragraph count).
+    mod.body = [];
+    {
+      let rest = content;
+      while (rest.length > 0) {
+        const mbOpenMatch = rest.match(/<div class="mod-body"[^>]*>/);
+        const mbIdx = mbOpenMatch ? mbOpenMatch.index : -1;
+        if (mbIdx === -1) break;
+        let depth = 0, i = mbIdx, endIdx = -1;
+        while (i < rest.length) {
+          if (rest[i] === '<') {
+            if (rest.slice(i, i + 4) === '<div') depth++;
+            else if (rest.slice(i, i + 6) === '</div>') {
+              depth--;
+              if (depth === 0) { endIdx = i + 6; break; }
+            }
+          }
+          i++;
+        }
+        const mbContent = endIdx !== -1 ? rest.slice(mbIdx, endIdx) : rest.slice(mbIdx);
+        mod.body.push(...[...mbContent.matchAll(/<p>([\s\S]*?)<\/p>/g)].map(m => m[1]));
+        if (endIdx === -1) break;
+        rest = rest.slice(endIdx);
+      }
     }
-  };
+
+    // pull quotes — all <div class="pq"...><p>...</p></div>
+    const pqs = [...content.matchAll(/<div class="pq"[^>]*>\s*<p>([\s\S]*?)<\/p>/g)].map(m => m[1]);
+    if (pqs.length) {
+      mod.pullQuote = pqs[0];
+      if (pqs.length > 1) mod.additionalPullQuotes = pqs.slice(1);
+    }
+
+    // simulator link text
+    const simMatch = content.match(/href="\/articles\/tank-simulator"[^>]*>([^<]*)/);
+    if (simMatch) mod.simulatorLinkText = simMatch[1];
+
+    // hint boxes — up to 5
+    const hintRe = /<div class="hn[^"]*">([\s\S]*?)(<span[^>]*>)([^<]*)(<\/span>)([\s\S]*?)<\/div>/g;
+    const hints = [];
+    let hMatch;
+    while ((hMatch = hintRe.exec(content)) !== null) {
+      const label = hMatch[3];
+      const body = hMatch[5];
+      const paras = [...body.matchAll(/<p>([\s\S]*?)<\/p>/g)].map(m => m[1]);
+      hints.push({ label, text: paras });
+    }
+    hints.forEach((h, idx) => {
+      const n = idx === 0 ? '' : String(idx + 1);
+      mod[`hintLabel${n}`] = h.label;
+      mod[`hintText${n}`] = h.text;
+    });
+
+    // rhythm grid
+    const names = [...content.matchAll(/<div class="rhythm-cell-name">([^<]*)<\/div>/g)].map(m => m[1]);
+    const descs = [...content.matchAll(/<div class="rhythm-cell-desc">([^<]*)<\/div>/g)].map(m => m[1]);
+    if (names.length) {
+      mod.rhythmGrid = names.map((name, idx) => ({ name, desc: descs[idx] || '' }));
+    }
+
+    // final CTA
+    const finalCtaMatch = content.match(/<div class="final-cta">[\s\S]*?<p>([\s\S]*?)<\/p>/);
+    if (finalCtaMatch) mod.finalCtaText = finalCtaMatch[1];
+    const ctaBtns = [...content.matchAll(/<a [^>]*class="btn-reading"[^>]*>([^<]*)/g)].map(m => m[1]);
+    if (ctaBtns[0]) mod.finalCtaBtn1 = ctaBtns[0];
+    if (ctaBtns[1]) mod.finalCtaBtn2 = ctaBtns[1];
+
+    // prev/next buttons
+    const prevMatch = content.match(/<button class="btn-prev"[^>]*>([^<]*)<\/button>/);
+    if (prevMatch) mod.prevBtn = prevMatch[1];
+    const nextMatch = content.match(/<button class="btn-next"[^>]*>([^<]*)<span/);
+    if (nextMatch) mod.nextBtn = nextMatch[1].trim();
+
+    modules.push(mod);
+  }
+  t.modules = modules;
+
+  // ── related links ──
+  const relLinks = [...html.matchAll(/<a href="([^"]*)" class="btn-ar"[^>]*>([^<]*)/g)]
+    .map(m => ({ text: m[2] }));
+  if (relLinks.length) t.relatedLinks = relLinks;
+
+  // ── footer ──
+  const footerBlock = firstMatch(html, /<div class="art-footer">([\s\S]*?)<\/div>\s*<\/div>\s*<\/footer>/) ||
+                       firstMatch(html, /<div class="art-footer">([\s\S]*?)<\/div>/);
+  if (footerBlock) {
+    const footer = {};
+    const allArt = footerBlock.match(/<a href="\/reading">([^<]*)<\/a>/);
+    if (allArt) footer.allArticles = allArt[1];
+    const araLink = footerBlock.match(/<a href="\/articles\/ara-full-framework">([^<]*)<\/a>/);
+    if (araLink) footer.araLink = araLink[1];
+    if (Object.keys(footer).length) t.footer = footer;
+  }
+
+  return t;
 }
 
-// ── Process one slug ──────────────────────────────────────────────────────────
-
-function processSlug(slug, lang) {
-  if (TOOL_SLUGS.has(slug)) {
-    console.log(`  skip (tool): ${slug}`);
+function processFile(lang, slug) {
+  const htmlPath = path.join(ROOT, lang, 'articles', `${slug}.html`);
+  const jsonPath = path.join(TRANS_DIR, lang, `${slug}.json`);
+  if (!fs.existsSync(htmlPath)) {
+    console.log(`  skip (no html): ${lang}/${slug}`);
     return;
   }
-
-  const srcPath = path.join(ARTICLES_DIR, `${slug}.html`);
-  if (!fs.existsSync(srcPath)) {
-    console.error(`  not found: ${srcPath}`);
+  if (!fs.existsSync(jsonPath)) {
+    console.log(`  skip (no json): ${lang}/${slug}`);
     return;
   }
-
-  const langDir = path.join(TRANSLATIONS_DIR, lang);
-  const outPath = path.join(langDir, `${slug}.json`);
-
-  if (fs.existsSync(outPath) && !force) {
-    console.log(`  exists (use --force to overwrite): ${outPath}`);
-    return;
-  }
-
-  const html = fs.readFileSync(srcPath, 'utf8');
-  const parsed = parseArticle(html);
-  const scaffold = {
-    _meta: { slug, lang, sourceFile: `articles/${slug}.html` },
-    ...parsed
-  };
-
-  fs.mkdirSync(langDir, { recursive: true });
-  fs.writeFileSync(outPath, JSON.stringify(scaffold, null, 2) + '\n', 'utf8');
-  console.log(`  written: translations/${lang}/${slug}.json`);
+  const html = fs.readFileSync(htmlPath, 'utf8');
+  const oldJson = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  const extracted = extractArticle(html);
+  const newJson = { _meta: oldJson._meta, ...extracted };
+  fs.writeFileSync(jsonPath, JSON.stringify(newJson, null, 4) + '\n', 'utf8');
+  console.log(`  → ${lang}/${slug}.json`);
 }
 
-// ── Entry point ───────────────────────────────────────────────────────────────
+function run(lang) {
+  const slugs = slugArg ? [slugArg] : getTranslatedSlugs(lang);
+  console.log(`Extracting ${slugs.length} article(s) for lang=${lang}…`);
+  for (const slug of slugs) processFile(lang, slug);
+}
 
-if (doAll) {
-  const slugs = fs.readdirSync(ARTICLES_DIR)
-    .filter(f => f.endsWith('.html'))
-    .map(f => f.replace('.html', ''));
-  console.log(`Extracting ${slugs.length} articles for lang=${langArg}…`);
-  for (const slug of slugs) processSlug(slug, langArg);
-  console.log('Done.');
-} else if (slugArg) {
-  processSlug(slugArg, langArg);
+if (allLangs) {
+  for (const lang of LANGUAGES) run(lang);
+} else if (langArg && (doAll || slugArg)) {
+  run(langArg);
 } else {
-  console.error('Usage:\n  node scripts/extract-i18n.mjs --slug <slug> [--lang ms] [--force]\n  node scripts/extract-i18n.mjs --all [--lang ms]');
+  console.error('Usage:\n  node scripts/extract-i18n.mjs --lang ms --slug <slug>\n  node scripts/extract-i18n.mjs --lang ms --all\n  node scripts/extract-i18n.mjs --all-langs');
   process.exit(1);
 }

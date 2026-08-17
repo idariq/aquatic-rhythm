@@ -12,7 +12,7 @@
         "ogDescription": "Betta yang diam di sudut bukan berdrama. Ia memberi Anda sinyal. Pelajari cara membaca ikan Anda."
     },
     "intro": {
-        "eyebrow": "Artikel · Livestock Rhythm",
+        "eyebrow": "Praktis",
         "titleHtml": "Perilaku Betta —<br><em>Apa yang Sedang Ia Sampaikan</em>",
         "subtitle": "Betta yang diam di sudut bukan sedang berdrama. Ia sedang memberi Anda sinyal.",
         "texts": [
@@ -35,8 +35,6 @@
                 "Dalam Aquatic Rhythm Alignment, ini adalah Livestock Rhythm — pola perilaku hewan yang berkelanjutan yang mencerminkan kondisi seluruh sistem. Pada betta, ritme ini lebih mudah dibaca dari hampir semua ikan lain, karena individunya sangat terbaca. Perubahan pada perilaku betta hampir selalu memberi tahu Anda sesuatu sebelum hal lain apapun dalam sistem menjadi terlihat."
             ],
             "pullQuote": "Betta yang selalu menyambut Anda saat makan dan kini diam di bawah — perubahan itu adalah informasi. Ia datang sebelum apapun dalam tes air Anda akan terlihat.",
-            "hintLabel": null,
-            "hintText": null,
             "prevBtn": "← Intro",
             "nextBtn": "Membaca sinyal"
         },
@@ -53,10 +51,9 @@
                 "<strong>Flaring pada bayangannya sendiri atau pada tidak ada apa-apa</strong><br>Flaring sesekali adalah normal dan sebenarnya baik untuk kesehatan betta — ini memberikan latihan dan stimulasi. Flaring terus-menerus dan panik pada bayangan atau tidak ada apa-apa menunjukkan ikan itu stres, mungkin karena terlalu sering melihat pesaing yang dianggap — bayangan, betta lain, atau ikan berbentuk serupa di dekatnya.",
                 "<strong>Tidak mau makan</strong><br>Betta yang menolak makan selama 1–2 hari menunjukkan stres atau penyakit awal. Betta bisa menolak makan satu hari sesekali — tapi ikan yang dulunya aktif saat makan dan kini secara konsisten mengabaikan makanan menunjukkan sesuatu telah berubah."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Livestock Rhythm",
+            "hintLabel": "Bandingkan dengan baseline, bukan dengan \"normal\"",
             "hintText": [
-                "Dalam ARA, Livestock Rhythm dibaca dengan membandingkan perilaku dengan baseline — bukan dengan standar generik tentang apa yang betta 'seharusnya' lakukan. Betta yang secara alami pemalu dan selalu pendiam tidak menunjukkan masalah. Betta yang sebelumnya aktif dan kini pendiam — itulah yang perlu diperhatikan. Sinyalnya adalah perubahan, bukan sifatnya."
+                "Perilaku paling baik dibaca dengan membandingkannya dengan baseline ikan itu sendiri — bukan dengan standar generik tentang apa yang betta \"seharusnya\" lakukan. Betta yang secara alami pemalu dan selalu pendiam tidak menunjukkan masalah. Betta yang sebelumnya aktif dan kini pendiam — itulah yang perlu diperhatikan. Sinyalnya adalah perubahan, bukan sifatnya."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Penyebab umum masalah betta"
@@ -73,9 +70,9 @@
                 "<strong>Kesendirian vs. overstimulasi</strong><br>Betta membutuhkan sedikit stimulasi visual tapi bukan ancaman terus-menerus. Betta dalam tank yang benar-benar kosong tanpa apapun untuk dijelajahi atau tempat bersembunyi mungkin menunjukkan stres kronis tingkat rendah. Betta yang bisa melihat betta lain, atau tanknya memiliki pantulan kuat dari satu sisi, mungkin menunjukkan stres flaring terus-menerus. Keduanya adalah masalah Environmental Rhythm — struktur fisik tank adalah bagian dari apa yang dialami betta."
             ],
             "pullQuote": "Sebelum Anda menambahkan apapun ke dalam tank, identifikasi mana yang paling mungkin menjadi penyebabnya. Satu perubahan yang selaras — biasanya suhu atau kualitas air — sering menyelesaikan apa yang tampak seperti masalah kesehatan betta yang kompleks.",
-            "hintLabel": "ARA · Asal sebelum Ekspresi",
+            "hintLabel": "Satu penyebab, banyak gejala",
             "hintText": [
-                "Pemudaran warna, sirip terlipat, tidak aktif — semua ini adalah ekspresi. Penurunan suhu, drift amonia, stres kronis yang menghasilkannya adalah asalnya. Prinsip keselarasan kelima ARA adalah Asal sebelum Ekspresi: salah satu penyebab asal ini hampir selalu menghasilkan semua sinyal yang terlihat secara bersamaan. Menemukan asalnya menyelesaikan ekspresi tanpa perlu menargetkan setiap satu secara langsung."
+                "Pemudaran warna, sirip terlipat, tidak aktif — semua ini yang Anda lihat. Penurunan suhu, drift amonia, atau stres kronis yang menghasilkannya adalah yang sebenarnya terjadi. Salah satu penyebab ini hampir selalu menghasilkan semua tanda yang terlihat secara bersamaan. Menemukan penyebabnya menyelesaikan gejala tanpa perlu menangani setiap satu secara terpisah."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Kondisi untuk betta yang sehat"
@@ -91,32 +88,24 @@
                 "Ini bukan kondisi mewah. Ini adalah kebutuhan ekologis dasar untuk ikan yang berevolusi di habitat yang hangat, terstruktur, dan musiman.",
                 "Jika betta Anda menunjukkan sinyal apapun dari Modul 2, panduan tentang ikan bersembunyi dan parameter air bisa membantu mempersempit apa yang perlu diperiksa. Dan jika Anda ingin memahami sinyal ekologis yang lebih luas yang diberikan tank Anda — bukan hanya betta — artikel Lima Ritme mencakup semua lima lapisan."
             ],
-            "pullQuote": null,
-            "hintLabel": null,
-            "hintText": null,
-            "prevBtn": "← Kembali",
-            "nextBtn": null,
-            "hintLabel2": "ARA · Keeper Rhythm",
-            "hintText2": [
-                "Betta dipelihara secara tunggal, yang berarti setiap perubahan perilaku terasa berbeda dari tangki komunitas — tidak ada sekolah untuk dibandingkan, tidak ada ikan lain yang perilaku normalnya memberikan konteks. Ketika betta berubah, penjaga memperhatikan, dan keterikatan pada ikan spesifik itu berarti perhatian itu datang dengan beban. Beban itu nyata. Ini juga berarti bahwa kondisi penjaga — perhatian yang meningkat, kecemasan tentang apa yang perubahan itu berarti, urgensi untuk bertindak — adalah bagian dari gambaran ekologi. Penjaga betta yang memeriksa parameter lebih sering, mengganggu tangki lebih sering, selama periode kekhawatiran adalah penjaga yang Ritmanya juga telah berubah. Baca keduanya sekaligus."
-            ]
+            "hintLabel": "Kondisi diri Anda juga bagian dari gambaran",
+            "hintText": [
+                "Betta dipelihara secara tunggal, yang berarti setiap perubahan perilaku terasa berbeda dari tangki komunitas — tidak ada sekolah untuk dibandingkan, tidak ada ikan lain yang perilaku normalnya memberikan konteks. Ketika betta berubah, penjaga memperhatikan, dan keterikatan pada ikan spesifik itu berarti perhatian itu datang dengan beban. Beban itu nyata. Ini juga berarti bahwa kondisi penjaga — perhatian yang meningkat, kecemasan tentang apa yang perubahan itu berarti, urgensi untuk bertindak — adalah bagian dari gambaran itu juga. Penjaga betta yang memeriksa parameter lebih sering, mengganggu tangki lebih sering, selama periode kekhawatiran adalah penjaga yang rutinnya sendiri juga sudah berubah. Baca keduanya sekaligus."
+            ],
+            "prevBtn": "← Kembali"
         }
     ],
     "relatedLinks": [
         {
-            "href": "/articles/fish-hiding-what-does-it-mean",
             "text": "Kenapa ikan saya bersembunyi? →"
         },
         {
-            "href": "/articles/perfect-parameters-fish-dying",
             "text": "Parameter ok tapi ikan mati →"
         },
         {
-            "href": "/articles/ara-full-framework",
             "text": "Framework ARA →"
         },
         {
-            "href": "/rhyssa",
             "text": "Tanya Rhyssa →"
         }
     ],

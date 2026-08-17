@@ -33,12 +33,13 @@
                 "Hobi akuarium jarang tiba-tiba berhenti menyenangkan. Lebih sering, ada pergeseran bertahap yang hampir tidak terasa sampai sudah mengubah keseluruhan hubungan penjaga dengan tanknya.",
                 "Awalnya mungkin hanya perasaan bahwa ada 'lebih banyak yang perlu dilakukan' dari yang diharapkan. Kemudian ganti air mulai terasa seperti kewajiban bukan pilihan. Kemudian masalah kecil — sedikit alga, satu parameter yang sedikit bergeser — mulai terasa berat secara tidak proporsional. Kemudian tank itu sendiri mulai terasa seperti sesuatu yang harus dikelola, bukan sesuatu yang dinikmati.",
                 "Dalam istilah ARA, ini adalah sinyal Keeper Rhythm — informasi tentang keselarasan antara apa yang sistem butuhkan dan apa yang penjaga bisa berikan secara berkelanjutan. Bukan tentang apakah penjaga cukup sayang pada ikannya. Bukan tentang apakah ia orang yang baik. Ini tentang apakah kapasitas yang ada cukup untuk setup yang dipilih.",
-                "Sinyal itu nyata dan berguna. Mengabaikannya karena merasa harus melanjutkan tidak membantu penjaga atau tanknya."
+                "Sinyal itu nyata dan berguna. Mengabaikannya karena merasa harus melanjutkan tidak membantu penjaga atau tanknya.",
+                "Ada pola tertentu yang perlu disebut di sini, karena inilah cara sebagian besar tangki akhirnya kolaps. Rasa malu soal tangki — lupa ganti air, ikan mati, alga muncul — cenderung bikin kita jadi kurang mengamati. Pengamatan yang berkurang berarti sinyal terlewat. Sinyal yang terlewat membiarkan masalah makin parah. Masalah yang makin parah bikin rasa malu makin besar, yang bikin kita makin menjauh, yang berarti makin jarang ganti air, makin kurang perhatian ke pemberian makan, makin banyak sinyal terlewat. Tangki yang dulunya sumber ketenangan jadi sesuatu yang dihindari. Ini bukan kelemahan. Ini respons psikologis yang wajar terhadap rasa bersalah — respons yang tidak sanggup ditoleransi oleh sistem hidup di tangki, tapi sangat bisa dipahami dari sisi penjaga di balik kaca."
             ],
             "pullQuote": "Akuarium yang terasa seperti beban adalah sinyal Keeper Rhythm — informasi tentang keselarasan antara apa yang sistem butuhkan dan apa yang penjaga bisa berikan.",
-            "hintLabel": "ARA · Keeper Rhythm",
+            "hintLabel": "Kapasitas Anda tidak tetap",
             "hintText": [
-                "Dalam ARA, Keeper Rhythm adalah ecological rhythm kelima — pola perhatian, waktu, energi, dan kapasitas emosional yang dibawa penjaga ke sistem. Ia tidak tetap. Ia berubah dengan musim, dengan keadaan hidup, dengan kesedihan, dengan kelelahan. Tangki yang berkelanjutan tahun lalu mungkin tidak berkelanjutan sekarang — bukan karena penjaga telah gagal, tetapi karena ritme penjaga telah berubah."
+                "Pola perhatian, waktu, energi, dan kapasitas emosional yang Anda bawa ke tangki tidak tetap. Ia berubah dengan musim, dengan keadaan hidup, dengan kesedihan, dengan kelelahan. Tangki yang berkelanjutan tahun lalu mungkin tidak berkelanjutan sekarang — bukan karena Anda telah gagal, tetapi karena kapasitas Anda telah berubah."
             ],
             "prevBtn": "← Intro",
             "nextBtn": "Jenis-jenis ketidakselarasan"
@@ -54,9 +55,7 @@
                 "<strong>Ketidakselarasan karena setup melampaui kapasitas.</strong> Setup yang terus ditambah dan diperluas sampai melampaui apa yang bisa dikelola secara konsisten. Ini sering terjadi perlahan — satu tank lagi, satu koleksi lagi — sampai keseluruhan sistem terasa tidak terkendali.",
                 "<strong>Penjaga yang berubah.</strong> Orang berubah. Seseorang yang memiliki banyak waktu dan energi di usia 25 mungkin punya prioritas yang berbeda di usia 35. Ini bukan kegagalan — ini adalah kehidupan. Setup yang dibuat untuk versi diri yang lebih awal mungkin tidak lagi sesuai dengan versi yang ada sekarang."
             ],
-            "pullQuote": null,
-            "hintLabel": null,
-            "hintText": null,
+            "pullQuote": "\"Penjaga yang dulu membangun tangki ini dan penjaga yang merawatnya hari ini bisa jadi dua orang yang berbeda. Keduanya sama-sama berhak punya tangki yang sesuai dengan kehidupan mereka yang sebenarnya.\"",
             "prevBtn": "← Kembali",
             "nextBtn": "Tiga jalur jujur"
         },
@@ -71,10 +70,9 @@
                 "<strong>Pergi.</strong> Pilihan ini sah dan sering diabaikan dalam komunitas hobi. Tidak semua orang harus terus memelihara akuarium selamanya. Kehidupan berubah. Minat berubah. Kapasitas berubah. Memilih untuk keluar dari hobi bukan kegagalan — itu adalah keputusan yang jujur dan bertanggung jawab.",
                 "Yang tidak tersedia sebagai pilihan yang berguna: terus dengan setup yang saat ini ada karena merasa harus, sementara kualitas perawatan merosot dan penjaga merasa semakin bersalah. Itu tidak membantu penjaga atau penghuni tank."
             ],
-            "pullQuote": "Tiga jalur jujur: redesain agar selaras dengan kapasitas yang ada, sederhanakan ke level yang lebih nyaman, atau pergi. Tidak ada yang secara otomatis salah.",
-            "hintLabel": "ARA · Pengampunan Ekologis",
+            "hintLabel": "Ini berlaku untuk Anda, bukan sekadar tangki",
             "hintText": [
-                "Pengampunan ekologis berlaku pada penjaga, bukan hanya pada tangki. Penjaga yang telah berjuang, yang melewatkan water change, yang kehilangan ikan karena penyebab yang dapat dicegah — penjaga itu bukan penjaga yang buruk. Mereka adalah penjaga yang sistemnya hanyut melampaui keselarasan. Yang penting sekarang bukan sejarahnya tapi pilihan berikutnya."
+                "Penjaga yang telah berjuang, yang melewatkan water change, yang kehilangan ikan karena penyebab yang dapat dicegah — penjaga itu bukan penjaga yang buruk. Mereka penjaga yang sistemnya kehilangan keseimbangan. Yang penting sekarang bukan sejarahnya tapi pilihan berikutnya."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Pergi dengan bermartabat"
@@ -90,28 +88,21 @@
                 "Tidak ada alasan untuk mempertahankan rasa bersalah tentang keputusan ini. Memilih untuk tidak memelihara akuarium lagi bukan tanda bahwa Anda tidak pernah peduli. Itu tanda bahwa Anda cukup jujur untuk mengakui kapan sebuah babak dalam hidup sudah selesai.",
                 "Dan jika suatu saat kondisi berubah — lebih banyak waktu, lebih banyak energi, minat yang muncul kembali — hobi ini akan ada. Komunitas akan ada. Tidak ada yang hilang secara permanen dengan memilih untuk berhenti sekarang."
             ],
-            "pullQuote": null,
-            "hintLabel": null,
-            "hintText": null,
             "prevBtn": "← Kembali",
-            "nextBtn": null
+            "nextBtn": "Back to Reading"
         }
     ],
     "relatedLinks": [
         {
-            "href": "/articles/caring-without-guilt",
             "text": "Merawat tanpa rasa bersalah →"
         },
         {
-            "href": "/articles/aquarium-not-a-project",
             "text": "Akuarium bukan proyek →"
         },
         {
-            "href": "/articles/aquarium-maintenance-routine",
             "text": "Rutinitas perawatan yang berhasil →"
         },
         {
-            "href": "/articles/ara-full-framework",
             "text": "Aquatic Rhythm Alignment →"
         }
     ],

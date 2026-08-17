@@ -7,9 +7,9 @@
     },
     "head": {
         "title": "Kenapa Tanaman Akuarium Saya Tidak Tumbuh? — Aquatic Rhythm",
-        "description": "Daun layu, menguning, atau tertutup alga. Tanaman sedang membaca sesuatu dan memberi tahu Anda tentangnya. Panduan ini menjelaskan cara membaca sinyal dan menyelaraskan setup dengan kapasitas Anda yang sebenar.",
+        "description": "Daun layu, menguning, atau tertutup alga. Tanaman sedang membaca sesuatu dan memberi tahu Anda tentangnya. Panduan ini menjelaskan cara membaca sinyal dan menyelaraskan setup dengan kapasitas Anda yang sebenarnya.",
         "ogTitle": "Kenapa Tanaman Akuarium Saya Tidak Tumbuh?",
-        "ogDescription": "Tanaman sedang membaca sesuatu. Pelajari cara membaca sinyal mereka dan menyelaraskan setup dengan kapasitas sebenar Anda."
+        "ogDescription": "Tanaman sedang membaca sesuatu. Pelajari cara membaca sinyal mereka dan menyelaraskan setup dengan kapasitas Anda yang sebenarnya."
     },
     "intro": {
         "eyebrow": "Bacaan · Praktis",
@@ -17,8 +17,7 @@
         "subtitle": "Tanaman sedang membaca sesuatu. Pelajari apa.",
         "texts": [
             "Daun sedang layu, atau menguning, atau ditumbuhi alga. Atau tidak ada yang tumbuh sama sekali — hanya penolakan yang lambat dan keras kepala untuk berkembang. Tanaman terlihat seharusnya hidup, tapi ada sesuatu yang jelas tidak beres.",
-            "Panduan ini menjelaskan apa yang sebenarnya direspons tanaman Anda, cara membaca sinyal spesifik yang mereka tunjukkan, dan cara menyelaraskan setup Anda dengan apa yang bisa Anda berikan secara konsisten.",
-            "Ini bukan tentang mencapai planted tank yang sempurna. Ini tentang memahami apa yang tanaman butuhkan, dan apakah Anda bisa menyediakannya secara konsisten — karena ketidakkonsistenan adalah kontributor terbesar kegagalan tanaman dalam hobi ini."
+            "Panduan ini menjelaskan apa yang sebenarnya direspons tanaman Anda, cara membaca sinyal spesifik yang mereka tunjukkan, dan cara menyelaraskan setup Anda dengan apa yang bisa Anda berikan secara konsisten."
         ],
         "metaModules": "4 modul",
         "metaTime": "Semua tingkat",
@@ -43,8 +42,6 @@
                 "<strong>Daun berlubang atau terkikis.</strong> Sering aktivitas ikan yang memakan tanaman (ikan mas, beberapa cichlid, siput) — bukan masalah pertumbuhan. Tapi bisa juga dari kekurangan kalium pada beberapa spesies."
             ],
             "pullQuote": "Tanaman yang sehat dan tumbuh aktif bersaing dengan alga untuk sumber yang sama. Tanaman yang berjuang tidak bisa. Alga di daunnya adalah gejala, bukan penyebab.",
-            "hintLabel": null,
-            "hintText": null,
             "prevBtn": "← Intro",
             "nextBtn": "Cahaya, nutrisi, dan CO2"
         },
@@ -59,10 +56,9 @@
                 "<strong>CO2</strong> adalah faktor pembatas di banyak planted tank. Tanaman membutuhkan karbon untuk pertumbuhan, dan di akuarium tertutup, CO2 terlarut secara alami sering tidak cukup untuk tanaman yang menuntut. Sinyal CO2 tidak cukup: pertumbuhan lambat meski cahaya dan nutrisi terlihat oke; daun baru kecil dan padat; pH tinggi di akhir periode cahaya di akuarium dengan CO2 alami saja.",
                 "Hubungan antara cahaya, CO2, dan nutrisi bekerja seperti hukum minimum Liebig — batas dalam rantai pertumbuhan adalah apa yang membatasi, terlepas dari berapa banyak yang lain Anda tambahkan. Menambah nutrisi ke akuarium yang terbatas cahaya tidak membantu pertumbuhan tanaman; itu hanya menyuburkan alga. Diagnosa dengan benar dulu sebelum menambahkan apa pun."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Environmental Rhythm",
+            "hintLabel": "Tempat pertama untuk diperiksa",
             "hintText": [
-                "Dalam ARA, Environmental Rhythm mencakup segala yang dialami organisme sebagai lingkungannya — bukan hanya kimia air, tetapi siklus cahaya, stabilitas suhu, ketersediaan CO2, dan struktur fisik. Tanaman adalah bagian dari ritme ini, bukan terpisah darinya. Ketika pertumbuhan tanaman adalah sinyalnya, Environmental Rhythm hampir selalu menjadi tempat untuk dilihat."
+                "Segala yang dialami tanaman sebagai lingkungannya — bukan hanya kimia air, tetapi siklus cahaya, stabilitas suhu, ketersediaan CO2, dan struktur fisik — membentuk cara ia tumbuh. Tanaman bagian dari gambaran itu, bukan terpisah. Ketika pertumbuhan tanaman jadi sinyalnya, lingkungan fisik hampir selalu tempat pertama untuk diperiksa."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Low-tech vs high-tech"
@@ -80,7 +76,7 @@
                 "Memulai dengan sederhana lebih mudah disesuaikan dari sistem rumit yang tidak berfungsi. Tiga jenis tanaman yang tumbuh baik lebih baik dari dua puluh jenis yang berjuang."
             ],
             "pullQuote": "Pertanyaannya bukan tanaman mana yang cantik. Pertanyaannya adalah tanaman mana yang masih akan hidup dalam tiga bulan dengan perawatan yang sebenarnya akan Anda berikan.",
-            "hintLabel": "ARA · Keeper Rhythm",
+            "hintLabel": "Low-tech bukan menyerah",
             "hintText": [
                 "Memilih low-tech ketika Anda menginginkan high-tech bisa terasa seperti menyerah. Itu bukan. Penjaga yang membangun tangki low-tech stabil yang berjalan baik selama tiga tahun — di mana tanaman hidup dan sehat serta ikan jelas merasa nyaman — telah melakukan sesuatu yang lebih sulit dari banyak build high-tech: mereka telah mencocokkan ambisi mereka secara jujur dengan kapasitas aktual mereka. Java fern yang tumbuh lambat dan stabil bukan kompromi. Itu tanda sistem bekerja."
             ],
@@ -99,29 +95,18 @@
                 "Pendekatan satu perubahan lebih lambat dari mengubah segalanya sekaligus — tapi ini satu-satunya cara untuk benar-benar memahami apa yang sistem Anda butuhkan. Planted tank yang dipahami adalah planted tank yang bisa disesuaikan. Planted tank yang dibangun berdasarkan asumsi adalah yang membingungkan ketika tidak berfungsi.",
                 "Akuarium yang tumbuh lambat dan stabil bukan gagal. Ia berhasil pada kecepatan yang sesuai dengan sistem tempatnya hidup."
             ],
-            "pullQuote": null,
-            "hintLabel": null,
-            "hintText": null,
-            "prevBtn": "← Kembali",
-            "nextBtn": null
+            "prevBtn": "← Kembali"
         }
     ],
     "relatedLinks": [
         {
-            "href": "/articles/low-tech-planted-tank",
             "text": "Cara mulai planted tank low-tech →"
         },
         {
-            "href": "/articles/algae-in-aquarium",
             "text": "Alga dalam akuarium →"
         },
         {
-            "href": "/articles/aquarium-maintenance-routine",
             "text": "Rutinitas perawatan yang berhasil →"
-        },
-        {
-            "href": "/rhyssa",
-            "text": "Tanya Rhyssa →"
         }
     ],
     "footer": {

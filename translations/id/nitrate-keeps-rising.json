@@ -12,7 +12,7 @@
         "ogDescription": "Siklus selesai tapi nitrat terus menumpuk. Pelajari apa yang sedang terjadi dan cara respons yang tepat."
     },
     "intro": {
-        "eyebrow": "Bacaan · Chemical Rhythm",
+        "eyebrow": "Semua tingkat",
         "titleHtml": "Kenapa Nitrat<br><em>Terus Naik?</em>",
         "subtitle": "Siklus nitrogen berjalan baik. Tapi nitrat terus menumpuk — dan kecepatannya adalah informasi.",
         "texts": [
@@ -35,8 +35,6 @@
                 "Inilah kenapa nitrat tidak pernah berhenti naik di akuarium yang berpenghuni — ia adalah output alami dari sistem yang berfungsi. Pertanyaannya bukan 'kenapa nitrat naik?' Pertanyaannya adalah 'apakah ia naik lebih cepat dari yang diperkirakan, dan kenapa?'"
             ],
             "pullQuote": "Nitrat bukan sinyal masalah seperti amonia. Ia sinyal apa yang telah menumpuk — perlahan, konsisten — sejak terakhir kali Anda ganti air.",
-            "hintLabel": null,
-            "hintText": null,
             "prevBtn": "← Intro",
             "nextBtn": "Ambang yang benar-benar penting"
         },
@@ -49,10 +47,9 @@
                 "Udang, terutama Neocaridina dan Caridina, sensitif terhadap tren nitrat dan bisa melemah perlahan meskipun angka individualnya terlihat bisa diterima. Untuk udang, stabilitas dan tren lebih penting dari angka mutlak — nitrat stabil di 20 ppm lebih baik dari nitrat yang berfluktuasi antara 10 dan 30 ppm.",
                 "Ikan yang lebih tahan — banyak cichlid Afrika, ikan mas, banyak spesies yang ditemukan di berbagai kondisi air alami — biasanya bisa menoleransi kadar lebih tinggi tanpa dampak kesehatan yang terlihat. Tapi 'menoleransi' berbeda dari 'berkembang dengan baik.' Mengetahui kebutuhan spesifik hewan peliharaan Anda adalah titik awal, bukan asumsi bahwa 40 ppm itu aman secara universal."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Chemical Rhythm",
+            "hintLabel": "Pola di balik angka itu",
             "hintText": [
-                "Dalam ARA, nitrat yang terus tinggi atau terus naik adalah bacaan Chemical Rhythm — ia mencerminkan hubungan antara beban biologis, penyerapan tanaman, dan keeper rhythm. Angka di test kit adalah hasilnya. Sinyalnya adalah apa yang menghasilkan angka itu."
+                "Nitrat yang terus tinggi atau terus naik biasanya mencerminkan hubungan antara beban biologis, penyerapan tanaman, dan seberapa sering Anda ganti air — bukan satu kesalahan tunggal. Angka di test kit adalah hasilnya. Yang penting adalah apa yang menghasilkan angka itu."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Membaca kenaikan sebagai informasi"
@@ -67,15 +64,15 @@
                 "Bacaan nitrat yang paling informatif bukan yang diambil tepat setelah ganti air — tapi yang diambil pada jumlah hari yang sama setelah setiap ganti air, selama empat minggu berturut-turut. Empat bacaan itu menunjukkan apakah tren Anda stabil, membaik, atau memburuk. Satu bacaan hanya menunjukkan angka. Empat bacaan menunjukkan arah."
             ],
             "pullQuote": "Tes nitrat yang diambil tepat setelah ganti air tidak memberi tahu hampir apa-apa. Tes yang diambil pada jumlah hari yang sama setelah setiap perubahan, selama empat minggu, memberi tahu apakah ritme Anda sudah sesuai.",
-            "hintLabel": "ARA · Asal sebelum Ekspresi",
-            "hintText": [
-                "Nitrat yang naik adalah ekspresi. Penyimpangan bertahap dalam kepadatan ikan, laju pemberian makan, atau tutupan tanaman yang menghasilkannya adalah asalnya. Prinsip keselarasan kelima ARA adalah Asal sebelum Ekspresi: bacaan pada test kit memberi tahu Anda sesuatu sedang beroperasi dalam sistem — bukan apa yang perlu dilakukan, tapi di mana perlu dicari. Telusuri kembali dari angka ke apa yang menghasilkannya."
-            ],
             "prevBtn": "← Kembali",
             "nextBtn": "Respons yang tepat untuk nitrat naik",
-            "hintLabel3": "ARA · Asal sebelum Ekspresi",
-            "hintText3": [
-                "Nitrat yang terus naik adalah ekspresinya. Pergeseran bertahap dalam kepadatan stok, laju pemberian makan, atau liputan tanaman yang menghasilkannya adalah asal muasalnya. Prinsip penyelarasan kelima ARA adalah Origin before Expression: bacaan pada kit uji memberi tahu Anda bahwa sesuatu sedang beroperasi dalam sistem — bukan apa yang harus dilakukan, tapi di mana harus melihat. Telusuri kembali dari angka ke apa yang menghasilkannya."
+            "hintLabel": "Frustrasi yang umum dialami",
+            "hintText": [
+                "Melakukan penggantian air yang sepertinya tidak bertahan lama adalah salah satu pola paling melemahkan semangat dalam hobi ini. Hasil tes turun, Anda merasa sudah beres, lalu seminggu kemudian naik lagi. Frustrasi itu sebenarnya berguna — ia menunjukkan celah antara jadwal perawatan Anda dan apa yang sebenarnya dibutuhkan oleh beban akuarium saat ini. Ini bukan cerminan seberapa baik Anda merawat akuarium. Ini celah dalam kecocokan antara keduanya, dan itu bisa disesuaikan."
+            ],
+            "hintLabel2": "Telusuri penyebabnya, bukan sekadar angka",
+            "hintText2": [
+                "Nitrat yang naik adalah yang Anda lihat. Penyimpangan bertahap dalam kepadatan ikan, laju pemberian makan, atau tutupan tanaman yang menghasilkannya adalah yang sebenarnya terjadi. Sebelum siklus ganti air lagi, tanyakan apa yang berubah baru-baru ini. Telusuri kembali dari angka ke apa yang menghasilkannya."
             ]
         },
         {
@@ -87,30 +84,24 @@
                 "Planted tank adalah kasus khusus: tanaman menggunakan nitrat dan fosfat secara langsung sebagai nutrisi. Akuarium yang ditanami dengan baik dengan tanaman yang aktif tumbuh bisa menampung beban organik yang jauh lebih tinggi dibanding akuarium kosong dengan stocking yang sama, dan nitrat mungkin naik sangat lambat atau bahkan stabil jika tanaman sehat dan pencahayaan cukup.",
                 "Satu hal yang tidak perlu terlalu dikhawatirkan: angka nitrat mutlak saat kondisi krisis. Banyak penghobi panik melihat nitrat 40 ppm. Nitrat stabil di 40 ppm dengan ikan yang makan dan berperilaku normal adalah situasi yang sangat berbeda dari nitrat di 20 ppm yang naik 10 ppm setiap tiga hari. Arah dan tren jauh lebih penting dari angka pada hari mana pun."
             ],
-            "pullQuote": null,
-            "hintLabel": "ARA · Pengampunan Ekologis",
+            "hintLabel": "Kabar baiknya",
             "hintText": [
-                "Akuarium dengan nitrat kronis tinggi bisa pulih. Mengurangi beban, meningkatkan tutupan tanaman, dan memulihkan ritme ganti air yang konsisten semua mengubah Chemical Rhythm dalam hitungan minggu. Penumpukan masa lalu bukan kondisi permanen — ia adalah hasil dari penyelarasan sebelumnya. Ubah penyelarasan, dan bacaannya berubah."
+                "Akuarium dengan nitrat kronis tinggi bisa pulih. Mengurangi beban, meningkatkan tutupan tanaman, dan memulihkan ritme ganti air yang konsisten semua mengubah tren itu dalam hitungan minggu. Penumpukan masa lalu bukan kondisi permanen — ia hasil dari pola yang pernah terjadi dan bisa berubah kembali."
             ],
-            "prevBtn": "← Kembali",
-            "nextBtn": null
+            "prevBtn": "← Kembali"
         }
     ],
     "relatedLinks": [
         {
-            "href": "/articles/overfeeding-aquarium",
             "text": "Memberi makan berlebihan →"
         },
         {
-            "href": "/articles/aquarium-filter-maintenance",
             "text": "Filter Anda bukan apa yang Anda kira →"
         },
         {
-            "href": "/articles/cycled-tank-problems",
             "text": "Masalah di akuarium matang →"
         },
         {
-            "href": "/articles/ara-full-framework",
             "text": "Framework ARA →"
         }
     ],

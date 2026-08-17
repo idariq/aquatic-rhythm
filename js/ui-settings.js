@@ -69,6 +69,30 @@
     el.addEventListener('click', closePanel);
   });
 
+  /* ── Language ──
+     The homepage exists in all four locales, so unlike article/reading
+     pages there's no "untranslated" case to fall back from — every locale
+     is always available. */
+  var AR_LANGS = [
+    { code: 'en', label: 'English' },
+    { code: 'ms', label: 'Bahasa Melayu' },
+    { code: 'id', label: 'Bahasa Indonesia' },
+    { code: 'ja', label: '日本語' }
+  ];
+  function renderLangSection() {
+    var list = document.getElementById('ar-stg-lang-list');
+    if (!list) return;
+    var cur = (document.documentElement.getAttribute('lang') || 'en').split('-')[0];
+    list.innerHTML = AR_LANGS.map(function (l) {
+      if (l.code === cur) {
+        return '<span class="ar-stg-lang-opt active" aria-current="page">' + l.label + '</span>';
+      }
+      var url = l.code === 'en' ? '/' : '/' + l.code;
+      return '<a class="ar-stg-lang-opt" href="' + url + '">' + l.label + '</a>';
+    }).join('');
+  }
+  renderLangSection();
+
   function syncToggles() {
     if (stgFauna)     stgFauna.checked     = localStorage.getItem('ar_fauna')         !== '0';
     if (stgFlora)     stgFlora.checked     = localStorage.getItem('ar_flora')         !== '0';

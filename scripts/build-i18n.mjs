@@ -29,10 +29,6 @@ const slugArg   = slugIdx !== -1 ? args[slugIdx + 1] : undefined;
 const doAll     = args.includes('--all');
 const patchEn   = args.includes('--patch-english');
 
-// ── Language switcher ─────────────────────────────────────────────────────────
-
-const LANG_LABELS = { en: 'EN', ms: 'MS', id: 'ID', ja: 'JA' };
-
 // ── Site nav chrome (shared across every article in a language — not sourced
 // from translations/*.json since it's fixed sitewide UI, not per-article
 // content). Applied uniformly by buildArticle() below. ─────────────────────
@@ -82,32 +78,20 @@ const NAV_LABELS = {
   }
 };
 
-function buildLangSwitcher(slug, currentLang) {
-  // Collect available lang → URL pairs
-  const options = [{ lang: 'en', url: `${BASE_URL}/articles/${slug}` }];
-  for (const lang of LANGUAGES) {
+// Language switching now lives in one place — the shared Settings panel
+// (js/ar-page.js) — instead of a per-article dropdown. This just tells that
+// panel which locales have a ready translation for this slug; any locale
+// not listed here falls back to the English article in the UI.
+function buildI18nDataScript(slug) {
+  const avail = LANGUAGES.filter(lang => {
     const tPath = path.join(TRANS_DIR, lang, `${slug}.json`);
-    if (!fs.existsSync(tPath)) continue;
+    if (!fs.existsSync(tPath)) return false;
     try {
       const t = JSON.parse(fs.readFileSync(tPath, 'utf8'));
-      if (t._meta && t._meta.status === 'ready') {
-        options.push({ lang, url: `${BASE_URL}/${lang}/articles/${slug}` });
-      }
-    } catch { /* skip */ }
-  }
-
-  // Only inject switcher if more than one language is available
-  if (options.length < 2) return '';
-
-  const currentLabel = LANG_LABELS[currentLang];
-  const others = options.filter(o => o.lang !== currentLang);
-  const menuItems = others.map(({ lang, url }) =>
-    `<a href="${url}" class="lang-sw-opt" hreflang="${lang}">${LANG_LABELS[lang]}</a>`
-  ).join('');
-
-  const dropdown = `<details class="lang-sw" aria-label="Language"><summary class="lang-sw-cur" aria-current="page">${currentLabel}</summary><div class="lang-sw-menu">${menuItems}</div></details>`;
-  const closeScript = `<script>if(!window._lswH){window._lswH=1;document.addEventListener('click',function(e){if(!e.target.closest('.lang-sw'))document.querySelectorAll('details.lang-sw[open]').forEach(function(d){d.removeAttribute('open')})})}</script>`;
-  return dropdown + '\n' + closeScript;
+      return !!(t._meta && t._meta.status === 'ready');
+    } catch { return false; }
+  });
+  return `<script>window.__arI18n={basePath:'articles/${slug}',avail:${JSON.stringify(avail)}};</script>`;
 }
 
 // ── SEO helpers ───────────────────────────────────────────────────────────────
@@ -206,16 +190,16 @@ function buildArticle(slug, lang, t) {
   h = replaceOnce(h, /(<link rel="canonical"[^>]*>)/,
     (_, canon) => `${canon}\n${hreflang}`);
 
-  // ── 4b. Language switcher (inject before burger button in nav) ────────────
-  // Strip any existing lang-sw injected by a previous patch/build run first.
+  // ── 4b. Language data for the shared Settings panel (inject before burger
+  // button in nav — same slot the old per-article lang-sw dropdown used) ────
+  // Strip anything injected by a previous patch/build run first (the legacy
+  // lang-sw dropdown, and any earlier __arI18n script) so reruns stay clean.
   h = h.replace(/<details class="lang-sw"[\s\S]*?<\/details>\n?/g, '');
   h = h.replace(/<div class="lang-sw"[^>]*>.*?<\/div>\n?/g, '');
   h = h.replace(/<script>if\(!window\._lswH\)[\s\S]*?<\/script>\n?/g, '');
-  const switcher = buildLangSwitcher(slug, lang);
-  if (switcher) {
-    h = replaceOnce(h, /(<button class="nbg")/,
-      (_, btn) => `${switcher}\n${btn}`);
-  }
+  h = h.replace(/<script>window\.__arI18n=[\s\S]*?<\/script>\n?/g, '');
+  h = replaceOnce(h, /(<button class="nbg")/,
+    (_, btn) => `${buildI18nDataScript(slug)}\n${btn}`);
 
   // ── 4c. Site nav chrome (desktop nav, mobile nav, burger + logo aria-labels) ─
   // Shared sitewide UI, not per-article content — translated from NAV_LABELS,
@@ -550,16 +534,16 @@ function patchEnglishArticle(slug) {
     (_, canon) => `${canon}\n${hreflang}`);
   if (h !== hreflangBefore) changed = true;
 
-  // Strip and re-inject language switcher so new languages appear.
+  // Strip and re-inject the Settings panel's language data so newly added
+  // translations are picked up.
   h = h.replace(/<details class="lang-sw"[\s\S]*?<\/details>\n?/g, '');
   h = h.replace(/<div class="lang-sw"[^>]*>.*?<\/div>\n?/g, '');
   h = h.replace(/<script>if\(!window\._lswH\)[\s\S]*?<\/script>\n?/g, '');
-  const switcher = buildLangSwitcher(slug, 'en');
-  if (switcher) {
-    h = replaceOnce(h, /(<button class="nbg")/,
-      (_, btn) => `${switcher}\n${btn}`);
-    changed = true;
-  }
+  h = h.replace(/<script>window\.__arI18n=[\s\S]*?<\/script>\n?/g, '');
+  const dataBefore = h;
+  h = replaceOnce(h, /(<button class="nbg")/,
+    (_, btn) => `${buildI18nDataScript(slug)}\n${btn}`);
+  if (h !== dataBefore) changed = true;
 
   if (changed) {
     fs.writeFileSync(srcPath, h, 'utf8');

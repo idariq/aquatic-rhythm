@@ -68,6 +68,11 @@
         '</div>' +
         '<div class="ar-stg-body">' +
           '<div class="ar-stg-section">' +
+            '<span class="ar-stg-label">Language</span>' +
+            '<div class="ar-stg-lang-list" id="ar-stg-lang-list"></div>' +
+          '</div>' +
+          '<div class="ar-stg-divider"></div>' +
+          '<div class="ar-stg-section">' +
             '<span class="ar-stg-label">Ecosystem</span>' +
             '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">Fauna</span><span class="ar-stg-row-sub">Fish &amp; animals</span></div><input class="ar-stg-toggle" type="checkbox" id="ar-stg-fauna" role="switch" aria-label="Show fauna"></div>' +
             '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">Flora</span><span class="ar-stg-row-sub">Plants &amp; driftwood</span></div><input class="ar-stg-toggle" type="checkbox" id="ar-stg-flora" role="switch" aria-label="Show flora"></div>' +
@@ -103,6 +108,44 @@
     var stgMotion    = document.getElementById('ar-stg-motion');
     var stgAnalytics = document.getElementById('ar-stg-analytics');
     var stgWcDays    = document.getElementById('ar-stg-wc-days');
+
+    /* ── Language ──
+       window.__arI18n (set inline by the build for translated pages) carries
+       { basePath, avail } — avail is the list of non-English locales that
+       actually have a ready translation for THIS page. When it's absent
+       (untranslated pages) or a locale isn't in it, that locale falls back
+       to the English version of the same page rather than disappearing. */
+    var AR_LANGS = [
+      { code: 'en', label: 'English' },
+      { code: 'ms', label: 'Bahasa Melayu' },
+      { code: 'id', label: 'Bahasa Indonesia' },
+      { code: 'ja', label: '日本語' }
+    ];
+    function arInferBasePath() {
+      var parts = location.pathname.replace(/^\/+|\/+$/g, '').split('/').filter(Boolean);
+      if (parts.length && ['ms', 'id', 'ja'].indexOf(parts[0]) !== -1) parts.shift();
+      return parts.join('/');
+    }
+    function renderLangSection() {
+      var list = document.getElementById('ar-stg-lang-list');
+      if (!list) return;
+      var cur = (document.documentElement.getAttribute('lang') || 'en').split('-')[0];
+      var info = window.__arI18n || {};
+      var basePath = typeof info.basePath === 'string' ? info.basePath : arInferBasePath();
+      var avail = info.avail || [];
+      list.innerHTML = AR_LANGS.map(function (l) {
+        if (l.code === cur) {
+          return '<span class="ar-stg-lang-opt active" aria-current="page">' + l.label + '</span>';
+        }
+        var hasTranslation = l.code === 'en' || avail.indexOf(l.code) !== -1;
+        var url = hasTranslation && l.code !== 'en'
+          ? '/' + l.code + (basePath ? '/' + basePath : '')
+          : '/' + basePath;
+        var suffix = hasTranslation ? '' : ' <span class="ar-stg-lang-fallback">(EN)</span>';
+        return '<a class="ar-stg-lang-opt" href="' + url + '">' + l.label + suffix + '</a>';
+      }).join('');
+    }
+    renderLangSection();
 
     function syncToggles() {
       if (stgFauna)     stgFauna.checked     = localStorage.getItem('ar_fauna')         !== '0';

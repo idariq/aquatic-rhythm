@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=57">
+<link rel="stylesheet" href="/css/ar-page.css?v=58">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--fs-3xs:.5rem;--fs-2xs:.65rem;--fs-xs:.7rem;--fs-sm:.8rem;--fs-sm-md:.85rem;--fs-md:.9rem;--fs-base:1rem;--fs-md-lg:1.1rem;--fs-lg:1.35rem;--fs-xl:1.6rem;--fs-2xl:2.2rem;--fs-3xl:2.8rem;--fs-4xl:3rem;--fs-5xl:3.5rem;
@@ -100,7 +100,7 @@
 html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--th-bg);color:var(--th-ink)}
 
 /* ── APP GRID ── */
-#app{display:grid;grid-template-rows:auto auto auto 1fr auto;height:100dvh;max-width:900px;margin:0 auto;padding:0 clamp(.5rem,2vw,1.2rem)}
+#app{display:grid;grid-template-rows:auto auto auto 1fr auto;height:100vh;height:100svh;max-width:900px;margin:0 auto;padding:0 clamp(.5rem,2vw,1.2rem)}
 
 /* ── TOPBAR ── */
 #topbar{display:flex;align-items:center;justify-content:space-between;padding:.55rem 0 .48rem;border-bottom:1px solid var(--th-accent-border);gap:.55rem;flex-shrink:0}
@@ -290,7 +290,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
   /* App — full height flex column */
   #app{
     display:flex;flex-direction:column;
-    height:100dvh;padding:0;gap:0;
+    height:100vh;height:100svh;padding:0;gap:0;
   }
 
   /* Topbar — larger tap targets & legibility */
@@ -928,18 +928,18 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
       <!-- Equipment row -->
       <div id="equip-bar">
         <button class="eq-btn eq-on" id="eq-heater" onclick="toggleEquip('heater')" data-tip="Menjaga air pada 26°C. Bakteri tumbuh ~50% lebih cepat pada suhu optimal.">
-          <span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg></span>
+          <span class="eq-icon" style="color:rgba(221,122,69,.9)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg></span>
           <span class="eq-lbl">Heater</span>
           <span class="eq-temp" id="eq-temp">26°C</span>
         </button>
         <div class="eq-div"></div>
         <button class="eq-btn eq-on" id="eq-filter" onclick="toggleEquip('filter')" data-tip="Tempat bakteri hidup. Tanpanya, siklus hampir tidak bisa selesai.">
-          <span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="10" height="16" rx="2.5"/><path d="M11 7.5a3 3 0 1 1-2.5 4.7"/><path d="M4 7h2M4 15h2"/></svg></span>
+          <span class="eq-icon" style="color:rgba(79,159,212,.9)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="10" height="16" rx="2.5"/><path d="M11 7.5a3 3 0 1 1-2.5 4.7"/><path d="M4 7h2M4 15h2"/></svg></span>
           <span class="eq-lbl">Filter</span>
         </button>
         <div class="eq-div"></div>
         <button class="eq-btn eq-on" id="eq-light" onclick="cycleLight()" data-tip="Ketuk untuk berganti: Mati → Rendah → Sedang → Tinggi. Memengaruhi tanaman dan alga.">
-          <span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span>
+          <span class="eq-icon" style="color:rgba(219,177,68,.95)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span>
           <span class="eq-lbl">Lampu</span>
           <span class="eq-temp" id="eq-light-lbl">Sedang</span>
         </button>
@@ -952,7 +952,7 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
         <div class="pi-div"></div>
         <div class="pi"><span class="pi-lbl" title="Nitrate">NO₃</span><span class="pi-val safe" id="v-no3">0.00</span><span class="pi-arrow" id="arr-no3"></span><div class="pi-track"><div class="pi-fill" id="b-no3"></div></div></div>
         <div class="pi-div"></div>
-        <div class="pi-fish"><span class="pi-fish-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="10" cy="12" rx="7" ry="4.3"/><path d="M17 8.3L21.5 12L17 15.7"/><circle cx="6" cy="10.8" r=".7" fill="currentColor" stroke="none"/></svg></span><span class="pi-fish-val" id="v-fish">0</span></div>
+        <div class="pi-fish"><span class="pi-fish-icon" style="color:rgba(79,159,212,.85)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="10" cy="12" rx="7" ry="4.3"/><path d="M17 8.3L21.5 12L17 15.7"/><circle cx="6" cy="10.8" r=".7" fill="currentColor" stroke="none"/></svg></span><span class="pi-fish-val" id="v-fish">0</span></div>
         <div class="pi-div"></div>
         <div class="pi-fish"><span class="pi-fish-icon" style="color:rgba(100,180,80,.6)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><span class="pi-fish-val" id="v-plant" style="color:rgba(100,180,80,.6)">0</span></div>
 
@@ -1021,21 +1021,21 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
 
   <div id="bbar">
     <button class="ab" id="act-source" onclick="doAct('source')">
-      <span class="ai" id="act-source-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg></span>
+      <span class="ai" id="act-source-icon" style="color:var(--th-accent)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg></span>
       <span class="an" id="act-source-name">Tambah amonia</span>
       <span class="ah">Memulai siklus</span>
     </button>
     <button class="ab" id="act-feed" onclick="doAct('feed')" disabled>
-      <span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M4 11c0 4.5 3.5 8 8 8s8-3.5 8-8"/><ellipse cx="12" cy="11" rx="9" ry="2.2"/></svg></span><span class="an">Beri makan</span><span class="ah">Khusus dengan ikan</span>
+      <span class="ai" style="color:rgba(196,146,86,.95)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M4 11c0 4.5 3.5 8 8 8s8-3.5 8-8"/><ellipse cx="12" cy="11" rx="9" ry="2.2"/></svg></span><span class="an">Beri makan</span><span class="ah">Khusus dengan ikan</span>
     </button>
     <button class="ab" id="act-water" onclick="showWaterPicker()">
-      <span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></span><span class="an">Ganti air</span><span class="ah">Pilih jumlah</span>
+      <span class="ai" style="color:rgba(79,159,212,.95)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></span><span class="an">Ganti air</span><span class="ah">Pilih jumlah</span>
     </button>
     <button class="ab" id="act-plant" onclick="doAct('plant')">
-      <span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><span class="an">Tambah tanaman</span><span class="ah">Menyangga nitrat</span>
+      <span class="ai" style="color:rgba(100,180,80,.9)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><span class="an">Tambah tanaman</span><span class="ah">Menyangga nitrat</span>
     </button>
     <button class="ab" id="act-seed" onclick="doSeed()">
-      <span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4M10.5 2v6.5l-4 9a2.2 2.2 0 0 0 2 3.1h7a2.2 2.2 0 0 0 2-3.1l-4-9V2"/><circle cx="10.5" cy="16" r=".55" fill="currentColor" stroke="none"/><circle cx="13.2" cy="17.5" r=".55" fill="currentColor" stroke="none"/><circle cx="11.5" cy="19" r=".55" fill="currentColor" stroke="none"/></svg></span><span class="an">Seed</span><span class="ah">Starter bakteri</span>
+      <span class="ai" style="color:rgba(160,130,210,.95)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4M10.5 2v6.5l-4 9a2.2 2.2 0 0 0 2 3.1h7a2.2 2.2 0 0 0 2-3.1l-4-9V2"/><circle cx="10.5" cy="16" r=".55" fill="currentColor" stroke="none"/><circle cx="13.2" cy="17.5" r=".55" fill="currentColor" stroke="none"/><circle cx="11.5" cy="19" r=".55" fill="currentColor" stroke="none"/></svg></span><span class="an">Seed</span><span class="ah">Starter bakteri</span>
     </button>
   </div>
 </div>
@@ -2450,7 +2450,7 @@ render();renderTime(0);
   </div>
 </div>
 <!-- ── LAB NAV SHEET ── -->
-<script src="/js/ar-page.js?v=57" defer></script>
+<script src="/js/ar-page.js?v=58" defer></script>
 <script>
 (function(){
   var btn = document.getElementById('tb-settings-btn');
@@ -2462,6 +2462,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=57" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=58" defer></script>
 </body>
 </html>

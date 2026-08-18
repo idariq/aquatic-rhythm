@@ -5,6 +5,608 @@
 (function () {
   'use strict';
 
+  /* ── i18n: runtime UI strings ──────────────────────────────────────────
+     Community Stress Lab is a single shared JS file across en/ms/id/ja
+     (no per-language duplicate) — same T()/STRINGS pattern as
+     js/ui-journal.js. jnLang picked from <html lang>, falls back to en
+     for any missing key. Placeholder tokens use {n}-style {...} syntax,
+     substituted at call time — never translate/alter the token itself.
+     cn_* keys are the per-species "citationNote" values from
+     data/community-stress-lab-species-v1.json — duplicated here (not
+     read from that file) since the data pack itself stays English
+     (reference data, same convention as ui-journal.js's FISH_SPECIES). */
+  var cslLang = (document.documentElement && document.documentElement.lang) || 'en';
+  var CSL_STRINGS = {
+    en: {
+    'meta_title': 'Tank mates stress map — Community Stress Lab — Aquatic Rhythm',
+    'meta_description': 'Educational lab: map overlapping pressures when mixing freshwater species. Not a compatibility guarantee — observation in your real tank still comes first.',
+    'og_description': 'Educational lab: map overlapping pressures when mixing freshwater species. Not a compatibility guarantee.',
+    'brief_eyebrow': 'Aquatic Rhythm Lab',
+    'brief_title': 'Map your<br><em>community mix.</em>',
+    'brief_body': 'Overlay ecological pressures for a hypothetical freshwater community — thermal window, chemistry, space, predation, social tension, and dwarf shrimp safety. For planning and learning, not for declaring fish "compatible."',
+    'brief_rhy_thermal_name': 'Thermal',
+    'brief_rhy_thermal_desc': 'Shared temperature range across all selected species',
+    'brief_rhy_chemistry_name': 'Chemistry',
+    'brief_rhy_chemistry_desc': 'pH and hardness overlap for the whole community',
+    'brief_rhy_space_name': 'Space',
+    'brief_rhy_space_desc': 'Bioload and territory demand relative to tank volume',
+    'brief_rhy_predation_name': 'Predation',
+    'brief_rhy_predation_desc': 'Mouth size and predatory behaviour risk between species',
+    'brief_rhy_social_name': 'Social',
+    'brief_rhy_social_desc': 'Schooling needs, aggression, and fin-nipping tendency',
+    'brief_rhy_inverts_name': 'Inverts',
+    'brief_rhy_inverts_desc': 'Dwarf shrimp compatibility and chemical sensitivity',
+    'brief_note': 'Simplified ranges and rules only. Does not predict individual behaviour, aggression, or disease. Your real tank and your observations come first.',
+    'brief_btn': 'Enter the lab &#x2192;',
+    'insight_label': 'What this lab does',
+    'insight_text': 'Map <em>overlapping pressures</em> for a hypothetical freshwater mix — thermal window, chemistry, space/load, predation, social tension, and dwarf shrimp safety. For planning and learning, not for declaring fish “compatible.”',
+    'setup_note': 'Simplified ranges and rules only. Does not predict individual behaviour, aggression, or disease. Your real tank and your observations come first — use the <a href="/journal">Keeper’s Log</a> for what actually happens at home.',
+    'disclosure_summary': 'How this lab works',
+    'disclosure_p1': 'Species parameters (temperature, pH, body size, and behavioural tags) come from the Aquatic Rhythm species pack — hobby-consensus ranges cross-referenced against <a href="https://fishbase.se" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">FishBase</a> and <a href="https://www.seriouslyfish.com" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">SeriouslyFish</a>. Each species entry carries a citation note.',
+    'disclosure_p2': 'The pressure engine checks thermal overlap, pH range intersection, bioload coefficient, predation mouth-size matching, fin-nipping pairing, and dwarf shrimp safety. It does not model individual personality, aggression history, or disease. "Elevated" and "High" labels mean the parameter warrants attention — they are not predictions of failure.',
+    'disclosure_p3': 'Verify species parameters against current sources before stocking. Your real tank and your observations always come first.',
+    'tank_context_label': 'Tank context',
+    'volume_label': 'Volume',
+    'species_label': 'Species',
+    'species_hint': 'Up to 6 species · 24 individuals total. Search by name or id (e.g. <code>neon_tetra</code>).',
+    'search_placeholder': 'Search species…',
+    'search_aria': 'Search species to add',
+    'add_btn': 'Add',
+    'pressure_map_label': 'Pressure map',
+    'findings_label': 'Findings',
+    'checklist_label': 'Observation checklist',
+    'foot_note': 'Aligned with living systems. All tools grow from ARA — they simulate and plan, but they do not replace observation.',
+    'empty_chips': 'Add species to map overlapping pressures.',
+    'decrease_count_aria': 'Decrease count',
+    'increase_count_aria': 'Increase count',
+    'remove_aria': 'Remove {name}',
+    'no_species_match': 'No species match that search.',
+    'select_species_for_findings': 'Select species to generate findings.',
+    'no_findings': 'No major overlapping pressures flagged by this MVP model — still observe the real tank.',
+    'could_not_load': 'Could not load species data. Check your connection and refresh.',
+    'lane_thermal': 'Thermal',
+    'lane_chemistry': 'Water chemistry',
+    'lane_space': 'Space / load',
+    'lane_predation': 'Predation',
+    'lane_social': 'Social tension',
+    'lane_inverts': 'Invert safety',
+    'lane_level_high': 'high',
+    'lane_level_elevated': 'elevated',
+    'lane_level_low': 'low',
+    'checklist_static_1': 'Watch feeding response and body condition for 7–10 days after any addition.',
+    'checklist_static_2': 'Note fin damage, hiding, or colour loss at the same time each day.',
+    'checklist_static_3': 'When troubleshooting, change one variable at a time so cause stays readable.',
+    'checklist_priority': 'Priority: re-read behaviour for “{title}” before adding more livestock.',
+    'r_thermal_gap_title': 'No shared temperature window',
+    'r_thermal_gap_body': 'On paper, these species do not overlap in a comfortable temperature range. Re-check sources before attempting a mixed setup.',
+    'r_thermal_narrow_title': 'Very narrow temperature overlap',
+    'r_thermal_narrow_body': 'The overlap is only about {width} °C — small heater drift or seasons can push someone out of comfort.',
+    'r_ph_gap_title': 'pH targets do not overlap',
+    'r_ph_gap_body': 'General ranges do not intersect. Source water and buffering will matter even more than usual.',
+    'r_ph_narrow_title': 'Tight pH overlap',
+    'r_ph_narrow_body': 'The combined pH window is narrow — test tap and tank chemistry before mixing.',
+    'r_coldwarm_mix_title': 'Coldwater mixed with tropical',
+    'r_coldwarm_mix_body': 'Coldwater species (like goldfish) and tropical species rarely share one stable long-term plan.',
+    'r_bioload_high_title': 'Bioload proxy is high for this volume',
+    'r_bioload_high_body': 'Stocking density (rough proxy) is high relative to {volumeL} L — filtration, plants, and water changes need to match.',
+    'r_bioload_proxy_title': 'Bioload proxy is elevated',
+    'r_bioload_proxy_body': 'There is meaningful livestock mass for this volume on paper — leave margin for growth and messy days.',
+    'r_small_tank_title': 'Small tank, many lifestyles',
+    'r_small_tank_body': 'Under {smallTankL} L with several species or aggressive cichlids, territory and water quality swing faster.',
+    'r_mbuna_community_title': 'Mbuna with non-mbuna fish',
+    'r_mbuna_community_body': 'Rock-dwelling mbuna are a different community model than typical community fish — mixing usually raises chronic aggression or stress.',
+    'r_predation_title': 'Mouth / body mismatch',
+    'r_predation_body': '{predatorName} may treat very small tankmates (such as {preyName}) as food — behaviour varies by individual and setup.',
+    'r_shrimp_risk_high_title': 'Shrimp with high-risk fish',
+    'r_shrimp_risk_high_body': 'Active predators, nippers, or aggressive cichlids often stress or consume dwarf shrimp in typical aquascapes.',
+    'r_shrimp_risk_mod_title': 'Shrimp with moderate-risk fish',
+    'r_shrimp_risk_mod_body': 'Some fish ignore shrimp; others do not. Plan hiding places and watch for missing shrimp over weeks, not hours.',
+    'r_fin_nipper_title': 'Fin-nipping exposure',
+    'r_fin_nipper_body': 'A nipping species is paired with long fins or labyrinth fish — watch fins daily after introduction.',
+    'r_tiger_school_title': 'Tiger barbs in a small group',
+    'r_tiger_school_body': 'Tiger barbs are often nippier below ~{tigerMinSchool} — a larger school sometimes redirects nipping within the group.',
+    'r_schooling_title': '{name} — low group size',
+    'r_schooling_body': 'This species is usually kept in larger groups (about {schoolingMin}+). Small groups often hide or act skittish.',
+    'r_betta_male_multi_title': 'Multiple male bettas — fighting near-certain',
+    'r_betta_male_multi_body': 'Male bettas are strongly territorial and will fight if housed together. Fin damage, stress, and death are the typical outcome in all but very large, heavily-divided setups.',
+    'r_betta_male_flow_title': 'Male betta with very active swimmers',
+    'r_betta_male_flow_body': 'Fast mid-water fish sometimes stress male bettas by repeatedly crossing territory — watch for flaring, torn fins, or loss of appetite.',
+    'r_betta_male_gourami_title': 'Male betta with other labyrinth fish',
+    'r_betta_male_gourami_body': 'Multiple labyrinth species can dispute the surface — line of sight breaks and float plants help, but aggression is common.',
+    'r_gbr_heat_title': 'Warm-specialist in a cool-overlap window',
+    'r_gbr_heat_body': 'Warm-loving fish need stable warm water — if the whole-group overlap sits low, heaters and room temperature need extra headroom.',
+    'r_discus_complex_title': 'Discus with a mismatched lifestyle mix',
+    'r_discus_complex_body': 'Discus husbandry (temperature, flow, temperament) rarely lines up with coldwater, high-chase, or mbuna setups — expect extra friction.',
+    'r_snail_loach_hunter_title': 'Snails with a dedicated snail hunter',
+    'r_snail_loach_hunter_body': '{name} actively hunts snails — shell populations will decline noticeably over time.',
+    'r_snail_loach_maybe_title': 'Snails with a potential snail eater',
+    'r_snail_loach_maybe_body': 'Some reports of {name} disturbing snails — monitor over several weeks.',
+    'r_snail_loach_cichlid_title': 'Mystery snail with aggressive cichlid',
+    'r_snail_loach_cichlid_body': 'Aggressive cichlids may harass or injure mystery snails — antennas and soft parts are vulnerable.',
+    'r_invert_assassin_title': 'Assassin snail with small inverts',
+    'r_invert_assassin_body': 'Assassin snails prey on pest snails and may also take dwarf shrimp, especially juveniles — monitor closely in a mixed invert setup.',
+    'r_zone_benthic_crowd_title': 'Multiple bottom-dwellers in a small tank',
+    'r_zone_benthic_crowd_body': 'Several benthic species ({names}) compete for substrate territory — friction increases in tanks under {smallTankL} L.',
+    'cn_default': 'Hobby consensus ranges — verify before stocking.',
+    'cn_otocinclus_trade': 'Trade identity uncertain — sold as several Otocinclus spp. Hobby consensus ranges.',
+    'cn_mbuna_generic': 'Generic stand-in for aggressive mbuna — verify species before stocking.',
+    'cn_goldfish_fancy': 'Fancy strains vary — verify before stocking.',
+    'cn_corydoras_sterbai': 'Warm-water cory; classic discus companion. Hobby consensus ranges.',
+    'cn_peppered_corydoras': 'Cool-water tolerant corydoras. Hobby consensus ranges.',
+    'cn_clown_loach': 'Sold small but grows very large — adult size frequently underestimated. Hobby consensus ranges.',
+    'cn_yoyo_loach': 'Active snail hunter. Hobby consensus ranges — verify before stocking.',
+    'cn_hillstream_loach': 'Requires high-flow, well-oxygenated cool water. Hobby consensus ranges.',
+    'cn_bristlenose_pleco': 'Common algae eater, notably messy. Hobby consensus ranges.',
+    'cn_white_cloud_minnow': 'Coldwater nano schooler — avoid mixing with tropical species. Hobby consensus ranges.',
+    'cn_paradise_fish': 'Aggressive labyrinth fish; males fight. Cool-water tolerant. Hobby consensus ranges.',
+    'cn_emperor_tetra': 'Males have long extended fins; vulnerable to nippers. Hobby consensus ranges.',
+    'cn_black_skirt_tetra': 'Known fin nipper especially toward slow long-finned fish. Hobby consensus ranges.',
+    'cn_serpae_tetra': 'Notorious fin nipper in small groups. Hobby consensus ranges.',
+    'cn_sparkling_gourami': 'Tiny peaceful labyrinth fish. Hobby consensus ranges.',
+    'cn_blue_gourami': 'Males can be aggressive toward other labyrinth fish. Hobby consensus ranges.',
+    'cn_apistogramma': 'Genus-level stand-in — species vary widely. Hobby consensus ranges.',
+    'cn_firemouth_cichlid': 'Territorial especially when breeding. Hobby consensus ranges.',
+    'cn_keyhole_cichlid': 'One of the most peaceful cichlids. Hobby consensus ranges.',
+    'cn_boesemani_rainbow': 'Active schooler; prefers hard alkaline water. Hobby consensus ranges.',
+    'cn_threadfin_rainbow': 'Delicate; vulnerable to fin nippers and fast tankmates. Hobby consensus ranges.',
+    'cn_glass_catfish': 'Peaceful schooler; dislikes strong currents. Hobby consensus ranges.',
+    'cn_assassin_snail': 'Preys on pest snails; may take small shrimp. Hobby consensus ranges.',
+    'cn_rosy_barb': 'Cool-tolerant fin nipper; active schooler. Hobby consensus ranges.',
+    },
+    ms: {
+    'meta_title': 'Peta tekanan rakan setangki — Makmal Tekanan Komuniti — Aquatic Rhythm',
+    'meta_description': 'Makmal pendidikan: petakan tekanan bertindih bila mencampur spesies air tawar. Bukan jaminan keserasian — pemerhatian pd tangki sebenar anda tetap diutamakan.',
+    'og_description': 'Makmal pendidikan: petakan tekanan bertindih bila mencampur spesies air tawar. Bukan jaminan keserasian.',
+    'brief_eyebrow': 'Makmal Aquatic Rhythm',
+    'brief_title': 'Petakan<br><em>campuran komuniti anda.</em>',
+    'brief_body': 'Tindankan tekanan ekologi utk komuniti air tawar hipotesis — julat suhu, kimia, ruang, pemangsaan, ketegangan sosial, dan keselamatan udang kerdil. Utk perancangan & pembelajaran, bukan utk mengisytiharkan ikan "serasi".',
+    'brief_rhy_thermal_name': 'Terma',
+    'brief_rhy_thermal_desc': 'Julat suhu bersama merentas semua spesies dipilih',
+    'brief_rhy_chemistry_name': 'Kimia',
+    'brief_rhy_chemistry_desc': 'Pertindihan pH dan kekerasan air utk keseluruhan komuniti',
+    'brief_rhy_space_name': 'Ruang',
+    'brief_rhy_space_desc': 'Permintaan bioload dan territori berbanding isipadu tangki',
+    'brief_rhy_predation_name': 'Pemangsaan',
+    'brief_rhy_predation_desc': 'Saiz mulut dan risiko tingkah laku pemangsa antara spesies',
+    'brief_rhy_social_name': 'Sosial',
+    'brief_rhy_social_desc': 'Keperluan berkumpulan, agresi, dan kecenderungan gigit sirip',
+    'brief_rhy_inverts_name': 'Invertebrata',
+    'brief_rhy_inverts_desc': 'Keserasian udang kerdil dan sensitiviti kimia',
+    'brief_note': 'Julat & peraturan yg dipermudah sahaja. Tak meramal tingkah laku individu, agresi, atau penyakit. Tangki sebenar & pemerhatian anda diutamakan.',
+    'brief_btn': 'Masuk ke makmal &#x2192;',
+    'insight_label': 'Apa yg makmal ini buat',
+    'insight_text': 'Petakan <em>tekanan bertindih</em> utk campuran air tawar hipotesis — julat suhu, kimia, ruang/beban, pemangsaan, ketegangan sosial, dan keselamatan udang kerdil. Utk perancangan & pembelajaran, bukan utk mengisytiharkan ikan “serasi”.',
+    'setup_note': 'Julat & peraturan yg dipermudah sahaja. Tak meramal tingkah laku individu, agresi, atau penyakit. Tangki sebenar & pemerhatian anda diutamakan — guna <a href="/journal">Catatan Penjaga</a> utk apa yg sebenarnya berlaku di rumah.',
+    'disclosure_summary': 'Bagaimana makmal ini berfungsi',
+    'disclosure_p1': 'Parameter spesies (suhu, pH, saiz badan, dan tag tingkah laku) datang drpd pek spesies Aquatic Rhythm — julat konsensus hobi dirujuk-silang dgn <a href="https://fishbase.se" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">FishBase</a> dan <a href="https://www.seriouslyfish.com" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">SeriouslyFish</a>. Setiap entri spesies ada nota rujukan.',
+    'disclosure_p2': 'Enjin tekanan semak pertindihan terma, persilangan julat pH, koefisien bioload, padanan saiz mulut pemangsaan, pasangan gigit sirip, dan keselamatan udang kerdil. Ia tak model personaliti individu, sejarah agresi, atau penyakit. Label "Meningkat" dan "Tinggi" bermaksud parameter itu wajar diberi perhatian — bukan ramalan kegagalan.',
+    'disclosure_p3': 'Sahkan parameter spesies berbanding sumber terkini sblm menstok. Tangki sebenar & pemerhatian anda sentiasa diutamakan.',
+    'tank_context_label': 'Konteks tangki',
+    'volume_label': 'Isipadu',
+    'species_label': 'Spesies',
+    'species_hint': 'Sehingga 6 spesies · 24 individu jumlah. Cari ikut nama atau id (cth. <code>neon_tetra</code>).',
+    'search_placeholder': 'Cari spesies…',
+    'search_aria': 'Cari spesies utk ditambah',
+    'add_btn': 'Tambah',
+    'pressure_map_label': 'Peta tekanan',
+    'findings_label': 'Penemuan',
+    'checklist_label': 'Senarai semak pemerhatian',
+    'foot_note': 'Selaras dgn sistem hidup. Semua alat tumbuh drpd ARA — ia mensimulasi & merancang, tapi tak menggantikan pemerhatian.',
+    'empty_chips': 'Tambah spesies utk petakan tekanan bertindih.',
+    'decrease_count_aria': 'Kurangkan bilangan',
+    'increase_count_aria': 'Tambah bilangan',
+    'remove_aria': 'Buang {name}',
+    'no_species_match': 'Tiada spesies sepadan carian itu.',
+    'select_species_for_findings': 'Pilih spesies utk jana penemuan.',
+    'no_findings': 'Tiada tekanan bertindih besar dikesan oleh model MVP ini — tetap perhati tangki sebenar.',
+    'could_not_load': 'Tak dapat muatkan data spesies. Semak sambungan anda & muat semula.',
+    'lane_thermal': 'Terma',
+    'lane_chemistry': 'Kimia air',
+    'lane_space': 'Ruang / beban',
+    'lane_predation': 'Pemangsaan',
+    'lane_social': 'Ketegangan sosial',
+    'lane_inverts': 'Keselamatan invertebrata',
+    'lane_level_high': 'tinggi',
+    'lane_level_elevated': 'meningkat',
+    'lane_level_low': 'rendah',
+    'checklist_static_1': 'Perhati respons makan & keadaan badan selama 7–10 hari lepas sebarang penambahan.',
+    'checklist_static_2': 'Catat kerosakan sirip, bersembunyi, atau kehilangan warna pd masa yg sama setiap hari.',
+    'checklist_static_3': 'Bila menyelesaikan masalah, ubah satu pemboleh ubah sekali gus supaya punca kekal jelas.',
+    'checklist_priority': 'Keutamaan: baca semula tingkah laku utk “{title}” sblm menambah lebih banyak hidupan.',
+    'r_thermal_gap_title': 'Tiada tetingkap suhu bersama',
+    'r_thermal_gap_body': 'Di atas kertas, spesies-spesies ini tak bertindih dlm julat suhu yg selesa. Semak semula sumber sblm cuba persediaan campuran.',
+    'r_thermal_narrow_title': 'Pertindihan suhu sangat sempit',
+    'r_thermal_narrow_body': 'Pertindihan cuma sekitar {width} °C — sedikit hanyutan pemanas atau musim boleh menolak seseorang keluar drpd keselesaan.',
+    'r_ph_gap_title': 'Sasaran pH tak bertindih',
+    'r_ph_gap_body': 'Julat umum tak bersilang. Sumber air & penimbalan akan lebih penting drpd biasa.',
+    'r_ph_narrow_title': 'Pertindihan pH ketat',
+    'r_ph_narrow_body': 'Tetingkap pH gabungan sempit — uji air paip & kimia tangki sblm mencampur.',
+    'r_coldwarm_mix_title': 'Air sejuk dicampur dgn tropika',
+    'r_coldwarm_mix_body': 'Spesies air sejuk (spt ikan emas) & spesies tropika jarang berkongsi satu rancangan jangka panjang yg stabil.',
+    'r_bioload_high_title': 'Proksi bioload tinggi utk isipadu ini',
+    'r_bioload_high_body': 'Kepadatan stok (proksi kasar) tinggi berbanding {volumeL} L — penapisan, tumbuhan, & penukaran air perlu sepadan.',
+    'r_bioload_proxy_title': 'Proksi bioload meningkat',
+    'r_bioload_proxy_body': 'Ada jisim hidupan yg bermakna utk isipadu ini di atas kertas — tinggalkan margin utk pertumbuhan & hari berselerak.',
+    'r_small_tank_title': 'Tangki kecil, banyak gaya hidup',
+    'r_small_tank_body': 'Bawah {smallTankL} L dgn beberapa spesies atau siklid agresif, territori & kualiti air berubah lebih cepat.',
+    'r_mbuna_community_title': 'Mbuna dgn ikan bukan-mbuna',
+    'r_mbuna_community_body': 'Mbuna penghuni batu ialah model komuniti berbeza drpd ikan komuniti biasa — mencampur biasanya menaikkan agresi atau tekanan kronik.',
+    'r_predation_title': 'Ketakserasian mulut / badan',
+    'r_predation_body': '{predatorName} mungkin anggap rakan setangki sangat kecil (spt {preyName}) sbg makanan — tingkah laku berbeza ikut individu & persediaan.',
+    'r_shrimp_risk_high_title': 'Udang dgn ikan berisiko tinggi',
+    'r_shrimp_risk_high_body': 'Pemangsa aktif, penggigit, atau siklid agresif selalu menekan atau memakan udang kerdil dlm akuaskap biasa.',
+    'r_shrimp_risk_mod_title': 'Udang dgn ikan berisiko sederhana',
+    'r_shrimp_risk_mod_body': 'Sesetengah ikan abaikan udang; yg lain tidak. Rancang tempat bersembunyi & perhati udang hilang selama berminggu, bukan berjam.',
+    'r_fin_nipper_title': 'Pendedahan gigitan sirip',
+    'r_fin_nipper_body': 'Spesies penggigit dipasangkan dgn sirip panjang atau ikan labirin — perhati sirip setiap hari lepas diperkenalkan.',
+    'r_tiger_school_title': 'Barb harimau dlm kumpulan kecil',
+    'r_tiger_school_body': 'Barb harimau selalunya lebih suka gigit di bawah ~{tigerMinSchool} — kumpulan lebih besar kadang mengalihkan gigitan dlm kumpulan itu.',
+    'r_schooling_title': '{name} — saiz kumpulan rendah',
+    'r_schooling_body': 'Spesies ini biasanya dipelihara dlm kumpulan lebih besar (kira-kira {schoolingMin}+). Kumpulan kecil selalu bersembunyi atau bertindak cemas.',
+    'r_betta_male_multi_title': 'Beberapa betta jantan — pergaduhan hampir pasti',
+    'r_betta_male_multi_body': 'Betta jantan sangat territorial & akan bergaduh kalau dipelihara bersama. Kerosakan sirip, tekanan, & kematian ialah hasil biasa dlm hampir semua persediaan kecuali yg sangat besar & dibahagikan secara berat.',
+    'r_betta_male_flow_title': 'Betta jantan dgn perenang sangat aktif',
+    'r_betta_male_flow_body': 'Ikan pertengahan air yg pantas kadang menekan betta jantan dgn berulang kali melintasi territori — perhati sirip mengembang, sirip koyak, atau kehilangan selera.',
+    'r_betta_male_gourami_title': 'Betta jantan dgn ikan labirin lain',
+    'r_betta_male_gourami_body': 'Berbilang spesies labirin boleh bertelagah permukaan — pemecah garis pandangan & tumbuhan terapung membantu, tapi agresi biasa berlaku.',
+    'r_gbr_heat_title': 'Spesialis air panas dlm tetingkap pertindihan sejuk',
+    'r_gbr_heat_body': 'Ikan yg suka air panas perlukan air panas yg stabil — kalau pertindihan keseluruhan kumpulan rendah, pemanas & suhu bilik perlukan ruang tambahan.',
+    'r_discus_complex_title': 'Discus dgn campuran gaya hidup tak sepadan',
+    'r_discus_complex_body': 'Penjagaan discus (suhu, aliran, perangai) jarang sepadan dgn persediaan air sejuk, kejar-mengejar tinggi, atau mbuna — jangkakan geseran tambahan.',
+    'r_snail_loach_hunter_title': 'Siput dgn pemburu siput khusus',
+    'r_snail_loach_hunter_body': '{name} aktif memburu siput — populasi cengkerang akan menurun dgn ketara drpd masa ke masa.',
+    'r_snail_loach_maybe_title': 'Siput dgn pemakan siput berpotensi',
+    'r_snail_loach_maybe_body': 'Ada laporan {name} mengganggu siput — pantau selama beberapa minggu.',
+    'r_snail_loach_cichlid_title': 'Siput mystery dgn siklid agresif',
+    'r_snail_loach_cichlid_body': 'Siklid agresif mungkin mengganggu atau mencederakan siput mystery — antena & bahagian lembut terdedah.',
+    'r_invert_assassin_title': 'Siput assassin dgn invertebrata kecil',
+    'r_invert_assassin_body': 'Siput assassin memangsa siput perosak & mungkin turut mengambil udang kerdil, terutama yg muda — pantau dgn teliti dlm persediaan invertebrata campuran.',
+    'r_zone_benthic_crowd_title': 'Berbilang penghuni dasar dlm tangki kecil',
+    'r_zone_benthic_crowd_body': 'Beberapa spesies bentik ({names}) bersaing utk territori substrat — geseran meningkat dlm tangki bawah {smallTankL} L.',
+    'cn_default': 'Julat konsensus hobi — sahkan sblm menstok.',
+    'cn_otocinclus_trade': 'Identiti dagangan tak pasti — dijual sbg beberapa spp Otocinclus. Julat konsensus hobi.',
+    'cn_mbuna_generic': 'Wakil generik utk mbuna agresif — sahkan spesies sblm menstok.',
+    'cn_goldfish_fancy': 'Strain fancy berbeza-beza — sahkan sblm menstok.',
+    'cn_corydoras_sterbai': 'Cory air panas; teman klasik discus. Julat konsensus hobi.',
+    'cn_peppered_corydoras': 'Cory bertoleransi air sejuk. Julat konsensus hobi.',
+    'cn_clown_loach': 'Dijual kecil tapi membesar sangat besar — saiz dewasa selalu diremehkan. Julat konsensus hobi.',
+    'cn_yoyo_loach': 'Pemburu siput aktif. Julat konsensus hobi — sahkan sblm menstok.',
+    'cn_hillstream_loach': 'Perlukan air sejuk beroksigen tinggi-aliran. Julat konsensus hobi.',
+    'cn_bristlenose_pleco': 'Pemakan alga biasa, agak berselerak. Julat konsensus hobi.',
+    'cn_white_cloud_minnow': 'Perenang kumpulan nano air sejuk — elak campur dgn spesies tropika. Julat konsensus hobi.',
+    'cn_paradise_fish': 'Ikan labirin agresif; jantan bergaduh. Bertoleransi air sejuk. Julat konsensus hobi.',
+    'cn_emperor_tetra': 'Jantan ada sirip panjang terbentang; terdedah kpd penggigit. Julat konsensus hobi.',
+    'cn_black_skirt_tetra': 'Penggigit sirip terkenal terutama thd ikan bersirip panjang yg perlahan. Julat konsensus hobi.',
+    'cn_serpae_tetra': 'Penggigit sirip yg terkenal dlm kumpulan kecil. Julat konsensus hobi.',
+    'cn_sparkling_gourami': 'Ikan labirin kecil yg aman. Julat konsensus hobi.',
+    'cn_blue_gourami': 'Jantan boleh agresif thd ikan labirin lain. Julat konsensus hobi.',
+    'cn_apistogramma': 'Wakil peringkat genus — spesies berbeza-beza secara meluas. Julat konsensus hobi.',
+    'cn_firemouth_cichlid': 'Territorial terutama semasa membiak. Julat konsensus hobi.',
+    'cn_keyhole_cichlid': 'Salah satu siklid paling aman. Julat konsensus hobi.',
+    'cn_boesemani_rainbow': 'Perenang kumpulan aktif; suka air alkali keras. Julat konsensus hobi.',
+    'cn_threadfin_rainbow': 'Halus; terdedah kpd penggigit sirip & rakan setangki pantas. Julat konsensus hobi.',
+    'cn_glass_catfish': 'Perenang kumpulan aman; tak suka arus kuat. Julat konsensus hobi.',
+    'cn_assassin_snail': 'Memangsa siput perosak; mungkin ambil udang kecil. Julat konsensus hobi.',
+    'cn_rosy_barb': 'Penggigit sirip bertoleransi sejuk; perenang kumpulan aktif. Julat konsensus hobi.',
+    },
+    id: {
+    'meta_title': 'Peta tekanan teman seakuarium — Community Stress Lab — Aquatic Rhythm',
+    'meta_description': 'Lab edukatif: memetakan tekanan yang bertumpang tindih saat mencampur spesies air tawar. Bukan jaminan kecocokan — pengamatan di akuarium nyata Anda tetap yang utama.',
+    'og_description': 'Lab edukatif: memetakan tekanan yang bertumpang tindih saat mencampur spesies air tawar. Bukan jaminan kecocokan.',
+    'brief_eyebrow': 'Aquatic Rhythm Lab',
+    'brief_title': 'Petakan<br><em>campuran komunitas Anda.</em>',
+    'brief_body': 'Tumpuk tekanan ekologis untuk komunitas air tawar hipotetis — jendela suhu, kimia air, ruang, predasi, ketegangan sosial, dan keamanan udang kerdil. Untuk perencanaan dan pembelajaran, bukan untuk menyatakan ikan "cocok".',
+    'brief_rhy_thermal_name': 'Termal',
+    'brief_rhy_thermal_desc': 'Rentang suhu bersama untuk semua spesies yang dipilih',
+    'brief_rhy_chemistry_name': 'Kimia air',
+    'brief_rhy_chemistry_desc': 'Irisan pH dan kesadahan untuk seluruh komunitas',
+    'brief_rhy_space_name': 'Ruang',
+    'brief_rhy_space_desc': 'Beban biologis dan kebutuhan teritori dibanding volume akuarium',
+    'brief_rhy_predation_name': 'Predasi',
+    'brief_rhy_predation_desc': 'Ukuran mulut dan risiko perilaku predator antarspesies',
+    'brief_rhy_social_name': 'Sosial',
+    'brief_rhy_social_desc': 'Kebutuhan bergerombol, agresi, dan kecenderungan menggigit sirip',
+    'brief_rhy_inverts_name': 'Invertebrata',
+    'brief_rhy_inverts_desc': 'Kecocokan udang kerdil dan sensitivitas terhadap zat kimia',
+    'brief_note': 'Hanya rentang dan aturan yang disederhanakan. Tidak memprediksi perilaku individu, agresi, atau penyakit. Akuarium nyata dan pengamatan Anda tetap yang utama.',
+    'brief_btn': 'Masuk ke lab &#x2192;',
+    'insight_label': 'Apa yang dilakukan lab ini',
+    'insight_text': 'Memetakan <em>tekanan yang bertumpang tindih</em> untuk campuran air tawar hipotetis — jendela suhu, kimia air, ruang/beban, predasi, ketegangan sosial, dan keamanan udang kerdil. Untuk perencanaan dan pembelajaran, bukan untuk menyatakan ikan “cocok”.',
+    'setup_note': 'Hanya rentang dan aturan yang disederhanakan. Tidak memprediksi perilaku individu, agresi, atau penyakit. Akuarium nyata dan pengamatan Anda tetap yang utama — gunakan <a href="/journal">Catatan Penjaga</a> untuk mencatat apa yang benar-benar terjadi di rumah.',
+    'disclosure_summary': 'Cara kerja lab ini',
+    'disclosure_p1': 'Parameter spesies (suhu, pH, ukuran tubuh, dan tag perilaku) berasal dari paket spesies Aquatic Rhythm — rentang konsensus hobi yang dirujuk silang dengan <a href="https://fishbase.se" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">FishBase</a> dan <a href="https://www.seriouslyfish.com" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">SeriouslyFish</a>. Setiap entri spesies memuat catatan rujukan.',
+    'disclosure_p2': 'Mesin tekanan memeriksa irisan suhu, perpotongan rentang pH, koefisien beban biologis, kecocokan ukuran mulut untuk predasi, pasangan penggigit sirip, dan keamanan udang kerdil. Mesin ini tidak memodelkan kepribadian individu, riwayat agresi, atau penyakit. Label "Meningkat" dan "Tinggi" berarti parameter tersebut perlu diperhatikan — keduanya bukan prediksi kegagalan.',
+    'disclosure_p3': 'Verifikasi parameter spesies dengan sumber terkini sebelum menebar penghuni. Akuarium nyata dan pengamatan Anda selalu yang utama.',
+    'tank_context_label': 'Konteks akuarium',
+    'volume_label': 'Volume',
+    'species_label': 'Spesies',
+    'species_hint': 'Maksimal 6 spesies · total 24 individu. Cari berdasarkan nama atau id (mis. <code>neon_tetra</code>).',
+    'search_placeholder': 'Cari spesies…',
+    'search_aria': 'Cari spesies untuk ditambahkan',
+    'add_btn': 'Tambah',
+    'pressure_map_label': 'Peta tekanan',
+    'findings_label': 'Temuan',
+    'checklist_label': 'Daftar periksa pengamatan',
+    'foot_note': 'Selaras dengan sistem kehidupan. Semua alat tumbuh dari ARA — alat ini menyimulasikan dan merencanakan, tetapi tidak menggantikan pengamatan.',
+    'empty_chips': 'Tambahkan spesies untuk memetakan tekanan yang bertumpang tindih.',
+    'decrease_count_aria': 'Kurangi jumlah',
+    'increase_count_aria': 'Tambah jumlah',
+    'remove_aria': 'Hapus {name}',
+    'no_species_match': 'Tidak ada spesies yang cocok dengan pencarian itu.',
+    'select_species_for_findings': 'Pilih spesies untuk menghasilkan temuan.',
+    'no_findings': 'Tidak ada tekanan bertumpang tindih besar yang ditandai oleh model MVP ini — tetap amati akuarium nyata Anda.',
+    'could_not_load': 'Tidak dapat memuat data spesies. Periksa koneksi Anda lalu muat ulang.',
+    'lane_thermal': 'Termal',
+    'lane_chemistry': 'Kimia air',
+    'lane_space': 'Ruang / beban',
+    'lane_predation': 'Predasi',
+    'lane_social': 'Ketegangan sosial',
+    'lane_inverts': 'Keamanan invertebrata',
+    'lane_level_high': 'tinggi',
+    'lane_level_elevated': 'meningkat',
+    'lane_level_low': 'rendah',
+    'checklist_static_1': 'Amati respons makan dan kondisi tubuh selama 7–10 hari setelah setiap penambahan.',
+    'checklist_static_2': 'Catat kerusakan sirip, perilaku bersembunyi, atau warna yang memudar pada jam yang sama setiap hari.',
+    'checklist_static_3': 'Saat menelusuri masalah, ubah satu variabel dalam satu waktu agar penyebabnya tetap terbaca.',
+    'checklist_priority': 'Prioritas: baca ulang perilaku untuk “{title}” sebelum menambah penghuni baru.',
+    'r_thermal_gap_title': 'Tidak ada jendela suhu bersama',
+    'r_thermal_gap_body': 'Di atas kertas, spesies ini tidak memiliki irisan rentang suhu yang nyaman. Periksa ulang sumber sebelum mencoba penataan campuran.',
+    'r_thermal_narrow_title': 'Irisan suhu sangat sempit',
+    'r_thermal_narrow_body': 'Irisannya hanya sekitar {width} °C — pergeseran kecil pada heater atau pergantian musim dapat membuat salah satu spesies keluar dari zona nyaman.',
+    'r_ph_gap_title': 'Target pH tidak beririsan',
+    'r_ph_gap_body': 'Rentang umumnya tidak berpotongan. Air sumber dan daya buffer akan lebih menentukan daripada biasanya.',
+    'r_ph_narrow_title': 'Irisan pH sempit',
+    'r_ph_narrow_body': 'Jendela pH gabungan tergolong sempit — uji kimia air keran dan air akuarium sebelum mencampur.',
+    'r_coldwarm_mix_title': 'Ikan air dingin dicampur dengan ikan tropis',
+    'r_coldwarm_mix_body': 'Spesies air dingin (seperti ikan mas koki) dan spesies tropis jarang dapat berbagi satu rencana jangka panjang yang stabil.',
+    'r_bioload_high_title': 'Perkiraan beban biologis tinggi untuk volume ini',
+    'r_bioload_high_body': 'Kepadatan tebar (perkiraan kasar) tergolong tinggi dibanding {volumeL} L — filtrasi, tanaman, dan penggantian air harus menyesuaikan.',
+    'r_bioload_proxy_title': 'Perkiraan beban biologis meningkat',
+    'r_bioload_proxy_body': 'Di atas kertas, massa penghuni cukup berarti untuk volume ini — sisakan ruang untuk pertumbuhan dan hari-hari yang berantakan.',
+    'r_small_tank_title': 'Akuarium kecil, banyak gaya hidup',
+    'r_small_tank_body': 'Di bawah {smallTankL} L dengan beberapa spesies atau cichlid agresif, teritori dan kualitas air berayun lebih cepat.',
+    'r_mbuna_community_title': 'Mbuna bersama ikan non-mbuna',
+    'r_mbuna_community_body': 'Mbuna penghuni bebatuan mengikuti model komunitas yang berbeda dari ikan komunitas pada umumnya — mencampurnya biasanya meningkatkan agresi atau stres kronis.',
+    'r_predation_title': 'Ketidaksesuaian ukuran mulut / tubuh',
+    'r_predation_body': '{predatorName} dapat memperlakukan teman seakuarium yang sangat kecil (seperti {preyName}) sebagai makanan — perilakunya berbeda-beda menurut individu dan penataan.',
+    'r_shrimp_risk_high_title': 'Udang bersama ikan berisiko tinggi',
+    'r_shrimp_risk_high_body': 'Predator aktif, penggigit sirip, atau cichlid agresif sering membuat udang kerdil stres atau memangsanya pada aquascape umumnya.',
+    'r_shrimp_risk_mod_title': 'Udang bersama ikan berisiko sedang',
+    'r_shrimp_risk_mod_body': 'Sebagian ikan mengabaikan udang; sebagian lain tidak. Siapkan tempat bersembunyi dan pantau udang yang hilang dalam hitungan minggu, bukan jam.',
+    'r_fin_nipper_title': 'Paparan gigitan sirip',
+    'r_fin_nipper_body': 'Spesies penggigit sirip dipasangkan dengan ikan bersirip panjang atau ikan labirin — periksa sirip setiap hari setelah pengenalan.',
+    'r_tiger_school_title': 'Tiger barb dalam kelompok kecil',
+    'r_tiger_school_body': 'Tiger barb sering lebih gemar menggigit bila jumlahnya di bawah ~{tigerMinSchool} — kelompok yang lebih besar kadang mengalihkan gigitan ke dalam kelompoknya sendiri.',
+    'r_schooling_title': '{name} — ukuran kelompok terlalu kecil',
+    'r_schooling_body': 'Spesies ini biasanya dipelihara dalam kelompok yang lebih besar (sekitar {schoolingMin}+). Kelompok kecil sering bersembunyi atau bersikap gugup.',
+    'r_betta_male_multi_title': 'Beberapa betta jantan — perkelahian hampir pasti',
+    'r_betta_male_multi_body': 'Betta jantan sangat teritorial dan akan berkelahi jika dipelihara bersama. Sirip rusak, stres, dan kematian adalah hasil yang biasa terjadi, kecuali pada penataan yang sangat besar dan bersekat rapat.',
+    'r_betta_male_flow_title': 'Betta jantan bersama perenang yang sangat aktif',
+    'r_betta_male_flow_body': 'Ikan cepat penghuni air tengah kadang membuat betta jantan stres karena berulang kali melintasi teritorinya — perhatikan sirip yang mengembang, sirip robek, atau nafsu makan menurun.',
+    'r_betta_male_gourami_title': 'Betta jantan bersama ikan labirin lain',
+    'r_betta_male_gourami_body': 'Beberapa spesies labirin dapat memperebutkan permukaan — pemutus garis pandang dan tanaman apung membantu, tetapi agresi tetap umum terjadi.',
+    'r_gbr_heat_title': 'Spesialis air hangat dalam jendela irisan yang sejuk',
+    'r_gbr_heat_body': 'Ikan penyuka suhu hangat membutuhkan air hangat yang stabil — jika irisan seluruh kelompok berada di sisi rendah, heater dan suhu ruangan perlu ruang cadangan ekstra.',
+    'r_discus_complex_title': 'Discus dengan campuran gaya hidup yang tidak sepadan',
+    'r_discus_complex_body': 'Perawatan discus (suhu, arus, temperamen) jarang sejalan dengan penataan air dingin, ikan pengejar aktif, atau mbuna — bersiaplah menghadapi gesekan ekstra.',
+    'r_snail_loach_hunter_title': 'Siput bersama pemburu siput sejati',
+    'r_snail_loach_hunter_body': '{name} aktif memburu siput — populasi siput akan menurun secara nyata seiring waktu.',
+    'r_snail_loach_maybe_title': 'Siput bersama pemakan siput potensial',
+    'r_snail_loach_maybe_body': 'Ada beberapa laporan {name} mengganggu siput — pantau selama beberapa minggu.',
+    'r_snail_loach_cichlid_title': 'Mystery snail bersama cichlid agresif',
+    'r_snail_loach_cichlid_body': 'Cichlid agresif dapat mengganggu atau melukai mystery snail — antena dan bagian tubuh lunaknya rentan.',
+    'r_invert_assassin_title': 'Assassin snail bersama invertebrata kecil',
+    'r_invert_assassin_body': 'Assassin snail memangsa siput hama dan mungkin juga memakan udang kerdil, terutama yang masih muda — pantau ketat pada penataan invertebrata campuran.',
+    'r_zone_benthic_crowd_title': 'Beberapa penghuni dasar dalam akuarium kecil',
+    'r_zone_benthic_crowd_body': 'Beberapa spesies bentik ({names}) bersaing memperebutkan teritori substrat — gesekan meningkat pada akuarium di bawah {smallTankL} L.',
+    'cn_default': 'Rentang konsensus hobi — verifikasi sebelum menebar.',
+    'cn_otocinclus_trade': 'Identitas dalam perdagangan tidak pasti — dijual sebagai beberapa Otocinclus spp. Rentang konsensus hobi.',
+    'cn_mbuna_generic': 'Pengganti umum untuk mbuna agresif — verifikasi spesies sebelum menebar.',
+    'cn_goldfish_fancy': 'Galur fancy bervariasi — verifikasi sebelum menebar.',
+    'cn_corydoras_sterbai': 'Cory air hangat; pendamping klasik discus. Rentang konsensus hobi.',
+    'cn_peppered_corydoras': 'Corydoras yang toleran air sejuk. Rentang konsensus hobi.',
+    'cn_clown_loach': 'Dijual dalam ukuran kecil tetapi tumbuh sangat besar — ukuran dewasanya sering diremehkan. Rentang konsensus hobi.',
+    'cn_yoyo_loach': 'Pemburu siput yang aktif. Rentang konsensus hobi — verifikasi sebelum menebar.',
+    'cn_hillstream_loach': 'Membutuhkan air sejuk beraliran deras dan kaya oksigen. Rentang konsensus hobi.',
+    'cn_bristlenose_pleco': 'Pemakan alga yang umum, terkenal banyak menghasilkan kotoran. Rentang konsensus hobi.',
+    'cn_white_cloud_minnow': 'Ikan nano air dingin yang bergerombol — hindari mencampurnya dengan spesies tropis. Rentang konsensus hobi.',
+    'cn_paradise_fish': 'Ikan labirin yang agresif; jantannya berkelahi. Toleran air sejuk. Rentang konsensus hobi.',
+    'cn_emperor_tetra': 'Jantan bersirip panjang menjuntai; rentan terhadap penggigit sirip. Rentang konsensus hobi.',
+    'cn_black_skirt_tetra': 'Dikenal sebagai penggigit sirip, terutama terhadap ikan lambat yang bersirip panjang. Rentang konsensus hobi.',
+    'cn_serpae_tetra': 'Penggigit sirip yang terkenal bila dipelihara dalam kelompok kecil. Rentang konsensus hobi.',
+    'cn_sparkling_gourami': 'Ikan labirin mungil yang damai. Rentang konsensus hobi.',
+    'cn_blue_gourami': 'Jantan bisa agresif terhadap ikan labirin lain. Rentang konsensus hobi.',
+    'cn_apistogramma': 'Pengganti di tingkat genus — antarspesies sangat bervariasi. Rentang konsensus hobi.',
+    'cn_firemouth_cichlid': 'Teritorial, terutama saat berbiak. Rentang konsensus hobi.',
+    'cn_keyhole_cichlid': 'Salah satu cichlid paling damai. Rentang konsensus hobi.',
+    'cn_boesemani_rainbow': 'Perenang bergerombol yang aktif; menyukai air sadah dan basa. Rentang konsensus hobi.',
+    'cn_threadfin_rainbow': 'Rapuh; rentan terhadap penggigit sirip dan teman seakuarium yang gesit. Rentang konsensus hobi.',
+    'cn_glass_catfish': 'Ikan bergerombol yang damai; tidak menyukai arus kuat. Rentang konsensus hobi.',
+    'cn_assassin_snail': 'Memangsa siput hama; bisa memakan udang kecil. Rentang konsensus hobi.',
+    'cn_rosy_barb': 'Penggigit sirip yang toleran air sejuk; perenang bergerombol yang aktif. Rentang konsensus hobi.',
+    },
+    ja: {
+    'meta_title': '混泳のストレスマップ — Community Stress Lab — Aquatic Rhythm',
+    'meta_description': '学習のためのラボです。淡水魚を混泳させたときに重なり合う負荷を可視化します。相性を保証するものではありません——優先されるのは、いつでも実際の水槽での観察です。',
+    'og_description': '学習のためのラボです。淡水魚を混泳させたときに重なり合う負荷を可視化します。相性を保証するものではありません。',
+    'brief_eyebrow': 'Aquatic Rhythm ラボ',
+    'brief_title': '混泳の組み合わせを<br><em>地図にする。</em>',
+    'brief_body': '想定した淡水の混泳水槽について、生態的な負荷を重ね合わせて表示します——水温域、水質、広さ、捕食、社会的な緊張、そして小型シュリンプの安全性。計画と学習のための道具であり、魚を「相性が良い」と断定するためのものではありません。',
+    'brief_rhy_thermal_name': '水温',
+    'brief_rhy_thermal_desc': '選んだすべての種に共通する水温の範囲',
+    'brief_rhy_chemistry_name': '水質',
+    'brief_rhy_chemistry_desc': '混泳全体で重なる pH と硬度の範囲',
+    'brief_rhy_space_name': '広さ',
+    'brief_rhy_space_desc': '水量に対する生体量と縄張りの要求',
+    'brief_rhy_predation_name': '捕食',
+    'brief_rhy_predation_desc': '口の大きさと、種どうしの捕食行動のリスク',
+    'brief_rhy_social_name': '社会性',
+    'brief_rhy_social_desc': '群れの必要性、攻撃性、ヒレをかじる傾向',
+    'brief_rhy_inverts_name': '無脊椎',
+    'brief_rhy_inverts_desc': '小型シュリンプとの相性と、薬品に対する敏感さ',
+    'brief_note': '扱うのは簡略化した数値範囲と規則だけです。個体ごとの行動、攻撃性、病気を予測するものではありません。優先されるのは、あなたの実際の水槽と観察です。',
+    'brief_btn': 'ラボに入る &#x2192;',
+    'insight_label': 'このラボでできること',
+    'insight_text': '想定した淡水の混泳について、<em>重なり合う負荷</em>を地図のように示します——水温域、水質、広さと生体量、捕食、社会的な緊張、小型シュリンプの安全性。計画と学習のための道具であり、魚を「相性が良い」と断定するためのものではありません。',
+    'setup_note': '扱うのは簡略化した数値範囲と規則だけです。個体ごとの行動、攻撃性、病気を予測するものではありません。優先されるのは、あなたの実際の水槽と観察です——自宅で実際に起きたことは、<a href="/journal">キーパーの記録</a>に残してください。',
+    'disclosure_summary': 'このラボの仕組み',
+    'disclosure_p1': '各種のパラメータ（水温、pH、体長、行動タグ）は Aquatic Rhythm の種データパックによります——アクアリウムで一般に共有されている範囲を、<a href="https://fishbase.se" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">FishBase</a> と <a href="https://www.seriouslyfish.com" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">SeriouslyFish</a> と照合したものです。種ごとの項目には出典メモが付いています。',
+    'disclosure_p2': 'この負荷エンジンが確認するのは、水温域の重なり、pH 範囲の交わり、生体量の係数、捕食における口と体の大きさの対応、ヒレをかじる組み合わせ、そして小型シュリンプの安全性です。個体の性格、攻撃の履歴、病気は扱いません。「やや高い」「高い」という表示は、その項目に注意が必要という意味であり、失敗の予告ではありません。',
+    'disclosure_p3': '導入の前に、最新の資料で各種のパラメータを確認してください。優先されるのは、いつでもあなたの実際の水槽と観察です。',
+    'tank_context_label': '水槽の条件',
+    'volume_label': '水量',
+    'species_label': '種',
+    'species_hint': '最大 6 種・合計 24 匹まで。名前または ID で検索できます（例：<code>neon_tetra</code>）。',
+    'search_placeholder': '種を検索…',
+    'search_aria': '追加する種を検索',
+    'add_btn': '追加',
+    'pressure_map_label': '負荷マップ',
+    'findings_label': '所見',
+    'checklist_label': '観察チェックリスト',
+    'foot_note': '生きた系に寄り添って。すべての道具は ARA から育っています——模擬と計画はできても、観察の代わりにはなりません。',
+    'empty_chips': '種を追加すると、重なり合う負荷が表示されます。',
+    'decrease_count_aria': '数を減らす',
+    'increase_count_aria': '数を増やす',
+    'remove_aria': '{name} を削除',
+    'no_species_match': 'その検索に合う種はありません。',
+    'select_species_for_findings': '種を選ぶと所見が表示されます。',
+    'no_findings': 'この簡易モデルでは、大きな負荷の重なりは見つかりませんでした——それでも実際の水槽をよく観察してください。',
+    'could_not_load': '種のデータを読み込めませんでした。通信状態を確認して、再読み込みしてください。',
+    'lane_thermal': '水温',
+    'lane_chemistry': '水質',
+    'lane_space': '広さ・生体量',
+    'lane_predation': '捕食',
+    'lane_social': '社会的な緊張',
+    'lane_inverts': '無脊椎の安全性',
+    'lane_level_high': '高い',
+    'lane_level_elevated': 'やや高い',
+    'lane_level_low': '低い',
+    'checklist_static_1': '生体を追加したら、7〜10 日は餌への反応と体の状態を観察する。',
+    'checklist_static_2': 'ヒレの傷、隠れる行動、色あせを、毎日同じ時間に記録する。',
+    'checklist_static_3': '問題を追うときは、一度に変える条件を一つに絞り、原因を読み取れるようにする。',
+    'checklist_priority': '優先：生体を増やす前に、「{title}」について行動をもう一度確かめる。',
+    'r_thermal_gap_title': '共通する水温域がない',
+    'r_thermal_gap_body': '資料の上では、これらの種に快適な水温の重なりはありません。混泳を試す前に、出典を確認し直してください。',
+    'r_thermal_narrow_title': '水温の重なりがとても狭い',
+    'r_thermal_narrow_body': '重なりは約 {width} °C しかありません——ヒーターのわずかなずれや季節の変化で、どれかの種が快適な範囲から外れます。',
+    'r_ph_gap_title': '目標とする pH が重ならない',
+    'r_ph_gap_body': '一般的な範囲どうしが交わりません。元の水と緩衝能が、いつも以上に重要になります。',
+    'r_ph_narrow_title': 'pH の重なりが狭い',
+    'r_ph_narrow_body': '全体で見た pH の幅は狭いです——混泳させる前に、水道水と水槽の水質を測ってください。',
+    'r_coldwarm_mix_title': '低水温の種と熱帯魚の混泳',
+    'r_coldwarm_mix_body': '金魚のような低水温の種と熱帯魚が、長期にわたって同じ安定した条件を共有できることはまれです。',
+    'r_bioload_high_title': 'この水量に対して生体量の目安が高い',
+    'r_bioload_high_body': 'おおまかな目安として、{volumeL} L に対する収容密度が高くなっています——ろ過、水草、換水をそれに見合うだけ用意してください。',
+    'r_bioload_proxy_title': '生体量の目安がやや高い',
+    'r_bioload_proxy_body': '計算の上では、この水量に対して生体の量がそれなりにあります——成長する分と、水が汚れる日のために余裕を残してください。',
+    'r_small_tank_title': '小さな水槽に、多様な暮らし方',
+    'r_small_tank_body': '{smallTankL} L 未満の水槽で複数の種や気の荒いシクリッドを飼うと、縄張りも水質も速く揺れます。',
+    'r_mbuna_community_title': 'ムブナと、それ以外の魚',
+    'r_mbuna_community_body': '岩場に暮らすムブナは、一般的な混泳魚とは別の飼い方の体系です——混ぜると、慢性的な攻撃やストレスが増えるのがふつうです。',
+    'r_predation_title': '口と体の大きさの不釣り合い',
+    'r_predation_body': '{predatorName} は、とても小さな同居魚（{preyName} など）を餌として扱うことがあります——行動は個体や環境によって変わります。',
+    'r_shrimp_risk_high_title': 'シュリンプと、危険度の高い魚',
+    'r_shrimp_risk_high_body': '活発な捕食魚、ヒレをかじる魚、気の荒いシクリッドは、ふつうのレイアウトでは小型シュリンプを追い詰めたり食べたりしがちです。',
+    'r_shrimp_risk_mod_title': 'シュリンプと、危険度が中くらいの魚',
+    'r_shrimp_risk_mod_body': 'シュリンプに見向きもしない魚もいれば、そうでない魚もいます。隠れ家を用意し、数が減っていないかを数時間ではなく数週間かけて確かめてください。',
+    'r_fin_nipper_title': 'ヒレをかじられる恐れ',
+    'r_fin_nipper_body': 'ヒレをかじる種が、長いヒレの魚やアナバス類と組み合わさっています——導入したあとは、毎日ヒレを確認してください。',
+    'r_tiger_school_title': 'スマトラの群れが小さい',
+    'r_tiger_school_body': 'スマトラは群れが約 {tigerMinSchool} を下回るとヒレをかじりやすくなります——群れを大きくすると、かじる相手が群れの中に向かうことがあります。',
+    'r_schooling_title': '{name} — 群れの数が少ない',
+    'r_schooling_body': 'この種はふつう、もっと大きな群れ（およそ {schoolingMin} 以上）で飼われます。小さな群れでは、隠れがちになったり、おびえた動きをしたりします。',
+    'r_betta_male_multi_title': 'オスのベタが複数 — 争いはほぼ確実',
+    'r_betta_male_multi_body': 'オスのベタは縄張り意識がとても強く、一緒に入れれば争います。とても大きく、しっかり仕切った水槽でない限り、ヒレの損傷、ストレス、死に至るのがふつうの結末です。',
+    'r_betta_male_flow_title': 'オスのベタと、とても活発に泳ぐ魚',
+    'r_betta_male_flow_body': '中層を速く泳ぐ魚が縄張りを何度も横切ることで、オスのベタが消耗することがあります——エラを広げる威嚇、裂けたヒレ、食欲の低下に注意してください。',
+    'r_betta_male_gourami_title': 'オスのベタと、ほかのアナバス類',
+    'r_betta_male_gourami_body': 'アナバス類が複数いると、水面をめぐって争うことがあります——視線を遮る配置や浮き草は助けになりますが、それでも攻撃はよく起きます。',
+    'r_gbr_heat_title': '高水温を好む種に、低めの重なり幅',
+    'r_gbr_heat_body': '高水温を好む魚には、安定して暖かい水が必要です——全体の重なりが低い側に寄っている場合、ヒーターと室温に余裕を持たせてください。',
+    'r_discus_complex_title': 'ディスカスと、暮らし方の合わない組み合わせ',
+    'r_discus_complex_body': 'ディスカスの飼い方（水温、水流、気質）は、低水温の魚、追いかけ回す魚、ムブナの水槽とかみ合うことがほとんどありません——余分な摩擦を見込んでください。',
+    'r_snail_loach_hunter_title': '貝と、貝を専門に狩る魚',
+    'r_snail_loach_hunter_body': '{name} は貝を積極的に狩ります——時間とともに、貝の数は目に見えて減ります。',
+    'r_snail_loach_maybe_title': '貝と、貝を食べる可能性のある魚',
+    'r_snail_loach_maybe_body': '{name} が貝にちょっかいを出したという報告があります——数週間かけて様子を見てください。',
+    'r_snail_loach_cichlid_title': 'ミステリースネールと、気の荒いシクリッド',
+    'r_snail_loach_cichlid_body': '気の荒いシクリッドは、ミステリースネールをつついたり傷つけたりすることがあります——触角や柔らかい部分が狙われやすいです。',
+    'r_invert_assassin_title': 'アサシンスネールと、小さな無脊椎',
+    'r_invert_assassin_body': 'アサシンスネールはスネール（害貝）を捕食し、小型シュリンプ、とくに稚エビを襲うこともあります——無脊椎を混ぜた水槽では、よく観察してください。',
+    'r_zone_benthic_crowd_title': '小さな水槽に底層の魚が複数',
+    'r_zone_benthic_crowd_body': '底層で暮らす種（{names}）が複数いると、底床の縄張りを取り合います——{smallTankL} L 未満の水槽では摩擦が大きくなります。',
+    'cn_default': 'アクアリウムで一般に共有されている範囲——導入の前に確認してください。',
+    'cn_otocinclus_trade': '流通名と種の対応が不確かで、複数の Otocinclus spp. が同じ名前で売られています。アクアリウムで一般に共有されている範囲。',
+    'cn_mbuna_generic': '気の荒いムブナ全般の代表としての項目——導入の前に種を確認してください。',
+    'cn_goldfish_fancy': '品種によって差があります——導入の前に確認してください。',
+    'cn_corydoras_sterbai': '高水温に向くコリドラス。ディスカスの定番の同居魚。アクアリウムで一般に共有されている範囲。',
+    'cn_peppered_corydoras': '低めの水温にも耐えるコリドラス。アクアリウムで一般に共有されている範囲。',
+    'cn_clown_loach': '小さな個体で売られますが、非常に大きく育ちます。成魚の大きさは見落とされがちです。アクアリウムで一般に共有されている範囲。',
+    'cn_yoyo_loach': '貝を積極的に狩ります。アクアリウムで一般に共有されている範囲——導入の前に確認してください。',
+    'cn_hillstream_loach': '強い水流と、酸素の豊富な低めの水温が必要です。アクアリウムで一般に共有されている範囲。',
+    'cn_bristlenose_pleco': 'よく使われるコケ取り役ですが、かなり水を汚します。アクアリウムで一般に共有されている範囲。',
+    'cn_white_cloud_minnow': '低水温を好む小型の群泳魚——熱帯魚との混泳は避けてください。アクアリウムで一般に共有されている範囲。',
+    'cn_paradise_fish': '気の荒いアナバス類で、オスどうしは争います。低めの水温にも耐えます。アクアリウムで一般に共有されている範囲。',
+    'cn_emperor_tetra': 'オスはヒレが長く伸び、ヒレをかじる魚に狙われやすいです。アクアリウムで一般に共有されている範囲。',
+    'cn_black_skirt_tetra': 'ヒレをかじることで知られ、とくに動きの遅い長いヒレの魚を狙います。アクアリウムで一般に共有されている範囲。',
+    'cn_serpae_tetra': '群れが小さいと、よくヒレをかじります。アクアリウムで一般に共有されている範囲。',
+    'cn_sparkling_gourami': 'とても小さく穏やかなアナバス類。アクアリウムで一般に共有されている範囲。',
+    'cn_blue_gourami': 'オスはほかのアナバス類に対して攻撃的になることがあります。アクアリウムで一般に共有されている範囲。',
+    'cn_apistogramma': 'Apistogramma 属をまとめた代表の項目——種による差が大きいです。アクアリウムで一般に共有されている範囲。',
+    'cn_firemouth_cichlid': '縄張り意識が強く、とくに繁殖期に目立ちます。アクアリウムで一般に共有されている範囲。',
+    'cn_keyhole_cichlid': 'もっとも穏やかなシクリッドの一つ。アクアリウムで一般に共有されている範囲。',
+    'cn_boesemani_rainbow': '活発な群泳魚で、硬めのアルカリ性の水を好みます。アクアリウムで一般に共有されている範囲。',
+    'cn_threadfin_rainbow': '繊細で、ヒレをかじる魚や動きの速い同居魚に弱いです。アクアリウムで一般に共有されている範囲。',
+    'cn_glass_catfish': '穏やかな群泳魚で、強い水流を嫌います。アクアリウムで一般に共有されている範囲。',
+    'cn_assassin_snail': 'スネール（害貝）を捕食し、小さなエビを襲うこともあります。アクアリウムで一般に共有されている範囲。',
+    'cn_rosy_barb': '低めの水温にも耐え、ヒレをかじることがある活発な群泳魚。アクアリウムで一般に共有されている範囲。',
+    }
+  };
+  function T(key, subs) {
+    var s = (CSL_STRINGS[cslLang] && CSL_STRINGS[cslLang][key]) || CSL_STRINGS.en[key] || key;
+    if (subs) {
+      Object.keys(subs).forEach(function (k) {
+        s = s.split('{' + k + '}').join(subs[k]);
+      });
+    }
+    return s;
+  }
+
+  // Species pack (data/community-stress-lab-species-v1.json) stays English —
+  // reference data, same convention as ui-journal.js's FISH_SPECIES — so its
+  // per-species citationNote strings can't be translated in the pack itself.
+  // Maps species id -> CSL_STRINGS cn_* key suffix for species with a note
+  // distinct from the shared default; anything not listed here uses 'default'.
+  var CITATION_KEY_BY_SPECIES = {
+    otocinclus: 'otocinclus_trade',
+    mbuna_generic: 'mbuna_generic',
+    goldfish: 'goldfish_fancy',
+    corydoras_sterbai: 'corydoras_sterbai',
+    peppered_corydoras: 'peppered_corydoras',
+    clown_loach: 'clown_loach',
+    yoyo_loach: 'yoyo_loach',
+    hillstream_loach: 'hillstream_loach',
+    bristlenose_pleco: 'bristlenose_pleco',
+    white_cloud_minnow: 'white_cloud_minnow',
+    paradise_fish: 'paradise_fish',
+    emperor_tetra: 'emperor_tetra',
+    black_skirt_tetra: 'black_skirt_tetra',
+    serpae_tetra: 'serpae_tetra',
+    sparkling_gourami: 'sparkling_gourami',
+    blue_gourami: 'blue_gourami',
+    apistogramma: 'apistogramma',
+    firemouth_cichlid: 'firemouth_cichlid',
+    keyhole_cichlid: 'keyhole_cichlid',
+    boesemani_rainbow: 'boesemani_rainbow',
+    threadfin_rainbow: 'threadfin_rainbow',
+    glass_catfish: 'glass_catfish',
+    assassin_snail: 'assassin_snail',
+    rosy_barb: 'rosy_barb'
+  };
+  function citationNoteFor(speciesId) {
+    return T('cn_' + (CITATION_KEY_BY_SPECIES[speciesId] || 'default'));
+  }
+
   var MAX_DISTINCT_SPECIES = 6;
   var MAX_INDIVIDUALS = 24;
   var BIoload_COEFF = 0.35;
@@ -77,16 +679,16 @@
     if (!tInt) {
       findings.push({
         id: 'R_THERMAL_GAP',
-        title: 'No shared temperature window',
-        body: 'On paper, these species do not overlap in a comfortable temperature range. Re-check sources before attempting a mixed setup.',
+        title: T('r_thermal_gap_title'),
+        body: T('r_thermal_gap_body'),
         severity: 'high',
         lanes: ['thermal']
       });
     } else if (tInt.width < 2) {
       findings.push({
         id: 'R_THERMAL_NARROW',
-        title: 'Very narrow temperature overlap',
-        body: 'The overlap is only about ' + tInt.width.toFixed(1) + ' °C — small heater drift or seasons can push someone out of comfort.',
+        title: T('r_thermal_narrow_title'),
+        body: T('r_thermal_narrow_body', { width: tInt.width.toFixed(1) }),
         severity: 'elevated',
         lanes: ['thermal']
       });
@@ -97,16 +699,16 @@
       if (phInt.gap) {
         findings.push({
           id: 'R_PH_GAP',
-          title: 'pH targets do not overlap',
-          body: 'General ranges do not intersect. Source water and buffering will matter even more than usual.',
+          title: T('r_ph_gap_title'),
+          body: T('r_ph_gap_body'),
           severity: 'high',
           lanes: ['chemistry']
         });
       } else if (phInt.ok && phInt.width < 0.4) {
         findings.push({
           id: 'R_PH_NARROW',
-          title: 'Tight pH overlap',
-          body: 'The combined pH window is narrow — test tap and tank chemistry before mixing.',
+          title: T('r_ph_narrow_title'),
+          body: T('r_ph_narrow_body'),
           severity: 'elevated',
           lanes: ['chemistry']
         });
@@ -124,8 +726,8 @@
     if (anyCold && anyNonCold) {
       findings.push({
         id: 'R_COLDWARM_MIX',
-        title: 'Coldwater mixed with tropical',
-        body: 'Coldwater species (like goldfish) and tropical species rarely share one stable long-term plan.',
+        title: T('r_coldwarm_mix_title'),
+        body: T('r_coldwarm_mix_body'),
         severity: 'high',
         lanes: ['thermal']
       });
@@ -144,16 +746,16 @@
     if (bioload > volumeL * BIoload_HIGH) {
       findings.push({
         id: 'R_BIoload_HIGH',
-        title: 'Bioload proxy is high for this volume',
-        body: 'Stocking density (rough proxy) is high relative to ' + volumeL + ' L — filtration, plants, and water changes need to match.',
+        title: T('r_bioload_high_title'),
+        body: T('r_bioload_high_body', { volumeL: volumeL }),
         severity: 'high',
         lanes: ['space']
       });
     } else if (bioload > volumeL * BIoload_COEFF) {
       findings.push({
         id: 'R_BIoload_PROXY',
-        title: 'Bioload proxy is elevated',
-        body: 'There is meaningful livestock mass for this volume on paper — leave margin for growth and messy days.',
+        title: T('r_bioload_proxy_title'),
+        body: T('r_bioload_proxy_body'),
         severity: 'elevated',
         lanes: ['space']
       });
@@ -170,8 +772,8 @@
     if (volumeL < SMALL_TANK_L && (nSpecies > 3 || aggressiveCichlid)) {
       findings.push({
         id: 'R_SMALL_TANK',
-        title: 'Small tank, many lifestyles',
-        body: 'Under ' + SMALL_TANK_L + ' L with several species or aggressive cichlids, territory and water quality swing faster.',
+        title: T('r_small_tank_title'),
+        body: T('r_small_tank_body', { smallTankL: SMALL_TANK_L }),
         severity: 'elevated',
         lanes: ['space']
       });
@@ -182,8 +784,8 @@
         if (picks[m].id !== 'mbuna_generic') {
           findings.push({
             id: 'R_MBUNA_COMMUNITY',
-            title: 'Mbuna with non-mbuna fish',
-            body: 'Rock-dwelling mbuna are a different community model than typical community fish — mixing usually raises chronic aggression or stress.',
+            title: T('r_mbuna_community_title'),
+            body: T('r_mbuna_community_body'),
             severity: 'high',
             lanes: ['social', 'space']
           });
@@ -204,8 +806,8 @@
         var sev = (a.mouthPredatorLevel >= 3 && bb.bodyMmAdult <= 30) ? 'high' : 'elevated';
         findings.push({
           id: 'R_PREDATION_' + a.id + '_' + bb.id,
-          title: 'Mouth / body mismatch',
-          body: a.displayName + ' may treat very small tankmates (such as ' + bb.displayName + ') as food — behaviour varies by individual and setup.',
+          title: T('r_predation_title'),
+          body: T('r_predation_body', { predatorName: a.displayName, preyName: bb.displayName }),
           severity: sev,
           lanes: ['predation']
         });
@@ -234,16 +836,16 @@
       if (riskyHigh) {
         findings.push({
           id: 'R_SHRIMP_RISK',
-          title: 'Shrimp with high-risk fish',
-          body: 'Active predators, nippers, or aggressive cichlids often stress or consume dwarf shrimp in typical aquascapes.',
+          title: T('r_shrimp_risk_high_title'),
+          body: T('r_shrimp_risk_high_body'),
           severity: 'high',
           lanes: ['inverts']
         });
       } else if (risky) {
         findings.push({
           id: 'R_SHRIMP_RISK',
-          title: 'Shrimp with moderate-risk fish',
-          body: 'Some fish ignore shrimp; others do not. Plan hiding places and watch for missing shrimp over weeks, not hours.',
+          title: T('r_shrimp_risk_mod_title'),
+          body: T('r_shrimp_risk_mod_body'),
           severity: 'elevated',
           lanes: ['inverts']
         });
@@ -264,8 +866,8 @@
     if (finNipperConflict) {
       findings.push({
         id: 'R_FIN_NIPPER',
-        title: 'Fin-nipping exposure',
-        body: 'A nipping species is paired with long fins or labyrinth fish — watch fins daily after introduction.',
+        title: T('r_fin_nipper_title'),
+        body: T('r_fin_nipper_body'),
         severity: 'elevated',
         lanes: ['social']
       });
@@ -278,8 +880,8 @@
     if (tigerCount > 0 && tigerCount < TIGER_MIN_SCHOOL) {
       findings.push({
         id: 'R_TIGER_SCHOOL',
-        title: 'Tiger barbs in a small group',
-        body: 'Tiger barbs are often nippier below ~' + TIGER_MIN_SCHOOL + ' — a larger school sometimes redirects nipping within the group.',
+        title: T('r_tiger_school_title'),
+        body: T('r_tiger_school_body', { tigerMinSchool: TIGER_MIN_SCHOOL }),
         severity: 'elevated',
         lanes: ['social']
       });
@@ -291,8 +893,8 @@
       if ((picks[sc].count || 0) < ssp.schoolingMin) {
         findings.push({
           id: 'R_SCHOOLING_' + picks[sc].id,
-          title: ssp.displayName + ' — low group size',
-          body: 'This species is usually kept in larger groups (about ' + ssp.schoolingMin + '+). Small groups often hide or act skittish.',
+          title: T('r_schooling_title', { name: ssp.displayName }),
+          body: T('r_schooling_body', { schoolingMin: ssp.schoolingMin }),
           severity: 'elevated',
           lanes: ['social']
         });
@@ -307,8 +909,8 @@
     if (bettaMaleCount > 1) {
       findings.push({
         id: 'R_BETTA_MALE_MULTI',
-        title: 'Multiple male bettas — fighting near-certain',
-        body: 'Male bettas are strongly territorial and will fight if housed together. Fin damage, stress, and death are the typical outcome in all but very large, heavily-divided setups.',
+        title: T('r_betta_male_multi_title'),
+        body: T('r_betta_male_multi_body'),
         severity: 'high',
         lanes: ['social']
       });
@@ -321,8 +923,8 @@
       if (fast) {
         findings.push({
           id: 'R_BETTA_MALE_FLOW',
-          title: 'Male betta with very active swimmers',
-          body: 'Fast mid-water fish sometimes stress male bettas by repeatedly crossing territory — watch for flaring, torn fins, or loss of appetite.',
+          title: T('r_betta_male_flow_title'),
+          body: T('r_betta_male_flow_body'),
           severity: 'elevated',
           lanes: ['social']
         });
@@ -335,8 +937,8 @@
       if (gourami) {
         findings.push({
           id: 'R_BETTA_MALE_GOURAMI',
-          title: 'Male betta with other labyrinth fish',
-          body: 'Multiple labyrinth species can dispute the surface — line of sight breaks and float plants help, but aggression is common.',
+          title: T('r_betta_male_gourami_title'),
+          body: T('r_betta_male_gourami_body'),
           severity: 'elevated',
           lanes: ['social']
         });
@@ -351,8 +953,8 @@
       if (warmSpecial) {
         findings.push({
           id: 'R_GBR_HEAT',
-          title: 'Warm-specialist in a cool-overlap window',
-          body: 'Warm-loving fish need stable warm water — if the whole-group overlap sits low, heaters and room temperature need extra headroom.',
+          title: T('r_gbr_heat_title'),
+          body: T('r_gbr_heat_body'),
           severity: 'elevated',
           lanes: ['thermal']
         });
@@ -367,8 +969,8 @@
       if (clash) {
         findings.push({
           id: 'R_DISCUS_COMPLEX',
-          title: 'Discus with a mismatched lifestyle mix',
-          body: 'Discus husbandry (temperature, flow, temperament) rarely lines up with coldwater, high-chase, or mbuna setups — expect extra friction.',
+          title: T('r_discus_complex_title'),
+          body: T('r_discus_complex_body'),
           severity: 'elevated',
           lanes: ['chemistry', 'social']
         });
@@ -393,10 +995,10 @@
           var snailSev = (slF.mouthPredatorLevel || 0) > 0 ? 'elevated' : 'info';
           findings.push({
             id: 'R_SNAIL_LOACH',
-            title: snailSev === 'elevated' ? 'Snails with a dedicated snail hunter' : 'Snails with a potential snail eater',
+            title: snailSev === 'elevated' ? T('r_snail_loach_hunter_title') : T('r_snail_loach_maybe_title'),
             body: snailSev === 'elevated'
-              ? slF.displayName + ' actively hunts snails — shell populations will decline noticeably over time.'
-              : 'Some reports of ' + slF.displayName + ' disturbing snails — monitor over several weeks.',
+              ? T('r_snail_loach_hunter_body', { name: slF.displayName })
+              : T('r_snail_loach_maybe_body', { name: slF.displayName }),
             severity: snailSev,
             lanes: ['inverts']
           });
@@ -409,8 +1011,8 @@
           if (slA && (hasTag(slA, 'cichlid_aggressive') || hasTag(slA, 'mbuna'))) {
             findings.push({
               id: 'R_SNAIL_LOACH_CICHLID',
-              title: 'Mystery snail with aggressive cichlid',
-              body: 'Aggressive cichlids may harass or injure mystery snails — antennas and soft parts are vulnerable.',
+              title: T('r_snail_loach_cichlid_title'),
+              body: T('r_snail_loach_cichlid_body'),
               severity: 'elevated',
               lanes: ['inverts']
             });
@@ -429,8 +1031,8 @@
         if (isInvert(aiS) && !hasTag(aiS, 'snail')) {
           findings.push({
             id: 'R_INVERT_ASSASSIN',
-            title: 'Assassin snail with small inverts',
-            body: 'Assassin snails prey on pest snails and may also take dwarf shrimp, especially juveniles — monitor closely in a mixed invert setup.',
+            title: T('r_invert_assassin_title'),
+            body: T('r_invert_assassin_body'),
             severity: 'elevated',
             lanes: ['inverts']
           });
@@ -450,8 +1052,8 @@
     if (benthicSpp.length >= 2 && volumeL < SMALL_TANK_L) {
       findings.push({
         id: 'R_ZONE_BENTHIC_CROWD',
-        title: 'Multiple bottom-dwellers in a small tank',
-        body: 'Several benthic species (' + benthicSpp.join(', ') + ') compete for substrate territory — friction increases in tanks under ' + SMALL_TANK_L + ' L.',
+        title: T('r_zone_benthic_crowd_title'),
+        body: T('r_zone_benthic_crowd_body', { names: benthicSpp.join(', '), smallTankL: SMALL_TANK_L }),
         severity: 'elevated',
         lanes: ['space', 'social']
       });
@@ -542,7 +1144,7 @@
     function renderChips() {
       chipsEl.innerHTML = '';
       if (!picks.length) {
-        chipsEl.innerHTML = '<p class="csl-empty">Add species to map overlapping pressures.</p>';
+        chipsEl.innerHTML = '<p class="csl-empty">' + escapeHtml(T('empty_chips')) + '</p>';
         return;
       }
       for (var i = 0; i < picks.length; i++) {
@@ -555,7 +1157,7 @@
             ? '<em class="csl-chip-sci">' + escapeHtml(s.scientificName) + '</em>'
             : '';
           var noteLine = s.citationNote
-            ? '<span class="csl-chip-note">' + escapeHtml(s.citationNote) + '</span>'
+            ? '<span class="csl-chip-note">' + escapeHtml(citationNoteFor(s.id)) + '</span>'
             : '';
           var srcLine = (s.sources && s.sources.length)
             ? '<span class="csl-chip-sources">' +
@@ -570,11 +1172,11 @@
             '<span class="csl-chip-name">' + escapeHtml(s.displayName) + sciLine + '</span>' +
             noteLine + srcLine +
             '<span class="csl-chip-ctl">' +
-            '<button type="button" class="csl-count-btn" data-act="minus" aria-label="Decrease count">−</button>' +
+            '<button type="button" class="csl-count-btn" data-act="minus" aria-label="' + escapeHtml(T('decrease_count_aria')) + '">−</button>' +
             '<span class="csl-count">' + p.count + '</span>' +
-            '<button type="button" class="csl-count-btn" data-act="plus" aria-label="Increase count">+</button>' +
+            '<button type="button" class="csl-count-btn" data-act="plus" aria-label="' + escapeHtml(T('increase_count_aria')) + '">+</button>' +
             '</span>' +
-            '<button type="button" class="csl-remove" data-act="remove" aria-label="Remove ' + escapeHtml(s.displayName) + '">×</button>';
+            '<button type="button" class="csl-remove" data-act="remove" aria-label="' + escapeHtml(T('remove_aria', { name: s.displayName })) + '">×</button>';
           row.querySelector('[data-act="minus"]').addEventListener('click', function () {
             if (picks[idx].count > 1) picks[idx].count--;
             else picks.splice(idx, 1);
@@ -625,7 +1227,7 @@
         row.innerHTML =
           '<div class="csl-lane-head">' +
           '<span class="csl-lane-name">' + escapeHtml(laneDisplay(lane)) + '</span>' +
-          '<span class="csl-lane-lbl">' + escapeHtml(lab) + '</span>' +
+          '<span class="csl-lane-lbl">' + escapeHtml(laneLevelDisplay(lab)) + '</span>' +
           '</div>' +
           '<div class="csl-lane-meter">' +
           '<div class="csl-lane-track"><span class="csl-lane-fill" style="width:' + w + '%"></span></div>' +
@@ -636,23 +1238,31 @@
 
     function laneDisplay(key) {
       return {
-        thermal: 'Thermal',
-        chemistry: 'Water chemistry',
-        space: 'Space / load',
-        predation: 'Predation',
-        social: 'Social tension',
-        inverts: 'Invert safety'
+        thermal: T('lane_thermal'),
+        chemistry: T('lane_chemistry'),
+        space: T('lane_space'),
+        predation: T('lane_predation'),
+        social: T('lane_social'),
+        inverts: T('lane_inverts')
       }[key] || key;
+    }
+
+    function laneLevelDisplay(lab) {
+      return {
+        high: T('lane_level_high'),
+        elevated: T('lane_level_elevated'),
+        low: T('lane_level_low')
+      }[lab] || lab;
     }
 
     function renderFindings(findings) {
       findingsEl.innerHTML = '';
       if (!picks.length) {
-        findingsEl.innerHTML = '<li class="csl-finding csl-finding--low">Select species to generate findings.</li>';
+        findingsEl.innerHTML = '<li class="csl-finding csl-finding--low">' + escapeHtml(T('select_species_for_findings')) + '</li>';
         return;
       }
       if (!findings.length) {
-        findingsEl.innerHTML = '<li class="csl-finding csl-finding--low">No major overlapping pressures flagged by this MVP model — still observe the real tank.</li>';
+        findingsEl.innerHTML = '<li class="csl-finding csl-finding--low">' + escapeHtml(T('no_findings')) + '</li>';
         return;
       }
       for (var i = 0; i < findings.length; i++) {
@@ -666,14 +1276,14 @@
 
     function renderChecklist(findings) {
       var staticLines = [
-        'Watch feeding response and body condition for 7–10 days after any addition.',
-        'Note fin damage, hiding, or colour loss at the same time each day.',
-        'When troubleshooting, change one variable at a time so cause stays readable.'
+        T('checklist_static_1'),
+        T('checklist_static_2'),
+        T('checklist_static_3')
       ];
       var extra = [];
       for (var i = 0; i < findings.length; i++) {
         if (findings[i].severity === 'high') {
-          extra.push('Priority: re-read behaviour for “' + findings[i].title + '” before adding more livestock.');
+          extra.push(T('checklist_priority', { title: findings[i].title }));
         }
       }
       checklistEl.innerHTML = staticLines.concat(extra).map(function (line) {
@@ -715,7 +1325,7 @@
         addSpeciesById(match.id);
         searchEl.value = '';
       } else {
-        setStatus('No species match that search.', true);
+        setStatus(T('no_species_match'), true);
         setTimeout(function () { setStatus(''); }, 2400);
       }
     }
@@ -751,7 +1361,7 @@
         refresh();
       })
       .catch(function () {
-        setStatus('Could not load species data. Check your connection and refresh.', true);
+        setStatus(T('could_not_load'), true);
       });
   }
 

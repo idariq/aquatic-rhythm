@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Tank mates stress map — Community Stress Lab — Aquatic Rhythm</title>
-<meta name="description" content="Educational lab: map overlapping pressures when mixing freshwater species. Not a compatibility guarantee — observation in your real tank still comes first.">
-<link rel="canonical" href="https://aquaticrhythm.com/articles/community-stress-lab">
+<title>混泳のストレスマップ — Community Stress Lab — Aquatic Rhythm</title>
+<meta name="description" content="学習のためのラボです。淡水魚を混泳させたときに重なり合う負荷を可視化します。相性を保証するものではありません——優先されるのは、いつでも実際の水槽での観察です。">
+<link rel="canonical" href="https://aquaticrhythm.com/ja/articles/community-stress-lab">
+<link rel="alternate" hreflang="en" href="https://aquaticrhythm.com/articles/community-stress-lab">
+<link rel="alternate" hreflang="ms" href="https://aquaticrhythm.com/ms/articles/community-stress-lab">
+<link rel="alternate" hreflang="id" href="https://aquaticrhythm.com/id/articles/community-stress-lab">
+<link rel="alternate" hreflang="ja" href="https://aquaticrhythm.com/ja/articles/community-stress-lab">
+<link rel="alternate" hreflang="x-default" href="https://aquaticrhythm.com/articles/community-stress-lab">
 <link rel="alternate" hreflang="en" href="https://aquaticrhythm.com/articles/community-stress-lab">
 <link rel="alternate" hreflang="ms" href="https://aquaticrhythm.com/ms/articles/community-stress-lab">
 <link rel="alternate" hreflang="id" href="https://aquaticrhythm.com/id/articles/community-stress-lab">
@@ -19,9 +24,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Aquatic Rhythm">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://aquaticrhythm.com/articles/community-stress-lab">
-<meta property="og:title" content="Tank mates stress map — Community Stress Lab — Aquatic Rhythm">
-<meta property="og:description" content="Educational lab: map overlapping pressures when mixing freshwater species. Not a compatibility guarantee.">
+<meta property="og:url" content="https://aquaticrhythm.com/ja/articles/community-stress-lab">
+<meta property="og:title" content="混泳のストレスマップ — Community Stress Lab — Aquatic Rhythm">
+<meta property="og:description" content="学習のためのラボです。淡水魚を混泳させたときに重なり合う負荷を可視化します。相性を保証するものではありません。">
 <meta property="og:image" content="https://aquaticrhythm.com/og/articles/community-stress-lab.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -60,7 +65,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--fs-3xs:.5rem;--fs-2xs:.65rem;--fs-xs:.7rem;--fs-sm:.8rem;--fs-sm-md:.85rem;--fs-md:.9rem;--fs-base:1rem;--fs-md-lg:1.1rem;--fs-lg:1.35rem;--fs-xl:1.6rem;--fs-2xl:2.2rem;--fs-3xl:2.8rem;--fs-4xl:3rem;--fs-5xl:3.5rem;
   --serif:'Fraunces',Georgia,serif;
-  --sans:'Work Sans',system-ui,sans-serif;
+  --sans:'Work Sans','Noto Sans JP',system-ui,sans-serif;
   --accent:#3DD6E8;
   --accent-dim:#28B8C8;
   --accent-glow:rgba(61,214,232,0.18);
@@ -268,25 +273,27 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
 .brief-btn{font-size:var(--fs-sm);letter-spacing:.14em;text-transform:uppercase;background:var(--th-accent);color:var(--th-accent-ink);border:1px solid var(--th-accent-border);padding:.85rem 2.2rem;border-radius:2px;cursor:pointer;font-family:var(--sans);transition:background .25s,transform .2s;display:inline-flex;align-items:center;gap:.5rem}
 .brief-btn:hover{opacity:.88;transform:translateY(-1px)}
 </style>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet"></noscript>
 </head>
 <body>
 
 <!-- ── BRIEFING (design identity — matches tank-builder) ── -->
 <div id="briefing">
   <div class="brief-inner">
-    <span class="brief-eyebrow">Aquatic Rhythm Lab</span>
-    <h1 class="brief-title">Map your<br><em>community mix.</em></h1>
-    <p class="brief-body">Overlay ecological pressures for a hypothetical freshwater community — thermal window, chemistry, space, predation, social tension, and dwarf shrimp safety. For planning and learning, not for declaring fish "compatible."</p>
+    <span class="brief-eyebrow">Aquatic Rhythm ラボ</span>
+    <h1 class="brief-title">混泳の組み合わせを<br><em>地図にする。</em></h1>
+    <p class="brief-body">想定した淡水の混泳水槽について、生態的な負荷を重ね合わせて表示します——水温域、水質、広さ、捕食、社会的な緊張、そして小型シュリンプの安全性。計画と学習のための道具であり、魚を「相性が良い」と断定するためのものではありません。</p>
     <div class="brief-rhythms">
-      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(61,214,232,.74)">Thermal</span><span class="brief-rhy-desc">Shared temperature range across all selected species</span></div>
-      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(100,200,82,.7)">Chemistry</span><span class="brief-rhy-desc">pH and hardness overlap for the whole community</span></div>
-      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(220,160,60,.7)">Space</span><span class="brief-rhy-desc">Bioload and territory demand relative to tank volume</span></div>
-      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(220,80,60,.75)">Predation</span><span class="brief-rhy-desc">Mouth size and predatory behaviour risk between species</span></div>
-      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(180,120,200,.7)">Social</span><span class="brief-rhy-desc">Schooling needs, aggression, and fin-nipping tendency</span></div>
-      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(139,189,210,.7)">Inverts</span><span class="brief-rhy-desc">Dwarf shrimp compatibility and chemical sensitivity</span></div>
+      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(61,214,232,.74)">水温</span><span class="brief-rhy-desc">選んだすべての種に共通する水温の範囲</span></div>
+      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(100,200,82,.7)">水質</span><span class="brief-rhy-desc">混泳全体で重なる pH と硬度の範囲</span></div>
+      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(220,160,60,.7)">広さ</span><span class="brief-rhy-desc">水量に対する生体量と縄張りの要求</span></div>
+      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(220,80,60,.75)">捕食</span><span class="brief-rhy-desc">口の大きさと、種どうしの捕食行動のリスク</span></div>
+      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(180,120,200,.7)">社会性</span><span class="brief-rhy-desc">群れの必要性、攻撃性、ヒレをかじる傾向</span></div>
+      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(139,189,210,.7)">無脊椎</span><span class="brief-rhy-desc">小型シュリンプとの相性と、薬品に対する敏感さ</span></div>
     </div>
-    <p class="brief-note">Simplified ranges and rules only. Does not predict individual behaviour, aggression, or disease. Your real tank and your observations come first.</p>
-    <button class="brief-btn" id="btn-enter">Enter the lab &#x2192;</button>
+    <p class="brief-note">扱うのは簡略化した数値範囲と規則だけです。個体ごとの行動、攻撃性、病気を予測するものではありません。優先されるのは、あなたの実際の水槽と観察です。</p>
+    <button class="brief-btn" id="btn-enter">ラボに入る &#x2192;</button>
   </div>
 </div>
 <script>
@@ -324,62 +331,62 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
   <div id="csl-middle">
     <div id="csl-scroll">
       <div class="insight-box">
-        <span class="ib-lbl">What this lab does</span>
-        <p class="ib-txt">Map <em>overlapping pressures</em> for a hypothetical freshwater mix — thermal window, chemistry, space/load, predation, social tension, and dwarf shrimp safety. For planning and learning, not for declaring fish “compatible.”</p>
+        <span class="ib-lbl">このラボでできること</span>
+        <p class="ib-txt">想定した淡水の混泳について、<em>重なり合う負荷</em>を地図のように示します——水温域、水質、広さと生体量、捕食、社会的な緊張、小型シュリンプの安全性。計画と学習のための道具であり、魚を「相性が良い」と断定するためのものではありません。</p>
       </div>
 
       <div class="setup-note" role="note">
-        <p>Simplified ranges and rules only. Does not predict individual behaviour, aggression, or disease. Your real tank and your observations come first — use the <a href="/journal">Keeper’s Log</a> for what actually happens at home.</p>
+        <p>扱うのは簡略化した数値範囲と規則だけです。個体ごとの行動、攻撃性、病気を予測するものではありません。優先されるのは、あなたの実際の水槽と観察です——自宅で実際に起きたことは、<a href="/journal">キーパーの記録</a>に残してください。</p>
       </div>
 
       <details class="ar-disclosure" style="margin-bottom:.55rem">
-        <summary>How this lab works</summary>
+        <summary>このラボの仕組み</summary>
         <div class="ar-disclosure-body">
-          <p>Species parameters (temperature, pH, body size, and behavioural tags) come from the Aquatic Rhythm species pack — hobby-consensus ranges cross-referenced against <a href="https://fishbase.se" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">FishBase</a> and <a href="https://www.seriouslyfish.com" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">SeriouslyFish</a>. Each species entry carries a citation note.</p>
-          <p>The pressure engine checks thermal overlap, pH range intersection, bioload coefficient, predation mouth-size matching, fin-nipping pairing, and dwarf shrimp safety. It does not model individual personality, aggression history, or disease. "Elevated" and "High" labels mean the parameter warrants attention — they are not predictions of failure.</p>
-          <p>Verify species parameters against current sources before stocking. Your real tank and your observations always come first.</p>
+          <p>各種のパラメータ（水温、pH、体長、行動タグ）は Aquatic Rhythm の種データパックによります——アクアリウムで一般に共有されている範囲を、<a href="https://fishbase.se" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">FishBase</a> と <a href="https://www.seriouslyfish.com" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">SeriouslyFish</a> と照合したものです。種ごとの項目には出典メモが付いています。</p>
+          <p>この負荷エンジンが確認するのは、水温域の重なり、pH 範囲の交わり、生体量の係数、捕食における口と体の大きさの対応、ヒレをかじる組み合わせ、そして小型シュリンプの安全性です。個体の性格、攻撃の履歴、病気は扱いません。「やや高い」「高い」という表示は、その項目に注意が必要という意味であり、失敗の予告ではありません。</p>
+          <p>導入の前に、最新の資料で各種のパラメータを確認してください。優先されるのは、いつでもあなたの実際の水槽と観察です。</p>
         </div>
       </details>
 
       <div id="csl-root" data-pack="/data/community-stress-lab-species-v1.json">
         <div class="csl-section">
-          <span class="csl-sh">Tank context</span>
+          <span class="csl-sh">水槽の条件</span>
           <div class="csl-vol-row">
-            <label for="csl-volume">Volume</label>
+            <label for="csl-volume">水量</label>
             <input type="range" id="csl-volume" min="20" max="240" value="80" step="5" aria-valuemin="20" aria-valuemax="240" aria-valuenow="80">
             <span id="csl-volume-val" aria-live="polite">80 L</span>
           </div>
         </div>
 
         <div class="csl-section">
-          <span class="csl-sh">Species</span>
-          <p class="csl-hint">Up to 6 species · 24 individuals total. Search by name or id (e.g. <code>neon_tetra</code>).</p>
+          <span class="csl-sh">種</span>
+          <p class="csl-hint">最大 6 種・合計 24 匹まで。名前または ID で検索できます（例：<code>neon_tetra</code>）。</p>
           <div class="csl-search-row">
-            <input type="search" id="csl-search" list="csl-species-datalist" placeholder="Search species…" autocomplete="off" aria-label="Search species to add">
+            <input type="search" id="csl-search" list="csl-species-datalist" placeholder="種を検索…" autocomplete="off" aria-label="追加する種を検索">
             <datalist id="csl-species-datalist"></datalist>
-            <button type="button" id="csl-add">Add</button>
+            <button type="button" id="csl-add">追加</button>
           </div>
           <div id="csl-status" aria-live="polite"></div>
           <div id="csl-chips"></div>
         </div>
 
         <div class="csl-section">
-          <span class="csl-sh">Pressure map</span>
+          <span class="csl-sh">負荷マップ</span>
           <div id="csl-lanes" aria-label="Pressure by category"></div>
         </div>
 
         <div class="csl-section">
-          <span class="csl-sh">Findings</span>
+          <span class="csl-sh">所見</span>
           <ul id="csl-findings"></ul>
         </div>
 
         <div class="csl-section">
-          <span class="csl-sh">Observation checklist</span>
+          <span class="csl-sh">観察チェックリスト</span>
           <ul id="csl-checklist"></ul>
         </div>
       </div>
 
-      <p class="csl-foot">Aligned with living systems. All tools grow from ARA — they simulate and plan, but they do not replace observation.</p>
+      <p class="csl-foot">生きた系に寄り添って。すべての道具は ARA から育っています——模擬と計画はできても、観察の代わりにはなりません。</p>
     </div>
   </div>
 
@@ -389,31 +396,31 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
 
 <!-- ── BOTTOM NAV (PWA / mobile) ── -->
 <nav class="bnav" id="bnav" aria-label="Main navigation">
-  <a href="/" class="bnav-item" aria-label="Home">
+  <a href="/" class="bnav-item" aria-label="ホーム">
     <svg class="bnav-icon" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
       <path d="M3 9.5L11 3l8 6.5V19a1 1 0 01-1 1H14v-5h-4v5H4a1 1 0 01-1-1V9.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="none"/>
     </svg>
-    <span class="bnav-label">Home</span>
+    <span class="bnav-label">ホーム</span>
   </a>
-  <a href="/reading" class="bnav-item" aria-label="Reading">
+  <a href="/reading" class="bnav-item" aria-label="ガイド">
     <svg class="bnav-icon" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
       <rect x="4" y="3" width="14" height="16" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/>
       <line x1="7.5" y1="8" x2="14.5" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
       <line x1="7.5" y1="11.5" x2="14.5" y2="11.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
       <line x1="7.5" y1="15" x2="11" y2="15" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
     </svg>
-    <span class="bnav-label">Reading</span>
+    <span class="bnav-label">ガイド</span>
   </a>
-  <a href="/tools" class="bnav-item active" aria-current="page" aria-label="Labs &amp; Tools">
+  <a href="/tools" class="bnav-item active" aria-current="page" aria-label="ラボ&amp;ツール">
     <svg class="bnav-icon" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
       <path d="M8 3v5.5L4.5 15A2 2 0 006.4 18h9.2a2 2 0 001.9-3L14 8.5V3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
       <line x1="7" y1="3" x2="15" y2="3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
       <circle cx="9.5" cy="13.5" r="1" fill="currentColor" opacity=".6"/>
       <circle cx="13" cy="15" r=".8" fill="currentColor" opacity=".45"/>
     </svg>
-    <span class="bnav-label">Tools</span>
+    <span class="bnav-label">ツール</span>
   </a>
-  <a href="/journal" class="bnav-item" aria-label="Keeper's Log">
+  <a href="/journal" class="bnav-item" aria-label="キーパーの記録">
     <svg class="bnav-icon" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
       <rect x="2.5" y="7" width="17" height="12" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/>
       <line x1="2.5" y1="11" x2="19.5" y2="11" stroke="currentColor" stroke-width="1" opacity=".3"/>
@@ -423,7 +430,7 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
       <line x1="7" y1="3" x2="7" y2="7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".5"/>
       <line x1="15" y1="3" x2="15" y2="7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".5"/>
     </svg>
-    <span class="bnav-label">Log</span>
+    <span class="bnav-label">記録</span>
   </a>
 </nav>
 
@@ -446,14 +453,14 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
 <!-- ── RHYSSA BOTTOM SHEET ── -->
 <div id="rh-sheet" class="rh-sheet" role="dialog" aria-label="Chat with Rhyssa" aria-modal="true" aria-hidden="true">
   <div class="rh-sheet-head">
-    <button class="rh-sheet-back" id="rh-sheet-cls" aria-label="Close chat">
+    <button class="rh-sheet-back" id="rh-sheet-cls" aria-label="戻る">
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
         <path d="M6 9L11 14L16 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
     <div class="rh-sheet-title-group">
       <span class="rh-sheet-name">Rhyssa</span>
-      <span class="rh-sheet-sub">Aquarium Companion</span>
+      <span class="rh-sheet-sub">アクアリウムの相棒</span>
     </div>
     <div class="rh-sheet-head-end">
       <a href="https://ko-fi.com/aquaticrhythm" class="rh-sheet-kofi" rel="noopener noreferrer" aria-label="Support on Ko-fi" title="Support on Ko-fi">
@@ -463,7 +470,7 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
           <path transform="translate(12 8.88)" d="M0 3.15C-1.25 1.75-3.55.45-3.55-2.05c0-2.55 1.8-3.3 3.55-1.9 1.75-1.4 3.55-.65 3.55 1.9 0 2.5-2.3 3.8-3.55 5.2z" fill="rgba(61,214,232,.24)" stroke="rgba(61,214,232,.42)" stroke-width=".5" stroke-linejoin="round"/>
         </svg>
       </a>
-      <button class="rh-sheet-back" id="rh-sheet-clear" aria-label="Reset conversation" title="Reset conversation">
+      <button class="rh-sheet-back" id="rh-sheet-clear" aria-label="新しい会話" title="新しい会話">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
           <path d="M3.5 4.5l1 10h9l1-10" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
           <line x1="2" y1="4.5" x2="16" y2="4.5" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/>
@@ -482,7 +489,7 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
         <line x1="3.5" y1="11" x2="1.5" y2="11" stroke="rgba(61,214,232,.3)" stroke-width="1.3" stroke-linecap="round"/>
         <line x1="20.5" y1="11" x2="18.5" y2="11" stroke="rgba(61,214,232,.3)" stroke-width="1.3" stroke-linecap="round"/>
       </svg>
-      <p class="rh-sheet-welcome-txt">Tell me what you see — water, behaviour, anything that changed — and we can read it together before we fix anything.</p>
+      <p class="rh-sheet-welcome-txt">見えているものを教えてください —— 水、行動、変わったことなら何でも —— 何かを直す前に、一緒に読み解いていきましょう。</p>
       <div class="rh-suggest-chips" id="rh-suggest-chips">
         <button type="button" class="rh-suggest-chip" data-msg="How is my tank doing overall?">How is my tank doing?</button>
         <button type="button" class="rh-suggest-chip" data-msg="What should I focus on or improve next in my tank?">What's next for my tank?</button>
@@ -495,14 +502,14 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
   </div>
   <div class="rh-sheet-foot">
     <form class="rh-sheet-form" id="rh-sheet-form" autocomplete="off">
-      <textarea id="rh-sheet-inp" class="rh-sheet-inp" placeholder="Ask about your tank…" rows="1" maxlength="1200" aria-label="Message to Rhyssa"></textarea>
-      <button type="submit" class="rh-sheet-send" id="rh-sheet-send" aria-label="Send">
+      <textarea id="rh-sheet-inp" class="rh-sheet-inp" placeholder="水槽について聞いてみましょう…" rows="1" maxlength="1200" aria-label="Rhyssa"></textarea>
+      <button type="submit" class="rh-sheet-send" id="rh-sheet-send" aria-label="送信">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
           <path d="M15 9H3M15 9L9.5 4M15 9L9.5 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
     </form>
-    <p class="rh-sheet-note">AI can be wrong — for fish emergencies, consult a specialist</p>
+    <p class="rh-sheet-note">AIは間違えることがあります —— 魚の緊急事態では、専門家に相談してください</p>
   </div>
 </div>
 

@@ -219,17 +219,47 @@ JS kongsi + `CSL_STRINGS`/`T()`), kuiz **Know Your Rhythm**
 (`know-your-rhythm.html` — 7 soalan + enjin refleksi, kandungan
 ditanam sbg literal JS inline per-fail, BUKAN JS kongsi; skrip
 `scripts/build-kyr-i18n.mjs` regenerate `var Q=[...]` drpd data &
-gantikan string dlm `reflect()` IKUT KEDUDUKAN, bukan padanan teks).
+gantikan string dlm `reflect()` IKUT KEDUDUKAN, bukan padanan teks),
+**Tank Cycle Simulator** (`tank-simulator.html` — briefing/setup/
+pra-permainan/gameplay + enjin JS ~1400 baris, 150+ string tertanam,
+skrip `scripts/build-tsim-i18n.mjs`, padanan exact-substring
+`subOnce`/`subAll` bukan regex-by-posisi, PR #318 2026-08-18).
 
-**Berbaki** (ikut saiz, kecil→besar): alat **`tank-simulator`** (~8.6k
-patah perkataan), alat **`tank-builder`** (~19k patah perkataan,
-terbesar). Pola kerja utk alat interaktif baharu: kalau logik JS-nya
-dikongsi merentas bahasa (satu fail `js/<alat>.js`, spt community-
-stress-lab) rujuk `scripts/build-csl-i18n.mjs` + `CSL_STRINGS`/`T()`
-sbg templat; kalau logiknya ditanam inline per-fail (spt
-know-your-rhythm) rujuk `scripts/build-kyr-i18n.mjs` sbg templat —
-semak struktur `tank-simulator.html`/`tank-builder.html` dulu utk
-tentukan yg mana sblm mula.
+**AWAS — susunan tatabahasa TIDAK universal merentas templat
+konkatenasi dinamik**, ditemui bina `tank-simulator` (turut menjejaskan
+`id` sendiri, bukan khusus `ja`): templat "N minggu"/"N hari" yg
+konkatenasi literal Inggeris/Indonesia perkataan-DULU ("Hari "+N) PECAH
+SENYAP utk ja (perlu nombor-DULU "N日目") — juga ayat "with X and Y"
+(susunan adjektif-nama Inggeris "small tank" ≠ nama-adjektif Indonesia
+betul "akuarium kecil" ≠ tiada partikel eksplisit ja). Jangan andaikan
+SATU templat konkatenasi (`ex.prefix+'<strong>'+var+ex.suffix...`)
+akan betul merentas bahasa bila tambah alat interaktif baharu dgn teks
+dinamik-tersusun (bukan sekadar swap perkataan) — bercabang ikut bahasa
+(`if(lang==='ja'){...}else{...}`) dlm skrip build, model
+`expectedStatic()`/`expectedDynamic()`/`dayConcat()` dlm
+`build-tsim-i18n.mjs` (sendiri model `QNUM_TEMPLATE`/`STATIC_QNUM`
+`build-kyr-i18n.mjs`) — JANGAN cuba paksa satu templat sejagat.
+
+**Berbaki**: alat **`tank-builder`** (~19k patah perkataan, terbesar).
+Pola kerja utk alat interaktif baharu: kalau logik JS-nya dikongsi
+merentas bahasa (satu fail `js/<alat>.js`, spt community-stress-lab)
+rujuk `scripts/build-csl-i18n.mjs` + `CSL_STRINGS`/`T()` sbg templat;
+kalau logiknya ditanam inline per-fail (spt know-your-rhythm/
+tank-simulator) rujuk `scripts/build-kyr-i18n.mjs`/`build-tsim-i18n.mjs`
+sbg templat (yg kedua lagi sesuai utk fail besar/kompleks dgn byk
+variasi bentuk string — ternary, array mesej, penjana laporan
+berbilang cabang — drpd corak `Q[]`/`reflect()` kyr yg lebih seragam)
+— semak struktur `tank-builder.html` dulu, & INGAT amaran tatabahasa
+di atas semasa rangka templat dinamik apa-apa pun.
+
+**Tempat tambahan perlu dikemas kini bila tambah slug templat bespoke
+baharu** (selain 15 tempat `LANGUAGES`/`NAV_LABELS` biasa di atas):
+`scripts/build-i18n.mjs`'s `BESPOKE_SLUGS` — skema
+`translations/<lang>/<slug>.json` templat bespoke (kyr/tsim/csl/ara)
+BERBEZA drpd skema artikel biasa (`head.titleHtml`/`intro`/`modules`),
+`buildJsonLd()` akan crash (`Cannot read properties of undefined`)
+tanpa pengecualian ni — ditemui via `npm run i18n:check` (build
+`--all` cuba proses slug bespoke sbg artikel biasa).
 
 ## Semakan Sebelum Commit
 

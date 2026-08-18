@@ -225,7 +225,8 @@ function patchScreenAndResult(h, t, lang) {
   h = replaceOnce(h, /(<p class="kyr-note-end">)[\s\S]*?(<\/p>)/, (_, a, b) => `${a}${res.noteEnd}${b}`);
   h = replaceOnce(h, /(<button class="kyr-btn-restart" id="kyr-btn-restart">)[^<]*(<\/button>)/, (_, a, b) => `${a}${res.restartBtn}${b}`);
   h = replaceOnce(h, /(data-cta="rhythm_to_builder">)[^<]*(<\/a>)/, (_, a, b) => `${a}${res.nextActionLink}${b}`);
-  h = replaceOnce(h, /(<a href="\/reading" class="kyr-link-reading">)[^<]*(<\/a>)/, (_, a, b) => `${a}${res.backToReadingLink}${b}`);
+  h = replaceOnce(h, /<a href="\/reading" class="kyr-link-reading">[^<]*(<\/a>)/,
+    (_, b) => `<a href="/${lang}/reading" class="kyr-link-reading">${res.backToReadingLink}${b}`);
   return h;
 }
 

@@ -1,4 +1,10 @@
 {
+  "_meta": {
+    "slug": "community-stress-lab",
+    "lang": "ja",
+    "sourceFile": "articles/community-stress-lab.html",
+    "status": "ready"
+  },
   "html": {
     "meta_title": "混泳のストレスマップ — Community Stress Lab — Aquatic Rhythm",
     "meta_description": "学習のためのラボです。淡水魚を混泳させたときに重なり合う負荷を可視化します。相性を保証するものではありません——優先されるのは、いつでも実際の水槽での観察です。",

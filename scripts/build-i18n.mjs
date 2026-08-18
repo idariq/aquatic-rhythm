@@ -507,7 +507,42 @@ function buildArticle(slug, lang, t) {
     h = h.replace(/\/articles\/ara-full-framework/g, `/${lang}/articles/ara-full-framework`);
   }
 
+  // ── 12. Localize cross-links to OTHER articles (related-article buttons,
+  // and any other inline <a href="/articles/<slug>"> link that survived
+  // translation verbatim from the English source) — bug found 2026-08-18:
+  // these all silently pointed at the English version even when the target
+  // slug had a ready translation in THIS language, so reading a ja article
+  // and following a related-article link would unexpectedly drop the reader
+  // back into English. Anything already lang-prefixed (/${lang}/articles/…,
+  // patched by earlier steps) is untouched since the regex requires
+  // "/articles/" immediately after the opening quote. ─────────────────────
+  h = localizeArticleLinks(h, lang);
+
   return h;
+}
+
+let readySlugsCache = {};
+function getReadySlugsForLang(lang) {
+  if (readySlugsCache[lang]) return readySlugsCache[lang];
+  const dir = path.join(TRANS_DIR, lang);
+  const ready = new Set();
+  if (fs.existsSync(dir)) {
+    for (const f of fs.readdirSync(dir)) {
+      if (!f.endsWith('.json')) continue;
+      try {
+        const t = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+        if (t._meta && t._meta.status === 'ready') ready.add(f.replace('.json', ''));
+      } catch { /* skip */ }
+    }
+  }
+  readySlugsCache[lang] = ready;
+  return ready;
+}
+
+function localizeArticleLinks(h, lang) {
+  const ready = getReadySlugsForLang(lang);
+  return h.replace(/href="\/articles\/([a-z0-9-]+)"/g, (m, slug) =>
+    ready.has(slug) ? `href="/${lang}/articles/${slug}"` : m);
 }
 
 // ── Patch English source files with hreflang ──────────────────────────────────

@@ -161,7 +161,8 @@
     },
     "misc": {
       "interactive_tag": "Interaktif",
-      "urgent_tag": "Darurat"
+      "urgent_tag": "Darurat",
+      "open_article_cta": "Buka artikel →"
     },
     "categories": [
       {

@@ -161,7 +161,8 @@
     },
     "misc": {
       "interactive_tag": "インタラクティブ",
-      "urgent_tag": "緊急"
+      "urgent_tag": "緊急",
+      "open_article_cta": "記事を読む →"
     },
     "categories": [
       {

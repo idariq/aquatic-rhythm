@@ -54,8 +54,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=47">
-<link rel="stylesheet" href="/css/kofi-sheet.css?v=47">
+<link rel="stylesheet" href="/css/ar-page.css?v=48">
+<link rel="stylesheet" href="/css/kofi-sheet.css?v=48">
 <style>
 
 
@@ -72,12 +72,32 @@
   --panel-shadow:0 10px 36px rgba(0,0,0,.42);
   --panel-inset:inset 0 1px 0 rgba(255,255,255,.07);
 }
+/* Panel tokens above are dark-first defaults (this page predates the
+   sitewide --th-* light/dark split) — give them a light-mode variant
+   too, same pattern as css/style.css's --panel family, else cards like
+   .tb-rpt-profile stay pinned dark in light theme (user report 2026-08-18). */
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --panel:rgba(255,255,255,.82);
+    --panel-2:rgba(255,255,255,.94);
+    --panel-border:rgba(35,36,32,.1);
+    --panel-inset:inset 0 1px 0 rgba(255,255,255,.8);
+    --panel-shadow:0 10px 30px rgba(40,50,42,.12);
+  }
+}
+:root[data-theme="light"]{
+  --panel:rgba(255,255,255,.82);
+  --panel-2:rgba(255,255,255,.94);
+  --panel-border:rgba(35,36,32,.1);
+  --panel-inset:inset 0 1px 0 rgba(255,255,255,.8);
+  --panel-shadow:0 10px 30px rgba(40,50,42,.12);
+}
 html{height:100%;font-size:16px}
 @supports(height:100dvh){html,body{height:100dvh}}
 @supports(padding:env(safe-area-inset-bottom)){}
 body{
   font-family:var(--sans);
-  background:var(--abyss);
+  background:var(--th-bg);
   color:var(--th-ink);
   height:100vh;height:100dvh;
   overflow:hidden;
@@ -225,7 +245,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .eq-item.active .eq-dot{background:var(--th-accent-soft);border-color:var(--th-accent);box-shadow:0 0 4px rgba(61,214,232,.26)}
 
 /* Dropdown */
-.eq-dropdown{display:none;flex-direction:column;background:rgba(4,14,11,.97);border:1px solid var(--th-accent-border);border-radius:0 0 2px 2px;margin-top:.22rem;overflow:hidden;grid-column:1/-1}
+.eq-dropdown{display:none;flex-direction:column;background:var(--th-surface);border:1px solid var(--th-accent-border);border-radius:0 0 2px 2px;margin-top:.22rem;overflow:hidden;grid-column:1/-1}
 .eq-dropdown.open{display:flex}
 .eq-dd-backdrop{display:none;position:fixed;inset:0;background:var(--th-surface-2);z-index:558;-webkit-tap-highlight-color:transparent}
 .eq-dd-backdrop.on{display:block}
@@ -362,7 +382,7 @@ body.eq-dd-open{overflow:hidden}
 }
 #brand-info-overlay.open{display:flex}
 #brand-info-card{
-  background:rgba(4,14,11,.98);
+  background:var(--th-surface);
   border:1px solid var(--th-accent-border);
   border-radius:14px 14px 0 0;
   max-width:520px;width:100%;
@@ -641,7 +661,7 @@ body.eq-dd-open{overflow:hidden}
 .ph2-qty-label{font-size:var(--fs-xs);color:var(--th-ink-2);flex:1;min-width:5rem;font-weight:500}
 .ph2-qty-count{font-size:var(--fs-md);font-weight:600;color:var(--th-accent);
   min-width:2.25rem;text-align:center}
-.ph2-qty-btn{font-size:var(--fs-md-lg);color:var(--th-accent);background:rgba(3,14,12,.5);
+.ph2-qty-btn{font-size:var(--fs-md-lg);color:var(--th-accent);background:var(--th-surface-2);
   border:1px solid var(--th-accent-border);border-radius:10px;
   min-width:44px;min-height:44px;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;
   justify-content:center;transition:all .15s;font-family:var(--sans);-webkit-tap-highlight-color:transparent}
@@ -697,9 +717,9 @@ body.eq-dd-open{overflow:hidden}
 }
 #compat-strip.visible{display:block}
 #compat-strip.has-warn{
-  color:rgba(220,130,60,.8);
+  color:rgba(220,130,60,.9);
   border-bottom-color:rgba(220,100,60,.2);
-  background:rgba(10,4,2,.96);
+  background:rgba(220,160,40,.08);
 }
 /* Ko-fi hint — ecosystem / results strip (same embed as main site) */
 .tb-kofi-hint{
@@ -861,9 +881,14 @@ body.eq-dd-open{overflow:hidden}
 .ph2-card-body{display:none;margin-top:.42rem;padding-top:.42rem;border-top:1px solid var(--th-line)}
 .ph2-card.expanded .ph2-card-body{display:block}
 
-/* Builder: shrink body when bottom nav is visible */
-@media(max-width:720px){body{height:calc(100dvh - 56px - env(safe-area-inset-bottom))}}
-@media(display-mode:standalone){body{height:calc(100dvh - 56px - env(safe-area-inset-bottom))}}
+/* Lab page: drop the site nav (logo/links/burger), bottom nav, and
+   Rhyssa fab so they don't overlap the builder UI — keep only the
+   settings gear that js/ar-page.js injects into <nav> (user request
+   2026-08-18). */
+.bnav{display:none!important}
+.rh-fab{display:none!important}
+nav:not(.bnav){background:none;backdrop-filter:none;-webkit-backdrop-filter:none;height:auto;justify-content:flex-end;padding:.6rem clamp(1rem,3vw,1.5rem)}
+nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 </style>
 <body>
 <nav>
@@ -1145,7 +1170,7 @@ body.eq-dd-open{overflow:hidden}
 </div>
 
 
-<script src="/js/tank-data.js?v=47"></script>
+<script src="/js/tank-data.js?v=48"></script>
 <script>
 
 var BRAND_INFO=window.AR_BRAND_INFO;
@@ -2016,7 +2041,7 @@ function showBrandInfo(brandName,eqId){
     body.appendChild(pr);
   }
   if(info.avoid_if){var av=document.createElement('div');av.className='bi-verdict';av.textContent='\u26a0 Avoid if: '+info.avoid_if;body.appendChild(av);}
-  var disc=document.createElement('div');disc.style.cssText='font-size:var(--fs-xs);color:rgba(235,240,236,.28);font-style:italic;font-family:var(--serif);padding:.55rem .85rem;border-top:1px solid rgba(235,240,236,.06);margin-top:.3rem';disc.textContent='Brands listed are examples. Prices and availability vary by region.';body.appendChild(disc);
+  var disc=document.createElement('div');disc.style.cssText='font-size:var(--fs-xs);color:var(--th-ink-4);font-style:italic;font-family:var(--serif);padding:.55rem .85rem;border-top:1px solid var(--th-line);margin-top:.3rem';disc.textContent='Brands listed are examples. Prices and availability vary by region.';body.appendChild(disc);
   /* Actions */
   var acts=document.getElementById('bi-actions');
   if(acts){
@@ -2101,7 +2126,7 @@ function showSpeciesInfo(k,item,cat){
     if(item.effect.hardness&&item.effect.hardness!=='none'&&item.effect.hardness!=='minimal')eff.push('Hardness: '+item.effect.hardness);
     if(eff.length)addTags('Water chemistry effects',eff,'warn');
   }
-  var disc=document.createElement('div');disc.style.cssText='font-size:var(--fs-xs);color:rgba(235,240,236,.28);font-style:italic;padding:.55rem .85rem;border-top:1px solid rgba(235,240,236,.06);margin-top:.3rem';
+  var disc=document.createElement('div');disc.style.cssText='font-size:var(--fs-xs);color:var(--th-ink-4);font-style:italic;padding:.55rem .85rem;border-top:1px solid var(--th-line);margin-top:.3rem';
   disc.textContent='Parameters reflect general community knowledge and may vary by breeding line or locality.';
   body.appendChild(disc);
   var acts=document.getElementById('bi-actions');
@@ -3124,7 +3149,7 @@ function _noBiImg(){
     <div class="rh-sheet-welcome" id="rh-sheet-welcome">
       <svg width="36" height="36" viewBox="0 0 22 22" fill="none" aria-hidden="true" style="opacity:.8"><circle cx="11" cy="11" r="7.5" stroke="rgba(61,214,232,.55)" stroke-width="1.4" fill="none"/><circle cx="11" cy="11" r="3.5" stroke="rgba(61,214,232,.3)" stroke-width="1.1" fill="none"/><circle cx="11" cy="11" r="1.2" fill="rgba(61,214,232,.75)"/><line x1="11" y1="3.5" x2="11" y2="1.5" stroke="rgba(61,214,232,.3)" stroke-width="1.3" stroke-linecap="round"/><line x1="3.5" y1="11" x2="1.5" y2="11" stroke="rgba(61,214,232,.3)" stroke-width="1.3" stroke-linecap="round"/><line x1="20.5" y1="11" x2="18.5" y2="11" stroke="rgba(61,214,232,.3)" stroke-width="1.3" stroke-linecap="round"/></svg>
       <p class="rh-sheet-welcome-txt">Tell me what you see — water, behaviour, anything that changed — and we can read it together before we fix anything.</p>
-      <p style="font-size:var(--fs-2xs);color:rgba(255,255,255,.22);text-align:center;margin:.5rem 0 0;line-height:1.6">Same Rhyssa — also on <a href="https://chatgpt.com/g/g-6a09401c8ef48191b18deb53565a7fe1-rhyssa-aquarium-companion" target="_blank" rel="noopener" style="color:rgba(61,214,232,.4);text-decoration:none">ChatGPT ↗</a> if you prefer.</p>
+      <p style="font-size:var(--fs-2xs);color:var(--th-ink-5);text-align:center;margin:.5rem 0 0;line-height:1.6">Same Rhyssa — also on <a href="https://chatgpt.com/g/g-6a09401c8ef48191b18deb53565a7fe1-rhyssa-aquarium-companion" target="_blank" rel="noopener" style="color:rgba(61,214,232,.4);text-decoration:none">ChatGPT ↗</a> if you prefer.</p>
     </div>
   </div>
   <div class="rh-sheet-foot">
@@ -3138,7 +3163,7 @@ function _noBiImg(){
   </div>
 </div>
 
-<script src="/js/ar-page.js?v=47" defer></script>
+<script src="/js/ar-page.js?v=48" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -3164,7 +3189,7 @@ if ('serviceWorker' in navigator) {
     <iframe id="kofi-embed-iframe" class="kofi-sheet-frame" title="Support Aquatic Rhythm on Ko-fi"></iframe>
   </div>
 </div>
-<script src="/js/kofi-sheet.js?v=47" defer></script>
-<script src="/js/rhyssa-fab-ext.js?v=47" defer></script>
+<script src="/js/kofi-sheet.js?v=48" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=48" defer></script>
 </body>
 </html>

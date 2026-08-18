@@ -530,7 +530,7 @@
     function setStatus(msg, err) {
       if (!statusEl) return;
       statusEl.textContent = msg || '';
-      statusEl.style.color = err ? 'rgba(220,120,100,.9)' : 'rgba(235,240,236,.45)';
+      statusEl.style.color = err ? 'rgba(220,120,100,.9)' : 'var(--th-ink-3)';
     }
 
     function totalIndividuals() {

@@ -20,10 +20,10 @@
         'padding:0!important;gap:0!important;' +
         'align-items:center!important;justify-content:center!important;' +
         'background:radial-gradient(ellipse at 38% 32%,rgba(255,255,255,.08) 0%,transparent 52%),' +
-          'radial-gradient(ellipse at 50% 50%,rgba(61,214,232,.13) 0%,transparent 66%),' +
-          'rgba(6,18,14,.88)!important;' +
-        'border:1.5px solid rgba(61,214,232,.38)!important;' +
-        'box-shadow:0 0 16px rgba(61,214,232,.13),0 6px 22px rgba(0,0,0,.48),' +
+          'radial-gradient(ellipse at 50% 50%,var(--th-accent-soft) 0%,transparent 66%),' +
+          'var(--th-surface)!important;' +
+        'border:1.5px solid var(--th-accent-border)!important;' +
+        'box-shadow:0 0 16px var(--th-accent-soft),0 6px 22px rgba(0,0,0,.48),' +
           'inset 0 1px 0 rgba(255,255,255,.07)!important;' +
         'touch-action:none!important;will-change:transform;' +
         'transition:border-color .25s,background .25s,' +
@@ -32,15 +32,15 @@
       '.rh-fab-lbl{display:none!important}' +
       '.rh-fab:active{transform:scale(.85)!important}' +
       '.rh-fab:hover{' +
-        'border-color:rgba(61,214,232,.62)!important;' +
-        'box-shadow:0 0 24px rgba(61,214,232,.2),0 6px 22px rgba(0,0,0,.48),' +
+        'border-color:var(--th-accent)!important;' +
+        'box-shadow:0 0 24px var(--th-accent-soft),0 6px 22px rgba(0,0,0,.48),' +
           'inset 0 1px 0 rgba(255,255,255,.07)!important}' +
       '.rh-fab.active{' +
-        'border-color:rgba(61,214,232,.62)!important;' +
+        'border-color:var(--th-accent)!important;' +
         'background:radial-gradient(ellipse at 38% 32%,rgba(255,255,255,.1) 0%,transparent 52%),' +
-          'radial-gradient(ellipse at 50% 50%,rgba(61,214,232,.2) 0%,transparent 66%),' +
-          'rgba(10,28,20,.96)!important;' +
-        'box-shadow:0 0 28px rgba(61,214,232,.26),0 6px 22px rgba(0,0,0,.48),' +
+          'radial-gradient(ellipse at 50% 50%,var(--th-accent-soft) 0%,transparent 66%),' +
+          'var(--th-surface-2)!important;' +
+        'box-shadow:0 0 28px var(--th-accent-soft),0 6px 22px rgba(0,0,0,.48),' +
           'inset 0 1px 0 rgba(255,255,255,.09)!important}' +
       '.rh-fab.idle{' +
         'animation:rh-fab-breathe 2.8s ease-in-out infinite}' +

@@ -878,7 +878,7 @@
       volEl.textContent = vol + ' ' + (unit || 'L');
       var cat = tankCategory(vol);
       catEl.textContent = cat;
-      catEl.style.color = CAT_COLORS[cat] || 'rgba(255,255,255,.3)';
+      catEl.style.color = CAT_COLORS[cat] || 'var(--th-ink-4)';
     } else {
       volEl.textContent = '—';
       catEl.textContent = T('preview_cat_default');
@@ -1086,8 +1086,8 @@
         + '</button>';
     }).join('')
     + '<button class="jn-tank-tab jn-tank-add" id="jn-add-tank" title="' + T('add_aquarium_title') + '">'
-    + '<span class="jn-ttab-icon" style="font-size:var(--fs-md-lg);line-height:1;color:rgba(255,255,255,.3)">+</span>'
-    + '<span class="jn-ttab-name" style="color:rgba(255,255,255,.2)">' + T('add_short') + '</span>'
+    + '<span class="jn-ttab-icon" style="font-size:var(--fs-md-lg);line-height:1;color:var(--th-ink-4)">+</span>'
+    + '<span class="jn-ttab-name" style="color:var(--th-ink-5)">' + T('add_short') + '</span>'
     + '</button>';
   }
 
@@ -1232,7 +1232,7 @@
       var last  = vals[vals.length - 1];
       var prev  = vals[vals.length - 2];
       var trend = last > prev ? '↗' : last < prev ? '↘' : '→';
-      var dangerColor = (p.dangerMax !== undefined && last > p.dangerMax) ? 'rgba(200,80,80,.85)' : 'rgba(235,240,236,.55)';
+      var dangerColor = (p.dangerMax !== undefined && last > p.dangerMax) ? 'rgba(200,80,80,.85)' : 'var(--th-ink-2)';
       latestParams.push(p.label + ' ' + last);
       return '<div class="jn-spark-row">'
         + '<span class="jn-spark-label">' + p.label + '</span>'
@@ -1743,7 +1743,7 @@
     active.forEach(function (inh) { bodyEl.appendChild(makeListRow(inh)); });
     if (past.length) {
       var sep = document.createElement('p');
-      sep.style.cssText = 'font-size:var(--fs-3xs);letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.2);margin:.6rem 0 .15rem;font-family:inherit';
+      sep.style.cssText = 'font-size:var(--fs-3xs);letter-spacing:.06em;text-transform:uppercase;color:var(--th-ink-5);margin:.6rem 0 .15rem;font-family:inherit';
       sep.textContent = T('past_residents');
       bodyEl.appendChild(sep);
       past.forEach(function (inh) { bodyEl.appendChild(makeListRow(inh)); });
@@ -1879,7 +1879,7 @@
         var m = info.color.match(/[\d.]+/g);
         if (m && m.length >= 3) phaseCard.style.setProperty('--tl-phase-bg', 'rgba(' + m[0] + ',' + m[1] + ',' + m[2] + ',.06)');
       } else {
-        phaseCard.style.borderLeftColor = 'rgba(255,255,255,.07)';
+        phaseCard.style.borderLeftColor = 'var(--th-line)';
         phaseCard.style.removeProperty('--tl-phase-bg');
       }
     }
@@ -2920,7 +2920,7 @@
       btn.dataset.shape = p.s;
       btn.dataset.dims  = p.d.join(',');
       btn.innerHTML = '<span class="mt-preset-vol">' + p.v + ' ' + p.u + '</span>'
-        + '<span class="mt-preset-cat" style="color:' + (CAT_COLORS[p.cat] || 'rgba(255,255,255,.4)') + '">' + p.cat + '</span>';
+        + '<span class="mt-preset-cat" style="color:' + (CAT_COLORS[p.cat] || 'var(--th-ink-3)') + '">' + p.cat + '</span>';
       presetGrid.appendChild(btn);
     });
   }

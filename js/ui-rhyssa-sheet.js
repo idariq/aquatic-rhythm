@@ -28,9 +28,9 @@
   if (!fab || !sheet) return;
 
   /* ── Tab strip inline styles (resilient to CSS cache) ── */
-  if (tabsEl) tabsEl.style.cssText = 'display:flex;align-items:center;gap:.4rem;padding:.3rem .85rem .28rem;border-bottom:1px solid rgba(255,255,255,.07);overflow-x:auto;scrollbar-width:none;flex-shrink:0';
+  if (tabsEl) tabsEl.style.cssText = 'display:flex;align-items:center;gap:.4rem;padding:.3rem .85rem .28rem;border-bottom:1px solid var(--th-line);overflow-x:auto;scrollbar-width:none;flex-shrink:0';
   if (tabsList) tabsList.style.cssText = 'display:flex;gap:.3rem;flex:1;min-width:0;overflow:hidden';
-  if (tabsNewBtn) tabsNewBtn.style.cssText = 'display:inline-flex;align-items:center;justify-content:center;background:none;border:1px solid rgba(255,255,255,.13);border-radius:20px;color:rgba(255,255,255,.4);cursor:pointer;padding:.22rem .55rem;line-height:1;flex-shrink:0;-webkit-tap-highlight-color:transparent';
+  if (tabsNewBtn) tabsNewBtn.style.cssText = 'display:inline-flex;align-items:center;justify-content:center;background:none;border:1px solid var(--th-line);border-radius:20px;color:var(--th-ink-3);cursor:pointer;padding:.22rem .55rem;line-height:1;flex-shrink:0;-webkit-tap-highlight-color:transparent';
 
   /* ── Storage — multi-conversation ── */
   function genId() {
@@ -101,7 +101,7 @@
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
     /* Markdown links — relative URLs only for security */
-    s = s.replace(/\[([^\]]+)\]\(\s*(\/[^)]*)\s*\)/g, '<a href="$2" style="color:rgba(61,214,232,.85);text-decoration:underline;text-underline-offset:2px">$1</a>');
+    s = s.replace(/\[([^\]]+)\]\(\s*(\/[^)]*)\s*\)/g, '<a href="$2" style="color:var(--th-accent);text-decoration:underline;text-underline-offset:2px">$1</a>');
     s = s.replace(/\*\*([\s\S]*?)\*\*/g, '<strong>$1</strong>');
     s = s.replace(/\*([^*\n]+)\*/g, '<em>$1</em>');
 
@@ -166,8 +166,8 @@
     if (!options || !options.length) return;
     var group = document.createElement('div');
     group.className = 'rh-opt-group';
-    group.style.cssText = 'display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.06)';
-    var btnBase = 'font-size:var(--fs-2xs);padding:.32rem .75rem;background:rgba(61,214,232,.07);border:1px solid rgba(61,214,232,.22);border-radius:20px;color:rgba(235,240,236,.82);cursor:pointer;font-family:inherit;letter-spacing:.01em;text-align:left;line-height:1.4;-webkit-tap-highlight-color:transparent';
+    group.style.cssText = 'display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem;padding-top:.5rem;border-top:1px solid var(--th-line)';
+    var btnBase = 'font-size:var(--fs-2xs);padding:.32rem .75rem;background:var(--th-accent-soft);border:1px solid var(--th-accent-border);border-radius:20px;color:var(--th-ink);cursor:pointer;font-family:inherit;letter-spacing:.01em;text-align:left;line-height:1.4;-webkit-tap-highlight-color:transparent';
     options.forEach(function (opt) {
       var btn = document.createElement('button');
       btn.className = 'rh-opt-btn';
@@ -183,7 +183,7 @@
     var writeBtn = document.createElement('button');
     writeBtn.className = 'rh-opt-btn rh-opt-write';
     writeBtn.type = 'button';
-    writeBtn.style.cssText = 'font-size:var(--fs-2xs);padding:.32rem .75rem;background:none;border:1px solid rgba(255,255,255,.1);border-radius:20px;color:rgba(255,255,255,.35);cursor:pointer;font-family:inherit;letter-spacing:.01em;text-align:left;line-height:1.4;font-style:italic;-webkit-tap-highlight-color:transparent';
+    writeBtn.style.cssText = 'font-size:var(--fs-2xs);padding:.32rem .75rem;background:none;border:1px solid var(--th-line);border-radius:20px;color:var(--th-ink-4);cursor:pointer;font-family:inherit;letter-spacing:.01em;text-align:left;line-height:1.4;font-style:italic;-webkit-tap-highlight-color:transparent';
     writeBtn.textContent = 'Write my own…';
     writeBtn.addEventListener('click', function () {
       group.remove();
@@ -199,8 +199,8 @@
     var data = initConvs();
     var isActive;
     tabsList.innerHTML = '';
-    var styleInactive = 'display:inline-flex;align-items:center;gap:.28rem;padding:.22rem .65rem;border-radius:20px;border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.4);cursor:pointer;font-size:var(--fs-2xs);font-family:var(--sans);white-space:nowrap;max-width:140px;flex-shrink:0;-webkit-tap-highlight-color:transparent;background:rgba(255,255,255,.05)';
-    var styleActive = 'display:inline-flex;align-items:center;gap:.28rem;padding:.22rem .65rem;border-radius:20px;border:1px solid rgba(61,214,232,.28);color:rgba(61,214,232,.85);cursor:pointer;font-size:var(--fs-2xs);font-family:var(--sans);white-space:nowrap;max-width:140px;flex-shrink:0;-webkit-tap-highlight-color:transparent;background:rgba(61,214,232,.1)';
+    var styleInactive = 'display:inline-flex;align-items:center;gap:.28rem;padding:.22rem .65rem;border-radius:20px;border:1px solid var(--th-line);color:var(--th-ink-3);cursor:pointer;font-size:var(--fs-2xs);font-family:var(--sans);white-space:nowrap;max-width:140px;flex-shrink:0;-webkit-tap-highlight-color:transparent;background:var(--th-surface-2)';
+    var styleActive = 'display:inline-flex;align-items:center;gap:.28rem;padding:.22rem .65rem;border-radius:20px;border:1px solid var(--th-accent-border);color:var(--th-accent);cursor:pointer;font-size:var(--fs-2xs);font-family:var(--sans);white-space:nowrap;max-width:140px;flex-shrink:0;-webkit-tap-highlight-color:transparent;background:var(--th-accent-soft)';
     data.list.forEach(function (conv) {
       isActive = conv.id === data.activeId;
       var tab = document.createElement('button');
@@ -219,7 +219,7 @@
         del.className = 'rh-tab-del';
         del.type = 'button';
         del.setAttribute('aria-label', 'Delete conversation');
-        del.style.cssText = 'background:none;border:none;color:rgba(255,255,255,.28);cursor:pointer;font-size:var(--fs-sm-md);padding:0;line-height:1;flex-shrink:0;-webkit-tap-highlight-color:transparent';
+        del.style.cssText = 'background:none;border:none;color:var(--th-ink-4);cursor:pointer;font-size:var(--fs-sm-md);padding:0;line-height:1;flex-shrink:0;-webkit-tap-highlight-color:transparent';
         del.textContent = '×';
         ;(function (id) {
           del.addEventListener('click', function (e) {
@@ -513,7 +513,7 @@
       pill = document.createElement('span');
       pill.className = 'rh-ctx-pill';
       /* Inline styles ensure correct appearance even before CSS loads/caches */
-      pill.style.cssText = 'display:inline-flex;align-items:center;gap:4px;font-size:var(--fs-3xs);padding:2px 7px;border-radius:20px;background:rgba(61,214,232,.08);border:1px solid rgba(61,214,232,.2);color:rgba(61,214,232,.62);font-family:var(--sans);letter-spacing:.02em;margin-top:.2rem;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap';
+      pill.style.cssText = 'display:inline-flex;align-items:center;gap:4px;font-size:var(--fs-3xs);padding:2px 7px;border-radius:20px;background:var(--th-accent-soft);border:1px solid var(--th-accent-border);color:var(--th-accent);font-family:var(--sans);letter-spacing:.02em;margin-top:.2rem;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap';
       titleGroup.appendChild(pill);
     }
     var parts = [];
@@ -649,7 +649,7 @@
   function showLogOffer(obsText, bubbleWrap) {
     var clean = obsText.trim().replace(/\n+/g, ' ').slice(0, 180);
     var offer = document.createElement('div');
-    offer.style.cssText = 'display:flex;align-items:flex-start;gap:.5rem;margin-top:.55rem;padding:.5rem .65rem;background:rgba(61,214,232,.04);border:1px solid rgba(61,214,232,.13);border-radius:8px';
+    offer.style.cssText = 'display:flex;align-items:flex-start;gap:.5rem;margin-top:.55rem;padding:.5rem .65rem;background:var(--th-accent-soft);border:1px solid var(--th-accent-border);border-radius:8px';
 
     var icon = document.createElement('span');
     icon.textContent = '📋';
@@ -659,10 +659,10 @@
     var mid = document.createElement('div');
     mid.style.cssText = 'flex:1;min-width:0';
     var lbl = document.createElement('p');
-    lbl.style.cssText = 'margin:0 0 .35rem;font-size:var(--fs-2xs);color:rgba(255,255,255,.38);font-family:var(--sans)';
+    lbl.style.cssText = 'margin:0 0 .35rem;font-size:var(--fs-2xs);color:var(--th-ink-4);font-family:var(--sans)';
     lbl.textContent = 'Save this to today\'s log?';
     var preview = document.createElement('p');
-    preview.style.cssText = 'margin:0;font-size:var(--fs-2xs);color:rgba(235,240,236,.55);font-family:var(--serif);font-style:italic;line-height:1.5';
+    preview.style.cssText = 'margin:0;font-size:var(--fs-2xs);color:var(--th-ink-2);font-family:var(--serif);font-style:italic;line-height:1.5';
     preview.textContent = '"' + clean + '"';
     mid.appendChild(lbl);
     mid.appendChild(preview);
@@ -673,10 +673,10 @@
 
     var saveBtn = document.createElement('button');
     saveBtn.textContent = 'Save';
-    saveBtn.style.cssText = 'font-size:var(--fs-2xs);padding:.22rem .6rem;background:rgba(61,214,232,.12);border:1px solid rgba(61,214,232,.3);border-radius:12px;color:rgba(61,214,232,.85);cursor:pointer;font-family:inherit;white-space:nowrap';
+    saveBtn.style.cssText = 'font-size:var(--fs-2xs);padding:.22rem .6rem;background:var(--th-accent-soft);border:1px solid var(--th-accent-border);border-radius:12px;color:var(--th-accent);cursor:pointer;font-family:inherit;white-space:nowrap';
     var dimBtn = document.createElement('button');
     dimBtn.textContent = 'Dismiss';
-    dimBtn.style.cssText = 'font-size:var(--fs-2xs);padding:.18rem .5rem;background:none;border:none;color:rgba(255,255,255,.22);cursor:pointer;font-family:inherit';
+    dimBtn.style.cssText = 'font-size:var(--fs-2xs);padding:.18rem .5rem;background:none;border:none;color:var(--th-ink-4);cursor:pointer;font-family:inherit';
 
     btns.appendChild(saveBtn);
     btns.appendChild(dimBtn);
@@ -687,7 +687,7 @@
       offer.remove();
       if (typeof window.__jnAutoSaveEntry === 'function' && window.__jnAutoSaveEntry(clean)) {
         var conf = document.createElement('p');
-        conf.style.cssText = 'margin:.4rem 0 0;font-size:var(--fs-2xs);color:rgba(61,214,232,.55);font-family:var(--sans)';
+        conf.style.cssText = 'margin:.4rem 0 0;font-size:var(--fs-2xs);color:var(--th-accent);font-family:var(--sans)';
         conf.textContent = 'Logged ✓';
         bubbleWrap && bubbleWrap.appendChild(conf);
         sendAutoReply('The keeper just saved an observation to their tank log: "' + clean.slice(0, 120) + '". Acknowledge in one warm sentence and share one brief actionable tip related to what they observed.');

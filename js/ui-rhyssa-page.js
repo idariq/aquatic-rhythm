@@ -50,7 +50,7 @@
       .trim();
     var s = display.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     /* Markdown links — relative URLs only for security */
-    s = s.replace(/\[([^\]]+)\]\(\s*(\/[^)]*)\s*\)/g, '<a href="$2" style="color:rgba(61,214,232,.85);text-decoration:underline;text-underline-offset:2px">$1</a>');
+    s = s.replace(/\[([^\]]+)\]\(\s*(\/[^)]*)\s*\)/g, '<a href="$2" style="color:var(--th-accent);text-decoration:underline;text-underline-offset:2px">$1</a>');
     s = s.replace(/\*\*([\s\S]*?)\*\*/g, '<strong>$1</strong>');
     s = s.replace(/\*([^*\n]+)\*/g, '<em>$1</em>');
 
@@ -115,8 +115,8 @@
     if (!options || !options.length) return;
     var group = document.createElement('div');
     group.className = 'rh-opt-group';
-    group.style.cssText = 'display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.06)';
-    var btnBase = 'font-size:var(--fs-2xs);padding:.32rem .75rem;background:rgba(61,214,232,.07);border:1px solid rgba(61,214,232,.22);border-radius:20px;color:rgba(235,240,236,.82);cursor:pointer;font-family:inherit;letter-spacing:.01em;text-align:left;line-height:1.4;-webkit-tap-highlight-color:transparent';
+    group.style.cssText = 'display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem;padding-top:.5rem;border-top:1px solid var(--th-line)';
+    var btnBase = 'font-size:var(--fs-2xs);padding:.32rem .75rem;background:var(--th-accent-soft);border:1px solid var(--th-accent-border);border-radius:20px;color:var(--th-ink);cursor:pointer;font-family:inherit;letter-spacing:.01em;text-align:left;line-height:1.4;-webkit-tap-highlight-color:transparent';
     options.forEach(function (opt) {
       var btn = document.createElement('button');
       btn.className = 'rh-opt-btn';
@@ -132,7 +132,7 @@
     var writeBtn = document.createElement('button');
     writeBtn.className = 'rh-opt-btn rh-opt-write';
     writeBtn.type = 'button';
-    writeBtn.style.cssText = 'font-size:var(--fs-2xs);padding:.32rem .75rem;background:none;border:1px solid rgba(255,255,255,.1);border-radius:20px;color:rgba(255,255,255,.35);cursor:pointer;font-family:inherit;letter-spacing:.01em;text-align:left;line-height:1.4;font-style:italic;-webkit-tap-highlight-color:transparent';
+    writeBtn.style.cssText = 'font-size:var(--fs-2xs);padding:.32rem .75rem;background:none;border:1px solid var(--th-line);border-radius:20px;color:var(--th-ink-4);cursor:pointer;font-family:inherit;letter-spacing:.01em;text-align:left;line-height:1.4;font-style:italic;-webkit-tap-highlight-color:transparent';
     writeBtn.textContent = 'Write my own…';
     writeBtn.addEventListener('click', function () {
       group.remove();

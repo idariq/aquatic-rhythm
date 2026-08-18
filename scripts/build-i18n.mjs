@@ -554,9 +554,18 @@ function patchEnglishArticle(slug) {
 // (build-ara-i18n.mjs) — its translations/<lang>/ara-*.json files share this
 // same directory but MUST be skipped here, or buildArticle() below (which
 // expects the regular article schema: intro/modules/section.module) crashes.
-const ARA_SLUGS = new Set([
+// Bespoke-template slugs — built by their own dedicated scripts
+// (build-ara-i18n.mjs, build-csl-i18n.mjs, build-kyr-i18n.mjs) whose
+// translations/<lang>/<slug>.json use a schema this file's buildArticle()
+// does NOT understand (no head/intro/modules). MUST be excluded here or
+// buildArticle() crashes (or, for community-stress-lab specifically —
+// which happens to lack a _meta.status field — gets silently skipped by
+// the 'ready' filter below by accident rather than by design; explicit
+// exclusion here removes that fragile reliance).
+const BESPOKE_SLUGS = new Set([
   'ara-full-framework', 'ara-s1-foundation', 'ara-s2-five-rhythms', 'ara-s3-phases',
-  'ara-s4-alignment', 'ara-s5-observation', 'ara-s6-ethics'
+  'ara-s4-alignment', 'ara-s5-observation', 'ara-s6-ethics',
+  'community-stress-lab', 'know-your-rhythm'
 ]);
 
 function getTranslatedSlugs(lang) {
@@ -565,7 +574,7 @@ function getTranslatedSlugs(lang) {
   return fs.readdirSync(dir)
     .filter(f => f.endsWith('.json'))
     .map(f => f.replace('.json', ''))
-    .filter(slug => !ARA_SLUGS.has(slug))
+    .filter(slug => !BESPOKE_SLUGS.has(slug))
     .filter(slug => {
       try {
         const t = JSON.parse(fs.readFileSync(path.join(dir, `${slug}.json`), 'utf8'));

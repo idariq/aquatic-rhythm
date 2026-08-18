@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=54">
+<link rel="stylesheet" href="/css/ar-page.css?v=55">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--fs-3xs:.5rem;--fs-2xs:.65rem;--fs-xs:.7rem;--fs-sm:.8rem;--fs-sm-md:.85rem;--fs-md:.9rem;--fs-base:1rem;--fs-md-lg:1.1rem;--fs-lg:1.35rem;--fs-xl:1.6rem;--fs-2xl:2.2rem;--fs-3xl:2.8rem;--fs-4xl:3rem;--fs-5xl:3.5rem;
@@ -163,7 +163,8 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
 .pi-track{flex:1;height:2px;background:var(--th-surface-2);border-radius:1px;overflow:hidden;min-width:16px}
 .pi-fill{height:100%;border-radius:1px;transition:width .8s ease,background .8s}
 .pi-fish{display:flex;align-items:center;gap:.22rem}
-.pi-fish-icon{font-size:var(--fs-sm-md);line-height:1;flex-shrink:0}
+.pi-fish-icon{display:flex;align-items:center;flex-shrink:0}
+.pi-fish-icon svg{width:15px;height:15px}
 .pi-fish-lbl{font-size:var(--fs-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--th-ink-4)}
 .pi-fish-val{font-size:var(--fs-xs);color:var(--th-accent)}
 .pi-div{width:1px;height:9px;background:var(--th-surface-2);flex-shrink:0}
@@ -218,7 +219,8 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
 .ab:hover:not(:disabled){background:var(--th-accent-soft);border-color:var(--th-accent);transform:translateY(-1px)}
 .ab:active:not(:disabled){transform:translateY(0)}
 .ab:disabled{opacity:.25;cursor:not-allowed}
-.ai{font-size:var(--fs-md-lg);line-height:1}
+.ai{display:flex;align-items:center;justify-content:center;line-height:1}
+.ai svg{width:19px;height:19px}
 .an{font-size:var(--fs-2xs);font-weight:400;letter-spacing:.07em;text-transform:uppercase;color:var(--th-ink-2)}
 .ah{font-size:var(--fs-2xs);color:var(--th-ink-4);text-align:center;line-height:1.25}
 
@@ -259,7 +261,8 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
   #opt-method.setup-options,#opt-plants.setup-options{flex-direction:row}
   #opt-method .sopt,#opt-plants .sopt{flex:1;min-width:calc(50% - .25rem)}
 }
-.sopt-icon{font-size:var(--fs-md-lg);display:block;margin-bottom:.22rem}
+.sopt-icon{display:block;margin-bottom:.22rem}
+.sopt-icon svg{width:21px;height:21px;display:block}
 .sopt-name{font-size:var(--fs-xs);font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--th-ink-2);display:block}
 .sopt-desc{font-size:var(--fs-xs);color:var(--th-ink-4);line-height:1.45;display:block;margin-top:.2rem}
 .setup-note{
@@ -344,7 +347,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
   .pi-val{font-size:var(--fs-md-lg);min-width:28px}
   .pi-track{display:none}  /* hide bar — save space for bigger text */
   .pi-arrow{font-size:var(--fs-2xs)}
-  .pi-fish-icon{font-size:var(--fs-sm-md)}
+  .pi-fish-icon svg{width:16px;height:16px}
   .pi-fish-val{font-size:var(--fs-sm-md)}
   .pi-div{height:10px}
 
@@ -372,7 +375,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
   /* Equipment */
   #equip-bar{padding:.25rem .75rem}
   .eq-btn{padding:.25rem .6rem}
-  .eq-icon{font-size:var(--fs-base)}
+  .eq-icon svg{width:17px;height:17px}
   .eq-lbl{font-size:var(--fs-xs)}
   .eq-temp{font-size:var(--fs-xs)}
 
@@ -397,7 +400,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
     max-width:104px;
     padding:.52rem .28rem;
   }
-  .ai{font-size:var(--fs-md-lg)}
+  .ai svg{width:22px;height:22px}
   .an{font-size:var(--fs-xs);letter-spacing:.05em}
 
   /* End overlay — comfortable reading on phone */
@@ -484,7 +487,8 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
 }
 .eq-btn.eq-on{opacity:1}
 .eq-btn:hover{background:var(--th-surface-2)}
-.eq-icon{font-size:var(--fs-sm);line-height:1}
+.eq-icon{display:flex;align-items:center;line-height:1}
+.eq-icon svg{width:15px;height:15px}
 .eq-lbl{font-size:var(--fs-2xs);letter-spacing:.1em;text-transform:uppercase;color:var(--th-ink-3)}
 .eq-temp{font-size:var(--fs-2xs);color:var(--th-accent);margin-left:.15rem}
 .eq-btn.eq-used{opacity:.25;cursor:default}
@@ -583,7 +587,8 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
 .bac-card{background:var(--th-surface-2);border:1px solid var(--th-accent-border);border-radius:12px;padding:.48rem .58rem}
 .brief-tip{display:flex;gap:.65rem;align-items:flex-start;margin-bottom:.55rem}
 .brief-tip:last-of-type{margin-bottom:0}
-.brief-tip-ic{font-size:var(--fs-base);line-height:1;flex-shrink:0;margin-top:.12rem}
+.brief-tip-ic{display:flex;flex-shrink:0;margin-top:.12rem}
+.brief-tip-ic svg{width:17px;height:17px}
 .brief-tip-body{min-width:0}
 .brief-tip-k{font-size:var(--fs-2xs);letter-spacing:.1em;text-transform:uppercase;color:var(--th-ink-3);margin-bottom:.15rem}
 .brief-tip p{font-size:var(--fs-xs);color:var(--th-ink-3);line-height:1.55;margin:0;font-family:var(--sans)}
@@ -671,17 +676,17 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
       <span class="setup-section-label">Ukuran akuarium</span>
       <div class="setup-options" id="opt-size">
         <div class="sopt selected" data-val="small">
-          <span class="sopt-icon">🫙</span>
+          <span class="sopt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 3h7"/><path d="M9.5 3v3.3L7.5 9v9.5A2.2 2.2 0 0 0 9.7 20.7h4.6A2.2 2.2 0 0 0 16.5 18.5V9l-2-2.7V3"/><path d="M7.8 12.5h8.4"/></svg></span>
           <span class="sopt-name">Kecil</span>
           <span class="sopt-desc">Di bawah 40L · Parameter berubah lebih cepat · Ruang untuk kesalahan lebih sempit</span>
         </div>
         <div class="sopt" data-val="medium">
-          <span class="sopt-icon">🪣</span>
+          <span class="sopt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8.5L7 19a2 2 0 0 0 2 1.8h6a2 2 0 0 0 2-1.8l1.5-10.5"/><ellipse cx="12" cy="8.3" rx="6.7" ry="2.2"/><path d="M7.3 6C7.3 4.2 9.4 3 12 3s4.7 1.2 4.7 3"/></svg></span>
           <span class="sopt-name">Sedang</span>
           <span class="sopt-desc">40–120L · Volume air lebih besar · Lebih memaafkan kesalahan</span>
         </div>
         <div class="sopt" data-val="large">
-          <span class="sopt-icon">🏊</span>
+          <span class="sopt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2.2"/><path d="M4.3 11.5c1.3-1 2.7-1 4 0s2.7 1 4 0 2.7-1 4 0 2.7 1 4 0"/><path d="M4.3 15.3c1.3-1 2.7-1 4 0s2.7 1 4 0 2.7-1 4 0 2.7 1 4 0"/></svg></span>
           <span class="sopt-name">Besar</span>
           <span class="sopt-desc">120L+ · Pengenceran sangat membantu · Perubahan parameter lebih lambat</span>
         </div>
@@ -693,12 +698,12 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
       <span class="setup-section-label">Metode siklus</span>
       <div class="setup-options" id="opt-method">
         <div class="sopt selected" data-val="fishless">
-          <span class="sopt-icon">🧪</span>
+          <span class="sopt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2h6M10 2v6.5L5.5 17a2.5 2.5 0 0 0 2.2 3.7h8.6a2.5 2.5 0 0 0 2.2-3.7L14 8.5V2"/><path d="M7.5 14.5h9"/></svg></span>
           <span class="sopt-name">Tanpa ikan</span>
           <span class="sopt-desc">Tambahkan amonia tanpa ikan · Bakteri tumbuh dengan aman · Lebih mudah dikelola</span>
         </div>
         <div class="sopt" data-val="fish-in">
-          <span class="sopt-icon">🐠</span>
+          <span class="sopt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="10" cy="12" rx="7" ry="4.3"/><path d="M17 8.3L21.5 12L17 15.7"/><circle cx="6" cy="10.8" r=".7" fill="currentColor" stroke="none"/></svg></span>
           <span class="sopt-name">Dengan ikan</span>
           <span class="sopt-desc">Ikan ada di akuarium sejak awal · Perlu diberi makan · Risiko lebih tinggi</span>
         </div>
@@ -720,7 +725,7 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
       <span class="setup-section-label">Tanaman sejak awal?</span>
       <div class="setup-options" id="opt-plants">
         <div class="sopt selected" data-val="yes">
-          <span class="sopt-icon">🌿</span>
+          <span class="sopt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20C6 10 12 4 20 4c0 8-6 14-16 14z"/><path d="M8 18c2-4 5-7 9-9"/></svg></span>
           <span class="sopt-name">Ya</span>
           <span class="sopt-desc">Menyerap nitrat · Menambah oksigen · Bersaing dengan alga</span>
         </div>
@@ -752,7 +757,7 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
 <div class="ov hide" id="ov-brief">
   <div class="oc" style="max-width:400px;text-align:left;margin:auto;width:100%">
     <div style="text-align:center;margin-bottom:.85rem">
-      <span class="oi" style="font-size:var(--fs-lg)">🌊</span>
+      <span class="oi" style="line-height:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px" aria-hidden="true"><path d="M2 14.5c3-6 7-6 10 0s7 6 10 0"/><path d="M2 9.5c3-6 7-6 10 0s7 6 10 0"/></svg></span>
       <h2 class="ot" style="margin-bottom:.35rem">Sebelum Anda mulai</h2>
       <p class="om" style="font-size:var(--fs-xs);margin-bottom:0;color:var(--th-ink-4)">Hal-hal penting di bawah — detail ada di dalam panduan.</p>
     </div>
@@ -762,35 +767,35 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
       <summary>Panduan lengkap — kontrol &amp; aturan</summary>
       <div class="ar-disclosure-body" style="padding-top:.15rem">
         <div class="brief-tip">
-          <span class="brief-tip-ic" aria-hidden="true">⏱</span>
+          <span class="brief-tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 3h6M6 5l-1.5-1.5M18 5l1.5-1.5"/></svg></span>
           <div class="brief-tip-body">
             <div class="brief-tip-k">Waktu</div>
             <p>Biarkan berjalan. Log menjelaskan apa yang sedang terjadi seiring berlangsungnya.</p>
           </div>
         </div>
         <div class="brief-tip">
-          <span class="brief-tip-ic" aria-hidden="true">⚙️</span>
+          <span class="brief-tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></span>
           <div class="brief-tip-body">
             <div class="brief-tip-k">Perangkat</div>
             <p>Heater, filter, dan lampu menyala secara default. Ketuk salah satunya untuk mematikan — dan lihat apa yang sebenarnya terjadi pada siklus.</p>
           </div>
         </div>
         <div class="brief-tip">
-          <span class="brief-tip-ic" aria-hidden="true">🐠</span>
+          <span class="brief-tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="12" rx="7" ry="4.3"/><path d="M17 8.3L21.5 12L17 15.7"/><circle cx="6" cy="10.8" r=".7" fill="currentColor" stroke="none"/></svg></span>
           <div class="brief-tip-body">
             <div class="brief-tip-k">Khusus dengan ikan</div>
             <p>Beri makan setiap 1–2 hari. Setelah 4 hari tanpa makanan, ikan mulai melemah — ikan yang stres kurang tahan terhadap amonia.</p>
           </div>
         </div>
         <div class="brief-tip">
-          <span class="brief-tip-ic" aria-hidden="true">🦠</span>
+          <span class="brief-tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4M10.5 2v6.5l-4 9a2.2 2.2 0 0 0 2 3.1h7a2.2 2.2 0 0 0 2-3.1l-4-9V2"/><circle cx="10.5" cy="16" r=".55" fill="currentColor" stroke="none"/><circle cx="13.2" cy="17.5" r=".55" fill="currentColor" stroke="none"/><circle cx="11.5" cy="19" r=".55" fill="currentColor" stroke="none"/></svg></span>
           <div class="brief-tip-body">
             <div class="brief-tip-k">Starter bakteri</div>
             <p>Seed hanya bekerja sekali. Gunakan setelah beberapa hari — bakteri perlu ada amonia dulu sebelum penambahan starter membantu.</p>
           </div>
         </div>
         <div class="brief-tip">
-          <span class="brief-tip-ic" aria-hidden="true">⏸</span>
+          <span class="brief-tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="4" width="4" height="16" rx="1.3" fill="currentColor" stroke="none"/><rect x="13.5" y="4" width="4" height="16" rx="1.3" fill="currentColor" stroke="none"/></svg></span>
           <div class="brief-tip-body">
             <div class="brief-tip-k">Jeda dan lompat</div>
             <p>Jeda untuk membaca dengan cermat. Gunakan <strong style="color:var(--th-ink-3);font-weight:500">+1h</strong> di bilah atas untuk melompat maju satu hari saat sedang menunggu.</p>
@@ -923,18 +928,18 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
       <!-- Equipment row -->
       <div id="equip-bar">
         <button class="eq-btn eq-on" id="eq-heater" onclick="toggleEquip('heater')" data-tip="Menjaga air pada 26°C. Bakteri tumbuh ~50% lebih cepat pada suhu optimal.">
-          <span class="eq-icon">🔥</span>
+          <span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 14.76V4a2 2 0 0 0-4 0v10.76a4 4 0 1 0 4 0z"/></svg></span>
           <span class="eq-lbl">Heater</span>
           <span class="eq-temp" id="eq-temp">26°C</span>
         </button>
         <div class="eq-div"></div>
         <button class="eq-btn eq-on" id="eq-filter" onclick="toggleEquip('filter')" data-tip="Tempat bakteri hidup. Tanpanya, siklus hampir tidak bisa selesai.">
-          <span class="eq-icon">🌀</span>
+          <span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="10" height="16" rx="2.5"/><path d="M11 7.5a3 3 0 1 1-2.5 4.7"/><path d="M4 7h2M4 15h2"/></svg></span>
           <span class="eq-lbl">Filter</span>
         </button>
         <div class="eq-div"></div>
         <button class="eq-btn eq-on" id="eq-light" onclick="cycleLight()" data-tip="Ketuk untuk berganti: Mati → Rendah → Sedang → Tinggi. Memengaruhi tanaman dan alga.">
-          <span class="eq-icon">💡</span>
+          <span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.6.55 1 1.36 1 2.2V16h6v-.3c0-.84.4-1.65 1-2.2A6 6 0 0 0 12 3z"/></svg></span>
           <span class="eq-lbl">Lampu</span>
           <span class="eq-temp" id="eq-light-lbl">Sedang</span>
         </button>
@@ -947,9 +952,9 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
         <div class="pi-div"></div>
         <div class="pi"><span class="pi-lbl" title="Nitrate">NO₃</span><span class="pi-val safe" id="v-no3">0.00</span><span class="pi-arrow" id="arr-no3"></span><div class="pi-track"><div class="pi-fill" id="b-no3"></div></div></div>
         <div class="pi-div"></div>
-        <div class="pi-fish"><span class="pi-fish-icon">🐠</span><span class="pi-fish-val" id="v-fish">0</span></div>
+        <div class="pi-fish"><span class="pi-fish-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="10" cy="12" rx="7" ry="4.3"/><path d="M17 8.3L21.5 12L17 15.7"/><circle cx="6" cy="10.8" r=".7" fill="currentColor" stroke="none"/></svg></span><span class="pi-fish-val" id="v-fish">0</span></div>
         <div class="pi-div"></div>
-        <div class="pi-fish"><span class="pi-fish-icon">🌿</span><span class="pi-fish-val" id="v-plant" style="color:rgba(100,180,80,.6)">0</span></div>
+        <div class="pi-fish"><span class="pi-fish-icon" style="color:rgba(100,180,80,.6)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20C6 10 12 4 20 4c0 8-6 14-16 14z"/><path d="M8 18c2-4 5-7 9-9"/></svg></span><span class="pi-fish-val" id="v-plant" style="color:rgba(100,180,80,.6)">0</span></div>
 
       </div>
     </div>
@@ -1016,21 +1021,21 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
 
   <div id="bbar">
     <button class="ab" id="act-source" onclick="doAct('source')">
-      <span class="ai" id="act-source-icon">🧪</span>
+      <span class="ai" id="act-source-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2h6M10 2v6.5L5.5 17a2.5 2.5 0 0 0 2.2 3.7h8.6a2.5 2.5 0 0 0 2.2-3.7L14 8.5V2"/><path d="M7.5 14.5h9"/></svg></span>
       <span class="an" id="act-source-name">Tambah amonia</span>
       <span class="ah">Memulai siklus</span>
     </button>
     <button class="ab" id="act-feed" onclick="doAct('feed')" disabled>
-      <span class="ai">🥣</span><span class="an">Beri makan</span><span class="ah">Khusus dengan ikan</span>
+      <span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M4 11c0 4.5 3.5 8 8 8s8-3.5 8-8"/><ellipse cx="12" cy="11" rx="9" ry="2.2"/></svg></span><span class="an">Beri makan</span><span class="ah">Khusus dengan ikan</span>
     </button>
     <button class="ab" id="act-water" onclick="showWaterPicker()">
-      <span class="ai">💧</span><span class="an">Ganti air</span><span class="ah">Pilih jumlah</span>
+      <span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/></svg></span><span class="an">Ganti air</span><span class="ah">Pilih jumlah</span>
     </button>
     <button class="ab" id="act-plant" onclick="doAct('plant')">
-      <span class="ai">🌿</span><span class="an">Tambah tanaman</span><span class="ah">Menyangga nitrat</span>
+      <span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20C6 10 12 4 20 4c0 8-6 14-16 14z"/><path d="M8 18c2-4 5-7 9-9"/></svg></span><span class="an">Tambah tanaman</span><span class="ah">Menyangga nitrat</span>
     </button>
     <button class="ab" id="act-seed" onclick="doSeed()">
-      <span class="ai">🦠</span><span class="an">Seed</span><span class="ah">Starter bakteri</span>
+      <span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4M10.5 2v6.5l-4 9a2.2 2.2 0 0 0 2 3.1h7a2.2 2.2 0 0 0 2-3.1l-4-9V2"/><circle cx="10.5" cy="16" r=".55" fill="currentColor" stroke="none"/><circle cx="13.2" cy="17.5" r=".55" fill="currentColor" stroke="none"/><circle cx="11.5" cy="19" r=".55" fill="currentColor" stroke="none"/></svg></span><span class="an">Seed</span><span class="ah">Starter bakteri</span>
     </button>
   </div>
 </div>
@@ -1043,6 +1048,12 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
 
 /* Setup config */
 var CFG = { size:'small', method:'fishless', plants:'yes' };
+
+/* Icon markup for the ammonia/fish action-button toggle (source icon swaps by cycling method) */
+var SRC_ICON = {
+  fishless:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2h6M10 2v6.5L5.5 17a2.5 2.5 0 0 0 2.2 3.7h8.6a2.5 2.5 0 0 0 2.2-3.7L14 8.5V2"/><path d="M7.5 14.5h9"/></svg>',
+  fish:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="10" cy="12" rx="7" ry="4.3"/><path d="M17 8.3L21.5 12L17 15.7"/><circle cx="6" cy="10.8" r=".7" fill="currentColor" stroke="none"/></svg>'
+};
 
 /* Fish individual states */
 var fishStates = [];
@@ -2282,7 +2293,7 @@ function setupOption(groupId, val) {
     /* Update action button */
     var icon=document.getElementById('act-source-icon');
     var name=document.getElementById('act-source-name');
-    if(icon)icon.textContent=val==='fishless'?'🧪':'🐠';
+    if(icon)icon.innerHTML=val==='fishless'?SRC_ICON.fishless:SRC_ICON.fish;
     if(name)name.textContent=val==='fishless'?'Tambah amonia':'Tambah ikan';
     /* Feed button label */
     document.getElementById('act-feed').querySelector('.ah').textContent=val==='fishless'?'Amonia lagi':'Menambah amonia';
@@ -2318,7 +2329,7 @@ function beginGame(){
   S.fishless=CFG.method==='fishless';
   var srcIcon=document.getElementById('act-source-icon');
   var srcName=document.getElementById('act-source-name');
-  if(srcIcon)srcIcon.textContent=S.fishless?'🧪':'🐠';
+  if(srcIcon)srcIcon.innerHTML=S.fishless?SRC_ICON.fishless:SRC_ICON.fish;
   if(srcName)srcName.textContent=S.fishless?'Tambah amonia':'Tambah ikan';
   /* Disable feed immediately for fishless */
   var feedBtn=document.getElementById('act-feed');
@@ -2439,7 +2450,7 @@ render();renderTime(0);
   </div>
 </div>
 <!-- ── LAB NAV SHEET ── -->
-<script src="/js/ar-page.js?v=54" defer></script>
+<script src="/js/ar-page.js?v=55" defer></script>
 <script>
 (function(){
   var btn = document.getElementById('tb-settings-btn');
@@ -2451,6 +2462,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=54" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=55" defer></script>
 </body>
 </html>

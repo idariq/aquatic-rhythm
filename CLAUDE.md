@@ -207,10 +207,14 @@ tetapan artikel/alat),
 ## Status Terjemahan Semasa (kemas kini 2026-08-18)
 
 **Siap**: ~35 artikel biasa, siri kerangka ARA penuh (7 fail), halaman
-utama (Fasa 1: nav/meta/pg-home/pg-companion/pg-terms/pg-privacy/
-pg-about — **pg-reading/pg-tools/pg-journal/pg-tank-log KEKAL English**
-sbb string JS-driven interaktifnya perlukan mekanisme i18n berasingan,
-belum dibina), `community-stress-lab` (alat interaktif rintis pertama,
+utama (SEMUA tab SPA — pg-home/pg-reading/pg-tools/pg-journal/
+pg-tank-log/pg-companion/pg-terms/pg-privacy/pg-about — diterjemah
+penuh id/ja, disahkan via Playwright 2026-08-18; nota lama fail ni
+yg kata pg-reading/pg-tools/pg-journal/pg-tank-log "kekal English"
+dah LAPUK, dibetulkan), panel Settings (laman utama & artikel/ARA,
+30+ label), sembang Rhyssa (semua templat + laman utama), footer
+"About this content" (`js/content-trust.js`, mekanisme CT_STRINGS/
+CT() baharu) — `community-stress-lab` (alat interaktif rintis pertama,
 JS kongsi + `CSL_STRINGS`/`T()`), kuiz **Know Your Rhythm**
 (`know-your-rhythm.html` — 7 soalan + enjin refleksi, kandungan
 ditanam sbg literal JS inline per-fail, BUKAN JS kongsi; skrip

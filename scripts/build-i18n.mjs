@@ -66,6 +66,16 @@ const NAV_LABELS = {
   }
 };
 
+// One-off "Back to Reading →" back-link (.art-back-link) — only
+// new-tank-syndrome.html uses this exact standalone link outside the
+// normal .art-footer/mod-next patchers, so it stayed fully English on
+// id/ja (bug found 2026-08-18, same audit as the /reading href sweep
+// above). Harmless no-op for every other article since the text won't match.
+const BACK_LINK = {
+  id: 'Kembali ke Reading →',
+  ja: 'Readingに戻る →'
+};
+
 // Rhyssa chat sliding sheet (.rh-sheet) — shared sitewide UI injected on
 // every article, same convention as NAV_LABELS. Was left fully English on
 // id/ja (bug found 2026-08-18, user video) even though the separate full
@@ -588,6 +598,17 @@ function buildArticle(slug, lang, t) {
     h = h.replace(/\/articles\/ara-full-framework/g, `/${lang}/articles/ara-full-framework`);
   }
 
+  // ── 11b. Safety net: any remaining bare href="/reading" that survived
+  // translation verbatim (e.g. one-off CTA/back-links inside module bodies
+  // not covered by the .art-footer/nav/bnav patchers above — bug found
+  // 2026-08-18, e.g. new-tank-syndrome's mod-7 back-link and cycled-tank-
+  // problems' final-cta second button). Anything already lang-prefixed is
+  // untouched since the regex requires "/reading" immediately after the
+  // opening quote. ─────────────────────────────────────────────────────
+  h = h.replace(/href="\/reading"/g, `href="/${lang}/reading"`);
+  h = h.replace(/(class="art-back-link"[^>]*>)Back to Reading →(<\/a>)/,
+    (_, open, close) => `${open}${BACK_LINK[lang]}${close}`);
+
   // ── 12. Localize cross-links to OTHER articles (related-article buttons,
   // and any other inline <a href="/articles/<slug>"> link that survived
   // translation verbatim from the English source) — bug found 2026-08-18:
@@ -622,8 +643,11 @@ function getReadySlugsForLang(lang) {
 
 function localizeArticleLinks(h, lang) {
   const ready = getReadySlugsForLang(lang);
-  return h.replace(/href="\/articles\/([a-z0-9-]+)"/g, (m, slug) =>
-    ready.has(slug) ? `href="/${lang}/articles/${slug}"` : m);
+  // Optional #fragment suffix so same-article anchor jumps (e.g.
+  // cycled-tank-problems' final-cta linking to its own #mod-5) get
+  // localized too, not just bare slug links — bug found 2026-08-18.
+  return h.replace(/href="\/articles\/([a-z0-9-]+)(#[^"]*)?"/g, (m, slug, frag) =>
+    ready.has(slug) ? `href="/${lang}/articles/${slug}${frag || ''}"` : m);
 }
 
 // ── Patch English source files with hreflang ──────────────────────────────────

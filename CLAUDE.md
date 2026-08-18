@@ -191,15 +191,22 @@ tetapan artikel/alat),
 utama (Fasa 1: nav/meta/pg-home/pg-companion/pg-terms/pg-privacy/
 pg-about — **pg-reading/pg-tools/pg-journal/pg-tank-log KEKAL English**
 sbb string JS-driven interaktifnya perlukan mekanisme i18n berasingan,
-belum dibina), `community-stress-lab` (alat interaktif rintis pertama).
+belum dibina), `community-stress-lab` (alat interaktif rintis pertama,
+JS kongsi + `CSL_STRINGS`/`T()`), kuiz **Know Your Rhythm**
+(`know-your-rhythm.html` — 7 soalan + enjin refleksi, kandungan
+ditanam sbg literal JS inline per-fail, BUKAN JS kongsi; skrip
+`scripts/build-kyr-i18n.mjs` regenerate `var Q=[...]` drpd data &
+gantikan string dlm `reflect()` IKUT KEDUDUKAN, bukan padanan teks).
 
-**Berbaki** (ikut saiz, kecil→besar): kuiz **Know Your Rhythm**
-(`know-your-rhythm.html`, ~4.3k patah perkataan — id tiada langsung,
-array kuiz ja 100% tak diterjemah), alat **`tank-simulator`** (~8.6k
+**Berbaki** (ikut saiz, kecil→besar): alat **`tank-simulator`** (~8.6k
 patah perkataan), alat **`tank-builder`** (~19k patah perkataan,
-terbesar). Pola kerja utk alat interaktif baharu: rujuk
-`scripts/build-csl-i18n.mjs` + mekanisme `CSL_STRINGS`/`T()` dlm
-`js/community-stress-lab.js` sbg templat.
+terbesar). Pola kerja utk alat interaktif baharu: kalau logik JS-nya
+dikongsi merentas bahasa (satu fail `js/<alat>.js`, spt community-
+stress-lab) rujuk `scripts/build-csl-i18n.mjs` + `CSL_STRINGS`/`T()`
+sbg templat; kalau logiknya ditanam inline per-fail (spt
+know-your-rhythm) rujuk `scripts/build-kyr-i18n.mjs` sbg templat —
+semak struktur `tank-simulator.html`/`tank-builder.html` dulu utk
+tentukan yg mana sblm mula.
 
 ## Semakan Sebelum Commit
 

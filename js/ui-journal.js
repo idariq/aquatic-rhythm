@@ -2330,7 +2330,7 @@
     if (target.id === 'jn-entry-open' || target.id === 'jn-entry-open-2' || target.id === 'jn-entry-open-main') {
       openEntryModal(); return;
     }
-    if (target.id === 'jn-tank-edit') {
+    if (target.closest('#jn-tank-edit')) {
       var d = loadData();
       var tank = getActiveTank(d);
       var p = tank ? (tank.profile || {}) : {};
@@ -2369,7 +2369,7 @@
       window.go('journal', false);
       return;
     }
-    if (target.id === 'jn-add-tank') {
+    if (target.closest('#jn-add-tank')) {
       resetSetupModal();
       if (formSetup) formSetup.dataset.editingId = '';
       var delBtn2 = document.getElementById('mt-setup-delete');
@@ -2448,7 +2448,7 @@
     if (target.id === 'jn-export-csv') { exportParamsCSV(); return; }
 
     /* Filter bar toggle */
-    if (target.id === 'jn-filter-toggle') {
+    if (target.closest('#jn-filter-toggle')) {
       var opts = document.getElementById('jn-filter-options');
       if (opts) {
         var open = opts.style.display === 'none' || !opts.style.display;

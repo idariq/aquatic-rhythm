@@ -353,6 +353,14 @@
           gtag('event', 'page_view', { page_path: path, page_title: localizedTitle(id) || id });
         }
         if (window.__araModTick && id === 'ara') setTimeout(window.__araModTick, 120);
+        /* Landing directly on journal/tank-log (fresh load, refresh, PWA
+           resume, bookmark) skipped go()'s lazy-loader entirely — the page
+           rendered with an empty tank list and every button silently did
+           nothing, since js/ui-journal.js never loaded. Bug found
+           2026-08-18 (user report: "sometimes can't add aquarium"). */
+        if ((id === 'journal' || id === 'tank-log') && typeof window.__loadJournal === 'function') {
+          window.__loadJournal();
+        }
       }
     })();
   }

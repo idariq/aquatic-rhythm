@@ -78,16 +78,16 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 }
 .ara-hub-title{
   font-family:var(--serif);font-weight:300;font-size:clamp(2.2rem,5.5vw,3.6rem);
-  color:rgba(235,240,236,.94);line-height:1.06;margin-bottom:1.5rem;
+  color:var(--th-ink);line-height:1.06;margin-bottom:1.5rem;
 }
-.ara-hub-title em{font-style:italic;color:rgba(61,214,232,.78)}
+.ara-hub-title em{font-style:italic;color:var(--th-accent)}
 .ara-hub-sub{
   font-family:var(--serif);font-style:italic;
   font-size:clamp(.96rem,1.5vw,1.08rem);font-weight:300;
-  color:rgba(235,240,236,.48);line-height:1.9;max-width:520px;
+  color:var(--th-ink-3);line-height:1.9;max-width:520px;
 }
 .ara-hub-divider{
-  height:1px;background:rgba(235,240,236,.07);
+  height:1px;background:var(--th-surface-2);
   margin:0 clamp(1.5rem,5vw,3rem);
 }
 
@@ -100,23 +100,23 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
   grid-template-columns:3.8rem 1fr auto;
   align-items:center;gap:1.4rem;
   padding:1.5rem 0;
-  border-bottom:1px solid rgba(235,240,236,.065);
+  border-bottom:1px solid var(--th-line);
   text-decoration:none;color:inherit;
   transition:background .18s;
   -webkit-tap-highlight-color:transparent;
 }
-.ara-hub-card:first-child{border-top:1px solid rgba(235,240,236,.065)}
+.ara-hub-card:first-child{border-top:1px solid var(--th-line)}
 
 .ara-hub-card-num{
   font-family:var(--serif);
   font-size:clamp(1.6rem,4vw,2.4rem);
   font-weight:300;
-  color:rgba(61,214,232,.18);
+  color:var(--th-accent);
   text-align:right;
   line-height:1;
   transition:color .22s;
 }
-.ara-hub-card:hover .ara-hub-card-num{color:rgba(61,214,232,.38)}
+.ara-hub-card:hover .ara-hub-card-num{color:var(--th-accent)}
 
 .ara-hub-card-body{flex:1;min-width:0}
 .ara-hub-card-label{
@@ -124,44 +124,44 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
   font-family:var(--serif);
   font-size:clamp(1.05rem,2.4vw,1.35rem);
   font-weight:400;
-  color:rgba(235,240,236,.88);
+  color:var(--th-ink);
   line-height:1.22;
   margin-bottom:.36rem;
   transition:color .22s;
 }
-.ara-hub-card:hover .ara-hub-card-label{color:rgba(61,214,232,.92)}
+.ara-hub-card:hover .ara-hub-card-label{color:var(--th-accent)}
 
 .ara-hub-card-desc{
   display:block;
   font-size:var(--fs-sm-md);font-weight:300;
-  color:rgba(235,240,236,.38);
+  color:var(--th-ink-4);
   line-height:1.72;margin-bottom:.45rem;
 }
 .ara-hub-card-meta{
   display:inline-block;
   font-size:var(--fs-2xs);letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(139,189,210,.38);
+  color:var(--th-ink-4);
 }
 
 .ara-hub-card-arrow{
   font-size:var(--fs-md);font-weight:300;
-  color:rgba(61,214,232,.28);
+  color:var(--th-accent);
   flex-shrink:0;
   transition:transform .22s var(--ease),color .22s;
 }
 .ara-hub-card:hover .ara-hub-card-arrow{
   transform:translateX(5px);
-  color:rgba(61,214,232,.65);
+  color:var(--th-accent);
 }
 
 /* ── HUB FOOTER ── */
 .ara-hub-footer{
   padding:2rem clamp(1.5rem,5vw,3rem) 2.5rem;
-  border-top:1px solid rgba(235,240,236,.065);
+  border-top:1px solid var(--th-line);
 }
 .ara-hub-footer-attr{
   font-size:var(--fs-xs);font-weight:300;
-  color:rgba(235,240,236,.28);line-height:1.75;
+  color:var(--th-ink-4);line-height:1.75;
 }
 .ara-hub-footer-attr em{font-style:italic}
 </style>

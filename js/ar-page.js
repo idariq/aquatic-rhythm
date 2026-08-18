@@ -68,6 +68,15 @@
         '</div>' +
         '<div class="ar-stg-body">' +
           '<div class="ar-stg-section">' +
+            '<span class="ar-stg-label">Theme</span>' +
+            '<div class="ar-stg-theme-seg" role="group" aria-label="Theme">' +
+              '<button class="ar-stg-theme-btn" type="button" data-theme-choice="system">System</button>' +
+              '<button class="ar-stg-theme-btn" type="button" data-theme-choice="light">Light</button>' +
+              '<button class="ar-stg-theme-btn" type="button" data-theme-choice="dark">Dark</button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="ar-stg-divider"></div>' +
+          '<div class="ar-stg-section">' +
             '<span class="ar-stg-label">Language</span>' +
             '<div class="ar-stg-lang-list" id="ar-stg-lang-list"></div>' +
           '</div>' +
@@ -146,6 +155,34 @@
       }).join('');
     }
     renderLangSection();
+
+    /* ── Theme (light / dark / system) ──
+       The anti-flash inline script in <head> already applied any stored
+       choice before first paint; this just wires the UI + persistence. */
+    var THEME_KEY = 'ar_theme';
+    function getThemeChoice() {
+      try { return localStorage.getItem(THEME_KEY) || 'system'; } catch (e) { return 'system'; }
+    }
+    function applyTheme(choice) {
+      if (choice === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      else if (choice === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      else document.documentElement.removeAttribute('data-theme');
+    }
+    function syncThemeButtons() {
+      var current = getThemeChoice();
+      panel.querySelectorAll('[data-theme-choice]').forEach(function (b) {
+        b.classList.toggle('active', b.dataset.themeChoice === current);
+      });
+    }
+    panel.querySelectorAll('[data-theme-choice]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var choice = btn.dataset.themeChoice;
+        try { localStorage.setItem(THEME_KEY, choice); } catch (e) {}
+        applyTheme(choice);
+        syncThemeButtons();
+      });
+    });
+    syncThemeButtons();
 
     function syncToggles() {
       if (stgFauna)     stgFauna.checked     = localStorage.getItem('ar_fauna')         !== '0';

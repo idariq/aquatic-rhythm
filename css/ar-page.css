@@ -24,6 +24,68 @@
   --fs-3xl:2.8rem;
   --fs-4xl:3rem;
   --fs-5xl:3.5rem;
+
+  /* ── Theme tokens (Fasa 2) ──────────────────────────────────────────────
+     Dark-first: the bare :root below IS the site's current dark identity,
+     so pages that don't opt into anything look exactly as they do today.
+     Light is the "swap" — applied only when the OS prefers light, or the
+     user explicitly picks Light in Settings (data-theme="light"). An
+     explicit "Dark" pick just clears the attribute back to these defaults,
+     so no separate [data-theme="dark"] block is needed. */
+  --th-bg:#15160f;
+  --th-surface:#1c1d16;
+  --th-surface-2:#22231a;
+  --th-ink:#eeece2;
+  --th-ink-2:#d7d5c9;
+  --th-ink-3:#b3b6a9;
+  --th-ink-4:#9a9c8f;
+  --th-ink-5:#7c8177;
+  --th-line:rgba(234,232,222,.12);
+  --th-line-2:rgba(234,232,222,.2);
+  --th-accent:#7fd4c4;
+  --th-accent-soft:rgba(127,212,196,.1);
+  --th-accent-border:rgba(127,212,196,.28);
+  --th-scrim:rgba(3,10,8,.88);
+  --th-accent-ink:#0d1610;
+  --th-water:linear-gradient(180deg,#052535 0%,#073040 18%,#062a38 38%,#041e28 58%,#030f18 78%,#020810 100%);
+}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --th-bg:#f6f5f1;
+    --th-surface:#ffffff;
+    --th-surface-2:#eef1ec;
+    --th-ink:#232420;
+    --th-ink-2:#454742;
+    --th-ink-3:#6b6d63;
+    --th-ink-4:#8a8d83;
+    --th-ink-5:#a3a69c;
+    --th-line:rgba(42,43,38,.12);
+    --th-line-2:rgba(42,43,38,.2);
+    --th-accent:#2b7a75;
+    --th-accent-soft:rgba(43,122,117,.08);
+    --th-accent-border:rgba(43,122,117,.3);
+    --th-scrim:rgba(246,245,241,.86);
+    --th-accent-ink:#fdfefb;
+    --th-water:linear-gradient(180deg,#eef4f0 0%,#e6f0ea 30%,#eef3f0 60%,#f6f5f1 100%);
+  }
+}
+:root[data-theme="light"]{
+  --th-bg:#f6f5f1;
+  --th-surface:#ffffff;
+  --th-surface-2:#eef1ec;
+  --th-ink:#232420;
+  --th-ink-2:#454742;
+  --th-ink-3:#6b6d63;
+  --th-ink-4:#8a8d83;
+  --th-ink-5:#a3a69c;
+  --th-line:rgba(42,43,38,.12);
+  --th-line-2:rgba(42,43,38,.2);
+  --th-accent:#2b7a75;
+  --th-accent-soft:rgba(43,122,117,.08);
+  --th-accent-border:rgba(43,122,117,.3);
+  --th-scrim:rgba(246,245,241,.86);
+  --th-accent-ink:#fdfefb;
+  --th-water:linear-gradient(180deg,#eef4f0 0%,#e6f0ea 30%,#eef3f0 60%,#f6f5f1 100%);
 }
 
 /* ── NAV (top) ── */
@@ -202,41 +264,47 @@ nav:not(.bnav){position:fixed;top:0;left:0;right:0;z-index:800;height:68px;displ
 /* ── SETTINGS PANEL (shared across all article/tool pages) ── */
 .ar-settings-backdrop{position:fixed;inset:0;z-index:1040;background:rgba(2,8,6,.65);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);opacity:0;pointer-events:none;transition:opacity .32s}
 .ar-settings-backdrop.open{opacity:1;pointer-events:all}
-.ar-settings-panel{position:fixed;top:0;right:0;bottom:0;z-index:1050;width:min(360px,88vw);background:rgba(4,12,9,.99);border-left:1px solid rgba(61,214,232,.1);transform:translateX(100%);transition:transform .42s var(--ease);overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior:contain;display:flex;flex-direction:column;will-change:transform}
+.ar-settings-panel{position:fixed;top:0;right:0;bottom:0;z-index:1050;width:min(360px,88vw);background:var(--th-surface);border-left:1px solid var(--th-line);transform:translateX(100%);transition:transform .42s var(--ease);overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior:contain;display:flex;flex-direction:column;will-change:transform;color:var(--th-ink-2)}
 .ar-settings-panel.open{transform:translateX(0)}
-.ar-stg-head{display:flex;align-items:center;justify-content:space-between;padding:calc(.9rem + env(safe-area-inset-top)) 1.2rem .9rem;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0;position:sticky;top:0;z-index:2;background:rgba(4,12,9,.98);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.ar-stg-head{display:flex;align-items:center;justify-content:space-between;padding:calc(.9rem + env(safe-area-inset-top)) 1.2rem .9rem;border-bottom:1px solid var(--th-line);flex-shrink:0;position:sticky;top:0;z-index:2;background:var(--th-surface);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .ar-stg-head-left{display:flex;align-items:center;gap:.55rem}
-.ar-stg-head-icon{color:rgba(61,214,232,.4)}
-.ar-stg-title{font-size:var(--fs-xs);font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.62)}
-.ar-stg-close{width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:none;border:none;color:rgba(255,255,255,.28);cursor:pointer;border-radius:8px;transition:color .2s,background .2s;line-height:1;font-size:var(--fs-sm-md);font-family:var(--sans)}
-.ar-stg-close:hover{color:rgba(255,255,255,.75);background:rgba(255,255,255,.07)}
+.ar-stg-head-icon{color:var(--th-accent)}
+.ar-stg-title{font-size:var(--fs-xs);font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--th-ink-3)}
+.ar-stg-close{width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:none;border:none;color:var(--th-ink-4);cursor:pointer;border-radius:8px;transition:color .2s,background .2s;line-height:1;font-size:var(--fs-sm-md);font-family:var(--sans)}
+.ar-stg-close:hover{color:var(--th-ink-2);background:var(--th-surface-2)}
 /* min-height:0 overrides the flex-item default (min-height:auto), which
    otherwise refuses to let this shrink below its own content height —
    that silently breaks the parent .ar-settings-panel's overflow-y:auto
    scrolling on some mobile browsers even though it "should" just work. */
 .ar-stg-body{padding:.4rem 0 env(safe-area-inset-bottom);flex:1;min-height:0}
 .ar-stg-section{padding:.9rem 1.2rem 0}
-.ar-stg-label{display:block;font-size:var(--fs-xs);font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(163,196,162,.44);margin-bottom:.7rem}
-.ar-stg-row{display:flex;align-items:center;justify-content:space-between;padding:.58rem 0;border-bottom:1px solid rgba(255,255,255,.04);gap:.75rem;min-height:42px}
+.ar-stg-label{display:block;font-size:var(--fs-xs);font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.7rem}
+.ar-stg-row{display:flex;align-items:center;justify-content:space-between;padding:.58rem 0;border-bottom:1px solid var(--th-line);gap:.75rem;min-height:42px}
 .ar-stg-row:last-child{border-bottom:none}
 .ar-stg-row-info{min-width:0;flex:1}
-.ar-stg-row-label{font-size:var(--fs-sm-md);font-weight:400;color:rgba(235,240,236,.82);display:block;line-height:1.3}
-.ar-stg-row-sub{font-size:var(--fs-2xs);color:rgba(255,255,255,.28);display:block;margin-top:.18rem;line-height:1.45}
-.ar-stg-toggle{appearance:none;-webkit-appearance:none;width:38px;height:21px;border-radius:11px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.16);cursor:pointer;position:relative;flex-shrink:0;transition:background .22s,border-color .22s;vertical-align:middle}
-.ar-stg-toggle::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,.42);transition:transform .2s var(--ease),background .2s}
-.ar-stg-toggle:checked{background:rgba(61,214,232,.26);border-color:rgba(61,214,232,.52)}
-.ar-stg-toggle:checked::after{transform:translateX(17px);background:#3DD6E8}
-.ar-stg-seg{display:flex;background:rgba(0,0,0,.28);border-radius:8px;padding:.18rem;gap:.18rem;flex-shrink:0}
-.ar-stg-seg-btn{background:none;border:none;font-size:var(--fs-xs);font-family:var(--sans);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:.38rem .72rem;border-radius:6px;cursor:pointer;transition:background .2s,color .2s;white-space:nowrap;line-height:1}
-.ar-stg-seg-btn.active{background:rgba(61,214,232,.14);color:rgba(61,214,232,.88)}
-.ar-stg-divider{margin:.45rem 1.2rem;height:1px;background:linear-gradient(to right,transparent,rgba(139,189,210,.1),transparent)}
-.ar-stg-num-input{width:56px;background:rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.35rem .5rem;color:rgba(235,240,236,.88);font-size:var(--fs-sm-md);font-family:var(--sans);text-align:center;transition:border-color .2s;-webkit-appearance:none;appearance:none}
-.ar-stg-num-input:focus{outline:none;border-color:rgba(61,214,232,.42)}
+.ar-stg-row-label{font-size:var(--fs-sm-md);font-weight:400;color:var(--th-ink-2);display:block;line-height:1.3}
+.ar-stg-row-sub{font-size:var(--fs-2xs);color:var(--th-ink-4);display:block;margin-top:.18rem;line-height:1.45}
+.ar-stg-toggle{appearance:none;-webkit-appearance:none;width:38px;height:21px;border-radius:11px;background:var(--th-surface-2);border:1.5px solid var(--th-line-2);cursor:pointer;position:relative;flex-shrink:0;transition:background .22s,border-color .22s;vertical-align:middle}
+.ar-stg-toggle::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:var(--th-ink-4);transition:transform .2s var(--ease),background .2s}
+.ar-stg-toggle:checked{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.ar-stg-toggle:checked::after{transform:translateX(17px);background:var(--th-accent)}
+.ar-stg-seg{display:flex;background:var(--th-surface-2);border-radius:8px;padding:.18rem;gap:.18rem;flex-shrink:0}
+.ar-stg-seg-btn{background:none;border:none;font-size:var(--fs-xs);font-family:var(--sans);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--th-ink-4);padding:.38rem .72rem;border-radius:6px;cursor:pointer;transition:background .2s,color .2s;white-space:nowrap;line-height:1}
+.ar-stg-seg-btn.active{background:var(--th-accent-soft);color:var(--th-accent)}
+.ar-stg-divider{margin:.45rem 1.2rem;height:1px;background:linear-gradient(to right,transparent,var(--th-line),transparent)}
+.ar-stg-num-input{width:56px;background:var(--th-surface-2);border:1px solid var(--th-line);border-radius:7px;padding:.35rem .5rem;color:var(--th-ink-2);font-size:var(--fs-sm-md);font-family:var(--sans);text-align:center;transition:border-color .2s;-webkit-appearance:none;appearance:none}
+.ar-stg-num-input:focus{outline:none;border-color:var(--th-accent-border)}
 .ar-stg-lang-list{display:flex;flex-direction:column;gap:.35rem}
-.ar-stg-lang-opt{display:flex;align-items:center;justify-content:space-between;width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:rgba(235,240,236,.78);font-family:var(--sans);font-size:var(--fs-sm-md);font-weight:400;padding:.6rem .85rem;cursor:pointer;text-align:left;text-decoration:none;transition:background .2s,border-color .2s,color .2s;line-height:1.3}
-.ar-stg-lang-opt:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16);color:rgba(255,255,255,.9)}
-.ar-stg-lang-opt.active{background:rgba(61,214,232,.1);border-color:rgba(61,214,232,.34);color:rgba(61,214,232,.92);cursor:default}
-.ar-stg-lang-fallback{font-size:var(--fs-2xs);color:rgba(255,255,255,.32);font-weight:400;letter-spacing:.02em}
+.ar-stg-lang-opt{display:flex;align-items:center;justify-content:space-between;width:100%;background:var(--th-surface-2);border:1px solid var(--th-line);border-radius:10px;color:var(--th-ink-2);font-family:var(--sans);font-size:var(--fs-sm-md);font-weight:400;padding:.6rem .85rem;cursor:pointer;text-align:left;text-decoration:none;transition:background .2s,border-color .2s,color .2s;line-height:1.3}
+.ar-stg-lang-opt:hover{border-color:var(--th-line-2);color:var(--th-ink)}
+.ar-stg-lang-opt.active{background:var(--th-accent-soft);border-color:var(--th-accent-border);color:var(--th-accent);cursor:default}
+.ar-stg-lang-fallback{font-size:var(--fs-2xs);color:var(--th-ink-4);font-weight:400;letter-spacing:.02em}
+
+/* ── Theme (light / dark / system) ── */
+.ar-stg-theme-seg{display:flex;background:var(--th-surface-2);border-radius:8px;padding:.18rem;gap:.18rem}
+.ar-stg-theme-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:.32rem;background:none;border:none;font-size:var(--fs-2xs);font-family:var(--sans);font-weight:600;letter-spacing:.04em;color:var(--th-ink-4);padding:.5rem .4rem;border-radius:6px;cursor:pointer;transition:background .2s,color .2s;line-height:1}
+.ar-stg-theme-btn svg{width:14px;height:14px;flex-shrink:0}
+.ar-stg-theme-btn.active{background:var(--th-accent-soft);color:var(--th-accent)}
 
 /* ── Article photography (shared article pages) ── */
 .art-intro-stack{

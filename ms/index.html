@@ -2,6 +2,7 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aquatic Rhythm — Penjagaan Ekologi untuk Akuarium Kecil</title>
 <meta name="google-site-verification" content="YNg85UJRTB6NR2wdMs_txYDIzi4yu4n8UUU7V9Xoobw" />
@@ -1918,6 +1919,18 @@ if ('serviceWorker' in navigator) {
     <button class="ar-stg-close" id="ar-settings-close" aria-label="Close settings">✕</button>
   </div>
   <div class="ar-stg-body">
+
+    <!-- ── Theme ── -->
+    <div class="ar-stg-section">
+      <span class="ar-stg-label">Theme</span>
+      <div class="ar-stg-theme-seg" role="group" aria-label="Theme">
+        <button class="ar-stg-theme-btn" type="button" data-theme-choice="system">System</button>
+        <button class="ar-stg-theme-btn" type="button" data-theme-choice="light">Light</button>
+        <button class="ar-stg-theme-btn" type="button" data-theme-choice="dark">Dark</button>
+      </div>
+    </div>
+
+    <div class="ar-stg-divider"></div>
 
     <!-- ── Language ── -->
     <div class="ar-stg-section">

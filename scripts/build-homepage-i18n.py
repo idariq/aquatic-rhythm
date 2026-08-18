@@ -1045,6 +1045,18 @@ def t1(block, pattern, value, label, flags=0):
     return replace_once(block, pattern, lambda m, v=value: m.group(1) + v + m.group(2), label, flags=flags)
 
 
+def localize_reading_links(h, lang):
+    """Final safety-net sweep: rewrite every remaining href="/reading" to the
+    localized "/<lang>/reading". Bug found 2026-08-18 (user video): the bnav
+    "Reading" tab, the home hero CTA, and the home-tile "Reading" card all
+    still pointed at the English SPA route (/reading -> /?p=reading) even on
+    fully translated id/ja homepages — tapping any of them silently dropped
+    the reader back into English. Unlike article cross-links, /<lang>/reading
+    always exists for every supported language, so this is an unconditional
+    rewrite rather than a per-slug "is it translated" check."""
+    return h.replace('href="/reading"', f'href="/{lang}/reading"')
+
+
 def main():
     src = SRC.read_text(encoding="utf-8")
     for lang in LANGUAGES:
@@ -1074,6 +1086,7 @@ def main():
         h = build_toast_and_inhabitant(h, lang, u)
         h = build_modal_gear(h, lang, u)
         h = build_shared_footer(h, lang, u)
+        h = localize_reading_links(h, lang)
         out_dir = ROOT / lang
         out_dir.mkdir(exist_ok=True)
         (out_dir / "index.html").write_text(h, encoding="utf-8")

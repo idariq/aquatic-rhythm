@@ -46,7 +46,8 @@ const NAV_LABELS = {
     about: 'Tentang',
     privacy: 'Kebijakan Privasi',
     terms: 'Syarat Penggunaan',
-    menu: 'Menu'
+    menu: 'Menu',
+    bnavLog: 'Log Penjaga'
   },
   ja: {
     logoAria: 'Aquatic Rhythm — 小型水槽のための生態学的なケア',
@@ -60,7 +61,8 @@ const NAV_LABELS = {
     about: 'サイトについて',
     privacy: 'プライバシーポリシー',
     terms: '利用規約',
-    menu: 'メニュー'
+    menu: 'メニュー',
+    bnavLog: 'キーパーの記録'
   }
 };
 
@@ -222,6 +224,29 @@ function buildArticle(slug, lang, t) {
     <li><a href="/privacy">${nav.privacy}</a></li>
     <li><a href="/terms">${nav.terms}</a></li>
   ${b}`);
+
+    // Bottom nav (.bnav) — was left fully English (labels, aria-labels, and
+    // the Reading href) even on translated articles, so the primary mobile
+    // nav visibly flipped language the moment a reader opened an article.
+    // Scoped to the <nav class="bnav">...</nav> block itself so the bare
+    // <span>text</span> substitution below can't touch unrelated markup.
+    h = replaceOnce(h, /(<nav class="bnav" id="bnav"[^>]*>)([\s\S]*?)(<\/nav>)/,
+      (_, open, inner, close) => {
+        let bn = inner;
+        bn = bn.replace('href="/reading" class="bnav-item active" aria-current="page" aria-label="Reading"',
+          `href="/${lang}/reading" class="bnav-item active" aria-current="page" aria-label="${nav.reading}"`);
+        bn = bn.replace('href="/" class="bnav-item" aria-label="Home"',
+          `href="/" class="bnav-item" aria-label="${nav.home}"`);
+        bn = bn.replace('href="/tools" class="bnav-item" aria-label="Tools"',
+          `href="/tools" class="bnav-item" aria-label="${nav.toolsMobile}"`);
+        bn = bn.replace('href="/journal" class="bnav-item" aria-label="Keeper\'s Log"',
+          `href="/journal" class="bnav-item" aria-label="${nav.bnavLog}"`);
+        const bnavSpanLabels = [nav.home, nav.reading, nav.tools, nav.log];
+        let bnavIdx = 0;
+        bn = bn.replace(/(<span>)[^<]*(<\/span>)/g, (m2, a, c) =>
+          bnavIdx < bnavSpanLabels.length ? `${a}${bnavSpanLabels[bnavIdx++]}${c}` : m2);
+        return `${open}${bn}${close}`;
+      });
   }
 
   // ── 5. JSON-LD ────────────────────────────────────────────────────────────
@@ -489,8 +514,8 @@ function buildArticle(slug, lang, t) {
       (_, open, inner, close) => {
         let f = inner;
         if (t.footer.allArticles) {
-          f = f.replace(/(<a href="\/reading">)[^<]*(<\/a>)/,
-            (__, a, b) => `${a}${t.footer.allArticles}${b}`);
+          f = f.replace(/<a href="\/reading">[^<]*<\/a>/,
+            () => `<a href="/${lang}/reading">${t.footer.allArticles}</a>`);
         }
         if (t.footer.araLink) {
           f = f.replace(/<a href="\/articles\/ara-full-framework">([^<]*)<\/a>/,

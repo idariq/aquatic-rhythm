@@ -15,11 +15,17 @@ anggap/patah balik keputusan sedia ada.
 **Satu cabang produksi (`main`)** — tiada aliran staging/main berasingan
 spt projek Vercel dlm ekosistem Idariq yg lain. Alur kerja: commit pd
 cabang kerja → push → `mcp__github__create_pull_request` (base `main`)
-→ semak CI (`Syntax, lint, and tests` — `npm run check:syntax && npm
-test && npm run lint && npm run i18n:check`) → `mcp__github__merge_pull_request`
-(`merge_method: "squash"`) → resync cabang kerja (`git fetch origin
-main && git reset --hard origin/main && git push --force-with-lease
-origin <cabang-kerja>`).
+→ `mcp__github__merge_pull_request` (`merge_method: "squash"`) →
+resync cabang kerja (`git fetch origin main && git reset --hard
+origin/main && git push --force-with-lease origin <cabang-kerja>`).
+
+**Tak perlu tunggu/semak CI sebelum merge** (arahan eksplisit user,
+2026-08-18 — sama pola dgn repo `zymnotes` dlm ekosistem sama). Lepas
+pengesahan tempatan lulus (`npm run check` + `npm run i18n:check`
+idempoten, ikut §"Semakan Sebelum Commit" di bawah), squash-merge PR
+TERUS tanpa `send_later`/tunggu keputusan check GitHub Actions
+(`Syntax, lint, and tests`) — pengesahan tempatan dah cukup, CI cuma
+lapisan kedua/rekod, bukan get merge.
 
 ## Bahasa
 

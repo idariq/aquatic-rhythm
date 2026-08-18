@@ -1,0 +1,277 @@
+{
+  "_meta": {
+    "slug": "know-your-rhythm",
+    "lang": "id",
+    "sourceFile": "articles/know-your-rhythm.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Kenali Ritme Anda — Aquatic Rhythm",
+    "description": "Sebelum memilih akuarium, pahami diri Anda sebagai penjaga. Tujuh pertanyaan reflektif. Tidak ada jawaban benar. Cermin, bukan kalkulator.",
+    "ogTitle": "Kenali Ritme Anda — Aquatic Rhythm",
+    "ogDescription": "Sebelum memilih akuarium, pahami diri Anda sebagai penjaga. Tujuh pertanyaan reflektif. Tidak ada jawaban benar.",
+    "twitterTitle": "Kenali Ritme Anda — Aquatic Rhythm",
+    "twitterDescription": "Sebelum memilih akuarium, pahami diri Anda sebagai penjaga. Tujuh pertanyaan reflektif. Tidak ada jawaban benar."
+  },
+  "intro": {
+    "eyebrow": "Coba Sendiri",
+    "titleHtml": "Kenali<br><em>Ritme Anda.</em>",
+    "subtitle": "Sebelum memilih akuarium, pahami diri Anda sebagai penjaga.",
+    "body": [
+      "Kebanyakan orang mulai dari akuarium. Ukurannya, ikannya, peralatannya. Baru kemudian mereka sadar — kadang berminggu-minggu kemudian, kadang berbulan-bulan — bahwa sistem yang mereka bangun tidak cocok dengan kehidupan yang sebenarnya mereka jalani.",
+      "Ini bukan tentang menemukan setup yang sempurna. Ini tentang memahami jenis penjaga seperti apa Anda sebenarnya — ritme Anda yang sesungguhnya, bukan yang Anda niatkan untuk dimiliki. Apa yang Anda perhatikan saat tertekan. Bagaimana Anda berhubungan dengan hal-hal yang tumbuh perlahan. Apa yang sebenarnya ingin Anda rasakan, saat duduk di sampingnya.",
+      "Dua konsep dari ARA layak dibawa ke dalam pertanyaan-pertanyaan ini. <strong>Capacity creep</strong> adalah yang terjadi ketika ritme perawatan bergeser bertahap tanpa keputusan sadar apa pun — penggantian air molor sehari di sini, pemberian pakan jadi sedikit kurang konsisten di sana — hingga akuarium menerima jauh lebih sedikit dari yang seharusnya. Terjadi cukup lambat sehingga setiap pergeseran terasa tidak berarti; efek kumulatifnya tidak demikian. <strong>Minimum viable care</strong> adalah kebalikan yang jujur: bukan seperti apa rutinitas ideal itu, tapi apa yang benar-benar dibutuhkan akuarium ini pada tingkat minimum — dan apakah minimum itu sesuatu yang bisa Anda sediakan secara andal. Kedua konsep ini layak direnungkan sebelum Anda merancang sistem, dan layak dikembalikan setiap kali hobi ini mulai terasa seperti tekanan."
+    ],
+    "note": "Tujuh pertanyaan yang diambil dari psikologi perilaku dan kerangka ARA. Tidak ada jawaban benar. Apa yang Anda terima di akhir adalah refleksi — bukan rekomendasi — karena hanya Anda yang bisa menilai apakah itu berlaku.",
+    "beginBtn": "Mulai →"
+  },
+  "screen": {
+    "backBtn": "← Kembali",
+    "nextBtnDefault": "Berikutnya →",
+    "nextBtnLast": "Lihat refleksi →"
+  },
+  "result": {
+    "eyebrow": "Refleksi Anda",
+    "closeLabel": "Pertanyaan untuk direnungkan",
+    "phaseLabel": "Keselarasan fase ARA",
+    "forgivenessNote": "Apa pun ritme Anda — episodik, bertahap, tidak teratur, atau sangat konsisten — ARA memegang satu prinsip yang konstan: ekosistem punya kapasitas pemaafan yang lebih besar daripada yang dipercaya kebanyakan penjaga. Tujuannya bukan kesempurnaan. Ini soal keselarasan jujur antara apa yang bisa Anda berikan dan apa yang sebenarnya dibutuhkan sistem. ARA bekerja dari titik awal yang jujur itu. Arah yang ditunjukkannya, tanpa rasa malu, adalah menuju perawatan yang lebih konsisten — karena di situlah ekologi berkembang.",
+    "noteEnd": "Refleksi ini bukan diagnosis. Ini titik awal — yang berubah seiring Anda berubah. Anda bisa kembali ke sini kapan pun pertanyaan ini terasa berbeda.",
+    "restartBtn": "Mulai lagi",
+    "nextActionLink": "Tindakan terbaik berikutnya: bangun akuarium yang sesuai →",
+    "backToReadingLink": "← Kembali ke Panduan"
+  },
+  "questions": [
+    {
+      "id": "tending",
+      "text": "Pikirkan sesuatu yang hidup yang pernah Anda rawat sebelumnya.",
+      "sub": "Tanaman, hewan peliharaan, kebun, biang sourdough. Bagaimana sebenarnya jalannya — bukan di awal, tapi sepanjang satu tahun?",
+      "opts": [
+        {
+          "v": "consistent",
+          "l": "Saya merawatnya secara konsisten",
+          "d": "Itu jadi bagian dari rutinitas saya. Tidak selalu mudah, tapi saya terus melakukannya."
+        },
+        {
+          "v": "started-well",
+          "l": "Saya mulai dengan baik, lalu kesibukan datang",
+          "d": "Minggu-minggu atau bulan-bulan pertama berjalan baik. Lalu perlahan terlupakan. Itu wajar terjadi."
+        },
+        {
+          "v": "drifted-returned",
+          "l": "Sempat terlupakan, tapi saya kembali lagi",
+          "d": "Ada jeda. Tapi saya kembali. Hubungan itu cukup kuat untuk bertahan dari absennya saya."
+        },
+        {
+          "v": "did-not-last",
+          "l": "Itu tidak bertahan — dan saya tahu sebabnya",
+          "d": "Ada sesuatu yang terjadi. Saya punya gambaran apa itu, meski saat itu saya belum bisa menamainya."
+        }
+      ]
+    },
+    {
+      "id": "response",
+      "text": "Sesuatu yang Anda rawat mulai terlihat tidak beres.",
+      "sub": "Anda tidak yakin kenapa. Apa yang terjadi selanjutnya — jujur saja?",
+      "opts": [
+        {
+          "v": "research",
+          "l": "Saya perlu memahaminya dulu sebelum bisa tenang",
+          "d": "Ketidakpastian itu tidak nyaman. Saya jadi membaca, menguji, mencoba menutup celah itu."
+        },
+        {
+          "v": "observe",
+          "l": "Saya mengamati dan menunggu sebelum bertindak",
+          "d": "Saya beri ruang. Kadang sesuatu terselesaikan sendiri kalau tidak buru-buru diintervensi."
+        },
+        {
+          "v": "multiple",
+          "l": "Saya cenderung mencoba beberapa hal sekaligus",
+          "d": "Saat ada yang salah, saya ingin melakukan sesuatu. Menunggu terasa seperti menyerah."
+        },
+        {
+          "v": "step-back",
+          "l": "Saya mundur dan memberi ruang",
+          "d": "Naluri saya adalah mengurangi campur tangan. Sistem biasanya tahu apa yang dibutuhkannya."
+        }
+      ]
+    },
+    {
+      "id": "role",
+      "text": "Di mana akuarium ini hidup dalam imajinasi Anda — bukan ruangannya, tapi peran yang dimainkannya?",
+      "sub": "Bukan apa yang Anda rencanakan untuk dilakukan dengannya. Perasaan apa yang sedang Anda tuju?",
+      "opts": [
+        {
+          "v": "anchor",
+          "l": "Sesuatu untuk saya pulangi",
+          "d": "Sebuah kehadiran. Tenang, konsisten, hidup. Sesuatu yang ada di sana saat yang lain tidak."
+        },
+        {
+          "v": "project",
+          "l": "Proyek yang saya rawat dan sempurnakan",
+          "d": "Saya tertarik pada kerajinannya. Penyesuaian, pembelajaran, penyempurnaan bertahap."
+        },
+        {
+          "v": "responsibility",
+          "l": "Makhluk hidup yang menjadi tanggung jawab saya",
+          "d": "Bebannya adalah bagian dari daya tariknya. Ada sesuatu yang benar-benar bergantung pada perhatian saya."
+        },
+        {
+          "v": "control",
+          "l": "Sudut dunia yang bisa saya bentuk",
+          "d": "Bukan kendali dalam arti kaku. Tapi ruang di mana pilihan saya benar-benar berarti."
+        }
+      ]
+    },
+    {
+      "id": "imagination",
+      "text": "Bayangkan diri Anda enam bulan dari sekarang, di samping akuarium yang berjalan baik.",
+      "sub": "Apa yang sebenarnya Anda lakukan — pada momen itu, sekarang, dalam pikiran Anda?",
+      "opts": [
+        {
+          "v": "watching",
+          "l": "Menonton tanpa melakukan apa pun",
+          "d": "Hanya duduk. Akuariumnya berjalan. Saya hadir tapi tidak dibutuhkan."
+        },
+        {
+          "v": "adjusting",
+          "l": "Menyesuaikan, menguji, memperbaiki sesuatu",
+          "d": "Saya terlibat dengannya. Mengutak-atik, membaca parameter, memikirkan apa yang perlu diubah selanjutnya."
+        },
+        {
+          "v": "feeding-quietly",
+          "l": "Memberi pakan dan mengamati dengan tenang",
+          "d": "Sebuah ritual. Kecil, harian, milik saya. Ikannya mengenal saya. Tidak tergesa-gesa."
+        },
+        {
+          "v": "sharing",
+          "l": "Menunjukkan pada orang lain apa yang telah saya buat",
+          "d": "Ini jadi sesuatu yang layak dibagikan. Saya ingin orang lain melihat apa yang saya lihat."
+        }
+      ]
+    },
+    {
+      "id": "slowness",
+      "text": "Bagaimana Anda berhubungan dengan hal-hal yang butuh berminggu-minggu atau berbulan-bulan untuk menunjukkan hasil?",
+      "sub": "Pikirkan area lain dalam hidup Anda — bukan bagaimana Anda berharap menjadi, tapi bagaimana Anda sebenarnya.",
+      "opts": [
+        {
+          "v": "calming",
+          "l": "Saya merasa itu menenangkan — kelambatannya adalah bagian dari daya tariknya",
+          "d": "Kesabaran bukan sesuatu yang perlu saya latih di sini. Itu datang alami untuk hal-hal yang saya pedulikan."
+        },
+        {
+          "v": "managed",
+          "l": "Saya mengelolanya — saya sudah pernah melakukannya",
+          "d": "Proses yang lambat tidak mudah, tapi saya sudah melewatinya. Saya tahu cara bertahan."
+        },
+        {
+          "v": "difficult",
+          "l": "Saya kesulitan — saya perlu melihat kemajuan untuk tetap terlibat",
+          "d": "Jujur, ini tantangan. Saya butuh perubahan yang terlihat untuk tetap termotivasi seiring waktu."
+        },
+        {
+          "v": "untested",
+          "l": "Saya belum pernah mengujinya pada diri saya",
+          "d": "Saya tidak yakin. Mungkin ini yang akan memberi tahu saya."
+        }
+      ]
+    },
+    {
+      "id": "loss",
+      "text": "Pernahkah Anda berhenti merawat sesuatu yang awalnya Anda cintai?",
+      "sub": "Ini bukan pertanyaan jebakan. Jawabannya lebih umum daripada yang orang mau akui.",
+      "opts": [
+        {
+          "v": "carry-it",
+          "l": "Ya — dan saya masih membawa sebagian dari itu",
+          "d": "Ada sesuatu yang berakhir yang mungkin tidak harus terjadi. Kadang saya masih memikirkannya."
+        },
+        {
+          "v": "life-changed",
+          "l": "Ya — hidup berubah dan saya harus melepaskannya",
+          "d": "Itu bukan kelalaian. Itu keadaan. Perbedaan itu penting bagi saya."
+        },
+        {
+          "v": "rarely-stop",
+          "l": "Saya cenderung tidak berhenti setelah memulai sesuatu",
+          "d": "Komitmen terasa penting bagi saya. Saya tidak mengambilnya dengan ringan, dan tidak mudah melepaskannya."
+        },
+        {
+          "v": "first-time",
+          "l": "Ini akan jadi komitmen nyata pertama saya seperti ini",
+          "d": "Saya belum pernah punya kesempatan untuk mengetahuinya. Mungkin di sinilah saya akan tahu."
+        }
+      ]
+    },
+    {
+      "id": "success",
+      "text": "Apa yang akan membuat Anda merasa, setahun dari sekarang, bahwa ini semua sepadan?",
+      "sub": "Bukan metriknya. Perasaannya. Seperti apa sebenarnya wujudnya kalau ini berjalan baik?",
+      "opts": [
+        {
+          "v": "running",
+          "l": "Akuariumnya masih berjalan dan ikannya sehat",
+          "d": "Bertahan lama dan sehat. Sederhana, tapi tidak mudah. Itu sudah cukup."
+        },
+        {
+          "v": "understanding",
+          "l": "Saya memahaminya dengan cara yang belum pernah sebelumnya",
+          "d": "Saya datang untuk hewannya. Saya bertahan karena biologinya. Saya belajar sesuatu yang nyata."
+        },
+        {
+          "v": "part-of-life",
+          "l": "Ini jadi bagian dari kehidupan sehari-hari saya tanpa terasa seperti beban",
+          "d": "Ini terintegrasi. Ini jadi bagian rutinitas saya dengan cara yang terasa pantas didapat, bukan dipaksakan."
+        },
+        {
+          "v": "witnessed",
+          "l": "Seseorang duduk di sampingnya bersama saya dan melihat apa yang saya lihat",
+          "d": "Ini jadi sesuatu yang bisa dibagikan. Orang lain berhenti sejenak untuk melihatnya. Itu berarti."
+        }
+      ]
+    }
+  ],
+  "reflect": {
+    "titles": [
+      "Seseorang yang telah belajar sesuatu dari <em>apa yang tidak bertahan.</em>",
+      "Seseorang yang tertarik pada ini <em>karena kedalamannya.</em>",
+      "Seseorang yang mencintai apa yang bisa jadi ini, <em>dan jujur tentang bagaimana hidup sebenarnya berjalan.</em>",
+      "Seseorang yang ingin duduk di samping sesuatu <em>yang sekadar hidup.</em>",
+      "Seseorang yang minatnya berlari lebih dulu dari <em>ritmenya.</em>",
+      "Seseorang yang bagi mereka perawatan <em>bukan hal sampingan.</em>",
+      "Seseorang di awal <em>proses menemukan.</em>",
+      "Seseorang yang masih belajar <em>jenis penjaga seperti apa dirinya.</em>"
+    ],
+    "paras": [
+      "Pola yang Anda gambarkan — merawat sesuatu secara konsisten seiring waktu, bukan hanya di awal — lebih jarang daripada kedengarannya. Kebanyakan orang mulai dengan perhatian tinggi dan sulit mempertahankannya. Jika ini benar-benar menggambarkan hubungan Anda dengan hal-hal yang Anda rawat, ini titik awal yang berarti. Artinya Anda sudah melakukan bagian tersulit dari yang diminta hobi ini. Pertanyaannya bukan lagi apakah Anda bisa mempertahankan perhatian, tapi jenis sistem seperti apa yang layak menerimanya.",
+      "Hubungan yang Anda gambarkan — terlupakan, lalu kembali — sebenarnya salah satu pola paling jujur dalam perawatan jangka panjang. Ini bukan berarti ketidakkonsistenan adalah kekurangan karakter. Ini berarti Anda punya hubungan dengan hal itu yang bertahan dari absennya Anda. Itu berarti sesuatu. Akuarium yang dirancang untuk penjaga jenis ini — yang punya cukup stabilitas biologis untuk mentoleransi jeda dan pulih — bukan sistem yang lebih rendah. Itu sistem yang jujur.",
+      "Memulai dengan baik lalu perlahan terlupakan mungkin pola paling umum, dan paling jarang diakui. Minggu-minggu atau bulan-bulan pertama cenderung terasa sangat berbeda dari bulan keenam atau ketujuh, saat kebaruannya sudah reda dan tuntutannya tetap ada. Mengetahui hal ini tentang diri Anda bukan alasan untuk tidak memulai — ini alasan untuk merancang secara berbeda. Sistem yang menuntut konsistensi lebih sedikit bukan kompromi. Itu kecocokan yang realistis.",
+      "Ada sesuatu yang penting dalam frasa \"saya tahu sebabnya.\" Kebanyakan orang yang berhenti merawat sesuatu tidak tahu alasannya. Mereka menyalahkan kesibukan, atau nasib buruk, atau kondisi yang salah. Punya gambaran tentang apa yang sebenarnya terjadi adalah jenis pengenalan diri yang berbeda — dan mungkin ini hal paling berguna yang bisa Anda bawa ke sini. Apa pun alasan itu, layak direnungkan sebelum Anda memilih apa yang akan disiapkan selanjutnya.",
+      "Naluri Anda saat sesuatu terlihat salah adalah mengamati sebelum bertindak. Dalam pemeliharaan akuarium, ini salah satu kualitas paling langka dan berharga yang bisa dimiliki seorang penjaga. Kebanyakan masalah di akuarium yang sudah mapan bukan keadaan darurat. Itu proses lambat yang terlihat mendesak. Dorongan untuk campur tangan — segera, terlihat — adalah salah satu penyebab paling umum masalah sekunder. Jika duduk dengan ketidakpastian cukup lama untuk benar-benar memahaminya adalah sesuatu yang bisa Anda lakukan, kapasitas itu akan sangat berguna bagi akuarium.",
+      "Dorongan untuk mencoba beberapa hal sekaligus saat ada yang salah bisa dimengerti — dan sangat umum. Kesulitannya adalah ini membuat hampir mustahil untuk tahu apa yang membantu dan apa yang tidak. Dalam sistem hidup, ambiguitas itu bertumpuk seiring waktu. Satu perubahan, diamati dengan cermat, mengajarkan Anda sesuatu. Lima perubahan sekaligus tidak mengajarkan apa-apa kecuali apakah arah keseluruhannya benar. Itu layak disadari, bukan sebagai kritik, tapi sebagai batasan perancangan. Sistem dengan lebih sedikit bagian yang bergerak lebih memaafkan pola ini.",
+      "Perlu memahami apa yang terjadi sebelum bisa tenang adalah kualitas yang cenderung membuat orang sangat baik dalam hobi ini seiring waktu — dan kadang lebih cemas di minggu-minggu awal daripada seharusnya. Kebanyakan parameter di akuarium baru terlihat mengkhawatirkan sebelum akhirnya membaik dengan sendirinya. Mengetahui ini secara intelektual tidak selalu membantu saat Anda melihat bacaan yang tampak salah. Yang biasanya membantu adalah sudah cukup banyak membaca sebelumnya sehingga polanya sudah dikenal sebelum muncul.",
+      "Versi kesuksesan yang Anda sebutkan — memahami sesuatu yang belum pernah sebelumnya — layak diperiksa dengan cermat. Ini jawaban yang jujur, dan langka. Kebanyakan orang bilang mereka ingin ikan sehat atau akuarium yang indah. Anda bilang Anda ingin tahu. Orientasi itu membentuk segalanya: spesies yang Anda pelihara, bacaan yang Anda ambil, waktu yang Anda habiskan di depan kaca. Ini juga berarti minggu-minggu awal yang sulit, saat semuanya tidak pasti dan tidak ada yang stabil, bukan keadaan gagal. Itu bagian paling menarik.",
+      "Versi kesuksesan yang Anda gambarkan — sesuatu yang terintegrasi ke kehidupan sehari-hari tanpa usaha — adalah salah satu hal paling jujur yang bisa Anda inginkan dari ini. Ini juga salah satu yang paling sulit direkayasa dengan sengaja. Ini cenderung terjadi saat sistemnya cocok dengan penjaganya: tidak terlalu menuntut, tidak terlalu rapuh, tidak terlalu rumit untuk dipahami. Kalau cocok, ya cocok. Anda berhenti memperhatikan kerja kerasnya dan mulai memperhatikan akuariumnya.",
+      "Ada sesuatu dalam keinginan agar orang lain berhenti sejenak melihat apa yang Anda buat — melihat apa yang Anda lihat. Itu bukan kesombongan. Itu keinginan agar hal itu bisa dibaca, agar perawatannya terlihat, agar hasilnya terlihat oleh orang yang tidak ikut menghabiskan jam-jamnya. Keinginan itu sinyal yang berguna. Artinya estetika penting bagi Anda, bukan cuma kesehatan. Artinya akuariumnya perlu jadi sesuatu yang Anda banggakan, bukan cuma sesuatu yang berfungsi.",
+      "Apa yang Anda katakan tentang masih membawa sesuatu yang berakhir — itu layak disebutkan langsung. Kehilangan dalam konteks perawatan tidak selalu terlihat. Kadang itu terlihat seperti akuarium yang perlahan menurun, atau rutinitas yang perlahan terlupakan sampai tidak ada lagi yang tersisa untuk dirawat. Jika ini bagian dari yang Anda bawa ke sini, ini bukan tanda peringatan. Ini informasi. Ini memberi tahu Anda apa yang penting bagi Anda, dan seberapa penting. Pertanyaannya adalah apakah kali ini kondisinya berbeda — dan apakah Anda tahu apa yang perlu berbeda agar bisa begitu.",
+      "Anda bilang proses yang butuh berminggu-minggu atau berbulan-bulan untuk menunjukkan hasil benar-benar sulit bagi Anda. Ini informasi penting. Akuarium baru butuh empat sampai delapan minggu untuk membangun koloni bakterinya. Parameter selama waktu itu bisa terlihat mengkhawatirkan. Ikannya, jika sudah ada, mungkin terlihat stres. Sepertinya tidak ada yang berjalan. Periode ini bukan tanda kegagalan — tapi ini menuntut kepercayaan pada proses yang tidak bisa Anda lihat, atau sudah cukup banyak membaca untuk tahu kenapa kesabaran itu beralasan. Mengetahui ini tentang diri Anda bukan berarti ini tidak cocok untuk Anda. Ini berarti Anda memulai dengan mata terbuka.",
+      "Tidak tahu bagaimana Anda berhubungan dengan proses lambat — sampai Anda benar-benar mengalaminya — adalah jawaban yang jujur. Minggu-minggu pertama akuarium baru cenderung menjawab pertanyaan ini cukup cepat. Jika Anda merasa menunggu lebih mudah dari yang diharapkan, itu memberi tahu Anda sesuatu. Jika Anda merasa lebih sulit, itu juga memberi tahu Anda sesuatu. Bagaimanapun, Anda akan mengenal diri Anda sedikit lebih baik saat siklusnya selesai. Itu bukan alasan buruk untuk memulai."
+    ],
+    "closings": [
+      "Apa pun yang tidak bertahan sebelumnya — apa yang perlu berbeda, kali ini, agar bisa bertahan? Bukan pada akuariumnya. Pada diri Anda.",
+      "Jika Anda menggambarkan ritme Anda yang sesungguhnya pada sistem sebelum Anda membangunnya — jujur, seperti cara Anda menggambarkan tanaman atau hewan peliharaan itu — apa yang perlu bisa diserap sistem itu?",
+      "Apa hal spesifik yang paling ingin Anda pahami yang belum Anda ketahui? Memulai dari sana — bukan dari daftar spesies — sering menghasilkan setup yang paling koheren.",
+      "Minggu-minggu awal akuarium baru bisa terasa salah sebelum terasa benar. Apa yang akan membantu Anda bertahan melewati periode itu — membaca, komunitas, pengamatan harian, atau hal lain?",
+      "Seperti apa itu, dalam bayangan Anda, saat orang lain berhenti sejenak untuk melihatnya? Apa yang akan mereka lihat — dan apa artinya bagi Anda?",
+      "Mungkin ini hal yang akan mengajarkan Anda apa yang perlu Anda ketahui tentang diri Anda sebagai penjaga. Apa yang ingin Anda ingat, enam bulan dari sekarang, tentang di mana Anda memulai?",
+      "Duduk di samping akuarium yang benar-benar mapan — stabil, tidak tergesa, jelas hidup — bagaimana rasanya itu? Dan apa yang akan diminta darinya, minggu demi minggu, agar tetap begitu?"
+    ],
+    "phases": [
+      "Ritme Anda menunjukkan kesiapan untuk akuarium Developing Phase dan Mature Phase — sistem yang merespons baik terhadap perawatan konsisten dan penuh perhatian yang bertahan seiring waktu.",
+      "Ritme Anda memanggil kesadaran Early Phase — memahami bagaimana akuarium berperilaku sebelum stabilitas datang, dan merancang sistem yang bisa menyerap jeda alami Anda tanpa runtuh.",
+      "Pemaafan ekologis bukan hanya kualitas akuarium. ARA menyatakan ini juga berlaku bagi penjaga — sistem berikutnya tidak perlu berhasil dengan syarat yang sama seperti yang sebelumnya.",
+      "Memulai dengan pemahaman Early Phase — apa yang benar-benar dibutuhkan akuarium baru di minggu-minggu pertamanya — akan mengajarkan Anda lebih banyak tentang ritme Anda sendiri daripada hal lain.",
+      "Ritme Anda menemukan keselarasan di setiap fase. Kuncinya adalah mencocokkan sistem secara jujur dengan kapasitas Anda yang sebenarnya, bukan yang Anda niatkan."
+    ]
+  }
+}

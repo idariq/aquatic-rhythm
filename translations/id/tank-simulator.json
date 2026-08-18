@@ -1,0 +1,372 @@
+{
+  "_meta": { "status": "ready" },
+  "head": {
+    "title": "Simulator Siklus Akuarium — Siklus Nitrogen Interaktif — Aquatic Rhythm",
+    "description": "Simulasi interaktif siklus nitrogen. Pilih pengaturan Anda, pelajari apa yang diharapkan, dan lihat bagaimana akuarium merespons keputusan Anda."
+  },
+  "briefing": {
+    "eyebrow": "Aquatic Rhythm Lab",
+    "titleHtml": "Siklus-kan<br><em>akuarium pertama Anda.</em>",
+    "body": "Setiap akuarium baru melewati proses tak kasatmata yang sama — bakteri perlahan berkembang biak, amonia dan nitrit naik lalu turun, air menemukan keseimbangannya. Pilih pengaturan Anda dan saksikan prosesnya dengan kecepatan Anda sendiri.",
+    "rhythms": [
+      { "name": "Amonia", "desc": "Kotoran ikan terurai menjadi amonia yang beracun — di sinilah siklus dimulai" },
+      { "name": "Nitrit", "desc": "Bakteri mengubah amonia — nitrit naik dulu sebelum turun" },
+      { "name": "Nitrat", "desc": "Produk akhir yang lebih aman — dihilangkan lewat pergantian air rutin" },
+      { "name": "Bakteri", "desc": "Koloni yang menggerakkan siklus — perlu waktu untuk berkembang" },
+      { "name": "Ikan", "desc": "Opsional sejak hari pertama — risiko lebih tinggi, perlu perhatian lebih dekat" }
+    ],
+    "note": "Model yang disederhanakan untuk belajar — akuarium sungguhan bisa bervariasi. Gunakan ini untuk memahami prosesnya, bukan meramalkan jangka waktu pasti.",
+    "btn": "Atur simulasi Anda →"
+  },
+  "setup": {
+    "heading": "Atur akuarium Anda",
+    "sub": "Pilih ukuran, metode, dan tanaman — lalu jalankan siklus yang aman bagi ikan dengan kecepatan Anda sendiri.",
+    "disclosureSummary": "Tentang simulasi ini",
+    "disclosureBody": "Setiap akuarium baru melewati proses tak kasatmata yang sama — bakteri perlahan berkembang biak, amonia dan nitrit naik lalu turun, air menemukan keseimbangannya. Simulator ini membiarkan Anda menyaksikan prosesnya dan mengambil keputusan di sepanjang jalan. Tidak perlu pengalaman.",
+    "sizeLabel": "Ukuran akuarium",
+    "sizes": [
+      { "name": "Kecil", "desc": "Di bawah 40L · Parameter berubah lebih cepat · Ruang untuk kesalahan lebih sempit" },
+      { "name": "Sedang", "desc": "40–120L · Volume air lebih besar · Lebih memaafkan kesalahan" },
+      { "name": "Besar", "desc": "120L+ · Pengenceran sangat membantu · Perubahan parameter lebih lambat" }
+    ],
+    "methodLabel": "Metode siklus",
+    "methods": [
+      { "name": "Tanpa ikan", "desc": "Tambahkan amonia tanpa ikan · Bakteri tumbuh dengan aman · Lebih mudah dikelola" },
+      { "name": "Dengan ikan", "desc": "Ikan ada di akuarium sejak awal · Perlu diberi makan · Risiko lebih tinggi" }
+    ],
+    "fishlessNote": "<strong>Siklus tanpa ikan adalah pilihan yang lebih lembut.</strong> Anda menambahkan amonia untuk memberi makan bakteri — tanpa melibatkan ikan. Bakteri tumbuh dengan kecepatannya sendiri, dan saat siklus selesai, akuarium siap untuk ikan.",
+    "fishinWarn": "<strong>Siklus dengan ikan lebih menuntut.</strong> Amonia dan nitrit akan naik sebelum bakteri bisa memprosesnya. Ikan Anda akan merasakannya — sirip mengatup, bersembunyi, bernapas di permukaan. Pergantian air kecil membantu, tapi metode ini butuh perhatian ekstra.",
+    "plantsLabel": "Tanaman sejak awal?",
+    "plants": [
+      { "name": "Ya", "desc": "Menyerap nitrat · Menambah oksigen · Bersaing dengan alga" },
+      { "name": "Tanpa tanaman", "desc": "Pengaturan lebih sederhana · Nitrat menumpuk lebih cepat" }
+    ],
+    "disclosure2Summary": "Di dalam simulator",
+    "disclosure2Body": "Tiga sakelar perangkat — heater, filter, dan lampu — menyala secara default. Coba matikan salah satunya untuk melihat apa yang terjadi. Ada starter bakteri sekali pakai (Seed). Gunakan <strong style=\"color:var(--th-ink-2);font-weight:500\">Status</strong> / <strong style=\"color:var(--th-ink-2);font-weight:500\">Log</strong> di ponsel untuk berpindah antara panduan dan log harian.",
+    "beginBtn": "Mulai →"
+  },
+  "expected": {
+    "prefix": "Dengan ",
+    "tankWord": "akuarium",
+    "and": " dan ",
+    "expect": " — siklus diperkirakan selesai dalam kurang lebih ",
+    "weeksWord": " minggu",
+    "afterWelfare": " Amonia memuncak lebih dulu, lalu nitrit, kemudian keduanya turun seiring bakteri berkembang. ",
+    "welfareNote": " Tidak ada hewan yang akan dirugikan dalam prosesnya.",
+    "sizeLabels": { "small": "kecil", "medium": "sedang", "large": "besar" },
+    "methodLabels": { "fishless": "siklus tanpa ikan", "fish-in": "siklus dengan ikan" },
+    "plantsYesNote": "Tanaman akan membantu menjaga nitrat tetap terkendali.",
+    "plantsNoNote": "Tanpa tanaman, pantau nitrat lebih ketat."
+  },
+  "brief": {
+    "heading": "Sebelum Anda mulai",
+    "sub": "Hal-hal penting di bawah — detail ada di dalam panduan.",
+    "intro": "Satu hari simulasi setiap 8 detik. Jeda, baca log, dan gunakan <strong style=\"color:var(--th-ink-2);font-weight:500\">+1h</strong> saat ingin melompat maju waktunya.",
+    "disclosureSummary": "Panduan lengkap — kontrol &amp; aturan",
+    "tips": [
+      { "k": "Waktu", "body": "Biarkan berjalan. Log menjelaskan apa yang sedang terjadi seiring berlangsungnya." },
+      { "k": "Perangkat", "body": "Heater, filter, dan lampu menyala secara default. Ketuk salah satunya untuk mematikan — dan lihat apa yang sebenarnya terjadi pada siklus." },
+      { "k": "Khusus dengan ikan", "body": "Beri makan setiap 1–2 hari. Setelah 4 hari tanpa makanan, ikan mulai melemah — ikan yang stres kurang tahan terhadap amonia." },
+      { "k": "Starter bakteri", "body": "Seed hanya bekerja sekali. Gunakan setelah beberapa hari — bakteri perlu ada amonia dulu sebelum penambahan starter membantu." },
+      { "k": "Jeda dan lompat", "body": "Jeda untuk membaca dengan cermat. Gunakan <strong style=\"color:var(--th-ink-3);font-weight:500\">+1h</strong> di bilah atas untuk melompat maju satu hari saat sedang menunggu." }
+    ],
+    "goalHeading": "Apa yang sedang Anda coba capai",
+    "goalP1": "Turunkan amonia dan nitrit hingga mendekati nol — dan pertahankan begitu selama tiga hari berturut-turut. Itu artinya koloni bakteri Anda sudah cukup matang untuk memproses limbah secara terus-menerus. Anda akan melihat <em style=\"color:rgba(61,214,232,.95);font-style:normal\">Stabil ✓</em> di panel bakteri saat siklus selesai.",
+    "goalP2": "Siklus akan gagal jika amonia atau nitrit tetap terlalu tinggi terlalu lama — atau jika ikan tidak diberi makan. Tidak ada batas waktu. Biologinya bergerak dengan kecepatannya sendiri.",
+    "btn": "Mulai simulasi →"
+  },
+  "end": {
+    "titleDefault": "Siklus gagal.",
+    "reportHeading": "Laporan simulasi",
+    "reflectionSummary": "Refleksi &amp; pembinaan",
+    "goalHeading": "Langkah terbaik berikutnya",
+    "goalBody": "Ambil pengaturan yang stabil dari simulasi ini, lalu terapkan pengaturan yang sama pada akuarium sungguhan Anda selama 7 hari (pemberian makan, pergantian air, dan jadwal pencahayaan yang konsisten).",
+    "retryBtn": "Coba lagi",
+    "applyBtn": "Terapkan pada akuarium sungguhan →",
+    "backToolsBtn": "Kembali ke Alat"
+  },
+  "app": {
+    "settingsAria": "Menu",
+    "settingsTitle": "Menu",
+    "day1": "Hari 1",
+    "settingUp": "Sedang mengatur",
+    "skipTitle": "Lewati satu hari",
+    "skipBtn": "+1h",
+    "pauseBtn": "⏸ Jeda",
+    "resumeBtn": "▶ Lanjutkan",
+    "ammoniaLbl": "Amonia",
+    "nitriteLbl": "Nitrit",
+    "nitrateLbl": "Nitrat",
+    "fishLbl": "Ikan",
+    "plantsLbl": "Tanaman",
+    "settingUpDots": "Sedang mengatur...",
+    "heaterTip": "Menjaga air pada 26°C. Bakteri tumbuh ~50% lebih cepat pada suhu optimal.",
+    "heaterLbl": "Heater",
+    "filterTip": "Tempat bakteri hidup. Tanpanya, siklus hampir tidak bisa selesai.",
+    "filterLbl": "Filter",
+    "lightTip": "Ketuk untuk berganti: Mati → Rendah → Sedang → Tinggi. Memengaruhi tanaman dan alga.",
+    "lightLbl": "Lampu",
+    "simTabsAria": "Panel simulator",
+    "statusTab": "Status",
+    "logTab": "Log",
+    "bacteriaColony": "Koloni Bakteri",
+    "seeding": "Menyemai",
+    "nitrosomonasLbl": "Nitrosomonas",
+    "nitrospiraLbl": "Nitrospira",
+    "stableDaysLbl": "Hari stabil",
+    "stableDaysNote": "3 hari berturut-turut dengan amonia dan nitrit mendekati nol — lalu siklus dinyatakan selesai.",
+    "whatsHappening": "Apa yang sedang terjadi",
+    "insightDefault": "Akuarium Anda siap. Siklus akan dimulai saat Anda menambahkan sumber amonia.",
+    "logDefault": "Akuarium sudah diatur. Siap untuk memulai siklus.",
+    "waterPickerQ": "Berapa banyak air yang diganti?",
+    "cancelBtn": "Batal",
+    "sourceStart": "Memulai siklus",
+    "feedName": "Beri makan",
+    "feedHintDefault": "Khusus dengan ikan",
+    "waterChangeName": "Ganti air",
+    "waterChangeHint": "Pilih jumlah",
+    "plantName": "Tambah tanaman",
+    "plantHint": "Menyangga nitrat",
+    "seedName": "Seed",
+    "seedHint": "Starter bakteri",
+    "sourceAmmonia": "Tambah amonia",
+    "sourceFish": "Tambah ikan",
+    "feedMoreAmmonia": "Amonia lagi",
+    "feedAddsAmmonia": "Menambah amonia"
+  },
+  "engine": {
+    "ammLow": "Sumber amonia mulai menipis — bahan organik hampir selesai terurai. Tambahkan amonia lagi jika siklus belum terbentuk.",
+    "ammDone": "Sumber amonia habis. Tidak ada amonia baru yang masuk ke akuarium. Bakteri akan memproses sisa yang ada.",
+    "hungry5": "Hari ke-5 tanpa makanan. Ikan mulai menunjukkan stres — sirip mengatup, gerakan berkurang. Cadangan glikogen sudah habis.",
+    "hungry7": "Ikan kekurangan gizi parah. Jaringan otot sedang dimetabolisasi. Fungsi kekebalan tubuh mulai gagal.",
+    "inhib": "Amonia di atas 3 ppm mulai menghambat aktivitas Nitrospira. Amonia tinggi tidak hanya berbahaya bagi ikan — pada tingkat ekstrem juga memperlambat tahap kedua siklus.",
+    "spikeAmmonia": "Lonjakan amonia terdeteksi. Ini bisa terjadi saat bahan organik terurai lebih cepat daripada bakteri bisa memprosesnya — bagian normal dari siklus yang belum stabil.",
+    "spikeNitrite": "Lonjakan nitrit. Nitrosomonas mengubah amonia lebih cepat daripada Nitrospira bisa memproses nitritnya. Koloni kedua masih berkembang.",
+    "coldTemp": "Suhu berada di {temp}°C. Metabolisme bakteri melambat — Nitrospira sangat peka terhadap suhu.",
+    "diatomStart": "Lapisan cokelat mulai terbentuk di permukaan — alga diatom (Bacillariophyceae). Normal di akuarium baru. Mereka memakan silikat dan kelebihan cahaya. Akan memudar seiring akuarium menjadi matang.",
+    "diatomFade": "Diatom mulai mereda. Seiring siklus menstabil, persaingan alga lain dan berkurangnya silikat membuat kondisi kurang mendukung bagi mereka.",
+    "algaeBloom": "Alga sedang berkembang biak. Intensitas cahaya tinggi ditambah nitrat tinggi menciptakan kondisi ideal bagi pertumbuhan alga yang cepat.",
+    "noLight": "Tanaman tidak mendapat cahaya. Tanpa fotosintesis mereka tidak bisa tumbuh — dan akan mulai membusuk, menambah beban organik.",
+    "cycleEstablished": "Siklus terbentuk. Parameter sudah stabil selama beberapa hari berturut-turut. Kedua koloni sudah mandiri.",
+    "fishStarved": "Ikan mati karena kelaparan dan stres. Tanpa pemberian makan rutin, fungsi metabolisme kolaps.",
+    "heaterOn": "Heater menyala. Suhu akuarium kembali ke 26°C. Aktivitas bakteri akan meningkat.",
+    "heaterOff": "Heater mati. Suhu air akan mulai turun. Di bawah 20°C, pertumbuhan bakteri melambat signifikan.",
+    "filterOn": "Filter menyala. Sirkulasi air pulih. Bakteri yang menghuni media filter akan kembali memproses limbah.",
+    "filterOff": "Filter mati. Bakteri di media filter kehilangan pasokan oksigen — mereka aerobik dan bergantung pada air beroksigen yang mengalir lewat filter. Tanpanya, koloni menjadi tidak aktif. Siklus akan terhenti.",
+    "seedAlready": "Starter bakteri sudah ditambahkan.",
+    "seedAdded": "Starter bakteri ditambahkan. Nitrosomonas dan Nitrospira disemai pada permukaan. Diharapkan kolonisasi jauh lebih cepat.",
+    "light0": "Lampu mati. Tanaman akan mulai kesulitan — fotosintesis butuh cahaya. Alga akan bergeser ke jenis yang tahan cahaya rendah.",
+    "light1": "Cahaya rendah. Tanaman tumbuh lambat. Diatom (alga cokelat) bisa meningkat — mereka berkembang di cahaya rendah.",
+    "light2": "Cahaya sedang. Keseimbangan yang baik untuk sebagian besar akuarium bertanaman. Alga dapat dikendalikan jika nutrisi tidak berlebihan.",
+    "light3": "Cahaya tinggi. Tanaman tumbuh lebih cepat — tapi alga juga demikian, terutama jika CO₂ dan nutrisi tidak seimbang. Waspadai ledakan populasi alga.",
+    "ammSourceSufficient": "Sumber amonia sudah cukup.",
+    "ammoniaAdded": "Amonia ditambahkan. Siklus berjalan.",
+    "bacteriaArriving": " Bakteri akan mulai datang tak lama lagi.",
+    "enoughFishNow": "Akuarium sudah cukup padat ikan untuk saat ini.",
+    "fishAdded": "Ikan ditambahkan. Total: {n}.",
+    "watchAmmoniaCarefully": " Perhatikan amonia dengan saksama.",
+    "nothingToFeedFishless": "Belum ada yang perlu diberi makan — tidak ada ikan pada siklus tanpa ikan.",
+    "addFishFirst": "Tambahkan ikan terlebih dahulu.",
+    "fedAgainOverfeed": "Diberi makan lagi. Sisa makanan terurai lebih cepat daripada bakteri bisa memprosesnya — amonia sedang naik.",
+    "overfeeding": "Kelebihan pakan. Sisa makanan yang tidak dimakan mencemari air. Bakteri tidak bisa mengimbangi beban ini.",
+    "fedProcessing": "Diberi makan. Bakteri sedang memproses limbah — parameter seharusnya tetap stabil.",
+    "fedAddingLoad": "Diberi makan. Limbah menambah beban amonia.",
+    "tankWellPlanted": "Akuarium sudah cukup bertanaman.",
+    "plantsAddedGood": "Tanaman ditambahkan. Akan menyerap nitrat seiring waktu.",
+    "readyMessage": "Akuarium siap. Heater, filter, dan lampu menyala secara default — ketuk untuk mengubah. Perhatikan bilah bakteri seiring berjalannya siklus. Log akan menjelaskan apa yang sedang terjadi.",
+    "insightGroups": [
+      [
+        "Akuarium sudah siap. Tambahkan sumber amonia untuk memulai siklus nitrogen.",
+        "💧 Akuarium kosong belum memiliki biologi. Amonia adalah yang mendatangkan bakteri.",
+        "Siklus tanpa ikan adalah metode yang lebih lembut — tidak ada ikan yang mengalami minggu-minggu awal yang berat."
+      ],
+      [
+        "🐠 Akuarium sudah siap. Tambahkan ikan pertama Anda untuk memulai siklus.",
+        "Perhatikan amonia dengan saksama begitu ikan ditambahkan — mereka terus-menerus menghasilkan limbah.",
+        "Mulailah dengan ikan lebih sedikit dari yang Anda rencanakan untuk dipelihara. Siklus akan lebih mudah dikelola."
+      ],
+      [
+        "🔬 Hari {day}. Bakteri mulai menyemai pada permukaan. Tak terlihat tapi sudah bekerja.",
+        "Hari-hari awal terlihat sepi — tapi kolonisasi sudah dimulai pada media filter dan substrat.",
+        "⏳ Belum ada yang perlu dilakukan sekarang. Fase ini soal waktu, bukan tindakan."
+      ],
+      [
+        "Amonia sedang naik. Ini normal — bakteri belum cukup banyak untuk memprosesnya.",
+        "🟡 Amonia yang meningkat adalah tanda pertama siklus sedang berjalan. Tahan keinginan untuk turun tangan.",
+        "Bakteri pemakan amonia (Nitrosomonas) sedang berkembang biak sekarang. Beri mereka waktu."
+      ],
+      [
+        "⚠️ Amonia semakin tinggi. Jika ada ikan, pergantian air kecil akan membantu.",
+        "Amonia tinggi merusak insang ikan secara langsung. Tak perlu mematikan untuk menyebabkan kerusakan.",
+        "Pergantian air 10–15% mengencerkan amonia tanpa menghanyutkan bakteri. Kecil dan bertahap."
+      ],
+      [
+        "Nitrit sedang naik — Nitrosomonas berhasil mengubah amonia. Tahap pertama berjalan baik.",
+        "🟠 Lonjakan nitrit berarti tahap pertama berhasil. Nitrospira — bakteri tahap kedua yang dominan — masih berkembang.",
+        "Ini fase paling berbahaya bagi ikan — nitrit menghambat penyerapan oksigen dalam darah."
+      ],
+      [
+        "🔴 Nitrit sangat tinggi. Jika ada ikan, pergantian air perlu dilakukan sekarang.",
+        "Nitrit tinggi menyebabkan penyakit darah cokelat pada ikan — hemoglobin tidak bisa membawa oksigen.",
+        "Nitrospira lebih lambat berkembang dibanding Nitrosomonas. Itu sebabnya nitrit memuncak setelah amonia. Bersabarlah."
+      ],
+      [
+        "🌱 Koloni bakteri mendekati kematangan. Akhir siklus semakin dekat.",
+        "Kedua tahap kini aktif. Parameter seharusnya mulai stabil tak lama lagi.",
+        "Perhatikan amonia dan nitrit turun bersamaan — itu tanda siklus sedang menuju selesai."
+      ],
+      [
+        "✅ Siklus terbentuk. Akuarium kini mandiri. Kerja bagus.",
+        "🎉 Kedua koloni bakteri stabil dan terus memproses limbah.",
+        "Nitrat akan mulai menumpuk dari sini — pantau dan ganti air secara rutin."
+      ],
+      [
+        "Nitrat sedang menumpuk. Pergantian air parsial secara rutin akan menjaganya tetap terkendali.",
+        "💧 Pergantian air 15–25% setiap minggu adalah cara paling efektif mengendalikan nitrat.",
+        "Tanaman hidup juga menyerap nitrat — akuarium yang bertanaman lebat butuh lebih sedikit pergantian air."
+      ],
+      [
+        "⚠️ Terlalu banyak pergantian air di tahap awal ini bisa memperlambat kemajuan.",
+        "Setiap pergantian air besar menghilangkan sebagian bakteri bersama amonianya.",
+        "Pergantian yang lebih kecil dan jarang lebih baik selama siklus masih berlangsung."
+      ],
+      [
+        "😰 Ikan menunjukkan tanda stres. Bernapas di permukaan adalah peringatan dini.",
+        "Ikan yang stres memiliki kekebalan tubuh yang tertekan — risiko penyakit meningkat.",
+        "Periksa amonia dan nitrit. Salah satunya kemungkinan penyebabnya."
+      ],
+      [
+        "🌡️ Suhu sedang turun. Pertumbuhan bakteri melambat signifikan di bawah 22°C.",
+        "Nitrospira sangat peka terhadap suhu dingin — di bawah 22°C tahap kedua melambat signifikan.",
+        "Nyalakan heater untuk memulihkan kondisi optimal (25–27°C)."
+      ],
+      [
+        "🌀 Tidak ada filter yang menyala. Bakteri kehilangan permukaan kolonisasi utamanya.",
+        "Tanpa sirkulasi, oksigen terlarut menurun — bakteri menjadi kurang aktif.",
+        "Bahkan filter spons sederhana pun membuat perbedaan signifikan pada kecepatan siklus."
+      ]
+    ],
+    "idle": [
+      "Sistem masih sedang menata diri. Ini normal.",
+      "🔬 Biologi bekerja dengan jadwalnya sendiri.",
+      "Setiap akuarium yang stabil pernah melewati tepat fase ini.",
+      "Hal terbaik yang bisa Anda lakukan sekarang adalah menunggu dan mengamati."
+    ],
+    "genLog": {
+      "ammCritical": "Amonia sangat tinggi.",
+      "ammCriticalFishSuffix": " Ikan dalam bahaya akut — insang sedang rusak.",
+      "ammElevated": "Amonia meningkat. Bakteri sedang berkembang tapi belum cukup.",
+      "no2Spike": "Lonjakan nitrit. Koloni Nitrospira masih berkembang — ini pola normal di pertengahan siklus, tapi berbahaya bagi ikan.",
+      "no3Building": "Nitrat sedang menumpuk. Pergantian air parsial akan membantu.",
+      "paramsStable": "Parameter stabil. Koloni bakteri sudah mandiri.",
+      "nitrosomonasGrowing": "Koloni Nitrosomonas sedang tumbuh. Nitrit akan mulai naik tak lama lagi.",
+      "nitrospiraGrowing": "Koloni Nitrospira sedang tumbuh. Nitrit seharusnya mulai turun tak lama lagi.",
+      "fishStressSigns": "Ikan menunjukkan tanda stres — gerakan melambat, warna memudar. Kesehatan: {pct}%.",
+      "fishPoorCondition": "Ikan dalam kondisi buruk. Fungsi kekebalan tubuh terganggu — risiko penyakit meningkat. Kesehatan: {pct}%."
+    },
+    "narratives": [
+      "Hari 3. Aktivitas tak kasatmata telah dimulai. Bakteri pengoksidasi amonia menyemai dari udara, air, dan permukaan apa pun yang Anda tambahkan.",
+      "Koloni bakteri masih mikroskopis pada tahap ini. Anda tidak bisa melihatnya, tapi mereka ada — berkembang biak perlahan pada media filter dan substrat.",
+      "Munculnya nitrit adalah tanda tahap pertama sedang berjalan. Nitrosomonas sedang mengubah amonia — kini Nitrospira punya substrat untuk berkembang.",
+      "Minggu kedua. Masa penantian paling sulit. Parameter mungkin terlihat kacau — ini normal. Biologinya sedang menata ulang dirinya sendiri.",
+      "Di akuarium sungguhan, koloni mencapai kepadatan mandiri sekitar minggu ke-3–4. Simulasi ini berjalan lebih cepat — tapi biologi yang dimodelkannya sama.",
+      "Hari 25. Beberapa siklus selesai pada titik ini — yang lain butuh 6–8 minggu. Jika parameter masih belum stabil, sistemnya masih bekerja."
+    ],
+    "guide": {
+      "addAmmonia": "Tambahkan sumber amonia untuk memulai",
+      "addFish": "Tambahkan ikan untuk memulai siklus",
+      "feedNeeded": "Ikan perlu diberi makan — jangan lewatkan hari",
+      "seeding": "Siklus sedang menyemai. Biarkan dulu untuk saat ini.",
+      "ammoniaCritical": "Amonia kritis — ganti air sekarang",
+      "ammoniaElevatedConsider": "Amonia meningkat — pertimbangkan pergantian air",
+      "bacteriaWorking": "Bakteri sedang bekerja — tidak ada yang perlu dilakukan selain menunggu",
+      "nitrateBuilding": "Nitrat sedang menumpuk — akuarium perlu pergantian air",
+      "tooManyChanges": "Terlalu banyak pergantian. Berhenti turun tangan — biarkan bakteri pulih."
+    },
+    "waterChange": {
+      "small": "{pct}% pergantian air. Parameter terencerkan. Bakteri tetap berada di media filter — pergantian sekecil ini tidak berdampak berarti pada koloni.",
+      "medium": "{pct}% pergantian air. Bakteri tetap di permukaan filter. Pada ukuran ini, sedikit perubahan kimia air mungkin terjadi — dan Anda telah menghilangkan sebagian amonia yang sedang diproses bakteri. Perkirakan sedikit perlambatan.",
+      "large": "{pct}% pergantian air. Koloni tidak terhanyutkan, tapi pergantian seukuran ini menyebabkan gangguan kimia air yang nyata. Metabolisme bakteri melambat akibat perubahan pH dan mineral yang mendadak. Substrat amonia juga hilang selama satu-dua hari.",
+      "extreme": "{pct}% pergantian air — hampir reset total. Koloni bertahan, tapi guncangan kimia air, hilangnya substrat total, dan gangguan fisik pada filter akan mengaturnya kembali secara signifikan. Simpan ini hanya untuk keadaan darurat sungguhan."
+    },
+    "report": {
+      "titleWon": "Siklus selesai.",
+      "titleCrashed": "Akuarium mengalami kegagalan.",
+      "msgWonFishless": "Hari {day}. Bakteri terbentuk tanpa ada hewan yang dirugikan.",
+      "msgWonFishIn": "Hari {day}. Siklus selesai dengan ikan hadir di dalamnya.",
+      "msgCrashedStarved": "Ikan melemah akibat kekurangan makanan dan stres yang berujung fatal.",
+      "msgCrashedWater": "Amonia atau nitrit mencapai tingkat yang tidak bisa ditoleransi ikan.",
+      "rowDaysElapsed": "Hari berlalu",
+      "rowDaysValue": "{day} hari",
+      "rowMethod": "Metode",
+      "methodFishless": "Tanpa ikan",
+      "methodFishIn": "Dengan ikan",
+      "methodFishlessNote": "Tidak ada hewan yang terpapar stres amonia",
+      "methodFishInNote": "Ikan mengalami amonia dan nitrit yang tinggi",
+      "rowWaterChanges": "Pergantian air",
+      "waterChangesValue": "{n} kali",
+      "wcNoteFrequent": "Terlalu sering — pergantian berulang mengganggu kimia air dan menghilangkan amonia yang dibutuhkan koloni",
+      "wcNoteNone": "Tidak pernah dilakukan — nitrat mungkin menumpuk tanpa terkendali",
+      "wcNoteWell": "Dikelola dengan baik — kecil dan tepat sasaran",
+      "wcNoteReasonable": "Cukup wajar",
+      "rowFishFeeding": "Pemberian makan ikan",
+      "feedInsufficient": "Kurang",
+      "feedManaged": "Terkelola",
+      "feedNoteInsufficient": "Ikan tidak diberi makan selama {n} hari — perlu makanan setiap 1–4 hari",
+      "feedNoteGood": "Baik",
+      "rowHeater": "Heater",
+      "heaterOnThroughout": "Menyala sepanjang waktu",
+      "heaterOffAtSomePoint": "Mati di suatu titik",
+      "heatNoteFell": "Suhu turun — bakteri melambat signifikan di bawah 22°C",
+      "heatNoteStable": "Suhu stabil sepanjang waktu",
+      "rowFilter": "Filter",
+      "filterOnThroughout": "Menyala sepanjang waktu",
+      "filterTurnedOff": "Dimatikan",
+      "filterNoteWithout": "Tanpa filter: bakteri kehilangan area permukaan dan oksigen utamanya",
+      "filterNoteRunning": "Filter berjalan — bakteri memiliki akses penuh ke media",
+      "rowBacteriaStarter": "Starter bakteri",
+      "starterUsed": "Digunakan",
+      "starterNotUsed": "Tidak digunakan",
+      "starterNote": "Memberi awalan bagi penyemaian koloni",
+      "rowNitrosomonas": "Nitrosomonas (A)",
+      "rowNitrospira": "Nitrospira (B)",
+      "bacFullyEstablished": "Sudah mandiri sepenuhnya",
+      "bacPartiallyEstablished": "Mandiri sebagian",
+      "bacStillSeeding": "Masih menyemai",
+      "bacGrowing": "Sedang tumbuh",
+      "bacNotYetActive": "Belum aktif",
+      "openings": [
+        "Anda berhasil — dan yang lebih penting, Anda melakukannya dengan cara yang benar. Sistem ini punya apa yang dibutuhkannya: waktu, stabilitas, dan seorang penjaga yang membaca prosesnya alih-alih melawannya.",
+        "Siklus sudah selesai. Setiap akuarium stabil di dunia ini sampai ke titik ini lewat proses yang persis sama. Sekarang Anda tahu bagaimana rasanya dari dalam.",
+        "Kerja bagus. Kesabaran adalah bagian tersulit saat sesuatu terlihat salah. Anda telah melatihnya di sini. Itu akan terbawa ke akuarium sungguhan."
+      ],
+      "crashings": [
+        "Ini bukan kegagalan — ini data. Akuarium menunjukkan sesuatu yang spesifik tentang apa yang salah. Pengetahuan itu lebih berharga daripada proses yang berjalan mulus.",
+        "Setiap penjaga akuarium berpengalaman pernah mengalami ini. Yang penting adalah memahami sebabnya. Laporan ini membantu untuk itu.",
+        "Siklus tidak selesai kali ini. Akuarium sungguhan lebih memaafkan dibanding simulasi — dan sekarang Anda tahu apa yang perlu diperhatikan."
+      ],
+      "adviceFrequentWc": "Pergantian air terlalu sering. Bakteri di filter Anda tidak terhilangkan — tapi pergantian besar berulang terus mengganggu kimia air dan menghilangkan amonia yang dibutuhkan koloni untuk tumbuh. Pergantian kecil dan tepat sasaran hanya saat parameter berbahaya adalah pendekatan yang lebih baik.",
+      "adviceFilterOff": "Filter mati selama sebagian proses. Di akuarium sungguhan, filter adalah tempat sebagian besar bakteri hidup. Tanpanya, fondasi biologis siklus akan runtuh.",
+      "adviceFeedMissed": "Pemberian makan terlewat terlalu lama. Ikan perlu makan setiap 1–4 hari bahkan selama siklus yang sulit. Kelaparan memperparah stres amonia — keduanya bersama lebih sulit dipulihkan.",
+      "adviceHeatDrop": "Suhu turun signifikan. Nitrospira — bakteri tahap kedua yang dominan — sangat peka terhadap suhu dingin — di bawah 22°C mereka melambat drastis. Heater yang andal adalah salah satu investasi terbaik di akuarium baru.",
+      "adviceCleanWon": "Sangat bersih. Sedikit pergantian, perangkat stabil, pengamatan yang sabar. Di akuarium sungguhan, pendekatan ini menghasilkan siklus tercepat dan paling minim stres.",
+      "adviceManagedWon": "Semuanya dikelola dengan cermat. Suhu stabil, filter berjalan, pergantian air terukur. Beginilah siklus yang baik terlihat.",
+      "adviceGeneralCrash": "Jaga filter tetap berjalan, pertahankan suhu 25–27°C, dan hindari pergantian air besar selama minggu-minggu awal. Tiga hal itu menyebabkan sebagian besar masalah siklus."
+    },
+    "misc": {
+      "off": "Mati", "low": "Rendah", "med": "Sedang", "high": "Tinggi",
+      "cycleComplete": "Siklus selesai ✓",
+      "nearlyCycled": "Hampir siklus",
+      "cycleBuilding": "Siklus berkembang",
+      "earlyCycle": "Siklus awal",
+      "tmsgFishless": "Tambahkan sumber amonia untuk memulai.",
+      "tmsgFishIn": "🐠 Tambahkan ikan untuk memulai.",
+      "bacStable": "Stabil ✓",
+      "bacStabilising": "Menstabilkan ({n}/3)",
+      "bacNearlyThere": "Hampir sampai",
+      "bacEstablishing": "Sedang mandiri",
+      "bacGrowing": "Sedang tumbuh",
+      "bacSeeding": "Menyemai"
+    }
+  }
+}

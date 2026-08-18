@@ -51,8 +51,8 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/css/ar-page.css?v=36">
 <link rel="stylesheet" href="/css/kofi-sheet.css?v=36">
 <style>
@@ -60,8 +60,8 @@
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--fs-3xs:.5rem;--fs-2xs:.65rem;--fs-xs:.7rem;--fs-sm:.8rem;--fs-sm-md:.85rem;--fs-md:.9rem;--fs-base:1rem;--fs-md-lg:1.1rem;--fs-lg:1.35rem;--fs-xl:1.6rem;--fs-2xl:2.2rem;--fs-3xl:2.8rem;--fs-4xl:3rem;--fs-5xl:3.5rem;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'DM Sans',system-ui,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Work Sans',system-ui,sans-serif;
   --ease:cubic-bezier(0.19,1,0.22,1);
   --abyss:#050a08;
   --accent:#3DD6E8;
@@ -875,8 +875,8 @@ body.eq-dd-open{overflow:hidden}
       <path d="M8.2 15 L6 12.5 L6 17.5 Z" fill="rgba(40,120,150,0.78)"/>
       <path d="M2 15 C5 8.5 9 8.5 12 15 C15 21.5 19 21.5 22 15" stroke="rgba(61,214,232,0.96)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
       <circle cx="14.8" cy="14.2" r=".9" fill="rgba(255,255,255,0.96)"/>
-      <text x="32" y="13" font-family="DM Sans,system-ui,sans-serif" font-size="6" font-weight="300" fill="rgba(235,240,236,.48)" letter-spacing="2.5">AQUATIC</text>
-      <text x="32" y="27" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="300" font-style="italic" fill="rgba(235,240,236,.86)">Rhythm</text>
+      <text x="32" y="13" font-family="Work Sans,system-ui,sans-serif" font-size="6" font-weight="300" fill="rgba(235,240,236,.48)" letter-spacing="2.5">AQUATIC</text>
+      <text x="32" y="27" font-family="Fraunces,Georgia,serif" font-size="17" font-weight="300" font-style="italic" fill="rgba(235,240,236,.86)">Rhythm</text>
     </svg>
   </a>
   <ul class="nlinks">
@@ -1452,12 +1452,12 @@ function drawTank(){
   /* Tank frame on top */
   ctx.strokeStyle='rgba(61,214,232,.32)';ctx.lineWidth=1.5;rr(tx,ty,tw,th);ctx.stroke();
   var slbl=tankLiters+'L';
-  ctx.font='500 9px DM Sans,sans-serif';ctx.fillStyle='rgba(255,255,255,.18)';ctx.textAlign='right';
+  ctx.font='500 9px Work Sans,sans-serif';ctx.fillStyle='rgba(255,255,255,.18)';ctx.textAlign='right';
   ctx.fillText(slbl,tx+tw-5,ty+th-5);ctx.textAlign='left';
   /* Filter hint when no filter selected */
   if(!f){
     ctx.save();
-    ctx.font='400 '+(W>400?'11':'9')+'px DM Sans,sans-serif';
+    ctx.font='400 '+(W>400?'11':'9')+'px Work Sans,sans-serif';
     ctx.fillStyle='rgba(235,240,236,.38)';ctx.textAlign='center';
     ctx.fillText('Add a filter to establish your biological rhythm',W/2,ty+th/2);
     ctx.restore();
@@ -1516,7 +1516,7 @@ function drawTank(){
       });ctx.restore();
     }
     if(stockKeys.length===0&&plantKeys.length===0&&hardKeys.length===0){
-      ctx.save();ctx.font='400 '+(W>400?'11':'9')+'px DM Sans,sans-serif';
+      ctx.save();ctx.font='400 '+(W>400?'11':'9')+'px Work Sans,sans-serif';
       ctx.fillStyle='rgba(255,255,255,.22)';ctx.textAlign='center';
       ctx.fillText('Select species below to populate your tank',W/2,ty+th*.5);ctx.restore();
     }
@@ -1525,7 +1525,7 @@ function drawTank(){
 
 function drawLabel(ctx,x,y,txt,col){
   ctx.save();
-  ctx.font='600 8px DM Sans,sans-serif';
+  ctx.font='600 8px Work Sans,sans-serif';
   var w=ctx.measureText(txt).width;
   ctx.fillStyle='rgba(2,10,18,.7)';ctx.fillRect(x-w/2-2,y-5,w+4,10);
   ctx.fillStyle=col||'rgba(235,240,236,.38)';ctx.textAlign='center';ctx.textBaseline='middle';

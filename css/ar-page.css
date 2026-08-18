@@ -6,8 +6,8 @@
 /* ── VARIABLES ── */
 :root{
   --accent:#3DD6E8;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'DM Sans',system-ui,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Work Sans',system-ui,sans-serif;
   --ease:cubic-bezier(0.22,1,0.36,1);
   /* Type scale — matches css/style.css so tokens are identical sitewide. */
   --fs-3xs:.5rem;

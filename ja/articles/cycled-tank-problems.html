@@ -56,13 +56,13 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/css/ar-page.css?v=36">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
-:root{--fs-3xs:.5rem;--fs-2xs:.65rem;--fs-xs:.7rem;--fs-sm:.8rem;--fs-sm-md:.85rem;--fs-md:.9rem;--fs-base:1rem;--fs-md-lg:1.1rem;--fs-lg:1.35rem;--fs-xl:1.6rem;--fs-2xl:2.2rem;--fs-3xl:2.8rem;--fs-4xl:3rem;--fs-5xl:3.5rem;--abyss:#030b09;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans','Noto Sans JP',system-ui,sans-serif;--accent:#3DD6E8;--ease:cubic-bezier(0.19,1,0.22,1)}
+:root{--fs-3xs:.5rem;--fs-2xs:.65rem;--fs-xs:.7rem;--fs-sm:.8rem;--fs-sm-md:.85rem;--fs-md:.9rem;--fs-base:1rem;--fs-md-lg:1.1rem;--fs-lg:1.35rem;--fs-xl:1.6rem;--fs-2xl:2.2rem;--fs-3xl:2.8rem;--fs-4xl:3rem;--fs-5xl:3.5rem;--abyss:#030b09;--serif:'Fraunces',Georgia,serif;--sans:'Work Sans','Noto Sans JP',system-ui,sans-serif;--accent:#3DD6E8;--ease:cubic-bezier(0.19,1,0.22,1)}
 body{font-family:var(--sans);background:var(--abyss);color:rgba(235,240,236,.94);overflow-x:hidden;line-height:1.72}
 body::before{content:'';position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#052535 0%,#073040 18%,#062a38 38%,#041e28 58%,#030f18 78%,#020810 100%)}
 
@@ -206,8 +206,8 @@ canvas{display:block;width:100%}
       <path d="M8.2 15 L6 12.5 L6 17.5 Z" fill="rgba(40,120,150,0.78)"/>
       <path d="M2 15 C5 8.5 9 8.5 12 15 C15 21.5 19 21.5 22 15" stroke="rgba(61,214,232,0.96)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
       <circle cx="14.8" cy="14.2" r=".9" fill="rgba(255,255,255,0.96)"/>
-      <text x="32" y="13" font-family="DM Sans,system-ui,sans-serif" font-size="6" font-weight="300" fill="rgba(255,255,255,.42)" letter-spacing="2.5">AQUATIC</text>
-      <text x="32" y="27" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="300" font-style="italic" fill="rgba(255,255,255,.82)">Rhythm</text>
+      <text x="32" y="13" font-family="Work Sans,system-ui,sans-serif" font-size="6" font-weight="300" fill="rgba(255,255,255,.42)" letter-spacing="2.5">AQUATIC</text>
+      <text x="32" y="27" font-family="Fraunces,Georgia,serif" font-size="17" font-weight="300" font-style="italic" fill="rgba(255,255,255,.82)">Rhythm</text>
     </svg>
   </a>
   <ul class="nlinks">
@@ -619,7 +619,7 @@ canvases[3]=function(){
   stressors.forEach(function(s,i){
     var btn=document.createElement('button');
     btn.className='vis-btn'+(i===0?' vis-btn-active':'');
-    btn.textContent=s.label;btn.style.fontFamily='"DM Sans",system-ui,sans-serif';
+    btn.textContent=s.label;btn.style.fontFamily='"Work Sans",system-ui,sans-serif';
     btn.addEventListener('click',function(){
       selected=i;
       wrap.querySelectorAll('.vis-btn').forEach(function(b){b.classList.remove('vis-btn-active');});
@@ -656,7 +656,7 @@ canvases[3]=function(){
       ctx.fillRect(bx,cur,bW,bMaxH);
       ctx.fillStyle=s.color+(0.45+b.val*.45).toFixed(2)+')';
       ctx.fillRect(bx,cur+bMaxH-fillH,bW,fillH);
-      ctx.font='300 9px DM Sans,system-ui,sans-serif';
+      ctx.font='300 9px Work Sans,system-ui,sans-serif';
       ctx.fillStyle='rgba(235,240,236,.38)';
       ctx.textAlign='center';
       ctx.fillText(b.label,bx+bW/2,cur+bMaxH+12);
@@ -670,7 +670,7 @@ canvases[3]=function(){
     cur+=16;
 
     /* Signals header */
-    ctx.font='300 10px DM Sans,system-ui,sans-serif';
+    ctx.font='300 10px Work Sans,system-ui,sans-serif';
     ctx.fillStyle='rgba(235,240,236,.40)';
     ctx.fillText('What you might notice:',pad,cur);
     cur+=18;
@@ -692,7 +692,7 @@ canvases[3]=function(){
     cur+=14;
 
     /* Note */
-    ctx.font='italic 300 12px Cormorant Garamond,serif';
+    ctx.font='italic 300 12px Fraunces,serif';
     ctx.fillStyle='rgba(235,240,236,.48)';
     var words=s.note.split(' ');
     var line='';var maxW=W-pad*2;var maxY=H-8;
@@ -746,7 +746,7 @@ canvases[4]=function(){
     var btn=document.createElement('button');
     btn.className='vis-btn'+(i===0?' vis-btn-active':'');
     btn.textContent=s.label;
-    btn.style.fontFamily='"DM Sans",system-ui,sans-serif';
+    btn.style.fontFamily='"Work Sans",system-ui,sans-serif';
     btn.addEventListener('click',function(){
       selected=i;
       wrap.querySelectorAll('.vis-btn').forEach(function(b){b.classList.remove('vis-btn-active');});
@@ -775,7 +775,7 @@ canvases[4]=function(){
     ctx.strokeRect(mediaX,mediaY,mediaW,mediaH);
 
     /* Label */
-    ctx.font='300 10px DM Sans,system-ui,sans-serif';
+    ctx.font='300 10px Work Sans,system-ui,sans-serif';
     ctx.fillStyle='rgba(235,240,236,.38)';ctx.textAlign='center';
     ctx.fillText('Filter media',mediaX+mediaW/2,mediaY-6);
 
@@ -803,7 +803,7 @@ canvases[4]=function(){
       ctx.fillStyle=s.color+'0.7)';
       ctx.fillRect(barX,barY+barH-fillH,barW,fillH);
     }
-    ctx.font='300 9px DM Sans,system-ui,sans-serif';
+    ctx.font='300 9px Work Sans,system-ui,sans-serif';
     ctx.fillStyle=s.color+'0.8)';ctx.textAlign='center';
     ctx.fillText(Math.round(colony*100)+'%',barX+barW/2,barY+barH+14);
     ctx.fillStyle='rgba(235,240,236,.34)';
@@ -813,7 +813,7 @@ canvases[4]=function(){
     /* Description */
     var words=s.desc.split(' ');
     var line='';var y=mediaY+mediaH+28;var maxW=W-24;var maxY=H-4;
-    ctx.font='italic 300 12px Cormorant Garamond,serif';
+    ctx.font='italic 300 12px Fraunces,serif';
     ctx.fillStyle='rgba(235,240,236,.58)';
     words.forEach(function(w){
       if(y>maxY)return;
@@ -873,7 +873,7 @@ canvases[5]=function(){
       ctx.lineWidth=1;ctx.setLineDash(v===40?[3,4]:[]);
       ctx.beginPath();ctx.moveTo(pL,y);ctx.lineTo(pL+gW,y);ctx.stroke();
       ctx.setLineDash([]);
-      ctx.font='300 10px DM Sans,system-ui,sans-serif';
+      ctx.font='300 10px Work Sans,system-ui,sans-serif';
       ctx.fillStyle=v===40?'rgba(220,80,60,.7)':'rgba(235,240,236,.54)';
       ctx.fillText(v,2,y+3);
     });
@@ -884,7 +884,7 @@ canvases[5]=function(){
     /* Axes */
     ctx.strokeStyle='rgba(255,255,255,.1)';ctx.lineWidth=1;ctx.setLineDash([]);
     ctx.beginPath();ctx.moveTo(pL,pT);ctx.lineTo(pL,pT+gH);ctx.lineTo(pL+gW,pT+gH);ctx.stroke();
-    ctx.font='300 10px DM Sans,system-ui,sans-serif';
+    ctx.font='300 10px Work Sans,system-ui,sans-serif';
     ctx.fillStyle='rgba(235,240,236,.54)';
     ctx.fillText('NO₃ ppm',2,pT+8);
     [1,4,8,12].forEach(function(w){ctx.fillText('W'+w,pL+(w/12)*gW-5,pT+gH+12);});
@@ -913,7 +913,7 @@ canvases[5]=function(){
         var endY=pT+gH-(Math.min(endVal,maxV)/maxV)*gH;
         endY=Math.max(pT+10, Math.min(pT+gH-10, endY));
         ctx.fillStyle=m.col+'0.85)';
-        ctx.font='300 10px DM Sans,system-ui,sans-serif';
+        ctx.font='300 10px Work Sans,system-ui,sans-serif';
         ctx.textAlign='right';
         ctx.fillText(Math.round(endVal)+' ppm',W-4,endY);
         ctx.textAlign='left';
@@ -924,7 +924,7 @@ canvases[5]=function(){
     var capText=wcMode==='wc'?'Weekly 15-25% changes keep nitrate stable.':
                 wcMode==='none'?'Without changes, nitrate rises into the stress range.':
                 'Plants + regular changes — the most effective combination.';
-    ctx.font='italic 300 12px Cormorant Garamond,serif';
+    ctx.font='italic 300 12px Fraunces,serif';
     ctx.fillStyle='rgba(235,240,236,.54)';
     ctx.textAlign='center';
     ctx.fillText(capText,W/2,H-8);
@@ -1010,7 +1010,7 @@ canvases[6]=function(){
     ctx.fillStyle='rgba(50,35,15,.6)';ctx.fillRect(12,tankTop+tankH,W-24,6);
 
     if(selected===0){ /* Surface breathing — fish at surface */
-      ctx.font='300 9px DM Sans,system-ui,sans-serif';
+      ctx.font='300 9px Work Sans,system-ui,sans-serif';
       ctx.fillStyle='rgba(61,214,232,.48)';ctx.fillText('surface',14,tankTop+8);
       drawFish(W*.35,tankTop+10,false,0.85,true,true,false);
       drawFish(W*.62,tankTop+12,true,0.75,true,true,false);
@@ -1039,7 +1039,7 @@ canvases[6]=function(){
       drawFish(W*.35,tankTop+tankH*.5,false,0.45,true,false,false);
       drawFish(W*.62,tankTop+tankH*.38,true,0.5,true,false,false);
       /* Colour comparison hint */
-      ctx.font='italic 300 9px Cormorant Garamond,serif';
+      ctx.font='italic 300 9px Fraunces,serif';
       ctx.fillStyle='rgba(235,240,236,.34)';
       ctx.fillText('colour faded',W*.55,tankTop+tankH*.62);
     } else { /* Near heater */
@@ -1055,14 +1055,14 @@ canvases[6]=function(){
 
     /* s already declared above */
     /* Icon + urgency badge — same row, icon left, badge right */
-    ctx.font='20px DM Sans,system-ui,sans-serif';
+    ctx.font='20px Work Sans,system-ui,sans-serif';
     ctx.textAlign='left';
     ctx.fillText(s.icon,12,H*.49);
 
     /* Urgency badge — pill style, safely anchored to right */
     var uc=urgencyColor[s.urgency];
     var uLabel=urgencyLabel[s.urgency];
-    ctx.font='400 10px DM Sans,system-ui,sans-serif';
+    ctx.font='400 10px Work Sans,system-ui,sans-serif';
     var uW=ctx.measureText(uLabel).width;
     var uX=W-uW-14;
     /* Pill background */
@@ -1077,7 +1077,7 @@ canvases[6]=function(){
     ctx.textAlign='left';
 
     /* Meaning — word wrapped */
-    ctx.font='italic 300 13px Cormorant Garamond,serif';
+    ctx.font='italic 300 13px Fraunces,serif';
     ctx.fillStyle='rgba(255,255,255,.68)';
     var words=s.meaning.split(' ');
     var line='';var y=H*.54;var maxW=W-22;var maxY=H-26;
@@ -1095,7 +1095,7 @@ canvases[6]=function(){
     ctx.beginPath();ctx.moveTo(12,H-26);ctx.lineTo(W-12,H-26);ctx.stroke();
 
     /* Footer note */
-    ctx.font='300 11px DM Sans,system-ui,sans-serif';
+    ctx.font='300 11px Work Sans,system-ui,sans-serif';
     ctx.fillStyle='rgba(235,240,236,.62)';
     var footerTxt='Signal '+(selected+1)+' of '+signals.length+' · '+s.label;
     if(ctx.measureText(footerTxt).width>W-24)footerTxt='Signal '+(selected+1)+' / '+signals.length;

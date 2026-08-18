@@ -255,8 +255,8 @@ function buildArticle(slug, lang, t) {
     h = h.replace(/(<\/style>)/, `$1${notoLink}`);
     // Override sans-serif stack to include Noto Sans JP
     h = h.replace(
-      /(--sans:'DM Sans',system-ui,sans-serif)/,
-      "--sans:'DM Sans','Noto Sans JP',system-ui,sans-serif"
+      /(--sans:'Work Sans',system-ui,sans-serif)/,
+      "--sans:'Work Sans','Noto Sans JP',system-ui,sans-serif"
     );
   }
 

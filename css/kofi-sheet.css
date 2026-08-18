@@ -74,7 +74,7 @@ body.kofi-sheet-open {
 
 .kofi-sheet-title {
   display: block;
-  font-family: var(--serif, 'Cormorant Garamond', Georgia, serif);
+  font-family: var(--serif, 'Fraunces', Georgia, serif);
   font-size:var(--fs-md-lg);
   font-weight: 300;
   color: rgba(255, 255, 255, 0.88);

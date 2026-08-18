@@ -181,7 +181,7 @@ All pages share a unified dark aquatic identity:
 
 - **Background**: Deep blue-black gradient (`#050a08`) with animated water caustics and light rays
 - **Accent**: Cyan (`#3DD6E8`) for interactive elements, status indicators, and highlights
-- **Typography**: Cormorant Garamond (serif, headings and italic accents) + DM Sans (sans-serif, UI and body)
+- **Typography**: Fraunces (serif, headings and italic accents) + Work Sans (sans-serif, UI and body)
 - **Header pattern**: `[Logo · AQUATIC Rhythm] ————— [⚙]` — consistent across all pages and tools
 - **Intro pattern**: All tools (Tank Builder, Tank Simulator, Community Stress Lab) open with a branded briefing screen — same visual identity, tool-specific content
 

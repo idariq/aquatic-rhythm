@@ -113,6 +113,25 @@ SEBELUM percaya output. Bug ni ditemui & dibetulkan sekali (PR #303,
 dlm fail ni bila CSS/HTML sumber disunting di masa depan tanpa
 regenerate homepage serentak.
 
+**`localizeArticleLinks(h, lang)`** — fungsi kecil (duplikat dgn
+sengaja kpd kesemua 4 skrip build, sama pola "kekal segerak scr
+manual") yg jadi LANGKAH TERAKHIR setiap fungsi `buildLang()`/
+`buildArticle()`/`buildAraS()`/`buildAraHub()` — scan SELURUH HTML
+dijana utk `href="/articles/<slug>"` & naik taraf ke
+`/<lang>/articles/<slug>` HANYA jika `translations/<lang>/<slug>.json`
+wujud dgn `_meta.status:"ready"` (cache sekali per bahasa). **WAJIB
+panggil ni sbg langkah TERAKHIR dlm mana-mana skrip build baharu**
+(alat interaktif akan datang, templat baharu, dll.) — tanpanya, mana²
+pautan `<a href="/articles/...">` yg terselit dlm kandungan (disalin
+verbatim drpd sumber Inggeris semasa terjemah — perenggan, pull
+quote, related-article button, dsb.) akan sentiasa tersasar ke
+English walau artikel sasaran dah diterjemah. Bug ni ditemui 2026-08-18
+(laporan user: navigasi ja/id "auto ke English" bila klik pautan
+dlm artikel) — 68+ pautan terjejas merentas 26+ fail sebelum
+dibetulkan. Pautan ke artikel yg MEMANG belum diterjemah (cth.
+`tank-simulator`/`tank-builder` sblm siap) BETUL kekal fallback ke
+English — jangan cuba "betulkan" tu.
+
 **`scripts/check-i18n-sync.mjs`** (`npm run i18n:check`) — regenerate
 SEMUA artikel (`build-i18n.mjs --all`) & diff drpd apa yg di working
 tree. **Sentiasa akan "gagal" (tunjuk diff) bila ada kerja belum

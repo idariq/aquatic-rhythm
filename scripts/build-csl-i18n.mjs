@@ -139,14 +139,14 @@ function patchBody(h, t) {
 
 function patchBnav(h, lang) {
   const b = BNAV_LABELS[lang];
-  h = replaceOnce(h, /(<a href="\/" class="bnav-item" aria-label=")[^"]*(">[\s\S]*?<span class="bnav-label">)[^<]*(<\/span>)/,
-    (_, a, mid, z) => `${a}${b.home}${mid}${b.home}${z}`);
-  h = replaceOnce(h, /(<a href="\/reading" class="bnav-item" aria-label=")[^"]*(">[\s\S]*?<span class="bnav-label">)[^<]*(<\/span>)/,
-    (_, a, mid, z) => `${a}${b.reading}${mid}${b.reading}${z}`);
+  h = replaceOnce(h, /<a href="\/" class="bnav-item" aria-label="[^"]*">([\s\S]*?<span class="bnav-label">)[^<]*(<\/span>)/,
+    (_, mid, z) => `<a href="/${lang}/" class="bnav-item" aria-label="${b.home}">${mid}${b.home}${z}`);
+  h = replaceOnce(h, /<a href="\/reading" class="bnav-item" aria-label="[^"]*">([\s\S]*?<span class="bnav-label">)[^<]*(<\/span>)/,
+    (_, mid, z) => `<a href="/${lang}/reading" class="bnav-item" aria-label="${b.reading}">${mid}${b.reading}${z}`);
   h = replaceOnce(h, /(<a href="\/tools" class="bnav-item active" aria-current="page" aria-label=")[^"]*(">[\s\S]*?<span class="bnav-label">)[^<]*(<\/span>)/,
     (_, a, mid, z) => `${a}${b.toolsAria}${mid}${b.tools_label}${z}`);
-  h = replaceOnce(h, /(<a href="\/journal" class="bnav-item" aria-label=")[^"]*(">[\s\S]*?<span class="bnav-label">)[^<]*(<\/span>)/,
-    (_, a, mid, z) => `${a}${b.logAria}${mid}${b.log}${z}`);
+  h = replaceOnce(h, /<a href="\/journal" class="bnav-item" aria-label="[^"]*">([\s\S]*?<span class="bnav-label">)[^<]*(<\/span>)/,
+    (_, mid, z) => `<a href="/${lang}/?p=journal" class="bnav-item" aria-label="${b.logAria}">${mid}${b.log}${z}`);
   return h;
 }
 

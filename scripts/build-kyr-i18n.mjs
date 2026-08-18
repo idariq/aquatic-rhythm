@@ -141,38 +141,38 @@ function patchTopNav(h, lang) {
   const nav = NAV_LABELS[lang];
   h = replaceOnce(h, /(<a href="\/" class="nl" aria-label=")[^"]*(")/, (_, a, b) => `${a}${nav.logoAria}${b}`);
   h = replaceOnce(h, /(<ul class="nlinks">)[\s\S]*?(<\/ul>)/, (_, a, b) => `${a}
-    <li><a href="/">${nav.home}</a></li>
+    <li><a href="/${lang}/">${nav.home}</a></li>
     <li><a href="/${lang}/reading">${nav.reading}</a></li>
-    <li><a href="/companion">${nav.companion}</a></li>
-    <li><a href="/tools">${nav.tools}</a></li>
-    <li><a href="/journal">${nav.log}</a></li>
-    <li><a href="/about">${nav.about}</a></li>
+    <li><a href="/${lang}/?p=companion">${nav.companion}</a></li>
+    <li><a href="/${lang}/?p=tools">${nav.tools}</a></li>
+    <li><a href="/${lang}/?p=journal">${nav.log}</a></li>
+    <li><a href="/${lang}/?p=about">${nav.about}</a></li>
   ${b}`);
   h = replaceOnce(h, /(window\.__arI18n=\{basePath:'[^']*',avail:\[)[^\]]*(\]\};)/, (_, a, b) => `${a}${LANGUAGES.map(l => `"${l}"`).join(',')}${b}`);
   h = replaceOnce(h, /(<button class="nbg" id="burger" aria-label=")[^"]*(")/, (_, a, b) => `${a}${nav.menu}${b}`);
   h = replaceOnce(h, /(<div class="nmob" id="nmob"[^>]*>\s*<ul>)[\s\S]*?(<\/ul>)/, (_, a, b) => `${a}
-    <li><a href="/">${nav.home}</a></li>
+    <li><a href="/${lang}/">${nav.home}</a></li>
     <li><a href="/${lang}/reading">${nav.reading}</a></li>
-    <li><a href="/companion">${nav.companionMobile}</a></li>
-    <li><a href="/tools">${nav.toolsMobile}</a></li>
-    <li><a href="/journal">${nav.log}</a></li>
-    <li><a href="/about">${nav.about}</a></li>
-    <li><a href="/privacy">${nav.privacy}</a></li>
-    <li><a href="/terms">${nav.terms}</a></li>
+    <li><a href="/${lang}/?p=companion">${nav.companionMobile}</a></li>
+    <li><a href="/${lang}/?p=tools">${nav.toolsMobile}</a></li>
+    <li><a href="/${lang}/?p=journal">${nav.log}</a></li>
+    <li><a href="/${lang}/?p=about">${nav.about}</a></li>
+    <li><a href="/${lang}/?p=privacy">${nav.privacy}</a></li>
+    <li><a href="/${lang}/?p=terms">${nav.terms}</a></li>
   ${b}`);
   return h;
 }
 
 function patchBnav(h, lang) {
   const b = BNAV_LABELS[lang];
-  h = replaceOnce(h, /(<a href="\/" class="bnav-item" aria-label=")[^"]*(">[\s\S]*?<span>)[^<]*(<\/span>)/,
-    (_, a, mid, z) => `${a}${b.home}${mid}${b.home}${z}`);
-  h = replaceOnce(h, /(<a href="\/reading" class="bnav-item[^"]*" aria-current="page" aria-label=")[^"]*(">[\s\S]*?<span>)[^<]*(<\/span>)/,
-    (_, a, mid, z) => `${a}${b.reading}${mid}${b.reading}${z}`);
-  h = replaceOnce(h, /(<a href="\/tools" class="bnav-item" aria-label=")[^"]*(">[\s\S]*?<span>)[^<]*(<\/span>)/,
-    (_, a, mid, z) => `${a}${b.tools}${mid}${b.tools}${z}`);
-  h = replaceOnce(h, /(<a href="\/journal" class="bnav-item" aria-label=")[^"]*(">[\s\S]*?<span>)[^<]*(<\/span>)/,
-    (_, a, mid, z) => `${a}${b.logAria}${mid}${b.log}${z}`);
+  h = replaceOnce(h, /<a href="\/" class="bnav-item" aria-label="[^"]*">([\s\S]*?<span>)[^<]*(<\/span>)/,
+    (_, mid, z) => `<a href="/${lang}/" class="bnav-item" aria-label="${b.home}">${mid}${b.home}${z}`);
+  h = replaceOnce(h, /<a href="\/reading" class="bnav-item([^"]*)" aria-current="page" aria-label="[^"]*">([\s\S]*?<span>)[^<]*(<\/span>)/,
+    (_, cls, mid, z) => `<a href="/${lang}/reading" class="bnav-item${cls}" aria-current="page" aria-label="${b.reading}">${mid}${b.reading}${z}`);
+  h = replaceOnce(h, /<a href="\/tools" class="bnav-item" aria-label="[^"]*">([\s\S]*?<span>)[^<]*(<\/span>)/,
+    (_, mid, z) => `<a href="/${lang}/?p=tools" class="bnav-item" aria-label="${b.tools}">${mid}${b.tools}${z}`);
+  h = replaceOnce(h, /<a href="\/journal" class="bnav-item" aria-label="[^"]*">([\s\S]*?<span>)[^<]*(<\/span>)/,
+    (_, mid, z) => `<a href="/${lang}/?p=journal" class="bnav-item" aria-label="${b.logAria}">${mid}${b.log}${z}`);
   return h;
 }
 

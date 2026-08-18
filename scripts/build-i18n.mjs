@@ -191,10 +191,15 @@ function buildArticle(slug, lang, t) {
 
   // ── 4c. Site nav chrome (desktop nav, mobile nav, burger + logo aria-labels) ─
   // Shared sitewide UI, not per-article content — translated from NAV_LABELS,
-  // not from t (the translations/*.json for this article). The "Reading" link
-  // points at the localized reading index (which exists for every language);
-  // the other nav targets (/, /companion, /tools, /journal, /about, /privacy,
-  // /terms) stay pointed at the English pages since those aren't localized yet.
+  // not from t (the translations/*.json for this article). Home/Companion/
+  // Tools/Journal/About/Privacy/Terms all live as pg-* sections INSIDE the
+  // localized homepage SPA shell (<lang>/index.html), not as separate
+  // top-level routes — so from an article page (a real navigation, not
+  // SPA-internal routing) they must point at "/<lang>/" or "/<lang>/?p=<page>"
+  // to land on that shell. Bug found 2026-08-18 (user video): these were
+  // pointing at the bare English path (e.g. "/tools"), which 404s and
+  // redirects to the English "/?p=tools" — so tapping any nav item other
+  // than Reading silently dropped the reader back into English.
   const nav = NAV_LABELS[lang];
   if (nav) {
     h = replaceOnce(h, /(<a href="\/" class="nl" aria-label=")[^"]*(")/,
@@ -202,12 +207,12 @@ function buildArticle(slug, lang, t) {
 
     h = replaceOnce(h, /(<ul class="nlinks">)[\s\S]*?(<\/ul>)/,
       (_, a, b) => `${a}
-    <li><a href="/">${nav.home}</a></li>
+    <li><a href="/${lang}/">${nav.home}</a></li>
     <li><a href="/${lang}/reading">${nav.reading}</a></li>
-    <li><a href="/companion">${nav.companion}</a></li>
-    <li><a href="/tools">${nav.tools}</a></li>
-    <li><a href="/journal">${nav.log}</a></li>
-    <li><a href="/about">${nav.about}</a></li>
+    <li><a href="/${lang}/?p=companion">${nav.companion}</a></li>
+    <li><a href="/${lang}/?p=tools">${nav.tools}</a></li>
+    <li><a href="/${lang}/?p=journal">${nav.log}</a></li>
+    <li><a href="/${lang}/?p=about">${nav.about}</a></li>
   ${b}`);
 
     h = replaceOnce(h, /(<button class="nbg" id="burger" aria-label=")[^"]*(")/,
@@ -215,14 +220,14 @@ function buildArticle(slug, lang, t) {
 
     h = replaceOnce(h, /(<div class="nmob" id="nmob"[^>]*>\s*<ul>)[\s\S]*?(<\/ul>)/,
       (_, a, b) => `${a}
-    <li><a href="/">${nav.home}</a></li>
+    <li><a href="/${lang}/">${nav.home}</a></li>
     <li><a href="/${lang}/reading">${nav.reading}</a></li>
-    <li><a href="/companion">${nav.companionMobile}</a></li>
-    <li><a href="/tools">${nav.toolsMobile}</a></li>
-    <li><a href="/journal">${nav.log}</a></li>
-    <li><a href="/about">${nav.about}</a></li>
-    <li><a href="/privacy">${nav.privacy}</a></li>
-    <li><a href="/terms">${nav.terms}</a></li>
+    <li><a href="/${lang}/?p=companion">${nav.companionMobile}</a></li>
+    <li><a href="/${lang}/?p=tools">${nav.toolsMobile}</a></li>
+    <li><a href="/${lang}/?p=journal">${nav.log}</a></li>
+    <li><a href="/${lang}/?p=about">${nav.about}</a></li>
+    <li><a href="/${lang}/?p=privacy">${nav.privacy}</a></li>
+    <li><a href="/${lang}/?p=terms">${nav.terms}</a></li>
   ${b}`);
 
     // Bottom nav (.bnav) — was left fully English (labels, aria-labels, and
@@ -236,11 +241,11 @@ function buildArticle(slug, lang, t) {
         bn = bn.replace('href="/reading" class="bnav-item active" aria-current="page" aria-label="Reading"',
           `href="/${lang}/reading" class="bnav-item active" aria-current="page" aria-label="${nav.reading}"`);
         bn = bn.replace('href="/" class="bnav-item" aria-label="Home"',
-          `href="/" class="bnav-item" aria-label="${nav.home}"`);
+          `href="/${lang}/" class="bnav-item" aria-label="${nav.home}"`);
         bn = bn.replace('href="/tools" class="bnav-item" aria-label="Tools"',
-          `href="/tools" class="bnav-item" aria-label="${nav.toolsMobile}"`);
+          `href="/${lang}/?p=tools" class="bnav-item" aria-label="${nav.toolsMobile}"`);
         bn = bn.replace('href="/journal" class="bnav-item" aria-label="Keeper\'s Log"',
-          `href="/journal" class="bnav-item" aria-label="${nav.bnavLog}"`);
+          `href="/${lang}/?p=journal" class="bnav-item" aria-label="${nav.bnavLog}"`);
         const bnavSpanLabels = [nav.home, nav.reading, nav.tools, nav.log];
         let bnavIdx = 0;
         bn = bn.replace(/(<span>)[^<]*(<\/span>)/g, (m2, a, c) =>

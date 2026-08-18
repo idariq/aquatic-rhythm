@@ -6,6 +6,16 @@
 
 /* ── RHYSSA COMPANION PAGE ── */
 (function () {
+  var rhLang = (document.documentElement.lang || 'en').split('-')[0];
+  var RH_STRINGS = {
+    en: { writeOwn: 'Write my own…' },
+    id: { writeOwn: 'Tulis sendiri…' },
+    ja: { writeOwn: '自分で入力…' }
+  };
+  function RHT(key) {
+    return (RH_STRINGS[rhLang] && RH_STRINGS[rhLang][key]) || RH_STRINGS.en[key] || key;
+  }
+
   var WORKER_URL  = 'https://api.aquaticrhythm.com/chat';
   var STORE_KEY   = 'rh_thread_companion';
   var cpStreaming  = false;
@@ -133,7 +143,7 @@
     writeBtn.className = 'rh-opt-btn rh-opt-write';
     writeBtn.type = 'button';
     writeBtn.style.cssText = 'font-size:var(--fs-2xs);padding:.32rem .75rem;background:none;border:1px solid var(--th-line);border-radius:20px;color:var(--th-ink-4);cursor:pointer;font-family:inherit;letter-spacing:.01em;text-align:left;line-height:1.4;font-style:italic;-webkit-tap-highlight-color:transparent';
-    writeBtn.textContent = 'Write my own…';
+    writeBtn.textContent = RHT('writeOwn');
     writeBtn.addEventListener('click', function () {
       group.remove();
       if (cpInp) cpInp.focus();

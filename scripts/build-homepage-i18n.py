@@ -73,6 +73,44 @@ BNAV_ARIA = {
     "ja": {"home": "ホーム", "reading": "ガイド", "tools": "ラボ&amp;ツール", "log": "キーパーの記録"},
 }
 
+# Rhyssa chat sliding sheet (.rh-sheet) — shared sitewide UI, same convention
+# as NAV/BNAV_ARIA. Was left entirely English on id/ja (bug found 2026-08-18,
+# user video) even though the separate full Companion page's own chat shell
+# (pg-companion, build_companion() below) was already translated — welcome/
+# note/sub reuse that exact phrasing for consistency.
+RH_SHEET = {
+    "id": {
+        "dialog_aria": "Chat dengan Rhyssa", "close_aria": "Tutup obrolan", "sub": "Pendamping Akuarium",
+        "kofi_aria": "Dukungan di Ko-fi", "tabs_aria": "Percakapan", "new_conv_aria": "Percakapan baru",
+        "thread_aria": "Percakapan dengan Rhyssa",
+        "welcome": "Ceritakan apa yang Anda lihat — air, perilaku, apa pun yang berubah — dan kita bisa memahaminya bersama sebelum memperbaiki apa pun.",
+        "chip1_label": "Ada yang tidak beres", "chip1_msg": "Ada yang terlihat tidak beres di akuarium saya — saya tidak yakin harus menyimpulkan apa.",
+        "chip2_label": "Ikan terlihat stres", "chip2_msg": "Ikan saya terlihat stres atau berperilaku berbeda dari biasanya.",
+        "chip3_label": "Air terlihat berbeda", "chip3_msg": "Air saya terlihat berbeda hari ini — tidak yakin apakah ini masalah.",
+        "chip4_label": "Akuarium baru", "chip4_msg": "Saya sedang menyiapkan akuarium baru dan tidak yakin apa yang perlu saya ketahui.",
+        "chip5_label": "Sekadar mengamati", "chip5_msg": "Saya hanya mengamati akuarium saya. Tidak ada yang mendesak — sekadar mengamati.",
+        "also_pre": "Rhyssa yang sama — juga ada di ", "also_post": " jika Anda lebih suka.",
+        "input_placeholder": "Tanyakan tentang akuarium Anda…", "input_aria": "Pesan untuk Rhyssa",
+        "send_aria": "Kirim",
+        "note": "AI bisa saja salah — untuk keadaan darurat pada ikan, konsultasikan dengan spesialis",
+    },
+    "ja": {
+        "dialog_aria": "Rhyssaとチャット", "close_aria": "チャットを閉じる", "sub": "アクアリウムコンパニオン",
+        "kofi_aria": "Ko-fiで支援", "tabs_aria": "会話", "new_conv_aria": "新しい会話",
+        "thread_aria": "Rhyssaとの会話",
+        "welcome": "見えているものを教えてください —— 水、行動、変わったことなら何でも —— 何かを直す前に、一緒に読み解いていきましょう。",
+        "chip1_label": "何かおかしい", "chip1_msg": "水槽の様子が何かおかしい気がします —— どう考えればいいのか分かりません。",
+        "chip2_label": "魚がストレスを感じている", "chip2_msg": "うちの魚がストレスを感じているようで、いつもと様子が違います。",
+        "chip3_label": "水の様子が違う", "chip3_msg": "今日は水の様子がいつもと違います —— 問題かどうか分かりません。",
+        "chip4_label": "新しい水槽", "chip4_msg": "新しい水槽をセットアップ中で、何を知っておくべきか分かりません。",
+        "chip5_label": "ただ見守っている", "chip5_msg": "特に急ぎではありませんが、水槽をただ見守っています。",
+        "also_pre": "同じRhyssaは、", "also_post": "でもご利用いただけます。",
+        "input_placeholder": "水槽について質問する…", "input_aria": "Rhyssaへのメッセージ",
+        "send_aria": "送信",
+        "note": "AIは間違えることがあります —— 魚の緊急事態では、専門家に相談してください",
+    },
+}
+
 # Settings panel chrome — shared sitewide UI (same convention as NAV/BNAV_ARIA
 # above), not per-article content. Bug found 2026-08-18 (user video): this
 # panel was never translated at all on id/ja, even though the gear button's
@@ -1053,6 +1091,66 @@ def build_pwa_settings(h, lang, u):
     return h
 
 
+def build_rh_sheet(h, lang):
+    """The Rhyssa chat sliding sheet (#rh-sheet) — a single shared element
+    injected once in the page, not a pg-* section, so it can't go through
+    apply_scoped(). Distinct from pg-companion's own full-page chat shell
+    (translated separately by build_companion())."""
+    r = RH_SHEET[lang]
+
+    h = replace_once(h, r'(<div id="rh-sheet" class="rh-sheet" role="dialog" aria-label=")[^"]*(")',
+                      lambda m: m.group(1) + r["dialog_aria"] + m.group(2), "rh-sheet dialog aria")
+    h = replace_once(h, r'(<button class="rh-sheet-back" id="rh-sheet-cls" aria-label=")[^"]*(")',
+                      lambda m: m.group(1) + r["close_aria"] + m.group(2), "rh-sheet close aria")
+    h = replace_once(h, r'(<span class="rh-sheet-sub">)[^<]*(<\/span>)',
+                      lambda m: m.group(1) + r["sub"] + m.group(2), "rh-sheet sub")
+    h = replace_once(h, r'(class="rh-sheet-kofi" data-kofi-open rel="noopener noreferrer" aria-label=")[^"]*(" title=")[^"]*(")',
+                      lambda m: m.group(1) + r["kofi_aria"] + m.group(2) + r["kofi_aria"] + m.group(3), "rh-sheet kofi")
+    h = replace_once(h, r'(<div class="rh-tabs" id="rh-tabs" aria-label=")[^"]*(")',
+                      lambda m: m.group(1) + r["tabs_aria"] + m.group(2), "rh-sheet tabs aria")
+    h = replace_once(h, r'(<button class="rh-tabs-new" id="rh-tabs-new" type="button" aria-label=")[^"]*(")',
+                      lambda m: m.group(1) + r["new_conv_aria"] + m.group(2), "rh-sheet new conv aria")
+    h = replace_once(h, r'(<div class="rh-sheet-thread" id="rh-sheet-thread" role="log" aria-live="polite" aria-label=")[^"]*(")',
+                      lambda m: m.group(1) + r["thread_aria"] + m.group(2), "rh-sheet thread aria")
+    h = replace_once(h, r'(<p class="rh-sheet-welcome-txt">)[^<]*(<\/p>)',
+                      lambda m: m.group(1) + r["welcome"] + m.group(2), "rh-sheet welcome")
+
+    # All 5 chips share identical markup shape (only data-msg/label content
+    # differs), so a plain replace_once looped 5x would keep re-matching
+    # chip 1 (structure-only regex, doesn't care what's already inside) —
+    # same trap this file's own apply-per-card helpers document elsewhere.
+    # A single re.sub pass with an incrementing counter advances through
+    # all 5 in document order instead.
+    chip_re = re.compile(r'<button type="button" class="rh-suggest-chip" data-msg="[^"]*">[^<]*</button>')
+    chip_n = [0]
+    def sub_chip(m):
+        chip_n[0] += 1
+        n = chip_n[0]
+        if n > 5:
+            return m.group(0)
+        return (f'<button type="button" class="rh-suggest-chip" data-msg="{r[f"chip{n}_msg"]}">'
+                f'{r[f"chip{n}_label"]}</button>')
+    new_h, n_chips = chip_re.subn(sub_chip, h)
+    if n_chips != 5:
+        print(f"  WARNING: expected 5 rh-suggest-chip matches, found {n_chips}", file=sys.stderr)
+    h = new_h
+
+    h = replace_once(h,
+        r'(<p class="rh-sheet-also">)Same Rhyssa — also on\s*(<a href="https://chatgpt\.com[^"]*"[^>]*>)ChatGPT ↗(</a>) if you prefer\.(</p>)',
+        lambda m: m.group(1) + r["also_pre"] + m.group(2) + "ChatGPT ↗" + m.group(3) + r["also_post"] + m.group(4),
+        "rh-sheet also")
+
+    h = replace_once(h, r'(<textarea id="rh-sheet-inp" class="rh-sheet-inp" placeholder=")[^"]*("[^>]*aria-label=")[^"]*(")',
+                      lambda m: m.group(1) + r["input_placeholder"] + m.group(2) + r["input_aria"] + m.group(3),
+                      "rh-sheet input")
+    h = replace_once(h, r'(<button type="submit" class="rh-sheet-send" id="rh-sheet-send" aria-label=")[^"]*(")',
+                      lambda m: m.group(1) + r["send_aria"] + m.group(2), "rh-sheet send aria")
+    h = replace_once(h, r'(<p class="rh-sheet-note">)[^<]*(<\/p>)',
+                      lambda m: m.group(1) + r["note"] + m.group(2), "rh-sheet note")
+
+    return h
+
+
 def build_settings_panel(h, lang, u):
     """The Settings panel body (Theme/Language/Ecosystem/Units/Keeper's Log/
     Privacy/Data/App) — a single shared panel injected once in the page, not
@@ -1257,6 +1355,7 @@ def main():
         h = build_head(h, lang)
         h = build_nav(h, lang)
         h = build_pwa_settings(h, lang, u)
+        h = build_rh_sheet(h, lang)
         h = build_settings_panel(h, lang, u)
         h = apply_scoped(h, "pg-home", "pg-companion", build_home, lang, u, "home")
         h = apply_scoped(h, "pg-companion", "pg-terms", build_companion, lang, u, "companion")

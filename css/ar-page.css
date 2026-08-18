@@ -306,6 +306,17 @@ nav:not(.bnav){position:fixed;top:0;left:0;right:0;z-index:800;height:68px;displ
 .ar-stg-theme-btn svg{width:14px;height:14px;flex-shrink:0}
 .ar-stg-theme-btn.active{background:var(--th-accent-soft);color:var(--th-accent)}
 
+/* ── Settings panel footer (About links + version) — mirrors css/style.css's
+   homepage panel so the JS-injected article panel ends on the same visual
+   "this is the end of the list" note instead of stopping abruptly after
+   the last toggle. ── */
+.ar-stg-about{padding:.8rem 1.2rem 1.6rem;text-align:center}
+.ar-stg-about-links{display:flex;align-items:center;justify-content:center;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem}
+.ar-stg-about-link{font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .2s;padding:.2rem 0}
+.ar-stg-about-link:hover{color:var(--th-accent)}
+.ar-stg-dot{color:var(--th-line-2);font-size:var(--fs-xs)}
+.ar-stg-version{font-size:var(--fs-xs);color:var(--th-ink-5);letter-spacing:.05em;display:block;margin-top:.4rem}
+
 /* ── Article photography (shared article pages) ── */
 .art-intro-stack{
   width:100%;

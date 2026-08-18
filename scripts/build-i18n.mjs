@@ -66,6 +66,33 @@ const NAV_LABELS = {
   }
 };
 
+// Rhyssa chat sliding sheet (.rh-sheet) — shared sitewide UI injected on
+// every article, same convention as NAV_LABELS. Was left fully English on
+// id/ja (bug found 2026-08-18, user video) even though the separate full
+// Companion page's chat shell (pg-companion, build-homepage-i18n.py) was
+// already translated — welcome/note text below reuses that exact phrasing
+// for consistency.
+const RH_SHEET = {
+  id: {
+    dialogAria: 'Chat dengan Rhyssa', closeAria: 'Tutup obrolan', sub: 'Pendamping Akuarium',
+    resetAria: 'Atur ulang percakapan', threadAria: 'Percakapan dengan Rhyssa',
+    welcome: 'Ceritakan apa yang Anda lihat — air, perilaku, apa pun yang berubah — dan kita bisa memahaminya bersama sebelum memperbaiki apa pun.',
+    alsoPre: 'Rhyssa yang sama — juga ada di ', alsoPost: ' jika Anda lebih suka.',
+    inputPlaceholder: 'Tanyakan tentang akuarium Anda…', inputAria: 'Pesan untuk Rhyssa',
+    sendAria: 'Kirim',
+    note: 'AI bisa saja salah — untuk keadaan darurat pada ikan, konsultasikan dengan spesialis'
+  },
+  ja: {
+    dialogAria: 'Rhyssaとチャット', closeAria: 'チャットを閉じる', sub: 'アクアリウムコンパニオン',
+    resetAria: '会話をリセット', threadAria: 'Rhyssaとの会話',
+    welcome: '見えているものを教えてください —— 水、行動、変わったことなら何でも —— 何かを直す前に、一緒に読み解いていきましょう。',
+    alsoPre: '同じRhyssaは、', alsoPost: 'でもご利用いただけます。',
+    inputPlaceholder: '水槽について質問する…', inputAria: 'Rhyssaへのメッセージ',
+    sendAria: '送信',
+    note: 'AIは間違えることがあります —— 魚の緊急事態では、専門家に相談してください'
+  }
+};
+
 // Language switching now lives in one place — the shared Settings panel
 // (js/ar-page.js) — instead of a per-article dropdown. This just tells that
 // panel which locales have a ready translation for this slug; any locale
@@ -252,6 +279,30 @@ function buildArticle(slug, lang, t) {
           bnavIdx < bnavSpanLabels.length ? `${a}${bnavSpanLabels[bnavIdx++]}${c}` : m2);
         return `${open}${bn}${close}`;
       });
+  }
+
+  // ── 4d. Rhyssa chat sliding sheet (.rh-sheet) ────────────────────────────
+  const rh = RH_SHEET[lang];
+  if (rh) {
+    h = h.replace(/aria-label="Chat with Rhyssa"/g, `aria-label="${rh.dialogAria}"`);
+    h = replaceOnce(h, /(<button class="rh-sheet-back" id="rh-sheet-cls" aria-label=")[^"]*(")/,
+      (_, a, b) => `${a}${rh.closeAria}${b}`);
+    h = replaceOnce(h, /(<span class="rh-sheet-sub">)[^<]*(<\/span>)/,
+      (_, a, b) => `${a}${rh.sub}${b}`);
+    h = replaceOnce(h, /(<button class="rh-sheet-back" id="rh-sheet-clear" aria-label=")[^"]*(" title=")[^"]*(")/,
+      (_, a, b, c) => `${a}${rh.resetAria}${b}${rh.resetAria}${c}`);
+    h = replaceOnce(h, /(<div class="rh-sheet-thread" id="rh-sheet-thread" role="log" aria-live="polite" aria-label=")[^"]*(")/,
+      (_, a, b) => `${a}${rh.threadAria}${b}`);
+    h = replaceOnce(h, /(<p class="rh-sheet-welcome-txt">)[^<]*(<\/p>)/,
+      (_, a, b) => `${a}${rh.welcome}${b}`);
+    h = replaceOnce(h, /(>)Same Rhyssa — also on\s*(<a href="https:\/\/chatgpt\.com[^"]*"[^>]*>)ChatGPT ↗(<\/a>) if you prefer\./,
+      (_, a, link, close) => `${a}${rh.alsoPre}${link}ChatGPT ↗${close}${rh.alsoPost}`);
+    h = replaceOnce(h, /(<textarea id="rh-sheet-inp" class="rh-sheet-inp" placeholder=")[^"]*("[^>]*aria-label=")[^"]*(")/,
+      (_, a, b, c) => `${a}${rh.inputPlaceholder}${b}${rh.inputAria}${c}`);
+    h = replaceOnce(h, /(<button type="submit" class="rh-sheet-send" id="rh-sheet-send" aria-label=")[^"]*(")/,
+      (_, a, b) => `${a}${rh.sendAria}${b}`);
+    h = replaceOnce(h, /(<p class="rh-sheet-note">)[^<]*(<\/p>)/,
+      (_, a, b) => `${a}${rh.note}${b}`);
   }
 
   // ── 5. JSON-LD ────────────────────────────────────────────────────────────

@@ -193,6 +193,13 @@ function patchRhyssaSheet(h, lang) {
   h = replaceOnce(h, /(<span class="rh-sheet-sub">)[^<]*(<\/span>)/, (_, a, b) => `${a}${c.sub}${b}`);
   h = replaceOnce(h, /(id="rh-sheet-clear" aria-label=")[^"]*(" title=")[^"]*(")/, (_, a, mid, z) => `${a}${c.new_aria}${mid}${c.new_aria}${z}`);
   h = replaceOnce(h, /(<p class="rh-sheet-welcome-txt">)[\s\S]*?(<\/p>)/, (_, a, b) => `${a}${c.welcome}${b}`);
+  // "Same Rhyssa — also on ChatGPT..." was left English even after PR #296
+  // translated the rest of this sheet (bug found 2026-08-18, user video).
+  const also = lang === 'ja'
+    ? { pre: '同じRhyssaは、', post: 'でもご利用いただけます。' }
+    : { pre: 'Rhyssa yang sama — juga ada di ', post: ' jika Anda lebih suka.' };
+  h = replaceOnce(h, /(>)Same Rhyssa — also on\s*(<a href="https:\/\/chatgpt\.com[^"]*"[^>]*>)ChatGPT ↗(<\/a>) if you prefer\./,
+    (_, a, link, close) => `${a}${also.pre}${link}ChatGPT ↗${close}${also.post}`);
   h = replaceOnce(h, /(<textarea id="rh-sheet-inp"[^>]*placeholder=")[^"]*("[^>]*aria-label=")[^"]*(")/,
     (_, a, mid, z) => `${a}${c.placeholder}${mid}Rhyssa${z}`);
   h = replaceOnce(h, /(id="rh-sheet-send" aria-label=")[^"]*(")/, (_, a, b) => `${a}${c.send_aria}${b}`);

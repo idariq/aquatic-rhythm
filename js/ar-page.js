@@ -47,7 +47,8 @@
         wc_alert_aria: 'Days before water change alert',
         privacy_label: 'Privacy',
         analytics_label: 'Usage Analytics', analytics_sub: 'Helps improve the app',
-        analytics_aria: 'Enable usage analytics'
+        analytics_aria: 'Enable usage analytics',
+        about_privacy: 'Privacy', about_terms: 'Terms', about_about: 'About', about_support: 'Support'
       },
       id: {
         settings: 'Pengaturan', close_aria: 'Tutup pengaturan',
@@ -67,7 +68,8 @@
         wc_alert_aria: 'Jumlah hari sebelum peringatan ganti air',
         privacy_label: 'Privasi',
         analytics_label: 'Analitik Penggunaan', analytics_sub: 'Membantu meningkatkan aplikasi',
-        analytics_aria: 'Aktifkan analitik penggunaan'
+        analytics_aria: 'Aktifkan analitik penggunaan',
+        about_privacy: 'Kebijakan Privasi', about_terms: 'Syarat Penggunaan', about_about: 'Tentang', about_support: 'Dukungan'
       },
       ja: {
         settings: '設定', close_aria: '設定を閉じる',
@@ -87,7 +89,8 @@
         wc_alert_aria: '水換えアラートまでの日数',
         privacy_label: 'プライバシー',
         analytics_label: '利用状況分析', analytics_sub: 'アプリの改善に役立ちます',
-        analytics_aria: '利用状況分析を有効にする'
+        analytics_aria: '利用状況分析を有効にする',
+        about_privacy: 'プライバシー', about_terms: '利用規約', about_about: 'サイトについて', about_support: '支援'
       }
     };
     function T(key) {
@@ -174,6 +177,19 @@
           '<div class="ar-stg-section">' +
             '<span class="ar-stg-label">' + T('privacy_label') + '</span>' +
             '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">' + T('analytics_label') + '</span><span class="ar-stg-row-sub">' + T('analytics_sub') + '</span></div><input class="ar-stg-toggle" type="checkbox" id="ar-stg-analytics" role="switch" aria-label="' + T('analytics_aria') + '"></div>' +
+          '</div>' +
+          '<div class="ar-stg-divider"></div>' +
+          '<div class="ar-stg-about">' +
+            '<div class="ar-stg-about-links">' +
+              '<a href="' + (stgLang === 'en' ? '/privacy' : '/' + stgLang + '/?p=privacy') + '" class="ar-stg-about-link">' + T('about_privacy') + '</a>' +
+              '<span class="ar-stg-dot">·</span>' +
+              '<a href="' + (stgLang === 'en' ? '/terms' : '/' + stgLang + '/?p=terms') + '" class="ar-stg-about-link">' + T('about_terms') + '</a>' +
+              '<span class="ar-stg-dot">·</span>' +
+              '<a href="' + (stgLang === 'en' ? '/about' : '/' + stgLang + '/?p=about') + '" class="ar-stg-about-link">' + T('about_about') + '</a>' +
+              '<span class="ar-stg-dot">·</span>' +
+              '<a href="https://ko-fi.com/aquaticrhythm" class="ar-stg-about-link" rel="noopener noreferrer">' + T('about_support') + '</a>' +
+            '</div>' +
+            '<span class="ar-stg-version">Aquatic Rhythm · aquaticrhythm.com</span>' +
           '</div>' +
         '</div>';
       document.body.appendChild(panel);
@@ -373,6 +389,16 @@
   })();
 
   /* ── RHYSSA FAB + SHEET ── */
+  var rhLang = (document.documentElement.lang || 'en').split('-')[0];
+  var RH_STRINGS = {
+    en: { newChat: 'New chat', deleteConv: 'Delete conversation', writeOwn: 'Write my own…' },
+    id: { newChat: 'Obrolan baru', deleteConv: 'Hapus percakapan', writeOwn: 'Tulis sendiri…' },
+    ja: { newChat: '新しいチャット', deleteConv: '会話を削除', writeOwn: '自分で入力…' }
+  };
+  function RHT(key) {
+    return (RH_STRINGS[rhLang] && RH_STRINGS[rhLang][key]) || RH_STRINGS.en[key] || key;
+  }
+
   var WORKER_URL = 'https://api.aquaticrhythm.com/chat';
   var STORE_KEY  = 'rh_thread';  /* legacy — migration source only */
   var CONVS_KEY  = 'rh_convs';  /* shared with SPA sheet */
@@ -552,7 +578,7 @@
     var writeBtn = document.createElement('button');
     writeBtn.type = 'button';
     writeBtn.style.cssText = 'font-size:var(--fs-2xs);padding:.32rem .75rem;background:none;border:1px solid var(--th-line);border-radius:20px;color:var(--th-ink-4);cursor:pointer;font-family:inherit;letter-spacing:.01em;text-align:left;line-height:1.4;font-style:italic;-webkit-tap-highlight-color:transparent';
-    writeBtn.textContent = 'Write my own…';
+    writeBtn.textContent = RHT('writeOwn');
     writeBtn.addEventListener('click', function () { group.remove(); if (inp) inp.focus(); });
     group.appendChild(writeBtn);
     wrap.appendChild(group);
@@ -574,12 +600,12 @@
       tab.style.cssText = isActive ? styleActive : styleInactive;
       var titleSpan = document.createElement('span');
       titleSpan.style.cssText = 'overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:90px;display:block';
-      titleSpan.textContent = conv.title || 'New chat';
+      titleSpan.textContent = conv.title || RHT('newChat');
       tab.appendChild(titleSpan);
       if (data.list.length > 1) {
         var del = document.createElement('button');
         del.type = 'button';
-        del.setAttribute('aria-label', 'Delete conversation');
+        del.setAttribute('aria-label', RHT('deleteConv'));
         del.style.cssText = 'background:none;border:none;color:var(--th-ink-4);cursor:pointer;font-size:var(--fs-sm-md);padding:0;line-height:1;flex-shrink:0;-webkit-tap-highlight-color:transparent';
         del.textContent = '×';
         ;(function (id) {

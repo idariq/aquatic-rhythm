@@ -186,9 +186,14 @@ function patchRhyssaSheet(h, lang) {
     (_, a, mid, z) => `${a}${c.placeholder}${mid}Rhyssa${z}`);
   h = replaceOnce(h, /(id="rh-sheet-send" aria-label=")[^"]*(")/, (_, a, b) => `${a}${c.send_aria}${b}`);
   h = replaceOnce(h, /(<p class="rh-sheet-note">)[^<]*(<\/p>)/, (_, a, b) => `${a}${c.note}${b}`);
-  // NOTE: the "Same Rhyssa — also on ChatGPT..." paragraph is deliberately
-  // NOT patched — deferred AI-companion-chrome content, same as every
-  // already-shipped id/ja article (matches established scope decision).
+  // "Same Rhyssa — also on ChatGPT..." was left English on every already-
+  // shipped id/ja article — bug found 2026-08-18 (user video), not actually
+  // a deliberate scope decision as previously assumed here.
+  const also = lang === 'ja'
+    ? { pre: '同じRhyssaは、', post: 'でもご利用いただけます。' }
+    : { pre: 'Rhyssa yang sama — juga ada di ', post: ' jika Anda lebih suka.' };
+  h = replaceOnce(h, /(>)Same Rhyssa — also on\s*(<a href="https:\/\/chatgpt\.com[^"]*"[^>]*>)ChatGPT ↗(<\/a>) if you prefer\./,
+    (_, a, link, close) => `${a}${also.pre}${link}ChatGPT ↗${close}${also.post}`);
   return h;
 }
 

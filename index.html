@@ -55,8 +55,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="css/style.css?v=51">
-<link rel="stylesheet" href="css/kofi-sheet.css?v=51">
+<link rel="stylesheet" href="css/style.css?v=52">
+<link rel="stylesheet" href="css/kofi-sheet.css?v=52">
 </head>
 <body>
 <div id="cd" aria-hidden="true"></div><div id="cr" aria-hidden="true"></div>
@@ -185,7 +185,7 @@
     <div class="cap" style="max-width:720px">
       <div class="ht">
         <span class="ey">Aquatic Rhythm</span>
-        <h1 class="dxl">Your tank is a small,<br>closed world.<br><em style="font-style:italic;color:rgba(61,214,232,.82)">You are part of what shapes it.</em></h1>
+        <h1 class="dxl">Your tank is a small,<br>closed world.<br><em style="font-style:italic;color:var(--th-accent)">You are part of what shapes it.</em></h1>
         <p class="hk">A calm place to read aquarium ecology, think through decisions, and understand what your tank actually needs — built for real life, not ideal conditions.</p>
         <div class="home-hero-actions">
           <a href="/reading" class="btn bf" data-page="reading" data-analytics-event="home_cta" data-pathway="home" data-cta="reading">Browse guides →</a>
@@ -432,7 +432,7 @@
         <p style="font-family:var(--serif);font-style:italic;font-size:var(--fs-md-lg);color:rgba(124,168,156,.65);line-height:1.95;margin-top:2.8rem">If you have ever cared imperfectly for a tank and still hoped the next week could feel lighter, this work was written with you in mind.</p>
         <div style="margin-top:2.4rem;padding:1.25rem 1.5rem;border:1px solid rgba(61,214,232,.12);background:var(--panel);border-radius:6px;max-width:520px">
           <p class="bt" style="margin:0;font-size:var(--fs-sm-md);line-height:1.8;color:var(--th-ink-4)">If this project has been useful, optional tips on Ko-fi help cover hosting and time for guides and tools. Nothing here is paywalled; support is entirely your choice.</p>
-          <p style="margin:.75rem 0 0"><a href="https://ko-fi.com/aquaticrhythm" class="sflink" data-kofi-open rel="noopener noreferrer" style="font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(61,214,232,.78);text-decoration:none;border-bottom:1px solid rgba(61,214,232,.2)">Support on Ko-fi →</a></p>
+          <p style="margin:.75rem 0 0"><a href="https://ko-fi.com/aquaticrhythm" class="sflink" data-kofi-open rel="noopener noreferrer" style="font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--th-accent);text-decoration:none;border-bottom:1px solid rgba(61,214,232,.2)">Support on Ko-fi →</a></p>
         </div>
       </div>
       <div class="sr d5" style="margin-top:4.5rem;padding-top:3rem;border-top:1px solid var(--th-line-2)">
@@ -1121,7 +1121,7 @@
     <div class="cap" style="max-width:760px">
       <div class="sr">
         <span class="ey">Labs &amp; Tools</span>
-        <h1 class="dlg" style="color:var(--th-ink)">Try it.<br><em style="font-style:italic;color:rgba(61,214,232,.78)">Before you commit.</em></h1>
+        <h1 class="dlg" style="color:var(--th-ink)">Try it.<br><em style="font-style:italic;color:var(--th-accent)">Before you commit.</em></h1>
         <p class="bt sr d1" style="max-width:540px;margin-top:1.4rem">Interactive simulators and planners. Make decisions on screen before you make them in the tank.</p>
       </div>
     </div>
@@ -1217,7 +1217,7 @@
     <div class="cap" style="max-width:760px">
       <div class="sr">
         <span class="ey">Keeper's Log</span>
-        <h1 class="dlg" style="color:var(--th-ink)">Your<br><em style="font-style:italic;color:rgba(61,214,232,.78)">aquariums</em></h1>
+        <h1 class="dlg" style="color:var(--th-ink)">Your<br><em style="font-style:italic;color:var(--th-accent)">aquariums</em></h1>
         <p class="bt sr d1" style="max-width:480px;margin-top:1rem;color:var(--th-ink-5)">A private log for every tank you keep — observe, reflect, and track your rhythm.</p>
       </div>
     </div>
@@ -1739,18 +1739,18 @@
 <!-- ── MODAL BACKDROP ── -->
 <div class="mt-backdrop" id="mt-backdrop" aria-hidden="true"></div>
 
-<script src="js/ecosystem.js?v=51" defer></script>
-<script src="js/fauna.js?v=51" defer></script>
-<script src="js/ui.js?v=51" defer></script>
+<script src="js/ecosystem.js?v=52" defer></script>
+<script src="js/fauna.js?v=52" defer></script>
+<script src="js/ui.js?v=52" defer></script>
 <!-- ui.js sub-modules — order matters: eco-toggle exposes window.__arApply{Fauna,Flora}
      which settings reads; journal is lazy-loaded on first journal navigation. -->
-<script src="js/ui-eco-toggle.js?v=51" defer></script>
-<script src="js/ui-reading-pathways.js?v=51" defer></script>
-<script src="js/ui-rhyssa-sheet.js?v=51" defer></script>
-<script src="js/ui-rhyssa-page.js?v=51" defer></script>
-<script src="js/ui-settings.js?v=51" defer></script>
-<script src="js/kofi-sheet.js?v=51" defer></script>
-<script src="js/rhyssa-fab-ext.js?v=51" defer></script>
+<script src="js/ui-eco-toggle.js?v=52" defer></script>
+<script src="js/ui-reading-pathways.js?v=52" defer></script>
+<script src="js/ui-rhyssa-sheet.js?v=52" defer></script>
+<script src="js/ui-rhyssa-page.js?v=52" defer></script>
+<script src="js/ui-settings.js?v=52" defer></script>
+<script src="js/kofi-sheet.js?v=52" defer></script>
+<script src="js/rhyssa-fab-ext.js?v=52" defer></script>
 <script>
 /* ── JOURNAL LAZY LOADER ── */
 (function () {
@@ -1759,9 +1759,9 @@
     window.__journalLoaded = true;
     // tank-data.js must load first — ui-journal.js reads window.AR_EQ from it
     var td = document.createElement('script');
-    td.src = '/js/tank-data.js?v=51';
+    td.src = '/js/tank-data.js?v=52';
     var s = document.createElement('script');
-    s.src = '/js/ui-journal.js?v=51';
+    s.src = '/js/ui-journal.js?v=52';
     document.head.appendChild(td);
     document.head.appendChild(s);
   }

@@ -59,8 +59,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/style.css?v=51">
-<link rel="stylesheet" href="/css/kofi-sheet.css?v=51">
+<link rel="stylesheet" href="/css/style.css?v=52">
+<link rel="stylesheet" href="/css/kofi-sheet.css?v=52">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet"></noscript>
 </head>
@@ -438,7 +438,7 @@
         <p style="font-family:var(--serif);font-style:italic;font-size:var(--fs-md-lg);color:rgba(124,168,156,.65);line-height:1.95;margin-top:2.8rem">もし、水槽を完璧とは言えない形で世話してきて、それでも来週は少し軽く感じられたらいいのにと願ったことがあるなら —— この仕事は、あなたのことを思って書かれている。</p>
         <div style="margin-top:2.4rem;padding:1.25rem 1.5rem;border:1px solid rgba(61,214,232,.12);background:var(--panel);border-radius:6px;max-width:520px">
           <p class="bt" style="margin:0;font-size:var(--fs-sm-md);line-height:1.8;color:var(--th-ink-4)">このプロジェクトが役に立ったなら、Ko-fiでの任意のチップが、ホスティング費用やガイド・ツール制作の時間を支えてくれます。ここにあるものに、有料の壁は一切ありません。サポートするかどうかは、完全にあなたの自由です。</p>
-          <p style="margin:.75rem 0 0"><a href="https://ko-fi.com/aquaticrhythm" class="sflink" data-kofi-open rel="noopener noreferrer" style="font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(61,214,232,.78);text-decoration:none;border-bottom:1px solid rgba(61,214,232,.2)">支援</a></p>
+          <p style="margin:.75rem 0 0"><a href="https://ko-fi.com/aquaticrhythm" class="sflink" data-kofi-open rel="noopener noreferrer" style="font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--th-accent);text-decoration:none;border-bottom:1px solid rgba(61,214,232,.2)">支援</a></p>
         </div>
       </div>
       <div class="sr d5" style="margin-top:4.5rem;padding-top:3rem;border-top:1px solid var(--th-line-2)">
@@ -1745,18 +1745,18 @@
 <!-- ── MODAL BACKDROP ── -->
 <div class="mt-backdrop" id="mt-backdrop" aria-hidden="true"></div>
 
-<script src="/js/ecosystem.js?v=51" defer></script>
-<script src="/js/fauna.js?v=51" defer></script>
-<script src="/js/ui.js?v=51" defer></script>
+<script src="/js/ecosystem.js?v=52" defer></script>
+<script src="/js/fauna.js?v=52" defer></script>
+<script src="/js/ui.js?v=52" defer></script>
 <!-- ui.js sub-modules — order matters: eco-toggle exposes window.__arApply{Fauna,Flora}
      which settings reads; journal is lazy-loaded on first journal navigation. -->
-<script src="/js/ui-eco-toggle.js?v=51" defer></script>
-<script src="/js/ui-reading-pathways.js?v=51" defer></script>
-<script src="/js/ui-rhyssa-sheet.js?v=51" defer></script>
-<script src="/js/ui-rhyssa-page.js?v=51" defer></script>
-<script src="/js/ui-settings.js?v=51" defer></script>
-<script src="/js/kofi-sheet.js?v=51" defer></script>
-<script src="/js/rhyssa-fab-ext.js?v=51" defer></script>
+<script src="/js/ui-eco-toggle.js?v=52" defer></script>
+<script src="/js/ui-reading-pathways.js?v=52" defer></script>
+<script src="/js/ui-rhyssa-sheet.js?v=52" defer></script>
+<script src="/js/ui-rhyssa-page.js?v=52" defer></script>
+<script src="/js/ui-settings.js?v=52" defer></script>
+<script src="/js/kofi-sheet.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
 <script>
 /* ── JOURNAL LAZY LOADER ── */
 (function () {
@@ -1765,9 +1765,9 @@
     window.__journalLoaded = true;
     // tank-data.js must load first — ui-journal.js reads window.AR_EQ from it
     var td = document.createElement('script');
-    td.src = '/js/tank-data.js?v=51';
+    td.src = '/js/tank-data.js?v=52';
     var s = document.createElement('script');
-    s.src = '/js/ui-journal.js?v=51';
+    s.src = '/js/ui-journal.js?v=52';
     document.head.appendChild(td);
     document.head.appendChild(s);
   }

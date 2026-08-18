@@ -282,6 +282,12 @@ function buildAraS(slug, lang, t) {
   h = replaceOnce(h, /(<span class="ara-art-hub-cta-eyebrow">)[^<]*(<\/span>)/, (_, a, b) => `${a}${t.hubCta.eyebrow}${b}`);
   h = replaceOnce(h, /(<span class="ara-art-hub-cta-body">)[^<]*(<\/span>)/, (_, a, b) => `${a}${t.hubCta.body}${b}`);
 
+  // Localize any inline cross-links to other articles that survived
+  // translation verbatim from the English source (module body/pq/hn text
+  // can reference e.g. /articles/tank-simulator) — same bug/fix as
+  // build-i18n.mjs's localizeArticleLinks (2026-08-18).
+  h = localizeArticleLinks(h, lang);
+
   return h;
 }
 
@@ -308,7 +314,33 @@ function buildAraHub(lang, t) {
     }
   );
 
+  h = localizeArticleLinks(h, lang);
+
   return h;
+}
+
+let readySlugsCache = {};
+function getReadySlugsForLang(lang) {
+  if (readySlugsCache[lang]) return readySlugsCache[lang];
+  const dir = path.join(TRANS_DIR, lang);
+  const ready = new Set();
+  if (fs.existsSync(dir)) {
+    for (const f of fs.readdirSync(dir)) {
+      if (!f.endsWith('.json')) continue;
+      try {
+        const t = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+        if (t._meta && t._meta.status === 'ready') ready.add(f.replace('.json', ''));
+      } catch { /* skip */ }
+    }
+  }
+  readySlugsCache[lang] = ready;
+  return ready;
+}
+
+function localizeArticleLinks(h, lang) {
+  const ready = getReadySlugsForLang(lang);
+  return h.replace(/href="\/articles\/([a-z0-9-]+)"/g, (m, slug) =>
+    ready.has(slug) ? `href="/${lang}/articles/${slug}"` : m);
 }
 
 // ── Main ─────────────────────────────────────────────────────────────────

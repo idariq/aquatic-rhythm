@@ -175,11 +175,36 @@ function buildLang(lang) {
   h = patchBody(h, t);
   h = patchBnav(h, lang);
   h = patchRhyssaSheet(h, lang);
+  h = localizeArticleLinks(h, lang);
 
   const outDir = path.join(ROOT, lang, 'articles');
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, `${SLUG}.html`), h);
   console.log(`Built ${lang}/articles/${SLUG}.html`);
+}
+
+let readySlugsCache = {};
+function getReadySlugsForLang(lang) {
+  if (readySlugsCache[lang]) return readySlugsCache[lang];
+  const dir = path.join(TRANS_DIR, lang);
+  const ready = new Set();
+  if (fs.existsSync(dir)) {
+    for (const f of fs.readdirSync(dir)) {
+      if (!f.endsWith('.json')) continue;
+      try {
+        const t = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+        if (t._meta && t._meta.status === 'ready') ready.add(f.replace('.json', ''));
+      } catch { /* skip */ }
+    }
+  }
+  readySlugsCache[lang] = ready;
+  return ready;
+}
+
+function localizeArticleLinks(h, lang) {
+  const ready = getReadySlugsForLang(lang);
+  return h.replace(/href="\/articles\/([a-z0-9-]+)"/g, (m, slug) =>
+    ready.has(slug) ? `href="/${lang}/articles/${slug}"` : m);
 }
 
 function patchEnglishHreflang() {

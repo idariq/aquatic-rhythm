@@ -93,16 +93,16 @@
     --th-accent-border:rgba(43,122,117,.3);
     --th-scrim:rgba(246,245,241,.86);
     --th-accent-ink:#fdfefb;
-    --th-water:linear-gradient(180deg,#eef4f0 0%,#e6f0ea 30%,#eef3f0 60%,#f6f5f1 100%);
+    --th-water:linear-gradient(180deg,#e6f2f4 0%,#dbedf1 30%,#e6f0f0 60%,#f2f6f5 100%);
     /* ── Ecosystem hero ambience (day) — warm sunlight through shallow
        water, replacing the night glow with gold/amber caustics that stay
        visible against the pale surface instead of vanishing into it. */
-    --th-eco-cl:radial-gradient(ellipse at 50% 0%,rgba(255,221,150,.42) 0%,rgba(255,200,110,.22) 38%,transparent 72%);
-    --th-eco-cl2:radial-gradient(ellipse at 40% 0%,rgba(255,232,175,.26) 0%,transparent 60%);
+    --th-eco-cl:radial-gradient(ellipse at 50% 0%,rgba(70,185,215,.42) 0%,rgba(50,165,200,.22) 38%,transparent 72%);
+    --th-eco-cl2:radial-gradient(ellipse at 40% 0%,rgba(85,190,215,.26) 0%,transparent 60%);
     --th-eco-sl:linear-gradient(to right,transparent,rgba(255,255,255,.85),transparent);
-    --th-eco-df:linear-gradient(to top,rgba(168,196,163,.38),transparent);
-    --th-eco-ray:linear-gradient(180deg,rgba(255,220,140,.26) 0%,rgba(255,200,110,.12) 50%,transparent 100%);
-    --th-eco-mote:rgba(255,214,140,.8);
+    --th-eco-df:linear-gradient(to top,rgba(55,140,150,.38),transparent);
+    --th-eco-ray:linear-gradient(180deg,rgba(70,185,215,.26) 0%,rgba(50,165,200,.12) 50%,transparent 100%);
+    --th-eco-mote:rgba(60,180,210,.8);
     --th-eco-spark:rgba(43,122,117,.42);
     --panel:rgba(255,255,255,.82);
     --panel-border:rgba(35,36,32,.1);
@@ -133,13 +133,13 @@
   --th-accent-border:rgba(43,122,117,.3);
   --th-scrim:rgba(246,245,241,.86);
   --th-accent-ink:#fdfefb;
-  --th-water:linear-gradient(180deg,#eef4f0 0%,#e6f0ea 30%,#eef3f0 60%,#f6f5f1 100%);
-  --th-eco-cl:radial-gradient(ellipse at 50% 0%,rgba(255,221,150,.42) 0%,rgba(255,200,110,.22) 38%,transparent 72%);
-  --th-eco-cl2:radial-gradient(ellipse at 40% 0%,rgba(255,232,175,.26) 0%,transparent 60%);
+  --th-water:linear-gradient(180deg,#e6f2f4 0%,#dbedf1 30%,#e6f0f0 60%,#f2f6f5 100%);
+  --th-eco-cl:radial-gradient(ellipse at 50% 0%,rgba(70,185,215,.42) 0%,rgba(50,165,200,.22) 38%,transparent 72%);
+  --th-eco-cl2:radial-gradient(ellipse at 40% 0%,rgba(85,190,215,.26) 0%,transparent 60%);
   --th-eco-sl:linear-gradient(to right,transparent,rgba(255,255,255,.85),transparent);
-  --th-eco-df:linear-gradient(to top,rgba(168,196,163,.38),transparent);
-  --th-eco-ray:linear-gradient(180deg,rgba(255,220,140,.26) 0%,rgba(255,200,110,.12) 50%,transparent 100%);
-  --th-eco-mote:rgba(255,214,140,.8);
+  --th-eco-df:linear-gradient(to top,rgba(55,140,150,.38),transparent);
+  --th-eco-ray:linear-gradient(180deg,rgba(70,185,215,.26) 0%,rgba(50,165,200,.12) 50%,transparent 100%);
+  --th-eco-mote:rgba(60,180,210,.8);
   --th-eco-spark:rgba(43,122,117,.42);
   --panel:rgba(255,255,255,.82);
   --panel-border:rgba(35,36,32,.1);

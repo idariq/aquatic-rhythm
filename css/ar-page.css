@@ -66,7 +66,7 @@
     --th-accent-border:rgba(43,122,117,.3);
     --th-scrim:rgba(246,245,241,.86);
     --th-accent-ink:#fdfefb;
-    --th-water:linear-gradient(180deg,#eef4f0 0%,#e6f0ea 30%,#eef3f0 60%,#f6f5f1 100%);
+    --th-water:linear-gradient(180deg,#e6f2f4 0%,#dbedf1 30%,#e6f0f0 60%,#f2f6f5 100%);
   }
 }
 :root[data-theme="light"]{
@@ -85,7 +85,7 @@
   --th-accent-border:rgba(43,122,117,.3);
   --th-scrim:rgba(246,245,241,.86);
   --th-accent-ink:#fdfefb;
-  --th-water:linear-gradient(180deg,#eef4f0 0%,#e6f0ea 30%,#eef3f0 60%,#f6f5f1 100%);
+  --th-water:linear-gradient(180deg,#e6f2f4 0%,#dbedf1 30%,#e6f0f0 60%,#f2f6f5 100%);
 }
 
 /* ── NAV (top) ── */

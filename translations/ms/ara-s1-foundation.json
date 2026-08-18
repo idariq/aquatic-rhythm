@@ -1,29 +1,83 @@
 {
   "_meta": {
+    "status": "ready",
     "slug": "ara-s1-foundation",
-    "lang": "ms",
-    "sourceFile": "articles/ara-s1-foundation.html"
+    "lang": "ms"
   },
   "head": {
-    "title": "Foundation — ARA Framework · Aquatic Rhythm",
-    "description": "What ARA is, who it is for, and what it assumes about aquariums and keepers.",
-    "ogTitle": "Foundation — ARA Framework · Aquatic Rhythm",
-    "ogDescription": "What ARA is, who it is for, and what it assumes about aquariums and keepers."
+    "title": "Asas — Framework ARA · Aquatic Rhythm",
+    "description": "Apa itu ARA, untuk siapa ia, dan apa yang ia andaikan tentang akuarium dan penjaga.",
+    "ogTitle": "Asas — Framework ARA · Aquatic Rhythm",
+    "ogDescription": "Apa itu ARA, untuk siapa ia, dan apa yang ia andaikan tentang akuarium dan penjaga.",
+    "twitterTitle": "Asas — Framework ARA · Aquatic Rhythm",
+    "twitterDescription": "Apa itu ARA, untuk siapa ia, dan apa yang ia andaikan tentang akuarium dan penjaga.",
+    "ldHeadline": "Asas — Framework ARA",
+    "ldDescription": "Apa itu ARA, untuk siapa ia, dan apa yang ia andaikan tentang akuarium dan penjaga."
   },
-  "intro": {
-    "eyebrow": "",
-    "titleHtml": "",
-    "subtitle": "",
-    "texts": [],
-    "metaModules": "",
-    "metaTime": "",
-    "metaLevel": "",
-    "cta": "Start reading"
+  "header": {
+    "eyebrow": "01 / 06 · Framework ARA",
+    "titleHtml": "Asas",
+    "desc": "Apa itu ARA, untuk siapa ia, dan apa yang ia andaikan tentang akuarium dan penjaga."
   },
-  "modules": [],
-  "relatedLinks": [],
-  "footer": {
-    "allArticles": "← All articles",
-    "araLink": "Aquatic Rhythm Alignment"
+  "modules": [
+    {
+      "pos": "1 / 2",
+      "tag": "Pengenalan",
+      "titleHtml": "Apa yang <em>ARA tanyakan</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Kebanyakan nasihat akuarium bermula dengan satu soalan: apa yang patut saya tambah, ubah, atau baiki? Satu lonjakan muncul, seekor ikan kelihatan tidak sihat, masalah alga kembali — dan bermulalah pencarian untuk produk yang betul, dos yang betul, campur tangan yang betul. Inilah model yang dominan, dan ia tidak salah. Tetapi ia bermula terlalu lewat, dan ia bermula di tempat yang salah.",
+            "Aquatic Rhythm Alignment bermula lebih awal, dan dengan soalan yang berbeza: <strong>apa yang tidak lagi bergerak dalam ritma?</strong> Sebelum bertanya apa yang perlu dilakukan, ARA bertanya apa yang sistem itu cuba beritahu anda — dan sama ada detik yang anda berada di dalamnya memang menuntut sebarang tindakan pun.",
+            "Ini bukan perbezaan semantik semata-mata. Ia mengubah apa yang anda perhatikan, apa yang anda anggap sebagai isyarat, dan apa yang anda biarkan sahaja. Penjaga yang bermula daripada \"apa yang patut saya baiki?\" akan bertindak atas hampir setiap isyarat. Penjaga yang bermula daripada \"apa yang tidak lagi berada dalam ritma?\" akan lebih banyak membaca, kurang bertindak, dan bertindak dengan lebih baik apabila mereka benar-benar bertindak.",
+            "ARA menyediakan tiga kanta untuk pembacaan ini. <strong>Lima ritma ekologi</strong> — Water, Biological, Environmental, Livestock, dan Keeper — ialah domain tempat keselarasan atau ketidakselarasan sentiasa menzahirkan dirinya. <strong>Tiga fasa sistem</strong> — Early, Developing, Mature — menentukan apa yang wajar pada sesuatu ketika; tindakan yang betul dalam satu fasa boleh menjadi tindakan yang salah dalam fasa yang lain. <strong>Lima prinsip</strong> — Masa sebelum Teknik (Timing before Technique), Kapasiti sebelum Ambisi (Capacity before Ambition), Ritma sebelum Intensiti (Rhythm before Intensity), Pemerhatian sebelum Pembetulan (Observation before Correction), dan Punca sebelum Manifestasi (Origin before Expression) — ialah peraturan penunjuk arah yang memastikan tindakan yang selaras kekal selaras.",
+            "Di sebalik semuanya ada satu dakwaan berbentuk struktur: penjaga bukan sesuatu yang berada di luar ekosistem. Apabila hidupan akuatik diletakkan dalam tank tertutup, mereka terputus daripada ritma semula jadi yang telah menyara kehidupan akuatik selama berjuta-juta tahun — kekonsistenan kitaran bermusim, pembaharuan air, dan dinamik komuniti biologi yang alam kekalkan tanpa usaha atau niat. Penjaga menjadi pengganti kepada semua itu. Ritma perhatian, masa, kekonsistenan, dan infrastruktur teknikal seorang penjaga adalah sebahagian daripada sistem, sama seperti penapisan atau kepadatan stok. ARA direka dengan dakwaan itu di tengah-tengahnya — dan dengan pengakuan jujur bahawa manusia, tidak seperti alam, tidak konsisten secara semula jadi. Jurang itulah yang kerangka ini wujud untuk membantu penjaga mengharunginya."
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "\"Sebelum bertanya apa yang perlu dilakukan, ARA bertanya apa yang tidak lagi bergerak dalam ritma — dan sama ada sistem itu, jika diberi masa dan ketenangan, sebenarnya sudah tahu jalan pulangnya.\""
+        }
+      ]
+    },
+    {
+      "pos": "2 / 2",
+      "tag": "Skop &amp; Andaian Teras",
+      "titleHtml": "Apa yang ARA <em>maksudkan dengan akuarium</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "ARA terpakai pada mikro-ekosistem akuatik air tawar dan air payau yang tertutup atau separa tertutup — lazimnya tank antara 20 hingga 500 liter, yang diuruskan oleh seorang penjaga atau sebuah isi rumah kecil. Inilah skop tempat kerangka ini dibangunkan dan untuknya ia direka. Sistem marin dan terumbu berkongsi ritma asas yang sama — Biological, Water, Environmental, Livestock, dan Keeper — tetapi manifestasi khususnya berbeza dengan ketara: biologi terumbu melibatkan komuniti mikrob pada live rock, isyarat kesihatan karang, dinamik protein skimming, dan kitaran unsur surih yang tidak diliputi oleh contoh-contoh berteraskan air tawar dalam kerangka ini. Penjaga terumbu akan mendapati kanta kerangka ini berguna, tetapi wajar membaca contoh-contoh khususnya sambil mengingati perbezaan tersebut. Kerangka ini tidak mendakwa ia meluas secara semula jadi kepada akuakultur berskala besar, akuaria awam, atau sistem kolam luar, yang mana ritma penjaga, kepadatan stok, dan dinamik biologinya berbeza dengan ketara.",
+            "Dalam skop itu, ARA membuat empat andaian asas. Pertama, bahawa akuarium ialah sistem hidup — bukan objek hiasan, bukan persekitaran statik, tetapi sebuah komuniti organisma (ikan, invertebrat, tumbuhan, mikrob, dan penjaga) yang berinteraksi secara berterusan. Kedua, bahawa penjaga ialah sebahagian daripada sistem, bukan berada di luarnya — ritma, kekonsistenan, perhatian, dan kapasiti penjaga secara langsung membentuk apa yang mampu ditampung oleh air itu. Ketiga, bahawa keselarasan — keadaan apabila ritma-ritma sistem berada dalam hubungan yang produktif — lebih baik daripada kawalan, dan bahawa kebanyakan masalah akuarium ialah manifestasi ketidakselarasan, bukan kegagalan teknikal. Keempat, bahawa ARA berpihak kepada kesinambungan ekologi: penyediaan yang konsisten dan tidak terputus terhadap apa yang diperlukan oleh sistem hidup itulah arah yang sentiasa dituju oleh akuarium, dan kerja penjaga — melalui apa jua cara yang benar-benar ada padanya — ialah menyediakan kesinambungan itu sejujur yang mungkin. Andaian keempat inilah yang memberi kerangka ini arah tujunya.",
+            "ARA tidak mengandaikan bahawa semua penjaga patut menyelenggara jenis tank yang sama, mengikut jadual yang sama, atau memegang nilai yang sama tentang tujuan sebuah akuarium. Kerangka ini direka untuk berfungsi merentas pelbagai gaya — planted tank high-tech, tank spesies tunggal, tank komuniti low-tech, setup pembiakan, tank udang — kerana ia beroperasi pada tahap ritma ekologi dan fasa sistem, bukan pada tahap cadangan produk atau teknik tertentu.",
+            "Satu nota tentang skop biologi: komuniti hidup dalam sebuah akuarium menjangkau jauh melebihi kitaran nitrogen dan hidupan yang kelihatan. Substrat, hardscape, akar tumbuhan, dan media filter menjadi tuan rumah kepada komuniti mikrob — bakteria, kulat, protista — yang terlibat dalam pemprosesan nutrien, penindasan penyakit, dan kestabilan sistem secara keseluruhan. ARA merujuk kekayaan komuniti yang lebih luas ini sebagai <strong>kedalaman mikrobiom</strong>. Ia salah satu pembeza utama antara tank yang benar-benar matang dengan tank yang sekadar stabil dari segi kimia."
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "\"ARA bermula dengan pemerhatian, bukan preskripsi. Kerangka ini tidak memberitahu anda rupa yang sepatutnya ada pada tank anda — ia memberi anda cara untuk membaca apa yang tank itu sebenarnya sedang lakukan.\""
+        },
+        {
+          "type": "hn",
+          "label": "ARA · Tentang Tanggungjawab Penjaga",
+          "paragraphs": [
+            "Kapasiti penjaga — ukuran jujur tentang apa yang seorang penjaga mampu sediakan secara boleh diharap, termasuk masa, perhatian, kekonsistenan, dan infrastruktur teknikal — adalah sebahagian daripada sistem, sama seperti penapisan atau kepadatan stok. Ini termasuk kapasiti yang diperluas oleh automasi dan reka bentuk sistem yang bijak: penjaga yang benar-benar memahami dan menyelenggara infrastruktur teknikalnya mempunyai kapasiti sebenar yang tidak akan terkira jika penilaian dibuat berdasarkan jadualnya semata-mata. Menilai kapasiti secara berlebihan, atau menganggapnya sedia ada tanpa membinanya dengan jujur, ialah salah satu punca paling biasa bagi masalah akuarium yang berpanjangan."
+          ]
+        }
+      ]
+    }
+  ],
+  "secnav": [
+    {
+      "href": "/articles/ara-s2-five-rhythms",
+      "text": "Lima Ritma →"
+    }
+  ],
+  "backLinkText": "← Kerangka ARA",
+  "hubCta": {
+    "eyebrow": "Selesai buat masa ini?",
+    "body": "Kembali ke gambaran keseluruhan Kerangka ARA ↗"
   }
 }

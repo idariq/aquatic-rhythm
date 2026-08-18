@@ -2,11 +2,12 @@
   "_meta": {
     "slug": "reading-the-five-rhythms",
     "lang": "ms",
-    "sourceFile": "articles/reading-the-five-rhythms.html"
+    "sourceFile": "articles/reading-the-five-rhythms.html",
+    "status": "ready"
   },
   "head": {
-    "title": "Reading the Five Rhythms — Aquatic Rhythm",
-    "description": "The five ecological rhythms of ARA — Water, Biological, Environmental, Livestock, and Keeper — are now part of the full ARA framework reference.",
+    "title": "Membaca Lima Ritma — Aquatic Rhythm",
+    "description": "Lima ritma ekologi ARA kini sebahagian drpd rujukan penuh kerangka ARA.",
     "ogTitle": "",
     "ogDescription": ""
   },
@@ -18,12 +19,12 @@
     "metaModules": "",
     "metaTime": "",
     "metaLevel": "",
-    "cta": "Start reading"
+    "cta": "Mula membaca"
   },
   "modules": [],
   "relatedLinks": [],
   "footer": {
-    "allArticles": "← All articles",
+    "allArticles": "← Semua artikel",
     "araLink": "Aquatic Rhythm Alignment"
   }
 }

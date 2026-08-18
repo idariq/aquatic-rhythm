@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "slug": "reading-the-five-rhythms",
+    "lang": "id",
+    "sourceFile": "articles/reading-the-five-rhythms.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Membaca Lima Ritme — Aquatic Rhythm",
+    "description": "Lima ritme ekologis ARA kini menjadi bagian dari referensi lengkap kerangka ARA.",
+    "ogTitle": "",
+    "ogDescription": ""
+  },
+  "intro": {
+    "eyebrow": "",
+    "titleHtml": "",
+    "subtitle": "",
+    "texts": [],
+    "metaModules": "",
+    "metaTime": "",
+    "metaLevel": "",
+    "cta": "Mulai membaca"
+  },
+  "modules": [],
+  "relatedLinks": [],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

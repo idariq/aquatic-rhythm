@@ -1,29 +1,312 @@
 {
   "_meta": {
+    "status": "ready",
     "slug": "ara-s2-five-rhythms",
-    "lang": "ms",
-    "sourceFile": "articles/ara-s2-five-rhythms.html"
+    "lang": "ms"
   },
   "head": {
-    "title": "Five Rhythms — ARA Framework · Aquatic Rhythm",
-    "description": "Water, Biological, Environmental, Livestock, and Keeper — the five domains every tank is always running.",
-    "ogTitle": "Five Rhythms — ARA Framework · Aquatic Rhythm",
-    "ogDescription": "Water, Biological, Environmental, Livestock, and Keeper — the five domains every tank is always running."
+    "title": "Lima Ritma — Framework ARA · Aquatic Rhythm",
+    "description": "Water, Biological, Environmental, Livestock, dan Keeper — lima domain yang sentiasa berjalan dalam setiap tank.",
+    "ogTitle": "Lima Ritma — Framework ARA · Aquatic Rhythm",
+    "ogDescription": "Water, Biological, Environmental, Livestock, dan Keeper — lima domain yang sentiasa berjalan dalam setiap tank.",
+    "twitterTitle": "Lima Ritma — Framework ARA · Aquatic Rhythm",
+    "twitterDescription": "Water, Biological, Environmental, Livestock, dan Keeper — lima domain yang sentiasa berjalan dalam setiap tank.",
+    "ldHeadline": "Lima Ritma — Framework ARA",
+    "ldDescription": "Water, Biological, Environmental, Livestock, dan Keeper — lima domain yang sentiasa berjalan dalam setiap tank."
   },
-  "intro": {
-    "eyebrow": "",
-    "titleHtml": "",
-    "subtitle": "",
-    "texts": [],
-    "metaModules": "",
-    "metaTime": "",
-    "metaLevel": "",
-    "cta": "Start reading"
+  "header": {
+    "eyebrow": "02 / 06 · Framework ARA",
+    "titleHtml": "Lima Ritma",
+    "desc": "Water, Biological, Environmental, Livestock, dan Keeper — lima domain yang sentiasa berjalan dalam setiap tank."
   },
-  "modules": [],
-  "relatedLinks": [],
-  "footer": {
-    "allArticles": "← All articles",
-    "araLink": "Aquatic Rhythm Alignment"
+  "modules": [
+    {
+      "pos": "1 / 6",
+      "tag": "Water Rhythm",
+      "titleHtml": "Water Rhythm.<br><em>Medium tempat segala yang lain terbentuk.</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Air bukan latar belakang sebuah tank. Ia medium yang melaluinya segala yang lain wujud — ikan bernafas di dalamnya, bakteria hidup di dalamnya, tumbuhan mengambil daripadanya, sisa larut ke dalamnya. Setiap ritma yang lain bergantung pada air yang cukup stabil untuk menyokongnya.",
+            "<strong>Water Rhythm</strong> dalam ARA bukan sekadar merujuk parameter kimia, tetapi hubungan berterusan antara komposisi mineral air, kekerapan pembaharuannya, dan beban biologi yang ditanggungnya. Water Rhythm sesebuah tank menjadi tidak selaras apabila tiga perkara itu tidak lagi seimbang antara satu sama lain — dan itu lebih kerap berlaku secara perlahan berbanding secara mengejut.",
+            "Kebanyakan masalah air dalam tank yang sudah mantap bukan peristiwa dramatik. Ia ialah drift. Nitrate menaik sedikit demi sedikit selama berminggu-minggu. Kekerasan mineral beralih apabila air tersejat lalu ditambah semula tanpa penukaran penuh. pH bergerak sedikit apabila beban biologi berubah. Membaca Water Rhythm bermakna menjejaki arah aliran, bukan detik tunggal. Satu bacaan parameter tunggal hampir tidak memberitahu anda apa-apa. Bacaan parameter yang diambil dalam keadaan yang sama pada waktu yang sama setiap minggu, lalu dibandingkan sepanjang sebulan, memberitahu anda sama ada air itu stabil, sedang drift, atau sedang pulih."
+          ]
+        },
+        {
+          "type": "rhythm-signals",
+          "items": [
+            {
+              "label": "Isyarat 01",
+              "text": "Ammonia atau nitrite muncul semula dalam tank yang sebelum ini sudah cycle — gangguan Biological Rhythm yang kini dicerminkan oleh air"
+            },
+            {
+              "label": "Isyarat 02",
+              "text": "Nitrate naik lebih cepat daripada jangkaan antara water change — biojisim atau beban pemakanan melebihi kadar pembaharuan"
+            },
+            {
+              "label": "Isyarat 03",
+              "text": "pH menurun secara beransur-ansur — pengumpulan karbon dioksida atau kehilangan kapasiti penampan dari masa ke masa"
+            },
+            {
+              "label": "Isyarat 04",
+              "text": "Ikan bernafas berhampiran permukaan walaupun tiada lonjakan — ketidakselarasan oksigen terlarut, selalunya berkaitan dengan suhu atau aliran"
+            },
+            {
+              "label": "Isyarat 05",
+              "text": "Air yang kelihatan jernih tetapi menghasilkan ikan yang lesu atau kurang bermaya — tekanan kimia tahap rendah yang kronik tanpa satu punca dramatik"
+            }
+          ]
+        },
+        {
+          "type": "hn",
+          "label": "ARA — Water Rhythm",
+          "paragraphs": [
+            "ARA tidak bertanya \"adakah airnya baik?\" Ia bertanya \"adakah Water Rhythm ini koheren?\" — maksudnya: adakah kadar pembaharuan sepadan dengan beban biologi, dan adakah parameternya cukup stabil dari minggu ke minggu sehingga ikan tidak sentiasa terpaksa menyesuaikan diri dengan sasaran yang bergerak?"
+          ]
+        }
+      ]
+    },
+    {
+      "pos": "2 / 6",
+      "tag": "Biological Rhythm",
+      "titleHtml": "Biological Rhythm.<br><em>Tank yang tidak dapat anda lihat itulah yang melakukan kerjanya.</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Setiap akuarium membawa satu populasi bakteria yang jarang difikirkan secara langsung oleh kebanyakan penjaga. Koloni ini — terutamanya <em>Nitrosomonas</em> dan <em>Nitrospira</em>, walaupun banyak lagi yang terlibat — hidup dalam media filter, pada substrat, pada daun tumbuhan, dan pada setiap permukaan lain yang bersentuhan dengan air. Mereka memproses ammonia menjadi nitrite, dan nitrite menjadi nitrate, secara berterusan.",
+            "Ini bukan sesuatu yang berlaku sekali sahaja ketika sebuah tank \"cycle\". Ia proses biologi yang berterusan — satu ritma yang sedang berjalan — yang boleh dikuatkan, diganggu, dan dipulihkan semula.",
+            "<strong>Biological Rhythm</strong> terganggu oleh apa-apa yang merosakkan atau menyingkirkan koloni bakteria tanpa memberi peluang kepada mereka untuk pulih terlebih dahulu. Punca yang paling biasa: mencuci media filter dengan air paip (klorin membunuh koloni), menggantikan media filter sepenuhnya, menggunakan antibiotik atau ubat lain, perubahan suhu yang besar, atau mengeluarkan substrat dalam jumlah besar sekali gus.",
+            "<strong>Biofilm</strong> — lapisan nipis kecoklatan-kelabu yang terbentuk pada hardscape, substrat, dan kaca dalam tank yang sihat — ialah petunjuk positif bagi komuniti mikrob yang berfungsi, bukan tanda kecuaian. Apabila biofilm hilang secara tiba-tiba daripada tank yang sebelum ini sihat, selalunya itulah tanda pertama yang kelihatan bagi gangguan biologi. <strong>Biologi substrat</strong> berfungsi dengan cara yang serupa: aktiviti mikrob dalam lapisan pasir, kerikil, atau tanah menyumbang kepada pemprosesan biologi dengan cara yang tidak diukur oleh mana-mana ujian rutin. Kedalaman biologi ini terbina selama berbulan-bulan dan merupakan salah satu kualiti yang membezakan tank Mature Phase yang tulen."
+          ]
+        },
+        {
+          "type": "rhythm-signals",
+          "items": [
+            {
+              "label": "Isyarat 01",
+              "text": "Lonjakan ammonia atau nitrite dalam tank yang sebelum ini stabil — gangguan koloni, bukan masalah tank baru"
+            },
+            {
+              "label": "Isyarat 02",
+              "text": "Kekeruhan muncul selepas pembersihan filter atau penggantian media — bacterial bloom yang menandakan gangguan"
+            },
+            {
+              "label": "Isyarat 03",
+              "text": "Penyakit berulang walaupun sudah dirawat — tekanan kualiti air yang mendasarinya, selalunya berkait dengan kapasiti biologi yang tidak mencukupi"
+            },
+            {
+              "label": "Isyarat 04",
+              "text": "Bau kuat daripada filter atau tank — keadaan anaerobik terbentuk dalam media tersumbat atau kawasan mati"
+            },
+            {
+              "label": "Isyarat 05",
+              "text": "Bacaan yang tidak menepati jangkaan selepas penyelenggaraan rutin — kapasiti biologi berubah oleh penyelenggaraan itu sendiri"
+            }
+          ]
+        },
+        {
+          "type": "hn",
+          "label": "ARA — Biological Rhythm",
+          "paragraphs": [
+            "ARA membingkai gangguan biologi sebagai satu peristiwa ritma, bukan satu kegagalan. Biologi itu tidak perlukan bantuan. Ia perlukan ruang."
+          ]
+        }
+      ]
+    },
+    {
+      "pos": "3 / 6",
+      "tag": "Environmental Rhythm",
+      "titleHtml": "Environmental Rhythm.<br><em>Ketidakselarasan kronik selalunya kelihatan seperti tiada apa-apa — sehinggalah ia kelihatan seperti segala-galanya.</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "<strong>Environmental Rhythm</strong> merangkumi kitaran cahaya, kestabilan suhu, dan aliran air — tetapi juga struktur fizikal tank itu sendiri: wilayah, geometri hardscape, dan kawasan yang dicapai oleh peredaran air berbanding kawasan yang tidak dicapainya.",
+            "<strong>Kitaran cahaya</strong> — tank yang berjalan pada kitaran dua belas jam yang konsisten beroperasi secara berbeza daripada tank yang dihidup dan dimatikan secara tidak menentu. Ikan yang berevolusi dengan fotoperiod yang konsisten memerlukan ritma itu untuk mengatur tidur, corak pemakanan, dan tingkah laku pembiakan. Timer ialah salah satu alat dengan pulangan tertinggi berbanding kosnya dalam hobi ini.",
+            "<strong>Wilayah dan geometri sosial</strong> — susunan fizikal hardscape, tumbuhan, dan ruang terbuka — menentukan sama ada ikan dapat membentuk kawasan tetap yang stabil dan mengelak tekanan wilayah yang kronik. Tank yang tidak menyediakan ruang berstruktur untuk dituntut oleh ikan dominan akan menghasilkan tekanan berpanjangan pada spesies yang lebih lemah, walaupun setiap parameter lain kelihatan normal.",
+            "<strong>Kawasan aliran mati</strong> — kawasan dengan peredaran air yang tidak mencukupi — mewujudkan ruang tempat sisa organik terkumpul, paras oksigen menurun, dan masalah bakteria setempat terbentuk. Ia punca biasa bagi masalah bakteria setempat yang muncul dalam tingkah laku hidupan sebelum muncul dalam ujian air."
+          ]
+        },
+        {
+          "type": "rhythm-signals",
+          "items": [
+            {
+              "label": "Isyarat 01",
+              "text": "Bloom alga yang kembali walaupun sudah dikawal — selalunya isu kitaran cahaya, bukan isu nutrien"
+            },
+            {
+              "label": "Isyarat 02",
+              "text": "Ikan yang kelihatan sihat tetapi tidak pernah benar-benar subur — kemungkinan suhu, cahaya, atau aliran tidak sepadan dengan keperluan spesies"
+            },
+            {
+              "label": "Isyarat 03",
+              "text": "Sembunyi atau tingkah laku luar biasa pada waktu tertentu setiap hari — peralihan kitaran cahaya atau suhu pada jam tertentu"
+            },
+            {
+              "label": "Isyarat 04",
+              "text": "Sukar pulih daripada penyakit — fungsi imun yang terjejas akibat ketidakselarasan persekitaran yang kronik"
+            },
+            {
+              "label": "Isyarat 05",
+              "text": "Tumbuhan mati atau enggan tumbuh walaupun nutrien mencukupi — ketidakselarasan spektrum, tempoh, atau keamatan cahaya"
+            }
+          ]
+        },
+        {
+          "type": "hn",
+          "label": "ARA — Environmental Rhythm",
+          "paragraphs": [
+            "Apabila Environmental Rhythm berada dalam keselarasan yang baik, tank itu sekadar berjalan dengan lebih lancar. Apabila ia tidak selaras, tank yang sama kelihatan rapuh, mudah diserang penyakit, dan sukar distabilkan — walaupun parameter airnya kelihatan boleh diterima."
+          ]
+        }
+      ]
+    },
+    {
+      "pos": "4 / 6",
+      "tag": "Livestock Rhythm",
+      "titleHtml": "Livestock Rhythm.<br><em>Instrumen paling sensitif dalam tank anda bukan test kit anda.</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Ikan bertindak balas terhadap persekitaran mereka secara berterusan, dalam masa nyata, pada resolusi yang tidak dapat ditandingi oleh mana-mana instrumen. <strong>Livestock Rhythm</strong> ialah corak berterusan tingkah laku ikan yang terhasil apabila sistem berada dalam keselarasan — dan yang beralih apabila ia tidak lagi selaras. Tingkah laku hadir lebih awal daripada nombor, dan lebih kaya.",
+            "Membaca Livestock Rhythm menuntut pengetahuan tentang apa yang normal bagi setiap spesies dan bagi setiap ekor ikan. Isyaratnya ialah perubahan daripada baseline — bukan tingkah laku yang diukur berbanding satu piawai umum.",
+            "<strong>Pengumpulan tekanan</strong>: ikan yang mengalami beberapa tekanan bawah-ambang serentak — nitrate yang sedikit tinggi, rakan tank yang agak agresif, wilayah yang marginal, suhu di pinggir julat — mungkin tidak menunjukkan sebarang simptom tunggal yang kelihatan sedangkan fungsi imun dan daya tahan mereka sedang susut secara berterusan. <strong>Petunjuk praklinikal</strong> (preclinical indicators) ialah perubahan tingkah laku yang halus dan muncul sebelum simptom klinikal: kurang bersemangat ketika makan, penerokaan yang sedikit kurang aktif, perubahan warna yang samar, peningkatan masa yang dihabiskan berhampiran permukaan atau di sudut. Membaca petunjuk praklinikal sebelum ia menjadi simptom klinikal ialah salah satu kemahiran paling bernilai yang boleh dibangunkan oleh seorang penjaga."
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "Seekor ikan bukan hiasan yang kadangkala bergerak. Ia satu bacaan berterusan terhadap persekitarannya sendiri — melaporkan apa yang telah dilakukan oleh air itu, sepanjang hari, setiap hari, pada resolusi yang tidak mampu dicapai oleh instrumen anda."
+        },
+        {
+          "type": "rhythm-signals",
+          "items": [
+            {
+              "label": "Isyarat 01",
+              "text": "Tindak balas makan berkurangan — selalunya tanda pertama tekanan kualiti air, malah sebelum test kit menunjukkan perubahan"
+            },
+            {
+              "label": "Isyarat 02",
+              "text": "Kedudukan luar biasa dalam lajur air — ikan mencari permukaan (oksigen rendah) atau substrat (suhu, tekanan)"
+            },
+            {
+              "label": "Isyarat 03",
+              "text": "Dinamik sosial berubah — ikan berkawan memecah formasi, ikan berwilayah menjadi pasif"
+            },
+            {
+              "label": "Isyarat 04",
+              "text": "Perubahan warna — pudar atau menggelap boleh menandakan tekanan, penyakit, atau tekanan sosial daripada rakan tank"
+            },
+            {
+              "label": "Isyarat 05",
+              "text": "Pergerakan insang yang laju ketika rehat — kemungkinan ammonia, oksigen, atau jangkitan pernafasan, malah sebelum simptom lain muncul"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pos": "5 / 6",
+      "tag": "Keeper Rhythm",
+      "titleHtml": "Keeper Rhythm.<br><em>Jurang kekonsistenan.</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Penjaga bukan berada di luar ekosistem. Setiap tindakan yang anda ambil — dan setiap jurang antara tindakan — ialah sebahagian daripada apa yang perlu disesuaikan oleh sistem. <strong>Keeper Rhythm</strong> ialah ritma ekologi kelima dalam ARA — dan ritma yang paling mungkin tidak kelihatan, kerana ia ritma yang paling sukar diperhatikan oleh penjaga dari luar dirinya sendiri.",
+            "Ritma penjaga berbeza-beza dalam amalan. Sesetengah penjaga melakukan tindakan perhatian yang pendek dan kerap — pemerhatian ringkas sebelum memberi makan, water change mengikut jadual mingguan yang boleh diharap, penyelenggaraan yang dipecahkan sepanjang minggu dalam bahagian kecil. Sesetengah penjaga pula melakukan sesi yang lebih panjang tetapi kurang kerap, dengan jurang yang lama antara satu sesi dengan sesi berikutnya. Sesetengah yang lain mengekalkan penglibatan yang konsisten tetapi sederhana, jarang melebihi dua puluh minit perhatian yang disengajakan pada setiap kali. ARA mengiktiraf kesemua ini sebagai corak penjaga yang sebenar — tetapi ia tidak menganggapnya setara dari segi ekologi.",
+            "Sistem ekologi memerlukan input yang konsisten. Kitaran nitrogen memproses sisa secara berterusan. Ikan mengalami persekitaran mereka dua puluh empat jam sehari. Komuniti mikrob bertindak balas terhadap input yang tiba secara boleh diharap pada ritma yang hampir dengan ritma yang telah mereka sesuaikan. Penjaga yang memberikan penjagaan kecil dan kerap — water change sederhana setiap minggu, pemberian makan yang konsisten, pemerhatian ringkas secara tetap — sedang bekerja seiring dengan realiti biologi ini. Penjaga yang penglibatannya bersifat episodik — usaha tinggi diikuti ketiadaan yang panjang — sedang bekerja menentangnya. Sistem itu bukan sahaja perlu menyerap jurang tersebut, tetapi juga kejutan campur tangan intensif yang bersifat pampasan di hujungnya. <strong>Penjagaan yang berperingkat dan konsisten ialah ritma yang paling mampu diterima oleh sistem hidup.</strong> ARA menamakan ini sebagai satu arah, bukan satu penghakiman. Penjaga yang kini terlibat secara episodik bukan gagal sebagai seorang manusia — mereka membawa satu kekangan yang secara jujur membentuk jenis setup yang boleh berhasil untuk mereka, dan ke arah mana amalan mereka mungkin bergerak dari masa ke masa.",
+            "Satu nota tentang <strong>hakisan kapasiti</strong> (capacity creep): kapasiti penjaga boleh berubah secara beransur-ansur tanpa sebarang keputusan yang disedari. Hakisan perlahan pada ritual penjagaan — water change yang sedikit lewat, masa pemerhatian yang lebih singkat, memberi makan dari muka pintu dan bukan di hadapan kaca — itulah hakisan kapasiti yang sedang berlaku. Kesannya pada sistem adalah nyata, walaupun setiap perubahan kecil itu kelihatan remeh."
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "Soalannya bukan berapa kerap anda patut buat water change. Ia tentang ritma apa yang mampu anda kekalkan dengan jujur — dan sama ada sistem yang anda bina mampu menyerap apa yang diberikan oleh ritma jujur anda itu."
+        },
+        {
+          "type": "hn",
+          "label": "ARA — Keeper Rhythm",
+          "paragraphs": [
+            "Matlamat memahami Keeper Rhythm anda bukan untuk menghukumnya — tetapi ia memang untuk berlaku jujur terhadapnya. ARA menamakan keupayaan sistem hidup untuk menyerap ketidakselarasan kecil lalu kembali kepada keadaan koheren sebagai <strong>pengampunan ekologi</strong> (ecological forgiveness). Daya tahan ini dibina oleh kekonsistenan, bukan oleh keamatan. Sistem yang diberi penjagaan sederhana yang boleh diharap akan membina pengampunan itu secara berperingkat selama berbulan-bulan dan bertahun-tahun. Sistem yang diberi penjagaan episodik pula berayun antara tekanan dan pemulihan tanpa sempat membina kedalaman biologi yang menjadikan pemulihan lebih mudah dari masa ke masa. ARA menemui penjaga di tempat mereka berada. Ia juga menamakan ke mana ekologi itu perlukan penjaga bergerak."
+          ]
+        }
+      ]
+    },
+    {
+      "pos": "6 / 6",
+      "tag": "Keeper Rhythm · Automasi",
+      "titleHtml": "Infrastruktur Teknikal.<br><em>Automasi berkhidmat kepada ekologi — bukan kepada ketiadaan penjaga.</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Ritma berkesan seorang penjaga boleh diperluas melalui <strong>infrastruktur teknikal</strong> — automasi, sistem pemantauan, dan reka bentuk bijak yang mengendalikan tugas rutin secara boleh diharap tanpa memerlukan input manual setiap hari. Penyuap automatik (auto feeder) mengekalkan pemberian makan yang konsisten. ATO mengekalkan paras air yang stabil. Pencahayaan bermasa memelihara fotoperiod tanpa bergantung pada ingatan penjaga. Pengawal CO2 dan sistem dosing mengekalkan kimia air pada ritma yang ditentukur. Alat-alat ini berkhidmat kepada ekologi — ia menyambung kekonsistenan yang tidak mampu disediakan oleh penjaga secara manual pada setiap saat. Ini sah dan bermakna: penjaga yang benar-benar memahami automasinya dan menyelenggaranya secara aktif sedang memberikan sistem itu input yang lebih konsisten daripada apa yang mampu diberikan oleh ritma manualnya semata-mata. ARA tidak berat sebelah kepada low-tech; ia berat sebelah kepada keselarasan yang jujur, di mana jua keselarasan itu berada pada spektrum kerumitan."
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "Automasi tidak memerhati. Ia melaksana. Pelaksanaan yang konsisten tanpa pembacaan yang aktif ialah ketidakselarasan yang ditangguhkan — masalah yang berganda secara senyap di sebalik kestabilan sistem yang kelihatan."
+        },
+        {
+          "type": "rhythm-signals",
+          "items": [
+            {
+              "label": "Penyuap Automatik",
+              "text": "Mengeluarkan makanan mengikut jadual tanpa mengira sama ada ikan sedang makan atau tidak. Ikan yang telah berhenti makan — selalunya isyarat paling awal bagi tekanan atau penyakit — kekal tidak dikesan sehingga simptom lain muncul."
+            },
+            {
+              "label": "Pengawal pH",
+              "text": "Mengekalkan pH dalam julat sasaran. Ia tidak membaca perubahan tingkah laku yang mendahului penyakit, atau getaran pada ekor seekor ikan yang hadir sebelum bacaan parameter berubah."
+            },
+            {
+              "label": "Pam Dosing",
+              "text": "Menambah nutrien mengikut jadual yang ditentukur. Ia tidak perasan apabila kesihatan tumbuhan telah beralih, atau apabila regimen dosing itu sendiri sudah terkeluar daripada keselarasan dengan keperluan semasa sistem."
+            }
+          ]
+        },
+        {
+          "type": "body",
+          "paragraphs": [
+            "Automasi yang digunakan untuk mengurangkan pemerhatian — dan bukan untuk menyokongnya — mewujudkan rasa selamat yang palsu, tempat masalah sebenar berganda secara senyap. Penjaga yang ritmanya bergantung pada automasi mesti memerhati dengan lebih banyak perhatian yang disengajakan, bukan kurang, justeru kerana rutin yang kelihatan itu kini sudah dikendalikan. Automasi tanpa pemerhatian yang aktif bukan Keeper Rhythm yang diperluas. Ia ketidakselarasan yang ditangguhkan."
+          ]
+        }
+      ]
+    },
+    {
+      "pos": null,
+      "tag": "Penampanan Silang Ritma",
+      "titleHtml": "Lima ritma itu <em>saling menyokong antara satu sama lain.</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Lima ritma ini tidak beroperasi secara berasingan. Dalam sistem yang stabil, ia saling menyokong dalam satu dinamik yang ARA namakan <strong>penampanan silang ritma</strong> (cross-rhythm buffering): komuniti biologi yang kuat mungkin mengimbangi drift kecil pada kimia air; keadaan persekitaran yang konsisten mungkin mengurangkan tekanan pada hidupan sepanjang tempoh penjaga kurang konsisten; kedalaman mikrobiom yang matang mungkin menyerap gangguan biologi sementara yang akan menggugat sistem yang kurang berkembang.",
+            "Kestabilan dalam ARA terhasil bukan daripada kesempurnaan mana-mana ritma tunggal, tetapi daripada penyepaduan dan sokongan bersama kelima-limanya. Sistem yang mempunyai satu ritma lemah masih boleh kekal stabil jika empat yang lain bertahan. Sistem yang kelima-lima ritmanya berada di bawah tekanan serentak tidak mempunyai penampan untuk disandarkan — dan ketika itulah krisis yang kelihatan akan tiba.",
+            "Ini membawa implikasi langsung pada cara menyelesaikan masalah. Masalah yang kelihatan dalam satu ritma — air keruh, bloom alga, hidupan yang tertekan — jarang sekali merupakan tempat gangguan itu bermula. Ia manifestasi hiliran bagi ketidakselarasan yang bermula dalam ritma lain lalu merebak melalui sistem dari masa ke masa. Diagnosis yang berkesan menuntut pembacaan ke belakang daripada simptom yang kelihatan untuk mencari ritma puncanya, bukan melayan manifestasi itu sebagai puncanya."
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "\"Masalah yang kelihatan dalam satu ritma hampir selalu berpunca daripada ritma yang lain. Membaca merentas kelima-limanya itulah yang dituntut oleh diagnosis yang berkesan.\""
+        }
+      ]
+    }
+  ],
+  "secnav": [
+    {
+      "href": "/articles/ara-s1-foundation",
+      "text": "← Asas"
+    },
+    {
+      "href": "/articles/ara-s3-phases",
+      "text": "Fasa Ekologi →"
+    }
+  ],
+  "backLinkText": "← Kerangka ARA",
+  "hubCta": {
+    "eyebrow": "Selesai buat masa ini?",
+    "body": "Kembali ke gambaran keseluruhan Kerangka ARA ↗"
   }
 }

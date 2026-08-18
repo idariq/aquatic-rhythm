@@ -1,29 +1,288 @@
 {
   "_meta": {
+    "status": "ready",
     "slug": "ara-s4-alignment",
-    "lang": "ms",
-    "sourceFile": "articles/ara-s4-alignment.html"
+    "lang": "ms"
   },
   "head": {
-    "title": "Alignment Thinking — ARA Framework · Aquatic Rhythm",
-    "description": "How to act aligned — the four principles, alignment vs control, seven domains, and pathways.",
-    "ogTitle": "Alignment Thinking — ARA Framework · Aquatic Rhythm",
-    "ogDescription": "How to act aligned — the four principles, alignment vs control, seven domains, and pathways."
+    "title": "Pemikiran Keselarasan — Framework ARA · Aquatic Rhythm",
+    "description": "Cara bertindak secara selaras — lima prinsip, keselarasan lawan kawalan, tujuh domain, dan laluan-laluannya.",
+    "ogTitle": "Pemikiran Keselarasan — Framework ARA · Aquatic Rhythm",
+    "ogDescription": "Cara bertindak secara selaras — lima prinsip, keselarasan lawan kawalan, tujuh domain, dan laluan-laluannya.",
+    "twitterTitle": "Pemikiran Keselarasan — Framework ARA · Aquatic Rhythm",
+    "twitterDescription": "Cara bertindak secara selaras — lima prinsip, keselarasan lawan kawalan, tujuh domain, dan laluan-laluannya.",
+    "ldHeadline": "Pemikiran Keselarasan — Framework ARA",
+    "ldDescription": "Cara bertindak secara selaras — lima prinsip, keselarasan lawan kawalan, tujuh domain, dan laluan-laluannya."
   },
-  "intro": {
-    "eyebrow": "",
-    "titleHtml": "",
-    "subtitle": "",
-    "texts": [],
-    "metaModules": "",
-    "metaTime": "",
-    "metaLevel": "",
-    "cta": "Start reading"
+  "header": {
+    "eyebrow": "04 / 06 · Framework ARA",
+    "titleHtml": "Pemikiran Keselarasan",
+    "desc": "Cara bertindak secara selaras — lima prinsip, keselarasan lawan kawalan, tujuh domain, dan laluan-laluannya."
   },
-  "modules": [],
-  "relatedLinks": [],
-  "footer": {
-    "allArticles": "← All articles",
-    "araLink": "Aquatic Rhythm Alignment"
+  "modules": [
+    {
+      "pos": "1 / 8",
+      "tag": "Keselarasan lawan Kawalan",
+      "titleHtml": "Keselarasan <em>lawan Kawalan</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Kawalan ialah model dominan dalam nasihat akuarium konvensional: ukur parameter, kenal pasti penyimpangan daripada nilai ideal, campur tangan untuk membetulkannya. Keselarasan bekerja secara berbeza. Daripada bertindak balas terhadap ukuran demi ukuran, keselarasan bertindak balas terhadap corak — merentas ritma, merentas masa, merentas sistem secara keseluruhan.",
+            "<strong>Kawalan bertindak balas terhadap nombor. Keselarasan bertindak balas terhadap corak.</strong> Satu bacaan nitrate yang tinggi mencetuskan water change dalam pendekatan kawalan. Dalam pendekatan keselarasan, soalannya ialah: bagaimana arah aliran nitrate sepanjang dua minggu lepas, dan adakah ia selaras dengan beban biologi serta ritma penyelenggaraan?",
+            "<strong>Kawalan menambah campur tangan. Keselarasan mengurangkan geseran.</strong> Pendekatan kawalan terhadap betta yang lesu mungkin melibatkan penambahan tonik. Pendekatan keselarasan bertanya: apa dalam sistem ini yang mencipta geseran untuk ikan ini? Langkah yang selaras ialah menghilangkan geseran itu, bukan menambah respons kepada simptomnya.",
+            "<strong>Kawalan bertindak pada isyarat pertama. Keselarasan memerhati sebelum bertindak.</strong> Pendekatan yang selaras membina satu tetingkap pemerhatian yang disengajakan sebelum campur tangan — lazimnya 24 hingga 48 jam bagi isyarat yang bukan kecemasan. Kebanyakan perkara yang kelihatan membimbangkan hanyalah sementara.",
+            "ARA turut memegang satu arah utama bagi usaha keselarasan: <strong>kestabilan mengatasi kesempurnaan</strong>. Matlamat yang selaras ialah tank yang baik secara konsisten, bukan tank yang sempurna sekali-sekala. Water change mingguan sebanyak 25% yang dilakukan secara boleh diharap lebih bernilai daripada penukaran 50% yang dilakukan sesekali selepas jurang yang panjang. Keutamaan ini bukan soal gaya — ia mencerminkan realiti biologi bahawa ekosistem akuatik, termasuk komuniti mikrob yang melakukan kerja pemprosesan nutrien dan hidupan yang menyesuaikan diri secara berterusan dengan airnya, ditentukur kepada input yang tiba secara boleh diharap. Kekonsistenan mewujudkan keadaan ekologi untuk kedalaman terbentuk; pencarian kesempurnaan pula selalunya memperkenalkan gangguan yang cuba dihapuskannya."
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "\"Langkah yang selaras hampir selalu langkah yang paling kecil — yang mengurangkan geseran tanpa mengganggu apa yang sudah mula mengendap.\""
+        }
+      ]
+    },
+    {
+      "pos": "2 / 8",
+      "tag": "Masa sebelum Teknik",
+      "titleHtml": "Masa <em>sebelum Teknik</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Prinsip pertama ARA ialah bila anda bertindak lebih penting daripada bagaimana anda bertindak. Kebanyakan nasihat akuarium berkisar tentang teknik — produk yang betul, kaedah yang betul, dos yang betul. ARA bermula lebih awal: adakah ini masa yang betul untuk bertindak sama sekali?",
+            "Lonjakan pada minggu pertama sesuatu kitaran adalah normal dari segi biologi — bertindak ke atasnya boleh mengganggu proses yang perlu disempurnakan. Lonjakan yang sama dalam tank berusia enam bulan yang sudah mantap pula ialah isyarat yang wajar ditangani. Tekniknya sama. Masanya yang berbeza.",
+            "Masa sebelum Teknik bermaksud: sebelum memilih kaedah, baca fasanya. Arah perkembangan fasa juga tidak semestinya ke hadapan. Tank Mature Phase yang mengalami gangguan besar boleh berundur sementara kepada tingkah laku fasa yang lebih awal. Penjaga yang menerapkan pemikiran Mature Phase pada apa yang kini berfungsi sebagai sistem Developing Phase akan campur tangan terlalu sedikit dan terlalu lewat.",
+            "Prinsip ini menjadi konkrit apabila tindakan yang sama dipetakan terhadap fasa yang berbeza — tekniknya tidak berubah, masanya yang menentukan:"
+          ]
+        },
+        {
+          "type": "rhythm-signals",
+          "items": [
+            {
+              "label": "Water Change · Early Phase",
+              "text": "Berisiko mengganggu kitaran nitrogen sebelum ia sempurna. Penukaran separa mungkin melewatkan garis masanya; penukaran besar boleh meresetnya sebahagian."
+            },
+            {
+              "label": "Water Change · Mature Phase",
+              "text": "Pembaharuan rutin. Komuniti biologi sudah mempunyai kedalaman untuk menyerapnya dan terus memproses tanpa gangguan."
+            },
+            {
+              "label": "Penambahan Hidupan · Early Phase",
+              "text": "Menambah ammonia kepada sistem yang pemprosesan biologinya masih terbentuk. Walaupun penambahan yang kecil boleh melencongkan kitaran itu."
+            },
+            {
+              "label": "Penambahan Hidupan · Developing Phase",
+              "text": "Boleh diuruskan dalam tokokan kecil, disertai pemerhatian. Komuniti biologi mampu menyerap peningkatan yang sederhana sambil terus terhimpun."
+            },
+            {
+              "label": "Pembersihan Filter · Developing Phase",
+              "text": "Berisiko menggugat apa yang telah terbentuk. Komuniti biologi sudah berfungsi tetapi belum cukup tahan untuk menyerap gangguan itu tanpa akibat."
+            },
+            {
+              "label": "Pembersihan Filter · Mature Phase",
+              "text": "Boleh dilakukan dengan berhati-hati tanpa gangguan menyeluruh, terutamanya apabila hanya sebahagian media dibersihkan atau diganti pada satu-satu masa."
+            }
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "\"Tindakan yang betul pada masa yang salah tetap tindakan yang salah. Fasa datang sebelum kaedah.\""
+        },
+        {
+          "type": "hn",
+          "label": "ARA · Tiga Fasa",
+          "paragraphs": [
+            "Early (kitaran sedang terbentuk, biologi rapuh), Developing (kitaran stabil, komuniti biologi sedang terhimpun), dan Mature (komuniti biologi mantap, sistem sudah mempunyai kedalaman ekologi). Fasa menentukan apa yang wajar — bukan sekadar produk apa yang perlu digunakan, tetapi sama ada perlu bertindak langsung ataupun tidak."
+          ]
+        }
+      ]
+    },
+    {
+      "pos": "3 / 8",
+      "tag": "Kapasiti sebelum Ambisi",
+      "titleHtml": "Kapasiti <em>sebelum Ambisi</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Sesebuah sistem hanya mampu menampung apa yang benar-benar boleh disokongnya — dan ukuran jujur bagi perkara itu bukan apa yang mampu disokong oleh setup tersebut dalam keadaan ideal, tetapi apa yang mampu disokongnya berdasarkan ritma sebenar penjaga, biologi sebenar tank, dan tuntutan realistik spesies yang terlibat.",
+            "Kapasiti sebelum Ambisi terpakai pada empat dimensi: <strong>(1) Kapasiti penjaga</strong> — masa, perhatian, kekonsistenan, ruang emosi. <strong>(2) Kapasiti sistem</strong> — bioload yang mampu diproses oleh biologi, fasa yang sedang dilalui tank, had penapisan dan pengoksigenan. <strong>(3) Kapasiti spesies</strong> — tuntutan ekologi haiwan itu sendiri: julat suhu, keperluan sosial, kepekaan terhadap drift parameter. <strong>(4) Kapasiti infrastruktur teknikal</strong> — sejauh mana automasi, pemantauan, dan reka bentuk sistem yang bijak mampu melaksanakan tugas rutin secara boleh diharap tanpa campur tangan langsung penjaga. Apabila keempat-empatnya berada dalam keselarasan yang jujur, tank itu berfungsi. Apabila ambisi melebihi mana-mana satu daripada empat itu, sistem mula drift.",
+            "Dimensi keempat ini penting kerana ia mengubah cara prinsip tersebut diterapkan. Kapasiti sebelum Ambisi tidak bermakna planted tank high-tech menuntut lebih banyak daripada seorang penjaga berbanding setup low-tech — ia bermakna tank tersebut menuntut jenis kapasiti yang <em>berbeza</em>. Pengawal CO2 bukan penjaga yang melaraskan CO2 setiap hari — ia sistem yang mengekalkan CO2. Pam dosing bukan penjaga yang menambah nutrien — ia sistem yang menambah nutrien mengikut jadual yang ditentukur. Apabila infrastruktur teknikal difahami dengan betul, disediakan dengan betul, dan diselenggara secara aktif, ia benar-benar memperluas apa yang mampu dikekalkan oleh seorang penjaga. Penjaga yang mempunyai kefasihan teknikal sebenar, yang menjalankan sistem CO2 bertekanan dengan regimen nutrien automatik, bukan sedang melampaui batas. Mereka sedang beroperasi dalam keselarasan yang jujur dengan kapasiti yang benar-benar mereka bina.",
+            "Ketidakselarasan dengan prinsip ini berlaku apabila jurang antara ambisi dan kapasiti sekadar diandaikan tiada, dan bukan benar-benar ditutup: automasi dipasang tetapi tidak difahami, kerumitan teknikal ditambah tanpa kefasihan untuk menyelesaikan masalahnya, atau peralatan yang menggantikan pemerhatian dan bukannya menyokongnya. Soalan yang relevan bukan gaya setup itu. Ia sama ada kapasiti sebenar — merentas keempat-empat dimensi — benar-benar menampung apa yang dituntut oleh sistem.",
+            "Satu konsep berkaitan ialah <strong>penjagaan minimum yang berdaya maju</strong> (minimum viable care) — paras jujur bagi apa yang dituntut oleh tank yang khusus ini berbanding apa yang mampu disediakan secara boleh diharap oleh penjaga yang khusus ini, termasuk melalui infrastruktur teknikalnya. Penjaga yang tahu paras penjagaan minimum berdaya maju mereka, dan telah membina sistem yang beroperasi di atas paras itu, berada pada kedudukan yang lebih baik berbanding penjaga yang membina sistem yang menuntut lebih daripada apa yang benar-benar mampu mereka kekalkan."
+          ]
+        },
+        {
+          "type": "hn",
+          "label": "ARA · Penilaian Kapasiti",
+          "paragraphs": [
+            "Kapasiti bukan sesuatu yang tetap. Kapasiti seorang penjaga berubah mengikut keadaan hidup, dan ia boleh diperluas secara sengaja melalui infrastruktur teknikal — automasi dan pemantauan yang benar-benar difahami dan diselenggara oleh penjaga itu sendiri. Kapasiti biologi sesebuah tank juga meningkat apabila ia matang. Penilaian ini bukan dibuat sekali sahaja semasa setup — ia dibaca secara berterusan, sama seperti lima ritma dibaca."
+          ]
+        }
+      ]
+    },
+    {
+      "pos": "4 / 8",
+      "tag": "Ritma sebelum Intensiti",
+      "titleHtml": "Ritma <em>sebelum Intensiti</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Kekonsistenan sepanjang masa menghasilkan keputusan yang lebih baik berbanding usaha intensif yang dilakukan sesekali. Penjaga yang membuat water change 20% setiap minggu menghasilkan tank yang lebih stabil berbanding penjaga yang membuat water change 50% sebulan sekali, walaupun jumlah air yang digantikan adalah sama. Sebabnya bersifat biologi: komuniti mikrob yang memproses sisa, hidupan yang menyesuaikan diri dengan kimia air, tumbuhan yang menyepadukan cahaya ke dalam kitaran biologi — semua proses ini berjalan secara berterusan, dan ia bertindak balas terhadap apa yang tiba secara boleh diharap, bukan terhadap apa yang tiba sesekali dalam kuantiti besar. Keamatan episodik bukan pengganti kepada ritma. Ia satu corak gangguan yang perlu dipulihkan oleh sistem pada setiap kali.",
+            "Ritma sebelum Intensiti bermaksud: reka penyelenggaraan anda untuk kemampanan, bukan untuk sesi ketika anda kebetulan ada masa. Ritma yang betul ialah ritma yang mampu anda kekalkan ketika hidup sedang sukar — ketika anda penat, ketika anda sibuk, ketika anda tidak begitu berminat. Ritma itu — sederhana, konsisten, mampan — memberi lebih banyak kepada sebuah tank berbanding mana-mana campur tangan intensif.",
+            "Satu nota tentang konteks: prinsip ini terpakai pada penjagaan berterusan bagi kestabilan sistem hidup. Ia tidak terpakai apabila keamatan itu sendiri ialah tujuannya. Aquascape pertandingan yang dikekalkan pada kemuncaknya untuk tempoh pameran, regimen penyediaan pembiakan yang sengaja memberikan input pemakanan intensif sebelum pemijahan, aquascaper yang sedang melalui fasa pertumbuhan bertempo tinggi — semua ini tidak bercanggah dengan ARA. Keamatan ialah pilihan yang wajar apabila ia keputusan penjaga yang berasaskan keadaan sistem dan tujuan yang jelas, bukan corak kecuaian yang diselang-selikan dengan letusan usaha yang bersifat pampasan. Sasaran prinsip ini ialah penjaga yang tersilap menganggap usaha pakar yang sekali-sekala itu sebagai satu ritma. Ia bukan dakwaan bahawa keamatan itu sendiri salah."
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "\"Tank yang menerima perhatian sederhana secara konsisten akan bertahan lebih lama daripada tank yang menerima penjagaan pakar sekali-sekala.\""
+        }
+      ]
+    },
+    {
+      "pos": "5 / 8",
+      "tag": "Pemerhatian sebelum Pembetulan",
+      "titleHtml": "Pemerhatian <em>sebelum Pembetulan</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Membaca apa yang sebenarnya sedang berlaku mendahului sebarang tindak balas. Bertindak atas pembacaan yang salah — atau bertindak sebelum sesuatu corak menjadi jelas — selalunya menghasilkan lebih banyak gangguan daripada yang sepatutnya dituntut oleh isyarat asal.",
+            "Pembacaan memerlukan baseline. Jika anda tidak tahu rupa tank anda ketika ia sihat, anda tidak akan dapat membaca rupanya ketika sesuatu sedang drift. Bina baseline untuk tank anda yang khusus: baseline betta anda, trajektori nitrate yang biasa bagi tank anda, warna normal substrat anda selepas seminggu.",
+            "Apabila sesuatu berubah daripada baseline itu, anda telah mendapat satu isyarat. Isyarat itu ialah permulaan tempoh pemerhatian — bukan permulaan campur tangan. Dalam kebanyakan kes, tetingkap pemerhatian 24–48 jam sebelum bertindak akan mendedahkan sama ada isyarat itu variasi sementara atau drift yang sebenar.",
+            "Pemerhatian sebelum Pembetulan turut membawa satu susulan: apabila pilihan perlu dibuat antara ritma baik yang konsisten dengan ritma yang sempurna sesekali, kestabilan yang menang. Kekonsistenan mewujudkan keadaan ekologi tempat kedalaman terbentuk; pencarian kesempurnaan pula selalunya memperkenalkan gangguan yang cuba dihapuskannya."
+          ]
+        },
+        {
+          "type": "hn",
+          "label": "ARA · Lima Ritma",
+          "paragraphs": [
+            "Water Rhythm (kimia, suhu, gas terlarut), Biological Rhythm (kitaran nitrogen, komuniti mikrob, fasa), Environmental Rhythm (cahaya, aliran, hardscape, tumbuhan), Livestock Rhythm (tingkah laku, warna, selera makan, dinamik sosial), Keeper Rhythm (perhatian, masa, kapasiti emosi, kekonsistenan). Setiap ritma boleh dibaca. Bersama-sama, kesemuanya memberi gambaran lengkap tentang keadaan tank yang tidak mampu diberikan oleh mana-mana ujian tunggal."
+          ]
+        }
+      ]
+    },
+    {
+      "pos": "6 / 8",
+      "tag": "Punca sebelum Manifestasi",
+      "titleHtml": "Punca <em>sebelum Manifestasi</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Dalam sistem akuatik tertutup, tempat sesuatu masalah menjadi kelihatan selalunya bukan tempat ia bermula. Ikan yang menunjukkan tingkah laku tertekan mungkin sedang bertindak balas terhadap drift kimia air yang bermula dengan perubahan corak pemberian makan dua minggu sebelumnya. Alga yang muncul pada kaca mungkin manifestasi hiliran bagi beban hidupan yang secara senyap telah melebihi apa yang mampu diproses oleh komuniti biologi. Simptom dan puncanya berada dalam domain yang berbeza.",
+            "Prinsip kelima berpegang bahawa tindakan pembetulan patut disasarkan pada punca, bukan pada manifestasi. Merawat manifestasi — simptom yang kelihatan di hadapan anda — tanpa menjejaki kembali ke puncanya menghasilkan penambahbaikan sementara yang tidak bertahan. Simptom yang sama akan kembali, selalunya dalam bentuk yang sedikit berbeza, kerana puncanya tidak pernah ditangani.",
+            "Menjejak ke punca bermula dengan tujuh domain dan lima ritma. Tanya: dalam domain yang mana perkara ini paling berkemungkinan bermula? Ritma yang mana kemungkinan besar menjadi pembawanya? Simptom memberi anda domain manifestasi. Pemerhatian merentas domain dan sepanjang masa memberi anda domain puncanya.",
+            "Prinsip inilah yang memberi empat prinsip sebelumnya kekuatan penuhnya. Memerhati sebelum membetulkan hanya berkesan jika anda sedang membaca ke arah sasaran yang betul. Memilih masa yang betul hanya bermakna jika anda telah mengenal pasti dengan tepat apa yang anda sedang tentukan masanya."
+          ]
+        },
+        {
+          "type": "hn",
+          "label": "ARA · Tentang Menjejak ke Belakang",
+          "paragraphs": [
+            "Domain tempat sesuatu masalah menjadi kelihatan ialah domain manifestasi. Domain tempat ia bermula ialah domain punca. Merawat domain manifestasi tanpa mengesan domain punca menghasilkan keputusan yang paling baik pun bersifat sementara, dan paling teruk mengelirukan. ARA menganggap ini sebagai corak paling biasa dalam kesilapan penjaga yang berulang."
+          ]
+        }
+      ]
+    },
+    {
+      "pos": "7 / 8",
+      "tag": "Tujuh Domain",
+      "titleHtml": "Di mana <em>Keselarasan Berlaku</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "ARA mengenal pasti tujuh domain yang mana keselarasan — atau ketidakselarasan — menzahirkan dirinya dalam sebuah akuarium yang sedang berjalan. Membaca setiap domain secara berasingan memberi gambaran yang lebih lengkap daripada mana-mana ukuran tunggal."
+          ]
+        },
+        {
+          "type": "domain-grid",
+          "cells": [
+            {
+              "name": "Air",
+              "q": "Adakah air sedang bergerak ke arah yang stabil, atau adakah sesuatu sedang drift melebihi julat yang dijangka?"
+            },
+            {
+              "name": "Beban Biologi",
+              "q": "Adakah paras penstokan berada dalam lingkungan yang benar-benar mampu diproses oleh komuniti biologi, mengambil kira fasa semasa tank ini?"
+            },
+            {
+              "name": "Tingkah Laku Hidupan",
+              "q": "Adakah haiwan dalam tank ini menzahirkan tingkah laku yang selaras dengan keselesaan — aktif, makan seperti biasa, menghuni ruang mereka tanpa tanda tekanan kronik?"
+            },
+            {
+              "name": "Nutrien &amp; Kimia",
+              "q": "Adakah kitaran nutrien (input pemakanan, pemprosesan sisa, ritma water change) seimbang dengan beban biologi?"
+            },
+            {
+              "name": "Persekitaran",
+              "q": "Adakah struktur fizikal — cahaya, aliran, hardscape, penanaman — menyokong keperluan tingkah laku dan wilayah haiwan tersebut?"
+            },
+            {
+              "name": "Teknologi",
+              "q": "Adakah peralatan (penapisan, pemanasan, pencahayaan) berfungsi mengikut spesifikasinya dan sesuai dengan tuntutan semasa tank?"
+            },
+            {
+              "name": "Ritma Manusia",
+              "q": "Adakah ritma penjagaan sebenar penjaga — masa, perhatian, kekonsistenan — selaras dengan apa yang diperlukan oleh tank ini sekarang?"
+            }
+          ]
+        },
+        {
+          "type": "body",
+          "paragraphs": [
+            "Apabila membaca merentas domain, ARA mencadangkan supaya <em>domain punca</em> dikenal pasti — tempat ketidakselarasan itu bermula — dan bukan <em>domain manifestasi</em> tempat ia menjadi kelihatan. Merawat manifestasi tanpa menangani puncanya menghasilkan penambahbaikan sementara yang tidak bertahan."
+          ]
+        }
+      ]
+    },
+    {
+      "pos": "8 / 8",
+      "tag": "Laluan Keselarasan",
+      "titleHtml": "Membaca <em>Corak, bukan Simptom</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Laluan keselarasan ialah jalan yang dilalui oleh ketidakselarasan dalam satu domain untuk merebak melalui sistem sehingga akhirnya kelihatan sebagai simptom dalam domain yang lain. Memahami laluan ini membolehkan anda membaca apa yang sedang ditunjukkan oleh sesuatu masalah — bukan sekadar rupanya.",
+            "Ikan yang tercungap-cungap di permukaan ialah satu simptom. Laluan yang menghasilkannya mungkin oksigen terlarut yang rendah, ammonia yang tinggi, penyakit insang, atau penurunan suhu yang mengejut. Simptomnya sama; laluannya berbeza. ARA menggalakkan penjaga membaca ke belakang daripada simptom: domain yang mana paling berkemungkinan menjadi puncanya?"
+          ]
+        },
+        {
+          "type": "hn",
+          "label": "ARA · Tentang Drift Beransur-ansur",
+          "paragraphs": [
+            "Drift beransur-ansur ialah salah satu jenis laluan yang paling biasa dan paling kurang dibaca. Kerana perubahannya perlahan, setiap keadaan baharu menjadi kebiasaan yang baharu — penjaga berhenti perasan jarak yang semakin terkumpul daripada baseline. Perbandingan berkala dengan baseline yang didokumentasikan ialah satu-satunya penawar yang boleh diharap bagi drift beransur-ansur."
+          ]
+        },
+        {
+          "type": "body",
+          "paragraphs": [
+            "ARA memetakan empat laluan yang berulang merentas pelbagai situasi akuarium:",
+            "<strong>Keeper Rhythm → Kualiti Air → Tingkah Laku Hidupan.</strong> Laluan drift perlahan yang paling biasa. Perubahan halus dalam rutin penjaga terkumpul sebagai drift kimia, yang kemudian menzahirkan diri sebagai perubahan tingkah laku pada hidupan.",
+            "<strong>Ketidakselarasan Persekitaran → Tekanan Kronik → Kerentanan Penyakit.</strong> Persekitaran fizikal mencipta tekanan tahap rendah yang berpanjangan. Fungsi imun susut selama berminggu-minggu atau berbulan-bulan. Wabak penyakit kelihatan tiba tanpa amaran, sedangkan ia didahului oleh laluan pengumpulan tekanan yang panjang.",
+            "<strong>Beban Biologi Berlebihan → Drift Kimia → Kehilangan Daya Tahan.</strong> Tank yang membawa beban biologi melebihi apa yang mampu diproses oleh fasa semasanya mengalami drift kimia beransur-ansur yang akhirnya mengukuhkan dirinya sendiri.",
+            "<strong>Kematangan Palsu → Tetingkap Kerentanan → Krisis Akut.</strong> Tank yang kelihatan stabil tetapi belum membina kedalaman ekologi yang tulen berdepan dengan satu gangguan lalu bertindak balas dengan kerapuhan fasa yang lebih awal."
+          ]
+        }
+      ]
+    }
+  ],
+  "secnav": [
+    {
+      "href": "/articles/ara-s3-phases",
+      "text": "← Fasa Ekologi"
+    },
+    {
+      "href": "/articles/ara-s5-observation",
+      "text": "Amalan Pemerhatian →"
+    }
+  ],
+  "backLinkText": "← Kerangka ARA",
+  "hubCta": {
+    "eyebrow": "Selesai buat masa ini?",
+    "body": "Kembali ke gambaran keseluruhan Kerangka ARA ↗"
   }
 }

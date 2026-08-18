@@ -3,189 +3,238 @@
 
   <url>
     <loc>https://aquaticrhythm.com/ms/reading</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/adding-new-fish</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/algae-in-aquarium</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/aquarium-filter-maintenance</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/aquarium-maintenance-routine</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/aquarium-not-a-project</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/aquarium-plants-not-growing</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/aquarium-travel-vacation</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aquaticrhythm.com/ms/articles/ara-full-framework</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aquaticrhythm.com/ms/articles/ara-s1-foundation</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aquaticrhythm.com/ms/articles/ara-s2-five-rhythms</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aquaticrhythm.com/ms/articles/ara-s3-phases</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aquaticrhythm.com/ms/articles/ara-s4-alignment</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aquaticrhythm.com/ms/articles/ara-s5-observation</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aquaticrhythm.com/ms/articles/ara-s6-ethics</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/betta-fish-behaviour</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/caring-without-guilt</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/community-fish-tank</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/cycled-tank-problems</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/fish-gasping-surface</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/fish-hiding-what-does-it-mean</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/fish-keep-dying-new-tank</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/how-often-water-changes</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/ich-keeps-coming-back</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/low-tech-planted-tank</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/new-tank-syndrome</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/nitrate-keeps-rising</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/overfeeding-aquarium</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/perfect-parameters-fish-dying</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/shrimp-dying-aquarium</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/tank-crash-recovery</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/when-hobby-stops-feeling-good</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/when-is-tank-ready-for-fish</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://aquaticrhythm.com/ms/articles/why-is-my-aquarium-water-cloudy</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

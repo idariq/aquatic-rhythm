@@ -1,29 +1,159 @@
 {
   "_meta": {
+    "status": "ready",
     "slug": "ara-s6-ethics",
-    "lang": "ms",
-    "sourceFile": "articles/ara-s6-ethics.html"
+    "lang": "ms"
   },
   "head": {
-    "title": "Ethics &amp; Living Framework — ARA Framework · Aquatic Rhythm",
-    "description": "What ARA doesn't cover, psychological foundations, and the living framework statement.",
-    "ogTitle": "Ethics &amp; Living Framework — ARA Framework · Aquatic Rhythm",
-    "ogDescription": "What ARA doesn't cover, psychological foundations, and the living framework statement."
+    "title": "Etika &amp; Kerangka Hidup — Framework ARA · Aquatic Rhythm",
+    "description": "Apa yang ARA tidak liputi, asas psikologi, dan pernyataan kerangka hidup.",
+    "ogTitle": "Etika &amp; Kerangka Hidup — Framework ARA · Aquatic Rhythm",
+    "ogDescription": "Apa yang ARA tidak liputi, asas psikologi, dan pernyataan kerangka hidup.",
+    "twitterTitle": "Etika &amp; Kerangka Hidup — Framework ARA · Aquatic Rhythm",
+    "twitterDescription": "Apa yang ARA tidak liputi, asas psikologi, dan pernyataan kerangka hidup.",
+    "ldHeadline": "Etika & Kerangka Hidup — Framework ARA",
+    "ldDescription": "Apa yang ARA tidak liputi, asas psikologi, dan pernyataan kerangka hidup."
   },
-  "intro": {
-    "eyebrow": "",
-    "titleHtml": "",
-    "subtitle": "",
-    "texts": [],
-    "metaModules": "",
-    "metaTime": "",
-    "metaLevel": "",
-    "cta": "Start reading"
+  "header": {
+    "eyebrow": "06 / 06 · Framework ARA",
+    "titleHtml": "Etika &amp; Kerangka Hidup",
+    "desc": "Apa yang ARA tidak liputi, asas psikologi, dan pernyataan kerangka hidup."
   },
-  "modules": [],
-  "relatedLinks": [],
-  "footer": {
-    "allArticles": "← All articles",
-    "araLink": "Aquatic Rhythm Alignment"
+  "modules": [
+    {
+      "pos": "1 / 4",
+      "tag": "Had &amp; Etika",
+      "titleHtml": "Apa yang ARA <em>tidak liputi</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "ARA ialah kerangka konseptual, bukan protokol diagnostik. Ia bukan pengganti kepada nasihat veterinar dalam kes penyakit yang telah disahkan, dan ia tidak menyediakan panduan perubatan khusus mengikut spesies. Apabila seekor ikan jelas sakit — dengan lesi luaran, parasit, atau simptom yang tidak reda dalam tempoh pemerhatian yang munasabah — tindak balas yang selaras ialah merujuk pakar atau rujukan penyakit yang boleh dipercayai, bukan menerapkan kerangka ini dengan lebih ketat.",
+            "Kerangka ini juga mempunyai hadnya dalam kes kecemasan akut: tank yang runtuh, kegagalan pemanas, kemasukan bahan kimia yang mengejut. Dalam keadaan kecemasan, keutamaannya ialah penstabilan segera — bukan pemikiran keselarasan. ARA paling berguna sebelum kecemasan berlaku (membaca drift yang selalunya mendahului keruntuhan) dan selepasnya (memahami apa yang membenarkan krisis itu terbentuk).",
+            "Kerangka ini memegang satu pendirian etika secara eksplisit: bahawa memelihara haiwan dalam sistem tertutup mewujudkan tanggungjawab terhadap kebajikan mereka, dan bahawa tanggungjawab itu tidak terlepas hanya dengan memenuhi piawai teknikal yang minimum. Tank yang mengekalkan ikan hidup bukan semestinya tank yang memelihara ikan dalam keadaan baik. Dalam ARA, \"memelihara ikan dengan baik\" bermaksud memeliharanya dalam sistem yang ritmanya berada dalam keselarasan yang jujur — bukan satu piawai estetik yang subjektif, tetapi satu piawai ekologi yang boleh dibaca. Di sinilah arah utama ARA menjadi satu tuntutan etika: kerangka ini berpihak kepada kesinambungan ekologi. Apabila hidupan akuatik diletakkan dalam tank tertutup, mereka kehilangan ritma semula jadi yang selama ini menyara mereka, lalu menerima apa jua yang disediakan oleh penjaga sebagai gantinya. Kerja penjaga — bagaimana jua ia disusun, melalui apa jua cara yang benar-benar ada padanya — adalah demi menyediakan hidupan tersebut dengan kekonsistenan yang mereka perlukan. Menemui penjaga di tempat mereka berada ialah permulaan kerja itu, bukan alasan untuk kekal di situ selama-lamanya.",
+            "Satu nota tentang skop: pembingkaian etika dan psikologi sepanjang bahagian ini direka untuk penggemar peribadi — penjaga yang mempunyai hubungan sukarela dan berterusan dengan sebuah tank atau beberapa tank tertentu. Konteks profesional dan komersial melibatkan hubungan penjaga yang berbeza: pembiak yang menguruskan banyak sistem untuk pengeluaran, kedai ikan yang menyelenggara stok pameran untuk dijual, kontraktor penyelenggaraan yang menservis pemasangan di pejabat. Lima ritma dan kerangka fasa tetap terpakai sebagai alat analisis dalam konteks tersebut, tetapi orientasi psikologinya — pemulihan, hubungan peribadi dengan sistem hidup, penglibatan yang bersifat intrinsik — menggambarkan hubungan penggemar, bukan hubungan profesional. ARA tidak meletakkan satu hubungan lebih tinggi daripada yang lain; ia sekadar mengakui bahawa bahasa psikologinya dibangunkan untuk salah satu daripadanya."
+          ]
+        },
+        {
+          "type": "hn",
+          "label": "ARA · Tentang Rasa Malu dan Kesukaran",
+          "paragraphs": [
+            "Kerangka ini menolak rasa malu secara eksplisit sebagai tindak balas yang berguna terhadap masalah akuarium. Ikan mati. Tank runtuh. Penjaga melakukan kesilapan. Membaca apa yang tidak kena dalam sesuatu keruntuhan tank — menjejaki laluan keselarasan ke belakang — ialah salah satu cara paling boleh diharap untuk membina kapasiti penjaga yang tulen. Rasa malu memutuskan pembelajaran itu."
+          ]
+        },
+        {
+          "type": "body",
+          "paragraphs": [
+            "Pendekatan ARA terhadap psikologi penjaga bersandar pada empat asas yang berteraskan bukti. <strong>Attention Restoration Theory</strong> (Kaplan, 1995) menerangkan mengapa akuarium mempunyai kualiti memulihkan yang dialami oleh ramai penjaga — \"soft fascination\" sesuatu sistem akuatik yang hidup membolehkan perhatian terarah yang digunakan dalam kerja harian pulih semula. <strong>Self-Compassion</strong> (Neff, 2003) mendasari penolakan eksplisit kerangka ini terhadap rasa malu: tindak balas mengkritik diri terhadap kesukaran dikaitkan dengan penarikan diri, yang dalam konteks akuarium bermakna pemerhatian berkurangan dan keadaan bertambah buruk. <strong>Self-Determination Theory</strong> (Deci &amp; Ryan, 1985) menerangkan dinamik motivasi bagi penglibatan intrinsik dengan hobi ini. <strong>Biophilia</strong> (Wilson, 1984) meletakkan pemeliharaan akuarium dalam kecenderungan manusia yang lebih luas untuk berhubung dengan sistem hidup."
+          ]
+        }
+      ]
+    },
+    {
+      "pos": "2 / 4",
+      "tag": "Asas Psikologi · Pemulihan",
+      "titleHtml": "Pemerhatian, Kesukaran, dan <em>Pemulihan</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "<strong>Psikologi penjaga</strong> bukan sesuatu yang sampingan kepada ekologi sebuah tank — ia sebahagian daripadanya. Kebanyakan kerangka akuarium menganggapnya sebagai latar belakang: motivasi, disiplin, tabiat. Pendirian ARA berbeza: keadaan emosi, tabiat kognitif, dan hubungan dengan kesukaran yang dibawa oleh seorang penjaga ke hadapan kaca ialah input ekologi yang langsung. Semuanya menentukan apa yang akan menjadi air itu nanti.",
+            "Penjaga yang cemas akan campur tangan secara berlebihan. Penjaga yang menanggung rasa malu akan menarik diri. Penjaga yang sekadar mengikut peraturan akan hilang motivasi apabila peraturan itu gagal. Penjaga yang mengalami tank sebagai sistem hidup yang sedang dia belajar membaca akan mendalami penglibatannya apabila sesuatu tidak berjalan lancar. Ini bukan pemerhatian yang lembut semata-mata — ini akibat ekologi yang boleh diramal daripada cara seseorang penjaga berhubung dengan kerjanya.",
+            "Asas psikologi ARA terdiri daripada empat tradisi penyelidikan yang saling berkait. Dua yang pertama menyentuh pemerhatian, kesukaran, dan pemulihan — nilai memulihkan dan nilai pembelajaran daripada kehadiran yang penuh perhatian."
+          ]
+        },
+        {
+          "type": "hn",
+          "label": "Asas 1 · Attention Restoration Theory",
+          "paragraphs": [
+            "<strong>Kaplan &amp; Kaplan, 1989; Kaplan, 1995.</strong> ART membezakan antara perhatian terarah — mod kerja dan pembuatan keputusan yang memerlukan usaha dan melelahkan — dengan perhatian tak sengaja, iaitu penglibatan tanpa usaha dengan rangsangan yang menawan minat tanpa kos kognitif. Perhatian tak sengaja tidak menyusut; ia memulihkan. Persekitaran yang memulihkan berkongsi empat kualiti: rasa berada jauh, kekayaan yang mencukupi untuk mengekalkan penglibatan, soft fascination (minat tanpa usaha), dan keserasian dengan apa yang diperlukan oleh orang itu.",
+            "Akuarium memenuhi kesemua empat kriteria tersebut. Penyelidikan oleh Cracknell et al. (2015–2017) di University of Exeter mendapati bahawa memerhati paparan akuarium menghasilkan penurunan kadar denyutan jantung dan tekanan darah yang boleh diukur, dan kepelbagaian biologi yang lebih tinggi menghasilkan kesan yang lebih kuat. Mekanismenya bukan keseronokan estetik — penanda fisiologi berubah tanpa bergantung pada tahap keseronokan yang dilaporkan.",
+            "<em>Mengapa ini membentuk ARA:</em> Pemerhatian dalam ARA mempunyai dua fungsi. Duduk bersama tank dan memerhatinya ialah kaedah pembacaan yang utama, dan sekali gus satu tindakan memulihkan perhatian. Kedua-duanya saling menguatkan: penjaga yang dipulihkan oleh pemerhatian akan memerhati dengan lebih konsisten. Amalan pemerhatian direka untuk mengekalkan kualiti soft fascination — penuh perhatian tetapi tanpa memerlukan usaha yang memenatkan — dan bukan menukarkannya menjadi pengumpulan data, yang akan mengalihkan mod itu kembali kepada perhatian terarah lalu menghilangkan kualiti memulihkannya."
+          ]
+        },
+        {
+          "type": "hn",
+          "label": "Asas 2 · Self-Compassion dan Pembelajaran Melalui Kesukaran",
+          "paragraphs": [
+            "<strong>Neff, 2003; Neff &amp; Germer, 2013.</strong> Self-compassion — bertindak balas terhadap kegagalan sendiri dengan layanan yang sama seperti yang akan kita berikan kepada seorang sahabat baik — mempunyai tiga komponen: kebaikan terhadap diri, kemanusiaan bersama (mengiktiraf kesukaran sebagai sesuatu yang dikongsi, bukan sebagai kekurangan peribadi), dan kesedaran yang penuh perhatian. Penyelidikan secara konsisten menunjukkan bahawa self-compassion, tidak seperti kritikan diri, menghasilkan lebih banyak tanggungjawab peribadi, lebih banyak pelaburan dalam pembelajaran, dan pemulihan yang lebih pantas daripada kegagalan. Kritikan diri pula menghasilkan sikap membela diri dan mengelak.",
+            "Hobi akuarium mempunyai masalah rasa malu yang tersendiri. Komuniti dalam talian selalunya persekitaran yang sangat kritis. Penjaga yang melakukan kesilapan kerap berdepan penghakiman yang keras, dan itu kontraproduktif dari segi ekologi: rasa malu → pemerhatian berkurangan → isyarat terlepas → keadaan bertambah buruk → lebih banyak rasa malu → semakin menarik diri. Lingkaran ini ialah satu urutan yang boleh diramal dari segi psikologi, bukan kecacatan peribadi.",
+            "<em>Mengapa ini membentuk ARA:</em> Penolakan eksplisit ARA terhadap rasa malu sebagai tindak balas kepada masalah tank bukan sentimentaliti — ia praktikal. Setiap masalah tank yang disiasat dengan jujur ialah satu latihan membaca yang membina kapasiti penjaga yang tulen. Setiap masalah tank yang ditinggalkan kerana rasa malu ialah satu peluang pembelajaran yang hilang. Kerangka ini secara konsisten membingkai kesukaran sebagai sesuatu yang boleh disiasat (laluan apa yang menghasilkan ini?) dan bukan sebagai bukti tentang diri (apa yang perkara ini kata tentang saya sebagai penjaga?). Ikan mati. Tank runtuh. Setiap penjaga berpengalaman ada kisah keruntuhan tank mereka sendiri. Inilah komponen kemanusiaan bersama yang diterapkan pada pemeliharaan akuarium."
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "Setiap masalah tank yang disiasat dengan jujur ialah satu latihan membaca yang membina kapasiti penjaga yang tulen. Setiap masalah tank yang ditinggalkan kerana rasa malu ialah satu peluang pembelajaran yang hilang."
+        }
+      ]
+    },
+    {
+      "pos": "3 / 4",
+      "tag": "Asas Psikologi · Penglibatan",
+      "titleHtml": "Motivasi, Penguasaan, dan <em>Hubungan</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "<strong>Motivasi yang berkekalan</strong> bukan perkara yang sama dengan keghairahan awal. Dua daripada asas psikologi ARA menyentuh apa yang mengekalkan penglibatan penjaga selama bertahun-tahun dan bukan sekadar beberapa bulan — dan apa yang mampu ditawarkan oleh hubungan yang semakin mendalam dengan sesuatu sistem hidup setelah keghairahan pertama berlalu."
+          ]
+        },
+        {
+          "type": "hn",
+          "label": "Asas 3 · Self-Determination Theory",
+          "paragraphs": [
+            "<strong>Deci &amp; Ryan, 1985, 2000.</strong> SDT mencadangkan bahawa motivasi yang mampan memerlukan tiga keperluan psikologi: autonomi (rasa bahawa apa yang anda lakukan itu pilihan anda sendiri), kompetensi (rasa bahawa penglibatan itu membina keupayaan tulen yang boleh dibawa ke tempat lain), dan keterhubungan (hubungan yang bermakna — dengan aktiviti itu, atau dengan sesuatu yang lebih besar). Motivasi yang bergerak pada spektrum daripada regulasi luaran (kepatuhan, kewajipan) menuju motivasi intrinsik (penglibatan yang lahir dari dalam) menjadi lebih tahan lama semakin ia dihayati. Mengikut peraturan yang kekal luaran semata-mata — patuh tanpa faham — adalah rapuh. Tetapi peraturan yang dihayati oleh seorang penjaga melalui penguasaan yang tulen akan menjadi kraf: penjaga berjiwa ahli kimia yang berpuas hati apabila mencapai parameter sasaran yang tepat, atau aquascaper pertandingan yang mengikut regimen teknikal yang menuntut atas pilihan sendiri dan dengan kefahaman yang mendalam, bukan berada dalam regulasi luaran. Mereka telah menjadikan peraturan itu milik mereka sendiri. Bezanya bukan antara ada peraturan dengan tiada peraturan; ia antara kepatuhan dengan kompetensi.",
+            "Penyelidikan oleh Deci et al. (1999) — sebuah meta-analisis 128 kajian — menunjukkan bahawa konteks yang mengawal secara luaran secara konsisten melemahkan motivasi intrinsik. Corak penjaga yang berhenti daripada hobi akuarium ialah kegagalan SDT yang klasik: keghairahan awal → kepatuhan kepada peraturan → krisis pertama apabila peraturan gagal → kompetensi runtuh → menarik diri. Ramai penjaga melalui kitaran ini berulang kali.",
+            "<em>Mengapa ini membentuk ARA:</em> ARA direka untuk membina kompetensi dalaman — kemahiran yang boleh dibawa ke mana-mana kerana ia beroperasi pada tahap prinsip ekologi, bukan pada tahap preskripsi tertentu. Penjaga yang mampu membaca ritma, fasa, dan domain keselarasan tidak akan kehilangan kapasitinya apabila mereka menukar saiz tank, spesies, atau pendekatan penyelenggaraan. Struktur ARA yang tidak preskriptif ialah pilihan reka bentuk yang menyokong autonomi: kerangka ini bertanya soalan dan bukan mengeluarkan arahan. Matlamat setiap modul ialah penjaga yang membaca dengan lebih baik, bukan penjaga yang mengikut langkah yang betul."
+          ]
+        },
+        {
+          "type": "hn",
+          "label": "Asas 4 · Biophilia",
+          "paragraphs": [
+            "<strong>Wilson, 1984; Kellert &amp; Wilson, 1993.</strong> Biophilia ialah hipotesis bahawa manusia mempunyai orientasi semula jadi terhadap organisma hidup yang lain — satu kecenderungan biologi yang dibentuk oleh sejarah evolusi, yang mana kelangsungan hidup bergantung pada keupayaan membaca dan berhubung dengan persekitaran semula jadi. Konsep yang berkait rapat dengannya, iaitu keterhubungan dengan alam (Nisbet, Zelenski &amp; Murphy, 2011) — rasa tergolong dalam dunia semula jadi — berkorelasi dengan kesejahteraan, kepuasan hidup, dan penglibatan yang berkekalan. Kedua-duanya keadaan yang boleh dipupuk, bukan sifat yang tetap.",
+            "Penyelidikan Blue Mind (Nichols, 2014) mendokumentasikan kesan khusus persekitaran akuatik terhadap keadaan psikologi: kebimbangan berkurangan, ketenangan dan kreativiti meningkat. Penyelidikan terhadap populasi bandar secara konsisten menunjukkan bahawa intervensi sentuhan dengan alam memberi kesan yang lebih besar dalam konteks yang mana sentuhan seperti itu jarang berlaku — dan itulah gambaran majoriti penjaga akuarium, yang menyelenggara tank dalam rumah sebagai sentuhan harian utama, atau satu-satunya, dengan sesuatu sistem hidup.",
+            "<em>Mengapa ini membentuk ARA:</em> Akuarium bukan pemasangan hiasan — ia satu tapak hubungan antara manusia dengan sistem hidup. Bagi penjaga di bandar, ia selalunya sentuhan harian utama dengan ekosistem hidup yang bukan infrastruktur uruslenggara manusia. Pembingkaian ARA terhadap penjaga sebagai peserta ekologi, dan bukan sebagai pengurus dari luar, sejajar dengan orientasi biofilik kerana ia mencerminkan apa yang ditunjukkan oleh penyelidikan tentang apa yang manusia sebenarnya cari dalam sentuhan dengan alam: bukan penguasaan ke atas alam, tetapi hubungan dengannya. Amalan pemerhatian dibingkai dengan jujur sebagai kaedah ekologi dan sekali gus amalan menghubungkan diri dengan alam. Tank itu memberi kembali.",
+            "Satu nota tentang konteks budaya: keempat-empat tradisi penyelidikan ini datang daripada psikologi akademik Barat. Pemeliharaan ikan wujud dalam lingkungan hubungan budaya yang jauh lebih luas daripada apa yang digambarkan oleh tradisi tersebut sahaja. Dalam tradisi Asia Timur, koi dan ikan emas membawa kaitan yang mendalam dengan kemakmuran, panjang umur, dan kehalusan estetik — motivasi yang dibentuk oleh warisan budaya sebanyak mana ia dibentuk oleh hubungan ekologi. Dalam banyak komuniti, ikan dipelihara sebagai sebahagian daripada amalan keagamaan, tradisi keluarga, atau sebagai ungkapan identiti budaya yang mempunyai keutuhan dan logik penjagaannya yang tersendiri. Semua ini orientasi penjaga yang sah. Mekanisme psikologi yang diterangkan dalam bahagian ini — pemulihan, self-compassion, motivasi intrinsik, hubungan dengan alam — mungkin masih beroperasi dalam konteks tersebut, tetapi bingkai budaya yang melaluinya penjaga mengalami tank mereka berbeza dengan ketara. ARA tidak mendakwa penjelasan psikologinya bersifat sejagat; ia sekadar menggambarkan apa yang disokong oleh penyelidikan yang ada."
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "\"Penjaga yang memerhati dengan penuh perhatian akan dipulihkan oleh perbuatan itu sendiri. Penjaga yang menyambut kesukaran dengan rasa ingin tahu dan bukan dengan rasa malu akan belajar daripadanya. Penjaga yang membina kompetensi membaca yang tulen akan kekal terlibat apabila sistem itu semakin mendalam. Penjaga yang mengalami tank sebagai satu hubungan yang hidup akan menemui makna di dalamnya. Inilah penjaga yang ARA direka untuk menyokongnya — bukan untuk dibentuk mengikut acuan yang telah ditetapkan, tetapi untuk ditemui dengan jujur, di mana jua mereka sudah berada.\""
+        }
+      ]
+    },
+    {
+      "pos": "4 / 4",
+      "tag": "Kerangka Hidup",
+      "titleHtml": "ARA sebagai <em>Kerangka Hidup</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "ARA bukan sebuah buku peraturan. Ia satu cara membaca — satu set kanta yang diterapkan pada apa yang sebenarnya sedang berlaku dalam tank anda yang khusus dengan ritma anda yang khusus, dan bukan satu set piawai yang tank anda sepatutnya penuhi.",
+            "Kerangka ini dipanggil \"hidup\" dalam dua pengertian. Pertama, ia terpakai pada sistem hidup — ekosistem yang mana pemboleh ubah yang relevan bersifat biologi dan tingkah laku, bukan sekadar kimia dan mekanikal. Kedua, kerangka itu sendiri memang diniatkan untuk terus berkembang. ARA dibangunkan melalui pemerhatian terhadap tank sebenar dari masa ke masa, lalu disemak silang dengan ekologi akuatik yang mapan serta pengetahuan komuniti penjaga.",
+            "ARA serasi dengan apa jua gaya pemeliharaan. Planted tank high-tech yang disuntik CO₂ dan mangkuk walstad low-tech kedua-duanya sistem hidup dengan lima ritma, tiga fasa yang mungkin, dan tujuh domain keselarasan. Soalan yang ARA tanyakan terpakai pada kedua-duanya. Jawapannya akan berbeza. Kerangka yang menjana soalan itu tetap sama.",
+            "ARA turut memegang pendirian yang eksplisit tentang psikologi penjaga. Lingkaran rasa malu — apabila rasa bersalah terhadap masalah akuarium membawa kepada pemerhatian yang berkurangan, yang membawa kepada isyarat yang terlepas, yang membawa kepada keadaan yang bertambah buruk, yang membawa kepada lebih banyak rasa malu — bukan kecacatan peribadi. Ia tindak balas psikologi yang boleh diramal, dan kerangka ini direka untuk memutuskannya.",
+            "Satu nota tentang kejujuran arah: menemui penjaga di tempat mereka berada ialah permulaan penglibatan ARA, bukan penghujungnya. Kerangka ini tidak mengesahkan setiap konfigurasi penjaga sebagai sama-sama mampan — ia menamakan kesinambungan ekologi sebagai matlamat, lalu menawarkan cara berfikir yang membantu penjaga bergerak ke arahnya dari mana jua mereka berdiri sekarang. Ini bukan tuntutan kesempurnaan atau piawai yang perlu dicapai sebelum seseorang dianggap penjaga yang sah. Ia satu penjelasan jujur tentang apa yang sebenarnya diperlukan oleh sistem hidup di dalam kaca itu — dan pengakuan bahawa penjaga, sebagai sebahagian daripada sistem tersebut, ialah satu-satunya pihak yang mampu menyediakannya.",
+            "Apa yang ARA tawarkan pada akhirnya ialah satu cara untuk hadir bersama sebuah tank: penuh perhatian, sabar, bertindak balas terhadap apa yang sebenarnya sedang berlaku dan bukan terhadap idea yang telah ditetapkan tentang apa yang sepatutnya berlaku. Itu bukan satu teknik. Ia satu amalan — amalan yang menjadi semakin kaya semakin lama anda membawanya ke hadapan kaca."
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "\"ARA bukan sesuatu untuk dihabiskan — hanya sesuatu untuk dikunjungi semula setiap kali kehidupan atau ekosistem itu mengubah apa yang sedang diminta secara senyap dari sebalik kaca.\""
+        }
+      ]
+    }
+  ],
+  "secnav": [
+    {
+      "href": "/articles/ara-s5-observation",
+      "text": "← Amalan Pemerhatian"
+    }
+  ],
+  "backLinkText": "← Kerangka ARA",
+  "hubCta": {
+    "eyebrow": "Selesai buat masa ini?",
+    "body": "Kembali ke gambaran keseluruhan Kerangka ARA ↗"
   }
 }

@@ -1,29 +1,125 @@
 {
   "_meta": {
+    "status": "ready",
     "slug": "ara-s3-phases",
-    "lang": "ms",
-    "sourceFile": "articles/ara-s3-phases.html"
+    "lang": "ms"
   },
   "head": {
-    "title": "Ecological Phases — ARA Framework · Aquatic Rhythm",
-    "description": "Early, Developing, and Mature — with false maturity and phase regression.",
-    "ogTitle": "Ecological Phases — ARA Framework · Aquatic Rhythm",
-    "ogDescription": "Early, Developing, and Mature — with false maturity and phase regression."
+    "title": "Fasa Ekologi — Framework ARA · Aquatic Rhythm",
+    "description": "Early, Developing, dan Mature — berserta kematangan palsu dan regresi fasa.",
+    "ogTitle": "Fasa Ekologi — Framework ARA · Aquatic Rhythm",
+    "ogDescription": "Early, Developing, dan Mature — berserta kematangan palsu dan regresi fasa.",
+    "twitterTitle": "Fasa Ekologi — Framework ARA · Aquatic Rhythm",
+    "twitterDescription": "Early, Developing, dan Mature — berserta kematangan palsu dan regresi fasa.",
+    "ldHeadline": "Fasa Ekologi — Framework ARA",
+    "ldDescription": "Early, Developing, dan Mature — berserta kematangan palsu dan regresi fasa."
   },
-  "intro": {
-    "eyebrow": "",
-    "titleHtml": "",
-    "subtitle": "",
-    "texts": [],
-    "metaModules": "",
-    "metaTime": "",
-    "metaLevel": "",
-    "cta": "Start reading"
+  "header": {
+    "eyebrow": "03 / 06 · Framework ARA",
+    "titleHtml": "Fasa Ekologi",
+    "desc": "Early, Developing, dan Mature — berserta kematangan palsu dan regresi fasa."
   },
-  "modules": [],
-  "relatedLinks": [],
-  "footer": {
-    "allArticles": "← All articles",
-    "araLink": "Aquatic Rhythm Alignment"
+  "modules": [
+    {
+      "pos": "1 / 2",
+      "tag": "Tiga Fasa Sistem",
+      "titleHtml": "Tiga <em>Fasa Sistem</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "ARA mengiktiraf bahawa kehidupan sesebuah tank mengikut satu lengkung perkembangan, dan bahawa apa yang wajar — dari segi campur tangan, penstokan, keamatan penyelenggaraan, dan jangkaan — turut berubah apabila tank itu bergerak melalui lengkung tersebut."
+          ]
+        },
+        {
+          "type": "rhythm-signals",
+          "items": [
+            {
+              "label": "Early Phase",
+              "text": "Kitaran nitrogen sedang terbentuk. Ammonia dan nitrite hadir; populasi mikrob yang memproses sisa masih sedang berkembang. Kebanyakan campur tangan hanya mengganggu proses biologi yang perlu disempurnakan. Pendekatan yang selaras: campur tangan minimum, keadaan yang stabil, dan masa."
+            },
+            {
+              "label": "Tetingkap Kritikal",
+              "text": "Dua minggu pertama membawa beban yang tersendiri. Lonjakan ammonia, kekeruhan, dan ketidakstabilan memang dijangka dan diperlukan — bukan masalah yang perlu diselesaikan. Desakan untuk campur tangan paling kuat di sini; kos campur tangan yang tidak perlu juga paling tinggi di sini."
+            },
+            {
+              "label": "Developing Phase",
+              "text": "Kitaran nitrogen sudah lengkap; tank berfungsi tetapi belum lagi mempunyai kedalaman ekologi. Penstokan sederhana boleh ditampung. Kerentanan kepada gangguan masih ada — perubahan besar atau penambahan stok yang mengejut boleh menggugat apa yang telah terbentuk."
+            },
+            {
+              "label": "Mature Phase",
+              "text": "Komuniti biologi sudah mempunyai kedalaman: populasi mikrob yang mantap, corak tingkah laku yang stabil, substrat dan hardscape yang telah menjadi berfungsi dari segi ekologi. Tank Mature Phase menyerap gangguan dan pulih tanpa campur tangan."
+            }
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "\"Fasa menentukan apa yang wajar — bukan sekadar produk apa yang perlu digunakan, tetapi sama ada perlu bertindak langsung ataupun tidak. Tindakan yang sama, diambil dalam Early Phase dan dalam Mature Phase, akan menghasilkan keputusan yang sama sekali berbeza.\""
+        },
+        {
+          "type": "hn",
+          "label": "ARA · Peralihan Fasa",
+          "paragraphs": [
+            "Tank tidak mengumumkan peralihan fasanya. Satu isyarat yang berguna ialah cara tank itu bertindak balas terhadap gangguan — tank Mature Phase pulih tanpa bantuan; tank Developing Phase mungkin memerlukan sokongan."
+          ]
+        }
+      ]
+    },
+    {
+      "pos": "2 / 2",
+      "tag": "Dinamik Fasa",
+      "titleHtml": "Dinamik <em>Fasa</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Perkembangan fasa bukan satu jaminan, dan ia tidak hanya bergerak ke hadapan. Tiga dinamik merumitkan lengkung ke hadapan yang mudah itu — keadaan yang mana sistem sedang melakukan sesuatu yang lebih halus daripada sekadar maju, dan yang menuntut jenis perhatian penjaga yang berbeza untuk dikenal pasti."
+          ]
+        },
+        {
+          "type": "rhythm-signals",
+          "items": [
+            {
+              "label": "Kematangan Palsu",
+              "text": "Kestabilan yang kelihatan tanpa kedalaman ekologi yang tulen. Substratnya nipis dari segi biologi; komuniti mikrob di luar kitaran nitrogen kekal cetek. Ia hanya kelihatan apabila tank berdepan dengan satu tekanan lalu bertindak balas dengan kerapuhan Developing Phase, bukan dengan daya tahan Mature Phase."
+            },
+            {
+              "label": "Regresi Fasa",
+              "text": "Tank Mature Phase yang mengalami gangguan yang cukup besar — peristiwa penyakit, kegagalan peralatan, water change besar yang berulang, rombakan stok yang mengejut — boleh berundur sementara kepada tingkah laku fasa yang lebih awal. Mengenali regresi ini, dan bukan menerapkan jangkaan Mature Phase pada sesuatu yang kini berfungsi sebagai sistem yang lebih awal, ialah salah satu tuntutan kerangka ini yang lebih halus."
+            },
+            {
+              "label": "Reset yang Disengajakan",
+              "text": "Bukan semua kitaran fasa itu regresi. Layout pertandingan yang dirobohkan pada kemuncaknya, setup pembiakan yang direset antara kitaran, tank kuarantin yang memang tidak pernah diniatkan untuk matang — semua ini melibatkan reset secara sedar dan sukarela sebagai keputusan penjaga. Kerangka fasa ARA terpakai dalam setiap pusingan; reset sukarela berbeza daripada regresi yang didorong oleh gangguan."
+            }
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "Fasa bukan pintu sehala. Apa yang kelihatan stabil mungkin cetek. Apa yang kelihatan seperti kemunduran mungkin masih boleh dipulihkan. Soalannya sentiasa: apa yang sistem ini sebenarnya sedang lakukan sekarang?"
+        },
+        {
+          "type": "hn",
+          "label": "ARA · Membaca Dinamik Fasa",
+          "paragraphs": [
+            "Dinamik fasa dibaca secara berbeza daripada perkembangan fasa. Perkembangan bertanya: berapa lama umur sistem ini? Dinamik bertanya: bagaimana sistem ini bertindak balas terhadap tekanan? Tank Mature Phase yang pulih tanpa bantuan sedang menzahirkan kematangan. Tank yang sama umurnya tetapi menunjukkan kerapuhan Early Phase di bawah gangguan sederhana sedang menunjukkan fasa sebenarnya kepada anda — bukan kalendarnya."
+          ]
+        }
+      ]
+    }
+  ],
+  "secnav": [
+    {
+      "href": "/articles/ara-s2-five-rhythms",
+      "text": "← Lima Ritma"
+    },
+    {
+      "href": "/articles/ara-s4-alignment",
+      "text": "Pemikiran Keselarasan →"
+    }
+  ],
+  "backLinkText": "← Kerangka ARA",
+  "hubCta": {
+    "eyebrow": "Selesai buat masa ini?",
+    "body": "Kembali ke gambaran keseluruhan Kerangka ARA ↗"
   }
 }

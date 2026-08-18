@@ -1,0 +1,212 @@
+# Aquatic Rhythm — Panduan Agen
+
+Laman statik (HTML/CSS/JS vanilla, tiada framework/build step JS runtime —
+skrip `scripts/*.mjs`/`*.py` HANYA jana fail statik, tak jalan di
+pelayar) utk `aquaticrhythm.com`. Deploy via GitHub Pages terus drpd
+cabang `main` (fail `CNAME` root). Cloudflare Worker berasingan
+(`worker/index.js`, auto-deploy via `.github/workflows/deploy-worker.yml`
+bila `worker/**` berubah) — kemungkinan proksi backend Rhyssa AI. Rujuk
+`README.md` utk falsafah produk (ARA — Aquatic Rhythm Alignment) & ciri
+penuh; fail ni fokus pada apa yg AGEN perlu tahu supaya tak tersalah
+anggap/patah balik keputusan sedia ada.
+
+## Cawangan & PR
+
+**Satu cabang produksi (`main`)** — tiada aliran staging/main berasingan
+spt projek Vercel dlm ekosistem Idariq yg lain. Alur kerja: commit pd
+cabang kerja → push → `mcp__github__create_pull_request` (base `main`)
+→ semak CI (`Syntax, lint, and tests` — `npm run check:syntax && npm
+test && npm run lint && npm run i18n:check`) → `mcp__github__merge_pull_request`
+(`merge_method: "squash"`) → resync cabang kerja (`git fetch origin
+main && git reset --hard origin/main && git push --force-with-lease
+origin <cabang-kerja>`).
+
+## Bahasa
+
+Tulis commit message, huraian PR, & balasan dlm **Bahasa Melayu**
+(konvensyen sesi, bukan pilihan sekali sahaja) — kandungan laman
+sendiri (artikel, UI) kekal en/id/ja spt biasa, ni khusus meta
+(commit/PR/dokumentasi agen).
+
+## i18n — HANYA en/id/ja (BUKAN ms — dibuang 2026-08-18)
+
+**Bahasa Melayu (`ms`) DIBUANG sepenuhnya drpd laman ni** (PR #303,
+2026-08-18) — keputusan produk EKSPLISIT: aquarist Malaysia biasanya
+cari maklumat hobi akuarium dlm English, bukan BM, jadi `ms` jadi
+overhead penyelenggaraan (naturalness fix, semakan register berulang
+setiap fasa terjemahan) tanpa audience sebenar — beza drpd `id`/`ja` yg
+pasaran mereka memang cari dlm bahasa sendiri utk hobi ni. **JANGAN
+cadang/bina semula sokongan `ms`** kecuali user nyatakan keputusan ni
+dah berubah secara eksplisit. Sejarah git (`git log --oneline | grep -i
+"terjemah\|ARA\|ms"`) masih ada rekod penuh kerja `ms` lama (~35
+artikel + siri ARA + Community Stress Lab) kalau perlu rujukan/rollback
+di masa depan.
+
+**3 bahasa disokong: `en` (sumber, root), `id`, `ja`.** Setiap
+skrip build (`LANGUAGES`/`LANGS` array) & setiap `NAV_LABELS`/
+`BNAV_LABELS`/`AR_LANGS` dict merentas fail di bawah MESTI kekal
+selaras 2-bahasa ni — kalau tambah bahasa baharu di masa depan,
+kemas kini SEMUA tempat ni serentak (senarai penuh dlm §"Pipeline
+Build" di bawah), bukan sebahagian.
+
+### Senibina — TIGA templat halaman berasingan, TIGA skrip build
+
+Laman ni ada 3 "bentuk" HTML struktur berbeza, masing² skrip build
+sendiri (JANGAN cuba guna satu skrip utk templat lain — regex/kelas
+CSS tak sepadan):
+
+1. **Artikel biasa** (`art-*`/`module`/`mod-*` kelas) —
+   `scripts/build-i18n.mjs`. Sumber: `translations/<lang>/<slug>.json`
+   (schema per-modul: head/intro/modules[]/footer). Usage:
+   `node scripts/build-i18n.mjs --lang id [--slug <slug>]` /
+   `--all` / `--patch-english` (tambah hreflang kpd sumber Inggeris).
+2. **Siri kerangka ARA** (`ara-art-*`/`ara-hub-*` kelas — 7 fail:
+   `ara-full-framework` + `ara-s1-foundation`..`ara-s6-ethics`) —
+   `scripts/build-ara-i18n.mjs`. Sumber: `translations/<lang>/ara-*.json`
+   (schema blok: `blocks[]` dgn `type: body/pq/hn/rhythm-signals/
+   domain-grid/signal-list`, kekalkan susunan dokumen). **PENGECUALIAN
+   PENTING**: 2 redirect stub (`four-principles-of-ara`,
+   `reading-the-five-rhythms`) yg redirect KE `ara-full-framework`
+   guna templat ARTIKEL BIASA (tiada markup `ara-art-*`), jadi dibina
+   oleh `build-i18n.mjs`, BUKAN `build-ara-i18n.mjs` — sasaran redirect
+   dilokalkan terus dlm `build-i18n.mjs`'s `buildArticle()` (step 11,
+   khusus 2 slug ni).
+3. **Alat interaktif mandiri** (satu fail HTML lengkap, bukan sebahagian
+   templat artikel — cth. `community-stress-lab.html`) —
+   `scripts/build-csl-i18n.mjs` (contoh sedia ada; alat interaktif
+   BAHARU akan perlukan skrip serupa sendiri, model ikut fail ni).
+   Sumber: `translations/<lang>/<slug>.json` (bahagian `"html"` sahaja
+   — string UI statik/modal/label). **String runtime JS** (label
+   dinamik, mesej enjin peraturan, dsb.) TIDAK dlm `translations/` —
+   ditanam terus dlm fail JS kongsi (`js/<alat>.js`) sbg jadual
+   `<PREFIX>_STRINGS`/fungsi `T(key, subs)`, dipilih ikut
+   `document.documentElement.lang` runtime — pola sama `JN_STRINGS`/
+   `T()` dlm `js/ui-journal.js`. SATU fail JS dikongsi SEMUA bahasa
+   (tiada salinan per-bahasa) — bila tambah bahasa/alat baharu, thread
+   `T()` call site demi call site, sahkan struktur (kunci sepadan,
+   placeholder `{...}` verbatim) via skrip perbandingan automatik,
+   BUKAN percaya laporan agen terjemah sahaja.
+
+**Halaman utama (`index.html`)** — templat KEEMPAT, berasingan lagi
+(SPA hab, bukan artikel/alat): `scripts/build-homepage-i18n.py`
+(Python, bukan `.mjs`). Sumber: `translations/homepage/<lang>.json`.
+**Bukan sebahagian pipeline berulang** (komen dlm fail: "Re-run this
+script only if index.html's structure changes and the localized copies
+need resyncing") — jalankan MANUAL bila `index.html` (sumber Inggeris)
+disunting, BUKAN automatik. **AWAS drift regex**: skrip ni guna regex
+literal (cth. `font-size:\.94rem`) yg boleh lapuk bila CSS token tema
+disunting (cth. ditukar ke `var(--fs-md)`) — regex GAGAL SENYAP
+(`replace_once` cetak amaran "pattern not found" ke console tapi skrip
+TAK gagal/exit), hasilnya bahagian tu KEKAL English pd halaman id/ja
+walau translations JSON betul. **SENTIASA baca output console utk
+amaran "pattern not found" lepas jalankan skrip ni** — kalau ada,
+regex tu dah lapuk berbanding `index.html` semasa, kena dikemas kini
+(bandingkan literal dlm regex vs teks sebenar dlm `index.html`)
+SEBELUM percaya output. Bug ni ditemui & dibetulkan sekali (PR #303,
+"tools closing note") — corak yg sama boleh berulang kat regex lain
+dlm fail ni bila CSS/HTML sumber disunting di masa depan tanpa
+regenerate homepage serentak.
+
+**`scripts/check-i18n-sync.mjs`** (`npm run i18n:check`) — regenerate
+SEMUA artikel (`build-i18n.mjs --all`) & diff drpd apa yg di working
+tree. **Sentiasa akan "gagal" (tunjuk diff) bila ada kerja belum
+commit** — ni BUKAN bug, `git diff` bandingkan working tree vs HEAD
+(commit terakhir), jadi kerja aktif SEMESTINYA nampak "out of sync"
+sehingga di-commit. Cara sah pengesahan: jalankan **DUA kali** &
+bandingkan diff-stat — SAMA = regenerasi deterministik/idempoten
+(betul), BEZA = ada masalah sebenar. Lepas commit, jalan sekali lagi
+patut tunjuk "in sync" (diff kosong).
+
+### Tempat "'ms'"/senarai bahasa perlu SELARAS bila tambah bahasa baharu
+
+(Senarai lengkap 15 tempat dikemas kini bila `ms` dibuang — rujukan
+kalau tambah bahasa baharu di masa depan, bukan sebaliknya):
+`scripts/build-i18n.mjs` (`LANGUAGES` + `NAV_LABELS`),
+`scripts/build-ara-i18n.mjs` (`LANGUAGES` + `NAV_LABELS` + `BNAV_LABELS`),
+`scripts/build-csl-i18n.mjs` (`LANGUAGES` + `BNAV_LABELS`),
+`scripts/build-reading-index.mjs` (`LANGS` + `ALL_READING_LANGS` +
+`UI` dict + `AR_LANGS` switcher list),
+`scripts/build-homepage-i18n.py` (`LANGUAGES` + `LANG_LABEL` + ~8 dict
+per-field),
+`scripts/extract-i18n.mjs` (`LANGUAGES`),
+`scripts/gen-og-images.mjs` (`LANGS`),
+`scripts/update-sitemap.mjs` (`LANGS`),
+`scripts/check-i18n-sync.mjs` (`WATCHED_DIRS`),
+`js/ui-settings.js` (`AR_LANGS` — togol tetapan halaman utama),
+`js/ar-page.js` (`AR_LANGS` + `arInferBasePath()` array — togol
+tetapan artikel/alat),
+`js/ui.js` (`titleMapByLang`/`descMapByLang` — tajuk/meta dinamik SPA),
+`js/ui-journal.js` (`JN_STRINGS.<lang>`),
+`js/community-stress-lab.js` (`CSL_STRINGS.<lang>`) — & mana-mana
+`<PREFIX>_STRINGS.<lang>` fail JS alat interaktif lain yg wujud kelak.
+
+## Konvensyen Istilah Terjemahan (disahkan merentas ~35 artikel + siri ARA)
+
+- **"ARA"**, **"Aquatic Rhythm"**, **"Aquatic Rhythm Alignment"**,
+  **"Rhyssa"** — KEKAL Bahasa Inggeris/roman semua bahasa (nama
+  produk/jenama).
+- **"Water/Biological/Environmental/Livestock/Keeper Rhythm"** (nama
+  konsep 5 irama ARA, huruf besar) — kekal English dlm id; dlm ja,
+  English + gloss Jepun dlm kurungan pd sebutan PERTAMA/definisi tiap
+  fail (cth. "Water Rhythm（水質リズム）"), sebutan seterusnya dlm fail
+  sama boleh gugur gloss.
+- **"Early Phase"/"Developing Phase"/"Mature Phase"** (sistem 3-fasa
+  ARA) — kekal English SEMUA bahasa (dominan merentas kandungan
+  sedia ada; JANGAN terjemah spt satu artikel lama tersasar buat).
+  **BEZA** drpd sistem 4-fasa Keeper's Log
+  ("Establishing/Stabilising/Optimising/Sustaining") — jangan
+  campur/keliru dua sistem ni.
+- **"Keeper's Log"** (rujuk ciri `/journal`) — **id: "Catatan
+  Penjaga"**, **ja: "キーパーの記録"** — istilah PRODUK yg dah
+  ditetapkan (padan label bottom-nav), BUKAN terjemah literal
+  perkataan demi perkataan.
+- Nama spesies ikan/tumbuhan (cth. dlm pek data spesies alat
+  interaktif) — kekal English (data rujukan sains), KECUALI medan
+  kandungan boleh-terjemah sebenar (cth. `citationNote` per-spesies)
+  yg dipetakan berasingan drpd nama spesies itu sendiri.
+- Istilah konsep baharu ARA (capacity creep, ecological forgiveness,
+  false maturity, dll.) — terjemah semula jadi id, English+gloss ja.
+- **Daftar (register)**: JANGAN kontrak "ini"/"itu" → "ni"/"tu" dlm id
+  — semak sendiri sebelum hantar/terima kerja terjemah agen.
+
+## Skop Sengaja Ditinggalkan (JANGAN cuba terjemah tanpa tanya user dulu)
+
+- **Kandungan prompt AI** dlm `js/ui-journal.js` (mesej `rhMsg`,
+  templat insight mingguan dihantar ke backend AI Rhyssa) — terjemah
+  ni akan UBAH TINGKAH LAKU AI, bukan sekadar tukar teks UI.
+  Keputusan skop eksplisit user, bukan andaian ejen.
+- **`js/tank-data.js`'s `AR_BRAND_INFO`** (126 entri peralatan,
+  ~11.5k patah perkataan prosa panduan beli) — tugas besar berasingan,
+  belum dimulakan.
+
+## Status Terjemahan Semasa (kemas kini 2026-08-18)
+
+**Siap**: ~35 artikel biasa, siri kerangka ARA penuh (7 fail), halaman
+utama (Fasa 1: nav/meta/pg-home/pg-companion/pg-terms/pg-privacy/
+pg-about — **pg-reading/pg-tools/pg-journal/pg-tank-log KEKAL English**
+sbb string JS-driven interaktifnya perlukan mekanisme i18n berasingan,
+belum dibina), `community-stress-lab` (alat interaktif rintis pertama).
+
+**Berbaki** (ikut saiz, kecil→besar): kuiz **Know Your Rhythm**
+(`know-your-rhythm.html`, ~4.3k patah perkataan — id tiada langsung,
+array kuiz ja 100% tak diterjemah), alat **`tank-simulator`** (~8.6k
+patah perkataan), alat **`tank-builder`** (~19k patah perkataan,
+terbesar). Pola kerja utk alat interaktif baharu: rujuk
+`scripts/build-csl-i18n.mjs` + mekanisme `CSL_STRINGS`/`T()` dlm
+`js/community-stress-lab.js` sbg templat.
+
+## Semakan Sebelum Commit
+
+- `npm run check` (`check:syntax` + `test` [Node test runner,
+  `tests/*.test.mjs`] + `lint` [ESLint `js/`/`scripts/`/`worker/`/
+  `tests/`]) — mesti 0 ralat (amaran `no-unused-vars` dsb. ditoleransi,
+  byk pre-existing).
+- `npm run i18n:check` — jalankan DUA kali, diff-stat mesti SAMA
+  (idempoten) sblm commit; selepas commit patut kosong.
+- Playwright (`node_modules/.bin/playwright`, guna
+  `executablePath: '/opt/pw-browsers/chromium'` dlm sandbox agen — CDN
+  luar cth. `fonts.googleapis.com`/analitik disekat, `ERR_TUNNEL_
+  CONNECTION_FAILED` dijangka & selamat diabaikan dlm log ralat JS,
+  bukan bug sebenar) — uji fungsian merentas SEMUA bahasa (termasuk
+  `en` sbg semakan regresi, sbb fail JS alat interaktif DIKONGSI semua
+  bahasa) lepas apa-apa perubahan JS/HTML i18n.

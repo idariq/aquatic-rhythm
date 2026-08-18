@@ -1,479 +1,479 @@
 {
-  "nav_extra": {
-    "settings_aria": "Pengaturan",
-    "pwa_title": "Simpan panduan Anda secara offline",
-    "pwa_body": "Baca, rujuk ARA, dan tanya Rhyssa tanpa koneksi internet.",
-    "pwa_install": "Pasang",
-    "pwa_dismiss_aria": "Tutup",
-    "footer_tagline": "Selaras dengan sistem kehidupan.",
-    "subfooter_support": "Dukungan",
-    "subfooter_contact": "Kontak",
-    "bnav_log_aria": "Log Penjaga"
-  },
-  "home": {
-    "hero_h1": "Akuarium Anda adalah dunia kecil,<br>yang tertutup.<br><em style=\"font-style:italic;color:rgba(61,214,232,.82)\">Anda bagian dari yang membentuknya.</em>",
-    "hero_sub": "Tempat yang tenang untuk memahami ekologi akuarium, memikirkan keputusan, dan mengerti apa yang sebenarnya dibutuhkan akuarium Anda — dibuat untuk kehidupan nyata, bukan kondisi ideal.",
-    "hero_cta": "Jelajahi panduan →",
-    "keeper_lead": "Sebagian besar saran akuarium ditulis untuk penjaga yang ideal — seseorang dengan rutinitas tetap, waktu yang selalu tersedia, dan akuarium yang selalu bekerja sama.",
-    "keeper_body1": "Kadang itu adalah Anda. Sering kali bukan. Minggu terasa panjang. Pergantian air tertunda. Ada sesuatu yang terlihat tidak beres dan Anda tidak yakin apa artinya. Anda peduli — tapi kepedulian tidak selalu terlihat seperti yang dikatakan panduan seharusnya.",
-    "keeper_body2": "Jarak antara penjaga yang Anda rencanakan untuk menjadi dan penjaga yang hadir hari ini bukanlah kegagalan yang perlu diperbaiki. <em>Itu adalah informasi untuk dipahami.</em> Situs ini dibangun di sekitar memahami jarak itu.",
-    "ara_ey": "Cara situs ini berpikir",
-    "ara_lead": "ARA adalah lensa yang peka terhadap perilaku di balik panduan dan alat ini. Ia memandang masalah yang tampak sebagai <em>sinyal yang terlambat</em> — biasanya setelah tekanan menumpuk di seluruh air, biologi, lingkungan, penghuni akuarium, dan jadwal Anda sendiri. Ia tidak bertanya “apa yang gagal?” terlebih dahulu. Ia bertanya <strong style=\"font-weight:500;color:rgba(255,255,255,.78)\">apa yang tidak lagi selaras</strong>, dan apakah langkah berikutnya sesuai dengan <em>fase</em> dan <em>kapasitas</em> sistem saat ini.",
-    "reframe_without_label": "Tanpa lensa ini",
-    "reframe_without_text": "“Apa yang salah?” → cari penyebabnya → perbaiki cepat → lanjutkan.",
-    "reframe_with_label": "Dengan ARA",
-    "reframe_with_text": "“Apa yang tidak lagi bergerak selaras?” → pahami polanya → kurangi gesekan → beri ruang untuk pulih.",
-    "principles_label": "Empat pertanyaan sebelum bertindak",
-    "principle_timing": "<strong>Waktu</strong> sebelum teknik — apakah momen ini bisa menampung langkah tersebut.",
-    "principle_capacity": "<strong>Kapasitas</strong> sebelum ambisi — apa yang benar-benar mampu ditanggung kehidupan Anda, bukan jadwal khayalan.",
-    "principle_rhythm": "<strong>Ritme</strong> sebelum intensitas — konsistensi biasanya mengalahkan lonjakan usaha yang heroik.",
-    "principle_observation": "<strong>Pengamatan</strong> sebelum koreksi — beberapa perubahan perlu selesai dulu sebelum bisa dipahami dengan jujur.",
-    "ara_foot_cta": "Baca kerangka kerja ARA selengkapnya →",
-    "offers_ey": "Empat area untuk dijelajahi",
-    "offers_h2": "Tidak ada urutan baku.<br><em>Tidak ada tekanan untuk menggunakan semuanya.</em>",
-    "offers_lead": "Bacaan, Alat, Pendamping, dan Log Penjaga masing-masing berdiri sendiri — buka salah satunya kapan pun terasa tepat. ARA adalah benang yang mengikat semuanya, tapi bukan bacaan wajib sebelum Anda mulai.",
-    "tile1_tag": "Bacaan",
-    "tile1_h3": "Panduan ekologi modular",
-    "tile1_p": "Panduan singkat tentang siklus nitrogen, tanda-tanda alga, perilaku ikan, perawatan tanaman, waktu pergantian air, perawatan rutin, dan lainnya. Diformat untuk dibaca sedikit demi sedikit, di mana pun Anda berada.",
-    "tile1_cta": "Jelajahi Bacaan →",
-    "tile2_tag": "Laboratorium &amp; Alat",
-    "tile2_h3": "Coba keputusan di layar dulu",
-    "tile2_p": "Simulator interaktif. Lihat bagaimana siklus nitrogen merespons pilihan Anda sebelum Anda menerapkannya di akuarium sungguhan. Rencanakan setup dan lihat apa yang sebenarnya dibutuhkan sebelum Anda membeli.",
-    "tile2_cta": "Buka Laboratorium &amp; Alat →",
-    "tile3_tag": "Pendamping",
-    "tile3_h3": "Rhyssa — teman berpikir",
-    "tile3_p_pre": "Pendamping AI yang dibentuk oleh ARA. Tersedia di sini, di halaman ini — ketuk untuk membuka. Rhyssa yang sama juga berjalan di ",
-    "tile3_p_link": "ChatGPT ↗",
-    "tile3_p_post": " jika Anda lebih suka.",
-    "tile3_cta": "Ngobrol dengan Rhyssa →",
-    "tile4_tag": "Log Penjaga",
-    "tile4_h3": "Log yang tenang di perangkat Anda",
-    "tile4_p": "Catat apa yang Anda perhatikan, apa yang Anda lakukan, dan bagaimana ritme Anda terasa minggu ini. Disimpan secara pribadi di browser Anda — tidak ada yang meninggalkan perangkat Anda.",
-    "tile4_cta": "Buka Log →"
-  },
-  "companion": {
-    "sub": "Pendamping Akuarium",
-    "back_aria": "Kembali",
-    "new_aria": "Percakapan baru",
-    "welcome": "Ceritakan apa yang Anda lihat — air, perilaku, apa pun yang berubah — dan kita bisa memahaminya bersama sebelum memperbaiki apa pun.",
-    "starter1_btn": "Ada yang terlihat tidak beres",
-    "starter1_data": "Ada yang terlihat tidak beres di akuarium saya — saya tidak yakin harus mulai memahaminya dari mana",
-    "starter2_btn": "Siklus nitrogen",
-    "starter2_data": "Bisakah kamu jelaskan siklus nitrogen dengan bahasa sederhana?",
-    "starter3_btn": "Setup akuarium pertama",
-    "starter3_data": "Saya sedang menyiapkan akuarium pertama saya — apa yang perlu saya ketahui?",
-    "starter4_btn": "Ikan terlihat stres",
-    "starter4_data": "Ikan saya terlihat stres. Dari mana saya harus mulai?",
-    "placeholder": "Tanyakan tentang akuarium Anda…",
-    "send_aria": "Kirim",
-    "note": "AI bisa saja salah — untuk keadaan darurat pada ikan, konsultasikan dengan spesialis"
-  },
-  "terms": {
-    "h1": "Ketentuan Penggunaan",
-    "date": "Terakhir diperbarui: Maret 2026",
-    "h_overview": "Ringkasan",
-    "p_overview": "Ketentuan ini menjelaskan syarat dasar untuk menggunakan situs web ini dan pendamping Rhyssa. Ketentuan ini ditulis sejelas mungkin. Aquatic Rhythm ditawarkan dengan itikad baik, tetapi tetap penting untuk menjelaskan secara jelas apa proyek ini, apa yang bukan, dan di mana tanggung jawab tetap berada pada pengguna.",
-    "h_offers": "Apa yang ditawarkan Aquatic Rhythm",
-    "p_offers1": "Aquatic Rhythm menyediakan kerangka kerja bernama ARA — Aquatic Rhythm Alignment — dan akses ke Rhyssa, pendamping AI yang dibentuk oleh kerangka kerja tersebut. Semua yang ada di sini ditawarkan hanya untuk tujuan informasi dan edukasi.",
-    "p_offers2": "Rhyssa adalah sistem bahasa AI. Jawabannya dibentuk oleh pelatihan dan konteks, bukan keahlian profesional. Dia bukan dokter hewan berlisensi, ahli biologi akuatik, atau profesional akuarium bersertifikat.",
-    "h_noadvice": "Bukan nasihat profesional",
-    "p_noadvice1": "Tidak ada apa pun di situs web ini atau dalam percakapan apa pun dengan Rhyssa yang merupakan nasihat profesional — termasuk nasihat kedokteran hewan, medis, hukum, atau keuangan.",
-    "p_noadvice2": "Jika ikan atau hewan akuatik Anda sakit atau dalam kondisi tertekan, harap konsultasikan dengan spesialis yang berkualifikasi. Rhyssa dapat menawarkan perspektif dan cara berpikir — dia tidak dapat mendiagnosis, meresepkan, atau menggantikan penilaian profesional.",
-    "h_ailimits": "Keterbatasan AI",
-    "p_ailimits1": "Rhyssa bisa saja salah. Seperti semua sistem AI, dia bisa menghasilkan informasi yang tidak akurat, tidak lengkap, atau sudah usang. Anda bertanggung jawab untuk mengevaluasi jawabannya sebelum bertindak berdasarkan jawaban tersebut. Aquatic Rhythm tidak menerima tanggung jawab atas keputusan yang dibuat berdasarkan jawabannya.",
-    "p_ailimits2": "Percakapan dengan Rhyssa berlangsung di platform eksternal. Dengan menggunakan Rhyssa, Anda juga menyetujui ketentuan platform tersebut.",
-    "h_ip": "Hak kekayaan intelektual",
-    "p_ip": "Kerangka kerja ARA, konten situs web ini, dan nama Aquatic Rhythm adalah kekayaan intelektual proyek ini. Anda boleh membagikan dan merujuknya secara bebas untuk tujuan pribadi, edukasi, atau non-komersial, dengan mencantumkan atribusi. Penggunaan komersial memerlukan izin terlebih dahulu.",
-    "h_liability": "Batasan tanggung jawab",
-    "p_liability": "Aquatic Rhythm disediakan apa adanya, tanpa jaminan dalam bentuk apa pun. Kami tidak bertanggung jawab atas kerugian langsung, tidak langsung, atau insidental yang timbul dari penggunaan situs web ini atau Rhyssa oleh Anda.",
-    "h_changes": "Perubahan pada ketentuan ini",
-    "p_changes_pre": "Ketentuan ini dapat diperbarui seiring berkembangnya Aquatic Rhythm. Tanggal di bagian atas halaman ini menunjukkan revisi terbaru. Ada pertanyaan? Hubungi kami di "
-  },
-  "privacy": {
-    "h1": "Kebijakan Privasi",
-    "date": "Terakhir diperbarui: Mei 2026",
-    "h_overview": "Ringkasan",
-    "p_overview_pre": "Aquatic Rhythm adalah proyek independen berskala kecil. Halaman ini menjelaskan, sesederhana mungkin, informasi apa yang mungkin dikumpulkan saat Anda mengunjungi situs ini, dari mana informasi itu berasal, dan bagaimana informasi itu dikelola. Pertanyaan dapat disampaikan ke ",
-    "h_direct": "Informasi yang kami kumpulkan secara langsung",
-    "p_direct_intro": "Aquatic Rhythm tidak mengharuskan Anda membuat akun. Namun, kami mungkin mengumpulkan informasi dengan cara berikut:",
-    "li_direct1_label": "Kontak email",
-    "li_direct1_text": " — jika Anda menghubungi kami, kami menerima alamat email Anda dan isi pesan Anda. Kami menggunakannya hanya untuk membalas Anda.",
-    "li_direct2_label": "Formulir masukan atau survei",
-    "li_direct2_text": " — jika kami memperkenalkan formulir masukan di masa mendatang, kami akan memperbarui kebijakan ini untuk mencerminkan apa yang dikumpulkan dan bagaimana penggunaannya.",
-    "p_direct_end": "Kami tidak menjual, membagikan, atau menggunakan informasi pribadi Anda untuk tujuan pemasaran.",
-    "h_third": "Layanan pihak ketiga",
-    "p_third_intro": "Situs web ini menggunakan beberapa layanan pihak ketiga yang dapat mengumpulkan data secara independen sesuai kebijakan privasi masing-masing:",
-    "li_third1_label": "GitHub Pages",
-    "li_third1_text": " — menghosting situs web ini. GitHub mungkin mengumpulkan log server termasuk alamat IP dan informasi browser Anda.",
-    "li_third2_label": "ChatGPT / OpenAI",
-    "li_third2_text": " — Rhyssa diakses melalui ChatGPT. Setiap percakapan yang Anda lakukan dengan Rhyssa tunduk pada Kebijakan Privasi OpenAI. Kami tidak menerima atau menyimpan percakapan Anda.",
-    "li_third3_label": "Google Search Console",
-    "li_third3_text": " — digunakan untuk memantau bagaimana situs ini muncul di Google Search. Alat ini mengumpulkan data agregat dan teranonimkan tentang performa pencarian.",
-    "li_third4_label": "Google Analytics",
-    "li_third4_text": " — digunakan untuk memahami bagaimana pengunjung berinteraksi dengan situs web ini. Alat ini mengumpulkan data teranonimkan termasuk halaman yang dikunjungi, waktu yang dihabiskan, jenis perangkat, dan perkiraan lokasi. Tidak ada informasi yang dapat mengidentifikasi individu yang dikumpulkan.",
-    "li_third5_label": "Ko-fi (donasi opsional)",
-    "li_third5_text": " — baik Anda menggunakan panel dukungan yang tertanam di situs ini maupun membuka Ko-fi di tab browser Anda sendiri, Anda berinteraksi langsung dengan Ko-fi. Ko-fi dan prosesor pembayarannya (seperti PayPal atau Stripe) mengelola informasi apa pun yang Anda berikan sesuai kebijakan privasi masing-masing. Aquatic Rhythm tidak menerima detail kartu pembayaran atau kredensial login Ko-fi Anda.",
-    "h_cookies": "Cookie",
-    "p_cookies1": "Aquatic Rhythm sendiri tidak membuat cookie akun atau login. Google Analytics mengatur cookie secara otomatis saat Anda mengunjungi situs web ini untuk membedakan pengunjung dan melacak sesi. Cookie ini teranonimkan dan tidak mengidentifikasi Anda secara pribadi.",
-    "p_cookies2": "Anda dapat mengelola atau menonaktifkan cookie melalui pengaturan browser Anda.",
-    "h_rights": "Hak Anda",
-    "p_rights_pre": "Jika Anda berada di Uni Eropa, Britania Raya, atau wilayah lain dengan undang-undang perlindungan data, Anda mungkin memiliki hak terkait data pribadi Anda — termasuk hak untuk mengakses, memperbaiki, atau menghapus informasi yang kami simpan tentang Anda. Hubungi kami di ",
-    "h_children": "Anak-anak",
-    "p_children": "Situs web ini tidak ditujukan untuk anak-anak di bawah usia 13 tahun. Kami tidak dengan sengaja mengumpulkan informasi pribadi dari anak-anak.",
-    "h_changes": "Perubahan pada kebijakan ini",
-    "p_changes": "Seiring berkembangnya Aquatic Rhythm, kebijakan ini dapat diperbarui untuk mencerminkan fitur atau layanan baru. Tanggal di bagian atas halaman ini akan selalu menunjukkan kapan terakhir kali direvisi."
-  },
-  "about": {
-    "ey": "Tentang",
-    "h1": "Dari mana<br>ini berasal.",
-    "intro_italic": "Aquatic Rhythm tidak dimulai sebagai kerangka kerja.<br>Ia dimulai dari sebuah pengalaman — yang mungkin tidak asing bagi Anda.",
-    "intro_small": "Berikut ini adalah kisah pribadi.",
-    "b1_p1": "Ada orang-orang yang datang ke hobi ini mencari sesuatu untuk dirawat.",
-    "b1_p2": "Akuarium. Terarium. Paludarium. Ekosistem tertutup dalam segala bentuknya.",
-    "b1_p3": "Sesuatu yang kecil dan hidup. Sebuah dunia yang muat di dalam sebuah ruangan. Satu sudut kehidupan sehari-hari yang menjadi lebih tenang, lebih hadir, lebih membumi.",
-    "b1_p4": "Pada awalnya, itu berhasil.",
-    "b2_p1": "Tapi tidak ada yang memperingatkan mereka tentang bagian lainnya.",
-    "b2_p2": "Hari ketika sesuatu berhenti terlihat seperti seharusnya. Bercak yang muncul. Tanaman yang kehilangan bentuknya. Air yang terasa tidak beres dengan cara yang sulit dijelaskan.",
-    "b2_p3": "Dan kemudian diam-diam, hampir tanpa disadari, motivasi pun mulai ikut memudar.",
-    "b2_quote": "Ketika ia berhenti terlihat seperti seharusnya, keinginan untuk berada di dekatnya pun ikut pergi.",
-    "b2_p4": "Bukan sikap acuh tak acuh. Bukan kemalasan. Hanya keruntuhan diam-diam dari sesuatu yang hanya tetap utuh karena keindahannya untuk dipandang.",
-    "b3_p1": "Lalu kehidupan mengisi ruang yang dulu ditempati perhatian. Minggu berlalu. Kadang lebih lama.",
-    "b3_quote": "Rasa bersalah itu nyata. Tapi ia membungkus sesuatu yang lain. Sesuatu yang saat itu tidak bisa saya jelaskan. Mungkin harapan bahwa kali berikutnya bisa berbeda.",
-    "b3_p2": "Perasaan itulah tempat proyek ini sebenarnya bermula.",
-    "b4_p1": "Hobi ini tidak kekurangan orang yang menawarkan jawaban. Produk baru. Teknik yang lebih baik. Parameter yang lebih presisi. Pesan tersiratnya selalu sama.",
-    "b4_quote": "Tidak ada yang membicarakan kesejahteraan orang yang memegang akuarium itu. Semua orang menjual sesuatu. Tapi hal yang sebenarnya sedang retak bukanlah sesuatu yang dijual.",
-    "b4_p2": "Banyak orang diam-diam menyerah pada sesuatu yang mereka cintai. Bukan karena mereka berhenti peduli. Tapi karena tidak ada yang memberi tahu mereka bahwa peduli secara tidak konsisten tetaplah peduli.",
-    "b5_p1": "Aquatic Rhythm tumbuh dari kesadaran itu. Ini adalah proyek kecil dan independen. Bukan perusahaan. Konten dan alat di sini bebas untuk digunakan.",
-    "b5_p2": "Yang ditawarkannya adalah sebuah perspektif dan pendamping yang dibentuk olehnya. Sebuah cara memahami ekosistem tertutup yang dimulai dari realitas ekologi, memuat realitas manusia di dalamnya, dan tidak memperlakukan jarak di antara keduanya sebagai kegagalan yang menunggu untuk diperbaiki.",
-    "b5_italic": "Jika Anda pernah merawat akuarium dengan tidak sempurna dan masih berharap minggu depan bisa terasa lebih ringan, karya ini ditulis dengan Anda dalam pikiran.",
-    "kofi_p": "Jika proyek ini bermanfaat, donasi opsional di Ko-fi membantu menutup biaya hosting dan waktu untuk membuat panduan serta alat. Tidak ada apa pun di sini yang berbayar; dukungan sepenuhnya pilihan Anda.",
-    "kofi_cta": "Dukung di Ko-fi →",
-    "final": "Proyek independen — masukan sangat diterima. Aquatic Rhythm tetap terbuka untuk direvisi selama ruang kehidupan dan akuarium hidup terus mengajarkan."
-  },
-  "reading": {
-    "header": {
-      "ey": "Bacaan",
-      "h1": "Baca sesuai<br><em style=\"font-style:italic;color:rgba(124,168,156,.78)\">ritme Anda sendiri.</em>",
-      "sub1": "Panduan ekologi singkat — dipecah menjadi blok-blok kecil agar Anda bisa membaca di ponsel, berhenti sejenak, lalu lanjut lagi. Bahasa sederhana dulu; nama Latin hanya bila membantu.",
-      "sub2_pre": "Ekologi dan perilaku dalam bahasa sederhana · keeper rhythm dan ARA. ",
-      "sub2_link": "Lab &amp; alat",
-      "sub2_post": " untuk simulator ada di tab sendiri."
+    "nav_extra": {
+        "settings_aria": "Pengaturan",
+        "pwa_title": "Simpan panduan Anda secara offline",
+        "pwa_body": "Baca, rujuk ARA, dan tanya Rhyssa tanpa koneksi internet.",
+        "pwa_install": "Pasang",
+        "pwa_dismiss_aria": "Tutup",
+        "footer_tagline": "Selaras dengan sistem kehidupan.",
+        "subfooter_support": "Dukungan",
+        "subfooter_contact": "Kontak",
+        "bnav_log_aria": "Log Penjaga"
     },
-    "misc": {
-      "interactive_tag": "Interaktif",
-      "urgent_tag": "Darurat",
-      "open_article_cta": "Buka artikel →"
+    "home": {
+        "hero_h1": "Akuarium Anda adalah dunia kecil,<br>yang tertutup.<br><em style=\"font-style:italic;color:rgba(61,214,232,.82)\">Anda bagian dari yang membentuknya.</em>",
+        "hero_sub": "Tempat yang tenang untuk memahami ekologi akuarium, memikirkan keputusan, dan mengerti apa yang sebenarnya dibutuhkan akuarium Anda — dibuat untuk kehidupan nyata, bukan kondisi ideal.",
+        "hero_cta": "Jelajahi panduan →",
+        "keeper_lead": "Sebagian besar saran akuarium ditulis untuk penjaga yang ideal — seseorang dengan rutinitas tetap, waktu yang selalu tersedia, dan akuarium yang selalu bekerja sama.",
+        "keeper_body1": "Kadang itu adalah Anda. Sering kali bukan. Minggu terasa panjang. Pergantian air tertunda. Ada sesuatu yang terlihat tidak beres dan Anda tidak yakin apa artinya. Anda peduli — tapi kepedulian tidak selalu terlihat seperti yang dikatakan panduan seharusnya.",
+        "keeper_body2": "Jarak antara penjaga yang Anda rencanakan untuk menjadi dan penjaga yang hadir hari ini bukanlah kegagalan yang perlu diperbaiki. <em>Itu adalah informasi untuk dipahami.</em> Situs ini dibangun di sekitar memahami jarak itu.",
+        "ara_ey": "Cara situs ini berpikir",
+        "ara_lead": "ARA adalah lensa yang peka terhadap perilaku di balik panduan dan alat ini. Ia memandang masalah yang tampak sebagai <em>sinyal yang terlambat</em> — biasanya setelah tekanan menumpuk di seluruh air, biologi, lingkungan, penghuni akuarium, dan jadwal Anda sendiri. Ia tidak bertanya “apa yang gagal?” terlebih dahulu. Ia bertanya <strong style=\"font-weight:500;color:var(--th-ink-2)\">apa yang tidak lagi selaras</strong>, dan apakah langkah berikutnya sesuai dengan <em>fase</em> dan <em>kapasitas</em> sistem saat ini.",
+        "reframe_without_label": "Tanpa lensa ini",
+        "reframe_without_text": "“Apa yang salah?” → cari penyebabnya → perbaiki cepat → lanjutkan.",
+        "reframe_with_label": "Dengan ARA",
+        "reframe_with_text": "“Apa yang tidak lagi bergerak selaras?” → pahami polanya → kurangi gesekan → beri ruang untuk pulih.",
+        "principles_label": "Empat pertanyaan sebelum bertindak",
+        "principle_timing": "<strong>Waktu</strong> sebelum teknik — apakah momen ini bisa menampung langkah tersebut.",
+        "principle_capacity": "<strong>Kapasitas</strong> sebelum ambisi — apa yang benar-benar mampu ditanggung kehidupan Anda, bukan jadwal khayalan.",
+        "principle_rhythm": "<strong>Ritme</strong> sebelum intensitas — konsistensi biasanya mengalahkan lonjakan usaha yang heroik.",
+        "principle_observation": "<strong>Pengamatan</strong> sebelum koreksi — beberapa perubahan perlu selesai dulu sebelum bisa dipahami dengan jujur.",
+        "ara_foot_cta": "Baca kerangka kerja ARA selengkapnya →",
+        "offers_ey": "Empat area untuk dijelajahi",
+        "offers_h2": "Tidak ada urutan baku.<br><em>Tidak ada tekanan untuk menggunakan semuanya.</em>",
+        "offers_lead": "Bacaan, Alat, Pendamping, dan Log Penjaga masing-masing berdiri sendiri — buka salah satunya kapan pun terasa tepat. ARA adalah benang yang mengikat semuanya, tapi bukan bacaan wajib sebelum Anda mulai.",
+        "tile1_tag": "Bacaan",
+        "tile1_h3": "Panduan ekologi modular",
+        "tile1_p": "Panduan singkat tentang siklus nitrogen, tanda-tanda alga, perilaku ikan, perawatan tanaman, waktu pergantian air, perawatan rutin, dan lainnya. Diformat untuk dibaca sedikit demi sedikit, di mana pun Anda berada.",
+        "tile1_cta": "Jelajahi Bacaan →",
+        "tile2_tag": "Laboratorium &amp; Alat",
+        "tile2_h3": "Coba keputusan di layar dulu",
+        "tile2_p": "Simulator interaktif. Lihat bagaimana siklus nitrogen merespons pilihan Anda sebelum Anda menerapkannya di akuarium sungguhan. Rencanakan setup dan lihat apa yang sebenarnya dibutuhkan sebelum Anda membeli.",
+        "tile2_cta": "Buka Laboratorium &amp; Alat →",
+        "tile3_tag": "Pendamping",
+        "tile3_h3": "Rhyssa — teman berpikir",
+        "tile3_p_pre": "Pendamping AI yang dibentuk oleh ARA. Tersedia di sini, di halaman ini — ketuk untuk membuka. Rhyssa yang sama juga berjalan di ",
+        "tile3_p_link": "ChatGPT ↗",
+        "tile3_p_post": " jika Anda lebih suka.",
+        "tile3_cta": "Ngobrol dengan Rhyssa →",
+        "tile4_tag": "Log Penjaga",
+        "tile4_h3": "Log yang tenang di perangkat Anda",
+        "tile4_p": "Catat apa yang Anda perhatikan, apa yang Anda lakukan, dan bagaimana ritme Anda terasa minggu ini. Disimpan secara pribadi di browser Anda — tidak ada yang meninggalkan perangkat Anda.",
+        "tile4_cta": "Buka Log →"
     },
-    "categories": [
-      {
-        "label": "Membaca akuarium",
-        "desc": "Apa yang air, ikan, tanaman, dan biologi coba sampaikan kepada Anda — sebelum masalah terlihat."
-      },
-      {
-        "label": "Praktik penjaga",
-        "desc": "Ritme, kapasitas, dan hubungan jujur antara penjaga dan akuarium."
-      }
-    ],
-    "cards": {
-      "new-tank-syndrome": {
-        "title": "Sindrom Tangki Baru<br><em>Apa yang sebenarnya terjadi dan mengapa menunggu adalah jawaban yang tepat</em>",
-        "desc": "Air keruh, ikan lesu, amonia meningkat — panduan santai menyusuri siklus nitrogen dan mengapa \"berbuat lebih banyak\" justru sering menekan biologi tangki."
-      },
-      "cycled-tank-problems": {
-        "title": "Tangki yang Sudah Cycle<br><em>Bukan tangki yang selesai.</em>",
-        "desc": "Siklusnya sudah selesai, tapi masalah terus berulang. Perawatan filter, biologi nitrat, penekan dominan, dan belajar membaca apa yang ikan Anda coba sampaikan."
-      },
-      "why-is-my-aquarium-water-cloudy": {
-        "title": "Kenapa Air Akuarium Saya Keruh?<br><em>Ketika air berubah, akuarium sedang bicara.</em>",
-        "desc": "Kabut putih, semburat hijau, corak kuning — panduan membaca arti tiap jenis air keruh, dan apa kata ARA soal merespons tanpa panik."
-      },
-      "how-often-water-changes": {
-        "title": "Seberapa Sering Harus Ganti Air?<br><em>Ritme dulu. Frekuensi mengikuti.</em>",
-        "desc": "Tidak ada jawaban universal — hanya tinjauan jujur pada keeper rhythm Anda, fase tangki Anda, dan apa arti sebenarnya kesinambungan yang koheren bagi sistem hidup."
-      },
-      "fish-hiding-what-does-it-mean": {
-        "title": "Ikan Saya Bersembunyi — Apa Artinya?<br><em>Perilaku ikan adalah Livestock Rhythm yang sedang bicara.</em>",
-        "desc": "Sebelum Anda menguji air atau mengubah apa pun, baca dulu sinyalnya. Ikan yang bersembunyi di sudut sedang menunjukkan sesuatu yang tidak bisa ditunjukkan alat uji Anda."
-      },
-      "fish-keep-dying-new-tank": {
-        "title": "Kenapa Ikan Saya Terus Mati di Tangki Baru?<br><em>Minggu-minggu pertama adalah bagian tersulit dari apa yang sedang Anda bangun.</em>",
-        "desc": "Kehilangan ikan di awal terasa seperti kegagalan. Hampir tidak pernah begitu. Apa yang sebenarnya terjadi di tangki baru, apa yang sejak awal di luar kendali Anda, dan cara melangkah maju."
-      },
-      "algae-in-aquarium": {
-        "title": "Alga di Akuarium Saya<br><em>Apa yang sebenarnya ia sampaikan.</em>",
-        "desc": "Alga bukan masalahnya — ia adalah bacaannya. Jenis yang berbeda menandakan ketidakselarasan Environmental Rhythm yang berbeda. Pelajari cara mengenali dan menyelaraskan, bukan sekadar memberantas."
-      },
-      "perfect-parameters-fish-dying": {
-        "title": "Ikan Saya Sekarat — Tapi Air Saya Terlihat Baik<br><em>Alat uji hanya mengukur satu lapisan. Ikan Anda membaca semuanya.</em>",
-        "desc": "Ketika amonia nol dan ikan masih kesulitan, jawabannya hampir selalu ada pada apa yang tidak diukur alat uji. Panduan tentang penekan dominan dan membaca Livestock Rhythm."
-      },
-      "betta-fish-behaviour": {
-        "title": "Perilaku Ikan Betta<br><em>Apa yang Betta Anda sampaikan.</em>",
-        "desc": "Betta adalah ikan paling mudah dibaca dalam hobi ini. Tidak aktif, warna memudar, bernapas di permukaan — masing-masing adalah sinyal Livestock Rhythm dengan makna spesifik, sebelum menjadi mendesak."
-      },
-      "aquarium-plants-not-growing": {
-        "title": "Kenapa Tanaman Akuarium Saya Tidak Tumbuh?<br><em>Tanaman membaca lingkungan sebelum Anda.</em>",
-        "desc": "Meleleh, menguning, alga di daun — tanaman gagal sebelum hasil uji air menunjukkan apa pun. Panduan membaca apa yang sebenarnya direspons tanaman Anda, dan menyelaraskan setup Anda dengan apa yang benar-benar bisa didukungnya."
-      },
-      "shrimp-dying-aquarium": {
-        "title": "Kenapa Udang Saya Mati?<br><em>Udang tidak gagal mendadak. Mereka hanyut, perlahan-lahan, hingga berhenti.</em>",
-        "desc": "Udang adalah pembaca Water Rhythm paling sensitif dalam hobi ini. Kenaikan TDS perlahan, fluktuasi suhu, jejak tembaga — semuanya menandakan pergeseran jauh sebelum alat uji Anda menunjukkannya."
-      },
-      "low-tech-planted-tank": {
-        "title": "Cara Memulai Tangki Bertanaman Low-Tech<br><em>Low-tech bukan pilihan hemat. Ia pilihan yang jujur.</em>",
-        "desc": "Tangki bertanaman low-tech berhasil ketika sesuai dengan ritme nyata penjaganya — bukan versi ideal yang dibayangkan. Pemilihan tanaman, konsistensi cahaya, dan memulai kecil sebelum berkembang."
-      },
-      "community-fish-tank": {
-        "title": "Tangki Ikan Komunitas<br><em>Siapa yang sebenarnya cocok.</em>",
-        "desc": "Tabel kompatibilitas memberi tahu ikan mana yang tidak akan saling membunuh. Tabel itu tidak memberi tahu ikan mana yang akan saling menekan secara perlahan. Panduan membaca dinamika komunitas melalui Livestock Rhythm."
-      },
-      "when-is-tank-ready-for-fish": {
-        "title": "Cara Tahu Kapan Tangki Anda Siap untuk Ikan<br><em>\"Cycled\" adalah sebuah angka. Siap adalah hal lain.</em>",
-        "desc": "Amonia dan nitrit nol berarti siklusnya ada — bukan berarti tangkinya siap. Panduan membaca transisi ke fase Berkembang dan memilih ikan pertama yang tepat."
-      },
-      "ich-keeps-coming-back": {
-        "title": "Ich Terus Kembali<br><em>Mengobati ich tidak sama dengan memahami penyebabnya.</em>",
-        "desc": "Ich yang berulang adalah sinyal Livestock Rhythm, bukan kegagalan pengobatan. Parasit itu kembali karena tangki kembali ke kondisi yang sama yang menekan ikan sejak awal."
-      },
-      "overfeeding-aquarium": {
-        "title": "Pemberian Makan Berlebihan dan Beban Tersembunyi Tangki<br><em>Kebanyakan tangki bukan kurang makan. Kebanyakan tangki kelebihan makan.</em>",
-        "desc": "Pemberian makan berlebihan adalah penyebab tersembunyi di balik sebagian besar masalah tangki — nitrat tinggi, air keruh, alga, lonjakan amonia. Panduan ini menjelaskan bagaimana kelebihan makanan berubah menjadi kelebihan kimia, dan bagaimana mengurangi beban organik sering menjadi cara paling sederhana untuk menstabilkan tangki."
-      },
-      "aquarium-filter-maintenance": {
-        "title": "Filter Anda Bukan Seperti yang Anda Kira<br><em>Membersihkannya dengan cara yang salah lebih buruk daripada tidak membersihkannya sama sekali.</em>",
-        "desc": "Filter bukan sekadar perangkap kotoran — ia adalah rumah utama bagi bakteri yang membuat tangki bisa cycling. Panduan ini menjelaskan apa yang hidup di dalam filter Anda, kapan dan bagaimana membersihkannya dengan aman, dan kenapa membilasnya sampai bersih dengan air keran adalah salah satu hal paling merusak yang bisa dilakukan seorang penjaga."
-      },
-      "fish-gasping-surface": {
-        "title": "Ikan Megap-megap di Permukaan<br><em>Tangki kehabisan sesuatu. Pertanyaannya, apa.</em>",
-        "desc": "Megap-megap di permukaan adalah salah satu sinyal darurat paling jelas yang bisa diberikan sebuah tangki — tapi gejala yang sama bisa punya banyak penyebab, dan masing-masing butuh respons berbeda. Panduan ini membantu Anda membaca sinyal-sinyal lain sebelum bertindak."
-      },
-      "adding-new-fish": {
-        "title": "Menambahkan Ikan Baru<br><em>Dua minggu pertama adalah gangguan. Itu normal.</em>",
-        "desc": "Setiap kedatangan ikan baru mengganggu tangki yang stabil. Panduan ini menjelaskan apa yang terjadi pada ikan baru maupun ekosistem yang sudah ada selama jendela gangguan itu — dan cara membedakan ketidakstabilan yang wajar dari sesuatu yang butuh intervensi."
-      },
-      "nitrate-keeps-rising": {
-        "title": "Kenapa Nitrat Terus Naik<br><em>Tangki yang sudah cycle bukan tangki yang seimbang.</em>",
-        "desc": "Sebuah tangki bisa sudah sepenuhnya cycle dan tetap menumpuk nitrat lebih cepat daripada yang bisa dibersihkan oleh pergantian air. Panduan ini menjelaskan dari mana penumpukan itu berasal, apa yang ditandakannya sebagai pola Chemical Rhythm, dan apa yang benar-benar bisa mengubahnya — lebih dari sekadar mengganti air lebih sering."
-      },
-      "know-your-rhythm": {
-        "title": "Kenali Ritme Anda<br><em>Sebelum Anda memilih tangki.</em>",
-        "desc": "Tujuh pertanyaan sederhana tentang bagaimana Anda sebenarnya merawat tangki — sebelum volume, lampu, atau daftar stok.",
-        "extra_cta": "Mulai refleksi →",
-        "level_manual": "Semua level",
-        "meta_manual": "7 pertanyaan"
-      },
-      "caring-without-guilt": {
-        "title": "Merawat Tanpa Rasa Bersalah<br><em>Ketika pikiran penjaga adalah bagian dari ekosistem.</em>",
-        "desc": "Kenapa rasa bersalah membuat tangki makin buruk — dan apa kata ARA tentang hubungan sebenarnya Anda dengan sistem yang Anda rawat."
-      },
-      "aquarium-maintenance-routine": {
-        "title": "Cara Membangun Rutinitas Akuarium<br><em>Yang benar-benar sesuai dengan hidup Anda.</em>",
-        "desc": "Jadwal perawatan generik gagal karena mengabaikan keeper rhythm. Panduan ini membantu Anda menemukan pola yang sesuai dengan cara Anda sebenarnya merawat tangki — bukan cara yang Anda bayangkan akan Anda lakukan."
-      },
-      "when-hobby-stops-feeling-good": {
-        "title": "Ketika Hobi Ini Berhenti Terasa Menyenangkan<br><em>Burnout dalam memelihara ikan itu nyata. Tidak ada yang membicarakannya secara jujur.</em>",
-        "desc": "Beban perawatan, kesedihan karena kehilangan, rasa bersalah karena merasa belum cukup berbuat. Tiga jalan jujur: merancang ulang, menyederhanakan, atau berhenti dengan bermartabat — tak satu pun dari itu kegagalan."
-      },
-      "tank-crash-recovery": {
-        "title": "Ketika Tangki Crash<br><em>Apa yang harus dilakukan, apa yang harus dirasakan, dan apa yang harus diputuskan.</em>",
-        "desc": "Crash adalah kondisi darurat sekaligus kehilangan pada saat yang sama. Panduan ini membahas triase jam pertama, cara menilai apakah tangki bisa pulih, dan cara memproses apa yang terjadi — memperlakukan crash sebagai informasi, bukan kegagalan."
-      },
-      "aquarium-travel-vacation": {
-        "title": "Merawat Tangki Saat Anda Bepergian<br><em>Tangki yang selaras dengan baik lebih tangguh dari yang Anda kira.</em>",
-        "desc": "Sebagian besar kecemasan penjaga soal bepergian adalah tentang apa yang bisa salah selama mereka tidak ada. Panduan ini menjelaskan apa yang sebenarnya dibutuhkan tangki yang stabil ketika penjaganya pergi — dan kenapa sistem yang selaras bertahan seminggu tanpa intervensi lebih andal daripada yang dibayangkan kebanyakan penjaga."
-      },
-      "aquarium-not-a-project": {
-        "title": "Akuarium Bukan Sebuah Proyek<br><em>Tahu kapan harus berhenti menyempurnakan adalah bagian dari praktiknya.</em>",
-        "desc": "Dorongan untuk meningkatkan, menambah, dan mengoptimalkan adalah bagian dari menjadi seorang penjaga — tapi itu juga bisa jadi hal yang paling mengganggu tangki yang sudah selaras dengan baik. Panduan ini menelusuri perbedaan antara perubahan yang melayani ekosistem dan perubahan yang melayani kegelisahan penjaga."
-      }
+    "companion": {
+        "sub": "Pendamping Akuarium",
+        "back_aria": "Kembali",
+        "new_aria": "Percakapan baru",
+        "welcome": "Ceritakan apa yang Anda lihat — air, perilaku, apa pun yang berubah — dan kita bisa memahaminya bersama sebelum memperbaiki apa pun.",
+        "starter1_btn": "Ada yang terlihat tidak beres",
+        "starter1_data": "Ada yang terlihat tidak beres di akuarium saya — saya tidak yakin harus mulai memahaminya dari mana",
+        "starter2_btn": "Siklus nitrogen",
+        "starter2_data": "Bisakah kamu jelaskan siklus nitrogen dengan bahasa sederhana?",
+        "starter3_btn": "Setup akuarium pertama",
+        "starter3_data": "Saya sedang menyiapkan akuarium pertama saya — apa yang perlu saya ketahui?",
+        "starter4_btn": "Ikan terlihat stres",
+        "starter4_data": "Ikan saya terlihat stres. Dari mana saya harus mulai?",
+        "placeholder": "Tanyakan tentang akuarium Anda…",
+        "send_aria": "Kirim",
+        "note": "AI bisa saja salah — untuk keadaan darurat pada ikan, konsultasikan dengan spesialis"
     },
-    "closing_cta": {
-      "intro_italic": "Panduan ini tumbuh dari Aquatic Rhythm Alignment (ARA) — cara membaca akuarium berdasarkan fase, ritme, dan kapasitas ekologi, bukan daftar periksa produk.",
-      "btn_framework": "Jelajahi kerangka kerja →",
-      "btn_companion": "Kenalan dengan Rhyssa →",
-      "btn_tools": "Lab &amp; alat →",
-      "kofi_note": "Jika panduan ini membantu ritme Anda, sumbangan opsional membantu mendanai bacaan dan alat baru — semuanya di sini tetap gratis.",
-      "kofi_link": "Dukung di Ko-fi"
+    "terms": {
+        "h1": "Ketentuan Penggunaan",
+        "date": "Terakhir diperbarui: Maret 2026",
+        "h_overview": "Ringkasan",
+        "p_overview": "Ketentuan ini menjelaskan syarat dasar untuk menggunakan situs web ini dan pendamping Rhyssa. Ketentuan ini ditulis sejelas mungkin. Aquatic Rhythm ditawarkan dengan itikad baik, tetapi tetap penting untuk menjelaskan secara jelas apa proyek ini, apa yang bukan, dan di mana tanggung jawab tetap berada pada pengguna.",
+        "h_offers": "Apa yang ditawarkan Aquatic Rhythm",
+        "p_offers1": "Aquatic Rhythm menyediakan kerangka kerja bernama ARA — Aquatic Rhythm Alignment — dan akses ke Rhyssa, pendamping AI yang dibentuk oleh kerangka kerja tersebut. Semua yang ada di sini ditawarkan hanya untuk tujuan informasi dan edukasi.",
+        "p_offers2": "Rhyssa adalah sistem bahasa AI. Jawabannya dibentuk oleh pelatihan dan konteks, bukan keahlian profesional. Dia bukan dokter hewan berlisensi, ahli biologi akuatik, atau profesional akuarium bersertifikat.",
+        "h_noadvice": "Bukan nasihat profesional",
+        "p_noadvice1": "Tidak ada apa pun di situs web ini atau dalam percakapan apa pun dengan Rhyssa yang merupakan nasihat profesional — termasuk nasihat kedokteran hewan, medis, hukum, atau keuangan.",
+        "p_noadvice2": "Jika ikan atau hewan akuatik Anda sakit atau dalam kondisi tertekan, harap konsultasikan dengan spesialis yang berkualifikasi. Rhyssa dapat menawarkan perspektif dan cara berpikir — dia tidak dapat mendiagnosis, meresepkan, atau menggantikan penilaian profesional.",
+        "h_ailimits": "Keterbatasan AI",
+        "p_ailimits1": "Rhyssa bisa saja salah. Seperti semua sistem AI, dia bisa menghasilkan informasi yang tidak akurat, tidak lengkap, atau sudah usang. Anda bertanggung jawab untuk mengevaluasi jawabannya sebelum bertindak berdasarkan jawaban tersebut. Aquatic Rhythm tidak menerima tanggung jawab atas keputusan yang dibuat berdasarkan jawabannya.",
+        "p_ailimits2": "Percakapan dengan Rhyssa berlangsung di platform eksternal. Dengan menggunakan Rhyssa, Anda juga menyetujui ketentuan platform tersebut.",
+        "h_ip": "Hak kekayaan intelektual",
+        "p_ip": "Kerangka kerja ARA, konten situs web ini, dan nama Aquatic Rhythm adalah kekayaan intelektual proyek ini. Anda boleh membagikan dan merujuknya secara bebas untuk tujuan pribadi, edukasi, atau non-komersial, dengan mencantumkan atribusi. Penggunaan komersial memerlukan izin terlebih dahulu.",
+        "h_liability": "Batasan tanggung jawab",
+        "p_liability": "Aquatic Rhythm disediakan apa adanya, tanpa jaminan dalam bentuk apa pun. Kami tidak bertanggung jawab atas kerugian langsung, tidak langsung, atau insidental yang timbul dari penggunaan situs web ini atau Rhyssa oleh Anda.",
+        "h_changes": "Perubahan pada ketentuan ini",
+        "p_changes_pre": "Ketentuan ini dapat diperbarui seiring berkembangnya Aquatic Rhythm. Tanggal di bagian atas halaman ini menunjukkan revisi terbaru. Ada pertanyaan? Hubungi kami di "
+    },
+    "privacy": {
+        "h1": "Kebijakan Privasi",
+        "date": "Terakhir diperbarui: Mei 2026",
+        "h_overview": "Ringkasan",
+        "p_overview_pre": "Aquatic Rhythm adalah proyek independen berskala kecil. Halaman ini menjelaskan, sesederhana mungkin, informasi apa yang mungkin dikumpulkan saat Anda mengunjungi situs ini, dari mana informasi itu berasal, dan bagaimana informasi itu dikelola. Pertanyaan dapat disampaikan ke ",
+        "h_direct": "Informasi yang kami kumpulkan secara langsung",
+        "p_direct_intro": "Aquatic Rhythm tidak mengharuskan Anda membuat akun. Namun, kami mungkin mengumpulkan informasi dengan cara berikut:",
+        "li_direct1_label": "Kontak email",
+        "li_direct1_text": " — jika Anda menghubungi kami, kami menerima alamat email Anda dan isi pesan Anda. Kami menggunakannya hanya untuk membalas Anda.",
+        "li_direct2_label": "Formulir masukan atau survei",
+        "li_direct2_text": " — jika kami memperkenalkan formulir masukan di masa mendatang, kami akan memperbarui kebijakan ini untuk mencerminkan apa yang dikumpulkan dan bagaimana penggunaannya.",
+        "p_direct_end": "Kami tidak menjual, membagikan, atau menggunakan informasi pribadi Anda untuk tujuan pemasaran.",
+        "h_third": "Layanan pihak ketiga",
+        "p_third_intro": "Situs web ini menggunakan beberapa layanan pihak ketiga yang dapat mengumpulkan data secara independen sesuai kebijakan privasi masing-masing:",
+        "li_third1_label": "GitHub Pages",
+        "li_third1_text": " — menghosting situs web ini. GitHub mungkin mengumpulkan log server termasuk alamat IP dan informasi browser Anda.",
+        "li_third2_label": "ChatGPT / OpenAI",
+        "li_third2_text": " — Rhyssa diakses melalui ChatGPT. Setiap percakapan yang Anda lakukan dengan Rhyssa tunduk pada Kebijakan Privasi OpenAI. Kami tidak menerima atau menyimpan percakapan Anda.",
+        "li_third3_label": "Google Search Console",
+        "li_third3_text": " — digunakan untuk memantau bagaimana situs ini muncul di Google Search. Alat ini mengumpulkan data agregat dan teranonimkan tentang performa pencarian.",
+        "li_third4_label": "Google Analytics",
+        "li_third4_text": " — digunakan untuk memahami bagaimana pengunjung berinteraksi dengan situs web ini. Alat ini mengumpulkan data teranonimkan termasuk halaman yang dikunjungi, waktu yang dihabiskan, jenis perangkat, dan perkiraan lokasi. Tidak ada informasi yang dapat mengidentifikasi individu yang dikumpulkan.",
+        "li_third5_label": "Ko-fi (donasi opsional)",
+        "li_third5_text": " — baik Anda menggunakan panel dukungan yang tertanam di situs ini maupun membuka Ko-fi di tab browser Anda sendiri, Anda berinteraksi langsung dengan Ko-fi. Ko-fi dan prosesor pembayarannya (seperti PayPal atau Stripe) mengelola informasi apa pun yang Anda berikan sesuai kebijakan privasi masing-masing. Aquatic Rhythm tidak menerima detail kartu pembayaran atau kredensial login Ko-fi Anda.",
+        "h_cookies": "Cookie",
+        "p_cookies1": "Aquatic Rhythm sendiri tidak membuat cookie akun atau login. Google Analytics mengatur cookie secara otomatis saat Anda mengunjungi situs web ini untuk membedakan pengunjung dan melacak sesi. Cookie ini teranonimkan dan tidak mengidentifikasi Anda secara pribadi.",
+        "p_cookies2": "Anda dapat mengelola atau menonaktifkan cookie melalui pengaturan browser Anda.",
+        "h_rights": "Hak Anda",
+        "p_rights_pre": "Jika Anda berada di Uni Eropa, Britania Raya, atau wilayah lain dengan undang-undang perlindungan data, Anda mungkin memiliki hak terkait data pribadi Anda — termasuk hak untuk mengakses, memperbaiki, atau menghapus informasi yang kami simpan tentang Anda. Hubungi kami di ",
+        "h_children": "Anak-anak",
+        "p_children": "Situs web ini tidak ditujukan untuk anak-anak di bawah usia 13 tahun. Kami tidak dengan sengaja mengumpulkan informasi pribadi dari anak-anak.",
+        "h_changes": "Perubahan pada kebijakan ini",
+        "p_changes": "Seiring berkembangnya Aquatic Rhythm, kebijakan ini dapat diperbarui untuk mencerminkan fitur atau layanan baru. Tanggal di bagian atas halaman ini akan selalu menunjukkan kapan terakhir kali direvisi."
+    },
+    "about": {
+        "ey": "Tentang",
+        "h1": "Dari mana<br>ini berasal.",
+        "intro_italic": "Aquatic Rhythm tidak dimulai sebagai kerangka kerja.<br>Ia dimulai dari sebuah pengalaman — yang mungkin tidak asing bagi Anda.",
+        "intro_small": "Berikut ini adalah kisah pribadi.",
+        "b1_p1": "Ada orang-orang yang datang ke hobi ini mencari sesuatu untuk dirawat.",
+        "b1_p2": "Akuarium. Terarium. Paludarium. Ekosistem tertutup dalam segala bentuknya.",
+        "b1_p3": "Sesuatu yang kecil dan hidup. Sebuah dunia yang muat di dalam sebuah ruangan. Satu sudut kehidupan sehari-hari yang menjadi lebih tenang, lebih hadir, lebih membumi.",
+        "b1_p4": "Pada awalnya, itu berhasil.",
+        "b2_p1": "Tapi tidak ada yang memperingatkan mereka tentang bagian lainnya.",
+        "b2_p2": "Hari ketika sesuatu berhenti terlihat seperti seharusnya. Bercak yang muncul. Tanaman yang kehilangan bentuknya. Air yang terasa tidak beres dengan cara yang sulit dijelaskan.",
+        "b2_p3": "Dan kemudian diam-diam, hampir tanpa disadari, motivasi pun mulai ikut memudar.",
+        "b2_quote": "Ketika ia berhenti terlihat seperti seharusnya, keinginan untuk berada di dekatnya pun ikut pergi.",
+        "b2_p4": "Bukan sikap acuh tak acuh. Bukan kemalasan. Hanya keruntuhan diam-diam dari sesuatu yang hanya tetap utuh karena keindahannya untuk dipandang.",
+        "b3_p1": "Lalu kehidupan mengisi ruang yang dulu ditempati perhatian. Minggu berlalu. Kadang lebih lama.",
+        "b3_quote": "Rasa bersalah itu nyata. Tapi ia membungkus sesuatu yang lain. Sesuatu yang saat itu tidak bisa saya jelaskan. Mungkin harapan bahwa kali berikutnya bisa berbeda.",
+        "b3_p2": "Perasaan itulah tempat proyek ini sebenarnya bermula.",
+        "b4_p1": "Hobi ini tidak kekurangan orang yang menawarkan jawaban. Produk baru. Teknik yang lebih baik. Parameter yang lebih presisi. Pesan tersiratnya selalu sama.",
+        "b4_quote": "Tidak ada yang membicarakan kesejahteraan orang yang memegang akuarium itu. Semua orang menjual sesuatu. Tapi hal yang sebenarnya sedang retak bukanlah sesuatu yang dijual.",
+        "b4_p2": "Banyak orang diam-diam menyerah pada sesuatu yang mereka cintai. Bukan karena mereka berhenti peduli. Tapi karena tidak ada yang memberi tahu mereka bahwa peduli secara tidak konsisten tetaplah peduli.",
+        "b5_p1": "Aquatic Rhythm tumbuh dari kesadaran itu. Ini adalah proyek kecil dan independen. Bukan perusahaan. Konten dan alat di sini bebas untuk digunakan.",
+        "b5_p2": "Yang ditawarkannya adalah sebuah perspektif dan pendamping yang dibentuk olehnya. Sebuah cara memahami ekosistem tertutup yang dimulai dari realitas ekologi, memuat realitas manusia di dalamnya, dan tidak memperlakukan jarak di antara keduanya sebagai kegagalan yang menunggu untuk diperbaiki.",
+        "b5_italic": "Jika Anda pernah merawat akuarium dengan tidak sempurna dan masih berharap minggu depan bisa terasa lebih ringan, karya ini ditulis dengan Anda dalam pikiran.",
+        "kofi_p": "Jika proyek ini bermanfaat, donasi opsional di Ko-fi membantu menutup biaya hosting dan waktu untuk membuat panduan serta alat. Tidak ada apa pun di sini yang berbayar; dukungan sepenuhnya pilihan Anda.",
+        "kofi_cta": "Dukung di Ko-fi →",
+        "final": "Proyek independen — masukan sangat diterima. Aquatic Rhythm tetap terbuka untuk direvisi selama ruang kehidupan dan akuarium hidup terus mengajarkan."
+    },
+    "reading": {
+        "header": {
+            "ey": "Bacaan",
+            "h1": "Baca sesuai<br><em style=\"font-style:italic;color:rgba(124,168,156,.78)\">ritme Anda sendiri.</em>",
+            "sub1": "Panduan ekologi singkat — dipecah menjadi blok-blok kecil agar Anda bisa membaca di ponsel, berhenti sejenak, lalu lanjut lagi. Bahasa sederhana dulu; nama Latin hanya bila membantu.",
+            "sub2_pre": "Ekologi dan perilaku dalam bahasa sederhana · keeper rhythm dan ARA. ",
+            "sub2_link": "Lab &amp; alat",
+            "sub2_post": " untuk simulator ada di tab sendiri."
+        },
+        "misc": {
+            "interactive_tag": "Interaktif",
+            "urgent_tag": "Darurat",
+            "open_article_cta": "Buka artikel →"
+        },
+        "categories": [
+            {
+                "label": "Membaca akuarium",
+                "desc": "Apa yang air, ikan, tanaman, dan biologi coba sampaikan kepada Anda — sebelum masalah terlihat."
+            },
+            {
+                "label": "Praktik penjaga",
+                "desc": "Ritme, kapasitas, dan hubungan jujur antara penjaga dan akuarium."
+            }
+        ],
+        "cards": {
+            "new-tank-syndrome": {
+                "title": "Sindrom Tangki Baru<br><em>Apa yang sebenarnya terjadi dan mengapa menunggu adalah jawaban yang tepat</em>",
+                "desc": "Air keruh, ikan lesu, amonia meningkat — panduan santai menyusuri siklus nitrogen dan mengapa \"berbuat lebih banyak\" justru sering menekan biologi tangki."
+            },
+            "cycled-tank-problems": {
+                "title": "Tangki yang Sudah Cycle<br><em>Bukan tangki yang selesai.</em>",
+                "desc": "Siklusnya sudah selesai, tapi masalah terus berulang. Perawatan filter, biologi nitrat, penekan dominan, dan belajar membaca apa yang ikan Anda coba sampaikan."
+            },
+            "why-is-my-aquarium-water-cloudy": {
+                "title": "Kenapa Air Akuarium Saya Keruh?<br><em>Ketika air berubah, akuarium sedang bicara.</em>",
+                "desc": "Kabut putih, semburat hijau, corak kuning — panduan membaca arti tiap jenis air keruh, dan apa kata ARA soal merespons tanpa panik."
+            },
+            "how-often-water-changes": {
+                "title": "Seberapa Sering Harus Ganti Air?<br><em>Ritme dulu. Frekuensi mengikuti.</em>",
+                "desc": "Tidak ada jawaban universal — hanya tinjauan jujur pada keeper rhythm Anda, fase tangki Anda, dan apa arti sebenarnya kesinambungan yang koheren bagi sistem hidup."
+            },
+            "fish-hiding-what-does-it-mean": {
+                "title": "Ikan Saya Bersembunyi — Apa Artinya?<br><em>Perilaku ikan adalah Livestock Rhythm yang sedang bicara.</em>",
+                "desc": "Sebelum Anda menguji air atau mengubah apa pun, baca dulu sinyalnya. Ikan yang bersembunyi di sudut sedang menunjukkan sesuatu yang tidak bisa ditunjukkan alat uji Anda."
+            },
+            "fish-keep-dying-new-tank": {
+                "title": "Kenapa Ikan Saya Terus Mati di Tangki Baru?<br><em>Minggu-minggu pertama adalah bagian tersulit dari apa yang sedang Anda bangun.</em>",
+                "desc": "Kehilangan ikan di awal terasa seperti kegagalan. Hampir tidak pernah begitu. Apa yang sebenarnya terjadi di tangki baru, apa yang sejak awal di luar kendali Anda, dan cara melangkah maju."
+            },
+            "algae-in-aquarium": {
+                "title": "Alga di Akuarium Saya<br><em>Apa yang sebenarnya ia sampaikan.</em>",
+                "desc": "Alga bukan masalahnya — ia adalah bacaannya. Jenis yang berbeda menandakan ketidakselarasan Environmental Rhythm yang berbeda. Pelajari cara mengenali dan menyelaraskan, bukan sekadar memberantas."
+            },
+            "perfect-parameters-fish-dying": {
+                "title": "Ikan Saya Sekarat — Tapi Air Saya Terlihat Baik<br><em>Alat uji hanya mengukur satu lapisan. Ikan Anda membaca semuanya.</em>",
+                "desc": "Ketika amonia nol dan ikan masih kesulitan, jawabannya hampir selalu ada pada apa yang tidak diukur alat uji. Panduan tentang penekan dominan dan membaca Livestock Rhythm."
+            },
+            "betta-fish-behaviour": {
+                "title": "Perilaku Ikan Betta<br><em>Apa yang Betta Anda sampaikan.</em>",
+                "desc": "Betta adalah ikan paling mudah dibaca dalam hobi ini. Tidak aktif, warna memudar, bernapas di permukaan — masing-masing adalah sinyal Livestock Rhythm dengan makna spesifik, sebelum menjadi mendesak."
+            },
+            "aquarium-plants-not-growing": {
+                "title": "Kenapa Tanaman Akuarium Saya Tidak Tumbuh?<br><em>Tanaman membaca lingkungan sebelum Anda.</em>",
+                "desc": "Meleleh, menguning, alga di daun — tanaman gagal sebelum hasil uji air menunjukkan apa pun. Panduan membaca apa yang sebenarnya direspons tanaman Anda, dan menyelaraskan setup Anda dengan apa yang benar-benar bisa didukungnya."
+            },
+            "shrimp-dying-aquarium": {
+                "title": "Kenapa Udang Saya Mati?<br><em>Udang tidak gagal mendadak. Mereka hanyut, perlahan-lahan, hingga berhenti.</em>",
+                "desc": "Udang adalah pembaca Water Rhythm paling sensitif dalam hobi ini. Kenaikan TDS perlahan, fluktuasi suhu, jejak tembaga — semuanya menandakan pergeseran jauh sebelum alat uji Anda menunjukkannya."
+            },
+            "low-tech-planted-tank": {
+                "title": "Cara Memulai Tangki Bertanaman Low-Tech<br><em>Low-tech bukan pilihan hemat. Ia pilihan yang jujur.</em>",
+                "desc": "Tangki bertanaman low-tech berhasil ketika sesuai dengan ritme nyata penjaganya — bukan versi ideal yang dibayangkan. Pemilihan tanaman, konsistensi cahaya, dan memulai kecil sebelum berkembang."
+            },
+            "community-fish-tank": {
+                "title": "Tangki Ikan Komunitas<br><em>Siapa yang sebenarnya cocok.</em>",
+                "desc": "Tabel kompatibilitas memberi tahu ikan mana yang tidak akan saling membunuh. Tabel itu tidak memberi tahu ikan mana yang akan saling menekan secara perlahan. Panduan membaca dinamika komunitas melalui Livestock Rhythm."
+            },
+            "when-is-tank-ready-for-fish": {
+                "title": "Cara Tahu Kapan Tangki Anda Siap untuk Ikan<br><em>\"Cycled\" adalah sebuah angka. Siap adalah hal lain.</em>",
+                "desc": "Amonia dan nitrit nol berarti siklusnya ada — bukan berarti tangkinya siap. Panduan membaca transisi ke fase Berkembang dan memilih ikan pertama yang tepat."
+            },
+            "ich-keeps-coming-back": {
+                "title": "Ich Terus Kembali<br><em>Mengobati ich tidak sama dengan memahami penyebabnya.</em>",
+                "desc": "Ich yang berulang adalah sinyal Livestock Rhythm, bukan kegagalan pengobatan. Parasit itu kembali karena tangki kembali ke kondisi yang sama yang menekan ikan sejak awal."
+            },
+            "overfeeding-aquarium": {
+                "title": "Pemberian Makan Berlebihan dan Beban Tersembunyi Tangki<br><em>Kebanyakan tangki bukan kurang makan. Kebanyakan tangki kelebihan makan.</em>",
+                "desc": "Pemberian makan berlebihan adalah penyebab tersembunyi di balik sebagian besar masalah tangki — nitrat tinggi, air keruh, alga, lonjakan amonia. Panduan ini menjelaskan bagaimana kelebihan makanan berubah menjadi kelebihan kimia, dan bagaimana mengurangi beban organik sering menjadi cara paling sederhana untuk menstabilkan tangki."
+            },
+            "aquarium-filter-maintenance": {
+                "title": "Filter Anda Bukan Seperti yang Anda Kira<br><em>Membersihkannya dengan cara yang salah lebih buruk daripada tidak membersihkannya sama sekali.</em>",
+                "desc": "Filter bukan sekadar perangkap kotoran — ia adalah rumah utama bagi bakteri yang membuat tangki bisa cycling. Panduan ini menjelaskan apa yang hidup di dalam filter Anda, kapan dan bagaimana membersihkannya dengan aman, dan kenapa membilasnya sampai bersih dengan air keran adalah salah satu hal paling merusak yang bisa dilakukan seorang penjaga."
+            },
+            "fish-gasping-surface": {
+                "title": "Ikan Megap-megap di Permukaan<br><em>Tangki kehabisan sesuatu. Pertanyaannya, apa.</em>",
+                "desc": "Megap-megap di permukaan adalah salah satu sinyal darurat paling jelas yang bisa diberikan sebuah tangki — tapi gejala yang sama bisa punya banyak penyebab, dan masing-masing butuh respons berbeda. Panduan ini membantu Anda membaca sinyal-sinyal lain sebelum bertindak."
+            },
+            "adding-new-fish": {
+                "title": "Menambahkan Ikan Baru<br><em>Dua minggu pertama adalah gangguan. Itu normal.</em>",
+                "desc": "Setiap kedatangan ikan baru mengganggu tangki yang stabil. Panduan ini menjelaskan apa yang terjadi pada ikan baru maupun ekosistem yang sudah ada selama jendela gangguan itu — dan cara membedakan ketidakstabilan yang wajar dari sesuatu yang butuh intervensi."
+            },
+            "nitrate-keeps-rising": {
+                "title": "Kenapa Nitrat Terus Naik<br><em>Tangki yang sudah cycle bukan tangki yang seimbang.</em>",
+                "desc": "Sebuah tangki bisa sudah sepenuhnya cycle dan tetap menumpuk nitrat lebih cepat daripada yang bisa dibersihkan oleh pergantian air. Panduan ini menjelaskan dari mana penumpukan itu berasal, apa yang ditandakannya sebagai pola Chemical Rhythm, dan apa yang benar-benar bisa mengubahnya — lebih dari sekadar mengganti air lebih sering."
+            },
+            "know-your-rhythm": {
+                "title": "Kenali Ritme Anda<br><em>Sebelum Anda memilih tangki.</em>",
+                "desc": "Tujuh pertanyaan sederhana tentang bagaimana Anda sebenarnya merawat tangki — sebelum volume, lampu, atau daftar stok.",
+                "extra_cta": "Mulai refleksi →",
+                "level_manual": "Semua level",
+                "meta_manual": "7 pertanyaan"
+            },
+            "caring-without-guilt": {
+                "title": "Merawat Tanpa Rasa Bersalah<br><em>Ketika pikiran penjaga adalah bagian dari ekosistem.</em>",
+                "desc": "Kenapa rasa bersalah membuat tangki makin buruk — dan apa kata ARA tentang hubungan sebenarnya Anda dengan sistem yang Anda rawat."
+            },
+            "aquarium-maintenance-routine": {
+                "title": "Cara Membangun Rutinitas Akuarium<br><em>Yang benar-benar sesuai dengan hidup Anda.</em>",
+                "desc": "Jadwal perawatan generik gagal karena mengabaikan keeper rhythm. Panduan ini membantu Anda menemukan pola yang sesuai dengan cara Anda sebenarnya merawat tangki — bukan cara yang Anda bayangkan akan Anda lakukan."
+            },
+            "when-hobby-stops-feeling-good": {
+                "title": "Ketika Hobi Ini Berhenti Terasa Menyenangkan<br><em>Burnout dalam memelihara ikan itu nyata. Tidak ada yang membicarakannya secara jujur.</em>",
+                "desc": "Beban perawatan, kesedihan karena kehilangan, rasa bersalah karena merasa belum cukup berbuat. Tiga jalan jujur: merancang ulang, menyederhanakan, atau berhenti dengan bermartabat — tak satu pun dari itu kegagalan."
+            },
+            "tank-crash-recovery": {
+                "title": "Ketika Tangki Crash<br><em>Apa yang harus dilakukan, apa yang harus dirasakan, dan apa yang harus diputuskan.</em>",
+                "desc": "Crash adalah kondisi darurat sekaligus kehilangan pada saat yang sama. Panduan ini membahas triase jam pertama, cara menilai apakah tangki bisa pulih, dan cara memproses apa yang terjadi — memperlakukan crash sebagai informasi, bukan kegagalan."
+            },
+            "aquarium-travel-vacation": {
+                "title": "Merawat Tangki Saat Anda Bepergian<br><em>Tangki yang selaras dengan baik lebih tangguh dari yang Anda kira.</em>",
+                "desc": "Sebagian besar kecemasan penjaga soal bepergian adalah tentang apa yang bisa salah selama mereka tidak ada. Panduan ini menjelaskan apa yang sebenarnya dibutuhkan tangki yang stabil ketika penjaganya pergi — dan kenapa sistem yang selaras bertahan seminggu tanpa intervensi lebih andal daripada yang dibayangkan kebanyakan penjaga."
+            },
+            "aquarium-not-a-project": {
+                "title": "Akuarium Bukan Sebuah Proyek<br><em>Tahu kapan harus berhenti menyempurnakan adalah bagian dari praktiknya.</em>",
+                "desc": "Dorongan untuk meningkatkan, menambah, dan mengoptimalkan adalah bagian dari menjadi seorang penjaga — tapi itu juga bisa jadi hal yang paling mengganggu tangki yang sudah selaras dengan baik. Panduan ini menelusuri perbedaan antara perubahan yang melayani ekosistem dan perubahan yang melayani kegelisahan penjaga."
+            }
+        },
+        "closing_cta": {
+            "intro_italic": "Panduan ini tumbuh dari Aquatic Rhythm Alignment (ARA) — cara membaca akuarium berdasarkan fase, ritme, dan kapasitas ekologi, bukan daftar periksa produk.",
+            "btn_framework": "Jelajahi kerangka kerja →",
+            "btn_companion": "Kenalan dengan Rhyssa →",
+            "btn_tools": "Lab &amp; alat →",
+            "kofi_note": "Jika panduan ini membantu ritme Anda, sumbangan opsional membantu mendanai bacaan dan alat baru — semuanya di sini tetap gratis.",
+            "kofi_link": "Dukung di Ko-fi"
+        }
+    },
+    "tools": {
+        "ey": "Lab &amp; Alat",
+        "h1": "Coba dulu.<br><em style=\"font-style:italic;color:rgba(61,214,232,.78)\">Sebelum Anda berkomitmen.</em>",
+        "sub": "Simulator dan perencana interaktif. Buat keputusan di layar dulu sebelum Anda buat di akuarium sebenarnya.",
+        "card1_tag": "Simulator",
+        "card1_title": "Simulator Siklus Tangki",
+        "card1_desc": "Lihat amonia, nitrit, dan nitrat merespons keputusan Anda secara real-time. Pilih cycling tanpa ikan atau dengan ikan.",
+        "card1_cta": "Buka simulator →",
+        "card2_tag": "Lab interaktif",
+        "card2_title": "Pembangun Tangki",
+        "card2_desc": "Bangun akuarium pertama Anda di layar. Tambah peralatan, jelajahi bagaimana tiap bagian mempengaruhi sistem, pahami apa yang Anda sebenarnya butuhkan.",
+        "card2_cta": "Masuk ke lab →",
+        "card3_tag": "Lab interaktif",
+        "card3_title": "Lab Tekanan Komunitas",
+        "card3_desc": "Petakan tekanan yang tumpang tindih saat mencampur spesies — suhu, kimia, ruang, predasi, ketegangan sosial, dan keamanan invertebrata. Bersifat edukatif, bukan skor kompatibilitas.",
+        "card3_cta": "Buka peta tekanan →",
+        "closing_note": "Semua alat tumbuh dari ARA — Aquatic Rhythm Alignment. Alat ini mensimulasikan dan merencanakan, tapi tidak menggantikan observasi.",
+        "closing_link": "Baca kerangka kerja ARA →",
+        "kofi_hint": "Lab butuh waktu yang stabil untuk dibangun. Jika alat di sini membantu Anda menghindari kesalahan yang mahal, sumbangan opsional membantu menjaga kelangsungannya."
+    },
+    "journal": {
+        "landing": {
+            "ey": "Log Penjaga",
+            "h1": "Akuarium<br><em style=\"font-style:italic;color:rgba(61,214,232,.78)\">Anda</em>",
+            "sub": "Log pribadi untuk setiap akuarium yang Anda pelihara — amati, renungkan, dan pantau ritme Anda."
+        },
+        "dashboard": {
+            "back_aria": "Kembali ke Log Penjaga",
+            "back_label": "Log Penjaga",
+            "edit_tank": "Edit akuarium",
+            "setup_eyebrow": "Pengaturan Saya",
+            "setup_edit_aria": "Edit pengaturan",
+            "setup_edit_btn": "Edit",
+            "setup_empty_text": "Belum ada pengaturan tercatat.",
+            "setup_start_btn": "Catat →",
+            "family_eyebrow": "Keluarga Akuarium",
+            "family_edit_aria": "Kelola penghuni",
+            "family_edit_btn": "Edit",
+            "phase_eyebrow": "Fase ARA",
+            "phase_step_1": "Merintis",
+            "phase_step_2": "Menstabilkan",
+            "phase_step_3": "Mengoptimalkan",
+            "phase_step_4": "Mempertahankan",
+            "phase_note_default": "Tulis entri pertama Anda untuk mendapatkan pembacaan fase ARA.",
+            "phase_rh_btn": "Tanya Rhyssa tentang fase ini",
+            "weekly_insight_eyebrow": "Bacaan Rhyssa",
+            "weekly_insight_btn": "Diskusikan dengan Rhyssa →",
+            "param_charts_eyebrow": "Tren Parameter",
+            "entry_cta_prompt_default": "Apa yang Anda perhatikan hari ini?",
+            "entry_cta_btn": "Tulis entri hari ini",
+            "no_entries_text": "Belum ada entri.",
+            "entries_eyebrow": "Entri",
+            "new_entry_btn": "+ Entri baru",
+            "search_placeholder": "Cari entri…",
+            "search_aria": "Cari entri",
+            "filter_toggle_aria": "Filter entri",
+            "filter_period_label": "Periode",
+            "filter_period_all": "Sepanjang waktu",
+            "filter_period_7": "7 hari",
+            "filter_period_30": "30 hari",
+            "filter_period_90": "90 hari",
+            "filter_rhythm_label": "Ritme",
+            "state_consistent": "Konsisten",
+            "state_catching_up": "Mengejar ketinggalan",
+            "state_occasional": "Sesekali",
+            "state_just_starting": "Baru mulai",
+            "filter_care_label": "Perawatan dilakukan",
+            "filter_clear_btn": "Hapus semua filter",
+            "filter_no_results": "Tidak ada entri yang cocok dengan filter ini.",
+            "load_more_btn": "Tampilkan entri lama",
+            "export_json_btn": "Ekspor JSON",
+            "export_csv_btn": "Ekspor CSV",
+            "delete_tank_btn": "Hapus akuarium ini"
+        },
+        "kofi_sheet": {
+            "title": "Dukungan",
+            "sub": "Tip opsional — dikelola di Ko-fi",
+            "linkout": "Buka terpisah ↗",
+            "close_aria": "Tutup panel dukungan"
+        },
+        "modal_setup": {
+            "title": "Atur akuarium Anda",
+            "close_aria": "Tutup",
+            "preview_cat_default": "Pilih ukuran atau merek di bawah",
+            "tab_preset": "Populer",
+            "tab_brand": "Bermerek",
+            "tab_custom": "Kustom",
+            "unit_label": "Satuan ukuran",
+            "unit_cm": "cm",
+            "unit_in": "inci",
+            "length_label": "Panjang",
+            "width_label": "Lebar",
+            "height_label": "Tinggi",
+            "calc_vol_label": "Volume terhitung",
+            "name_label": "Nama akuarium",
+            "name_placeholder": "cth. Akuarium Ruang Tamu Saya",
+            "type_label": "Jenis akuarium",
+            "type_freshwater": "Air tawar",
+            "type_planted": "Tanaman",
+            "type_marine": "Marin / Reef",
+            "type_brackish": "Payau",
+            "type_coldwater": "Air dingin",
+            "type_paludarium": "Paludarium",
+            "date_label": "Tanggal pengaturan",
+            "optional": "(opsional)",
+            "save_btn": "Simpan akuarium"
+        },
+        "modal_entry": {
+            "title": "Entri hari ini",
+            "close_aria": "Tutup",
+            "rhythm_question": "Ritme Anda belakangan ini",
+            "obs_question": "Apa yang Anda perhatikan?",
+            "obs_placeholder": "Ikan aktif hari ini. Tanaman tumbuh dengan baik. Air terlihat agak hijau…",
+            "care_question": "Apa yang Anda lakukan?",
+            "optional": "(opsional)",
+            "care_water_change": "Ganti air",
+            "care_filter": "Filter",
+            "care_feeding": "Pemberian pakan",
+            "care_top_up": "Tambah air",
+            "care_treatment": "Pengobatan",
+            "care_dosing": "Dosis",
+            "care_media": "Ganti media",
+            "care_trimming": "Pangkas",
+            "care_nothing": "Hanya mengamati",
+            "care_more_btn": "+ 6 lainnya",
+            "treatment_label": "Produk / dosis",
+            "treatment_placeholder": "cth. Easy Carbo 5ml, Seachem Prime 2ml",
+            "params_note": "Parameter air",
+            "param_ph": "pH",
+            "param_nh3": "NH₃ (mg/L)",
+            "param_no2": "NO₂ (mg/L)",
+            "param_no3": "NO₃ (mg/L)",
+            "param_temp": "Suhu (°C)",
+            "param_gh": "GH (°dH)",
+            "param_kh": "KH (°dH)",
+            "param_sg": "Salinitas / SG",
+            "save_entry_btn": "Simpan entri",
+            "delete_btn": "Hapus"
+        },
+        "toast": {
+            "dismiss_aria": "Tutup"
+        },
+        "modal_inhabitant": {
+            "title": "Keluarga Akuarium",
+            "close_aria": "Tutup",
+            "add_resident_btn": "+ Tambah penghuni",
+            "back_list_btn": "← Daftar",
+            "form_title_add": "Tambah penghuni",
+            "category_question": "Kategori",
+            "cat_fish": "Ikan",
+            "cat_plant": "Tanaman",
+            "cat_invertebrate": "Invertebrata",
+            "cat_coral": "Karang",
+            "cat_other": "Lainnya",
+            "common_name_label": "Nama umum",
+            "required": "(wajib)",
+            "common_name_placeholder": "cth. Neon Tetra",
+            "quantity_label": "Jumlah",
+            "personal_name_label": "Nama panggilan",
+            "optional": "(opsional)",
+            "personal_name_placeholder": "cth. Nemo, Goldie…",
+            "species_label": "Nama ilmiah",
+            "species_hint": "(terisi otomatis saat disarankan)",
+            "species_placeholder": "cth. Paracheirodon innesi",
+            "date_added_label": "Tanggal ditambahkan",
+            "status_label": "Status",
+            "status_active": "Aktif",
+            "status_rehomed": "Dipindahkan",
+            "status_passed": "Meninggal",
+            "add_to_tank_btn": "Tambahkan ke akuarium",
+            "remove_resident_btn": "Hapus penghuni"
+        },
+        "modal_gear": {
+            "title": "Pengaturan Akuarium Saya",
+            "close_aria": "Tutup",
+            "equipment_label": "Peralatan",
+            "equipment_hint": "Pilih apa yang benar-benar Anda miliki di akuarium ini.",
+            "save_setup_btn": "Simpan Pengaturan"
+        }
     }
-  },
-  "tools": {
-    "ey": "Lab &amp; Alat",
-    "h1": "Coba dulu.<br><em style=\"font-style:italic;color:rgba(61,214,232,.78)\">Sebelum Anda berkomitmen.</em>",
-    "sub": "Simulator dan perencana interaktif. Buat keputusan di layar dulu sebelum Anda buat di akuarium sebenarnya.",
-    "card1_tag": "Simulator",
-    "card1_title": "Simulator Siklus Tangki",
-    "card1_desc": "Lihat amonia, nitrit, dan nitrat merespons keputusan Anda secara real-time. Pilih cycling tanpa ikan atau dengan ikan.",
-    "card1_cta": "Buka simulator →",
-    "card2_tag": "Lab interaktif",
-    "card2_title": "Pembangun Tangki",
-    "card2_desc": "Bangun akuarium pertama Anda di layar. Tambah peralatan, jelajahi bagaimana tiap bagian mempengaruhi sistem, pahami apa yang Anda sebenarnya butuhkan.",
-    "card2_cta": "Masuk ke lab →",
-    "card3_tag": "Lab interaktif",
-    "card3_title": "Lab Tekanan Komunitas",
-    "card3_desc": "Petakan tekanan yang tumpang tindih saat mencampur spesies — suhu, kimia, ruang, predasi, ketegangan sosial, dan keamanan invertebrata. Bersifat edukatif, bukan skor kompatibilitas.",
-    "card3_cta": "Buka peta tekanan →",
-    "closing_note": "Semua alat tumbuh dari ARA — Aquatic Rhythm Alignment. Alat ini mensimulasikan dan merencanakan, tapi tidak menggantikan observasi.",
-    "closing_link": "Baca kerangka kerja ARA →",
-    "kofi_hint": "Lab butuh waktu yang stabil untuk dibangun. Jika alat di sini membantu Anda menghindari kesalahan yang mahal, sumbangan opsional membantu menjaga kelangsungannya."
-  },
-  "journal": {
-    "landing": {
-      "ey": "Log Penjaga",
-      "h1": "Akuarium<br><em style=\"font-style:italic;color:rgba(61,214,232,.78)\">Anda</em>",
-      "sub": "Log pribadi untuk setiap akuarium yang Anda pelihara — amati, renungkan, dan pantau ritme Anda."
-    },
-    "dashboard": {
-      "back_aria": "Kembali ke Log Penjaga",
-      "back_label": "Log Penjaga",
-      "edit_tank": "Edit akuarium",
-      "setup_eyebrow": "Pengaturan Saya",
-      "setup_edit_aria": "Edit pengaturan",
-      "setup_edit_btn": "Edit",
-      "setup_empty_text": "Belum ada pengaturan tercatat.",
-      "setup_start_btn": "Catat →",
-      "family_eyebrow": "Keluarga Akuarium",
-      "family_edit_aria": "Kelola penghuni",
-      "family_edit_btn": "Edit",
-      "phase_eyebrow": "Fase ARA",
-      "phase_step_1": "Merintis",
-      "phase_step_2": "Menstabilkan",
-      "phase_step_3": "Mengoptimalkan",
-      "phase_step_4": "Mempertahankan",
-      "phase_note_default": "Tulis entri pertama Anda untuk mendapatkan pembacaan fase ARA.",
-      "phase_rh_btn": "Tanya Rhyssa tentang fase ini",
-      "weekly_insight_eyebrow": "Bacaan Rhyssa",
-      "weekly_insight_btn": "Diskusikan dengan Rhyssa →",
-      "param_charts_eyebrow": "Tren Parameter",
-      "entry_cta_prompt_default": "Apa yang Anda perhatikan hari ini?",
-      "entry_cta_btn": "Tulis entri hari ini",
-      "no_entries_text": "Belum ada entri.",
-      "entries_eyebrow": "Entri",
-      "new_entry_btn": "+ Entri baru",
-      "search_placeholder": "Cari entri…",
-      "search_aria": "Cari entri",
-      "filter_toggle_aria": "Filter entri",
-      "filter_period_label": "Periode",
-      "filter_period_all": "Sepanjang waktu",
-      "filter_period_7": "7 hari",
-      "filter_period_30": "30 hari",
-      "filter_period_90": "90 hari",
-      "filter_rhythm_label": "Ritme",
-      "state_consistent": "Konsisten",
-      "state_catching_up": "Mengejar ketinggalan",
-      "state_occasional": "Sesekali",
-      "state_just_starting": "Baru mulai",
-      "filter_care_label": "Perawatan dilakukan",
-      "filter_clear_btn": "Hapus semua filter",
-      "filter_no_results": "Tidak ada entri yang cocok dengan filter ini.",
-      "load_more_btn": "Tampilkan entri lama",
-      "export_json_btn": "Ekspor JSON",
-      "export_csv_btn": "Ekspor CSV",
-      "delete_tank_btn": "Hapus akuarium ini"
-    },
-    "kofi_sheet": {
-      "title": "Dukungan",
-      "sub": "Tip opsional — dikelola di Ko-fi",
-      "linkout": "Buka terpisah ↗",
-      "close_aria": "Tutup panel dukungan"
-    },
-    "modal_setup": {
-      "title": "Atur akuarium Anda",
-      "close_aria": "Tutup",
-      "preview_cat_default": "Pilih ukuran atau merek di bawah",
-      "tab_preset": "Populer",
-      "tab_brand": "Bermerek",
-      "tab_custom": "Kustom",
-      "unit_label": "Satuan ukuran",
-      "unit_cm": "cm",
-      "unit_in": "inci",
-      "length_label": "Panjang",
-      "width_label": "Lebar",
-      "height_label": "Tinggi",
-      "calc_vol_label": "Volume terhitung",
-      "name_label": "Nama akuarium",
-      "name_placeholder": "cth. Akuarium Ruang Tamu Saya",
-      "type_label": "Jenis akuarium",
-      "type_freshwater": "Air tawar",
-      "type_planted": "Tanaman",
-      "type_marine": "Marin / Reef",
-      "type_brackish": "Payau",
-      "type_coldwater": "Air dingin",
-      "type_paludarium": "Paludarium",
-      "date_label": "Tanggal pengaturan",
-      "optional": "(opsional)",
-      "save_btn": "Simpan akuarium"
-    },
-    "modal_entry": {
-      "title": "Entri hari ini",
-      "close_aria": "Tutup",
-      "rhythm_question": "Ritme Anda belakangan ini",
-      "obs_question": "Apa yang Anda perhatikan?",
-      "obs_placeholder": "Ikan aktif hari ini. Tanaman tumbuh dengan baik. Air terlihat agak hijau…",
-      "care_question": "Apa yang Anda lakukan?",
-      "optional": "(opsional)",
-      "care_water_change": "Ganti air",
-      "care_filter": "Filter",
-      "care_feeding": "Pemberian pakan",
-      "care_top_up": "Tambah air",
-      "care_treatment": "Pengobatan",
-      "care_dosing": "Dosis",
-      "care_media": "Ganti media",
-      "care_trimming": "Pangkas",
-      "care_nothing": "Hanya mengamati",
-      "care_more_btn": "+ 6 lainnya",
-      "treatment_label": "Produk / dosis",
-      "treatment_placeholder": "cth. Easy Carbo 5ml, Seachem Prime 2ml",
-      "params_note": "Parameter air",
-      "param_ph": "pH",
-      "param_nh3": "NH₃ (mg/L)",
-      "param_no2": "NO₂ (mg/L)",
-      "param_no3": "NO₃ (mg/L)",
-      "param_temp": "Suhu (°C)",
-      "param_gh": "GH (°dH)",
-      "param_kh": "KH (°dH)",
-      "param_sg": "Salinitas / SG",
-      "save_entry_btn": "Simpan entri",
-      "delete_btn": "Hapus"
-    },
-    "toast": {
-      "dismiss_aria": "Tutup"
-    },
-    "modal_inhabitant": {
-      "title": "Keluarga Akuarium",
-      "close_aria": "Tutup",
-      "add_resident_btn": "+ Tambah penghuni",
-      "back_list_btn": "← Daftar",
-      "form_title_add": "Tambah penghuni",
-      "category_question": "Kategori",
-      "cat_fish": "Ikan",
-      "cat_plant": "Tanaman",
-      "cat_invertebrate": "Invertebrata",
-      "cat_coral": "Karang",
-      "cat_other": "Lainnya",
-      "common_name_label": "Nama umum",
-      "required": "(wajib)",
-      "common_name_placeholder": "cth. Neon Tetra",
-      "quantity_label": "Jumlah",
-      "personal_name_label": "Nama panggilan",
-      "optional": "(opsional)",
-      "personal_name_placeholder": "cth. Nemo, Goldie…",
-      "species_label": "Nama ilmiah",
-      "species_hint": "(terisi otomatis saat disarankan)",
-      "species_placeholder": "cth. Paracheirodon innesi",
-      "date_added_label": "Tanggal ditambahkan",
-      "status_label": "Status",
-      "status_active": "Aktif",
-      "status_rehomed": "Dipindahkan",
-      "status_passed": "Meninggal",
-      "add_to_tank_btn": "Tambahkan ke akuarium",
-      "remove_resident_btn": "Hapus penghuni"
-    },
-    "modal_gear": {
-      "title": "Pengaturan Akuarium Saya",
-      "close_aria": "Tutup",
-      "equipment_label": "Peralatan",
-      "equipment_hint": "Pilih apa yang benar-benar Anda miliki di akuarium ini.",
-      "save_setup_btn": "Simpan Pengaturan"
-    }
-  }
 }

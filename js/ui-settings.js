@@ -75,7 +75,6 @@
      is always available. */
   var AR_LANGS = [
     { code: 'en', label: 'English' },
-    { code: 'ms', label: 'Bahasa Melayu' },
     { code: 'id', label: 'Bahasa Indonesia' },
     { code: 'ja', label: '日本語' }
   ];

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-One-off builder for localized homepage SPA shells (ms/id/ja/index.html).
+One-off builder for localized homepage SPA shells (id/ja/index.html).
 
 Unlike scripts/build-i18n.mjs (which templates individual articles from
 translations/<lang>/<slug>.json on every run), index.html is NOT part of
@@ -16,7 +16,7 @@ interactive strings need a different i18n mechanism, tracked separately.
 
 Usage: python3 scripts/build-homepage-i18n.py
 Reads: index.html, translations/homepage/<lang>.json
-Writes: <lang>/index.html for lang in ms, id, ja
+Writes: <lang>/index.html for lang in id, ja
 """
 import json
 import re
@@ -27,49 +27,39 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "index.html"
 UNITS_DIR = ROOT / "translations" / "homepage"
 
-LANGUAGES = ["ms", "id", "ja"]
-LANG_LABEL = {"en": "EN", "ms": "MS", "id": "ID", "ja": "JA"}
+LANGUAGES = ["id", "ja"]
+LANG_LABEL = {"en": "EN", "id": "ID", "ja": "JA"}
 
 TITLE = {
-    "ms": "Aquatic Rhythm — Penjagaan Ekologi untuk Akuarium Kecil",
     "id": "Aquatic Rhythm — Perawatan Ekologis untuk Akuarium Kecil",
     "ja": "Aquatic Rhythm — 小型水槽のための生態学的なケア",
 }
 DESCRIPTION = {
-    "ms": "Ekologi akuarium rumah yang tenang dan mesra mudah alih. ARA (Aquatic Rhythm Alignment) menggabungkan Panduan bermodul, makmal interaktif, Rhyssa di laman ini, dan log peribadi dalam peranti. Akses ChatGPT pilihan tersedia untuk penjaga yang lebih suka.",
     "id": "Ekologi akuarium rumah yang tenang dan ramah perangkat seluler. ARA (Aquatic Rhythm Alignment) menyatukan Panduan bermodul, laboratorium interaktif, Rhyssa di situs ini, dan jurnal pribadi di perangkat. Akses ChatGPT opsional tersedia bagi yang lebih menyukainya.",
     "ja": "落ち着いた、モバイルフレンドリーな家庭用水槽の生態学。ARA（Aquatic Rhythm Alignment）が、モジュール式のガイド、対話型ラボ、このサイト上のRhyssa、そして端末内のプライベートな記録をひとつにまとめる。ChatGPT経由のオプションアクセスも利用できる。",
 }
 OG_DESC = {
-    "ms": "Dibina untuk penjaga yang mengambil berat secara mendalam dan tidak selalu ada masa untuk menunjukkannya. Panduan tenang berasaskan ekologi untuk akuarium kecil — dengan ARA, alat, dan Rhyssa.",
     "id": "Dibuat untuk penjaga yang peduli secara mendalam dan tidak selalu punya waktu untuk menunjukkannya. Panduan tenang berbasis ekologi untuk akuarium kecil — dengan ARA, alat, dan Rhyssa.",
     "ja": "深く気にかけていても、それを示す時間がいつもあるとは限らないキーパーのために作られた。小型水槽のための、落ち着いた生態学重視のガイド — ARA、ツール、そしてRhyssaとともに。",
 }
 OG_IMAGE_ALT = {
-    "ms": "Aquatic Rhythm — panduan ekologi untuk akuarium rumah",
     "id": "Aquatic Rhythm — panduan ekologi untuk akuarium rumah",
     "ja": "Aquatic Rhythm — 家庭用水槽のための生態学ガイド",
 }
 WEBSITE_ALT_NAME = {
-    "ms": "Penjagaan ekologi untuk akuarium kecil",
     "id": "Perawatan ekologis untuk akuarium kecil",
     "ja": "小型水槽のための生態学的なケア",
 }
 WEBSITE_DESC = {
-    "ms": "Aquatic Rhythm membantu penjaga memahami ekologi akuarium sistem tertutup — kimia air, biologi, dan waktu — menggunakan ARA dan panduan praktikal.",
     "id": "Aquatic Rhythm membantu penjaga memahami ekologi akuarium sistem tertutup — kimia air, biologi, dan waktu — menggunakan ARA dan panduan praktis.",
     "ja": "Aquatic Rhythmは、ARAと実践的なガイドを用いて、閉鎖系水槽の生態 — 水質、生物、そしてタイミング — を読み解く手助けをする。",
 }
 LOGO_ARIA = {
-    "ms": "Aquatic Rhythm — penjagaan ekologi untuk akuarium kecil",
     "id": "Aquatic Rhythm — perawatan ekologis untuk akuarium kecil",
     "ja": "Aquatic Rhythm — 小型水槽のための生態学的なケア",
 }
 
 NAV = {
-    "ms": {"home": "Laman Utama", "reading": "Panduan", "companion": "Rakan", "companionMobile": "Rakan AI",
-           "tools": "Alat", "toolsMobile": "Makmal &amp; Alat", "log": "Catatan", "about": "Tentang",
-           "privacy": "Dasar Privasi", "terms": "Terma Penggunaan", "menu": "Menu"},
     "id": {"home": "Beranda", "reading": "Panduan", "companion": "Pendamping", "companionMobile": "Pendamping AI",
            "tools": "Alat", "toolsMobile": "Lab &amp; Alat", "log": "Catatan", "about": "Tentang",
            "privacy": "Kebijakan Privasi", "terms": "Syarat Penggunaan", "menu": "Menu"},
@@ -79,7 +69,6 @@ NAV = {
 }
 
 BNAV_ARIA = {
-    "ms": {"home": "Laman Utama", "reading": "Panduan", "tools": "Makmal &amp; Alat", "log": "Log Penjaga"},
     "id": {"home": "Beranda", "reading": "Panduan", "tools": "Lab &amp; Alat", "log": "Log Penjaga"},
     "ja": {"home": "ホーム", "reading": "ガイド", "tools": "ラボ&amp;ツール", "log": "キーパーの記録"},
 }
@@ -650,7 +639,7 @@ def build_tools(h, lang, u):
         h = h[:start] + block + h[end:]
 
     h = replace_once(h,
-        r'(font-size:\.94rem;color:rgba\(255,255,255,\.38\);line-height:1\.9">)'
+        r'(font-size:var\(--fs-md\);color:rgba\(255,255,255,\.38\);line-height:1\.9">)'
         r'All tools grow from ARA — Aquatic Rhythm Alignment\. They simulate and plan, but they do not replace observation\.(<\/p>)',
         lambda m: m.group(1) + x["closing_note"] + m.group(2), "tools closing note")
     h = replace_once(h, r'(href="/articles/ara-full-framework"[^>]*>)Read the ARA framework →(<\/a>)',

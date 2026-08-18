@@ -8,7 +8,7 @@
  * js/community-stress-lab.js's CSL_STRINGS table, not here).
  *
  * Usage:
- *   node scripts/build-csl-i18n.mjs --lang ms
+ *   node scripts/build-csl-i18n.mjs --lang id
  *   node scripts/build-csl-i18n.mjs --all
  *
  * Output: /<lang>/articles/community-stress-lab.html
@@ -20,7 +20,7 @@ const ROOT      = path.join(import.meta.dirname, '..');
 const ART_DIR   = path.join(ROOT, 'articles');
 const TRANS_DIR = path.join(ROOT, 'translations');
 const BASE_URL  = 'https://aquaticrhythm.com';
-const LANGUAGES = ['ms', 'id', 'ja'];
+const LANGUAGES = ['id', 'ja'];
 const SLUG      = 'community-stress-lab';
 
 const args    = process.argv.slice(2);
@@ -31,7 +31,6 @@ const doAll   = args.includes('--all');
 // bnav (bottom PWA nav) — Home/Reading/Tools/Log — shared across every page
 // (kept in sync manually with build-ara-i18n.mjs's BNAV_LABELS by design).
 const BNAV_LABELS = {
-  ms: { home: 'Laman Utama', reading: 'Panduan', tools: 'Alat &amp; Makmal', toolsAria: 'Makmal &amp; Alat', tools_label: 'Alat', log: 'Catatan', logAria: 'Catatan Penjaga' },
   id: { home: 'Beranda', reading: 'Panduan', tools: 'Lab &amp; Alat', toolsAria: 'Lab &amp; Alat', tools_label: 'Alat', log: 'Catatan', logAria: 'Catatan Penjaga' },
   ja: { home: 'ホーム', reading: 'ガイド', tools: 'ラボ&amp;ツール', toolsAria: 'ラボ&amp;ツール', tools_label: 'ツール', log: '記録', logAria: 'キーパーの記録' }
 };
@@ -74,6 +73,7 @@ function patchHead(h, t, lang) {
   h = replaceOnce(h, /(<link rel="canonical" href=")[^"]*(")/, (_, a, b) => `${a}${localUrl}${b}`);
   h = replaceOnce(h, /(<meta property="og:url" content=")[^"]*(")/, (_, a, b) => `${a}${localUrl}${b}`);
 
+  h = h.replace(/<link rel="alternate" hreflang="[^"]*"[^>]*>\n?/g, '');
   const hreflang = buildHreflangTags(lang);
   h = replaceOnce(h, /(<link rel="canonical"[^>]*>)/, (_, canon) => `${canon}\n${hreflang}`);
 
@@ -206,6 +206,6 @@ if (patchEn) {
 } else if (langArg) {
   buildLang(langArg);
 } else {
-  console.error('Usage: node scripts/build-csl-i18n.mjs --lang <ms|id|ja> | --all | --patch-english');
+  console.error('Usage: node scripts/build-csl-i18n.mjs --lang <id|ja> | --all | --patch-english');
   process.exit(1);
 }

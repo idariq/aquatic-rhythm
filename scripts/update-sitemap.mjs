@@ -9,7 +9,7 @@
  *
  * Output:
  *   sitemap-en.xml    — copy of existing sitemap.xml
- *   sitemap-ms.xml    — Malay articles + /ms/reading
+ *   sitemap-id.xml    — Indonesian articles + /id/reading
  *   sitemap-ja.xml    — Japanese articles + /ja/reading
  *   sitemap-index.xml — references all sitemaps
  *   robots.txt        — updated to reference sitemap-index.xml
@@ -24,7 +24,7 @@ const ROOT      = path.join(__dirname, '..');
 const TRANS_DIR = path.join(ROOT, 'translations');
 const BASE_URL  = 'https://aquaticrhythm.com';
 const TODAY     = new Date().toISOString().slice(0, 10);
-const LANGS     = ['ms', 'id', 'ja'];
+const LANGS     = ['id', 'ja'];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 

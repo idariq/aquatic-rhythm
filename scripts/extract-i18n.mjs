@@ -3,8 +3,8 @@
  * fields back out of an already-localized article HTML file.
  *
  * Usage:
- *   node scripts/extract-i18n.mjs --lang ms --slug adding-new-fish
- *   node scripts/extract-i18n.mjs --lang ms --all
+ *   node scripts/extract-i18n.mjs --lang id --slug adding-new-fish
+ *   node scripts/extract-i18n.mjs --lang id --all
  *   node scripts/extract-i18n.mjs --all-langs
  */
 import fs from 'fs';
@@ -12,7 +12,7 @@ import path from 'path';
 
 const ROOT      = path.join(import.meta.dirname, '..');
 const TRANS_DIR = path.join(ROOT, 'translations');
-const LANGUAGES = ['ms', 'id', 'ja'];
+const LANGUAGES = ['id', 'ja'];
 
 const args    = process.argv.slice(2);
 const langIdx = args.indexOf('--lang');
@@ -221,6 +221,6 @@ if (allLangs) {
 } else if (langArg && (doAll || slugArg)) {
   run(langArg);
 } else {
-  console.error('Usage:\n  node scripts/extract-i18n.mjs --lang ms --slug <slug>\n  node scripts/extract-i18n.mjs --lang ms --all\n  node scripts/extract-i18n.mjs --all-langs');
+  console.error('Usage:\n  node scripts/extract-i18n.mjs --lang id --slug <slug>\n  node scripts/extract-i18n.mjs --lang id --all\n  node scripts/extract-i18n.mjs --all-langs');
   process.exit(1);
 }

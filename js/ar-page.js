@@ -126,13 +126,12 @@
        to the English version of the same page rather than disappearing. */
     var AR_LANGS = [
       { code: 'en', label: 'English' },
-      { code: 'ms', label: 'Bahasa Melayu' },
       { code: 'id', label: 'Bahasa Indonesia' },
       { code: 'ja', label: '日本語' }
     ];
     function arInferBasePath() {
       var parts = location.pathname.replace(/^\/+|\/+$/g, '').split('/').filter(Boolean);
-      if (parts.length && ['ms', 'id', 'ja'].indexOf(parts[0]) !== -1) parts.shift();
+      if (parts.length && ['id', 'ja'].indexOf(parts[0]) !== -1) parts.shift();
       return parts.join('/');
     }
     function renderLangSection() {

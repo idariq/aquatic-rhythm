@@ -33,7 +33,7 @@ const TRANS_DIR     = join(ROOT, 'translations');
 const OG_DIR        = join(ROOT, 'og', 'articles');
 const FONTS_CACHE   = join(ROOT, '.font-cache');
 
-const LANGS = ['ms', 'id', 'ja'];
+const LANGS = ['id', 'ja'];
 
 // ── colours ─────────────────────────────────────────────────────────────────
 const C = {

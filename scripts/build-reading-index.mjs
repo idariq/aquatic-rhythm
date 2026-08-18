@@ -6,7 +6,7 @@
  *
  * Usage:
  *   node scripts/build-reading-index.mjs
- *   node scripts/build-reading-index.mjs --lang ms
+ *   node scripts/build-reading-index.mjs --lang id
  */
 
 import fs   from 'fs';
@@ -21,7 +21,7 @@ const TODAY     = new Date().toISOString().slice(0, 10);
 
 const args     = process.argv.slice(2);
 const langArg  = args.includes('--lang') ? args[args.indexOf('--lang') + 1] : null;
-const LANGS    = langArg ? [langArg] : ['ms', 'id', 'ja'];
+const LANGS    = langArg ? [langArg] : ['id', 'ja'];
 
 // Preferred article order for the reading index
 const SLUG_ORDER = [
@@ -58,19 +58,6 @@ const SLUG_ORDER = [
 
 // UI strings per language
 const UI = {
-  ms: {
-    lang:        'ms',
-    htmlLang:    'ms',
-    pageTitle:   'Panduan Akuarium — Aquatic Rhythm',
-    metaDesc:    'Panduan ekologi akuarium dalam Bahasa Melayu — nitrogen cycle, ritma penjagaan, dan pendekatan ARA. Mudah dibaca di telefon.',
-    ogTitle:     'Panduan Akuarium — Aquatic Rhythm',
-    eyebrow:     'Aquatic Rhythm',
-    heading:     'Panduan ekologi<br><em>boleh dibaca di mana-mana.</em>',
-    intro:       'Artikel ringkas tentang ekosistem akuarium tertutup — dipecah kepada modul pendek untuk telefon dan malam yang tenang. Biologi dan kimia dahulu; hype tidak ada.',
-    backToEn:    'Lihat semua artikel dalam English →',
-    backHome:    '← Kembali ke Aquatic Rhythm',
-    notoFont:    false,
-  },
   id: {
     lang:        'id',
     htmlLang:    'id',
@@ -134,7 +121,7 @@ function getReadyArticles(lang) {
   return articles;
 }
 
-const ALL_READING_LANGS = ['ms', 'id', 'ja'];
+const ALL_READING_LANGS = ['id', 'ja'];
 
 // Language switching lives in the Settings panel (matches articles), not a
 // per-page dropdown. This just tells that panel which locales actually have
@@ -315,7 +302,6 @@ ${buildI18nDataScript()}
 
   var AR_LANGS = [
     { code: 'en', label: 'English' },
-    { code: 'ms', label: 'Bahasa Melayu' },
     { code: 'id', label: 'Bahasa Indonesia' },
     { code: 'ja', label: '日本語' }
   ];

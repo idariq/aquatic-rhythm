@@ -433,7 +433,7 @@
     if (!options || !options.length) return;
     var group = document.createElement('div');
     group.style.cssText = 'display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.06)';
-    var btnBase = 'font-size:.65rem;padding:.32rem .75rem;background:rgba(61,214,232,.07);border:1px solid rgba(61,214,232,.22);border-radius:20px;color:rgba(235,240,236,.82);cursor:pointer;font-family:inherit;letter-spacing:.01em;text-align:left;line-height:1.4;-webkit-tap-highlight-color:transparent';
+    var btnBase = 'font-size:var(--fs-2xs);padding:.32rem .75rem;background:rgba(61,214,232,.07);border:1px solid rgba(61,214,232,.22);border-radius:20px;color:rgba(235,240,236,.82);cursor:pointer;font-family:inherit;letter-spacing:.01em;text-align:left;line-height:1.4;-webkit-tap-highlight-color:transparent';
     options.forEach(function (opt) {
       var btn = document.createElement('button');
       btn.type = 'button';
@@ -444,7 +444,7 @@
     });
     var writeBtn = document.createElement('button');
     writeBtn.type = 'button';
-    writeBtn.style.cssText = 'font-size:.65rem;padding:.32rem .75rem;background:none;border:1px solid rgba(255,255,255,.1);border-radius:20px;color:rgba(255,255,255,.35);cursor:pointer;font-family:inherit;letter-spacing:.01em;text-align:left;line-height:1.4;font-style:italic;-webkit-tap-highlight-color:transparent';
+    writeBtn.style.cssText = 'font-size:var(--fs-2xs);padding:.32rem .75rem;background:none;border:1px solid rgba(255,255,255,.1);border-radius:20px;color:rgba(255,255,255,.35);cursor:pointer;font-family:inherit;letter-spacing:.01em;text-align:left;line-height:1.4;font-style:italic;-webkit-tap-highlight-color:transparent';
     writeBtn.textContent = 'Write my own…';
     writeBtn.addEventListener('click', function () { group.remove(); if (inp) inp.focus(); });
     group.appendChild(writeBtn);
@@ -456,8 +456,8 @@
     if (!tabsList) return;
     var data = initConvs();
     tabsList.innerHTML = '';
-    var styleInactive = 'display:inline-flex;align-items:center;gap:.28rem;padding:.22rem .65rem;border-radius:20px;border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.4);cursor:pointer;font-size:.6rem;font-family:inherit;white-space:nowrap;max-width:140px;flex-shrink:0;-webkit-tap-highlight-color:transparent;background:rgba(255,255,255,.05)';
-    var styleActive   = 'display:inline-flex;align-items:center;gap:.28rem;padding:.22rem .65rem;border-radius:20px;border:1px solid rgba(61,214,232,.28);color:rgba(61,214,232,.85);cursor:pointer;font-size:.6rem;font-family:inherit;white-space:nowrap;max-width:140px;flex-shrink:0;-webkit-tap-highlight-color:transparent;background:rgba(61,214,232,.1)';
+    var styleInactive = 'display:inline-flex;align-items:center;gap:.28rem;padding:.22rem .65rem;border-radius:20px;border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.4);cursor:pointer;font-size:var(--fs-2xs);font-family:inherit;white-space:nowrap;max-width:140px;flex-shrink:0;-webkit-tap-highlight-color:transparent;background:rgba(255,255,255,.05)';
+    var styleActive   = 'display:inline-flex;align-items:center;gap:.28rem;padding:.22rem .65rem;border-radius:20px;border:1px solid rgba(61,214,232,.28);color:rgba(61,214,232,.85);cursor:pointer;font-size:var(--fs-2xs);font-family:inherit;white-space:nowrap;max-width:140px;flex-shrink:0;-webkit-tap-highlight-color:transparent;background:rgba(61,214,232,.1)';
     data.list.forEach(function (conv) {
       var isActive = conv.id === data.activeId;
       var tab = document.createElement('button');
@@ -473,7 +473,7 @@
         var del = document.createElement('button');
         del.type = 'button';
         del.setAttribute('aria-label', 'Delete conversation');
-        del.style.cssText = 'background:none;border:none;color:rgba(255,255,255,.28);cursor:pointer;font-size:.85rem;padding:0;line-height:1;flex-shrink:0;-webkit-tap-highlight-color:transparent';
+        del.style.cssText = 'background:none;border:none;color:rgba(255,255,255,.28);cursor:pointer;font-size:var(--fs-sm-md);padding:0;line-height:1;flex-shrink:0;-webkit-tap-highlight-color:transparent';
         del.textContent = '×';
         ;(function (id) {
           del.addEventListener('click', function (e) { e.stopPropagation(); deleteConv(id); });
@@ -603,7 +603,7 @@
     if (!pill) {
       pill = document.createElement('span');
       pill.className = 'rh-ctx-pill';
-      pill.style.cssText = 'display:inline-flex;align-items:center;gap:4px;font-size:.48rem;padding:2px 7px;border-radius:20px;background:rgba(61,214,232,.08);border:1px solid rgba(61,214,232,.2);color:rgba(61,214,232,.62);font-family:inherit;letter-spacing:.02em;margin-top:.2rem;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap';
+      pill.style.cssText = 'display:inline-flex;align-items:center;gap:4px;font-size:var(--fs-3xs);padding:2px 7px;border-radius:20px;background:rgba(61,214,232,.08);border:1px solid rgba(61,214,232,.2);color:rgba(61,214,232,.62);font-family:inherit;letter-spacing:.02em;margin-top:.2rem;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap';
       titleGroup.appendChild(pill);
     }
     var parts = [];

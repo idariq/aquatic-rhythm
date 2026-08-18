@@ -35,47 +35,47 @@ body{font-family:var(--sans);background:var(--abyss);color:rgba(235,240,236,.94)
 body::before{content:'';position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#052535 0%,#073040 18%,#062a38 38%,#041e28 58%,#030f18 78%,#020810 100%)}
 
 .share-wrap{max-width:640px;margin:0 auto;padding:clamp(5.5rem,14vw,7rem) clamp(1.5rem,5vw,3rem) 5rem}
-.share-eyebrow{display:block;font-size:.68rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(157,191,154,.72);margin-bottom:1.2rem}
+.share-eyebrow{display:block;font-size:var(--fs-xs);font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(157,191,154,.72);margin-bottom:1.2rem}
 .share-title{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4.5vw,2.85rem);color:rgba(235,240,236,.94);line-height:1.1;margin-bottom:1.2rem}
 .share-title em{font-style:italic;color:rgba(61,214,232,.78)}
-.share-lead{font-size:1rem;font-weight:300;color:rgba(255,255,255,.62);line-height:1.9;margin-bottom:2rem}
+.share-lead{font-size:var(--fs-base);font-weight:300;color:rgba(255,255,255,.62);line-height:1.9;margin-bottom:2rem}
 
 .share-thanks{display:none;padding:1.2rem 1.4rem;border:1px solid rgba(61,214,232,.28);background:rgba(61,214,232,.08);border-radius:4px;margin-bottom:2rem}
 .share-thanks.visible{display:block}
-.share-thanks p{font-size:.92rem;color:rgba(235,240,236,.78);margin:0}
+.share-thanks p{font-size:var(--fs-md);color:rgba(235,240,236,.78);margin:0}
 
 .sf-hn{margin:2rem 0;padding:1.35rem 1.6rem;border:1px solid rgba(139,189,210,.16);background:rgba(255,255,255,.035);border-radius:4px}
-.sf-hn h2{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(139,189,210,.48);margin-bottom:.85rem}
-.sf-hn p{font-size:.78rem;font-weight:300;color:rgba(235,240,236,.48);line-height:1.75;margin-bottom:.65rem}
+.sf-hn h2{font-size:var(--fs-xs);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(139,189,210,.48);margin-bottom:.85rem}
+.sf-hn p{font-size:var(--fs-sm);font-weight:300;color:rgba(235,240,236,.48);line-height:1.75;margin-bottom:.65rem}
 .sf-hn p:last-child{margin-bottom:0}
 .sf-hn a.sf-svc-link{color:rgba(61,214,232,.78);text-decoration:none;border-bottom:1px solid rgba(61,214,232,.28);transition:color .2s,border-color .2s;word-break:break-word}
 .sf-hn a.sf-svc-link:hover{color:rgba(190,245,255,.95);border-bottom-color:rgba(61,214,232,.55)}
 
-.share-form-error{margin:1rem 0 0;padding:.85rem 1rem;border:1px solid rgba(220,120,100,.4);background:rgba(220,70,55,.12);color:rgba(255,215,205,.92);font-size:.82rem;font-weight:400;line-height:1.55;border-radius:4px}
+.share-form-error{margin:1rem 0 0;padding:.85rem 1rem;border:1px solid rgba(220,120,100,.4);background:rgba(220,70,55,.12);color:rgba(255,215,205,.92);font-size:var(--fs-sm-md);font-weight:400;line-height:1.55;border-radius:4px}
 .sf-row{margin-bottom:1.35rem}
-.sf-label{display:block;font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(235,240,236,.38);margin-bottom:.45rem}
-.sf-input,.sf-textarea{width:100%;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:.72rem .95rem;color:rgba(235,240,236,.9);font-size:.95rem;font-family:var(--sans);transition:border-color .2s}
+.sf-label{display:block;font-size:var(--fs-xs);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(235,240,236,.38);margin-bottom:.45rem}
+.sf-input,.sf-textarea{width:100%;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:.72rem .95rem;color:rgba(235,240,236,.9);font-size:var(--fs-base);font-family:var(--sans);transition:border-color .2s}
 .sf-input:focus,.sf-textarea:focus{outline:none;border-color:rgba(61,214,232,.42)}
 .sf-textarea{min-height:140px;resize:vertical;line-height:1.65}
-.sf-hint{font-size:.72rem;color:rgba(255,255,255,.28);margin-top:.35rem;line-height:1.55}
+.sf-hint{font-size:var(--fs-xs);color:rgba(255,255,255,.28);margin-top:.35rem;line-height:1.55}
 
 .sf-fieldset{margin:0 0 1.35rem;padding:1.1rem 1.25rem 1.2rem;border:1px solid rgba(139,189,210,.14);border-radius:4px;background:rgba(255,255,255,.02)}
-.sf-fieldset .sf-legend{padding:0 .35rem;font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(235,240,236,.38)}
+.sf-fieldset .sf-legend{padding:0 .35rem;font-size:var(--fs-xs);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(235,240,236,.38)}
 .sf-fieldset > .sf-hint{margin-top:.5rem}
 .sf-opts{display:flex;flex-direction:column;gap:.5rem;margin-top:.85rem}
-.sf-opt{display:flex;align-items:flex-start;gap:.55rem;font-size:.78rem;font-weight:300;color:rgba(235,240,236,.52);line-height:1.55;cursor:pointer}
+.sf-opt{display:flex;align-items:flex-start;gap:.55rem;font-size:var(--fs-sm);font-weight:300;color:rgba(235,240,236,.52);line-height:1.55;cursor:pointer}
 .sf-opt input{margin-top:.22rem;flex-shrink:0;accent-color:rgba(61,214,232,.85)}
 
 .sf-check{display:flex;align-items:flex-start;gap:.65rem;margin:1.75rem 0}
 .sf-check input{margin-top:.25rem;accent-color:rgba(61,214,232,.85)}
-.sf-check label{font-size:.78rem;font-weight:300;color:rgba(235,240,236,.52);line-height:1.65}
+.sf-check label{font-size:var(--fs-sm);font-weight:300;color:rgba(235,240,236,.52);line-height:1.65}
 
-.sf-submit{font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:rgba(61,214,232,.92);color:#fff;border:1px solid rgba(61,214,232,.54);padding:.85rem 2rem;border-radius:2px;cursor:pointer;transition:background .25s,transform .2s;font-family:var(--sans)}
+.sf-submit{font-size:var(--fs-2xs);font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:rgba(61,214,232,.92);color:#fff;border:1px solid rgba(61,214,232,.54);padding:.85rem 2rem;border-radius:2px;cursor:pointer;transition:background .25s,transform .2s;font-family:var(--sans)}
 .sf-submit:hover{background:rgba(110,165,155,.95);transform:translateY(-1px)}
 .sf-submit:disabled{opacity:.45;cursor:not-allowed;transform:none}
 
 .sf-foot{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(235,240,236,.06)}
-.sf-foot a{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(235,240,236,.32);text-decoration:none;transition:color .25s}
+.sf-foot a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:rgba(235,240,236,.32);text-decoration:none;transition:color .25s}
 .sf-foot a:hover{color:rgba(61,214,232,.72)}
 </style>
 </head>

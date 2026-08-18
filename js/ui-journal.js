@@ -1086,7 +1086,7 @@
         + '</button>';
     }).join('')
     + '<button class="jn-tank-tab jn-tank-add" id="jn-add-tank" title="' + T('add_aquarium_title') + '">'
-    + '<span class="jn-ttab-icon" style="font-size:1.1rem;line-height:1;color:rgba(255,255,255,.3)">+</span>'
+    + '<span class="jn-ttab-icon" style="font-size:var(--fs-md-lg);line-height:1;color:rgba(255,255,255,.3)">+</span>'
     + '<span class="jn-ttab-name" style="color:rgba(255,255,255,.2)">' + T('add_short') + '</span>'
     + '</button>';
   }
@@ -1633,7 +1633,7 @@
     if (!active.length) {
       var ep = document.createElement('p');
       ep.className = 'jn-entry-empty';
-      ep.style.cssText = 'font-size:.75rem;margin:.1rem 0';
+      ep.style.cssText = 'font-size:var(--fs-sm);margin:.1rem 0';
       ep.textContent = T('no_residents_yet');
       bodyEl.appendChild(ep);
       return;
@@ -1684,7 +1684,7 @@
     if (!all.length) {
       var ep = document.createElement('p');
       ep.className = 'jn-entry-empty';
-      ep.style.cssText = 'font-size:.75rem;margin:.5rem 0';
+      ep.style.cssText = 'font-size:var(--fs-sm);margin:.5rem 0';
       ep.textContent = T('no_residents_yet');
       bodyEl.appendChild(ep);
       return;
@@ -1715,7 +1715,7 @@
         var pill = document.createElement('span');
         pill.className = 'jn-inh-status-chip ' + (inh.status === 'rehomed' ? 'jn-fam-status--rehomed' : 'jn-fam-status--passed');
         pill.textContent = inh.status === 'rehomed' ? T('rehomed') : T('passed');
-        pill.style.cssText = 'font-size:.5rem;letter-spacing:.05em;text-transform:uppercase;padding:.1rem .38rem;border-radius:20px;border:1px solid;display:inline-block;margin-top:.18rem;' + (inh.status === 'rehomed' ? 'color:rgba(255,200,80,.8);border-color:rgba(255,200,80,.3);background:rgba(255,200,80,.06)' : 'color:rgba(180,80,80,.7);border-color:rgba(180,80,80,.25);background:rgba(180,80,80,.05)');
+        pill.style.cssText = 'font-size:var(--fs-3xs);letter-spacing:.05em;text-transform:uppercase;padding:.1rem .38rem;border-radius:20px;border:1px solid;display:inline-block;margin-top:.18rem;' + (inh.status === 'rehomed' ? 'color:rgba(255,200,80,.8);border-color:rgba(255,200,80,.3);background:rgba(255,200,80,.06)' : 'color:rgba(180,80,80,.7);border-color:rgba(180,80,80,.25);background:rgba(180,80,80,.05)');
         infoDiv.appendChild(pill);
       }
       row.appendChild(infoDiv);
@@ -1743,7 +1743,7 @@
     active.forEach(function (inh) { bodyEl.appendChild(makeListRow(inh)); });
     if (past.length) {
       var sep = document.createElement('p');
-      sep.style.cssText = 'font-size:.5rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.2);margin:.6rem 0 .15rem;font-family:inherit';
+      sep.style.cssText = 'font-size:var(--fs-3xs);letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.2);margin:.6rem 0 .15rem;font-family:inherit';
       sep.textContent = T('past_residents');
       bodyEl.appendChild(sep);
       past.forEach(function (inh) { bodyEl.appendChild(makeListRow(inh)); });

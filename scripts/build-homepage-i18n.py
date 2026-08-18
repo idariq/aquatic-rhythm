@@ -546,6 +546,23 @@ def build_reading(h, lang, u):
             block = replace_once(block, r'(rd-card-cta">)[^<]*(<\/span>)',
                                   lambda m: m.group(1) + card["extra_cta"] + m.group(2), f"{slug} extra cta")
 
+        # "Open article →" CTA — bug found 2026-08-18: this link's href AND
+        # text were never patched at all (the generic seo_link_sub catch-all
+        # below doesn't match it either, since its regex requires ">"
+        # immediately after the href attribute, but this tag has an
+        # intervening class="rd-card-go bf"). Result: every expanded reading
+        # card's CTA silently sent the reader to the English article even
+        # when a ready translation existed, and the button text itself
+        # never translated. Localize the href only when the target slug
+        # actually has a ready translation (ready_article_title returns
+        # None otherwise) — untranslated targets correctly keep the
+        # English fallback path.
+        target_href = f"/{lang}/articles/{slug}" if ready_article_title(lang, slug) is not None else f"/articles/{slug}"
+        block = replace_once(block,
+            r'<a href="/articles/' + re.escape(slug) + r'" class="rd-card-go bf">[^<]*</a>',
+            lambda m, th=target_href: f'<a href="{th}" class="rd-card-go bf">{misc["open_article_cta"]}</a>',
+            f"{slug} open-article cta")
+
         parts[i] = block
     h = "".join(parts)
 

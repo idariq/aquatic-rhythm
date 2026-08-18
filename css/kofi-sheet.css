@@ -35,14 +35,15 @@ body.kofi-sheet-open {
   flex-direction: column;
   max-height: min(78vh, 720px);
   height: min(78vh, 720px);
-  background: linear-gradient(180deg, rgba(10, 28, 22, 0.98) 0%, rgba(4, 12, 9, 0.99) 45%);
-  border: 1px solid rgba(61, 214, 232, 0.12);
+  background: var(--th-surface, #1c1d16);
+  border: 1px solid var(--th-accent-border, rgba(61, 214, 232, 0.12));
   border-bottom: none;
   border-radius: 18px 18px 0 0;
   box-shadow: 0 -24px 64px rgba(0, 0, 0, 0.55);
   transform: translateY(105%);
   transition: transform 0.4s var(--kofi-ease);
   -webkit-overflow-scrolling: touch;
+  color: var(--th-ink-2, rgba(235, 240, 236, 0.82));
 }
 
 .kofi-sheet.open {
@@ -54,7 +55,7 @@ body.kofi-sheet-open {
   height: 4px;
   margin: 0.45rem auto 0;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--th-line-2, rgba(255, 255, 255, 0.12));
   flex-shrink: 0;
 }
 
@@ -64,7 +65,7 @@ body.kofi-sheet-open {
   justify-content: space-between;
   gap: 0.75rem;
   padding: 0.55rem clamp(1rem, 4vw, 1.5rem) 0.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--th-line, rgba(255, 255, 255, 0.06));
   flex-shrink: 0;
 }
 
@@ -77,7 +78,7 @@ body.kofi-sheet-open {
   font-family: var(--serif, 'Fraunces', Georgia, serif);
   font-size:var(--fs-md-lg);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--th-ink, rgba(255, 255, 255, 0.88));
   line-height: 1.2;
 }
 
@@ -87,7 +88,7 @@ body.kofi-sheet-open {
   font-size:var(--fs-3xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.28);
+  color: var(--th-ink-4, rgba(255, 255, 255, 0.28));
 }
 
 .kofi-sheet-head-actions {
@@ -102,14 +103,14 @@ body.kofi-sheet-open {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 600;
-  color: rgba(61, 214, 232, 0.55);
+  color: var(--th-accent, rgba(61, 214, 232, 0.55));
   text-decoration: none;
   white-space: nowrap;
   transition: color 0.2s;
 }
 
 .kofi-sheet-linkout:hover {
-  color: rgba(61, 214, 232, 0.88);
+  opacity: 0.8;
 }
 
 .kofi-sheet-close {
@@ -117,8 +118,8 @@ body.kofi-sheet-open {
   height: 40px;
   border: none;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.42);
+  background: var(--th-surface-2, rgba(255, 255, 255, 0.04));
+  color: var(--th-ink-4, rgba(255, 255, 255, 0.42));
   font-size:var(--fs-base);
   line-height: 1;
   cursor: pointer;
@@ -127,8 +128,8 @@ body.kofi-sheet-open {
 }
 
 .kofi-sheet-close:hover {
-  color: rgba(255, 255, 255, 0.78);
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--th-ink-2, rgba(255, 255, 255, 0.78));
+  background: var(--th-surface-2, rgba(255, 255, 255, 0.08));
 }
 
 .kofi-sheet-body {
@@ -138,12 +139,7 @@ body.kofi-sheet-open {
   flex-direction: column;
   padding: 0 0.65rem 0.5rem;
   /* AR shell only: Ko-fi’s own purple/teal/etc. inside the iframe are unchanged (cross-origin). */
-  background: linear-gradient(
-    180deg,
-    rgba(6, 22, 18, 0.45) 0%,
-    rgba(4, 14, 11, 0.82) 38%,
-    rgba(3, 11, 9, 0.94) 100%
-  );
+  background: var(--th-surface, #04120a);
   border-radius: 0 0 14px 14px;
 }
 

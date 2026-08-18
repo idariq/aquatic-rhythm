@@ -54,7 +54,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=47">
+<link rel="stylesheet" href="/css/ar-page.css?v=48">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--fs-3xs:.5rem;--fs-2xs:.65rem;--fs-xs:.7rem;--fs-sm:.8rem;--fs-sm-md:.85rem;--fs-md:.9rem;--fs-base:1rem;--fs-md-lg:1.1rem;--fs-lg:1.35rem;--fs-xl:1.6rem;--fs-2xl:2.2rem;--fs-3xl:2.8rem;--fs-4xl:3rem;--fs-5xl:3.5rem;
@@ -73,7 +73,27 @@
   --panel-inset:inset 0 1px 0 rgba(255,255,255,.07);
   --panel-shadow:0 10px 36px rgba(0,0,0,.42);
 }
-html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--abyss);color:var(--th-ink)}
+/* Panel tokens above are dark-first defaults (this page predates the
+   sitewide --th-* light/dark split) — give them a light-mode variant
+   too, same pattern as css/style.css's --panel family, else cards like
+   .oc/.rpt-wrap stay pinned dark in light theme (user report 2026-08-18). */
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --panel:rgba(255,255,255,.82);
+    --panel-2:rgba(255,255,255,.94);
+    --panel-border:rgba(35,36,32,.1);
+    --panel-inset:inset 0 1px 0 rgba(255,255,255,.8);
+    --panel-shadow:0 10px 30px rgba(40,50,42,.12);
+  }
+}
+:root[data-theme="light"]{
+  --panel:rgba(255,255,255,.82);
+  --panel-2:rgba(255,255,255,.94);
+  --panel-border:rgba(35,36,32,.1);
+  --panel-inset:inset 0 1px 0 rgba(255,255,255,.8);
+  --panel-shadow:0 10px 30px rgba(40,50,42,.12);
+}
+html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--th-bg);color:var(--th-ink)}
 
 /* ── APP GRID ── */
 #app{display:grid;grid-template-rows:auto auto auto 1fr auto;height:100dvh;max-width:900px;margin:0 auto;padding:0 clamp(.5rem,2vw,1.2rem)}
@@ -187,7 +207,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--a
 .ab{
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.16rem;
   min-height:3.25rem;padding:.48rem .32rem;
-  background:rgba(6,22,18,.72);border:1px solid var(--th-accent-border);border-radius:12px;
+  background:var(--panel);border:1px solid var(--th-accent-border);border-radius:12px;
   cursor:pointer;transition:background .2s,border-color .2s,transform .15s;box-shadow:0 4px 14px rgba(0,0,0,.2);
   font-family:var(--sans);
 }
@@ -211,8 +231,8 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--a
 .ot{font-family:var(--serif);font-weight:300;font-size:clamp(1.55rem,5vw,1.85rem);color:var(--th-ink);margin-bottom:.5rem;line-height:1.2}
 .om{font-family:var(--sans);font-style:normal;font-size:var(--fs-base);color:var(--th-ink-2);line-height:1.65;margin-bottom:1.4rem}
 .obtn{font-size:var(--fs-xs);font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.72rem 1.35rem;border-radius:10px;cursor:pointer;transition:background .2s,transform .2s,border-color .2s;margin:.22rem;display:inline-block;text-decoration:none;font-family:var(--sans)}
-.op{background:var(--th-accent-soft);color:#fff;border:1px solid var(--th-accent-border)}
-.op:hover{background:rgba(90,142,130,.92);transform:translateY(-1px)}
+.op{background:var(--th-accent);color:var(--th-accent-ink);border:1px solid var(--th-accent-border)}
+.op:hover{opacity:.88;transform:translateY(-1px)}
 .os{background:transparent;color:var(--th-ink-3);border:1px solid var(--th-line)}
 .os:hover{color:var(--th-accent);background:var(--th-accent-soft)}
 
@@ -514,9 +534,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--a
 }
 
 
-/* Simulator: shrink app grid when bottom nav is visible */
-@media(max-width:720px){#app{height:calc(100dvh - 56px - env(safe-area-inset-bottom))}}
-@media(display-mode:standalone){#app{height:calc(100dvh - 56px - env(safe-area-inset-bottom))}}
+/* (bottom nav removed on this page — no grid shrink needed, #app uses full height) */
 
 /* Disclosure blocks (setup / briefing / report) */
 details.ar-disclosure{margin:.35rem 0 0;border:1px solid var(--th-accent-border);border-radius:12px;background:var(--th-surface-2);overflow:hidden}
@@ -590,6 +608,13 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
 .stb-left{display:flex;align-items:center;gap:.42rem;min-width:0;overflow:hidden;flex:1}
 .stb-right{display:flex;align-items:center;gap:.38rem;flex-shrink:0}
 
+/* Lab page: drop the site bottom nav + Rhyssa fab so they don't overlap
+   the simulator UI, and slim the topbar to just the settings gear
+   (user request 2026-08-18). */
+.bnav{display:none!important}
+.rh-fab{display:none!important}
+.tb-logo{display:none}
+#topbar{justify-content:flex-end;border-bottom:none;padding:.3rem 0}
 </style>
 </head>
 <body>
@@ -711,7 +736,7 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
     <details class="ar-disclosure" style="margin-top:.75rem">
       <summary>Inside the simulator</summary>
       <div class="ar-disclosure-body">
-        <p>Three equipment toggles — heater, filter, and light — are on by default. Try turning one off to see what happens. There is a one-time bacteria starter (Seed). Use <strong style="color:rgba(235,240,236,.72);font-weight:500">Status</strong> / <strong style="color:rgba(235,240,236,.72);font-weight:500">Log</strong> on mobile to switch between guidance and the day-by-day log.</p>
+        <p>Three equipment toggles — heater, filter, and light — are on by default. Try turning one off to see what happens. There is a one-time bacteria starter (Seed). Use <strong style="color:var(--th-ink-2);font-weight:500">Status</strong> / <strong style="color:var(--th-ink-2);font-weight:500">Log</strong> on mobile to switch between guidance and the day-by-day log.</p>
       </div>
     </details>
     <button class="obtn op" id="btn-begin" style="width:100%;margin-top:1rem">Begin →</button>
@@ -725,9 +750,9 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
     <div style="text-align:center;margin-bottom:.85rem">
       <span class="oi" style="font-size:var(--fs-lg)">🌊</span>
       <h2 class="ot" style="margin-bottom:.35rem">Before you begin</h2>
-      <p class="om" style="font-size:var(--fs-xs);margin-bottom:0;color:rgba(235,240,236,.42)">Essentials below — details inside the guide.</p>
+      <p class="om" style="font-size:var(--fs-xs);margin-bottom:0;color:var(--th-ink-4)">Essentials below — details inside the guide.</p>
     </div>
-    <p class="om-compact" style="text-align:center;margin-bottom:.65rem">One simulated day every 8 seconds. Pause, read the log, and use <strong style="color:rgba(235,240,236,.75);font-weight:500">+1d</strong> when you want time to jump ahead.</p>
+    <p class="om-compact" style="text-align:center;margin-bottom:.65rem">One simulated day every 8 seconds. Pause, read the log, and use <strong style="color:var(--th-ink-2);font-weight:500">+1d</strong> when you want time to jump ahead.</p>
 
     <details class="ar-disclosure" style="margin-bottom:.85rem">
       <summary>Full guide — controls &amp; rules</summary>
@@ -764,7 +789,7 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
           <span class="brief-tip-ic" aria-hidden="true">⏸</span>
           <div class="brief-tip-body">
             <div class="brief-tip-k">Pause and skip</div>
-            <p>Pause to read carefully. Use <strong style="color:rgba(235,240,236,.68);font-weight:500">+1d</strong> in the top bar to skip forward one day when you are waiting.</p>
+            <p>Pause to read carefully. Use <strong style="color:var(--th-ink-3);font-weight:500">+1d</strong> in the top bar to skip forward one day when you are waiting.</p>
           </div>
         </div>
       </div>
@@ -934,20 +959,20 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
       <!-- Bacteria indicator — always visible above insight -->
       <div id="bac-box" class="bac-card" style="display:none">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.38rem">
-          <span style="font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;color:rgba(235,240,236,.36)">Bacteria Colony</span>
-          <span id="bac-status" style="font-size:var(--fs-sm);letter-spacing:.03em;color:rgba(235,240,236,.38)">Seeding</span>
+          <span style="font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--th-ink-5)">Bacteria Colony</span>
+          <span id="bac-status" style="font-size:var(--fs-sm);letter-spacing:.03em;color:var(--th-ink-4)">Seeding</span>
         </div>
         <div style="display:flex;flex-direction:column;gap:.28rem">
           <div style="display:flex;align-items:center;gap:.4rem">
             <span style="font-size:var(--fs-xs);color:rgba(220,140,60,.65);min-width:54px;letter-spacing:.01em;line-height:1.3">Nitrosomonas<br><span style="font-size:var(--fs-2xs);opacity:.7">NH₃ → NO₂</span></span>
-            <div style="flex:1;height:4px;background:rgba(235,240,236,.07);border-radius:2px;overflow:hidden">
+            <div style="flex:1;height:4px;background:var(--th-line);border-radius:2px;overflow:hidden">
               <div id="bac-bar-a" style="height:100%;width:0%;background:linear-gradient(to right,rgba(220,140,60,.6),rgba(220,140,60,.9));border-radius:2px;transition:width 1.2s ease"></div>
             </div>
             <span id="bac-a-pct" style="font-size:var(--fs-sm);color:rgba(220,140,60,.7);min-width:32px;text-align:right">0%</span>
           </div>
           <div style="display:flex;align-items:center;gap:.4rem">
             <span style="font-size:var(--fs-xs);color:rgba(80,200,100,.65);min-width:54px;letter-spacing:.01em;line-height:1.3">Nitrospira<br><span style="font-size:var(--fs-2xs);opacity:.7">NO₂ → NO₃</span></span>
-            <div style="flex:1;height:4px;background:rgba(235,240,236,.07);border-radius:2px;overflow:hidden">
+            <div style="flex:1;height:4px;background:var(--th-line);border-radius:2px;overflow:hidden">
               <div id="bac-bar-b" style="height:100%;width:0%;background:linear-gradient(to right,rgba(80,200,100,.6),rgba(80,200,100,.9));border-radius:2px;transition:width 1.2s ease"></div>
             </div>
             <span id="bac-b-pct" style="font-size:var(--fs-sm);color:rgba(80,200,100,.7);min-width:32px;text-align:right">0%</span>
@@ -958,10 +983,10 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
               <span style="font-size:var(--fs-xs);color:rgba(61,214,232,.74);letter-spacing:.04em;text-transform:uppercase">Stable days</span>
               <span id="stable-pct" style="font-size:var(--fs-sm-md);font-weight:400;color:rgba(61,214,232,.9);letter-spacing:.04em">0/3</span>
             </div>
-            <div style="height:4px;background:rgba(235,240,236,.07);border-radius:2px;overflow:hidden">
+            <div style="height:4px;background:var(--th-line);border-radius:2px;overflow:hidden">
               <div id="stable-bar" style="height:100%;width:0%;background:rgba(61,214,232,.8);border-radius:2px;transition:width .8s ease"></div>
             </div>
-            <span style="font-size:var(--fs-xs);color:rgba(235,240,236,.38);line-height:1.4">3 consecutive days with ammonia and nitrite near zero — then the cycle is complete.</span>
+            <span style="font-size:var(--fs-xs);color:var(--th-ink-4);line-height:1.4">3 consecutive days with ammonia and nitrite near zero — then the cycle is complete.</span>
           </div>
         </div>
       </div>
@@ -975,14 +1000,14 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
 
   <!-- Water change picker -->
   <div id="wc-picker" style="display:none;position:fixed;bottom:5.5rem;left:50%;transform:translateX(-50%);z-index:60;background:rgba(4,16,12,.97);border:1px solid rgba(61,214,232,.28);border-radius:4px;padding:.9rem 1.2rem;backdrop-filter:blur(12px);min-width:220px">
-    <div style="font-size:var(--fs-2xs);letter-spacing:.16em;text-transform:uppercase;color:rgba(235,240,236,.46);margin-bottom:.7rem;text-align:center">How much water to change?</div>
+    <div style="font-size:var(--fs-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.7rem;text-align:center">How much water to change?</div>
     <div style="display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap">
       <button class="wc-opt" onclick="doWaterChange(10)">10%</button>
       <button class="wc-opt" onclick="doWaterChange(25)">25%</button>
       <button class="wc-opt" onclick="doWaterChange(50)">50%</button>
       <button class="wc-opt" onclick="doWaterChange(80)">80%</button>
     </div>
-    <div style="text-align:center;margin-top:.6rem"><button onclick="hideWaterPicker()" style="font-size:var(--fs-2xs);letter-spacing:.12em;text-transform:uppercase;color:rgba(235,240,236,.38);background:none;border:none;cursor:pointer">Cancel</button></div>
+    <div style="text-align:center;margin-top:.6rem"><button onclick="hideWaterPicker()" style="font-size:var(--fs-2xs);letter-spacing:.12em;text-transform:uppercase;color:var(--th-ink-4);background:none;border:none;cursor:pointer">Cancel</button></div>
   </div>
 
   <div id="bbar">
@@ -1735,7 +1760,7 @@ function updateGuide(){
       ibtxt.textContent = icon+' '+text;
       ibtxt.style.color = pulseClass==='ar-stop'?'rgba(220,100,60,.8)':
                           pulseClass==='ar-warn'?'rgba(220,160,60,.75)':
-                          'rgba(235,240,236,.74)';
+                          'var(--th-ink-2)';
     }
     if(ibbox)ibbox.style.borderColor = pulseClass==='ar-stop'?'rgba(220,80,60,.45)':
                                             pulseClass==='ar-warn'?'rgba(220,160,40,.38)':
@@ -1797,7 +1822,7 @@ function drawFish(ctx,x,y,w,h,col,facingLeft,opacity,sick){
   ctx.closePath();ctx.globalAlpha=opacity*.8;ctx.fill();
   /* Eye */
   ctx.globalAlpha=opacity;
-  ctx.fillStyle='rgba(235,240,236,.92)';
+  ctx.fillStyle='var(--th-ink)';
   var ex=facingLeft?x-w*.45:x+w*.45;
   ctx.beginPath();ctx.arc(ex,y-h*.25,h*.4,0,Math.PI*2);ctx.fill();
   ctx.fillStyle='rgba(20,20,30,.9)';
@@ -1935,10 +1960,10 @@ function render(){
     var dangerous=cur>=warnThreshold;
     if(rising){
       el.textContent='↑';
-      el.style.color=dangerous?'rgba(220,100,60,.85)':'rgba(235,240,236,.38)';
+      el.style.color=dangerous?'rgba(220,100,60,.85)':'var(--th-ink-4)';
     } else {
       el.textContent='↓';
-      el.style.color=cur<warnThreshold?'rgba(80,200,100,.8)':'rgba(235,240,236,.38)';
+      el.style.color=cur<warnThreshold?'rgba(80,200,100,.8)':'var(--th-ink-4)';
     }
   }
   setArrow('arr-nh3',S.nh3,S.prevNh3||0,.5,2);
@@ -2057,11 +2082,11 @@ function render(){
   if(barB)barB.style.width=(S.bacB*100).toFixed(0)+'%';
   if(pctA){
     pctA.textContent=(S.bacA*100).toFixed(0)+'%';
-    pctA.style.color=S.bacA>.7?'rgba(80,200,100,.9)':S.bacA>.2?'rgba(220,140,60,.85)':'rgba(235,240,236,.38)';
+    pctA.style.color=S.bacA>.7?'rgba(80,200,100,.9)':S.bacA>.2?'rgba(220,140,60,.85)':'var(--th-ink-4)';
   }
   if(pctB){
     pctB.textContent=(S.bacB*100).toFixed(0)+'%';
-    pctB.style.color=S.bacB>.65?'rgba(80,200,100,.9)':S.bacB>.2?'rgba(220,140,60,.85)':'rgba(235,240,236,.38)';
+    pctB.style.color=S.bacB>.65?'rgba(80,200,100,.9)':S.bacB>.2?'rgba(220,140,60,.85)':'var(--th-ink-4)';
   }
   /* Status label */
   var bacSt=document.getElementById('bac-status');
@@ -2075,7 +2100,7 @@ function render(){
                 avgBac>.2?'Growing':'Seeding';
     var stCol=S.cycleOk?'rgba(80,200,100,.9)':
               sd>0?'rgba(61,214,232,.8)':
-              avgBac>.7?'rgba(61,214,232,.66)':'rgba(235,240,236,.38)';
+              avgBac>.7?'rgba(61,214,232,.66)':'var(--th-ink-4)';
     bacSt.textContent=stLabel;
     bacSt.style.color=stCol;
   }
@@ -2395,7 +2420,7 @@ render();renderTime(0);
     <div class="rh-sheet-welcome" id="rh-sheet-welcome">
       <svg width="36" height="36" viewBox="0 0 22 22" fill="none" aria-hidden="true" style="opacity:.8"><circle cx="11" cy="11" r="7.5" stroke="rgba(61,214,232,.55)" stroke-width="1.4" fill="none"/><circle cx="11" cy="11" r="3.5" stroke="rgba(61,214,232,.3)" stroke-width="1.1" fill="none"/><circle cx="11" cy="11" r="1.2" fill="rgba(61,214,232,.75)"/><line x1="11" y1="3.5" x2="11" y2="1.5" stroke="rgba(61,214,232,.3)" stroke-width="1.3" stroke-linecap="round"/><line x1="3.5" y1="11" x2="1.5" y2="11" stroke="rgba(61,214,232,.3)" stroke-width="1.3" stroke-linecap="round"/><line x1="20.5" y1="11" x2="18.5" y2="11" stroke="rgba(61,214,232,.3)" stroke-width="1.3" stroke-linecap="round"/></svg>
       <p class="rh-sheet-welcome-txt">Tell me what you see — water, behaviour, anything that changed — and we can read it together before we fix anything.</p>
-      <p style="font-size:var(--fs-2xs);color:rgba(255,255,255,.22);text-align:center;margin:.5rem 0 0;line-height:1.6">Same Rhyssa — also on <a href="https://chatgpt.com/g/g-6a09401c8ef48191b18deb53565a7fe1-rhyssa-aquarium-companion" target="_blank" rel="noopener" style="color:rgba(61,214,232,.4);text-decoration:none">ChatGPT ↗</a> if you prefer.</p>
+      <p style="font-size:var(--fs-2xs);color:var(--th-ink-5);text-align:center;margin:.5rem 0 0;line-height:1.6">Same Rhyssa — also on <a href="https://chatgpt.com/g/g-6a09401c8ef48191b18deb53565a7fe1-rhyssa-aquarium-companion" target="_blank" rel="noopener" style="color:rgba(61,214,232,.4);text-decoration:none">ChatGPT ↗</a> if you prefer.</p>
     </div>
   </div>
   <div class="rh-sheet-foot">
@@ -2409,7 +2434,7 @@ render();renderTime(0);
   </div>
 </div>
 <!-- ── LAB NAV SHEET ── -->
-<script src="/js/ar-page.js?v=47" defer></script>
+<script src="/js/ar-page.js?v=48" defer></script>
 <script>
 (function(){
   var btn = document.getElementById('tb-settings-btn');
@@ -2421,6 +2446,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=47" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=48" defer></script>
 </body>
 </html>

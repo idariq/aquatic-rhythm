@@ -54,7 +54,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=47">
+<link rel="stylesheet" href="/css/ar-page.css?v=48">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--fs-3xs:.5rem;--fs-2xs:.65rem;--fs-xs:.7rem;--fs-sm:.8rem;--fs-sm-md:.85rem;--fs-md:.9rem;--fs-base:1rem;--fs-md-lg:1.1rem;--fs-lg:1.35rem;--fs-xl:1.6rem;--fs-2xl:2.2rem;--fs-3xl:2.8rem;--fs-4xl:3rem;--fs-5xl:3.5rem;
@@ -73,7 +73,27 @@
   --panel-inset:inset 0 1px 0 rgba(255,255,255,.07);
   --panel-shadow:0 10px 36px rgba(0,0,0,.42);
 }
-html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--abyss);color:var(--th-ink)}
+/* Panel tokens above are dark-first defaults (this page predates the
+   sitewide --th-* light/dark split) — give them a light-mode variant
+   too, same pattern as css/style.css's --panel family (user report
+   2026-08-18). */
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --panel:rgba(255,255,255,.82);
+    --panel-2:rgba(255,255,255,.94);
+    --panel-border:rgba(35,36,32,.1);
+    --panel-inset:inset 0 1px 0 rgba(255,255,255,.8);
+    --panel-shadow:0 10px 30px rgba(40,50,42,.12);
+  }
+}
+:root[data-theme="light"]{
+  --panel:rgba(255,255,255,.82);
+  --panel-2:rgba(255,255,255,.94);
+  --panel-border:rgba(35,36,32,.1);
+  --panel-inset:inset 0 1px 0 rgba(255,255,255,.8);
+  --panel-shadow:0 10px 30px rgba(40,50,42,.12);
+}
+html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--th-bg);color:var(--th-ink)}
 body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--th-water)}
 
 /* ── APP (matches Tank Cycle Simulator shell) ── */
@@ -163,7 +183,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 .csl-empty{font-size:var(--fs-sm);color:var(--th-ink-4);font-family:var(--serif);font-style:italic}
 .csl-chip{
   display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;
-  background:rgba(6,22,18,.85);border:1px solid var(--th-accent-border);
+  background:var(--th-surface-2);border:1px solid var(--th-accent-border);
   border-radius:10px;padding:.42rem .55rem;
 }
 .csl-chip-name{flex:1;font-size:var(--fs-sm);color:var(--th-ink)}
@@ -266,6 +286,14 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
 .brief-note{font-size:var(--fs-sm);color:var(--th-ink-4);font-style:italic;font-family:var(--serif);line-height:1.65;margin-bottom:2rem;padding-left:.9rem;border-left:1px solid var(--th-line)}
 .brief-btn{font-size:var(--fs-sm);letter-spacing:.14em;text-transform:uppercase;background:var(--th-accent);color:var(--th-accent-ink);border:1px solid var(--th-accent-border);padding:.85rem 2.2rem;border-radius:2px;cursor:pointer;font-family:var(--sans);transition:background .25s,transform .2s;display:inline-flex;align-items:center;gap:.5rem}
 .brief-btn:hover{opacity:.88;transform:translateY(-1px)}
+
+/* Lab page: drop the site bottom nav + Rhyssa fab so they don't overlap
+   the lab UI, and slim the topbar to just the settings gear
+   (user request 2026-08-18). */
+.bnav{display:none!important}
+.rh-fab{display:none!important}
+.tb-logo{display:none}
+#topbar{justify-content:flex-end;border-bottom:none;padding:.3rem 0}
 </style>
 </head>
 <body>
@@ -384,7 +412,7 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
 
 </div>
 
-<script src="/js/community-stress-lab.js?v=47" defer></script>
+<script src="/js/community-stress-lab.js?v=48" defer></script>
 
 <!-- ── BOTTOM NAV (PWA / mobile) ── -->
 <nav class="bnav" id="bnav" aria-label="Main navigation">
@@ -506,13 +534,13 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
 </div>
 
 <!-- ── LAB NAV SHEET ── -->
-<script src="/js/ar-page.js?v=47" defer></script>
+<script src="/js/ar-page.js?v=48" defer></script>
 <script>
 (function(){
   var btn = document.getElementById('tb-settings-btn');
   if (btn) btn.addEventListener('click', function(){ if (typeof window.__arOpenSettings === 'function') window.__arOpenSettings(); });
 })();
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=47" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=48" defer></script>
 </body>
 </html>

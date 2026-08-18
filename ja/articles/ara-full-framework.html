@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=42">
+<link rel="stylesheet" href="/css/ar-page.css?v=43">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -173,6 +173,44 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet"></noscript>
 </head>
 <body>
+
+<nav>
+  <a href="/" class="nl" aria-label="Aquatic Rhythm — 小型水槽のための生態学的なケア">
+    <svg width="175" height="30" viewBox="0 0 175 30" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true">
+      <circle cx="13" cy="15" r="11.5" stroke="rgba(61,214,232,0.22)" stroke-width="1.0" fill="none"/>
+      <line x1="16.8" y1="24.5" x2="16.8" y2="9" stroke="rgba(100,200,82,0.82)" stroke-width="1.6" stroke-linecap="round"/>
+      <line x1="19.8" y1="23.0" x2="19.8" y2="17" stroke="rgba(100,200,82,0.65)" stroke-width="1.3" stroke-linecap="round"/>
+      <ellipse cx="12" cy="15" rx="4.0" ry="2.3" fill="rgba(40,120,150,0.85)"/>
+      <path d="M8.2 15 L6 12.5 L6 17.5 Z" fill="rgba(40,120,150,0.78)"/>
+      <path d="M2 15 C5 8.5 9 8.5 12 15 C15 21.5 19 21.5 22 15" stroke="rgba(61,214,232,0.96)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+      <circle cx="14.8" cy="14.2" r=".9" fill="rgba(255,255,255,0.96)"/>
+      <text x="32" y="13" font-family="Work Sans,system-ui,sans-serif" font-size="6" font-weight="300" fill="var(--th-ink-4)" letter-spacing="2.5">AQUATIC</text>
+      <text x="32" y="27" font-family="Fraunces,Georgia,serif" font-size="17" font-weight="300" font-style="italic" fill="var(--th-ink)">Rhythm</text>
+    </svg>
+  </a>
+  <ul class="nlinks">
+    <li><a href="/ja/">ホーム</a></li>
+    <li><a href="/ja/reading">ガイド</a></li>
+    <li><a href="/ja/?p=companion">コンパニオン</a></li>
+    <li><a href="/ja/?p=tools">ツール</a></li>
+    <li><a href="/ja/?p=journal">記録</a></li>
+    <li><a href="/ja/?p=about">サイトについて</a></li>
+  </ul>
+  <button class="nbg" id="burger" aria-label="メニュー" aria-expanded="false"><span></span><span></span></button>
+</nav>
+<div class="nmob" id="nmob" aria-hidden="true">
+  <ul>
+    <li><a href="/ja/">ホーム</a></li>
+    <li><a href="/ja/reading">ガイド</a></li>
+    <li><a href="/ja/?p=companion">AIコンパニオン</a></li>
+    <li><a href="/ja/?p=tools">ラボ&amp;ツール</a></li>
+    <li><a href="/ja/?p=journal">記録</a></li>
+    <li><a href="/ja/?p=about">サイトについて</a></li>
+    <li><a href="/ja/?p=privacy">プライバシーポリシー</a></li>
+    <li><a href="/ja/?p=terms">利用規約</a></li>
+  </ul>
+</div>
+
 <main>
 
 <div class="ara-hub">
@@ -260,7 +298,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
 </main>
 
-<script src="/js/content-trust.js?v=42"></script>
+<script src="/js/content-trust.js?v=43"></script>
 <!-- ── BOTTOM NAV (PWA) ── -->
 <nav class="bnav" id="bnav" aria-label="Main navigation">
   <a href="/ja/" class="bnav-item" aria-label="ホーム">
@@ -322,7 +360,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <p class="rh-sheet-note">AIは間違えることがあります —— 魚の緊急事態では、専門家に相談してください</p>
   </div>
 </div>
-<script src="/js/ar-page.js?v=42" defer></script>
+<script src="/js/ar-page.js?v=43" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -330,6 +368,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=42" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=43" defer></script>
 </body>
 </html>

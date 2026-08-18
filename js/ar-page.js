@@ -23,6 +23,77 @@
 
   /* ── SETTINGS BUTTON + SETTINGS PANEL ── */
   (function(){
+    /* Settings panel chrome — was hardcoded English on every locale (bug
+       found 2026-08-18, user video). Values here mirror SETTINGS in
+       scripts/build-homepage-i18n.py so the JS-injected article panel and
+       the homepage's own static panel read identically. */
+    var stgLang = (document.documentElement.lang || 'en').split('-')[0];
+    var AR_STG_STRINGS = {
+      en: {
+        settings: 'Settings', close_aria: 'Close settings',
+        theme_label: 'Theme', theme_system: 'System', theme_light: 'Light', theme_dark: 'Dark',
+        language_label: 'Language',
+        ecosystem_label: 'Ecosystem',
+        fauna_label: 'Fauna', fauna_sub: 'Fish &amp; animals', fauna_aria: 'Show fauna',
+        flora_label: 'Flora', flora_sub: 'Plants &amp; driftwood', flora_aria: 'Show flora',
+        motion_label: 'Reduce Motion', motion_sub: 'Pauses background animations', motion_aria: 'Reduce motion',
+        units_label: 'Units',
+        temp_label: 'Temperature', temp_group_aria: 'Temperature unit',
+        vol_label: 'Volume', vol_group_aria: 'Volume unit', vol_litres: 'Litres', vol_usgal: 'US Gal',
+        log_label: 'Keeper\'s Log',
+        entry_order_label: 'Entry Order', entry_order_sub: 'Newest or oldest first', entry_sort_aria: 'Entry sort order',
+        newest: 'Newest', oldest: 'Oldest',
+        wc_alert_label: 'Water Change Alert', wc_alert_sub: 'Warn after this many days',
+        wc_alert_aria: 'Days before water change alert',
+        privacy_label: 'Privacy',
+        analytics_label: 'Usage Analytics', analytics_sub: 'Helps improve the app',
+        analytics_aria: 'Enable usage analytics'
+      },
+      id: {
+        settings: 'Pengaturan', close_aria: 'Tutup pengaturan',
+        theme_label: 'Tema', theme_system: 'Sistem', theme_light: 'Terang', theme_dark: 'Gelap',
+        language_label: 'Bahasa',
+        ecosystem_label: 'Ekosistem',
+        fauna_label: 'Fauna', fauna_sub: 'Ikan &amp; hewan', fauna_aria: 'Tampilkan fauna',
+        flora_label: 'Flora', flora_sub: 'Tumbuhan &amp; kayu apung', flora_aria: 'Tampilkan flora',
+        motion_label: 'Kurangi Gerakan', motion_sub: 'Menjeda animasi latar belakang', motion_aria: 'Kurangi gerakan',
+        units_label: 'Satuan',
+        temp_label: 'Suhu', temp_group_aria: 'Satuan suhu',
+        vol_label: 'Volume', vol_group_aria: 'Satuan volume', vol_litres: 'Liter', vol_usgal: 'Galon AS',
+        log_label: 'Catatan Penjaga',
+        entry_order_label: 'Urutan Entri', entry_order_sub: 'Terbaru atau terlama dulu', entry_sort_aria: 'Urutan entri',
+        newest: 'Terbaru', oldest: 'Terlama',
+        wc_alert_label: 'Peringatan Ganti Air', wc_alert_sub: 'Peringatkan setelah sekian hari',
+        wc_alert_aria: 'Jumlah hari sebelum peringatan ganti air',
+        privacy_label: 'Privasi',
+        analytics_label: 'Analitik Penggunaan', analytics_sub: 'Membantu meningkatkan aplikasi',
+        analytics_aria: 'Aktifkan analitik penggunaan'
+      },
+      ja: {
+        settings: '設定', close_aria: '設定を閉じる',
+        theme_label: 'テーマ', theme_system: 'システム', theme_light: 'ライト', theme_dark: 'ダーク',
+        language_label: '言語',
+        ecosystem_label: 'エコシステム',
+        fauna_label: '動物', fauna_sub: '魚と生き物', fauna_aria: '動物を表示',
+        flora_label: '植物', flora_sub: '水草と流木', flora_aria: '植物を表示',
+        motion_label: 'モーション削減', motion_sub: '背景アニメーションを一時停止', motion_aria: 'モーションを削減',
+        units_label: '単位',
+        temp_label: '水温', temp_group_aria: '温度単位',
+        vol_label: '水量', vol_group_aria: '容量単位', vol_litres: 'リットル', vol_usgal: '米ガロン',
+        log_label: 'キーパーの記録',
+        entry_order_label: '記録の並び順', entry_order_sub: '新しい順または古い順', entry_sort_aria: '記録の並び順',
+        newest: '新しい順', oldest: '古い順',
+        wc_alert_label: '水換えアラート', wc_alert_sub: '指定日数後に通知',
+        wc_alert_aria: '水換えアラートまでの日数',
+        privacy_label: 'プライバシー',
+        analytics_label: '利用状況分析', analytics_sub: 'アプリの改善に役立ちます',
+        analytics_aria: '利用状況分析を有効にする'
+      }
+    };
+    function T(key) {
+      return (AR_STG_STRINGS[stgLang] && AR_STG_STRINGS[stgLang][key]) || AR_STG_STRINGS.en[key] || key;
+    }
+
     var GA_ID = 'G-8MDN065WNW';
     var GEAR_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>';
 
@@ -32,9 +103,9 @@
       var btn = document.createElement('button');
       btn.className = 'ar-settings-btn';
       btn.id = 'ar-settings-btn';
-      btn.setAttribute('aria-label', 'Settings');
+      btn.setAttribute('aria-label', T('settings'));
       btn.setAttribute('aria-expanded', 'false');
-      btn.title = 'Settings';
+      btn.title = T('settings');
       btn.innerHTML = GEAR_SVG;
       var bg = nav.querySelector('.nbg');
       if (bg) nav.insertBefore(btn, bg); else nav.appendChild(btn);
@@ -53,7 +124,7 @@
       panel.id = 'ar-settings-panel';
       panel.setAttribute('role', 'dialog');
       panel.setAttribute('aria-modal', 'true');
-      panel.setAttribute('aria-label', 'Settings');
+      panel.setAttribute('aria-label', T('settings'));
       panel.setAttribute('aria-hidden', 'true');
       panel.innerHTML =
         '<div class="ar-stg-head">' +
@@ -62,47 +133,47 @@
               '<path d="M6.8 2.2h3.4l.48 1.6a5 5 0 011.3.76l1.65-.5 1.7 2.94-1.18 1.14c.04.3.07.6.07.86s-.03.57-.07.86l1.18 1.14-1.7 2.94-1.65-.5a5 5 0 01-1.3.76L10.2 14.8H6.8l-.48-1.6a5 5 0 01-1.3-.76l-1.65.5-1.7-2.94 1.18-1.14A5 5 0 012.78 8.5c0-.26.03-.56.07-.86L1.67 6.5l1.7-2.94 1.65.5a5 5 0 011.3-.76L6.8 2.2z" stroke="currentColor" stroke-width="1.15" stroke-linejoin="round" fill="none"/>' +
               '<circle cx="8.5" cy="8.5" r="2.1" stroke="currentColor" stroke-width="1.15" fill="none"/>' +
             '</svg>' +
-            '<span class="ar-stg-title">Settings</span>' +
+            '<span class="ar-stg-title">' + T('settings') + '</span>' +
           '</div>' +
-          '<button class="ar-stg-close" id="ar-stg-close" aria-label="Close settings">✕</button>' +
+          '<button class="ar-stg-close" id="ar-stg-close" aria-label="' + T('close_aria') + '">✕</button>' +
         '</div>' +
         '<div class="ar-stg-body">' +
           '<div class="ar-stg-section">' +
-            '<span class="ar-stg-label">Theme</span>' +
-            '<div class="ar-stg-theme-seg" role="group" aria-label="Theme">' +
-              '<button class="ar-stg-theme-btn" type="button" data-theme-choice="system">System</button>' +
-              '<button class="ar-stg-theme-btn" type="button" data-theme-choice="light">Light</button>' +
-              '<button class="ar-stg-theme-btn" type="button" data-theme-choice="dark">Dark</button>' +
+            '<span class="ar-stg-label">' + T('theme_label') + '</span>' +
+            '<div class="ar-stg-theme-seg" role="group" aria-label="' + T('theme_label') + '">' +
+              '<button class="ar-stg-theme-btn" type="button" data-theme-choice="system">' + T('theme_system') + '</button>' +
+              '<button class="ar-stg-theme-btn" type="button" data-theme-choice="light">' + T('theme_light') + '</button>' +
+              '<button class="ar-stg-theme-btn" type="button" data-theme-choice="dark">' + T('theme_dark') + '</button>' +
             '</div>' +
           '</div>' +
           '<div class="ar-stg-divider"></div>' +
           '<div class="ar-stg-section">' +
-            '<span class="ar-stg-label">Language</span>' +
+            '<span class="ar-stg-label">' + T('language_label') + '</span>' +
             '<div class="ar-stg-lang-list" id="ar-stg-lang-list"></div>' +
           '</div>' +
           '<div class="ar-stg-divider"></div>' +
           '<div class="ar-stg-section">' +
-            '<span class="ar-stg-label">Ecosystem</span>' +
-            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">Fauna</span><span class="ar-stg-row-sub">Fish &amp; animals</span></div><input class="ar-stg-toggle" type="checkbox" id="ar-stg-fauna" role="switch" aria-label="Show fauna"></div>' +
-            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">Flora</span><span class="ar-stg-row-sub">Plants &amp; driftwood</span></div><input class="ar-stg-toggle" type="checkbox" id="ar-stg-flora" role="switch" aria-label="Show flora"></div>' +
-            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">Reduce Motion</span><span class="ar-stg-row-sub">Pauses background animations</span></div><input class="ar-stg-toggle" type="checkbox" id="ar-stg-motion" role="switch" aria-label="Reduce motion"></div>' +
+            '<span class="ar-stg-label">' + T('ecosystem_label') + '</span>' +
+            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">' + T('fauna_label') + '</span><span class="ar-stg-row-sub">' + T('fauna_sub') + '</span></div><input class="ar-stg-toggle" type="checkbox" id="ar-stg-fauna" role="switch" aria-label="' + T('fauna_aria') + '"></div>' +
+            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">' + T('flora_label') + '</span><span class="ar-stg-row-sub">' + T('flora_sub') + '</span></div><input class="ar-stg-toggle" type="checkbox" id="ar-stg-flora" role="switch" aria-label="' + T('flora_aria') + '"></div>' +
+            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">' + T('motion_label') + '</span><span class="ar-stg-row-sub">' + T('motion_sub') + '</span></div><input class="ar-stg-toggle" type="checkbox" id="ar-stg-motion" role="switch" aria-label="' + T('motion_aria') + '"></div>' +
           '</div>' +
           '<div class="ar-stg-divider"></div>' +
           '<div class="ar-stg-section">' +
-            '<span class="ar-stg-label">Units</span>' +
-            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">Temperature</span></div><div class="ar-stg-seg" role="group" aria-label="Temperature unit"><button class="ar-stg-seg-btn" data-unit-temp="C">°C</button><button class="ar-stg-seg-btn" data-unit-temp="F">°F</button></div></div>' +
-            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">Volume</span></div><div class="ar-stg-seg" role="group" aria-label="Volume unit"><button class="ar-stg-seg-btn" data-unit-vol="L">Litres</button><button class="ar-stg-seg-btn" data-unit-vol="gal">US Gal</button></div></div>' +
+            '<span class="ar-stg-label">' + T('units_label') + '</span>' +
+            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">' + T('temp_label') + '</span></div><div class="ar-stg-seg" role="group" aria-label="' + T('temp_group_aria') + '"><button class="ar-stg-seg-btn" data-unit-temp="C">°C</button><button class="ar-stg-seg-btn" data-unit-temp="F">°F</button></div></div>' +
+            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">' + T('vol_label') + '</span></div><div class="ar-stg-seg" role="group" aria-label="' + T('vol_group_aria') + '"><button class="ar-stg-seg-btn" data-unit-vol="L">' + T('vol_litres') + '</button><button class="ar-stg-seg-btn" data-unit-vol="gal">' + T('vol_usgal') + '</button></div></div>' +
           '</div>' +
           '<div class="ar-stg-divider"></div>' +
           '<div class="ar-stg-section">' +
-            '<span class="ar-stg-label">Keeper\'s Log</span>' +
-            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">Entry Order</span><span class="ar-stg-row-sub">Newest or oldest first</span></div><div class="ar-stg-seg" role="group" aria-label="Entry sort order"><button class="ar-stg-seg-btn" data-sort="desc">Newest</button><button class="ar-stg-seg-btn" data-sort="asc">Oldest</button></div></div>' +
-            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">Water Change Alert</span><span class="ar-stg-row-sub">Warn after this many days</span></div><input class="ar-stg-num-input" type="number" id="ar-stg-wc-days" min="3" max="60" value="14" aria-label="Days before water change alert"></div>' +
+            '<span class="ar-stg-label">' + T('log_label') + '</span>' +
+            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">' + T('entry_order_label') + '</span><span class="ar-stg-row-sub">' + T('entry_order_sub') + '</span></div><div class="ar-stg-seg" role="group" aria-label="' + T('entry_sort_aria') + '"><button class="ar-stg-seg-btn" data-sort="desc">' + T('newest') + '</button><button class="ar-stg-seg-btn" data-sort="asc">' + T('oldest') + '</button></div></div>' +
+            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">' + T('wc_alert_label') + '</span><span class="ar-stg-row-sub">' + T('wc_alert_sub') + '</span></div><input class="ar-stg-num-input" type="number" id="ar-stg-wc-days" min="3" max="60" value="14" aria-label="' + T('wc_alert_aria') + '"></div>' +
           '</div>' +
           '<div class="ar-stg-divider"></div>' +
           '<div class="ar-stg-section">' +
-            '<span class="ar-stg-label">Privacy</span>' +
-            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">Usage Analytics</span><span class="ar-stg-row-sub">Helps improve the app</span></div><input class="ar-stg-toggle" type="checkbox" id="ar-stg-analytics" role="switch" aria-label="Enable usage analytics"></div>' +
+            '<span class="ar-stg-label">' + T('privacy_label') + '</span>' +
+            '<div class="ar-stg-row"><div class="ar-stg-row-info"><span class="ar-stg-row-label">' + T('analytics_label') + '</span><span class="ar-stg-row-sub">' + T('analytics_sub') + '</span></div><input class="ar-stg-toggle" type="checkbox" id="ar-stg-analytics" role="switch" aria-label="' + T('analytics_aria') + '"></div>' +
           '</div>' +
         '</div>';
       document.body.appendChild(panel);

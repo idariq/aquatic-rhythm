@@ -73,6 +73,61 @@ BNAV_ARIA = {
     "ja": {"home": "ホーム", "reading": "ガイド", "tools": "ラボ&amp;ツール", "log": "キーパーの記録"},
 }
 
+# Settings panel chrome — shared sitewide UI (same convention as NAV/BNAV_ARIA
+# above), not per-article content. Bug found 2026-08-18 (user video): this
+# panel was never translated at all on id/ja, even though the gear button's
+# own aria-label (nav_extra.settings_aria) already was.
+SETTINGS = {
+    "id": {
+        "title": "Pengaturan", "close_aria": "Tutup pengaturan",
+        "theme_label": "Tema", "theme_system": "Sistem", "theme_light": "Terang", "theme_dark": "Gelap",
+        "language_label": "Bahasa",
+        "ecosystem_label": "Ekosistem",
+        "fauna_label": "Fauna", "fauna_sub": "Ikan &amp; hewan", "fauna_aria": "Tampilkan fauna",
+        "flora_label": "Flora", "flora_sub": "Tumbuhan &amp; kayu apung", "flora_aria": "Tampilkan flora",
+        "motion_label": "Kurangi Gerakan", "motion_sub": "Menjeda animasi latar belakang", "motion_aria": "Kurangi gerakan",
+        "units_label": "Satuan",
+        "temp_label": "Suhu", "temp_group_aria": "Satuan suhu",
+        "vol_label": "Volume", "vol_group_aria": "Satuan volume", "vol_litres": "Liter", "vol_usgal": "Galon AS",
+        "log_label": "Catatan Penjaga",
+        "entry_order_label": "Urutan Entri", "entry_order_sub": "Terbaru atau terlama dulu", "entry_sort_aria": "Urutan entri",
+        "newest": "Terbaru", "oldest": "Terlama",
+        "wc_alert_label": "Peringatan Ganti Air", "wc_alert_sub": "Peringatkan setelah sekian hari",
+        "wc_alert_aria": "Jumlah hari sebelum peringatan ganti air",
+        "privacy_label": "Privasi",
+        "analytics_label": "Analitik Penggunaan", "analytics_sub": "Membantu meningkatkan aplikasi",
+        "analytics_aria": "Aktifkan analitik penggunaan",
+        "data_label": "Data", "export_btn": "Ekspor Catatan", "import_btn": "Impor Catatan",
+        "import_aria": "Impor berkas JSON jurnal",
+        "clear_rhyssa_btn": "Hapus Obrolan Rhyssa", "reset_all_btn": "Setel Ulang Semua Data",
+        "app_label": "Aplikasi", "install_btn": "Pasang Aplikasi", "install_sub": "Tambahkan ke layar utama",
+    },
+    "ja": {
+        "title": "設定", "close_aria": "設定を閉じる",
+        "theme_label": "テーマ", "theme_system": "システム", "theme_light": "ライト", "theme_dark": "ダーク",
+        "language_label": "言語",
+        "ecosystem_label": "エコシステム",
+        "fauna_label": "動物", "fauna_sub": "魚と生き物", "fauna_aria": "動物を表示",
+        "flora_label": "植物", "flora_sub": "水草と流木", "flora_aria": "植物を表示",
+        "motion_label": "モーション削減", "motion_sub": "背景アニメーションを一時停止", "motion_aria": "モーションを削減",
+        "units_label": "単位",
+        "temp_label": "水温", "temp_group_aria": "温度単位",
+        "vol_label": "水量", "vol_group_aria": "容量単位", "vol_litres": "リットル", "vol_usgal": "米ガロン",
+        "log_label": "キーパーの記録",
+        "entry_order_label": "記録の並び順", "entry_order_sub": "新しい順または古い順", "entry_sort_aria": "記録の並び順",
+        "newest": "新しい順", "oldest": "古い順",
+        "wc_alert_label": "水換えアラート", "wc_alert_sub": "指定日数後に通知",
+        "wc_alert_aria": "水換えアラートまでの日数",
+        "privacy_label": "プライバシー",
+        "analytics_label": "利用状況分析", "analytics_sub": "アプリの改善に役立ちます",
+        "analytics_aria": "利用状況分析を有効にする",
+        "data_label": "データ", "export_btn": "記録をエクスポート", "import_btn": "記録をインポート",
+        "import_aria": "ジャーナルのJSONファイルをインポート",
+        "clear_rhyssa_btn": "Rhyssaのチャットを削除", "reset_all_btn": "すべてのデータをリセット",
+        "app_label": "アプリ", "install_btn": "アプリをインストール", "install_sub": "ホーム画面に追加",
+    },
+}
+
 
 def load_units(lang):
     with open(UNITS_DIR / f"{lang}.json", encoding="utf-8") as f:
@@ -998,6 +1053,119 @@ def build_pwa_settings(h, lang, u):
     return h
 
 
+def build_settings_panel(h, lang, u):
+    """The Settings panel body (Theme/Language/Ecosystem/Units/Keeper's Log/
+    Privacy/Data/App) — a single shared panel injected once in the page, not
+    a pg-* section, so it can't go through apply_scoped(). Was left entirely
+    English on id/ja even though the gear button that opens it (settings_aria,
+    handled in build_pwa_settings above) was already translated."""
+    s = SETTINGS[lang]
+    nav = NAV[lang]
+    x = u["nav_extra"]
+
+    h = replace_once(h, r'(<aside class="ar-settings-panel" id="ar-settings-panel" role="dialog" aria-modal="true" aria-label=")[^"]*(")',
+                      lambda m: m.group(1) + s["title"] + m.group(2), "stg panel aria")
+    h = replace_once(h, r'(<span class="ar-stg-title">)[^<]*(<\/span>)',
+                      lambda m: m.group(1) + s["title"] + m.group(2), "stg title")
+    h = replace_once(h, r'(<button class="ar-stg-close" id="ar-settings-close" aria-label=")[^"]*(")',
+                      lambda m: m.group(1) + s["close_aria"] + m.group(2), "stg close aria")
+
+    h = replace_once(h, r'(<span class="ar-stg-label">)Theme(<\/span>)\s*(<div class="ar-stg-theme-seg" role="group" aria-label=")[^"]*(")',
+                      lambda m: m.group(1) + s["theme_label"] + m.group(2) + "\n      " + m.group(3) + s["theme_label"] + m.group(4),
+                      "stg theme label+group-aria")
+    h = replace_once(h, r'(data-theme-choice="system">)[^<]*(<\/button>)',
+                      lambda m: m.group(1) + s["theme_system"] + m.group(2), "stg theme system")
+    h = replace_once(h, r'(data-theme-choice="light">)[^<]*(<\/button>)',
+                      lambda m: m.group(1) + s["theme_light"] + m.group(2), "stg theme light")
+    h = replace_once(h, r'(data-theme-choice="dark">)[^<]*(<\/button>)',
+                      lambda m: m.group(1) + s["theme_dark"] + m.group(2), "stg theme dark")
+
+    h = replace_once(h, r'(<span class="ar-stg-label">)Language(<\/span>)',
+                      lambda m: m.group(1) + s["language_label"] + m.group(2), "stg language label")
+
+    h = replace_once(h, r'(<span class="ar-stg-label">)Ecosystem(<\/span>)',
+                      lambda m: m.group(1) + s["ecosystem_label"] + m.group(2), "stg ecosystem label")
+    h = replace_once(h,
+        r'(<span class="ar-stg-row-label">)Fauna(<\/span>)(\s*<span class="ar-stg-row-sub">)Fish &amp; animals(<\/span>[\s\S]*?aria-label=")Show fauna(")',
+        lambda m: m.group(1) + s["fauna_label"] + m.group(2) + m.group(3) + s["fauna_sub"] + m.group(4) + s["fauna_aria"] + m.group(5),
+        "stg fauna")
+    h = replace_once(h,
+        r'(<span class="ar-stg-row-label">)Flora(<\/span>)(\s*<span class="ar-stg-row-sub">)Plants &amp; driftwood(<\/span>[\s\S]*?aria-label=")Show flora(")',
+        lambda m: m.group(1) + s["flora_label"] + m.group(2) + m.group(3) + s["flora_sub"] + m.group(4) + s["flora_aria"] + m.group(5),
+        "stg flora")
+    h = replace_once(h,
+        r'(<span class="ar-stg-row-label">)Reduce Motion(<\/span>)(\s*<span class="ar-stg-row-sub">)Pauses background animations(<\/span>[\s\S]*?aria-label=")Reduce motion(")',
+        lambda m: m.group(1) + s["motion_label"] + m.group(2) + m.group(3) + s["motion_sub"] + m.group(4) + s["motion_aria"] + m.group(5),
+        "stg motion")
+
+    h = replace_once(h, r'(<span class="ar-stg-label">)Units(<\/span>)',
+                      lambda m: m.group(1) + s["units_label"] + m.group(2), "stg units label")
+    h = replace_once(h,
+        r'(<span class="ar-stg-row-label">)Temperature(<\/span>[\s\S]*?aria-label=")Temperature unit(")',
+        lambda m: m.group(1) + s["temp_label"] + m.group(2) + s["temp_group_aria"] + m.group(3), "stg temp")
+    h = replace_once(h,
+        r'(<span class="ar-stg-row-label">)Volume(<\/span>[\s\S]*?aria-label=")Volume unit(")',
+        lambda m: m.group(1) + s["vol_label"] + m.group(2) + s["vol_group_aria"] + m.group(3), "stg volume")
+    h = replace_once(h, r'(data-unit-temp="C">)[^<]*(<\/button>)', lambda m: m.group(1) + "°C" + m.group(2), "stg C")
+    h = replace_once(h, r'(data-unit-temp="F">)[^<]*(<\/button>)', lambda m: m.group(1) + "°F" + m.group(2), "stg F")
+    h = replace_once(h, r'(data-unit-vol="L">)[^<]*(<\/button>)',
+                      lambda m: m.group(1) + s["vol_litres"] + m.group(2), "stg litres")
+    h = replace_once(h, r'(data-unit-vol="gal">)[^<]*(<\/button>)',
+                      lambda m: m.group(1) + s["vol_usgal"] + m.group(2), "stg usgal")
+
+    h = replace_once(h, r"(<span class=\"ar-stg-label\">)Keeper's Log(</span>)",
+                      lambda m: m.group(1) + s["log_label"] + m.group(2), "stg log label")
+    h = replace_once(h,
+        r'(<span class="ar-stg-row-label">)Entry Order(<\/span>)(\s*<span class="ar-stg-row-sub">)Newest or oldest first(<\/span>[\s\S]*?aria-label=")Entry sort order(")',
+        lambda m: m.group(1) + s["entry_order_label"] + m.group(2) + m.group(3) + s["entry_order_sub"] + m.group(4) + s["entry_sort_aria"] + m.group(5),
+        "stg entry order")
+    h = replace_once(h, r'(data-sort="desc">)[^<]*(<\/button>)',
+                      lambda m: m.group(1) + s["newest"] + m.group(2), "stg newest")
+    h = replace_once(h, r'(data-sort="asc">)[^<]*(<\/button>)',
+                      lambda m: m.group(1) + s["oldest"] + m.group(2), "stg oldest")
+    h = replace_once(h,
+        r'(<span class="ar-stg-row-label">)Water Change Alert(<\/span>)(\s*<span class="ar-stg-row-sub">)Warn after this many days(<\/span>[\s\S]*?aria-label=")Days before water change alert(")',
+        lambda m: m.group(1) + s["wc_alert_label"] + m.group(2) + m.group(3) + s["wc_alert_sub"] + m.group(4) + s["wc_alert_aria"] + m.group(5),
+        "stg wc alert")
+
+    h = replace_once(h, r'(<span class="ar-stg-label">)Privacy(<\/span>)',
+                      lambda m: m.group(1) + s["privacy_label"] + m.group(2), "stg privacy label")
+    h = replace_once(h,
+        r'(<span class="ar-stg-row-label">)Usage Analytics(<\/span>)(\s*<span class="ar-stg-row-sub">)Helps improve the app(<\/span>[\s\S]*?aria-label=")Enable usage analytics(")',
+        lambda m: m.group(1) + s["analytics_label"] + m.group(2) + m.group(3) + s["analytics_sub"] + m.group(4) + s["analytics_aria"] + m.group(5),
+        "stg analytics")
+
+    h = replace_once(h, r'(<span class="ar-stg-label">)Data(<\/span>)',
+                      lambda m: m.group(1) + s["data_label"] + m.group(2), "stg data label")
+    h = replace_once(h, r'(id="stg-export">[\s\S]*?<\/svg>\s*)Export Log(\s*<span)',
+                      lambda m: m.group(1) + s["export_btn"] + m.group(2), "stg export btn")
+    h = replace_once(h, r'(for="stg-import-file"[^>]*>[\s\S]*?<\/svg>\s*)Import Log(\s*<span)',
+                      lambda m: m.group(1) + s["import_btn"] + m.group(2), "stg import btn")
+    h = replace_once(h, r'(id="stg-import-file" class="ar-stg-import-input" accept="\.json,application/json" aria-label=")[^"]*(")',
+                      lambda m: m.group(1) + s["import_aria"] + m.group(2), "stg import aria")
+    h = replace_once(h, r'(id="stg-clear-rhyssa">[\s\S]*?<\/svg>\s*)Clear Rhyssa Chat',
+                      lambda m: m.group(1) + s["clear_rhyssa_btn"], "stg clear rhyssa btn")
+    h = replace_once(h, r'(id="stg-reset-all">[\s\S]*?<\/svg>\s*)Reset All Data',
+                      lambda m: m.group(1) + s["reset_all_btn"], "stg reset all btn")
+
+    h = replace_once(h, r'(<span class="ar-stg-label">)App(<\/span>)',
+                      lambda m: m.group(1) + s["app_label"] + m.group(2), "stg app label")
+    h = replace_once(h, r'(id="stg-install-pwa">[\s\S]*?<\/svg>\s*)Install App(\s*<span[^>]*>)Add to home screen(<\/span>)',
+                      lambda m: m.group(1) + s["install_btn"] + m.group(2) + s["install_sub"] + m.group(3),
+                      "stg install app")
+
+    h = replace_once(h, r'(<a href="/privacy" data-page="privacy" class="ar-stg-about-link">)[^<]*(<\/a>)',
+                      lambda m: m.group(1) + nav["privacy"] + m.group(2), "stg about privacy")
+    h = replace_once(h, r'(<a href="/terms" data-page="terms" class="ar-stg-about-link">)[^<]*(<\/a>)',
+                      lambda m: m.group(1) + nav["terms"] + m.group(2), "stg about terms")
+    h = replace_once(h, r'(<a href="/about" data-page="about" class="ar-stg-about-link">)[^<]*(<\/a>)',
+                      lambda m: m.group(1) + nav["about"] + m.group(2), "stg about about")
+    h = replace_once(h, r'(<a href="https://ko-fi\.com/aquaticrhythm" class="ar-stg-about-link" data-kofi-open[^>]*>)[^<]*(<\/a>)',
+                      lambda m: m.group(1) + x["subfooter_support"] + m.group(2), "stg about support")
+
+    return h
+
+
 def apply_scoped(h, start_id, end_id, transform, lang, u, label):
     """Extract the substring between two `id="pg-*"` div starts, run `transform`
     on ONLY that substring, splice the result back in. This is critical: several
@@ -1057,6 +1225,24 @@ def localize_reading_links(h, lang):
     return h.replace('href="/reading"', f'href="/{lang}/reading"')
 
 
+def localize_article_links(h, lang):
+    """Final safety-net sweep: rewrite every remaining href="/articles/<slug>"
+    to "/<lang>/articles/<slug>" wherever that translated file actually
+    exists on disk (mirrors build-i18n.mjs's localizeArticleLinks(), PR
+    #307). Bug found 2026-08-18 (user video): the homepage's own ARA promo
+    CTAs ("Baca kerangka kerja ARA...") still pointed at the English
+    ara-full-framework even though it (and community-stress-lab) are fully
+    translated — landing the reader on a page with no way back to their
+    language. Untranslated targets (tank-simulator, tank-builder) are left
+    on the English fallback, same policy as everywhere else."""
+    def sub(m):
+        slug = m.group(1)
+        if (ROOT / lang / "articles" / f"{slug}.html").exists():
+            return f'href="/{lang}/articles/{slug}"'
+        return m.group(0)
+    return re.sub(r'href="/articles/([a-z0-9-]+)"', sub, h)
+
+
 def main():
     src = SRC.read_text(encoding="utf-8")
     for lang in LANGUAGES:
@@ -1071,6 +1257,7 @@ def main():
         h = build_head(h, lang)
         h = build_nav(h, lang)
         h = build_pwa_settings(h, lang, u)
+        h = build_settings_panel(h, lang, u)
         h = apply_scoped(h, "pg-home", "pg-companion", build_home, lang, u, "home")
         h = apply_scoped(h, "pg-companion", "pg-terms", build_companion, lang, u, "companion")
         h = apply_scoped(h, "pg-terms", "pg-privacy", build_terms, lang, u, "terms")
@@ -1087,6 +1274,7 @@ def main():
         h = build_modal_gear(h, lang, u)
         h = build_shared_footer(h, lang, u)
         h = localize_reading_links(h, lang)
+        h = localize_article_links(h, lang)
         out_dir = ROOT / lang
         out_dir.mkdir(exist_ok=True)
         (out_dir / "index.html").write_text(h, encoding="utf-8")

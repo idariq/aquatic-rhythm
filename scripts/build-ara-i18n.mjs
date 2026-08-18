@@ -147,7 +147,7 @@ function patchHead(h, t, lang, slug) {
 
 function patchTopNav(h, lang) {
   const nav = NAV_LABELS[lang];
-  if (!/<ul class="nlinks">/.test(h)) return h; // ara-full-framework has no top nav
+  if (!/<ul class="nlinks">/.test(h)) return h; // safety net if a future template omits the top nav
   h = replaceOnce(h, /(<a href="\/" class="nl" aria-label=")[^"]*(")/, (_, a, b) => `${a}${nav.logoAria}${b}`);
   h = replaceOnce(h, /(<ul class="nlinks">)[\s\S]*?(<\/ul>)/, (_, a, b) => `${a}
     <li><a href="/${lang}/">${nav.home}</a></li>
@@ -296,6 +296,7 @@ function buildAraHub(lang, t) {
   let h = fs.readFileSync(srcPath, 'utf8');
 
   h = patchHead(h, t, lang, 'ara-full-framework');
+  h = patchTopNav(h, lang);
   h = patchBnav(h, lang);
   h = patchRhyssaSheet(h, lang);
 

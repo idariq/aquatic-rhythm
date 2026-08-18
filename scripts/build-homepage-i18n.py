@@ -663,7 +663,7 @@ def build_reading(h, lang, u):
     # card and the footer.
     cc = x["closing_cta"]
     h = replace_once(h,
-        r'(font-weight:300;color:rgba\(255,255,255,\.52\);line-height:1\.95;margin-bottom:1\.8rem">)'
+        r'(font-weight:300;color:var\(--th-ink-3\);line-height:1\.95;margin-bottom:1\.8rem">)'
         r'These guides grow out of Aquatic Rhythm Alignment \(ARA\) — a way to read tanks by phase, '
         r'rhythm, and ecological capacity instead of product checklists\.(<\/p>)',
         lambda m: m.group(1) + cc["intro_italic"] + m.group(2), "closing_cta intro")
@@ -749,7 +749,7 @@ def build_tools(h, lang, u):
         h = h[:start] + block + h[end:]
 
     h = replace_once(h,
-        r'(font-size:var\(--fs-md\);color:rgba\(255,255,255,\.38\);line-height:1\.9">)'
+        r'(font-size:var\(--fs-md\);color:var\(--th-ink-4\);line-height:1\.9">)'
         r'All tools grow from ARA — Aquatic Rhythm Alignment\. They simulate and plan, but they do not replace observation\.(<\/p>)',
         lambda m: m.group(1) + x["closing_note"] + m.group(2), "tools closing note")
     h = replace_once(h, r'(href="/articles/ara-full-framework"[^>]*>)Read the ARA framework →(<\/a>)',

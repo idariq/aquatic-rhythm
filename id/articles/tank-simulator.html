@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tank Cycle Simulator — Interactive Nitrogen Cycle — Aquatic Rhythm</title>
-<meta name="description" content="An interactive simulation of the nitrogen cycle. Choose your setup, learn what to expect, and watch how the tank responds to your decisions.">
-<link rel="canonical" href="https://aquaticrhythm.com/articles/tank-simulator">
+<title>Simulator Siklus Akuarium — Siklus Nitrogen Interaktif — Aquatic Rhythm</title>
+<meta name="description" content="Simulasi interaktif siklus nitrogen. Pilih pengaturan Anda, pelajari apa yang diharapkan, dan lihat bagaimana akuarium merespons keputusan Anda.">
+<link rel="canonical" href="https://aquaticrhythm.com/id/articles/tank-simulator">
 <link rel="alternate" hreflang="en" href="https://aquaticrhythm.com/articles/tank-simulator">
 <link rel="alternate" hreflang="id" href="https://aquaticrhythm.com/id/articles/tank-simulator">
 <link rel="alternate" hreflang="ja" href="https://aquaticrhythm.com/ja/articles/tank-simulator">
@@ -18,19 +18,19 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Aquatic Rhythm">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://aquaticrhythm.com/articles/tank-simulator">
-<meta property="og:title" content="Tank Cycle Simulator — Interactive Nitrogen Cycle — Aquatic Rhythm">
-<meta property="og:description" content="An interactive simulation of the nitrogen cycle. Choose your setup, learn what to expect, and watch how the tank responds to your decisions.">
+<meta property="og:url" content="https://aquaticrhythm.com/id/articles/tank-simulator">
+<meta property="og:title" content="Simulator Siklus Akuarium — Siklus Nitrogen Interaktif — Aquatic Rhythm">
+<meta property="og:description" content="Simulasi interaktif siklus nitrogen. Pilih pengaturan Anda, pelajari apa yang diharapkan, dan lihat bagaimana akuarium merespons keputusan Anda.">
 <meta property="og:image" content="https://aquaticrhythm.com/og/articles/tank-simulator.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Aquatic Rhythm">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://aquaticrhythm.com/articles/tank-simulator">
-<meta name="twitter:title" content="Tank Cycle Simulator — Interactive Nitrogen Cycle — Aquatic Rhythm">
-<meta name="twitter:description" content="An interactive simulation of the nitrogen cycle. Choose your setup, learn what to expect, and watch how the tank responds to your decisions.">
+<meta name="twitter:url" content="https://aquaticrhythm.com/id/articles/tank-simulator">
+<meta name="twitter:title" content="Simulator Siklus Akuarium — Siklus Nitrogen Interaktif — Aquatic Rhythm">
+<meta name="twitter:description" content="Simulasi interaktif siklus nitrogen. Pilih pengaturan Anda, pelajari apa yang diharapkan, dan lihat bagaimana akuarium merespons keputusan Anda.">
 <meta name="twitter:image" content="https://aquaticrhythm.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Tank Cycle Simulator — Interactive Nitrogen Cycle — Aquatic Rhythm","description":"An interactive simulation of the nitrogen cycle. Choose your setup, learn what to expect, and watch how the tank responds to your decisions.","url":"https://aquaticrhythm.com/articles/tank-simulator","image":"https://aquaticrhythm.com/og-image.png","dateModified":"2026-03-30","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com","logo":{"@type":"ImageObject","url":"https://aquaticrhythm.com/og-image.png"}},"datePublished":"2026-05-22"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Simulator Siklus Akuarium — Siklus Nitrogen Interaktif — Aquatic Rhythm","description":"Simulasi interaktif siklus nitrogen. Pilih pengaturan Anda, pelajari apa yang diharapkan, dan lihat bagaimana akuarium merespons keputusan Anda.","url":"https://aquaticrhythm.com/id/articles/tank-simulator","image":"https://aquaticrhythm.com/og-image.png","dateModified":"2026-03-30","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com","logo":{"@type":"ImageObject","url":"https://aquaticrhythm.com/og-image.png"}},"datePublished":"2026-05-22"}</script>
 <script>if(localStorage.getItem('ar_analytics_opt')==='1'){window['ga-disable-G-8MDN065WNW']=true}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8MDN065WNW"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8MDN065WNW');</script>
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=53">
+<link rel="stylesheet" href="/css/ar-page.css?v=52">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--fs-3xs:.5rem;--fs-2xs:.65rem;--fs-xs:.7rem;--fs-sm:.8rem;--fs-sm-md:.85rem;--fs-md:.9rem;--fs-base:1rem;--fs-md-lg:1.1rem;--fs-lg:1.35rem;--fs-xl:1.6rem;--fs-2xl:2.2rem;--fs-3xl:2.8rem;--fs-4xl:3rem;--fs-5xl:3.5rem;
@@ -627,17 +627,17 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
 <div id="briefing">
   <div class="brief-inner">
     <span class="brief-eyebrow">Aquatic Rhythm Lab</span>
-    <h1 class="brief-title">Cycle your<br><em>first tank.</em></h1>
-    <p class="brief-body">Every new aquarium goes through the same invisible process — bacteria slowly building up, ammonia and nitrite rising then falling, the water finding its balance. Choose your setup and watch it happen at your own pace.</p>
+    <h1 class="brief-title">Siklus-kan<br><em>akuarium pertama Anda.</em></h1>
+    <p class="brief-body">Setiap akuarium baru melewati proses tak kasatmata yang sama — bakteri perlahan berkembang biak, amonia dan nitrit naik lalu turun, air menemukan keseimbangannya. Pilih pengaturan Anda dan saksikan prosesnya dengan kecepatan Anda sendiri.</p>
     <div class="brief-rhythms">
-      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(220,80,60,.8)">Ammonia</span><span class="brief-rhy-desc">Fish waste breaks down into toxic ammonia — the cycle begins here</span></div>
-      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(200,160,40,.8)">Nitrite</span><span class="brief-rhy-desc">Bacteria convert ammonia — nitrite rises before it falls</span></div>
-      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(100,200,82,.7)">Nitrate</span><span class="brief-rhy-desc">The safer end product — removed with regular water changes</span></div>
-      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(61,214,232,.74)">Bacteria</span><span class="brief-rhy-desc">The colony that drives the cycle — needs time to establish</span></div>
-      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(139,189,210,.7)">Fish</span><span class="brief-rhy-desc">Optional from day one — higher stakes, closer attention needed</span></div>
+      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(220,80,60,.8)">Amonia</span><span class="brief-rhy-desc">Kotoran ikan terurai menjadi amonia yang beracun — di sinilah siklus dimulai</span></div>
+      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(200,160,40,.8)">Nitrit</span><span class="brief-rhy-desc">Bakteri mengubah amonia — nitrit naik dulu sebelum turun</span></div>
+      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(100,200,82,.7)">Nitrat</span><span class="brief-rhy-desc">Produk akhir yang lebih aman — dihilangkan lewat pergantian air rutin</span></div>
+      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(61,214,232,.74)">Bakteri</span><span class="brief-rhy-desc">Koloni yang menggerakkan siklus — perlu waktu untuk berkembang</span></div>
+      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(139,189,210,.7)">Ikan</span><span class="brief-rhy-desc">Opsional sejak hari pertama — risiko lebih tinggi, perlu perhatian lebih dekat</span></div>
     </div>
-    <p class="brief-note">A simplified model for learning — real tanks vary. Use this to understand the process, not predict exact timelines.</p>
-    <button class="brief-btn" id="btn-briefing-enter">Set up your simulation &#x2192;</button>
+    <p class="brief-note">Model yang disederhanakan untuk belajar — akuarium sungguhan bisa bervariasi. Gunakan ini untuk memahami prosesnya, bukan meramalkan jangka waktu pasti.</p>
+    <button class="brief-btn" id="btn-briefing-enter">Atur simulasi Anda →</button>
   </div>
 </div>
 <script>
@@ -656,94 +656,94 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
   <div class="oc" style="max-width:440px;text-align:left;margin-top:auto;margin-bottom:auto;width:100%">
     <div style="text-align:center;margin-bottom:1.1rem">
       <span class="oi">🌊</span>
-      <h2 class="ot">Set up your tank</h2>
-      <p class="om-compact" style="text-align:center;margin-bottom:.35rem">Choose size, method, and plants — then run a fish-safe cycle at your own pace.</p>
+      <h2 class="ot">Atur akuarium Anda</h2>
+      <p class="om-compact" style="text-align:center;margin-bottom:.35rem">Pilih ukuran, metode, dan tanaman — lalu jalankan siklus yang aman bagi ikan dengan kecepatan Anda sendiri.</p>
       <details class="ar-disclosure">
-        <summary>About this simulation</summary>
+        <summary>Tentang simulasi ini</summary>
         <div class="ar-disclosure-body">
-          <p>Every new aquarium goes through the same invisible process — bacteria slowly building up, ammonia and nitrite rising then falling, the water finding its balance. This simulator lets you watch that happen and make decisions along the way. No experience needed.</p>
+          <p>Setiap akuarium baru melewati proses tak kasatmata yang sama — bakteri perlahan berkembang biak, amonia dan nitrit naik lalu turun, air menemukan keseimbangannya. Simulator ini membiarkan Anda menyaksikan prosesnya dan mengambil keputusan di sepanjang jalan. Tidak perlu pengalaman.</p>
         </div>
       </details>
     </div>
 
     <!-- Tank size -->
     <div class="setup-section">
-      <span class="setup-section-label">Tank size</span>
+      <span class="setup-section-label">Ukuran akuarium</span>
       <div class="setup-options" id="opt-size">
         <div class="sopt selected" data-val="small">
           <span class="sopt-icon">🫙</span>
-          <span class="sopt-name">Small</span>
-          <span class="sopt-desc">Under 40L · Parameters swing faster · Less room for error</span>
+          <span class="sopt-name">Kecil</span>
+          <span class="sopt-desc">Di bawah 40L · Parameter berubah lebih cepat · Ruang untuk kesalahan lebih sempit</span>
         </div>
         <div class="sopt" data-val="medium">
           <span class="sopt-icon">🪣</span>
-          <span class="sopt-name">Medium</span>
-          <span class="sopt-desc">40–120L · More water volume · More forgiving of mistakes</span>
+          <span class="sopt-name">Sedang</span>
+          <span class="sopt-desc">40–120L · Volume air lebih besar · Lebih memaafkan kesalahan</span>
         </div>
         <div class="sopt" data-val="large">
           <span class="sopt-icon">🏊</span>
-          <span class="sopt-name">Large</span>
-          <span class="sopt-desc">120L+ · Dilution helps enormously · Slower parameter swings</span>
+          <span class="sopt-name">Besar</span>
+          <span class="sopt-desc">120L+ · Pengenceran sangat membantu · Perubahan parameter lebih lambat</span>
         </div>
       </div>
     </div>
 
     <!-- Cycling method -->
     <div class="setup-section">
-      <span class="setup-section-label">Cycling method</span>
+      <span class="setup-section-label">Metode siklus</span>
       <div class="setup-options" id="opt-method">
         <div class="sopt selected" data-val="fishless">
           <span class="sopt-icon">🧪</span>
-          <span class="sopt-name">Fishless</span>
-          <span class="sopt-desc">Add ammonia without fish · Bacteria grow safely · Easier to manage</span>
+          <span class="sopt-name">Tanpa ikan</span>
+          <span class="sopt-desc">Tambahkan amonia tanpa ikan · Bakteri tumbuh dengan aman · Lebih mudah dikelola</span>
         </div>
         <div class="sopt" data-val="fish-in">
           <span class="sopt-icon">🐠</span>
-          <span class="sopt-name">Fish-in</span>
-          <span class="sopt-desc">Fish in the tank from the start · Need feeding · Higher stakes</span>
+          <span class="sopt-name">Dengan ikan</span>
+          <span class="sopt-desc">Ikan ada di akuarium sejak awal · Perlu diberi makan · Risiko lebih tinggi</span>
         </div>
       </div>
 
       <!-- Welfare note for fishless -->
       <div class="setup-note" id="note-fishless">
-        <p><strong>Fishless cycling is the gentler option.</strong> You add ammonia to feed the bacteria — no fish involved. The bacteria grow at their own pace, and when the cycle is done, the tank is ready for fish.</p>
+        <p><strong>Siklus tanpa ikan adalah pilihan yang lebih lembut.</strong> Anda menambahkan amonia untuk memberi makan bakteri — tanpa melibatkan ikan. Bakteri tumbuh dengan kecepatannya sendiri, dan saat siklus selesai, akuarium siap untuk ikan.</p>
       </div>
 
       <!-- Warning for fish-in -->
       <div class="setup-warn" id="note-fishin" style="display:none">
-        <p><strong>Fish-in cycling is more demanding.</strong> Ammonia and nitrite will rise before bacteria can process them. Your fish will feel it — clamped fins, hiding, surface breathing. Small water changes help, but this method requires close attention.</p>
+        <p><strong>Siklus dengan ikan lebih menuntut.</strong> Amonia dan nitrit akan naik sebelum bakteri bisa memprosesnya. Ikan Anda akan merasakannya — sirip mengatup, bersembunyi, bernapas di permukaan. Pergantian air kecil membantu, tapi metode ini butuh perhatian ekstra.</p>
       </div>
     </div>
 
     <!-- Plants -->
     <div class="setup-section">
-      <span class="setup-section-label">Starting plants?</span>
+      <span class="setup-section-label">Tanaman sejak awal?</span>
       <div class="setup-options" id="opt-plants">
         <div class="sopt selected" data-val="yes">
           <span class="sopt-icon">🌿</span>
-          <span class="sopt-name">Yes</span>
-          <span class="sopt-desc">Absorbs nitrate · Adds oxygen · Competes with algae</span>
+          <span class="sopt-name">Ya</span>
+          <span class="sopt-desc">Menyerap nitrat · Menambah oksigen · Bersaing dengan alga</span>
         </div>
         <div class="sopt" data-val="no">
           <span class="sopt-icon">—</span>
-          <span class="sopt-name">No plants</span>
-          <span class="sopt-desc">Simpler setup · Nitrate accumulates faster</span>
+          <span class="sopt-name">Tanpa tanaman</span>
+          <span class="sopt-desc">Pengaturan lebih sederhana · Nitrat menumpuk lebih cepat</span>
         </div>
       </div>
     </div>
 
     <!-- Expected outcome -->
     <div class="expected-box" id="expected-box">
-      <p id="expected-text">With a <strong>small tank</strong>, <strong>fishless cycling</strong>, and <strong>plants</strong> — expect the cycle to complete in roughly <strong>3–4 weeks</strong>. Ammonia will peak first, then nitrite, then both will fall as bacteria establish. Plants will help keep nitrate manageable.</p>
+      <p id="expected-text">Dengan <strong>akuarium kecil</strong> dan <strong>siklus tanpa ikan</strong> — siklus diperkirakan selesai dalam kurang lebih <strong>3–4 minggu</strong>. Tidak ada hewan yang akan dirugikan dalam prosesnya. Amonia memuncak lebih dulu, lalu nitrit, kemudian keduanya turun seiring bakteri berkembang. Tanaman akan membantu menjaga nitrat tetap terkendali.</p>
     </div>
 
     <details class="ar-disclosure" style="margin-top:.75rem">
-      <summary>Inside the simulator</summary>
+      <summary>Di dalam simulator</summary>
       <div class="ar-disclosure-body">
-        <p>Three equipment toggles — heater, filter, and light — are on by default. Try turning one off to see what happens. There is a one-time bacteria starter (Seed). Use <strong style="color:var(--th-ink-2);font-weight:500">Status</strong> / <strong style="color:var(--th-ink-2);font-weight:500">Log</strong> on mobile to switch between guidance and the day-by-day log.</p>
+        <p>Tiga sakelar perangkat — heater, filter, dan lampu — menyala secara default. Coba matikan salah satunya untuk melihat apa yang terjadi. Ada starter bakteri sekali pakai (Seed). Gunakan <strong style="color:var(--th-ink-2);font-weight:500">Status</strong> / <strong style="color:var(--th-ink-2);font-weight:500">Log</strong> di ponsel untuk berpindah antara panduan dan log harian.</p>
       </div>
     </details>
-    <button class="obtn op" id="btn-begin" style="width:100%;margin-top:1rem">Begin →</button>
+    <button class="obtn op" id="btn-begin" style="width:100%;margin-top:1rem">Mulai →</button>
   </div>
 </div>
 
@@ -753,60 +753,60 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
   <div class="oc" style="max-width:400px;text-align:left;margin:auto;width:100%">
     <div style="text-align:center;margin-bottom:.85rem">
       <span class="oi" style="font-size:var(--fs-lg)">🌊</span>
-      <h2 class="ot" style="margin-bottom:.35rem">Before you begin</h2>
-      <p class="om" style="font-size:var(--fs-xs);margin-bottom:0;color:var(--th-ink-4)">Essentials below — details inside the guide.</p>
+      <h2 class="ot" style="margin-bottom:.35rem">Sebelum Anda mulai</h2>
+      <p class="om" style="font-size:var(--fs-xs);margin-bottom:0;color:var(--th-ink-4)">Hal-hal penting di bawah — detail ada di dalam panduan.</p>
     </div>
-    <p class="om-compact" style="text-align:center;margin-bottom:.65rem">One simulated day every 8 seconds. Pause, read the log, and use <strong style="color:var(--th-ink-2);font-weight:500">+1d</strong> when you want time to jump ahead.</p>
+    <p class="om-compact" style="text-align:center;margin-bottom:.65rem">Satu hari simulasi setiap 8 detik. Jeda, baca log, dan gunakan <strong style="color:var(--th-ink-2);font-weight:500">+1h</strong> saat ingin melompat maju waktunya.</p>
 
     <details class="ar-disclosure" style="margin-bottom:.85rem">
-      <summary>Full guide — controls &amp; rules</summary>
+      <summary>Panduan lengkap — kontrol &amp; aturan</summary>
       <div class="ar-disclosure-body" style="padding-top:.15rem">
         <div class="brief-tip">
           <span class="brief-tip-ic" aria-hidden="true">⏱</span>
           <div class="brief-tip-body">
-            <div class="brief-tip-k">Time</div>
-            <p>Let it run. The log explains what is happening as it unfolds.</p>
+            <div class="brief-tip-k">Waktu</div>
+            <p>Biarkan berjalan. Log menjelaskan apa yang sedang terjadi seiring berlangsungnya.</p>
           </div>
         </div>
         <div class="brief-tip">
           <span class="brief-tip-ic" aria-hidden="true">⚙️</span>
           <div class="brief-tip-body">
-            <div class="brief-tip-k">Equipment</div>
-            <p>Heater, filter, and light are on by default. Tap any of them to toggle off — and see what actually happens to the cycle.</p>
+            <div class="brief-tip-k">Perangkat</div>
+            <p>Heater, filter, dan lampu menyala secara default. Ketuk salah satunya untuk mematikan — dan lihat apa yang sebenarnya terjadi pada siklus.</p>
           </div>
         </div>
         <div class="brief-tip">
           <span class="brief-tip-ic" aria-hidden="true">🐠</span>
           <div class="brief-tip-body">
-            <div class="brief-tip-k">Fish-in only</div>
-            <p>Feed every 1–2 days. After 4 days without food fish begin to weaken — stressed fish are less tolerant of ammonia.</p>
+            <div class="brief-tip-k">Khusus dengan ikan</div>
+            <p>Beri makan setiap 1–2 hari. Setelah 4 hari tanpa makanan, ikan mulai melemah — ikan yang stres kurang tahan terhadap amonia.</p>
           </div>
         </div>
         <div class="brief-tip">
           <span class="brief-tip-ic" aria-hidden="true">🦠</span>
           <div class="brief-tip-body">
-            <div class="brief-tip-k">Bacteria starter</div>
-            <p>Seed works once. Use it after a few days — bacteria need some ammonia present first before seeding helps.</p>
+            <div class="brief-tip-k">Starter bakteri</div>
+            <p>Seed hanya bekerja sekali. Gunakan setelah beberapa hari — bakteri perlu ada amonia dulu sebelum penambahan starter membantu.</p>
           </div>
         </div>
         <div class="brief-tip">
           <span class="brief-tip-ic" aria-hidden="true">⏸</span>
           <div class="brief-tip-body">
-            <div class="brief-tip-k">Pause and skip</div>
-            <p>Pause to read carefully. Use <strong style="color:var(--th-ink-3);font-weight:500">+1d</strong> in the top bar to skip forward one day when you are waiting.</p>
+            <div class="brief-tip-k">Jeda dan lompat</div>
+            <p>Jeda untuk membaca dengan cermat. Gunakan <strong style="color:var(--th-ink-3);font-weight:500">+1h</strong> di bilah atas untuk melompat maju satu hari saat sedang menunggu.</p>
           </div>
         </div>
       </div>
     </details>
 
     <div class="goal-card">
-      <div class="goal-card-h">What you are trying to do</div>
-      <p>Get ammonia and nitrite down to near zero — and keep them there for three days in a row. That means your bacteria colony is mature enough to process waste continuously. You will see <em style="color:rgba(61,214,232,.95);font-style:normal">Stable ✓</em> in the bacteria panel when the cycle is complete.</p>
-      <p>The cycle crashes if ammonia or nitrite stays too high for too long — or if fish go without food. There is no time limit. The biology moves at its own pace.</p>
+      <div class="goal-card-h">Apa yang sedang Anda coba capai</div>
+      <p>Turunkan amonia dan nitrit hingga mendekati nol — dan pertahankan begitu selama tiga hari berturut-turut. Itu artinya koloni bakteri Anda sudah cukup matang untuk memproses limbah secara terus-menerus. Anda akan melihat <em style="color:rgba(61,214,232,.95);font-style:normal">Stabil ✓</em> di panel bakteri saat siklus selesai.</p>
+      <p>Siklus akan gagal jika amonia atau nitrit tetap terlalu tinggi terlalu lama — atau jika ikan tidak diberi makan. Tidak ada batas waktu. Biologinya bergerak dengan kecepatannya sendiri.</p>
     </div>
 
     <div style="display:flex;gap:.6rem;flex-direction:column;margin-top:1.1rem">
-      <button class="obtn op" id="btn-brief-go" style="width:100%">Start the simulation →</button>
+      <button class="obtn op" id="btn-brief-go" style="width:100%">Mulai simulasi →</button>
     </div>
   </div>
 </div>
@@ -816,16 +816,16 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
   <div class="oc" style="max-width:460px;text-align:left;margin-top:auto;margin-bottom:auto;width:100%">
     <div style="text-align:center;margin-bottom:1.2rem">
       <span class="oi" id="ov-icon">🐟</span>
-      <h2 class="ot" id="ov-title">The cycle crashed.</h2>
+      <h2 class="ot" id="ov-title">Siklus gagal.</h2>
       <p class="om" id="ov-msg" style="text-align:center"></p>
     </div>
 
     <!-- Report + optional narrative -->
     <div id="ov-report" class="rpt-wrap">
-      <div class="rpt-heading">Simulation report</div>
+      <div class="rpt-heading">Laporan simulasi</div>
       <div id="rpt-rows"></div>
       <details class="ar-disclosure" style="margin-top:.75rem;margin-bottom:0;border-color:rgba(139,189,210,.12)">
-        <summary>Reflection &amp; coaching</summary>
+        <summary>Refleksi &amp; pembinaan</summary>
         <div class="ar-disclosure-body" style="padding-bottom:.5rem">
           <div id="rpt-verdict"></div>
         </div>
@@ -833,14 +833,14 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
     </div>
 
     <div class="goal-card" style="margin-bottom:1rem;border-color:rgba(61,214,232,.2);background:rgba(61,214,232,.05)">
-      <div class="goal-card-h">Next best action</div>
-      <p>Take the stable settings from this simulation, then use the same setup on your real tank for 7 days (feeding, water changes, and a consistent lighting schedule).</p>
+      <div class="goal-card-h">Langkah terbaik berikutnya</div>
+      <p>Ambil pengaturan yang stabil dari simulasi ini, lalu terapkan pengaturan yang sama pada akuarium sungguhan Anda selama 7 hari (pemberian makan, pergantian air, dan jadwal pencahayaan yang konsisten).</p>
     </div>
 
     <div class="rpt-actions">
-      <button class="obtn op" id="btn-restart" style="width:100%;margin:0">Try again</button>
-      <a href="/articles/new-tank-syndrome" class="obtn os" style="width:100%;margin:0;text-align:center;box-sizing:border-box" data-analytics-event="cta_simulator_next_action" data-cta="simulator_to_new_tank">Apply this to real tank →</a>
-      <a href="/tools" class="obtn os" style="width:100%;margin:0;text-align:center;box-sizing:border-box">Back to tools</a>
+      <button class="obtn op" id="btn-restart" style="width:100%;margin:0">Coba lagi</button>
+      <a href="/id/articles/new-tank-syndrome" class="obtn os" style="width:100%;margin:0;text-align:center;box-sizing:border-box" data-analytics-event="cta_simulator_next_action" data-cta="simulator_to_new_tank">Terapkan pada akuarium sungguhan →</a>
+      <a href="/tools" class="obtn os" style="width:100%;margin:0;text-align:center;box-sizing:border-box">Kembali ke Alat</a>
     </div>
   </div>
 </div>
@@ -871,12 +871,12 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
     <div class="stb-left">
       <span class="t-icon" id="t-icon">☀️</span>
       <div class="t-prog"><div class="t-prog-fill" id="t-fill"></div></div>
-      <span class="t-day" id="t-day">Day 1</span>
-      <span class="t-status" id="t-status">Setting up</span>
+      <span class="t-day" id="t-day">Hari 1</span>
+      <span class="t-status" id="t-status">Sedang mengatur</span>
     </div>
     <div class="stb-right">
-      <button class="btn-skip-inline" id="btn-skip" onclick="skipDay()" title="Skip one day">+1d</button>
-      <button class="btn-sm btn-pp" id="btn-pp">⏸ Pause</button>
+      <button class="btn-skip-inline" id="btn-skip" onclick="skipDay()" title="Lewati satu hari">+1h</button>
+      <button class="btn-sm btn-pp" id="btn-pp">⏸ Jeda</button>
     </div>
   </div>
   <div id="day-prog-wrap"><div id="day-prog-fill"></div></div>
@@ -884,27 +884,27 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
   <div id="middle">
     <div id="pleft">
       <div class="pc">
-        <span class="pc-lbl">Ammonia <span class="pc-unit">ppm</span></span>
+        <span class="pc-lbl">Amonia <span class="pc-unit">ppm</span></span>
         <span class="pc-val safe" id="pv-nh3">0.00</span>
         <div class="pc-bar"><div class="pc-fill" id="pb-nh3"></div></div>
       </div>
       <div class="pc">
-        <span class="pc-lbl">Nitrite <span class="pc-unit">ppm</span></span>
+        <span class="pc-lbl">Nitrit <span class="pc-unit">ppm</span></span>
         <span class="pc-val safe" id="pv-no2">0.00</span>
         <div class="pc-bar"><div class="pc-fill" id="pb-no2"></div></div>
       </div>
       <div class="pc">
-        <span class="pc-lbl">Nitrate <span class="pc-unit">ppm</span></span>
+        <span class="pc-lbl">Nitrat <span class="pc-unit">ppm</span></span>
         <span class="pc-val safe" id="pv-no3">0.00</span>
         <div class="pc-bar"><div class="pc-fill" id="pb-no3"></div></div>
       </div>
       <div class="pc" style="border-color:rgba(139,189,210,.14)">
-        <span class="pc-lbl">Fish</span>
+        <span class="pc-lbl">Ikan</span>
         <span class="pc-val" id="pv-fish" style="color:rgba(139,189,210,.8)">0</span>
         <div class="pc-bar"><div class="pc-fill" id="pb-fish" style="background:rgba(139,189,210,.5)"></div></div>
       </div>
       <div class="pc" style="border-color:rgba(100,160,80,.14)">
-        <span class="pc-lbl">Plants</span>
+        <span class="pc-lbl">Tanaman</span>
         <span class="pc-val" id="pv-plant" style="color:rgba(100,180,80,.8)">0</span>
         <div class="pc-bar"><div class="pc-fill" id="pb-plant" style="background:rgba(100,180,80,.5)"></div></div>
       </div>
@@ -918,25 +918,25 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
         <canvas id="tdiatom" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity 2s"></canvas>
         <div id="tsurf"></div>
         <div id="tplants"></div><div id="tfish"></div><div id="tgravel"></div>
-        <div id="tmsg"><span id="tmsg-txt">Setting up...</span></div>
+        <div id="tmsg"><span id="tmsg-txt">Sedang mengatur...</span></div>
       </div>
       <!-- Equipment row -->
       <div id="equip-bar">
-        <button class="eq-btn eq-on" id="eq-heater" onclick="toggleEquip('heater')" data-tip="Keeps water at 26°C. Bacteria grow ~50% faster at optimal temperature.">
+        <button class="eq-btn eq-on" id="eq-heater" onclick="toggleEquip('heater')" data-tip="Menjaga air pada 26°C. Bakteri tumbuh ~50% lebih cepat pada suhu optimal.">
           <span class="eq-icon">🔥</span>
           <span class="eq-lbl">Heater</span>
           <span class="eq-temp" id="eq-temp">26°C</span>
         </button>
         <div class="eq-div"></div>
-        <button class="eq-btn eq-on" id="eq-filter" onclick="toggleEquip('filter')" data-tip="Where bacteria live. Without it, the cycle almost cannot complete.">
+        <button class="eq-btn eq-on" id="eq-filter" onclick="toggleEquip('filter')" data-tip="Tempat bakteri hidup. Tanpanya, siklus hampir tidak bisa selesai.">
           <span class="eq-icon">🌀</span>
           <span class="eq-lbl">Filter</span>
         </button>
         <div class="eq-div"></div>
-        <button class="eq-btn eq-on" id="eq-light" onclick="cycleLight()" data-tip="Tap to cycle: Off → Low → Med → High. Affects plants and algae.">
+        <button class="eq-btn eq-on" id="eq-light" onclick="cycleLight()" data-tip="Ketuk untuk berganti: Mati → Rendah → Sedang → Tinggi. Memengaruhi tanaman dan alga.">
           <span class="eq-icon">💡</span>
-          <span class="eq-lbl">Light</span>
-          <span class="eq-temp" id="eq-light-lbl">Med</span>
+          <span class="eq-lbl">Lampu</span>
+          <span class="eq-temp" id="eq-light-lbl">Sedang</span>
         </button>
       </div>
 
@@ -955,7 +955,7 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
     </div>
 
     <div id="pright">
-      <div class="sim-tabs" id="sim-tabs" role="tablist" aria-label="Simulator panels">
+      <div class="sim-tabs" id="sim-tabs" role="tablist" aria-label="Panel simulator">
         <button type="button" class="sim-tab active" data-tab="status" role="tab" aria-selected="true" id="tab-sim-status">Status</button>
         <button type="button" class="sim-tab" data-tab="log" role="tab" aria-selected="false" id="tab-sim-log">Log</button>
       </div>
@@ -963,8 +963,8 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
       <!-- Bacteria indicator — always visible above insight -->
       <div id="bac-box" class="bac-card" style="display:none">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.38rem">
-          <span style="font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--th-ink-5)">Bacteria Colony</span>
-          <span id="bac-status" style="font-size:var(--fs-sm);letter-spacing:.03em;color:var(--th-ink-4)">Seeding</span>
+          <span style="font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--th-ink-5)">Koloni Bakteri</span>
+          <span id="bac-status" style="font-size:var(--fs-sm);letter-spacing:.03em;color:var(--th-ink-4)">Menyemai</span>
         </div>
         <div style="display:flex;flex-direction:column;gap:.28rem">
           <div style="display:flex;align-items:center;gap:.4rem">
@@ -984,53 +984,53 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
           <!-- Stable days indicator — only shows when close to completion -->
           <div id="stable-row" style="display:none;flex-direction:column;gap:.28rem;margin-top:.5rem;padding:.4rem .5rem;background:rgba(61,214,232,.04);border:1px solid rgba(61,214,232,.20);border-radius:8px">
             <div style="display:flex;align-items:center;justify-content:space-between">
-              <span style="font-size:var(--fs-xs);color:rgba(61,214,232,.74);letter-spacing:.04em;text-transform:uppercase">Stable days</span>
+              <span style="font-size:var(--fs-xs);color:rgba(61,214,232,.74);letter-spacing:.04em;text-transform:uppercase">Hari stabil</span>
               <span id="stable-pct" style="font-size:var(--fs-sm-md);font-weight:400;color:rgba(61,214,232,.9);letter-spacing:.04em">0/3</span>
             </div>
             <div style="height:4px;background:var(--th-line);border-radius:2px;overflow:hidden">
               <div id="stable-bar" style="height:100%;width:0%;background:rgba(61,214,232,.8);border-radius:2px;transition:width .8s ease"></div>
             </div>
-            <span style="font-size:var(--fs-xs);color:var(--th-ink-4);line-height:1.4">3 consecutive days with ammonia and nitrite near zero — then the cycle is complete.</span>
+            <span style="font-size:var(--fs-xs);color:var(--th-ink-4);line-height:1.4">3 hari berturut-turut dengan amonia dan nitrit mendekati nol — lalu siklus dinyatakan selesai.</span>
           </div>
         </div>
       </div>
-      <div class="insight-box"><span class="ib-lbl">What is happening</span><span class="ib-txt" id="ib-txt">Your tank is ready. The cycle will begin when you add an ammonia source.</span></div>
+      <div class="insight-box"><span class="ib-lbl">Apa yang sedang terjadi</span><span class="ib-txt" id="ib-txt">Akuarium Anda siap. Siklus akan dimulai saat Anda menambahkan sumber amonia.</span></div>
       </div>
       <div class="sim-panel sim-panel--log" data-panel="log" id="panel-sim-log" role="tabpanel" aria-labelledby="tab-sim-log">
-      <div class="log-box" id="log"><div class="le"><span class="ld">Day 1</span><span>Tank set up. Ready to begin cycling.</span></div></div>
+      <div class="log-box" id="log"><div class="le"><span class="ld">Hari 1</span><span>Akuarium sudah diatur. Siap untuk memulai siklus.</span></div></div>
       </div>
     </div>
   </div>
 
   <!-- Water change picker -->
   <div id="wc-picker" style="display:none;position:fixed;bottom:5.5rem;left:50%;transform:translateX(-50%);z-index:60;background:var(--panel);border:1px solid rgba(61,214,232,.28);border-radius:4px;padding:.9rem 1.2rem;backdrop-filter:blur(12px);min-width:220px;box-shadow:var(--panel-shadow)">
-    <div style="font-size:var(--fs-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.7rem;text-align:center">How much water to change?</div>
+    <div style="font-size:var(--fs-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.7rem;text-align:center">Berapa banyak air yang diganti?</div>
     <div style="display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap">
       <button class="wc-opt" onclick="doWaterChange(10)">10%</button>
       <button class="wc-opt" onclick="doWaterChange(25)">25%</button>
       <button class="wc-opt" onclick="doWaterChange(50)">50%</button>
       <button class="wc-opt" onclick="doWaterChange(80)">80%</button>
     </div>
-    <div style="text-align:center;margin-top:.6rem"><button onclick="hideWaterPicker()" style="font-size:var(--fs-2xs);letter-spacing:.12em;text-transform:uppercase;color:var(--th-ink-4);background:none;border:none;cursor:pointer">Cancel</button></div>
+    <div style="text-align:center;margin-top:.6rem"><button onclick="hideWaterPicker()" style="font-size:var(--fs-2xs);letter-spacing:.12em;text-transform:uppercase;color:var(--th-ink-4);background:none;border:none;cursor:pointer">Batal</button></div>
   </div>
 
   <div id="bbar">
     <button class="ab" id="act-source" onclick="doAct('source')">
       <span class="ai" id="act-source-icon">🧪</span>
-      <span class="an" id="act-source-name">Add ammonia</span>
-      <span class="ah">Starts cycle</span>
+      <span class="an" id="act-source-name">Tambah amonia</span>
+      <span class="ah">Memulai siklus</span>
     </button>
     <button class="ab" id="act-feed" onclick="doAct('feed')" disabled>
-      <span class="ai">🥣</span><span class="an">Feed</span><span class="ah">Fish-in only</span>
+      <span class="ai">🥣</span><span class="an">Beri makan</span><span class="ah">Khusus dengan ikan</span>
     </button>
     <button class="ab" id="act-water" onclick="showWaterPicker()">
-      <span class="ai">💧</span><span class="an">Water change</span><span class="ah">Choose amount</span>
+      <span class="ai">💧</span><span class="an">Ganti air</span><span class="ah">Pilih jumlah</span>
     </button>
     <button class="ab" id="act-plant" onclick="doAct('plant')">
-      <span class="ai">🌿</span><span class="an">Add plants</span><span class="ah">Buffers nitrate</span>
+      <span class="ai">🌿</span><span class="an">Tambah tanaman</span><span class="ah">Menyangga nitrat</span>
     </button>
     <button class="ab" id="act-seed" onclick="doSeed()">
-      <span class="ai">🦠</span><span class="an">Seed</span><span class="ah">Bacteria starter</span>
+      <span class="ai">🦠</span><span class="an">Seed</span><span class="ah">Starter bakteri</span>
     </button>
   </div>
 </div>
@@ -1155,11 +1155,11 @@ function tick(){
     ammoniaIn = S.ammSource > 0.05 ? S.ammSource*.07*sz.load*(1-S.plants*.04) : 0;
     if(S.ammSource<0.5&&S.ammSource>0.05&&!S.warned['ammlow']){
       S.warned['ammlow']=true;
-      addLog('Ammonia source is running low — organic matter has nearly finished decomposing. Add more ammonia if the cycle is not yet established.','warn');
+      addLog('Sumber amonia mulai menipis — bahan organik hampir selesai terurai. Tambahkan amonia lagi jika siklus belum terbentuk.','warn');
     }
     if(S.ammSource<=0.05&&!S.warned['ammdone']){
       S.warned['ammdone']=true;
-      addLog('Ammonia source exhausted. No new ammonia is entering the tank. Bacteria will process what remains.','');
+      addLog('Sumber amonia habis. Tidak ada amonia baru yang masuk ke akuarium. Bakteri akan memproses sisa yang ada.','');
     }
   } else {
     /* Fish-in: base waste from respiration + waste
@@ -1182,11 +1182,11 @@ function tick(){
         S.fishHealth=clamp(S.fishHealth-starveRate,0,100);
         if(!S.warned['hungry5']&&S.daysSinceFed===5){
           S.warned['hungry5']=true;
-          addLog('Day 5 without food. Fish begin showing stress — clamped fins, reduced movement. Glycogen stores are depleted.','warn');
+          addLog('Hari ke-5 tanpa makanan. Ikan mulai menunjukkan stres — sirip mengatup, gerakan berkurang. Cadangan glikogen sudah habis.','warn');
         }
         if(!S.warned['hungry7']&&S.daysSinceFed>=7){
           S.warned['hungry7']=true;
-          addLog('Fish critically malnourished. Muscle tissue is being metabolised. Immune function is failing.','danger');
+          addLog('Ikan kekurangan gizi parah. Jaringan otot sedang dimetabolisasi. Fungsi kekebalan tubuh mulai gagal.','danger');
         }
       } else {
         /* Healthy recovery if fed regularly */
@@ -1199,7 +1199,7 @@ function tick(){
   /* ── AMMONIA INHIBITION WARNING ── */
   if(S.nh3>3&&!S.warned['inhib']){
     S.warned['inhib']=true;
-    addLog('Ammonia above 3 ppm is beginning to inhibit Nitrospira activity. High ammonia is not just dangerous for fish — at extreme levels it also slows the second stage of the cycle.','warn');
+    addLog('Amonia di atas 3 ppm mulai menghambat aktivitas Nitrospira. Amonia tinggi tidak hanya berbahaya bagi ikan — pada tingkat ekstrem juga memperlambat tahap kedua siklus.','warn');
   }
 
   /* ── RANDOM SPIKE EVENT ──
@@ -1211,10 +1211,10 @@ function tick(){
     var spikeMag=0.3+Math.random()*.5;
     if(S.spikeType==='ammonia'){
       S.nh3=clamp(S.nh3+spikeMag,0,8);
-      addLog('Ammonia spike detected. This can happen when organic matter decomposes faster than bacteria can process — a normal part of an unstable cycle.','warn');
+      addLog('Lonjakan amonia terdeteksi. Ini bisa terjadi saat bahan organik terurai lebih cepat daripada bakteri bisa memprosesnya — bagian normal dari siklus yang belum stabil.','warn');
     } else {
       S.no2=clamp(S.no2+spikeMag,0,5);
-      addLog('Nitrite spike. Nitrosomonas are converting ammonia faster than Nitrospira can process the nitrite. The second colony is still establishing.','warn');
+      addLog('Lonjakan nitrit. Nitrosomonas mengubah amonia lebih cepat daripada Nitrospira bisa memproses nitritnya. Koloni kedua masih berkembang.','warn');
     }
     /* Schedule another possible spike */
     S.spikeDay=0;
@@ -1229,7 +1229,7 @@ function tick(){
     S.temp=Math.max(S.temp-0.5,18); /* drops toward 18°C room temp */
     if(S.temp<22&&S.day%3===0&&!S.warned['cold'+Math.floor(S.temp)]){
       S.warned['cold'+Math.floor(S.temp)]=true;
-      addLog('Temperature at '+S.temp.toFixed(0)+'°C. Bacterial metabolism is slowing — Nitrospira are especially temperature-sensitive.','warn');
+      addLog('Suhu berada di '+S.temp.toFixed(0)+'°C. Metabolisme bakteri melambat — Nitrospira sangat peka terhadap suhu.','warn');
     }
   }
   var tempFac = S.temp>=25?1.0:S.temp>=22?0.7:S.temp>=18?0.45:0.2;
@@ -1297,11 +1297,11 @@ function tick(){
   /* Plant health — wilt without light */
   if(S.light===0&&S.plants>0&&S.day%4===0&&!S.warned['nolight']){
     S.warned['nolight']=true;
-    addLog('Plants are not receiving light. Without photosynthesis they cannot grow — and will begin to decay, adding to the organic load.','warn');
+    addLog('Tanaman tidak mendapat cahaya. Tanpa fotosintesis mereka tidak bisa tumbuh — dan akan mulai membusuk, menambah beban organik.','warn');
   }
   if(S.light===3&&S.no3>30&&S.day%5===0&&!S.warned['algbloom'+S.day]){
     S.warned['algbloom'+S.day]=true;
-    addLog('Algae is proliferating. High light intensity combined with elevated nitrate creates ideal conditions for rapid algae growth.','warn');
+    addLog('Alga sedang berkembang biak. Intensitas cahaya tinggi ditambah nitrat tinggi menciptakan kondisi ideal bagi pertumbuhan alga yang cepat.','warn');
   }
 
   /* ── CYCLE COMPLETE ──
@@ -1312,7 +1312,7 @@ function tick(){
       S.stableDays=(S.stableDays||0)+1;
       if(S.stableDays>=3){
         S.cycleOk=true;
-        addLog('Cycle established. Parameters have been stable for several consecutive days. Both colonies are self-sustaining.','good');
+        addLog('Siklus terbentuk. Parameter sudah stabil selama beberapa hari berturut-turut. Kedua koloni sudah mandiri.','good');
       }
     } else {
       S.stableDays=0; /* reset if parameters spike again */
@@ -1336,7 +1336,7 @@ function tick(){
   /* ── FISH DEATH FROM STARVATION ── */
   if(S.fish>0&&S.fishHealth<=0&&!S.dead){
     S.dead=true;S.fish=0;running=false;
-    addLog('The fish have died from starvation and stress. Without regular feeding, metabolic function collapsed.','danger');
+    addLog('Ikan mati karena kelaparan dan stres. Tanpa pemberian makan rutin, fungsi metabolisme kolaps.','danger');
     showEnd('crashed');return;
   }
 
@@ -1366,10 +1366,10 @@ function toggleEquip(type){
     var btn=document.getElementById('eq-heater');
     if(S.heater){
       btn.classList.add('eq-on');
-      addLog('Heater on. Tank temperature returning to 26°C. Bacterial activity will increase.','');
+      addLog('Heater menyala. Suhu akuarium kembali ke 26°C. Aktivitas bakteri akan meningkat.','');
     } else {
       btn.classList.remove('eq-on');
-      addLog('Heater off. Water temperature will begin to drop. Below 20°C, bacterial growth slows significantly.','warn');
+      addLog('Heater mati. Suhu air akan mulai turun. Di bawah 20°C, pertumbuhan bakteri melambat signifikan.','warn');
     }
   }
   if(type==='filter'){
@@ -1377,10 +1377,10 @@ function toggleEquip(type){
     var btn=document.getElementById('eq-filter');
     if(S.filter){
       btn.classList.add('eq-on');
-      addLog('Filter on. Water circulation restored. Bacteria colonising filter media will resume processing.','');
+      addLog('Filter menyala. Sirkulasi air pulih. Bakteri yang menghuni media filter akan kembali memproses limbah.','');
     } else {
       btn.classList.remove('eq-on');
-      addLog('Filter off. Bacteria on the media are losing their oxygen supply — they are aerobic and depend on oxygenated water flowing through the filter. Without it, the colony becomes dormant. The cycle will stall.','warn');
+      addLog('Filter mati. Bakteri di media filter kehilangan pasokan oksigen — mereka aerobik dan bergantung pada air beroksigen yang mengalir lewat filter. Tanpanya, koloni menjadi tidak aktif. Siklus akan terhenti.','warn');
     }
   }
   render();updateGuide();
@@ -1389,17 +1389,17 @@ function toggleEquip(type){
 function cycleLight(){
   if(S.dead||S.won)return;
   var levels=[0,1,2,3];
-  var labels=['Off','Low','Med','High'];
+  var labels=['Mati','Rendah','Sedang','Tinggi'];
   S.light=(S.light+1)%4;
   var btn=document.getElementById('eq-light');
   var lbl=document.getElementById('eq-light-lbl');
   if(lbl)lbl.textContent=labels[S.light];
   if(btn)btn.classList.toggle('eq-on',S.light>0);
   var msgs={
-    0:'Light off. Plants will begin to suffer — photosynthesis requires light. Algae will shift toward low-light tolerant species.',
-    1:'Low light. Plants grow slowly. Diatoms (brown algae) may increase — they thrive under low light conditions.',
-    2:'Medium light. A good balance for most planted tanks. Algae is manageable if nutrients are not excessive.',
-    3:'High light. Plants grow faster — but so does algae, especially if CO₂ and nutrients are not matched. Watch for outbreaks.'
+    0:'Lampu mati. Tanaman akan mulai kesulitan — fotosintesis butuh cahaya. Alga akan bergeser ke jenis yang tahan cahaya rendah.',
+    1:'Cahaya rendah. Tanaman tumbuh lambat. Diatom (alga cokelat) bisa meningkat — mereka berkembang di cahaya rendah.',
+    2:'Cahaya sedang. Keseimbangan yang baik untuk sebagian besar akuarium bertanaman. Alga dapat dikendalikan jika nutrisi tidak berlebihan.',
+    3:'Cahaya tinggi. Tanaman tumbuh lebih cepat — tapi alga juga demikian, terutama jika CO₂ dan nutrisi tidak seimbang. Waspadai ledakan populasi alga.'
   };
   addLog(msgs[S.light],'');
   render();updateGuide();
@@ -1407,13 +1407,13 @@ function cycleLight(){
 
 function doSeed(){
   if(S.dead||S.won)return;
-  if(S.seeded){addLog('Bacteria starter already added.','');return;}
+  if(S.seeded){addLog('Starter bakteri sudah ditambahkan.','');return;}
   S.seeded=true;
   S.bacA=Math.min(S.bacA+0.18,1);
   S.bacB=Math.min(S.bacB+0.10,1);
   var btn=document.getElementById('act-seed');
   if(btn){btn.classList.add('ab-used');btn.disabled=true;}
-  addLog('Bacteria starter added. Nitrosomonas and Nitrospira seeded onto surfaces. Expect noticeably faster colonisation.','good');
+  addLog('Starter bakteri ditambahkan. Nitrosomonas dan Nitrospira disemai pada permukaan. Diharapkan kolonisasi jauh lebih cepat.','good');
   render();updateGuide();
 }
 
@@ -1462,16 +1462,16 @@ function doWaterChange(pct){
 
   var msg='';var type='';
   if(pct<=25){
-    msg=pct+'% water change. Parameters diluted. Bacteria remain on filter media — small changes like this have no meaningful impact on the colony.';
+    msg=pct+'% pergantian air. Parameter terencerkan. Bakteri tetap berada di media filter — pergantian sekecil ini tidak berdampak berarti pada koloni.';
     type=S.cycleOk?'good':'';
   } else if(pct<=50){
-    msg=pct+'% water change. Bacteria stay on filter surfaces. At this size, some chemistry shift is possible — and you have removed some ammonia the bacteria were processing. Expect a minor slowdown.';
+    msg=pct+'% pergantian air. Bakteri tetap di permukaan filter. Pada ukuran ini, sedikit perubahan kimia air mungkin terjadi — dan Anda telah menghilangkan sebagian amonia yang sedang diproses bakteri. Perkirakan sedikit perlambatan.';
     type='';
   } else if(pct<=70){
-    msg=pct+'% water change. The colony is not washed out, but this size of change causes real chemistry disruption. Bacterial metabolism slows under sudden pH and mineral shifts. Ammonia substrate is also gone for a day or two.';
+    msg=pct+'% pergantian air. Koloni tidak terhanyutkan, tapi pergantian seukuran ini menyebabkan gangguan kimia air yang nyata. Metabolisme bakteri melambat akibat perubahan pH dan mineral yang mendadak. Substrat amonia juga hilang selama satu-dua hari.';
     type='warn';
   } else {
-    msg=pct+'% water change — near-complete reset. The colony survives, but chemistry shock, complete substrate loss, and physical disturbance to the filter will set it back noticeably. Reserve this for genuine emergencies only.';
+    msg=pct+'% pergantian air — hampir reset total. Koloni bertahan, tapi guncangan kimia air, hilangnya substrat total, dan gangguan fisik pada filter akan mengaturnya kembali secara signifikan. Simpan ini hanya untuk keadaan darurat sungguhan.';
     type='danger';
   }
   addLog(msg,type);
@@ -1482,19 +1482,19 @@ function doAct(a){
   if(S.dead||S.won)return;
   if(a==='source'){
     if(S.fishless){
-      if(S.ammSource>=5){addLog('Ammonia source is already sufficient.','warn');return;}
+      if(S.ammSource>=5){addLog('Sumber amonia sudah cukup.','warn');return;}
       S.ammSource++;
       S.nh3=clamp(S.nh3+.4,0,8);
-      addLog('Ammonia added. Cycle progressing.'+( S.ammSource===1?' Bacteria will begin arriving soon.':''),'');
+      addLog('Amonia ditambahkan. Siklus berjalan.'+( S.ammSource===1?' Bakteri akan mulai datang tak lama lagi.':''),'');
     } else {
-      if(S.fish>=5){addLog('The tank is carrying enough fish for now.','warn');return;}
+      if(S.fish>=5){addLog('Akuarium sudah cukup padat ikan untuk saat ini.','warn');return;}
       S.fish++;
-      addLog('Added a fish. Total: '+S.fish+'.'+( S.fish>2?' Watch ammonia carefully.':''),S.fish>2?'warn':'');
+      addLog('Ikan ditambahkan. Total: '+S.fish+'.'+( S.fish>2?' Perhatikan amonia dengan saksama.':''),S.fish>2?'warn':'');
     }
   }
   if(a==='feed'){
-    if(S.fish===0&&S.fishless){addLog('Nothing to feed yet — no fish in a fishless cycle.','');return;}
-    if(S.fish===0){addLog('Add fish first.','');return;}
+    if(S.fish===0&&S.fishless){addLog('Belum ada yang perlu diberi makan — tidak ada ikan pada siklus tanpa ikan.','');return;}
+    if(S.fish===0){addLog('Tambahkan ikan terlebih dahulu.','');return;}
     S.feedCount=(S.feedCount||0)+1;
     /* Feeding resets hunger clock */
     S.daysSinceFed=0;
@@ -1513,24 +1513,24 @@ function doAct(a){
       /* Overfeeding always causes problems regardless of cycle stage */
       var overLoad = cycleActive ? S.fish * 0.08 : S.fish * 0.22;
       S.nh3 = clamp(S.nh3 + overLoad, 0, 8);
-      addLog('Fed again. Excess food decomposes faster than bacteria can process — ammonia is rising.', 'warn');
+      addLog('Diberi makan lagi. Sisa makanan terurai lebih cepat daripada bakteri bisa memprosesnya — amonia sedang naik.', 'warn');
     } else if(S.feedCount > 2){
       var bigLoad = cycleActive ? S.fish * 0.14 : S.fish * 0.35;
       S.nh3 = clamp(S.nh3 + bigLoad, 0, 8);
-      addLog('Overfeeding. Uneaten food is polluting the water. Bacteria cannot keep up with this load.', 'danger');
+      addLog('Kelebihan pakan. Sisa makanan yang tidak dimakan mencemari air. Bakteri tidak bisa mengimbangi beban ini.', 'danger');
     } else {
       S.nh3 = clamp(S.nh3 + baseLoad, 0, 8);
       var feedMsg = cycleActive
-        ? 'Fed. Bacteria are processing waste — parameters should stay stable.'
-        : 'Fed. Waste is adding to ammonia load.';
+        ? 'Diberi makan. Bakteri sedang memproses limbah — parameter seharusnya tetap stabil.'
+        : 'Diberi makan. Limbah menambah beban amonia.';
       addLog(feedMsg, S.nh3 > 1.5 && !cycleActive ? 'warn' : '');
     }
   }
   /* water handled by doWaterChange() */
   if(a==='plant'){
-    if(S.plants>=4){addLog('Tank is well planted.','');return;}
+    if(S.plants>=4){addLog('Akuarium sudah cukup bertanaman.','');return;}
     S.plants++;
-    addLog('Plants added. Will absorb nitrate over time.','good');
+    addLog('Tanaman ditambahkan. Akan menyerap nitrat seiring waktu.','good');
   }
   /* wait replaced by doSkipDay() */
   render();
@@ -1541,74 +1541,74 @@ function doAct(a){
 var insightTick=0;
 var insightGroups=[
   {t:function(s){return s.ammSource===0&&s.fish===0&&s.fishless;},msgs:[
-    'The tank is ready. Add an ammonia source to begin the nitrogen cycle.',
-    '💧 An empty tank has no biology yet. Ammonia is what brings bacteria in.',
-    'Fishless cycling is the kinder method — no fish experience the difficult early weeks.'
+    'Akuarium sudah siap. Tambahkan sumber amonia untuk memulai siklus nitrogen.',
+    '💧 Akuarium kosong belum memiliki biologi. Amonia adalah yang mendatangkan bakteri.',
+    'Siklus tanpa ikan adalah metode yang lebih lembut — tidak ada ikan yang mengalami minggu-minggu awal yang berat.'
   ]},
   {t:function(s){return s.ammSource===0&&s.fish===0&&!s.fishless;},msgs:[
-    '🐠 The tank is ready. Add your first fish to begin the cycle.',
-    'Watch ammonia closely once fish are added — they produce waste continuously.',
-    'Start with fewer fish than you plan to keep. The cycle will be easier to manage.'
+    '🐠 Akuarium sudah siap. Tambahkan ikan pertama Anda untuk memulai siklus.',
+    'Perhatikan amonia dengan saksama begitu ikan ditambahkan — mereka terus-menerus menghasilkan limbah.',
+    'Mulailah dengan ikan lebih sedikit dari yang Anda rencanakan untuk dipelihara. Siklus akan lebih mudah dikelola.'
   ]},
   {t:function(s){return (s.ammSource>0||s.fish>0)&&s.nh3<.3&&s.day<6;},msgs:[
-    '🔬 Day '+0+'. Bacteria are beginning to seed onto surfaces. Invisible but already working.',
-    'The early days look quiet — but colonisation has begun on filter media and substrate.',
-    '⏳ Nothing to do right now. This phase is about time, not action.'
+    '🔬 Hari '+0+'. Bakteri mulai menyemai pada permukaan. Tak terlihat tapi sudah bekerja.',
+    'Hari-hari awal terlihat sepi — tapi kolonisasi sudah dimulai pada media filter dan substrat.',
+    '⏳ Belum ada yang perlu dilakukan sekarang. Fase ini soal waktu, bukan tindakan.'
   ]},
   {t:function(s){return s.nh3>=.5&&s.nh3<2&&s.no2<.5;},msgs:[
-    'Ammonia is rising. This is normal — bacteria are not yet numerous enough to process it.',
-    '🟡 Elevated ammonia is the first sign the cycle is fuelling. Resist the urge to intervene.',
-    'The bacteria feeding on ammonia (Nitrosomonas) are multiplying now. Give them time.'
+    'Amonia sedang naik. Ini normal — bakteri belum cukup banyak untuk memprosesnya.',
+    '🟡 Amonia yang meningkat adalah tanda pertama siklus sedang berjalan. Tahan keinginan untuk turun tangan.',
+    'Bakteri pemakan amonia (Nitrosomonas) sedang berkembang biak sekarang. Beri mereka waktu.'
   ]},
   {t:function(s){return s.nh3>=2&&s.no2<.5&&s.fish>0;},msgs:[
-    '⚠️ Ammonia is getting high. If fish are present, a small water change will help.',
-    'High ammonia damages fish gills directly. It does not need to be lethal to cause harm.',
-    'A 10-15% water change dilutes ammonia without washing away bacteria. Small and steady.'
+    '⚠️ Amonia semakin tinggi. Jika ada ikan, pergantian air kecil akan membantu.',
+    'Amonia tinggi merusak insang ikan secara langsung. Tak perlu mematikan untuk menyebabkan kerusakan.',
+    'Pergantian air 10–15% mengencerkan amonia tanpa menghanyutkan bakteri. Kecil dan bertahap.'
   ]},
   {t:function(s){return s.no2>.3&&s.no2<1.5&&s.bacA>.3;},msgs:[
-    'Nitrite is rising — Nitrosomonas are converting ammonia successfully. Stage one is working.',
-    '🟠 Nitrite spike means stage one is working. Nitrospira — the dominant second-stage bacteria — are still establishing.',
-    'This is the most dangerous phase for fish — nitrite blocks oxygen uptake in the blood.'
+    'Nitrit sedang naik — Nitrosomonas berhasil mengubah amonia. Tahap pertama berjalan baik.',
+    '🟠 Lonjakan nitrit berarti tahap pertama berhasil. Nitrospira — bakteri tahap kedua yang dominan — masih berkembang.',
+    'Ini fase paling berbahaya bagi ikan — nitrit menghambat penyerapan oksigen dalam darah.'
   ]},
   {t:function(s){return s.no2>=1.5;},msgs:[
-    '🔴 Nitrite is very high. If fish are present, a water change is needed now.',
-    'High nitrite causes brown blood disease in fish — haemoglobin cannot carry oxygen.',
-    'Nitrospira are slower to establish than Nitrosomonas. This is why nitrite peaks after ammonia. Patience.'
+    '🔴 Nitrit sangat tinggi. Jika ada ikan, pergantian air perlu dilakukan sekarang.',
+    'Nitrit tinggi menyebabkan penyakit darah cokelat pada ikan — hemoglobin tidak bisa membawa oksigen.',
+    'Nitrospira lebih lambat berkembang dibanding Nitrosomonas. Itu sebabnya nitrit memuncak setelah amonia. Bersabarlah.'
   ]},
   {t:function(s){return s.bacA>.6&&s.bacB>.4&&!s.cycleOk;},msgs:[
-    '🌱 Bacterial colonies are reaching maturity. The end of the cycle is getting close.',
-    'Both stages are now active. Parameters should begin stabilising soon.',
-    'Watch for ammonia and nitrite falling together — that is the sign the cycle is completing.'
+    '🌱 Koloni bakteri mendekati kematangan. Akhir siklus semakin dekat.',
+    'Kedua tahap kini aktif. Parameter seharusnya mulai stabil tak lama lagi.',
+    'Perhatikan amonia dan nitrit turun bersamaan — itu tanda siklus sedang menuju selesai.'
   ]},
   {t:function(s){return s.cycleOk&&s.no3<30;},msgs:[
-    '✅ Cycle established. The tank is now self-sustaining. Well done.',
-    '🎉 Both bacterial colonies are stable and processing continuously.',
-    'Nitrate will accumulate from here — monitor it and change water regularly.'
+    '✅ Siklus terbentuk. Akuarium kini mandiri. Kerja bagus.',
+    '🎉 Kedua koloni bakteri stabil dan terus memproses limbah.',
+    'Nitrat akan mulai menumpuk dari sini — pantau dan ganti air secara rutin.'
   ]},
   {t:function(s){return s.cycleOk&&s.no3>=30;},msgs:[
-    'Nitrate is building. Regular partial water changes will keep it manageable.',
-    '💧 A weekly 15-25% water change is the most effective nitrate control.',
-    'Live plants absorb nitrate too — a well-planted tank needs fewer water changes.'
+    'Nitrat sedang menumpuk. Pergantian air parsial secara rutin akan menjaganya tetap terkendali.',
+    '💧 Pergantian air 15–25% setiap minggu adalah cara paling efektif mengendalikan nitrat.',
+    'Tanaman hidup juga menyerap nitrat — akuarium yang bertanaman lebat butuh lebih sedikit pergantian air.'
   ]},
   {t:function(s){return s.totalWc>3&&s.day<18&&!s.cycleOk;},msgs:[
-    '⚠️ Multiple water changes this early may be slowing progress.',
-    'Each large water change removes some bacteria along with the ammonia.',
-    'Smaller, less frequent changes are better during an active cycle.'
+    '⚠️ Terlalu banyak pergantian air di tahap awal ini bisa memperlambat kemajuan.',
+    'Setiap pergantian air besar menghilangkan sebagian bakteri bersama amonianya.',
+    'Pergantian yang lebih kecil dan jarang lebih baik selama siklus masih berlangsung.'
   ]},
   {t:function(s){return s.fish>0&&s.stress>50&&!s.dead;},msgs:[
-    '😰 Fish are showing stress. Surface breathing is an early warning.',
-    'Stressed fish have suppressed immunity — disease risk increases.',
-    'Check ammonia and nitrite. One of them is likely the cause.'
+    '😰 Ikan menunjukkan tanda stres. Bernapas di permukaan adalah peringatan dini.',
+    'Ikan yang stres memiliki kekebalan tubuh yang tertekan — risiko penyakit meningkat.',
+    'Periksa amonia dan nitrit. Salah satunya kemungkinan penyebabnya.'
   ]},
   {t:function(s){return !s.heater&&s.temp<22;},msgs:[
-    '🌡️ Temperature is dropping. Bacterial growth slows significantly below 22°C.',
-    'Nitrospira are especially cold-sensitive — below 22°C the second stage slows significantly.',
-    'Turn the heater on to restore optimal conditions (25-27°C).'
+    '🌡️ Suhu sedang turun. Pertumbuhan bakteri melambat signifikan di bawah 22°C.',
+    'Nitrospira sangat peka terhadap suhu dingin — di bawah 22°C tahap kedua melambat signifikan.',
+    'Nyalakan heater untuk memulihkan kondisi optimal (25–27°C).'
   ]},
   {t:function(s){return !s.filter;},msgs:[
-    '🌀 No filter running. Bacteria are losing their primary colonisation surface.',
-    'Without circulation, dissolved oxygen drops — bacteria become less active.',
-    'Even a simple sponge filter makes a significant difference to cycling speed.'
+    '🌀 Tidak ada filter yang menyala. Bakteri kehilangan permukaan kolonisasi utamanya.',
+    'Tanpa sirkulasi, oksigen terlarut menurun — bakteri menjadi kurang aktif.',
+    'Bahkan filter spons sederhana pun membuat perbedaan signifikan pada kecepatan siklus.'
   ]}
 ];
 var insightRotate={};
@@ -1623,13 +1623,13 @@ function getInsight(s){
       if(insightTick%3===0)insightRotate[key]=(insightRotate[key]+1)%msgs.length;
       var txt=msgs[insightRotate[key]];
       /* Replace day placeholder */
-      return txt.replace('Day '+0,'Day '+s.day);
+      return txt.replace('Hari 0','Hari '+s.day);
     }
   }
-  var idle=['The system is still settling. This is normal.',
-    '🔬 Biology works on its own schedule.',
-    'Every stable tank went through exactly this phase.',
-    'The best thing you can do right now is watch.'];
+  var idle=['Sistem masih sedang menata diri. Ini normal.',
+    '🔬 Biologi bekerja dengan jadwalnya sendiri.',
+    'Setiap akuarium yang stabil pernah melewati tepat fase ini.',
+    'Hal terbaik yang bisa Anda lakukan sekarang adalah menunggu dan mengamati.'];
   if(insightTick%4===0)insightRotate['idle']=(( insightRotate['idle']||0)+1)%idle.length;
   return idle[insightRotate['idle']||0];
 }
@@ -1638,33 +1638,33 @@ function addLog(msg,type){
   var log=document.getElementById('log');
   var e=document.createElement('div');
   e.className='le'+(type==='warn'?' lw':type==='danger'?' ldg':type==='good'?' lgd':'');
-  e.innerHTML='<span class="ld">Day '+S.day+'</span><span>'+msg+'</span>';
+  e.innerHTML='<span class="ld">'+'Hari '+S.day+'</span><span>'+msg+'</span>';
   log.insertBefore(e,log.firstChild);
   while(log.children.length>20)log.removeChild(log.lastChild);
 }
 
 function genLog(){
-  if(S.nh3>2&&S.nh3<=4.5)addLog('Ammonia critically high.'+( S.fish>0?' Fish in acute danger — gills are being damaged.':''),'danger');
-  else if(S.nh3>.5&&S.day%3===0)addLog('Ammonia elevated. Bacteria are building but not yet sufficient.','warn');
-  if(S.no2>2&&S.day%2===0)addLog('Nitrite spike. Nitrospira colonies are still establishing — this is the normal mid-cycle pattern, but dangerous for fish.','warn');
-  if(S.no3>40&&S.day%5===0)addLog('Nitrate accumulating. A partial water change would help.','warn');
-  if(S.cycleOk&&S.day%6===0)addLog('Parameters stable. Bacterial colonies are self-sustaining.','good');
-  if(S.bacA>.3&&S.bacA<.6&&S.day%5===0)addLog('Nitrosomonas colonies growing. Nitrite will begin rising soon.','');
-  if(S.bacB>.3&&S.bacB<.7&&S.day%5===0)addLog('Nitrospira colonies are growing. Nitrite should begin falling soon.','');
+  if(S.nh3>2&&S.nh3<=4.5)addLog('Amonia sangat tinggi.'+( S.fish>0?' Ikan dalam bahaya akut — insang sedang rusak.':''),'danger');
+  else if(S.nh3>.5&&S.day%3===0)addLog('Amonia meningkat. Bakteri sedang berkembang tapi belum cukup.','warn');
+  if(S.no2>2&&S.day%2===0)addLog('Lonjakan nitrit. Koloni Nitrospira masih berkembang — ini pola normal di pertengahan siklus, tapi berbahaya bagi ikan.','warn');
+  if(S.no3>40&&S.day%5===0)addLog('Nitrat sedang menumpuk. Pergantian air parsial akan membantu.','warn');
+  if(S.cycleOk&&S.day%6===0)addLog('Parameter stabil. Koloni bakteri sudah mandiri.','good');
+  if(S.bacA>.3&&S.bacA<.6&&S.day%5===0)addLog('Koloni Nitrosomonas sedang tumbuh. Nitrit akan mulai naik tak lama lagi.','');
+  if(S.bacB>.3&&S.bacB<.7&&S.day%5===0)addLog('Koloni Nitrospira sedang tumbuh. Nitrit seharusnya mulai turun tak lama lagi.','');
   /* Fish health status */
   if(S.fish>0&&S.fishHealth<70&&S.fishHealth>=40&&S.day%3===0)
-    addLog('Fish showing stress signs — slower movement, reduced colour. Health: '+((S.fishHealth||100)).toFixed(0)+'%.','warn');
+    addLog('Ikan menunjukkan tanda stres — gerakan melambat, warna memudar. Kesehatan: '+((S.fishHealth||100)).toFixed(0)+'%.','warn');
   if(S.fish>0&&S.fishHealth<40&&S.day%2===0)
-    addLog('Fish in poor condition. Immune function compromised — disease risk rising. Health: '+((S.fishHealth||100)).toFixed(0)+'%.','danger');
+    addLog('Ikan dalam kondisi buruk. Fungsi kekebalan tubuh terganggu — risiko penyakit meningkat. Kesehatan: '+((S.fishHealth||100)).toFixed(0)+'%.','danger');
 
   /* Narrative logs — biology explanations every few days */
   var narratives=[
-    {day:3, fn:function(){return !S.warned['n3'];}, msg:'Day 3. Invisible activity has begun. Ammonia-oxidising bacteria are seeding from the air, water, and any surfaces you introduced.',type:''},
-    {day:6, fn:function(){return S.bacA<.15&&!S.warned['n6'];}, msg:'Bacterial colonies are microscopic at this stage. You cannot see them, but they are there — multiplying slowly on filter media and substrate.',type:''},
-    {day:10, fn:function(){return S.no2>.2&&!S.warned['n10'];}, msg:'Nitrite appearing is a sign the first stage is working. Nitrosomonas are converting ammonia — Nitrospira now have substrate to establish on.',type:''},
-    {day:15, fn:function(){return !S.cycleOk&&!S.warned['n15'];}, msg:'Week two. The most difficult waiting period. Parameters may look chaotic — this is normal. The biology is reorganising itself.',type:''},
-    {day:20, fn:function(){return !S.cycleOk&&!S.warned['n20'];}, msg:'In a real tank, colonies reach self-sustaining density around weeks 3-4. This simulation runs faster — but the biology it models is the same.',type:''},
-    {day:25, fn:function(){return !S.cycleOk&&!S.warned['n25'];}, msg:'Day 25. Some cycles complete by now — others take 6-8 weeks. If parameters are still unstable, the system is still working.',type:''},
+    {day:3, fn:function(){return !S.warned['n3'];}, msg:'Hari 3. Aktivitas tak kasatmata telah dimulai. Bakteri pengoksidasi amonia menyemai dari udara, air, dan permukaan apa pun yang Anda tambahkan.',type:''},
+    {day:6, fn:function(){return S.bacA<.15&&!S.warned['n6'];}, msg:'Koloni bakteri masih mikroskopis pada tahap ini. Anda tidak bisa melihatnya, tapi mereka ada — berkembang biak perlahan pada media filter dan substrat.',type:''},
+    {day:10, fn:function(){return S.no2>.2&&!S.warned['n10'];}, msg:'Munculnya nitrit adalah tanda tahap pertama sedang berjalan. Nitrosomonas sedang mengubah amonia — kini Nitrospira punya substrat untuk berkembang.',type:''},
+    {day:15, fn:function(){return !S.cycleOk&&!S.warned['n15'];}, msg:'Minggu kedua. Masa penantian paling sulit. Parameter mungkin terlihat kacau — ini normal. Biologinya sedang menata ulang dirinya sendiri.',type:''},
+    {day:20, fn:function(){return !S.cycleOk&&!S.warned['n20'];}, msg:'Di akuarium sungguhan, koloni mencapai kepadatan mandiri sekitar minggu ke-3–4. Simulasi ini berjalan lebih cepat — tapi biologi yang dimodelkannya sama.',type:''},
+    {day:25, fn:function(){return !S.cycleOk&&!S.warned['n25'];}, msg:'Hari 25. Beberapa siklus selesai pada titik ini — yang lain butuh 6–8 minggu. Jika parameter masih belum stabil, sistemnya masih bekerja.',type:''},
   ];
   narratives.forEach(function(n){
     if(S.day===n.day&&n.fn()){
@@ -1676,11 +1676,11 @@ function genLog(){
   /* Diatom event */
   if(S.day===4&&!S.warned['diatom']){
     S.warned['diatom']=true;
-    addLog('A brown film is forming on surfaces — diatom algae (Bacillariophyceae). Normal in new tanks. They feed on silicates and excess light. Will fade as the tank matures.','');
+    addLog('Lapisan cokelat mulai terbentuk di permukaan — alga diatom (Bacillariophyceae). Normal di akuarium baru. Mereka memakan silikat dan kelebihan cahaya. Akan memudar seiring akuarium menjadi matang.','');
   }
   if(S.cycleOk&&!S.warned['diatom_fade']){
     S.warned['diatom_fade']=true;
-    addLog('Diatoms are receding. As the cycle stabilises, competing algae and reduced silicates make conditions less favourable for them.','good');
+    addLog('Diatom mulai mereda. Seiring siklus menstabil, persaingan alga lain dan berkurangnya silikat membuat kondisi kurang mendukung bagi mereka.','good');
   }
 }
 
@@ -1706,38 +1706,38 @@ function updateGuide(){
   if(!hasStarted){
     /* Pulse source button */
     pulseBtn='act-source'; pulseClass='ar-pulse';
-    icon=S.fishless?'🧪':'🐠'; text=S.fishless?'Add an ammonia source to begin':'Add fish to begin the cycle';
+    icon=S.fishless?'🧪':'🐠'; text=S.fishless?'Tambahkan sumber amonia untuk memulai':'Tambahkan ikan untuk memulai siklus';
     hintShow=true;
 
   } else if(!S.fishless&&S.fish>0&&S.daysSinceFed>=4){
     /* Fish need feeding */
     pulseBtn='act-feed'; pulseClass='ar-warn';
-    icon='🥣'; text='Fish need feeding — don\'t skip days';
+    icon='🥣'; text='Ikan perlu diberi makan — jangan lewatkan hari';
     hintShow=true;
   } else if(S.nh3<.3&&S.bacA<.15&&S.day<8){
     pulseBtn=null;
-    icon='⏳'; text='The cycle is seeding. Leave it alone for now.';
+    icon='⏳'; text='Siklus sedang menyemai. Biarkan dulu untuk saat ini.';
     hintShow=true;
 
   } else if(S.nh3>3&&S.fish>0){
     /* Ammonia dangerously high with fish — urgent water change */
     pulseBtn='act-water'; pulseClass='ar-stop';
-    icon='🚨'; text='Ammonia critical — water change now';
+    icon='🚨'; text='Amonia kritis — ganti air sekarang';
     hintShow=true;
 
   } else if(S.nh3>1.5&&S.no2<.5&&!S.cycleOk){
     pulseBtn='act-water'; pulseClass='ar-warn';
-    icon='💧'; text='Ammonia elevated — consider a water change';
+    icon='💧'; text='Amonia meningkat — pertimbangkan pergantian air';
     hintShow=true;
 
   } else if(S.nh3>.3&&S.no2>.3&&S.bacA>.3&&!S.cycleOk){
     pulseBtn=null;
-    icon='⏳'; text='Bacteria are working — nothing to do but wait';
+    icon='⏳'; text='Bakteri sedang bekerja — tidak ada yang perlu dilakukan selain menunggu';
     hintShow=true;
 
   } else if(S.no3>40&&S.cycleOk){
     pulseBtn='act-water'; pulseClass='ar-warn';
-    icon='💧'; text='Nitrate is building — the tank needs a water change';
+    icon='💧'; text='Nitrat sedang menumpuk — akuarium perlu pergantian air';
     hintShow=true;
 
   } else if(S.cycleOk&&S.no3<30){
@@ -1747,7 +1747,7 @@ function updateGuide(){
   } else if(S.totalWc>3&&S.day<20&&!S.cycleOk){
     /* Too many water changes */
     pulseBtn=null;
-    icon='⛔'; text='Too many changes. Stop intervening — let bacteria recover.';
+    icon='⛔'; text='Terlalu banyak pergantian. Berhenti turun tangan — biarkan bakteri pulih.';
     hintShow=true;
   }
 
@@ -1930,13 +1930,13 @@ function animFish(){
 }
 
 function render(){
-  document.getElementById('t-day').textContent='Day '+S.day;
-  var st='Setting up';
+  document.getElementById('t-day').textContent='Hari '+S.day;
+  var st='Sedang mengatur';
   if(S.fishless&&S.ammSource>0||!S.fishless&&S.fish>0){
-    if(S.cycleOk)st='Cycle complete ✓';
-    else if(S.bacA>.5)st='Nearly cycled';
-    else if(S.bacA>.2)st='Cycle building';
-    else st='Early cycle';
+    if(S.cycleOk)st='Siklus selesai ✓';
+    else if(S.bacA>.5)st='Hampir siklus';
+    else if(S.bacA>.2)st='Siklus berkembang';
+    else st='Siklus awal';
   }
   document.getElementById('t-status').textContent=st;
 
@@ -2002,7 +2002,7 @@ function render(){
   var hasActivity=S.fishless?(S.ammSource>0):(S.fish>0);
   msg.style.opacity=hasActivity?'0':'1';
   if(!hasActivity){
-    var txt=S.fishless?'Add an ammonia source to begin.':'🐠 Add fish to begin.';
+    var txt=S.fishless?'Tambahkan sumber amonia untuk memulai.':'🐠 Tambahkan ikan untuk memulai.';
     document.getElementById('tmsg-txt').textContent=txt;
   }
 
@@ -2097,11 +2097,11 @@ function render(){
   if(bacSt){
     var avgBac=(S.bacA+S.bacB)/2;
     var sd=S.stableDays||0;
-    var stLabel=S.cycleOk?'Stable \u2713':
-                sd>0?'Stabilising ('+sd+'/3)':
-                avgBac>.8?'Nearly there':
-                avgBac>.5?'Establishing':
-                avgBac>.2?'Growing':'Seeding';
+    var stLabel=S.cycleOk?'Stabil ✓':
+                sd>0?'Menstabilkan ('+sd+'/3)':
+                avgBac>.8?'Hampir sampai':
+                avgBac>.5?'Sedang mandiri':
+                avgBac>.2?'Sedang tumbuh':'Menyemai';
     var stCol=S.cycleOk?'rgba(80,200,100,.9)':
               sd>0?'rgba(61,214,232,.8)':
               avgBac>.7?'rgba(61,214,232,.66)':'var(--th-ink-4)';
@@ -2134,18 +2134,18 @@ function render(){
 function showEnd(type){
   var ov=document.getElementById('ov-end');
   var icons={won:'🌿',crashed:'💀'};
-  var titles={won:'The cycle is complete.',crashed:'The tank crashed.'};
+  var titles={won:'Siklus selesai.',crashed:'Akuarium mengalami kegagalan.'};
   document.getElementById('ov-icon').textContent=icons[type]||'💀';
-  document.getElementById('ov-title').textContent=titles[type]||'Simulation ended.';
+  document.getElementById('ov-title').textContent=titles[type]||'Akuarium mengalami kegagalan.';
   var msg='';
   if(type==='won'){
     msg=S.fishless
-      ?'Day '+S.day+'. Bacteria established without any animals being harmed.'
-      :'Day '+S.day+'. The cycle completed with fish present.';
+      ?'Hari '+S.day+'. Bakteri terbentuk tanpa ada hewan yang dirugikan.'
+      :'Hari '+S.day+'. Siklus selesai dengan ikan hadir di dalamnya.';
   } else {
     msg=S.fishHealth<=0
-      ?'The fish weakened from lack of food and the stress became fatal.'
-      :'Ammonia or nitrite reached a level the fish could not survive.';
+      ?'Ikan melemah akibat kekurangan makanan dan stres yang berujung fatal.'
+      :'Amonia atau nitrit mencapai tingkat yang tidak bisa ditoleransi ikan.';
   }
   document.getElementById('ov-msg').textContent=msg;
   buildReport(type);
@@ -2168,53 +2168,53 @@ function buildReport(type){
   }
 
   var wcWarn=S.totalWc>6;
-  var wcNote=S.totalWc>6?'Too frequent — repeated changes disrupt water chemistry and remove ammonia the colony needs':
-             S.totalWc===0?'None done — nitrate may have accumulated unchecked':
-             S.totalWc<=3?'Well managed — small and targeted':'Reasonable';
+  var wcNote=S.totalWc>6?'Terlalu sering — pergantian berulang mengganggu kimia air dan menghilangkan amonia yang dibutuhkan koloni':
+             S.totalWc===0?'Tidak pernah dilakukan — nitrat mungkin menumpuk tanpa terkendali':
+             S.totalWc<=3?'Dikelola dengan baik — kecil dan tepat sasaran':'Cukup wajar';
 
   var feedWarn=!S.fishless&&S.daysSinceFed>3;
   var heatWarn=!S.heater&&(S.temp||26)<22;
   var filterWarn=!S.filter;
 
-  row('Days elapsed', S.day+' days', null, false);
-  row('Method', S.fishless?'Fishless':'Fish-in',
-    S.fishless?'No animals exposed to ammonia stress':'Fish experienced elevated ammonia and nitrite',
+  row('Hari berlalu', S.day+' hari', null, false);
+  row('Metode', S.fishless?'Tanpa ikan':'Dengan ikan',
+    S.fishless?'Tidak ada hewan yang terpapar stres amonia':'Ikan mengalami amonia dan nitrit yang tinggi',
     !S.fishless&&type==='crashed');
-  row('Water changes', S.totalWc+' total', wcNote, wcWarn);
-  if(!S.fishless) row('Fish feeding',
-    feedWarn?'Insufficient':'Managed',
-    feedWarn?'Fish went '+S.daysSinceFed+' days unfed — need food every 1-4 days':'Good',
+  row('Pergantian air', S.totalWc+' kali', wcNote, wcWarn);
+  if(!S.fishless) row('Pemberian makan ikan',
+    feedWarn?'Kurang':'Terkelola',
+    feedWarn?'Ikan tidak diberi makan selama '+S.daysSinceFed+' hari — perlu makanan setiap 1–4 hari':'Baik',
     feedWarn);
-  row('Heater', S.heater?'On throughout':'Off at some point',
-    heatWarn?'Temperature fell — bacteria slow significantly below 22°C':'Stable temperature throughout',
+  row('Heater', S.heater?'Menyala sepanjang waktu':'Mati di suatu titik',
+    heatWarn?'Suhu turun — bakteri melambat signifikan di bawah 22°C':'Suhu stabil sepanjang waktu',
     heatWarn);
-  row('Filter', S.filter?'On throughout':'Turned off',
-    filterWarn?'Without filter: bacteria lose primary surface area and oxygen':'Filter running — bacteria had full access to media',
+  row('Filter', S.filter?'Menyala sepanjang waktu':'Dimatikan',
+    filterWarn?'Tanpa filter: bakteri kehilangan area permukaan dan oksigen utamanya':'Filter berjalan — bakteri memiliki akses penuh ke media',
     filterWarn);
-  row('Bacteria starter', S.seeded?'Used':'Not used',
-    S.seeded?'Provided a head-start for colony seeding':null, false);
+  row('Starter bakteri', S.seeded?'Digunakan':'Tidak digunakan',
+    S.seeded?'Memberi awalan bagi penyemaian koloni':null, false);
   row('Nitrosomonas (A)', (S.bacA*100).toFixed(0)+'%',
-    S.bacA>.75?'Fully established':S.bacA>.4?'Partially established':'Still seeding', S.bacA<.5);
+    S.bacA>.75?'Sudah mandiri sepenuhnya':S.bacA>.4?'Mandiri sebagian':'Masih menyemai', S.bacA<.5);
   row('Nitrospira (B)', (S.bacB*100).toFixed(0)+'%',
-    S.bacB>.65?'Fully established':S.bacB>.3?'Growing':'Not yet active', S.bacB<.4);
+    S.bacB>.65?'Sudah mandiri sepenuhnya':S.bacB>.3?'Sedang tumbuh':'Belum aktif', S.bacB<.4);
 
   /* Opening — warm, honest, specific to outcome */
   var opening='';
   if(type==='won'){
-    var openings=['You did it — and more importantly, you did it the right way. The system had what it needed: time, stability, and a keeper who read it rather than fought it.','The cycle is complete. Every stable aquarium in the world got here through exactly this process. Now you know what it feels like from the inside.','Well done. Patience is the hardest part when something looks wrong. You practiced it here. That carries over into a real tank.'];
+    var openings=['Anda berhasil — dan yang lebih penting, Anda melakukannya dengan cara yang benar. Sistem ini punya apa yang dibutuhkannya: waktu, stabilitas, dan seorang penjaga yang membaca prosesnya alih-alih melawannya.','Siklus sudah selesai. Setiap akuarium stabil di dunia ini sampai ke titik ini lewat proses yang persis sama. Sekarang Anda tahu bagaimana rasanya dari dalam.','Kerja bagus. Kesabaran adalah bagian tersulit saat sesuatu terlihat salah. Anda telah melatihnya di sini. Itu akan terbawa ke akuarium sungguhan.'];
     opening=openings[S.day%3];
   } else {
-    var crashings=['This is not failure — it is data. The tank showed you something specific about what went wrong. That knowledge is worth more than a clean run.','Every experienced keeper has been here. What matters is understanding why. This report helps with that.','The cycle did not complete this time. Real tanks are more forgiving than simulations — and now you know what to watch for.'];
+    var crashings=['Ini bukan kegagalan — ini data. Akuarium menunjukkan sesuatu yang spesifik tentang apa yang salah. Pengetahuan itu lebih berharga daripada proses yang berjalan mulus.','Setiap penjaga akuarium berpengalaman pernah mengalami ini. Yang penting adalah memahami sebabnya. Laporan ini membantu untuk itu.','Siklus tidak selesai kali ini. Akuarium sungguhan lebih memaafkan dibanding simulasi — dan sekarang Anda tahu apa yang perlu diperhatikan.'];
     opening=crashings[S.day%3];
   }
 
   var advice='';
-  if(S.totalWc>6) advice='Water changes were frequent. The bacteria in your filter were not removed — but repeated large changes keep disrupting water chemistry and removing the ammonia the colony needs to grow on. Small, targeted changes only when parameters get dangerous is the better approach.';
-  else if(filterWarn) advice='The filter was off for part of the run. In a real aquarium the filter is where most bacteria live. Without it, the biological foundation of the cycle collapses.';
-  else if(feedWarn) advice='Feeding was missed for too long. Fish need food every 1-4 days even during a difficult cycle. Starvation compounds ammonia stress — the two together are harder to recover from.';
-  else if(heatWarn) advice='Temperature dropped significantly. Nitrospira — the dominant second-stage bacteria — are especially cold-sensitive — below 22\u00b0C they slow dramatically. A reliable heater is one of the best investments in a new tank.';
-  else if(type==='won'&&S.totalWc<=2) advice='Remarkably clean. Few changes, stable equipment, patient observation. In a real tank this approach produces the fastest and least stressful cycles.';
-  else advice=type==='won'?'Everything was managed thoughtfully. Stable temperature, filter running, measured water changes. This is what good cycling looks like.':'Keep the filter running, maintain 25-27\u00b0C, and resist large water changes during the early weeks. Those three things account for most cycling problems.';
+  if(S.totalWc>6) advice='Pergantian air terlalu sering. Bakteri di filter Anda tidak terhilangkan — tapi pergantian besar berulang terus mengganggu kimia air dan menghilangkan amonia yang dibutuhkan koloni untuk tumbuh. Pergantian kecil dan tepat sasaran hanya saat parameter berbahaya adalah pendekatan yang lebih baik.';
+  else if(filterWarn) advice='Filter mati selama sebagian proses. Di akuarium sungguhan, filter adalah tempat sebagian besar bakteri hidup. Tanpanya, fondasi biologis siklus akan runtuh.';
+  else if(feedWarn) advice='Pemberian makan terlewat terlalu lama. Ikan perlu makan setiap 1–4 hari bahkan selama siklus yang sulit. Kelaparan memperparah stres amonia — keduanya bersama lebih sulit dipulihkan.';
+  else if(heatWarn) advice='Suhu turun signifikan. Nitrospira — bakteri tahap kedua yang dominan — sangat peka terhadap suhu dingin — di bawah 22°C mereka melambat drastis. Heater yang andal adalah salah satu investasi terbaik di akuarium baru.';
+  else if(type==='won'&&S.totalWc<=2) advice='Sangat bersih. Sedikit pergantian, perangkat stabil, pengamatan yang sabar. Di akuarium sungguhan, pendekatan ini menghasilkan siklus tercepat dan paling minim stres.';
+  else advice=type==='won'?'Semuanya dikelola dengan cermat. Suhu stabil, filter berjalan, pergantian air terukur. Beginilah siklus yang baik terlihat.':'Jaga filter tetap berjalan, pertahankan suhu 25–27°C, dan hindari pergantian air besar selama minggu-minggu awal. Tiga hal itu menyebabkan sebagian besar masalah siklus.';
 
   if(verdict){
     verdict.innerHTML='<em class="rpt-coach-lead">'+opening+'</em><span class="rpt-coach-body">'+advice+'</span>';
@@ -2253,17 +2253,17 @@ function reset(){
   running=false;subCount=0;
   if(subTimer){clearInterval(subTimer);subTimer=null;}
   S={day:1,nh3:0,no2:0,no3:0,fish:0,plants:0,ammSource:0,bacA:0,bacB:0,cycleOk:false,dead:false,won:false,stress:0,wc:0,totalWc:0,fishless:CFG.method==='fishless',fishHealth:100,daysSinceFed:0,feedCount:0,spikeDay:0,spikeType:'',warned:{},heater:true,filter:true,seeded:false,temp:26,light:2,algae:0,stableDays:0,prevNh3:0,prevNo2:0,prevNo3:0};
-  document.getElementById('log').innerHTML='<div class="le"><span class="ld">Day 1</span><span>Tank set up. Ready to begin cycling.</span></div>';
+  document.getElementById('log').innerHTML='<div class="le"><span class="ld">Hari 1</span><span>Akuarium sudah diatur. Siap untuk memulai siklus.</span></div>';
   ['eq-heater','eq-filter','eq-light'].forEach(function(id){var b=document.getElementById(id);if(b){b.classList.add('eq-on');b.classList.remove('eq-used');b.disabled=false;}});
   var seedBtn=document.getElementById('act-seed');if(seedBtn){seedBtn.classList.remove('ab-used');seedBtn.disabled=false;}
   document.getElementById('eq-temp').textContent='26°C';
-  var lbl=document.getElementById('eq-light-lbl');if(lbl)lbl.textContent='Med';
+  var lbl=document.getElementById('eq-light-lbl');if(lbl)lbl.textContent='Sedang';
   document.getElementById('tfish').innerHTML='';
   document.getElementById('tplants').innerHTML='';
   document.getElementById('ov-end').classList.add('hide');
   document.getElementById('ov-setup').classList.remove('hide');
   document.getElementById('ov-setup').style.display='';
-  var pp=document.getElementById('btn-pp');pp.textContent='⏸ Pause';pp.classList.remove('paused');pp.disabled=false;pp.style.opacity='';
+  var pp=document.getElementById('btn-pp');pp.textContent='⏸ Jeda';pp.classList.remove('paused');pp.disabled=false;pp.style.opacity='';
   /* Apply starting plants if selected */
   if(CFG.plants==='yes'){S.plants=2;}
   renderTime(0);render();
@@ -2283,9 +2283,9 @@ function setupOption(groupId, val) {
     var icon=document.getElementById('act-source-icon');
     var name=document.getElementById('act-source-name');
     if(icon)icon.textContent=val==='fishless'?'🧪':'🐠';
-    if(name)name.textContent=val==='fishless'?'Add ammonia':'Add fish';
+    if(name)name.textContent=val==='fishless'?'Tambah amonia':'Tambah ikan';
     /* Feed button label */
-    document.getElementById('act-feed').querySelector('.ah').textContent=val==='fishless'?'More ammonia':'Adds ammonia';
+    document.getElementById('act-feed').querySelector('.ah').textContent=val==='fishless'?'Amonia lagi':'Menambah amonia';
   }
   if(groupId==='opt-plants') CFG.plants=val;
   updateExpected();
@@ -2297,12 +2297,12 @@ function updateExpected(){
   var wkBase=baseWeeks[sz]?baseWeeks[sz][mt==='fishless'?'fishless':'fish']:'3–4';
   var facLabel='';
   var wk=wkBase+facLabel;
-  var szLabel={small:'small',medium:'medium',large:'large'}[sz];
-  var mtLabel=mt==='fishless'?'fishless cycling':'fish-in cycling';
-  var plNote=pl==='yes'?'Plants will help keep nitrate manageable.':'Without plants, monitor nitrate more closely.';
-  var welfareNote=mt==='fishless'?' No animals will be harmed in the process.':'';
+  var szLabel={small:'kecil',medium:'sedang',large:'besar'}[sz];
+  var mtLabel=mt==='fishless'?'siklus tanpa ikan':'siklus dengan ikan';
+  var plNote=pl==='yes'?'Tanaman akan membantu menjaga nitrat tetap terkendali.':'Tanpa tanaman, pantau nitrat lebih ketat.';
+  var welfareNote=mt==='fishless'?' Tidak ada hewan yang akan dirugikan dalam prosesnya.':'';
   document.getElementById('expected-text').innerHTML=
-    'With a <strong>'+szLabel+' tank</strong> and <strong>'+mtLabel+'</strong> — expect the cycle to complete in roughly <strong>'+wk+' weeks</strong>.'+welfareNote+' Ammonia peaks first, then nitrite, then both fall as bacteria establish. '+plNote;
+    'Dengan <strong>akuarium '+szLabel+'</strong> dan <strong>'+mtLabel+'</strong> — siklus diperkirakan selesai dalam kurang lebih <strong>'+wk+' minggu</strong>.'+welfareNote+' Amonia memuncak lebih dulu, lalu nitrit, kemudian keduanya turun seiring bakteri berkembang. '+plNote;
 }
 
 /* Setup option clicks */
@@ -2319,7 +2319,7 @@ function beginGame(){
   var srcIcon=document.getElementById('act-source-icon');
   var srcName=document.getElementById('act-source-name');
   if(srcIcon)srcIcon.textContent=S.fishless?'🧪':'🐠';
-  if(srcName)srcName.textContent=S.fishless?'Add ammonia':'Add fish';
+  if(srcName)srcName.textContent=S.fishless?'Tambah amonia':'Tambah ikan';
   /* Disable feed immediately for fishless */
   var feedBtn=document.getElementById('act-feed');
   if(feedBtn)feedBtn.disabled=S.fishless;
@@ -2328,7 +2328,7 @@ function beginGame(){
   initFishCanvas();animFish();
   render();updateGuide();
   setTimeout(function(){
-    addLog('Tank ready. Heater, filter, and light are on by default — tap to toggle. Watch the bacteria bar as the cycle progresses. The log will explain what is happening.','');
+    addLog('Akuarium siap. Heater, filter, dan lampu menyala secara default — ketuk untuk mengubah. Perhatikan bilah bakteri seiring berjalannya siklus. Log akan menjelaskan apa yang sedang terjadi.','');
   },400);
 }
 
@@ -2344,7 +2344,7 @@ document.getElementById('btn-brief-go').addEventListener('click',function(){
 
 document.getElementById('btn-pp').addEventListener('click',function(){
   running=!running;
-  var btn=this;btn.textContent=running?'⏸ Pause':'▶ Resume';btn.classList.toggle('paused',!running);
+  var btn=this;btn.textContent=running?'⏸ Jeda':'▶ Lanjutkan';btn.classList.toggle('paused',!running);
 });
 document.getElementById('btn-restart').addEventListener('click',function(){
   if(subTimer){clearInterval(subTimer);subTimer=null;}
@@ -2379,24 +2379,24 @@ render();renderTime(0);
 <script>window.__arI18n={basePath:'articles/tank-simulator',avail:["id","ja"]};</script>
 <!-- ── BOTTOM NAV (PWA) ── -->
 <nav class="bnav" id="bnav" aria-label="Main navigation">
-  <a href="/" class="bnav-item" aria-label="Home">
+  <a href="/id/" class="bnav-item" aria-label="Beranda">
     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3 9.5L11 3l8 6.5V19a1 1 0 01-1 1H14v-5h-4v5H4a1 1 0 01-1-1V9.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="none"/></svg>
-    <span>Home</span>
+    <span>Beranda</span>
   </a>
-  <a href="/reading" class="bnav-item" aria-label="Reading">
+  <a href="/id/reading" class="bnav-item" aria-label="Panduan">
     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="4" y="3" width="14" height="16" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/><line x1="7.5" y1="8" x2="14.5" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="7.5" y1="11.5" x2="14.5" y2="11.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-    <span>Reading</span>
+    <span>Panduan</span>
   </a>
-  <a href="/tools" class="bnav-item active" aria-current="page" aria-label="Tools">
+  <a href="/id/?p=tools" class="bnav-item active" aria-current="page" aria-label="Alat">
     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M8 3v5.5L4.5 15A2 2 0 006.4 18h9.2a2 2 0 001.9-3L14 8.5V3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="7" y1="3" x2="15" y2="3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="9.5" cy="13.5" r="1" fill="currentColor" opacity=".6"/><circle cx="13" cy="15" r=".8" fill="currentColor" opacity=".45"/></svg>
-    <span>Tools</span>
+    <span>Alat</span>
   </a>
-  <a href="/journal" class="bnav-item" aria-label="Keeper's Log">
+  <a href="/id/?p=journal" class="bnav-item" aria-label="Catatan Penjaga">
     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="2.5" y="7" width="17" height="12" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/><line x1="2.5" y1="11" x2="19.5" y2="11" stroke="currentColor" stroke-width="1" opacity=".3"/><path d="M6 9.5 C7 8 8 8 9 9.5 C10 11 11 11 12 9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".65"/><line x1="15" y1="13.5" x2="15" y2="17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".6"/><line x1="17" y1="14.5" x2="17" y2="17" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity=".45"/><line x1="7" y1="3" x2="7" y2="7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".5"/><line x1="15" y1="3" x2="15" y2="7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".5"/></svg>
-    <span>Log</span>
+    <span>Catatan</span>
   </a>
 </nav>
-<button id="rh-fab" class="rh-fab" aria-label="Chat with Rhyssa" aria-expanded="false">
+<button id="rh-fab" class="rh-fab" aria-label="Obrolan dengan Rhyssa" aria-expanded="false">
   <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
     <circle cx="11" cy="11" r="7.5" stroke="currentColor" stroke-width="1.4" fill="none"/>
     <circle cx="11" cy="11" r="3.5" stroke="currentColor" stroke-width="1.1" fill="none" opacity=".55"/>
@@ -2408,38 +2408,38 @@ render();renderTime(0);
   <span class="rh-fab-lbl">Rhyssa</span>
 </button>
 <div id="rh-backdrop" class="rh-backdrop"></div>
-<div id="rh-sheet" class="rh-sheet" role="dialog" aria-label="Chat with Rhyssa" aria-modal="true" aria-hidden="true">
+<div id="rh-sheet" class="rh-sheet" role="dialog" aria-label="Obrolan dengan Rhyssa" aria-modal="true" aria-hidden="true">
   <div class="rh-sheet-head">
-    <button class="rh-sheet-back" id="rh-sheet-cls" aria-label="Close chat">
+    <button class="rh-sheet-back" id="rh-sheet-cls" aria-label="Tutup obrolan">
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M6 9L11 14L16 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <div class="rh-sheet-title-group">
       <span class="rh-sheet-name">Rhyssa</span>
-      <span class="rh-sheet-sub">Aquarium Companion</span>
+      <span class="rh-sheet-sub">Pendamping Akuarium</span>
     </div>
-    <button class="rh-sheet-back" id="rh-sheet-clear" aria-label="Reset conversation" title="Reset conversation">
+    <button class="rh-sheet-back" id="rh-sheet-clear" aria-label="Reset percakapan" title="Reset percakapan">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.5 4.5l1 10h9l1-10" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/><line x1="2" y1="4.5" x2="16" y2="4.5" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/><path d="M6.5 4.5V3.5h5v1" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/></svg>
     </button>
   </div>
-  <div class="rh-sheet-thread" id="rh-sheet-thread" role="log" aria-live="polite" aria-label="Conversation with Rhyssa">
+  <div class="rh-sheet-thread" id="rh-sheet-thread" role="log" aria-live="polite" aria-label="Percakapan dengan Rhyssa">
     <div class="rh-sheet-welcome" id="rh-sheet-welcome">
       <svg width="36" height="36" viewBox="0 0 22 22" fill="none" aria-hidden="true" style="opacity:.8"><circle cx="11" cy="11" r="7.5" stroke="rgba(61,214,232,.55)" stroke-width="1.4" fill="none"/><circle cx="11" cy="11" r="3.5" stroke="rgba(61,214,232,.3)" stroke-width="1.1" fill="none"/><circle cx="11" cy="11" r="1.2" fill="rgba(61,214,232,.75)"/><line x1="11" y1="3.5" x2="11" y2="1.5" stroke="rgba(61,214,232,.3)" stroke-width="1.3" stroke-linecap="round"/><line x1="3.5" y1="11" x2="1.5" y2="11" stroke="rgba(61,214,232,.3)" stroke-width="1.3" stroke-linecap="round"/><line x1="20.5" y1="11" x2="18.5" y2="11" stroke="rgba(61,214,232,.3)" stroke-width="1.3" stroke-linecap="round"/></svg>
-      <p class="rh-sheet-welcome-txt">Tell me what you see — water, behaviour, anything that changed — and we can read it together before we fix anything.</p>
-      <p style="font-size:var(--fs-2xs);color:var(--th-ink-5);text-align:center;margin:.5rem 0 0;line-height:1.6">Same Rhyssa — also on <a href="https://chatgpt.com/g/g-6a09401c8ef48191b18deb53565a7fe1-rhyssa-aquarium-companion" target="_blank" rel="noopener" style="color:var(--th-accent);text-decoration:none">ChatGPT ↗</a> if you prefer.</p>
+      <p class="rh-sheet-welcome-txt">Ceritakan apa yang Anda lihat — air, perilaku, apa pun yang berubah — dan kita bisa memahaminya bersama sebelum memperbaiki apa pun.</p>
+      <p style="font-size:var(--fs-2xs);color:var(--th-ink-5);text-align:center;margin:.5rem 0 0;line-height:1.6">Rhyssa yang sama — juga ada di <a href="https://chatgpt.com/g/g-6a09401c8ef48191b18deb53565a7fe1-rhyssa-aquarium-companion" target="_blank" rel="noopener" style="color:var(--th-accent);text-decoration:none">ChatGPT ↗</a> jika Anda lebih suka.</p>
     </div>
   </div>
   <div class="rh-sheet-foot">
     <form class="rh-sheet-form" id="rh-sheet-form" autocomplete="off">
-      <textarea id="rh-sheet-inp" class="rh-sheet-inp" placeholder="Ask about your tank…" rows="1" maxlength="1200" aria-label="Message to Rhyssa"></textarea>
-      <button type="submit" class="rh-sheet-send" id="rh-sheet-send" aria-label="Send">
+      <textarea id="rh-sheet-inp" class="rh-sheet-inp" placeholder="Tanyakan tentang akuarium Anda…" rows="1" maxlength="1200" aria-label="Pesan untuk Rhyssa"></textarea>
+      <button type="submit" class="rh-sheet-send" id="rh-sheet-send" aria-label="Kirim">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M15 9H3M15 9L9.5 4M15 9L9.5 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
     </form>
-    <p class="rh-sheet-note">AI can be wrong — for fish emergencies, consult a specialist</p>
+    <p class="rh-sheet-note">AI bisa saja salah — untuk keadaan darurat pada ikan, konsultasikan dengan spesialis</p>
   </div>
 </div>
 <!-- ── LAB NAV SHEET ── -->
-<script src="/js/ar-page.js?v=53" defer></script>
+<script src="/js/ar-page.js?v=52" defer></script>
 <script>
 (function(){
   var btn = document.getElementById('tb-settings-btn');
@@ -2451,6 +2451,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=53" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
 </body>
 </html>

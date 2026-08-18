@@ -324,7 +324,15 @@
       var pParam = params.get('p');
       var id = (pParam && pageMap['/' + pParam]) ? pageMap['/' + pParam] : pageMap[location.pathname] || 'home';
       if (pParam) {
-        var cleanPath = '/' + pParam;
+        /* Preserve the locale prefix (/id/, /ja/) when cleaning the URL —
+           this used to always rewrite to the bare English path ("/tools"),
+           so a ja/id reader landing here via a "?p=" link (e.g. the
+           Settings language switcher preserving their current tab) would
+           silently lose their locale from the address bar, then bounce to
+           English on refresh. Bug found 2026-08-18 (user video). */
+        var pathParts = location.pathname.replace(/^\/+|\/+$/g, '').split('/').filter(Boolean);
+        var localePrefix = (pathParts.length && ['id', 'ja'].indexOf(pathParts[0]) !== -1) ? '/' + pathParts[0] : '';
+        var cleanPath = localePrefix + '/' + pParam;
         try { history.replaceState({ page: id }, '', cleanPath); } catch (e) {}
       }
       var active = document.querySelector('.page.active');

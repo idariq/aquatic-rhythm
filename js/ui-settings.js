@@ -46,6 +46,9 @@
     openBtn.setAttribute('aria-expanded', 'true');
     lockBodyScroll();
     try { syncToggles(); } catch (e) {}
+    /* Re-render so the language links carry whichever SPA tab is
+       currently open, not just the tab that was active on page load. */
+    try { renderLangSection(); } catch (e) {}
   }
 
   function closePanel() {
@@ -70,9 +73,14 @@
   });
 
   /* ── Language ──
-     The homepage exists in all four locales, so unlike article/reading
+     The homepage exists in all three locales, so unlike article/reading
      pages there's no "untranslated" case to fall back from — every locale
-     is always available. */
+     is always available. Switching language used to always land on that
+     locale's bare root regardless of which SPA tab (Reading/Tools/
+     Companion/...) was open — bug found 2026-08-18 (user video). Carry
+     the current tab across via the same "?p=<page>" query the SPA router
+     already reads on load (js/ui.js), from document.body's
+     data-active-page (set by that same router on every tab switch). */
   var AR_LANGS = [
     { code: 'en', label: 'English' },
     { code: 'id', label: 'Bahasa Indonesia' },
@@ -82,11 +90,13 @@
     var list = document.getElementById('ar-stg-lang-list');
     if (!list) return;
     var cur = (document.documentElement.getAttribute('lang') || 'en').split('-')[0];
+    var activePage = document.body.getAttribute('data-active-page');
+    var suffix = (activePage && activePage !== 'home') ? '?p=' + activePage : '';
     list.innerHTML = AR_LANGS.map(function (l) {
       if (l.code === cur) {
         return '<span class="ar-stg-lang-opt active" aria-current="page">' + l.label + '</span>';
       }
-      var url = l.code === 'en' ? '/' : '/' + l.code;
+      var url = (l.code === 'en' ? '/' : '/' + l.code + '/') + suffix;
       return '<a class="ar-stg-lang-opt" href="' + url + '">' + l.label + '</a>';
     }).join('');
   }

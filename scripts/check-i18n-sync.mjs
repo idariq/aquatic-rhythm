@@ -4,7 +4,7 @@
  * committed on disk.
  *
  * This is the guard against the failure mode discovered 2026-08-17: HTML
- * under ms/id/ja/articles/ got hand-edited directly (naturalness fixes,
+ * under id/ja/articles/ got hand-edited directly (naturalness fixes,
  * de-jargoning, completeness fixes) across several PRs while
  * translations/*.json — the actual source build-i18n.mjs reads from — was
  * never updated to match. The drift was invisible until someone ran the
@@ -20,7 +20,7 @@ import { execSync } from 'child_process';
 import path from 'path';
 
 const ROOT = path.join(import.meta.dirname, '..');
-const WATCHED_DIRS = ['ms/articles', 'id/articles', 'ja/articles'];
+const WATCHED_DIRS = ['id/articles', 'ja/articles'];
 
 function run(cmd) {
   return execSync(cmd, { cwd: ROOT, encoding: 'utf8' });

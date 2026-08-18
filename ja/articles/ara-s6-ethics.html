@@ -2,12 +2,12 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>倫理と生きた枠組み — ARAフレームワーク · Aquatic Rhythm</title>
 <meta name="description" content="ARAが扱わないこと、心理的な基盤、そして「生きた枠組み」という姿勢。">
 <link rel="canonical" href="https://aquaticrhythm.com/ja/articles/ara-s6-ethics">
 <link rel="alternate" hreflang="en" href="https://aquaticrhythm.com/articles/ara-s6-ethics">
-<link rel="alternate" hreflang="ms" href="https://aquaticrhythm.com/ms/articles/ara-s6-ethics">
 <link rel="alternate" hreflang="id" href="https://aquaticrhythm.com/id/articles/ara-s6-ethics">
 <link rel="alternate" hreflang="ja" href="https://aquaticrhythm.com/ja/articles/ara-s6-ethics">
 <link rel="alternate" hreflang="x-default" href="https://aquaticrhythm.com/articles/ara-s6-ethics">
@@ -56,70 +56,70 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=36">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="/css/ar-page.css?v=40">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
-:root{
-  --abyss:#030b09;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans','Noto Sans JP',system-ui,sans-serif;
+:root{--fs-3xs:.5rem;--fs-2xs:.65rem;--fs-xs:.7rem;--fs-sm:.8rem;--fs-sm-md:.85rem;--fs-md:.9rem;--fs-base:1rem;--fs-md-lg:1.1rem;--fs-lg:1.35rem;--fs-xl:1.6rem;--fs-2xl:2.2rem;--fs-3xl:2.8rem;--fs-4xl:3rem;--fs-5xl:3.5rem;
+  --abyss:#030b09;--serif:'Fraunces',Georgia,serif;--sans:'Work Sans',system-ui,sans-serif;
   --accent:#3DD6E8;--ease:cubic-bezier(0.19,1,0.22,1);
 }
-body{font-family:var(--sans);background:var(--abyss);color:rgba(235,240,236,.94);overflow-x:hidden;line-height:1.72}
-body::before{content:'';position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#052535 0%,#073040 18%,#062a38 38%,#041e28 58%,#030f18 78%,#020810 100%)}
+body{font-family:var(--sans);background:var(--th-bg);color:var(--th-ink);overflow-x:hidden;line-height:1.72}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-water)}
 
 /* ── SECTION ARTICLE STYLES ── */
 .ara-art-back{padding:1.4rem clamp(1.5rem,5vw,3rem) 0;max-width:680px;margin:0 auto}
-.ara-art-back-link{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(139,189,210,.55);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:color .2s}
-.ara-art-back-link:hover{color:rgba(61,214,232,.8)}
+.ara-art-back-link{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:color .2s}
+.ara-art-back-link:hover{color:var(--th-accent)}
 .ara-art-header{max-width:680px;margin:0 auto;padding:3rem clamp(1.5rem,5vw,3rem) 3.5rem}
-.ara-art-eyebrow{display:block;font-size:.66rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(61,214,232,.5);margin-bottom:1.2rem}
-.ara-art-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,4.5vw,3rem);color:rgba(235,240,236,.94);line-height:1.1;margin-bottom:1rem}
-.ara-art-title em{font-style:italic;color:rgba(61,214,232,.78)}
-.ara-art-desc{font-family:var(--serif);font-style:italic;font-size:clamp(.92rem,1.4vw,1.05rem);font-weight:300;color:rgba(235,240,236,.48);line-height:1.85}
+.ara-art-eyebrow{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--th-accent);margin-bottom:1.2rem}
+.ara-art-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,4.5vw,3rem);color:var(--th-ink);line-height:1.1;margin-bottom:1rem}
+.ara-art-title em{font-style:italic;color:var(--th-accent)}
+.ara-art-desc{font-family:var(--serif);font-style:italic;font-size:clamp(.92rem,1.4vw,1.05rem);font-weight:300;color:var(--th-ink-3);line-height:1.85}
 .ara-art-body{max-width:680px;margin:0 auto;padding:0 clamp(1.5rem,5vw,3rem) 5rem}
 .ara-art-mod{padding-top:2.8rem}
-.ara-art-mod+.ara-art-mod{margin-top:2.4rem;border-top:1px solid rgba(235,240,236,.055);padding-top:2.8rem}
+.ara-art-mod+.ara-art-mod{margin-top:2.4rem;border-top:1px solid var(--th-line);padding-top:2.8rem}
 .ara-art-mod-eyebrow{display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem}
-.ara-art-mod-pos{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(61,214,232,.36)}
-.ara-art-mod-tag{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(235,240,236,.26)}
-.mod-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.55rem,3.5vw,2.2rem);color:rgba(235,240,236,.94);line-height:1.12;margin-bottom:1.2rem}
-.mod-title em{font-style:italic;color:rgba(61,214,232,.78)}
-.mod-body p{font-size:1rem;font-weight:300;color:rgba(255,255,255,.68);line-height:1.95;margin-bottom:1.2rem}
+.ara-art-mod-pos{font-size:var(--fs-2xs);letter-spacing:.2em;text-transform:uppercase;color:var(--th-accent)}
+.ara-art-mod-tag{font-size:var(--fs-2xs);letter-spacing:.18em;text-transform:uppercase;color:var(--th-ink-4)}
+.mod-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,4.5vw,3rem);color:var(--th-ink);line-height:1.12;margin-bottom:1.2rem}
+.mod-title em{font-style:italic;color:var(--th-accent)}
+.mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}
-.mod-body strong{font-weight:400;color:rgba(235,240,236,.88)}
-.mod-body em{font-style:italic;color:rgba(235,240,236,.56)}
-.pq{margin:2.2rem 0;padding:1.5rem 1.8rem;border-left:2px solid rgba(61,214,232,.44);background:rgba(58,110,140,.07)}
-.pq p{font-family:var(--serif);font-style:italic;font-size:clamp(.95rem,1.6vw,1.1rem);color:rgba(235,240,236,.74);line-height:1.85;margin:0}
-.hn{margin:1.8rem 0;padding:1.3rem 1.6rem;border:1px solid rgba(139,189,210,.14);background:rgba(255,255,255,.04);position:relative}
-.hn-label{position:absolute;top:-.48rem;left:.9rem;background:rgba(3,11,9,.95);padding:0 .4rem;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(139,189,210,.5)}
-.hn p{font-size:.9rem;font-weight:300;color:rgba(235,240,236,.62);line-height:1.85;margin-bottom:.55rem}
+.mod-body strong{font-weight:400;color:var(--th-ink)}
+.mod-body em{font-style:italic;color:var(--th-ink-3)}
+.pq{margin:2.2rem 0;padding:1.5rem 1.8rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
+.pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
+.hn{margin:1.8rem 0;padding:1.3rem 1.6rem;border:1px solid var(--th-line);background:var(--th-surface-2);position:relative}
+.hn-label{position:absolute;top:-.48rem;left:.9rem;background:var(--th-bg);padding:0 .4rem;font-size:var(--fs-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4)}
+.hn p{font-size:var(--fs-md);font-weight:300;color:var(--th-ink-2);line-height:1.85;margin-bottom:.55rem}
 .hn p:last-child{margin-bottom:0}
-.domain-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:1px;background:rgba(139,189,210,.08);border:1px solid rgba(139,189,210,.08);margin:1.6rem 0}
-.domain-cell{padding:1.4rem 1.6rem;background:rgba(3,11,9,.82)}
-.domain-cell-name{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(61,214,232,.6);margin-bottom:.5rem}
-.domain-cell-q{font-size:.88rem;font-weight:300;color:rgba(235,240,236,.62);line-height:1.8}
-.rhythm-signals{display:flex;flex-direction:column;gap:0;margin:1.8rem 0;border:1px solid rgba(139,189,210,.1)}
-.rs-item{display:grid;grid-template-columns:5rem 1fr;gap:1rem;padding:.9rem 1.2rem;border-bottom:1px solid rgba(139,189,210,.07);align-items:start}
+.domain-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:1px;background:var(--th-line);border:1px solid var(--th-line);margin:1.6rem 0}
+.domain-cell{padding:1.4rem 1.6rem;background:var(--th-surface-2)}
+.domain-cell-name{font-size:var(--fs-xs);letter-spacing:.18em;text-transform:uppercase;color:var(--th-accent);margin-bottom:.5rem}
+.domain-cell-q{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-2);line-height:1.8}
+.rhythm-signals{display:flex;flex-direction:column;gap:0;margin:1.8rem 0;border:1px solid var(--th-line)}
+.rs-item{display:grid;grid-template-columns:5rem 1fr;gap:1rem;padding:.9rem 1.2rem;border-bottom:1px solid var(--th-line);align-items:start}
 .rs-item:last-child{border-bottom:none}
-.rs-item-label{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(61,214,232,.45);padding-top:.15rem}
-.rs-item-text{font-size:.88rem;font-weight:300;color:rgba(235,240,236,.62);line-height:1.75}
+.rs-item-label{font-size:var(--fs-2xs);letter-spacing:.18em;text-transform:uppercase;color:var(--th-accent);padding-top:.15rem}
+.rs-item-text{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-2);line-height:1.75}
 .signal-list{display:flex;flex-direction:column;gap:.5rem;margin:1.6rem 0}
-.signal-item{padding:1.2rem 1.4rem;border:1px solid rgba(139,189,210,.1);background:rgba(5,12,10,.4)}
-.signal-name{font-size:.7rem;font-weight:400;letter-spacing:.06em;color:rgba(235,240,236,.88);margin-bottom:.35rem}
-.signal-body{font-size:.85rem;font-weight:300;color:rgba(235,240,236,.55);line-height:1.75;margin-bottom:.4rem}
-.signal-read{font-size:.82rem;font-weight:300;color:rgba(157,191,154,.7);line-height:1.7;border-left:2px solid rgba(157,191,154,.3);padding-left:.8rem;margin-top:.4rem}
-.ara-art-secnav{display:flex;justify-content:space-between;align-items:center;padding:2.5rem clamp(1.5rem,5vw,3rem);max-width:680px;margin:0 auto;border-top:1px solid rgba(235,240,236,.07)}
-.ara-art-secnav a{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(139,189,210,.6);text-decoration:none;transition:color .2s}
-.ara-art-secnav a:hover{color:rgba(61,214,232,.85)}
+.signal-item{padding:1.2rem 1.4rem;border:1px solid var(--th-line);background:var(--th-surface-2)}
+.signal-name{font-size:var(--fs-xs);font-weight:400;letter-spacing:.06em;color:var(--th-ink);margin-bottom:.35rem}
+.signal-body{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-3);line-height:1.75;margin-bottom:.4rem}
+.signal-read{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-accent);line-height:1.7;border-left:2px solid var(--th-accent-border);padding-left:.8rem;margin-top:.4rem}
+.ara-art-secnav{display:flex;justify-content:space-between;align-items:center;padding:2.5rem clamp(1.5rem,5vw,3rem);max-width:680px;margin:0 auto;border-top:1px solid var(--th-line)}
+.ara-art-secnav a{font-size:var(--fs-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .2s}
+.ara-art-secnav a:hover{color:var(--th-accent)}
 .ara-art-secnav-empty{flex:1}
 .ara-art-hub-cta{max-width:680px;margin:0 auto;padding:0 clamp(1.5rem,5vw,3rem) 3rem}
-.ara-art-hub-cta-link{display:block;padding:1.4rem 1.6rem;border:1px solid rgba(139,189,210,.12);background:rgba(5,12,10,.4);text-decoration:none;transition:border-color .22s,background .22s;-webkit-tap-highlight-color:transparent}
-.ara-art-hub-cta-link:hover{border-color:rgba(61,214,232,.28);background:rgba(61,214,232,.04)}
-.ara-art-hub-cta-eyebrow{display:block;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(235,240,236,.28);margin-bottom:.45rem}
-.ara-art-hub-cta-body{display:block;font-family:var(--serif);font-size:clamp(.95rem,1.5vw,1.08rem);font-weight:300;color:rgba(139,189,210,.65);line-height:1.4}
-.ara-art-hub-cta-link:hover .ara-art-hub-cta-body{color:rgba(61,214,232,.82)}
+.ara-art-hub-cta-link{display:block;padding:1.4rem 1.6rem;border:1px solid var(--th-line);background:var(--th-surface-2);text-decoration:none;transition:border-color .22s,background .22s;-webkit-tap-highlight-color:transparent}
+.ara-art-hub-cta-link:hover{border-color:var(--th-accent-border);background:var(--th-accent-soft)}
+.ara-art-hub-cta-eyebrow{display:block;font-size:var(--fs-2xs);letter-spacing:.2em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.45rem}
+.ara-art-hub-cta-body{display:block;font-family:var(--serif);font-size:clamp(.95rem,1.5vw,1.08rem);font-weight:300;color:var(--th-ink-3);line-height:1.4}
+.ara-art-hub-cta-link:hover .ara-art-hub-cta-body{color:var(--th-accent)}
 </style>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet"></noscript>
@@ -136,8 +136,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:linear-grad
       <path d="M8.2 15 L6 12.5 L6 17.5 Z" fill="rgba(40,120,150,0.78)"/>
       <path d="M2 15 C5 8.5 9 8.5 12 15 C15 21.5 19 21.5 22 15" stroke="rgba(61,214,232,0.96)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
       <circle cx="14.8" cy="14.2" r=".9" fill="rgba(255,255,255,0.96)"/>
-      <text x="32" y="13" font-family="DM Sans,system-ui,sans-serif" font-size="6" font-weight="300" fill="rgba(255,255,255,.42)" letter-spacing="2.5">AQUATIC</text>
-      <text x="32" y="27" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="300" font-style="italic" fill="rgba(255,255,255,.82)">Rhythm</text>
+      <text x="32" y="13" font-family="Work Sans,system-ui,sans-serif" font-size="6" font-weight="300" fill="var(--th-ink-4)" letter-spacing="2.5">AQUATIC</text>
+      <text x="32" y="27" font-family="Fraunces,Georgia,serif" font-size="17" font-weight="300" font-style="italic" fill="var(--th-ink)">Rhythm</text>
     </svg>
   </a>
   <ul class="nlinks">
@@ -279,7 +279,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:linear-grad
 
 </main>
 
-<script src="/js/content-trust.js?v=36"></script>
+<script src="/js/content-trust.js?v=40"></script>
 <!-- ── BOTTOM NAV (PWA) ── -->
 <nav class="bnav" id="bnav" aria-label="Main navigation">
   <a href="/" class="bnav-item" aria-label="ホーム">
@@ -299,7 +299,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:linear-grad
     <span>記録</span>
   </a>
 </nav>
-<script src="/js/ar-page.js?v=36" defer></script>
+<script src="/js/ar-page.js?v=40" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -307,6 +307,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=36" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=40" defer></script>
 </body>
 </html>

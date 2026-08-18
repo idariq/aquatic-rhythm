@@ -2,8 +2,8 @@
  * Generates localized HTML files from English source articles + translation JSON.
  *
  * Usage:
- *   node scripts/build-i18n.mjs --lang ms [--slug adding-new-fish]
- *   node scripts/build-i18n.mjs --lang ms          (builds all translated articles)
+ *   node scripts/build-i18n.mjs --lang id [--slug adding-new-fish]
+ *   node scripts/build-i18n.mjs --lang id          (builds all translated articles)
  *   node scripts/build-i18n.mjs --all              (builds all languages)
  *   node scripts/build-i18n.mjs --patch-english    (adds hreflang to English source files)
  *
@@ -19,7 +19,7 @@ const ROOT       = path.join(import.meta.dirname, '..');
 const ART_DIR    = path.join(ROOT, 'articles');
 const TRANS_DIR  = path.join(ROOT, 'translations');
 const BASE_URL   = 'https://aquaticrhythm.com';
-const LANGUAGES  = ['ms', 'id', 'ja'];
+const LANGUAGES  = ['id', 'ja'];
 
 const args      = process.argv.slice(2);
 const langIdx   = args.indexOf('--lang');
@@ -34,20 +34,6 @@ const patchEn   = args.includes('--patch-english');
 // content). Applied uniformly by buildArticle() below. ─────────────────────
 
 const NAV_LABELS = {
-  ms: {
-    logoAria: 'Aquatic Rhythm — penjagaan ekologi untuk akuarium kecil',
-    home: 'Laman Utama',
-    reading: 'Panduan',
-    companion: 'Rakan',
-    companionMobile: 'Rakan AI',
-    tools: 'Alat',
-    toolsMobile: 'Makmal &amp; Alat',
-    log: 'Catatan',
-    about: 'Tentang',
-    privacy: 'Dasar Privasi',
-    terms: 'Terma Penggunaan',
-    menu: 'Menu'
-  },
   id: {
     logoAria: 'Aquatic Rhythm — perawatan ekologis untuk akuarium kecil',
     home: 'Beranda',
@@ -641,6 +627,6 @@ if (patchEn) {
   buildLang(langArg);
   console.log('Done.');
 } else {
-  console.error('Usage:\n  node scripts/build-i18n.mjs --lang ms [--slug <slug>]\n  node scripts/build-i18n.mjs --all\n  node scripts/build-i18n.mjs --patch-english');
+  console.error('Usage:\n  node scripts/build-i18n.mjs --lang id [--slug <slug>]\n  node scripts/build-i18n.mjs --all\n  node scripts/build-i18n.mjs --patch-english');
   process.exit(1);
 }

@@ -7,8 +7,8 @@
  * just a different, richer schema — see extract shape below).
  *
  * Usage:
- *   node scripts/build-ara-i18n.mjs --lang ms [--slug ara-s1-foundation]
- *   node scripts/build-ara-i18n.mjs --lang ms          (builds all 7: hub + s1..s6)
+ *   node scripts/build-ara-i18n.mjs --lang id [--slug ara-s1-foundation]
+ *   node scripts/build-ara-i18n.mjs --lang id          (builds all 7: hub + s1..s6)
  *   node scripts/build-ara-i18n.mjs --all              (builds all languages)
  *
  * Output:
@@ -24,7 +24,7 @@ const ROOT      = path.join(import.meta.dirname, '..');
 const ART_DIR   = path.join(ROOT, 'articles');
 const TRANS_DIR = path.join(ROOT, 'translations');
 const BASE_URL  = 'https://aquaticrhythm.com';
-const LANGUAGES = ['ms', 'id', 'ja'];
+const LANGUAGES = ['id', 'ja'];
 
 const args    = process.argv.slice(2);
 const langIdx = args.indexOf('--lang');
@@ -43,12 +43,6 @@ const ALL_SLUGS = ['ara-full-framework', ...S_FILES];
 // articles — kept in sync manually since these are two separate scripts by
 // design, mirroring the two distinct page templates they build). ──────────
 const NAV_LABELS = {
-  ms: {
-    logoAria: 'Aquatic Rhythm — penjagaan ekologi untuk akuarium kecil',
-    home: 'Laman Utama', reading: 'Panduan', companion: 'Rakan', companionMobile: 'Rakan AI',
-    tools: 'Alat', toolsMobile: 'Makmal &amp; Alat', log: 'Catatan', about: 'Tentang',
-    privacy: 'Dasar Privasi', terms: 'Terma Penggunaan', menu: 'Menu'
-  },
   id: {
     logoAria: 'Aquatic Rhythm — perawatan ekologis untuk akuarium kecil',
     home: 'Beranda', reading: 'Panduan', companion: 'Pendamping', companionMobile: 'Pendamping AI',
@@ -65,7 +59,6 @@ const NAV_LABELS = {
 
 // bnav (bottom PWA nav) — Home/Reading/Tools/Log — shared across every page.
 const BNAV_LABELS = {
-  ms: { home: 'Laman Utama', reading: 'Panduan', tools: 'Alat', log: 'Catatan', logAria: 'Catatan Penjaga' },
   id: { home: 'Beranda', reading: 'Panduan', tools: 'Alat', log: 'Catatan', logAria: 'Catatan Penjaga' },
   ja: { home: 'ホーム', reading: 'ガイド', tools: 'ツール', log: '記録', logAria: 'キーパーの記録' }
 };
@@ -346,7 +339,7 @@ function buildLang(lang) {
 }
 
 // ── Patch English source files with hreflang (so search engines can
-// discover the ms/id/ja versions from the EN pages too) ───────────────────
+// discover the id/ja versions from the EN pages too) ───────────────────
 
 function patchEnglishHreflang(slug) {
   const srcPath = path.join(ART_DIR, `${slug}.html`);
@@ -381,6 +374,6 @@ if (patchEn) {
   buildLang(langArg);
   console.log('Done.');
 } else {
-  console.error('Usage:\n  node scripts/build-ara-i18n.mjs --lang ms [--slug <slug>]\n  node scripts/build-ara-i18n.mjs --all\n  node scripts/build-ara-i18n.mjs --patch-english');
+  console.error('Usage:\n  node scripts/build-ara-i18n.mjs --lang id [--slug <slug>]\n  node scripts/build-ara-i18n.mjs --all\n  node scripts/build-ara-i18n.mjs --patch-english');
   process.exit(1);
 }

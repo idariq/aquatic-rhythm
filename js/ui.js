@@ -114,13 +114,6 @@
      titleMap/descMap above, since their in-page content is still English too —
      title/lang should never claim a translation the content doesn't have. */
   var titleMapByLang = {
-    ms: {
-      home: 'Aquatic Rhythm — Penjagaan Ekologi untuk Akuarium Kecil',
-      companion: 'Rhyssa — Rakan AI Akuarium',
-      about: 'Tentang — Aquatic Rhythm',
-      privacy: 'Dasar Privasi — Aquatic Rhythm',
-      terms: 'Terma Penggunaan — Aquatic Rhythm'
-    },
     id: {
       home: 'Aquatic Rhythm — Perawatan Ekologis untuk Akuarium Kecil',
       companion: 'Rhyssa — Pendamping AI Akuarium',
@@ -138,13 +131,6 @@
   };
 
   var descMapByLang = {
-    ms: {
-      home: 'Aquatic Rhythm — panduan ekologi yang tenang untuk akuarium rumah. ARA (Aquatic Rhythm Alignment) ialah pemikiran di sebalik Panduan, alat, Rhyssa, dan log peribadi anda.',
-      companion: 'Rhyssa — rakan AI akuarium di Aquatic Rhythm, dibentuk oleh ARA. Berbual terus di laman ini; pautan ChatGPT pilihan bagi penjaga yang lebih suka.',
-      about: 'Kenapa Aquatic Rhythm wujud — daripada nasihat tidak konsisten kepada cara memahami akuarium kecil yang lebih tenang, berasaskan ekologi.',
-      privacy: 'Dasar Privasi untuk Aquatic Rhythm. Apa yang kami kumpul, bagaimana ia diuruskan, dan apa maknanya untuk anda.',
-      terms: 'Terma Penggunaan untuk Aquatic Rhythm dan Rhyssa. Ditulis dengan jelas, tanpa kerumitan yang tidak perlu.'
-    },
     id: {
       home: 'Aquatic Rhythm — panduan ekologi yang tenang untuk akuarium rumah. ARA (Aquatic Rhythm Alignment) adalah pemikiran di balik Panduan, alat, Rhyssa, dan jurnal pribadi Anda.',
       companion: 'Rhyssa — pendamping AI akuarium di Aquatic Rhythm, dibentuk oleh ARA. Mengobrol langsung di situs ini; tautan ChatGPT opsional bagi yang lebih menyukainya.',

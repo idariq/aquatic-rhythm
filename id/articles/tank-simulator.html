@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=59">
+<link rel="stylesheet" href="/css/ar-page.css?v=60">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--fs-3xs:.5rem;--fs-2xs:.65rem;--fs-xs:.7rem;--fs-sm:.8rem;--fs-sm-md:.85rem;--fs-md:.9rem;--fs-base:1rem;--fs-md-lg:1.1rem;--fs-lg:1.35rem;--fs-xl:1.6rem;--fs-2xl:2.2rem;--fs-3xl:2.8rem;--fs-4xl:3rem;--fs-5xl:3.5rem;
@@ -143,6 +143,10 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
 /* TANK */
 #tcol{position:relative;min-height:0;display:flex;flex-direction:column;gap:.28rem}
 #tank{flex:1;min-height:0;border:1px solid var(--th-accent-border);border-top:2px solid var(--th-accent-border);border-radius:0 0 12px 12px;overflow:hidden;position:relative;background:#030f18}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) #tank{background:#a9d2de}
+}
+:root[data-theme="light"] #tank{background:#a9d2de}
 #tsky{position:absolute;inset:0;transition:background 3s ease;pointer-events:none}
 #twater{position:absolute;inset:0;transition:background 2s ease;pointer-events:none}
 #tlight{position:absolute;top:0;left:0;right:0;height:55%;background:radial-gradient(ellipse at 50% 0%,rgba(110,155,138,.12) 0%,transparent 74%);transition:opacity 3s ease;pointer-events:none}
@@ -1106,6 +1110,15 @@ var phases=[
 ];
 function phase(t){for(var i=0;i<phases.length;i++)if(t>=phases[i].from&&t<phases[i].to)return phases[i];return phases[0];}
 
+/* Theme-aware tank visuals — light mode gets an aqua-toned water/sky
+   instead of the dark "night water" gradient. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+
 /* Stars */
 var sC=document.getElementById('tstars'),sX=sC?sC.getContext('2d'):null,stars=[];
 function initStars(){
@@ -1124,7 +1137,7 @@ function drawStars(op){
 function renderTime(t){
   var p=phase(t);
   var sky=document.getElementById('tsky'),light=document.getElementById('tlight'),st=document.getElementById('tstars');
-  if(sky)sky.style.background='rgba(2,5,15,'+p.skyA+')';
+  if(sky)sky.style.background=vcLight()?'rgba(70,120,145,'+(p.skyA*.5).toFixed(2)+')':'rgba(2,5,15,'+p.skyA+')';
   if(light)light.style.opacity=p.lightO;
   var nOp=t>=.84?(t-.84)/.16:t<.04?(1-t/.04)*.65:0;
   if(st)st.style.opacity=nOp;
@@ -1996,16 +2009,18 @@ function render(){
   var murk=Math.min(1,S.nh3*.25+S.no2*.15);
   var clarity=S.cycleOk?0.22:Math.max(0,.16-danger*.12-murk*.06);
   /* Cloudy effect — ammonia makes water greenish-yellow, early tank is murky brown */
-  var r=4+Math.round(danger*18)+Math.round(murk*12);
-  var g=28+Math.round(murk*10)-Math.round(danger*4);
-  var b=38-Math.round(danger*8)-Math.round(murk*6);
+  var light=vcLight();
+  var r=(light?150:4)+Math.round(danger*18)+Math.round(murk*12);
+  var g=(light?195:28)+Math.round(murk*10)-Math.round(danger*4);
+  var b=(light?205:38)-Math.round(danger*8)-Math.round(murk*6);
   document.getElementById('twater').style.background=
-    'radial-gradient(ellipse at 50% 30%,rgba(60,200,220,'+clarity.toFixed(3)+') 0%,rgba('+r+','+g+','+b+',.6) 100%)';
+    'radial-gradient(ellipse at 50% 30%,rgba(60,200,220,'+clarity.toFixed(3)+') 0%,rgba('+r+','+g+','+b+','+(light?.42:.6)+') 100%)';
   /* Cloudiness overlay — new tank often gets bacterial bloom (white cloud) */
   var tsky=document.getElementById('tsky');
   if(tsky&&S.day>2&&S.day<10&&!S.cycleOk&&S.nh3>.3){
     var cloudStr=Math.min(.15,(S.day-2)*.02);
-    tsky.style.background='rgba('+Math.round(2+murk*20)+','+Math.round(5+murk*12)+','+Math.round(15+murk*8)+','+Math.max(.62,cloudStr+.62)+')';
+    if(light) tsky.style.background='rgba('+Math.round(150+murk*20)+','+Math.round(180+murk*12)+','+Math.round(190+murk*8)+','+Math.max(.3,cloudStr+.28)+')';
+    else tsky.style.background='rgba('+Math.round(2+murk*20)+','+Math.round(5+murk*12)+','+Math.round(15+murk*8)+','+Math.max(.62,cloudStr+.62)+')';
   }
 
   /* Tank message */
@@ -2450,7 +2465,7 @@ render();renderTime(0);
   </div>
 </div>
 <!-- ── LAB NAV SHEET ── -->
-<script src="/js/ar-page.js?v=59" defer></script>
+<script src="/js/ar-page.js?v=60" defer></script>
 <script>
 (function(){
   var btn = document.getElementById('tb-settings-btn');
@@ -2462,6 +2477,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=59" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=60" defer></script>
 </body>
 </html>

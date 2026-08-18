@@ -85,8 +85,6 @@ function buildHreflangTags(lang) {
   return lines.join('\n');
 }
 
-function jsonLdEscape(s) { return String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"'); }
-
 function patchHead(h, t, lang) {
   h = h.replace(/(<html[^>]*\slang=")[^"]*(")/, (_, a, b) => `${a}${lang}${b}`);
   h = subOnce(h, '<title>Tank Cycle Simulator — Interactive Nitrogen Cycle — Aquatic Rhythm</title>', `<title>${t.head.title}</title>`, 'head.title');
@@ -172,7 +170,30 @@ function patchBriefing(h, t) {
   return h;
 }
 
-function patchSetup(h, t) {
+// The "expected outcome" sentence concatenates size/method/weeks/welfare/plant
+// fragments — id's word order (adjective-noun, "with X and Y — expect Z")
+// carries over cleanly from the English source, but ja needs different
+// wrapping/punctuation (no ASCII period after weeksWord, which already ends
+// in "。"; <strong> wraps only the numeral, not the trailing "週間の…" tail;
+// no space between size adjective and "水槽"). Kept as literal per-language
+// branches here rather than forcing one shared template — same reasoning as
+// build-kyr-i18n.mjs's QNUM_TEMPLATE/STATIC_QNUM per-language functions.
+function expectedStatic(lang, ex, szLabel, mtLabel, wk, welfareNote, plNote) {
+  if (lang === 'ja') {
+    return `<strong>${szLabel}${ex.tankWord}</strong>${ex.and}<strong>${mtLabel}</strong>${ex.expect}<strong>${wk}</strong>${ex.weeksWord}${welfareNote}${ex.afterWelfare}${plNote}`;
+  }
+  // id/default: noun-adjective order ("akuarium kecil", not "kecil akuarium").
+  return `${ex.prefix}<strong>${ex.tankWord} ${szLabel}</strong>${ex.and}<strong>${mtLabel}</strong>${ex.expect}<strong>${wk}${ex.weeksWord}</strong>.${welfareNote}${ex.afterWelfare}${plNote}`;
+}
+
+function expectedDynamic(lang, ex) {
+  if (lang === 'ja') {
+    return `'<strong>'+szLabel+'${ex.tankWord}</strong>${ex.and}<strong>'+mtLabel+'</strong>${ex.expect}<strong>'+wk+'</strong>${ex.weeksWord}'+welfareNote+'${ex.afterWelfare}'+plNote;`;
+  }
+  return `'${ex.prefix}<strong>${ex.tankWord} '+szLabel+'</strong>${ex.and}<strong>'+mtLabel+'</strong>${ex.expect}<strong>'+wk+'${ex.weeksWord}</strong>.'+welfareNote+'${ex.afterWelfare}'+plNote;`;
+}
+
+function patchSetup(h, t, lang) {
   const s = t.setup;
   h = subOnce(h, '<h2 class="ot">Set up your tank</h2>', `<h2 class="ot">${s.heading}</h2>`, 'setup.heading');
   h = subOnce(h, '<p class="om-compact" style="text-align:center;margin-bottom:.35rem">Choose size, method, and plants — then run a fish-safe cycle at your own pace.</p>',
@@ -221,9 +242,11 @@ function patchSetup(h, t) {
   h = subOnce(h, '<button class="obtn op" id="btn-begin" style="width:100%;margin-top:1rem">Begin →</button>',
     `<button class="obtn op" id="btn-begin" style="width:100%;margin-top:1rem">${s.beginBtn}</button>`, 'setup.beginBtn');
   // Default expected-text box (matches small/fishless/yes defaults) — regenerated from updateExpected() template pieces.
+  const ex = t.expected;
+  const defaultSentence = expectedStatic(lang, ex, ex.sizeLabels.small, ex.methodLabels.fishless, '3–4', ex.welfareNote, ex.plantsYesNote);
   h = subOnce(h,
     '<p id="expected-text">With a <strong>small tank</strong>, <strong>fishless cycling</strong>, and <strong>plants</strong> — expect the cycle to complete in roughly <strong>3–4 weeks</strong>. Ammonia will peak first, then nitrite, then both will fall as bacteria establish. Plants will help keep nitrate manageable.</p>',
-    `<p id="expected-text">${t.expected.prefix}<strong>${t.expected.sizeLabels.small} ${t.expected.tankWord}</strong>, <strong>${t.expected.methodLabels.fishless}</strong>,${t.expected.and}<strong>tanaman</strong>${t.expected.expect}<strong>3–4${t.expected.weeksWord}</strong>.${t.expected.afterWelfare}${t.expected.plantsYesNote}</p>`,
+    `<p id="expected-text">${defaultSentence}</p>`,
     'setup.expectedDefault');
   return h;
 }
@@ -383,7 +406,13 @@ function patchEngine(h, t) {
   return h;
 }
 
-function patchEngine2(h, t) {
+// Matches dayConcat() below in spirit — the "Day 0" placeholder text embedded
+// in insightGroups[2][0] (patched further down) and the runtime
+// txt.replace('Day 0', 'Day '+s.day) call in getInsight() must use the same
+// literal fragment per language, or the runtime replace silently no-ops.
+function dayZeroText(lang) { return lang === 'ja' ? '0日目' : 'Hari 0'; }
+
+function patchEngine2(h, t, lang) {
   const e = t.engine;
   // ── insightGroups (12 groups × 3 msgs, in document order) ──
   const groupsEn = [
@@ -404,6 +433,8 @@ function patchEngine2(h, t) {
   ];
   h = subOnce(h, "'🔬 Day '+0+'. Bacteria are beginning to seed onto surfaces. Invisible but already working.'",
     `'${t.engine.insightGroups[2][0].replace('{day}', "'+0+'")}'`, 'engine.insight.2.0');
+  h = subOnce(h, "return txt.replace('Day '+0,'Day '+s.day);",
+    `return txt.replace('${dayZeroText(lang)}',${dayConcat(lang, 's.day')});`, 'engine.insightDayReplace');
   groupsEn.forEach((msgs, gi) => {
     msgs.forEach((oldS, mi) => {
       if (gi === 2 && mi === 0) return; // handled above (contains +0+ concatenation, not a plain literal)
@@ -545,11 +576,19 @@ function patchEngine4(h, t) {
   return h;
 }
 
-function patchEngine5(h, t) {
+// ja counts days number-first ("N日目"), unlike id's word-first "Hari N" —
+// same reasoning as expectedStatic/expectedDynamic above: per-language literal
+// JS-concatenation fragments rather than one shared word-order template.
+function dayConcat(lang, dayVarExpr) {
+  if (lang === 'ja') return `${dayVarExpr}+'日目'`;
+  return `'Hari '+${dayVarExpr}`;
+}
+
+function patchEngine5(h, t, lang) {
   const a = t.app, m = t.engine.misc;
-  h = subOnce(h, "document.getElementById('t-day').textContent='Day '+S.day;", `document.getElementById('t-day').textContent='${a.day1.replace(/ 1$/, ' ')}'+S.day;`, 'engine.tdayLive');
+  h = subOnce(h, "document.getElementById('t-day').textContent='Day '+S.day;", `document.getElementById('t-day').textContent=${dayConcat(lang, 'S.day')};`, 'engine.tdayLive');
   h = subOnce(h, "e.innerHTML='<span class=\"ld\">Day '+S.day+'</span><span>'+msg+'</span>';",
-    `e.innerHTML='<span class="ld">${a.day1.replace(/ 1$/, ' ')}'+S.day+'</span><span>'+msg+'</span>';`, 'engine.addLogDay');
+    `e.innerHTML='<span class="ld">'+${dayConcat(lang, 'S.day')}+'</span><span>'+msg+'</span>';`, 'engine.addLogDay');
   h = subOnce(h, "if(lbl)lbl.textContent='Med';", `if(lbl)lbl.textContent='${m.med}';`, 'engine.medDefault');
   h = subOnce(h, "if(name)name.textContent=val==='fishless'?'Add ammonia':'Add fish';",
     `if(name)name.textContent=val==='fishless'?'${a.sourceAmmonia}':'${a.sourceFish}';`, 'engine.setupSourceName');
@@ -570,7 +609,7 @@ function patchEngine5(h, t) {
     `var welfareNote=mt==='fishless'?'${ex.welfareNote}':'';`, 'expected.welfareNote');
   h = subOnce(h,
     "'With a <strong>'+szLabel+' tank</strong> and <strong>'+mtLabel+'</strong> — expect the cycle to complete in roughly <strong>'+wk+' weeks</strong>.'+welfareNote+' Ammonia peaks first, then nitrite, then both fall as bacteria establish. '+plNote;",
-    `'${ex.prefix}<strong>'+szLabel+' ${ex.tankWord}</strong>${ex.and}<strong>'+mtLabel+'</strong>${ex.expect}<strong>'+wk+'${ex.weeksWord}</strong>.'+welfareNote+'${ex.afterWelfare}'+plNote;`, 'expected.template');
+    expectedDynamic(lang, ex), 'expected.template');
 
   return h;
 }
@@ -585,15 +624,15 @@ function buildLang(lang) {
   h = patchBnav(h, lang);
   h = patchRhyssaSheet(h, lang);
   h = patchBriefing(h, t);
-  h = patchSetup(h, t);
+  h = patchSetup(h, t, lang);
   h = patchBrief(h, t);
   h = patchEnd(h, t);
   h = patchAppChrome(h, t, lang);
   h = patchEngine(h, t);
-  h = patchEngine2(h, t);
+  h = patchEngine2(h, t, lang);
   h = patchEngine3(h, t);
   h = patchEngine4(h, t);
-  h = patchEngine5(h, t);
+  h = patchEngine5(h, t, lang);
   h = localizeArticleLinks(h, lang);
 
   const outDir = path.join(ROOT, lang, 'articles');

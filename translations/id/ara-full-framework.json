@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "status": "ready",
+    "slug": "ara-full-framework",
+    "lang": "id"
+  },
+  "head": {
+    "title": "Kerangka ARA — Aquatic Rhythm",
+    "description": "Aquatic Rhythm Alignment — kerangka lengkap untuk membaca ekosistem akuatik tertutup. Enam bagian yang mencakup lima ecological rhythm, tiga fase sistem, pemikiran keselarasan, praktik observasi, dan fondasi psikologis hobi ini.",
+    "ogTitle": "Kerangka ARA — Aquatic Rhythm",
+    "ogDescription": "Kerangka untuk membaca ekosistem akuatik tertutup — lima ecological rhythm, tiga fase sistem, pemikiran keselarasan, dan psikologi hubungan pemelihara-tank.",
+    "twitterTitle": "Kerangka ARA — Aquatic Rhythm",
+    "twitterDescription": "Kerangka untuk membaca ekosistem akuatik tertutup — lima ecological rhythm, tiga fase sistem, pemikiran keselarasan, dan psikologi hubungan pemelihara-tank.",
+    "ldHeadline": "Kerangka ARA",
+    "ldDescription": "Aquatic Rhythm Alignment — kerangka untuk membaca ekosistem akuatik tertutup melalui ecological rhythm, fase sistem, dan pemikiran keselarasan."
+  },
+  "header": {
+    "eyebrow": "Kerangka ARA · Rujukan Lengkap",
+    "titleHtml": "Aquatic Rhythm<br><em>Alignment</em>",
+    "sub": "Kerangka untuk membaca ekosistem akuatik tertutup — melalui lima ecological rhythm, tiga fase sistem, dan keselarasan antara pemelihara dan tank. Enam bagian. Bisa dibaca dalam urutan apa pun."
+  },
+  "cards": [
+    {
+      "href": "/articles/ara-s1-foundation",
+      "num": "01",
+      "label": "Fondasi",
+      "desc": "Apa itu ARA, untuk siapa kerangka ini, dan apa yang diasumsikannya tentang akuarium dan pemelihara.",
+      "meta": "2 modul"
+    },
+    {
+      "href": "/articles/ara-s2-five-rhythms",
+      "num": "02",
+      "label": "Lima Ritme",
+      "desc": "Water, Biological, Environmental, Livestock, dan Keeper — lima domain yang selalu berjalan di setiap tank.",
+      "meta": "6 modul"
+    },
+    {
+      "href": "/articles/ara-s3-phases",
+      "num": "03",
+      "label": "Fase Ekologis",
+      "desc": "Early, Developing, dan Mature — beserta kematangan palsu dan regresi fase.",
+      "meta": "2 modul"
+    },
+    {
+      "href": "/articles/ara-s4-alignment",
+      "num": "04",
+      "label": "Pemikiran Keselarasan",
+      "desc": "Cara bertindak selaras — lima prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalur yang umum ditempuh.",
+      "meta": "8 modul"
+    },
+    {
+      "href": "/articles/ara-s5-observation",
+      "num": "05",
+      "label": "Praktik Observasi",
+      "desc": "Cara mengamati dengan baik — membangun baseline, mengembangkan kapasitas, dan membaca sinyal palsu.",
+      "meta": "4 modul"
+    },
+    {
+      "href": "/articles/ara-s6-ethics",
+      "num": "06",
+      "label": "Etika &amp; Kerangka yang Hidup",
+      "desc": "Apa yang tidak dicakup ARA, empat fondasi psikologis, dan pernyataan tentang kerangka yang hidup.",
+      "meta": "4 modul"
+    }
+  ]
+}

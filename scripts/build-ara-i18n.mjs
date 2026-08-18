@@ -277,10 +277,8 @@ function buildAraS(slug, lang, t) {
       const href = l.href.startsWith('/articles/') ? `/${lang}${l.href}` : l.href;
       return `<a href="${href}">${l.text}</a>`;
     }).join('\n    ');
-    const empty = t.secnav.length < 2 ? '<div class="ara-art-secnav-empty"></div>\n    ' : '';
     // preserve original ordering: prev link (if any) comes first, so if only one
     // link and it's a "next" link (page 1), keep the empty placeholder first.
-    const hasPrevOriginally = /ara-art-secnav-empty/.test(_inner) === false && t.secnav.length === 2;
     if (t.secnav.length === 1 && /ara-art-secnav-empty/.test(h)) {
       return `${open}\n    <div class="ara-art-secnav-empty"></div>\n    ${links}\n  ${close}`;
     }
@@ -320,36 +318,20 @@ function buildAraHub(lang, t) {
   return h;
 }
 
-const REDIRECT_FALLBACK = {
-  ms: { redirecting: 'Mengalihkan ke', linkText: 'Kerangka ARA: Rujukan Penuh' },
-  id: { redirecting: 'Mengalihkan ke', linkText: 'Kerangka ARA: Referensi Lengkap' },
-  ja: { redirecting: 'リダイレクト中：', linkText: 'ARAフレームワーク：完全版リファレンス' }
-};
-
-function buildRedirectStub(slug, lang, title, description) {
-  const srcPath = path.join(ART_DIR, `${slug}.html`);
-  let h = fs.readFileSync(srcPath, 'utf8');
-  h = h.replace(/(<html[^>]*\slang=")[^"]*(")/, (_, a, b) => `${a}${lang}${b}`);
-  h = replaceOnce(h, /<title>[^<]*<\/title>/, () => `<title>${title}</title>`);
-  h = replaceOnce(h, /(<meta name="description" content=")[^"]*(")/, (_, a, b) => `${a}${description}${b}`);
-  h = h.replace(/\/articles\/ara-full-framework/g, `/${lang}/articles/ara-full-framework`);
-  h = h.replace(/<link rel="alternate" hreflang="[^"]*"[^>]*>\n?/g, '');
-  const hreflang = buildHreflangTags(slug, lang);
-  h = replaceOnce(h, /(<link rel="canonical"[^>]*>)/, (_, canon) => `${canon}\n${hreflang}`);
-  const fb = REDIRECT_FALLBACK[lang];
-  h = replaceOnce(h, /(<p>)Redirecting to (<a[^>]*>)[^<]*(<\/a>)…(<\/p>)/,
-    (_, p, a, aClose, pClose) => `${p}${fb.redirecting} ${a}${fb.linkText}${aClose}…${pClose}`);
-  return h;
-}
-
 // ── Main ─────────────────────────────────────────────────────────────────
+// NOTE: the two redirect stubs (four-principles-of-ara, reading-the-five-
+// rhythms) are NOT built here — they use the regular article schema/pipeline
+// (translations/<lang>/*.json + build-i18n.mjs), since their source HTML has
+// no ara-art-*/ara-hub-* markup at all, just generic <title>/<meta> tags that
+// build-i18n.mjs's buildArticle() already patches correctly. Run
+// `node scripts/build-i18n.mjs --lang <lang> --slug four-principles-of-ara`
+// (and reading-the-five-rhythms) after this script, or `npm run i18n:build`.
 
 function buildLang(lang) {
   const outDir = path.join(ROOT, lang, 'articles');
   fs.mkdirSync(outDir, { recursive: true });
 
   const slugs = slugArg ? [slugArg] : ALL_SLUGS;
-  let builtHub = false;
   for (const slug of slugs) {
     const tPath = path.join(TRANS_DIR, lang, `${slug}.json`);
     if (!fs.existsSync(tPath)) { console.log(`  no translation: ${tPath}`); continue; }
@@ -360,39 +342,45 @@ function buildLang(lang) {
     const html = slug === 'ara-full-framework' ? buildAraHub(lang, t) : buildAraS(slug, lang, t);
     fs.writeFileSync(path.join(outDir, `${slug}.html`), html, 'utf8');
     console.log(`  → ${lang}/articles/${slug}.html`);
-    if (slug === 'ara-full-framework') builtHub = true;
-  }
-
-  // Redirect stubs — only once ara-full-framework itself is built for this lang.
-  if (builtHub || fs.existsSync(path.join(outDir, 'ara-full-framework.html'))) {
-    const stubs = {
-      'four-principles-of-ara': {
-        ms: ['Empat Prinsip ARA — Aquatic Rhythm', 'Empat prinsip ARA kini sebahagian drpd rujukan penuh kerangka ARA.'],
-        id: ['Empat Prinsip ARA — Aquatic Rhythm', 'Empat prinsip ARA kini menjadi bagian dari referensi lengkap kerangka ARA.'],
-        ja: ['ARAの4つの原則 — Aquatic Rhythm', 'ARAの4つの原則は、現在ARAフレームワークの完全版リファレンスの一部です。']
-      },
-      'reading-the-five-rhythms': {
-        ms: ['Membaca Lima Ritma — Aquatic Rhythm', 'Lima ritma ekologi ARA kini sebahagian drpd rujukan penuh kerangka ARA.'],
-        id: ['Membaca Lima Ritme — Aquatic Rhythm', 'Lima ritme ekologis ARA kini menjadi bagian dari referensi lengkap kerangka ARA.'],
-        ja: ['5つのリズムを読む — Aquatic Rhythm', 'ARAの5つの生態学的リズムは、現在ARAフレームワークの完全版リファレンスの一部です。']
-      }
-    };
-    for (const [slug, byLang] of Object.entries(stubs)) {
-      const [title, desc] = byLang[lang];
-      const html = buildRedirectStub(slug, lang, title, desc);
-      fs.writeFileSync(path.join(outDir, `${slug}.html`), html, 'utf8');
-      console.log(`  → ${lang}/articles/${slug}.html (redirect stub)`);
-    }
   }
 }
 
-if (doAll) {
+// ── Patch English source files with hreflang (so search engines can
+// discover the ms/id/ja versions from the EN pages too) ───────────────────
+
+function patchEnglishHreflang(slug) {
+  const srcPath = path.join(ART_DIR, `${slug}.html`);
+  if (!fs.existsSync(srcPath)) return;
+  let h = fs.readFileSync(srcPath, 'utf8');
+  const before = h;
+  h = h.replace(/<link rel="alternate" hreflang="[^"]*"[^>]*>\n?/g, '');
+  const hreflang = buildHreflangTags(slug, 'en');
+  h = replaceOnce(h, /(<link rel="canonical"[^>]*>)/, (_, canon) => `${canon}\n${hreflang}`);
+  if (h !== before) {
+    fs.writeFileSync(srcPath, h, 'utf8');
+    console.log(`  patched: articles/${slug}.html`);
+  }
+}
+
+// NOTE: the 2 redirect stubs' target URL (four-principles-of-ara,
+// reading-the-five-rhythms → ara-full-framework) is localized directly
+// inside build-i18n.mjs's buildArticle() (step 11), since those 2 slugs are
+// built by that regular pipeline, not this script — see the note above
+// buildLang() for why.
+
+const patchEn = args.includes('--patch-english');
+
+if (patchEn) {
+  console.log('Patching English ARA source files with hreflang…');
+  for (const slug of ALL_SLUGS) patchEnglishHreflang(slug);
+  console.log('Done.');
+} else if (doAll) {
   for (const lang of LANGUAGES) buildLang(lang);
   console.log('Done.');
 } else if (langArg) {
   buildLang(langArg);
   console.log('Done.');
 } else {
-  console.error('Usage:\n  node scripts/build-ara-i18n.mjs --lang ms [--slug <slug>]\n  node scripts/build-ara-i18n.mjs --all');
+  console.error('Usage:\n  node scripts/build-ara-i18n.mjs --lang ms [--slug <slug>]\n  node scripts/build-ara-i18n.mjs --all\n  node scripts/build-ara-i18n.mjs --patch-english');
   process.exit(1);
 }

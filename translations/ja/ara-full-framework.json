@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "status": "ready",
+    "slug": "ara-full-framework",
+    "lang": "ja"
+  },
+  "head": {
+    "title": "ARAフレームワーク — Aquatic Rhythm",
+    "description": "Aquatic Rhythm Alignment — 閉じた水中生態系を読むための総合フレームワーク。5つの生態リズム、3つのシステムフェーズ、整合の思考、観察の実践、そしてこの趣味を支える心理的基盤を、6つのセクションで扱います。",
+    "ogTitle": "ARAフレームワーク — Aquatic Rhythm",
+    "ogDescription": "閉じた水中生態系を読むためのフレームワーク — 5つの生態リズム、3つのシステムフェーズ、整合の思考、そして飼育者と水槽の関係をめぐる心理。",
+    "twitterTitle": "ARAフレームワーク — Aquatic Rhythm",
+    "twitterDescription": "閉じた水中生態系を読むためのフレームワーク — 5つの生態リズム、3つのシステムフェーズ、整合の思考、そして飼育者と水槽の関係をめぐる心理。",
+    "ldHeadline": "ARAフレームワーク",
+    "ldDescription": "Aquatic Rhythm Alignment — 生態リズム、システムフェーズ、そして整合の思考を通して、閉じた水中生態系を読むためのフレームワーク。"
+  },
+  "header": {
+    "eyebrow": "ARAフレームワーク · 総合リファレンス",
+    "titleHtml": "Aquatic Rhythm<br><em>Alignment</em>",
+    "sub": "閉じた水中生態系を読むためのフレームワーク — 5つの生態リズム、3つのシステムフェーズ、そして飼育者と水槽のあいだの整合を通して。全6セクション。どの順番から読んでも構いません。"
+  },
+  "cards": [
+    {
+      "href": "/articles/ara-s1-foundation",
+      "num": "01",
+      "label": "基礎",
+      "desc": "ARAとは何か、誰のためのものか、そしてアクアリウムと飼育者について何を前提にしているのか。",
+      "meta": "2モジュール"
+    },
+    {
+      "href": "/articles/ara-s2-five-rhythms",
+      "num": "02",
+      "label": "5つのリズム",
+      "desc": "Water、Biological、Environmental、Livestock、Keeper — すべての水槽が常に動かしている5つの領域。",
+      "meta": "6モジュール"
+    },
+    {
+      "href": "/articles/ara-s3-phases",
+      "num": "03",
+      "label": "生態フェーズ",
+      "desc": "Early、Developing、Mature — そして見せかけの成熟とフェーズの後退。",
+      "meta": "2モジュール"
+    },
+    {
+      "href": "/articles/ara-s4-alignment",
+      "num": "04",
+      "label": "整合の思考",
+      "desc": "整合した行動のとり方 — 5つの原則、整合と制御の違い、7つの領域、そしてよく見られる経路。",
+      "meta": "8モジュール"
+    },
+    {
+      "href": "/articles/ara-s5-observation",
+      "num": "05",
+      "label": "観察の実践",
+      "desc": "よく観るために — ベースラインの構築、観察力の育成、そして偽のシグナルの読み方。",
+      "meta": "4モジュール"
+    },
+    {
+      "href": "/articles/ara-s6-ethics",
+      "num": "06",
+      "label": "倫理と生きた枠組み",
+      "desc": "ARAが扱わないこと、4つの心理学的基盤、そして「生きた枠組み」という姿勢。",
+      "meta": "4モジュール"
+    }
+  ]
+}

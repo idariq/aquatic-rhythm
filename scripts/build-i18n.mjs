@@ -523,11 +523,18 @@ function buildArticle(slug, lang, t) {
             (__, a, b) => `${a}${t.footer.allArticles}${b}`);
         }
         if (t.footer.araLink) {
-          f = f.replace(/(<a href="\/articles\/ara-full-framework">)[^<]*(<\/a>)/,
-            (__, a, b) => `${a}${t.footer.araLink}${b}`);
+          f = f.replace(/<a href="\/articles\/ara-full-framework">([^<]*)<\/a>/,
+            (__, text) => `<a href="/${lang}/articles/ara-full-framework">${t.footer.araLink || text}</a>`);
         }
         return `${open}${f}${close}`;
       });
+  }
+
+  // ── 11. Redirect-stub target (four-principles-of-ara, reading-the-five-
+  // rhythms — both permanently redirect to the ARA framework hub, which now
+  // has localized versions too; point the redirect at those instead of EN) ──
+  if (slug === 'four-principles-of-ara' || slug === 'reading-the-five-rhythms') {
+    h = h.replace(/\/articles\/ara-full-framework/g, `/${lang}/articles/ara-full-framework`);
   }
 
   return h;
@@ -572,12 +579,23 @@ function patchEnglishArticle(slug) {
 // ── Discover translated slugs for a language ─────────────────────────────────
 
 /** Return slugs whose translation JSON has _meta.status === "ready" */
+// ARA framework series (ara-full-framework + ara-s1..s6) uses a different page
+// template (ara-art-*/ara-hub-* classes) and its own build script
+// (build-ara-i18n.mjs) — its translations/<lang>/ara-*.json files share this
+// same directory but MUST be skipped here, or buildArticle() below (which
+// expects the regular article schema: intro/modules/section.module) crashes.
+const ARA_SLUGS = new Set([
+  'ara-full-framework', 'ara-s1-foundation', 'ara-s2-five-rhythms', 'ara-s3-phases',
+  'ara-s4-alignment', 'ara-s5-observation', 'ara-s6-ethics'
+]);
+
 function getTranslatedSlugs(lang) {
   const dir = path.join(TRANS_DIR, lang);
   if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir)
     .filter(f => f.endsWith('.json'))
     .map(f => f.replace('.json', ''))
+    .filter(slug => !ARA_SLUGS.has(slug))
     .filter(slug => {
       try {
         const t = JSON.parse(fs.readFileSync(path.join(dir, `${slug}.json`), 'utf8'));

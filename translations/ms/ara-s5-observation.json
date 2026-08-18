@@ -1,0 +1,192 @@
+{
+  "_meta": {
+    "status": "ready",
+    "slug": "ara-s5-observation",
+    "lang": "ms"
+  },
+  "head": {
+    "title": "Amalan Pemerhatian — Framework ARA · Aquatic Rhythm",
+    "description": "Cara memerhati dengan baik — membina baseline, membangunkan kapasiti, dan membaca isyarat palsu.",
+    "ogTitle": "Amalan Pemerhatian — Framework ARA · Aquatic Rhythm",
+    "ogDescription": "Cara memerhati dengan baik — membina baseline, membangunkan kapasiti, dan membaca isyarat palsu.",
+    "twitterTitle": "Amalan Pemerhatian — Framework ARA · Aquatic Rhythm",
+    "twitterDescription": "Cara memerhati dengan baik — membina baseline, membangunkan kapasiti, dan membaca isyarat palsu.",
+    "ldHeadline": "Amalan Pemerhatian — Framework ARA",
+    "ldDescription": "Cara memerhati dengan baik — membina baseline, membangunkan kapasiti, dan membaca isyarat palsu."
+  },
+  "header": {
+    "eyebrow": "05 / 06 · Framework ARA",
+    "titleHtml": "Amalan Pemerhatian",
+    "desc": "Cara memerhati dengan baik — membina baseline, membangunkan kapasiti, dan membaca isyarat palsu."
+  },
+  "modules": [
+    {
+      "pos": "1 / 4",
+      "tag": "Asas",
+      "titleHtml": "Pemerhatian <em>sebelum Tindakan</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "ARA menganggap pemerhatian sebagai alat utama, bukan langkah awal sebelum alat yang sebenar (ujian, rawatan, campur tangan). Keupayaan membaca sebuah tank — untuk perasan apa yang telah berubah, untuk membezakan variasi normal daripada drift yang sebenar, untuk mengenal pasti ritma yang mana berada di bawah tekanan paling besar — itulah asas kerangka ini dibina.",
+            "Pemerhatian yang berkesan memerlukan baseline. Jika anda tidak tahu rupa tank anda ketika ia sihat — warna khusus air anda dalam pencahayaan ini, tingkah laku biasa setiap ekor ikan pada setiap waktu hari, rupa normal substrat anda selepas seminggu — anda tidak akan dapat membaca dengan yakin bila sesuatu sedang berubah.",
+            "Kemajuan dalam sistem hidup kelihatan berbeza daripada kemajuan dalam sistem teknikal. Dalam sistem hidup, campur tangan yang betul selalunya tidak menghasilkan sebarang perubahan yang kelihatan serta-merta — manfaatnya ialah pengurangan masalah pada masa hadapan, atau penstabilan senyap bagi sesuatu yang sedang drift. Ketiadaan masalah yang kelihatan bukan bermakna sama dengan kesihatan.",
+            "Lelaran — mencuba satu perubahan, memerhati kesannya, kemudian melaraskannya — ialah alternatif yang selaras kepada campur tangan yang bertimpa-timpa. Apabila sesuatu sistem tidak bertindak balas seperti yang dijangka, kesilapan paling biasa ialah menambah lebih banyak campur tangan dan bukannya mengurangkan pemboleh ubah."
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "\"Pemerhatian yang tidak tergesa-gesa — sebelum mencapai test kit, sebelum membuat water change, sebelum menambah sesuatu produk — itulah asas ARA dibina.\""
+        }
+      ]
+    },
+    {
+      "pos": "2 / 4",
+      "tag": "Membina Tabiat Pemerhatian",
+      "titleHtml": "Membina <em>Tabiat Pemerhatian</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Pemerhatian ialah satu kemahiran, bukan sekadar satu niat. ARA menerangkan empat tabiat khusus yang membina keupayaan ini dari masa ke masa — setiap satunya menyasarkan dimensi yang berbeza bagi maksud benar-benar melihat sebuah tank."
+          ]
+        },
+        {
+          "type": "rhythm-signals",
+          "items": [
+            {
+              "label": "Rekod Fotografi",
+              "text": "Ambil gambar tank setiap dua minggu untuk tiga bulan pertama, kemudian sebulan sekali — pada waktu yang konsisten setiap hari, dari sudut yang sama. Mata menyesuaikan diri dengan perubahan beransur-ansur lalu berhenti merakamnya; gambar dari enam bulan lalu selalunya mendedahkan apa yang telah dinormalkan oleh kebiasaan."
+            },
+            {
+              "label": "Pemetaan Tingkah Laku",
+              "text": "Ketahui di mana setiap haiwan menghabiskan kebanyakan masanya, apa yang dilakukannya apabila lampu dihidupkan, dan bagaimana ia bertindak ketika waktu makan. Apabila tingkah laku berubah, peta itulah yang menjadikan perubahan tersebut boleh dibaca."
+            },
+            {
+              "label": "Tabiat Waktu Sama",
+              "text": "Perhatikan tank pada waktu yang sama setiap hari — sebaiknya pada cahaya pertama (sebelum lampu dihidupkan), ketika waktu makan, dan selepas lampu dipadamkan. Setiap tetingkap waktu mendedahkan maklumat yang berbeza tentang keadaan sistem."
+            },
+            {
+              "label": "Amalan Mata Baharu",
+              "text": "Sesekali perhatikan tank seolah-olah anda melihatnya buat kali pertama — duduk sebaris dengan paras tank, bergerak perlahan-lahan, dan lihat tanpa andaian yang dibawa oleh kebiasaan."
+            }
+          ]
+        },
+        {
+          "type": "hn",
+          "label": "ARA · Tentang Membina berbanding Memiliki Kapasiti",
+          "paragraphs": [
+            "Kapasiti pemerhatian dibina secara berperingkat, bukan diperoleh sekali gus. Penjaga yang baru enam bulan bersama sebuah tank mempunyai lebih kapasiti untuk membaca tank tersebut berbanding penjaga dengan sepuluh tahun pengalaman umum yang tidak pernah memerhati sistem yang khusus itu."
+          ]
+        }
+      ]
+    },
+    {
+      "pos": "3 / 4",
+      "tag": "Membaca Merentas Masa",
+      "titleHtml": "Membaca <em>Merentas Masa</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Tabiat pemerhatian memberi anda apa — amalan yang konsisten untuk membina baseline. Masa dan kadensi pula memberi anda bagaimana: bila perlu melihat, berapa lama perlu menunggu sebelum bertindak, dan bagaimana membezakan gangguan sementara daripada drift yang bermakna."
+          ]
+        },
+        {
+          "type": "rhythm-signals",
+          "items": [
+            {
+              "label": "Peraturan 3 Hari",
+              "text": "Selepas sebarang perubahan, beri sistem itu tiga hari sebelum menilai semula keputusannya. Kebanyakan gangguan sementara selesai dalam tempoh 72 jam; apa yang berterusan selepas tiga hari memang wajar dibaca."
+            },
+            {
+              "label": "Peraturan 7 Hari",
+              "text": "Perubahan ekologi yang ketara selalunya tidak menzahirkan diri sepenuhnya sebelum tujuh hari atau lebih. Membina tetingkap tujuh hari ke dalam penilaian selepas perubahan mengurangkan kadar campur tangan semula yang pramatang."
+            }
+          ]
+        },
+        {
+          "type": "body",
+          "paragraphs": [
+            "Tabiat-tabiat ini ialah cadangan, bukan syarat. Penjaga yang telah bertahun-tahun bersama sebuah tank tertentu mungkin mampu membacanya tanpa baseline fotografi atau peta tingkah laku yang formal — kerana baseline itu sudah terbina dalam cara mereka melihat tank tersebut. Penjaga berpengalaman selalunya menggambarkan ini sebagai pemerhatian yang bersifat intuitif: tahu ada sesuatu yang tidak kena tanpa mampu menyatakan dengan tepat apa yang berubah. ARA tidak meletakkannya lebih rendah daripada pemerhatian yang sistematik. Kedua-duanya manifestasi keupayaan membaca yang tulen — satu dibina secara eksplisit, satu lagi terkumpul secara tersirat. Tabiat di atas paling berguna dalam tahun pertama sesebuah sistem, ketika pengetahuan tersirat belum sempat terbentuk. Penjaga yang tidak dapat memerhati pada waktu harian yang konsisten — kerana kerja syif, perjalanan, atau tuntutan lain — membina baseline yang setara melalui kedalaman perhatian ketika mereka memerhati, bukan melalui kekerapannya. Apa yang penting ialah pemerhatian itu benar-benar hadir, bukan bahawa ia mengikut jadual yang tetap.",
+            "Satu nota khusus tentang sistem automatik: penjaga yang menggunakan auto feeder, pam dosing, ATO, atau pengawal CO2 harus faham bahawa automasi tidak mengurangkan keperluan untuk memerhati — ia mengubah apa yang dicari oleh pemerhatian itu. Apabila tugas rutin diautomasikan, pemerhatian penjaga beralih daripada memantau sama ada tugas itu berlaku kepada membaca sama ada automasi itu berfungsi dengan betul dan sama ada sistem bertindak balas seperti yang dijangka. Auto feeder yang tersekat tanpa disedari, pam dosing yang salah tentukur, pengawal pH yang menyelindungi turun naik CO2 dan bukannya menyelesaikannya — kegagalan seperti ini berganda secara senyap justeru kerana perhatian penjaga telah dialihkan ke tempat lain. Penjaga yang ritmanya bergantung pada automasi wajar membina tabiat pemerhatian yang direka khusus untuk menangkap kegagalan automasi: memeriksa bahawa penyuap telah mengeluarkan makanan, bahawa paras air ATO menepati jangkaan, bahawa tingkah laku hidupan selaras dengan apa yang ditunjukkan oleh bacaan. Kestabilan sistem yang kelihatan bukan pengesahan bahawa semuanya berfungsi dengan betul. Ia mungkin keadaan terakhir sebelum satu kegagalan yang telah lama berjalan tanpa disedari."
+          ]
+        },
+        {
+          "type": "pq",
+          "text": "Kebanyakan perkara yang kelihatan membimbangkan hanyalah sementara. Apa yang berterusan selepas tiga hari memang wajar dibaca. Apa yang berterusan selepas tujuh hari ialah sistem sedang memberitahu anda sesuatu yang nyata."
+        }
+      ]
+    },
+    {
+      "pos": "4 / 4",
+      "tag": "Membaca Isyarat Palsu",
+      "titleHtml": "Membaca <em>Isyarat Palsu</em>",
+      "blocks": [
+        {
+          "type": "body",
+          "paragraphs": [
+            "Bukan setiap rupa yang membimbangkan itu satu masalah. Antara punca paling biasa bagi campur tangan yang tidak perlu dalam akuarium ialah isyarat palsu — rupa yang kelihatan seperti ada sesuatu yang tidak kena, sedangkan sebenarnya ia manifestasi normal bagi proses perkembangan sistem itu sendiri."
+          ]
+        },
+        {
+          "type": "signal-list",
+          "items": [
+            {
+              "name": "Bloom diatom",
+              "body": "Lapisan coklat pada kaca, substrat, dan hardscape dalam tank baru, muncul dalam minggu-minggu pertama sesuatu setup Early Phase.",
+              "read": "Baca sebagai: penanda fasa, bukan masalah alga. Diatom surut dengan sendirinya apabila komuniti biologi matang. Tiada campur tangan diperlukan."
+            },
+            {
+              "name": "Kekeruhan tank baru",
+              "body": "Air keruh berwarna putih atau kelabu, lazimnya muncul dalam satu hingga dua minggu pertama sesuatu kitaran baru.",
+              "read": "Baca sebagai: bacterial bloom yang bertindak balas terhadap beban organik awal. Sementara sahaja, biasanya reda dalam masa seminggu. Water change yang besar mengganggunya dan memanjangkan garis masanya."
+            },
+            {
+              "name": "Biofilm putih pada hardscape",
+              "body": "Lapisan berbulu putih atau putih pudar pada driftwood, batu, atau substrat dalam setup yang baru atau yang baru diubah.",
+              "read": "Baca sebagai: penguraian bahan organik oleh kulat atau bakteria. Biasa berlaku, tidak berbahaya, lazimnya dimakan oleh udang dan siput dalam masa beberapa hari hingga beberapa minggu."
+            },
+            {
+              "name": "Tingkah laku selepas water change",
+              "body": "Ikan kelihatan tertekan, bersembunyi, atau kurang aktif selama satu hingga beberapa jam selepas water change.",
+              "read": "Baca sebagai: tindak balas gangguan yang sementara. Terapkan peraturan 3 hari sebelum membuat kesimpulan bahawa water change itu menyebabkan masalah."
+            },
+            {
+              "name": "Pernafasan di permukaan awal pagi",
+              "body": "Ikan berada di permukaan air pada waktu pagi, kelihatan tercungap atau bernafas dengan berat, kemudian kembali normal setelah lampu dihidupkan.",
+              "read": "Baca sebagai: kekurangan oksigen sepanjang malam akibat tumbuhan. Meningkatkan pergerakan permukaan air biasanya menyelesaikannya. Jika pernafasan di permukaan berterusan sepanjang hari, siasat dengan lebih lanjut."
+            },
+            {
+              "name": "Tetingkap panik",
+              "body": "Tingkah laku yang sangat tidak menentu, keliru, atau bersembunyi pada ikan yang baru dimasukkan, berlarutan 24 hingga 72 jam selepas dimasukkan.",
+              "read": "Baca sebagai: tempoh penyesuaian bagi ikan baru. Beri ikan baru 48 hingga 72 jam untuk menyesuaikan diri sebelum menilai keadaan kesihatannya."
+            }
+          ]
+        },
+        {
+          "type": "hn",
+          "label": "ARA · Tentang Kos Campur Tangan yang Tidak Perlu",
+          "paragraphs": [
+            "Dalam setup yang pasif dan rendah campur tangan, tindakan yang tidak diperlukan membawa kos yang nyata — ia menambah tekanan, mengubah kimia air, dan selalunya memanjangkan garis masa ke arah kestabilan. Campur tangan yang dicetuskan oleh isyarat palsu ialah gangguan tanpa sebarang manfaat ekologi. Bagi gaya penjaga yang menjadikan pengurusan aktif sebagai amalan — planted tank pertandingan, aquascape yang sedang dibangunkan secara aktif, setup pembiakan yang sedang dalam penyediaan — prinsip yang sama terpakai dengan cara yang berbeza: soalannya bukan sama ada perlu campur tangan, tetapi sama ada setiap campur tangan itu berasaskan apa yang benar-benar diperhatikan dan bukan pada kebimbangan atau andaian. Tindakan yang selaras dalam apa jua konteks ialah tindakan yang bertindak balas terhadap isyarat yang nyata, dibaca dengan jelas."
+          ]
+        }
+      ]
+    }
+  ],
+  "secnav": [
+    {
+      "href": "/articles/ara-s4-alignment",
+      "text": "← Pemikiran Keselarasan"
+    },
+    {
+      "href": "/articles/ara-s6-ethics",
+      "text": "Etika &amp; Kerangka →"
+    }
+  ],
+  "backLinkText": "← Kerangka ARA",
+  "hubCta": {
+    "eyebrow": "Selesai buat masa ini?",
+    "body": "Kembali ke gambaran keseluruhan Kerangka ARA ↗"
+  }
+}

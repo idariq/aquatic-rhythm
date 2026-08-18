@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "slug": "four-principles-of-ara",
+    "lang": "ms",
+    "sourceFile": "articles/four-principles-of-ara.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Empat Prinsip ARA — Aquatic Rhythm",
+    "description": "Empat prinsip ARA kini sebahagian drpd rujukan penuh kerangka ARA.",
+    "ogTitle": "",
+    "ogDescription": ""
+  },
+  "intro": {
+    "eyebrow": "",
+    "titleHtml": "",
+    "subtitle": "",
+    "texts": [],
+    "metaModules": "",
+    "metaTime": "",
+    "metaLevel": "",
+    "cta": "Mula membaca"
+  },
+  "modules": [],
+  "relatedLinks": [],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

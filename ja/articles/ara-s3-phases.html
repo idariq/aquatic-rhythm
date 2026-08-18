@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生態フェーズ — ARAフレームワーク · Aquatic Rhythm</title>
+<meta name="description" content="Early、Developing、Mature — そして見せかけの成熟とフェーズの後退。">
+<link rel="canonical" href="https://aquaticrhythm.com/ja/articles/ara-s3-phases">
+<link rel="alternate" hreflang="en" href="https://aquaticrhythm.com/articles/ara-s3-phases">
+<link rel="alternate" hreflang="ms" href="https://aquaticrhythm.com/ms/articles/ara-s3-phases">
+<link rel="alternate" hreflang="id" href="https://aquaticrhythm.com/id/articles/ara-s3-phases">
+<link rel="alternate" hreflang="ja" href="https://aquaticrhythm.com/ja/articles/ara-s3-phases">
+<link rel="alternate" hreflang="x-default" href="https://aquaticrhythm.com/articles/ara-s3-phases">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
+<meta name="theme-color" content="#030b09">
+<link rel="manifest" href="/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Aquatic Rhythm">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://aquaticrhythm.com/ja/articles/ara-s3-phases">
+<meta property="og:title" content="生態フェーズ — ARAフレームワーク · Aquatic Rhythm">
+<meta property="og:description" content="Early、Developing、Mature — そして見せかけの成熟とフェーズの後退。">
+<meta property="og:image" content="https://aquaticrhythm.com/og/articles/ara-s3-phases-ja.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Aquatic Rhythm">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://aquaticrhythm.com/ja/articles/ara-s3-phases">
+<meta name="twitter:title" content="生態フェーズ — ARAフレームワーク · Aquatic Rhythm">
+<meta name="twitter:description" content="Early、Developing、Mature — そして見せかけの成熟とフェーズの後退。">
+<meta name="twitter:image" content="https://aquaticrhythm.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"生態フェーズ — ARAフレームワーク","description":"Early、Developing、Mature — そして見せかけの成熟とフェーズの後退。","url":"https://aquaticrhythm.com/ja/articles/ara-s3-phases","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com"},"image":"https://aquaticrhythm.com/og-image.png","datePublished":"2026-05-22","dateModified":"2026-05-23"}</script>
+<script>if(localStorage.getItem('ar_analytics_opt')==='1'){window['ga-disable-G-8MDN065WNW']=true}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8MDN065WNW"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8MDN065WNW');</script>
+<script>
+(function(){
+  try{
+    localStorage.setItem('ar_last_location', JSON.stringify({
+      href: window.location.pathname + window.location.hash,
+      title: document.title,
+      type: 'article'
+    }));
+  }catch(e){}
+  document.addEventListener('click', function(ev){
+    var el = ev.target.closest('[data-analytics-event]');
+    if(!el || typeof gtag==='undefined') return;
+    gtag('event', el.getAttribute('data-analytics-event'), {
+      pathway: el.getAttribute('data-pathway') || '',
+      cta: el.getAttribute('data-cta') || '',
+      destination: el.getAttribute('href') || ''
+    });
+  });
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="/css/ar-page.css?v=36">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px;scroll-behavior:smooth}
+:root{
+  --abyss:#030b09;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans','Noto Sans JP',system-ui,sans-serif;
+  --accent:#3DD6E8;--ease:cubic-bezier(0.19,1,0.22,1);
+}
+body{font-family:var(--sans);background:var(--abyss);color:rgba(235,240,236,.94);overflow-x:hidden;line-height:1.72}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#052535 0%,#073040 18%,#062a38 38%,#041e28 58%,#030f18 78%,#020810 100%)}
+
+/* ── SECTION ARTICLE STYLES ── */
+.ara-art-back{padding:1.4rem clamp(1.5rem,5vw,3rem) 0;max-width:680px;margin:0 auto}
+.ara-art-back-link{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(139,189,210,.55);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:color .2s}
+.ara-art-back-link:hover{color:rgba(61,214,232,.8)}
+.ara-art-header{max-width:680px;margin:0 auto;padding:3rem clamp(1.5rem,5vw,3rem) 3.5rem}
+.ara-art-eyebrow{display:block;font-size:.66rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(61,214,232,.5);margin-bottom:1.2rem}
+.ara-art-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,4.5vw,3rem);color:rgba(235,240,236,.94);line-height:1.1;margin-bottom:1rem}
+.ara-art-title em{font-style:italic;color:rgba(61,214,232,.78)}
+.ara-art-desc{font-family:var(--serif);font-style:italic;font-size:clamp(.92rem,1.4vw,1.05rem);font-weight:300;color:rgba(235,240,236,.48);line-height:1.85}
+.ara-art-body{max-width:680px;margin:0 auto;padding:0 clamp(1.5rem,5vw,3rem) 5rem}
+.ara-art-mod{padding-top:2.8rem}
+.ara-art-mod+.ara-art-mod{margin-top:2.4rem;border-top:1px solid rgba(235,240,236,.055);padding-top:2.8rem}
+.ara-art-mod-eyebrow{display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem}
+.ara-art-mod-pos{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(61,214,232,.36)}
+.ara-art-mod-tag{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(235,240,236,.26)}
+.mod-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.55rem,3.5vw,2.2rem);color:rgba(235,240,236,.94);line-height:1.12;margin-bottom:1.2rem}
+.mod-title em{font-style:italic;color:rgba(61,214,232,.78)}
+.mod-body p{font-size:1rem;font-weight:300;color:rgba(255,255,255,.68);line-height:1.95;margin-bottom:1.2rem}
+.mod-body p:last-child{margin-bottom:0}
+.mod-body strong{font-weight:400;color:rgba(235,240,236,.88)}
+.mod-body em{font-style:italic;color:rgba(235,240,236,.56)}
+.pq{margin:2.2rem 0;padding:1.5rem 1.8rem;border-left:2px solid rgba(61,214,232,.44);background:rgba(58,110,140,.07)}
+.pq p{font-family:var(--serif);font-style:italic;font-size:clamp(.95rem,1.6vw,1.1rem);color:rgba(235,240,236,.74);line-height:1.85;margin:0}
+.hn{margin:1.8rem 0;padding:1.3rem 1.6rem;border:1px solid rgba(139,189,210,.14);background:rgba(255,255,255,.04);position:relative}
+.hn-label{position:absolute;top:-.48rem;left:.9rem;background:rgba(3,11,9,.95);padding:0 .4rem;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(139,189,210,.5)}
+.hn p{font-size:.9rem;font-weight:300;color:rgba(235,240,236,.62);line-height:1.85;margin-bottom:.55rem}
+.hn p:last-child{margin-bottom:0}
+.domain-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:1px;background:rgba(139,189,210,.08);border:1px solid rgba(139,189,210,.08);margin:1.6rem 0}
+.domain-cell{padding:1.4rem 1.6rem;background:rgba(3,11,9,.82)}
+.domain-cell-name{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(61,214,232,.6);margin-bottom:.5rem}
+.domain-cell-q{font-size:.88rem;font-weight:300;color:rgba(235,240,236,.62);line-height:1.8}
+.rhythm-signals{display:flex;flex-direction:column;gap:0;margin:1.8rem 0;border:1px solid rgba(139,189,210,.1)}
+.rs-item{display:grid;grid-template-columns:5rem 1fr;gap:1rem;padding:.9rem 1.2rem;border-bottom:1px solid rgba(139,189,210,.07);align-items:start}
+.rs-item:last-child{border-bottom:none}
+.rs-item-label{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(61,214,232,.45);padding-top:.15rem}
+.rs-item-text{font-size:.88rem;font-weight:300;color:rgba(235,240,236,.62);line-height:1.75}
+.signal-list{display:flex;flex-direction:column;gap:.5rem;margin:1.6rem 0}
+.signal-item{padding:1.2rem 1.4rem;border:1px solid rgba(139,189,210,.1);background:rgba(5,12,10,.4)}
+.signal-name{font-size:.7rem;font-weight:400;letter-spacing:.06em;color:rgba(235,240,236,.88);margin-bottom:.35rem}
+.signal-body{font-size:.85rem;font-weight:300;color:rgba(235,240,236,.55);line-height:1.75;margin-bottom:.4rem}
+.signal-read{font-size:.82rem;font-weight:300;color:rgba(157,191,154,.7);line-height:1.7;border-left:2px solid rgba(157,191,154,.3);padding-left:.8rem;margin-top:.4rem}
+.ara-art-secnav{display:flex;justify-content:space-between;align-items:center;padding:2.5rem clamp(1.5rem,5vw,3rem);max-width:680px;margin:0 auto;border-top:1px solid rgba(235,240,236,.07)}
+.ara-art-secnav a{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(139,189,210,.6);text-decoration:none;transition:color .2s}
+.ara-art-secnav a:hover{color:rgba(61,214,232,.85)}
+.ara-art-secnav-empty{flex:1}
+.ara-art-hub-cta{max-width:680px;margin:0 auto;padding:0 clamp(1.5rem,5vw,3rem) 3rem}
+.ara-art-hub-cta-link{display:block;padding:1.4rem 1.6rem;border:1px solid rgba(139,189,210,.12);background:rgba(5,12,10,.4);text-decoration:none;transition:border-color .22s,background .22s;-webkit-tap-highlight-color:transparent}
+.ara-art-hub-cta-link:hover{border-color:rgba(61,214,232,.28);background:rgba(61,214,232,.04)}
+.ara-art-hub-cta-eyebrow{display:block;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(235,240,236,.28);margin-bottom:.45rem}
+.ara-art-hub-cta-body{display:block;font-family:var(--serif);font-size:clamp(.95rem,1.5vw,1.08rem);font-weight:300;color:rgba(139,189,210,.65);line-height:1.4}
+.ara-art-hub-cta-link:hover .ara-art-hub-cta-body{color:rgba(61,214,232,.82)}
+</style>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet"></noscript>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nl" aria-label="Aquatic Rhythm — 小型水槽のための生態学的なケア">
+    <svg width="175" height="30" viewBox="0 0 175 30" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true">
+      <circle cx="13" cy="15" r="11.5" stroke="rgba(61,214,232,0.22)" stroke-width="1.0" fill="none"/>
+      <line x1="16.8" y1="24.5" x2="16.8" y2="9" stroke="rgba(100,200,82,0.82)" stroke-width="1.6" stroke-linecap="round"/>
+      <line x1="19.8" y1="23.0" x2="19.8" y2="17" stroke="rgba(100,200,82,0.65)" stroke-width="1.3" stroke-linecap="round"/>
+      <ellipse cx="12" cy="15" rx="4.0" ry="2.3" fill="rgba(40,120,150,0.85)"/>
+      <path d="M8.2 15 L6 12.5 L6 17.5 Z" fill="rgba(40,120,150,0.78)"/>
+      <path d="M2 15 C5 8.5 9 8.5 12 15 C15 21.5 19 21.5 22 15" stroke="rgba(61,214,232,0.96)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+      <circle cx="14.8" cy="14.2" r=".9" fill="rgba(255,255,255,0.96)"/>
+      <text x="32" y="13" font-family="DM Sans,system-ui,sans-serif" font-size="6" font-weight="300" fill="rgba(255,255,255,.42)" letter-spacing="2.5">AQUATIC</text>
+      <text x="32" y="27" font-family="Cormorant Garamond,Georgia,serif" font-size="17" font-weight="300" font-style="italic" fill="rgba(255,255,255,.82)">Rhythm</text>
+    </svg>
+  </a>
+  <ul class="nlinks">
+    <li><a href="/">ホーム</a></li>
+    <li><a href="/ja/reading">ガイド</a></li>
+    <li><a href="/companion">コンパニオン</a></li>
+    <li><a href="/tools">ツール</a></li>
+    <li><a href="/journal">記録</a></li>
+    <li><a href="/about">サイトについて</a></li>
+  </ul>
+  <button class="nbg" id="burger" aria-label="メニュー" aria-expanded="false"><span></span><span></span></button>
+</nav>
+<div class="nmob" id="nmob" aria-hidden="true">
+  <ul>
+    <li><a href="/">ホーム</a></li>
+    <li><a href="/ja/reading">ガイド</a></li>
+    <li><a href="/companion">AIコンパニオン</a></li>
+    <li><a href="/tools">ラボ&amp;ツール</a></li>
+    <li><a href="/journal">記録</a></li>
+    <li><a href="/about">サイトについて</a></li>
+    <li><a href="/privacy">プライバシーポリシー</a></li>
+    <li><a href="/terms">利用規約</a></li>
+  </ul>
+</div>
+
+<main>
+  <div class="ara-art-back">
+    <a href="/ja/articles/ara-full-framework" class="ara-art-back-link">← ARAフレームワーク</a>
+  </div>
+  <div class="ara-art-header">
+    <span class="ara-art-eyebrow">03 / 06 · ARAフレームワーク</span>
+    <h1 class="ara-art-title">生態フェーズ</h1>
+    <p class="ara-art-desc">Early、Developing、Mature — そして見せかけの成熟とフェーズの後退。</p>
+  </div>
+  <div class="ara-art-body">
+
+    <div class="ara-art-mod">
+      <div class="ara-art-mod-eyebrow">
+        <span class="ara-art-mod-pos">1 / 2</span>
+        <span class="ara-art-mod-tag">3つのシステムフェーズ</span>
+      </div>
+      <h2 class="mod-title">3つの<em>システムフェーズ</em></h2>
+      <div class="mod-body">
+        <p>ARAは、水槽の一生が発達の弧を描くこと、そしてその弧を進むにつれて、介入、生体の導入、メンテナンスの強度、そして期待について何が適切なのかが変わっていくことを認めています。</p>
+      </div>
+      <div class="rhythm-signals">
+        <div class="rs-item"><span class="rs-item-label">Early Phase（立ち上げ期）</span><span class="rs-item-text">窒素循環が確立しつつある段階です。アンモニアと亜硝酸が存在し、老廃物を処理する微生物の集団はまだ育っている途中です。この時期の介入の多くは、完了させる必要のある生物学的なプロセスを妨げます。整合したアプローチは、最小限の介入、安定した条件、そして時間です。</span></div>
+        <div class="rs-item"><span class="rs-item-label">Critical Window（最初の重要な期間）</span><span class="rs-item-text">最初の2週間には、とりわけ大きな重みがあります。アンモニアの上昇、白濁、不安定さは、想定されたものであり、必要なものでもあります — 解決すべき問題ではありません。介入したい衝動が最も強くなるのがこの時期であり、不要な介入の代償が最も高くつくのも、この時期です。</span></div>
+        <div class="rs-item"><span class="rs-item-label">Developing Phase（発達期）</span><span class="rs-item-text">窒素循環は完成し、水槽は機能していますが、まだ生態学的な厚みはありません。ほどほどの生体導入なら支えられます。乱れに対する脆さは残っており、大きな変更や急な追加導入は、築かれてきたものを不安定にし得ます。</span></div>
+        <div class="rs-item"><span class="rs-item-label">Mature Phase（成熟期）</span><span class="rs-item-text">生物群集に厚みがあります。定着した微生物の集団、安定したふるまいのパターン、そして生態学的に機能するようになった底床とレイアウト素材。Mature Phase の水槽は、乱れを吸収し、介入なしに回復します。</span></div>
+      </div>
+      <div class="pq"><p>「フェーズは、何が適切かを決めます — どの製品を使うかだけでなく、そもそも行動すべきかどうかまで。同じ行動でも、Early Phase でとるのと Mature Phase でとるのとでは、まったく違う結果になります。」</p></div>
+      <div class="hn">
+        <span class="hn-label">ARA · フェーズの移行</span>
+        <p>水槽は、自分のフェーズの移行を告げてはくれません。ひとつ役に立つシグナルは、その水槽が乱れにどう応えるかです — Mature Phase の水槽は助けなしに回復し、Developing Phase の水槽は支えを必要とするかもしれません。</p>
+      </div>
+    </div>
+
+    <div class="ara-art-mod">
+      <div class="ara-art-mod-eyebrow">
+        <span class="ara-art-mod-pos">2 / 2</span>
+        <span class="ara-art-mod-tag">フェーズの力学</span>
+      </div>
+      <h2 class="mod-title">フェーズの<em>力学</em></h2>
+      <div class="mod-body">
+        <p>フェーズの進行は保証されたものではなく、前へ進むだけのものでもありません。単純な前進の弧を込み入ったものにする力学が3つあります — システムが「前進」よりも微妙なことをしている状態であり、それを見分けるには、別の種類の注意が必要になります。</p>
+      </div>
+      <div class="rhythm-signals">
+        <div class="rs-item"><span class="rs-item-label">False Maturity（見せかけの成熟）</span><span class="rs-item-text">本当の生態学的な厚みを伴わない、見かけだけの安定です。底床は生物学的に薄く、窒素循環の先にある微生物の共同体は浅いままです。水槽がストレス要因に出会い、Mature Phase の回復力ではなく Developing Phase の脆さで応えるとき、それは姿を現します。</span></div>
+        <div class="rs-item"><span class="rs-item-label">Phase Regression（フェーズの後退）</span><span class="rs-item-text">Mature Phase の水槽でも、十分な乱れ — 病気の発生、機材の故障、大量換水の繰り返し、急な生体の入れ替え — を受ければ、一時的に前のフェーズのふるまいへ後退することがあります。いまや前段階のシステムとして働いているものに Mature Phase の期待をあてはめるのではなく、後退を後退として見分けること。これは、このフレームワークが求めるもののなかでも、より繊細なもののひとつです。</span></div>
+        <div class="rs-item"><span class="rs-item-label">Intentional Reset（意図的なリセット）</span><span class="rs-item-text">フェーズが巡ることのすべてが後退なのではありません。ピークで解体されるコンテスト用のレイアウト、サイクルごとにリセットされる繁殖用のセットアップ、そもそも成熟を目指していないトリートメント水槽 — これらには、飼育者の判断としての意図的で自発的なリセットが含まれます。ARAのフェーズの枠組みは、それぞれの反復のなかで適用されます。自発的なリセットは、乱れによって引き起こされる後退とは別のものです。</span></div>
+      </div>
+      <div class="pq"><p>フェーズは一方通行の扉ではありません。安定して見えるものが、浅いこともあります。後退に見えるものから、戻れることもあります。問いはいつも同じです — このシステムは、いま実際に何をしているのか。</p></div>
+      <div class="hn">
+        <span class="hn-label">ARA · フェーズの力学を読む</span>
+        <p>フェーズの力学は、フェーズの進行とは違う読み方をします。進行が問うのは、このシステムはどれくらい古いか、です。力学が問うのは、このシステムは圧にどう応えるか、です。助けなしに回復する Mature Phase の水槽は、成熟を表しています。同じ年数でありながら、ほどほどの乱れで Early Phase の脆さを見せる水槽は、カレンダーではなく実際のフェーズを、あなたに示しているのです。</p>
+      </div>
+    </div>
+
+  </div><!-- /ara-art-body -->
+
+  <nav class="ara-art-secnav">
+    <a href="/ja/articles/ara-s2-five-rhythms">← 5つのリズム</a>
+    <a href="/ja/articles/ara-s4-alignment">整合の思考 →</a>
+  </nav>
+
+  <div class="ara-art-hub-cta">
+    <a href="/ja/articles/ara-full-framework" class="ara-art-hub-cta-link">
+      <span class="ara-art-hub-cta-eyebrow">今日はここまで？</span>
+      <span class="ara-art-hub-cta-body">ARAフレームワークの概要に戻る ↗</span>
+    </a>
+  </div>
+
+</main>
+
+<script src="/js/content-trust.js?v=36"></script>
+<!-- ── BOTTOM NAV (PWA) ── -->
+<nav class="bnav" id="bnav" aria-label="Main navigation">
+  <a href="/" class="bnav-item" aria-label="ホーム">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3 9.5L11 3l8 6.5V19a1 1 0 01-1 1H14v-5h-4v5H4a1 1 0 01-1-1V9.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="none"/></svg>
+    <span>ホーム</span>
+  </a>
+  <a href="/reading" class="bnav-item active" aria-current="page" aria-label="ガイド">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="4" y="3" width="14" height="16" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/><line x1="7.5" y1="8" x2="14.5" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><line x1="7.5" y1="11.5" x2="14.5" y2="11.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+    <span>ガイド</span>
+  </a>
+  <a href="/tools" class="bnav-item" aria-label="ツール">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M8 3v5.5L4.5 15A2 2 0 006.4 18h9.2a2 2 0 001.9-3L14 8.5V3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="7" y1="3" x2="15" y2="3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="9.5" cy="13.5" r="1" fill="currentColor" opacity=".6"/><circle cx="13" cy="15" r=".8" fill="currentColor" opacity=".45"/></svg>
+    <span>ツール</span>
+  </a>
+  <a href="/journal" class="bnav-item" aria-label="キーパーの記録">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="2.5" y="7" width="17" height="12" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/><line x1="2.5" y1="11" x2="19.5" y2="11" stroke="currentColor" stroke-width="1" opacity=".3"/><path d="M6 9.5 C7 8 8 8 9 9.5 C10 11 11 11 12 9.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".65"/><line x1="15" y1="13.5" x2="15" y2="17" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".6"/><line x1="17" y1="14.5" x2="17" y2="17" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity=".45"/><line x1="7" y1="3" x2="7" y2="7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".5"/><line x1="15" y1="3" x2="15" y2="7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".5"/></svg>
+    <span>記録</span>
+  </a>
+</nav>
+<script src="/js/ar-page.js?v=36" defer></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/sw.js').catch(function () {});
+  });
+}
+</script>
+<script src="/js/rhyssa-fab-ext.js?v=36" defer></script>
+</body>
+</html>

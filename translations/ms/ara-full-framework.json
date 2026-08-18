@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "status": "ready",
+    "slug": "ara-full-framework",
+    "lang": "ms"
+  },
+  "head": {
+    "title": "Framework ARA — Aquatic Rhythm",
+    "description": "Aquatic Rhythm Alignment — kerangka lengkap untuk membaca ekosistem akuatik tertutup. Enam bahagian merangkumi lima ritma ekologi, tiga fasa sistem, pemikiran keselarasan, amalan pemerhatian, dan asas psikologi hobi ini.",
+    "ogTitle": "Framework ARA — Aquatic Rhythm",
+    "ogDescription": "Kerangka untuk membaca ekosistem akuatik tertutup — lima ritma ekologi, tiga fasa sistem, pemikiran keselarasan, dan psikologi hubungan antara penjaga dan tank.",
+    "twitterTitle": "Framework ARA — Aquatic Rhythm",
+    "twitterDescription": "Kerangka untuk membaca ekosistem akuatik tertutup — lima ritma ekologi, tiga fasa sistem, pemikiran keselarasan, dan psikologi hubungan antara penjaga dan tank.",
+    "ldHeadline": "Framework ARA",
+    "ldDescription": "Aquatic Rhythm Alignment — kerangka untuk membaca ekosistem akuatik tertutup melalui ritma ekologi, fasa sistem, dan pemikiran keselarasan."
+  },
+  "header": {
+    "eyebrow": "Framework ARA · Rujukan Lengkap",
+    "titleHtml": "Aquatic Rhythm<br><em>Alignment</em>",
+    "sub": "Kerangka untuk membaca ekosistem akuatik tertutup — melalui lima ritma ekologi, tiga fasa sistem, dan keselarasan antara penjaga dan tank. Enam bahagian. Boleh dibaca dalam apa-apa susunan."
+  },
+  "cards": [
+    {
+      "href": "/articles/ara-s1-foundation",
+      "num": "01",
+      "label": "Asas",
+      "desc": "Apa itu ARA, untuk siapa ia, dan apa yang ia andaikan tentang akuarium dan penjaga.",
+      "meta": "2 modul"
+    },
+    {
+      "href": "/articles/ara-s2-five-rhythms",
+      "num": "02",
+      "label": "Lima Ritma",
+      "desc": "Water, Biological, Environmental, Livestock, dan Keeper — lima domain yang sentiasa berjalan dalam setiap tank.",
+      "meta": "6 modul"
+    },
+    {
+      "href": "/articles/ara-s3-phases",
+      "num": "03",
+      "label": "Fasa Ekologi",
+      "desc": "Early, Developing, dan Mature — berserta kematangan palsu dan regresi fasa.",
+      "meta": "2 modul"
+    },
+    {
+      "href": "/articles/ara-s4-alignment",
+      "num": "04",
+      "label": "Pemikiran Keselarasan",
+      "desc": "Cara bertindak secara selaras — lima prinsip, keselarasan lawan kawalan, tujuh domain, dan laluan yang biasa berlaku.",
+      "meta": "8 modul"
+    },
+    {
+      "href": "/articles/ara-s5-observation",
+      "num": "05",
+      "label": "Amalan Pemerhatian",
+      "desc": "Cara memerhati dengan baik — membina baseline, membangunkan kapasiti, dan membaca isyarat palsu.",
+      "meta": "4 modul"
+    },
+    {
+      "href": "/articles/ara-s6-ethics",
+      "num": "06",
+      "label": "Etika &amp; Kerangka Hidup",
+      "desc": "Apa yang ARA tidak liputi, empat asas psikologi, dan pernyataan kerangka hidup.",
+      "meta": "4 modul"
+    }
+  ]
+}

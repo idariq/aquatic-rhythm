@@ -54,8 +54,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=48">
-<link rel="stylesheet" href="/css/kofi-sheet.css?v=48">
+<link rel="stylesheet" href="/css/ar-page.css?v=49">
+<link rel="stylesheet" href="/css/kofi-sheet.css?v=49">
 <style>
 
 
@@ -160,8 +160,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
   font-size:var(--fs-xs);
   letter-spacing:.1em;
   text-transform:uppercase;
-  background:var(--th-accent-soft);
-  color:#fff;
+  background:var(--th-accent);
+  color:var(--th-accent-ink);
   border:none;
   padding:.26rem .65rem;
   border-radius:5px;
@@ -200,7 +200,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
   justify-content:stretch;
   padding:.24rem .3rem .22rem;
   gap:.08rem;
-  background:rgba(2,6,12,.85);
+  background:var(--th-surface);
   border-left:1px solid var(--th-line);
   overflow:hidden;
 }
@@ -265,7 +265,7 @@ body.eq-dd-open{overflow:hidden}
 .dq-item-note{font-size:var(--fs-sm);color:var(--th-ink-4);line-height:1.45;font-family:var(--serif);font-style:italic;display:none}
 .dq-item.chosen .dq-item-note{display:block;color:var(--th-accent)}
 .dq-actions{padding:.38rem .48rem .52rem;border-top:1px solid var(--th-line);display:flex;align-items:stretch;flex-wrap:wrap;gap:.38rem}
-.dq-btn-use{font-size:var(--fs-sm);letter-spacing:.07em;text-transform:uppercase;background:var(--th-accent-soft);color:#fff;border:none;padding:.42rem .7rem;border-radius:8px;cursor:pointer;font-family:var(--sans);opacity:.35;pointer-events:none;transition:all .18s;flex:1;min-height:42px;font-weight:600}
+.dq-btn-use{font-size:var(--fs-sm);letter-spacing:.07em;text-transform:uppercase;background:var(--th-accent);color:var(--th-accent-ink);border:none;padding:.42rem .7rem;border-radius:8px;cursor:pointer;font-family:var(--sans);opacity:.35;pointer-events:none;transition:all .18s;flex:1;min-height:42px;font-weight:600}
 .dq-btn-use.ready{opacity:1;pointer-events:all}.dq-btn-use.ready:active{background:rgba(110,165,155,.98)}
 .dq-btn-skip{font-size:var(--fs-sm);color:var(--th-ink-2);background:var(--th-surface-2);border:1px solid var(--th-line);border-radius:8px;cursor:pointer;font-family:var(--sans);transition:color .2s,background .2s;padding:.42rem .7rem;min-height:42px}
 .dq-btn-skip:hover{color:var(--th-ink);background:var(--th-surface-2)}
@@ -365,7 +365,7 @@ body.eq-dd-open{overflow:hidden}
 .tb-rpt-callout-p{font-size:var(--fs-md);color:var(--th-ink-2);font-family:var(--sans);font-weight:300;line-height:1.62}
 .tb-rpt-quote{font-size:var(--fs-sm-md);color:var(--th-ink-4);font-family:var(--serif);font-style:italic;line-height:1.65;text-align:center;margin-top:1.1rem}
 .tb-rpt-actions{display:flex;flex-direction:column;gap:.75rem;margin-top:2rem}
-.tb-rpt-btn-primary{font-size:var(--fs-xs);letter-spacing:.1em;text-transform:uppercase;background:var(--th-accent-soft);color:#fff;border:none;padding:.95rem 1rem;border-radius:8px;cursor:pointer;font-family:var(--sans);font-weight:500}
+.tb-rpt-btn-primary{font-size:var(--fs-xs);letter-spacing:.1em;text-transform:uppercase;background:var(--th-accent);color:var(--th-accent-ink);border:none;padding:.95rem 1rem;border-radius:8px;cursor:pointer;font-family:var(--sans);font-weight:500}
 .tb-rpt-btn-primary:hover{background:rgba(110,165,155,.95)}
 .tb-rpt-btn-ghost{font-size:var(--fs-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--th-accent);text-align:center;text-decoration:none;padding:.72rem 1rem;border:1px solid var(--th-accent-border);border-radius:8px;display:block;font-family:var(--sans);font-weight:500}
 .tb-rpt-btn-ghost:hover{color:var(--th-accent);border-color:var(--th-accent)}
@@ -450,7 +450,7 @@ body.eq-dd-open{overflow:hidden}
 }
 .bi-btn-use{
   font-size:var(--fs-sm);letter-spacing:.07em;text-transform:uppercase;
-  background:var(--th-accent-soft);color:#fff;border:none;
+  background:var(--th-accent);color:var(--th-accent-ink);border:none;
   padding:.42rem .75rem;border-radius:8px;cursor:pointer;
   font-family:var(--sans);transition:background .2s;text-align:center;
   min-height:42px;font-weight:600;
@@ -1170,7 +1170,7 @@ nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 </div>
 
 
-<script src="/js/tank-data.js?v=48"></script>
+<script src="/js/tank-data.js?v=49"></script>
 <script>
 
 var BRAND_INFO=window.AR_BRAND_INFO;
@@ -3163,7 +3163,7 @@ function _noBiImg(){
   </div>
 </div>
 
-<script src="/js/ar-page.js?v=48" defer></script>
+<script src="/js/ar-page.js?v=49" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -3189,7 +3189,7 @@ if ('serviceWorker' in navigator) {
     <iframe id="kofi-embed-iframe" class="kofi-sheet-frame" title="Support Aquatic Rhythm on Ko-fi"></iframe>
   </div>
 </div>
-<script src="/js/kofi-sheet.js?v=48" defer></script>
-<script src="/js/rhyssa-fab-ext.js?v=48" defer></script>
+<script src="/js/kofi-sheet.js?v=49" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=49" defer></script>
 </body>
 </html>

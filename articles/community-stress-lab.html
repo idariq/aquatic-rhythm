@@ -70,7 +70,7 @@
   --panel-shadow:0 10px 36px rgba(0,0,0,.42);
 }
 html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--abyss);color:rgba(235,240,236,.94)}
-body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#052535 0%,#073040 18%,#062a38 38%,#041e28 58%,#030f18 78%,#020810 100%)}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--th-water)}
 
 /* ── APP (matches Tank Cycle Simulator shell) ── */
 #app{display:grid;grid-template-rows:auto 1fr auto;height:100dvh;max-width:900px;margin:0 auto;padding:0 clamp(.5rem,2vw,1.2rem)}
@@ -86,7 +86,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 .t-status{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm);color:rgba(235,240,236,.36);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:min(200px,28vw)}
 .tb-right{display:flex;align-items:center;gap:.4rem;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
 .btn-sm{font-size:var(--fs-2xs);letter-spacing:.08em;text-transform:uppercase;background:rgba(235,240,236,.06);border:1px solid rgba(235,240,236,.14);border-radius:100px;padding:.32rem .72rem;cursor:pointer;transition:color .2s,border-color .2s;color:rgba(235,240,236,.56);text-decoration:none;font-family:var(--sans);display:inline-block}
-.btn-sm:hover{color:rgba(235,240,236,.70);border-color:rgba(235,240,236,.30)}
+.btn-sm:hover{color:rgba(235,240,236,.70);border-color:var(--th-ink-4)}
 .btn-sm.btn-accent{color:rgba(61,214,232,.82);border-color:rgba(61,214,232,.32)}
 .btn-sm.btn-accent:hover{color:rgba(61,214,232,.95);border-color:rgba(61,214,232,.5)}
 
@@ -249,19 +249,19 @@ code{font-size:var(--fs-xs);color:rgba(61,214,232,.7)}
 
 
 /* ── BRIEFING (design identity — matches tank-builder) ── */
-#briefing{position:fixed;inset:0;z-index:500;background:rgba(2,8,14,.97);display:flex;align-items:flex-start;justify-content:center;padding-top:max(4rem,env(safe-area-inset-top,4rem));padding-left:1.2rem;padding-right:1.2rem;padding-bottom:2rem;overflow-y:auto;transition:opacity .5s}
+#briefing{position:fixed;inset:0;z-index:500;background:var(--th-bg);display:flex;align-items:flex-start;justify-content:center;padding-top:max(4rem,env(safe-area-inset-top,4rem));padding-left:1.2rem;padding-right:1.2rem;padding-bottom:2rem;overflow-y:auto;transition:opacity .5s}
 .brief-inner{max-width:540px;width:100%;padding:2rem clamp(1.2rem,4vw,2.5rem) 3rem}
-.brief-eyebrow{font-size:var(--fs-2xs);letter-spacing:.22em;text-transform:uppercase;color:rgba(157,191,154,.7);display:block;margin-bottom:1.2rem}
-.brief-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.6rem,4.5vw,2.5rem);color:rgba(235,240,236,.92);line-height:1.1;margin-bottom:1.4rem}
-.brief-title em{font-style:italic;color:rgba(61,214,232,.74)}
-.brief-body{font-size:var(--fs-md);font-weight:300;color:rgba(235,240,236,.56);line-height:1.8;margin-bottom:1.4rem}
-.brief-rhythms{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.4rem;padding:1rem 1.2rem;background:rgba(6,18,14,.5);border:1px solid rgba(139,189,210,.08);border-radius:2px}
+.brief-eyebrow{font-size:var(--fs-2xs);letter-spacing:.22em;text-transform:uppercase;color:var(--th-accent);display:block;margin-bottom:1.2rem}
+.brief-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.6rem,4.5vw,2.5rem);color:var(--th-ink);line-height:1.1;margin-bottom:1.4rem}
+.brief-title em{font-style:italic;color:var(--th-accent)}
+.brief-body{font-size:var(--fs-md);font-weight:300;color:var(--th-ink-2);line-height:1.8;margin-bottom:1.4rem}
+.brief-rhythms{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.4rem;padding:1rem 1.2rem;background:var(--th-surface-2);border:1px solid var(--th-line);border-radius:2px}
 .brief-rhy-item{display:flex;align-items:flex-start;gap:.7rem}
 .brief-rhy-name{font-size:var(--fs-2xs);letter-spacing:.1em;text-transform:uppercase;font-weight:500;flex-shrink:0;width:100px}
-.brief-rhy-desc{font-size:var(--fs-sm-md);font-weight:300;color:rgba(235,240,236,.46);font-family:var(--serif);font-style:italic;line-height:1.55}
-.brief-note{font-size:var(--fs-sm);color:rgba(235,240,236,.30);font-style:italic;font-family:var(--serif);line-height:1.65;margin-bottom:2rem;padding-left:.9rem;border-left:1px solid rgba(255,255,255,.1)}
-.brief-btn{font-size:var(--fs-sm);letter-spacing:.14em;text-transform:uppercase;background:rgba(61,214,232,.92);color:#fff;border:1px solid rgba(61,214,232,.54);padding:.85rem 2.2rem;border-radius:2px;cursor:pointer;font-family:var(--sans);transition:background .25s,transform .2s;display:inline-flex;align-items:center;gap:.5rem}
-.brief-btn:hover{background:rgba(110,165,155,.95);transform:translateY(-1px)}
+.brief-rhy-desc{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-3);font-family:var(--serif);font-style:italic;line-height:1.55}
+.brief-note{font-size:var(--fs-sm);color:var(--th-ink-4);font-style:italic;font-family:var(--serif);line-height:1.65;margin-bottom:2rem;padding-left:.9rem;border-left:1px solid var(--th-line)}
+.brief-btn{font-size:var(--fs-sm);letter-spacing:.14em;text-transform:uppercase;background:var(--th-accent);color:var(--th-accent-ink);border:1px solid var(--th-accent-border);padding:.85rem 2.2rem;border-radius:2px;cursor:pointer;font-family:var(--sans);transition:background .25s,transform .2s;display:inline-flex;align-items:center;gap:.5rem}
+.brief-btn:hover{opacity:.88;transform:translateY(-1px)}
 </style>
 </head>
 <body>

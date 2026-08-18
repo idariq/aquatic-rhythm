@@ -63,8 +63,8 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
 :root{--fs-3xs:.5rem;--fs-2xs:.65rem;--fs-xs:.7rem;--fs-sm:.8rem;--fs-sm-md:.85rem;--fs-md:.9rem;--fs-base:1rem;--fs-md-lg:1.1rem;--fs-lg:1.35rem;--fs-xl:1.6rem;--fs-2xl:2.2rem;--fs-3xl:2.8rem;--fs-4xl:3rem;--fs-5xl:3.5rem;--abyss:#030b09;--serif:'Fraunces',Georgia,serif;--sans:'Work Sans',system-ui,sans-serif;--accent:#3DD6E8;--ease:cubic-bezier(0.19,1,0.22,1)}
-body{font-family:var(--sans);background:var(--abyss);color:rgba(235,240,236,.94);overflow-x:hidden;line-height:1.72}
-body::before{content:'';position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#052535 0%,#073040 18%,#062a38 38%,#041e28 58%,#030f18 78%,#020810 100%)}
+body{font-family:var(--sans);background:var(--th-bg);color:var(--th-ink);overflow-x:hidden;line-height:1.72}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-water)}
 @media(max-width:600px){}
 #kyr-progress{height:2px;background:rgba(235,240,236,.06);position:sticky;top:calc(68px + 41px);z-index:79}
 #kyr-prog-fill{height:100%;width:0%;background:rgba(61,214,232,.54);transition:width .7s var(--ease)}
@@ -72,7 +72,7 @@ main{min-height:100vh;padding-top:64px}
 
 /* INTRO */
 .kyr-intro{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:6rem clamp(1.5rem,5vw,3rem) 5rem;position:relative}
-.kyr-intro::after{content:'';position:absolute;bottom:0;left:0;right:0;height:140px;background:linear-gradient(to bottom,transparent,var(--abyss));pointer-events:none}
+.kyr-intro::after{content:'';position:absolute;bottom:0;left:0;right:0;height:140px;background:linear-gradient(to bottom,transparent,var(--th-bg));pointer-events:none}
 .kyr-intro-inner{max-width:540px;margin:0 auto}
 .kyr-eyebrow{display:block;font-size:var(--fs-xs);font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(157,191,154,.75);margin-bottom:1.4rem}
 .kyr-title{font-family:var(--serif);font-weight:300;font-size:clamp(2.4rem,5vw,3.8rem);color:rgba(235,240,236,.94);line-height:1.06;margin-bottom:1.8rem}

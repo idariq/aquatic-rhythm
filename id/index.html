@@ -59,8 +59,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/style.css?v=73">
-<link rel="stylesheet" href="/css/kofi-sheet.css?v=73">
+<link rel="stylesheet" href="/css/style.css?v=74">
+<link rel="stylesheet" href="/css/kofi-sheet.css?v=74">
 </head>
 <body>
 <div id="cd" aria-hidden="true"></div><div id="cr" aria-hidden="true"></div>
@@ -1737,18 +1737,18 @@
 <!-- ── MODAL BACKDROP ── -->
 <div class="mt-backdrop" id="mt-backdrop" aria-hidden="true"></div>
 
-<script src="/js/ecosystem.js?v=73" defer></script>
-<script src="/js/fauna.js?v=73" defer></script>
-<script src="/js/ui.js?v=73" defer></script>
+<script src="/js/ecosystem.js?v=74" defer></script>
+<script src="/js/fauna.js?v=74" defer></script>
+<script src="/js/ui.js?v=74" defer></script>
 <!-- ui.js sub-modules — order matters: eco-toggle exposes window.__arApply{Fauna,Flora}
      which settings reads; journal is lazy-loaded on first journal navigation. -->
-<script src="/js/ui-eco-toggle.js?v=73" defer></script>
-<script src="/js/ui-reading-pathways.js?v=73" defer></script>
-<script src="/js/ui-rhyssa-sheet.js?v=73" defer></script>
-<script src="/js/ui-rhyssa-page.js?v=73" defer></script>
-<script src="/js/ui-settings.js?v=73" defer></script>
-<script src="/js/kofi-sheet.js?v=73" defer></script>
-<script src="/js/rhyssa-fab-ext.js?v=73" defer></script>
+<script src="/js/ui-eco-toggle.js?v=74" defer></script>
+<script src="/js/ui-reading-pathways.js?v=74" defer></script>
+<script src="/js/ui-rhyssa-sheet.js?v=74" defer></script>
+<script src="/js/ui-rhyssa-page.js?v=74" defer></script>
+<script src="/js/ui-settings.js?v=74" defer></script>
+<script src="/js/kofi-sheet.js?v=74" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 <script>
 /* ── JOURNAL LAZY LOADER ── */
 (function () {
@@ -1757,9 +1757,9 @@
     window.__journalLoaded = true;
     // tank-data.js must load first — ui-journal.js reads window.AR_EQ from it
     var td = document.createElement('script');
-    td.src = '/js/tank-data.js?v=73';
+    td.src = '/js/tank-data.js?v=74';
     var s = document.createElement('script');
-    s.src = '/js/ui-journal.js?v=73';
+    s.src = '/js/ui-journal.js?v=74';
     document.head.appendChild(td);
     document.head.appendChild(s);
   }

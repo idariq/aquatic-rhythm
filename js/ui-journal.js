@@ -1851,6 +1851,35 @@
     ['mt-modal-setup', 'mt-modal-entry', 'mt-modal-inhabitant', 'mt-modal-gear'].forEach(closeModal);
   }
 
+  /* ── Back-button intercept ──
+     Without this, Android back (hardware/gesture) exits the page
+     entirely instead of just closing whichever mt-modal-* is open —
+     same pattern as js/rhyssa-fab-ext.js / js/ui-settings.js. All
+     four modals share one backdrop, toggled in lockstep by
+     openModal()/closeModal(), so watching it is a single source of
+     truth for "some modal is open" regardless of which one. */
+  (function () {
+    var mtBackdrop = document.getElementById('mt-backdrop');
+    if (!mtBackdrop) return;
+    var mtInHistory = false;
+    new MutationObserver(function () {
+      var open = mtBackdrop.classList.contains('open');
+      if (open && !mtInHistory) {
+        mtInHistory = true;
+        history.pushState({ mtModal: true }, '');
+      } else if (!open && mtInHistory) {
+        history.back();
+      }
+    }).observe(mtBackdrop, { attributes: true, attributeFilter: ['class'] });
+
+    window.addEventListener('popstate', function () {
+      if (!mtInHistory) return;
+      mtInHistory = false;
+      window.__rhSuppressSpaNav = true;
+      if (mtBackdrop.classList.contains('open')) closeAllModals();
+    }, true);
+  })();
+
   /* ── EQ label helper ── */
   function fmtEqLabel(key) {
     return key.replace(/-/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); });

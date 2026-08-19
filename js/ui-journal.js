@@ -12,7 +12,6 @@
   var STREAK_MILESTONES = [4, 8, 12, 26, 52];
   var jnFilter = { query: '', days: 0, care: [], state: [] };
   var jnFilteredEntries = [];
-  var INH_CATS = { fish:'🐟', plant:'🌿', invertebrate:'🦐', coral:'🪸', other:'◈' };
 
   var FISH_SPECIES = [
     { common: 'Neon Tetra',          sci: 'Paracheirodon innesi' },

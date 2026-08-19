@@ -333,6 +333,7 @@ function patchAppChrome(h, t, lang) {
   h = subOnce(h, '<span class="ib-lbl">What is happening</span>', `<span class="ib-lbl">${a.whatsHappening}</span>`, 'app.whatsHappening');
   h = subOnce(h, '<span class="ib-txt" id="ib-txt">Your tank is ready. The cycle will begin when you add an ammonia source.</span>',
     `<span class="ib-txt" id="ib-txt">${a.insightDefault}</span>`, 'app.insightDefault');
+  h = subOnce(h, '<span class="ml-lbl">Recent activity</span>', `<span class="ml-lbl">${a.recentActivity}</span>`, 'app.recentActivity');
   h = subAll(h, '<span class="ld">Day 1</span><span>Tank set up. Ready to begin cycling.</span>',
     `<span class="ld">${a.day1}</span><span>${a.logDefault}</span>`, 2, 'app.logDefault');
   h = subOnce(h, 'text-align:center">How much water to change?</div>', `text-align:center">${a.waterPickerQ}</div>`, 'app.waterPickerQ');

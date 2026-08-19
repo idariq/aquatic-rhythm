@@ -117,6 +117,7 @@
     "stableDaysNote": "アンモニアと亜硝酸塩がほぼゼロの状態が3日間連続で続くと、サイクル完了と判定されます。",
     "whatsHappening": "今起きていること",
     "insightDefault": "水槽の準備が整いました。アンモニア源を加えると、サイクルが始まります。",
+    "recentActivity": "最近の記録",
     "logDefault": "水槽の設定が完了しました。サイクルを開始する準備ができています。",
     "waterPickerQ": "水をどれくらい換えますか？",
     "cancelBtn": "キャンセル",

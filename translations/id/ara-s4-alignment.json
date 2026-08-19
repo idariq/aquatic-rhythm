@@ -6,22 +6,22 @@
   },
   "head": {
     "title": "Pemikiran Keselarasan — Kerangka ARA · Aquatic Rhythm",
-    "description": "Cara bertindak selaras — lima prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya.",
+    "description": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya.",
     "ogTitle": "Pemikiran Keselarasan — Kerangka ARA · Aquatic Rhythm",
-    "ogDescription": "Cara bertindak selaras — lima prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya.",
+    "ogDescription": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya.",
     "twitterTitle": "Pemikiran Keselarasan — Kerangka ARA · Aquatic Rhythm",
-    "twitterDescription": "Cara bertindak selaras — lima prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya.",
+    "twitterDescription": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya.",
     "ldHeadline": "Pemikiran Keselarasan — Kerangka ARA",
-    "ldDescription": "Cara bertindak selaras — lima prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya."
+    "ldDescription": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya."
   },
   "header": {
     "eyebrow": "04 / 06 · Kerangka ARA",
     "titleHtml": "Pemikiran Keselarasan",
-    "desc": "Cara bertindak selaras — lima prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya."
+    "desc": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya."
   },
   "modules": [
     {
-      "pos": "1 / 8",
+      "pos": "1 / 7",
       "tag": "Keselarasan vs Kendali",
       "titleHtml": "Keselarasan <em>vs Kendali</em>",
       "blocks": [
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "pos": "2 / 8",
+      "pos": "2 / 7",
       "tag": "Timing sebelum Teknik",
       "titleHtml": "Timing <em>sebelum Teknik</em>",
       "blocks": [
@@ -105,7 +105,7 @@
       ]
     },
     {
-      "pos": "3 / 8",
+      "pos": "3 / 7",
       "tag": "Kapasitas sebelum Ambisi",
       "titleHtml": "Kapasitas <em>sebelum Ambisi</em>",
       "blocks": [
@@ -129,7 +129,7 @@
       ]
     },
     {
-      "pos": "4 / 8",
+      "pos": "4 / 7",
       "tag": "Konsistensi sebelum Intensitas",
       "titleHtml": "Konsistensi <em>sebelum Intensitas</em>",
       "blocks": [
@@ -148,7 +148,7 @@
       ]
     },
     {
-      "pos": "5 / 8",
+      "pos": "5 / 7",
       "tag": "Observasi sebelum Koreksi",
       "titleHtml": "Observasi <em>sebelum Koreksi</em>",
       "blocks": [
@@ -158,30 +158,9 @@
             "Membaca apa yang sebenarnya sedang terjadi mendahului respons apa pun. Bertindak atas pembacaan yang keliru — atau bertindak sebelum polanya jelas — sering menghasilkan gangguan yang lebih besar daripada yang pantas ditimbulkan oleh sinyal aslinya.",
             "Membaca menuntut adanya baseline. Jika Anda tidak tahu seperti apa tank Anda ketika sedang baik-baik saja, Anda tidak bisa membaca seperti apa ia ketika sesuatu mulai bergeser. Bangunlah baseline untuk tank Anda sendiri: baseline betta Anda, lintasan nitrat yang khas di tank Anda, warna normal substrat Anda setelah seminggu.",
             "Ketika sesuatu berubah dari baseline itu, Anda mendapat sinyal. Sinyal itu adalah awal dari periode pengamatan — bukan awal dari intervensi. Dalam kebanyakan kasus, jendela pengamatan 24–48 jam sebelum bertindak akan memperlihatkan apakah sinyal tersebut sekadar variasi sesaat atau pergeseran yang sungguhan.",
+            "Observasi tidak selesai begitu sebuah sinyal dikonfirmasi — ia berlanjut hingga menelusuri di mana sinyal itu bermula. Dalam sistem akuatik tertutup, tempat sebuah masalah menjadi terlihat sering bukanlah tempat masalah itu bermula. Ikan yang menunjukkan perilaku stres mungkin sedang merespons pergeseran kimia air yang bermula dari perubahan pola pemberian pakan dua minggu sebelumnya; alga yang muncul di kaca mungkin merupakan ekspresi hilir dari beban hewan yang diam-diam melampaui apa yang sanggup diolah komunitas biologis. Gejala dan asalnya sering berada di domain yang berbeda, dan koreksi yang diarahkan pada gejala alih-alih pada asalnya menghasilkan perbaikan sementara yang tidak bertahan — gejala yang sama akan kembali, sering dalam bentuk yang sedikit berbeda, karena penyebabnya tidak pernah disentuh.",
+            "Menelusuri asal bermula dari tujuh domain dan lima ritme. Tanyakan: di domain mana hal ini paling mungkin bermula? Ritme mana yang kemungkinan menjadi pembawanya? Gejala memberi Anda domain ekspresi; pengamatan lintas domain dan sepanjang waktu memberi Anda domain asalnya.",
             "Observasi sebelum Koreksi juga membawa satu konsekuensi lanjutan: ketika harus memilih antara ritme yang baik dan konsisten dengan ritme yang sesekali sempurna, kestabilanlah yang menang. Konsistensi menciptakan kondisi ekologis tempat kedalaman tumbuh; pengejaran kesempurnaan sering justru memasukkan gangguan yang sedang berusaha ia hilangkan."
-          ]
-        },
-        {
-          "type": "hn",
-          "label": "ARA · Lima Ritme",
-          "paragraphs": [
-            "Water Rhythm (kimia air, suhu, gas terlarut), Biological Rhythm (siklus nitrogen, komunitas mikroba, fase), Environmental Rhythm (cahaya, aliran, hardscape, tanaman), Livestock Rhythm (perilaku, warna, nafsu makan, dinamika sosial), Keeper Rhythm (perhatian, waktu, kapasitas emosional, konsistensi). Setiap ritme bisa dibaca. Bersama-sama, semuanya memberi gambaran utuh tentang keadaan tank yang tidak bisa diberikan oleh satu tes mana pun."
-          ]
-        }
-      ]
-    },
-    {
-      "pos": "6 / 8",
-      "tag": "Asal sebelum Ekspresi",
-      "titleHtml": "Asal <em>sebelum Ekspresi</em>",
-      "blocks": [
-        {
-          "type": "body",
-          "paragraphs": [
-            "Dalam sistem akuatik tertutup, tempat sebuah masalah menjadi terlihat sering bukanlah tempat masalah itu bermula. Ikan yang menunjukkan perilaku stres mungkin sedang merespons pergeseran kimia air yang bermula dari perubahan pola pemberian pakan dua minggu sebelumnya. Alga yang muncul di kaca mungkin merupakan ekspresi hilir dari beban hewan yang diam-diam melampaui apa yang sanggup diolah komunitas biologis. Gejala dan asalnya berada di domain yang berbeda.",
-            "Prinsip kelima menyatakan bahwa tindakan korektif seharusnya diarahkan pada asal, bukan pada ekspresi. Mengobati ekspresi — gejala kasatmata yang ada di depan Anda — tanpa menelusuri kembali ke asalnya menghasilkan perbaikan sementara yang tidak bertahan. Gejala yang sama akan kembali, sering dalam bentuk yang sedikit berbeda, karena penyebabnya tidak pernah disentuh.",
-            "Menelusuri asal bermula dari tujuh domain dan lima ritme. Tanyakan: di domain mana hal ini paling mungkin bermula? Ritme mana yang kemungkinan menjadi pembawanya? Gejala memberi Anda domain ekspresi. Pengamatan lintas domain dan sepanjang waktu memberi Anda domain asalnya.",
-            "Prinsip inilah yang memberi keempat prinsip sebelumnya kekuatan penuhnya. Mengamati sebelum mengoreksi hanya efektif bila Anda membaca ke arah sasaran yang tepat. Memilih waktu yang tepat hanya berarti bila Anda telah mengenali dengan benar terhadap apa sebenarnya respons Anda diatur waktunya."
           ]
         },
         {
@@ -194,7 +173,7 @@
       ]
     },
     {
-      "pos": "7 / 8",
+      "pos": "6 / 7",
       "tag": "Tujuh Domain",
       "titleHtml": "Tempat <em>Keselarasan Terjadi</em>",
       "blocks": [
@@ -246,7 +225,7 @@
       ]
     },
     {
-      "pos": "8 / 8",
+      "pos": "7 / 7",
       "tag": "Jalur Keselarasan",
       "titleHtml": "Membaca <em>Pola, bukan Gejala</em>",
       "blocks": [

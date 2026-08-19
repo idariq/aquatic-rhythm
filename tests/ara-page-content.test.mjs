@@ -69,14 +69,13 @@ test('all six ARA section articles exist and the hub page links to each', () => 
   }
 });
 
-test('ARA alignment page (s4) declares the five principles', () => {
+test('ARA alignment page (s4) declares the four principles', () => {
   const s4 = readArticle('ara-s4-alignment');
   const titles = [
     'Timing before Technique',
     'Capacity before Ambition',
     'Consistency before Intensity',
     'Observation before Correction',
-    'Origin before Expression',
   ];
   for (const t of titles) {
     assert.ok(s4.includes(t), `missing principle title: ${t}`);

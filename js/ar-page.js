@@ -330,6 +330,28 @@
       if (e.key === 'Escape' && panel.classList.contains('open')) closeSettings();
     });
 
+    /* ── Back-button intercept ──
+       Without this, Android back (hardware/gesture) exits the page
+       entirely instead of just closing the panel — same pattern as
+       js/rhyssa-fab-ext.js's chat sheet / js/ui-settings.js. */
+    var stgInHistory = false;
+    new MutationObserver(function () {
+      var open = panel.classList.contains('open');
+      if (open && !stgInHistory) {
+        stgInHistory = true;
+        history.pushState({ settingsPanel: true }, '');
+      } else if (!open && stgInHistory) {
+        history.back();
+      }
+    }).observe(panel, { attributes: true, attributeFilter: ['class'] });
+
+    window.addEventListener('popstate', function () {
+      if (!stgInHistory) return;
+      stgInHistory = false;
+      window.__rhSuppressSpaNav = true;
+      if (panel.classList.contains('open')) closeSettings();
+    }, true);
+
     /* Fauna */
     if (stgFauna) stgFauna.addEventListener('change', function() { localStorage.setItem('ar_fauna', stgFauna.checked ? '1' : '0'); });
 

@@ -155,17 +155,35 @@ function getNotoSubsetMap(weight = 300) {
   return map;
 }
 
-// Returns satori font entries for Noto Serif JP subsets covering `text`.
+// Returns satori font entries for Noto Serif JP subsets covering `text`, plus
+// the CSS font-family fallback-stack string to pair with them.
 // DM Sans (already in latinFonts) covers ASCII punctuation and Latin chars.
+//
+// @fontsource/noto-serif-jp ships Noto Serif JP pre-split into ~124 tiny
+// per-unicode-block subset .woff files (Google Fonts' browser-lazy-load
+// strategy) — there is no single full/unsubsetted file anywhere in the
+// package. Satori only keeps ONE font per unique {name, weight, style}
+// triple, silently dropping the rest — so registering every needed subset
+// under the same literal name 'Noto Serif JP' (the original bug, found
+// 2026-08-19 while chasing site-wide "tofu box" ja OG images) means only
+// one subset's glyphs ever render. Fix: give each subset a unique name and
+// return them as a comma-separated fallback stack (same trick as a CSS
+// `font-family: "A", "B", "C"` list) so Satori tries each named font in
+// turn per glyph until one contains the character.
 function getJaFonts(text) {
   const map   = getNotoSubsetMap(300);
   const fonts = [];
+  const names = [];
+  let i = 0;
   for (const { file, ranges } of map) {
     if (!textNeedsSubset(text, ranges)) continue;
     const woff = readFileSync(require.resolve(`@fontsource/noto-serif-jp/files/${file}`));
-    fonts.push({ name: 'Noto Serif JP', weight: 300, style: 'normal', data: woffToTtf(woff).buffer });
+    const name = `Noto Serif JP Subset ${i++}`;
+    fonts.push({ name, weight: 300, style: 'normal', data: woffToTtf(woff).buffer });
+    names.push(name);
   }
-  return fonts;
+  const fontFamily = names.map(n => `"${n}"`).join(', ');
+  return { fonts, fontFamily };
 }
 
 // ── Data extraction ───────────────────────────────────────────────────────────
@@ -184,12 +202,19 @@ function extractEnData(htmlPath) {
   const html   = readFileSync(htmlPath, 'utf-8');
   const ogTitle = html.match(/<meta property="og:title" content="([^"]+)"/)?.[1] ?? '';
   const ogDesc  = html.match(/<meta property="og:description" content="([^"]+)"/)?.[1] ?? '';
+  // Bespoke single-file tools (tank-simulator/tank-builder/community-stress-lab)
+  // use a "brief-*" briefing-screen class, not the regular article's "art-*"
+  // (found 2026-08-19 while auditing why their OG images were blank/wrong —
+  // the "??" fallback here silently degrades instead of erroring, so this
+  // bug produced no crash, just an eyebrow-less, differently-titled image).
   const eyebrow = (
     html.match(/class="art-eyebrow"[^>]*>([^<]+)</)?.[1] ??
     html.match(/class="ara-art-eyebrow"[^>]*>([^<]+)</)?.[1] ??
+    html.match(/class="brief-eyebrow"[^>]*>([^<]+)</)?.[1] ??
     ''
   ).replace(/&amp;/g, '&').trim();
   const rawH1 = html.match(/class="art-main-title"[^>]*>([\s\S]*?)<\/h1>/)?.[1] ??
+    html.match(/class="brief-title"[^>]*>([\s\S]*?)<\/h1>/)?.[1] ??
     ogTitle.replace(/\s*[—·]\s*Aquatic Rhythm.*$/, '');
   return {
     title:   ogTitle.replace(/\s*[—·]\s*Aquatic Rhythm.*$/, '').trim(),
@@ -199,16 +224,27 @@ function extractEnData(htmlPath) {
   };
 }
 
-// Localized — read from translations/{lang}/{slug}.json
+// Localized — read from translations/{lang}/{slug}.json. Bespoke templates
+// don't share the regular article's {head.ogTitle/ogDescription, intro.eyebrow/
+// titleHtml} schema — tank-simulator/tank-builder use {head.title/description,
+// briefing.eyebrow/titleHtml}, community-stress-lab flattens everything into
+// html.{meta_title,og_description,brief_eyebrow,brief_title}. Each "??" tier
+// below is a distinct schema, checked in order (found 2026-08-19 alongside the
+// matching extractEnData bug — same root cause: a template-specific field name
+// silently resolves to undefined instead of erroring).
 function extractLangData(slug, lang) {
   const tPath = join(TRANS_DIR, lang, `${slug}.json`);
   if (!existsSync(tPath)) return null;
   const t = JSON.parse(readFileSync(tPath, 'utf-8'));
-  const rawH1 = t.intro?.titleHtml ?? t.head?.ogTitle ?? '';
+  const html = t.html ?? {};
+  const ogTitle = t.head?.ogTitle ?? t.head?.title ?? html.meta_title ?? '';
+  const ogDesc = t.head?.ogDescription ?? t.head?.description ?? html.og_description ?? html.meta_description ?? '';
+  const eyebrow = t.intro?.eyebrow ?? t.briefing?.eyebrow ?? html.brief_eyebrow ?? '';
+  const rawH1 = t.intro?.titleHtml ?? t.briefing?.titleHtml ?? html.brief_title ?? ogTitle;
   return {
-    title:   (t.head?.ogTitle ?? '').replace(/\s*[—·].*$/, '').trim(),
-    desc:    (t.head?.ogDescription ?? '').replace(/&amp;/g, '&').trim(),
-    eyebrow: (t.intro?.eyebrow ?? '').replace(/&amp;/g, '&').trim(),
+    title:   ogTitle.replace(/\s*[—·].*$/, '').trim(),
+    desc:    ogDesc.replace(/&amp;/g, '&').trim(),
+    eyebrow: eyebrow.replace(/&amp;/g, '&').trim(),
     lines:   parseH1Lines(rawH1),
   };
 }
@@ -227,7 +263,7 @@ function buildLayout(data, titleFont, uiFont, isJa = false) {
       // Japanese: strip italic markers, render plain
       const text = line.replace(/[‹›]/g, '');
       return txt(text, {
-        fontFamily: `"${titleFont}"`,
+        fontFamily: titleFont,
         fontWeight: 300,
         fontStyle: 'normal',
         fontSize: titleSize,
@@ -243,7 +279,7 @@ function buildLayout(data, titleFont, uiFont, isJa = false) {
         children: line.split(/(‹[^›]+›)/).map(part => {
           const isItalic = part.startsWith('‹') && part.endsWith('›');
           return txt(isItalic ? part.slice(1, -1) : part, {
-            fontFamily: `"${titleFont}"`,
+            fontFamily: titleFont,
             fontWeight: isItalic ? 400 : 300,
             fontStyle: isItalic ? 'italic' : 'normal',
             fontSize: titleSize,
@@ -265,7 +301,7 @@ function buildLayout(data, titleFont, uiFont, isJa = false) {
         width: 1200, height: 630,
         background: `linear-gradient(155deg, ${C.bg1} 0%, ${C.bg2} 30%, ${C.bg3} 65%, ${C.bg4} 100%)`,
         padding: '56px 80px',
-        fontFamily: `"${uiFont}"`,
+        fontFamily: uiFont,
         position: 'relative',
       },
       children: [
@@ -287,7 +323,7 @@ function buildLayout(data, titleFont, uiFont, isJa = false) {
             style: { display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center' },
             children: [
               eyebrow ? txt(isJa ? eyebrow : eyebrow.toUpperCase(), {
-                fontFamily: `"${uiFont}"`, fontWeight: 500, fontSize: 20,
+                fontFamily: uiFont, fontWeight: 500, fontSize: 20,
                 letterSpacing: isJa ? '0.08em' : '0.18em',
                 color: C.eyebrow,
                 textTransform: isJa ? 'none' : 'uppercase',
@@ -301,7 +337,7 @@ function buildLayout(data, titleFont, uiFont, isJa = false) {
                 },
               },
               shortDesc ? txt(shortDesc, {
-                fontFamily: `"${titleFont}"`, fontWeight: 300,
+                fontFamily: titleFont, fontWeight: 300,
                 fontStyle: isJa ? 'normal' : 'italic',
                 fontSize: 28, color: C.textDim, lineHeight: 1.5, maxWidth: 980,
               }) : null,
@@ -325,7 +361,7 @@ function buildLayout(data, titleFont, uiFont, isJa = false) {
 }
 
 // ── Image generation ──────────────────────────────────────────────────────────
-async function generateImage(outFile, data, extraFonts = [], titleFont = 'Cormorant Garamond', uiFont = 'DM Sans', isJa = false) {
+async function generateImage(outFile, data, extraFonts = [], titleFont = '"Cormorant Garamond"', uiFont = '"DM Sans"', isJa = false) {
   const layout = buildLayout(data, titleFont, uiFont, isJa);
   const fonts  = [...getLatinFonts(), ...extraFonts];
   const svg    = await satori(layout, { width: 1200, height: 630, fonts });
@@ -417,8 +453,13 @@ for (const lang of activeLangs) {
 
       if (isJa) {
         const allText = [data.eyebrow, ...data.lines, data.desc].join('');
-        const jaFonts = getJaFonts(allText);
-        await generateImage(outFile, data, jaFonts, 'Noto Serif JP', 'DM Sans', true);
+        const { fonts: jaFonts, fontFamily: jaFamily } = getJaFonts(allText);
+        // Eyebrow/UI text (uiFont) can also carry Japanese (not uppercased for
+        // ja, unlike en/id), so both title and UI need the Noto subset stack —
+        // DM Sans appended as a fallback for any plain Latin/ASCII chars, since
+        // the Noto subsets only cover CJK unicode blocks.
+        const jaFontFamily = jaFamily ? `${jaFamily}, "DM Sans"` : '"DM Sans"';
+        await generateImage(outFile, data, jaFonts, jaFontFamily, jaFontFamily, true);
       } else {
         await generateImage(outFile, data);
       }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Why Is My Aquarium Water Cloudy? — Aquatic Rhythm</title>
 <meta name="description" content="Cloudy aquarium water is one of the most common experiences in the hobby — and usually not a sign that something has gone wrong. Learn to read what your tank is actually doing.">
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -264,7 +264,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">Read the type<br><em>before you act.</em></h2>
     <div class="mod-body">
       <p>The most common response to cloudy water is an immediate large water change. This feels productive — but for bacterial blooms, it often extends the cloudiness by removing the bacteria before they have settled and established. The system gets disrupted again, the bloom restarts, and the keeper becomes more anxious.</p>
-      <p>ARA calls this the intervention trap: when caring becomes the obstacle. The impulse to act is not wrong — it is caring. But in most cloudiness situations, the most aligned response is to identify the type first, make at most one small adjustment, and then observe for several days before doing anything else.</p>
+      <p>This is a case where caring itself becomes the obstacle. The impulse to act is not wrong — it is caring. But in most cloudiness situations, the most aligned response is to identify the type first, make at most one small adjustment, and then observe for several days before doing anything else.</p>
     </div>
 
     <div class="hn">
@@ -451,8 +451,8 @@ function updateDots() {
     <p class="rh-sheet-note">AI can be wrong — for fish emergencies, consult a specialist</p>
   </div>
 </div>
-<script src="/js/content-trust.js?v=52"></script>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/content-trust.js?v=74"></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -460,6 +460,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

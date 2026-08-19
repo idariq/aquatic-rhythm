@@ -57,6 +57,28 @@
       if (!sheet.classList.contains('open')) return;
       closeSheet();
     });
+
+    /* ── Back-button intercept ──
+       Without this, Android back (hardware/gesture) exits the page
+       entirely instead of just closing the sheet — same pattern as
+       js/rhyssa-fab-ext.js / js/ui-settings.js. */
+    var kofiInHistory = false;
+    new MutationObserver(function () {
+      var open = sheet.classList.contains('open');
+      if (open && !kofiInHistory) {
+        kofiInHistory = true;
+        history.pushState({ kofiSheet: true }, '');
+      } else if (!open && kofiInHistory) {
+        history.back();
+      }
+    }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
+
+    window.addEventListener('popstate', function () {
+      if (!kofiInHistory) return;
+      kofiInHistory = false;
+      window.__rhSuppressSpaNav = true;
+      if (sheet.classList.contains('open')) closeSheet();
+    }, true);
   }
 
   if (document.readyState === 'loading') {

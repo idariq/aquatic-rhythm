@@ -98,7 +98,7 @@
     }
 
     var GA_ID = 'G-8MDN065WNW';
-    var GEAR_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>';
+    var GEAR_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>';
 
     /* Inject settings button into standard nav (articles / tank-builder) */
     var nav = document.querySelector('nav:not(.bnav)');
@@ -132,13 +132,13 @@
       panel.innerHTML =
         '<div class="ar-stg-head">' +
           '<div class="ar-stg-head-left">' +
-            '<svg class="ar-stg-head-icon" width="15" height="15" viewBox="0 0 17 17" fill="none" aria-hidden="true">' +
-              '<path d="M6.8 2.2h3.4l.48 1.6a5 5 0 011.3.76l1.65-.5 1.7 2.94-1.18 1.14c.04.3.07.6.07.86s-.03.57-.07.86l1.18 1.14-1.7 2.94-1.65-.5a5 5 0 01-1.3.76L10.2 14.8H6.8l-.48-1.6a5 5 0 01-1.3-.76l-1.65.5-1.7-2.94 1.18-1.14A5 5 0 012.78 8.5c0-.26.03-.56.07-.86L1.67 6.5l1.7-2.94 1.65.5a5 5 0 011.3-.76L6.8 2.2z" stroke="currentColor" stroke-width="1.15" stroke-linejoin="round" fill="none"/>' +
-              '<circle cx="8.5" cy="8.5" r="2.1" stroke="currentColor" stroke-width="1.15" fill="none"/>' +
+            '<svg class="ar-stg-head-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+              '<path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' +
+              '<circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>' +
             '</svg>' +
             '<span class="ar-stg-title">' + T('settings') + '</span>' +
           '</div>' +
-          '<button class="ar-stg-close" id="ar-stg-close" aria-label="' + T('close_aria') + '">✕</button>' +
+          '<button class="ar-stg-close" id="ar-stg-close" aria-label="' + T('close_aria') + '"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="m6 6 12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>' +
         '</div>' +
         '<div class="ar-stg-body">' +
           '<div class="ar-stg-section">' +
@@ -329,6 +329,28 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && panel.classList.contains('open')) closeSettings();
     });
+
+    /* ── Back-button intercept ──
+       Without this, Android back (hardware/gesture) exits the page
+       entirely instead of just closing the panel — same pattern as
+       js/rhyssa-fab-ext.js's chat sheet / js/ui-settings.js. */
+    var stgInHistory = false;
+    new MutationObserver(function () {
+      var open = panel.classList.contains('open');
+      if (open && !stgInHistory) {
+        stgInHistory = true;
+        history.pushState({ settingsPanel: true }, '');
+      } else if (!open && stgInHistory) {
+        history.back();
+      }
+    }).observe(panel, { attributes: true, attributeFilter: ['class'] });
+
+    window.addEventListener('popstate', function () {
+      if (!stgInHistory) return;
+      stgInHistory = false;
+      window.__rhSuppressSpaNav = true;
+      if (panel.classList.contains('open')) closeSettings();
+    }, true);
 
     /* Fauna */
     if (stgFauna) stgFauna.addEventListener('change', function() { localStorage.setItem('ar_fauna', stgFauna.checked ? '1' : '0'); });

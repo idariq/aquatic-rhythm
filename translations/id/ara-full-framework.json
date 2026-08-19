@@ -17,7 +17,9 @@
   "header": {
     "eyebrow": "Kerangka ARA · Rujukan Lengkap",
     "titleHtml": "Aquatic Rhythm<br><em>Alignment</em>",
-    "sub": "Kerangka untuk membaca ekosistem akuatik tertutup — melalui lima ecological rhythm, tiga fase sistem, dan keselarasan antara pemelihara dan tank. Enam bagian. Bisa dibaca dalam urutan apa pun."
+    "sub": "Kerangka untuk membaca ekosistem akuatik tertutup — melalui lima ecological rhythm, tiga fase sistem, dan keselarasan antara pemelihara dan tank. Enam bagian. Bisa dibaca dalam urutan apa pun.",
+    "statusLabel": "Catatan tentang apa yang diklaim kerangka ini",
+    "statusBody": "ARA tidak mengklaim validasi empiris. Ia mengklaim koherensi teoretis — bahwa konstruknya terdefinisi dengan baik, hubungan antar-konstruknya masuk akal, dan pertanyaan yang ditimbulkannya dapat diuji. Empat dari lima ritme (Water, Biological, Environmental, Livestock) bertumpu pada penelitian mapan dalam ekologi akuatik, mikrobiologi, dan kesejahteraan hewan tangkaran, dan memerlukan pemeriksaan oleh peneliti dengan keahlian tersebut sebelum dapat diperlakukan sebagai lebih dari sekadar proposisi yang koheren. Ritme kelima, Keeper Rhythm, adalah bidang keahlian formal penulis — kontribusi utama kerangka ini, dan alasan mengapa keempat ritme lainnya turut disertakan. Apa yang mengikuti ditawarkan sebagai titik awal untuk pengujian itu, bukan teori yang sudah selesai."
   },
   "cards": [
     {
@@ -45,15 +47,15 @@
       "href": "/articles/ara-s4-alignment",
       "num": "04",
       "label": "Pemikiran Keselarasan",
-      "desc": "Cara bertindak selaras — lima prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalur yang umum ditempuh.",
-      "meta": "8 modul"
+      "desc": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, membaca lewat ritme, dan jalur-jalur yang umum ditempuh.",
+      "meta": "7 modul"
     },
     {
       "href": "/articles/ara-s5-observation",
       "num": "05",
       "label": "Praktik Observasi",
-      "desc": "Cara mengamati dengan baik — membangun baseline, mengembangkan kapasitas, dan membaca sinyal palsu.",
-      "meta": "4 modul"
+      "desc": "Cara mengamati dengan baik — membangun baseline, mengembangkan kapasitas, membaca sinyal palsu, dan menahan diri sebagai strategi.",
+      "meta": "5 modul"
     },
     {
       "href": "/articles/ara-s6-ethics",

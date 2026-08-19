@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>水質は問題ないのに魚が死ぬ — Aquatic Rhythm</title>
 <meta name="description" content="アンモニアゼロ、亜硝酸ゼロ。でも魚はまだ苦しんでいる。テストキットが測定しないものとは何か、魚のシグナルの読み方、本当の原因の見つけ方を解説します。">
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -272,8 +272,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-eyebrow"><span class="mod-num">03 / 04</span><span class="mod-tag">根本原因を探す</span></div>
     <h2 class="mod-title">苦しんでいる水槽のほぼすべてに<br><em>ひとつの根本原因がある。</em></h2>
     <div class="mod-body">
-      <p>水質がきれいなのに魚が衰退しているとき、<strong>支配的ストレス要因</strong>——そのときシステムに最も大きな負担をかけている単一の圧力——の観点で考えると助かります。水槽内の他のすべてはそのひとつのことに反応しています。それを特定できれば、残りが明確になります。</p>
-      <p>これは常に見つけやすいわけではありません。支配的ストレス要因はテストキットには見えないことが多く、ゆっくり進行し、しばらく存在すると正常化されやすい。でも、ほぼ必ず見つかります。</p>
+      <p>水質がきれいなのに魚が衰退しているとき、そのときシステムに最も大きな負担をかけている単一の圧力を探すと助かります。水槽内の他のすべてはそのひとつのことに反応しています。それを特定できれば、残りが明確になります。</p>
+      <p>これは常に見つけやすいわけではありません。その圧力はテストキットには見えないことが多く、ゆっくり進行し、しばらく存在すると正常化されやすい。でも、ほぼ必ず見つかります。</p>
     </div>
 
     <div class="mod-body">
@@ -290,7 +290,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <div class="hn">
       <span class="hn-label">見えているものではなく、その原因に対処する</span>
-      <p>支配的ストレス要因が本当の原因です。魚が見せる症状——退色、隠れ、健康悪化——が目に見えるものです。何かを調整する前に、見えているものを生み出しているものをたどること。原因を見つければ、個々を直接ターゲットにしなくても症状は解消されます。</p>
+      <p>その根底にある圧力が本当の原因です。魚が見せる症状——退色、隠れ、健康悪化——が目に見えるものです。何かを調整する前に、見えているものを生み出しているものをたどること。原因を見つければ、個々を直接ターゲットにしなくても症状は解消されます。</p>
     </div>
 
     <div class="mod-next">
@@ -316,7 +316,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     </div>
 
     <div class="mod-body">
-      <p>このような体系的な観察によって、支配的ストレス要因はほぼ必ず見つかります。必要なのはより多くのテストではありません。より多く見ることです。</p>
+      <p>このような体系的な観察によって、原因はほぼ必ず見つかります。必要なのはより多くのテストではありません。より多く見ることです。</p>
     </div>
 
     <div class="mod-body">
@@ -463,8 +463,8 @@ function updateDots() {
     <p class="rh-sheet-note">AIは間違えることがあります —— 魚の緊急事態では、専門家に相談してください</p>
   </div>
 </div>
-<script src="/js/content-trust.js?v=52"></script>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/content-trust.js?v=74"></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -472,6 +472,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

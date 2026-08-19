@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>水槽はいつ魚を入れる準備ができる？ — Aquatic Rhythm</title>
 <meta name="description" content="テストキットがアンモニアゼロ、亜硝酸ゼロを示している。どのガイドもそれで「準備完了」と言います。でも「サイクル完了」は生物学的な最低限にすぎません。このガイドでは、成熟が生物学的に何を意味するかを解説します。">
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -281,7 +281,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-body">
       <p>サイクル完了直後の水槽に最初の魚を追加する前に、ひとつの実践がほとんどの不確実性を取り除きます——小さな制御されたアンモニア源を追加して、24時間で何が起きるかを観察する。ひとつまみの魚用フード、分解するままにしておくと小さなアンモニアスパイクが生じます。水槽が24時間以内にそれをゼロに戻せた場合——アンモニアが一時的に上がってからゼロに戻り、亜硝酸塩が上がらない——バクテリアのコロニーは本当に確立されて反応性があります。それがシステムの準備ができているサインです。</p>
       <p>アンモニアスパイクが24時間を超えて続く場合、または亜硝酸塩が上がって高い状態が続く場合、コロニーにはもう少し時間が必要です。これは失敗ではありません。水槽がまだDeveloping Phaseではないと伝えているのです。もう1週間待って再チェックしてください。</p>
-      <p>このチェック以外にも、最初の魚を追加するアライメントのとれたアプローチは段階的です——最初は小さなグループだけ（群泳魚なら6匹など）、それから10日間の観察期間を経てから何か追加します。最初の48時間の行動を観察してください。活発に探索しているのは良いサインです。隠れて食べないのは、先に進む前に水質と水温を確認するシグナルです。</p>
+      <p>このチェック以外にも、最初の魚を追加する整合したアプローチは段階的です——最初は小さなグループだけ（群泳魚なら6匹など）、それから10日間の観察期間を経てから何か追加します。最初の48時間の行動を観察してください。活発に探索しているのは良いサインです。隠れて食べないのは、先に進む前に水質と水温を確認するシグナルです。</p>
       <p>水槽は自分が何を収容できるかを伝えてくれます。ストックする前に読み取ってください。この初期段階で観察を中心に構築するキーパーリズムは、水槽が経てるすべてのフェーズに引き継がれていきます。</p>
     </div>
 
@@ -297,7 +297,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <div class="mod-next" style="margin-top:1.5rem">
       <button class="btn-prev" onclick="goMod(3)">← 戻る</button>
-      <button class="btn-next" onclick="goIntro()">Readingに戻る <span>→</span></button>
+      <button class="btn-next" onclick="goIntro()">イントロに戻る <span>→</span></button>
     </div>
 
     <div style="margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center">
@@ -431,8 +431,8 @@ function updateDots() {
     <p class="rh-sheet-note">AIは間違えることがあります —— 魚の緊急事態では、専門家に相談してください</p>
   </div>
 </div>
-<script src="/js/content-trust.js?v=52"></script>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/content-trust.js?v=74"></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -440,6 +440,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

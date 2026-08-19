@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ich Terus Kembali — Aquatic Rhythm</title>
 <meta name="description" content="Pengobatan berhasil. Bintik hilang. Tapi beberapa minggu kemudian muncul lagi. Panduan ini menjelaskan mengapa ich berulang dan apa yang sebenarnya sedang disampaikan tank kepada Anda.">
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -244,17 +244,17 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <div class="mod-next">
       <button class="btn-prev" onclick="goMod(1)">← Kembali</button>
-      <button class="btn-next" onclick="goMod(3)">Mencari stres dominan <span>→</span></button>
+      <button class="btn-next" onclick="goMod(3)">Mencari akar penyebab <span>→</span></button>
     </div>
   </section>
 
   <!-- ═══ MODULE 3 ═══ -->
   <section class="module" id="mod-3" data-mod="3">
-    <div class="mod-eyebrow"><span class="mod-num">03 / 04</span><span class="mod-tag">Mencari stres dominan</span></div>
+    <div class="mod-eyebrow"><span class="mod-num">03 / 04</span><span class="mod-tag">Mencari akar penyebab</span></div>
     <h2 class="mod-title">Menemukan apa yang<br><em>sebenarnya sedang disampaikan tank.</em></h2>
     <div class="mod-body">
       <p>Langkah pertama setelah membersihkan wabah ich adalah pengamatan, bukan perubahan segera. Buat daftar apa yang Anda ketahui: kapan wabah muncul? Apa yang berubah dalam dua hingga empat minggu sebelumnya? Ikan baru? Makan baru? Perubahan suhu musiman? Perubahan suhu ruangan? Ganti air besar? Pembersihan filter?</p>
-      <p>Setelah perubahan terbaru yang paling mungkin teridentifikasi, itulah stres dominan yang perlu diatasi. Jika tidak ada perubahan yang jelas teridentifikasi, lihat kondisi yang berkelanjutan: seberapa padat populasi? Apakah ikan tertentu selalu bersembunyi atau menghindari area tertentu? Apakah suhu stabil sepanjang hari dan malam?</p>
+      <p>Setelah perubahan terbaru yang paling mungkin teridentifikasi, itulah tekanan yang perlu diatasi. Jika tidak ada perubahan yang jelas teridentifikasi, lihat kondisi yang berkelanjutan: seberapa padat populasi? Apakah ikan tertentu selalu bersembunyi atau menghindari area tertentu? Apakah suhu stabil sepanjang hari dan malam?</p>
       <p>Periksa stabilitas suhu terlebih dahulu — ini adalah penyumbang ich yang paling sering diabaikan. Banyak heater berayun 2–3°C sepanjang hari, terutama heater yang lebih murah. Ikan di lingkungan termal yang tidak menentu hidup dalam stres fisiologis kronis walau suhu rata-rata 'benar.'</p>
       <p>Periksa parameter air tidak hanya setelah ganti air tapi beberapa hari sebelum ganti air berikutnya. Amonia dan nitrit yang perlahan-lahan naik di antara ganti air, walau tidak mencapai tingkat yang sangat tinggi, bisa membuat ikan dalam kondisi stres yang berkelanjutan.</p>
     </div>
@@ -280,9 +280,9 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">Respons yang selaras<br><em>terhadap penyakit berulang.</em></h2>
     <div class="mod-body">
       <p>Respons yang selaras terhadap ich berulang berbeda dari respons pengobatan. Pengobatan bertanya: 'bagaimana cara menghilangkan bintik?' Respons yang selaras bertanya: 'apa yang dibutuhkan tank ini agar berhenti menghasilkan wabah?'</p>
-      <p>Urutan praktis: Pertama, tangani wabah saat ini — pengobatan panas (30°C selama 10 hari) efektif dan tidak melibatkan bahan kimia obat; untuk planted tank, garam dengan dosis rendah bisa digunakan. Kedua, selama pengobatan, mulai pengamatan: catat suhu setiap hari, uji air di pertengahan siklus pengobatan, perhatikan perilaku makan dan sosial. Ketiga, setelah bintik hilang selama tujuh hari, identifikasi stres dominan — satu hal yang paling mungkin menjadi penyumbang. Keempat, atasi satu hal itu saja dan pantau selama empat hingga delapan minggu sebelum menarik kesimpulan.</p>
+      <p>Urutan praktis: Pertama, tangani wabah saat ini — pengobatan panas (30°C selama 10 hari) efektif dan tidak melibatkan bahan kimia obat; untuk planted tank, garam dengan dosis rendah bisa digunakan. Kedua, selama pengobatan, mulai pengamatan: catat suhu setiap hari, uji air di pertengahan siklus pengobatan, perhatikan perilaku makan dan sosial. Ketiga, setelah bintik hilang selama tujuh hari, identifikasi tekanan utama — satu hal yang paling mungkin menjadi penyumbang. Keempat, atasi satu hal itu saja dan pantau selama empat hingga delapan minggu sebelum menarik kesimpulan.</p>
       <p>Perubahan yang paling berguna setelah ich berulang, berdasarkan urutan seberapa sering membantu: perbaiki stabilitas suhu, kurangi populasi atau atasi agresi, tingkatkan frekuensi atau kualitas ganti air, tambahkan karantina untuk ikan baru ke depannya.</p>
-      <p>Tank yang melewati empat hingga enam bulan tanpa wabah ich berulang setelah mengatasi stres dominan hampir selalu tank di mana satu hal yang signifikan berubah — bukan tank di mana semua hal disesuaikan sedikit-sedikit sekaligus.</p>
+      <p>Tank yang melewati empat hingga enam bulan tanpa wabah ich berulang setelah mengatasi penyebab utamanya hampir selalu tank di mana satu hal yang signifikan berubah — bukan tank di mana semua hal disesuaikan sedikit-sedikit sekaligus.</p>
     </div>
 
     <div class="hn">
@@ -435,8 +435,8 @@ function updateDots() {
     <p class="rh-sheet-note">AI bisa saja salah — untuk keadaan darurat pada ikan, konsultasikan dengan spesialis</p>
   </div>
 </div>
-<script src="/js/content-trust.js?v=52"></script>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/content-trust.js?v=74"></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -444,6 +444,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

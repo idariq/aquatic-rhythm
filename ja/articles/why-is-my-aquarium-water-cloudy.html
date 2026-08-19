@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>なぜ水槽の水が濁るの？ — Aquatic Rhythm</title>
 <meta name="description" content="水槽の水の濁りはアクアリウムで最もよくある経験のひとつ——そして、ほとんどの場合、何かが間違いているサインではありません。水槽が実際に何をしているのかを読み取る方法を学びましょう。">
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -266,7 +266,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">行動する前に<br><em>種類を読み取ろう。</em></h2>
     <div class="mod-body">
       <p>濁った水への最もよくある対応は、すぐに大きな水換えをすることです。これは生産的に感じられます——でもバクテリアブルームの場合、バクテリアが定着する前に取り除いてしまうことで、濁りを延長させることがよくあります。システムはまた乱され、ブルームが再び始まり、飼育者はより不安になります。</p>
-      <p>ARAではこれを<strong>intervention trap（介入のわな）</strong>と呼びます：ケアが障壁になるとき。行動しようとする衝動は間違いではありません——それは気遣いです。でもほとんどの濁りの状況では、最も適切な対応は、まず種類を識別し、多くても一つの小さな調整をして、それから他に何もする前に数日間観察することです。</p>
+      <p>これは、ケアそのものが障壁になるケースです。行動しようとする衝動は間違いではありません——それは気遣いです。でもほとんどの濁りの状況では、最も適切な対応は、まず種類を識別し、多くても一つの小さな調整をして、それから他に何もする前に数日間観察することです。</p>
     </div>
 
     <div class="hn">
@@ -316,7 +316,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     </div>
     <div class="hn">
       <span class="hn-label">新しい水槽の場合</span>
-      <p>8週間未満の水槽での白い濁りは、ほぼ常に生物学的な立ち上げフェーズの正常な一部です。ニュータンクシンドロームのガイドが、何が起きているのかとなぜ忍耐がこの時期に最もアライメントの取れた対応なのかを詳しく説明しています。</p>
+      <p>8週間未満の水槽での白い濁りは、ほぼ常に生物学的な立ち上げフェーズの正常な一部です。ニュータンクシンドロームのガイドが、何が起きているのかとなぜ忍耐がこの時期に最も整合した対応なのかを詳しく説明しています。</p>
     </div>
 
     <div class="mod-next" style="margin-top:1.5rem">
@@ -453,8 +453,8 @@ function updateDots() {
     <p class="rh-sheet-note">AIは間違えることがあります —— 魚の緊急事態では、専門家に相談してください</p>
   </div>
 </div>
-<script src="/js/content-trust.js?v=52"></script>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/content-trust.js?v=74"></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -462,6 +462,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>生態フェーズ — ARAフレームワーク · Aquatic Rhythm</title>
 <meta name="description" content="Early、Developing、Mature — そして見せかけの成熟とフェーズの後退。">
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -186,7 +186,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       </div>
       <div class="rhythm-signals">
         <div class="rs-item"><span class="rs-item-label">Early Phase（立ち上げ期）</span><span class="rs-item-text">窒素循環が確立しつつある段階です。アンモニアと亜硝酸が存在し、老廃物を処理する微生物の集団はまだ育っている途中です。この時期の介入の多くは、完了させる必要のある生物学的なプロセスを妨げます。整合したアプローチは、最小限の介入、安定した条件、そして時間です。</span></div>
-        <div class="rs-item"><span class="rs-item-label">Critical Window（最初の重要な期間）</span><span class="rs-item-text">最初の2週間には、とりわけ大きな重みがあります。アンモニアの上昇、白濁、不安定さは、想定されたものであり、必要なものでもあります — 解決すべき問題ではありません。介入したい衝動が最も強くなるのがこの時期であり、不要な介入の代償が最も高くつくのも、この時期です。</span></div>
+        <div class="rs-item"><span class="rs-item-label">Critical Window（最初の重要な期間）</span><span class="rs-item-text">最初の2〜4週間には、とりわけ大きな重みがあります。アンモニアの上昇、白濁、不安定さは、想定されたものであり、必要なものでもあります — 解決すべき問題ではありません。介入したい衝動が最も強くなるのがこの時期であり、不要な介入の代償が最も高くつくのも、この時期です。</span></div>
         <div class="rs-item"><span class="rs-item-label">Developing Phase（発達期）</span><span class="rs-item-text">窒素循環は完成し、水槽は機能していますが、まだ生態学的な厚みはありません。ほどほどの生体導入なら支えられます。乱れに対する脆さは残っており、大きな変更や急な追加導入は、築かれてきたものを不安定にし得ます。</span></div>
         <div class="rs-item"><span class="rs-item-label">Mature Phase（成熟期）</span><span class="rs-item-text">生物群集に厚みがあります。定着した微生物の集団、安定したふるまいのパターン、そして生態学的に機能するようになった底床とレイアウト素材。Mature Phase の水槽は、乱れを吸収し、介入なしに回復します。</span></div>
       </div>
@@ -204,12 +204,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       </div>
       <h2 class="mod-title">フェーズの<em>力学</em></h2>
       <div class="mod-body">
-        <p>フェーズの進行は保証されたものではなく、前へ進むだけのものでもありません。単純な前進の弧を込み入ったものにする力学が3つあります — システムが「前進」よりも微妙なことをしている状態であり、それを見分けるには、別の種類の注意が必要になります。</p>
+        <p>フェーズの進行は保証されたものではなく、前へ進むだけのものでもありません。単純な前進の弧を込み入ったものにする力学が2つあります — システムが「前進」よりも微妙なことをしている状態であり、それを見分けるには、別の種類の注意が必要になります。</p>
       </div>
       <div class="rhythm-signals">
         <div class="rs-item"><span class="rs-item-label">False Maturity（見せかけの成熟）</span><span class="rs-item-text">本当の生態学的な厚みを伴わない、見かけだけの安定です。底床は生物学的に薄く、窒素循環の先にある微生物の共同体は浅いままです。水槽がストレス要因に出会い、Mature Phase の回復力ではなく Developing Phase の脆さで応えるとき、それは姿を現します。</span></div>
         <div class="rs-item"><span class="rs-item-label">Phase Regression（フェーズの後退）</span><span class="rs-item-text">Mature Phase の水槽でも、十分な乱れ — 病気の発生、機材の故障、大量換水の繰り返し、急な生体の入れ替え — を受ければ、一時的に前のフェーズのふるまいへ後退することがあります。いまや前段階のシステムとして働いているものに Mature Phase の期待をあてはめるのではなく、後退を後退として見分けること。これは、このフレームワークが求めるもののなかでも、より繊細なもののひとつです。</span></div>
-        <div class="rs-item"><span class="rs-item-label">Intentional Reset（意図的なリセット）</span><span class="rs-item-text">フェーズが巡ることのすべてが後退なのではありません。ピークで解体されるコンテスト用のレイアウト、サイクルごとにリセットされる繁殖用のセットアップ、そもそも成熟を目指していないトリートメント水槽 — これらには、飼育者の判断としての意図的で自発的なリセットが含まれます。ARAのフェーズの枠組みは、それぞれの反復のなかで適用されます。自発的なリセットは、乱れによって引き起こされる後退とは別のものです。</span></div>
+      </div>
+      <div class="mod-body">
+        <p>フェーズが巡ることのすべてが後退というわけでもありません。ピークで解体されるコンテスト用のレイアウト、サイクルごとにリセットされる繁殖用のセットアップ、そもそも成熟を目指していない検疫用の水槽は、飼育者の判断としての意図的で自発的なリセットを伴います — どちらもシステムを前のフェーズからやり直させるものではありますが、乱れによって引き起こされる後退とは区別する価値があります。</p>
       </div>
       <div class="pq"><p>フェーズは一方通行の扉ではありません。安定して見えるものが、浅いこともあります。後退に見えるものから、戻れることもあります。問いはいつも同じです — このシステムは、いま実際に何をしているのか。</p></div>
       <div class="hn">
@@ -234,7 +236,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
 </main>
 
-<script src="/js/content-trust.js?v=52"></script>
+<script src="/js/content-trust.js?v=74"></script>
 <!-- ── BOTTOM NAV (PWA) ── -->
 <nav class="bnav" id="bnav" aria-label="Main navigation">
   <a href="/ja/" class="bnav-item" aria-label="ホーム">
@@ -254,7 +256,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <span>記録</span>
   </a>
 </nav>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -262,6 +264,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

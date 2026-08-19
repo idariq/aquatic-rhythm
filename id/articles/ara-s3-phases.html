@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fase Ekologis — Kerangka ARA · Aquatic Rhythm</title>
 <meta name="description" content="Early, Developing, dan Mature — beserta kematangan palsu dan regresi fase.">
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -184,7 +184,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       </div>
       <div class="rhythm-signals">
         <div class="rs-item"><span class="rs-item-label">Early Phase</span><span class="rs-item-text">Siklus nitrogen sedang terbentuk. Amonia dan nitrit masih hadir; populasi mikroba yang mengolah limbah masih berkembang. Sebagian besar intervensi justru mengganggu proses biologis yang perlu diselesaikan. Pendekatan yang selaras: intervensi seminimal mungkin, kondisi yang stabil, dan waktu.</span></div>
-        <div class="rs-item"><span class="rs-item-label">Jendela Kritis</span><span class="rs-item-text">Dua minggu pertama punya bobot tersendiri. Lonjakan amonia, kekeruhan, dan ketidakstabilan adalah hal yang wajar dan memang diperlukan — bukan masalah yang harus dipecahkan. Dorongan untuk campur tangan paling kuat justru di sini; dan di sini pula biaya dari intervensi yang tidak perlu paling mahal.</span></div>
+        <div class="rs-item"><span class="rs-item-label">Jendela Kritis</span><span class="rs-item-text">Dua hingga empat minggu pertama punya bobot tersendiri. Lonjakan amonia, kekeruhan, dan ketidakstabilan adalah hal yang wajar dan memang diperlukan — bukan masalah yang harus dipecahkan. Dorongan untuk campur tangan paling kuat justru di sini; dan di sini pula biaya dari intervensi yang tidak perlu paling mahal.</span></div>
         <div class="rs-item"><span class="rs-item-label">Developing Phase</span><span class="rs-item-text">Siklus nitrogen sudah lengkap; tank sudah berfungsi tetapi belum dalam secara ekologis. Stocking sedang sudah bisa ditopang. Kerentanan terhadap gangguan masih ada — perubahan besar atau penambahan hewan yang mendadak bisa mengguncang apa yang sudah terbentuk.</span></div>
         <div class="rs-item"><span class="rs-item-label">Mature Phase</span><span class="rs-item-text">Komunitas biologisnya sudah punya kedalaman: populasi mikroba yang mapan, pola perilaku yang stabil, substrat dan hardscape yang telah menjadi fungsional secara ekologis. Tank Mature Phase menyerap gangguan dan pulih tanpa perlu intervensi.</span></div>
       </div>
@@ -202,12 +202,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       </div>
       <h2 class="mod-title">Dinamika <em>Fase</em></h2>
       <div class="mod-body">
-        <p>Kemajuan fase bukanlah jaminan, dan ia tidak hanya bergerak maju. Ada tiga dinamika yang membuat busur maju yang sederhana menjadi lebih rumit — keadaan-keadaan ketika sistem sedang melakukan sesuatu yang lebih berlapis daripada sekadar melangkah maju, dan yang menuntut jenis perhatian pemelihara yang berbeda untuk dikenali.</p>
+        <p>Kemajuan fase bukanlah jaminan, dan ia tidak hanya bergerak maju. Ada dua dinamika yang membuat busur maju yang sederhana menjadi lebih rumit — keadaan-keadaan ketika sistem sedang melakukan sesuatu yang lebih berlapis daripada sekadar melangkah maju, dan yang menuntut jenis perhatian pemelihara yang berbeda untuk dikenali.</p>
       </div>
       <div class="rhythm-signals">
         <div class="rs-item"><span class="rs-item-label">Kematangan Palsu</span><span class="rs-item-text">Kestabilan yang tampak di permukaan tanpa kedalaman ekologis yang sesungguhnya. Substratnya tipis secara biologis; komunitas mikroba di luar siklus nitrogen masih dangkal. Terlihat ketika tank berhadapan dengan pemicu stres dan merespons dengan kerapuhan Developing Phase alih-alih ketahanan Mature Phase.</span></div>
         <div class="rs-item"><span class="rs-item-label">Regresi Fase</span><span class="rs-item-text">Tank Mature Phase yang mengalami gangguan cukup besar — peristiwa penyakit, kegagalan peralatan, ganti air besar berulang kali, perombakan stocking yang mendadak — bisa untuk sementara mundur ke perilaku fase yang lebih awal. Mengenali regresi, alih-alih menerapkan harapan Mature Phase pada sistem yang kini berfungsi sebagai sistem yang lebih muda, adalah salah satu tuntutan paling halus dari kerangka ini.</span></div>
-        <div class="rs-item"><span class="rs-item-label">Reset yang Disengaja</span><span class="rs-item-text">Tidak semua perputaran fase adalah regresi. Layout kompetisi yang dibongkar saat puncaknya, setup pembiakan yang direset di antara siklus, tank karantina yang memang tidak pernah dimaksudkan untuk matang — semuanya melibatkan reset yang disengaja dan sukarela sebagai keputusan pemelihara. Kerangka fase ARA berlaku di dalam setiap iterasi; reset sukarela berbeda dari regresi yang dipicu gangguan.</span></div>
+      </div>
+      <div class="mod-body">
+        <p>Tidak semua perputaran fase adalah regresi juga. Layout kompetisi yang dibongkar saat puncaknya, setup pembiakan yang direset di antara siklus, dan tank karantina yang memang tidak pernah dimaksudkan untuk matang melibatkan reset yang disengaja dan sukarela sebagai keputusan pemelihara — layak dibedakan dari regresi yang dipicu gangguan, meski keduanya sama-sama membuat sistem mulai lagi dari fase yang lebih awal.</p>
       </div>
       <div class="pq"><p>Fase bukan pintu satu arah. Apa yang tampak stabil bisa jadi dangkal. Apa yang tampak seperti kemunduran bisa jadi masih bisa dipulihkan. Pertanyaannya selalu sama: apa yang sebenarnya sedang dilakukan sistem ini sekarang?</p></div>
       <div class="hn">
@@ -232,7 +234,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
 </main>
 
-<script src="/js/content-trust.js?v=52"></script>
+<script src="/js/content-trust.js?v=74"></script>
 <!-- ── BOTTOM NAV (PWA) ── -->
 <nav class="bnav" id="bnav" aria-label="Main navigation">
   <a href="/id/" class="bnav-item" aria-label="Beranda">
@@ -252,7 +254,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <span>Catatan</span>
   </a>
 </nav>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -260,6 +262,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

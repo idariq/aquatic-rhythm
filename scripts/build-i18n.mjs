@@ -72,8 +72,8 @@ const NAV_LABELS = {
 // id/ja (bug found 2026-08-18, same audit as the /reading href sweep
 // above). Harmless no-op for every other article since the text won't match.
 const BACK_LINK = {
-  id: 'Kembali ke Reading →',
-  ja: 'Readingに戻る →'
+  id: 'Kembali ke Semua artikel →',
+  ja: '記事一覧に戻る →'
 };
 
 // Rhyssa chat sliding sheet (.rh-sheet) — shared sitewide UI injected on

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ich Keeps Coming Back — Aquatic Rhythm</title>
 <meta name="description" content="Ich returns in tanks where the underlying stress was never addressed. Treatment clears the parasite. Only an aligned tank keeps it away.">
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -250,11 +250,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
   <!-- ═══ MODULE 3 ═══ -->
   <section class="module" id="mod-3" data-mod="3">
-    <div class="mod-eyebrow"><span class="mod-num">03 / 04</span><span class="mod-tag">Finding the dominant stressor</span></div>
+    <div class="mod-eyebrow"><span class="mod-num">03 / 04</span><span class="mod-tag">Finding the root cause</span></div>
     <h2 class="mod-title">Finding what <em>the tank is actually saying</em></h2>
     <div class="mod-body">
       <p>The first step after clearing an ich outbreak is observation, not immediate change. List what you know: when did the outbreak appear? What changed in the two to four weeks before it? New fish? New food? Seasonal temperature change? Room temperature shift? A large water change? A filter cleaning?</p>
-      <p>Once the most likely recent change is identified, that is the dominant stressor to address. If nothing changed externally, the next question is what has been accumulating: has the cleaning routine slipped? Is the tank overcrowded relative to what it was six months ago — fish grow? Is the heater still working accurately, not just "the light is on" but measured with a separate thermometer?</p>
+      <p>Once the most likely recent change is identified, that is the pressure to address. If nothing changed externally, the next question is what has been accumulating: has the cleaning routine slipped? Is the tank overcrowded relative to what it was six months ago — fish grow? Is the heater still working accurately, not just "the light is on" but measured with a separate thermometer?</p>
       <p>Get a second thermometer and log tank temperature at the same time each day for one week. Temperature instability shows up in this log far more often than keepers expect — a swing of two or three degrees across a day can be enough to suppress immune function chronically without ever looking like an obvious problem. The keeper rhythm felt consistent; the thermal environment had been drifting.</p>
       <p>Also test nitrate, not just ammonia and nitrite. A nitrate reading above 40 ppm in a community tank with recurring ich is nearly always part of the picture. It will not appear as an emergency on a test kit, but it is the kind of background misalignment that the Livestock Rhythm will eventually surface.</p>
     </div>
@@ -280,8 +280,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">Aligned response <em>to recurring disease</em></h2>
     <div class="mod-body">
       <p>An aligned response to recurring ich is different from a treatment response. Treatment asks: "How do I clear the spots?" An aligned response asks: "What does this tank need to stop producing outbreaks?"</p>
-      <p>The practical sequence works in four steps. First, address the current outbreak: raise temperature to 30°C over 48 hours and hold for 10 days (the heat method), add salt at 1–2 tbsp per 10 gallons, or use medication if fish are sensitive to heat. Second, during the clearing period, identify the dominant stressor using the approach from Module 3 — do not wait until the spots are gone to begin this observation. Third, after the tank has cleared, address the dominant stressor: stabilise temperature, reduce stocking density, restore the water change rhythm, or establish a quarantine process for new arrivals. Fourth, watch for six to eight weeks.</p>
-      <p>If no recurrence appears within that window, the dominant stressor was identified and addressed. If it returns, something was missed or there is a second stressor layered beneath the first. Do not return to the same keeper rhythm that produced the outbreak and expect a different result. The Livestock Rhythm will keep signalling until the signal is read.</p>
+      <p>The practical sequence works in four steps. First, address the current outbreak: raise temperature to 30°C over 48 hours and hold for 10 days (the heat method), add salt at 1–2 tbsp per 10 gallons, or use medication if fish are sensitive to heat. Second, during the clearing period, identify the underlying pressure using the approach from Module 3 — do not wait until the spots are gone to begin this observation. Third, after the tank has cleared, address that pressure: stabilise temperature, reduce stocking density, restore the water change rhythm, or establish a quarantine process for new arrivals. Fourth, watch for six to eight weeks.</p>
+      <p>If no recurrence appears within that window, the underlying pressure was identified and addressed. If it returns, something was missed or there is a second stressor layered beneath the first. Do not return to the same keeper rhythm that produced the outbreak and expect a different result. The Livestock Rhythm will keep signalling until the signal is read.</p>
       <p>The aligned response also means accepting that some tanks require structural change — not just a return to previous routines. A tank that has been producing ich outbreaks every few months may need a genuine reduction in stocking density, a new heater, or a change to the water change frequency. These are not admissions of past drift so much as they are the practical steps of an ecological forgiveness: releasing the conditions that produced the pattern and building the ones that will not.</p>
     </div>
 
@@ -435,8 +435,8 @@ function updateDots() {
     <p class="rh-sheet-note">AI can be wrong — for fish emergencies, consult a specialist</p>
   </div>
 </div>
-<script src="/js/content-trust.js?v=52"></script>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/content-trust.js?v=74"></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -444,6 +444,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

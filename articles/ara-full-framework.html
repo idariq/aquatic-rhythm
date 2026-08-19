@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The ARA Framework — Aquatic Rhythm</title>
 <meta name="description" content="Aquatic Rhythm Alignment — the complete framework for reading closed aquatic ecosystems. Six sections covering five ecological rhythms, three system phases, alignment thinking, observation practice, and the psychological foundations of the hobby.">
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -93,6 +93,20 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .ara-hub-divider{
   height:1px;background:var(--th-surface-2);
   margin:0 clamp(1.5rem,5vw,3rem);
+}
+.ara-hub-status{
+  margin:0 clamp(1.5rem,5vw,3rem) 3rem;
+  padding:1.3rem 1.6rem;
+  border:1px solid var(--th-line);
+  background:var(--th-surface-2);
+  max-width:560px;
+}
+.ara-hub-status-label{
+  display:block;font-size:var(--fs-2xs);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--th-ink-4);margin-bottom:.55rem;
+}
+.ara-hub-status-body{
+  font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-3);line-height:1.8;
 }
 
 /* ── SECTION CARDS ── */
@@ -221,6 +235,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <p class="ara-hub-sub">A framework for reading closed aquatic ecosystems — through five ecological rhythms, three system phases, and the alignment between keeper and tank. Six sections. Read in any order.</p>
   </div>
 
+  <div class="ara-hub-status">
+    <span class="ara-hub-status-label">A note on what this claims</span>
+    <p class="ara-hub-status-body">ARA does not claim empirical validation. It claims theoretical coherence — that its constructs are well-defined, their relationships hold together, and the questions they raise can be tested. Four of the five rhythms (Water, Biological, Environmental, Livestock) rest on established research in aquatic ecology, microbiology, and captive welfare, and require examination by researchers with that expertise before being treated as more than coherent propositions. The fifth, Keeper Rhythm, is the author's area of formal grounding — the framework's central contribution, and the reason the other four are included at all. What follows is offered as a starting point for testing, not a finished theory.</p>
+  </div>
+
   <div class="ara-hub-divider"></div>
 
   <!-- ── SECTION CARDS ── -->
@@ -260,8 +279,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <span class="ara-hub-card-num">04</span>
       <div class="ara-hub-card-body">
         <span class="ara-hub-card-label">Alignment Thinking</span>
-        <span class="ara-hub-card-desc">How to act aligned — five principles, alignment vs control, seven domains, and common pathways.</span>
-        <span class="ara-hub-card-meta">8 modules</span>
+        <span class="ara-hub-card-desc">How to act aligned — four principles, alignment vs control, reading through the rhythms, and common pathways.</span>
+        <span class="ara-hub-card-meta">7 modules</span>
       </div>
       <span class="ara-hub-card-arrow">→</span>
     </a>
@@ -270,8 +289,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <span class="ara-hub-card-num">05</span>
       <div class="ara-hub-card-body">
         <span class="ara-hub-card-label">Observation Practice</span>
-        <span class="ara-hub-card-desc">How to observe well — baseline building, capacity development, and reading false signals.</span>
-        <span class="ara-hub-card-meta">4 modules</span>
+        <span class="ara-hub-card-desc">How to observe well — baseline building, capacity development, reading false signals, and restraint as strategy.</span>
+        <span class="ara-hub-card-meta">5 modules</span>
       </div>
       <span class="ara-hub-card-arrow">→</span>
     </a>
@@ -297,7 +316,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
 </main>
 
-<script src="/js/content-trust.js?v=52"></script>
+<script src="/js/content-trust.js?v=74"></script>
 <!-- ── BOTTOM NAV (PWA) ── -->
 <nav class="bnav" id="bnav" aria-label="Main navigation">
   <a href="/" class="bnav-item" aria-label="Home">
@@ -359,7 +378,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <p class="rh-sheet-note">AI can be wrong — for fish emergencies, consult a specialist</p>
   </div>
 </div>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -367,6 +386,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

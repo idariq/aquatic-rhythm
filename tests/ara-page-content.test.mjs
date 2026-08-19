@@ -69,36 +69,27 @@ test('all six ARA section articles exist and the hub page links to each', () => 
   }
 });
 
-test('ARA alignment page (s4) declares the five principles', () => {
+test('ARA alignment page (s4) declares the four principles', () => {
   const s4 = readArticle('ara-s4-alignment');
   const titles = [
     'Timing before Technique',
     'Capacity before Ambition',
-    'Rhythm before Intensity',
+    'Consistency before Intensity',
     'Observation before Correction',
-    'Origin before Expression',
   ];
   for (const t of titles) {
     assert.ok(s4.includes(t), `missing principle title: ${t}`);
   }
 });
 
-test('ARA alignment page (s4) describes the seven alignment domains', () => {
+test('ARA alignment page (s4) reads through the five rhythms as diagnostic handles', () => {
   const s4 = readArticle('ara-s4-alignment');
-  // Labels were shortened when this content was rewritten (e.g. "Water
-  // quality" -> "Water", "Environmental structure" -> "Environmental") —
-  // these are the current domain-cell labels, not the old pg-ara wording.
-  const domains = [
-    'Water',
-    'Biological Load',
-    'Livestock Behaviour',
-    'Nutrient &amp; Chemical',
-    'Environmental',
-    'Technology',
-    'Human Rhythm',
-  ];
-  for (const d of domains) {
-    assert.ok(s4.includes(d), `seven-domains block missing: ${d}`);
+  assert.ok(s4.includes('Reading through the Rhythms'), 'reading-through-the-rhythms module title missing');
+  // The five rhythms are the diagnostic handles this module reads through —
+  // no separate "seven domains" taxonomy (that construct was never in the
+  // ARA paper and was removed; see PR history for the terminology audit).
+  for (const rhythm of ['Water', 'Biological', 'Environmental', 'Livestock', 'Keeper']) {
+    assert.ok(s4.includes(rhythm), `reading-through-the-rhythms block missing: ${rhythm}`);
   }
 });
 

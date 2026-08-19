@@ -281,44 +281,45 @@ function patchRack(h, t) {
   cats.forEach(c => { h = subOnce(h, `<div class="rack-cat">${c}</div>`, `<div class="rack-cat">${r.categories[c]}</div>`, `rack.cat.${c}`); });
   for (const [id, item] of Object.entries(r.items)) {
     const enItem = ENGLISH_RACK_ITEMS[id];
+    // Match on the <eq-name>/<eq-role> text pair only — NOT the icon markup
+    // in between (icons switched from emoji entities to inline <svg> once
+    // already; matching past them again would just re-break on the next
+    // icon-only redesign). Each name/role pair is unique sitewide.
     h = subOnce(h,
-      `data-eq="${id}"><span class="eq-icon">${enItem.iconEntity}</span><div class="eq-info"><span class="eq-name">${enItem.name}</span><span class="eq-role">${enItem.role}</span>`,
-      `data-eq="${id}"><span class="eq-icon">${enItem.iconEntity}</span><div class="eq-info"><span class="eq-name">${item.name}</span><span class="eq-role">${item.role}</span>`,
+      `<span class="eq-name">${enItem.name}</span><span class="eq-role">${enItem.role}</span>`,
+      `<span class="eq-name">${item.name}</span><span class="eq-role">${item.role}</span>`,
       `rack.item.${id}`);
   }
   return h;
 }
 
-// Icon HTML entities are unique-enough anchors per equipment item (paired
-// with data-eq) — kept here rather than re-derived from the DOM at patch
-// time so patchRack() only needs one exact-substring match per item.
 const ENGLISH_RACK_ITEMS = {
-  'filter-sponge': { iconEntity: '&#x1F9FD;', name: 'Sponge Filter', role: 'Biological, gentle flow' },
-  'filter-internal': { iconEntity: '&#x1F300;', name: 'Internal Filter', role: 'Submersible, compact' },
-  'filter-hang': { iconEntity: '&#x1F4E6;', name: 'Hang-on Filter', role: 'Mechanical + biological' },
-  'filter-canister': { iconEntity: '&#x1F6E2;&#xFE0F;', name: 'Canister Filter', role: 'High capacity, external' },
-  'filter-overflow': { iconEntity: '&#x1F4A7;', name: 'Overflow Filter', role: 'Trickle/wet-dry, high O&#x2082;' },
-  'powerhead': { iconEntity: '&#x26A1;', name: 'Powerhead', role: 'Return pump / flow' },
-  'wavemaker': { iconEntity: '&#x1F30A;', name: 'Wavemaker', role: 'Circulation, dead zones' },
-  'airpump': { iconEntity: '&#x1F4A8;', name: 'Air Pump', role: 'Oxygen + agitation' },
-  'uv-sterilizer': { iconEntity: '&#x1F7E3;', name: 'UV Sterilizer', role: 'Clarity + pathogen control' },
-  'heater': { iconEntity: '&#x1F321;&#xFE0F;', name: 'Heater', role: 'Stable temperature' },
-  'light-basic': { iconEntity: '&#x1F4A1;', name: 'Basic LED', role: 'Day/night cycle' },
-  'light-planted': { iconEntity: '&#x2600;&#xFE0F;', name: 'Plant Light', role: 'Full spectrum, high output' },
-  'timer': { iconEntity: '&#x23F0;', name: 'Light Timer', role: 'Consistent photoperiod' },
-  'chiller': { iconEntity: '&#x2744;&#xFE0F;', name: 'Aquarium Chiller', role: 'Precise temperature control' },
-  'cooling-fan': { iconEntity: '&#x1F4A8;', name: 'Cooling Fan', role: 'Evaporative cooling' },
-  'sub-gravel': { iconEntity: '&#x1F7E4;', name: 'Gravel', role: 'Neutral, forgiving' },
-  'sub-sand': { iconEntity: '&#x1F7E1;', name: 'Sand', role: 'Natural, soft substrate' },
-  'sub-soil': { iconEntity: '&#x1F7E2;', name: 'Aqua Soil', role: 'Nutrient-rich for plants' },
-  'conditioner': { iconEntity: '&#x1F4A7;', name: 'Water Conditioner', role: 'Neutralise chlorine' },
-  'ammonia-source': { iconEntity: '&#x26A1;', name: 'Ammonia Source', role: 'Fishless cycling' },
-  'seed': { iconEntity: '&#x1F9EA;', name: 'Bacteria Starter', role: 'Cycle head-start' },
-  'lid': { iconEntity: '&#x1FAA9;', name: 'Lid / Cover', role: 'Safety + reduces evaporation' },
-  'ato': { iconEntity: '&#x1F4A7;', name: 'Auto Top-Off', role: 'Replaces evaporated water' },
-  'thermometer': { iconEntity: '&#x1F321;&#xFE0F;', name: 'Thermometer', role: 'Verify temperature daily' },
-  'testkit': { iconEntity: '&#x1F52C;', name: 'Test Kit', role: 'Read the nitrogen cycle' },
-  'siphon': { iconEntity: '&#x1F9F9;', name: 'Gravel Vacuum', role: 'Water change tool' }
+  'filter-sponge': { name: 'Sponge Filter', role: 'Biological, gentle flow' },
+  'filter-internal': { name: 'Internal Filter', role: 'Submersible, compact' },
+  'filter-hang': { name: 'Hang-on Filter', role: 'Mechanical + biological' },
+  'filter-canister': { name: 'Canister Filter', role: 'High capacity, external' },
+  'filter-overflow': { name: 'Overflow Filter', role: 'Trickle/wet-dry, high O&#x2082;' },
+  'powerhead': { name: 'Powerhead', role: 'Return pump / flow' },
+  'wavemaker': { name: 'Wavemaker', role: 'Circulation, dead zones' },
+  'airpump': { name: 'Air Pump', role: 'Oxygen + agitation' },
+  'uv-sterilizer': { name: 'UV Sterilizer', role: 'Clarity + pathogen control' },
+  'heater': { name: 'Heater', role: 'Stable temperature' },
+  'light-basic': { name: 'Basic LED', role: 'Day/night cycle' },
+  'light-planted': { name: 'Plant Light', role: 'Full spectrum, high output' },
+  'timer': { name: 'Light Timer', role: 'Consistent photoperiod' },
+  'chiller': { name: 'Aquarium Chiller', role: 'Precise temperature control' },
+  'cooling-fan': { name: 'Cooling Fan', role: 'Evaporative cooling' },
+  'sub-gravel': { name: 'Gravel', role: 'Neutral, forgiving' },
+  'sub-sand': { name: 'Sand', role: 'Natural, soft substrate' },
+  'sub-soil': { name: 'Aqua Soil', role: 'Nutrient-rich for plants' },
+  'conditioner': { name: 'Water Conditioner', role: 'Neutralise chlorine' },
+  'ammonia-source': { name: 'Ammonia Source', role: 'Fishless cycling' },
+  'seed': { name: 'Bacteria Starter', role: 'Cycle head-start' },
+  'lid': { name: 'Lid / Cover', role: 'Safety + reduces evaporation' },
+  'ato': { name: 'Auto Top-Off', role: 'Replaces evaporated water' },
+  'thermometer': { name: 'Thermometer', role: 'Verify temperature daily' },
+  'testkit': { name: 'Test Kit', role: 'Read the nitrogen cycle' },
+  'siphon': { name: 'Gravel Vacuum', role: 'Water change tool' }
 };
 
 function patchEco(h, t) {
@@ -369,8 +370,8 @@ function patchEngineStrings(h, t, lang) {
   h = subOnce(h, "else el.placeholder='Search fish & invertebrates\\u2026';", `else el.placeholder='${eco.searchPlaceholderDefault}';`, 'js.searchPlaceholderDefault2');
   h = subOnce(h, "all.textContent='All';", `all.textContent='${eco.chips.all}';`, 'js.chipAll');
   h = subOnce(h,
-    "[{k:'community',l:'Community'},{k:'planted',l:'Planted'},{k:'shrimp',l:'Shrimp'},\n   {k:'biotope',l:'Biotope'},{k:'coldwater',l:'Coldwater'},{k:'species',l:'Species'},\n   {k:'nano',l:'Nano'},{k:'blackwater',l:'Blackwater'}].forEach(function(c){",
-    `[{k:'community',l:'${eco.chips.community}'},{k:'planted',l:'${eco.chips.planted}'},{k:'shrimp',l:'${eco.chips.shrimp}'},\n   {k:'biotope',l:'${eco.chips.biotope}'},{k:'coldwater',l:'${eco.chips.coldwater}'},{k:'species',l:'${eco.chips.species}'},\n   {k:'nano',l:'${eco.chips.nano}'},{k:'blackwater',l:'${eco.chips.blackwater}'}].forEach(function(c){`,
+    "var STYLES=[{k:'community',l:'Community'},{k:'planted',l:'Planted'},{k:'shrimp',l:'Shrimp'},\n   {k:'biotope',l:'Biotope'},{k:'coldwater',l:'Coldwater'},{k:'species',l:'Species'},\n   {k:'nano',l:'Nano'},{k:'blackwater',l:'Blackwater'}];",
+    `var STYLES=[{k:'community',l:'${eco.chips.community}'},{k:'planted',l:'${eco.chips.planted}'},{k:'shrimp',l:'${eco.chips.shrimp}'},\n   {k:'biotope',l:'${eco.chips.biotope}'},{k:'coldwater',l:'${eco.chips.coldwater}'},{k:'species',l:'${eco.chips.species}'},\n   {k:'nano',l:'${eco.chips.nano}'},{k:'blackwater',l:'${eco.chips.blackwater}'}];`,
     'js.chips');
 
   // ── canvas hints ──

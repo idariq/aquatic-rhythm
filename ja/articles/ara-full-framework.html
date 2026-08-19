@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARAフレームワーク — Aquatic Rhythm</title>
 <meta name="description" content="Aquatic Rhythm Alignment — 閉じた水中生態系を読むための総合フレームワーク。5つの生態リズム、3つのシステムフェーズ、整合の思考、観察の実践、そしてこの趣味を支える心理的基盤を、6つのセクションで扱います。">
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -93,6 +93,20 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .ara-hub-divider{
   height:1px;background:var(--th-surface-2);
   margin:0 clamp(1.5rem,5vw,3rem);
+}
+.ara-hub-status{
+  margin:0 clamp(1.5rem,5vw,3rem) 3rem;
+  padding:1.3rem 1.6rem;
+  border:1px solid var(--th-line);
+  background:var(--th-surface-2);
+  max-width:560px;
+}
+.ara-hub-status-label{
+  display:block;font-size:var(--fs-2xs);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--th-ink-4);margin-bottom:.55rem;
+}
+.ara-hub-status-body{
+  font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-3);line-height:1.8;
 }
 
 /* ── SECTION CARDS ── */
@@ -223,6 +237,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <p class="ara-hub-sub">閉じた水中生態系を読むためのフレームワーク — 5つの生態リズム、3つのシステムフェーズ、そして飼育者と水槽のあいだの整合を通して。全6セクション。どの順番から読んでも構いません。</p>
   </div>
 
+  <div class="ara-hub-status">
+    <span class="ara-hub-status-label">本フレームワークが主張していることについての注記</span>
+    <p class="ara-hub-status-body">ARAは実証的な検証を主張していません。主張しているのは理論的な一貫性です — すなわち、その構成概念が明確に定義されていること、それらの関係が筋道立っていること、そしてそこから生まれる問いが検証可能であること。5つのリズムのうち4つ(Water、Biological、Environmental、Livestock)は、水生生態学、微生物学、captive welfare(飼育下福祉)の確立された研究に基づいていますが、それらの関係を単なる筋の通った命題以上のものとして扱う前に、その分野の専門知識を持つ研究者による検証が必要です。5つ目のKeeper Rhythmは、著者が正式な訓練を受けている領域であり — このフレームワークの中心的な貢献であり、他の4つが組み込まれている理由でもあります。以下に示すのは、その検証のための出発点として提示するものであり、完成した理論ではありません。</p>
+  </div>
+
   <div class="ara-hub-divider"></div>
 
   <!-- ── SECTION CARDS ── -->
@@ -262,8 +281,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <span class="ara-hub-card-num">04</span>
       <div class="ara-hub-card-body">
         <span class="ara-hub-card-label">整合の思考</span>
-        <span class="ara-hub-card-desc">整合した行動のとり方 — 5つの原則、整合と制御の違い、7つの領域、そしてよく見られる経路。</span>
-        <span class="ara-hub-card-meta">8モジュール</span>
+        <span class="ara-hub-card-desc">整合した行動のとり方 — 4つの原則、整合と制御の違い、リズムを通して読む、そしてよく見られる経路。</span>
+        <span class="ara-hub-card-meta">7モジュール</span>
       </div>
       <span class="ara-hub-card-arrow">→</span>
     </a>
@@ -272,8 +291,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <span class="ara-hub-card-num">05</span>
       <div class="ara-hub-card-body">
         <span class="ara-hub-card-label">観察の実践</span>
-        <span class="ara-hub-card-desc">よく観るために — ベースラインの構築、観察力の育成、そして偽のシグナルの読み方。</span>
-        <span class="ara-hub-card-meta">4モジュール</span>
+        <span class="ara-hub-card-desc">よく観るために — ベースラインの構築、観察力の育成、偽のシグナルの読み方、そして戦略としての抑制。</span>
+        <span class="ara-hub-card-meta">5モジュール</span>
       </div>
       <span class="ara-hub-card-arrow">→</span>
     </a>
@@ -299,7 +318,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
 </main>
 
-<script src="/js/content-trust.js?v=52"></script>
+<script src="/js/content-trust.js?v=74"></script>
 <!-- ── BOTTOM NAV (PWA) ── -->
 <nav class="bnav" id="bnav" aria-label="Main navigation">
   <a href="/ja/" class="bnav-item" aria-label="ホーム">
@@ -348,7 +367,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="rh-sheet-welcome" id="rh-sheet-welcome">
       <svg width="36" height="36" viewBox="0 0 22 22" fill="none" aria-hidden="true" style="opacity:.8"><circle cx="11" cy="11" r="7.5" stroke="rgba(61,214,232,.55)" stroke-width="1.4" fill="none"/><circle cx="11" cy="11" r="3.5" stroke="rgba(61,214,232,.3)" stroke-width="1.1" fill="none"/><circle cx="11" cy="11" r="1.2" fill="rgba(61,214,232,.75)"/><line x1="11" y1="3.5" x2="11" y2="1.5" stroke="rgba(61,214,232,.3)" stroke-width="1.3" stroke-linecap="round"/><line x1="3.5" y1="11" x2="1.5" y2="11" stroke="rgba(61,214,232,.3)" stroke-width="1.3" stroke-linecap="round"/><line x1="20.5" y1="11" x2="18.5" y2="11" stroke="rgba(61,214,232,.3)" stroke-width="1.3" stroke-linecap="round"/></svg>
       <p class="rh-sheet-welcome-txt">見えているものを教えてください —— 水、行動、変わったことなら何でも —— 何かを直す前に、一緒に読み解いていきましょう。</p>
-      <p style="font-size:var(--fs-2xs);color:rgba(255,255,255,.22);text-align:center;margin:.5rem 0 0;line-height:1.6">同じRhyssaは、<a href="https://chatgpt.com/g/g-6a09401c8ef48191b18deb53565a7fe1-rhyssa-aquarium-companion" target="_blank" rel="noopener" style="color:rgba(61,214,232,.4);text-decoration:none">ChatGPT ↗</a>でもご利用いただけます。</p>
+      <p style="font-size:var(--fs-2xs);color:var(--th-ink-5);text-align:center;margin:.5rem 0 0;line-height:1.6">同じRhyssaは、<a href="https://chatgpt.com/g/g-6a09401c8ef48191b18deb53565a7fe1-rhyssa-aquarium-companion" target="_blank" rel="noopener" style="color:var(--th-accent);text-decoration:none">ChatGPT ↗</a>でもご利用いただけます。</p>
     </div>
   </div>
   <div class="rh-sheet-foot">
@@ -361,7 +380,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <p class="rh-sheet-note">AIは間違えることがあります —— 魚の緊急事態では、専門家に相談してください</p>
   </div>
 </div>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -369,6 +388,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

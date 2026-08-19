@@ -334,7 +334,7 @@ def build_home(h, lang, u):
                       lambda m: m.group(1) + x["principle_timing"] + m.group(2), "principle timing")
     h = replace_once(h, r'(<li>)<strong>Capacity<\/strong>[\s\S]*?(<\/li>)',
                       lambda m: m.group(1) + x["principle_capacity"] + m.group(2), "principle capacity")
-    h = replace_once(h, r'(<li>)<strong>Rhythm<\/strong>[\s\S]*?(<\/li>)',
+    h = replace_once(h, r'(<li>)<strong>Consistency<\/strong>[\s\S]*?(<\/li>)',
                       lambda m: m.group(1) + x["principle_rhythm"] + m.group(2), "principle rhythm")
     h = replace_once(h, r'(<li>)<strong>Observation<\/strong>[\s\S]*?(<\/li>)',
                       lambda m: m.group(1) + x["principle_observation"] + m.group(2), "principle observation")

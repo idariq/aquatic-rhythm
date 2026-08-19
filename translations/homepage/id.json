@@ -26,7 +26,7 @@
         "principles_label": "Empat pertanyaan sebelum bertindak",
         "principle_timing": "<strong>Waktu</strong> sebelum teknik — apakah momen ini bisa menampung langkah tersebut.",
         "principle_capacity": "<strong>Kapasitas</strong> sebelum ambisi — apa yang benar-benar mampu ditanggung kehidupan Anda, bukan jadwal khayalan.",
-        "principle_rhythm": "<strong>Ritme</strong> sebelum intensitas — konsistensi biasanya mengalahkan lonjakan usaha yang heroik.",
+        "principle_rhythm": "<strong>Konsistensi</strong> sebelum intensitas — kontinuitas biasanya mengalahkan lonjakan usaha yang heroik.",
         "principle_observation": "<strong>Pengamatan</strong> sebelum koreksi — beberapa perubahan perlu selesai dulu sebelum bisa dipahami dengan jujur.",
         "ara_foot_cta": "Baca kerangka kerja ARA selengkapnya →",
         "offers_ey": "Empat area untuk dijelajahi",
@@ -181,7 +181,7 @@
             },
             "cycled-tank-problems": {
                 "title": "Tangki yang Sudah Cycle<br><em>Bukan tangki yang selesai.</em>",
-                "desc": "Siklusnya sudah selesai, tapi masalah terus berulang. Perawatan filter, biologi nitrat, penekan dominan, dan belajar membaca apa yang ikan Anda coba sampaikan."
+                "desc": "Siklusnya sudah selesai, tapi masalah terus berulang. Perawatan filter, biologi nitrat, menemukan akar penyebab, dan belajar membaca apa yang ikan Anda coba sampaikan."
             },
             "why-is-my-aquarium-water-cloudy": {
                 "title": "Kenapa Air Akuarium Saya Keruh?<br><em>Ketika air berubah, akuarium sedang bicara.</em>",
@@ -205,7 +205,7 @@
             },
             "perfect-parameters-fish-dying": {
                 "title": "Ikan Saya Sekarat — Tapi Air Saya Terlihat Baik<br><em>Alat uji hanya mengukur satu lapisan. Ikan Anda membaca semuanya.</em>",
-                "desc": "Ketika amonia nol dan ikan masih kesulitan, jawabannya hampir selalu ada pada apa yang tidak diukur alat uji. Panduan tentang penekan dominan dan membaca Livestock Rhythm."
+                "desc": "Ketika amonia nol dan ikan masih kesulitan, jawabannya hampir selalu ada pada apa yang tidak diukur alat uji. Panduan tentang menemukan akar penyebab dan membaca Livestock Rhythm."
             },
             "betta-fish-behaviour": {
                 "title": "Perilaku Ikan Betta<br><em>Apa yang Betta Anda sampaikan.</em>",

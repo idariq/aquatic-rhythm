@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Akuarium Komunitas — Lebih dari Tabel Kompatibilitas — Aquatic Rhythm</title>
 <meta name="description" content="Tabel kompatibilitas bilang ini akan berhasil. Anda stocking dengan hati-hati. Sekarang ada yang bersembunyi, ada yang semakin kurus, dan dinamika tidak beres. Panduan ini menjelaskan apa yang tabel tidak jawab.">
@@ -20,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://aquaticrhythm.com/id/articles/community-fish-tank">
 <meta property="og:title" content="Akuarium Komunitas — Lebih dari Tabel Kompatibilitas">
-<meta property="og:description" content="Tabel bilang oke tapi akuarium komunitas tidak berfungsi. Pelajari cara membaca ekologi sosial dan stresor dominan.">
+<meta property="og:description" content="Tabel bilang oke tapi akuarium komunitas tidak berfungsi. Pelajari cara membaca ekologi sosial dan menemukan akar penyebabnya.">
 <meta property="og:image" content="https://aquaticrhythm.com/og/articles/community-fish-tank-id.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -191,7 +191,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h1 class="art-main-title">Akuarium Komunitas —<br><em>Lebih dari Tabel Kompatibilitas</em></h1>
     <p class="art-intro-subtitle">Tabel kompatibilitas menjawab pertanyaan minimum. Masalah di akuarium komunitas sering dimulai di luar batas tabel.</p>
     <p class="art-intro-text">Tabel kompatibilitas bilang ini akan berhasil. Anda stocking dengan hati-hati — spesies berbeda, lapisan berbeda, tidak ada yang dikenal agresif. Tapi sekarang ada ikan yang bersembunyi sepanjang hari, satu spesies terlihat semakin kurus, dan ada satu yang sepertinya menguasai semuanya.</p>
-    <p class="art-intro-text">Panduan ini menjelaskan kenapa tabel kompatibilitas hanya menjawab pertanyaan paling dasar, bagaimana Livestock Rhythm di akuarium komunitas terlihat ketika berfungsi, cara menemukan stresor dominan dalam sistem sosial, dan pendekatan yang tepat untuk menambahkan spesies ke komunitas yang sudah ada.</p>
+    <p class="art-intro-text">Panduan ini menjelaskan kenapa tabel kompatibilitas hanya menjawab pertanyaan paling dasar, bagaimana Livestock Rhythm di akuarium komunitas terlihat ketika berfungsi, cara menemukan penyebabnya dalam sistem sosial, dan pendekatan yang tepat untuk menambahkan spesies ke komunitas yang sudah ada.</p>
     <div class="art-intro-meta">
       <span>4 modul</span><span class="meta-dot">·</span>
       <span>Semua tingkat</span><span class="meta-dot">·</span>
@@ -239,27 +239,27 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <div class="hn">
       <span class="hn-label">Baca kelompoknya, bukan sekadar individu</span>
-      <p>Di akuarium komunitas, amati kelompok secara keseluruhan — bukan sekadar apakah ada ikan yang terlihat sakit. Komunitas di mana sebagian individu berkembang sementara yang lain perlahan melemah punya stresor dominan yang belum diselesaikan di suatu tempat. Cari ikan yang berkembang dan yang melemah — polanya biasanya akan menunjukkan apa yang tidak beres.</p>
+      <p>Di akuarium komunitas, amati kelompok secara keseluruhan — bukan sekadar apakah ada ikan yang terlihat sakit. Komunitas di mana sebagian individu berkembang sementara yang lain perlahan melemah punya tekanan yang belum diselesaikan di suatu tempat. Cari ikan yang berkembang dan yang melemah — polanya biasanya akan menunjukkan apa yang tidak beres.</p>
     </div>
 
     <div class="mod-next">
       <button class="btn-prev" onclick="goMod(1)">← Kembali</button>
-      <button class="btn-next" onclick="goMod(3)">Stresor dominan dalam sistem sosial <span>→</span></button>
+      <button class="btn-next" onclick="goMod(3)">Menemukan penyebabnya dalam sistem sosial <span>→</span></button>
     </div>
   </section>
 
   <!-- ═══ MODULE 3 ═══ -->
   <section class="module" id="mod-3" data-mod="3">
-    <div class="mod-eyebrow"><span class="mod-num">03 / 04</span><span class="mod-tag">Stresor dominan</span></div>
-    <h2 class="mod-title">Stresor dominan<br><em>dalam sistem sosial.</em></h2>
+    <div class="mod-eyebrow"><span class="mod-num">03 / 04</span><span class="mod-tag">Menemukan penyebabnya</span></div>
+    <h2 class="mod-title">Menemukan penyebabnya<br><em>dalam sistem sosial.</em></h2>
     <div class="mod-body">
-      <p>Di akuarium komunitas, stresor dominan biasanya salah satu dari tiga hal: ketidakcocokan spesies, masalah kepadatan stocking, atau satu individu yang menyebabkan tekanan yang tidak proporsional. Menemukannya memerlukan observasi dari waktu ke waktu, bukan satu pandangan sekilas.</p>
+      <p>Di akuarium komunitas, penyebab utamanya biasanya salah satu dari tiga hal: ketidakcocokan spesies, masalah kepadatan stocking, atau satu individu yang menyebabkan tekanan yang tidak proporsional. Menemukannya memerlukan observasi dari waktu ke waktu, bukan satu pandangan sekilas.</p>
       <p>Pendekatan ARA: selama satu minggu, amati akuarium pada waktu yang sama setiap hari — idealnya saat waktu makan dan sekali di malam hari. Catat ikan mana yang makan aktif, ikan mana yang bersembunyi saat makan, siapa berada di mana di akuarium, dan apakah ada ikan yang selalu menghindari area atau individu tertentu.</p>
       <p><strong>Ketidakcocokan spesies.</strong> Ikan yang membutuhkan parameter air berbeda — pH, kekerasan, suhu — mengalami stres kronis meski semua 'hidup.' Periksa kebutuhan ekologi setiap spesies dan bandingkan dengan parameter akuarium sebenarnya. Ketidakcocokan yang jelas sering menjelaskan kenapa satu spesies tidak berkembang meski yang lain berkembang.</p>
       <p><strong>Kepadatan stocking.</strong> Akuarium yang terlalu padat menghasilkan stres yang tersebar luas — bukan dari agresi, tapi dari persaingan terus-menerus untuk ruang, makanan, dan wilayah. Ikan di akuarium yang terlalu padat sering membakar lebih banyak energi untuk navigasi sosial dibanding mencari kenyamanan.</p>
       <p><strong>Satu individu yang dominan.</strong> Satu ikan yang secara konsisten mengejar, memblokir, atau mendominasi waktu makan bisa memberikan tekanan pada seluruh komunitas meski agresi tampak ringan. Ukuran kerusakan yang dilakukan bukan keparahan serangan tunggal — tapi frekuensi dan siapa yang tidak bisa istirahat atau makan dengan normal.</p>
       <p><strong>Masalah kepadatan tidak selalu terlihat.</strong> Akuarium yang baik-baik saja di bulan pertama bisa menjadi terlalu padat ketika ikan tumbuh besar, atau ketika Anda menambah beberapa ikan 'kecil' yang tumbuh lebih dari yang diperkirakan. Kepadatan stocking adalah dinamis, bukan keputusan sekali saja.</p>
-      <p><strong>Cara mengkonfirmasi stresor dominan.</strong> Pindahkan ikan yang dicurigai sebagai penyebab stres ke akuarium karantina selama dua minggu. Jika perilaku bersembunyi berkurang dan ikan lain mulai muncul lebih sering, Anda telah mengidentifikasi akar masalahnya. Ini lebih akurat dari membuat asumsi berdasarkan observasi saja.</p>
+      <p><strong>Cara mengkonfirmasi penyebabnya.</strong> Pindahkan ikan yang dicurigai sebagai penyebab stres ke akuarium karantina selama dua minggu. Jika perilaku bersembunyi berkurang dan ikan lain mulai muncul lebih sering, Anda telah mengidentifikasi akar masalahnya. Ini lebih akurat dari membuat asumsi berdasarkan observasi saja.</p>
     </div>
 
     <div class="pq">
@@ -429,8 +429,8 @@ function updateDots() {
     <p class="rh-sheet-note">AI bisa saja salah — untuk keadaan darurat pada ikan, konsultasikan dengan spesialis</p>
   </div>
 </div>
-<script src="/js/content-trust.js?v=52"></script>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/content-trust.js?v=74"></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -438,6 +438,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

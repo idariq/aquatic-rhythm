@@ -2,10 +2,10 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>フィルターの本当の正体 — Aquatic Rhythm</title>
-<meta name="description" content="間違った方法で掃除する方が、掃除しないよりも悪い結果になる。このガイドでは、水槽フィルターが実際に何をしているのか、そして生物学を壊さずにどうメンテナンスするかを解説します。">
+<meta name="description" content="間違った方法で掃除すると、掃除しないよりも悪い結果になることがあります。このガイドでは、水槽フィルターが実際に何をしているのか、そして生物学を壊さずにどうメンテナンスすればよいかを解説します。">
 <link rel="canonical" href="https://aquaticrhythm.com/ja/articles/aquarium-filter-maintenance">
 <link rel="alternate" hreflang="en" href="https://aquaticrhythm.com/articles/aquarium-filter-maintenance">
 <link rel="alternate" hreflang="id" href="https://aquaticrhythm.com/id/articles/aquarium-filter-maintenance">
@@ -20,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://aquaticrhythm.com/ja/articles/aquarium-filter-maintenance">
 <meta property="og:title" content="フィルターの本当の正体">
-<meta property="og:description" content="間違った方法で掃除する方が、掃除しないよりも悪い。水槽の生物リズムを読み取り、守る方法を学びましょう。">
+<meta property="og:description" content="間違った方法で掃除すると、掃除しないよりも悪い結果になります。水槽の生物リズムを読み取り、守る方法を学びましょう。">
 <meta property="og:image" content="https://aquaticrhythm.com/og/articles/aquarium-filter-maintenance-ja.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -30,7 +30,7 @@
 <meta name="twitter:title" content="Your Filter Is Not What You Think — Aquatic Rhythm">
 <meta name="twitter:description" content="Most keepers clean their filter to keep it working. The ones who crash their tanks do the same thing. The difference is understanding what the filter actually is.">
 <meta name="twitter:image" content="https://aquaticrhythm.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"フィルターは あなたが思うものとは違う","description":"間違った方法で掃除する方が、掃除しないよりも悪い結果になる。このガイドでは、水槽フィルターが実際に何をしているのか、そして生物学を壊さずにどうメンテナンスするかを解説します。","url":"https://aquaticrhythm.com/ja/articles/aquarium-filter-maintenance","inLanguage":"ja","image":"https://aquaticrhythm.com/og/articles/aquarium-filter-maintenance-ja.png","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com"},"datePublished":"2026-05-22","dateModified":"2026-05-25"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"フィルターは あなたが思うものとは違う","description":"間違った方法で掃除すると、掃除しないよりも悪い結果になることがあります。このガイドでは、水槽フィルターが実際に何をしているのか、そして生物学を壊さずにどうメンテナンスすればよいかを解説します。","url":"https://aquaticrhythm.com/ja/articles/aquarium-filter-maintenance","inLanguage":"ja","image":"https://aquaticrhythm.com/og/articles/aquarium-filter-maintenance-ja.png","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com"},"datePublished":"2026-05-22","dateModified":"2026-05-25"}</script>
 <script>if(localStorage.getItem('ar_analytics_opt')==='1'){window['ga-disable-G-8MDN065WNW']=true}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8MDN065WNW"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8MDN065WNW');</script>
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -190,9 +190,9 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
   <div class="art-intro-inner">
     <span class="art-eyebrow">読む · フィルターの本当の正体</span>
     <h1 class="art-main-title">フィルターは<br><em>あなたが思うものとは違う</em></h1>
-    <p class="art-intro-subtitle">間違った方法で掃除する方が、掃除しないよりもずっと悪い。</p>
-    <p class="art-intro-text">汚れて見えるから、数か月経ったから、流量が落ちてきたから——そんな理由でフィルターを掃除した。3日後、アンモニアが急上昇した。なぜか分からない。水槽は問題なく見えていた。ちゃんとやったつもりだった。</p>
-    <p class="art-intro-text">このガイドでは、水槽フィルターが実際に何をしているのか、なぜ間違ったタイミング・間違った方法での掃除が安定した水槽をクラッシュさせるのか、そしてフィルターの状態を「チェックリストのメンテナンス」としてではなく、生物リズム（Biological Rhythm）の一部として読み取る方法を解説する。</p>
+    <p class="art-intro-subtitle">間違った方法で掃除するほうが、掃除しないよりもずっと悪い結果になります。</p>
+    <p class="art-intro-text">汚れて見えるから、数か月経ったから、流量が落ちてきたから——そんな理由でフィルターを掃除しました。3日後、アンモニアが急上昇しました。なぜか分かりません。水槽は問題なく見えていました。ちゃんとやったつもりでした。</p>
+    <p class="art-intro-text">このガイドでは、水槽フィルターが実際に何をしているのか、なぜ間違ったタイミング・間違った方法での掃除が安定した水槽をクラッシュさせるのか、そしてフィルターの状態を「チェックリストのメンテナンス」としてではなく、生物リズム（Biological Rhythm）の一部として読み取る方法を解説します。</p>
     <div class="art-intro-meta">
       <span>5 モジュール</span><span class="meta-dot">·</span>
       <span>入門・中級</span><span class="meta-dot">·</span>
@@ -209,13 +209,13 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-eyebrow"><span class="mod-num">01 / 05</span><span class="mod-tag">フィルターの本当の役割</span></div>
     <h2 class="mod-title">フィルターは<br><em>本当は何をしているのか。</em></h2>
     <div class="mod-body">
-      <p>多くの飼育者はフィルターを清掃機械として捉えている——水から汚れを取り除くもの、と。それは半分正しい。物理的ろ過は確かに粒子を捕まえる。でも、フィルターの生物学的な機能はそれよりもはるかに重要で、はるかに繊細だ。</p>
-      <p>フィルターメディア——スポンジ、セラミックリング、バイオボール、溶岩石——は、窒素サイクルを担う硝化バクテリアの主要な住処だ。このバクテリアたちは、魚の排泄物から生まれるアンモニアを亜硝酸塩に、そして亜硝酸塩を硝酸塩へと変換する。彼らがいなければ、アンモニアと亜硝酸塩は毒性レベルまで蓄積する。この仕事をしているコロニーはフィルターの中に生きている。水槽のサイクリング期間中に数週間かけて形成され、毎日水が流れることで維持される。</p>
-      <p>これを理解すると、「フィルターメンテナンス」の意味が変わってくる。機械を掃除しているのではない。プラスチックとセラミックの中に存在する生きたエコシステムを管理しているのだ。いつ、どのようにメンテナンスするかという選択が、そのエコシステムを守るか、それとも乱すかを決める。</p>
+      <p>多くの飼育者は、フィルターを掃除のための機械として捉えています。水から汚れを取り除くもの、と。それは半分正しいと言えます。物理的ろ過が粒子を捕らえているのは確かです。けれども、フィルターの生物学的な機能は、それよりもはるかに重要で、はるかに繊細なのです。</p>
+      <p>フィルターメディア——スポンジ、セラミックリング、バイオボール、溶岩石など——は、窒素サイクルを担う硝化バクテリアの主要な住みかです。これらのバクテリアは、魚の排泄物から生まれるアンモニアを亜硝酸塩へ、そして亜硝酸塩を硝酸塩へと変換していきます。彼らがいなければ、アンモニアと亜硝酸塩は有毒なレベルまで蓄積してしまいます。この仕事を担うコロニーは、フィルターの中に生きています。水槽の立ち上げ期間中に数週間かけて形成され、毎日水が流れることで維持されているのです。</p>
+      <p>これを理解すると、「フィルターメンテナンス」の意味が変わってきます。機械を掃除しているのではありません。プラスチックとセラミックの中に息づく生きたエコシステムを管理しているのです。いつ、どのようにメンテナンスするかという選択が、そのエコシステムを守るか乱すかを決めます。</p>
     </div>
 
     <div class="pq">
-      <p>フィルターは汚れた水が行く場所ではない。水槽を住める場所にするバクテリアが生きている場所だ。</p>
+      <p>フィルターは、汚れた水が行き着く場所ではありません。水槽を住める環境にしてくれるバクテリアが生きている場所です。</p>
     </div>
 
     <div class="mod-next">
@@ -229,14 +229,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-eyebrow"><span class="mod-num">02 / 05</span><span class="mod-tag">水道水がなぜ水槽を壊すのか</span></div>
     <h2 class="mod-title">水道水が<br><em>なぜ水槽を壊すのか。</em></h2>
     <div class="mod-body">
-      <p>水道水には塩素とクロラミンが含まれている——水処理施設がバクテリアを殺すために添加する化合物だ。飲料水には最適だが、フィルターメディアには致命的だ。スポンジを水道の流水でゆすいだり、セラミックメディアを水道水に浸けたりすると、数週間かけて形成されたバクテリアコロニーの大半を死滅させてしまう。</p>
-      <p>ダメージは必ずしもすぐには現れない。コロニーの一部が生き残れば、数日で回復するかもしれない。しかしその回復期間中、フィルターの処理能力は著しく低下している。アンモニアと亜硝酸塩が上昇し始め、最初はゆっくりと、次第に急激に——残ったバクテリアが通常の排泄物による負荷に押し潰されていく。</p>
-      <p>フィルター掃除後にクラッシュを経験した飼育者は、それを「タイミングの悪い掃除」や「病気」のせいだと思いがちだ。実際の原因はもっとシンプルだ——掃除に使った水が生物学を壊したのだ。解決策も同じくらいシンプルだ。フィルターメディアは常に、その水換えセッションで取り出した水槽の水でゆすぐこと。水槽の水は塩素フリーで、温度も合っていて、バクテリアが必要とする化合物をすでに含んでいる。バケツに汲んだ水槽の水でやさしくゆすぐだけで、捕捉された堆積物を取り除きながらコロニーを乱さずに済む。</p>
+      <p>水道水には塩素とクロラミンが含まれています。水処理施設がバクテリアを殺すために添加している化合物です。飲み水としては申し分ありませんが、フィルターメディアにとっては致命的です。スポンジを水道の流水ですすいだり、セラミックメディアを水道水に浸けたりすると、数週間かけて形成されたバクテリアコロニーの大半を死滅させてしまいます。</p>
+      <p>ダメージは必ずしもすぐには現れません。コロニーの一部が生き残っていれば、数日で回復することもあります。しかしその回復期間のあいだ、フィルターの処理能力は著しく落ちています。アンモニアと亜硝酸塩が上昇し始め、最初はゆっくりと、やがて急激に——生き残ったバクテリアが、通常の排泄物による負荷に押しつぶされていきます。</p>
+      <p>フィルター掃除のあとにクラッシュを経験した飼育者は、それを「タイミングの悪い掃除」や「病気」のせいだと考えがちです。しかし実際の原因は、もっとシンプルです。掃除に使った水が、生物学を壊してしまったのです。解決策も同じくらいシンプルです。フィルターメディアは、常にその水換えで汲んだ水槽の水ですすぐこと。水槽の水は塩素を含まず、温度も合っていて、バクテリアが必要とする化合物をすでに含んでいます。バケツに汲んだ水槽の水でやさしくすすぐだけで、たまった堆積物を取り除きながら、コロニーを乱さずに済みます。</p>
     </div>
 
     <div class="hn">
       <span class="hn-label">フィルターも生きている</span>
-      <p>フィルター内のバクテリアコロニーは、魚や植物と同様に水槽の生きた一部だ。フィルターを管理することは、そのコロニーの状態を読み取ることを意味する。いつ形成されて安定しているか、いつサービスが必要か、そしてどんな種類のサービスが守るのか、乱すのかを見極めることだ。</p>
+      <p>フィルター内のバクテリアコロニーは、魚や植物と同じように水槽の生きた一部です。フィルターを管理するということは、そのコロニーの状態を読み取ることにほかなりません。いつ形成されて安定しているか、いつ手入れが必要か、そしてどんな手入れがコロニーを守り、どんな手入れが乱してしまうのかを見極めることです。</p>
     </div>
 
     <div class="mod-next">
@@ -248,15 +248,15 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
   <!-- ═══ MODULE 3 ═══ -->
   <section class="module" id="mod-3" data-mod="3">
     <div class="mod-eyebrow"><span class="mod-num">03 / 05</span><span class="mod-tag">掃除すべき時と、しなくていい時</span></div>
-    <h2 class="mod-title">掃除すべき時——<br><em>そして、しなくていい時。</em></h2>
+    <h2 class="mod-title">掃除すべき時<br><em>そして、しなくていい時。</em></h2>
     <div class="mod-body">
-      <p>フィルター掃除のタイミングは、方法と同じくらい重要だ。いくつかの状況では、フィルター掃除のリスクが通常より高くなる。新しい魚を追加した直後（バクテリアの負荷がコロニーの適応に伴い数週間かけて増加する——この期間内の掃除は、まさに処理能力が最も必要なときにそれを削ってしまう）。病気の治療中または直後（多くの薬はバクテリアと同時に病原体も殺す——コロニーの能力をさらに削る掃除を加えることで、混乱が倍増する）。水温が不安定な時（バクテリアの成長速度は温度に依存する——ヒーターの問題や季節的な水温変化を経験している水槽では、コロニーがすでにストレスを受けているかもしれない）。</p>
-      <p>フィルターのサービスが必要なシグナルは、流量の低下（ポンプが詰まったメディアに抗って動いている）と、見て分かるスポンジの圧縮だ。これらは物理的なシグナルであって、生物的なシグナルではない——バクテリアコロニーは掃除が必要な時を告知しない。しかし、水を自由に流していて、設置後3か月未満のフィルターは、ほぼ確実にまだ掃除の必要はない。</p>
-      <p>「時間が経ったから掃除しよう」という衝動は、実際のフィルターの状態を読み取ることよりも役に立たない。</p>
+      <p>フィルター掃除のタイミングは、方法と同じくらい重要です。状況によっては、フィルター掃除のリスクが通常より高くなります。新しい魚を追加した直後（バクテリアの負荷が、コロニーの適応にあわせて数週間かけて増えていく時期です。この期間の掃除は、まさに処理能力が最も必要なときにそれを削ってしまいます）。病気の治療中や治療直後（多くの薬はバクテリアと同時に病原体も殺してしまいます。コロニーの能力をさらに削る掃除を重ねれば、混乱は倍になります）。水温が不安定なとき（バクテリアの成長速度は温度に左右されます。ヒーターの不調や季節による水温の変化を経験している水槽では、コロニーがすでにストレスを受けているかもしれません）。</p>
+      <p>フィルターの手入れが必要なサインは、流量の低下（ポンプが目詰まりしたメディアに逆らって動いている状態）と、見てわかるほどのスポンジの圧縮です。これらは物理的なサインであって、生物学的なサインではありません。バクテリアコロニー自身が、掃除の必要な時期を教えてくれるわけではないのです。とはいえ、水がよく流れていて、設置から3か月未満のフィルターであれば、ほぼ確実にまだ掃除の必要はありません。</p>
+      <p>「時間が経ったから掃除しよう」という衝動は、実際のフィルターの状態を読み取ることに比べれば、あまり役に立ちません。</p>
     </div>
 
     <div class="pq">
-      <p>正常に機能しているフィルター——水を自由に流している、安定した水槽の中の——は仕事をしている。「もう長いから」という理由で掃除したくなる衝動は、キーパーリズム（Keeper Rhythm）のシグナルであって、水槽のシグナルではない。</p>
+      <p>正常に機能しているフィルター、つまり安定した水槽の中で水をよく流しているフィルターは、きちんと仕事をしています。「もう長いから」という理由で掃除したくなる衝動は、キーパーリズム（Keeper Rhythm）のシグナルであって、水槽が発しているシグナルではありません。</p>
     </div>
 
     <div class="mod-next">
@@ -270,14 +270,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-eyebrow"><span class="mod-num">04 / 05</span><span class="mod-tag">水槽を壊さない掃除の方法</span></div>
     <h2 class="mod-title">水槽を壊さない<br><em>掃除の方法。</em></h2>
     <div class="mod-body">
-      <p>バクテリアコロニーを守りながら物理的な汚れを取り除く方法。フィルターメディアは一度にすべてではなく、一部ずつ取り出す。各パーツを、その水換えセッションで汲んだ水槽の水を入れたバケツで、やさしくゆすぐ。スポンジは捕捉された汚れを取り除くために1〜2回絞る。何度も繰り返さない。セラミックメディアやバイオメディアはこすらない——やさしくゆすぐだけで十分だ。次のパーツに移る前に、掃除したメディアを元に戻す。すべてのメディアを同時に交換しないこと。</p>
-      <p>古いメディアを新しいものに交換する場合（最終的に劣化したスポンジ、割れたセラミック）、古いメディアが完全に廃棄される前に、4〜6週間は古いものと新しいものを並行して運転する。古いメディアがバクテリアを新しいものに移植する。古いメディアをすぐに取り除くと、新しい部分はコロニーのいない空白のままになり、フィルターのキャパシティが大幅に低下する。</p>
-      <p>これが、「毎月フィルターカートリッジを交換する」というアドバイス——ブランドの掛け流しフィルターの説明書によく見られる——が安定した水槽を不安定にし得る理由でもある。そのカートリッジこそが生物学的メディアなのだ。毎月交換することは、水槽の一部を繰り返しサイクリングし続ける緩やかな方法だ。</p>
+      <p>バクテリアコロニーを守りながら物理的な汚れを取り除く方法を紹介します。フィルターメディアは、一度にすべてではなく一部ずつ取り出します。各パーツを、その水換えで汲んだ水槽の水を入れたバケツで、やさしくすすぎます。スポンジは、捕らえた汚れを落とすために1〜2回絞れば十分です。何度も繰り返す必要はありません。セラミックメディアやバイオメディアはこすらないこと。やさしくすすぐだけで十分です。次のパーツに移る前に、掃除したメディアを元に戻します。すべてのメディアを同時に交換しないようにしましょう。</p>
+      <p>古いメディアを新しいものに交換する場合（劣化しきったスポンジや割れたセラミックなど）は、古いメディアを完全に処分する前に、4〜6週間ほど古いものと新しいものを並行して運転しましょう。古いメディアが、バクテリアを新しいメディアへと移植してくれます。古いメディアをすぐに取り除いてしまうと、新しい部分はコロニーのいない空白のままになり、フィルターの処理能力が大きく落ちてしまいます。</p>
+      <p>これが、「毎月フィルターカートリッジを交換する」というアドバイス——市販の掛け流しフィルターの説明書によく見られるものです——が、安定した水槽を不安定にしかねない理由でもあります。そのカートリッジこそが、生物学的なメディアなのです。毎月交換することは、水槽の一部を繰り返し立ち上げ直しているようなものと言えます。</p>
     </div>
 
     <div class="hn">
       <span class="hn-label">技術よりタイミングが大事</span>
-      <p>これはフィルターメンテナンスに直接当てはまる。間違ったタイミングに正しい技術で掃除されたフィルターは、それでも水槽をクラッシュさせる可能性がある。正しいタイミングに正しい技術で掃除されたフィルターは、バクテリアコロニーを守る。まずタイミングを読むこと。</p>
+      <p>これはフィルターメンテナンスにそのまま当てはまります。間違ったタイミングで、たとえ正しい技術で掃除したとしても、フィルターは水槽をクラッシュさせてしまうことがあります。正しいタイミングで正しい技術で掃除されたフィルターは、バクテリアコロニーを守ります。まずはタイミングを読むことです。</p>
     </div>
 
     <div class="mod-next">
@@ -291,19 +291,19 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-eyebrow"><span class="mod-num">05 / 05</span><span class="mod-tag">フィルターの状態を読む</span></div>
     <h2 class="mod-title">フィルターの<br><em>状態を読む。</em></h2>
     <div class="mod-body">
-      <p>安定した水槽の成熟したフィルターには、独特の見た目と手触りがある。バクテリアのコロニー形成によってスポンジは茶色くなり、セラミックメディアには薄いバイオフィルムがついている場合があり、流量は強くて安定している。これらはどれもフィルターが汚れているサインではない——生きているサインだ。その茶色はバクテリアだ。そのバイオフィルムは生物学だ。そのように見えるフィルターは機能している。</p>
-      <p>本当に注意が必要な状況。流量が著しく低下していて、圧力下でスポンジが弾力のある固まりではなく固体の塊に圧縮されている。バクテリアを殺す薬で水槽を治療した（治療後24〜48時間後にアンモニアを検査する。上昇はコロニーが影響を受けたことを示す）。電気系統の故障やポンプ障害でフィルターが空運転した（空運転後のフィルター再起動には、コロニーの再形成が必要な場合がある——1週間毎日検査すること）。</p>
-      <p>これ以外では、フィルターで最も有益な習慣は掃除の頻度ではなく、観察だ。流量に注目する。メンテナンス後の水槽のパラメーターに注目する。生物学に働く余地を与える。生物リズム（Biological Rhythm）は多くの飼育者が思うよりも安定していて、そしてほとんどの掃除習慣が考慮するよりもずっと繊細だ。</p>
+      <p>安定した水槽で育った成熟フィルターには、独特の見た目と手触りがあります。バクテリアのコロニーが形成されることでスポンジは茶色くなり、セラミックメディアには薄いバイオフィルムがつくこともあり、流量は強く安定しています。これらはどれも、フィルターが汚れているサインではありません。生きているサインなのです。その茶色さはバクテリアです。そのバイオフィルムは生物学そのものです。そう見えるフィルターは、きちんと機能しています。</p>
+      <p>本当に注意が必要な状況もあります。流量が著しく落ちていて、スポンジが弾力のあるかたまりではなく、押しつぶされたように固く圧縮されている場合。バクテリアを殺すタイプの薬で水槽を治療した場合（治療後24〜48時間後にアンモニアを検査してください。数値の上昇は、コロニーが影響を受けたことを示します）。停電やポンプの故障でフィルターが空運転してしまった場合（空運転のあとにフィルターを再稼働させると、コロニーの再形成が必要になることがあります。1週間は毎日検査しましょう）。</p>
+      <p>それ以外の場面では、フィルターにとって最も有益な習慣は、掃除の頻度ではなく観察です。流量に注目すること。メンテナンス後の水槽のパラメーターに注目すること。そして、生物学が働くための余地を与えてあげること。生物リズム（Biological Rhythm）は、多くの飼育者が思うよりも安定していて、そしてほとんどの掃除習慣が考えているよりもずっと繊細なのです。</p>
     </div>
 
 
     <div class="hn">
       <span class="hn-label">メンテナンスが裏目に出るとき</span>
-      <p>フィルター掃除の後に水槽がクラッシュするのは、この趣味の中でも特に混乱させられる経験のひとつだ——メンテナンスをした、やるべきことをやった、それなのに水槽は悪化した。この特有の戸惑いは、過度の慎重さ(フィルターメンテナンスを完全に避ける)か、繰り返し(もっと激しく掃除し直して、掃除が引き起こしたものを直そうとする)のどちらかを生みやすい。どちらの反応も、理にかなった動機から来ているが、どちらも問題を長引かせてしまう。フィルター内の生物相は目に見えないため、フィルターを生きたものではなく機械的な物体として扱いやすくなる。クラッシュが間違った行動の証拠ではなく、タイミングや方法のずれの証拠であると認識することが、次の掃除を変えるものになる。</p>
+      <p>フィルター掃除のあとに水槽がクラッシュするのは、この趣味の中でも特に戸惑わされる経験のひとつです。メンテナンスをした、やるべきことをやった、それなのに水槽は悪化してしまった——そんな状況です。この独特の戸惑いは、過度の慎重さ(フィルターメンテナンスを完全に避けてしまう)か、繰り返し(もっと激しく掃除し直して、掃除が引き起こした問題を直そうとする)のどちらかを生みやすいものです。どちらの反応も、理にかなった動機から生まれていますが、どちらも問題を長引かせてしまいます。フィルター内の生物相は目に見えないため、フィルターを生きたものではなく機械的な物体として扱いたくなってしまいます。クラッシュが間違った行動の証拠ではなく、タイミングや方法のずれの証拠であると気づくこと。それが、次の掃除のしかたを変えてくれます。</p>
     </div>
     <div class="hn">
-      <span class="hn-label">自動化はあなたの能力を広げる——理解していれば</span>
-      <p>自動化、監視システム、機器のデザインが、ルーティンケアの機能をどれだけ信頼性高く実行できるか——それが本当のキャパシティだ。十分に理解されてきちんとメンテナンスされた機器は、飼育者が提供できることを本当に広げる。しかし本当の理解なしに設置された自動化は負債になる——システムが静かに失敗したり、シグナルを隠したりするとき、助けるはずの機器が必要な情報から遮断してしまうのだ。</p>
+      <span class="hn-label">理解していれば、自動化は能力を広げる</span>
+      <p>自動化、モニタリングシステム、機器の設計が、日々のケアをどれだけ確実に実行してくれるか——それこそが本当のキャパシティです。十分に理解され、きちんとメンテナンスされた機器は、飼育者にできることを確かに広げてくれます。しかし、本当の理解のないまま設置された自動化は、負債になってしまいます。システムが静かに不調をきたしたり、シグナルを覆い隠したりするとき、助けてくれるはずの機器が、必要な情報から飼育者を遮断してしまうのです。</p>
     </div>
 
     <div class="mod-next" style="margin-top:1.5rem">
@@ -441,8 +441,8 @@ function updateDots() {
     <p class="rh-sheet-note">AIは間違えることがあります —— 魚の緊急事態では、専門家に相談してください</p>
   </div>
 </div>
-<script src="/js/content-trust.js?v=52"></script>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/content-trust.js?v=74"></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -450,6 +450,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

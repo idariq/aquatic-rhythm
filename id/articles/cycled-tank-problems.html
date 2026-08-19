@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Akuarium yang Sudah Siklus Bukan Akuarium yang Selesai — Aquatic Rhythm</title>
 <meta name="description" content="Akuarium yang sudah lama berjalan adalah sistem yang berbeda. Panduan ini menjelaskan kenapa akuarium yang sudah matang masih bisa bermasalah — dan apa yang coba ia beritahu Anda.">
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -122,6 +122,10 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
 /* VISUAL */
 .vis-block{margin:2.2rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid var(--th-accent-border)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft)}
 canvas{display:block;width:100%}
 .vis-ctrl{padding:.6rem 0 .3rem}
 .vc-label{text-align:center;margin-bottom:.4rem}
@@ -152,6 +156,10 @@ canvas{display:block;width:100%}
 .rhythm-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:2rem 0}
 @media(max-width:500px){.rhythm-grid{grid-template-columns:1fr}}
 .rhythm-cell{padding:1.2rem 1.4rem;border:1px solid var(--th-accent-border);background:rgba(4,22,32,.5)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .rhythm-cell{background:var(--th-accent-soft)}
+}
+:root[data-theme="light"] .rhythm-cell{background:var(--th-accent-soft)}
 .rhythm-cell-num{font-size:var(--fs-2xs);letter-spacing:.2em;text-transform:uppercase;color:var(--th-accent);margin-bottom:.45rem}
 .rhythm-cell-name{font-family:var(--serif);font-weight:300;font-size:var(--fs-md-lg);color:var(--th-ink);margin-bottom:.4rem;line-height:1.2}
 .rhythm-cell-desc{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-3);line-height:1.75}
@@ -366,7 +374,7 @@ canvas{display:block;width:100%}
 
     <div class="hn ar">
       <span class="hn-label">Perspektif Aquatic Rhythm</span>
-      <p>ARA menamai ini sebagai dominant stressor — satu tekanan tunggal yang memberikan beban terbesar pada sistem pada waktu tertentu. Singkirkan itu, dan masalah lain sering mulai menyelesaikan dirinya sendiri. Keterampilannya adalah belajar menemukan akar masalah, bukan merawat setiap gejala secara terpisah. Peralihan itu — dari reaktif ke ekologis — adalah salah satu hal yang mengubah cara penghobi mengalami hobi ini.</p>
+      <p>Pada kebanyakan kasus, ada satu tekanan tunggal yang memberikan beban terbesar pada sistem pada waktu tertentu. Singkirkan itu, dan masalah lain sering mulai menyelesaikan dirinya sendiri. Keterampilannya adalah belajar menemukan akar masalah itu, bukan merawat setiap gejala secara terpisah. Peralihan itu — dari reaktif ke ekologis — adalah salah satu hal yang mengubah cara penghobi mengalami hobi ini.</p>
     </div>
 
     <div class="hn">
@@ -474,7 +482,7 @@ canvas{display:block;width:100%}
 
     <div class="hn ar">
       <span class="hn-label">Perspektif Aquatic Rhythm</span>
-      <p>ARA menamai ini sebagai ecological attunement — kualitas perhatian yang berkembang dari waktu ke waktu, melalui kehadiran bukan studi. Itu bukan sesuatu yang bisa Anda baca ke dalamnya. Tapi ia tumbuh secara alami ketika Anda menghabiskan waktu di depan akuarium bukan untuk mencari masalah — hanya melihat. Perhatikan bagaimana ikan bergerak dalam air. Sadari perubahan kecil yang belum pernah Anda perhatikan sebelumnya. Perbedaan antara memeriksa dan melihat.</p>
+      <p>Ini adalah kualitas perhatian yang berkembang dari waktu ke waktu, melalui kehadiran bukan studi. Itu bukan sesuatu yang bisa Anda baca ke dalamnya. Tapi ia tumbuh secara alami ketika Anda menghabiskan waktu di depan akuarium bukan untuk mencari masalah — hanya melihat. Perhatikan bagaimana ikan bergerak dalam air. Sadari perubahan kecil yang belum pernah Anda perhatikan sebelumnya. Perbedaan antara memeriksa dan melihat.</p>
       <p>Penghobi yang membangun perhatian ini tidak menghabiskan lebih banyak waktu di akuarium mereka. Mereka menghabiskan lebih sedikit — karena mereka menangkap sesuatu lebih awal, merespons dengan lebih tenang, dan telah mendapatkan kepercayaan yang cukup pada sistem untuk membiarkannya sendiri ketika berjalan dengan baik. Kepercayaan itu datang dari mengenal akuarium cukup baik untuk membacanya. Dan itu membuat hobi ini terasa sangat berbeda.</p>
       <p>Dalam ARA, ecological rhythm kelima — <strong>Keeper Rhythm</strong> — adalah yang membentuk semua yang lain. Penghobi yang mengamati secara konsisten, mengganti air dengan konsistensi yang koheren, dan telah menentukan jadwal mereka dengan jujur sesuai kapasitas nyata mereka menciptakan stabilitas yang tidak bisa ditiru produk mana pun. Akuarium mencerminkan penghobi. Dan penghobi yang selaras, dari waktu ke waktu, memerlukan lebih sedikit intervensi — bukan lebih.</p>
     </div>
@@ -492,7 +500,7 @@ canvas{display:block;width:100%}
     <div class="final-cta">
       <p><strong>Langkah terbaik berikutnya:</strong> Buat log 72 jam: catat 3 hal setiap hari (perilaku ikan, suhu, dan bacaan nitrat). Setelah 3 hari, periksa apakah pola tekanan berasal dari parameter, pemberian makan, atau aliran.</p>
       <a href="/id/articles/cycled-tank-problems#mod-5" class="btn-reading" data-analytics-event="cta_mature_tank_next_action" data-cta="mature_tank_signal_review">Periksa sinyal perilaku →</a>
-      <a href="/id/reading" class="btn-reading" style="margin-top:.7rem">← Kembali ke Reading</a>
+      <a href="/id/reading" class="btn-reading" style="margin-top:.7rem">← Kembali ke Semua artikel</a>
     </div>
 
   </section>
@@ -575,6 +583,229 @@ if(introEl){
 /* ═══════════════════════════════
    VISUALS
 ═══════════════════════════════ */
+
+/* i18n: runtime UI strings for the canvas widgets in this article.
+   Same CTP_STRINGS/ctpT() pattern as js/community-stress-lab.js's
+   CSL_STRINGS/T() — this <script> block is copied byte-for-byte into
+   id/articles & ja/articles by the build pipeline, so selecting off
+   document.documentElement.lang at runtime is what makes one source
+   script serve en/id/ja. Placeholder tokens use {n}-style {...}
+   syntax substituted at call time. Week/counter labels are NOT put
+   through {n} substitution alone — ja needs number-before-counter
+   order ("N週") unlike en/id's counter-before-number ("WN"/"MN"), so
+   ctpWeekLabel()/ctpBehFooter() branch per-language explicitly, same
+   reasoning as dayConcat() in scripts/build-tsim-i18n.mjs. */
+var CTP_STRINGS = {
+  en: {
+    stressHint: 'tap a stressor to explore it',
+    barWater: 'Water', barFish: 'Fish', barStable: 'Stable', barVisible: 'Visible',
+    noticeHeader: 'What you might notice:',
+    stressor0Label: 'Nitrate buildup',
+    stressor0Sig0: 'Fish seem dull or less enthusiastic',
+    stressor0Sig1: 'Disease keeps returning after treatment',
+    stressor0Sig2: 'Algae growing despite regular maintenance',
+    stressor0Note: 'Nitrate rises quietly after every cycle. At high levels it suppresses immune function — fish survive but are never quite comfortable. Weekly partial water changes are the most reliable solution.',
+    stressor1Label: 'Too many fish',
+    stressor1Sig0: 'Frequent fin damage or aggression',
+    stressor1Sig1: 'Fish breathing at the surface',
+    stressor1Sig2: 'Ammonia spikes after feeding',
+    stressor1Note: 'More fish means more waste, less oxygen, more competition. The bacteria can handle the chemistry — but the fish still experience the crowding. Rehoming some fish often transforms a tank overnight.',
+    stressor2Label: 'Wrong chemistry',
+    stressor2Sig0: 'Fish surviving but never thriving',
+    stressor2Sig1: 'Difficulty breeding species that should breed',
+    stressor2Sig2: 'Chronic low-grade illness without clear cause',
+    stressor2Note: 'Fish evolved for specific water conditions. A species from soft acidic rivers kept in hard alkaline water is under constant stress, even if it looks fine on paper. Research your specific species — not just "tropical fish" in general.',
+    stressor3Label: 'Irregular care',
+    stressor3Sig0: 'Tank seems fine then suddenly crashes',
+    stressor3Sig1: 'Problems always seem to appear at the same time',
+    stressor3Sig2: 'Recovery from problems takes unusually long',
+    stressor3Note: 'Tanks tolerate gaps — but not indefinitely. Missed changes and irregular feeding create cumulative stress. The crash feels sudden because the warning signs were quiet. A modest consistent routine beats intensive irregular care.',
+    filterMediaLabel: 'Filter media',
+    colonyLabel: 'Colony',
+    scenario0Label: 'Correct — tank water',
+    scenario0Desc: 'Rinsing in old tank water preserves the biofilm. Chlorine is absent. Bacteria survive. The colony remains intact.',
+    scenario1Label: 'Incorrect — tap water',
+    scenario1Desc: 'Tap water contains chlorine. Even a brief rinse kills the majority of bacteria in the biofilm. The colony must rebuild from near zero.',
+    scenario2Label: 'Replace all media',
+    scenario2Desc: 'New media has no bacteria. Replacing everything at once removes the entire colony. The tank effectively re-cycles — often invisibly, over weeks.',
+    scenario3Label: 'Replace one third',
+    scenario3Desc: 'Replacing a third of the media at a time preserves most of the colony on the remaining surfaces. The new media colonises within 2–4 weeks.',
+    btnWc: 'Water changes', btnNoWc: 'No changes', btnWcPlants: 'Changes + plants',
+    nitrateHint: 'compare nitrate over 12 weeks',
+    stressZone: 'stress zone',
+    captionWc: 'Weekly 15-25% changes keep nitrate stable.',
+    captionNone: 'Without changes, nitrate rises into the stress range.',
+    captionPlants: 'Plants + regular changes — the most effective combination.',
+    behHint: 'slide to explore behaviour signals',
+    urgencyHigh: 'Respond soon', urgencyMedium: 'Worth checking', urgencyLow: 'Keep an eye on it',
+    signal0Label: 'Surface breathing',
+    signal0Meaning: 'Fish gulping at the water surface is one of the clearest distress signals. It usually means dissolved oxygen is low — from overcrowding, overfeeding, poor surface agitation, or high ammonia affecting gill function.',
+    signal1Label: 'Hiding more than usual',
+    signal1Meaning: 'A fish that suddenly spends time hiding when it normally did not is often experiencing stress from poor water quality, aggression from tankmates, or the early stages of illness. It is worth investigating before other symptoms appear.',
+    signal2Label: 'Eating less eagerly',
+    signal2Meaning: 'Loss of appetite is one of the earliest and most reliable signs that something is not right. Fish that are comfortable and healthy are almost always enthusiastic feeders. A fish that skips meals deserves attention.',
+    signal3Label: 'Colour looking faded',
+    signal3Meaning: 'Fish often show their best colour when they are genuinely comfortable — the right temperature, good water quality, low stress. Fading can be gradual and easy to miss. Comparing to photographs taken weeks apart can be revealing.',
+    signal4Label: 'Staying near the heater',
+    signal4Meaning: 'Fish huddling near a heat source often indicates the tank is too cold, or that a temperature fluctuation has occurred. Check your heater is functioning and that readings are consistent throughout the day.',
+    surfaceLabel: 'surface',
+    colourFadedLabel: 'colour faded',
+    behFooter: 'Signal {n} of {total}'
+  },
+  id: {
+    stressHint: 'ketuk salah satu tekanan untuk menjelajahinya',
+    barWater: 'Air', barFish: 'Ikan', barStable: 'Stabil', barVisible: 'Terlihat',
+    noticeHeader: 'Yang mungkin Anda perhatikan:',
+    stressor0Label: 'Penumpukan nitrat',
+    stressor0Sig0: 'Ikan terlihat kusam atau kurang bersemangat',
+    stressor0Sig1: 'Penyakit terus kembali setelah diobati',
+    stressor0Sig2: 'Alga tetap tumbuh meski perawatan rutin dilakukan',
+    stressor0Note: 'Nitrat naik diam-diam setelah setiap siklus. Pada kadar tinggi ia menekan fungsi imun — ikan bertahan hidup tapi tidak pernah benar-benar nyaman. Ganti air sebagian setiap minggu adalah solusi paling andal.',
+    stressor1Label: 'Ikan terlalu banyak',
+    stressor1Sig0: 'Sering terjadi kerusakan sirip atau agresi',
+    stressor1Sig1: 'Ikan bernapas di permukaan air',
+    stressor1Sig2: 'Amonia melonjak setelah pemberian makan',
+    stressor1Note: 'Ikan lebih banyak berarti kotoran lebih banyak, oksigen lebih sedikit, dan persaingan lebih ketat. Bakteri bisa mengatasi kimianya — tapi ikan tetap merasakan kepadatannya. Memindahkan beberapa ikan ke akuarium lain sering mengubah kondisi akuarium dalam semalam.',
+    stressor2Label: 'Kimia air tidak sesuai',
+    stressor2Sig0: 'Ikan bertahan hidup tapi tidak pernah benar-benar berkembang',
+    stressor2Sig1: 'Sulit membiakkan spesies yang seharusnya mudah berkembang biak',
+    stressor2Sig2: 'Sakit ringan yang terus-menerus tanpa penyebab yang jelas',
+    stressor2Note: 'Ikan berevolusi untuk kondisi air tertentu. Spesies dari sungai lunak dan asam yang dipelihara di air keras dan basa berada dalam tekanan terus-menerus, meski terlihat baik-baik saja di atas kertas. Pelajari spesies Anda secara spesifik — bukan sekadar "ikan tropis" secara umum.',
+    stressor3Label: 'Perawatan tidak teratur',
+    stressor3Sig0: 'Akuarium terlihat baik-baik saja lalu tiba-tiba kolaps',
+    stressor3Sig1: 'Masalah selalu tampak muncul bersamaan',
+    stressor3Sig2: 'Pemulihan dari masalah memakan waktu lebih lama dari biasanya',
+    stressor3Note: 'Akuarium bisa mentoleransi jeda — tapi tidak selamanya. Ganti air yang terlewat dan pemberian makan yang tidak teratur menciptakan tekanan yang menumpuk. Kolapsnya terasa mendadak karena tanda-tanda peringatannya selama ini diam-diam saja. Rutinitas sederhana yang konsisten mengalahkan perawatan intensif yang tidak teratur.',
+    filterMediaLabel: 'Media filter',
+    colonyLabel: 'Koloni',
+    scenario0Label: 'Benar — air akuarium',
+    scenario0Desc: 'Membilas dengan air akuarium lama menjaga biofilm tetap utuh. Tidak ada klorin. Bakteri bertahan hidup. Koloni tetap utuh.',
+    scenario1Label: 'Salah — air keran',
+    scenario1Desc: 'Air keran mengandung klorin. Bahkan bilasan sebentar saja membunuh sebagian besar bakteri dalam biofilm. Koloni harus dibangun kembali hampir dari nol.',
+    scenario2Label: 'Ganti semua media',
+    scenario2Desc: 'Media baru tidak memiliki bakteri. Mengganti semuanya sekaligus menghilangkan seluruh koloni. Akuarium secara efektif mengalami siklus ulang — sering kali tanpa terlihat, selama berminggu-minggu.',
+    scenario3Label: 'Ganti sepertiga',
+    scenario3Desc: 'Mengganti sepertiga media setiap kali menjaga sebagian besar koloni tetap ada di permukaan yang tersisa. Media baru akan mulai dihuni bakteri dalam 2–4 minggu.',
+    btnWc: 'Ganti air', btnNoWc: 'Tanpa penggantian', btnWcPlants: 'Ganti air + tanaman',
+    nitrateHint: 'bandingkan nitrat selama 12 minggu',
+    stressZone: 'zona stres',
+    captionWc: 'Ganti air 15-25% setiap minggu menjaga nitrat tetap stabil.',
+    captionNone: 'Tanpa penggantian air, nitrat naik ke zona stres.',
+    captionPlants: 'Tanaman + penggantian air teratur — kombinasi paling efektif.',
+    behHint: 'geser untuk menjelajahi sinyal perilaku',
+    urgencyHigh: 'Segera tanggapi', urgencyMedium: 'Perlu diperiksa', urgencyLow: 'Perhatikan saja',
+    signal0Label: 'Bernapas di permukaan',
+    signal0Meaning: 'Ikan yang megap-megap di permukaan air adalah salah satu sinyal stres yang paling jelas. Biasanya berarti oksigen terlarut rendah — akibat kepadatan berlebih, pemberian makan berlebih, pergerakan permukaan yang kurang, atau amonia tinggi yang mengganggu fungsi insang.',
+    signal1Label: 'Lebih sering bersembunyi dari biasanya',
+    signal1Meaning: 'Ikan yang tiba-tiba menghabiskan waktu bersembunyi padahal biasanya tidak, sering kali mengalami stres akibat kualitas air yang buruk, agresi dari sesama penghuni akuarium, atau tahap awal penyakit. Ini layak diselidiki sebelum gejala lain muncul.',
+    signal2Label: 'Kurang antusias saat makan',
+    signal2Meaning: 'Berkurangnya nafsu makan adalah salah satu tanda paling awal dan paling dapat diandalkan bahwa ada yang tidak beres. Ikan yang nyaman dan sehat hampir selalu bersemangat saat makan. Ikan yang melewatkan waktu makan layak mendapat perhatian.',
+    signal3Label: 'Warna terlihat memudar',
+    signal3Meaning: 'Ikan sering menunjukkan warna terbaiknya saat benar-benar nyaman — suhu yang tepat, kualitas air yang baik, stres yang rendah. Memudarnya warna bisa terjadi bertahap dan mudah terlewat. Membandingkan dengan foto yang diambil beberapa minggu sebelumnya bisa sangat membantu.',
+    signal4Label: 'Berkumpul di dekat pemanas',
+    signal4Meaning: 'Ikan yang berkerumun di dekat sumber panas sering menandakan akuarium terlalu dingin, atau telah terjadi fluktuasi suhu. Periksa apakah pemanas berfungsi dengan baik dan suhu tetap konsisten sepanjang hari.',
+    surfaceLabel: 'permukaan',
+    colourFadedLabel: 'warna memudar',
+    behFooter: 'Sinyal {n} dari {total}'
+  },
+  ja: {
+    stressHint: 'ストレス要因をタップして詳しく見る',
+    barWater: '水', barFish: '魚', barStable: '安定', barVisible: '兆候',
+    noticeHeader: '気づくかもしれないサイン：',
+    stressor0Label: '硝酸塩の蓄積',
+    stressor0Sig0: '魚がどこか元気がなく、鈍く見える',
+    stressor0Sig1: '治療してもすぐに病気が戻ってくる',
+    stressor0Sig2: '定期的な手入れをしてもコケが生える',
+    stressor0Note: '硝酸塩はサイクルのたびに静かに上昇していきます。濃度が高くなると免疫機能が抑えられ、魚は生きてはいても、なかなか快適にはなれません。毎週の部分換水が最も確実な対策です。',
+    stressor1Label: '魚の数が多すぎる',
+    stressor1Sig0: 'ヒレの損傷や攻撃行動が頻繁に起こる',
+    stressor1Sig1: '魚が水面で呼吸している',
+    stressor1Sig2: '給餌後にアンモニアが急上昇する',
+    stressor1Note: '魚が増えるほど排泄物は増え、酸素は減り、競争は激しくなります。バクテリアは水質を処理できても、魚は過密そのものを経験しています。何匹かを他の水槽に移すだけで、一晩で水槽の様子が一変することも珍しくありません。',
+    stressor2Label: '水質が合っていない',
+    stressor2Sig0: '魚は生きてはいるが、決して調子よく育たない',
+    stressor2Sig1: '本来なら繁殖しやすいはずの種が繁殖しない',
+    stressor2Sig2: '原因がはっきりしない、慢性的な軽い不調が続く',
+    stressor2Note: '魚は特定の水質条件に合わせて進化してきました。軟水・弱酸性の川に由来する種を硬水・アルカリ性の水で飼うと、数値上は問題なく見えても、常にストレスにさらされています。「熱帯魚」とひとくくりにせず、自分が飼っている種そのものを調べてみましょう。',
+    stressor3Label: '不規則な世話',
+    stressor3Sig0: '水槽は問題なさそうに見えて、突然崩れる',
+    stressor3Sig1: '問題がいつも同時に起こるように見える',
+    stressor3Sig2: '問題からの回復に、いつも以上に時間がかかる',
+    stressor3Note: '水槽はある程度のブランクには耐えられますが、無期限にではありません。水換えを忘れたり給餌が不規則になったりすると、ストレスが積み重なっていきます。崩壊が突然に感じられるのは、それまでの警告サインが静かだったからです。控えめでも一貫したルーティンは、熱心でも不規則な世話に勝ります。',
+    filterMediaLabel: 'フィルターメディア',
+    colonyLabel: 'コロニー',
+    scenario0Label: '正解 — 水槽の水',
+    scenario0Desc: '古い水槽の水ですすげば、バイオフィルムは守られます。塩素はありません。バクテリアは生き残り、コロニーはそのまま保たれます。',
+    scenario1Label: '不正解 — 水道水',
+    scenario1Desc: '水道水には塩素が含まれています。ほんの短くすすいだだけでも、バイオフィルム内のバクテリアの大半が死んでしまいます。コロニーはほぼゼロから再構築されることになります。',
+    scenario2Label: 'メディアをすべて交換',
+    scenario2Desc: '新しいメディアにはバクテリアがいません。すべてを一度に交換すると、コロニー全体が失われます。水槽は実質的に再サイクルすることになります——多くの場合、何週間もかけて、目に見えないまま。',
+    scenario3Label: '3分の1だけ交換',
+    scenario3Desc: '一度に3分の1ずつ交換すれば、残りの表面にコロニーの大部分が保たれます。新しいメディアは2〜4週間ほどで定着していきます。',
+    btnWc: '換水', btnNoWc: '換水なし', btnWcPlants: '換水 + 水草',
+    nitrateHint: '12週間の硝酸塩を比較',
+    stressZone: 'ストレスゾーン',
+    captionWc: '毎週15〜25%の換水で硝酸塩を安定させられます。',
+    captionNone: '換水をしないと、硝酸塩はストレスゾーンまで上昇します。',
+    captionPlants: '水草 + 定期的な換水——最も効果的な組み合わせ。',
+    behHint: 'スライドして行動サインを見る',
+    urgencyHigh: '早めの対応を', urgencyMedium: '確認しておきたい', urgencyLow: '様子を見守る',
+    signal0Label: '水面での呼吸',
+    signal0Meaning: '魚が水面でパクパクと空気を飲み込むのは、最もわかりやすい苦しさのサインのひとつです。多くの場合、溶存酸素が不足していることを意味します——過密飼育、餌の与えすぎ、水面の動きの弱さ、あるいは高いアンモニアによるエラ機能への影響などが原因です。',
+    signal1Label: 'いつもより隠れている',
+    signal1Meaning: 'ふだんは隠れなかった魚が急に隠れるようになるのは、水質の悪化、他の魚からの攻撃、あるいは病気の初期段階によるストレスが原因であることが多いです。他の症状が出る前に調べておく価値があります。',
+    signal2Label: '食欲が落ちている',
+    signal2Meaning: '食欲の低下は、何かがおかしいことを示す最も早く、最も信頼できるサインのひとつです。快適で健康な魚は、ほぼ必ず餌に対して意欲的です。食事を抜く魚には注意を払う価値があります。',
+    signal3Label: '色があせて見える',
+    signal3Meaning: '魚は本当に快適なとき——適切な水温、良い水質、低いストレス——に最も美しい色を見せます。色あせは緩やかに進み、見逃しやすいものです。数週間前に撮った写真と見比べると、はっきりわかることがあります。',
+    signal4Label: 'ヒーターの近くにいる',
+    signal4Meaning: '魚が熱源の近くに集まるのは、水槽が冷えすぎているか、水温が変動していることを示している場合が多いです。ヒーターが正常に動作しているか、一日を通して水温が安定しているかを確認しましょう。',
+    surfaceLabel: '水面',
+    colourFadedLabel: '色あせ',
+    behFooter: 'サイン {n} / {total}'
+  }
+};
+function ctpT(key, subs){
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = CTP_STRINGS[lang] || CTP_STRINGS.en;
+  var s = (table[key] !== undefined ? table[key] : CTP_STRINGS.en[key]) || '';
+  if (subs) { for (var k in subs) { s = s.split('{'+k+'}').join(subs[k]); } }
+  return s;
+}
+/* Week-axis labels (W1/W4/W8/W12 in the nitrate chart) don't reduce to
+   a single {n} template — ja counts weeks number-first ("N週"), id/en
+   count letter-first ("MN"/"WN"). See dayConcat() note above. */
+function ctpWeekLabel(n){
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  if (lang === 'ja') return n + '週';
+  if (lang === 'id') return 'M' + n;
+  return 'W' + n;
+}
+
+/* Theme-aware canvas colors — light mode gets an aqua-toned backdrop
+   instead of the dark "night water" gradient. Registered draw() calls
+   re-fire on theme toggle so an open module updates live. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
 function resizeCanvas(id,h){
   var c=document.getElementById(id);if(!c)return null;
   c.width=c.parentElement.offsetWidth;
@@ -582,7 +813,7 @@ function resizeCanvas(id,h){
   return c;
 }
 
-/* ── VISUAL 1: Dominant stressor selector ── */
+/* ── VISUAL 1: Root-pressure selector ── */
 canvases[3]=function(){
   stopAnim('cv-stress');
   var c=resizeCanvas('cv-stress',320);if(!c)return;
@@ -590,22 +821,22 @@ canvases[3]=function(){
   var W=c.width,H=c.height;
 
   var stressors=[
-    {label:'Nitrate buildup',
-     icon:'NO₃↑',color:'rgba(200,160,40,',
-     signals:['Fish seem dull or less enthusiastic','Disease keeps returning after treatment','Algae growing despite regular maintenance'],
-     note:'Nitrate rises quietly after every cycle. At high levels it suppresses immune function — fish survive but are never quite comfortable. Weekly partial water changes are the most reliable solution.'},
-    {label:'Too many fish',
-     icon:'🐟🐟🐟',color:'rgba(180,100,80,',
-     signals:['Frequent fin damage or aggression','Fish breathing at the surface','Ammonia spikes after feeding'],
-     note:'More fish means more waste, less oxygen, more competition. The bacteria can handle the chemistry — but the fish still experience the crowding. Rehoming some fish often transforms a tank overnight.'},
-    {label:'Wrong chemistry',
-     icon:'pH?',color:'rgba(80,150,180,',
-     signals:['Fish surviving but never thriving','Difficulty breeding species that should breed','Chronic low-grade illness without clear cause'],
-     note:'Fish evolved for specific water conditions. A species from soft acidic rivers kept in hard alkaline water is under constant stress, even if it looks fine on paper. Research your specific species — not just "tropical fish" in general.'},
-    {label:'Irregular care',
-     icon:'📅',color:'rgba(139,189,210,',
-     signals:['Tank seems fine then suddenly crashes','Problems always seem to appear at the same time','Recovery from problems takes unusually long'],
-     note:'Tanks tolerate gaps — but not indefinitely. Missed changes and irregular feeding create cumulative stress. The crash feels sudden because the warning signs were quiet. A modest consistent routine beats intensive irregular care.'}
+    {label:ctpT('stressor0Label'),
+     color:'rgba(200,160,40,',
+     signals:[ctpT('stressor0Sig0'),ctpT('stressor0Sig1'),ctpT('stressor0Sig2')],
+     note:ctpT('stressor0Note')},
+    {label:ctpT('stressor1Label'),
+     color:'rgba(180,100,80,',
+     signals:[ctpT('stressor1Sig0'),ctpT('stressor1Sig1'),ctpT('stressor1Sig2')],
+     note:ctpT('stressor1Note')},
+    {label:ctpT('stressor2Label'),
+     color:'rgba(80,150,180,',
+     signals:[ctpT('stressor2Sig0'),ctpT('stressor2Sig1'),ctpT('stressor2Sig2')],
+     note:ctpT('stressor2Note')},
+    {label:ctpT('stressor3Label'),
+     color:'rgba(139,189,210,',
+     signals:[ctpT('stressor3Sig0'),ctpT('stressor3Sig1'),ctpT('stressor3Sig2')],
+     note:ctpT('stressor3Note')}
   ];
 
   var selected=0;
@@ -626,36 +857,34 @@ canvases[3]=function(){
     btnRow.appendChild(btn);
   });
   ctrl.appendChild(btnRow);
-  var hint=document.createElement('div');hint.className='vc-hint';hint.textContent='tap a stressor to explore it';
+  var hint=document.createElement('div');hint.className='vc-hint';hint.textContent=ctpT('stressHint');
   ctrl.appendChild(hint);
   wrap.appendChild(ctrl);
 
   function draw(){
     ctx.clearRect(0,0,W,H);
-    var grd=ctx.createLinearGradient(0,0,0,H);
-    grd.addColorStop(0,'rgba(4,18,28,.97)');grd.addColorStop(1,'rgba(2,10,18,.99)');
-    ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
+    ctx.fillStyle=vcBg(ctx,W,H);ctx.fillRect(0,0,W,H);
 
     var s=stressors[selected];
     var pad=16, lineH=22, cur=14;
 
     /* Bars */
     var barData=[
-      {label:'Water',  val:selected===0?0.85:selected===1?0.5:selected===2?0.3:0.4},
-      {label:'Fish',   val:selected===0?0.5:selected===1?0.9:selected===2?0.6:0.55},
-      {label:'Stable', val:selected===0?0.4:selected===1?0.3:selected===2?0.35:0.2},
-      {label:'Visible',val:selected===0?0.2:selected===1?0.4:selected===2?0.15:0.3}
+      {label:ctpT('barWater'),  val:selected===0?0.85:selected===1?0.5:selected===2?0.3:0.4},
+      {label:ctpT('barFish'),   val:selected===0?0.5:selected===1?0.9:selected===2?0.6:0.55},
+      {label:ctpT('barStable'), val:selected===0?0.4:selected===1?0.3:selected===2?0.35:0.2},
+      {label:ctpT('barVisible'),val:selected===0?0.2:selected===1?0.4:selected===2?0.15:0.3}
     ];
     var bMaxH=40, bW=(W-pad*2)/4-8;
     barData.forEach(function(b,i){
       var bx=pad+i*(bW+8);
       var fillH=b.val*bMaxH;
-      ctx.fillStyle='rgba(235,240,236,.06)';
+      ctx.fillStyle=vcInk(.06);
       ctx.fillRect(bx,cur,bW,bMaxH);
       ctx.fillStyle=s.color+(0.45+b.val*.45).toFixed(2)+')';
       ctx.fillRect(bx,cur+bMaxH-fillH,bW,fillH);
       ctx.font='300 9px Work Sans,system-ui,sans-serif';
-      ctx.fillStyle='rgba(235,240,236,.38)';
+      ctx.fillStyle=vcInk(.38);
       ctx.textAlign='center';
       ctx.fillText(b.label,bx+bW/2,cur+bMaxH+12);
     });
@@ -663,20 +892,20 @@ canvases[3]=function(){
     cur+=bMaxH+20;
 
     /* Divider */
-    ctx.strokeStyle='rgba(235,240,236,.07)';ctx.lineWidth=1;
+    ctx.strokeStyle=vcInk(.07);ctx.lineWidth=1;
     ctx.beginPath();ctx.moveTo(pad,cur);ctx.lineTo(W-pad,cur);ctx.stroke();
     cur+=16;
 
     /* Signals header */
     ctx.font='300 10px Work Sans,system-ui,sans-serif';
-    ctx.fillStyle='rgba(235,240,236,.40)';
-    ctx.fillText('What you might notice:',pad,cur);
+    ctx.fillStyle=vcInk(.40);
+    ctx.fillText(ctpT('noticeHeader'),pad,cur);
     cur+=18;
 
     /* Signal items */
     s.signals.forEach(function(sig){
       ctx.fillStyle=s.color+'0.7)';ctx.fillText('·',pad,cur);
-      ctx.fillStyle='rgba(235,240,236,.74)';
+      ctx.fillStyle=vcInk(.74);
       var maxW=W-pad*2-10;
       while(ctx.measureText(sig).width>maxW&&sig.length>8)sig=sig.slice(0,-4)+'…';
       ctx.fillText(sig,pad+12,cur);
@@ -685,13 +914,13 @@ canvases[3]=function(){
     cur+=6;
 
     /* Divider */
-    ctx.strokeStyle='rgba(235,240,236,.07)';
+    ctx.strokeStyle=vcInk(.07);
     ctx.beginPath();ctx.moveTo(pad,cur);ctx.lineTo(W-pad,cur);ctx.stroke();
     cur+=14;
 
     /* Note */
     ctx.font='italic 300 12px Fraunces,serif';
-    ctx.fillStyle='rgba(235,240,236,.48)';
+    ctx.fillStyle=vcInk(.48);
     var words=s.note.split(' ');
     var line='';var maxW=W-pad*2;var maxY=H-8;
     words.forEach(function(w){
@@ -704,6 +933,7 @@ canvases[3]=function(){
     });
     if(line&&cur<=maxY)ctx.fillText(line,pad,cur);
   }
+  vcRedraws['cv-stress'] = draw;
   draw();
   window.addEventListener('resize',function(){c.width=c.parentElement.offsetWidth;W=c.width;draw();});
 };
@@ -716,22 +946,22 @@ canvases[4]=function(){
   var W=c.width,H=c.height;
 
   var scenarios=[
-    {label:'Correct — tank water',
+    {label:ctpT('scenario0Label'),
      color:'rgba(80,200,120,',
      colony:0.95,
-     desc:'Rinsing in old tank water preserves the biofilm. Chlorine is absent. Bacteria survive. The colony remains intact.'},
-    {label:'Incorrect — tap water',
+     desc:ctpT('scenario0Desc')},
+    {label:ctpT('scenario1Label'),
      color:'rgba(220,100,60,',
      colony:0.08,
-     desc:'Tap water contains chlorine. Even a brief rinse kills the majority of bacteria in the biofilm. The colony must rebuild from near zero.'},
-    {label:'Replace all media',
+     desc:ctpT('scenario1Desc')},
+    {label:ctpT('scenario2Label'),
      color:'rgba(220,80,40,',
      colony:0.0,
-     desc:'New media has no bacteria. Replacing everything at once removes the entire colony. The tank effectively re-cycles — often invisibly, over weeks.'},
-    {label:'Replace one third',
+     desc:ctpT('scenario2Desc')},
+    {label:ctpT('scenario3Label'),
      color:'rgba(61,214,232,',
      colony:0.72,
-     desc:'Replacing a third of the media at a time preserves most of the colony on the remaining surfaces. The new media colonises within 2–4 weeks.'}
+     desc:ctpT('scenario3Desc')}
   ];
 
   var selected=0;
@@ -758,24 +988,22 @@ canvases[4]=function(){
 
   function draw(){
     ctx.clearRect(0,0,W,H);
-    var grd=ctx.createLinearGradient(0,0,0,H);
-    grd.addColorStop(0,'rgba(4,18,28,.97)');grd.addColorStop(1,'rgba(2,10,18,.99)');
-    ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
+    ctx.fillStyle=vcBg(ctx,W,H);ctx.fillRect(0,0,W,H);
 
     var s=scenarios[selected];
     var colony=s.colony;
 
     /* Filter media illustration — left side */
     var mediaX=18,mediaY=20,mediaW=W*.38,mediaH=H-50;
-    ctx.fillStyle='rgba(235,240,236,.05)';
+    ctx.fillStyle=vcInk(.05);
     ctx.fillRect(mediaX,mediaY,mediaW,mediaH);
     ctx.strokeStyle='rgba(61,214,232,.24)';ctx.lineWidth=1;
     ctx.strokeRect(mediaX,mediaY,mediaW,mediaH);
 
     /* Label */
     ctx.font='300 10px Work Sans,system-ui,sans-serif';
-    ctx.fillStyle='rgba(235,240,236,.38)';ctx.textAlign='center';
-    ctx.fillText('Filter media',mediaX+mediaW/2,mediaY-6);
+    ctx.fillStyle=vcInk(.38);ctx.textAlign='center';
+    ctx.fillText(ctpT('filterMediaLabel'),mediaX+mediaW/2,mediaY-6);
 
     /* Bacteria dots filling media */
     var dotCount=Math.floor(colony*80);
@@ -788,14 +1016,14 @@ canvases[4]=function(){
         var dy=mediaY+8+(r/rows)*(mediaH-16);
         var alive=idx2<dotCount;
         ctx.beginPath();ctx.arc(dx,dy,2.8,0,Math.PI*2);
-        ctx.fillStyle=alive?s.color+'0.7)':'rgba(235,240,236,.06)';
+        ctx.fillStyle=alive?s.color+'0.7)':vcInk(.06);
         ctx.fill();
       }
     }
 
     /* Colony health bar — right side */
     var barX=W*.52,barY=mediaY,barW=22,barH=mediaH;
-    ctx.fillStyle='rgba(235,240,236,.06)';ctx.fillRect(barX,barY,barW,barH);
+    ctx.fillStyle=vcInk(.06);ctx.fillRect(barX,barY,barW,barH);
     var fillH=colony*barH;
     if(fillH>0){
       ctx.fillStyle=s.color+'0.7)';
@@ -804,15 +1032,15 @@ canvases[4]=function(){
     ctx.font='300 9px Work Sans,system-ui,sans-serif';
     ctx.fillStyle=s.color+'0.8)';ctx.textAlign='center';
     ctx.fillText(Math.round(colony*100)+'%',barX+barW/2,barY+barH+14);
-    ctx.fillStyle='rgba(235,240,236,.34)';
-    ctx.fillText('Colony',barX+barW/2,barY-6);
+    ctx.fillStyle=vcInk(.34);
+    ctx.fillText(ctpT('colonyLabel'),barX+barW/2,barY-6);
     ctx.textAlign='left';
 
     /* Description */
     var words=s.desc.split(' ');
     var line='';var y=mediaY+mediaH+28;var maxW=W-24;var maxY=H-4;
     ctx.font='italic 300 12px Fraunces,serif';
-    ctx.fillStyle='rgba(235,240,236,.58)';
+    ctx.fillStyle=vcInk(.58);
     words.forEach(function(w){
       if(y>maxY)return;
       var test=line+(line?' ':'')+w;
@@ -823,6 +1051,7 @@ canvases[4]=function(){
     });
     if(line&&y<=maxY)ctx.fillText(line,12,y);
   }
+  vcRedraws['cv-filter'] = draw;
   draw();
   window.addEventListener('resize',function(){c.width=c.parentElement.offsetWidth;W=c.width;draw();});
 };
@@ -837,7 +1066,7 @@ canvases[5]=function(){
   var wrap=c.parentElement;
   var existing=wrap.querySelector('.vis-ctrl');if(existing)existing.remove();
   var ctrl=document.createElement('div');ctrl.className='vis-ctrl';
-  ctrl.innerHTML='<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0"><button class="vis-btn vis-btn-active" id="btn-wc-y">Water changes</button><button class="vis-btn" id="btn-wc-n">No changes</button><button class="vis-btn" id="btn-wc-p">Changes + plants</button></div><div class="vc-hint">compare nitrate over 12 weeks</div>';
+  ctrl.innerHTML='<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0"><button class="vis-btn vis-btn-active" id="btn-wc-y">'+ctpT('btnWc')+'</button><button class="vis-btn" id="btn-wc-n">'+ctpT('btnNoWc')+'</button><button class="vis-btn" id="btn-wc-p">'+ctpT('btnWcPlants')+'</button></div><div class="vc-hint">'+ctpT('nitrateHint')+'</div>';
   wrap.appendChild(ctrl);
 
   var wcMode='wc'; /* wc, none, plants */
@@ -857,9 +1086,7 @@ canvases[5]=function(){
 
   function draw(){
     ctx.clearRect(0,0,W,H);
-    var grd=ctx.createLinearGradient(0,0,0,H);
-    grd.addColorStop(0,'rgba(4,18,28,.97)');grd.addColorStop(1,'rgba(2,10,18,.99)');
-    ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
+    ctx.fillStyle=vcBg(ctx,W,H);ctx.fillRect(0,0,W,H);
 
     var pL=42,pR=12,pT=22,pB=52;
     var gW=W-pL-pR,gH=H-pT-pB,maxV=80;
@@ -867,25 +1094,25 @@ canvases[5]=function(){
     /* Grid */
     [0,20,40,60,80].forEach(function(v){
       var y=pT+gH-(v/maxV)*gH;
-      ctx.strokeStyle=v===40?'rgba(220,80,60,.22)':'rgba(235,240,236,.06)';
+      ctx.strokeStyle=v===40?'rgba(220,80,60,.22)':vcInk(.06);
       ctx.lineWidth=1;ctx.setLineDash(v===40?[3,4]:[]);
       ctx.beginPath();ctx.moveTo(pL,y);ctx.lineTo(pL+gW,y);ctx.stroke();
       ctx.setLineDash([]);
       ctx.font='300 10px Work Sans,system-ui,sans-serif';
-      ctx.fillStyle=v===40?'rgba(220,80,60,.7)':'rgba(235,240,236,.54)';
+      ctx.fillStyle=v===40?'rgba(220,80,60,.7)':vcInk(.54);
       ctx.fillText(v,2,y+3);
     });
     ctx.fillStyle='rgba(220,80,60,.4)';
-    var szLabel='stress zone';
+    var szLabel=ctpT('stressZone');
     ctx.fillText(szLabel,Math.min(pL+gW*.55,W-ctx.measureText(szLabel).width-8),pT+gH-(40/maxV)*gH-5);
 
     /* Axes */
-    ctx.strokeStyle='rgba(255,255,255,.1)';ctx.lineWidth=1;ctx.setLineDash([]);
+    ctx.strokeStyle=vcInk(.1);ctx.lineWidth=1;ctx.setLineDash([]);
     ctx.beginPath();ctx.moveTo(pL,pT);ctx.lineTo(pL,pT+gH);ctx.lineTo(pL+gW,pT+gH);ctx.stroke();
     ctx.font='300 10px Work Sans,system-ui,sans-serif';
-    ctx.fillStyle='rgba(235,240,236,.54)';
+    ctx.fillStyle=vcInk(.54);
     ctx.fillText('NO₃ ppm',2,pT+8);
-    [1,4,8,12].forEach(function(w){ctx.fillText('W'+w,pL+(w/12)*gW-5,pT+gH+12);});
+    [1,4,8,12].forEach(function(w){ctx.fillText(ctpWeekLabel(w),pL+(w/12)*gW-5,pT+gH+12);});
 
     /* Lines — draw all three faintly, highlight selected */
     var modes=[
@@ -919,15 +1146,16 @@ canvases[5]=function(){
     });
 
     /* Caption — placed below chart area, clear of all lines */
-    var capText=wcMode==='wc'?'Weekly 15-25% changes keep nitrate stable.':
-                wcMode==='none'?'Without changes, nitrate rises into the stress range.':
-                'Plants + regular changes — the most effective combination.';
+    var capText=wcMode==='wc'?ctpT('captionWc'):
+                wcMode==='none'?ctpT('captionNone'):
+                ctpT('captionPlants');
     ctx.font='italic 300 12px Fraunces,serif';
-    ctx.fillStyle='rgba(235,240,236,.54)';
+    ctx.fillStyle=vcInk(.54);
     ctx.textAlign='center';
     ctx.fillText(capText,W/2,H-8);
     ctx.textAlign='left';
   }
+  vcRedraws['cv-nitrate'] = draw;
   draw();
   window.addEventListener('resize',function(){c.width=c.parentElement.offsetWidth;W=c.width;draw();});
 };
@@ -941,27 +1169,27 @@ canvases[6]=function(){
   var selected=0;
 
   var signals=[
-    {label:'Surface breathing',
-     meaning:'Fish gulping at the water surface is one of the clearest distress signals. It usually means dissolved oxygen is low — from overcrowding, overfeeding, poor surface agitation, or high ammonia affecting gill function.',
-     urgency:'high',icon:'🐟↑'},
-    {label:'Hiding more than usual',
-     meaning:'A fish that suddenly spends time hiding when it normally did not is often experiencing stress from poor water quality, aggression from tankmates, or the early stages of illness. It is worth investigating before other symptoms appear.',
-     urgency:'medium',icon:'👁️'},
-    {label:'Eating less eagerly',
-     meaning:'Loss of appetite is one of the earliest and most reliable signs that something is not right. Fish that are comfortable and healthy are almost always enthusiastic feeders. A fish that skips meals deserves attention.',
-     urgency:'medium',icon:'🥣'},
-    {label:'Colour looking faded',
-     meaning:'Fish often show their best colour when they are genuinely comfortable — the right temperature, good water quality, low stress. Fading can be gradual and easy to miss. Comparing to photographs taken weeks apart can be revealing.',
-     urgency:'low',icon:'🎨'},
-    {label:'Staying near the heater',
-     meaning:'Fish huddling near a heat source often indicates the tank is too cold, or that a temperature fluctuation has occurred. Check your heater is functioning and that readings are consistent throughout the day.',
-     urgency:'medium',icon:'🌡️'}
+    {label:ctpT('signal0Label'),
+     meaning:ctpT('signal0Meaning'),
+     urgency:'high',icon:'surface'},
+    {label:ctpT('signal1Label'),
+     meaning:ctpT('signal1Meaning'),
+     urgency:'medium',icon:'eye'},
+    {label:ctpT('signal2Label'),
+     meaning:ctpT('signal2Meaning'),
+     urgency:'medium',icon:'bowl'},
+    {label:ctpT('signal3Label'),
+     meaning:ctpT('signal3Meaning'),
+     urgency:'low',icon:'palette'},
+    {label:ctpT('signal4Label'),
+     meaning:ctpT('signal4Meaning'),
+     urgency:'medium',icon:'thermometer'}
   ];
 
   var wrap=c.parentElement;
   var existing=wrap.querySelector('.vis-ctrl');if(existing)existing.remove();
   var ctrl=document.createElement('div');ctrl.className='vis-ctrl';
-  ctrl.innerHTML='<div class="vc-label"><span id="beh-label">'+signals[0].label+'</span></div><input type="range" min="0" max="4" value="0" step="1" class="vis-slider" id="beh-slider"><div class="vc-hint">slide to explore behaviour signals</div>';
+  ctrl.innerHTML='<div class="vc-label"><span id="beh-label">'+signals[0].label+'</span></div><input type="range" min="0" max="4" value="0" step="1" class="vis-slider" id="beh-slider"><div class="vc-hint">'+ctpT('behHint')+'</div>';
   wrap.appendChild(ctrl);
 
   var slider=document.getElementById('beh-slider');
@@ -973,7 +1201,7 @@ canvases[6]=function(){
   });
 
   var urgencyColor={'high':'rgba(220,100,60,.8)','medium':'rgba(200,160,40,.75)','low':'rgba(80,200,120,.7)'};
-  var urgencyLabel={'high':'Respond soon','medium':'Worth checking','low':'Keep an eye on it'};
+  var urgencyLabel={'high':ctpT('urgencyHigh'),'medium':ctpT('urgencyMedium'),'low':ctpT('urgencyLow')};
 
   function drawFish(x,y,facingLeft,alpha,sick,surface,hiding){
     ctx.save();ctx.globalAlpha=alpha;
@@ -987,29 +1215,60 @@ canvases[6]=function(){
     else{ctx.moveTo(x-7,y);ctx.lineTo(tx-8,y-5);ctx.lineTo(tx-8,y+5);}
     ctx.closePath();ctx.globalAlpha=alpha*.7;ctx.fill();
     ctx.globalAlpha=alpha;
-    ctx.fillStyle='rgba(235,240,236,.92)';
+    ctx.fillStyle=vcInk(.92);
     var ex=facingLeft?x-6:x+6;
     ctx.beginPath();ctx.arc(ex,y-2,1.8,0,Math.PI*2);ctx.fill();
     if(sick)ctx.filter='none';
     ctx.restore();
   }
 
+  /* Small stroke-based badge icons for the signal list — matches the
+     line-art SVG icon set used elsewhere on the site (thermometer/
+     bowl/etc reuse the same shapes), drawn as vector paths since
+     canvas text can't embed SVG. */
+  function drawSignalIcon(type,cx,cy,size,color){
+    ctx.save();
+    ctx.translate(cx,cy);
+    var s=size/24;
+    ctx.scale(s,s);
+    ctx.strokeStyle=color;ctx.fillStyle=color;
+    ctx.lineWidth=1.75;ctx.lineCap='round';ctx.lineJoin='round';
+    ctx.beginPath();
+    if(type==='surface'){
+      ctx.ellipse(-2,1,6,3.5,0,0,Math.PI*2);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(4,1);ctx.lineTo(8,-2);ctx.lineTo(8,4);ctx.closePath();ctx.stroke();
+      ctx.beginPath();ctx.moveTo(-8,-7);ctx.lineTo(-5,-10);ctx.lineTo(-2,-7);ctx.stroke();
+    } else if(type==='eye'){
+      ctx.moveTo(-9,0);ctx.quadraticCurveTo(0,-7,9,0);ctx.quadraticCurveTo(0,7,-9,0);ctx.stroke();
+      ctx.beginPath();ctx.arc(0,0,3,0,Math.PI*2);ctx.stroke();
+    } else if(type==='bowl'){
+      ctx.moveTo(-9,-1);ctx.lineTo(9,-1);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(-8,-1);ctx.bezierCurveTo(-8,3.5,-4.5,7,0,7);ctx.bezierCurveTo(4.5,7,8,3.5,8,-1);ctx.stroke();
+      ctx.beginPath();ctx.ellipse(0,-1,9,2.2,0,0,Math.PI*2);ctx.stroke();
+    } else if(type==='palette'){
+      ctx.ellipse(0,-1,8,7,0,0,Math.PI*2);ctx.stroke();
+      [[-3,-4],[3,-4],[-5,1],[5,-1]].forEach(function(p){ctx.beginPath();ctx.arc(p[0],p[1],1,0,Math.PI*2);ctx.fill();});
+    } else if(type==='thermometer'){
+      ctx.moveTo(0,-9);ctx.lineTo(0,3);ctx.stroke();
+      ctx.beginPath();ctx.arc(0,5.5,3.3,0,Math.PI*2);ctx.stroke();
+    }
+    ctx.restore();
+  }
+
   function draw(){
     ctx.clearRect(0,0,W,H);
-    var grd=ctx.createLinearGradient(0,0,0,H);
-    grd.addColorStop(0,'rgba(4,18,28,.97)');grd.addColorStop(1,'rgba(2,10,18,.99)');
-    ctx.fillStyle=grd;ctx.fillRect(0,0,W,H);
+    ctx.fillStyle=vcBg(ctx,W,H);ctx.fillRect(0,0,W,H);
 
     var s=signals[selected];
 
     /* Fish illustration — position and state changes per signal */
     var tankH=H*.38, tankTop=H*.04;
-    ctx.fillStyle='rgba(235,240,236,.05)';ctx.fillRect(12,tankTop,W-24,tankH);
+    ctx.fillStyle=vcInk(.05);ctx.fillRect(12,tankTop,W-24,tankH);
     ctx.fillStyle='rgba(50,35,15,.6)';ctx.fillRect(12,tankTop+tankH,W-24,6);
 
     if(selected===0){ /* Surface breathing — fish at surface */
       ctx.font='300 9px Work Sans,system-ui,sans-serif';
-      ctx.fillStyle='rgba(61,214,232,.48)';ctx.fillText('surface',14,tankTop+8);
+      ctx.fillStyle='rgba(61,214,232,.48)';ctx.fillText(ctpT('surfaceLabel'),14,tankTop+8);
       drawFish(W*.35,tankTop+10,false,0.85,true,true,false);
       drawFish(W*.62,tankTop+12,true,0.75,true,true,false);
       /* Ripples at surface */
@@ -1038,8 +1297,8 @@ canvases[6]=function(){
       drawFish(W*.62,tankTop+tankH*.38,true,0.5,true,false,false);
       /* Colour comparison hint */
       ctx.font='italic 300 9px Fraunces,serif';
-      ctx.fillStyle='rgba(235,240,236,.34)';
-      ctx.fillText('colour faded',W*.55,tankTop+tankH*.62);
+      ctx.fillStyle=vcInk(.34);
+      ctx.fillText(ctpT('colourFadedLabel'),W*.55,tankTop+tankH*.62);
     } else { /* Near heater */
       /* Heater on right side */
       ctx.strokeStyle='rgba(220,100,60,.4)';ctx.lineWidth=2;
@@ -1053,9 +1312,8 @@ canvases[6]=function(){
 
     /* s already declared above */
     /* Icon + urgency badge — same row, icon left, badge right */
-    ctx.font='20px Work Sans,system-ui,sans-serif';
     ctx.textAlign='left';
-    ctx.fillText(s.icon,12,H*.49);
+    drawSignalIcon(s.icon,21,H*.49-6,20,vcInk(.72));
 
     /* Urgency badge — pill style, safely anchored to right */
     var uc=urgencyColor[s.urgency];
@@ -1076,7 +1334,7 @@ canvases[6]=function(){
 
     /* Meaning — word wrapped */
     ctx.font='italic 300 13px Fraunces,serif';
-    ctx.fillStyle='rgba(255,255,255,.68)';
+    ctx.fillStyle=vcInk(.68);
     var words=s.meaning.split(' ');
     var line='';var y=H*.54;var maxW=W-22;var maxY=H-26;
     words.forEach(function(w){
@@ -1089,16 +1347,18 @@ canvases[6]=function(){
     if(line&&y<=maxY)ctx.fillText(line,12,y);
 
     /* Divider */
-    ctx.strokeStyle='rgba(235,240,236,.06)';ctx.lineWidth=1;
+    ctx.strokeStyle=vcInk(.06);ctx.lineWidth=1;
     ctx.beginPath();ctx.moveTo(12,H-26);ctx.lineTo(W-12,H-26);ctx.stroke();
 
     /* Footer note */
     ctx.font='300 11px Work Sans,system-ui,sans-serif';
-    ctx.fillStyle='rgba(235,240,236,.62)';
-    var footerTxt='Signal '+(selected+1)+' of '+signals.length+' · '+s.label;
-    if(ctx.measureText(footerTxt).width>W-24)footerTxt='Signal '+(selected+1)+' / '+signals.length;
+    ctx.fillStyle=vcInk(.62);
+    var footerBase=ctpT('behFooter',{n:(selected+1),total:signals.length});
+    var footerTxt=footerBase+' · '+s.label;
+    if(ctx.measureText(footerTxt).width>W-24)footerTxt=footerBase;
     ctx.fillText(footerTxt,12,H-10);
   }
+  vcRedraws['cv-behaviour'] = draw;
   draw();
   window.addEventListener('resize',function(){c.width=c.parentElement.offsetWidth;W=c.width;draw();});
 };
@@ -1166,8 +1426,8 @@ canvases[6]=function(){
     <p class="rh-sheet-note">AI bisa saja salah — untuk keadaan darurat pada ikan, konsultasikan dengan spesialis</p>
   </div>
 </div>
-<script src="/js/content-trust.js?v=52"></script>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/content-trust.js?v=74"></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -1175,6 +1435,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

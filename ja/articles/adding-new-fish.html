@@ -2,10 +2,10 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>新しい魚を追加する — 混乱の窓 — Aquatic Rhythm</title>
-<meta name="description" content="最初の2週間は混乱する。それは正常だ。ARAは、なぜ新しい魚を追加することが常に安定した水槽を乱すのか、そして何が起きているかをどう読み取るかを解説します。">
+<meta name="description" content="最初の2週間は混乱します。それは正常なことです。ARAは、なぜ新しい魚を追加することが常に安定した水槽を乱すのか、そして何が起きているかをどう読み取ればよいかを解説します。">
 <link rel="canonical" href="https://aquaticrhythm.com/ja/articles/adding-new-fish">
 <link rel="alternate" hreflang="en" href="https://aquaticrhythm.com/articles/adding-new-fish">
 <link rel="alternate" hreflang="id" href="https://aquaticrhythm.com/id/articles/adding-new-fish">
@@ -20,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://aquaticrhythm.com/ja/articles/adding-new-fish">
 <meta property="og:title" content="新しい魚を追加する — 混乱の窓">
-<meta property="og:description" content="最初の2週間は混乱する。それは正常だ。混乱の窓をどう読み取り、いつ行動すべきかを学びましょう。">
+<meta property="og:description" content="最初の2週間は混乱します。それは正常なことです。混乱の窓をどう読み取り、いつ行動すべきかを学びましょう。">
 <meta property="og:image" content="https://aquaticrhythm.com/og/articles/adding-new-fish-ja.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -30,7 +30,7 @@
 <meta name="twitter:title" content="Adding New Fish — Aquatic Rhythm">
 <meta name="twitter:description" content="Every new fish disrupts a tank that was stable. Reading that disruption — rather than trying to prevent it entirely — is the aligned keeper's approach.">
 <meta name="twitter:image" content="https://aquaticrhythm.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"新しい魚を追加する—— 混乱の窓","description":"最初の2週間は混乱する。それは正常だ。ARAは、なぜ新しい魚を追加することが常に安定した水槽を乱すのか、そして何が起きているかをどう読み取るかを解説します。","url":"https://aquaticrhythm.com/ja/articles/adding-new-fish","inLanguage":"ja","image":"https://aquaticrhythm.com/og/articles/adding-new-fish-ja.png","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com"},"datePublished":"2026-05-22","dateModified":"2026-05-25"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"新しい魚を追加する 混乱の窓","description":"最初の2週間は混乱します。それは正常なことです。ARAは、なぜ新しい魚を追加することが常に安定した水槽を乱すのか、そして何が起きているかをどう読み取ればよいかを解説します。","url":"https://aquaticrhythm.com/ja/articles/adding-new-fish","inLanguage":"ja","image":"https://aquaticrhythm.com/og/articles/adding-new-fish-ja.png","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com"},"datePublished":"2026-05-22","dateModified":"2026-05-25"}</script>
 <script>if(localStorage.getItem('ar_analytics_opt')==='1'){window['ga-disable-G-8MDN065WNW']=true}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8MDN065WNW"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8MDN065WNW');</script>
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -189,10 +189,10 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <div class="art-intro">
   <div class="art-intro-inner">
     <span class="art-eyebrow">読む · 新しい魚を追加する</span>
-    <h1 class="art-main-title">新しい魚を追加する——<br><em>混乱の窓</em></h1>
-    <p class="art-intro-subtitle">最初の2週間は混乱する。それは正常だ。</p>
-    <p class="art-intro-text">正しい手順を踏んだ——ドリップ水合わせ、水温を合わせ、袋を20分浮かせた。でも3日後、既存の魚がストレスを受けているように見え、今まで隠れなかった子が突然隠れ、新しい魚はエサを食べない。ちゃんとやったのに。混乱は起きた。</p>
-    <p class="art-intro-text">このガイドでは、なぜ新しい魚を追加することが常に安定した水槽を乱すのか、2週間の混乱の窓がARAの5つのリズム全体でどのように見えるか、そして修正が不要なものを慌てて直そうとするのではなく、何が起きているかをどう読み取るかを解説する。</p>
+    <h1 class="art-main-title">新しい魚を追加する<br><em>混乱の窓</em></h1>
+    <p class="art-intro-subtitle">最初の2週間は混乱します。それは正常です。</p>
+    <p class="art-intro-text">正しい手順は踏みました。ドリップ法で水合わせをし、水温を合わせ、袋を20分ほど浮かべました。それでも3日後には、既存の魚がストレスを受けているように見え、今まで隠れなかった子が突然物陰に隠れるようになり、新しい魚はエサを食べません。ちゃんとやったつもりでも、混乱は起きました。</p>
+    <p class="art-intro-text">このガイドでは、なぜ新しい魚を追加することが常に安定した水槽を乱すのか、2週間の混乱の窓がARAの5つのリズム全体でどのように現れるか、そして修正が不要なものを慌てて直そうとするのではなく、何が起きているかをどう読み取ればよいかを解説します。</p>
     <div class="art-intro-meta">
       <span>4 モジュール</span><span class="meta-dot">·</span>
       <span>全レベル</span><span class="meta-dot">·</span>
@@ -209,18 +209,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-eyebrow"><span class="mod-num">01 / 04</span><span class="mod-tag">なぜすべての追加が混乱を引き起こすのか</span></div>
     <h2 class="mod-title">なぜすべての追加が<br><em>混乱を引き起こすのか。</em></h2>
     <div class="mod-body">
-      <p>安定した水槽はネゴシエートされたバランスだ。魚たちは縄張り、摂食ヒエラルキー、社会的パターンを確立している。フィルター内のバクテリアコロニーは現在の生体負荷に合わせてサイジングされている。水質は水槽が生み出すものとメンテナンスのリズムが取り除くものの間のバランスを反映している。</p>
-      <p>新しい魚が来ると、これらすべてが同時に乱される。バクテリアコロニーは自分のサイジングを超えた高い生体負荷に直面する——新しい魚はバクテリアがそれを処理するために増殖できる前に排泄物を出し始め、アンモニアと亜硝酸塩が数日から数週間のあいだ少し上昇するかもしれない。既存の魚は新しい魚を侵入者として認識し、縄張り的・社会的な反応を引き起こす——それは攻撃、隠れ、または体色の変化として見える。新しい魚は輸送、見慣れない水質、見慣れない社会的ヒエラルキーによるストレスを受けていて——最も必要な時に免疫反応を抑制している。</p>
-      <p>これらは何も問題ではない。混乱だ——アライメントのとれたキーパーリズムを持つ健康な水槽が通り抜ける一時的な状態だ。混乱の窓は行動のシグナルではない。観察のシグナルだ。</p>
+      <p>安定した水槽は、いわば交渉の末に保たれたバランスです。魚たちはそれぞれ縄張り、摂食の序列、社会的なパターンを築き上げています。フィルター内のバクテリアコロニーは、いまの生体量に見合った規模に育っています。水質は、水槽が生み出すものと、メンテナンスのリズムが取り除くものとのバランスを映し出しています。</p>
+      <p>新しい魚が加わると、これらすべてが一度に揺らぎます。バクテリアコロニーは、自分の規模を超えた生体負荷に直面します。新しい魚はバクテリアがそれを処理できるだけ増える前から排泄を始めるため、アンモニアと亜硝酸塩が数日から数週間のあいだ、わずかに上昇することがあります。既存の魚は新しい魚を侵入者とみなし、縄張り的・社会的な反応を示します。攻撃、隠れ、体色の変化として現れることもあります。新しい魚のほうも、輸送や見慣れない水質、見慣れない社会的序列によるストレスを受けており、最も必要なときに免疫反応が抑えられてしまいます。</p>
+      <p>これらはどれも問題ではありません。混乱です。整合したキーパーリズムを持つ健康な水槽でも通り抜ける、一時的な状態です。混乱の窓は行動のシグナルではなく、観察のシグナルです。</p>
     </div>
 
     <div class="pq">
-      <p>混乱はクライシスではない。水槽が新しい情報に合わせて自分を再構成しているのだ。アライメントのとれた対応は観察であって、介入ではない。</p>
+      <p>混乱は危機ではありません。水槽が新しい情報に合わせて、自らを再構成しているのです。整合のとれた対応とは観察であって、介入ではありません。</p>
     </div>
 
     <div class="hn">
       <span class="hn-label">水槽全体が落ち着かなくなる理由</span>
-      <p>新しい魚を追加すると、新しい魚のコーナーだけでなく水槽全体が影響を受ける。バクテリアコロニーが新しい生体負荷に適応し、水質がわずかに変化し、縄張りが再構成され、既存の魚が社会的に反応する——すべて同時に。この混乱は想定内だ——それはシステムが新しい情報を取り込む方法なのだ。最善の対応は観察だ。水槽が自分でバランスを取り戻すまで待ち、その前に介入しないこと。</p>
+      <p>新しい魚を追加すると、その一角だけでなく水槽全体が影響を受けます。バクテリアコロニーが新しい生体負荷に適応し、水質がわずかに変化し、縄張りが再編され、既存の魚が社会的に反応する——それがすべて同時に起こります。この混乱は想定の範囲内です。システムが新しい情報を取り込む、そのやり方なのです。最善の対応は観察すること。水槽が自分でバランスを取り戻すのを待ち、それまでは介入しないことです。</p>
     </div>
 
     <div class="mod-next">
@@ -234,14 +234,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-eyebrow"><span class="mod-num">02 / 04</span><span class="mod-tag">隔離：それが本当に守るもの</span></div>
     <h2 class="mod-title">隔離：<br><em>それが本当に守るもの。</em></h2>
     <div class="mod-body">
-      <p>隔離はよく、新しい魚が持ち込む病気から既存の魚を守るものとして説明される。それは正しいし、隔離タンクを維持する実用的な理由だ。しかし隔離は新しい魚も守る。すでに確立されたコミュニティタンクに直接入れられた魚は、輸送ストレスを受けながら、新しい社会的ヒエラルキー、見慣れない水質パラメーター、縄張り的な攻撃の可能性を同時に乗り越えなければならない。もし魚が低レベルの感染症を抱えていたとしたら——白点病、細菌感染、内部寄生虫——ストレス要因の組み合わせが新しい魚での発病を引き起こし、縄張りの混乱で免疫機能が低下している既存の魚への感染に繋がるかもしれない。</p>
-      <p>2週間の隔離は3つのことをする。新しい魚が静かで争いのない環境で輸送ストレスから回復できる。持ち込まれた病気が現れる時間を与え、メインタンクに影響を与えることなく治療できる。そして飼育者が、メインタンクの社会的複雑さに導入する前に、ストレスフリーのベースラインで新しい魚の行動、食欲、体色を観察できる。</p>
-      <p>隔離タンクは複雑にする必要はない——サイクル済みのスポンジフィルター、ヒーター、シンプルな隠れ家を備えた20〜40Lのシンプルなタンクで十分だ。</p>
+      <p>隔離は、新しい魚が持ち込む病気から既存の魚を守るためのものだとよく説明されます。それは正しく、隔離用の水槽を維持する実用的な理由のひとつです。しかし隔離は、新しい魚自身も守っています。すでに確立されたコミュニティタンクにいきなり入れられた魚は、輸送のストレスを受けながら、新しい社会的序列、見慣れない水質、縄張り的な攻撃の可能性を同時に乗り越えなければなりません。もしその魚が白点病や細菌感染、内部寄生虫といった軽度の感染症を抱えていた場合、いくつものストレス要因が重なることで発病し、さらに縄張り争いで免疫機能が落ちている既存の魚にまで感染が広がってしまうこともあります。</p>
+      <p>2週間の隔離には、3つの役割があります。まず、静かで争いのない環境で、新しい魚が輸送のストレスから回復できること。次に、持ち込まれた病気が現れる時間を確保し、メインタンクに影響を与えることなく治療できること。そして、メインタンクの社会的な複雑さに投入する前に、ストレスのないベースラインの状態で、新しい魚の行動や食欲、体色を観察できることです。</p>
+      <p>隔離タンクを凝ったものにする必要はありません。サイクル済みのスポンジフィルター、ヒーター、シンプルな隠れ家を備えた20〜40Lほどの水槽で十分です。</p>
     </div>
 
     <div class="hn">
       <span class="hn-label">隔離が本当に必要な理由</span>
-      <p>隔離は単なる病気予防ではない——魚を知るための機会だ。争いのない環境で新しい魚が食べ、泳ぎ、休息するのを観察することで、そのベースラインがどんな様子かを知ることができる。それがメインタンクに入ってからの比較基準となるベースラインだ。</p>
+      <p>隔離は単なる病気予防ではなく、その魚を知るための機会でもあります。争いのない環境で新しい魚が食べ、泳ぎ、休む様子を観察することで、そのベースラインがどんなものかを知ることができます。それが、メインタンクに入ってからの比較の基準になるのです。</p>
     </div>
 
     <div class="mod-next">
@@ -255,18 +255,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-eyebrow"><span class="mod-num">03 / 04</span><span class="mod-tag">2週間の窓を読む</span></div>
     <h2 class="mod-title">2週間の窓を<br><em>読む。</em></h2>
     <div class="mod-body">
-      <p>導入後の2週間は混乱の窓だ——水槽が自分を再構成している期間。予想されることとその読み取り方。縄張りのネゴシエーションは、追いかけ合い、ヒレの広げ合い、時には軽い噛みつきとして見える。縄張りのない一般的なコミュニティフィッシュでは、これは通常数日で落ち着く。シクリッドやベタでは、ネゴシエーションはより長く、より激しい。持続的な追いかけ（一匹の魚がエサにアクセスできないか休めない）、回復しないヒレのまとまり、5〜7日を超える継続的な隠れ——これらは社会的混乱が自然に解決していないサインだ。</p>
-      <p>この窓の間のパラメーターのドリフトは想定内だ。新しい魚を追加した後の最初の10日間はアンモニアと亜硝酸塩を検査しよう——クライシスが起きるかもしれないからではなく、バクテリアコロニーが新しい負荷に適応しているからだ。24時間以内に消える小さなアンモニアの読み値（0.25 ppm）は追いついているコロニーだ。24時間以内に下がらない0.5 ppm以上の読み値はコロニーが苦しんでいて、水換えを検討するべきシグナルだ。</p>
-      <p>最初の2〜3日エサを食べない新しい魚は正常だ——ストレスを受けていて環境に慣れようとしている。5〜7日を超えてエサを食べないのは注意が必要だ。行動する前に観察すること。キーパーリズム（給餌、水換え）が窓の間も一貫していれば、ほとんどの混乱は介入なしに解決する。</p>
+      <p>導入後の2週間は混乱の窓、つまり水槽が自分自身を再構成している期間です。ここでは、何が起こり得るか、そしてそれをどう読み取ればよいかを見ていきます。縄張りをめぐる駆け引きは、追いかけ合いやヒレの広げ合い、時には軽い噛みつきとして現れます。縄張り意識の薄い一般的なコミュニティフィッシュであれば、これは通常数日で落ち着きます。シクリッドやベタでは、駆け引きがより長く、より激しくなります。持続的な追いかけ回し（一匹の魚がエサに近づけない、あるいは休めずにいる状態）、元に戻らないヒレのまとまり、5〜7日を超えて続く隠れ——これらは、社会的な混乱が自然には収まっていないサインです。</p>
+      <p>この窓のあいだにパラメーターがドリフトするのは想定の範囲内です。新しい魚を追加してから最初の10日間は、アンモニアと亜硝酸塩を検査しましょう。危機が起きるかもしれないからではなく、バクテリアコロニーが新しい負荷に適応している最中だからです。24時間以内に消える小さなアンモニアの読み値（0.25 ppm程度）は、コロニーが追いついてきている証拠です。24時間以内に下がらない0.5 ppm以上の読み値は、コロニーが苦しんでいるサインであり、水換えを検討すべきシグナルです。</p>
+      <p>最初の2〜3日、新しい魚がエサを食べないのは正常です。ストレスを受けていて、環境に慣れようとしている段階だからです。5〜7日を超えてもエサを食べない場合は、注意が必要です。行動する前に、まず観察してください。キーパーリズム（給餌、水換え）がこの窓のあいだも一貫していれば、ほとんどの混乱は介入なしに解決します。</p>
     </div>
 
     <div class="pq">
-      <p>混乱の窓が飼育者に求めることはひとつ：一貫性。給餌スケジュール、照明、水換えのリズムを変えないこと。生物学がすでに知っていることに従って安定させてあげよう。</p>
+      <p>混乱の窓が飼育者に求めることはひとつだけです。一貫性です。給餌のスケジュール、照明、水換えのリズムを変えないこと。生物学がすでに知っていることに、そのまま任せてあげましょう。</p>
     </div>
 
     <div class="hn">
       <span class="hn-label">最も難しい部分</span>
-      <p>混乱の窓で最も難しいのは、魚が隠れているのを見たり、ストレスを受けているように見えたりしながら、何かしたいという衝動を抑えること。私たちは目に見える問題を目に見えるアクションの必要性と同一視しがちだ。しかしこの2週間の窓は、別種のケアの試練だ——水槽が不安定に見える時でも、やり続けること。その抑制自体が積極的な決断だ。この趣味が教える最も直感に反することのひとつだ。</p>
+      <p>混乱の窓でいちばん難しいのは、魚が隠れていたりストレスを受けているように見えたりする中で、何かしたいという衝動を抑えることです。私たちはつい、目に見える問題を目に見える行動の必要性と結びつけて考えてしまいます。しかしこの2週間の窓は、別の種類のケアが試されている期間です。水槽が不安定に見えるときでも、やり続けること。その抑制そのものが、能動的な決断なのです。この趣味が教えてくれる、最も直感に反することのひとつと言えるでしょう。</p>
     </div>
 
     <div class="mod-next">
@@ -280,14 +280,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-eyebrow"><span class="mod-num">04 / 04</span><span class="mod-tag">窓の後に</span></div>
     <h2 class="mod-title">窓の<br><em>後に。</em></h2>
     <div class="mod-body">
-      <p>2週目の終わりには、追加前から健康だった水槽はそのベースラインに戻っているはずだ。縄張りが確立されるか受け入れられるにつれて攻撃は減る。給餌は通常のパターンに戻る。アンモニアと亜硝酸塩はゼロに戻る。新しい魚は最初の数日の、ストレスによる色褪せではなく、安静時の体色を見せ始める。</p>
-      <p>3週間経っても水槽がベースラインに戻っていなければ、混乱の窓の何かは一時的な再構成ではなかった——持続している状態だ。3週間での継続的な攻撃は、時間では解決できない相性の問題を示す。生体構成を見直す必要があるかもしれない。3週間での持続的なアンモニアは、バクテリアコロニーが新しい負荷を維持できないことを示す。水槽がオーバーストックされているか、フィルターの問題に対処が必要だ。3週間でのエサを食べない継続は、ストレスではなく病気のシグナルだ。</p>
-      <p>2週間の混乱の窓は読み取りツールだ。水槽が吸収できるもの、既存の魚が変化にどう反応するか、そして新しい魚が本当に入れられた環境に適合しているかどうかを教えてくれる。窓をきれいに通り抜けた水槽はその回復力について何か有益なことを教えてくれる。3週間で解決しなかった水槽は、その限界について同様に有益なことを教えてくれる。</p>
+      <p>2週目の終わりには、追加前から健康だった水槽は、そのベースラインに戻っているはずです。縄張りが確立され、あるいは受け入れられるにつれて攻撃は減っていきます。給餌は通常のパターンに戻り、アンモニアと亜硝酸塩はゼロに戻ります。新しい魚も、最初の数日に見られたストレスによる色褪せではなく、落ち着いたときの本来の体色を見せ始めます。</p>
+      <p>3週間経っても水槽がベースラインに戻らない場合、混乱の窓の中の何かが一時的な再構成では終わらず、持続している状態だと考えられます。3週間経っても攻撃が続いているなら、時間では解決できない相性の問題を示しています。生体構成の見直しが必要かもしれません。3週間経ってもアンモニアが下がらないなら、バクテリアコロニーが新しい負荷を維持しきれていないことを示しています。水槽が過密になっているか、フィルターに問題があり、対処が必要です。3週間を過ぎてもエサを食べない状態が続くのは、ストレスではなく病気のシグナルです。</p>
+      <p>2週間の混乱の窓は、読み取りのための道具です。水槽がどれだけのことを吸収できるか、既存の魚が変化にどう反応するか、そして新しい魚が本当にその環境に合っているかどうかを教えてくれます。窓をすんなり通り抜けた水槽は、その回復力について有益なことを教えてくれます。3週間経っても解決しなかった水槽は、その限界について、同じくらい有益なことを教えてくれます。</p>
     </div>
 
     <div class="hn">
       <span class="hn-label">リセットは失敗ではなく選択</span>
-      <p>すべてのフェーズ移行が失敗を意味するわけではない。飼育者はシステムを意図的にリセットすることができる——長引く病気を治療するため、セットアップを再構成するため、またはクラッシュ後に新たなサイクルを始めるために。それは混乱による後退とは違う。リセットは飼育者の決断であって、システムの失敗ではない。水槽はもう一度初期段階を通り、同じ発展の軌跡に沿って進む——しかし飼育者の蓄積された知識が、新しいサイクルをどう管理するかを形成する。</p>
+      <p>すべてのフェーズ移行が失敗を意味するわけではありません。飼育者は、長引く病気を治療するため、セットアップを組み直すため、あるいはクラッシュのあとに新たなサイクルを始めるために、システムを意図的にリセットすることがあります。それは、混乱による後退とは違います。リセットは飼育者の決断であって、システムの失敗ではありません。水槽はもう一度初期段階を通り、同じ発展の軌跡をたどりますが、飼育者がそれまでに積み重ねてきた知識が、新しいサイクルの管理のしかたを形づくってくれます。</p>
     </div>
 
     <div class="mod-next" style="margin-top:1.5rem">
@@ -425,8 +425,8 @@ function updateDots() {
     <p class="rh-sheet-note">AIは間違えることがあります —— 魚の緊急事態では、専門家に相談してください</p>
   </div>
 </div>
-<script src="/js/content-trust.js?v=52"></script>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/content-trust.js?v=74"></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -434,6 +434,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

@@ -56,15 +56,15 @@
                 "Perilaku ikan, warna, nafsu makan, dan dinamika sosial mencerminkan kondisi seluruh sistem. Ikan yang sehat sebelum wabah ich dan sehat setelahnya tidak memberi Anda informasi yang berguna. Ikan yang cukup stres untuk menunjukkan bintik sedang menyampaikan sesuatu yang tes air tidak bisa."
             ],
             "prevBtn": "← Kembali",
-            "nextBtn": "Mencari stres dominan"
+            "nextBtn": "Mencari akar penyebab"
         },
         {
             "id": "mod-3",
-            "tag": "Mencari stres dominan",
+            "tag": "Mencari akar penyebab",
             "titleHtml": "Menemukan apa yang<br><em>sebenarnya sedang disampaikan tank.</em>",
             "body": [
                 "Langkah pertama setelah membersihkan wabah ich adalah pengamatan, bukan perubahan segera. Buat daftar apa yang Anda ketahui: kapan wabah muncul? Apa yang berubah dalam dua hingga empat minggu sebelumnya? Ikan baru? Makan baru? Perubahan suhu musiman? Perubahan suhu ruangan? Ganti air besar? Pembersihan filter?",
-                "Setelah perubahan terbaru yang paling mungkin teridentifikasi, itulah stres dominan yang perlu diatasi. Jika tidak ada perubahan yang jelas teridentifikasi, lihat kondisi yang berkelanjutan: seberapa padat populasi? Apakah ikan tertentu selalu bersembunyi atau menghindari area tertentu? Apakah suhu stabil sepanjang hari dan malam?",
+                "Setelah perubahan terbaru yang paling mungkin teridentifikasi, itulah tekanan yang perlu diatasi. Jika tidak ada perubahan yang jelas teridentifikasi, lihat kondisi yang berkelanjutan: seberapa padat populasi? Apakah ikan tertentu selalu bersembunyi atau menghindari area tertentu? Apakah suhu stabil sepanjang hari dan malam?",
                 "Periksa stabilitas suhu terlebih dahulu — ini adalah penyumbang ich yang paling sering diabaikan. Banyak heater berayun 2–3°C sepanjang hari, terutama heater yang lebih murah. Ikan di lingkungan termal yang tidak menentu hidup dalam stres fisiologis kronis walau suhu rata-rata 'benar.'",
                 "Periksa parameter air tidak hanya setelah ganti air tapi beberapa hari sebelum ganti air berikutnya. Amonia dan nitrit yang perlahan-lahan naik di antara ganti air, walau tidak mencapai tingkat yang sangat tinggi, bisa membuat ikan dalam kondisi stres yang berkelanjutan."
             ],
@@ -82,9 +82,9 @@
             "titleHtml": "Respons yang selaras<br><em>terhadap penyakit berulang.</em>",
             "body": [
                 "Respons yang selaras terhadap ich berulang berbeda dari respons pengobatan. Pengobatan bertanya: 'bagaimana cara menghilangkan bintik?' Respons yang selaras bertanya: 'apa yang dibutuhkan tank ini agar berhenti menghasilkan wabah?'",
-                "Urutan praktis: Pertama, tangani wabah saat ini — pengobatan panas (30°C selama 10 hari) efektif dan tidak melibatkan bahan kimia obat; untuk planted tank, garam dengan dosis rendah bisa digunakan. Kedua, selama pengobatan, mulai pengamatan: catat suhu setiap hari, uji air di pertengahan siklus pengobatan, perhatikan perilaku makan dan sosial. Ketiga, setelah bintik hilang selama tujuh hari, identifikasi stres dominan — satu hal yang paling mungkin menjadi penyumbang. Keempat, atasi satu hal itu saja dan pantau selama empat hingga delapan minggu sebelum menarik kesimpulan.",
+                "Urutan praktis: Pertama, tangani wabah saat ini — pengobatan panas (30°C selama 10 hari) efektif dan tidak melibatkan bahan kimia obat; untuk planted tank, garam dengan dosis rendah bisa digunakan. Kedua, selama pengobatan, mulai pengamatan: catat suhu setiap hari, uji air di pertengahan siklus pengobatan, perhatikan perilaku makan dan sosial. Ketiga, setelah bintik hilang selama tujuh hari, identifikasi tekanan utama — satu hal yang paling mungkin menjadi penyumbang. Keempat, atasi satu hal itu saja dan pantau selama empat hingga delapan minggu sebelum menarik kesimpulan.",
                 "Perubahan yang paling berguna setelah ich berulang, berdasarkan urutan seberapa sering membantu: perbaiki stabilitas suhu, kurangi populasi atau atasi agresi, tingkatkan frekuensi atau kualitas ganti air, tambahkan karantina untuk ikan baru ke depannya.",
-                "Tank yang melewati empat hingga enam bulan tanpa wabah ich berulang setelah mengatasi stres dominan hampir selalu tank di mana satu hal yang signifikan berubah — bukan tank di mana semua hal disesuaikan sedikit-sedikit sekaligus."
+                "Tank yang melewati empat hingga enam bulan tanpa wabah ich berulang setelah mengatasi penyebab utamanya hampir selalu tank di mana satu hal yang signifikan berubah — bukan tank di mana semua hal disesuaikan sedikit-sedikit sekaligus."
             ],
             "prevBtn": "← Kembali",
             "hintLabel": "Renungkan dulu sebelum merespons",

@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Parameter Ok Tapi Ikan Masih Mati — Aquatic Rhythm</title>
 <meta name="description" content="Amonia nol. Nitrit nol. Tapi ikan masih dalam kondisi sulit. Panduan ini menjelaskan apa yang test kit tidak ukur, cara membaca sinyal ikan, dan cara menemukan penyebab sebenarnya.">
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -270,8 +270,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-eyebrow"><span class="mod-num">03 / 04</span><span class="mod-tag">Menemukan penyebab utama</span></div>
     <h2 class="mod-title">Hampir setiap tank yang berjuang<br><em>memiliki satu penyebab utama.</em></h2>
     <div class="mod-body">
-      <p>Ketika ikan memburuk walau parameter bersih, berguna untuk berpikir dalam hal stres dominan — stres tunggal yang menempatkan beban paling banyak pada sistem saat itu. Semua hal lain di tank sedang merespons satu hal itu. Identifikasi itu dan sisanya menjadi lebih jelas.</p>
-      <p>Ini tidak selalu mudah dilihat. Stres dominan sering tidak terlihat oleh test kit, beroperasi secara perlahan, dan mudah dinormalisasi setelah hadir untuk sementara waktu. Tapi hampir selalu bisa ditemukan.</p>
+      <p>Ketika ikan memburuk walau parameter bersih, berguna untuk mencari tekanan tunggal yang menempatkan beban paling banyak pada sistem saat itu. Semua hal lain di tank sedang merespons satu hal itu. Identifikasi itu dan sisanya menjadi lebih jelas.</p>
+      <p>Ini tidak selalu mudah dilihat. Tekanan itu sering tidak terlihat oleh test kit, beroperasi secara perlahan, dan mudah dinormalisasi setelah hadir untuk sementara waktu. Tapi hampir selalu bisa ditemukan.</p>
     </div>
 
     <div class="mod-body">
@@ -288,7 +288,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <div class="hn">
       <span class="hn-label">Telusuri penyebabnya, bukan sekadar angka</span>
-      <p>Stres dominan adalah penyebab sebenarnya. Gejala yang ditunjukkan ikan Anda — kepucatan, bersembunyi, kesehatan yang memburuk — adalah yang Anda lihat. Sebelum menyesuaikan apa pun, telusuri kembali apa yang menghasilkan apa yang Anda lihat. Temukan penyebabnya, dan gejala-gejala itu biasanya teratasi tanpa harus menangani setiap satu secara terpisah.</p>
+      <p>Tekanan yang mendasarinya adalah penyebab sebenarnya. Gejala yang ditunjukkan ikan Anda — kepucatan, bersembunyi, kesehatan yang memburuk — adalah yang Anda lihat. Sebelum menyesuaikan apa pun, telusuri kembali apa yang menghasilkan apa yang Anda lihat. Temukan penyebabnya, dan gejala-gejala itu biasanya teratasi tanpa harus menangani setiap satu secara terpisah.</p>
     </div>
 
     <div class="mod-next">
@@ -314,7 +314,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     </div>
 
     <div class="mod-body">
-      <p>Stres dominan hampir selalu bisa ditemukan dengan pengamatan sistematis seperti ini. Anda tidak membutuhkan lebih banyak tes. Anda membutuhkan lebih banyak melihat.</p>
+      <p>Penyebabnya hampir selalu bisa ditemukan dengan pengamatan sistematis seperti ini. Anda tidak membutuhkan lebih banyak tes. Anda membutuhkan lebih banyak melihat.</p>
     </div>
 
     <div class="mod-body">
@@ -461,8 +461,8 @@ function updateDots() {
     <p class="rh-sheet-note">AI bisa saja salah — untuk keadaan darurat pada ikan, konsultasikan dengan spesialis</p>
   </div>
 </div>
-<script src="/js/content-trust.js?v=52"></script>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/content-trust.js?v=74"></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -470,6 +470,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>水槽サイクルシミュレーター — インタラクティブな窒素サイクル — Aquatic Rhythm</title>
 <meta name="description" content="窒素サイクルのインタラクティブなシミュレーションです。設定を選んで、何が起こるかを学び、あなたの判断に水槽がどう応えるかを見てみましょう。">
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--fs-3xs:.5rem;--fs-2xs:.65rem;--fs-xs:.7rem;--fs-sm:.8rem;--fs-sm-md:.85rem;--fs-md:.9rem;--fs-base:1rem;--fs-md-lg:1.1rem;--fs-lg:1.35rem;--fs-xl:1.6rem;--fs-2xl:2.2rem;--fs-3xl:2.8rem;--fs-4xl:3rem;--fs-5xl:3.5rem;
@@ -100,7 +100,7 @@
 html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--th-bg);color:var(--th-ink)}
 
 /* ── APP GRID ── */
-#app{display:grid;grid-template-rows:auto auto auto 1fr auto;height:100dvh;max-width:900px;margin:0 auto;padding:0 clamp(.5rem,2vw,1.2rem)}
+#app{display:grid;grid-template-rows:auto auto auto 1fr auto;height:100vh;height:100svh;max-width:900px;margin:0 auto;padding:0 clamp(.5rem,2vw,1.2rem)}
 
 /* ── TOPBAR ── */
 #topbar{display:flex;align-items:center;justify-content:space-between;padding:.55rem 0 .48rem;border-bottom:1px solid var(--th-accent-border);gap:.55rem;flex-shrink:0}
@@ -143,6 +143,10 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
 /* TANK */
 #tcol{position:relative;min-height:0;display:flex;flex-direction:column;gap:.28rem}
 #tank{flex:1;min-height:0;border:1px solid var(--th-accent-border);border-top:2px solid var(--th-accent-border);border-radius:0 0 12px 12px;overflow:hidden;position:relative;background:#030f18}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) #tank{background:#a9d2de}
+}
+:root[data-theme="light"] #tank{background:#a9d2de}
 #tsky{position:absolute;inset:0;transition:background 3s ease;pointer-events:none}
 #twater{position:absolute;inset:0;transition:background 2s ease;pointer-events:none}
 #tlight{position:absolute;top:0;left:0;right:0;height:55%;background:radial-gradient(ellipse at 50% 0%,rgba(110,155,138,.12) 0%,transparent 74%);transition:opacity 3s ease;pointer-events:none}
@@ -163,7 +167,8 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
 .pi-track{flex:1;height:2px;background:var(--th-surface-2);border-radius:1px;overflow:hidden;min-width:16px}
 .pi-fill{height:100%;border-radius:1px;transition:width .8s ease,background .8s}
 .pi-fish{display:flex;align-items:center;gap:.22rem}
-.pi-fish-icon{font-size:var(--fs-sm-md);line-height:1;flex-shrink:0}
+.pi-fish-icon{display:flex;align-items:center;flex-shrink:0}
+.pi-fish-icon svg{width:15px;height:15px}
 .pi-fish-lbl{font-size:var(--fs-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--th-ink-4)}
 .pi-fish-val{font-size:var(--fs-xs);color:var(--th-accent)}
 .pi-div{width:1px;height:9px;background:var(--th-surface-2);flex-shrink:0}
@@ -175,7 +180,11 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
   border-radius:12px;padding:.48rem .62rem;flex-shrink:0;
 }
 .ib-lbl{font-size:var(--fs-2xs);letter-spacing:.12em;text-transform:uppercase;color:var(--th-accent);display:block;margin-bottom:.2rem}
-.ib-txt{font-family:var(--sans);font-style:normal;font-size:var(--fs-xs);font-weight:400;color:var(--th-ink-2);line-height:1.5}
+.ib-line{display:flex;align-items:flex-start;gap:.4rem}
+.ib-icon{flex-shrink:0;margin-top:.14rem;display:none}
+.ib-icon.show{display:flex}
+.ib-icon svg{width:13px;height:13px;display:block}
+.ib-txt{flex:1;min-width:0;font-family:var(--sans);font-style:normal;font-size:var(--fs-xs);font-weight:400;color:var(--th-ink-2);line-height:1.5}
 .log-box{
   background:var(--panel-2);border:1px solid var(--th-accent-border);
   border-radius:12px;overflow-y:auto;flex:1;min-height:0;
@@ -184,6 +193,10 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
 .le:last-child{border-bottom:none}
 .ld{font-size:var(--fs-xs);color:var(--th-accent);flex-shrink:0;min-width:34px}
 .lw{color:rgba(200,160,40,.75)}.ldg{color:rgba(220,100,80,.8)}.lgd{color:rgba(80,200,120,.72)}
+.mini-log-box{background:var(--panel-2);border:1px solid var(--th-accent-border);border-radius:12px;padding:.42rem .55rem .1rem;flex-shrink:0}
+.ml-lbl{font-size:var(--fs-2xs);letter-spacing:.12em;text-transform:uppercase;color:var(--th-ink-5);display:block;margin-bottom:.1rem}
+#ml-list .le{padding:.28rem 0}
+#ml-list .le:last-child{border-bottom:none}
 
 /* Status / Log switcher — mobile only */
 .sim-tabs{display:none}
@@ -218,7 +231,8 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
 .ab:hover:not(:disabled){background:var(--th-accent-soft);border-color:var(--th-accent);transform:translateY(-1px)}
 .ab:active:not(:disabled){transform:translateY(0)}
 .ab:disabled{opacity:.25;cursor:not-allowed}
-.ai{font-size:var(--fs-md-lg);line-height:1}
+.ai{display:flex;align-items:center;justify-content:center;line-height:1}
+.ai svg{width:19px;height:19px}
 .an{font-size:var(--fs-2xs);font-weight:400;letter-spacing:.07em;text-transform:uppercase;color:var(--th-ink-2)}
 .ah{font-size:var(--fs-2xs);color:var(--th-ink-4);text-align:center;line-height:1.25}
 
@@ -259,7 +273,8 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
   #opt-method.setup-options,#opt-plants.setup-options{flex-direction:row}
   #opt-method .sopt,#opt-plants .sopt{flex:1;min-width:calc(50% - .25rem)}
 }
-.sopt-icon{font-size:var(--fs-md-lg);display:block;margin-bottom:.22rem}
+.sopt-icon{display:block;margin-bottom:.22rem}
+.sopt-icon svg{width:21px;height:21px;display:block}
 .sopt-name{font-size:var(--fs-xs);font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--th-ink-2);display:block}
 .sopt-desc{font-size:var(--fs-xs);color:var(--th-ink-4);line-height:1.45;display:block;margin-top:.2rem}
 .setup-note{
@@ -287,7 +302,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
   /* App — full height flex column */
   #app{
     display:flex;flex-direction:column;
-    height:100dvh;padding:0;gap:0;
+    height:100vh;height:100svh;padding:0;gap:0;
   }
 
   /* Topbar — larger tap targets & legibility */
@@ -344,7 +359,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
   .pi-val{font-size:var(--fs-md-lg);min-width:28px}
   .pi-track{display:none}  /* hide bar — save space for bigger text */
   .pi-arrow{font-size:var(--fs-2xs)}
-  .pi-fish-icon{font-size:var(--fs-sm-md)}
+  .pi-fish-icon svg{width:16px;height:16px}
   .pi-fish-val{font-size:var(--fs-sm-md)}
   .pi-div{height:10px}
 
@@ -365,6 +380,9 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
   .insight-box{flex-shrink:0;padding:.32rem .55rem}
   .ib-lbl{font-size:var(--fs-xs)}
   .ib-txt{font-size:var(--fs-sm-md);line-height:1.48}
+  .ib-icon svg{width:15px;height:15px}
+  .mini-log-box{flex-shrink:0;padding:.32rem .55rem .1rem}
+  .ml-lbl{font-size:var(--fs-xs)}
   .log-box{flex:1;min-height:0;overflow-y:auto;border-radius:12px}
   .le{font-size:var(--fs-sm-md);padding:.3rem .48rem;line-height:1.48}
   .ld{font-size:var(--fs-xs);min-width:34px}
@@ -372,7 +390,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
   /* Equipment */
   #equip-bar{padding:.25rem .75rem}
   .eq-btn{padding:.25rem .6rem}
-  .eq-icon{font-size:var(--fs-base)}
+  .eq-icon svg{width:17px;height:17px}
   .eq-lbl{font-size:var(--fs-xs)}
   .eq-temp{font-size:var(--fs-xs)}
 
@@ -397,7 +415,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
     max-width:104px;
     padding:.52rem .28rem;
   }
-  .ai{font-size:var(--fs-md-lg)}
+  .ai svg{width:22px;height:22px}
   .an{font-size:var(--fs-xs);letter-spacing:.05em}
 
   /* End overlay — comfortable reading on phone */
@@ -484,7 +502,8 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
 }
 .eq-btn.eq-on{opacity:1}
 .eq-btn:hover{background:var(--th-surface-2)}
-.eq-icon{font-size:var(--fs-sm);line-height:1}
+.eq-icon{display:flex;align-items:center;line-height:1}
+.eq-icon svg{width:15px;height:15px}
 .eq-lbl{font-size:var(--fs-2xs);letter-spacing:.1em;text-transform:uppercase;color:var(--th-ink-3)}
 .eq-temp{font-size:var(--fs-2xs);color:var(--th-accent);margin-left:.15rem}
 .eq-btn.eq-used{opacity:.25;cursor:default}
@@ -583,7 +602,8 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
 .bac-card{background:var(--th-surface-2);border:1px solid var(--th-accent-border);border-radius:12px;padding:.48rem .58rem}
 .brief-tip{display:flex;gap:.65rem;align-items:flex-start;margin-bottom:.55rem}
 .brief-tip:last-of-type{margin-bottom:0}
-.brief-tip-ic{font-size:var(--fs-base);line-height:1;flex-shrink:0;margin-top:.12rem}
+.brief-tip-ic{display:flex;flex-shrink:0;margin-top:.12rem}
+.brief-tip-ic svg{width:17px;height:17px}
 .brief-tip-body{min-width:0}
 .brief-tip-k{font-size:var(--fs-2xs);letter-spacing:.1em;text-transform:uppercase;color:var(--th-ink-3);margin-bottom:.15rem}
 .brief-tip p{font-size:var(--fs-xs);color:var(--th-ink-3);line-height:1.55;margin:0;font-family:var(--sans)}
@@ -655,7 +675,7 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
 <div class="ov hide" id="ov-setup" style="align-items:flex-start;padding:1rem">
   <div class="oc" style="max-width:440px;text-align:left;margin-top:auto;margin-bottom:auto;width:100%">
     <div style="text-align:center;margin-bottom:1.1rem">
-      <span class="oi">🌊</span>
+      <span class="oi" style="line-height:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px" aria-hidden="true"><path d="M2 14.5c3-6 7-6 10 0s7 6 10 0"/><path d="M2 9.5c3-6 7-6 10 0s7 6 10 0"/></svg></span>
       <h2 class="ot">水槽を設定する</h2>
       <p class="om-compact" style="text-align:center;margin-bottom:.35rem">サイズ、方法、水草を選んで——魚に優しいサイクルを、自分のペースで進めましょう。</p>
       <details class="ar-disclosure">
@@ -671,17 +691,17 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
       <span class="setup-section-label">水槽のサイズ</span>
       <div class="setup-options" id="opt-size">
         <div class="sopt selected" data-val="small">
-          <span class="sopt-icon">🫙</span>
+          <span class="sopt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 3h7"/><path d="M9.5 3v3.3L7.5 9v9.5A2.2 2.2 0 0 0 9.7 20.7h4.6A2.2 2.2 0 0 0 16.5 18.5V9l-2-2.7V3"/><path d="M7.8 12.5h8.4"/></svg></span>
           <span class="sopt-name">小型</span>
           <span class="sopt-desc">40L未満・パラメーターの変化が速い・許容できる誤差が小さい</span>
         </div>
         <div class="sopt" data-val="medium">
-          <span class="sopt-icon">🪣</span>
+          <span class="sopt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8.5L7 19a2 2 0 0 0 2 1.8h6a2 2 0 0 0 2-1.8l1.5-10.5"/><ellipse cx="12" cy="8.3" rx="6.7" ry="2.2"/><path d="M7.3 6C7.3 4.2 9.4 3 12 3s4.7 1.2 4.7 3"/></svg></span>
           <span class="sopt-name">中型</span>
           <span class="sopt-desc">40〜120L・水量が多い・多少の誤差には寛容</span>
         </div>
         <div class="sopt" data-val="large">
-          <span class="sopt-icon">🏊</span>
+          <span class="sopt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2.2"/><path d="M4.3 11.5c1.3-1 2.7-1 4 0s2.7 1 4 0 2.7-1 4 0 2.7 1 4 0"/><path d="M4.3 15.3c1.3-1 2.7-1 4 0s2.7 1 4 0 2.7-1 4 0 2.7 1 4 0"/></svg></span>
           <span class="sopt-name">大型</span>
           <span class="sopt-desc">120L以上・希釈効果が大きい・パラメーターの変化が緩やか</span>
         </div>
@@ -693,12 +713,12 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
       <span class="setup-section-label">サイクルの方法</span>
       <div class="setup-options" id="opt-method">
         <div class="sopt selected" data-val="fishless">
-          <span class="sopt-icon">🧪</span>
+          <span class="sopt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg></span>
           <span class="sopt-name">フィッシュレス</span>
           <span class="sopt-desc">魚を入れずにアンモニアを添加・バクテリアが安全に育つ・管理しやすい</span>
         </div>
         <div class="sopt" data-val="fish-in">
-          <span class="sopt-icon">🐠</span>
+          <span class="sopt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="10" cy="12" rx="7" ry="4.3"/><path d="M21.5 8.3L17 12L21.5 15.7"/><circle cx="6" cy="10.8" r=".7" fill="currentColor" stroke="none"/></svg></span>
           <span class="sopt-name">魚あり</span>
           <span class="sopt-desc">最初から水槽に魚がいる・給餌が必要・リスクが高い</span>
         </div>
@@ -720,7 +740,7 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
       <span class="setup-section-label">最初から水草を入れますか？</span>
       <div class="setup-options" id="opt-plants">
         <div class="sopt selected" data-val="yes">
-          <span class="sopt-icon">🌿</span>
+          <span class="sopt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>
           <span class="sopt-name">はい</span>
           <span class="sopt-desc">硝酸塩を吸収する・酸素を増やす・コケと競合する</span>
         </div>
@@ -752,7 +772,7 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
 <div class="ov hide" id="ov-brief">
   <div class="oc" style="max-width:400px;text-align:left;margin:auto;width:100%">
     <div style="text-align:center;margin-bottom:.85rem">
-      <span class="oi" style="font-size:var(--fs-lg)">🌊</span>
+      <span class="oi" style="line-height:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px" aria-hidden="true"><path d="M2 14.5c3-6 7-6 10 0s7 6 10 0"/><path d="M2 9.5c3-6 7-6 10 0s7 6 10 0"/></svg></span>
       <h2 class="ot" style="margin-bottom:.35rem">はじめる前に</h2>
       <p class="om" style="font-size:var(--fs-xs);margin-bottom:0;color:var(--th-ink-4)">大事なポイントは以下のとおりです——詳細はガイドの中にあります。</p>
     </div>
@@ -762,35 +782,35 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
       <summary>完全ガイド — 操作とルール</summary>
       <div class="ar-disclosure-body" style="padding-top:.15rem">
         <div class="brief-tip">
-          <span class="brief-tip-ic" aria-hidden="true">⏱</span>
+          <span class="brief-tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
           <div class="brief-tip-body">
             <div class="brief-tip-k">時間</div>
             <p>そのまま進めましょう。今何が起きているかは、ログが説明してくれます。</p>
           </div>
         </div>
         <div class="brief-tip">
-          <span class="brief-tip-ic" aria-hidden="true">⚙️</span>
+          <span class="brief-tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg></span>
           <div class="brief-tip-body">
             <div class="brief-tip-k">機器</div>
             <p>ヒーター、フィルター、照明は初期状態でオンになっています。どれかをタップしてオフにし——サイクルに実際何が起こるか見てみましょう。</p>
           </div>
         </div>
         <div class="brief-tip">
-          <span class="brief-tip-ic" aria-hidden="true">🐠</span>
+          <span class="brief-tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="12" rx="7" ry="4.3"/><path d="M21.5 8.3L17 12L21.5 15.7"/><circle cx="6" cy="10.8" r=".7" fill="currentColor" stroke="none"/></svg></span>
           <div class="brief-tip-body">
             <div class="brief-tip-k">魚ありの場合</div>
             <p>1〜2日おきに餌を与えましょう。4日間エサを与えないと魚は弱り始めます——ストレスを受けた魚はアンモニアへの耐性が下がります。</p>
           </div>
         </div>
         <div class="brief-tip">
-          <span class="brief-tip-ic" aria-hidden="true">🦠</span>
+          <span class="brief-tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4M10.5 2v6.5l-4 9a2.2 2.2 0 0 0 2 3.1h7a2.2 2.2 0 0 0 2-3.1l-4-9V2"/><circle cx="10.5" cy="16" r=".55" fill="currentColor" stroke="none"/><circle cx="13.2" cy="17.5" r=".55" fill="currentColor" stroke="none"/><circle cx="11.5" cy="19" r=".55" fill="currentColor" stroke="none"/></svg></span>
           <div class="brief-tip-body">
             <div class="brief-tip-k">バクテリア添加剤</div>
             <p>シードは一度しか使えません。数日経ってから使いましょう——添加剤が効果を発揮するには、先にアンモニアが存在している必要があります。</p>
           </div>
         </div>
         <div class="brief-tip">
-          <span class="brief-tip-ic" aria-hidden="true">⏸</span>
+          <span class="brief-tip-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="3" width="5" height="18" rx="1" fill="currentColor" stroke="none"/><rect x="5" y="3" width="5" height="18" rx="1" fill="currentColor" stroke="none"/></svg></span>
           <div class="brief-tip-body">
             <div class="brief-tip-k">一時停止と早送り</div>
             <p>じっくり読みたいときは一時停止しましょう。待っている間は、上部バーの<strong style="color:var(--th-ink-3);font-weight:500">+1h</strong>で1日先に進められます。</p>
@@ -863,7 +883,7 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
     </a>
     <div class="tb-right">
       <button class="ar-settings-btn" id="tb-settings-btn" aria-label="メニュー" aria-expanded="false" title="メニュー">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>
       </button>
     </div>
   </div>
@@ -923,18 +943,18 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
       <!-- Equipment row -->
       <div id="equip-bar">
         <button class="eq-btn eq-on" id="eq-heater" onclick="toggleEquip('heater')" data-tip="水温を26°Cに保ちます。最適な温度ではバクテリアの成長速度が約50%速くなります。">
-          <span class="eq-icon">🔥</span>
+          <span class="eq-icon" style="color:rgba(221,122,69,.9)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg></span>
           <span class="eq-lbl">ヒーター</span>
           <span class="eq-temp" id="eq-temp">26°C</span>
         </button>
         <div class="eq-div"></div>
         <button class="eq-btn eq-on" id="eq-filter" onclick="toggleEquip('filter')" data-tip="バクテリアが暮らす場所です。これがなければ、サイクルはほとんど完了しません。">
-          <span class="eq-icon">🌀</span>
+          <span class="eq-icon" style="color:rgba(79,159,212,.9)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="10" height="16" rx="2.5"/><path d="M11 7.5a3 3 0 1 1-2.5 4.7"/><path d="M4 7h2M4 15h2"/></svg></span>
           <span class="eq-lbl">フィルター</span>
         </button>
         <div class="eq-div"></div>
         <button class="eq-btn eq-on" id="eq-light" onclick="cycleLight()" data-tip="タップして切り替え: オフ → 弱 → 中 → 強。水草とコケに影響します。">
-          <span class="eq-icon">💡</span>
+          <span class="eq-icon" style="color:rgba(219,177,68,.95)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span>
           <span class="eq-lbl">照明</span>
           <span class="eq-temp" id="eq-light-lbl">中</span>
         </button>
@@ -947,9 +967,9 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
         <div class="pi-div"></div>
         <div class="pi"><span class="pi-lbl" title="Nitrate">NO₃</span><span class="pi-val safe" id="v-no3">0.00</span><span class="pi-arrow" id="arr-no3"></span><div class="pi-track"><div class="pi-fill" id="b-no3"></div></div></div>
         <div class="pi-div"></div>
-        <div class="pi-fish"><span class="pi-fish-icon">🐠</span><span class="pi-fish-val" id="v-fish">0</span></div>
+        <div class="pi-fish"><span class="pi-fish-icon" style="color:rgba(79,159,212,.85)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="10" cy="12" rx="7" ry="4.3"/><path d="M21.5 8.3L17 12L21.5 15.7"/><circle cx="6" cy="10.8" r=".7" fill="currentColor" stroke="none"/></svg></span><span class="pi-fish-val" id="v-fish">0</span></div>
         <div class="pi-div"></div>
-        <div class="pi-fish"><span class="pi-fish-icon">🌿</span><span class="pi-fish-val" id="v-plant" style="color:rgba(100,180,80,.6)">0</span></div>
+        <div class="pi-fish"><span class="pi-fish-icon" style="color:rgba(100,180,80,.6)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><span class="pi-fish-val" id="v-plant" style="color:rgba(100,180,80,.6)">0</span></div>
 
       </div>
     </div>
@@ -994,7 +1014,8 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
           </div>
         </div>
       </div>
-      <div class="insight-box"><span class="ib-lbl">今起きていること</span><span class="ib-txt" id="ib-txt">水槽の準備が整いました。アンモニア源を加えると、サイクルが始まります。</span></div>
+      <div class="insight-box"><span class="ib-lbl">今起きていること</span><div class="ib-line"><span class="ib-icon" id="ib-icon"></span><span class="ib-txt" id="ib-txt">水槽の準備が整いました。アンモニア源を加えると、サイクルが始まります。</span></div></div>
+      <div class="mini-log-box"><span class="ml-lbl">最近の記録</span><div id="ml-list"></div></div>
       </div>
       <div class="sim-panel sim-panel--log" data-panel="log" id="panel-sim-log" role="tabpanel" aria-labelledby="tab-sim-log">
       <div class="log-box" id="log"><div class="le"><span class="ld">1日目</span><span>水槽の設定が完了しました。サイクルを開始する準備ができています。</span></div></div>
@@ -1016,21 +1037,21 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
 
   <div id="bbar">
     <button class="ab" id="act-source" onclick="doAct('source')">
-      <span class="ai" id="act-source-icon">🧪</span>
+      <span class="ai" id="act-source-icon" style="color:var(--th-accent)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg></span>
       <span class="an" id="act-source-name">アンモニアを追加</span>
       <span class="ah">サイクルを開始</span>
     </button>
     <button class="ab" id="act-feed" onclick="doAct('feed')" disabled>
-      <span class="ai">🥣</span><span class="an">餌をやる</span><span class="ah">魚ありの場合のみ</span>
+      <span class="ai" style="color:rgba(196,146,86,.95)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M4 11c0 4.5 3.5 8 8 8s8-3.5 8-8"/><ellipse cx="12" cy="11" rx="9" ry="2.2"/></svg></span><span class="an">餌をやる</span><span class="ah">魚ありの場合のみ</span>
     </button>
     <button class="ab" id="act-water" onclick="showWaterPicker()">
-      <span class="ai">💧</span><span class="an">水換え</span><span class="ah">量を選択</span>
+      <span class="ai" style="color:rgba(79,159,212,.95)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></span><span class="an">水換え</span><span class="ah">量を選択</span>
     </button>
     <button class="ab" id="act-plant" onclick="doAct('plant')">
-      <span class="ai">🌿</span><span class="an">水草を追加</span><span class="ah">硝酸塩を抑える</span>
+      <span class="ai" style="color:rgba(100,180,80,.9)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><span class="an">水草を追加</span><span class="ah">硝酸塩を抑える</span>
     </button>
     <button class="ab" id="act-seed" onclick="doSeed()">
-      <span class="ai">🦠</span><span class="an">シード</span><span class="ah">バクテリア添加剤</span>
+      <span class="ai" style="color:rgba(160,130,210,.95)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4M10.5 2v6.5l-4 9a2.2 2.2 0 0 0 2 3.1h7a2.2 2.2 0 0 0 2-3.1l-4-9V2"/><circle cx="10.5" cy="16" r=".55" fill="currentColor" stroke="none"/><circle cx="13.2" cy="17.5" r=".55" fill="currentColor" stroke="none"/><circle cx="11.5" cy="19" r=".55" fill="currentColor" stroke="none"/></svg></span><span class="an">シード</span><span class="ah">バクテリア添加剤</span>
     </button>
   </div>
 </div>
@@ -1043,6 +1064,61 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
 
 /* Setup config */
 var CFG = { size:'small', method:'fishless', plants:'yes' };
+
+/* Icon markup for the ammonia/fish action-button toggle (source icon swaps by cycling method) */
+var SRC_ICON = {
+  fishless:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg>',
+  fish:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="10" cy="12" rx="7" ry="4.3"/><path d="M21.5 8.3L17 12L21.5 15.7"/><circle cx="6" cy="10.8" r=".7" fill="currentColor" stroke="none"/></svg>'
+};
+
+/* Icon markup for the "What is happening" insight box — resolves a
+   leading emoji character (still used internally in guide-hint/
+   insight message strings) to an SVG icon, keeping the icon set
+   consistent with the rest of the lab. Log tab narration keeps its
+   emoji as-is — different pattern (inline mood-flag in scrolling
+   text), out of scope. */
+var IB_ICON_SVG = {
+  flask:'<path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/>',
+  fish:'<ellipse cx="10" cy="12" rx="7" ry="4.3"/><path d="M21.5 8.3L17 12L21.5 15.7"/><circle cx="6" cy="10.8" r=".7" fill="currentColor" stroke="none"/>',
+  bowl:'<path d="M3 11h18"/><path d="M4 11c0 4.5 3.5 8 8 8s8-3.5 8-8"/><ellipse cx="12" cy="11" rx="9" ry="2.2"/>',
+  droplet:'<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
+  thermometer:'<path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>',
+  filter:'<rect x="6" y="3" width="10" height="16" rx="2.5"/><path d="M11 7.5a3 3 0 1 1-2.5 4.7"/><path d="M4 7h2M4 15h2"/>',
+  bacteria:'<path d="M10 2h4M10.5 2v6.5l-4 9a2.2 2.2 0 0 0 2 3.1h7a2.2 2.2 0 0 0 2-3.1l-4-9V2"/><circle cx="10.5" cy="16" r=".55" fill="currentColor" stroke="none"/><circle cx="13.2" cy="17.5" r=".55" fill="currentColor" stroke="none"/><circle cx="11.5" cy="19" r=".55" fill="currentColor" stroke="none"/>',
+  hourglass:'<path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/><path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/>',
+  alert:'<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+  stop:'<path d="M12 16h.01"/><path d="M12 8v4"/><path d="M15.312 2a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586l-4.688-4.688A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2z"/>',
+  sprout:'<path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"/><path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"/><path d="M5 21h14"/>',
+  check:'<path d="M20 6 9 17l-5-5"/>',
+  dot:'<circle cx="12" cy="12" r="7" fill="currentColor" stroke="none"/>'
+};
+var IB_EMOJI_MAP = {
+  '🧪':'flask', '🐠':'fish', '🥣':'bowl', '💧':'droplet', '🌡️':'thermometer',
+  '🌀':'filter', '🔬':'bacteria', '⏳':'hourglass', '🚨':'alert', '⚠️':'alert',
+  '😰':'fish', '⛔':'stop', '🌱':'sprout', '✅':'check', '🎉':'check',
+  '🟡':'dot', '🟠':'dot', '🔴':'dot'
+};
+var IB_DOT_COLOR = { '🟡':'rgba(216,170,50,.9)', '🟠':'rgba(216,130,60,.9)', '🔴':'rgba(210,80,70,.9)' };
+function setInsightBox(str){
+  var iconEl = document.getElementById('ib-icon'), txtEl = document.getElementById('ib-txt');
+  if(!txtEl) return;
+  var m = str.match(/^(\S+)\s+([\s\S]*)$/);
+  var key = m && IB_EMOJI_MAP[m[1]];
+  if(iconEl){
+    if(key){
+      iconEl.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IB_ICON_SVG[key]+'</svg>';
+      iconEl.style.color = IB_DOT_COLOR[m[1]] || '';
+      iconEl.classList.add('show');
+      txtEl.textContent = m[2];
+    } else {
+      iconEl.innerHTML = '';
+      iconEl.classList.remove('show');
+      txtEl.textContent = str;
+    }
+  } else {
+    txtEl.textContent = str;
+  }
+}
 
 /* Fish individual states */
 var fishStates = [];
@@ -1095,6 +1171,15 @@ var phases=[
 ];
 function phase(t){for(var i=0;i<phases.length;i++)if(t>=phases[i].from&&t<phases[i].to)return phases[i];return phases[0];}
 
+/* Theme-aware tank visuals — light mode gets an aqua-toned water/sky
+   instead of the dark "night water" gradient. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+
 /* Stars */
 var sC=document.getElementById('tstars'),sX=sC?sC.getContext('2d'):null,stars=[];
 function initStars(){
@@ -1113,7 +1198,7 @@ function drawStars(op){
 function renderTime(t){
   var p=phase(t);
   var sky=document.getElementById('tsky'),light=document.getElementById('tlight'),st=document.getElementById('tstars');
-  if(sky)sky.style.background='rgba(2,5,15,'+p.skyA+')';
+  if(sky)sky.style.background=vcLight()?'rgba(70,120,145,'+(p.skyA*.5).toFixed(2)+')':'rgba(2,5,15,'+p.skyA+')';
   if(light)light.style.opacity=p.lightO;
   var nOp=t>=.84?(t-.84)/.16:t<.04?(1-t/.04)*.65:0;
   if(st)st.style.opacity=nOp;
@@ -1636,11 +1721,28 @@ function getInsight(s){
 
 function addLog(msg,type){
   var log=document.getElementById('log');
-  var e=document.createElement('div');
-  e.className='le'+(type==='warn'?' lw':type==='danger'?' ldg':type==='good'?' lgd':'');
-  e.innerHTML='<span class="ld">'+S.day+'日目'+'</span><span>'+msg+'</span>';
-  log.insertBefore(e,log.firstChild);
-  while(log.children.length>20)log.removeChild(log.lastChild);
+  var first=log.firstElementChild;
+  if(first&&first.getAttribute('data-msg')===msg&&first.getAttribute('data-day')===String(S.day)){
+    var n=parseInt(first.getAttribute('data-count')||'1',10)+1;
+    first.setAttribute('data-count',n);
+    first.querySelector('.ld').textContent='Day '+S.day+' ×'+n;
+  } else {
+    var e=document.createElement('div');
+    e.className='le'+(type==='warn'?' lw':type==='danger'?' ldg':type==='good'?' lgd':'');
+    e.setAttribute('data-msg',msg);
+    e.setAttribute('data-day',String(S.day));
+    e.setAttribute('data-count','1');
+    e.innerHTML='<span class="ld">'+S.day+'日目'+'</span><span>'+msg+'</span>';
+    log.insertBefore(e,log.firstChild);
+    while(log.children.length>20)log.removeChild(log.lastChild);
+  }
+  updateMiniLog();
+}
+
+function updateMiniLog(){
+  var log=document.getElementById('log'),list=document.getElementById('ml-list');
+  if(!list)return;
+  list.innerHTML=Array.prototype.slice.call(log.children,0,3).map(function(r){return r.outerHTML;}).join('');
 }
 
 function genLog(){
@@ -1758,10 +1860,10 @@ function updateGuide(){
 
   /* Route guide messages into insight box */
   var ibtxt = document.getElementById('ib-txt');
-  var ibbox = ibtxt ? ibtxt.parentElement : null;
+  var ibbox = document.querySelector('.insight-box');
   if(hintShow){
     if(ibtxt){
-      ibtxt.textContent = icon+' '+text;
+      setInsightBox(icon+' '+text);
       ibtxt.style.color = pulseClass==='ar-stop'?'rgba(220,100,60,.8)':
                           pulseClass==='ar-warn'?'rgba(220,160,60,.75)':
                           'var(--th-ink-2)';
@@ -1777,7 +1879,7 @@ function updateGuide(){
   } else {
     /* Restore insight text from getInsight */
     if(ibtxt){
-      ibtxt.textContent = getInsight(S);
+      setInsightBox(getInsight(S));
       ibtxt.style.color = '';
     }
     if(ibbox)ibbox.style.borderColor = '';
@@ -1985,16 +2087,18 @@ function render(){
   var murk=Math.min(1,S.nh3*.25+S.no2*.15);
   var clarity=S.cycleOk?0.22:Math.max(0,.16-danger*.12-murk*.06);
   /* Cloudy effect — ammonia makes water greenish-yellow, early tank is murky brown */
-  var r=4+Math.round(danger*18)+Math.round(murk*12);
-  var g=28+Math.round(murk*10)-Math.round(danger*4);
-  var b=38-Math.round(danger*8)-Math.round(murk*6);
+  var light=vcLight();
+  var r=(light?150:4)+Math.round(danger*18)+Math.round(murk*12);
+  var g=(light?195:28)+Math.round(murk*10)-Math.round(danger*4);
+  var b=(light?205:38)-Math.round(danger*8)-Math.round(murk*6);
   document.getElementById('twater').style.background=
-    'radial-gradient(ellipse at 50% 30%,rgba(60,200,220,'+clarity.toFixed(3)+') 0%,rgba('+r+','+g+','+b+',.6) 100%)';
+    'radial-gradient(ellipse at 50% 30%,rgba(60,200,220,'+clarity.toFixed(3)+') 0%,rgba('+r+','+g+','+b+','+(light?.42:.6)+') 100%)';
   /* Cloudiness overlay — new tank often gets bacterial bloom (white cloud) */
   var tsky=document.getElementById('tsky');
   if(tsky&&S.day>2&&S.day<10&&!S.cycleOk&&S.nh3>.3){
     var cloudStr=Math.min(.15,(S.day-2)*.02);
-    tsky.style.background='rgba('+Math.round(2+murk*20)+','+Math.round(5+murk*12)+','+Math.round(15+murk*8)+','+Math.max(.62,cloudStr+.62)+')';
+    if(light) tsky.style.background='rgba('+Math.round(150+murk*20)+','+Math.round(180+murk*12)+','+Math.round(190+murk*8)+','+Math.max(.3,cloudStr+.28)+')';
+    else tsky.style.background='rgba('+Math.round(2+murk*20)+','+Math.round(5+murk*12)+','+Math.round(15+murk*8)+','+Math.max(.62,cloudStr+.62)+')';
   }
 
   /* Tank message */
@@ -2055,7 +2159,7 @@ function render(){
     pc.appendChild(p);
   }
 
-  document.getElementById('ib-txt').textContent=getInsight(S);
+  setInsightBox(getInsight(S));
 
   /* Fish health indicator */
   var fhl=document.getElementById('fish-health-lbl');
@@ -2282,7 +2386,7 @@ function setupOption(groupId, val) {
     /* Update action button */
     var icon=document.getElementById('act-source-icon');
     var name=document.getElementById('act-source-name');
-    if(icon)icon.textContent=val==='fishless'?'🧪':'🐠';
+    if(icon)icon.innerHTML=val==='fishless'?SRC_ICON.fishless:SRC_ICON.fish;
     if(name)name.textContent=val==='fishless'?'アンモニアを追加':'魚を追加';
     /* Feed button label */
     document.getElementById('act-feed').querySelector('.ah').textContent=val==='fishless'?'アンモニアを追加':'アンモニアが増加';
@@ -2318,7 +2422,7 @@ function beginGame(){
   S.fishless=CFG.method==='fishless';
   var srcIcon=document.getElementById('act-source-icon');
   var srcName=document.getElementById('act-source-name');
-  if(srcIcon)srcIcon.textContent=S.fishless?'🧪':'🐠';
+  if(srcIcon)srcIcon.innerHTML=S.fishless?SRC_ICON.fishless:SRC_ICON.fish;
   if(srcName)srcName.textContent=S.fishless?'アンモニアを追加':'魚を追加';
   /* Disable feed immediately for fishless */
   var feedBtn=document.getElementById('act-feed');
@@ -2373,7 +2477,7 @@ document.getElementById('btn-restart').addEventListener('click',function(){
   });
 })();
 
-render();renderTime(0);
+render();renderTime(0);updateMiniLog();
 </script>
 
 <script>window.__arI18n={basePath:'articles/tank-simulator',avail:["id","ja"]};</script>
@@ -2439,7 +2543,7 @@ render();renderTime(0);
   </div>
 </div>
 <!-- ── LAB NAV SHEET ── -->
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 (function(){
   var btn = document.getElementById('tb-settings-btn');
@@ -2451,6 +2555,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>水槽ビルダー — Aquatic Rhythm</title>
 <meta name="description" content="はじめての淡水水槽を作りましょう。好きな魚を選んで、その魚に何が必要かを知ることができます。">
@@ -58,8 +58,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
-<link rel="stylesheet" href="/css/kofi-sheet.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
+<link rel="stylesheet" href="/css/kofi-sheet.css?v=74">
 <style>
 
 
@@ -185,13 +185,17 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .size-select{
   pointer-events:all;appearance:none;-webkit-appearance:none;
   font-family:var(--sans);font-size:var(--fs-xs);font-weight:500;letter-spacing:.03em;
-  color:var(--th-accent);background:rgba(3,12,10,.94);
+  color:var(--th-accent);background:var(--th-surface-2);
   border:1px solid var(--th-accent-border);border-radius:6px;
   padding:.24rem 1.75rem .24rem .45rem;min-height:34px;min-width:4.75rem;max-width:calc(100% - .5rem);
   cursor:pointer;transition:border-color .2s,box-shadow .2s;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236fd6e0' d='M2.5 4.25L6 7.75l3.5-3.5'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right .5rem center;
 }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .size-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232b7a75' d='M2.5 4.25L6 7.75l3.5-3.5'/%3E%3C/svg%3E")}
+}
+:root[data-theme="light"] .size-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232b7a75' d='M2.5 4.25L6 7.75l3.5-3.5'/%3E%3C/svg%3E")}
 .size-select:focus{outline:none;border-color:var(--th-accent);box-shadow:0 0 0 2px rgba(61,214,232,.2)}
 .size-select option{color:#0a1210;background:#e8f4f2}
 
@@ -240,7 +244,9 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .eq-item.warn-state::after{content:'!';position:absolute;top:2px;right:3px;font-size:var(--fs-2xs);color:rgba(220,160,40,.7)}
 .eq-item.disabled{opacity:.25;cursor:not-allowed;pointer-events:none}
 .eq-item.size-warn{border-color:rgba(220,160,40,.2)}
-.eq-icon{font-size:var(--fs-base);flex-shrink:0;width:22px;text-align:center}
+.eq-icon{flex-shrink:0;width:22px;height:22px;display:flex;align-items:center;justify-content:center}
+.eq-icon svg{width:18px;height:18px;color:var(--th-ink-3);transition:color .15s}
+.eq-item.active .eq-icon svg{color:var(--th-accent)}
 .eq-info{flex:1;min-width:0}
 .eq-name{font-size:var(--fs-sm-md);font-weight:500;color:var(--th-ink);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .eq-role{font-size:var(--fs-sm);color:var(--th-ink-3);font-style:italic;font-family:var(--serif);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -1011,11 +1017,11 @@ nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 <div class="rack-grid">
 
   <div class="rack-cat">ろ過</div>
-  <div class="eq-item" data-eq="filter-sponge"><span class="eq-icon">&#x1F9FD;</span><div class="eq-info"><span class="eq-name">スポンジフィルター</span><span class="eq-role">生物ろ過、穏やかな水流</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="filter-internal"><span class="eq-icon">&#x1F300;</span><div class="eq-info"><span class="eq-name">内部フィルター</span><span class="eq-role">水中設置、コンパクト</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="filter-hang"><span class="eq-icon">&#x1F4E6;</span><div class="eq-info"><span class="eq-name">掛け式フィルター</span><span class="eq-role">物理ろ過+生物ろ過</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="filter-canister"><span class="eq-icon">&#x1F6E2;&#xFE0F;</span><div class="eq-info"><span class="eq-name">外部フィルター</span><span class="eq-role">大容量、外部設置</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="filter-overflow"><span class="eq-icon">&#x1F4A7;</span><div class="eq-info"><span class="eq-name">オーバーフローフィルター</span><span class="eq-role">トリクル式（ウェット・ドライ）、高い酸素供給</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="filter-sponge"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="12" rx="3"/><circle cx="10" cy="8" r=".6" fill="currentColor" stroke="none"/><circle cx="14" cy="9" r=".6" fill="currentColor" stroke="none"/><circle cx="9" cy="12" r=".6" fill="currentColor" stroke="none"/><circle cx="14" cy="13" r=".6" fill="currentColor" stroke="none"/><path d="M12 16v4"/></svg></span><div class="eq-info"><span class="eq-name">スポンジフィルター</span><span class="eq-role">生物ろ過、穏やかな水流</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="filter-internal"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="10" height="16" rx="2.5"/><path d="M11 7.5a3 3 0 1 1-2.5 4.7"/><path d="M4 7h2M4 15h2"/></svg></span><div class="eq-info"><span class="eq-name">内部フィルター</span><span class="eq-role">水中設置、コンパクト</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="filter-hang"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h20"/><rect x="13" y="7" width="8" height="12" rx="1.8"/><path d="M15.5 7V5a2 2 0 0 1 2-2h1.5"/></svg></span><div class="eq-info"><span class="eq-name">掛け式フィルター</span><span class="eq-role">物理ろ過+生物ろ過</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="filter-canister"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="12" height="9" rx="3.5"/><path d="M7 10V7a2 2 0 0 1 2-2h6"/><path d="M18 5v6"/></svg></span><div class="eq-info"><span class="eq-name">外部フィルター</span><span class="eq-role">大容量、外部設置</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="filter-overflow"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v5a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z"/><path d="M8 16v3M12 16v4M16 16v3"/></svg></span><div class="eq-info"><span class="eq-name">オーバーフローフィルター</span><span class="eq-role">トリクル式（ウェット・ドライ）、高い酸素供給</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
   <div class="eq-dropdown" data-for="filter-sponge"></div>
   <div class="eq-dropdown" data-for="filter-internal"></div>
   <div class="eq-dropdown" data-for="filter-hang"></div>
@@ -1023,45 +1029,45 @@ nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
   <div class="eq-dropdown" data-for="filter-overflow"></div>
 
   <div class="rack-cat">循環</div>
-  <div class="eq-item" data-eq="powerhead"><span class="eq-icon">&#x26A1;</span><div class="eq-info"><span class="eq-name">パワーヘッド</span><span class="eq-role">リターンポンプ／水流</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="wavemaker"><span class="eq-icon">&#x1F30A;</span><div class="eq-info"><span class="eq-name">ウェーブメーカー</span><span class="eq-role">循環、水の淀み対策</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="airpump"><span class="eq-icon">&#x1F4A8;</span><div class="eq-info"><span class="eq-name">エアポンプ</span><span class="eq-role">酸素供給+水面の攪拌</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="uv-sterilizer"><span class="eq-icon">&#x1F7E3;</span><div class="eq-info"><span class="eq-name">UV殺菌灯</span><span class="eq-role">透明度の向上+病原体の抑制</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="powerhead"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="12" r="6"/><path d="M11 8v4l3 2"/><path d="M18.5 12H21"/></svg></span><div class="eq-info"><span class="eq-name">パワーヘッド</span><span class="eq-role">リターンポンプ／水流</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="wavemaker"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8c1.5-1.5 3-1.5 4.5 0S10.5 9.5 12 8s3-1.5 4.5 0 3 1.5 4.5 0"/><path d="M3 13c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0"/><path d="M3 18c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0"/></svg></span><div class="eq-info"><span class="eq-name">ウェーブメーカー</span><span class="eq-role">循環、水の淀み対策</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="airpump"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="14" width="8" height="6" rx="1.5"/><circle cx="15" cy="16" r="1" fill="currentColor" stroke="none"/><circle cx="17.3" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="15.5" cy="7.5" r="1.5" fill="currentColor" stroke="none"/></svg></span><div class="eq-info"><span class="eq-name">エアポンプ</span><span class="eq-role">酸素供給+水面の攪拌</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="uv-sterilizer"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="10.3" y="3.5" width="3.4" height="16" rx="1.6"/><path d="M6 6.5l1.6 1.2M18 6.5l-1.6 1.2M6 17.5l1.6-1.2M18 17.5l-1.6-1.2M3.5 11.5h2.2M18.3 11.5h2.2"/></svg></span><div class="eq-info"><span class="eq-name">UV殺菌灯</span><span class="eq-role">透明度の向上+病原体の抑制</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
   <div class="eq-dropdown" data-for="powerhead"></div>
   <div class="eq-dropdown" data-for="wavemaker"></div>
   <div class="eq-dropdown" data-for="airpump"></div>
   <div class="eq-dropdown" data-for="uv-sterilizer"></div>
 
   <div class="rack-cat">環境</div>
-  <div class="eq-item" data-eq="heater"><span class="eq-icon">&#x1F321;&#xFE0F;</span><div class="eq-info"><span class="eq-name">ヒーター</span><span class="eq-role">安定した水温</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="light-basic"><span class="eq-icon">&#x1F4A1;</span><div class="eq-info"><span class="eq-name">基本LEDライト</span><span class="eq-role">昼夜のサイクル</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="light-planted"><span class="eq-icon">&#x2600;&#xFE0F;</span><div class="eq-info"><span class="eq-name">水草用ライト</span><span class="eq-role">フルスペクトラム、高出力</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="timer"><span class="eq-icon">&#x23F0;</span><div class="eq-info"><span class="eq-name">ライトタイマー</span><span class="eq-role">一定の照明時間</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="heater"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg></span><div class="eq-info"><span class="eq-name">ヒーター</span><span class="eq-role">安定した水温</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="light-basic"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span><div class="eq-info"><span class="eq-name">基本LEDライト</span><span class="eq-role">昼夜のサイクル</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="light-planted"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></span><div class="eq-info"><span class="eq-name">水草用ライト</span><span class="eq-role">フルスペクトラム、高出力</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="timer"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg></span><div class="eq-info"><span class="eq-name">ライトタイマー</span><span class="eq-role">一定の照明時間</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
   <div class="eq-dropdown" data-for="heater"></div>
   <div class="eq-dropdown" data-for="light-basic"></div>
   <div class="eq-dropdown" data-for="light-planted"></div>
   <div class="eq-dropdown" data-for="timer"></div>
 
   <div class="rack-cat">冷却</div>
-  <div class="eq-item" data-eq="chiller"><span class="eq-icon">&#x2744;&#xFE0F;</span><div class="eq-info"><span class="eq-name">アクアリウムチラー</span><span class="eq-role">精密な水温管理</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="cooling-fan"><span class="eq-icon">&#x1F4A8;</span><div class="eq-info"><span class="eq-name">冷却ファン</span><span class="eq-role">気化熱による冷却</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="chiller"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m10 20-1.25-2.5L6 18"/><path d="M10 4 8.75 6.5 6 6"/><path d="m14 20 1.25-2.5L18 18"/><path d="m14 4 1.25 2.5L18 6"/><path d="m17 21-3-6h-4"/><path d="m17 3-3 6 1.5 3"/><path d="M2 12h6.5L10 9"/><path d="m20 10-1.5 2 1.5 2"/><path d="M22 12h-6.5L14 15"/><path d="m4 10 1.5 2L4 14"/><path d="m7 21 3-6-1.5-3"/><path d="m7 3 3 6h4"/></svg></span><div class="eq-info"><span class="eq-name">アクアリウムチラー</span><span class="eq-role">精密な水温管理</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="cooling-fan"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10.827 16.379a6.082 6.082 0 0 1-8.618-7.002l5.412 1.45a6.082 6.082 0 0 1 7.002-8.618l-1.45 5.412a6.082 6.082 0 0 1 8.618 7.002l-5.412-1.45a6.082 6.082 0 0 1-7.002 8.618l1.45-5.412Z"/><path d="M12 12v.01"/></svg></span><div class="eq-info"><span class="eq-name">冷却ファン</span><span class="eq-role">気化熱による冷却</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
   <div class="eq-dropdown" data-for="chiller"></div>
   <div class="eq-dropdown" data-for="cooling-fan"></div>
 
   <div class="rack-cat">底床</div>
-  <div class="eq-item" data-eq="sub-gravel"><span class="eq-icon">&#x1F7E4;</span><div class="eq-info"><span class="eq-name">砂利</span><span class="eq-role">中性、扱いやすい</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="sub-sand"><span class="eq-icon">&#x1F7E1;</span><div class="eq-info"><span class="eq-name">砂</span><span class="eq-role">自然な、柔らかい底床</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="sub-soil"><span class="eq-icon">&#x1F7E2;</span><div class="eq-info"><span class="eq-name">アクアソイル</span><span class="eq-role">水草向けの栄養豊富な底床</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="sub-gravel"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="8" cy="15" rx="3.2" ry="2.4"/><ellipse cx="14.5" cy="16" rx="3.6" ry="2.6"/><ellipse cx="11" cy="10.5" rx="2.6" ry="2"/></svg></span><div class="eq-info"><span class="eq-name">砂利</span><span class="eq-role">中性、扱いやすい</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="sub-sand"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="6" cy="9" r=".9"/><circle cx="11" cy="7" r=".9"/><circle cx="16" cy="9.5" r=".9"/><circle cx="8.5" cy="13" r=".9"/><circle cx="14" cy="13.5" r=".9"/><circle cx="18" cy="14" r=".9"/><circle cx="6" cy="17" r=".9"/><circle cx="11" cy="18" r=".9"/><circle cx="16" cy="17.5" r=".9"/></svg></span><div class="eq-info"><span class="eq-name">砂</span><span class="eq-role">自然な、柔らかい底床</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="sub-soil"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V11"/><path d="M12 11c0-3 2-5 5-5 0 3-2 5-5 5z"/><path d="M12 14c0-2.5-1.8-4-4.5-4 0 2.5 1.8 4 4.5 4z"/><path d="M6 20h12"/></svg></span><div class="eq-info"><span class="eq-name">アクアソイル</span><span class="eq-role">水草向けの栄養豊富な底床</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
   <div class="eq-dropdown" data-for="sub-gravel"></div>
   <div class="eq-dropdown" data-for="sub-sand"></div>
   <div class="eq-dropdown" data-for="sub-soil"></div>
 
   <div class="rack-cat">添加剤</div>
-  <div class="eq-item" data-eq="conditioner"><span class="eq-icon">&#x1F4A7;</span><div class="eq-info"><span class="eq-name">水質調整剤</span><span class="eq-role">塩素を中和</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="ammonia-source"><span class="eq-icon">&#x26A1;</span><div class="eq-info"><span class="eq-name">アンモニア源</span><span class="eq-role">フィッシュレスサイクル用</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="seed"><span class="eq-icon">&#x1F9EA;</span><div class="eq-info"><span class="eq-name">バクテリアスターター</span><span class="eq-role">サイクルを早める</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="lid"><span class="eq-icon">&#x1FAA9;</span><div class="eq-info"><span class="eq-name">フタ／カバー</span><span class="eq-role">安全性+蒸発の抑制</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="ato"><span class="eq-icon">&#x1F4A7;</span><div class="eq-info"><span class="eq-name">自動足し水装置</span><span class="eq-role">蒸発した分の水を自動補給</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="conditioner"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/><path d="M9.3 14.2l1.8 1.8 3.4-3.4"/></svg></span><div class="eq-info"><span class="eq-name">水質調整剤</span><span class="eq-role">塩素を中和</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="ammonia-source"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></svg></span><div class="eq-info"><span class="eq-name">アンモニア源</span><span class="eq-role">フィッシュレスサイクル用</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="seed"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4M10.5 2v6.5l-4 9a2.2 2.2 0 0 0 2 3.1h7a2.2 2.2 0 0 0 2-3.1l-4-9V2"/><circle cx="10.5" cy="16" r=".55" fill="currentColor" stroke="none"/><circle cx="13.2" cy="17.5" r=".55" fill="currentColor" stroke="none"/><circle cx="11.5" cy="19" r=".55" fill="currentColor" stroke="none"/></svg></span><div class="eq-info"><span class="eq-name">バクテリアスターター</span><span class="eq-role">サイクルを早める</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="lid"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15c0-4.5 3.5-8 8-8s8 3.5 8 8"/><path d="M3 15h18"/><circle cx="12" cy="11" r="1" fill="currentColor" stroke="none"/></svg></span><div class="eq-info"><span class="eq-name">フタ／カバー</span><span class="eq-role">安全性+蒸発の抑制</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="ato"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 2.7 4 5 4 7.3A4 4 0 0 1 8 10.3C8 8 10 5.7 12 3z"/><path d="M6 16h12M12 16v5M10 19l2 2 2-2"/></svg></span><div class="eq-info"><span class="eq-name">自動足し水装置</span><span class="eq-role">蒸発した分の水を自動補給</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
   <div class="eq-dropdown" data-for="conditioner"></div>
   <div class="eq-dropdown" data-for="ammonia-source"></div>
   <div class="eq-dropdown" data-for="seed"></div>
@@ -1069,9 +1075,9 @@ nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
   <div class="eq-dropdown" data-for="ato"></div>
 
   <div class="rack-cat">モニタリング</div>
-  <div class="eq-item" data-eq="thermometer"><span class="eq-icon">&#x1F321;&#xFE0F;</span><div class="eq-info"><span class="eq-name">温度計</span><span class="eq-role">毎日水温を確認</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="testkit"><span class="eq-icon">&#x1F52C;</span><div class="eq-info"><span class="eq-name">水質検査キット</span><span class="eq-role">窒素循環の状態を確認</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
-  <div class="eq-item" data-eq="siphon"><span class="eq-icon">&#x1F9F9;</span><div class="eq-info"><span class="eq-name">底床クリーナー</span><span class="eq-role">水換え用の道具</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="thermometer"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15a8 8 0 0 1 16 0"/><path d="M12 15V9.5M12 15l3-2"/><circle cx="12" cy="15" r="1" fill="currentColor" stroke="none"/></svg></span><div class="eq-info"><span class="eq-name">温度計</span><span class="eq-role">毎日水温を確認</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="testkit"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v17.5A2.5 2.5 0 0 1 6.5 22A2.5 2.5 0 0 1 4 19.5V2"/><path d="M20 2v17.5a2.5 2.5 0 0 1-2.5 2.5a2.5 2.5 0 0 1-2.5-2.5V2"/><path d="M3 2h7"/><path d="M14 2h7"/><path d="M9 16H4"/><path d="M20 16h-5"/></svg></span><div class="eq-info"><span class="eq-name">水質検査キット</span><span class="eq-role">窒素循環の状態を確認</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
+  <div class="eq-item" data-eq="siphon"><span class="eq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20a5 3 0 0 1-5-3l1-4h8l1 4a5 3 0 0 1-5 3z"/><path d="M8 13V8c0-1.5 1-3 3-3s4 1 6 1"/></svg></span><div class="eq-info"><span class="eq-name">底床クリーナー</span><span class="eq-role">水換え用の道具</span><span class="eq-choice"></span></div><div class="eq-dot"></div></div>
   <div class="eq-dropdown" data-for="thermometer"></div>
   <div class="eq-dropdown" data-for="testkit"></div>
   <div class="eq-dropdown" data-for="siphon"></div>
@@ -1174,7 +1180,7 @@ nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 </div>
 
 
-<script src="/js/tank-data.js?v=52"></script>
+<script src="/js/tank-data.js?v=74"></script>
 <script>
 
 var BRAND_INFO=window.AR_BRAND_INFO;
@@ -1196,6 +1202,24 @@ function enumLabel(field,value){
   return (TB_ENUM_LABELS[field]&&TB_ENUM_LABELS[field][value])||value;
 }
 
+/* Theme-aware canvas colors — light mode gets an aqua-toned tank
+   backdrop instead of the dark "night water" gradient. Registered
+   draw calls re-fire on theme toggle so the preview updates live. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
 function drawTank(){
   if(!cvs||!ctx)return;
   szCvs();
@@ -1206,7 +1230,9 @@ function drawTank(){
   var sc=tz==='large'?.88:tz==='medium'?.82:.74;
   var tw=W*sc,th=H*.74*sc,tx=(W-tw)/2,ty=(H-th)/2+10;
   /* Background */
-  ctx.fillStyle='rgba(3,18,28,.95)';ctx.fillRect(0,0,W,H);
+  if(vcLight()){var bgg=ctx.createLinearGradient(0,0,0,H);bgg.addColorStop(0,'rgba(230,242,244,.97)');bgg.addColorStop(1,'rgba(210,233,238,.98)');ctx.fillStyle=bgg;}
+  else{ctx.fillStyle='rgba(3,18,28,.95)';}
+  ctx.fillRect(0,0,W,H);
   var fs=active['filter-sponge'],fh=active['filter-hang'],fc=active['filter-canister'];
   var fi=active['filter-internal'],fo=active['filter-overflow'],ph=active['powerhead'];
   var f=fs||fh||fc||fi||fo;
@@ -1220,9 +1246,15 @@ function drawTank(){
   /* Water — always show, clarity increases with filter */
   var cl=f?(.72+(h?.12:0)+(sg?.06:0)):.28;
   var wg=ctx.createLinearGradient(tx,ty,tx,ty+th);
-  wg.addColorStop(0,'rgba(8,62,95,'+(cl*.72).toFixed(2)+')');
-  wg.addColorStop(.5,'rgba(5,38,60,'+(cl*.85).toFixed(2)+')');
-  wg.addColorStop(1,'rgba(3,20,32,'+(cl*.9).toFixed(2)+')');
+  if(vcLight()){
+    wg.addColorStop(0,'rgba(150,205,222,'+(cl*.55).toFixed(2)+')');
+    wg.addColorStop(.5,'rgba(115,182,205,'+(cl*.62).toFixed(2)+')');
+    wg.addColorStop(1,'rgba(90,160,188,'+(cl*.68).toFixed(2)+')');
+  } else {
+    wg.addColorStop(0,'rgba(8,62,95,'+(cl*.72).toFixed(2)+')');
+    wg.addColorStop(.5,'rgba(5,38,60,'+(cl*.85).toFixed(2)+')');
+    wg.addColorStop(1,'rgba(3,20,32,'+(cl*.9).toFixed(2)+')');
+  }
   ctx.fillStyle=wg;rr(tx,ty,tw,th);ctx.fill();
   /* Light beam */
   if(lb||lp){
@@ -1495,13 +1527,13 @@ function drawTank(){
   /* Tank frame on top */
   ctx.strokeStyle='rgba(61,214,232,.32)';ctx.lineWidth=1.5;rr(tx,ty,tw,th);ctx.stroke();
   var slbl=tankLiters+'L';
-  ctx.font='500 9px Work Sans,sans-serif';ctx.fillStyle='rgba(255,255,255,.18)';ctx.textAlign='right';
+  ctx.font='500 9px Work Sans,sans-serif';ctx.fillStyle=vcInk(.18);ctx.textAlign='right';
   ctx.fillText(slbl,tx+tw-5,ty+th-5);ctx.textAlign='left';
   /* Filter hint when no filter selected */
   if(!f){
     ctx.save();
     ctx.font='400 '+(W>400?'11':'9')+'px Work Sans,sans-serif';
-    ctx.fillStyle='rgba(235,240,236,.38)';ctx.textAlign='center';
+    ctx.fillStyle=vcInk(.38);ctx.textAlign='center';
     ctx.fillText('フィルターを追加して、生物学的なリズムを整えましょう',W/2,ty+th/2);
     ctx.restore();
   }
@@ -1560,7 +1592,7 @@ function drawTank(){
     }
     if(stockKeys.length===0&&plantKeys.length===0&&hardKeys.length===0){
       ctx.save();ctx.font='400 '+(W>400?'11':'9')+'px Work Sans,sans-serif';
-      ctx.fillStyle='rgba(255,255,255,.22)';ctx.textAlign='center';
+      ctx.fillStyle=vcInk(.22);ctx.textAlign='center';
       ctx.fillText('下記から種を選んで、水槽に生体を追加しましょう',W/2,ty+th*.5);ctx.restore();
     }
   }
@@ -1715,6 +1747,25 @@ window.addEventListener('load',function(){
     if(ro){ro.classList.remove('tb-rpt-on');ro.scrollTop=0;}
   });
 
+  /* ── Back-button intercept (report overlay) ──
+     Without this, Android back exits the whole Tools section instead
+     of returning to the builder from the report screen. */
+  var rptOverlay=document.getElementById('report-overlay');
+  if(rptOverlay){
+    var rptInHistory=false;
+    new MutationObserver(function(){
+      var open=rptOverlay.classList.contains('tb-rpt-on');
+      if(open&&!rptInHistory){rptInHistory=true;history.pushState({rptOverlay:true},'');}
+      else if(!open&&rptInHistory){history.back();}
+    }).observe(rptOverlay,{attributes:true,attributeFilter:['class']});
+    window.addEventListener('popstate',function(){
+      if(!rptInHistory)return;
+      rptInHistory=false;
+      window.__rhSuppressSpaNav=true;
+      if(rptOverlay.classList.contains('tb-rpt-on')){rptOverlay.classList.remove('tb-rpt-on');rptOverlay.scrollTop=0;}
+    },true);
+  }
+
   /* Brand info overlay close on backdrop */
   var biOverlay=document.getElementById('brand-info-overlay');
   if(biOverlay)biOverlay.addEventListener('click',function(e){
@@ -1731,6 +1782,28 @@ window.addEventListener('load',function(){
       if(_biCurrentEq){var eq2=_biCurrentEq;_biCurrentEq=null;setTimeout(function(){openDropdown(eq2);},80);}
     }
   });
+
+  /* ── Back-button intercept (About overlay) ──
+     Without this, Android back (hardware/gesture) exits the whole
+     Tools section instead of just closing the species/equipment
+     About panel — same pattern as js/rhyssa-fab-ext.js / Settings. */
+  if(biOverlay){
+    var biInHistory=false;
+    new MutationObserver(function(){
+      var open=biOverlay.classList.contains('open');
+      if(open&&!biInHistory){biInHistory=true;history.pushState({biOverlay:true},'');}
+      else if(!open&&biInHistory){history.back();}
+    }).observe(biOverlay,{attributes:true,attributeFilter:['class']});
+    window.addEventListener('popstate',function(){
+      if(!biInHistory)return;
+      biInHistory=false;
+      window.__rhSuppressSpaNav=true;
+      if(biOverlay.classList.contains('open')){
+        biOverlay.classList.remove('open');
+        if(_biCurrentEq){var eq3=_biCurrentEq;_biCurrentEq=null;setTimeout(function(){openDropdown(eq3);},80);}
+      }
+    },true);
+  }
 
   window.addEventListener('click',function(){closeAllDropdowns();});
   var dqBackdrop=document.getElementById('eq-dd-backdrop');
@@ -1792,6 +1865,7 @@ function checkAnimNeeded(){
   if(needs&&!animFrame){(function loop(){drawTank();animFrame=requestAnimationFrame(loop);})();}
   else if(!needs){cancelAnimationFrame(animFrame);animFrame=null;scheduleRedraw();}
 }
+vcRedraws.tank = scheduleRedraw;
 
 /* ═══ RHYTHMS ═══ */
 function calcRhythms(){
@@ -2157,14 +2231,35 @@ function showSpeciesInfo(k,item,cat){
 }
 
 /* ═══ ECOSYSTEM CARDS ═══ */
+function ph2TabDatasets(tab){
+  if(tab==='plants')return [ECOSYSTEM.PLANTS];
+  if(tab==='hardscape')return [ECOSYSTEM.HARDSCAPE];
+  return [ECOSYSTEM.FISH,ECOSYSTEM.INVERTEBRATES];
+}
+function styleHasMatch(styleKey,tab){
+  var sets=ph2TabDatasets(tab);
+  for(var i=0;i<sets.length;i++){
+    var obj=sets[i];
+    for(var k in obj){
+      if(obj[k].setup&&obj[k].setup.indexOf(styleKey)>=0)return true;
+    }
+  }
+  return false;
+}
 function buildChips(){
-  var cont=document.getElementById('ph2-chips');if(!cont)return;cont.innerHTML='';
+  var cont=document.getElementById('ph2-chips');if(!cont)return;
+  var STYLES=[{k:'community',l:'コミュニティ'},{k:'planted',l:'プランテッド'},{k:'shrimp',l:'エビ'},
+   {k:'biotope',l:'ビオトープ'},{k:'coldwater',l:'低水温'},{k:'species',l:'種水槽'},
+   {k:'nano',l:'ナノ'},{k:'blackwater',l:'ブラックウォーター'}];
+  /* Only show chips with at least one match on the active tab — avoids
+     dead-end "0 entries" clicks and self-trims clutter per tab. */
+  var relevant=STYLES.filter(function(c){return styleHasMatch(c.k,_currentTab);});
+  if(ph2Style&&!relevant.some(function(c){return c.k===ph2Style;}))ph2Style=null;
+  cont.innerHTML='';
   var all=document.createElement('button');all.className='ph2-chip'+(ph2Style===null?' active':'');
   all.textContent='すべて';all.onclick=function(){ph2Style=null;buildChips();buildAllGrids();};
   cont.appendChild(all);
-  [{k:'community',l:'コミュニティ'},{k:'planted',l:'プランテッド'},{k:'shrimp',l:'エビ'},
-   {k:'biotope',l:'ビオトープ'},{k:'coldwater',l:'低水温'},{k:'species',l:'種水槽'},
-   {k:'nano',l:'ナノ'},{k:'blackwater',l:'ブラックウォーター'}].forEach(function(c){
+  relevant.forEach(function(c){
     var chip=document.createElement('button');
     chip.className='ph2-chip'+(ph2Style===c.k?' active':'');
     chip.textContent=c.l;
@@ -3181,7 +3276,7 @@ function _noBiImg(){
   </div>
 </div>
 
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -3207,7 +3302,7 @@ if ('serviceWorker' in navigator) {
     <iframe id="kofi-embed-iframe" class="kofi-sheet-frame" title="Support Aquatic Rhythm on Ko-fi"></iframe>
   </div>
 </div>
-<script src="/js/kofi-sheet.js?v=52" defer></script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/kofi-sheet.js?v=74" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

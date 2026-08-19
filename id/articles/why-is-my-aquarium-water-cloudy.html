@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kenapa Air Akuarium Saya Keruh? — Aquatic Rhythm</title>
 <meta name="description" content="Air keruh di akuarium adalah hal yang sangat umum — dan hampir tidak pernah berarti ada yang salah. Pelajari cara membaca apa yang sebenarnya sedang dilakukan tank Anda.">
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -264,12 +264,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">Baca jenisnya dulu<br><em>sebelum bertindak.</em></h2>
     <div class="mod-body">
       <p>Respons paling umum terhadap air keruh adalah langsung ganti air besar-besaran. Ini terasa produktif — tapi untuk bacterial bloom, ini justru sering memperpanjang kekeruhan dengan membuang bakteri sebelum mereka sempat menetap dan membangun diri. Sistem terganggu lagi, bloom mulai ulang, dan pemelihara semakin cemas.</p>
-      <p>ARA menyebut ini sebagai intervention trap: ketika perawatan justru menjadi hambatan. Naluri untuk bertindak bukan salah — itu wujud kepedulian. Tapi dalam kebanyakan situasi kekeruhan, respons yang paling tepat adalah identifikasi jenisnya terlebih dahulu, buat satu penyesuaian kecil saja, lalu amati selama beberapa hari sebelum melakukan hal lain.</p>
+      <p>Ini adalah kasus di mana kepedulian itu sendiri justru menjadi hambatan. Naluri untuk bertindak bukan salah — itu wujud kepedulian. Tapi dalam kebanyakan situasi kekeruhan, respons yang paling tepat adalah identifikasi jenisnya terlebih dahulu, buat satu penyesuaian kecil saja, lalu amati selama beberapa hari sebelum melakukan hal lain.</p>
     </div>
 
     <div class="hn">
       <span class="hn-label">Prinsip ARA</span>
-      <p>Observation before correction adalah salah satu dari lima prinsip inti ARA. Tidak setiap perubahan yang terlihat adalah sinyal untuk intervensi. Beberapa adalah transisi, beberapa adalah adaptasi, dan beberapa perlu diamati sebelum bisa dibaca dengan benar. Air keruh biasanya termasuk dalam kategori ini.</p>
+      <p>Observation before correction adalah salah satu dari empat prinsip inti ARA. Tidak setiap perubahan yang terlihat adalah sinyal untuk intervensi. Beberapa adalah transisi, beberapa adalah adaptasi, dan beberapa perlu diamati sebelum bisa dibaca dengan benar. Air keruh biasanya termasuk dalam kategori ini.</p>
     </div>
 
     <div class="hn">
@@ -451,8 +451,8 @@ function updateDots() {
     <p class="rh-sheet-note">AI bisa saja salah — untuk keadaan darurat pada ikan, konsultasikan dengan spesialis</p>
   </div>
 </div>
-<script src="/js/content-trust.js?v=52"></script>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/content-trust.js?v=74"></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -460,6 +460,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

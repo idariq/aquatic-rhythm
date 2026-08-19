@@ -6,22 +6,22 @@
   },
   "head": {
     "title": "Pemikiran Keselarasan — Kerangka ARA · Aquatic Rhythm",
-    "description": "Cara bertindak selaras — lima prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya.",
+    "description": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, membaca lewat ritme, dan jalur-jalurnya.",
     "ogTitle": "Pemikiran Keselarasan — Kerangka ARA · Aquatic Rhythm",
-    "ogDescription": "Cara bertindak selaras — lima prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya.",
+    "ogDescription": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, membaca lewat ritme, dan jalur-jalurnya.",
     "twitterTitle": "Pemikiran Keselarasan — Kerangka ARA · Aquatic Rhythm",
-    "twitterDescription": "Cara bertindak selaras — lima prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya.",
+    "twitterDescription": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, membaca lewat ritme, dan jalur-jalurnya.",
     "ldHeadline": "Pemikiran Keselarasan — Kerangka ARA",
-    "ldDescription": "Cara bertindak selaras — lima prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya."
+    "ldDescription": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, membaca lewat ritme, dan jalur-jalurnya."
   },
   "header": {
     "eyebrow": "04 / 06 · Kerangka ARA",
     "titleHtml": "Pemikiran Keselarasan",
-    "desc": "Cara bertindak selaras — lima prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya."
+    "desc": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, membaca lewat ritme, dan jalur-jalurnya."
   },
   "modules": [
     {
-      "pos": "1 / 8",
+      "pos": "1 / 7",
       "tag": "Keselarasan vs Kendali",
       "titleHtml": "Keselarasan <em>vs Kendali</em>",
       "blocks": [
@@ -38,11 +38,18 @@
         {
           "type": "pq",
           "text": "\"Langkah yang selaras hampir selalu merupakan langkah terkecil yang mengurangi gesekan tanpa mengganggu apa yang sedang mengendap.\""
+        },
+        {
+          "type": "hn",
+          "label": "ARA · Pengecualian Darurat",
+          "paragraphs": [
+            "Jendela observasi yang dijelaskan di seluruh kerangka ini berlaku untuk sinyal perkembangan dan kronis — bukan untuk risiko kesejahteraan akut. Sesak napas, dugaan keracunan, luka parah, dan kemerosotan yang cepat menuntut tindakan segera, bukan menahan diri. Pengecualian ini berada di atas setiap prinsip dalam artikel ini, bukan di bawah salah satunya."
+          ]
         }
       ]
     },
     {
-      "pos": "2 / 8",
+      "pos": "2 / 7",
       "tag": "Timing sebelum Teknik",
       "titleHtml": "Timing <em>sebelum Teknik</em>",
       "blocks": [
@@ -98,7 +105,7 @@
       ]
     },
     {
-      "pos": "3 / 8",
+      "pos": "3 / 7",
       "tag": "Kapasitas sebelum Ambisi",
       "titleHtml": "Kapasitas <em>sebelum Ambisi</em>",
       "blocks": [
@@ -109,7 +116,7 @@
             "Kapasitas sebelum Ambisi berlaku pada empat dimensi: <strong>(1) Kapasitas pemelihara</strong> — waktu, perhatian, konsistensi, ruang emosional. <strong>(2) Kapasitas sistem</strong> — bioload yang sanggup diolah biologinya, fase yang sedang dijalani tank, batas filtrasi dan oksigenasi. <strong>(3) Kapasitas spesies</strong> — tuntutan ekologis hewan-hewannya: rentang suhu, kebutuhan sosial, kepekaan terhadap pergeseran parameter. <strong>(4) Kapasitas infrastruktur teknis</strong> — sejauh mana otomatisasi, pemantauan, dan desain sistem yang cermat sanggup menjalankan tugas rutin secara andal tanpa campur tangan langsung pemelihara. Ketika keempatnya berada dalam keselarasan yang jujur, tank berjalan baik. Ketika ambisi melampaui salah satu dari keempatnya, sistem mulai bergeser.",
             "Dimensi keempat penting karena ia mengubah cara prinsip ini diterapkan. Kapasitas sebelum Ambisi tidak berarti planted tank high-tech menuntut lebih banyak dari pemelihara dibanding setup low-tech — artinya keduanya menuntut jenis kapasitas yang <em>berbeda</em>. Kontroler CO2 bukanlah pemelihara yang menyetel CO2 setiap hari — itu sistem yang menjaga CO2. Pompa dosing bukanlah pemelihara yang menambahkan nutrisi — itu sistem yang menambahkan nutrisi pada jadwal yang terkalibrasi. Ketika infrastruktur teknis dipahami dengan benar, dipasang dengan tepat, dan dirawat secara aktif, ia sungguh-sungguh memperluas apa yang sanggup dipertahankan seorang pemelihara. Pemelihara dengan kefasihan teknis yang nyata, yang menjalankan sistem CO2 bertekanan dengan regimen nutrisi otomatis, tidak sedang melampaui batasnya. Ia sedang bekerja dalam keselarasan yang jujur dengan kapasitas yang memang telah ia bangun.",
             "Ketidakselarasan dengan prinsip ini terjadi ketika kesenjangan antara ambisi dan kapasitas dianggap tidak ada, alih-alih benar-benar ditutup: otomatisasi yang dipasang tetapi tidak dipahami, kerumitan teknis yang ditambahkan tanpa kefasihan untuk menanganinya ketika bermasalah, atau peralatan yang menggantikan observasi alih-alih menopangnya. Pertanyaan yang relevan bukanlah gaya setup-nya. Pertanyaannya adalah apakah kapasitas yang sebenarnya — pada keempat dimensi — secara jujur menutupi apa yang dituntut sistem.",
-            "Konsep yang berkaitan adalah <strong>perawatan minimum yang layak</strong> (minimum viable care) — batas bawah yang jujur tentang apa yang dituntut oleh tank tertentu dibandingkan dengan apa yang sanggup disediakan seorang pemelihara secara andal, termasuk melalui infrastruktur teknisnya. Pemelihara yang mengetahui batas perawatan minimum itu dan telah membangun sistem yang beroperasi di atasnya berada dalam posisi yang lebih baik daripada pemelihara yang membangun sistem yang menuntut lebih dari yang sanggup ia pertahankan."
+            "Batas bawah yang jujur itu — apa yang dituntut oleh tank tertentu ini dibandingkan dengan apa yang sanggup disediakan pemelihara ini secara andal, termasuk melalui infrastruktur teknisnya — layak dikenali secara eksplisit untuk diri sendiri. Pemelihara yang mengetahuinya, dan telah membangun sistem yang beroperasi di atasnya, berada dalam posisi yang lebih baik daripada pemelihara yang membangun sistem yang menuntut lebih dari yang sanggup ia pertahankan."
           ]
         },
         {
@@ -122,15 +129,15 @@
       ]
     },
     {
-      "pos": "4 / 8",
-      "tag": "Ritme sebelum Intensitas",
-      "titleHtml": "Ritme <em>sebelum Intensitas</em>",
+      "pos": "4 / 7",
+      "tag": "Konsistensi sebelum Intensitas",
+      "titleHtml": "Konsistensi <em>sebelum Intensitas</em>",
       "blocks": [
         {
           "type": "body",
           "paragraphs": [
             "Konsistensi sepanjang waktu menghasilkan hasil yang lebih baik daripada usaha intensif yang diterapkan sesekali. Pemelihara yang ganti air 20% setiap minggu menghasilkan tank yang lebih stabil daripada pemelihara yang ganti air 50% sebulan sekali, sekalipun total air yang diganti sama banyaknya. Alasannya bersifat biologis: komunitas mikroba yang mengolah limbah, hewan yang beradaptasi dengan kimia air, tanaman yang memadukan cahaya ke dalam siklus biologisnya — semua proses ini berjalan tanpa henti, dan semuanya merespons apa yang datang secara andal, bukan apa yang datang sesekali dalam volume besar. Intensitas yang episodik bukan pengganti ritme. Ia adalah pola gangguan yang harus dipulihkan sistem setiap kali terjadi.",
-            "Ritme sebelum Intensitas berarti: rancanglah perawatan Anda agar bisa dipertahankan, bukan untuk sesi-sesi ketika Anda kebetulan punya waktu. Ritme yang benar adalah ritme yang sanggup Anda jalankan ketika hidup sedang berat — ketika Anda lelah, ketika Anda sibuk, ketika Anda sebenarnya sedang tidak ingin. Ritme itu — sederhana, konsisten, berkelanjutan — memberi lebih banyak bagi sebuah tank daripada intervensi intensif mana pun.",
+            "Konsistensi sebelum Intensitas berarti: rancanglah perawatan Anda agar bisa dipertahankan, bukan untuk sesi-sesi ketika Anda kebetulan punya waktu. Ritme yang benar adalah ritme yang sanggup Anda jalankan ketika hidup sedang berat — ketika Anda lelah, ketika Anda sibuk, ketika Anda sebenarnya sedang tidak ingin. Ritme itu — sederhana, konsisten, berkelanjutan — memberi lebih banyak bagi sebuah tank daripada intervensi intensif mana pun.",
             "Satu catatan tentang konteks: prinsip ini berlaku untuk perawatan berkelanjutan demi kestabilan sistem hidup. Ia tidak berlaku ketika intensitas memang menjadi tujuannya. Aquascape kompetisi yang dijaga pada puncaknya untuk jendela penjurian, regimen pengondisian pembiakan yang sengaja memberi asupan nutrisi intensif sebelum pemijahan, aquascaper yang sedang melewati fase pertumbuhan bertempo tinggi — semua itu tidak bertentangan dengan ARA. Intensitas adalah pilihan yang tepat ketika ia merupakan keputusan pemelihara yang berpijak pada keadaan sistem dan tujuan yang jelas, bukan pola kelalaian yang diselingi ledakan usaha yang bersifat kompensasi. Sasaran prinsip ini adalah pemelihara yang mengira usaha ahli yang sesekali itu sudah merupakan sebuah ritme. Ia bukan klaim bahwa intensitas pada dirinya sendiri keliru."
           ]
         },
@@ -141,7 +148,7 @@
       ]
     },
     {
-      "pos": "5 / 8",
+      "pos": "5 / 7",
       "tag": "Observasi sebelum Koreksi",
       "titleHtml": "Observasi <em>sebelum Koreksi</em>",
       "blocks": [
@@ -151,50 +158,29 @@
             "Membaca apa yang sebenarnya sedang terjadi mendahului respons apa pun. Bertindak atas pembacaan yang keliru — atau bertindak sebelum polanya jelas — sering menghasilkan gangguan yang lebih besar daripada yang pantas ditimbulkan oleh sinyal aslinya.",
             "Membaca menuntut adanya baseline. Jika Anda tidak tahu seperti apa tank Anda ketika sedang baik-baik saja, Anda tidak bisa membaca seperti apa ia ketika sesuatu mulai bergeser. Bangunlah baseline untuk tank Anda sendiri: baseline betta Anda, lintasan nitrat yang khas di tank Anda, warna normal substrat Anda setelah seminggu.",
             "Ketika sesuatu berubah dari baseline itu, Anda mendapat sinyal. Sinyal itu adalah awal dari periode pengamatan — bukan awal dari intervensi. Dalam kebanyakan kasus, jendela pengamatan 24–48 jam sebelum bertindak akan memperlihatkan apakah sinyal tersebut sekadar variasi sesaat atau pergeseran yang sungguhan.",
+            "Observasi tidak selesai begitu sebuah sinyal dikonfirmasi — ia berlanjut hingga menelusuri di mana sinyal itu bermula. Dalam sistem akuatik tertutup, tempat sebuah masalah menjadi terlihat sering bukanlah tempat masalah itu bermula. Ikan yang menunjukkan perilaku stres mungkin sedang merespons pergeseran kimia air yang bermula dari perubahan pola pemberian pakan dua minggu sebelumnya; alga yang muncul di kaca mungkin merupakan ekspresi hilir dari beban hewan yang diam-diam melampaui apa yang sanggup diolah komunitas biologis. Gejala dan asalnya sering berada di ritme yang berbeda, dan koreksi yang diarahkan pada gejala alih-alih pada asalnya menghasilkan perbaikan sementara yang tidak bertahan — gejala yang sama akan kembali, sering dalam bentuk yang sedikit berbeda, karena penyebabnya tidak pernah disentuh.",
+            "Menelusuri asal bermula dari lima ritme. Tanyakan: ritme mana yang paling mungkin membawa asalnya? Gejala menunjukkan tempat masalah itu menjadi terlihat; pengamatan lintas ritme dan sepanjang waktu menunjukkan tempat ia bermula.",
             "Observasi sebelum Koreksi juga membawa satu konsekuensi lanjutan: ketika harus memilih antara ritme yang baik dan konsisten dengan ritme yang sesekali sempurna, kestabilanlah yang menang. Konsistensi menciptakan kondisi ekologis tempat kedalaman tumbuh; pengejaran kesempurnaan sering justru memasukkan gangguan yang sedang berusaha ia hilangkan."
-          ]
-        },
-        {
-          "type": "hn",
-          "label": "ARA · Lima Ritme",
-          "paragraphs": [
-            "Water Rhythm (kimia air, suhu, gas terlarut), Biological Rhythm (siklus nitrogen, komunitas mikroba, fase), Environmental Rhythm (cahaya, aliran, hardscape, tanaman), Livestock Rhythm (perilaku, warna, nafsu makan, dinamika sosial), Keeper Rhythm (perhatian, waktu, kapasitas emosional, konsistensi). Setiap ritme bisa dibaca. Bersama-sama, semuanya memberi gambaran utuh tentang keadaan tank yang tidak bisa diberikan oleh satu tes mana pun."
-          ]
-        }
-      ]
-    },
-    {
-      "pos": "6 / 8",
-      "tag": "Asal sebelum Ekspresi",
-      "titleHtml": "Asal <em>sebelum Ekspresi</em>",
-      "blocks": [
-        {
-          "type": "body",
-          "paragraphs": [
-            "Dalam sistem akuatik tertutup, tempat sebuah masalah menjadi terlihat sering bukanlah tempat masalah itu bermula. Ikan yang menunjukkan perilaku stres mungkin sedang merespons pergeseran kimia air yang bermula dari perubahan pola pemberian pakan dua minggu sebelumnya. Alga yang muncul di kaca mungkin merupakan ekspresi hilir dari beban hewan yang diam-diam melampaui apa yang sanggup diolah komunitas biologis. Gejala dan asalnya berada di domain yang berbeda.",
-            "Prinsip kelima menyatakan bahwa tindakan korektif seharusnya diarahkan pada asal, bukan pada ekspresi. Mengobati ekspresi — gejala kasatmata yang ada di depan Anda — tanpa menelusuri kembali ke asalnya menghasilkan perbaikan sementara yang tidak bertahan. Gejala yang sama akan kembali, sering dalam bentuk yang sedikit berbeda, karena penyebabnya tidak pernah disentuh.",
-            "Menelusuri asal bermula dari tujuh domain dan lima ritme. Tanyakan: di domain mana hal ini paling mungkin bermula? Ritme mana yang kemungkinan menjadi pembawanya? Gejala memberi Anda domain ekspresi. Pengamatan lintas domain dan sepanjang waktu memberi Anda domain asalnya.",
-            "Prinsip inilah yang memberi keempat prinsip sebelumnya kekuatan penuhnya. Mengamati sebelum mengoreksi hanya efektif bila Anda membaca ke arah sasaran yang tepat. Memilih waktu yang tepat hanya berarti bila Anda telah mengenali dengan benar terhadap apa sebenarnya respons Anda diatur waktunya."
           ]
         },
         {
           "type": "hn",
           "label": "ARA · Tentang Menelusuri ke Belakang",
           "paragraphs": [
-            "Domain tempat sebuah masalah menjadi terlihat adalah domain ekspresi. Domain tempat ia bermula adalah domain asal. Mengobati domain ekspresi tanpa menemukan domain asalnya menghasilkan sesuatu yang paling baik pun hanya bersifat sementara, dan paling buruk justru membingungkan. ARA memandang hal ini sebagai pola paling umum dalam kesalahan pemelihara yang terus berulang."
+            "Ritme tempat sebuah masalah menjadi terlihat tidak selalu sama dengan ritme tempat ia bermula. Diagnosis yang efektif berarti membaca mundur dari gejala yang terlihat untuk mengenali ritme asalnya, bukan memperlakukan tempat ia menjadi terlihat sebagai penyebabnya. ARA memandang hal ini sebagai pola paling umum dalam kesalahan pemelihara yang terus berulang."
           ]
         }
       ]
     },
     {
-      "pos": "7 / 8",
-      "tag": "Tujuh Domain",
-      "titleHtml": "Tempat <em>Keselarasan Terjadi</em>",
+      "pos": "6 / 7",
+      "tag": "Membaca Lewat Ritme",
+      "titleHtml": "Membaca <em>Lewat Ritme</em>",
       "blocks": [
         {
           "type": "body",
           "paragraphs": [
-            "ARA mengenali tujuh domain tempat keselarasan — atau ketidakselarasan — mewujud dalam akuarium yang sedang berjalan. Membaca setiap domain secara terpisah memberi gambaran yang lebih utuh daripada pengukuran tunggal mana pun."
+            "ARA tidak menggunakan seperangkat kategori terpisah untuk mendiagnosis tank. Lima ritme itu sendirilah pegangan diagnostiknya: membaca sebuah sistem berarti bertanya, untuk setiap ritme, apakah ia berada dalam hubungan yang produktif dengan yang lain atau mulai menariknya ke arah berlawanan."
           ]
         },
         {
@@ -202,52 +188,44 @@
           "cells": [
             {
               "name": "Air",
-              "q": "Apakah air bergerak ke arah yang stabil, atau ada sesuatu yang bergeser melampaui rentang yang diharapkan?"
+              "q": "Apakah kimia air cenderung stabil, atau bergeser?"
             },
             {
-              "name": "Beban Biologis",
-              "q": "Apakah tingkat stocking masih berada dalam batas yang sanggup diolah komunitas biologis, mengingat fase tank ini saat ini?"
-            },
-            {
-              "name": "Perilaku Hewan",
-              "q": "Apakah hewan-hewan di tank ini menunjukkan perilaku yang menandakan kenyamanan — aktif, makan seperti biasa, menempati ruangnya tanpa tanda stres kronis?"
-            },
-            {
-              "name": "Nutrisi &amp; Kimia",
-              "q": "Apakah siklus nutrisi (masukan pakan, pengolahan limbah, ritme ganti air) seimbang dengan beban biologisnya?"
+              "name": "Biologis",
+              "q": "Apakah tingkat stocking, pemberian pakan, dan limbah masih berada dalam batas yang sanggup diolah komunitas mikroba pada fase tank ini saat ini?"
             },
             {
               "name": "Lingkungan",
-              "q": "Apakah struktur fisiknya — cahaya, aliran, hardscape, penanaman — menopang kebutuhan perilaku dan teritorial hewan?"
+              "q": "Apakah cahaya, aliran, hardscape, dan tata letak menopang kebutuhan hewan — dan apakah peralatan berfungsi andal serta sesuai skala tank, tanpa menganggap low-tech atau high-tech secara inheren lebih unggul?"
             },
             {
-              "name": "Teknologi",
-              "q": "Apakah peralatan (filtrasi, pemanas, pencahayaan) bekerja sesuai spesifikasinya dan sesuai dengan tuntutan tank saat ini?"
+              "name": "Hewan Peliharaan",
+              "q": "Apakah perilakunya menandakan kenyamanan?"
             },
             {
-              "name": "Ritme Manusia",
-              "q": "Apakah ritme perawatan pemelihara yang sebenarnya — waktu, perhatian, konsistensi — selaras dengan apa yang dibutuhkan tank ini sekarang?"
+              "name": "Pemelihara",
+              "q": "Apakah pola perawatan, perhatian, dan pengendalian diri pemelihara yang sebenarnya sesuai dengan apa yang dibutuhkan sistem saat ini?"
             }
           ]
         },
         {
           "type": "body",
           "paragraphs": [
-            "Ketika membaca lintas domain, ARA menyarankan agar Anda mengenali <em>domain asal</em> — tempat ketidakselarasan bermula — alih-alih <em>domain ekspresi</em> tempat ia menjadi terlihat. Mengobati ekspresi tanpa menyentuh asalnya menghasilkan perbaikan sementara yang tidak bertahan."
+            "Ketika satu ritme cukup besar untuk memuat lebih dari satu pembacaan yang berguna, ia bisa dibaca lewat garis internalnya tanpa menjadi kategori terpisah. Water Rhythm adalah contoh paling jelas: layak dibedakan antara keadaan kimia air yang terekspresikan dengan cara keadaan itu dihasilkan — bagaimana masukan nutrisi, pengolahan limbah, dan ritme ganti air bergabung menghasilkannya. Sebuah tank bisa lulus tes sementara proses yang menghasilkannya sudah bergeser."
           ]
         }
       ]
     },
     {
-      "pos": "8 / 8",
+      "pos": "7 / 7",
       "tag": "Jalur Keselarasan",
       "titleHtml": "Membaca <em>Pola, bukan Gejala</em>",
       "blocks": [
         {
           "type": "body",
           "paragraphs": [
-            "Jalur keselarasan adalah rute yang dilalui sebuah ketidakselarasan di satu domain untuk merambat melalui sistem hingga akhirnya menjadi terlihat sebagai gejala di domain lain. Memahami jalur memungkinkan Anda membaca ke arah mana sebuah masalah menunjuk — bukan sekadar seperti apa masalah itu terlihat.",
-            "Ikan yang megap-megap di permukaan adalah gejala. Jalur yang menghasilkannya bisa berupa oksigen terlarut yang rendah, amonia yang tinggi, penyakit insang, atau penurunan suhu yang mendadak. Gejalanya sama; jalurnya berbeda-beda. ARA mendorong pemelihara untuk membaca mundur dari sebuah gejala: domain mana yang paling mungkin menjadi asalnya?"
+            "Jalur keselarasan adalah rute yang dilalui sebuah ketidakselarasan di satu ritme untuk merambat melalui sistem hingga akhirnya menjadi terlihat sebagai gejala di ritme lain. Memahami jalur memungkinkan Anda membaca ke arah mana sebuah masalah menunjuk — bukan sekadar seperti apa masalah itu terlihat.",
+            "Ikan yang megap-megap di permukaan adalah gejala. Jalur yang menghasilkannya bisa berupa oksigen terlarut yang rendah, amonia yang tinggi, penyakit insang, atau penurunan suhu yang mendadak. Gejalanya sama; jalurnya berbeda-beda. ARA mendorong pemelihara untuk membaca mundur dari sebuah gejala: ritme mana yang paling mungkin menjadi asalnya?"
           ]
         },
         {
@@ -260,7 +238,7 @@
         {
           "type": "body",
           "paragraphs": [
-            "ARA memetakan empat jalur yang berulang dalam beragam situasi akuarium:",
+            "Beberapa jalur cukup sering berulang di tank sungguhan hingga layak dinamai. Ini disajikan sebagai contoh kerja untuk membaca mundur dari gejala ke asalnya — bukan sebagai daftar yang tetap atau lengkap:",
             "<strong>Keeper Rhythm → Kualitas Air → Perilaku Hewan.</strong> Jalur pergeseran lambat yang paling umum. Perubahan halus pada rutinitas pemelihara menumpuk menjadi pergeseran kimia air, yang lalu mewujud sebagai perubahan perilaku pada hewan.",
             "<strong>Ketidakselarasan Lingkungan → Stres Kronis → Kerentanan terhadap Penyakit.</strong> Lingkungan fisik menciptakan stres tingkat rendah yang menetap. Fungsi imun terkuras selama berminggu-minggu atau berbulan-bulan. Wabah penyakit tampak datang tanpa peringatan, padahal didahului jalur akumulasi stres yang panjang.",
             "<strong>Kelebihan Beban Biologis → Pergeseran Kimia Air → Hilangnya Ketahanan.</strong> Tank yang menanggung beban biologis lebih besar daripada yang sanggup diolah oleh fasenya saat ini mengalami pergeseran kimia air bertahap yang lama-lama memperkuat dirinya sendiri.",

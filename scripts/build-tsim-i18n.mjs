@@ -333,20 +333,21 @@ function patchAppChrome(h, t, lang) {
   h = subOnce(h, '<span class="ib-lbl">What is happening</span>', `<span class="ib-lbl">${a.whatsHappening}</span>`, 'app.whatsHappening');
   h = subOnce(h, '<span class="ib-txt" id="ib-txt">Your tank is ready. The cycle will begin when you add an ammonia source.</span>',
     `<span class="ib-txt" id="ib-txt">${a.insightDefault}</span>`, 'app.insightDefault');
+  h = subOnce(h, '<span class="ml-lbl">Recent activity</span>', `<span class="ml-lbl">${a.recentActivity}</span>`, 'app.recentActivity');
   h = subAll(h, '<span class="ld">Day 1</span><span>Tank set up. Ready to begin cycling.</span>',
     `<span class="ld">${a.day1}</span><span>${a.logDefault}</span>`, 2, 'app.logDefault');
   h = subOnce(h, 'text-align:center">How much water to change?</div>', `text-align:center">${a.waterPickerQ}</div>`, 'app.waterPickerQ');
   h = subOnce(h, '>Cancel</button></div>', `>${a.cancelBtn}</button></div>`, 'app.cancelBtn');
   h = subOnce(h, '<span class="an" id="act-source-name">Add ammonia</span>\n      <span class="ah">Starts cycle</span>',
     `<span class="an" id="act-source-name">${a.sourceAmmonia}</span>\n      <span class="ah">${a.sourceStart}</span>`, 'app.actSource');
-  h = subOnce(h, '<span class="ai">🥣</span><span class="an">Feed</span><span class="ah">Fish-in only</span>',
-    `<span class="ai">🥣</span><span class="an">${a.feedName}</span><span class="ah">${a.feedHintDefault}</span>`, 'app.actFeed');
-  h = subOnce(h, '<span class="ai">💧</span><span class="an">Water change</span><span class="ah">Choose amount</span>',
-    `<span class="ai">💧</span><span class="an">${a.waterChangeName}</span><span class="ah">${a.waterChangeHint}</span>`, 'app.actWater');
-  h = subOnce(h, '<span class="ai">🌿</span><span class="an">Add plants</span><span class="ah">Buffers nitrate</span>',
-    `<span class="ai">🌿</span><span class="an">${a.plantName}</span><span class="ah">${a.plantHint}</span>`, 'app.actPlant');
-  h = subOnce(h, '<span class="ai">🦠</span><span class="an">Seed</span><span class="ah">Bacteria starter</span>',
-    `<span class="ai">🦠</span><span class="an">${a.seedName}</span><span class="ah">${a.seedHint}</span>`, 'app.actSeed');
+  h = subOnce(h, '</svg></span><span class="an">Feed</span><span class="ah">Fish-in only</span>',
+    `</svg></span><span class="an">${a.feedName}</span><span class="ah">${a.feedHintDefault}</span>`, 'app.actFeed');
+  h = subOnce(h, '</svg></span><span class="an">Water change</span><span class="ah">Choose amount</span>',
+    `</svg></span><span class="an">${a.waterChangeName}</span><span class="ah">${a.waterChangeHint}</span>`, 'app.actWater');
+  h = subOnce(h, '</svg></span><span class="an">Add plants</span><span class="ah">Buffers nitrate</span>',
+    `</svg></span><span class="an">${a.plantName}</span><span class="ah">${a.plantHint}</span>`, 'app.actPlant');
+  h = subOnce(h, '</svg></span><span class="an">Seed</span><span class="ah">Bacteria starter</span>',
+    `</svg></span><span class="an">${a.seedName}</span><span class="ah">${a.seedHint}</span>`, 'app.actSeed');
   return h;
 }
 

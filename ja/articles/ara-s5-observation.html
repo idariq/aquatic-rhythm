@@ -2,10 +2,10 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>観察の実践 — ARAフレームワーク · Aquatic Rhythm</title>
-<meta name="description" content="よく観るために — ベースラインの構築、観察力の育成、そして偽のシグナルの読み方。">
+<meta name="description" content="よく観るために — ベースラインの構築、観察力の育成、偽のシグナルの読み方、そして戦略としての抑制。">
 <link rel="canonical" href="https://aquaticrhythm.com/ja/articles/ara-s5-observation">
 <link rel="alternate" hreflang="en" href="https://aquaticrhythm.com/articles/ara-s5-observation">
 <link rel="alternate" hreflang="id" href="https://aquaticrhythm.com/id/articles/ara-s5-observation">
@@ -20,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://aquaticrhythm.com/ja/articles/ara-s5-observation">
 <meta property="og:title" content="観察の実践 — ARAフレームワーク · Aquatic Rhythm">
-<meta property="og:description" content="よく観るために — ベースラインの構築、観察力の育成、そして偽のシグナルの読み方。">
+<meta property="og:description" content="よく観るために — ベースラインの構築、観察力の育成、偽のシグナルの読み方、そして戦略としての抑制。">
 <meta property="og:image" content="https://aquaticrhythm.com/og/articles/ara-s5-observation-ja.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -28,9 +28,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://aquaticrhythm.com/ja/articles/ara-s5-observation">
 <meta name="twitter:title" content="観察の実践 — ARAフレームワーク · Aquatic Rhythm">
-<meta name="twitter:description" content="よく観るために — ベースラインの構築、観察力の育成、そして偽のシグナルの読み方。">
+<meta name="twitter:description" content="よく観るために — ベースラインの構築、観察力の育成、偽のシグナルの読み方、そして戦略としての抑制。">
 <meta name="twitter:image" content="https://aquaticrhythm.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"観察の実践 — ARAフレームワーク","description":"よく観るために — ベースラインの構築、観察力の育成、そして偽のシグナルの読み方。","url":"https://aquaticrhythm.com/ja/articles/ara-s5-observation","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com"},"image":"https://aquaticrhythm.com/og-image.png","datePublished":"2026-05-22","dateModified":"2026-05-23"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"観察の実践 — ARAフレームワーク","description":"よく観るために — ベースラインの構築、観察力の育成、偽のシグナルの読み方、そして戦略としての抑制。","url":"https://aquaticrhythm.com/ja/articles/ara-s5-observation","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com"},"image":"https://aquaticrhythm.com/og-image.png","datePublished":"2026-05-22","dateModified":"2026-05-23"}</script>
 <script>if(localStorage.getItem('ar_analytics_opt')==='1'){window['ga-disable-G-8MDN065WNW']=true}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8MDN065WNW"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8MDN065WNW');</script>
@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=52">
+<link rel="stylesheet" href="/css/ar-page.css?v=74">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -171,13 +171,13 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
   <div class="ara-art-header">
     <span class="ara-art-eyebrow">05 / 06 · ARAフレームワーク</span>
     <h1 class="ara-art-title">観察の実践</h1>
-    <p class="ara-art-desc">よく観るために — ベースラインの構築、観察力の育成、そして偽のシグナルの読み方。</p>
+    <p class="ara-art-desc">よく観るために — ベースラインの構築、観察力の育成、偽のシグナルの読み方、そして戦略としての抑制。</p>
   </div>
   <div class="ara-art-body">
 
     <div class="ara-art-mod">
       <div class="ara-art-mod-eyebrow">
-        <span class="ara-art-mod-pos">1 / 4</span>
+        <span class="ara-art-mod-pos">1 / 5</span>
         <span class="ara-art-mod-tag">土台</span>
       </div>
       <h2 class="mod-title">観察を、<em>行動より先に</em></h2>
@@ -188,11 +188,15 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
         <p>反復 — ひとつ変えてみて、その影響を観察し、調整する — は、介入を次々と重ねることに代わる、整合したやり方です。システムが思ったように応えないとき、最もよくある誤りは、変数を減らすのではなく介入を足すことです。</p>
       </div>
       <div class="pq"><p>「試薬キットに手を伸ばす前に、換水をする前に、製品を加える前に置かれる、急がない観察 — ARAが立っているのは、その上です。」</p></div>
+      <div class="hn">
+        <span class="hn-label">ARA・緊急時の例外</span>
+        <p>この忍耐は、発達的・慢性的な状態に当てはまるものであり、急性の福祉リスクには決して当てはまりません。呼吸困難、中毒の疑い、重い外傷、急速な悪化が見られる場合は、観察期間ではなく、直ちの介入が求められます。</p>
+      </div>
     </div>
 
     <div class="ara-art-mod">
       <div class="ara-art-mod-eyebrow">
-        <span class="ara-art-mod-pos">2 / 4</span>
+        <span class="ara-art-mod-pos">2 / 5</span>
         <span class="ara-art-mod-tag">観察の習慣を育てる</span>
       </div>
       <h2 class="mod-title"><em>観察の習慣</em>を育てる</h2>
@@ -213,7 +217,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <div class="ara-art-mod">
       <div class="ara-art-mod-eyebrow">
-        <span class="ara-art-mod-pos">3 / 4</span>
+        <span class="ara-art-mod-pos">3 / 5</span>
         <span class="ara-art-mod-tag">時間を横断して読む</span>
       </div>
       <h2 class="mod-title"><em>時間を横断して</em>読む</h2>
@@ -233,7 +237,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <div class="ara-art-mod">
       <div class="ara-art-mod-eyebrow">
-        <span class="ara-art-mod-pos">4 / 4</span>
+        <span class="ara-art-mod-pos">4 / 5</span>
         <span class="ara-art-mod-tag">偽のシグナルを読む</span>
       </div>
       <h2 class="mod-title"><em>偽のシグナル</em>を読む</h2>
@@ -278,6 +282,24 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       </div>
     </div>
 
+    <div class="ara-art-mod">
+      <div class="ara-art-mod-eyebrow">
+        <span class="ara-art-mod-pos">5 / 5</span>
+        <span class="ara-art-mod-tag">生態学的戦略としての抑制</span>
+      </div>
+      <h2 class="mod-title">抑制という<em>戦略</em></h2>
+      <div class="mod-body">
+        <p>抑制 — あえて介入しないという選択 — は、ARAにおいて正当な生態学的戦略であり、受動性や放置ではありません。生きたシステムは自らの回復プロセスを備えており、そのプロセスは、助けようとする介入そのものによって妨げられることがあります。濁った水槽が自然と澄んでいくこと、ストレスを受けた魚が通常の行動に戻ること、第二のバクテリアコロニーが追いつくにつれて亜硝酸塩の急上昇が下がっていくこと — これらはすべて、システムがすでに知っているサイクルを完了させている過程です。そのサイクルの中に手を加えても、早まることはめったにありません。たいていはリセットされてしまいます。</p>
+        <p>ここでは、時間そのものが生態学的な入力として働いており、入力の不在ではありません。生きたシステムが本来すること — 回復すること — をしている間、観察の猶予期間を保つことは、しばしば受動的な対応ではなく、より効果的な対応です。その規律は、何もしないことにあるのではありません。すでにシグナルを読み取り、それが本当のずれではなく発達的なものだと判断したうえで、意図的に何もしないことにあります。</p>
+        <p>これは、飼育者が身につける中でもっとも生態学的に重要なスキルのひとつであり、もっとも難しいスキルのひとつでもあります。なぜなら、行動したいという衝動がもっとも強くなるのは、まさに抑制が求められる瞬間 — 何かがおかしく見える瞬間 — だからです。発達的なノイズと本当のずれを見分けること — このフレームワークのあらゆる原則が立ち返る問い — こそが、抑制を単なる言い訳ではなく戦略にするものです。</p>
+      </div>
+      <div class="pq"><p>「抑制とは行動の不在ではありません。それは、いまが行動すべき瞬間ではないという、意図してくだされた決断です。」</p></div>
+      <div class="hn">
+        <span class="hn-label">ARA・緊急時の例外</span>
+        <p>抑制は福祉の例外にはなりません。この戦略は発達的・慢性的なシグナルに当てはまるものであり、急性の福祉リスクには決して当てはまりません。呼吸困難、中毒の疑い、重い外傷、急速な悪化が見られる場合は、抑制ではなく、直ちの介入が求められます。</p>
+      </div>
+    </div>
+
   </div><!-- /ara-art-body -->
 
   <nav class="ara-art-secnav">
@@ -294,7 +316,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
 </main>
 
-<script src="/js/content-trust.js?v=52"></script>
+<script src="/js/content-trust.js?v=74"></script>
 <!-- ── BOTTOM NAV (PWA) ── -->
 <nav class="bnav" id="bnav" aria-label="Main navigation">
   <a href="/ja/" class="bnav-item" aria-label="ホーム">
@@ -314,7 +336,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <span>記録</span>
   </a>
 </nav>
-<script src="/js/ar-page.js?v=52" defer></script>
+<script src="/js/ar-page.js?v=74" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -322,6 +344,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=52" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=74" defer></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ import fs from 'fs';
 import path from 'path';
 
 const ROOT = path.join(import.meta.dirname, '..');
-const V = '60';
+const V = '61';
 
 const DIRS = [
   path.join(ROOT, 'articles'),

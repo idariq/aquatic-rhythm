@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>リズムを知る — Aquatic Rhythm</title>
 <meta name="description" content="水槽を選ぶ前に、飼育者としての自分を理解する。7つの内省的な問い。正解はありません。電卓ではなく、鏡です。">

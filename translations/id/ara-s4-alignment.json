@@ -6,18 +6,18 @@
   },
   "head": {
     "title": "Pemikiran Keselarasan — Kerangka ARA · Aquatic Rhythm",
-    "description": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya.",
+    "description": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, membaca lewat ritme, dan jalur-jalurnya.",
     "ogTitle": "Pemikiran Keselarasan — Kerangka ARA · Aquatic Rhythm",
-    "ogDescription": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya.",
+    "ogDescription": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, membaca lewat ritme, dan jalur-jalurnya.",
     "twitterTitle": "Pemikiran Keselarasan — Kerangka ARA · Aquatic Rhythm",
-    "twitterDescription": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya.",
+    "twitterDescription": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, membaca lewat ritme, dan jalur-jalurnya.",
     "ldHeadline": "Pemikiran Keselarasan — Kerangka ARA",
-    "ldDescription": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya."
+    "ldDescription": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, membaca lewat ritme, dan jalur-jalurnya."
   },
   "header": {
     "eyebrow": "04 / 06 · Kerangka ARA",
     "titleHtml": "Pemikiran Keselarasan",
-    "desc": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, tujuh domain, dan jalur-jalurnya."
+    "desc": "Cara bertindak selaras — empat prinsip, keselarasan vs kendali, membaca lewat ritme, dan jalur-jalurnya."
   },
   "modules": [
     {
@@ -158,8 +158,8 @@
             "Membaca apa yang sebenarnya sedang terjadi mendahului respons apa pun. Bertindak atas pembacaan yang keliru — atau bertindak sebelum polanya jelas — sering menghasilkan gangguan yang lebih besar daripada yang pantas ditimbulkan oleh sinyal aslinya.",
             "Membaca menuntut adanya baseline. Jika Anda tidak tahu seperti apa tank Anda ketika sedang baik-baik saja, Anda tidak bisa membaca seperti apa ia ketika sesuatu mulai bergeser. Bangunlah baseline untuk tank Anda sendiri: baseline betta Anda, lintasan nitrat yang khas di tank Anda, warna normal substrat Anda setelah seminggu.",
             "Ketika sesuatu berubah dari baseline itu, Anda mendapat sinyal. Sinyal itu adalah awal dari periode pengamatan — bukan awal dari intervensi. Dalam kebanyakan kasus, jendela pengamatan 24–48 jam sebelum bertindak akan memperlihatkan apakah sinyal tersebut sekadar variasi sesaat atau pergeseran yang sungguhan.",
-            "Observasi tidak selesai begitu sebuah sinyal dikonfirmasi — ia berlanjut hingga menelusuri di mana sinyal itu bermula. Dalam sistem akuatik tertutup, tempat sebuah masalah menjadi terlihat sering bukanlah tempat masalah itu bermula. Ikan yang menunjukkan perilaku stres mungkin sedang merespons pergeseran kimia air yang bermula dari perubahan pola pemberian pakan dua minggu sebelumnya; alga yang muncul di kaca mungkin merupakan ekspresi hilir dari beban hewan yang diam-diam melampaui apa yang sanggup diolah komunitas biologis. Gejala dan asalnya sering berada di domain yang berbeda, dan koreksi yang diarahkan pada gejala alih-alih pada asalnya menghasilkan perbaikan sementara yang tidak bertahan — gejala yang sama akan kembali, sering dalam bentuk yang sedikit berbeda, karena penyebabnya tidak pernah disentuh.",
-            "Menelusuri asal bermula dari tujuh domain dan lima ritme. Tanyakan: di domain mana hal ini paling mungkin bermula? Ritme mana yang kemungkinan menjadi pembawanya? Gejala memberi Anda domain ekspresi; pengamatan lintas domain dan sepanjang waktu memberi Anda domain asalnya.",
+            "Observasi tidak selesai begitu sebuah sinyal dikonfirmasi — ia berlanjut hingga menelusuri di mana sinyal itu bermula. Dalam sistem akuatik tertutup, tempat sebuah masalah menjadi terlihat sering bukanlah tempat masalah itu bermula. Ikan yang menunjukkan perilaku stres mungkin sedang merespons pergeseran kimia air yang bermula dari perubahan pola pemberian pakan dua minggu sebelumnya; alga yang muncul di kaca mungkin merupakan ekspresi hilir dari beban hewan yang diam-diam melampaui apa yang sanggup diolah komunitas biologis. Gejala dan asalnya sering berada di ritme yang berbeda, dan koreksi yang diarahkan pada gejala alih-alih pada asalnya menghasilkan perbaikan sementara yang tidak bertahan — gejala yang sama akan kembali, sering dalam bentuk yang sedikit berbeda, karena penyebabnya tidak pernah disentuh.",
+            "Menelusuri asal bermula dari lima ritme. Tanyakan: ritme mana yang paling mungkin membawa asalnya? Gejala menunjukkan tempat masalah itu menjadi terlihat; pengamatan lintas ritme dan sepanjang waktu menunjukkan tempat ia bermula.",
             "Observasi sebelum Koreksi juga membawa satu konsekuensi lanjutan: ketika harus memilih antara ritme yang baik dan konsisten dengan ritme yang sesekali sempurna, kestabilanlah yang menang. Konsistensi menciptakan kondisi ekologis tempat kedalaman tumbuh; pengejaran kesempurnaan sering justru memasukkan gangguan yang sedang berusaha ia hilangkan."
           ]
         },
@@ -167,20 +167,20 @@
           "type": "hn",
           "label": "ARA · Tentang Menelusuri ke Belakang",
           "paragraphs": [
-            "Domain tempat sebuah masalah menjadi terlihat adalah domain ekspresi. Domain tempat ia bermula adalah domain asal. Mengobati domain ekspresi tanpa menemukan domain asalnya menghasilkan sesuatu yang paling baik pun hanya bersifat sementara, dan paling buruk justru membingungkan. ARA memandang hal ini sebagai pola paling umum dalam kesalahan pemelihara yang terus berulang."
+            "Ritme tempat sebuah masalah menjadi terlihat tidak selalu sama dengan ritme tempat ia bermula. Diagnosis yang efektif berarti membaca mundur dari gejala yang terlihat untuk mengenali ritme asalnya, bukan memperlakukan tempat ia menjadi terlihat sebagai penyebabnya. ARA memandang hal ini sebagai pola paling umum dalam kesalahan pemelihara yang terus berulang."
           ]
         }
       ]
     },
     {
       "pos": "6 / 7",
-      "tag": "Tujuh Domain",
-      "titleHtml": "Tempat <em>Keselarasan Terjadi</em>",
+      "tag": "Membaca Lewat Ritme",
+      "titleHtml": "Membaca <em>Lewat Ritme</em>",
       "blocks": [
         {
           "type": "body",
           "paragraphs": [
-            "ARA mengenali tujuh domain tempat keselarasan — atau ketidakselarasan — mewujud dalam akuarium yang sedang berjalan. Membaca setiap domain secara terpisah memberi gambaran yang lebih utuh daripada pengukuran tunggal mana pun."
+            "ARA tidak menggunakan seperangkat kategori terpisah untuk mendiagnosis tank. Lima ritme itu sendirilah pegangan diagnostiknya: membaca sebuah sistem berarti bertanya, untuk setiap ritme, apakah ia berada dalam hubungan yang produktif dengan yang lain atau mulai menariknya ke arah berlawanan."
           ]
         },
         {
@@ -188,38 +188,30 @@
           "cells": [
             {
               "name": "Air",
-              "q": "Apakah air bergerak ke arah yang stabil, atau ada sesuatu yang bergeser melampaui rentang yang diharapkan?"
+              "q": "Apakah kimia air cenderung stabil, atau bergeser?"
             },
             {
-              "name": "Beban Biologis",
-              "q": "Apakah tingkat stocking masih berada dalam batas yang sanggup diolah komunitas biologis, mengingat fase tank ini saat ini?"
-            },
-            {
-              "name": "Perilaku Hewan",
-              "q": "Apakah hewan-hewan di tank ini menunjukkan perilaku yang menandakan kenyamanan — aktif, makan seperti biasa, menempati ruangnya tanpa tanda stres kronis?"
-            },
-            {
-              "name": "Nutrisi &amp; Kimia",
-              "q": "Apakah siklus nutrisi (masukan pakan, pengolahan limbah, ritme ganti air) seimbang dengan beban biologisnya?"
+              "name": "Biologis",
+              "q": "Apakah tingkat stocking, pemberian pakan, dan limbah masih berada dalam batas yang sanggup diolah komunitas mikroba pada fase tank ini saat ini?"
             },
             {
               "name": "Lingkungan",
-              "q": "Apakah struktur fisiknya — cahaya, aliran, hardscape, penanaman — menopang kebutuhan perilaku dan teritorial hewan?"
+              "q": "Apakah cahaya, aliran, hardscape, dan tata letak menopang kebutuhan hewan — dan apakah peralatan berfungsi andal serta sesuai skala tank, tanpa menganggap low-tech atau high-tech secara inheren lebih unggul?"
             },
             {
-              "name": "Teknologi",
-              "q": "Apakah peralatan (filtrasi, pemanas, pencahayaan) bekerja sesuai spesifikasinya dan sesuai dengan tuntutan tank saat ini?"
+              "name": "Hewan Peliharaan",
+              "q": "Apakah perilakunya menandakan kenyamanan?"
             },
             {
-              "name": "Ritme Manusia",
-              "q": "Apakah ritme perawatan pemelihara yang sebenarnya — waktu, perhatian, konsistensi — selaras dengan apa yang dibutuhkan tank ini sekarang?"
+              "name": "Pemelihara",
+              "q": "Apakah pola perawatan, perhatian, dan pengendalian diri pemelihara yang sebenarnya sesuai dengan apa yang dibutuhkan sistem saat ini?"
             }
           ]
         },
         {
           "type": "body",
           "paragraphs": [
-            "Ketika membaca lintas domain, ARA menyarankan agar Anda mengenali <em>domain asal</em> — tempat ketidakselarasan bermula — alih-alih <em>domain ekspresi</em> tempat ia menjadi terlihat. Mengobati ekspresi tanpa menyentuh asalnya menghasilkan perbaikan sementara yang tidak bertahan."
+            "Ketika satu ritme cukup besar untuk memuat lebih dari satu pembacaan yang berguna, ia bisa dibaca lewat garis internalnya tanpa menjadi kategori terpisah. Water Rhythm adalah contoh paling jelas: layak dibedakan antara keadaan kimia air yang terekspresikan dengan cara keadaan itu dihasilkan — bagaimana masukan nutrisi, pengolahan limbah, dan ritme ganti air bergabung menghasilkannya. Sebuah tank bisa lulus tes sementara proses yang menghasilkannya sudah bergeser."
           ]
         }
       ]
@@ -232,8 +224,8 @@
         {
           "type": "body",
           "paragraphs": [
-            "Jalur keselarasan adalah rute yang dilalui sebuah ketidakselarasan di satu domain untuk merambat melalui sistem hingga akhirnya menjadi terlihat sebagai gejala di domain lain. Memahami jalur memungkinkan Anda membaca ke arah mana sebuah masalah menunjuk — bukan sekadar seperti apa masalah itu terlihat.",
-            "Ikan yang megap-megap di permukaan adalah gejala. Jalur yang menghasilkannya bisa berupa oksigen terlarut yang rendah, amonia yang tinggi, penyakit insang, atau penurunan suhu yang mendadak. Gejalanya sama; jalurnya berbeda-beda. ARA mendorong pemelihara untuk membaca mundur dari sebuah gejala: domain mana yang paling mungkin menjadi asalnya?"
+            "Jalur keselarasan adalah rute yang dilalui sebuah ketidakselarasan di satu ritme untuk merambat melalui sistem hingga akhirnya menjadi terlihat sebagai gejala di ritme lain. Memahami jalur memungkinkan Anda membaca ke arah mana sebuah masalah menunjuk — bukan sekadar seperti apa masalah itu terlihat.",
+            "Ikan yang megap-megap di permukaan adalah gejala. Jalur yang menghasilkannya bisa berupa oksigen terlarut yang rendah, amonia yang tinggi, penyakit insang, atau penurunan suhu yang mendadak. Gejalanya sama; jalurnya berbeda-beda. ARA mendorong pemelihara untuk membaca mundur dari sebuah gejala: ritme mana yang paling mungkin menjadi asalnya?"
           ]
         },
         {

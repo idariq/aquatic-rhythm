@@ -7,7 +7,7 @@ export const ARTICLE_INDEX = [
   { slug: "ara-s1-foundation", title: "Foundation — ARA Framework", desc: "What ARA is, who it is for, and what it assumes about aquariums and keepers." },
   { slug: "ara-s2-five-rhythms", title: "Five Rhythms — ARA Framework", desc: "Water, Biological, Environmental, Livestock, and Keeper — the five domains every tank is always running." },
   { slug: "ara-s3-phases", title: "Ecological Phases — ARA Framework", desc: "Early, Developing, and Mature — with false maturity and phase regression." },
-  { slug: "ara-s4-alignment", title: "Alignment Thinking — ARA Framework", desc: "How to act aligned — four principles, alignment vs control, seven domains, and pathways." },
+  { slug: "ara-s4-alignment", title: "Alignment Thinking — ARA Framework", desc: "How to act aligned — four principles, alignment vs control, reading through the rhythms, and pathways." },
   { slug: "ara-s5-observation", title: "Observation Practice — ARA Framework", desc: "How to observe well — baseline building, capacity development, reading false signals, and restraint as strategy." },
   { slug: "ara-s6-ethics", title: "Ethics & Living Framework — ARA Framework", desc: "What ARA doesn't cover, psychological foundations, and the living framework statement." },
   { slug: "new-tank-syndrome", title: "New Tank Syndrome — What's Actually Happening and Why Waiting Is the Right Answer", desc: "New tank syndrome is not a mistake you made. It is a phase every aquarium passes through. A guided introduction to the nitrogen cycle — with visuals, clear explanations, and a live simulator to try it yourself." },

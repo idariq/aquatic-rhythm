@@ -662,8 +662,9 @@
     offer.style.cssText = 'display:flex;align-items:flex-start;gap:.5rem;margin-top:.55rem;padding:.5rem .65rem;background:var(--th-accent-soft);border:1px solid var(--th-accent-border);border-radius:8px';
 
     var icon = document.createElement('span');
-    icon.textContent = '📋';
-    icon.style.cssText = 'font-size:var(--fs-sm);flex-shrink:0;margin-top:.05rem';
+    icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>';
+    icon.style.cssText = 'flex-shrink:0;margin-top:.05rem;display:flex;color:var(--th-accent)';
+    icon.querySelector('svg').style.cssText = 'width:15px;height:15px;display:block';
     offer.appendChild(icon);
 
     var mid = document.createElement('div');

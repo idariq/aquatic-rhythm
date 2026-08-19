@@ -58,7 +58,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=61">
+<link rel="stylesheet" href="/css/ar-page.css?v=62">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{font-size:17px;scroll-behavior:smooth}
@@ -624,19 +624,19 @@ canvases[3]=function(){
 
   var stressors=[
     {label:'Nitrate buildup',
-     icon:'NO₃↑',color:'rgba(200,160,40,',
+     color:'rgba(200,160,40,',
      signals:['Fish seem dull or less enthusiastic','Disease keeps returning after treatment','Algae growing despite regular maintenance'],
      note:'Nitrate rises quietly after every cycle. At high levels it suppresses immune function — fish survive but are never quite comfortable. Weekly partial water changes are the most reliable solution.'},
     {label:'Too many fish',
-     icon:'🐟🐟🐟',color:'rgba(180,100,80,',
+     color:'rgba(180,100,80,',
      signals:['Frequent fin damage or aggression','Fish breathing at the surface','Ammonia spikes after feeding'],
      note:'More fish means more waste, less oxygen, more competition. The bacteria can handle the chemistry — but the fish still experience the crowding. Rehoming some fish often transforms a tank overnight.'},
     {label:'Wrong chemistry',
-     icon:'pH?',color:'rgba(80,150,180,',
+     color:'rgba(80,150,180,',
      signals:['Fish surviving but never thriving','Difficulty breeding species that should breed','Chronic low-grade illness without clear cause'],
      note:'Fish evolved for specific water conditions. A species from soft acidic rivers kept in hard alkaline water is under constant stress, even if it looks fine on paper. Research your specific species — not just "tropical fish" in general.'},
     {label:'Irregular care',
-     icon:'📅',color:'rgba(139,189,210,',
+     color:'rgba(139,189,210,',
      signals:['Tank seems fine then suddenly crashes','Problems always seem to appear at the same time','Recovery from problems takes unusually long'],
      note:'Tanks tolerate gaps — but not indefinitely. Missed changes and irregular feeding create cumulative stress. The crash feels sudden because the warning signs were quiet. A modest consistent routine beats intensive irregular care.'}
   ];
@@ -973,19 +973,19 @@ canvases[6]=function(){
   var signals=[
     {label:'Surface breathing',
      meaning:'Fish gulping at the water surface is one of the clearest distress signals. It usually means dissolved oxygen is low — from overcrowding, overfeeding, poor surface agitation, or high ammonia affecting gill function.',
-     urgency:'high',icon:'🐟↑'},
+     urgency:'high',icon:'surface'},
     {label:'Hiding more than usual',
      meaning:'A fish that suddenly spends time hiding when it normally did not is often experiencing stress from poor water quality, aggression from tankmates, or the early stages of illness. It is worth investigating before other symptoms appear.',
-     urgency:'medium',icon:'👁️'},
+     urgency:'medium',icon:'eye'},
     {label:'Eating less eagerly',
      meaning:'Loss of appetite is one of the earliest and most reliable signs that something is not right. Fish that are comfortable and healthy are almost always enthusiastic feeders. A fish that skips meals deserves attention.',
-     urgency:'medium',icon:'🥣'},
+     urgency:'medium',icon:'bowl'},
     {label:'Colour looking faded',
      meaning:'Fish often show their best colour when they are genuinely comfortable — the right temperature, good water quality, low stress. Fading can be gradual and easy to miss. Comparing to photographs taken weeks apart can be revealing.',
-     urgency:'low',icon:'🎨'},
+     urgency:'low',icon:'palette'},
     {label:'Staying near the heater',
      meaning:'Fish huddling near a heat source often indicates the tank is too cold, or that a temperature fluctuation has occurred. Check your heater is functioning and that readings are consistent throughout the day.',
-     urgency:'medium',icon:'🌡️'}
+     urgency:'medium',icon:'thermometer'}
   ];
 
   var wrap=c.parentElement;
@@ -1021,6 +1021,39 @@ canvases[6]=function(){
     var ex=facingLeft?x-6:x+6;
     ctx.beginPath();ctx.arc(ex,y-2,1.8,0,Math.PI*2);ctx.fill();
     if(sick)ctx.filter='none';
+    ctx.restore();
+  }
+
+  /* Small stroke-based badge icons for the signal list — matches the
+     line-art SVG icon set used elsewhere on the site (thermometer/
+     bowl/etc reuse the same shapes), drawn as vector paths since
+     canvas text can't embed SVG. */
+  function drawSignalIcon(type,cx,cy,size,color){
+    ctx.save();
+    ctx.translate(cx,cy);
+    var s=size/24;
+    ctx.scale(s,s);
+    ctx.strokeStyle=color;ctx.fillStyle=color;
+    ctx.lineWidth=1.75;ctx.lineCap='round';ctx.lineJoin='round';
+    ctx.beginPath();
+    if(type==='surface'){
+      ctx.ellipse(-2,1,6,3.5,0,0,Math.PI*2);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(4,1);ctx.lineTo(8,-2);ctx.lineTo(8,4);ctx.closePath();ctx.stroke();
+      ctx.beginPath();ctx.moveTo(-8,-7);ctx.lineTo(-5,-10);ctx.lineTo(-2,-7);ctx.stroke();
+    } else if(type==='eye'){
+      ctx.moveTo(-9,0);ctx.quadraticCurveTo(0,-7,9,0);ctx.quadraticCurveTo(0,7,-9,0);ctx.stroke();
+      ctx.beginPath();ctx.arc(0,0,3,0,Math.PI*2);ctx.stroke();
+    } else if(type==='bowl'){
+      ctx.moveTo(-9,-1);ctx.lineTo(9,-1);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(-8,-1);ctx.bezierCurveTo(-8,3.5,-4.5,7,0,7);ctx.bezierCurveTo(4.5,7,8,3.5,8,-1);ctx.stroke();
+      ctx.beginPath();ctx.ellipse(0,-1,9,2.2,0,0,Math.PI*2);ctx.stroke();
+    } else if(type==='palette'){
+      ctx.ellipse(0,-1,8,7,0,0,Math.PI*2);ctx.stroke();
+      [[-3,-4],[3,-4],[-5,1],[5,-1]].forEach(function(p){ctx.beginPath();ctx.arc(p[0],p[1],1,0,Math.PI*2);ctx.fill();});
+    } else if(type==='thermometer'){
+      ctx.moveTo(0,-9);ctx.lineTo(0,3);ctx.stroke();
+      ctx.beginPath();ctx.arc(0,5.5,3.3,0,Math.PI*2);ctx.stroke();
+    }
     ctx.restore();
   }
 
@@ -1081,9 +1114,8 @@ canvases[6]=function(){
 
     /* s already declared above */
     /* Icon + urgency badge — same row, icon left, badge right */
-    ctx.font='20px Work Sans,system-ui,sans-serif';
     ctx.textAlign='left';
-    ctx.fillText(s.icon,12,H*.49);
+    drawSignalIcon(s.icon,21,H*.49-6,20,vcInk(.72));
 
     /* Urgency badge — pill style, safely anchored to right */
     var uc=urgencyColor[s.urgency];
@@ -1195,8 +1227,8 @@ canvases[6]=function(){
     <p class="rh-sheet-note">AI bisa saja salah — untuk keadaan darurat pada ikan, konsultasikan dengan spesialis</p>
   </div>
 </div>
-<script src="/js/content-trust.js?v=61"></script>
-<script src="/js/ar-page.js?v=61" defer></script>
+<script src="/js/content-trust.js?v=62"></script>
+<script src="/js/ar-page.js?v=62" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -1204,6 +1236,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
-<script src="/js/rhyssa-fab-ext.js?v=61" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=62" defer></script>
 </body>
 </html>

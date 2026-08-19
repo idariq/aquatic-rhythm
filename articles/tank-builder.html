@@ -54,8 +54,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=66">
-<link rel="stylesheet" href="/css/kofi-sheet.css?v=66">
+<link rel="stylesheet" href="/css/ar-page.css?v=67">
+<link rel="stylesheet" href="/css/kofi-sheet.css?v=67">
 <style>
 
 
@@ -1176,7 +1176,7 @@ nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 </div>
 
 
-<script src="/js/tank-data.js?v=66"></script>
+<script src="/js/tank-data.js?v=67"></script>
 <script>
 
 var BRAND_INFO=window.AR_BRAND_INFO;
@@ -2173,14 +2173,35 @@ function showSpeciesInfo(k,item,cat){
 }
 
 /* ═══ ECOSYSTEM CARDS ═══ */
+function ph2TabDatasets(tab){
+  if(tab==='plants')return [ECOSYSTEM.PLANTS];
+  if(tab==='hardscape')return [ECOSYSTEM.HARDSCAPE];
+  return [ECOSYSTEM.FISH,ECOSYSTEM.INVERTEBRATES];
+}
+function styleHasMatch(styleKey,tab){
+  var sets=ph2TabDatasets(tab);
+  for(var i=0;i<sets.length;i++){
+    var obj=sets[i];
+    for(var k in obj){
+      if(obj[k].setup&&obj[k].setup.indexOf(styleKey)>=0)return true;
+    }
+  }
+  return false;
+}
 function buildChips(){
-  var cont=document.getElementById('ph2-chips');if(!cont)return;cont.innerHTML='';
+  var cont=document.getElementById('ph2-chips');if(!cont)return;
+  var STYLES=[{k:'community',l:'Community'},{k:'planted',l:'Planted'},{k:'shrimp',l:'Shrimp'},
+   {k:'biotope',l:'Biotope'},{k:'coldwater',l:'Coldwater'},{k:'species',l:'Species'},
+   {k:'nano',l:'Nano'},{k:'blackwater',l:'Blackwater'}];
+  /* Only show chips with at least one match on the active tab — avoids
+     dead-end "0 entries" clicks and self-trims clutter per tab. */
+  var relevant=STYLES.filter(function(c){return styleHasMatch(c.k,_currentTab);});
+  if(ph2Style&&!relevant.some(function(c){return c.k===ph2Style;}))ph2Style=null;
+  cont.innerHTML='';
   var all=document.createElement('button');all.className='ph2-chip'+(ph2Style===null?' active':'');
   all.textContent='All';all.onclick=function(){ph2Style=null;buildChips();buildAllGrids();};
   cont.appendChild(all);
-  [{k:'community',l:'Community'},{k:'planted',l:'Planted'},{k:'shrimp',l:'Shrimp'},
-   {k:'biotope',l:'Biotope'},{k:'coldwater',l:'Coldwater'},{k:'species',l:'Species'},
-   {k:'nano',l:'Nano'},{k:'blackwater',l:'Blackwater'}].forEach(function(c){
+  relevant.forEach(function(c){
     var chip=document.createElement('button');
     chip.className='ph2-chip'+(ph2Style===c.k?' active':'');
     chip.textContent=c.l;
@@ -3196,7 +3217,7 @@ function _noBiImg(){
   </div>
 </div>
 
-<script src="/js/ar-page.js?v=66" defer></script>
+<script src="/js/ar-page.js?v=67" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -3222,7 +3243,7 @@ if ('serviceWorker' in navigator) {
     <iframe id="kofi-embed-iframe" class="kofi-sheet-frame" title="Support Aquatic Rhythm on Ko-fi"></iframe>
   </div>
 </div>
-<script src="/js/kofi-sheet.js?v=66" defer></script>
-<script src="/js/rhyssa-fab-ext.js?v=66" defer></script>
+<script src="/js/kofi-sheet.js?v=67" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=67" defer></script>
 </body>
 </html>

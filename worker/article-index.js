@@ -1,7 +1,7 @@
 /* AUTO-GENERATED — run: node scripts/build-worker-knowledge.mjs */
 
 export const ARTICLE_INDEX = [
-  { slug: "four-principles-of-ara", title: "The Four Principles of ARA", desc: "The four principles of ARA — Timing before Technique, Capacity before Ambition, Rhythm before Intensity, Observation before Correction — are now part of the full ARA framework reference." },
+  { slug: "four-principles-of-ara", title: "The Four Principles of ARA", desc: "The four principles of ARA — Timing before Technique, Capacity before Ambition, Consistency before Intensity, Observation before Correction — are now part of the full ARA framework reference." },
   { slug: "reading-the-five-rhythms", title: "Reading the Five Rhythms", desc: "The five ecological rhythms of ARA — Water, Biological, Environmental, Livestock, and Keeper — are now part of the full ARA framework reference." },
   { slug: "ara-full-framework", title: "The ARA Framework", desc: "Aquatic Rhythm Alignment — the complete framework for reading closed aquatic ecosystems. Six sections covering five ecological rhythms, three system phases, alignment thinking, observation practice, and the psychological foundations of the hobby." },
   { slug: "ara-s1-foundation", title: "Foundation — ARA Framework", desc: "What ARA is, who it is for, and what it assumes about aquariums and keepers." },

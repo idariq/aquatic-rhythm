@@ -74,7 +74,7 @@ test('ARA alignment page (s4) declares the five principles', () => {
   const titles = [
     'Timing before Technique',
     'Capacity before Ambition',
-    'Rhythm before Intensity',
+    'Consistency before Intensity',
     'Observation before Correction',
     'Origin before Expression',
   ];

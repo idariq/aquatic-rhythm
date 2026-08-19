@@ -1,0 +1,1224 @@
+{
+ "_meta": {
+  "status": "ready"
+ },
+ "head": {
+  "title": "Penyusun Akuarium — Aquatic Rhythm",
+  "description": "Susun akuarium air tawar pertama Anda. Pilih ikan yang Anda sukai dan temukan apa yang mereka butuhkan."
+ },
+ "briefing": {
+  "eyebrow": "Aquatic Rhythm Lab",
+  "titleHtml": "Susun<br><em>akuarium pertama Anda.</em>",
+  "body": "Mulai dari mana saja. Pilih ikan yang Anda sukai dan temukan apa yang mereka butuhkan — atau susun pengaturan peralatan Anda dan lihat apa yang bisa didukungnya. Gunakan tab untuk berpindah antara peralatan, penghuni, tanaman, dan hardscape; tampilan akuarium merespons semuanya.",
+  "panels": [
+   {
+    "title": "Mulai dengan ikan",
+    "desc": "Pilih spesies yang ingin Anda pelihara. Lihat peralatan apa yang mereka butuhkan."
+   },
+   {
+    "title": "Mulai dengan peralatan",
+    "desc": "Susun pengaturan Anda terlebih dahulu. Lihat spesies apa yang bisa didukungnya."
+   }
+  ],
+  "rhythms": [
+   {
+    "name": "Water",
+    "desc": "Infrastruktur filtrasi, arus, dan kualitas air"
+   },
+   {
+    "name": "Biological",
+    "desc": "Stabilitas koloni bakteri dan siklus nitrogen"
+   },
+   {
+    "name": "Environmental",
+    "desc": "Suhu, cahaya, dan kondisi habitat"
+   },
+   {
+    "name": "Livestock",
+    "desc": "Kecocokan spesies dan kebutuhan penebaran"
+   },
+   {
+    "name": "Human",
+    "desc": "Kebutuhan perawatan dan komitmen penjaga"
+   }
+  ],
+  "note": "Kelima ritme ini adalah model interpretatif ARA — sebuah lensa untuk berpikir, bukan pengukuran ilmiah. Ritme ini mencerminkan pola yang diamati di seluruh hobi akuarium air tawar.",
+  "btn": "Masuk ke lab →"
+ },
+ "topBand": {
+  "volumeLabel": "Volume akuarium (liter)",
+  "volumeAria": "Volume akuarium dalam liter",
+  "rhyHeading": "Ritme ARA",
+  "rhyBarsAria": "Lima tingkat ritme",
+  "rhyLabels": {
+   "water": "Water",
+   "bio": "Biological",
+   "env": "Environment",
+   "live": "Livestock",
+   "human": "Human"
+  }
+ },
+ "tabs": {
+  "equipment": "Peralatan",
+  "livestock": "Penghuni",
+  "plants": "Tanaman",
+  "hardscape": "Hardscape"
+ },
+ "rack": {
+  "categories": {
+   "Filtration": "Filtrasi",
+   "Circulation": "Sirkulasi",
+   "Environment": "Lingkungan",
+   "Cooling": "Pendinginan",
+   "Substrate": "Substrat",
+   "Additions": "Tambahan",
+   "Monitoring": "Pemantauan"
+  },
+  "items": {
+   "filter-sponge": {
+    "name": "Filter Spons",
+    "role": "Biologis, arus lembut"
+   },
+   "filter-internal": {
+    "name": "Filter Internal",
+    "role": "Terendam, kompak"
+   },
+   "filter-hang": {
+    "name": "Filter Gantung",
+    "role": "Mekanis + biologis"
+   },
+   "filter-canister": {
+    "name": "Filter Kanister",
+    "role": "Kapasitas tinggi, eksternal"
+   },
+   "filter-overflow": {
+    "name": "Filter Overflow",
+    "role": "Trickle/wet-dry, O₂ tinggi"
+   },
+   "powerhead": {
+    "name": "Powerhead",
+    "role": "Pompa balik / arus"
+   },
+   "wavemaker": {
+    "name": "Wavemaker",
+    "role": "Sirkulasi, zona mati"
+   },
+   "airpump": {
+    "name": "Pompa Udara",
+    "role": "Oksigen + agitasi"
+   },
+   "uv-sterilizer": {
+    "name": "Sterilisator UV",
+    "role": "Kejernihan + kendali patogen"
+   },
+   "heater": {
+    "name": "Heater",
+    "role": "Suhu stabil"
+   },
+   "light-basic": {
+    "name": "LED Dasar",
+    "role": "Siklus siang/malam"
+   },
+   "light-planted": {
+    "name": "Lampu Tanaman",
+    "role": "Spektrum penuh, output tinggi"
+   },
+   "timer": {
+    "name": "Timer Lampu",
+    "role": "Fotoperiode konsisten"
+   },
+   "chiller": {
+    "name": "Chiller Akuarium",
+    "role": "Kendali suhu presisi"
+   },
+   "cooling-fan": {
+    "name": "Kipas Pendingin",
+    "role": "Pendinginan evaporatif"
+   },
+   "sub-gravel": {
+    "name": "Kerikil",
+    "role": "Netral, memaafkan kesalahan"
+   },
+   "sub-sand": {
+    "name": "Pasir",
+    "role": "Alami, substrat lembut"
+   },
+   "sub-soil": {
+    "name": "Aqua Soil",
+    "role": "Kaya nutrisi untuk tanaman"
+   },
+   "conditioner": {
+    "name": "Kondisioner Air",
+    "role": "Menetralkan klorin"
+   },
+   "ammonia-source": {
+    "name": "Sumber Amonia",
+    "role": "Siklus tanpa ikan"
+   },
+   "seed": {
+    "name": "Starter Bakteri",
+    "role": "Awalan siklus"
+   },
+   "lid": {
+    "name": "Tutup / Penutup",
+    "role": "Keamanan + mengurangi penguapan"
+   },
+   "ato": {
+    "name": "Auto Top-Off",
+    "role": "Mengganti air yang menguap"
+   },
+   "thermometer": {
+    "name": "Termometer",
+    "role": "Verifikasi suhu setiap hari"
+   },
+   "testkit": {
+    "name": "Test Kit",
+    "role": "Membaca siklus nitrogen"
+   },
+   "siphon": {
+    "name": "Vakum Kerikil",
+    "role": "Alat pergantian air"
+   }
+  }
+ },
+ "eco": {
+  "compatDefault": "Catatan kecocokan akan muncul saat Anda memilih spesies.",
+  "kofiHint": "Merencanakan di sini gratis — tip membantu menjaga lab seperti ini tetap berjalan.",
+  "kofiLinkAria": "Dukung di Ko-fi",
+  "searchPlaceholderDefault": "Cari ikan & invertebrata…",
+  "searchPlaceholderPlants": "Cari tanaman…",
+  "searchPlaceholderHardscape": "Cari hardscape…",
+  "sectionHeaders": {
+   "stock": "Ikan & Invertebrata",
+   "plants": "Tanaman",
+   "hardscape": "Hardscape"
+  },
+  "chips": {
+   "all": "Semua",
+   "community": "Komunitas",
+   "planted": "Bertanaman",
+   "shrimp": "Udang",
+   "biotope": "Biotope",
+   "coldwater": "Air Dingin",
+   "species": "Spesies Tunggal",
+   "nano": "Nano",
+   "blackwater": "Blackwater"
+  }
+ },
+ "brandInfo": {
+  "loadingImage": "Memuat gambar…",
+  "closeAria": "Tutup",
+  "overview": "Ringkasan",
+  "bestFor": "Cocok untuk",
+  "strengths": "Kelebihan",
+  "limitations": "Keterbatasan",
+  "priceTier": "Kelas harga",
+  "avoidIfPrefix": "Hindari jika: ",
+  "brandsDisclaimer": "Merek yang tercantum adalah contoh. Harga dan ketersediaan bervariasi menurut wilayah.",
+  "useBtnPrefix": "Gunakan ",
+  "useBtnSuffix": " →",
+  "backBtn": "← Kembali",
+  "noInfo": "Tidak ada informasi detail yang tersedia."
+ },
+ "speciesInfo": {
+  "temperatureLbl": "Suhu: ",
+  "phLbl": "pH: ",
+  "hardnessLbl": "Kesadahan: ",
+  "maxSizeLbl": "Ukuran maks: ",
+  "minTankLbl": "Akuarium min: ",
+  "lifespanLbl": "Umur: ",
+  "lifespanSuffix": " thn",
+  "swimsLbl": "Berenang di: ",
+  "originLbl": "Asal: ",
+  "parametersLbl": "Parameter",
+  "schoolingLbl": "Bergerombol",
+  "schoolingNotePrefix": "Minimal ",
+  "schoolingNoteSuffix": " ekor direkomendasikan. Ikan yang sendirian akan menjadi stres dan bersembunyi.",
+  "notesLbl": "Catatan",
+  "dietLbl": "Pakan",
+  "substrateLbl": "Substrat",
+  "lightReqLbl": "Kebutuhan cahaya",
+  "co2Suffix": " — CO₂ direkomendasikan",
+  "waterChemEffectsLbl": "Efek kimia air",
+  "tanninsNote": "Melepaskan tanin — air berwarna amber, menurunkan pH",
+  "paramsDisclaimer": "Parameter mencerminkan pengetahuan umum di komunitas hobi dan dapat bervariasi menurut galur atau lokasi asal.",
+  "aboutBtn": "Tentang",
+  "schoolTagPrefix": "Kelompok ",
+  "loadSuffix": " (beban)",
+  "lightSuffix": " (cahaya)",
+  "cm": "cm",
+  "quantityLbl": "Jumlah",
+  "suggestedPrefix": "Disarankan: ",
+  "addToSetup": "+ Tambah ke pengaturan",
+  "removeFromSetup": "✕ Hapus dari pengaturan"
+ },
+ "dropdown": {
+  "chooseBrand": "Pilih merek",
+  "chooseOption": "Pilih opsi",
+  "closeAria": "Tutup",
+  "useBtnPrefix": "Gunakan ",
+  "useBtnSuffix": " →",
+  "tapOption": "Ketuk opsi di atas",
+  "detailsBtn": "Detail →",
+  "skipBtn": "Lewati",
+  "removeBtn": "Hapus"
+ },
+ "reportOverlay": {
+  "saveBtn": "Simpan rencana ke Catatan Penjaga",
+  "tryAgainBtn": "Coba pengaturan lain →",
+  "backToolsLink": "Kembali ke Alat"
+ },
+ "statusBar": {
+  "resetBtn": "Atur Ulang",
+  "submitBtn": "Lihat laporan →"
+ },
+ "compat": {
+  "tempConflict": "Konflik suhu antara spesies yang dipilih.",
+  "hardnessConflict": "Konflik kesadahan — spesies air lunak dan air sadah bersama.",
+  "minTankSuffix": "L.",
+  "minTankNeeds": " membutuhkan minimal ",
+  "schoolingNeed": ": perlu ",
+  "schoolingYouHave": " ekor (Anda punya ",
+  "schoolingClose": " ekor).",
+  "highBioload": "Beban biologis tinggi — filter kanister atau overflow direkomendasikan.",
+  "noFilterSelected": "Tidak ada filter dipilih — tambahkan filtrasi sebelum menebar penghuni.",
+  "noIssues": "✓ Tidak ada masalah dengan pilihan saat ini.",
+  "saveErrorNoTank": "Buat akuarium di Catatan Penjaga terlebih dahulu (situs utama → Log), lalu simpan rencana ini lagi.",
+  "saveErrorGeneric": "Tidak dapat menyimpan — penyimpanan mungkin diblokir atau penuh.",
+  "savedToPrefix": "Disimpan ke ",
+  "savedToFallback": "akuarium aktif Anda",
+  "savedToSuffix": " — buka Log (situs utama) untuk meninjau Pengaturan Saya."
+ },
+ "eqCategories": {
+  "Filtration": "Filtrasi",
+  "Sterilization": "Sterilisasi",
+  "Circulation": "Sirkulasi",
+  "Additions": "Tambahan",
+  "Environment": "Lingkungan",
+  "Substrate": "Substrat",
+  "Cooling": "Pendinginan",
+  "equipmentSub": "Peralatan"
+ },
+ "canvasHints": {
+  "addFilterHint": "Tambahkan filter untuk membangun ritme biologis Anda",
+  "selectSpeciesHint": "Pilih spesies di bawah untuk mengisi akuarium Anda"
+ },
+ "report": {
+  "araReportEyebrow": "Laporan ARA",
+  "disclaimer": "Model ritme ARA adalah kerangka kualitatif — alat berpikir, bukan pengukuran ilmiah.",
+  "fiveRhythmProfile": "Profil Lima Ritme",
+  "metaEquipment": " peralatan",
+  "metaLivestock": " penghuni",
+  "metaPlants": " tanaman",
+  "metaHardscape": " hardscape",
+  "sections": {
+   "stocking": "Penebaran",
+   "equipment": "Peralatan",
+   "plants": "Tanaman",
+   "hardscape": "Hardscape"
+  },
+  "rhythmLabels": {
+   "water": "Water",
+   "bio": "Biological",
+   "env": "Environmental",
+   "live": "Livestock",
+   "human": "Human"
+  },
+  "rhythmDesc": {
+   "water": [
+    "Kapasitas filtrasi sudah mapan.",
+    "Filtrasi dasar sudah terpasang.",
+    "Filtrasi perlu diperhatikan sebelum menebar penghuni."
+   ],
+   "bio": [
+    "Area permukaan biologis yang baik.",
+    "Koloni bakteri dapat terbentuk melalui proses siklus.",
+    "Media biologis tidak mencukupi."
+   ],
+   "env": [
+    "Suhu dan fotoperiode terkendali dengan baik.",
+    "Kendali lingkungan dasar sudah terpasang.",
+    "Konsistensi kondisi perlu diperhatikan."
+   ],
+   "live": [
+    "Kebutuhan penebaran tinggi — pantau parameter dengan ketat.",
+    "Kebutuhan penebaran sedang.",
+    "Penebaran ringan — titik awal yang baik."
+   ],
+   "human": [
+    "Pengaturan yang menuntut perhatian konsisten.",
+    "Perawatan sedang diperlukan.",
+    "Perawatan relatif rendah."
+   ]
+  },
+  "nextBestAction": "Langkah terbaik berikutnya",
+  "calloutHasFilter": "Gunakan konfigurasi ini, beli dulu hanya komponen penting (filter + heater + test kit), lalu jalankan siklus tanpa ikan selama 14 hari pertama sebelum menambahkan ikan.",
+  "calloutNoFilter": "Tambahkan satu filter terlebih dahulu, lalu ulangi pemeriksaan ritme sebelum memilih penghuni. Tanpa filter, rencana ini belum siap untuk memulai siklus.",
+  "closingQuote": "Ritme yang dibangun dengan kesabaran akan menjadi mandiri dengan sendirinya. Apa yang Anda pilih di sini adalah arsitektur dari sebuah sistem yang hidup."
+ },
+ "images": {
+  "photoAriaPrefix": "Foto ",
+  "noImageFound": "Gambar tidak ditemukan"
+ },
+ "enums": {
+  "care_level": {
+   "Beginner": "Pemula",
+   "Intermediate": "Menengah",
+   "Advanced": "Mahir"
+  },
+  "bioload": {
+   "very-low": "Sangat rendah",
+   "low": "Rendah",
+   "medium": "Sedang",
+   "medium-high": "Sedang-tinggi",
+   "high": "Tinggi",
+   "very-high": "Sangat tinggi"
+  },
+  "aggression": {
+   "peaceful": "Damai",
+   "semi-aggressive": "Agak agresif",
+   "aggressive": "Agresif",
+   "predatory": "Predator"
+  },
+  "hardness": {
+   "very-soft": "Sangat lunak",
+   "soft": "Lunak",
+   "soft-medium": "Lunak-sedang",
+   "medium": "Sedang",
+   "medium-hard": "Sedang-sadah",
+   "hard": "Sadah",
+   "soft-hard": "Lunak-sadah"
+  },
+  "water_column": {
+   "top": "Atas",
+   "upper-middle": "Atas-tengah",
+   "middle": "Tengah",
+   "lower-middle": "Bawah-tengah",
+   "bottom": "Bawah",
+   "surface": "Permukaan",
+   "all": "Semua",
+   "bottom-all": "Bawah-semua",
+   "bottom-middle": "Bawah-tengah",
+   "middle-bottom": "Tengah-bawah"
+  },
+  "light": {
+   "low": "Rendah",
+   "medium": "Sedang",
+   "high": "Tinggi",
+   "low-medium": "Rendah-sedang",
+   "medium-high": "Sedang-tinggi",
+   "low-high": "Rendah-tinggi"
+  },
+  "effect_ph": {
+   "neutral": "Netral",
+   "neutral to slight increase": "Netral hingga sedikit naik",
+   "neutral to very slight increase": "Netral hingga sangat sedikit naik",
+   "neutral to variable": "Netral hingga bervariasi"
+  },
+  "effect_hardness": {
+   "none": "Tidak ada",
+   "minimal": "Minimal",
+   "slight": "Sedikit",
+   "slight increase": "Sedikit naik",
+   "increases significantly": "Naik signifikan",
+   "increases significantly over time": "Naik signifikan seiring waktu",
+   "variable": "Bervariasi",
+   "softens": "Melunakkan",
+   "softening": "Pelunakan",
+   "slight softening": "Sedikit melunak",
+   "minimal to slight": "Minimal hingga sedikit",
+   "very minimal": "Sangat minimal"
+  }
+ },
+ "ecosystem": {
+  "FISH": {
+   "neon-tetra": {
+    "diet": "Omnivora — menerima pelet flake berkualitas, pelet mikro, daphnia beku, dan artemia.",
+    "substrate_pref": "Substrat gelap membuat warnanya makin cerah. Kerikil halus atau pasir.",
+    "notes_detail": "Salah satu ikan air tawar paling banyak dipelihara di dunia. Garis biru-merah ikoniknya paling cerah di air lunak yang sedikit asam dengan tanaman yang tumbuh baik. Sangat sensitif pada minggu-minggu pertama — jangan pernah dimasukkan ke akuarium yang belum disiklus atau baru dibangun. Cardinal tetra sering dianggap sebagai alternatif yang lebih cerah tapi lebih menuntut.",
+    "caution": "New Tank Syndrome adalah penyebab kematian nomor satu. Tunggu sampai amonia dan nitrit nol. Rentan terhadap Neon Tetra Disease (Pleistophora) — tidak ada obatnya, karantina ikan baru."
+   },
+   "cardinal-tetra": {
+    "diet": "Omnivora — pelet mikro, flake berkualitas, artemia baby beku, daphnia.",
+    "substrate_pref": "Substrat gelap. Lebih menyukai air blackwater berwarna tanin dengan serasah daun.",
+    "notes_detail": "Garis merah yang memanjang sepanjang tubuhnya membedakannya dari neon tetra. Butuh air yang benar-benar lunak dan asam agar warnanya keluar maksimal dan ikan tetap sehat dalam jangka panjang. Spesimen tangkapan liar lebih rapuh dibanding hasil ternak akuarium. Hulu Sungai Negro dan Orinoco tempat asalnya punya pH serendah 4.0 dan kesadahan hampir nol.",
+    "caution": "Tidak akan berkembang baik di air keran yang keras tanpa air RO atau conditioning. Lebih sensitif dibanding neon tetra — hanya untuk pemula yang sudah cukup berpengalaman."
+   },
+   "ember-tetra": {
+    "diet": "Omnivora — mulutnya sangat kecil. Pelet mikro, flake yang dihaluskan, artemia baby.",
+    "substrate_pref": "Substrat gelap yang halus. Tanaman lebat dengan area berenang yang terbuka.",
+    "notes_detail": "Salah satu ikan nano terbaik yang ada. Warna oranye-amber-nya jadi jauh lebih cerah di air lunak dengan substrat gelap dan tanaman lebat. Bioload-nya sangat kecil — cocok untuk setup 20L yang bertanaman baik. Bisa dicampur dengan udang kerdil karena badannya terlalu kecil untuk memangsa Neocaridina dewasa.",
+    "caution": "Mulutnya sangat kecil — kebanyakan flake standar terlalu besar. Haluskan dulu atau gunakan pakan khusus nano/mikro."
+   },
+   "rummy-nose-tetra": {
+    "diet": "Omnivora — flake berkualitas, pelet mikro, daphnia beku, dan artemia.",
+    "substrate_pref": "Substrat gelap. Ruang berenang terbuka di bagian tengah akuarium.",
+    "notes_detail": "Warna merah di hidungnya benar-benar berfungsi sebagai indikator kualitas air — akan memudar saat amonia naik atau pH berubah drastis. Penghobi berpengalaman memantau warna hidung ini setiap hari. Perilaku berkelompoknya yang rapat dan sinkron paling terlihat jelas dalam kelompok 10 ekor ke atas. Salah satu ikan schooling paling indah dalam hobi ini.",
+    "caution": "Hidung merah yang memudar = ada masalah kualitas air. Segera cek parameter air. Lebih sensitif dibanding kebanyakan tetra lain."
+   },
+   "black-skirt-tetra": {
+    "diet": "Omnivora — flake, pelet, pakan beku. Tidak pemilih.",
+    "substrate_pref": "Tidak terlalu spesifik. Kerikil atau pasir sama-sama bisa.",
+    "notes_detail": "Kuat dan mudah beradaptasi. Sirip hitamnya yang mengalir indah akan memudar jadi abu-abu seiring bertambahnya usia. Dikenal suka menggigit sirip ikan lain — hindari memeliharanya bersama ikan bersirip panjang seperti betta, angelfish, atau guppy. Dipelihara berkelompok akan mengurangi kecenderungan menggigit sirip ini secara signifikan.",
+    "caution": "Terkenal suka menggigit sirip. Hindari teman seakuarium bersirip panjang. Pelihara dalam kelompok 6 ekor ke atas agar perhatiannya teralih ke sesama."
+   },
+   "glowlight-tetra": {
+    "diet": "Omnivora — flake, pelet mikro, daphnia beku.",
+    "substrate_pref": "Substrat gelap membuat garis oranyenya lebih terlihat jelas.",
+    "notes_detail": "Garis oranye-merahnya bersinar sangat indah di bawah pencahayaan akuarium bertanaman. Sangat damai — teman yang sangat baik untuk tetra kecil lainnya. Kuat dan toleran terhadap rentang pH yang lebih lebar dibanding kebanyakan tetra Amazon.",
+    "caution": "Tidak ada yang perlu dikhawatirkan secara khusus. Salah satu tetra yang paling mudah dipelihara."
+   },
+   "serpae-tetra": {
+    "diet": "Omnivora — flake, pelet, cacing darah beku, dan artemia.",
+    "substrate_pref": "Tidak pemilih. Tanaman yang lebat membantu mengurangi agresivitas.",
+    "notes_detail": "Warna merah darahnya sangat mencolok dengan bercak hitam khas di dekat sirip dada. Termasuk aktif menggigit sirip — memeliharanya dalam kelompok besar 8 ekor ke atas mengurangi agresivitasnya secara signifikan karena perhatian ikan lebih tertuju ke sesamanya, bukan ke teman seakuarium lain. Akuarium bertanaman lebat dengan tempat bersembunyi juga membantu.",
+    "caution": "Aktif menggigit sirip. Pelihara dalam kelompok 8 ekor ke atas. Hindari sama sekali teman seakuarium bersirip panjang."
+   },
+   "lemon-tetra": {
+    "diet": "Omnivora — flake halus, pelet mikro, artemia baby beku.",
+    "substrate_pref": "Substrat gelap memunculkan warna kuningnya.",
+    "notes_detail": "Tetra kuning yang ceria dan damai. Sering terlewatkan karena orang lebih memilih spesies berwarna lebih mencolok, padahal sangat memuaskan dipelihara di akuarium bertanaman. Sirip kuning dan iris matanya yang merah tampil halus tapi indah.",
+    "caution": "Tidak ada yang perlu dikhawatirkan secara khusus. Salah satu tetra komunitas paling dapat diandalkan."
+   },
+   "diamond-tetra": {
+    "diet": "Omnivora — flake, pelet, pakan beku. Tidak pemilih.",
+    "substrate_pref": "Tidak pemilih. Tampil spektakuler di bawah pencahayaan akuarium bertanaman yang terang.",
+    "notes_detail": "Setiap sisiknya memantulkan cahaya secara individual — efek berkilaunya paling terlihat di bawah pencahayaan akuarium bertanaman yang kuat. Ikan jantan mengembangkan sirip yang dramatis seiring bertambahnya usia. Ikan yang indah tapi kurang mendapat perhatian yang layak.",
+    "caution": "Tidak ada yang perlu dikhawatirkan secara khusus. Butuh cahaya yang baik agar warnanya keluar maksimal."
+   },
+   "congo-tetra": {
+    "diet": "Omnivora — flake, pelet, cacing darah beku. Bisa menggigiti tanaman berdaun lunak.",
+    "substrate_pref": "Butuh ruang berenang terbuka. Tidak pemilih soal substrat.",
+    "notes_detail": "Tetra terbesar yang umum dipelihara. Ikan jantan mengembangkan sisik biru-oranye yang berkilau spektakuler serta sirip yang mengalir indah. Salah satu dari sedikit tetra asal Afrika yang mudah didapat. Lebih menyukai ruang berenang terbuka — hindari akuarium yang terlalu padat tanaman.",
+    "caution": "Bisa menggigiti tanaman berdaun lunak. Butuh ruang berenang horizontal — tidak cocok untuk akuarium yang tinggi dan sempit."
+   },
+   "pencilfish": {
+    "diet": "Omnivora — mulutnya sangat kecil. Pelet mikro, artemia baby, flake yang dihaluskan.",
+    "substrate_pref": "Setup blackwater dengan serasah daun dan tanin adalah yang paling ideal. Menyukai tanaman apung.",
+    "notes_detail": "Langsing dan elegan. Ada banyak spesies yang tersedia — N. marginatus (dwarf pencilfish) dan N. beckfordi (golden pencilfish) yang paling umum. Penghuni bagian atas hingga tengah air. Pola garis horizontalnya tampil berbeda-beda antar spesies. Pencilfish jantan kadang bisa saling agresif — perhatikan perilaku dominasi di antara mereka.",
+    "caution": "Mulutnya sangat kecil — flake standar harus dihaluskan dulu. Jantan bisa saling berkelahi — pelihara satu jantan dengan beberapa betina, atau dalam kelompok yang lebih besar."
+   },
+   "hatchetfish": {
+    "diet": "Insektivora — pelet apung, cacing darah freeze-dried, serangga kecil. Beri makan di permukaan air.",
+    "substrate_pref": "Tidak relevan — ikan penghuni permukaan. Tanaman apung memberi rasa aman.",
+    "notes_detail": "Bentuk tubuhnya yang pipih unik dan beradaptasi untuk mencari makan di permukaan air. Bisa melompat jauh dengan sangat mengejutkan saat kaget. Tutup akuarium yang rapat tanpa celah adalah keharusan mutlak. Sirip dadanya beradaptasi untuk melompat-meluncur jarak pendek — ini perilaku normal. Ikan penghuni permukaan yang jarang turun ke bawah sepertiga bagian atas akuarium.",
+    "caution": "Pelompat ulung — tutup akuarium tanpa celah sedikit pun wajib hukumnya. Spesimen tangkapan liar bisa rapuh pada awalnya."
+   },
+   "harlequin-rasbora": {
+    "diet": "Omnivora — flake, pelet mikro, artemia baby beku.",
+    "substrate_pref": "Substrat gelap dan setup bertanaman menonjolkan pola segitiga tembaga-hitamnya secara maksimal.",
+    "notes_detail": "Berasal dari Asia Tenggara termasuk Malaysia dan Singapura — sangat cocok dengan iklim regional. Tanda segitiga hitam dan warna tembaga tubuhnya sangat khas. Salah satu ikan hias paling populer di dunia selama beberapa dekade. Memijah di bagian bawah daun lebar — anubias adalah tempat pemijahan favoritnya. Kuat dan mudah beradaptasi selama masih dalam rentang suhu yang sesuai.",
+    "caution": "Tidak ada yang perlu dikhawatirkan secara khusus. Salah satu ikan schooling paling ramah untuk pemula."
+   },
+   "chili-rasbora": {
+    "diet": "Omnivora — pelet mikro, nauplii artemia baby, infusoria. Mulutnya sangat mungil.",
+    "substrate_pref": "Setup blackwater dengan substrat gelap dan tanin memunculkan warna merahnya yang mencolok.",
+    "notes_detail": "Warna merah menyalanya membuat ikan ini salah satu ikan nano paling mencolok yang ada. Berasal dari hutan rawa gambut Kalimantan tempat airnya sangat lunak dan berwarna seperti teh karena tanin. Di air keran yang keras, warna merahnya akan memudar cukup drastis. Paling baik dipelihara di biotope blackwater atau air lunak yang sudah dikondisikan dengan baik. Kelompok 15 ekor ke atas menunjukkan perilaku paling alami.",
+    "caution": "Flake standar terlalu besar — harus pakai pakan nano atau mikro. Tidak cocok dengan ikan apa pun yang mungkin memangsa ikan sekecil 2cm."
+   },
+   "galaxy-rasbora": {
+    "diet": "Omnivora — pelet mikro, flake yang dihaluskan, artemia baby.",
+    "substrate_pref": "Tanaman lebat. Substrat gelap. Air yang lebih sejuk karena berasal dari dataran tinggi.",
+    "notes_detail": "Baru ditemukan tahun 2006 dan langsung jadi salah satu ikan nano paling diburu. Tubuh birunya berbintik putih dengan sirip bergaris merah yang sangat khas. Lebih menyukai air yang agak lebih sejuk dibanding kebanyakan ikan tropis — pertimbangan penting di iklim Malaysia/Singapura yang suhu ruangnya bisa mencapai 28°C ke atas. Mungkin perlu pendinginan untuk menjaga suhu di 22–24°C.",
+    "caution": "Lebih menyukai air yang sejuk — mungkin perlu pendinginan di iklim tropis. Tidak cocok untuk akuarium komunitas hangat di atas 26°C."
+   },
+   "lambchop-rasbora": {
+    "diet": "Omnivora — flake halus, pelet mikro, artemia baby.",
+    "substrate_pref": "Setup bertanaman lebat dengan substrat gelap.",
+    "notes_detail": "Sangat mirip harlequin tapi tubuhnya lebih ramping dan tanda hitamnya berbentuk garis diagonal, bukan segitiga. Sering dijual dan dianggap sama dengan harlequin. Sangat mudah beradaptasi dan damai. Sangat cocok untuk akuarium komunitas bertanaman.",
+    "caution": "Tidak ada yang perlu dikhawatirkan secara khusus."
+   },
+   "guppy": {
+    "diet": "Omnivora — flake, pelet mikro, artemia baby hidup. Pakan berkualitas tinggi mencegah penyakit akibat kekurangan gizi.",
+    "substrate_pref": "Tidak pemilih. Tanaman lebat memberi betina tempat berlindung dari gangguan jantan.",
+    "notes_detail": "Salah satu ikan hias paling banyak dipelihara di seluruh dunia. Ada ratusan varian warna dan sirip hasil pembiakan selektif. Jantan terus-menerus mengganggu betina — menjaga rasio jantan-betina 1:2 atau 1:3 sangat penting untuk kesehatan betina. Termasuk livebearer, jadi burayaknya lahir langsung bisa berenang bebas — pisahkan burayak kalau ingin membesarkannya. Lebih menyukai air yang sedikit lebih keras dibanding kebanyakan ikan tropis.",
+    "caution": "Gangguan jantan terhadap betina menyebabkan stres dan memperpendek umur. Rasio minimum: 1 jantan untuk 2 betina. Tanaman lebat sangat penting agar betina punya tempat bersembunyi."
+   },
+   "platy": {
+    "diet": "Omnivora — flake, pelet, pakan berbahan sayuran. Sertakan juga wafer alga.",
+    "substrate_pref": "Tidak pemilih. Kuat dan mudah beradaptasi.",
+    "notes_detail": "Salah satu ikan air tawar paling kuat dan mudah beradaptasi. Ada banyak varian warna yang tersedia. Termasuk livebearer — akan berkembang biak dengan mudah, pisahkan burayak kalau ruang terbatas. Toleransi suhunya yang sedikit lebih rendah membuatnya cocok untuk ruangan tanpa pemanas. Lebih menyukai air yang lebih keras dan basa dibanding spesies asal Amazon.",
+    "caution": "Lebih menyukai air keras — air lunak dan asam memperpendek umurnya. Akan berkembang biak berlebihan tanpa pengelolaan populasi."
+   },
+   "molly": {
+    "diet": "Omnivora — flake, pelet, sayuran, wafer alga. Kandungan sayuran yang tinggi penting untuk kesehatannya.",
+    "substrate_pref": "Tidak pemilih. Toleran terhadap sedikit garam akuarium.",
+    "notes_detail": "Secara alami toleran terhadap air payau dan berkembang paling baik di air keras dan basa. Sedikit garam akuarium (1 sendok teh per 10L) sangat bermanfaat untuk molly. Bioload-nya cukup tinggi untuk ukuran tubuhnya — filtrasi harus memperhitungkan hal ini. Black molly, dalmatian molly, sailfin molly semuanya adalah varian dari spesies yang sama atau berkerabat dekat.",
+    "caution": "Tidak bisa dipelihara bersama ikan air lunak seperti discus atau cardinal tetra. Bioload-nya yang tinggi butuh filtrasi yang baik. Rentan terhadap Mollies Disease (shimmy) di kondisi air yang buruk."
+   },
+   "swordtail": {
+    "diet": "Omnivora — flake, pelet, pakan beku, bahan sayuran.",
+    "substrate_pref": "Tidak pemilih. Perenang aktif — butuh ruang horizontal.",
+    "notes_detail": "Sirip ekor bawah jantan yang memanjang jadi ciri khasnya. Aktif dan berenang cepat. Jantan bisa saling agresif — pelihara satu jantan dengan beberapa betina, atau di akuarium yang lebih besar dengan dekorasi yang memutus garis pandang. Bisa melompat — tutup akuarium wajib.",
+    "caution": "Jantan saling berkelahi. Pelihara satu jantan per akuarium kecuali akuariumnya 150L ke atas. Pelompat aktif — tutup akuarium sangat penting."
+   },
+   "endler-guppy": {
+    "diet": "Omnivora — pelet mikro, flake yang dihaluskan, artemia baby.",
+    "substrate_pref": "Menyukai tanaman lebat. Substrat gelap membuat warnanya makin cerah.",
+    "notes_detail": "Aslinya berasal dari sebuah laguna pesisir kecil di Venezuela. Lebih mungil dan aktif dibanding guppy biasa. Warna jantannya sering lebih cerah. Akan berhibridasi dengan guppy biasa kalau dipelihara bersama — jaga kemurnian spesies atau terima saja hasil hibridanya. Bisa dipelihara bersama udang kecil karena jarang memangsa Neocaridina dewasa.",
+    "caution": "Akan berhibridasi dengan guppy. Pelihara terpisah kalau ingin menjaga galur murni."
+   },
+   "zebra-danio": {
+    "diet": "Omnivora — flake, pelet, pakan beku. Tidak pemilih.",
+    "substrate_pref": "Tidak pemilih. Butuh ruang berenang horizontal yang terbuka.",
+    "notes_detail": "Salah satu hewan vertebrata yang paling banyak diteliti dalam dunia sains — genomnya sudah dipetakan secara lengkap. Sangat kuat dan toleran terhadap kondisi air yang buruk dibanding kebanyakan ikan tropis. Sering direkomendasikan untuk siklus akuarium (meski fishless cycling tetap lebih dianjurkan). Perenang yang sangat aktif di bagian atas air. Varian longfin-nya populer tapi lebih rentan digigit sirip oleh ikan lain.",
+    "caution": "Aktif dan cepat — bisa membuat teman seakuarium yang lebih lambat atau pemalu jadi stres. Varian longfin sebaiknya tidak dipelihara bersama ikan penggigit sirip."
+   },
+   "giant-danio": {
+    "diet": "Omnivora — flake, pelet, cacing darah beku. Pemakan yang sangat lahap.",
+    "substrate_pref": "Tidak pemilih. Butuh area berenang terbuka yang luas.",
+    "notes_detail": "Danio berukuran lebih besar untuk akuarium yang lebih besar pula. Sangat aktif berkelompok. Garis horizontal biru-kuningnya terlihat menarik saat bergerak. Bisa sesekali menggigit sirip ikan yang bergerak lambat. Lebih menyukai air yang sejuk — kurang cocok untuk setup discus atau setup bersuhu tinggi lainnya.",
+    "caution": "Sesekali menggigit sirip. Butuh ruang berenang terbuka. Tidak cocok untuk akuarium kecil."
+   },
+   "pearl-danio": {
+    "diet": "Omnivora — flake, pelet mikro, pakan beku.",
+    "substrate_pref": "Tidak pemilih. Air yang sejuk — pertimbangkan akuarium tanpa pemanas di iklim tropis.",
+    "notes_detail": "Kilau lavender-merah muda yang halus dan menangkap cahaya dengan indah. Lebih menyukai air yang sejuk dibanding kebanyakan ikan tropis — cocok untuk akuarium tanpa pemanas di ruangan bersuhu sedang, atau dengan pendinginan di iklim tropis.",
+    "caution": "Lebih menyukai air yang sejuk dibanding kebanyakan ikan tropis. Tidak cocok untuk akuarium komunitas hangat di atas 24°C."
+   },
+   "corydoras": {
+    "diet": "Omnivora — pelet tenggelam, wafer alga, cacing darah beku. Pakan harus sampai ke dasar akuarium.",
+    "substrate_pref": "Pasir halus atau kerikil yang sangat halus wajib digunakan — substrat yang tajam merusak sungutnya secara permanen.",
+    "notes_detail": "Lebih dari 160 spesies telah dideskripsikan. C. paleatus (pepper cory), C. aeneus (bronze cory), dan C. panda yang paling mudah didapat. Sangat sosial — akan terlihat stres atau kurang aktif kalau dipelihara dalam kelompok di bawah 5 ekor. Penghuni dasar yang juga bernapas dengan udara atmosfer — wajar kalau sesekali naik cepat ke permukaan. Butuh pakan tenggelam yang bisa sampai ke mereka sebelum dihabiskan ikan lain.",
+    "caution": "Kerikil tajam = sungut rusak = infeksi. Pasir halus adalah yang paling ideal. Kerusakan sungut bersifat permanen. Jangan pernah memelihara kurang dari 5 ekor."
+   },
+   "pygmy-corydoras": {
+    "diet": "Omnivora — pelet mikro, artemia baby, wafer tenggelam berukuran kecil.",
+    "substrate_pref": "Pasir halus. Tanaman lebat — berbeda dari corydoras biasa, pygmy corydoras sering berenang di kolom air.",
+    "notes_detail": "Berbeda dari kebanyakan corydoras, pygmy corydoras berenang di tengah air, bukan hanya di dasar. Ini membuatnya unik dan menarik untuk diamati. Ukurannya yang sangat kecil membuatnya cocok untuk akuarium nano. Paling baik dipelihara dalam kelompok besar agar perilaku schooling-nya terlihat alami.",
+    "caution": "Sangat kecil — hindari teman seakuarium yang mungkin memangsa ikan seukuran 2,5cm. Substrat halus sangat penting."
+   },
+   "sterbai-corydoras": {
+    "diet": "Omnivora — pelet tenggelam, cacing darah beku, wafer alga.",
+    "substrate_pref": "Pasir halus atau substrat yang sangat halus. Lebih menyukai air hangat.",
+    "notes_detail": "Salah satu spesies corydoras paling populer. Pola gelap berbintik putihnya sangat khas. Yang cukup unik, spesies ini bisa menoleransi suhu yang lebih tinggi dibanding kebanyakan corydoras lain — menjadikannya satu-satunya cory yang cocok untuk akuarium discus dengan suhu 28–30°C. Duri sirip dadanya bisa menusuk kulit dan sedikit beracun — tangani dengan hati-hati.",
+    "caution": "Duri sirip dadanya sedikit beracun — hati-hati saat menjaringnya. Substrat halus sangat penting."
+   },
+   "otocinclus": {
+    "diet": "Herbivora — biofilm, alga, sayuran yang direbus sebentar (zukini, mentimun), wafer alga. Tidak bisa bertahan hidup hanya dari alga saja.",
+    "substrate_pref": "Akuarium bertanaman dengan biofilm yang sudah terbentuk. Tidak bisa bertahan hidup di akuarium baru.",
+    "notes_detail": "Pembersih alga kecil terbaik untuk akuarium bertanaman. Memakan biofilm dan alga hijau lunak dari daun tanpa merusak tanamannya. Syarat yang sangat penting: hanya masukkan ke akuarium yang sudah matang, sudah disiklus, dan punya biofilm yang terbentuk — mereka tidak bisa bertahan hidup di akuarium baru. Ikan tangkapan liar kadang menolak makanan komersial dan bisa mati kelaparan. Andalan dalam hobi akuarium bertanaman selama beberapa dekade.",
+    "caution": "JANGAN PERNAH memasukkannya ke akuarium baru — akan mati kelaparan tanpa biofilm yang sudah terbentuk. Sebagian besar kematiannya disebabkan oleh kelaparan, bukan penyakit. Beri tambahan sayuran yang direbus sebentar sejak hari pertama."
+   },
+   "bristlenose-pleco": {
+    "diet": "Herbivora/Omnivora — alga, kayu apung (wajib untuk dikerat), wafer alga, sayuran yang direbus sebentar, sesekali protein.",
+    "substrate_pref": "Kayu apung wajib ada — mengerat kayu adalah kebutuhan pakan sekaligus pencernaan.",
+    "notes_detail": "Pleco yang direkomendasikan untuk akuarium komunitas — berbeda dari common pleco, ukurannya tetap di bawah 12cm. Ikan jantan mengembangkan bulu-bulu seperti kumis di moncongnya. Pemijah gua — jantan menjaga telurnya dengan sangat rajin. Wajib punya kayu apung: selulosanya adalah bagian dari pakan dan proses pencernaannya. Tidak akan bertahan lama tanpa kayu untuk dikerat.",
+    "caution": "Wajib punya kayu apung — tidak bisa ditawar demi kesehatannya. Dua jantan dalam satu akuarium akan berkelahi. Menghasilkan limbah yang cukup banyak untuk ukuran tubuhnya."
+   },
+   "siamese-algae-eater": {
+    "diet": "Omnivora — alga (termasuk black beard algae), biofilm, pelet tenggelam.",
+    "substrate_pref": "Tidak pemilih. Butuh ruang dasar terbuka untuk mencari makan.",
+    "notes_detail": "Salah satu dari sedikit ikan yang mau memakan black beard algae (Audouinella) — alga paling merepotkan di akuarium bertanaman. Bisa tumbuh sampai 15cm dan sangat aktif. Sering tertukar dengan Flying Fox (Epalzeorhynchos kalopterus) dan False Siamese Algae Eater — identifikasi yang tepat sangat penting. SAE asli punya garis hitam solid dari moncong sampai ekor yang menyambung sampai ke sirip ekornya.",
+    "caution": "Sering salah label di toko ikan. SAE asli punya garis hitam yang menyambung sampai ke sirip ekor — pastikan dulu sebelum membeli. Tumbuh cukup besar untuk ukuran ikan komunitas."
+   },
+   "hillstream-loach": {
+    "diet": "Herbivora — biofilm, alga, sayuran yang direbus sebentar. Jangan diberi makan berlebihan.",
+    "substrate_pref": "Batu sungai bulat yang halus. Arus yang kuat wajib ada — gunakan powerhead atau wavemaker.",
+    "notes_detail": "Tubuhnya yang pipih seperti cakram beradaptasi untuk hidup di sungai berarus deras dan kaya oksigen. Butuh kadar oksigen tinggi dan arus yang kuat — powerhead atau wavemaker yang diarahkan ke batu-batu halus sangat penting. Memakan biofilm dari permukaan batu. Sangat sensitif terhadap kadar oksigen rendah — harus ada pergolakan permukaan air yang kuat. Penampilannya unik dan memukau.",
+    "caution": "Butuh oksigen tinggi dan arus yang kuat — kondisi akuarium standar tidak cukup. Akan melemah dan mati tanpa arus yang memadai di atas batu-batu halus."
+   },
+   "kuhli-loach": {
+    "diet": "Omnivora — pelet tenggelam, cacing darah beku, pelet udang. Makan di malam hari.",
+    "substrate_pref": "Pasir halus wajib — mereka suka menggali. Gua dan tempat bersembunyi juga wajib.",
+    "notes_detail": "Berasal dari Malaysia dan Singapura. Bentuknya menyerupai belut dan sangat menggemaskan. Sebagian besar aktif di malam hari — keluar untuk mencari makan dan menjelajah saat malam tiba. Sangat jarang terlihat di siang hari kecuali sudah merasa nyaman di akuariumnya. Sangat sosial — kelompok 5 ekor ke atas merasa lebih aman dan lebih sering terlihat. Bisa bersembunyi di bawah substrat pasir halus. Bisa berumur panjang kalau kondisinya sesuai.",
+    "caution": "Jarang terlihat di siang hari — ini perilaku normal, bukan tanda sakit. Butuh substrat yang sangat halus agar bisa menggali dengan aman. Bisa menyusup lewat celah kecil pada intake filter — tutup intake-nya."
+   },
+   "clown-loach": {
+    "diet": "Omnivora — pelet tenggelam, cacing darah beku, siput (diburu secara aktif), sayuran.",
+    "substrate_pref": "Substrat lunak. Gua dan tempat bersembunyi. Menyukai area yang agak redup.",
+    "notes_detail": "Salah satu ikan hias paling populer selama beberapa dekade, tapi sering diperlakukan tidak baik karena dipelihara di akuarium yang terlalu kecil. Dijual di ukuran 3–5cm tapi bisa tumbuh sampai 30cm dalam 5–10 tahun. Sekelompok clown loach dewasa butuh akuarium 400L ke atas. Umurnya sangat panjang — beberapa spesimen bisa hidup lebih dari 25 tahun. Berasal dari Sumatra dan Kalimantan. Duri tajam di bawah matanya bisa tersangkut jaring — gunakan wadah untuk menangkapnya.",
+    "caution": "Tumbuh sampai 30cm — kebanyakan akuarium tidak memadai untuk jangka panjang. Rencanakan minimal 400L untuk kelompok yang layak. Duri tajam dekat matanya tersangkut jaring — gunakan wadah, bukan jaring. Sangat rentan terhadap Ich (bintik putih) — tanda pertama stres."
+   },
+   "yoyo-loach": {
+    "diet": "Omnivora — pelet tenggelam, pakan beku, siput (dengan sangat semangat).",
+    "substrate_pref": "Substrat halus. Menyukai gua dan pipa PVC.",
+    "notes_detail": "Nama \"yoyo\" berasal dari pola garis hitam di tubuh perak yang menyerupai bentuk yoyo. Karakternya aktif dan menghibur. Sangat sosial dalam kelompoknya sendiri tapi bisa mengejar dan mengganggu ikan lain. Pemburu siput yang sangat bersemangat — sekelompok yoyo loach bisa menghabiskan populasi siput dalam hitungan minggu.",
+    "caution": "Bisa agresif terhadap ikan yang lambat atau jinak — pantau perilakunya. Pemangsa siput yang aktif — akan memakan semua siput termasuk mystery snail dan nerite snail."
+   },
+   "dwarf-chain-loach": {
+    "diet": "Omnivora — pelet tenggelam, cacing darah beku, siput kecil.",
+    "substrate_pref": "Substrat halus. Menyukai setup bertanaman.",
+    "notes_detail": "Pola rantainya sangat khas dan indah. Lebih damai dan mungil dibanding loach lainnya — cocok untuk akuarium komunitas mulai dari 60L. Lebih ramah dibanding clown loach — sering berenang di kolom air. Populasi liarnya di Thailand terancam punah — kebanyakan ikan yang tersedia adalah hasil ternak akuarium.",
+    "caution": "Tidak ada yang perlu dikhawatirkan secara khusus. Salah satu pilihan loach terbaik untuk akuarium komunitas."
+   },
+   "betta-male": {
+    "diet": "Karnivora — pelet tinggi protein, cacing darah beku, artemia. Hindari flake murni.",
+    "substrate_pref": "Tidak pemilih. Menyukai tanaman apung — sering beristirahat di dekat permukaan.",
+    "notes_detail": "Berasal dari perairan dangkal, hangat, dan berarus tenang di Asia Tenggara. Ikan labirin — bernapas dengan udara atmosfer dari permukaan. Akses ke permukaan bukan sekadar pilihan, tapi keharusan. Dua jantan akan berkelahi sampai mati. Bisa dipelihara bersama teman seakuarium tertentu yang damai, tapi ikan penggigit sirip (barb, beberapa jenis tetra) akan merusak siripnya. Akuarium minimum yang direkomendasikan kebanyakan penghobi berpengalaman adalah 20L untuk satu jantan tunggal. Wadah yang lebih kecil dari itu kejam — betta butuh ruang untuk berenang dan menjelajah.",
+    "caution": "Dua jantan = salah satunya mati. Akses ke permukaan wajib. Minimal 20L — mangkuk dan vas betta merugikan kesehatannya. Ikan penggigit sirip bisa merusak siripnya dalam hitungan jam."
+   },
+   "pearl-gourami": {
+    "diet": "Omnivora — flake, pelet, pakan beku. Bisa memakan udang kecil.",
+    "substrate_pref": "Tidak pemilih. Menyukai tanaman apung untuk menutupi permukaan air.",
+    "notes_detail": "Salah satu spesies gourami paling indah. Bintik-bintik mutiaranya serta warna tenggorokan merah-oranye pada jantan yang siap kawin sangat mencolok. Berasal dari Malaysia, Sumatra, dan Kalimantan. Jantan membangun sarang gelembung di permukaan air, di bawah tanaman apung. Butuh akses ke permukaan untuk organ labirinnya. Jantan bisa saling berkelahi — pelihara satu jantan saja kecuali akuariumnya besar.",
+    "caution": "Jantan saling berkelahi. Akses ke permukaan wajib. Bisa memakan udang yang sangat kecil."
+   },
+   "honey-gourami": {
+    "diet": "Omnivora — flake kecil, pelet mikro, artemia baby beku.",
+    "substrate_pref": "Setup bertanaman. Tanaman apung untuk rasa aman.",
+    "notes_detail": "Gourami terkecil yang umum dipelihara. Jantan berubah menjadi oranye-kuning yang cerah saat siap kawin. Sangat damai — salah satu dari sedikit gourami yang bisa dipelihara bersama udang tanpa banyak risiko dimangsa. Membangun sarang gelembung. Dijual dengan warna kusam tapi akan jauh lebih cerah dengan pakan yang baik dan air yang bersih.",
+    "caution": "Dijual dengan warna anakan yang kusam — bersabarlah, warnanya akan berkembang dalam hitungan minggu. Akses ke permukaan wajib."
+   },
+   "dwarf-gourami": {
+    "diet": "Omnivora — flake, pelet, pakan beku.",
+    "substrate_pref": "Setup bertanaman. Tanaman apung untuk rasa aman.",
+    "notes_detail": "Garis diagonal merah-biru yang cerah pada jantan. Namun, ada kekhawatiran kesejahteraan hewan yang cukup serius: Dwarf Gourami Iridovirus (DGIV) sudah endemik di rantai pasokan pasar massal, dengan beberapa perkiraan menyebutkan 22% dwarf gourami yang dijual secara komersial membawa virus ini. Tidak ada obatnya. DGIV menyebabkan ikan makin kurus secara bertahap hingga akhirnya mati dalam hitungan bulan sampai tahun. Belilah hanya dari breeder terpercaya atau toko ikan lokal dengan stok yang sehat.",
+    "caution": "DGIV (Dwarf Gourami Iridovirus) sangat umum ditemukan di stok pasar massal. Belilah hanya dari sumber terpercaya dengan ikan yang sehat. Tidak ada obatnya — ikan yang terinfeksi akan melemah lalu mati."
+   },
+   "moonlight-gourami": {
+    "diet": "Omnivora — flake, pelet, pakan beku.",
+    "substrate_pref": "Tidak pemilih. Menyukai tanaman apung.",
+    "notes_detail": "Ikan perak yang elegan dengan kilau halus. Tidak sewarna-warni pearl gourami tapi anggun dan damai. Sering terlewatkan karena orang lebih memilih spesies berwarna lebih mencolok, padahal sangat memuaskan dipelihara di akuarium bertanaman besar. Butuh air lunak yang sedikit asam agar bisa berkembang dengan baik.",
+    "caution": "Akses ke permukaan wajib. Jantan mungkin membangun sarang gelembung — ini perilaku normal."
+   },
+   "angelfish": {
+    "diet": "Karnivora/Omnivora — pelet, flake, cacing darah beku, udang. Memangsa ikan kecil.",
+    "substrate_pref": "Tidak pemilih. Butuh akuarium yang tinggi agar siripnya bisa tumbuh maksimal.",
+    "notes_detail": "Cichlid ikonik asal Amerika Selatan. Butuh akuarium yang tinggi (minimal 50cm) agar siripnya bisa berkembang sempurna. Akan memangsa ikan apa pun yang muat di mulutnya — tetra kecil bisa jadi santapan saat angelfish sudah dewasa. Pasangan angelfish membentuk ikatan yang sangat kuat — memisahkan salah satu dari pasangan yang sudah terikat menyebabkan stres berat. Bisa jadi agresif saat menjaga telur atau burayak. Umurnya sangat panjang — rencanakan untuk 10 tahun ke atas.",
+    "caution": "Akan memangsa neon tetra, rasbora kecil, dan apa pun yang cukup kecil untuk ditelan saat sudah dewasa. Akuarium tinggi wajib. Pasangannya sudah terikat kuat — jangan dipisahkan."
+   },
+   "discus": {
+    "diet": "Karnivora — campuran jantung sapi (cara tradisional), pelet tinggi protein, cacing darah beku. Butuh pemberian pakan yang sering.",
+    "substrate_pref": "Dasar akuarium kosong (tanpa substrat) demi kebersihan, atau pasir halus. Sangat sensitif terhadap limbah organik.",
+    "notes_detail": "Sering dijuluki Raja Akuarium. Salah satu ikan air tawar paling menantang untuk dipelihara dengan sukses. Butuh air yang sangat bersih — banyak penghobi serius melakukan ganti air 25–30% setiap hari. Suhu air 28–30°C sangat diperlukan. Suhu yang tinggi mempercepat pertumbuhan bakteri — filtrasi dan ganti air harus mengimbangi hal ini. Bukan ikan untuk siapa pun dengan pengalaman kurang dari 2 tahun.",
+    "caution": "Bukan untuk pemula atau penghobi tingkat menengah. Ganti air harian atau hampir setiap hari sering kali diperlukan. Fluktuasi parameter apa pun menyebabkan stres dan penyakit. Penyebab kematian nomor satu pada discus adalah kualitas air yang buruk akibat perawatan yang kurang memadai."
+   },
+   "apistogramma": {
+    "diet": "Karnivora/Omnivora — pelet kecil, cacing darah beku, artemia baby.",
+    "substrate_pref": "Pasir halus dengan gua-gua (tempurung kelapa, pot kecil). Jantan butuh teritorinya sendiri.",
+    "notes_detail": "Lebih dari 90 spesies telah dideskripsikan. A. cacatuoides (cockatoo dwarf cichlid) dan A. agassizii yang paling umum. Jantan jauh lebih berwarna dibanding betina. Pemijah gua — betina menjaga telur dan burayak dengan sangat galak di dalam tempurung kelapa atau gua. Jantan bisa agresif terhadap sesama jantan — sediakan tanaman untuk memutus garis pandang.",
+    "caution": "Jantan agresif terhadap sesama jantan. Betina jadi sangat agresif saat menjaga anak-anaknya — pisahkan jantan kalau perlu. Butuh air lunak dan sedikit asam."
+   },
+   "german-blue-ram": {
+    "diet": "Karnivora/Omnivora — pelet kecil, cacing darah beku, artemia baby.",
+    "substrate_pref": "Pasir halus. Area dasar terbuka agar sepasang ram bisa membangun teritorinya.",
+    "notes_detail": "Salah satu ikan air tawar paling indah yang ada. Warna biru elektrik dan kuningnya dengan bercak hitam sangat khas. Butuh air hangat, bersih, dan lunak — lonjakan amonia yang bisa ditoleransi ikan lain sering kali fatal bagi ram. Banyak spesimen yang tersedia secara komersial diberi hormon atau hasil perkawinan sedarah — belilah dari breeder terpercaya. Pasangannya membentuk ikatan dan akan memijah di atas batu datar atau lubang kecil di pasir.",
+    "caution": "Umurnya cukup pendek untuk standar ikan hias — 2–3 tahun adalah hal normal. Sangat sensitif terhadap kualitas air. Banyak spesimen komersial yang lemah akibat produksi massal. Belilah dari breeder spesialis kalau memungkinkan."
+   },
+   "bolivian-ram": {
+    "diet": "Karnivora/Omnivora — pelet kecil, cacing darah beku, artemia.",
+    "substrate_pref": "Pasir halus. Area terbuka untuk teritori ditambah pinggiran bertanaman.",
+    "notes_detail": "Alternatif yang lebih kuat dan berumur lebih panjang dibanding German Blue Ram. Toleran terhadap rentang kondisi air yang lebih lebar. Warnanya tidak secerah German Blue Ram tapi tetap menarik dengan sirip punggung bertepi merah dan tubuh kuning. Direkomendasikan untuk pemula yang ingin mencoba memelihara cichlid kerdil.",
+    "caution": "Tidak ada yang perlu dikhawatirkan secara khusus dibanding cichlid lain. Cichlid kerdil yang cukup toleran terhadap kesalahan pemula."
+   },
+   "severum": {
+    "diet": "Omnivora — pelet, pakan beku, sayuran, cacing tanah hidup. Memakan tanaman.",
+    "substrate_pref": "Dekorasi yang kokoh — akan menata ulang semuanya. Jangan pakai tanaman yang lembut/rapuh.",
+    "notes_detail": "Cichlid besar dengan karakter yang kuat. Sering mengenali pemiliknya dan mau berinteraksi. Akan memakan atau mencabut semua tanaman — hanya cocok dengan tanaman yang sangat kuat seperti java fern yang diikatkan ke batu. Bisa dipelihara bersama cichlid besar lain yang sifatnya serupa. Ada varian warna hijau, emas, dan merah.",
+    "caution": "Akan merusak semua tanaman. Bioload-nya yang tinggi butuh filtrasi yang kuat. Semi-agresif terhadap ikan yang lebih kecil."
+   },
+   "oscar": {
+    "diet": "Karnivora — pelet besar, pakan beku, cacing tanah, ikan pakan (masih kontroversial). Hindari ikan pakan dari sumber yang tidak terpercaya.",
+    "substrate_pref": "Hanya dekorasi yang kokoh. Akan menata ulang semuanya.",
+    "notes_detail": "Cichlid besar paling populer di dunia akuarium. Sangat cerdas — mengenali pemiliknya, bisa belajar makan langsung dari tangan, dan punya karakter yang sungguh nyata. Tumbuh dari ukuran 5cm saat dijual menjadi 35cm ke atas dalam 12–18 bulan. Menghasilkan limbah dalam jumlah luar biasa banyak — filter kanister besar atau sump bukan sekadar pilihan, tapi keharusan. Memakan apa saja. Akuarium harus khusus satu spesies atau bersama cichlid besar dan kuat lainnya.",
+    "caution": "Tumbuh sampai 35cm dalam 18 bulan — kebanyakan pembeli tidak siap menghadapi ini. Menghasilkan limbah dalam jumlah besar. Minimal 300L untuk satu ekor Oscar. Akan memangsa apa pun yang lebih kecil darinya."
+   },
+   "cichlid-african": {
+    "diet": "Herbivora/Omnivora — pelet berbahan dasar spirulina, alga. Pakan rendah protein sangat penting.",
+    "substrate_pref": "Gua batu wajib ada — minimal satu gua per ikan. Substrat karang hancur atau aragonit untuk menstabilkan pH.",
+    "notes_detail": "Danau Malawi adalah danau dengan air yang sangat keras dan basa — pH 7,8–8,5, TDS sangat tinggi. Cichlid Afrika berevolusi mengikuti kondisi kimia air khusus ini dan tidak bisa bertahan hidup di air keran lunak standar tanpa buffer yang memadai. Kelompok mbuna hidup di sekitar bebatuan dan sangat teritorial. Uniknya, overstocking justru mengurangi agresivitas karena mencegah satu ikan pun membangun teritori eksklusif.",
+    "caution": "Tidak bisa dicampur dengan ikan air lunak apa pun. Sangat agresif — ikuti prinsip overstocking. Pakan tinggi protein menyebabkan penyakit bloat. Substrat karang hancur wajib untuk menjaga pH tetap tinggi."
+   },
+   "peacock-cichlid": {
+    "diet": "Karnivora — pelet tenggelam, cacing darah beku, artemia. Berburu invertebrata.",
+    "substrate_pref": "Dasar pasir — berburu dengan cara menyaring pasir untuk mencari invertebrata. Struktur batu untuk berlindung.",
+    "notes_detail": "Tidak seagresif cichlid mbuna. Jantan punya warna yang spektakuler — biru, merah, dan oranye tergantung spesiesnya. Dasar pasir penting karena mereka secara alami menyaring substrat untuk mencari invertebrata. Bisa dicampur dengan cichlid haplochromine lain yang ukurannya serupa, tapi tidak dengan mbuna di akuarium yang lebih kecil.",
+    "caution": "Butuh air keras dan basa yang sama seperti mbuna. Tidak bisa dipelihara bersama ikan air lunak. Jantan bisa saling berkelahi — butuh ruang yang cukup dan jumlah betina yang memadai."
+   },
+   "frontosa": {
+    "diet": "Karnivora — pelet besar, ikan beku, udang. Predator penyergap.",
+    "substrate_pref": "Dasar pasir terbuka dengan gua batu berukuran besar. Suasana tenang, pencahayaan redup.",
+    "notes_detail": "Cichlid air dalam yang benar-benar megah dari Danau Tanganyika. Punuk di kepalanya berkembang seiring bertambahnya usia. Gerakannya sangat lambat dan penuh perhitungan — predator penyergap di alam liar. Butuh akuarium khusus dengan ikan berukuran serupa. Danau Tanganyika adalah salah satu danau tertua dan paling stabil di Bumi — airnya harus sangat keras, basa, dan kaya oksigen.",
+    "caution": "Umurnya sangat panjang — 20 tahun ke atas adalah komitmen yang serius. Butuh minimal 400L untuk kelompok yang layak. Kimia air Danau Tanganyika sangat spesifik."
+   },
+   "boesemani-rainbow": {
+    "diet": "Omnivora — flake, pelet, pakan beku.",
+    "substrate_pref": "Tidak pemilih. Butuh ruang berenang terbuka.",
+    "notes_detail": "Warna separuh biru separuh oranyenya termasuk salah satu yang paling mencolok di antara semua ikan air tawar. Warnanya baru berkembang penuh seiring bertambahnya usia dan kondisi yang tepat — ikan mudanya masih pucat. Endemik di area kecil di Papua Barat — populasi liarnya terancam. Kebanyakan ikan yang tersedia adalah hasil ternak akuarium. Lebih menyukai air yang lebih keras dibanding kebanyakan ikan tropis lain.",
+    "caution": "Ikan mudanya sama sekali tidak mirip ikan dewasa — warna penuhnya butuh 6–12 bulan untuk berkembang. Butuh air terbuka untuk berenang."
+   },
+   "turquoise-rainbow": {
+    "diet": "Omnivora — flake, pelet, pakan beku.",
+    "substrate_pref": "Tidak pemilih. Butuh area berenang terbuka yang luas.",
+    "notes_detail": "Warna biru-tosca elektriknya sangat cerah. Endemik danau lain dari Papua Nugini dengan sebaran alami yang kecil. Kuat kalau dipelihara di akuarium. Aktif berkelompok dan berenang cepat. Lebih menyukai air yang lebih sejuk dibanding boesemani.",
+    "caution": "Perenang aktif yang butuh ruang. Lebih sejuk dari setup tropis rata-rata."
+   },
+   "neon-rainbow": {
+    "diet": "Omnivora — flake, pelet mikro, pakan beku.",
+    "substrate_pref": "Tidak pemilih. Tanaman lebat dengan koridor berenang yang terbuka.",
+    "notes_detail": "Rainbowfish paling mungil yang umum dipelihara. Tubuh biru dengan sirip merah cerah pada jantan. Lebih toleran terhadap air yang lebih lunak dibanding rainbowfish lain. Ikan yang bagus untuk berenang di bagian tengah akuarium bertanaman.",
+    "caution": "Tidak ada yang perlu dikhawatirkan secara khusus. Salah satu rainbowfish yang paling mudah dipelihara."
+   },
+   "fundulopanchax-gardneri": {
+    "diet": "Karnivora — pelet mikro, cacing darah beku, artemia hidup.",
+    "substrate_pref": "Setup bertanaman dengan tanaman apung. Menyukai substrat gambut atau kondisi blackwater.",
+    "notes_detail": "Killifish annual yang sangat memukau dengan tubuh biru-hijau berkilau dan bercak merah. Jantan bisa saling agresif dan kadang juga terhadap betina — sediakan tempat bersembunyi dan jaga rasio jenis kelamin 1:2 atau 1:3. Tidak benar-benar \"annual\" di akuarium karena airnya tidak pernah mengering, tapi umurnya tetap relatif pendek.",
+    "caution": "Jantan agresif terhadap sesama jantan dan juga terhadap betina. Jumlah betina harus lebih banyak dari jantan. Bisa melompat — tutup akuarium sangat penting."
+   },
+   "aphyosemion": {
+    "diet": "Karnivora — pelet mikro, artemia hidup, cacing darah beku.",
+    "substrate_pref": "Setup blackwater. Tanaman apung. Serasah daun.",
+    "notes_detail": "Sirip lyretail jantannya memanjang indah, dengan bercak oranye-merah di tubuh biru-hijau. Favorit di kalangan penggemar killifish. Lebih menyukai air yang sejuk — kurang cocok untuk akuarium di atas 26°C. Salah satu killifish yang lebih damai.",
+    "caution": "Lebih menyukai air yang sejuk — kurang cocok untuk akuarium tropis di atas 24°C. Bisa melompat — tutup akuarium sangat penting."
+   },
+   "dwarf-puffer": {
+    "diet": "Karnivora — siput hidup atau beku (wajib untuk mengasah paruhnya), cacing darah beku, artemia. Tidak akan makan flake.",
+    "substrate_pref": "Setup dengan tanaman lebat. Banyak tempat bersembunyi — mereka membangun teritorinya sendiri.",
+    "notes_detail": "Puffer terkecil di dunia. Berasal dari sungai-sungai Pegunungan Ghats Barat di India — endemik dan makin terancam akibat hilangnya habitat. Karakternya sangat kuat — matanya yang penasaran mengikuti gerakan di luar akuarium. Siput sangat penting — ramshorn snail adalah pilihan ideal karena memberi makanan sekaligus mengasah paruhnya agar tidak tumbuh berlebihan. Sebaiknya di akuarium khusus atau hanya dengan teman seakuarium yang paling kuat.",
+    "caution": "Akan menggigit sirip teman seakuarium apa pun. Paling baik dipelihara di akuarium khusus satu spesies. Pasokan siput harus tetap tersedia — paruh yang tumbuh berlebihan tanpa makanan keras itu menyakitkan dan bisa fatal."
+   },
+   "bumblebee-goby": {
+    "diet": "Karnivora — cacing darah hidup atau beku, artemia, daphnia. Tidak akan menerima pakan kering.",
+    "substrate_pref": "Pasir dengan gua batu dan tempat bersembunyi. Tanaman air opsional.",
+    "notes_detail": "Pola garis kuning-hitamnya mirip lebah. Sebenarnya adalah spesies air payau di alam liar — toleran terhadap air tawar tapi berkembang lebih baik dengan sedikit garam akuarium (1 sendok teh per 10L). Hanya akan menerima pakan hidup atau beku — menolak pakan kering adalah hal yang wajar, bukan pengecualian. Membangun teritori kecil di sekitar gua.",
+    "caution": "Tidak akan makan pakan kering — hanya pakan hidup atau beku. Lebih menyukai kondisi air payau. Akan berkelahi memperebutkan teritori — sediakan gua yang cukup."
+   },
+   "goldfish-fancy": {
+    "diet": "Omnivora — pelet tenggelam atau melayang netral (pakan apung menyebabkan masalah gelembung renang pada varietas fancy). Sayuran.",
+    "substrate_pref": "Kerikil halus atau dasar kosong tanpa substrat. Jangan ada tepi yang tajam. Hanya dekorasi yang kokoh.",
+    "notes_detail": "Goldfish fancy (ryukin, oranda, ranchu, dll.) sangat berbeda dari goldfish biasa yang hidup di kolam taman. Mereka menghasilkan limbah sekitar tiga kali lipat dibanding ikan tropis dengan ukuran setara. Aturan \"10 galon per ikan\" yang sering disebut-sebut secara online sama sekali tidak memadai — minimal 60L per ikan adalah standar umum di komunitas, 75L lebih disarankan. Pendinginan diperlukan di iklim Malaysia/Singapura — goldfish fancy tidak bisa menoleransi suhu tropis di atas 24°C. Umurnya sangat panjang — oranda yang sehat bisa hidup 15–20 tahun.",
+    "caution": "Butuh pendinginan di iklim tropis — tidak bisa bertahan lama di atas 24°C. Bioload-nya sangat besar — filtrasi yang kuat sangat penting. Memelihara di dalam \"mangkuk\" atau \"vas\" seperti yang umum dilakukan itu kejam dan menyebabkan kematian dini."
+   },
+   "white-cloud-minnow": {
+    "diet": "Omnivora — flake kecil, pelet mikro, daphnia beku.",
+    "substrate_pref": "Tidak pemilih. Menyukai setup bertanaman.",
+    "notes_detail": "Dulu dijuluki \"neon tetra-nya orang miskin\" — padahal sebenarnya lebih unggul dalam banyak hal. Kuat, aktif, dan indah dengan ujung sirip merah serta garis lateral di tubuhnya. Populasi liarnya kritis terancam punah atau bahkan mungkin sudah punah — hampir semua ikan yang tersedia adalah hasil ternak akuarium. Sangat cocok untuk setup tanpa pemanas di ruangan tropis yang tidak melebihi 24°C.",
+    "caution": "Tidak bisa menoleransi suhu di atas 24°C dalam jangka waktu yang lama. Tidak cocok untuk akuarium tropis dengan pemanas."
+   },
+   "weather-loach": {
+    "diet": "Omnivora — pelet tenggelam, cacing darah beku, sayuran. Akan memakan apa saja.",
+    "substrate_pref": "Substrat lunak — mereka menggali cukup dalam. Pasir halus adalah yang paling ideal.",
+    "notes_detail": "Namanya berasal dari perilakunya yang menjadi sangat aktif dan gelisah sebelum sistem cuaca bertekanan rendah tiba — mereka bisa merasakan perubahan tekanan udara. Sangat menggemaskan dan punya karakter kuat. Tumbuh jauh lebih besar dari ukuran saat dijual. Bisa bernapas dengan udara atmosfer saat kadar oksigen rendah. Sangat kuat — bisa bertahan di kondisi yang mematikan bagi kebanyakan ikan lain.",
+    "caution": "Tumbuh sampai 25cm — rencanakan ukuran akuarium sesuai itu. Tidak bisa menoleransi suhu tropis yang hangat. Bisa kabur lewat celah mana pun — tutup akuarium harus benar-benar rapat."
+   },
+   "black-ghost-knifefish": {
+    "diet": "Karnivora — cacing tanah, cacing darah beku, udang. Individu yang sudah terlatih bisa menerima pelet tenggelam tinggi protein.",
+    "substrate_pref": "Pasir halus. Nokturnal — butuh gua, pipa, atau tempat berlindung yang rimbun untuk siang hari.",
+    "notes_detail": "Salah satu ikan air tawar paling mencolok yang ada. Menghasilkan medan listrik lemah untuk bernavigasi dan berkomunikasi. Sangat cerdas dan bisa mengenali pemiliknya. Nokturnal — jarang terlihat di siang hari tanpa tempat bersembunyi khusus. Bisa dipelihara bersama ikan tengah air yang tenang dan cukup besar untuk tidak dimangsa. Teritorial terhadap sesamanya — pelihara satu ekor saja kecuali akuariumnya sangat besar.",
+    "caution": "Sangat sensitif terhadap kualitas air yang buruk dan obat-obatan — pengobatan berbasis tembaga apa pun bersifat fatal. Butuh air yang sangat bersih dan ganti air rutin. Bukan untuk pemula."
+   },
+   "arowana-silver": {
+    "diet": "Karnivora — serangga, ikan, pakan hidup dan beku. Melompat untuk menangkap mangsa — beri makan di permukaan air.",
+    "substrate_pref": "Pasir atau dasar kosong. Butuh ruang berenang terbuka yang luas di dekat permukaan.",
+    "notes_detail": "Salah satu ikan predator besar paling ikonik dalam hobi ini. Penghuni permukaan yang menggunakan mulutnya yang miring untuk menyerang mangsa dari atas atau bahkan melompat keluar dari air. Arowana muda dijual dalam ukuran kecil tapi tumbuh sangat cepat — 90cm adalah ukuran dewasa yang umum. Butuh akuarium yang sangat besar dan tertutup sepenuhnya. Risiko melompat tetap serius meski sudah ada tutup. Hanya bisa dipelihara bersama ikan lain kalau ikan itu terlalu besar untuk dimangsa dan akuariumnya sangat luas.",
+    "caution": "Bisa melompat — tutup akuarium yang berat dan rapat tidak bisa ditawar. Tumbuh sampai 90cm. Hanya cocok untuk penghobi berpengalaman dengan akuarium besar yang memadai. Tidak legal dipelihara di beberapa wilayah — cek dulu peraturan setempat."
+   },
+   "elephant-nose": {
+    "diet": "Karnivora — blackworm, cacing darah beku, invertebrata kecil hidup. Menggunakan moncong panjangnya yang seperti belalai untuk mencari makanan di substrat.",
+    "substrate_pref": "Pasir halus dan lunak — menggunakan substrat untuk berburu. Tanaman lebat dan gua untuk rasa aman.",
+    "notes_detail": "Menghasilkan medan listrik lemah untuk bernavigasi dan berkomunikasi — salah satu ikan air tawar paling cerdas yang dipelihara di akuarium. Perpanjangan dagunya yang menjulur adalah rostrum yang digunakan untuk mencari cacing dan invertebrata di substrat lunak. Nokturnal dan pemalu — butuh banyak tempat bersembunyi. Bisa agresif terhadap sesamanya dan ikan berbentuk serupa. Sangat sensitif terhadap gangguan listrik dari peralatan akuarium.",
+    "caution": "Tidak bisa dipelihara di bawah pencahayaan yang terang tanpa tempat berlindung yang memadai. Hindari peralatan apa pun yang menghasilkan gangguan listrik. Sangat sensitif terhadap kualitas air dan obat-obatan. Bukan untuk pemula."
+   },
+   "fire-eel": {
+    "diet": "Karnivora — cacing tanah, cacing darah, udang, ikan kecil. Individu yang sudah terlatih bisa menerima pelet tenggelam.",
+    "substrate_pref": "Pasir halus yang dalam — menggali sampai terbenam total. Butuh lapisan pasir yang tebal dan banyak tempat bersembunyi di pipa atau gua.",
+    "notes_detail": "Spiny eel terbesar yang umum tersedia. Tanda oranye-merah yang mencolok di tubuh cokelat gelapnya. Sepenuhnya nokturnal — akan bersembunyi di bawah pasir atau di pipa sepanjang hari. Ahli kabur yang bisa menyusup lewat celah sekecil apa pun. Bisa hidup 20 tahun ke atas. Umumnya tidak agresif terhadap ikan yang terlalu besar untuk dimangsa tapi akan memburu apa pun yang kecil. Tidak cocok dengan udang atau ikan kecil.",
+    "caution": "Bisa kabur lewat celah mana pun termasuk lubang selang filter yang sempit. Butuh tutup akuarium yang benar-benar rapat dan intake filter yang tertutup. Bisa melukai orang yang menanganinya dengan duri sirip punggungnya yang tajam. Bukan untuk pemula."
+   },
+   "flowerhorn": {
+    "diet": "Omnivora — pelet cichlid berkualitas, cacing tanah, udang, cacing darah beku. Pelet khusus flowerhorn membuat warna punuknya makin cerah.",
+    "substrate_pref": "Dasar kosong atau kerikil halus. Akan menata ulang substrat apa pun dan merusak tanaman.",
+    "notes_detail": "Cichlid hibrida yang dikembangkan di Malaysia pada tahun 1990-an, dikenal dengan punuk khasnya (kok) di dahi. Karakternya sangat kuat dan sangat interaktif — mengenali pemiliknya dan akan merespons kehadiran orang di dekat akuarium. Hampir tidak bisa dipelihara bersama ikan apa pun karena agresivitasnya yang ekstrem. Akuarium khusus satu ekor adalah satu-satunya pendekatan yang praktis. Jantan lebih agresif dibanding betina.",
+    "caution": "Sangat agresif — akan membunuh kebanyakan teman seakuarium termasuk ikan yang lebih besar. Wajib dipelihara sendirian. Akan merusak tanaman, dekorasi, atau peralatan apa pun yang bisa dipindahkannya. Sama sekali tidak cocok untuk akuarium komunitas dalam kondisi apa pun."
+   },
+   "tiger-barb": {
+    "diet": "Omnivora — flake berkualitas, pelet, cacing darah beku, dan daphnia. Mudah menerima kebanyakan pakan olahan.",
+    "substrate_pref": "Kerikil halus atau pasir dengan tanaman sedang dan ruang berenang terbuka.",
+    "notes_detail": "Salah satu ikan air tawar paling mudah dikenali — garis vertikal hitam di tubuh emas-oranyenya sangat khas. Aktif dan berani. Kunci sukses memelihara tiger barb adalah ukuran kelompoknya: dalam kelompok 8 ekor ke atas, agresivitasnya tersalur ke sesamanya sendiri sehingga gigitan sirip ke teman seakuarium lain jadi minimal. Dalam kelompok 5 ekor atau kurang, mereka jadi penggigit sirip yang gigih. Hindari teman seakuarium bersirip panjang seperti betta, angelfish, dan guppy berapa pun ukuran kelompoknya.",
+    "caution": "Menggigit sirip kalau dipelihara dalam kelompok kurang dari 8 ekor. Akan terus-menerus mengganggu ikan bersirip panjang. Pelihara dalam kelompok 8 ekor ke atas dan pilih teman seakuarium bersirip pendek dan kuat seperti corydoras dan barb lainnya."
+   },
+   "pea-puffer": {
+    "diet": "Karnivora — siput hidup dan beku (wajib untuk mengasah paruhnya), cacing darah beku, daphnia, artemia baby.",
+    "substrate_pref": "Tanaman lebat dengan banyak pemutus garis pandang. Akuarium bertanaman lebat mengurangi agresivitas antar individu.",
+    "notes_detail": "Ikan buntal terkecil di dunia — spesies nano sejati yang ukurannya tetap di bawah 2,5cm. Penasaran dan interaktif dengan karakter yang mudah dikenali. Meski ukurannya kecil, mereka predator yang cerdas. Siput sangat penting untuk mengasah paruhnya yang terus tumbuh — tanpa pemberian siput rutin, paruhnya akan tumbuh berlebihan sampai membuatnya tidak bisa makan. Bisa dipelihara di akuarium khusus atau bersama ikan yang sangat cepat dan tidak teritorial. Jantan lebih agresif dibanding betina, terutama saat bersaing memperebutkan pasangan.",
+    "caution": "Tidak aman bersama kebanyakan teman seakuarium — akan menggigit sirip dan menyerang udang. Pemberian siput bukan pilihan, tapi keharusan. Jantan mungkin perlu dipisahkan kalau perkelahiannya jadi parah."
+   },
+   "geophagus": {
+    "diet": "Omnivora — menyaring substrat untuk mencari makanan. Pelet cichlid, cacing darah beku, cacing tanah, udang beku.",
+    "substrate_pref": "Pasir halus dan lunak — wajib. Terus-menerus menyaring gundukan substrat mencari makanan. Kerikil kasar merusak bagian mulutnya.",
+    "notes_detail": "Dijuluki \"pemakan tanah\" karena perilaku makannya yang khas — menyaring gundukan pasir lewat insangnya untuk memisahkan partikel makanan. Salah satu cichlid Amerika Selatan yang lebih bersahabat — tidak seagresif kebanyakan cichlid lain. Pasangannya membentuk ikatan pemijahan dan kedua induk sama-sama aktif menjaga burayak. Cocok dengan ikan tengah air yang kuat di akuarium besar. Akan terus-menerus menata ulang substrat — tidak cocok untuk akuarium bertanaman.",
+    "caution": "Akan mencabut tanaman apa pun dan menata ulang substrat sepenuhnya. Tidak cocok untuk akuarium bertanaman. Agresif saat memijah. Pasir halus adalah kebutuhan biologis, bukan sekadar pilihan."
+   },
+   "flying-fox": {
+    "diet": "Omnivora — alga, pelet tenggelam, sayuran yang direbus sebentar, wafer tenggelam. Memakan alga dari hardscape dan kaca akuarium.",
+    "substrate_pref": "Kerikil atau pasir dengan hardscape halus untuk dimakan. Butuh permukaan batu datar dan kayu apung.",
+    "notes_detail": "Sering tertukar dengan Siamese Algae Eater (Crossocheilus oblongus) — flying fox punya garis warna yang lebih lebar dan kurang efektif memakan hair algae saat sudah dewasa. Aktif memakan alga, biofilm, dan detritus. Teritorial terhadap sesamanya dan penghuni dasar yang serupa — pelihara satu ekor saja per akuarium kecuali setup-nya sangat besar. Bisa dipelihara bersama ikan komunitas tengah dan atas air tanpa masalah.",
+    "caution": "Teritorial terhadap sesamanya dan ikan yang serupa (siamese algae eater, flying fox lain). Jangan pelihara lebih dari satu di akuarium komunitas standar. Ikan dewasa makan lebih sedikit alga dibanding yang muda — jadi tidak bisa menggantikan perawatan akuarium yang semestinya."
+   },
+   "ropefish": {
+    "diet": "Karnivora — cacing tanah, udang beku, ikan kecil hidup. Pemburu malam — beri makan saat lampu dimatikan.",
+    "substrate_pref": "Pasir halus atau dasar kosong dengan banyak tempat bersembunyi — pipa, gua, tanaman lebat di dekat dasar.",
+    "notes_detail": "Ikan purba dari keluarga Polypterus yang bisa bernapas dengan udara atmosfer menggunakan paru-paru primitif. Penampilannya menyerupai belut dengan sirip dada kecil yang digunakan untuk \"berjalan\" di dasar akuarium. Sepenuhnya nokturnal — hanya aktif setelah lampu dimatikan. Damai terhadap ikan yang terlalu besar untuk ditelan, tapi akan memangsa ikan apa pun yang cukup kecil untuk muat di mulutnya. Bisa dipelihara berkelompok. Cukup mengejutkan, toleran terhadap berbagai kondisi air setelah beradaptasi.",
+    "caution": "Ahli kabur ulung — akan keluar lewat celah apa pun di tutup akuarium, selang filter, atau lubang peralatan lainnya. Tutup akuarium yang benar-benar rapat sangat penting. Akan memangsa ikan apa pun yang cukup kecil untuk ditelan. Periksa dulu seluruh ruangan sebelum menyimpulkan ropefish yang hilang sudah mati — mereka bisa bertahan hidup berjam-jam di luar air."
+   },
+   "rosy-barb": {
+    "diet": "Omnivora — flake berkualitas, pelet, cacing darah beku, sayuran yang direbus sebentar. Akan menggigiti tanaman berdaun lunak.",
+    "substrate_pref": "Kerikil atau pasir. Toleran terhadap air yang lebih sejuk — alternatif yang baik untuk setup tanpa pemanas dibanding ikan tropis lain.",
+    "notes_detail": "Salah satu barb terbesar yang umum tersedia. Jantan mengembangkan warna merah muda-merah yang cerah, terutama saat siap kawin. Lebih menyukai air yang sejuk dibanding kebanyakan ikan komunitas tropis lain — ideal untuk setup bersuhu sedang tanpa pemanas. Ikan schooling aktif yang menyukai ruang berenang terbuka. Dalam kelompok besar, kecenderungan menggigit sirip ringannya jadi minimal. Spesies yang kuat dan mudah beradaptasi, cocok untuk pemula.",
+    "caution": "Akan memakan tanaman berdaun lunak — gunakan spesies yang kuat seperti java fern dan anubias. Menggigit sirip kalau dipelihara dalam kelompok kurang dari 6 ekor. Tidak cocok untuk setup tropis murni di atas 24°C dalam jangka panjang."
+   },
+   "cherry-barb": {
+    "diet": "Omnivora — flake berkualitas, pelet mikro, daphnia beku, dan artemia baby.",
+    "substrate_pref": "Substrat gelap yang halus dengan tanaman lebat dan area berenang terbuka. Habitat aslinya punya banyak serasah daun.",
+    "notes_detail": "Jantan menampilkan warna merah ceri yang pekat, terutama saat menarik perhatian betina. Salah satu barb yang lebih damai — berbeda dari tiger barb, cherry barb bukan penggigit sirip dan cocok untuk akuarium komunitas dengan ikan bersirip panjang. Lebih menyukai akuarium bertanaman baik dengan sedikit keteduhan. Bisa dicampur dengan udang kecil di akuarium bertanaman lebat, meski sesekali ada individu yang memburu udang kecil. Populasi liarnya terancam akibat hilangnya habitat.",
+    "caution": "Pelihara dalam kelompok 8 ekor ke atas agar perilaku schooling-nya alami dan mengurangi stres individu. Jantan mungkin saling menunjukkan sikap agresif — tidak berbahaya, ini perilaku normal."
+   },
+   "australian-rainbow": {
+    "diet": "Omnivora — flake berkualitas, pelet, artemia beku, dan daphnia.",
+    "substrate_pref": "Kerikil atau pasir dengan tanaman sedang dan ruang berenang terbuka. Menyukai sedikit pergerakan air.",
+    "notes_detail": "Rainbowfish yang kuat dan berwarna-warni dari Queensland. Jantan menampilkan sisi tubuh biru dan merah yang berkilau, makin cerah di bawah pencahayaan yang baik. Damai dan aktif — sangat cocok untuk akuarium komunitas besar. Lebih menyukai air yang sedikit keras dan basa, tapi cukup mudah beradaptasi dengan kondisi netral. Warna terbaik terlihat dalam kelompok campuran jantan-betina di mana jantan bersaing memperebutkan perhatian betina. Perenang aktif yang butuh ruang berenang horizontal.",
+    "caution": "Tidak cocok untuk akuarium kecil — perenang aktif ini butuh ruang. Warnanya kurang cerah di pencahayaan yang buruk atau air lunak. Jantan mungkin sesekali saling mengejar tapi jarang menyebabkan cedera."
+   },
+   "buenos-aires-tetra": {
+    "diet": "Omnivora — flake dan pelet berkualitas. Akan memakan dan merusak kebanyakan tanaman akuarium berdaun lunak.",
+    "substrate_pref": "Kerikil atau pasir. Hindari tanaman hidup — spesies ini akan memakannya. Tanaman plastik yang kuat atau spesies tahan banting seperti java fern adalah pilihan yang lebih baik.",
+    "notes_detail": "Tetra yang kuat dan aktif dari Amerika Selatan. Lebih tahan suhu dingin dibanding kebanyakan tetra lain — bisa dipelihara tanpa pemanas di iklim sedang. Tubuh perak dengan ujung sirip merah. Kuat dan mudah dipelihara tapi bisa cukup berisik dan akan memakan atau merusak tanaman berdaun lunak. Pilihan yang bagus untuk penghobi yang ingin ikan schooling aktif dan tidak menuntut, tanpa tanaman hidup.",
+    "caution": "Akan merusak kebanyakan tanaman hidup — hanya cocok dengan java fern, anubias, dan spesies tahan banting serupa. Bisa sedikit menggigit sirip kalau dipelihara dalam kelompok kecil. Tidak cocok untuk setup akuarium bertanaman."
+   },
+   "green-tiger-barb": {
+    "diet": "Omnivora — flake berkualitas, pelet, cacing darah beku, dan daphnia.",
+    "substrate_pref": "Kerikil halus atau pasir dengan tanaman sedang dan ruang berenang terbuka.",
+    "notes_detail": "Varian warna dari tiger barb dengan tubuh berwarna hijau gelap merata, bukan emas dengan garis hitam. Semua kebutuhan perawatannya identik dengan tiger barb biasa. Green tiger barb bisa dicampur dengan tiger barb standar dalam kelompok yang sama — mereka bebas saling kawin. Aturan ukuran kelompok yang sama berlaku: pelihara 8 ekor ke atas agar agresivitasnya tersalur dalam kelompok dan meminimalkan gigitan sirip ke ikan lain.",
+    "caution": "Menggigit sirip kalau dipelihara dalam kelompok kurang dari 8 ekor. Akan terus-menerus mengganggu ikan bersirip panjang seperti betta, angelfish, dan guppy. Pelihara dalam kelompok 8 ekor ke atas bersama teman seakuarium bersirip pendek dan kuat."
+   }
+  },
+  "INVERTEBRATES": {
+   "neocaridina-shrimp": {
+    "diet": "Detritivora/Omnivora — biofilm, alga, serasah daun, pelet khusus udang, sayuran yang direbus sebentar.",
+    "notes_detail": "Udang air tawar yang paling ramah untuk pemula. Diternak dalam banyak varian warna — red cherry, kuning, oranye, blue velvet, green jade, black rose, dan masih banyak lagi. Setiap varian warna punya sistem grading tersendiri (dari kualitas warna rendah sampai tinggi). Berkembang biak dengan mudah dalam kondisi yang baik dan populasinya bisa bertahan tanpa campur tangan pemilik. Cocok dengan kebanyakan ikan kecil dan damai yang tidak memangsa udang.",
+    "caution": "Kebanyakan ikan akan memangsa udang — cek dulu kompatibilitasnya dengan teliti. Obat berbasis tembaga apa pun bersifat fatal."
+   },
+   "caridina-shrimp": {
+    "diet": "Detritivora/Omnivora — biofilm, pakan udang khusus, daun-daunan.",
+    "notes_detail": "Crystal Red (CRS), Crystal Black (CBS), Taiwan Bee — udang grade tinggi dengan sistem grading yang ketat (C, B, A, S, SS, SSS). Butuh air RO yang diremineralisasi dengan campuran mineral khusus caridina. Kestabilan pH jauh lebih penting dibanding angka pH yang persis — fluktuasi sedikit saja bisa menyebabkan kematian massal. Bukan untuk siapa pun yang belum berpengalaman. Caridina dan Neocaridina tidak bisa dipelihara bersama karena kebutuhan airnya berbeda.",
+    "caution": "Fluktuasi parameter apa pun = kematian massal. Wajib air RO dengan remineralizer khusus. Tembaga = kematian instan. Sama sekali tidak cocok untuk pemula dalam kondisi apa pun."
+   },
+   "amano-shrimp": {
+    "diet": "Herbivora/Detritivora — alga, biofilm, sisa tanaman yang membusuk, sayuran yang direbus sebentar.",
+    "notes_detail": "Namanya diambil dari aquascaper terkenal Takashi Amano yang mempopulerkan penggunaannya di akuarium bertanaman. Jauh lebih besar dan lebih kuat dibanding cherry shrimp — bisa menghadapi akuarium dengan arus dan pergerakan air yang lebih kuat. Pemakan alga yang sangat baik. Tidak bisa berkembang biak di air tawar — larvanya butuh air payau, jadi populasinya tidak akan bertambah dengan sendirinya. Tubuhnya yang transparan memperlihatkan organ dalamnya.",
+    "caution": "Tidak akan berkembang biak di air tawar — ini normal. Tembaga = fatal. Beberapa ikan tetap akan memangsa amano shrimp meski ukurannya besar."
+   },
+   "ghost-shrimp": {
+    "diet": "Detritivora/Omnivora — biofilm, alga, sayuran yang direbus sebentar, pakan udang.",
+    "notes_detail": "Tubuhnya yang sepenuhnya transparan memperlihatkan organ dalam dan isi perutnya. Sangat murah dan kuat — sering dijual sebagai udang pakan tapi sebenarnya menarik juga dijadikan hewan peliharaan display. Akan berkembang biak di air tawar. Betina membawa telur hijau yang terlihat jelas. Bisa dipelihara bersama ikan kecil yang damai. Sering tertukar dengan glass shrimp (spesies yang berbeda).",
+    "caution": "Umurnya pendek. Sering dijual sebagai udang pakan — kualitasnya bisa buruk dari sumber-sumber tertentu."
+   },
+   "bamboo-shrimp": {
+    "diet": "Penyaring makanan — memakan partikel dalam arus air. Tidak bisa bersaing memperebutkan makanan. Beri makan dengan menambahkan pakan burayak cair atau bubuk spirulina di hulu arus, di depan udangnya.",
+    "notes_detail": "Berasal dari Asia Tenggara termasuk Malaysia. Mengembangkan kaki depannya yang seperti bulu ke arah arus air untuk menangkap partikel makanan. Tempatkan di depan output filter untuk hasil makan yang maksimal. Tidak bisa bersaing dengan ikan untuk mendapatkan makanan — harus diberi makan secara langsung dan tertarget. Kalau warnanya berubah kecoklatan-kemerahan dan jadi gelisah, itu tandanya akan berganti kulit — sediakan pakan kaya protein dan tempat bersembunyi selama masa rentan ini. Perilakunya sangat menarik untuk diamati.",
+    "caution": "Tidak bisa bersaing memperebutkan makanan — butuh cara pemberian pakan khusus. Wajib ada arus yang kuat untuk menyaring makanan. Rentan saat berganti kulit."
+   },
+   "mystery-snail": {
+    "diet": "Detritivora/Herbivora — alga, biofilm, sayuran yang direbus sebentar, wafer alga, sisa tanaman yang membusuk. TIDAK akan memakan tanaman yang sehat.",
+    "notes_detail": "Salah satu siput akuarium yang paling umum dipelihara. Tersedia dalam varian warna emas, cokelat, biru, ungu, gading, dan lainnya. Bernapas dengan udara dari permukaan lewat sifonnya — sering naik ke luar air. Tutup akuarium yang rapat tanpa celah sangat penting. Meletakkan kelompok telurnya di atas permukaan air — gumpalan berwarna merah muda/putih di tutup akuarium. Telurnya butuh 2–4 minggu untuk menetas. Sensitif terhadap tembaga.",
+    "caution": "Tutup akuarium wajib — akan kabur kalau tidak. Butuh air kaya kalsium (tambahkan cuttlebone kalau perlu), kalau tidak cangkangnya akan rusak. Tembaga dalam bentuk apa pun = fatal."
+   },
+   "nerite-snail": {
+    "diet": "Herbivora — hanya alga. Salah satu pemakan alga paling efisien yang ada.",
+    "notes_detail": "Ada banyak varian pola — zebra, tiger, olive, horned. Tidak bisa berkembang biak di air tawar — larvanya butuh air payau, jadi tidak akan terjadi ledakan populasi. Siput pemakan alga serba bisa terbaik untuk akuarium bertanaman maupun komunitas. Akan meletakkan telur putih kecil seukuran kepala jarum di permukaan keras yang tidak akan menetas di air tawar — kurang sedap dipandang tapi tidak berbahaya.",
+    "caution": "Telur putih yang diletakkan di kaca dan dekorasi tidak akan menetas di air tawar — ini normal. Tembaga = fatal."
+   },
+   "assassin-snail": {
+    "diet": "Karnivora — siput (mangsa utamanya), juga menerima pakan tenggelam berbasis protein.",
+    "notes_detail": "Solusi biologis untuk mengatasi ledakan siput hama. Berasal dari Asia Tenggara. Berburu dan memakan ramshorn snail, trumpet snail, dan bladder snail dengan efisien. Tidak akan banyak melukai mystery snail atau nerite snail yang berukuran besar. Bisa menghabiskan populasi siput hama dalam hitungan minggu. Begitu siput mangsanya habis, mereka mau menerima pakan alternatif. Akan berkembang biak perlahan di air tawar.",
+    "caution": "Akan memakan siput kecil apa pun termasuk ramshorn dan trumpet snail yang mungkin justru ingin Anda pelihara. Jangan gunakan kalau ingin membiarkan siput hama tetap ada."
+   },
+   "ramshorn-snail": {
+    "diet": "Omnivora — alga, biofilm, sisa tanaman yang membusuk, sayuran yang direbus sebentar.",
+    "notes_detail": "Tersedia dalam varian merah/merah muda dan cokelat. Populasinya mengatur diri sendiri mengikuti ketersediaan makanan — kalau terlalu banyak, kurangi pemberian pakan atau tambahkan assassin snail. Tidak berbahaya bagi tanaman yang sehat tapi akan memakan daun yang sekarat. Petugas kebersihan akuarium yang sangat baik. Hermafrodit — dua siput bisa berkembang biak tanpa perlu jantan.",
+    "caution": "Bisa berpopulasi berlebihan kalau akuarium diberi pakan terlalu banyak. Bukan masalah di akuarium yang dirawat dengan baik."
+   },
+   "trumpet-snail": {
+    "diet": "Detritivora — detritus, alga, sisa pakan yang tidak habis di substrat.",
+    "notes_detail": "Penggali nokturnal. Membantu menganginkan substrat sehingga mencegah terbentuknya kantong gas anaerobik di substrat yang dalam. Hampir hanya terlihat di malam hari. Populasinya terlihat dalam jumlah besar saat malam hari atau ketika lampu akuarium dimatikan. Populasinya mengatur diri sendiri. Bermanfaat untuk akuarium bertanaman dengan substrat yang dalam.",
+    "caution": "Bisa berkembang biak dalam jumlah sangat besar di akuarium yang terlalu banyak diberi pakan. Nokturnal — jarang terlihat tapi selalu ada begitu sudah dimasukkan ke akuarium."
+   },
+   "vampire-shrimp": {
+    "diet": "Penyaring makanan — memakan partikel mikro dalam arus air. Beri makan langsung dengan pakan burayak cair atau bubuk spirulina.",
+    "notes_detail": "Salah satu udang air tawar terbesar yang ada. Meski namanya terdengar seram, sebenarnya sama sekali tidak berbahaya — mengembangkan kaki depannya yang termodifikasi ke arah arus untuk menyaring partikel makanan. Warnanya bervariasi dari putih, biru, sampai cokelat keabu-abuan. Butuh arus air yang kuat untuk bisa menyaring makanan. Akan bersembunyi di gua saat berganti kulit.",
+    "caution": "Penyaring makanan — tidak bisa bersaing memperebutkan makanan. Butuh cara pemberian pakan khusus. Butuh arus yang kuat."
+   },
+   "pom-pom-crab": {
+    "diet": "Penyaring makanan/Omnivora — memegang partikel makanan di capitnya lalu menyaringnya. Menerima pakan bubuk halus, biofilm, fitoplankton.",
+    "notes_detail": "Kepiting mungil yang terkenal karena memegang potongan anemon, alga, atau lumut di capitnya seperti pompom — digunakan untuk mencari makan sekaligus bertahan diri. Sepenuhnya damai dan sangat menarik untuk diamati. Butuh kondisi air tawar atau sedikit payau. Cocok dengan ikan kecil yang damai dan udang neocaridina. Sangat sensitif terhadap perubahan kualitas air. Tidak selalu mudah ditemukan di pasar hobi ini.",
+    "caution": "Sangat sensitif terhadap fluktuasi kualitas air. Tidak cocok dengan ikan yang suka mematuk invertebrata. Bisa melepas capitnya sendiri kalau stres — akan tumbuh lagi tapi perlahan."
+   },
+   "red-claw-crab": {
+    "diet": "Omnivora/Pemulung — pakan ikan, pelet, sayuran, invertebrata kecil, sumber protein.",
+    "notes_detail": "Kepiting populer untuk setup paludarium. Capitnya yang merah cerah dan perilakunya yang aktif membuatnya menarik untuk diamati. Semi-daratan — wajib punya akses rutin ke daratan kering di atas permukaan air. Air payau adalah kondisi optimalnya meski mereka toleran terhadap air tawar. Tidak bisa dipelihara bersama ikan yang cukup kecil untuk ditangkap atau bersama udang. Jantan teritorial terhadap sesamanya — pelihara satu jantan per akuarium atau pastikan ruang dan tempat bersembunyi yang cukup.",
+    "caution": "Semi-daratan — wajib punya akses ke daratan setiap saat. Akan kabur lewat celah apa pun. Akan memangsa ikan kecil dan udang. Kondisi air payau lebih disarankan — air tawar murni memperpendek umurnya. Bukan spesies air tawar sejati."
+   },
+   "dwarf-orange-crayfish": {
+    "diet": "Omnivora/Pemulung — pelet tenggelam, sayuran, sisa tanaman yang membusuk, invertebrata kecil.",
+    "notes_detail": "Salah satu dari sedikit udang karang yang cukup kecil untuk akuarium. Warna oranyenya cerah merata di seluruh tubuh. Berbeda dari udang karang yang lebih besar, mereka jauh lebih tidak merusak dan bisa dipelihara di akuarium bertanaman dengan spesies tanaman yang kuat. Aktif dan menghibur — akan menjelajahi setiap sudut akuarium. Tidak seagresif udang karang yang lebih besar tapi tetap akan menangkap ikan kecil yang lambat atau sedang tidur. Cocok dengan ikan tengah air yang cepat di akuarium bertanaman baik.",
+    "caution": "Akan menangkap dan memangsa ikan kecil yang lambat atau sedang tidur. Akan memotong ujung tanaman berdaun lunak. Tidak cocok dengan udang — akan memangsanya. Lebih menyukai air yang lebih sejuk dibanding kebanyakan spesies tropis lain."
+   },
+   "thai-micro-crab": {
+    "diet": "Penyaring makanan/Omnivora — biofilm, partikel halus yang melayang di air, pakan udang bubuk. Terus-menerus menyaring air menggunakan rambut halus di kakinya.",
+    "notes_detail": "Mungkin kepiting air tawar terkecil dalam hobi ini, ukurannya di bawah 1cm. Sepenuhnya putih transparan dengan kaki yang halus. Hanya ditemukan di satu sistem sungai di Thailand — makin langka di alam liar. Menghabiskan sebagian besar waktunya bersembunyi di lumut atau tanaman berdaun halus, menyaring partikel dari air. Hanya cocok dengan teman seakuarium yang sangat kecil dan damai — apa pun yang lebih besar akan memangsanya. Paling baik dipelihara di akuarium nano atau akuarium udang khusus.",
+    "caution": "Sangat kecil dan rapuh — kebanyakan ikan akan memangsanya. Hanya bisa dipelihara bersama ikan damai yang paling kecil seperti ember tetra atau micro danio, atau di setup khusus udang. Butuh akuarium yang sudah matang dengan biofilm yang melimpah. Bukan untuk pemula."
+   }
+  },
+  "PLANTS": {
+   "java-fern": {
+    "about": "Java fern adalah tanaman rimpang yang tumbuh lambat, tahan terhadap cahaya rendah dan kesalahan pemula. Biarkan rimpangnya di atas substrat dan ikatkan ke kayu atau batu agar akarnya bisa mencengkeram tanpa membusuk.",
+    "notes": "Ikatkan rimpang ke hardscape dengan benang atau lem — menguburnya akan mematikan tanaman ini. Berkembang biak lewat tunas kecil (plantlet) di daun tua. Nyaris tak bisa mati. Ada beberapa varietas: narrow leaf, windelov (lace), trident, needle leaf."
+   },
+   "anubias": {
+    "about": "Spesies anubias termasuk tanaman akuarium paling toleran, dengan daun tebal yang tahan gigitan ikan. Jaga rimpangnya tetap terbuka — jika dikubur, rimpang akan lambat laun mati karena sesak napas.",
+    "notes": "Ikatkan rimpang ke hardscape. Tanaman akuarium umum yang tumbuh paling lambat. Pertumbuhan lambat berarti alga sering menempel di daun — tambahkan otocinclus atau siput nerite. Ada beberapa spesies: barteri, nana, coffeefolia, gigantea. Nana paling cocok untuk tank kecil."
+   },
+   "java-moss": {
+    "about": "Java moss membentuk hamparan rapat dan halus yang jadi tempat berlindung burayak dan udang, sekaligus melembutkan tepian hardscape. Tahan di air sejuk hingga hangat dan toleran terhadap pencahayaan yang tak menentu, meski pertumbuhan yang terlalu lebat sesekali perlu dipangkas tipis.",
+    "notes": "Sangat serbaguna. Ikatkan ke mesh untuk dinding moss, ikatkan ke kayu apung, atau biarkan mengambang bebas. Tempat perlindungan yang sangat baik untuk burayak dan udang. Tumbuh lebih cepat dengan cahaya lebih banyak. Salah satu tanaman akuarium paling banyak dipakai di dunia."
+   },
+   "christmas-moss": {
+    "about": "Christmas moss bercabang dengan pola menyerupai pohon cemara, memberi tekstur yang rapi di kayu dan mesh. Lebih menyukai aliran air yang stabil dan air bersih — kotoran yang terperangkap di sela-selanya sebaiknya dibilas perlahan saat perawatan rutin.",
+    "notes": "Bercabang dengan pola berbulu menyerupai ranting pohon Natal. Populer untuk membuat dinding moss dan background. Tumbuh dengan pola yang lebih rapi dibanding java moss. Cocok untuk tank udang."
+   },
+   "flame-moss": {
+    "about": "Flame moss tumbuh lebih tegak dibanding java moss, membentuk gerombolan menyerupai lidah api secara vertikal di hardscape. Cahaya sedang dan aliran air lembut menjaga pertumbuhannya tetap kompak — pangkas dengan gunting untuk mempertahankan bentuknya.",
+    "notes": "Tumbuh ke atas dalam pilinan menyerupai api. Tampilannya khas, berbeda dari moss lain. Ikatkan ke hardscape. Tumbuh lebih lambat dibanding java moss."
+   },
+   "cryptocoryne": {
+    "about": "Cryptocoryne adalah tanaman roset klasik untuk community tank dan biotope, yang sering mengalami melt setelah dipindahkan lalu tumbuh kembali. Parameter air yang stabil dan root tab di bawah kerikil inert membantu pemulihan jangka panjang dan warna daunnya.",
+    "notes": "Mengalami \"crypt melt\" ketika dipindahkan atau kondisi air berubah — daun meleleh tapi tanaman bisa pulih dari rimpangnya selama akar masih ada. Bersabarlah — jangan dicabut. Spesies populer: wendtii, balansae (sangat tinggi), parva (paling kecil), lucens. Pemakan akar (root feeder) — substrat kaya nutrisi atau root tab akan sangat membantu."
+   },
+   "bucephalandra": {
+    "about": "Bucephalandra adalah tanaman rimpang kecil yang tumbuh lambat, digemari karena tekstur daunnya dan corak warna pekat di bawah cahaya yang baik. Perlakukan seperti anubias: ikatkan rimpangnya ke hardscape dan hindari menguburnya di substrat halus.",
+    "notes": "Berasal dari sungai-sungai di Kalimantan (Borneo) — relevan bagi hobiis Indonesia/Malaysia. Ada ratusan varietas hasil budidaya dengan kilau biru-ungu yang berkilauan. Ikatkan rimpang ke hardscape. Salah satu tanaman planted tank paling populer dan diburu kolektor di Asia Tenggara. Pertumbuhan yang lambat membuat nilai jualnya tinggi di kalangan kolektor."
+   },
+   "vallisneria": {
+    "about": "Vallisneria mengirim daun panjang menyerupai pita menuju permukaan air, sangat baik untuk menutupi background dan menyerap nitrat. Menyebar lewat runner (tunas rambat) — jarangkan rumpun yang terlalu padat agar daun-daun bawah tetap mendapat cahaya.",
+    "notes": "Tanaman background menyerupai rumput yang menyebar lewat runner. Spesies yang tinggi (V. spiralis, V. americana) bisa tumbuh lebih dari 60cm. Tidak tahan pH rendah akibat CO2 — hindari di planted tank dengan CO2 tinggi. Sangat baik untuk community tank dan biotope."
+   },
+   "amazon-sword": {
+    "about": "Amazon sword adalah pemakan akar berat yang membentuk roset besar sebagai centerpiece bila diberi ruang dan nutrisi cukup. Root tab atau substrat kaya nutrisi jauh lebih meningkatkan warna daun dibanding hanya mengandalkan dosis pupuk cair di kolom air.",
+    "notes": "Centerpiece klasik untuk biotope Amazon. Pemakan akar berat — substrat kaya nutrisi atau setidaknya root tab diperlukan untuk pertumbuhan yang sehat. Bisa tumbuh sangat besar (lebih dari 40cm) dalam kondisi yang baik. Berkembang biak lewat tanaman anakan pada batang runner yang dikirim dari tanaman induk."
+   },
+   "hygrophila": {
+    "about": "Spesies hygrophila adalah tanaman batang yang tumbuh cepat, berguna di tank baru untuk menyerap kelebihan nutrisi. Pemangkasan rutin mendorong pertumbuhan yang lebih rimbun — sebagian spesies dibatasi di negara tertentu, jadi periksa regulasi setempat.",
+    "notes": "Tanaman batang yang tumbuh cepat. Sangat baik untuk tank baru — menyerap kelebihan nutrisi dan mengungguli alga dalam persaingan. Perlu dipangkas rutin. Ada beberapa spesies: H. polysperma (paling cepat, kadang invasif), H. corymbosa (lebih besar), H. pinnatifida (daun bercuping dalam yang khas dengan bagian bawah kemerahan)."
+   },
+   "rotala": {
+    "about": "Spesies rotala adalah tanaman batang yang warnanya berubah mengikuti intensitas cahaya dan kadar nitrat. Pemangkasan yang sering menanam kembali bagian pucuknya dan menjaga rumpun tetap rapat — CO2 memperbaiki bentuknya tapi tidak wajib untuk semua spesies.",
+    "notes": "Tanaman batang populer dengan warna merah muda-merah di bawah cahaya baik dan CO2. Ada beberapa spesies: R. rotundifolia (paling umum, paling mudah), R. wallichii (daun jarum halus, lebih menuntut), R. H'ra (daun bulat, merah pekat di setup high-tech). Petik bagian pucuk untuk mendorong pertumbuhan yang lebih rimbun."
+   },
+   "ludwigia": {
+    "about": "Batang ludwigia menampilkan corak merah paling jelas di bawah cahaya kuat dan ketersediaan zat besi yang cukup. Bagian pucuk tumbuh lebih berwarna dibanding bagian bawah yang ternaungi, jadi tanam kembali potongan pucuknya dan buang batang yang gundul agar rumpun tetap rapi.",
+    "notes": "Tanaman batang merah-oranye yang bisa berwarna tanpa CO2 asal cahayanya baik. Lebih mudah dicapai dibanding rotala untuk setup low-tech. L. repens paling umum dan paling mudah. L. glandulosa dan L. arcuata lebih menuntut tapi warnanya lebih cerah."
+   },
+   "monte-carlo": {
+    "about": "Micranthemum \"Monte Carlo\" perlahan membentuk karpet di foreground di bawah cahaya sedang hingga tinggi. Tekan rumpun-rumpun kecil ke substrat tanpa mengubur daunnya — CO2 dan cahaya yang konsisten mengurangi kecenderungannya tumbuh menjulang ke atas.",
+    "notes": "Membentuk karpet hijau yang rapat dan indah. Butuh CO2 dan cahaya tinggi agar tetap kompak — tanpa CO2, tanaman ini tumbuh menjulang dan kurus. Tanam dalam rumpun kecil dan biarkan menyebar ke samping. Salah satu tanaman karpet gaya Nature Aquarium paling populer."
+   },
+   "dwarf-hairgrass": {
+    "about": "Eleocharis \"dwarf hairgrass\" membentuk hamparan rumput halus saat runner-nya menyebar di substrat terbuka. Cahaya tinggi dan CO2 menghasilkan karpet paling rapat — di tank low-tech, tanaman ini sering tumbuh lebih tinggi tapi tetap bisa dipakai sebagai elemen tekstur.",
+    "notes": "Menciptakan karpet menyerupai padang rumput alami. Lambat untuk mapan — perlu kesabaran. CO2 dan cahaya kuat mutlak diperlukan untuk karpet yang benar-benar rapat. Berkembang biak lewat runner yang menyebar ke samping. Indah dalam layout gaya Iwagumi."
+   },
+   "glossostigma": {
+    "about": "Glossostigma elatinoides adalah tanaman karpet klasik yang menuntut tinggi, hanya tetap pendek dengan cahaya kuat dan CO2. Tanam bagian-bagian kecilnya cukup dalam dan pangkas runner yang mulai memanjat dekorasi agar hamparannya tetap menempel di substrat.",
+    "notes": "Tanaman karpet terkecil dan paling menuntut cahaya. Tumbuh sangat cepat dalam kondisi high-tech. Butuh cahaya intens agar tetap pendek — tanpa itu, tumbuh mengarah ke permukaan. Ikonik dalam gaya Nature Aquarium ala Takashi Amano."
+   },
+   "pogostemon-helferi": {
+    "about": "Downoi adalah tanaman batang berdaun keriting yang khas untuk aksen midground. CO2 yang stabil dan kesadahan sedang mendukung pertumbuhan yang kompak — perubahan parameter air yang mendadak bisa menyebabkan melt seperti pada tanaman batang lainnya.",
+    "notes": "Daun hijau keriting berbentuk bintang dengan pola pertumbuhan roset. Tampilannya unik, tidak seperti tanaman akuarium umum lainnya. CO2 disarankan. Tumbuh sangat lambat."
+   },
+   "blyxa-japonica": {
+    "about": "Blyxa japonica membentuk roset menyerupai rumput dengan corak hijau zaitun hingga kemerahan di bawah cahaya yang baik. Menyukai pemupukan akar serta air bersih yang mengalir lembut — hindari menaunginya sepenuhnya dengan tanaman apung yang tumbuh lebih cepat.",
+    "notes": "Tanaman midground menyerupai rumput dengan semburat keemasan-kemerahan tipis di bawah cahaya tinggi. Sangat populer dalam komposisi gaya Nature Aquarium. CO2 disarankan untuk pertumbuhan yang baik."
+   },
+   "hornwort": {
+    "about": "Hornwort adalah tanaman batang yang bisa mengambang bebas atau diberi pemberat, tumbuh cepat, dan menyerap amonia serta nitrat. Merontokkan daun-daun jarumnya yang halus setelah dipindahkan itu normal — beri ruang yang cukup agar tidak menutupi tanaman lain yang tumbuh lebih lambat di bawahnya.",
+    "notes": "Tumbuh sangat cepat — bisa menyerap amonia dan nitrat dalam jumlah besar, bermanfaat selama proses cycling. Tidak berakar — mengambang atau bisa diberi pemberat. Terus-menerus merontokkan daun menyerupai jarum, sehingga menambah pekerjaan perawatan. Sangat tahan banting di rentang suhu yang luas."
+   },
+   "duckweed": {
+    "about": "Duckweed berkembang biak cepat di permukaan air, menyebarkan cahaya dan menekan alga dengan menyerap kelebihan nutrisi. Serok kelebihannya setiap minggu agar pertukaran gas dan cahaya tetap sampai ke tanaman dan ikan di bawahnya.",
+    "notes": "Populasinya berlipat ganda setiap 24 jam dalam kondisi yang baik. Penyerap nitrat yang sangat baik. Mengurangi cahaya yang masuk — bermanfaat untuk spesies yang butuh cahaya rendah dan cupang. Nyaris mustahil dibasmi total begitu masuk ke tank — pertimbangkan ini baik-baik sebelum menambahkannya. Ikan dan udang mungkin akan memakannya."
+   },
+   "frogbit": {
+    "about": "Amazon frogbit mengembangkan akar panjang yang jadi tempat merumput udang, sementara daunnya menaungi permukaan air. Jarangkan hamparan yang terlalu padat agar tanaman terendam dan pertukaran gas tidak sepenuhnya terhalang.",
+    "notes": "Daun bundar menyerupai daun teratai dengan akar menjuntai yang disukai udang untuk merumput dan berlindung. Memberi penutup permukaan yang sangat baik untuk ikan labirin. Lebih mudah dikendalikan dibanding duckweed. Bisa dibuang sepenuhnya bila diperlukan."
+   },
+   "water-wisteria": {
+    "about": "Hygrophila difformis bisa tumbuh sebagai tanaman batang atau semak dengan daun yang terbelah halus di bawah cahaya kuat. Tumbuh cepat — pangkas sesering mungkin dan tanam kembali pucuknya agar bentuknya tetap rimbun dan mencegah bagian bawah mati.",
+    "notes": "Tanaman yang menarik — bentuk daunnya berubah drastis tergantung intensitas cahaya, mulai dari oval sederhana hingga daun bercuping dalam menyerupai renda. Laju pertumbuhannya yang sangat cepat membuatnya sangat baik untuk tank baru dan pengendalian alga lewat persaingan nutrisi."
+   },
+   "pennywort": {
+    "about": "Spesies hydrocotyle merambat secara horizontal dengan daun bundar, berguna untuk tepian wabi-kusa atau tank dangkal. Cahaya terang menjaga daunnya tetap kecil dan rata — cahaya rendah membuat batangnya lebih panjang dan mengarah ke atas.",
+    "notes": "Daun bundar hijau cerah pada batang panjang. Bisa ditanam atau dibiarkan mengambang. Sangat adaptif dan tumbuh cepat. Memberi kontras tekstur yang menarik dengan tanaman berdaun sempit."
+   },
+   "pearlweed": {
+    "about": "Hemianthus micranthemoides membentuk semak hijau cerah atau karpet longgar tergantung cara pemangkasannya. Tanpa CO2, tanaman ini cenderung tumbuh kurus menjulang — pemangkasan yang sering mendorong percabangan ke samping dan kepadatan.",
+    "notes": "Daun kecil bundar hijau cerah. Bisa membentuk karpet rendah tanpa CO2 asal cahayanya tinggi, atau tumbuh sebagai tanaman batang. Lebih mudah dicapai dibanding glossostigma atau monte carlo untuk setup tanpa CO2."
+   },
+   "limnophila-aquatica": {
+    "about": "Batang limnophila menambahkan tekstur berbulu dan penyerapan nutrisi yang cepat dalam layout tanaman batang. Batang yang dibudidayakan secara emersed bisa merontokkan daun terendamnya di awal — pertumbuhan baru akan beradaptasi selama parameter air tetap stabil.",
+    "notes": "Tanaman batang berbulu yang tumbuh cepat, populer di seluruh Asia. Penyerapan nutrisinya sangat baik — membantu mengungguli alga dalam persaingan di tank yang baru ditanami. Petik dan tanam kembali pucuknya secara rutin untuk mencegah pertumbuhan kurus menjulang. Cahaya terang memperkuat lingkaran daun berbulunya yang khas. Dibudidayakan secara emersed di lahan pembibitan — beri waktu penyesuaian setelah dibeli karena daunnya bisa meleleh sebelum pertumbuhan terendam yang baru muncul."
+   },
+   "bacopa-caroliniana": {
+    "about": "Bacopa caroliniana adalah tanaman batang yang kokoh dengan daun tebal, cukup toleran di community tank. Daun bagian bawah rontok bila cahaya terlalu redup — cahaya sedang dan sesekali pupuk zat besi menjaga batangnya tetap hijau sampai ke pangkal.",
+    "notes": "Tanaman batang yang tumbuh lambat dengan daun membulat yang mengeluarkan aroma lemon ringan bila daunnya diremas di luar air. Sangat toleran terhadap cahaya rendah dan kondisi minim nutrisi — salah satu tanaman batang paling mudah yang ada. Tidak butuh CO2. Tumbuh paling baik di cahaya sedang dengan sedikit pupuk, tapi tetap bertahan meski kurang dirawat. Tanaman pengisi (filler) yang bisa diandalkan untuk community tank."
+   },
+   "hydrocotyle-leucocephala": {
+    "about": "Brazilian pennywort merambat ke arah cahaya dengan daun menyerupai daun teratai, bisa berupa tanaman batang yang mengambang maupun berakar. Tumbuh cepat — buang kelebihannya agar filter dan skimmer permukaan tidak tersumbat.",
+    "notes": "Tanaman batang yang tumbuh cepat, bisa ditanam di substrat atau dibiarkan mengambang di permukaan. Daun bundar menyerupai koin membentuk kanopi rapat saat mengambang. Memberi naungan yang sangat baik untuk ikan yang menyukai cahaya rendah. Pertumbuhannya bisa jadi invasif di air yang tenang — pangkas secara rutin. Mudah diperbanyak lewat stek. Salah satu pilihan tanaman apung terbaik untuk tank yang tidak bisa memakai duckweed."
+   },
+   "staurogyne-repens": {
+    "about": "Staurogyne repens adalah tanaman batang merambat rendah yang dipakai sebagai karpet pendek atau semak foreground. Tekan batangnya sedikit ke dalam substrat dan pangkas secara horizontal untuk mendorong tunas samping dan hamparan yang rapat.",
+    "notes": "Tanaman foreground kompak dengan daun hijau kecil yang membentuk karpet rimbun rendah. Salah satu dari sedikit tanaman karpet foreground yang bisa dicapai tanpa injeksi CO2 — meski CO2 tetap mempercepat pertumbuhan dan kepadatannya secara signifikan. Pangkas secara rutin untuk menjaga bentuknya tetap kompak. Mengakar dengan baik ke substrat — pakai substrat kaya nutrisi atau tambahkan root tab. Pertumbuhan yang lambat berarti alga bisa menempel di daun sebelum tanaman ini benar-benar mapan."
+   },
+   "rotala-wallichii": {
+    "about": "Rotala wallichii adalah tanaman batang yang halus dengan ujung merah muda-oranye di bawah cahaya intens dan CO2 yang baik. Air lunak dan nitrat yang stabil membantu — tanaman ini kurang toleran dibanding spesies rotala umum, jadi hindari perubahan parameter air yang besar.",
+    "notes": "Tanaman batang premium dengan daun sangat halus menyerupai jarum yang berubah merah muda hingga merah di bawah cahaya tinggi dan CO2. Salah satu tanaman batang yang tampilannya paling khas, tapi juga salah satu yang paling menuntut. Butuh cahaya tinggi, injeksi CO2, dan pemupukan rutin. Tanpa CO2, tanaman ini jadi kurus menjulang dan warna merahnya hilang. Sensitif terhadap perubahan kimia air. Paling baik dipakai sebagai tanaman aksen di planted tank high-tech."
+   },
+   "bolbitis-heudelotii": {
+    "about": "African water fern adalah pakis rimpang berukuran besar yang cocok untuk kayu apung lebar dan tank tinggi. Pertumbuhan yang lambat berarti perlu kesabaran — bersihkan dengan lembut agar daunnya tidak sobek dan jaga aliran air di sekitar rimpangnya tetap ringan.",
+    "notes": "Tanaman rimpang yang diikatkan ke hardscape seperti java fern. Daun hijau tua bercuping dalam memberinya tampilan khas yang berbeda dari kebanyakan tanaman akuarium lain. Tumbuh sangat lambat tapi tahan lama. Lebih menyukai air lunak sedikit asam dengan aliran yang baik melewati daunnya. Ikatkan rimpang ke kayu apung atau batu dengan benang atau lem — menguburnya akan mematikan tanaman ini. Lebih menuntut dibanding java fern, tapi memuaskan begitu sudah mapan."
+   },
+   "microsorum-narrow": {
+    "about": "Narrow-leaf java fern cocok untuk penempatan vertikal di kayu, di mana java fern standar terlihat terlalu lebar. Aturan rimpangnya sama seperti java fern: ikat atau lem, jangan pernah dikubur, dan siap-siap melihat tunas kecil (plantlet) muncul di daun-daun tua.",
+    "notes": "Varian java fern berdaun sempit dengan tampilan yang lebih anggun dan halus. Perawatannya identik dengan java fern standar — ikatkan rimpang ke hardscape dengan benang atau gel superglue, jangan pernah dikubur di substrat. Berkembang biak lewat tunas kecil di daun tua. Tumbuh lebih lambat dibanding varietas berdaun lebar. Menciptakan efek mengalir yang anggun di posisi midground."
+   },
+   "hydrocotyle-tripartita": {
+    "about": "Tripartite hydrocotyle membentuk karpet dalam rumpun rendah dengan daun bercuping tiga, populer untuk detail dalam aquascape. Cahaya sedang dan pemangkasan sesekali menjaganya tetap menyebar horizontal, bukannya memanjat ke atas.",
+    "notes": "Pennywort bercuping tiga yang populer dalam aquascaping karena pertumbuhannya yang rapat menyerupai semanggi. Bisa dipakai sebagai karpet foreground, aksen midground, atau dibiarkan mengambang. CO2 secara signifikan meningkatkan kepadatan pertumbuhan dan cakupannya. Tanpa CO2, tumbuh lebih lambat tapi tetap tampil baik dengan cahaya sedang dan pupuk. Populer dalam gaya Dutch dan Nature aquarium. Mudah dipangkas — tanam kembali potongannya untuk penyebaran yang cepat."
+   },
+   "marsilea-hirsuta": {
+    "about": "Marsilea hirsuta membentuk karpet menyerupai semanggi berdaun empat bila kondisinya cocok. CO2 dan cahaya sedang menghasilkan daun yang paling mirip semanggi — di setup low-tech, daunnya bisa tetap lebih memanjang tapi tetap menarik.",
+    "notes": "Tanaman berbentuk semanggi berdaun empat yang membentuk penutup tanah rendah tanpa CO2. Salah satu karpet foreground yang paling mudah dicapai untuk tank low-tech. Tumbuh secara emersed dengan batang tegak dan bentuk semanggi berdaun empat, lalu bertransisi menjadi bentuk merambat datar dan rendah saat terendam. Lambat untuk mapan, tapi menyebar dengan andal begitu sudah berakar kuat. Tidak butuh CO2 atau cahaya tinggi — pilihan karpet yang benar-benar cocok untuk pemula."
+   },
+   "eleocharis-parvulus": {
+    "about": "Dwarf spikerush membentuk karpet rumput halus mirip hairgrass, tapi seringkali lebih mudah dengan cahaya sedang. Tanam dalam rumpun kecil di sepanjang foreground dan pangkas helai yang tumbuh terlalu tinggi untuk mendorong penyebaran runner.",
+    "notes": "Rumput berhelai halus yang membentuk karpet rapat menyerupai hamparan rumput. Lebih mudah dicapai dibanding Eleocharis acicularis (varian yang bahkan lebih kecil). CO2 secara signifikan mempercepat pembentukan karpet, tapi tidak mutlak diperlukan bila cahayanya kuat. Menyebar lewat runner — tanam setiap plug sekitar 2–3cm terpisah dan biarkan menyebar. Pilihan populer untuk layout gaya Nature Aquarium. Pemangkasan rutin menjaga karpetnya tetap rapat."
+   },
+   "sagittaria-subulata": {
+    "about": "Dwarf sagittaria menyebar lewat runner, mengirimkan daun menyerupai rumput ke atas dari foreground. Tahan di air yang lebih sejuk — jarangkan rumpun yang terlalu padat agar daun bagian dalam tetap mendapat cahaya dan aliran air.",
+    "notes": "Tanaman menyerupai rumput dari Amerika Utara dan Selatan. Salah satu tanaman background tinggi yang paling mudah dipelihara. Menyebar cepat lewat runner — menciptakan tampilan padang rumput yang rapat. Tahan cahaya rendah, air payau, dan suhu yang lebih sejuk. Bisa tumbuh sangat tinggi (hingga 50cm) dalam kondisi baik — pemangkasan rutin mungkin diperlukan di tank yang lebih kecil. Alternatif yang bagus untuk vallisneria di tank yang membuat spesies itu kesulitan tumbuh."
+   },
+   "aponogeton-crispus": {
+    "about": "Aponogeton crispus tumbuh dari umbi, menghasilkan daun panjang bergelombang dan kadang mengalami periode istirahat di mana daunnya layu. Jangan kubur umbinya sepenuhnya — umbi yang setengah terbuka lebih jarang membusuk di setup baru.",
+    "notes": "Tanaman umbi dengan daun bergelombang dan keriting yang khas, tumbuh dari umbi yang dibeli dalam kondisi dorman atau aktif. Salah satu tanaman yang tumbuh paling cepat saat aktif — bisa berlipat ganda ukurannya dalam hitungan minggu. Mengalami siklus dorman alami di mana daunnya layu dan umbinya beristirahat. Biarkan umbi beristirahat di dalam tank dan ia akan tumbuh kembali. Tidak butuh CO2 dan tahan di berbagai kondisi air. Tanam umbi setengah terbuka di substrat — mengubur sepenuhnya akan menghambat pertumbuhan."
+   }
+  },
+  "HARDSCAPE": {
+   "seiryu-stone": {
+    "notes": "Batu kapur keras berwarna abu-abu kebiruan dengan urat kalsit putih. Bersudut tajam dan dramatis — ikonik dalam aquascape gaya Iwagumi. Menaikkan pH dan kesadahan secara terukur dalam hitungan bulan. Uji kimia air setelah menambahkannya. Tidak cocok untuk spesies air lunak, udang caridina, atau discus."
+   },
+   "dragon-stone": {
+    "notes": "Batu vulkanik berpori dengan tekstur dramatis berupa lubang dan lekukan. Pengaruhnya terhadap pH lebih kecil dibanding Seiryu. Pori-porinya memberi sedikit luas permukaan untuk bakteri. Ringan untuk ukuran tampilannya. Sangat populer dalam aquascaping modern."
+   },
+   "lava-rock": {
+    "notes": "Batu vulkanik yang sangat berpori. Per volume, punya luas permukaan bakteri tertinggi dibanding hardscape apa pun — benar-benar berguna sebagai media filtrasi biologis tambahan. Sangat ringan. Teksturnya yang kasar bisa melukai ikan yang rentan."
+   },
+   "mopani-driftwood": {
+    "notes": "Kayu apung dari Afrika yang sangat padat — tenggelam tanpa pemberat begitu sudah jenuh air. Melepaskan tanin dalam jangka panjang yang membuat air berwarna amber. Tanin bermanfaat untuk spesies air lunak dan blackwater. Harus direndam atau direbus sampai benar-benar bersih sebelum dipakai. Pleco akan mengeriknya."
+   },
+   "spider-wood": {
+    "notes": "Struktur bercabang rumit yang ideal untuk menciptakan layout bernuansa alami. Lebih ringan dibanding mopani — mungkin perlu diberi pemberat batu di awal. Awalnya membentuk biofilm putih — normal dan tidak berbahaya, udang akan memakannya. Populer dalam layout gaya iwagumi dan nature aquarium."
+   },
+   "cholla-wood": {
+    "notes": "Kerangka kaktus kering dengan struktur tabung berongga. Udang senang menjelajah, bersembunyi, dan memakannya. Terurai dalam 3–6 bulan. Aman dan alami. Salah satu tambahan terbaik untuk tank udang."
+   },
+   "pagoda-stone": {
+    "notes": "Batu pasir alami berlapis dengan stratifikasi horizontal yang khas. Susunan bertumpuknya sangat fotogenik. Efek pada pH sedang — uji air setelah menambahkannya. Umumnya aman untuk kebanyakan setup community tank."
+   },
+   "petrified-wood": {
+    "notes": "Kayu terfosilkan yang berubah menjadi batu selama jutaan tahun. Tekstur organiknya unik. Umumnya inert — pengaruhnya pada pH lebih kecil dibanding batu berbasis kapur. Bervariasi antar potongan — disarankan melakukan uji asam."
+   },
+   "slate": {
+    "notes": "Batu berlapis pipih yang terbelah menjadi lembaran tipis. Sangat mudah ditumpuk dan disusun. Sangat inert — tidak berdampak terukur pada kimia air. Aman untuk semua kebutuhan parameter air. Umum dan terjangkau."
+   },
+   "river-rock": {
+    "notes": "Batu bulat halus dari dasar sungai. Tampilan alami untuk biotope dan setup natural. Kimianya bervariasi cukup besar tergantung jenisnya — selalu lakukan uji asam (teteskan cuka putih — kalau berbusa berarti mengandung kalsium karbonat dan akan menaikkan pH). Cari dari sumber lokal untuk keaslian biotope terbaik."
+   },
+   "malaysian-driftwood": {
+    "notes": "Kayu apung padat dan berat dari rawa hutan hujan Malaysia. Tenggelam tanpa pemberat begitu sudah diolah (cured). Melepaskan tanin cukup banyak — bermanfaat untuk spesies air lunak. Sangat populer dalam setup planted dan community tank di Asia Tenggara. Olah dengan merendamnya selama 1–2 minggu sambil rutin mengganti air rendaman."
+   },
+   "bamboo-decor": {
+    "notes": "Dekorasi bambu yang telah dilapisi sealant atau memang aman untuk akuarium. Harus benar-benar dijual sebagai produk yang aman untuk akuarium — bambu segar cepat membusuk di dalam air. Tidak memengaruhi kimia air. Menciptakan estetika biotope bernuansa Asia."
+   },
+   "ohko-stone": {
+    "notes": "Batu vulkanik ringan dengan lubang dan alur dramatis di seluruh permukaannya. Varian Dragon Stone yang lebih lunak dan lebih ringan. Tekstur berpori yang tidak beraturan menciptakan tampilan sangat alami, ideal untuk layout aquascape bertema gunung dan lembah. Pengaruhnya pada pH rendah, sehingga cocok untuk spesies air lunak dan planted tank. Sangat populer dalam aquascaping modern karena tekstur visualnya yang dramatis."
+   },
+   "limestone": {
+    "notes": "Batu sedimen yang secara aktif menaikkan pH dan kesadahan seiring larutnya secara perlahan. Penting untuk setup cichlid Afrika (Danau Malawi, Tanganyika) yang membutuhkan air keras dan basa. Jangan dipakai bersama spesies air lunak, planted tank yang memakai aqua soil, atau ikan mana pun yang butuh pH di bawah 7,0. Uji kimia air setiap minggu setelah dimasukkan."
+   },
+   "mountain-stone": {
+    "notes": "Batu abu-abu padat dengan permukaan patahan bersudut dan guratan-guratan halus. Pengaruhnya pada pH lebih kecil dibanding batu Seiryu, sehingga lebih serbaguna untuk setup planted dan air lunak. Populer dalam desain aquascape minimalis. Corak abu-abu yang bersih cocok dipadukan dengan substrat gelap dan tanaman hijau. Berat — posisikan dengan hati-hati sebelum mengisi air ke tank."
+   },
+   "ohko-mini": {
+    "notes": "Potongan-potongan lebih kecil dari Ohko Dragon Stone yang berukuran pas untuk nano tank dan setup udang. Tekstur berporinya memberi luas permukaan bakteri yang sangat baik sekaligus tempat berlindung untuk anakan udang. Sangat ringan. Ideal untuk menciptakan formasi batu bernuansa alami di tank kecil tanpa masalah berat seperti batu yang lebih padat."
+   },
+   "black-lava-rock": {
+    "notes": "Batu basalt vulkanik yang sangat berpori. Per volume, menawarkan luas permukaan bakteri tertinggi dibanding batu akuarium umum lainnya — benar-benar berguna sebagai media filtrasi biologis tambahan. Pengaruhnya pada pH netral. Sangat ringan untuk ukurannya. Java moss dan moss lainnya menempel dengan baik di permukaannya yang bertekstur."
+   },
+   "sandstone": {
+    "notes": "Batu sedimen berlapis dengan corak warna hangat dan tampilan berpita datar yang alami. Warnanya berkisar dari cokelat muda dan krem hingga merah terakota, tergantung kandungan mineralnya. Pengaruhnya pada pH lebih kecil dibanding batu kapur. Menciptakan tampilan dasar sungai alami yang populer dalam setup biotope Asia Tenggara."
+   },
+   "coconut-shell-cave": {
+    "notes": "Batok kelapa setengah atau utuh dengan lubang masuk yang menjadi gua alami. Melepaskan tanin ringan yang bermanfaat untuk spesies air lunak. Sangat populer untuk pembiakan cupang, pemijahan cichlid, dan tempat berlindung udang. Bersihkan serat sabutnya sampai benar-benar bersih sebelum dipakai. Murah dan mudah ditemukan di negara-negara tropis."
+   },
+   "mangrove-root": {
+    "notes": "Struktur akar bercabang yang menciptakan suasana biotope Asia Tenggara atau Amazon yang sangat alami. Tanin yang dilepaskan mewarnai air jadi amber dan bermanfaat untuk spesies air lunak. Bisa mengambang di awal — rendam atau beri pemberat sampai jenuh air. Moss dan tanaman epifit menempel dengan baik pada struktur cabangnya."
+   },
+   "cork-bark": {
+    "notes": "Diperoleh dari pohon oak gabus (cork oak). Sangat ringan — akan mengambang kecuali diberi pemberat atau direndam dalam waktu lama. Permukaannya bertekstur seperti sarang lebah dengan warna cokelat-abu-abu alami. Dipakai dalam paludarium untuk bagian yang muncul di atas air dan sebagai panel background. Melepaskan tanin ringan. Terurai perlahan selama bertahun-tahun."
+   },
+   "sumatran-driftwood": {
+    "notes": "Kayu apung padat dari Sumatra yang mewarnai air cukup gelap. Melepaskan tanin dalam jumlah besar, ideal untuk setup blackwater. Mudah tenggelam begitu direndam. Tanin punya sifat antibakteri dan antijamur yang bermanfaat untuk udang dan ikan air lunak. Bisa muncul lapisan jamur putih di permukaannya pada minggu-minggu awal — tidak berbahaya, bersihkan secara manual atau tambahkan udang untuk memakannya."
+   },
+   "catappa-leaves": {
+    "notes": "Daun ketapang (Terminalia catappa) kering yang melepaskan tanin, asam humat, dan flavonoid seiring terurainya. Terbukti bermanfaat untuk pembiakan dan kelangsungan hidup udang, cupang, dan ikan air lunak. Juga jadi sumber makanan saat terurai — udang memakan biofilm yang terbentuk di atasnya. Ganti setiap 4-6 minggu."
+   },
+   "alder-cones": {
+    "notes": "Buah kerucut kecil dari pohon alder yang melepaskan tanin dan asam humat secara ringan. Dipakai di tank udang untuk mendukung kesehatan imun dan mendorong perilaku mencari makan. Efek pada pH ringan. Mudah tenggelam. Tahan lama — terurai perlahan selama berbulan-bulan. Rebus dulu sebelum dipakai bila ingin mengurangi pelepasan tanin di awal."
+   },
+   "marimo-moss-ball": {
+    "notes": "Aegagropila linnaei — alga hijau yang secara alami membentuk bola. Berasal dari danau-danau dingin di Jepang dan Islandia. Menghasilkan oksigen pada siang hari. Dekorasi hidup yang tumbuh sangat lambat — jangan pernah dipangkas. Gulingkan perlahan sekali seminggu untuk mempertahankan bentuk bulatnya. Sensitif terhadap suhu di atas 25°C."
+   },
+   "coconut-husk": {
+    "notes": "Sabut kelapa kering berserat yang dipakai sebagai penutup alami untuk ikan dan udang penghuni dasar. Melepaskan tanin ringan. Terurai perlahan — ganti begitu mulai melunak. Murah dan mudah ditemukan di negara-negara tropis. Buang semua serat tanaman hijau sepenuhnya sebelum dipakai."
+   }
+  },
+  "SETUP_STYLES": {
+   "community": {
+    "label": "Akuarium Komunitas",
+    "desc": "Ikan-ikan damai yang dicampur dalam lingkungan yang seimbang dan toleran. Setup air tawar paling umum. Beberapa spesies yang hidup berdampingan secara damai."
+   },
+   "planted": {
+    "label": "Planted Tank",
+    "desc": "Tanaman hidup sebagai fokus utama. Mulai dari java fern low-tech dengan cahaya minimal hingga karpet high-tech dengan injeksi CO2. Tanaman membentuk lingkungan kimia dan visual tank."
+   },
+   "biotope": {
+    "label": "Biotope",
+    "desc": "Meniru habitat alami tertentu — ikan, tanaman, dan hardscape dari ekosistem geografis yang sama. Blackwater Amazon, sungai Asia Tenggara, atau danau rift Afrika."
+   },
+   "species": {
+    "label": "Spesifik Spesies",
+    "desc": "Dibangun di sekitar satu spesies dengan kebutuhan yang menuntut, tidak biasa, atau sulit dipadukan dengan spesies lain. Setup discus, oscar, puffer, atau cichlid Afrika di mana pencampuran tidak praktis."
+   },
+   "shrimp": {
+    "label": "Tank Udang",
+    "desc": "Berfokus pada invertebrata. Parameter air harus presisi dan stabil. Mulai dari Neocaridina yang ramah pemula hingga udang bee Caridina tingkat lanjut."
+   },
+   "coldwater": {
+    "label": "Air Dingin / Ikan Mas",
+    "desc": "Spesies yang lebih menyukai atau membutuhkan air yang lebih sejuk (15–22°C). Ikan mas, white cloud minnow, atau ikan iklim sedang lainnya. Tanpa heater — pendinginan mungkin diperlukan di iklim tropis."
+   },
+   "paludarium": {
+    "label": "Paludarium",
+    "desc": "Setengah akuatik, setengah terestrial. Tanaman muncul di atas permukaan air. Menggabungkan akuarium dan terarium. Struktur dan perawatannya lebih kompleks."
+   },
+   "nano": {
+    "label": "Nano Tank",
+    "desc": "Tank di bawah 30L. Terbatas pada spesies yang sangat kecil. Butuh pengelolaan air yang lebih presisi — volume kecil membuat parameter air berfluktuasi cepat."
+   },
+   "blackwater": {
+    "label": "Blackwater",
+    "desc": "Air kaya tanin berwarna amber pekat yang meniru rawa gambut Amazon dan Asia Tenggara. pH sangat rendah, air sangat lunak, serasah daun, dan kayu apung. Hanya cocok untuk spesies air lunak tertentu."
+   }
+  }
+ }
+}

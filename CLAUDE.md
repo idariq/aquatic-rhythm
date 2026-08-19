@@ -202,7 +202,13 @@ tetapan artikel/alat),
   Keputusan skop eksplisit user, bukan andaian ejen.
 - **`js/tank-data.js`'s `AR_BRAND_INFO`** (126 entri peralatan,
   ~11.5k patah perkataan prosa panduan beli) — tugas besar berasingan,
-  belum dimulakan.
+  belum dimulakan. **JANGAN keliru dgn `tank-builder.html`'s `var
+  ECOSYSTEM`** (pangkalan data spesies ikan/tumbuhan/hardscape, skop
+  BERBEZA & bersaiz serupa) — ECOSYSTEM DAH diterjemah (medan prosa
+  sahaja, keputusan eksplisit user 2026-08-19 selepas ditanya, rujuk
+  §"Status Terjemahan Semasa" bawah), AR_BRAND_INFO KEKAL dikecualikan.
+  Dua pangkalan data BERASINGAN dlm fail BERBEZA — semak yg mana
+  sebelum anggap "data spesies/peralatan" bermaksud sama.
 
 ## Status Terjemahan Semasa (kemas kini 2026-08-18)
 
@@ -240,26 +246,85 @@ dinamik-tersusun (bukan sekadar swap perkataan) — bercabang ikut bahasa
 `build-tsim-i18n.mjs` (sendiri model `QNUM_TEMPLATE`/`STATIC_QNUM`
 `build-kyr-i18n.mjs`) — JANGAN cuba paksa satu templat sejagat.
 
-**Berbaki**: alat **`tank-builder`** (~19k patah perkataan, terbesar).
-Pola kerja utk alat interaktif baharu: kalau logik JS-nya dikongsi
-merentas bahasa (satu fail `js/<alat>.js`, spt community-stress-lab)
-rujuk `scripts/build-csl-i18n.mjs` + `CSL_STRINGS`/`T()` sbg templat;
-kalau logiknya ditanam inline per-fail (spt know-your-rhythm/
-tank-simulator) rujuk `scripts/build-kyr-i18n.mjs`/`build-tsim-i18n.mjs`
-sbg templat (yg kedua lagi sesuai utk fail besar/kompleks dgn byk
-variasi bentuk string — ternary, array mesej, penjana laporan
-berbilang cabang — drpd corak `Q[]`/`reflect()` kyr yg lebih seragam)
-— semak struktur `tank-builder.html` dulu, & INGAT amaran tatabahasa
-di atas semasa rangka templat dinamik apa-apa pun.
+**`tank-builder`** (~2000 baris JS enjin + pangkalan data `var
+ECOSYSTEM={...}` — 75 ikan + 15 invertebrata + 35 tumbuhan + 26
+hardscape + 9 gaya persediaan, ~145KB satu baris — skrip
+`scripts/build-tb-i18n.mjs`, PR akan datang selepas 2026-08-19).
+**BERBEZA drpd `tank-simulator`** dlm dua cara penting:
+
+1. **Skop pangkalan data spesies TERMASUK dlm terjemahan ni** (keputusan
+   eksplisit user selepas ditanya — BEZA drpd `js/tank-data.js`'s
+   `AR_BRAND_INFO` yg KEKAL dikecualikan). Medan prosa sahaja diterjemah
+   (`diet`/`substrate_pref`/`notes_detail`/`caution` ikan-invertebrata,
+   `about`/`notes` tumbuhan-hardscape, `label`/`desc` gaya persediaan)
+   — nama spesies/Latin/nilai enum berstruktur (`care_level`/`bioload`/
+   `hardness`/dll., dibaca terus oleh logik JS spt
+   `item.care_level==='Beginner'`) KEKAL English/berangka, ikut
+   konvensyen "nama spesies kekal English" sedia ada.
+2. **Blob JSON gergasi (`ECOSYSTEM`/`TB_ENUM_LABELS`) dibina semula via
+   `JSON.parse`/gabung/`JSON.stringify`, BUKAN `subOnce`/`subAll`
+   substring** — terlalu besar & padat utk regex selamat. Skema
+   `translations/<lang>/tank-builder.json`'s `ecosystem{}` cermin
+   struktur `ECOSYSTEM` (kunci slug SAMA, hanya medan prosa diganti).
+
+**Corak baharu — kamus label-paparan utk medan data berenum
+(`TB_ENUM_LABELS` + fungsi `enumLabel(field,value)`, ditambah terus ke
+`articles/tank-builder.html`'s enjin)**: bila medan data (`item.bioload`,
+`item.care_level`, dll.) dipaparkan LANGSUNG sbg teks kpd pengguna (cth.
+`cl.textContent=item.care_level`) TAPI turut dibaca oleh logik
+perbandingan string (`.indexOf('Beginner')`, `!=='peaceful'`) di tempat
+LAIN, JANGAN terjemah nilai data itu sendiri (akan pecahkan logik) —
+tambah lapisan pemetaan (nilai mentah → label bahasa) yg skrip build
+tukar SAHAJA nilainya (kunci KEKAL), panggilan paparan dibalut
+`enumLabel('field',item.field)` manakala semakan logik kekal baca
+`item.field` mentah terus. Model ni bila tambah alat interaktif baharu
+dgn sebarang medan data yg dipaparkan DAN diperiksa serentak.
+
+**AWAS — susunan Prefix/Suffix boleh pecah tatabahasa bila digabung
+dgn nilai enum yg SUDAH diterjemah**, bukan sekadar konkatenasi
+nombor/kata nama (kes `tank-simulator` di atas): cth. `item.bioload+'
+load'` (suffix Inggeris) diterjemah ja betul (nilai enum bentuk め +
+suffix "の負荷" — sesuai tatabahasa), TAPI id: suffix sahaja tak boleh
+hasilkan "Beban Tinggi" (nama-dulu) drpd nilai enum "Tinggi" sedia ada
+— perlu tukar ke PREFIX ("Beban "+nilai) khusus id dlm skrip build
+(bukan sekadar tukar teks suffix→prefix dlm JSON, PERLU cabang
+`if(lang==='id'){...}` code, ikut pola `expectedStatic`/`dayConcat`).
+Agen terjemah yg jujur laporkan isu ni bila diminta (rujuk arahan
+"SENARAIKAN medan PERLU SUSUNAN BERBEZA" dlm brief agen) — JANGAN
+terima cadangan tampalan kurungan/helah visual drpd agen sbg
+penyelesaian muktamad, betulkan punca (kod build) macam kes ni.
+
+**Konvensyen "5 Irama ARA" (`Water`/`Biological`/`Environmental`/
+`Livestock`/`Keeper` Rhythm, rujuk §"Konvensyen Istilah Terjemahan" di
+atas) turut terpakai pd label PENDEK tanpa perkataan "Rhythm" literal**
+(cth. `tank-builder`'s `briefing.rhythms[].name`="Water"/"Biological"/
+dll, tanpa suffix "Rhythm") — bukan sekadar bila teks penuh "Water
+Rhythm" muncul verbatim. `tank-builder` guna "Human" sbg dimensi ke-5
+(BUKAN "Keeper" spt sistem biasa) tapi konsep SAMA (rujuk medan `desc`
+"Maintenance demand and keeper commitment") — gloss ja pinjam
+"飼育者" (Keeper) sedia ada drpd cipta istilah baharu. Sentiasa SEMAK
+CLAUDE.md bahagian ni SEBELUM hantar draf terjemahan agen bila alat
+baharu ada label ringkas rujuk konsep 5-irama — mudah terlepas pandang
+sbb tiada perkataan "Rhythm" literal dlm label pendek.
 
 **Tempat tambahan perlu dikemas kini bila tambah slug templat bespoke
 baharu** (selain 15 tempat `LANGUAGES`/`NAV_LABELS` biasa di atas):
 `scripts/build-i18n.mjs`'s `BESPOKE_SLUGS` — skema
-`translations/<lang>/<slug>.json` templat bespoke (kyr/tsim/csl/ara)
+`translations/<lang>/<slug>.json` templat bespoke (kyr/tsim/tb/csl/ara)
 BERBEZA drpd skema artikel biasa (`head.titleHtml`/`intro`/`modules`),
 `buildJsonLd()` akan crash (`Cannot read properties of undefined`)
 tanpa pengecualian ni — ditemui via `npm run i18n:check` (build
-`--all` cuba proses slug bespoke sbg artikel biasa).
+`--all` cuba proses slug bespoke sbg artikel biasa). **AWAS — skrip
+build BESPOKE lain (`build-kyr-i18n.mjs`, `build-tsim-i18n.mjs`,
+`build-tb-i18n.mjs`) TIDAK saling menggantikan** — masing-masing
+templat halaman berbeza, guna skrip SALAH pd fail SALAH (cth.
+`build-i18n.mjs --slug know-your-rhythm`, bukan `build-kyr-i18n.mjs`)
+akan "berjaya" tanpa ralat TAPI hasilkan output CORRUPT (buildArticle()
+proses skema bespoke sbg skema artikel biasa secara senyap-senyap
+salah, bukan crash) — SENTIASA semak `git diff --stat` lepas regenerate
+fail rujukan-silang (cth. artikel lain yg pautkan ke alat bespoke) utk
+pastikan bilangan baris berubah MASUK AKAL (~1-2 baris utk pautan
+sahaja), bukan ratusan baris (tanda skrip salah dipakai).
 
 ## Semakan Sebelum Commit
 

@@ -73,8 +73,8 @@
             "tag": "Menemukan penyebab utama",
             "titleHtml": "Hampir setiap tank yang berjuang<br><em>memiliki satu penyebab utama.</em>",
             "body": [
-                "Ketika ikan memburuk walau parameter bersih, berguna untuk berpikir dalam hal stres dominan — stres tunggal yang menempatkan beban paling banyak pada sistem saat itu. Semua hal lain di tank sedang merespons satu hal itu. Identifikasi itu dan sisanya menjadi lebih jelas.",
-                "Ini tidak selalu mudah dilihat. Stres dominan sering tidak terlihat oleh test kit, beroperasi secara perlahan, dan mudah dinormalisasi setelah hadir untuk sementara waktu. Tapi hampir selalu bisa ditemukan.",
+                "Ketika ikan memburuk walau parameter bersih, berguna untuk mencari tekanan tunggal yang menempatkan beban paling banyak pada sistem saat itu. Semua hal lain di tank sedang merespons satu hal itu. Identifikasi itu dan sisanya menjadi lebih jelas.",
+                "Ini tidak selalu mudah dilihat. Tekanan itu sering tidak terlihat oleh test kit, beroperasi secara perlahan, dan mudah dinormalisasi setelah hadir untuk sementara waktu. Tapi hampir selalu bisa ditemukan.",
                 "<strong>Ketidakstabilan suhu.</strong> Periksa heater dengan mengukur suhu 3–4 kali sepanjang hari — pagi, siang, sore, malam. Banyak heater berayun lebih dari spesifikasinya. Fluktuasi 3°C signifikan. Jika ketidakstabilan hadir, ganti dengan heater berkualitas.",
                 "<strong>Akumulasi organik.</strong> Lihat apa yang membusuk di tank — makanan yang tidak dimakan di belakang substrat, tanaman yang mati, siput yang tertanam di kerikil. Ini menghasilkan amonia secara lokal sebelum kit menangkapnya. Penyedotan substrat yang lebih teliti dan pengurangan pemberian makan mengatasi ini secara langsung.",
                 "<strong>Agresi tersembunyi.</strong> Ikan yang tampak baik secara individual bisa mengalami stres kronis dari satu pengganggu yang beroperasi saat Anda tidak memperhatikan. Mengamati tank sekali di malam hari dengan cahaya ruangan yang rendah sering mengungkap dinamika yang tidak terlihat di siang hari.",
@@ -84,7 +84,7 @@
             "pullQuote": "Pertanyaannya bukan 'tes apa yang terlewat?' Melainkan 'satu hal apa yang, jika diubah, akan menjelaskan semua yang saya lihat?'",
             "hintLabel": "Telusuri penyebabnya, bukan sekadar angka",
             "hintText": [
-                "Stres dominan adalah penyebab sebenarnya. Gejala yang ditunjukkan ikan Anda — kepucatan, bersembunyi, kesehatan yang memburuk — adalah yang Anda lihat. Sebelum menyesuaikan apa pun, telusuri kembali apa yang menghasilkan apa yang Anda lihat. Temukan penyebabnya, dan gejala-gejala itu biasanya teratasi tanpa harus menangani setiap satu secara terpisah."
+                "Tekanan yang mendasarinya adalah penyebab sebenarnya. Gejala yang ditunjukkan ikan Anda — kepucatan, bersembunyi, kesehatan yang memburuk — adalah yang Anda lihat. Sebelum menyesuaikan apa pun, telusuri kembali apa yang menghasilkan apa yang Anda lihat. Temukan penyebabnya, dan gejala-gejala itu biasanya teratasi tanpa harus menangani setiap satu secara terpisah."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Apa yang perlu dilakukan sekarang"
@@ -100,7 +100,7 @@
                 "<strong>3. Pemindaian fisik.</strong> Lihat setiap sudut substrat untuk bahan yang membusuk. Periksa di balik dekorasi. Lihat setiap ikan dengan teliti dari jarak dekat — cari perubahan apapun yang tidak ada seminggu lalu: bintik, lendir, insang merah, perut kembung.",
                 "<strong>4. Periksa aliran filter.</strong> Letakkan tangan di outlet. Apakah aliran sekuat biasanya? Jika lambat, media filter mungkin tersumbat dan kapasitas pemrosesan berkurang.",
                 "<strong>5. Periksa prosedur ganti air.</strong> Apakah air yang dimasukkan saat ganti air terakhir disesuaikan suhunya? Apakah dechlorinator digunakan dengan benar? Banyak kasus 'parameter ok tapi ikan mati' bisa ditelusuri ke air yang tidak disesuaikan suhunya atau yang tidak cukup didekhlorinasi.",
-                "Stres dominan hampir selalu bisa ditemukan dengan pengamatan sistematis seperti ini. Anda tidak membutuhkan lebih banyak tes. Anda membutuhkan lebih banyak melihat.",
+                "Penyebabnya hampir selalu bisa ditemukan dengan pengamatan sistematis seperti ini. Anda tidak membutuhkan lebih banyak tes. Anda membutuhkan lebih banyak melihat.",
                 "Kalau perilaku ikan adalah bagian dari yang sedang Anda baca, panduan <a href=\"/articles/fish-hiding-what-does-it-mean\" style=\"color:rgba(61,214,232,.7);text-decoration:none;border-bottom:1px solid rgba(61,214,232,.22);transition:color .25s\">ikan bersembunyi</a> membahas Livestock Rhythm lebih detail. Untuk pandangan yang lebih luas pada akuarium yang siklusnya sudah selesai tapi masalah tetap berlanjut, panduan <a href=\"/articles/cycled-tank-problems\" style=\"color:rgba(61,214,232,.7);text-decoration:none;border-bottom:1px solid rgba(61,214,232,.22);transition:color .25s\">masalah akuarium yang sudah siklus</a> melanjutkan dari sini."
             ],
             "hintLabel": "Ketika kit uji dan ikan tidak sependapat",

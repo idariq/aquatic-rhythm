@@ -37,6 +37,13 @@
         {
           "type": "pq",
           "text": "\"Pengamatan yang tidak tergesa-gesa — sebelum meraih test kit, sebelum ganti air, sebelum menambahkan produk — itulah fondasi tempat ARA berdiri.\""
+        },
+        {
+          "type": "hn",
+          "label": "ARA · Pengecualian Darurat",
+          "paragraphs": [
+            "Kesabaran ini berlaku untuk kondisi perkembangan dan kronis — bukan untuk risiko kesejahteraan akut. Sesak napas, dugaan keracunan, luka parah, atau kemerosotan yang cepat menuntut campur tangan segera, bukan jendela observasi."
+          ]
         }
       ]
     },

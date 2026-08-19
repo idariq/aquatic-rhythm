@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Akuarium Bukan Proyek — Aquatic Rhythm</title>
 <meta name="description" content="Akuarium yang sehat bukan tentang mencapai 'selesai'. Cara penjaga berpikir tentang akuariumnya — sebagai proyek atau sebagai sistem hidup — menentukan cara ia merespons, dan apa yang ia lakukan ketika semuanya sudah stabil.">

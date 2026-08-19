@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>新しい魚を追加する — 混乱の窓 — Aquatic Rhythm</title>
 <meta name="description" content="最初の2週間は混乱する。それは正常だ。ARAは、なぜ新しい魚を追加することが常に安定した水槽を乱すのか、そして何が起きているかをどう読み取るかを解説します。">

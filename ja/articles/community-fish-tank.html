@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>コミュニティ水槽 — 相性チャートを超えて — Aquatic Rhythm</title>
 <meta name="description" content="相性チャートは「攻撃し合わないか」という最小限の問いに答えるだけです。コミュニティ水槽の問題のほとんどは、チャートの外側から来ます。生体リズム（Livestock Rhythm）を通じて、水槽が本当に何を伝えているかを読み解きます。">

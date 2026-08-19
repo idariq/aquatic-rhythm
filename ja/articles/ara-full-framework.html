@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}})();</script>
+<script>(function(){function ap(){try{var t=localStorage.getItem('ar_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme')}catch(e){}}ap();window.addEventListener('pageshow',ap)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARAフレームワーク — Aquatic Rhythm</title>
 <meta name="description" content="Aquatic Rhythm Alignment — 閉じた水中生態系を読むための総合フレームワーク。5つの生態リズム、3つのシステムフェーズ、整合の思考、観察の実践、そしてこの趣味を支える心理的基盤を、6つのセクションで扱います。">

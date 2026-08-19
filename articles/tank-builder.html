@@ -54,8 +54,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=65">
-<link rel="stylesheet" href="/css/kofi-sheet.css?v=65">
+<link rel="stylesheet" href="/css/ar-page.css?v=66">
+<link rel="stylesheet" href="/css/kofi-sheet.css?v=66">
 <style>
 
 
@@ -181,13 +181,17 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .size-select{
   pointer-events:all;appearance:none;-webkit-appearance:none;
   font-family:var(--sans);font-size:var(--fs-xs);font-weight:500;letter-spacing:.03em;
-  color:var(--th-accent);background:rgba(3,12,10,.94);
+  color:var(--th-accent);background:var(--th-surface-2);
   border:1px solid var(--th-accent-border);border-radius:6px;
   padding:.24rem 1.75rem .24rem .45rem;min-height:34px;min-width:4.75rem;max-width:calc(100% - .5rem);
   cursor:pointer;transition:border-color .2s,box-shadow .2s;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236fd6e0' d='M2.5 4.25L6 7.75l3.5-3.5'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right .5rem center;
 }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .size-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232b7a75' d='M2.5 4.25L6 7.75l3.5-3.5'/%3E%3C/svg%3E")}
+}
+:root[data-theme="light"] .size-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232b7a75' d='M2.5 4.25L6 7.75l3.5-3.5'/%3E%3C/svg%3E")}
 .size-select:focus{outline:none;border-color:var(--th-accent);box-shadow:0 0 0 2px rgba(61,214,232,.2)}
 .size-select option{color:#0a1210;background:#e8f4f2}
 
@@ -1172,7 +1176,7 @@ nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 </div>
 
 
-<script src="/js/tank-data.js?v=65"></script>
+<script src="/js/tank-data.js?v=66"></script>
 <script>
 
 var BRAND_INFO=window.AR_BRAND_INFO;
@@ -3192,7 +3196,7 @@ function _noBiImg(){
   </div>
 </div>
 
-<script src="/js/ar-page.js?v=65" defer></script>
+<script src="/js/ar-page.js?v=66" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -3218,7 +3222,7 @@ if ('serviceWorker' in navigator) {
     <iframe id="kofi-embed-iframe" class="kofi-sheet-frame" title="Support Aquatic Rhythm on Ko-fi"></iframe>
   </div>
 </div>
-<script src="/js/kofi-sheet.js?v=65" defer></script>
-<script src="/js/rhyssa-fab-ext.js?v=65" defer></script>
+<script src="/js/kofi-sheet.js?v=66" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=66" defer></script>
 </body>
 </html>

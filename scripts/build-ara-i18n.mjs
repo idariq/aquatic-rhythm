@@ -310,6 +310,8 @@ function buildAraHub(lang, t) {
   h = replaceOnce(h, /(<span class="ara-hub-eyebrow">)[^<]*(<\/span>)/, (_, a, b) => `${a}${t.header.eyebrow}${b}`);
   h = replaceOnce(h, /(<h1 class="ara-hub-title">)[\s\S]*?(<\/h1>)/, (_, a, b) => `${a}${t.header.titleHtml}${b}`);
   h = replaceOnce(h, /(<p class="ara-hub-sub">)[\s\S]*?(<\/p>)/, (_, a, b) => `${a}${t.header.sub}${b}`);
+  h = replaceOnce(h, /(<span class="ara-hub-status-label">)[^<]*(<\/span>)/, (_, a, b) => `${a}${t.header.statusLabel}${b}`);
+  h = replaceOnce(h, /(<p class="ara-hub-status-body">)[\s\S]*?(<\/p>)/, (_, a, b) => `${a}${t.header.statusBody}${b}`);
 
   let cardIdx = 0;
   h = h.replace(

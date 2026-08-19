@@ -17,7 +17,9 @@
   "header": {
     "eyebrow": "Kerangka ARA · Rujukan Lengkap",
     "titleHtml": "Aquatic Rhythm<br><em>Alignment</em>",
-    "sub": "Kerangka untuk membaca ekosistem akuatik tertutup — melalui lima ecological rhythm, tiga fase sistem, dan keselarasan antara pemelihara dan tank. Enam bagian. Bisa dibaca dalam urutan apa pun."
+    "sub": "Kerangka untuk membaca ekosistem akuatik tertutup — melalui lima ecological rhythm, tiga fase sistem, dan keselarasan antara pemelihara dan tank. Enam bagian. Bisa dibaca dalam urutan apa pun.",
+    "statusLabel": "Catatan tentang apa yang diklaim kerangka ini",
+    "statusBody": "ARA tidak mengklaim validasi empiris. Ia mengklaim koherensi teoretis — bahwa konstruknya terdefinisi dengan baik, hubungan antar-konstruknya masuk akal, dan pertanyaan yang ditimbulkannya dapat diuji. Empat dari lima ritme (Water, Biological, Environmental, Livestock) bertumpu pada penelitian mapan dalam ekologi akuatik, mikrobiologi, dan kesejahteraan hewan tangkaran, dan memerlukan pemeriksaan oleh peneliti dengan keahlian tersebut sebelum dapat diperlakukan sebagai lebih dari sekadar proposisi yang koheren. Ritme kelima, Keeper Rhythm, adalah bidang keahlian formal penulis — kontribusi utama kerangka ini, dan alasan mengapa keempat ritme lainnya turut disertakan. Apa yang mengikuti ditawarkan sebagai titik awal untuk pengujian itu, bukan teori yang sudah selesai."
   },
   "cards": [
     {

@@ -73,7 +73,7 @@
         {
           "type": "body",
           "paragraphs": [
-            "Kemajuan fase bukanlah jaminan, dan ia tidak hanya bergerak maju. Ada tiga dinamika yang membuat busur maju yang sederhana menjadi lebih rumit — keadaan-keadaan ketika sistem sedang melakukan sesuatu yang lebih berlapis daripada sekadar melangkah maju, dan yang menuntut jenis perhatian pemelihara yang berbeda untuk dikenali."
+            "Kemajuan fase bukanlah jaminan, dan ia tidak hanya bergerak maju. Ada dua dinamika yang membuat busur maju yang sederhana menjadi lebih rumit — keadaan-keadaan ketika sistem sedang melakukan sesuatu yang lebih berlapis daripada sekadar melangkah maju, dan yang menuntut jenis perhatian pemelihara yang berbeda untuk dikenali."
           ]
         },
         {
@@ -86,11 +86,13 @@
             {
               "label": "Regresi Fase",
               "text": "Tank Mature Phase yang mengalami gangguan cukup besar — peristiwa penyakit, kegagalan peralatan, ganti air besar berulang kali, perombakan stocking yang mendadak — bisa untuk sementara mundur ke perilaku fase yang lebih awal. Mengenali regresi, alih-alih menerapkan harapan Mature Phase pada sistem yang kini berfungsi sebagai sistem yang lebih muda, adalah salah satu tuntutan paling halus dari kerangka ini."
-            },
-            {
-              "label": "Reset yang Disengaja",
-              "text": "Tidak semua perputaran fase adalah regresi. Layout kompetisi yang dibongkar saat puncaknya, setup pembiakan yang direset di antara siklus, tank karantina yang memang tidak pernah dimaksudkan untuk matang — semuanya melibatkan reset yang disengaja dan sukarela sebagai keputusan pemelihara. Kerangka fase ARA berlaku di dalam setiap iterasi; reset sukarela berbeda dari regresi yang dipicu gangguan."
             }
+          ]
+        },
+        {
+          "type": "body",
+          "paragraphs": [
+            "Tidak semua perputaran fase adalah regresi juga. Layout kompetisi yang dibongkar saat puncaknya, setup pembiakan yang direset di antara siklus, dan tank karantina yang memang tidak pernah dimaksudkan untuk matang melibatkan reset yang disengaja dan sukarela sebagai keputusan pemelihara — layak dibedakan dari regresi yang dipicu gangguan, meski keduanya sama-sama membuat sistem mulai lagi dari fase yang lebih awal."
           ]
         },
         {

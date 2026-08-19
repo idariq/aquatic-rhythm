@@ -261,6 +261,86 @@ BERBEZA drpd skema artikel biasa (`head.titleHtml`/`intro`/`modules`),
 tanpa pengecualian ni — ditemui via `npm run i18n:check` (build
 `--all` cuba proses slug bespoke sbg artikel biasa).
 
+## Panduan Kualiti ja (elak bug audit 2026-08-19 berulang, PR #350-356)
+
+Audit kualiti ja (2026-08-19, susulan pertanyaan user "adakah dah
+berkualiti utk pembaca Jepun?") jumpa 6 kategori bug merentas
+kandungan ja SEDIA ADA (bukan hanya "belum terjemah" — kandungan yg
+DAH diterjemah pun silap). Semak SEMUA 6 checklist ni bila tulis
+kandungan ja BAHARU (artikel, modul ARA, alat interaktif, UI chrome)
+supaya bug yg sama tak berulang:
+
+1. **Daftar (register) — です/ます, BUKAN だ/である.** Rangka ARA
+   (7 fail `ara-s*.json`) & halaman utama ialah standard laman —
+   badan teks (`body`/`pullQuote`/`hintText`) MESTI です/ます sopan,
+   BUKAN だ/である plain/literary. **Pengecualian**: medan pendek
+   punchy (`tag`/`titleHtml`/`nextBtn`/`hintLabel`) BOLEH kekal
+   casual/plain-form (cth. tag "これはあなたのせいじゃない") — ni
+   konvensyen berasingan drpd daftar badan teks, bukan salah. Rujuk
+   `translations/ja/ara-s1-foundation.json` sbg kalibrasi daftar.
+
+2. **"Alignment"/"aligned" → 整合, BUKAN katakana.** Istilah rasmi
+   kerangka ARA (rujuk `translations/ja/ara-s4-alignment.json`) ialah
+   整合 (整合した[noun], 不整合 utk "misalignment", 整合している utk
+   "is aligned"). JANGAN guna katakana loanword — ada 2 varian silap
+   ditemui: アライメント (PR #351, 8 fail) & アラインメント (varian
+   ejaan lain, PR #355, 1 fail terlepas drpd grep asal sbb beza ejaan
+   katakana). Semak KEDUA-DUA ejaan bila grep verifikasi istilah
+   katakana yg patut jadi native-Japanese term.
+
+3. **Jangan cipta semula perkataan utk konsep rasmi kerangka ARA
+   sedia ada.** Bug PR #354: halaman utama guna "Rhythm before
+   Intensity" sbg salah satu 4 prinsip, padahal nama rasmi prinsip
+   tu (rujuk `articles/four-principles-of-ara.html` &
+   `articles/ara-s4-alignment.html`) ialah "**Consistency** before
+   Intensity" — overload istilah "Rhythm" (nama produk + salah satu
+   5 Rhythms) buat pembaca keliru. Bila kandungan baharu rujuk/
+   parafrasa konsep rasmi ARA (4 prinsip, 5 Rhythms, 3 fasa), SEMAK
+   nama rasmi dlm artikel sumber dulu — jangan agak/parafrasa drpd
+   ingatan.
+
+4. **Boilerplate UI/nav TAK BOLEH tinggal perkataan English separa.**
+   Bug PR #356: butang/pautan "kembali" dlm 5 artikel papar
+   "Readingに戻る"/"Kembali ke Reading" — "Reading" ditinggalkan
+   English walau konteks Jepun/Indonesia sekeliling, tak konsisten
+   dgn label nav sedia ada (ガイド/Panduan) & pautan "记事一覧"/
+   "Semua artikel" yg dah betul di fail lain. Bila tambah
+   butang/pautan nav baharu (termasuk dlm `scripts/build-i18n.mjs`
+   punya boilerplate dict cth. `BACK_LINK`/`NAV_LABELS`), terjemah
+   PENUH ke istilah sedia ada — jangan translit separa sebahagian
+   perkataan Inggeris. Kenal pasti dahulu APA fungsi sebenar
+   butang/pautan tu (navigasi luar ke `/reading` vs navigasi dalam
+   halaman cth. `goIntro()`) sblm pilih istilah — dua fungsi beza
+   patut istilah beza (rujuk PR #356: "記事一覧に戻る" utk pautan
+   `/reading` sebenar, "イントロに戻る" utk butang `goIntro()`).
+
+5. **Elak overuse em dash "——" dlm prosa ja.** Rangka ARA (kualiti
+   emas, 7 fail `ara-s*.json`) ialah **SIFAR** guna "——" — guna
+   struktur ayat/tanda baca Jepun asli sepenuhnya sebaliknya. Byk
+   artikel biasa & halaman utama masih guna corak "——" gaya Inggeris
+   secara pervasive (audit 2026-08-19 jumpa 20 fail + halaman utama,
+   kiraan 2-75 setiap fail) — tanda kandungan kurang "asli" berbanding
+   rangka ARA. Bila tulis/terjemah prosa ja baharu, ELAK "——" —
+   susun ayat balik ikut struktur Jepun asli (、。 atau frasa
+   berasingan), jangan salin struktur ayat Inggeris literal (subject
+   — clause — clause) terus ke ja.
+
+6. **Widget interaktif tertanam (`<canvas>`/JS dinamik) MESTI guna
+   jadual string runtime, BUKAN translations JSON.** Pipeline
+   `build-i18n.mjs` salin blok `<script>` inline VERBATIM drpd sumber
+   EN — apa² teks tertanam dlm JS (label butang canvas, mesej hasil,
+   dll.) TAK diproses templat i18n, kekal English walau pd build
+   id/ja (bug PR #353, 2 fail, 112 string). Fix: tanam jadual
+   `<PREFIX>_STRINGS` (en/id/ja) + fungsi `T(key,subs)` yg baca
+   `document.documentElement.lang` runtime terus dlm EN source (ikut
+   pola `CSL_STRINGS`/`T()` drpd `js/community-stress-lab.js`, atau
+   `NTS_STRINGS`/`ntsT()` drpd `articles/new-tank-syndrome.html`
+   sbg contoh baharu). **Ingat susunan nombor-perkataan Jepun**
+   ("N日目" nombor-dulu) beza drpd en/id ("Day N"/"Hari N"
+   perkataan-dulu) bila templat teks dinamik ada nombor — rujuk
+   `ntsDay()`/`ctpWeekLabel()`/`dayConcat()` (§i18n "AWAS — susunan
+   tatabahasa" di atas utk butiran penuh).
+
 ## Semakan Sebelum Commit
 
 - `npm run check` (`check:syntax` + `test` [Node test runner,

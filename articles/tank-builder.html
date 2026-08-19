@@ -54,8 +54,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="/css/ar-page.css?v=68">
-<link rel="stylesheet" href="/css/kofi-sheet.css?v=68">
+<link rel="stylesheet" href="/css/ar-page.css?v=69">
+<link rel="stylesheet" href="/css/kofi-sheet.css?v=69">
 <style>
 
 
@@ -1176,7 +1176,7 @@ nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 </div>
 
 
-<script src="/js/tank-data.js?v=68"></script>
+<script src="/js/tank-data.js?v=69"></script>
 <script>
 
 var BRAND_INFO=window.AR_BRAND_INFO;
@@ -1730,6 +1730,25 @@ window.addEventListener('load',function(){
     if(ro){ro.classList.remove('tb-rpt-on');ro.scrollTop=0;}
   });
 
+  /* ── Back-button intercept (report overlay) ──
+     Without this, Android back exits the whole Tools section instead
+     of returning to the builder from the report screen. */
+  var rptOverlay=document.getElementById('report-overlay');
+  if(rptOverlay){
+    var rptInHistory=false;
+    new MutationObserver(function(){
+      var open=rptOverlay.classList.contains('tb-rpt-on');
+      if(open&&!rptInHistory){rptInHistory=true;history.pushState({rptOverlay:true},'');}
+      else if(!open&&rptInHistory){history.back();}
+    }).observe(rptOverlay,{attributes:true,attributeFilter:['class']});
+    window.addEventListener('popstate',function(){
+      if(!rptInHistory)return;
+      rptInHistory=false;
+      window.__rhSuppressSpaNav=true;
+      if(rptOverlay.classList.contains('tb-rpt-on')){rptOverlay.classList.remove('tb-rpt-on');rptOverlay.scrollTop=0;}
+    },true);
+  }
+
   /* Brand info overlay close on backdrop */
   var biOverlay=document.getElementById('brand-info-overlay');
   if(biOverlay)biOverlay.addEventListener('click',function(e){
@@ -1746,6 +1765,28 @@ window.addEventListener('load',function(){
       if(_biCurrentEq){var eq2=_biCurrentEq;_biCurrentEq=null;setTimeout(function(){openDropdown(eq2);},80);}
     }
   });
+
+  /* ── Back-button intercept (About overlay) ──
+     Without this, Android back (hardware/gesture) exits the whole
+     Tools section instead of just closing the species/equipment
+     About panel — same pattern as js/rhyssa-fab-ext.js / Settings. */
+  if(biOverlay){
+    var biInHistory=false;
+    new MutationObserver(function(){
+      var open=biOverlay.classList.contains('open');
+      if(open&&!biInHistory){biInHistory=true;history.pushState({biOverlay:true},'');}
+      else if(!open&&biInHistory){history.back();}
+    }).observe(biOverlay,{attributes:true,attributeFilter:['class']});
+    window.addEventListener('popstate',function(){
+      if(!biInHistory)return;
+      biInHistory=false;
+      window.__rhSuppressSpaNav=true;
+      if(biOverlay.classList.contains('open')){
+        biOverlay.classList.remove('open');
+        if(_biCurrentEq){var eq3=_biCurrentEq;_biCurrentEq=null;setTimeout(function(){openDropdown(eq3);},80);}
+      }
+    },true);
+  }
 
   window.addEventListener('click',function(){closeAllDropdowns();});
   var dqBackdrop=document.getElementById('eq-dd-backdrop');
@@ -3217,7 +3258,7 @@ function _noBiImg(){
   </div>
 </div>
 
-<script src="/js/ar-page.js?v=68" defer></script>
+<script src="/js/ar-page.js?v=69" defer></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
@@ -3243,7 +3284,7 @@ if ('serviceWorker' in navigator) {
     <iframe id="kofi-embed-iframe" class="kofi-sheet-frame" title="Support Aquatic Rhythm on Ko-fi"></iframe>
   </div>
 </div>
-<script src="/js/kofi-sheet.js?v=68" defer></script>
-<script src="/js/rhyssa-fab-ext.js?v=68" defer></script>
+<script src="/js/kofi-sheet.js?v=69" defer></script>
+<script src="/js/rhyssa-fab-ext.js?v=69" defer></script>
 </body>
 </html>

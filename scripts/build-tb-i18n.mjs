@@ -63,17 +63,17 @@ const RH_SHEET = {
   },
   ja: {
     closeAria: 'チャットを閉じる', subLbl: 'アクアリウムコンパニオン', resetAria: '会話をリセット',
-    welcome: '見えているものを教えてください —— 水、行動、変わったことなら何でも —— 何かを直す前に、一緒に読み解いていきましょう。',
+    welcome: '見えているものを教えてください。水、行動、変わったことなら何でも構いません。何かを直す前に、一緒に読み解いていきましょう。',
     also_pre: '同じRhyssaは、', also_post: 'でもご利用いただけます。',
     placeholder: '水槽について質問する…', msgAria: 'Rhyssaへのメッセージ', sendAria: '送信',
-    note: 'AIは間違えることがあります —— 魚の緊急事態では、専門家に相談してください',
+    note: 'AIは間違えることがあります。魚の緊急事態では、専門家に相談してください',
     chatAria: 'Rhyssaとチャット', threadAria: 'Rhyssaとの会話'
   }
 };
 
 const KOFI_SHEET = {
   id: { title: 'Dukungan', sub: 'Tip opsional — dikelola di Ko-fi', linkout: 'Buka terpisah ↗', closeAria: 'Tutup panel dukungan' },
-  ja: { title: 'サポート', sub: '任意のご支援——Ko-fiで対応', linkout: '別ウィンドウで開く ↗', closeAria: 'サポートパネルを閉じる' }
+  ja: { title: 'サポート', sub: '任意のご支援（Ko-fiで対応）', linkout: '別ウィンドウで開く ↗', closeAria: 'サポートパネルを閉じる' }
 };
 
 function subOnce(h, oldStr, newStr, label) {

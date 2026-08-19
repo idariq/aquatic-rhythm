@@ -96,7 +96,7 @@ function getReadyArticles(lang) {
   for (const file of fs.readdirSync(dir).filter(f => f.endsWith('.json'))) {
     try {
       const j = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
-      if (j._meta?.status !== 'ready') continue;
+      if (j._meta?.status !== 'ready' || !j._meta?.slug) continue;
       articles.push({
         slug:       j._meta.slug,
         titleHtml:  j.intro?.titleHtml  || '',
@@ -265,9 +265,9 @@ h1 em{font-style:italic;color:rgba(45,107,82,.82)}
     Aquatic Rhythm
   </a>
   <button class="ar-settings-btn" id="ar-settings-btn" aria-label="Settings" aria-expanded="false" title="Settings">
-    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true">
-      <path d="M6.8 2.2h3.4l.48 1.6a5 5 0 011.3.76l1.65-.5 1.7 2.94-1.18 1.14c.04.3.07.6.07.86s-.03.57-.07.86l1.18 1.14-1.7 2.94-1.65-.5a5 5 0 01-1.3.76L10.2 14.8H6.8l-.48-1.6a5 5 0 01-1.3-.76l-1.65.5-1.7-2.94 1.18-1.14A5 5 0 012.78 8.5c0-.26.03-.56.07-.86L1.67 6.5l1.7-2.94 1.65.5a5 5 0 011.3-.76L6.8 2.2z" stroke="currentColor" stroke-width="1.15" stroke-linejoin="round" fill="none"/>
-      <circle cx="8.5" cy="8.5" r="2.1" stroke="currentColor" stroke-width="1.15" fill="none"/>
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
     </svg>
   </button>
 </nav>
@@ -276,13 +276,13 @@ h1 em{font-style:italic;color:rgba(45,107,82,.82)}
 <aside class="ar-settings-panel" id="ar-settings-panel" role="dialog" aria-modal="true" aria-label="Settings" aria-hidden="true">
   <div class="ar-stg-head">
     <div class="ar-stg-head-left">
-      <svg class="ar-stg-head-icon" width="15" height="15" viewBox="0 0 17 17" fill="none" aria-hidden="true">
-        <path d="M6.8 2.2h3.4l.48 1.6a5 5 0 011.3.76l1.65-.5 1.7 2.94-1.18 1.14c.04.3.07.6.07.86s-.03.57-.07.86l1.18 1.14-1.7 2.94-1.65-.5a5 5 0 01-1.3.76L10.2 14.8H6.8l-.48-1.6a5 5 0 01-1.3-.76l-1.65.5-1.7-2.94 1.18-1.14A5 5 0 012.78 8.5c0-.26.03-.56.07-.86L1.67 6.5l1.7-2.94 1.65.5a5 5 0 011.3-.76L6.8 2.2z" stroke="currentColor" stroke-width="1.15" stroke-linejoin="round" fill="none"/>
-        <circle cx="8.5" cy="8.5" r="2.1" stroke="currentColor" stroke-width="1.15" fill="none"/>
+      <svg class="ar-stg-head-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
       </svg>
       <span class="ar-stg-title">Settings</span>
     </div>
-    <button class="ar-stg-close" id="ar-settings-close" aria-label="Close settings">✕</button>
+    <button class="ar-stg-close" id="ar-settings-close" aria-label="Close settings"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="m6 6 12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
   </div>
   <div class="ar-stg-body">
     <div class="ar-stg-section">

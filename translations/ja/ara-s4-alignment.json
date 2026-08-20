@@ -51,7 +51,7 @@
     {
       "pos": "2 / 7",
       "tag": "Timing before Technique",
-      "titleHtml": "Timing <em>before Technique</em>",
+      "titleHtml": "Timing（タイミング） <em>before Technique</em>",
       "blocks": [
         {
           "type": "body",
@@ -107,7 +107,7 @@
     {
       "pos": "3 / 7",
       "tag": "Capacity before Ambition",
-      "titleHtml": "Capacity <em>before Ambition</em>",
+      "titleHtml": "Capacity（キャパシティ） <em>before Ambition</em>",
       "blocks": [
         {
           "type": "body",
@@ -131,7 +131,7 @@
     {
       "pos": "4 / 7",
       "tag": "Consistency before Intensity",
-      "titleHtml": "Consistency <em>before Intensity</em>",
+      "titleHtml": "Consistency（一貫性） <em>before Intensity</em>",
       "blocks": [
         {
           "type": "body",
@@ -150,7 +150,7 @@
     {
       "pos": "5 / 7",
       "tag": "Observation before Correction",
-      "titleHtml": "Observation <em>before Correction</em>",
+      "titleHtml": "Observation（観察） <em>before Correction</em>",
       "blocks": [
         {
           "type": "body",

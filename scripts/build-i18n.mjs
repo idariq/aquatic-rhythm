@@ -95,11 +95,11 @@ const RH_SHEET = {
   ja: {
     dialogAria: 'Rhyssaとチャット', closeAria: 'チャットを閉じる', sub: 'アクアリウムコンパニオン',
     resetAria: '会話をリセット', threadAria: 'Rhyssaとの会話',
-    welcome: '見えているものを教えてください —— 水、行動、変わったことなら何でも —— 何かを直す前に、一緒に読み解いていきましょう。',
+    welcome: '見えているものを教えてください。水、行動、変わったことなら何でも構いません。何かを直す前に、一緒に読み解いていきましょう。',
     alsoPre: '同じRhyssaは、', alsoPost: 'でもご利用いただけます。',
     inputPlaceholder: '水槽について質問する…', inputAria: 'Rhyssaへのメッセージ',
     sendAria: '送信',
-    note: 'AIは間違えることがあります —— 魚の緊急事態では、専門家に相談してください'
+    note: 'AIは間違えることがあります。魚の緊急事態では、専門家に相談してください'
   }
 };
 

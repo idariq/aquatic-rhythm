@@ -79,7 +79,7 @@ const UI = {
     ogTitle:     '水槽ガイド — Aquatic Rhythm',
     eyebrow:     'Aquatic Rhythm',
     heading:     'どこでも読める<br><em>水槽生態学ガイド</em>',
-    intro:       '閉鎖系水槽の生物学と化学を、スマートフォンで読みやすいモジュール形式で解説します。生物学と化学から始める——誇大広告はありません。',
+    intro:       '閉鎖系水槽の生物学と化学を、スマートフォンで読みやすいモジュール形式で解説します。生物学と化学から始めます。誇大広告はありません。',
     backToEn:    'すべての記事を英語で見る →',
     backHome:    '← Aquatic Rhythmに戻る',
     notoFont:    true,

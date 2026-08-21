@@ -406,6 +406,35 @@ supaya bug yg sama tak berulang:
    `ntsDay()`/`ctpWeekLabel()`/`dayConcat()` (§i18n "AWAS — susunan
    tatabahasa" di atas utk butiran penuh).
 
+## Pengetahuan Rhyssa (`worker/knowledge.js`) — TIGA lapisan sync MANUAL, tiada pipeline auto
+
+Kandungan kerangka ARA wujud di **TIGA tempat berasingan**, tiada skrip build
+yg hubungkan mereka automatik (beza drpd `translations/*.json` → HTML
+biasa, yg ada pipeline `build-*-i18n.mjs`):
+
+1. **Halaman laman sebenar** — `articles/ara-*.html` (+ `id`/`ja` setara) —
+   apa yg pengguna sebenar baca.
+2. **`docs/ARA-framework-v2.md`** (+ `docs/ARA-psychology-foundations.md`) —
+   dokumen rujukan dalaman, sepatutnya cerminkan (1).
+3. **`worker/knowledge.js`** — pengetahuan Rhyssa (AI chat backend),
+   diimport terus sbg *string statik* ke `worker/index.js`
+   (`import { ARA_FRAMEWORK, ARA_PSYCHOLOGY } from './knowledge.js'`,
+   disuntik ke system prompt) & **dibakar masa deploy Worker** — BUKAN
+   dibaca "live" drpd laman semasa pengguna chat. Nota kepala fail tu
+   sendiri kata "sourced from docs/ at build time... update these
+   constants if the docs change" — arahan MANUAL utk manusia/ejen,
+   bukan skrip yg jalan sendiri (beza drpd `worker/article-index.js`
+   yg DIJANA oleh `scripts/build-worker-knowledge.mjs`).
+
+**WAJIB**: lepas ubah kandungan ARA di (1), semak & selaraskan (2) DAN
+(3) dlm PR/commit yg SAMA — jangan anggap salah satu akan "ikut sendiri".
+Disahkan drift boleh berlaku sunyi (ditemui 2026-08-21: paragraf skop
+marine/reef dikemas kini di (1) tapi tertinggal di (2)/(3) sehingga
+disemak khusus) — Rhyssa akan terus bagi jawapan berdasarkan pengetahuan
+LAPUK kpd pengguna walau laman sendiri dah betul, sehingga (3) turut
+dikemas kini & Worker di-deploy semula (`worker/**` berubah → auto-deploy
+via `.github/workflows/deploy-worker.yml`).
+
 ## Semakan Sebelum Commit
 
 - `npm run check` (`check:syntax` + `test` [Node test runner,

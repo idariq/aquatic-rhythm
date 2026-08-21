@@ -73,7 +73,7 @@ Neither frame is always wrong. A heater failure is a technical emergency that re
 
 ARA applies to closed or semi-closed freshwater and brackish aquatic micro-ecosystems — typically tanks between 20 and 500 litres, maintained by a single keeper or small household. This is the scope the framework was designed for, and the scope within which its concepts have been developed and tested.
 
-Marine and reef systems fall within the framework's conceptual scope — the five ecological rhythms, three phases, and alignment approach apply — but the specific expressions of those rhythms differ substantially. Reef biology involves live rock microbial communities, coral health signals, protein skimming dynamics, and trace element cycling that are not covered in the freshwater-centric examples throughout this document. A marine or reef keeper will find the framework's lens useful, but should read the specific examples with that difference in mind.
+The framework's analytical logic — the five ecological rhythms, three phases, and alignment approach — is held to apply across closed aquatic system types, and it has been cross-referenced against literature spanning both freshwater and marine captive systems. But its empirical basis is freshwater: ARA was developed and tested through freshwater practitioner observation. Extension to marine and reef systems — with their live rock microbial communities, coral health signals, protein skimming dynamics, and trace element cycling, none of which are covered in the freshwater-centric examples throughout this document — is an identified direction for future research, not a claim of the current framework. A marine or reef keeper may still find the framework's lens useful, but should treat its examples as illustrative rather than directly transferable.
 
 The framework does not extend naturally to:
 - Large-scale aquaculture systems, where stocking density, biological management, and keeper-to-tank ratios operate at different scales
@@ -644,7 +644,7 @@ These foundations explain why ARA is a distinguishable approach from technical a
 
 ---
 
-*Harun, M. N. H. (2026). Aquatic Rhythm Alignment (ARA): A literacy framework for human-maintained closed aquatic micro-ecosystems. OSF. https://osf.io/ckjf2*
+*Harun, M. N. H. (2026). Aquatic Rhythm Alignment (ARA): A literacy framework for human-maintained closed aquatic micro-ecosystems. OSF. https://doi.org/10.17605/OSF.IO/CKJF2*
 *Version 2.0 — Companion: ARA-psychology-foundations.md*
 *aquaticrhythm.com*
 `;

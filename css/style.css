@@ -195,6 +195,7 @@ nav:not(.bnav){position:fixed;z-index:800}
 /* ── FISH ── */
 .fish{position:absolute;pointer-events:none;will-change:transform,left,top;contain:layout style size}
 .fish svg{display:block}
+body:not(.tier-low) .fish-oscar svg{filter:drop-shadow(0 3px 4px rgba(0,0,0,.22))}
 
 /* ── TEXT PROTECTION ── */
 .ht,.pst,.bt,.hk,.api,.rhd,.apq,.snt,.sco,.stit,.starr,.stco,.home-ara-lead,.home-ara-card h3,.home-ara-card p,.home-strip q,.home-tile h3,.home-tile p,.home-hero-note,.home-ara-pr-list li,.home-ara-rf p,.home-ara-rf span,.home-tile-tag,.home-tile-cta,.rd-card-hit-text,.home-keeper-lead,.home-keeper-body{text-shadow:var(--th-halo-sm)}

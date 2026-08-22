@@ -57,9 +57,17 @@
     s.appendChild(mk('circle', { cx: '48.5', cy: '10', r: '1.9', fill: 'rgba(5,15,10,.92)' }));
   }
 
+  var oscarGradSeq = 0;
   function buildOscar(s) {
-    s.appendChild(mk('path', { d: 'M2,14 Q9,22 2,30 L13,22Z', fill: 'rgba(175,78,18,.85)' }));
-    s.appendChild(mk('path', { d: 'M13,22 C13,7 24,2 34,2 C48,2 60,10 60,22 C60,34 48,42 34,42 C24,42 13,37 13,22Z', fill: 'rgba(185,85,20,.85)' }));
+    var gid = 'oscBody' + (oscarGradSeq++);
+    var defs = document.createElementNS(NS, 'defs');
+    var grad = mk('linearGradient', { id: gid, x1: '0', y1: '0', x2: '0', y2: '1' });
+    grad.appendChild(mk('stop', { offset: '0%',   'stop-color': 'rgba(220,128,48,.9)' }));
+    grad.appendChild(mk('stop', { offset: '55%',  'stop-color': 'rgba(185,85,20,.85)' }));
+    grad.appendChild(mk('stop', { offset: '100%', 'stop-color': 'rgba(132,55,10,.85)' }));
+    defs.appendChild(grad); s.appendChild(defs);
+    s.appendChild(mk('path', { d: 'M2,14 Q9,22 2,30 L13,22Z', fill: 'rgba(150,64,13,.85)' }));
+    s.appendChild(mk('path', { d: 'M13,22 C13,7 24,2 34,2 C48,2 60,10 60,22 C60,34 48,42 34,42 C24,42 13,37 13,22Z', fill: 'url(#' + gid + ')' }));
     s.appendChild(mk('path', { d: 'M20,4 C18,12 20,22 18,34', stroke: 'rgba(18,6,1,.42)', 'stroke-width': '5', fill: 'none' }));
     s.appendChild(mk('path', { d: 'M32,3 C30,13 32,23 30,37', stroke: 'rgba(18,6,1,.38)', 'stroke-width': '4', fill: 'none' }));
     s.appendChild(mk('circle', { cx: '50', cy: '13', r: '4', fill: 'rgba(255,255,255,.88)' }));
@@ -100,7 +108,7 @@
     var svg = document.createElementNS(NS, 'svg');
     svg.setAttribute('width', cfg.w); svg.setAttribute('height', cfg.h); svg.setAttribute('viewBox', '0 0 ' + cfg.w + ' ' + cfg.h);
     cfg.build(svg);
-    var wrap = document.createElement('div'); wrap.className = 'fish';
+    var wrap = document.createElement('div'); wrap.className = 'fish' + (cfg.cls ? ' ' + cfg.cls : '');
     wrap.style.cssText = 'left:' + Math.round(startX) + 'px;top:' + Math.round(baseY) + 'px;transform:scaleX(' + (goRight ? 1 : -1) + ') scale(' + sc + ');transform-origin:center center;opacity:0;transition:opacity 1.2s';
     wrap.appendChild(svg); fl.appendChild(wrap);
     setTimeout(function () { wrap.style.opacity = (cfg.opMin + Math.random() * (cfg.opMax - cfg.opMin)).toFixed(2); }, 150);
@@ -112,7 +120,7 @@
   var congoCfg    = { w: 42, h: 16,  build: buildCongo,    count: TIER === 'low' ? 8 : TIER === 'mid' ? 12 : 16,   spreadX: 105, spreadY: 55,  speedMin: 24, speedMax: 36, yMin: .12, yMax: .6,  scaleMin: .58, scaleMax: .8,  opMin: .52, opMax: .78, wob: 1.6, wobF: 0.48 };
   var cardinalCfg = { w: 36, h: 12,  build: buildCardinal, count: TIER === 'low' ? 10 : TIER === 'mid' ? 16 : 22,  spreadX: 115, spreadY: 58,  speedMin: 30, speedMax: 45, yMin: .15, yMax: .65, scaleMin: .55, scaleMax: .75, opMin: .55, opMax: .82, wob: 1.4, wobF: 0.55 };
   var geoCfg      = { w: 60, h: 36,  build: buildGeo,      yMin: .1,  yMax: .55, speedMin: 12, speedMax: 20, scaleMin: .7,  scaleMax: .95, opMin: .58, opMax: .8,  wob: 1.2, wobF: 0.32 };
-  var oscarCfg    = { w: 62, h: 44,  build: buildOscar,    yMin: .08, yMax: .5,  speedMin: 10, speedMax: 18, scaleMin: .68, scaleMax: .9,  opMin: .55, opMax: .78, wob: 1.0, wobF: 0.28 };
+  var oscarCfg    = { w: 62, h: 44,  build: buildOscar,    yMin: .08, yMax: .5,  speedMin: 10, speedMax: 18, scaleMin: .68, scaleMax: .9,  opMin: .55, opMax: .78, wob: 1.0, wobF: 0.28, cls: 'fish-oscar' };
 
   /* ── DESPAWN HELPERS (shared by normal edge-exit and error/NaN recovery) ── */
   function despawnSchool(e) {

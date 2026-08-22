@@ -81,17 +81,20 @@
   }
 
   function buildCardinal(s) {
-    var bodyD = 'M6,6 C6,2 13,0 22,1 C29,2 34,4 35,6 C34,8 29,10 22,11 C13,12 6,10 6,6Z';
+    /* Real cardinal tetras are tiny (~3cm) & slender — body compressed
+       vertically (~.71x) vs the original stockier proportions so the
+       viewBox itself is thin, not just uniformly scaled down. */
+    var bodyD = 'M6,4.2 C6,1.4 13,0 22,0.7 C29,1.4 34,2.8 35,4.2 C34,5.7 29,7.1 22,7.8 C13,8.5 6,7.1 6,4.2Z';
     var fill = makeBodyGradient(s, 'cardBody', [
       ['0%', 'rgba(167,93,79,.9)'], ['55%', 'rgba(132,58,44,.85)'], ['100%', 'rgba(92,28,14,.85)']
     ]);
-    s.appendChild(mk('path', { d: 'M0,3 Q4,6 0,9 L6,6Z', fill: fill }));
+    s.appendChild(mk('path', { d: 'M0,2.1 Q4,4.2 0,6.4 L6,4.2Z', fill: fill }));
     s.appendChild(mk('path', { d: bodyD, fill: fill }));
     var g = makeClipGroup(s, bodyD);
-    g.appendChild(mk('path', { d: 'M7,2 C13,0 22,0 30,3 C32,4 34,5 34,5 C32,4 22,2 13,2Z', fill: 'rgba(25,120,215,.85)' }));
-    g.appendChild(mk('path', { d: 'M7,8 C13,9 22,10 30,9 L30,11 C22,12 13,11 7,10Z', fill: 'rgba(210,42,30,.7)' }));
-    s.appendChild(mk('circle', { cx: '30', cy: '5', r: '1.7', fill: 'rgba(255,255,255,.9)' }));
-    s.appendChild(mk('circle', { cx: '30.2', cy: '5', r: '.85', fill: 'rgba(4,4,4,.92)' }));
+    g.appendChild(mk('path', { d: 'M7,1.4 C13,0 22,0 30,2.1 C32,2.8 34,3.5 34,3.5 C32,2.8 22,1.4 13,1.4Z', fill: 'rgba(25,120,215,.85)' }));
+    g.appendChild(mk('path', { d: 'M7,5.7 C13,6.4 22,7.1 30,6.4 L30,7.8 C22,8.5 13,7.8 7,7.1Z', fill: 'rgba(210,42,30,.7)' }));
+    s.appendChild(mk('circle', { cx: '30', cy: '3.5', r: '1.2', fill: 'rgba(255,255,255,.9)' }));
+    s.appendChild(mk('circle', { cx: '30.2', cy: '3.5', r: '.6', fill: 'rgba(4,4,4,.92)' }));
   }
 
   function buildGeo(s) {
@@ -167,7 +170,7 @@
   /* ── CONFIGS ── */
   var altumCfg    = { w: 54, h: 82,  build: buildAltum,    count: TIER === 'low' ? 3 : 5,                          spreadX: 200, spreadY: 140, speedMin: 5,  speedMax: 9,  yMin: .06, yMax: .44, scaleMin: .55, scaleMax: .78, opMin: .44, opMax: .7,  wob: 1.0, wobF: 0.22 };
   var congoCfg    = { w: 42, h: 16,  build: buildCongo,    count: TIER === 'low' ? 8 : TIER === 'mid' ? 12 : 16,   spreadX: 105, spreadY: 55,  speedMin: 24, speedMax: 36, yMin: .12, yMax: .6,  scaleMin: .58, scaleMax: .8,  opMin: .52, opMax: .78, wob: 1.6, wobF: 0.48 };
-  var cardinalCfg = { w: 36, h: 12,  build: buildCardinal, count: TIER === 'low' ? 10 : TIER === 'mid' ? 16 : 22,  spreadX: 115, spreadY: 58,  speedMin: 30, speedMax: 45, yMin: .15, yMax: .65, scaleMin: .55, scaleMax: .75, opMin: .55, opMax: .82, wob: 1.4, wobF: 0.55 };
+  var cardinalCfg = { w: 36, h: 8.5, build: buildCardinal, count: TIER === 'low' ? 10 : TIER === 'mid' ? 16 : 22,  spreadX: 115, spreadY: 58,  speedMin: 30, speedMax: 45, yMin: .15, yMax: .65, scaleMin: .34, scaleMax: .46, opMin: .55, opMax: .82, wob: 1.4, wobF: 0.55 };
   var geoCfg      = { w: 60, h: 36,  build: buildGeo,      yMin: .1,  yMax: .55, speedMin: 12, speedMax: 20, scaleMin: .7,  scaleMax: .95, opMin: .58, opMax: .8,  wob: 1.2, wobF: 0.32, cls: 'fish-geo' };
   var oscarCfg    = { w: 62, h: 44,  build: buildOscar,    yMin: .08, yMax: .5,  speedMin: 10, speedMax: 18, scaleMin: .68, scaleMax: .9,  opMin: .55, opMax: .78, wob: 1.0, wobF: 0.28, cls: 'fish-oscar' };
 

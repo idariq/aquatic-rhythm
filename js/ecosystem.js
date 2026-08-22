@@ -54,6 +54,33 @@
   var pc = document.getElementById('plants');
   var NS = 'http://www.w3.org/2000/svg';
 
+  /* Top-light/bottom-dark gradient (same treatment as the fish bodies in
+     fauna.js) derived from each plant's own flat placement color, so every
+     leaf/stem reads as lit from above instead of a single flat tone. */
+  function parseRgba(str) {
+    var m = /rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?\)/.exec(str);
+    return m ? { r: +m[1], g: +m[2], b: +m[3], a: m[4] !== undefined ? +m[4] : 1 } : { r: 90, g: 130, b: 80, a: .6 };
+  }
+  function shadeRgba(c, amt) {
+    function cl(v) { return Math.max(0, Math.min(255, v)); }
+    return 'rgba(' + Math.round(cl(c.r + amt)) + ',' + Math.round(cl(c.g + amt)) + ',' + Math.round(cl(c.b + amt)) + ',' + c.a + ')';
+  }
+  var plantGradSeq = 0;
+  function makePlantGradient(svg, baseColorStr) {
+    var base = parseRgba(baseColorStr);
+    var gid = 'pgrad' + (plantGradSeq++);
+    var defs = document.createElementNS(NS, 'defs');
+    var grad = document.createElementNS(NS, 'linearGradient');
+    grad.setAttribute('id', gid); grad.setAttribute('x1', '0'); grad.setAttribute('y1', '0'); grad.setAttribute('x2', '0'); grad.setAttribute('y2', '1');
+    [['0%', shadeRgba(base, 34)], ['60%', baseColorStr], ['100%', shadeRgba(base, -36)]].forEach(function (s) {
+      var stop = document.createElementNS(NS, 'stop');
+      stop.setAttribute('offset', s[0]); stop.setAttribute('stop-color', s[1]);
+      grad.appendChild(stop);
+    });
+    defs.appendChild(grad); svg.appendChild(defs);
+    return 'url(#' + gid + ')';
+  }
+
   var plantTypes = [
     {
       name: 'val', draw: function (svg, w, h, c) {
@@ -156,7 +183,8 @@
       wrap.style.cssText = 'left:' + pd.l + ';--sa:' + pd.sa + ';--sb:' + pd.sb + ';animation:psway ' + pd.d + ' ease-in-out ' + pd.dl + ' infinite';
       var svg = document.createElementNS(NS, 'svg');
       svg.setAttribute('width', pd.w); svg.setAttribute('height', pd.h); svg.setAttribute('viewBox', '0 0 ' + pd.w + ' ' + pd.h); svg.setAttribute('fill', 'none');
-      type.draw(svg, pd.w, pd.h, pd.c); wrap.appendChild(svg); pc.appendChild(wrap);
+      var gradColor = makePlantGradient(svg, pd.c);
+      type.draw(svg, pd.w, pd.h, gradColor); wrap.appendChild(svg); pc.appendChild(wrap);
     }
     if (pi < chosen.length) setTimeout(plantBatch, 80);
   }

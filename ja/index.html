@@ -76,6 +76,13 @@
 <div id="reading-progress" aria-hidden="true"><div id="reading-progress-fill"></div></div>
 <div id="fish-layer" aria-hidden="true"></div>
 
+<button class="ar-calm-exit" id="ar-calm-exit" aria-label="静穏モードを終了" title="静穏モードを終了">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </svg>
+  <span>静穏モードを終了</span>
+</button>
+
 <nav>
   <a href="/" class="nl" data-page="home" aria-label="Aquatic Rhythm — 小型水槽のための生態学的なケア">
     <svg width="175" height="30" viewBox="0 0 175 30" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true">
@@ -98,6 +105,12 @@
     <li><a href="/journal" data-page="journal">記録</a></li>
     <li><a href="/about" data-page="about">サイトについて</a></li>
   </ul>
+  <button class="ar-settings-btn" id="ar-calm-btn" aria-label="静穏モード" title="静穏モード — 読まずに眺める">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M3 10.5c2-3 4-3 6 0s4 3 6 0 4-3 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+      <path d="M3 15.5c2-3 4-3 6 0s4 3 6 0 4-3 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none" opacity=".5"/>
+    </svg>
+  </button>
   <button class="ar-settings-btn" id="ar-settings-btn" aria-label="設定" aria-expanded="false" title="設定">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1745,6 +1758,7 @@
 <!-- ui.js sub-modules — order matters: eco-toggle exposes window.__arApply{Fauna,Flora}
      which settings reads; journal is lazy-loaded on first journal navigation. -->
 <script src="/js/ui-eco-toggle.js?v=74" defer></script>
+<script src="/js/ui-calm-mode.js?v=74" defer></script>
 <script src="/js/ui-reading-pathways.js?v=74" defer></script>
 <script src="/js/ui-rhyssa-sheet.js?v=74" defer></script>
 <script src="/js/ui-rhyssa-page.js?v=74" defer></script>

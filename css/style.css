@@ -178,12 +178,14 @@ body.hov #cr{width:48px;height:48px;border-color:rgba(100,230,180,.18)}
 @keyframes rayf{0%,100%{opacity:.32;transform:skewX(-2deg) scaleY(1)}50%{opacity:.62;transform:skewX(2deg) scaleY(1.04)}}
 .plant-layer{position:absolute;bottom:0;left:0;right:0;height:70%;pointer-events:none}
 .plant{position:absolute;bottom:0;transform-origin:bottom center}
+.plant svg{overflow:visible}
 @keyframes psway{0%,100%{transform:rotate(var(--sa))}50%{transform:rotate(var(--sb))}}
 .mote{position:absolute;border-radius:50%;background:var(--th-eco-mote);animation:mrise linear infinite;pointer-events:none;will-change:transform,opacity}
 @keyframes mrise{0%{opacity:0;transform:translateY(0) translateX(0)}5%{opacity:var(--mo)}90%{opacity:calc(var(--mo)*.4)}100%{opacity:0;transform:translateY(var(--mr)) translateX(var(--md))}}
 .spk{position:absolute;border-radius:50%;background:var(--th-eco-spark);animation:sdrift ease-in-out infinite alternate;pointer-events:none;will-change:transform,opacity}
 @keyframes sdrift{from{transform:translate(0,0);opacity:.1}to{transform:translate(var(--sx),var(--sy));opacity:.55}}
 #driftwood-layer{position:absolute;bottom:0;left:0;right:0;height:55%;pointer-events:none}
+#driftwood-layer svg{overflow:visible}
 
 /* ── Z-INDEX STACK ── */
 #fish-layer{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1;contain:strict;will-change:contents}

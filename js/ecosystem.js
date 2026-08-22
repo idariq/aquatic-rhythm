@@ -66,12 +66,24 @@
     return 'rgba(' + Math.round(cl(c.r + amt)) + ',' + Math.round(cl(c.g + amt)) + ',' + Math.round(cl(c.b + amt)) + ',' + c.a + ')';
   }
   var plantGradSeq = 0;
-  function makeDepthGradient(svg, baseColorStr) {
+  /* gradientUnits defaults to objectBoundingBox, which SVG explicitly
+     ignores when the shape it's applied to has a zero-width or
+     zero-height bounding box (spec behavior, not a bug in one browser) —
+     a perfectly straight vertical stem path (constant x, e.g. sword's
+     stem) has exactly that degenerate bbox, so its stroke silently gets
+     NO paint at all and the plant renders as leaves with no visible
+     stem. userSpaceOnUse against the plant's own full height sidesteps
+     this entirely, and as a bonus lights the whole plant consistently
+     top-to-bottom instead of each leaf/segment shading independently
+     within its own tiny bounding box. */
+  function makeDepthGradient(svg, baseColorStr, h) {
     var base = parseRgba(baseColorStr);
     var gid = 'pgrad' + (plantGradSeq++);
     var defs = document.createElementNS(NS, 'defs');
     var grad = document.createElementNS(NS, 'linearGradient');
-    grad.setAttribute('id', gid); grad.setAttribute('x1', '0'); grad.setAttribute('y1', '0'); grad.setAttribute('x2', '0'); grad.setAttribute('y2', '1');
+    grad.setAttribute('id', gid);
+    grad.setAttribute('gradientUnits', 'userSpaceOnUse');
+    grad.setAttribute('x1', '0'); grad.setAttribute('y1', '0'); grad.setAttribute('x2', '0'); grad.setAttribute('y2', h || 100);
     [['0%', shadeRgba(base, 34)], ['60%', baseColorStr], ['100%', shadeRgba(base, -36)]].forEach(function (s) {
       var stop = document.createElementNS(NS, 'stop');
       stop.setAttribute('offset', s[0]); stop.setAttribute('stop-color', s[1]);
@@ -188,7 +200,7 @@
       wrap.style.cssText = 'left:' + pd.l + ';--sa:' + pd.sa + ';--sb:' + pd.sb + ';animation:psway ' + pd.d + ' ease-in-out ' + pd.dl + ' infinite';
       var svg = document.createElementNS(NS, 'svg');
       svg.setAttribute('width', pd.w); svg.setAttribute('height', pd.h); svg.setAttribute('viewBox', '0 0 ' + pd.w + ' ' + pd.h); svg.setAttribute('fill', 'none');
-      var gradColor = makeDepthGradient(svg, pd.c);
+      var gradColor = makeDepthGradient(svg, pd.c, pd.h);
       type.draw(svg, pd.w, pd.h, gradColor); wrap.appendChild(svg); pc.appendChild(wrap);
     }
     if (pi < chosen.length) setTimeout(plantBatch, 80);
@@ -236,7 +248,7 @@
          bark gradient so the whole piece reads as lit from one side. */
       (function () {
         var w = 300, h = 140, svg = mkEl('svg', { width: w, height: h, viewBox: '0 0 ' + w + ' ' + h });
-        var bark = makeDepthGradient(svg, 'rgba(58,36,14,.68)');
+        var bark = makeDepthGradient(svg, 'rgba(58,36,14,.68)', h);
         svg.appendChild(path('M8,' + h + ' C25,' + Math.round(h * .72) + ' 70,' + Math.round(h * .48) + ' 130,' + Math.round(h * .38) + ' C185,' + Math.round(h * .3) + ' 248,' + Math.round(h * .33) + ' 292,' + Math.round(h * .4), 'none', bark, 9));
         svg.appendChild(path('M130,' + Math.round(h * .38) + ' C148,' + Math.round(h * .2) + ' 188,' + Math.round(h * .1) + ' 215,' + Math.round(h * .06), 'none', bark, 5.5));
         svg.appendChild(path('M195,' + Math.round(h * .32) + ' C215,' + Math.round(h * .44) + ' 252,' + Math.round(h * .5) + ' 294,' + Math.round(h * .54), 'none', bark, 4));
@@ -250,7 +262,7 @@
       /* Right driftwood */
       (function () {
         var w = 270, h = 88, svg = mkEl('svg', { width: w, height: h, viewBox: '0 0 ' + w + ' ' + h });
-        var bark = makeDepthGradient(svg, 'rgba(54,34,12,.62)');
+        var bark = makeDepthGradient(svg, 'rgba(54,34,12,.62)', h);
         svg.appendChild(path('M0,' + Math.round(h * .62) + ' C38,' + Math.round(h * .46) + ' 95,' + Math.round(h * .38) + ' 158,' + Math.round(h * .42) + ' C208,' + Math.round(h * .46) + ' 255,' + Math.round(h * .56) + ' 268,' + Math.round(h * .66), 'none', bark, 13));
         svg.appendChild(path('M95,' + Math.round(h * .38) + ' C100,' + Math.round(h * .2) + ' 112,' + Math.round(h * .1) + ' 120,' + Math.round(h * .06), 'none', bark, 6));
         svg.appendChild(path('M175,' + Math.round(h * .43) + ' C182,' + Math.round(h * .3) + ' 195,' + Math.round(h * .22) + ' 205,' + Math.round(h * .18), 'none', bark, 4));
@@ -276,7 +288,7 @@
       }
       function buildRockCluster(leftPct, w, h, stones, baseColor, opacity) {
         var svg = mkEl('svg', { width: w, height: h, viewBox: '0 0 ' + w + ' ' + h });
-        var fill = makeDepthGradient(svg, baseColor);
+        var fill = makeDepthGradient(svg, baseColor, h);
         stones.forEach(function (st, i) {
           svg.appendChild(path(rockFacets(st[0], st[1], st[2], i * 1.7), fill, null));
         });

@@ -114,6 +114,18 @@
   var geoCfg      = { w: 60, h: 36,  build: buildGeo,      yMin: .1,  yMax: .55, speedMin: 12, speedMax: 20, scaleMin: .7,  scaleMax: .95, opMin: .58, opMax: .8,  wob: 1.2, wobF: 0.32 };
   var oscarCfg    = { w: 62, h: 44,  build: buildOscar,    yMin: .08, yMax: .5,  speedMin: 10, speedMax: 18, scaleMin: .68, scaleMax: .9,  opMin: .55, opMax: .78, wob: 1.0, wobF: 0.28 };
 
+  /* ── DESPAWN HELPERS (shared by normal edge-exit and error/NaN recovery) ── */
+  function despawnSchool(e) {
+    e.members.forEach(function (m) { m.el.style.opacity = '0'; setTimeout(function () { m.el.remove(); }, 1000); });
+    setTimeout(function () { entities.push(makeSchool(e.cfg)); }, 10000 + Math.random() * 12000);
+  }
+
+  function despawnSolo(e) {
+    var el2 = e.el, cfg2 = e.cfg;
+    el2.style.opacity = '0';
+    setTimeout(function () { el2.remove(); setTimeout(function () { entities.push(makeSolo(cfg2)); }, 8000 + Math.random() * 10000); }, 1000);
+  }
+
   /* ── SINGLE RAF LOOP ── */
   var lastTs = null;
   function tick(ts) {
@@ -125,37 +137,45 @@
     var vW = W(), vH = H();
 
     entities = entities.filter(function (e) {
-      if (e.type === 'school') {
-        e.x += (e.goRight ? 1 : -1) * e.speed * dt;
-        e.members.forEach(function (m) {
-          m.t += dt;
-          var y = Math.max(vH * .02, Math.min(vH * .80, e.baseY + m.oy + Math.sin(m.t * m.wobF) * m.wob));
-          m.el.style.left = Math.round(e.x + m.ox) + 'px';
-          m.el.style.top  = Math.round(y) + 'px';
-        });
-        var edge = e.spreadX + 140;
-        if (e.goRight ? e.x > (vW + edge) : e.x < (-edge)) {
-          e.members.forEach(function (m) { m.el.style.opacity = '0'; setTimeout(function () { m.el.remove(); }, 1000); });
-          setTimeout(function () { entities.push(makeSchool(e.cfg)); }, 10000 + Math.random() * 12000);
-          return false;
+      try {
+        if (e.type === 'school') {
+          e.x += (e.goRight ? 1 : -1) * e.speed * dt;
+          if (!isFinite(e.x)) { despawnSchool(e); return false; }
+          e.members.forEach(function (m) {
+            m.t += dt;
+            var y = Math.max(vH * .02, Math.min(vH * .80, e.baseY + m.oy + Math.sin(m.t * m.wobF) * m.wob));
+            m.el.style.left = Math.round(e.x + m.ox) + 'px';
+            m.el.style.top  = Math.round(y) + 'px';
+          });
+          var edge = e.spreadX + 140;
+          if (e.goRight ? e.x > (vW + edge) : e.x < (-edge)) { despawnSchool(e); return false; }
+          return true;
+        }
+        if (e.type === 'solo') {
+          e.t += dt;
+          e.x += (e.goRight ? 1 : -1) * e.speed * dt;
+          if (!isFinite(e.x)) { despawnSolo(e); return false; }
+          var y = Math.max(vH * .02, Math.min(vH * .80, e.baseY + Math.sin(e.t * e.wobF) * e.wob));
+          e.el.style.left = Math.round(e.x) + 'px';
+          e.el.style.top  = Math.round(y) + 'px';
+          if (e.goRight ? e.x > (vW + e.bodyW + 80) : e.x < (-e.bodyW - 80)) { despawnSolo(e); return false; }
+          return true;
         }
         return true;
-      }
-      if (e.type === 'solo') {
-        e.t += dt;
-        e.x += (e.goRight ? 1 : -1) * e.speed * dt;
-        var y = Math.max(vH * .02, Math.min(vH * .80, e.baseY + Math.sin(e.t * e.wobF) * e.wob));
-        e.el.style.left = Math.round(e.x) + 'px';
-        e.el.style.top  = Math.round(y) + 'px';
-        if (e.goRight ? e.x > (vW + e.bodyW + 80) : e.x < (-e.bodyW - 80)) {
-          var el2 = e.el, cfg2 = e.cfg;
-          el2.style.opacity = '0';
-          setTimeout(function () { el2.remove(); setTimeout(function () { entities.push(makeSolo(cfg2)); }, 8000 + Math.random() * 10000); }, 1000);
-          return false;
+      } catch (err) {
+        try {
+          if (e.type === 'school') despawnSchool(e);
+          else if (e.type === 'solo') despawnSolo(e);
+        } catch (err2) {
+          if (e.el) e.el.remove();
+          if (e.members) e.members.forEach(function (m) { m.el.remove(); });
+          if (e.cfg) {
+            var respawn = e.type === 'school' ? makeSchool : makeSolo;
+            setTimeout(function () { entities.push(respawn(e.cfg)); }, 10000 + Math.random() * 10000);
+          }
         }
-        return true;
+        return false;
       }
-      return true;
     });
   }
 

@@ -311,22 +311,22 @@ nav:not(.bnav){position:fixed;top:0;left:0;right:0;z-index:800;height:68px;displ
 .home-ara{padding:clamp(3.25rem,9vw,5.5rem) clamp(1.5rem,5vw,4.5rem)}
 .home-ara-head{max-width:36rem;margin-bottom:clamp(2rem,5vw,3rem)}
 .home-ara-head .pst{font-size:clamp(1.45rem,4vw,2.15rem);margin-top:.5rem}
-.home-ara-lead{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-2);line-height:1.9;margin-top:1.1rem;max-width:36rem}
+.home-ara-lead{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.9;margin-top:1.1rem;max-width:36rem}
 .home-ara-reframe{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--th-line);border-radius:16px;overflow:hidden;margin:clamp(1.75rem,4vw,2.5rem) 0;box-shadow:var(--panel-shadow)}
 .home-ara-rf{padding:clamp(1.35rem,3.5vw,1.85rem) clamp(1.25rem,3vw,1.75rem);background:var(--th-surface-2);backdrop-filter:blur(10px)}
 .home-ara-rf span{display:block;font-size:var(--fs-xs);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.75rem;color:var(--th-ink-4)}
 .home-ara-rf--ara span{color:var(--th-accent)}
-.home-ara-rf p{font-family:var(--serif);font-style:italic;font-size:clamp(.92rem,2.2vw,1.05rem);line-height:1.72;color:var(--th-ink-3)}
+.home-ara-rf p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,2.4vw,1.15rem);line-height:1.72;color:var(--th-ink-3)}
 .home-ara-rf--ara p{color:var(--th-ink-2)}
 .home-ara-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:clamp(1.75rem,4vw,2.75rem)}
 .home-ara-card{padding:1.35rem 1.25rem;background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;box-shadow:var(--panel-shadow),var(--panel-inset)}
 .home-ara-card .home-ara-card-num{font-family:var(--serif);font-size:var(--fs-xl);font-weight:300;color:var(--th-accent);line-height:1;margin-bottom:.65rem}
 .home-ara-card h3{font-family:var(--serif);font-size:var(--fs-base);font-weight:400;color:var(--th-ink);line-height:1.25;margin-bottom:.45rem}
-.home-ara-card p{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-2);line-height:1.75}
+.home-ara-card p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.75}
 .home-ara-principles{margin-top:clamp(2rem,5vw,2.75rem);padding:1.35rem 1.25rem;border-radius:14px;border:1px solid var(--th-line);background:var(--th-surface-2)}
 .home-ara-principles > span{display:block;font-size:var(--fs-xs);letter-spacing:.22em;text-transform:uppercase;color:var(--th-sage);margin-bottom:1rem}
 .home-ara-pr-list{list-style:none;display:flex;flex-direction:column;gap:.85rem}
-.home-ara-pr-list li{display:grid;grid-template-columns:auto 1fr;gap:.65rem 1rem;align-items:baseline;font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-2);line-height:1.65}
+.home-ara-pr-list li{display:grid;grid-template-columns:auto 1fr;gap:.65rem 1rem;align-items:baseline;font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.65}
 .home-ara-pr-list strong{font-size:var(--fs-xs);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--th-accent);white-space:nowrap}
 .home-ara-foot{margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
 .home-ara-foot .bl{font-size:var(--fs-xs);padding:.35rem 0}
@@ -339,7 +339,7 @@ nav:not(.bnav){position:fixed;top:0;left:0;right:0;z-index:800;height:68px;displ
 .home-tile:focus-visible{outline:2px solid rgba(61,214,232,.35);outline-offset:2px}
 .home-tile-tag{font-size:var(--fs-xs);font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--th-accent);margin-bottom:.55rem}
 .home-tile h3{font-family:var(--serif);font-size:var(--fs-md-lg);font-weight:400;color:var(--th-ink);line-height:1.22;margin-bottom:.5rem}
-.home-tile p{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-2);line-height:1.78;flex:1;margin-bottom:1rem}
+.home-tile p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.78;flex:1;margin-bottom:1rem}
 .home-tile-cta{font-size:var(--fs-xs);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--th-accent)}
 .home-tile:hover .home-tile-cta,.home-tile:focus-visible .home-tile-cta{color:var(--th-accent)}
 .home-tile--soon{pointer-events:none;opacity:.55}

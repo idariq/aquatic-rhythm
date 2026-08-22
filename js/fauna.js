@@ -188,8 +188,9 @@
 
   /* ── SINGLE RAF LOOP ── */
   var lastTs = null;
+  var rafHandle = null;
   function tick(ts) {
-    requestAnimationFrame(tick);
+    rafHandle = requestAnimationFrame(tick);
     if (window.AR_PAUSED) return;
     if (!lastTs) { lastTs = ts; return; }
     var dt = Math.min((ts - lastTs) / 1000, .05);
@@ -248,6 +249,28 @@
   }
   setTimeout(function () { entities.push(makeSolo(oscarCfg)); }, 28000);
 
-  requestAnimationFrame(tick);
+  rafHandle = requestAnimationFrame(tick);
+
+  /* Mobile browsers can suspend a backgrounded tab so aggressively that the
+     self-perpetuating requestAnimationFrame(tick) chain never gets its next
+     callback invoked at all (not merely paused) — when that happens the
+     whole fish animation freezes forever even after the tab is foregrounded
+     again, since nothing is left to call tick(). Force the loop back to
+     life whenever the page becomes visible: cancel whatever might (or might
+     not) still be pending and re-arm a fresh one. Harmless no-op if the
+     chain was never actually broken. */
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) return;
+    if (rafHandle !== null) cancelAnimationFrame(rafHandle);
+    lastTs = null;
+    rafHandle = requestAnimationFrame(tick);
+  });
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+      if (rafHandle !== null) cancelAnimationFrame(rafHandle);
+      lastTs = null;
+      rafHandle = requestAnimationFrame(tick);
+    }
+  });
 
 })();

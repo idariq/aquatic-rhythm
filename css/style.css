@@ -1415,6 +1415,22 @@ body[data-active-page="companion"] #rh-backdrop{display:none!important}
 .rh-bubble-body p+p{margin-top:.6rem}
 .rh-bubble-body strong{font-weight:600;color:var(--th-ink)}
 .rh-bubble-body em{font-style:italic;opacity:.88}
+
+/* ── RHYSSA MESSAGE ACTIONS (copy / retry) ──
+   Only style.css needs these: the two scripts that build them
+   (ui-rhyssa-sheet.js, ui-rhyssa-page.js) are loaded by the homepage
+   alone — article pages run ar-page.js instead. Without these rules the
+   buttons fell back to native browser chrome, which is why the copy
+   button rendered as a white box against the dark bubble. */
+.rh-msg-actions{display:flex;align-items:center;gap:.1rem;margin-top:.35rem;align-self:flex-start}
+.rh-copy-btn,.rh-retry-btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;background:none;border:none;padding:5px 7px;border-radius:7px;color:var(--th-ink-4);cursor:pointer;font-size:var(--fs-2xs);font-family:var(--sans);letter-spacing:.02em;line-height:1;transition:color .15s,background .15s;-webkit-tap-highlight-color:transparent}
+.rh-copy-btn svg,.rh-retry-btn svg{display:block;flex-shrink:0}
+.rh-copy-btn:hover,.rh-retry-btn:hover,.rh-copy-btn:focus-visible,.rh-retry-btn:focus-visible{color:var(--th-accent);background:var(--th-accent-soft)}
+.rh-copy-btn.copied{color:var(--th-accent)}
+/* Retry belongs to the newest reply only — re-running an older one would
+   silently discard every exchange after it. */
+.rh-retry-btn{display:none}
+.rh-bubble.rh-last-reply .rh-retry-btn{display:inline-flex}
 .rh-sheet-thread .rh-typing{align-self:flex-start;background:var(--th-surface-2);border:1px solid var(--th-line);border-radius:14px;padding:.65rem 1rem}
 .rh-date-sep{display:flex;align-items:center;gap:.6rem;margin:.3rem 0;flex-shrink:0}
 .rh-date-sep::before,.rh-date-sep::after{content:'';flex:1;height:1px;background:var(--th-surface-2)}

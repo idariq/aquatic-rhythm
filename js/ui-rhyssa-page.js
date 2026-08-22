@@ -8,10 +8,13 @@
 (function () {
   var rhLang = (document.documentElement.lang || 'en').split('-')[0];
   var RH_STRINGS = {
-    en: { writeOwn: 'Write my own…' },
-    id: { writeOwn: 'Tulis sendiri…' },
-    ja: { writeOwn: '自分で入力…' }
+    en: { writeOwn: 'Write my own…', copy: 'Copy message', copied: 'Copied', retry: 'Ask again' },
+    id: { writeOwn: 'Tulis sendiri…', copy: 'Salin pesan', copied: 'Tersalin', retry: 'Tanya lagi' },
+    ja: { writeOwn: '自分で入力…', copy: 'メッセージをコピー', copied: 'コピーしました', retry: 'もう一度きく' }
   };
+  var ICON_COPY  = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><rect x="1.5" y="4.5" width="7" height="7" rx="1.6" stroke="currentColor" stroke-width="1.15"/><path d="M4.5 4.5V2.5A1 1 0 0 1 5.5 1.5h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H8.5" stroke="currentColor" stroke-width="1.15" stroke-linecap="round"/></svg>';
+  var ICON_TICK  = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2.6 6.9 5.2 9.5l5.2-6" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var ICON_RETRY = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M11.2 6.5a4.7 4.7 0 1 1-1.5-3.45" stroke="currentColor" stroke-width="1.15" stroke-linecap="round"/><path d="M11.4 1.2v3.1H8.3" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   function RHT(key) {
     return (RH_STRINGS[rhLang] && RH_STRINGS[rhLang][key]) || RH_STRINGS.en[key] || key;
   }
@@ -30,6 +33,14 @@
   var cpBackBtn = document.getElementById('rh-cp-back');
 
   if (!cpThread) return;
+
+  /* Same rule as the bottom sheet: on touch, the keyboard only appears when
+     typing is the intent, never as a side effect of sending or navigating. */
+  function cpFocusInput(intentToType) {
+    if (!cpInp) return;
+    if (cpIsTouch && !intentToType) return;
+    cpInp.focus();
+  }
 
   /* ── Storage ── */
   function cpGetThread() {
@@ -146,7 +157,7 @@
     writeBtn.textContent = RHT('writeOwn');
     writeBtn.addEventListener('click', function () {
       group.remove();
-      if (cpInp) cpInp.focus();
+      cpFocusInput(true);
     });
     group.appendChild(writeBtn);
     wrap.appendChild(group);
@@ -177,18 +188,27 @@
     wrap.appendChild(body);
 
     if (role === 'assistant') {
+      var actions = document.createElement('div');
+      actions.className = 'rh-msg-actions';
+
       var copyBtn = document.createElement('button');
-      copyBtn.className = 'rh-copy-btn' + (cpIsTouch ? ' rh-copy-visible' : '');
-      copyBtn.setAttribute('aria-label', 'Copy message');
-      copyBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.15"/><path d="M4.5 4.5V2.5A1 1 0 0 1 5.5 1.5h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H9.5" stroke="currentColor" stroke-width="1.15" stroke-linecap="round"/></svg>';
+      copyBtn.className = 'rh-copy-btn';
+      copyBtn.type = 'button';
+      copyBtn.title = RHT('copy');
+      copyBtn.setAttribute('aria-label', RHT('copy'));
+      copyBtn.innerHTML = ICON_COPY;
       copyBtn.addEventListener('click', function () {
         var msgText = (body.innerText || body.textContent || '').trim();
         function markCopied() {
           copyBtn.classList.add('copied');
-          copyBtn.setAttribute('aria-label', 'Copied!');
+          copyBtn.innerHTML = ICON_TICK;
+          copyBtn.title = RHT('copied');
+          copyBtn.setAttribute('aria-label', RHT('copied'));
           setTimeout(function () {
             copyBtn.classList.remove('copied');
-            copyBtn.setAttribute('aria-label', 'Copy message');
+            copyBtn.innerHTML = ICON_COPY;
+            copyBtn.title = RHT('copy');
+            copyBtn.setAttribute('aria-label', RHT('copy'));
           }, 1800);
         }
         if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -197,11 +217,47 @@
           cpFallbackCopy(msgText); markCopied();
         }
       });
-      wrap.appendChild(copyBtn);
+      actions.appendChild(copyBtn);
+
+      var retryBtn = document.createElement('button');
+      retryBtn.className = 'rh-retry-btn';
+      retryBtn.type = 'button';
+      retryBtn.title = RHT('retry');
+      retryBtn.setAttribute('aria-label', RHT('retry'));
+      retryBtn.innerHTML = ICON_RETRY;
+      retryBtn.addEventListener('click', cpRetryLast);
+      actions.appendChild(retryBtn);
+
+      wrap.appendChild(actions);
     }
 
     cpThread.appendChild(wrap);
     return body;
+  }
+
+  /* Retry is offered on the newest reply only, so it can never silently
+     discard exchanges that came after the one being re-run. */
+  function cpMarkLastReply() {
+    var replies = cpThread.querySelectorAll('.rh-bubble-rh');
+    for (var i = 0; i < replies.length; i++) replies[i].classList.remove('rh-last-reply');
+    if (replies.length) replies[replies.length - 1].classList.add('rh-last-reply');
+  }
+
+  /* Drop the last exchange and ask the same question again, handing off to
+     cpSendMsg so streaming and option buttons behave as on a first send. */
+  function cpRetryLast() {
+    if (cpStreaming) return;
+    var s = cpGetThread();
+    var lastUser = -1;
+    for (var i = s.messages.length - 1; i >= 0; i--) {
+      if (s.messages[i].role === 'user') { lastUser = i; break; }
+    }
+    if (lastUser < 0) return;
+    var text = s.messages[lastUser].content;
+    s.messages = s.messages.slice(0, lastUser);
+    cpSaveThread(s);
+    cpRenderThread();
+    cpSendMsg(text);
   }
 
   function cpFallbackCopy(text) {
@@ -240,6 +296,7 @@
       cpAppendBubble(m.role, m.content);
     });
     cpThread.scrollTop = cpThread.scrollHeight;
+    cpMarkLastReply();
   }
 
   /* ── Send ── */
@@ -318,7 +375,8 @@
             }
             if (cpSendBtn) cpSendBtn.disabled = false;
             cpStreaming = false;
-            if (cpInp) cpInp.focus();
+            cpMarkLastReply();
+            cpFocusInput();
             return;
           }
           buf += decoder.decode(chunk.value, { stream: true });
@@ -336,6 +394,7 @@
       cpAppendBubble('assistant', 'Something went wrong — please try again in a moment.');
       if (cpSendBtn) cpSendBtn.disabled = false;
       cpStreaming = false;
+      cpMarkLastReply();
     });
   }
 
@@ -375,7 +434,8 @@
     cpNewBtn.addEventListener('click', function () {
       cpSaveThread({ messages: [] });
       cpRenderThread();
-      if (cpInp) { cpInp.value = ''; cpInp.style.height = 'auto'; cpInp.focus(); }
+      if (cpInp) { cpInp.value = ''; cpInp.style.height = 'auto'; }
+      cpFocusInput();
     });
   }
 
@@ -390,7 +450,7 @@
   /* ── Page activation hook ── */
   window.__rhCompanionInit = function () {
     cpRenderThread();
-    setTimeout(function () { if (cpInp) cpInp.focus(); }, 80);
+    setTimeout(function () { cpFocusInput(); }, 80);
   };
 
   /* If companion page is already active on load, init now */

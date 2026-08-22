@@ -25,11 +25,19 @@
     high: { plants: 17, rays: 8, motes: 25, sparks: 38 }
   }[TIER];
 
-  /* ── PAUSE ON HIDDEN TAB ── */
-  window.AR_PAUSED = false;
-  document.addEventListener('visibilitychange', function () {
-    window.AR_PAUSED = document.hidden;
-  });
+  /* ── PAUSE ON HIDDEN TAB ──
+     AR_PAUSED gates the animation loops in fauna.js and ui.js, so a stale
+     `true` here freezes them permanently. visibilitychange alone is not a
+     reliable resume signal on mobile: a page restored from bfcache, or
+     thawed after Chrome's freeze/resume lifecycle, can come back visible
+     without a visibilitychange ever firing — leaving this flag stuck true
+     and both loops dead. Seed it from the real state and resync it from
+     every signal that can mean "we're back", never just the one. */
+  function syncPaused() { window.AR_PAUSED = document.hidden; }
+  syncPaused();
+  document.addEventListener('visibilitychange', syncPaused);
+  window.addEventListener('pageshow', syncPaused);
+  window.addEventListener('focus', syncPaused);
 
   /* ── RAYS ── */
   var rc = document.getElementById('rays');

@@ -189,11 +189,25 @@
   /* ── SINGLE RAF LOOP ── */
   var lastTs = null;
   var rafHandle = null;
+  var lastTickAt = Date.now();
   function tick(ts) {
     rafHandle = requestAnimationFrame(tick);
-    if (window.AR_PAUSED) return;
+    lastTickAt = Date.now();
+    /* Read document.hidden directly rather than trusting window.AR_PAUSED.
+       That flag is event-driven state owned by ecosystem.js, and a single
+       missed resume event used to leave it stuck true — which froze every
+       fish permanently, because this early return then fired on every
+       frame no matter how healthy the rAF chain was. document.hidden is
+       the authoritative source and cannot go stale. */
+    if (document.hidden) return;
     if (!lastTs) { lastTs = ts; return; }
-    var dt = Math.min((ts - lastTs) / 1000, .05);
+    /* A page resumed from bfcache can hand us a rAF timestamp on a fresh
+       timeline, making ts jump backwards. A negative dt would drag fish
+       backwards off their entry edge and despawn the whole cast; a NaN
+       would poison every position. Skip that one frame and re-baseline. */
+    var dt = (ts - lastTs) / 1000;
+    if (!isFinite(dt) || dt < 0) { lastTs = ts; return; }
+    dt = Math.min(dt, .05);
     lastTs = ts;
     var vW = W(), vH = H();
 
@@ -259,18 +273,27 @@
      life whenever the page becomes visible: cancel whatever might (or might
      not) still be pending and re-arm a fresh one. Harmless no-op if the
      chain was never actually broken. */
-  document.addEventListener('visibilitychange', function () {
-    if (document.hidden) return;
+  function restartLoop() {
     if (rafHandle !== null) cancelAnimationFrame(rafHandle);
     lastTs = null;
+    lastTickAt = Date.now();
     rafHandle = requestAnimationFrame(tick);
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) restartLoop();
   });
-  window.addEventListener('pageshow', function (e) {
-    if (e.persisted) {
-      if (rafHandle !== null) cancelAnimationFrame(rafHandle);
-      lastTs = null;
-      rafHandle = requestAnimationFrame(tick);
-    }
-  });
+  window.addEventListener('pageshow', restartLoop);
+  window.addEventListener('focus', restartLoop);
+
+  /* Last resort, and the only recovery path that depends on no event at
+     all: if the page is visible but tick() has not run for seconds, the
+     loop is dead by some mechanism the listeners above did not catch, so
+     restart it. Timers are throttled while backgrounded and resume on
+     return — exactly when this check is needed. */
+  setInterval(function () {
+    if (document.hidden) return;
+    if (Date.now() - lastTickAt < 2500) return;
+    restartLoop();
+  }, 2500);
 
 })();

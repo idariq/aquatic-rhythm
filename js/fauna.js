@@ -168,11 +168,11 @@
   }
 
   /* ── CONFIGS ── */
-  var altumCfg    = { w: 54, h: 82,  build: buildAltum,    count: TIER === 'low' ? 3 : 5,                          spreadX: 200, spreadY: 140, speedMin: 5,  speedMax: 9,  yMin: .06, yMax: .44, scaleMin: .55, scaleMax: .78, opMin: .44, opMax: .7,  wob: 1.0, wobF: 0.22 };
-  var congoCfg    = { w: 42, h: 16,  build: buildCongo,    count: TIER === 'low' ? 8 : TIER === 'mid' ? 12 : 16,   spreadX: 105, spreadY: 55,  speedMin: 24, speedMax: 36, yMin: .12, yMax: .6,  scaleMin: .58, scaleMax: .8,  opMin: .52, opMax: .78, wob: 1.6, wobF: 0.48 };
-  var cardinalCfg = { w: 36, h: 8.5, build: buildCardinal, count: TIER === 'low' ? 10 : TIER === 'mid' ? 16 : 22,  spreadX: 115, spreadY: 58,  speedMin: 30, speedMax: 45, yMin: .15, yMax: .65, scaleMin: .34, scaleMax: .46, opMin: .55, opMax: .82, wob: 1.4, wobF: 0.55 };
-  var geoCfg      = { w: 60, h: 36,  build: buildGeo,      yMin: .1,  yMax: .55, speedMin: 12, speedMax: 20, scaleMin: .7,  scaleMax: .95, opMin: .58, opMax: .8,  wob: 1.2, wobF: 0.32, cls: 'fish-geo' };
-  var oscarCfg    = { w: 62, h: 44,  build: buildOscar,    yMin: .08, yMax: .5,  speedMin: 10, speedMax: 18, scaleMin: .68, scaleMax: .9,  opMin: .55, opMax: .78, wob: 1.0, wobF: 0.28, cls: 'fish-oscar' };
+  var altumCfg    = { w: 54, h: 82,  build: buildAltum,    count: TIER === 'low' ? 3 : 5,                          spreadX: 200, spreadY: 140, speedMin: 5,  speedMax: 9,  yMin: .06, yMax: .44, scaleMin: .55, scaleMax: .78, opMin: .8,  opMax: .96, wob: 1.0, wobF: 0.22 };
+  var congoCfg    = { w: 42, h: 16,  build: buildCongo,    count: TIER === 'low' ? 8 : TIER === 'mid' ? 12 : 16,   spreadX: 105, spreadY: 55,  speedMin: 24, speedMax: 36, yMin: .12, yMax: .6,  scaleMin: .58, scaleMax: .8,  opMin: .82, opMax: .96, wob: 1.6, wobF: 0.48 };
+  var cardinalCfg = { w: 36, h: 8.5, build: buildCardinal, count: TIER === 'low' ? 10 : TIER === 'mid' ? 16 : 22,  spreadX: 115, spreadY: 58,  speedMin: 30, speedMax: 45, yMin: .15, yMax: .65, scaleMin: .34, scaleMax: .46, opMin: .85, opMax: .97, wob: 1.4, wobF: 0.55 };
+  var geoCfg      = { w: 60, h: 36,  build: buildGeo,      yMin: .1,  yMax: .55, speedMin: 12, speedMax: 20, scaleMin: .7,  scaleMax: .95, opMin: .85, opMax: .97, wob: 1.2, wobF: 0.32, cls: 'fish-geo' };
+  var oscarCfg    = { w: 62, h: 44,  build: buildOscar,    yMin: .08, yMax: .5,  speedMin: 10, speedMax: 18, scaleMin: .68, scaleMax: .9,  opMin: .85, opMax: .97, wob: 1.0, wobF: 0.28, cls: 'fish-oscar' };
 
   /* ── DESPAWN HELPERS (shared by normal edge-exit and error/NaN recovery) ── */
   function despawnSchool(e) {

@@ -65,11 +65,21 @@
     grad.appendChild(mk('stop', { offset: '0%',   'stop-color': 'rgba(220,128,48,.9)' }));
     grad.appendChild(mk('stop', { offset: '55%',  'stop-color': 'rgba(185,85,20,.85)' }));
     grad.appendChild(mk('stop', { offset: '100%', 'stop-color': 'rgba(132,55,10,.85)' }));
-    defs.appendChild(grad); s.appendChild(defs);
-    s.appendChild(mk('path', { d: 'M2,14 Q9,22 2,30 L13,22Z', fill: 'rgba(150,64,13,.85)' }));
-    s.appendChild(mk('path', { d: 'M13,22 C13,7 24,2 34,2 C48,2 60,10 60,22 C60,34 48,42 34,42 C24,42 13,37 13,22Z', fill: 'url(#' + gid + ')' }));
-    s.appendChild(mk('path', { d: 'M20,4 C18,12 20,22 18,34', stroke: 'rgba(18,6,1,.42)', 'stroke-width': '5', fill: 'none' }));
-    s.appendChild(mk('path', { d: 'M32,3 C30,13 32,23 30,37', stroke: 'rgba(18,6,1,.38)', 'stroke-width': '4', fill: 'none' }));
+    defs.appendChild(grad);
+    var bodyD = 'M13,22 C13,7 24,2 34,2 C48,2 60,10 60,22 C60,34 48,42 34,42 C24,42 13,37 13,22Z';
+    var clipId = 'oscClip' + oscarGradSeq;
+    var clip = document.createElementNS(NS, 'clipPath');
+    clip.setAttribute('id', clipId);
+    clip.appendChild(mk('path', { d: bodyD }));
+    defs.appendChild(clip);
+    s.appendChild(defs);
+    s.appendChild(mk('path', { d: 'M2,14 Q9,22 2,30 L13,22Z', fill: 'url(#' + gid + ')' }));
+    s.appendChild(mk('path', { d: bodyD, fill: 'url(#' + gid + ')' }));
+    var stripes = document.createElementNS(NS, 'g');
+    stripes.setAttribute('clip-path', 'url(#' + clipId + ')');
+    stripes.appendChild(mk('path', { d: 'M20,4 C18,12 20,22 18,34', stroke: 'rgba(18,6,1,.42)', 'stroke-width': '5', fill: 'none' }));
+    stripes.appendChild(mk('path', { d: 'M32,3 C30,13 32,23 30,37', stroke: 'rgba(18,6,1,.38)', 'stroke-width': '4', fill: 'none' }));
+    s.appendChild(stripes);
     s.appendChild(mk('circle', { cx: '50', cy: '13', r: '4', fill: 'rgba(255,255,255,.88)' }));
     s.appendChild(mk('circle', { cx: '50.5', cy: '13', r: '2', fill: 'rgba(8,4,0,.92)' }));
   }

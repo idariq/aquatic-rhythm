@@ -8,10 +8,16 @@
 (function () {
   var rhLang = (document.documentElement.lang || 'en').split('-')[0];
   var RH_STRINGS = {
-    en: { newChat: 'New chat', deleteConv: 'Delete conversation', writeOwn: 'Write my own…' },
-    id: { newChat: 'Obrolan baru', deleteConv: 'Hapus percakapan', writeOwn: 'Tulis sendiri…' },
-    ja: { newChat: '新しいチャット', deleteConv: '会話を削除', writeOwn: '自分で入力…' }
+    en: { newChat: 'New chat', deleteConv: 'Delete conversation', writeOwn: 'Write my own…',
+          copy: 'Copy message', copied: 'Copied', retry: 'Ask again' },
+    id: { newChat: 'Obrolan baru', deleteConv: 'Hapus percakapan', writeOwn: 'Tulis sendiri…',
+          copy: 'Salin pesan', copied: 'Tersalin', retry: 'Tanya lagi' },
+    ja: { newChat: '新しいチャット', deleteConv: '会話を削除', writeOwn: '自分で入力…',
+          copy: 'メッセージをコピー', copied: 'コピーしました', retry: 'もう一度きく' }
   };
+  var ICON_COPY  = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><rect x="1.5" y="4.5" width="7" height="7" rx="1.6" stroke="currentColor" stroke-width="1.15"/><path d="M4.5 4.5V2.5A1 1 0 0 1 5.5 1.5h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H8.5" stroke="currentColor" stroke-width="1.15" stroke-linecap="round"/></svg>';
+  var ICON_TICK  = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2.6 6.9 5.2 9.5l5.2-6" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var ICON_RETRY = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M11.2 6.5a4.7 4.7 0 1 1-1.5-3.45" stroke="currentColor" stroke-width="1.15" stroke-linecap="round"/><path d="M11.4 1.2v3.1H8.3" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   function RHT(key) {
     return (RH_STRINGS[rhLang] && RH_STRINGS[rhLang][key]) || RH_STRINGS.en[key] || key;
   }
@@ -36,6 +42,17 @@
   var tabsEl     = document.getElementById('rh-tabs');
 
   if (!fab || !sheet) return;
+
+  /* Focusing the textarea pops the on-screen keyboard, which then covers
+     the reply the keeper is waiting to read. On touch, only focus when
+     typing is the actual intent (tapping the box, or picking "write my
+     own") — never as a side effect of sending, opening or switching tabs.
+     A desktop caret costs nothing, so there it always focuses. */
+  function focusInput(intentToType) {
+    if (!inp) return;
+    if (isTouch && !intentToType) return;
+    inp.focus();
+  }
 
   /* ── Tab strip inline styles (resilient to CSS cache) ── */
   if (tabsEl) tabsEl.style.cssText = 'display:flex;align-items:center;gap:.4rem;padding:.3rem .85rem .28rem;border-bottom:1px solid var(--th-line);overflow-x:auto;scrollbar-width:none;flex-shrink:0';
@@ -197,7 +214,7 @@
     writeBtn.textContent = RHT('writeOwn');
     writeBtn.addEventListener('click', function () {
       group.remove();
-      if (inp) inp.focus();
+      focusInput(true);
     });
     group.appendChild(writeBtn);
     wrap.appendChild(group);
@@ -265,7 +282,8 @@
     saveConvs(data);
     renderTabs();
     renderThread();
-    if (inp) { inp.value = ''; inp.style.height = 'auto'; inp.focus(); }
+    if (inp) { inp.value = ''; inp.style.height = 'auto'; }
+    focusInput();
   }
 
   function deleteConv(id) {
@@ -314,6 +332,7 @@
       appendBubble(m.role, m.content);
     });
     thread.scrollTop = thread.scrollHeight;
+    markLastReply();
     renderSuggestions();
   }
 
@@ -363,18 +382,27 @@
     wrap.appendChild(body);
 
     if (role === 'assistant') {
+      var actions = document.createElement('div');
+      actions.className = 'rh-msg-actions';
+
       var copyBtn = document.createElement('button');
-      copyBtn.className = 'rh-copy-btn' + (isTouch ? ' rh-copy-visible' : '');
-      copyBtn.setAttribute('aria-label', 'Copy message');
-      copyBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.15"/><path d="M4.5 4.5V2.5A1 1 0 0 1 5.5 1.5h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H9.5" stroke="currentColor" stroke-width="1.15" stroke-linecap="round"/></svg>';
+      copyBtn.className = 'rh-copy-btn';
+      copyBtn.type = 'button';
+      copyBtn.title = RHT('copy');
+      copyBtn.setAttribute('aria-label', RHT('copy'));
+      copyBtn.innerHTML = ICON_COPY;
       copyBtn.addEventListener('click', function () {
         var msgText = (body.innerText || body.textContent || '').trim();
         function markCopied() {
           copyBtn.classList.add('copied');
-          copyBtn.setAttribute('aria-label', 'Copied!');
+          copyBtn.innerHTML = ICON_TICK;
+          copyBtn.title = RHT('copied');
+          copyBtn.setAttribute('aria-label', RHT('copied'));
           setTimeout(function () {
             copyBtn.classList.remove('copied');
-            copyBtn.setAttribute('aria-label', 'Copy message');
+            copyBtn.innerHTML = ICON_COPY;
+            copyBtn.title = RHT('copy');
+            copyBtn.setAttribute('aria-label', RHT('copy'));
           }, 1800);
         }
         if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -383,11 +411,48 @@
           fallbackCopy(msgText); markCopied();
         }
       });
-      wrap.appendChild(copyBtn);
+      actions.appendChild(copyBtn);
+
+      var retryBtn = document.createElement('button');
+      retryBtn.className = 'rh-retry-btn';
+      retryBtn.type = 'button';
+      retryBtn.title = RHT('retry');
+      retryBtn.setAttribute('aria-label', RHT('retry'));
+      retryBtn.innerHTML = ICON_RETRY;
+      retryBtn.addEventListener('click', retryLast);
+      actions.appendChild(retryBtn);
+
+      wrap.appendChild(actions);
     }
 
     thread.appendChild(wrap);
     return body;
+  }
+
+  /* Retry is offered on the newest reply only, so it can never silently
+     discard exchanges that came after the one being re-run. */
+  function markLastReply() {
+    var replies = thread.querySelectorAll('.rh-bubble-rh');
+    for (var i = 0; i < replies.length; i++) replies[i].classList.remove('rh-last-reply');
+    if (replies.length) replies[replies.length - 1].classList.add('rh-last-reply');
+  }
+
+  /* Drop the last exchange and ask the same question again, then hand off
+     to sendMsg so the typing indicator, streaming, option buttons and log
+     offer all behave exactly as they do on a first send. */
+  function retryLast() {
+    if (isStreaming) return;
+    var s = getThread();
+    var lastUser = -1;
+    for (var i = s.messages.length - 1; i >= 0; i--) {
+      if (s.messages[i].role === 'user') { lastUser = i; break; }
+    }
+    if (lastUser < 0) return;
+    var text = s.messages[lastUser].content;
+    s.messages = s.messages.slice(0, lastUser);
+    saveThread(s);
+    renderThread();
+    sendMsg(text);
   }
 
   function fallbackCopy(text) {
@@ -565,7 +630,7 @@
     updateCtxPill();
     renderTabs();
     renderThread();
-    setTimeout(function () { if (inp) inp.focus(); }, 80);
+    setTimeout(function () { focusInput(); }, 80);
   }
   function closeSheet() {
     sheet.classList.remove('open');
@@ -595,7 +660,7 @@
         inp.value = msg;
         inp.style.height = 'auto';
         inp.style.height = Math.min(inp.scrollHeight, 120) + 'px';
-        inp.focus();
+        focusInput();
       }
     }, 100);
   };
@@ -750,7 +815,8 @@
             saveThread(s2);
             sendBtn.disabled = false;
             isStreaming = false;
-            if (inp) inp.focus();
+            markLastReply();
+            focusInput();
             return;
           }
           buf += decoder.decode(chunk.value, { stream: true });
@@ -761,7 +827,7 @@
         });
       }
       return readStream();
-    }).catch(function () { hideTyping(); sendBtn.disabled = false; isStreaming = false; });
+    }).catch(function () { hideTyping(); sendBtn.disabled = false; isStreaming = false; markLastReply(); });
   }
 
   /* ── Send message ── */
@@ -870,7 +936,8 @@
             }
             sendBtn.disabled = false;
             isStreaming = false;
-            if (inp) inp.focus();
+            markLastReply();
+            focusInput();
             return;
           }
           buf += decoder.decode(chunk.value, { stream: true });
@@ -888,6 +955,7 @@
       appendBubble('assistant', 'Something went wrong — please try again in a moment.');
       sendBtn.disabled = false;
       isStreaming = false;
+      markLastReply();
     });
   }
 })();

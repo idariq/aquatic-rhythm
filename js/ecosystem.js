@@ -66,7 +66,7 @@
     return 'rgba(' + Math.round(cl(c.r + amt)) + ',' + Math.round(cl(c.g + amt)) + ',' + Math.round(cl(c.b + amt)) + ',' + c.a + ')';
   }
   var plantGradSeq = 0;
-  function makePlantGradient(svg, baseColorStr) {
+  function makeDepthGradient(svg, baseColorStr) {
     var base = parseRgba(baseColorStr);
     var gid = 'pgrad' + (plantGradSeq++);
     var defs = document.createElementNS(NS, 'defs');
@@ -154,24 +154,29 @@
     }
   ];
 
+  /* Positions are grouped into 4 dense clumps (natural aquascape "beds"
+     with open water between them) instead of one evenly-spaced row —
+     array ORDER still round-robins across all 4 clumps so low/mid tier
+     (which only takes the first N via slice()) still gets a plant in
+     every clump rather than filling just the first one solid. */
   var allPlacements = [
-    { l: '1%',  t: 'val',     w: 32, h: 145, sa: '-3deg',   sb: '2.5deg', d: '6.5s', dl: '0s',   c: 'rgba(68,105,62,.62)'  },
-    { l: '5%',  t: 'moss',    w: 45, h: 55,  sa: '-2deg',   sb: '2deg',   d: '9s',   dl: '.5s',  c: 'rgba(55,90,45,.55)'   },
-    { l: '10%', t: 'sword',   w: 52, h: 200, sa: '-2deg',   sb: '2.5deg', d: '8s',   dl: '1s',   c: 'rgba(72,110,60,.65)'  },
-    { l: '17%', t: 'bacopa',  w: 28, h: 130, sa: '-4deg',   sb: '4deg',   d: '7s',   dl: '2s',   c: 'rgba(62,100,52,.55)'  },
-    { l: '23%', t: 'val',     w: 26, h: 165, sa: '-3deg',   sb: '3deg',   d: '9.5s', dl: '.8s',  c: 'rgba(58,95,48,.58)'   },
+    { l: '2%',  t: 'val',     w: 32, h: 145, sa: '-3deg',   sb: '2.5deg', d: '6.5s', dl: '0s',   c: 'rgba(68,105,62,.62)'  },
+    { l: '26%', t: 'moss',    w: 45, h: 55,  sa: '-2deg',   sb: '2deg',   d: '9s',   dl: '.5s',  c: 'rgba(55,90,45,.55)'   },
+    { l: '50%', t: 'sword',   w: 52, h: 200, sa: '-2deg',   sb: '2.5deg', d: '8s',   dl: '1s',   c: 'rgba(72,110,60,.65)'  },
+    { l: '74%', t: 'bacopa',  w: 28, h: 130, sa: '-4deg',   sb: '4deg',   d: '7s',   dl: '2s',   c: 'rgba(62,100,52,.55)'  },
+    { l: '5%',  t: 'val',     w: 26, h: 165, sa: '-3deg',   sb: '3deg',   d: '9.5s', dl: '.8s',  c: 'rgba(58,95,48,.58)'   },
     { l: '29%', t: 'cabomba', w: 50, h: 180, sa: '-2.5deg', sb: '2deg',   d: '7.5s', dl: '1.5s', c: 'rgba(78,120,65,.6)'   },
-    { l: '37%', t: 'moss',    w: 55, h: 60,  sa: '-2deg',   sb: '2.5deg', d: '10s',  dl: '3s',   c: 'rgba(50,85,40,.5)'    },
-    { l: '43%', t: 'sword',   w: 46, h: 185, sa: '-2deg',   sb: '2.5deg', d: '7s',   dl: '1.1s', c: 'rgba(70,112,58,.62)'  },
-    { l: '51%', t: 'bacopa',  w: 30, h: 115, sa: '-3.5deg', sb: '3.5deg', d: '8s',   dl: '2.2s', c: 'rgba(62,100,50,.52)'  },
-    { l: '57%', t: 'sword',   w: 46, h: 185, sa: '-2deg',   sb: '2.5deg', d: '7s',   dl: '1.1s', c: 'rgba(70,112,58,.62)'  },
-    { l: '64%', t: 'val',     w: 24, h: 140, sa: '-3deg',   sb: '3.5deg', d: '9s',   dl: '.6s',  c: 'rgba(60,98,50,.56)'   },
-    { l: '70%', t: 'cabomba', w: 44, h: 170, sa: '-3deg',   sb: '2.5deg', d: '8.5s', dl: '1.8s', c: 'rgba(75,115,62,.6)'   },
-    { l: '77%', t: 'moss',    w: 48, h: 52,  sa: '-2deg',   sb: '2deg',   d: '11s',  dl: '2.8s', c: 'rgba(52,88,42,.5)'    },
-    { l: '82%', t: 'sword',   w: 50, h: 195, sa: '-2deg',   sb: '2deg',   d: '7.5s', dl: '.4s',  c: 'rgba(72,110,60,.64)'  },
-    { l: '88%', t: 'val',     w: 28, h: 150, sa: '-3.5deg', sb: '3deg',   d: '8s',   dl: '1.4s', c: 'rgba(64,102,54,.58)'  },
-    { l: '93%', t: 'bacopa',  w: 26, h: 120, sa: '-4deg',   sb: '4deg',   d: '9.5s', dl: '2.5s', c: 'rgba(60,96,48,.5)'    },
-    { l: '97%', t: 'moss',    w: 42, h: 48,  sa: '-2deg',   sb: '2.5deg', d: '10s',  dl: '0s',   c: 'rgba(55,88,44,.48)'   }
+    { l: '53%', t: 'moss',    w: 55, h: 60,  sa: '-2deg',   sb: '2.5deg', d: '10s',  dl: '3s',   c: 'rgba(50,85,40,.5)'    },
+    { l: '77%', t: 'sword',   w: 46, h: 185, sa: '-2deg',   sb: '2.5deg', d: '7s',   dl: '1.1s', c: 'rgba(70,112,58,.62)'  },
+    { l: '8%',  t: 'bacopa',  w: 30, h: 115, sa: '-3.5deg', sb: '3.5deg', d: '8s',   dl: '2.2s', c: 'rgba(62,100,50,.52)'  },
+    { l: '32%', t: 'sword',   w: 46, h: 185, sa: '-2deg',   sb: '2.5deg', d: '7s',   dl: '1.1s', c: 'rgba(70,112,58,.62)'  },
+    { l: '56%', t: 'val',     w: 24, h: 140, sa: '-3deg',   sb: '3.5deg', d: '9s',   dl: '.6s',  c: 'rgba(60,98,50,.56)'   },
+    { l: '80%', t: 'cabomba', w: 44, h: 170, sa: '-3deg',   sb: '2.5deg', d: '8.5s', dl: '1.8s', c: 'rgba(75,115,62,.6)'   },
+    { l: '11%', t: 'moss',    w: 48, h: 52,  sa: '-2deg',   sb: '2deg',   d: '11s',  dl: '2.8s', c: 'rgba(52,88,42,.5)'    },
+    { l: '35%', t: 'sword',   w: 50, h: 195, sa: '-2deg',   sb: '2deg',   d: '7.5s', dl: '.4s',  c: 'rgba(72,110,60,.64)'  },
+    { l: '83%', t: 'val',     w: 28, h: 150, sa: '-3.5deg', sb: '3deg',   d: '8s',   dl: '1.4s', c: 'rgba(64,102,54,.58)'  },
+    { l: '86%', t: 'bacopa',  w: 26, h: 120, sa: '-4deg',   sb: '4deg',   d: '9.5s', dl: '2.5s', c: 'rgba(60,96,48,.5)'    },
+    { l: '89%', t: 'moss',    w: 42, h: 48,  sa: '-2deg',   sb: '2.5deg', d: '10s',  dl: '0s',   c: 'rgba(55,88,44,.48)'   }
   ];
 
   var chosen = allPlacements.slice(0, CFG.plants), pi = 0;
@@ -183,7 +188,7 @@
       wrap.style.cssText = 'left:' + pd.l + ';--sa:' + pd.sa + ';--sb:' + pd.sb + ';animation:psway ' + pd.d + ' ease-in-out ' + pd.dl + ' infinite';
       var svg = document.createElementNS(NS, 'svg');
       svg.setAttribute('width', pd.w); svg.setAttribute('height', pd.h); svg.setAttribute('viewBox', '0 0 ' + pd.w + ' ' + pd.h); svg.setAttribute('fill', 'none');
-      var gradColor = makePlantGradient(svg, pd.c);
+      var gradColor = makeDepthGradient(svg, pd.c);
       type.draw(svg, pd.w, pd.h, gradColor); wrap.appendChild(svg); pc.appendChild(wrap);
     }
     if (pi < chosen.length) setTimeout(plantBatch, 80);
@@ -209,7 +214,7 @@
     }
   }, 800);
 
-  /* ── DRIFTWOOD — mid/high only ── */
+  /* ── DRIFTWOOD & ROCKS — mid/high only ── */
   if (TIER !== 'low') {
     setTimeout(function () {
       var dl = document.getElementById('driftwood-layer');
@@ -227,28 +232,64 @@
         return e;
       }
 
-      /* Left driftwood */
+      /* Left driftwood — trunk + 2 branches + a low root, all sharing one
+         bark gradient so the whole piece reads as lit from one side. */
       (function () {
         var w = 300, h = 140, svg = mkEl('svg', { width: w, height: h, viewBox: '0 0 ' + w + ' ' + h });
-        svg.appendChild(path('M8,' + h + ' C25,' + Math.round(h * .72) + ' 70,' + Math.round(h * .48) + ' 130,' + Math.round(h * .38) + ' C185,' + Math.round(h * .3) + ' 248,' + Math.round(h * .33) + ' 292,' + Math.round(h * .4), 'none', 'rgba(52,32,12,.7)', 9));
-        svg.appendChild(path('M130,' + Math.round(h * .38) + ' C148,' + Math.round(h * .2) + ' 188,' + Math.round(h * .1) + ' 215,' + Math.round(h * .06), 'none', 'rgba(46,28,10,.58)', 5.5));
-        svg.appendChild(path('M195,' + Math.round(h * .32) + ' C215,' + Math.round(h * .44) + ' 252,' + Math.round(h * .5) + ' 294,' + Math.round(h * .54), 'none', 'rgba(44,26,8,.52)', 4));
+        var bark = makeDepthGradient(svg, 'rgba(58,36,14,.68)');
+        svg.appendChild(path('M8,' + h + ' C25,' + Math.round(h * .72) + ' 70,' + Math.round(h * .48) + ' 130,' + Math.round(h * .38) + ' C185,' + Math.round(h * .3) + ' 248,' + Math.round(h * .33) + ' 292,' + Math.round(h * .4), 'none', bark, 9));
+        svg.appendChild(path('M130,' + Math.round(h * .38) + ' C148,' + Math.round(h * .2) + ' 188,' + Math.round(h * .1) + ' 215,' + Math.round(h * .06), 'none', bark, 5.5));
+        svg.appendChild(path('M195,' + Math.round(h * .32) + ' C215,' + Math.round(h * .44) + ' 252,' + Math.round(h * .5) + ' 294,' + Math.round(h * .54), 'none', bark, 4));
+        svg.appendChild(path('M60,' + Math.round(h * .58) + ' C50,' + Math.round(h * .78) + ' 38,' + Math.round(h * .92) + ' 30,' + h, 'none', bark, 5));
         [[30, h * .68, 14, 6], [55, h * .6, 10, 5], [80, h * .54, 12, 5]].forEach(function (r) {
           svg.appendChild(mkEl('ellipse', { cx: r[0], cy: Math.round(r[1]), rx: r[2], ry: r[3], fill: 'rgba(42,62,28,.38)' }));
         });
-        var wrap = document.createElement('div'); wrap.style.cssText = 'position:absolute;left:2%;bottom:0;opacity:.5'; wrap.appendChild(svg); dl.appendChild(wrap);
+        var wrap = document.createElement('div'); wrap.style.cssText = 'position:absolute;left:2%;bottom:0;opacity:.65'; wrap.appendChild(svg); dl.appendChild(wrap);
       })();
 
       /* Right driftwood */
       (function () {
         var w = 270, h = 88, svg = mkEl('svg', { width: w, height: h, viewBox: '0 0 ' + w + ' ' + h });
-        svg.appendChild(path('M0,' + Math.round(h * .62) + ' C38,' + Math.round(h * .46) + ' 95,' + Math.round(h * .38) + ' 158,' + Math.round(h * .42) + ' C208,' + Math.round(h * .46) + ' 255,' + Math.round(h * .56) + ' 268,' + Math.round(h * .66), 'none', 'rgba(48,30,10,.65)', 13));
-        svg.appendChild(path('M95,' + Math.round(h * .38) + ' C100,' + Math.round(h * .2) + ' 112,' + Math.round(h * .1) + ' 120,' + Math.round(h * .06), 'none', 'rgba(44,26,8,.52)', 6));
+        var bark = makeDepthGradient(svg, 'rgba(54,34,12,.62)');
+        svg.appendChild(path('M0,' + Math.round(h * .62) + ' C38,' + Math.round(h * .46) + ' 95,' + Math.round(h * .38) + ' 158,' + Math.round(h * .42) + ' C208,' + Math.round(h * .46) + ' 255,' + Math.round(h * .56) + ' 268,' + Math.round(h * .66), 'none', bark, 13));
+        svg.appendChild(path('M95,' + Math.round(h * .38) + ' C100,' + Math.round(h * .2) + ' 112,' + Math.round(h * .1) + ' 120,' + Math.round(h * .06), 'none', bark, 6));
+        svg.appendChild(path('M175,' + Math.round(h * .43) + ' C182,' + Math.round(h * .3) + ' 195,' + Math.round(h * .22) + ' 205,' + Math.round(h * .18), 'none', bark, 4));
         [[60, h * .5, 11, 5], [95, h * .42, 9, 4], [130, h * .44, 10, 5]].forEach(function (r) {
           svg.appendChild(mkEl('ellipse', { cx: r[0], cy: Math.round(r[1]), rx: r[2], ry: r[3], fill: 'rgba(40,60,25,.34)' }));
         });
-        var wrap = document.createElement('div'); wrap.style.cssText = 'position:absolute;left:58%;bottom:0;opacity:.45'; wrap.appendChild(svg); dl.appendChild(wrap);
+        var wrap = document.createElement('div'); wrap.style.cssText = 'position:absolute;left:58%;bottom:0;opacity:.55'; wrap.appendChild(svg); dl.appendChild(wrap);
       })();
+
+      /* ── ROCKS — irregular clustered stones, grouped with the driftwood
+         like a real aquascape hardscape (not scattered singly). Straight
+         segments (not smooth curves) between many jittered points read as
+         angular stone facets rather than smooth pebbles. */
+      function rockFacets(cx, cy, r, seed) {
+        var pts = 9, d = '';
+        for (var i = 0; i <= pts; i++) {
+          var a = (i / pts) * Math.PI * 2;
+          var jitter = .74 + Math.sin(i * 2.3 + seed * 3.1) * .16 + Math.cos(i * 1.6 + seed) * .1;
+          var x = cx + Math.cos(a) * r * jitter, y = cy + Math.sin(a) * r * jitter * .7;
+          d += (i === 0 ? 'M' : 'L') + x.toFixed(1) + ',' + y.toFixed(1) + ' ';
+        }
+        return d + 'Z';
+      }
+      function buildRockCluster(leftPct, w, h, stones, baseColor, opacity) {
+        var svg = mkEl('svg', { width: w, height: h, viewBox: '0 0 ' + w + ' ' + h });
+        var fill = makeDepthGradient(svg, baseColor);
+        stones.forEach(function (st, i) {
+          svg.appendChild(path(rockFacets(st[0], st[1], st[2], i * 1.7), fill, null));
+        });
+        var wrap = document.createElement('div');
+        wrap.style.cssText = 'position:absolute;left:' + leftPct + '%;bottom:0;opacity:' + opacity;
+        wrap.appendChild(svg); dl.appendChild(wrap);
+      }
+      /* Beside the left driftwood */
+      buildRockCluster(13, 130, 60, [[42, 44, 26], [78, 40, 19], [102, 48, 15], [24, 50, 13]], 'rgba(96,100,102,.7)', .6);
+      /* Beside the right driftwood */
+      buildRockCluster(47, 110, 52, [[38, 40, 22], [68, 44, 17], [90, 36, 13]], 'rgba(86,92,96,.68)', .55);
+      /* Standalone accent, away from either wood piece */
+      buildRockCluster(67, 80, 42, [[26, 32, 17], [52, 38, 12]], 'rgba(90,96,100,.65)', .5);
     }, 1200);
   }
 

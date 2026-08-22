@@ -589,6 +589,16 @@ footer{padding:3.5rem clamp(1.5rem,5vw,4.5rem);display:flex;align-items:center;j
 #reading-progress.visible{opacity:1}
 #reading-progress-fill{height:100%;width:0%;background:linear-gradient(to right,rgba(61,214,232,.66),var(--th-sage-2));transition:width .35s ease-out}
 
+/* ── CALM MODE — fullscreen ambient view, no reading, of the aquatic
+   background that already sits behind everything else (#eco/#fish-layer
+   are already position:fixed/inset:0, so entering calm mode is just
+   hiding the foreground UI, not resizing the background layers). ── */
+.ar-calm-exit{display:none;position:fixed;top:1rem;right:1rem;z-index:2000;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border-radius:100px;background:rgba(8,18,16,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);color:#eaf6f2;font-size:var(--fs-xs);letter-spacing:.03em;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ar-calm-exit:hover{background:rgba(8,18,16,.72)}
+body.calm-mode{overflow:hidden}
+body.calm-mode .ar-calm-exit{display:flex}
+body.calm-mode>*:not(#eco):not(#fish-layer):not(#cd):not(#cr):not(.ar-calm-exit){display:none!important}
+
 /* ── SETTINGS PANEL ── */
 .ar-settings-btn{display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:none;border:none;border-radius:50%;cursor:pointer!important;padding:0;color:var(--th-ink-2);opacity:.52;transition:background .25s,opacity .3s;pointer-events:all!important;-webkit-tap-highlight-color:transparent;flex-shrink:0}
 .ar-settings-btn:hover{background:var(--th-line);opacity:.92}

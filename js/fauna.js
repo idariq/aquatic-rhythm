@@ -18,12 +18,33 @@
     return e;
   }
 
+  /* Clip a <g> of decorative markings (stripes/spots/patterns) to the fish's
+     own body outline, so stroke-width or hand-tuned pattern coords can never
+     visibly poke past the body silhouette. Not for fins/tails — those are
+     meant to extend beyond the body. */
+  var clipSeq = 0;
+  function makeClipGroup(s, bodyD) {
+    var cid = 'fclip' + (clipSeq++);
+    var defs = document.createElementNS(NS, 'defs');
+    var clip = document.createElementNS(NS, 'clipPath');
+    clip.setAttribute('id', cid);
+    clip.appendChild(mk('path', { d: bodyD }));
+    defs.appendChild(clip);
+    s.appendChild(defs);
+    var g = document.createElementNS(NS, 'g');
+    g.setAttribute('clip-path', 'url(#' + cid + ')');
+    s.appendChild(g);
+    return g;
+  }
+
   /* ── FISH BUILDERS ── */
   function buildAltum(s) {
-    s.appendChild(mk('path', { d: 'M2,38 C8,28 16,12 24,2 C32,12 42,28 48,38 C42,48 32,64 24,74 C16,64 8,48 2,38Z', fill: 'rgba(182,200,188,.8)' }));
-    s.appendChild(mk('path', { d: 'M16,7 C14,18 14,40 15,58 C16,64 18,70 20,72 C18,70 16,64 16,58 C15,40 16,18 18,7Z', fill: 'rgba(35,45,38,.58)' }));
-    s.appendChild(mk('path', { d: 'M24,3 C22,12 22,36 23,56 C24,66 24,72 24,74 C24,72 24,66 25,56 C26,36 26,12 24,3Z', fill: 'rgba(35,45,38,.44)' }));
-    s.appendChild(mk('path', { d: 'M32,7 C30,18 30,40 31,58 C32,64 30,70 28,72 C30,70 32,64 32,58 C31,40 32,18 34,7Z', fill: 'rgba(35,45,38,.38)' }));
+    var bodyD = 'M2,38 C8,28 16,12 24,2 C32,12 42,28 48,38 C42,48 32,64 24,74 C16,64 8,48 2,38Z';
+    s.appendChild(mk('path', { d: bodyD, fill: 'rgba(182,200,188,.8)' }));
+    var g = makeClipGroup(s, bodyD);
+    g.appendChild(mk('path', { d: 'M16,7 C14,18 14,40 15,58 C16,64 18,70 20,72 C18,70 16,64 16,58 C15,40 16,18 18,7Z', fill: 'rgba(35,45,38,.58)' }));
+    g.appendChild(mk('path', { d: 'M24,3 C22,12 22,36 23,56 C24,66 24,72 24,74 C24,72 24,66 25,56 C26,36 26,12 24,3Z', fill: 'rgba(35,45,38,.44)' }));
+    g.appendChild(mk('path', { d: 'M32,7 C30,18 30,40 31,58 C32,64 30,70 28,72 C30,70 32,64 32,58 C31,40 32,18 34,7Z', fill: 'rgba(35,45,38,.38)' }));
     s.appendChild(mk('path', { d: 'M2,38 C-5,30 -9,22 -4,16 C0,22 4,30 8,34Z', fill: 'rgba(162,184,170,.62)' }));
     s.appendChild(mk('path', { d: 'M2,38 C-5,46 -9,54 -4,60 C0,54 4,46 8,42Z', fill: 'rgba(162,184,170,.58)' }));
     s.appendChild(mk('circle', { cx: '40', cy: '34', r: '3.2', fill: 'rgba(255,255,255,.9)' }));
@@ -32,26 +53,32 @@
 
   function buildCongo(s) {
     s.appendChild(mk('path', { d: 'M0,5 Q5,8 0,11 L8,8Z', fill: 'rgba(70,55,110,.8)' }));
-    s.appendChild(mk('path', { d: 'M8,8 C8,3 17,0 27,1 C35,2 40,4 41,8 C40,12 35,14 27,15 C17,16 8,13 8,8Z', fill: 'rgba(75,58,118,.82)' }));
-    s.appendChild(mk('path', { d: 'M9,6 C17,4 27,4 37,7 C39,8 40,9 40,9 C38,8 27,6 17,7 C13,7 10,7 9,8Z', fill: 'rgba(110,90,200,.72)' }));
+    var bodyD = 'M8,8 C8,3 17,0 27,1 C35,2 40,4 41,8 C40,12 35,14 27,15 C17,16 8,13 8,8Z';
+    s.appendChild(mk('path', { d: bodyD, fill: 'rgba(75,58,118,.82)' }));
+    var g = makeClipGroup(s, bodyD);
+    g.appendChild(mk('path', { d: 'M9,6 C17,4 27,4 37,7 C39,8 40,9 40,9 C38,8 27,6 17,7 C13,7 10,7 9,8Z', fill: 'rgba(110,90,200,.72)' }));
     s.appendChild(mk('circle', { cx: '36', cy: '7', r: '2', fill: 'rgba(255,255,255,.9)' }));
     s.appendChild(mk('circle', { cx: '36.2', cy: '7', r: '1', fill: 'rgba(5,4,8,.92)' }));
   }
 
   function buildCardinal(s) {
     s.appendChild(mk('path', { d: 'M0,3 Q4,6 0,9 L6,6Z', fill: 'rgba(125,55,42,.85)' }));
-    s.appendChild(mk('path', { d: 'M6,6 C6,2 13,0 22,1 C29,2 34,4 35,6 C34,8 29,10 22,11 C13,12 6,10 6,6Z', fill: 'rgba(132,58,44,.85)' }));
-    s.appendChild(mk('path', { d: 'M7,2 C13,0 22,0 30,3 C32,4 34,5 34,5 C32,4 22,2 13,2Z', fill: 'rgba(25,120,215,.85)' }));
-    s.appendChild(mk('path', { d: 'M7,8 C13,9 22,10 30,9 L30,11 C22,12 13,11 7,10Z', fill: 'rgba(210,42,30,.7)' }));
+    var bodyD = 'M6,6 C6,2 13,0 22,1 C29,2 34,4 35,6 C34,8 29,10 22,11 C13,12 6,10 6,6Z';
+    s.appendChild(mk('path', { d: bodyD, fill: 'rgba(132,58,44,.85)' }));
+    var g = makeClipGroup(s, bodyD);
+    g.appendChild(mk('path', { d: 'M7,2 C13,0 22,0 30,3 C32,4 34,5 34,5 C32,4 22,2 13,2Z', fill: 'rgba(25,120,215,.85)' }));
+    g.appendChild(mk('path', { d: 'M7,8 C13,9 22,10 30,9 L30,11 C22,12 13,11 7,10Z', fill: 'rgba(210,42,30,.7)' }));
     s.appendChild(mk('circle', { cx: '30', cy: '5', r: '1.7', fill: 'rgba(255,255,255,.9)' }));
     s.appendChild(mk('circle', { cx: '30.2', cy: '5', r: '.85', fill: 'rgba(4,4,4,.92)' }));
   }
 
   function buildGeo(s) {
     s.appendChild(mk('path', { d: 'M2,12 Q9,18 2,24 L13,18Z', fill: 'rgba(38,140,130,.82)' }));
-    s.appendChild(mk('path', { d: 'M13,18 C13,5 24,1 36,1 C50,1 58,8 58,18 C58,28 50,35 36,35 C24,35 13,31 13,18Z', fill: 'rgba(42,155,140,.82)' }));
+    var bodyD = 'M13,18 C13,5 24,1 36,1 C50,1 58,8 58,18 C58,28 50,35 36,35 C24,35 13,31 13,18Z';
+    s.appendChild(mk('path', { d: bodyD, fill: 'rgba(42,155,140,.82)' }));
+    var g = makeClipGroup(s, bodyD);
     [[22, 8, 3], [30, 6, 2.5], [38, 9, 3], [26, 14, 2], [34, 13, 3.5]].forEach(function (sp) {
-      s.appendChild(mk('circle', { cx: sp[0], cy: sp[1], r: sp[2], fill: 'rgba(80,220,200,.45)' }));
+      g.appendChild(mk('circle', { cx: sp[0], cy: sp[1], r: sp[2], fill: 'rgba(80,220,200,.45)' }));
     });
     s.appendChild(mk('circle', { cx: '48', cy: '10', r: '3.8', fill: 'rgba(255,255,255,.88)' }));
     s.appendChild(mk('circle', { cx: '48.5', cy: '10', r: '1.9', fill: 'rgba(5,15,10,.92)' }));
@@ -66,20 +93,13 @@
     grad.appendChild(mk('stop', { offset: '55%',  'stop-color': 'rgba(185,85,20,.85)' }));
     grad.appendChild(mk('stop', { offset: '100%', 'stop-color': 'rgba(132,55,10,.85)' }));
     defs.appendChild(grad);
-    var bodyD = 'M13,22 C13,7 24,2 34,2 C48,2 60,10 60,22 C60,34 48,42 34,42 C24,42 13,37 13,22Z';
-    var clipId = 'oscClip' + oscarGradSeq;
-    var clip = document.createElementNS(NS, 'clipPath');
-    clip.setAttribute('id', clipId);
-    clip.appendChild(mk('path', { d: bodyD }));
-    defs.appendChild(clip);
     s.appendChild(defs);
+    var bodyD = 'M13,22 C13,7 24,2 34,2 C48,2 60,10 60,22 C60,34 48,42 34,42 C24,42 13,37 13,22Z';
     s.appendChild(mk('path', { d: 'M2,14 Q9,22 2,30 L13,22Z', fill: 'url(#' + gid + ')' }));
     s.appendChild(mk('path', { d: bodyD, fill: 'url(#' + gid + ')' }));
-    var stripes = document.createElementNS(NS, 'g');
-    stripes.setAttribute('clip-path', 'url(#' + clipId + ')');
-    stripes.appendChild(mk('path', { d: 'M20,4 C18,12 20,22 18,34', stroke: 'rgba(18,6,1,.42)', 'stroke-width': '5', fill: 'none' }));
-    stripes.appendChild(mk('path', { d: 'M32,3 C30,13 32,23 30,37', stroke: 'rgba(18,6,1,.38)', 'stroke-width': '4', fill: 'none' }));
-    s.appendChild(stripes);
+    var g = makeClipGroup(s, bodyD);
+    g.appendChild(mk('path', { d: 'M20,4 C18,12 20,22 18,34', stroke: 'rgba(18,6,1,.42)', 'stroke-width': '5', fill: 'none' }));
+    g.appendChild(mk('path', { d: 'M32,3 C30,13 32,23 30,37', stroke: 'rgba(18,6,1,.38)', 'stroke-width': '4', fill: 'none' }));
     s.appendChild(mk('circle', { cx: '50', cy: '13', r: '4', fill: 'rgba(255,255,255,.88)' }));
     s.appendChild(mk('circle', { cx: '50.5', cy: '13', r: '2', fill: 'rgba(8,4,0,.92)' }));
   }

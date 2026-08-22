@@ -11,7 +11,7 @@
         "bnav_log_aria": "Log Penjaga"
     },
     "home": {
-        "hero_h1": "Akuarium Anda adalah dunia kecil,<br>yang tertutup.<br><em style=\"font-style:italic;color:rgba(61,214,232,.82)\">Anda bagian dari yang membentuknya.</em>",
+        "hero_h1": "Akuarium Anda adalah dunia kecil,<br>yang tertutup.<br><em style=\"font-style:italic;color:var(--th-accent)\">Anda bagian dari yang membentuknya.</em>",
         "hero_sub": "Tempat yang tenang untuk memahami ekologi akuarium, memikirkan keputusan, dan mengerti apa yang sebenarnya dibutuhkan akuarium Anda — dibuat untuk kehidupan nyata, bukan kondisi ideal.",
         "hero_cta": "Jelajahi panduan →",
         "keeper_lead": "Sebagian besar saran akuarium ditulis untuk penjaga yang ideal — seseorang dengan rutinitas tetap, waktu yang selalu tersedia, dan akuarium yang selalu bekerja sama.",
@@ -153,7 +153,7 @@
     "reading": {
         "header": {
             "ey": "Bacaan",
-            "h1": "Baca sesuai<br><em style=\"font-style:italic;color:rgba(124,168,156,.78)\">ritme Anda sendiri.</em>",
+            "h1": "Baca sesuai<br><em style=\"font-style:italic;color:var(--th-accent)\">ritme Anda sendiri.</em>",
             "sub1": "Panduan ekologi singkat — dipecah menjadi blok-blok kecil agar Anda bisa membaca di ponsel, berhenti sejenak, lalu lanjut lagi. Bahasa sederhana dulu; nama Latin hanya bila membantu.",
             "sub2_pre": "Ekologi dan perilaku dalam bahasa sederhana · keeper rhythm dan ARA. ",
             "sub2_link": "Lab &amp; alat",
@@ -298,7 +298,7 @@
     },
     "tools": {
         "ey": "Lab &amp; Alat",
-        "h1": "Coba dulu.<br><em style=\"font-style:italic;color:rgba(61,214,232,.78)\">Sebelum Anda berkomitmen.</em>",
+        "h1": "Coba dulu.<br><em style=\"font-style:italic;color:var(--th-accent)\">Sebelum Anda berkomitmen.</em>",
         "sub": "Simulator dan perencana interaktif. Buat keputusan di layar dulu sebelum Anda buat di akuarium sebenarnya.",
         "card1_tag": "Simulator",
         "card1_title": "Simulator Siklus Tangki",
@@ -319,7 +319,7 @@
     "journal": {
         "landing": {
             "ey": "Log Penjaga",
-            "h1": "Akuarium<br><em style=\"font-style:italic;color:rgba(61,214,232,.78)\">Anda</em>",
+            "h1": "Akuarium<br><em style=\"font-style:italic;color:var(--th-accent)\">Anda</em>",
             "sub": "Log pribadi untuk setiap akuarium yang Anda pelihara — amati, renungkan, dan pantau ritme Anda."
         },
         "dashboard": {

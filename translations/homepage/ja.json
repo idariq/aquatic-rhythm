@@ -11,7 +11,7 @@
         "bnav_log_aria": "飼育ログ"
     },
     "home": {
-        "hero_h1": "あなたの水槽は小さく、<br>閉じた世界。<br><em style=\"font-style:italic;color:rgba(61,214,232,.82)\">あなたもまた、それを形づくる一部です。</em>",
+        "hero_h1": "あなたの水槽は小さく、<br>閉じた世界。<br><em style=\"font-style:italic;color:var(--th-accent)\">あなたもまた、それを形づくる一部です。</em>",
         "hero_sub": "アクアリウムの生態を読み解き、判断についてじっくり考え、あなたの水槽が本当に必要としていることを理解するための、静かな場所です。理想の条件のためではなく、現実の生活のためにつくられています。",
         "hero_cta": "ガイドを見る →",
         "keeper_lead": "アクアリウムに関する助言の多くは、決まった習慣を持ち、いつでも時間があり、水槽も協力的な、理想的な飼育者のために書かれています。",
@@ -153,7 +153,7 @@
     "reading": {
         "header": {
             "ey": "読む",
-            "h1": "自分の<br><em style=\"font-style:italic;color:rgba(124,168,156,.78)\">リズムで読もう。</em>",
+            "h1": "自分の<br><em style=\"font-style:italic;color:var(--th-accent)\">リズムで読もう。</em>",
             "sub1": "短いエコロジーガイドです。スマートフォンで読めるよう小さなブロックに分けているので、途中で止めてもまた戻ってこられます。まずは平易な言葉で。ラテン語名は役立つときだけ使います。",
             "sub2_pre": "生態と行動をわかりやすい言葉で解説 · キーパーリズムとARA。シミュレーターは",
             "sub2_link": "ラボ&amp;ツール",
@@ -298,7 +298,7 @@
     },
     "tools": {
         "ey": "ラボ&amp;ツール",
-        "h1": "試してみる。<br><em style=\"font-style:italic;color:rgba(61,214,232,.78)\">本格導入の前に。</em>",
+        "h1": "試してみる。<br><em style=\"font-style:italic;color:var(--th-accent)\">本格導入の前に。</em>",
         "sub": "対話型シミュレーターとプランナー。実際の水槽で試す前に、画面上で判断できる。",
         "card1_tag": "シミュレーター",
         "card1_title": "水槽サイクルシミュレーター",
@@ -319,7 +319,7 @@
     "journal": {
         "landing": {
             "ey": "キーパーの記録",
-            "h1": "あなたの<br><em style=\"font-style:italic;color:rgba(61,214,232,.78)\">水槽</em>",
+            "h1": "あなたの<br><em style=\"font-style:italic;color:var(--th-accent)\">水槽</em>",
             "sub": "あなたが管理するすべての水槽のための非公開ログ。観察し、振り返り、リズムを記録。"
         },
         "dashboard": {

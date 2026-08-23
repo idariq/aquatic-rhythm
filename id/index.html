@@ -75,10 +75,9 @@
 <div id="fish-layer" aria-hidden="true"></div>
 
 <button class="ar-calm-exit" id="ar-calm-exit" aria-label="Keluar dari mode tenang" title="Keluar dari mode tenang">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
   </svg>
-  <span>Keluar dari mode tenang</span>
 </button>
 
 <nav>
@@ -103,19 +102,21 @@
     <li><a href="/journal" data-page="journal">Catatan</a></li>
     <li><a href="/about" data-page="about">Tentang</a></li>
   </ul>
-  <button class="ar-settings-btn" id="ar-calm-btn" aria-label="Mode Tenang" title="Mode Tenang — tonton tanpa membaca">
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M3 10.5c2-3 4-3 6 0s4 3 6 0 4-3 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-      <path d="M3 15.5c2-3 4-3 6 0s4 3 6 0 4-3 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none" opacity=".5"/>
-    </svg>
-  </button>
-  <button class="ar-settings-btn" id="ar-settings-btn" aria-label="Pengaturan" aria-expanded="false" title="Pengaturan">
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
-    </svg>
-  </button>
-  <button class="nbg" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+  <div class="nav-actions">
+    <button class="ar-settings-btn" id="ar-calm-btn" aria-label="Mode Tenang" title="Mode Tenang — tonton tanpa membaca">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3 10.5c2-3 4-3 6 0s4 3 6 0 4-3 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <path d="M3 15.5c2-3 4-3 6 0s4 3 6 0 4-3 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none" opacity=".5"/>
+      </svg>
+    </button>
+    <button class="ar-settings-btn" id="ar-settings-btn" aria-label="Pengaturan" aria-expanded="false" title="Pengaturan">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+    </button>
+    <button class="nbg" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
 </nav>
 
 

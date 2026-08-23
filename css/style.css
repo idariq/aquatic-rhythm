@@ -216,6 +216,7 @@ nav:not(.bnav){position:fixed;top:0;left:0;right:0;z-index:800;height:68px;displ
 .nlinks a:hover::after{width:100%}
 .ncta{font-size:var(--fs-xs);font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--th-accent);border:1px solid var(--th-accent-border);padding:.52rem 1.25rem;border-radius:100px;text-decoration:none;transition:background .3s,border-color .3s,color .3s;backdrop-filter:blur(8px)}
 .ncta:hover{background:var(--th-accent);border-color:var(--th-accent);color:var(--th-accent-ink)}
+.nav-actions{display:flex;align-items:center;gap:.15rem}
 .nbg{display:none;flex-direction:column;justify-content:center;gap:5px;width:34px;height:34px;background:none;border:none;padding:5px}
 .nbg span{display:block;height:1px;background:var(--th-surface-2);transition:transform .36s var(--ease),opacity .22s,width .3s var(--ease);transform-origin:center}
 .nbg span:nth-child(1){width:18px}
@@ -593,7 +594,7 @@ footer{padding:3.5rem clamp(1.5rem,5vw,4.5rem);display:flex;align-items:center;j
    background that already sits behind everything else (#eco/#fish-layer
    are already position:fixed/inset:0, so entering calm mode is just
    hiding the foreground UI, not resizing the background layers). ── */
-.ar-calm-exit{display:none;position:fixed;top:1rem;right:1rem;z-index:2000;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border-radius:100px;background:rgba(8,18,16,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);color:#eaf6f2;font-size:var(--fs-xs);letter-spacing:.03em;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ar-calm-exit{display:none;align-items:center;justify-content:center;position:fixed;top:1rem;right:1rem;z-index:2000;width:36px;height:36px;padding:0;border-radius:50%;background:rgba(8,18,16,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);color:#eaf6f2;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .2s}
 .ar-calm-exit:hover{background:rgba(8,18,16,.72)}
 body.calm-mode{overflow:hidden}
 body.calm-mode .ar-calm-exit{display:flex}

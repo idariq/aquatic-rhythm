@@ -1971,16 +1971,30 @@ vcRedraws.tank = scheduleRedraw;
 /* ═══ RHYTHMS ═══ */
 function calcRhythms(){
   var s={water:0,bio:0,env:0,live:0,human:0};
+  /* humanOffset (Automation items only — timer/ato/auto-feeder/
+     auto-dosing/auto-water-changer) is a SEPARATE negative pool from
+     human: human is the small ongoing cost of the device itself
+     (refilling, checking), humanOffset is burden it removes from the
+     Keeper Rhythm total. Summed here and applied once below, so
+     automation genuinely lowers the score instead of just adding
+     less than a manual-task equivalent would. Per-species/per-task
+     attribution (e.g. "this offset cancels exactly this fish's
+     water-change burden") isn't possible — livestock demand.human is
+     one aggregate number, not broken into sub-tasks — so this is a
+     single shared pool against the whole Keeper total, not a
+     per-category cap. */
+  var humanOffset=0;
   Object.keys(active).forEach(function(k){
     var e=EQ[k];if(!e)return;
     s.water+=e.water||0; s.bio+=e.bio||0; s.env+=e.env||0;
     s.live+=e.live||0; s.human+=e.human||0;
+    humanOffset+=e.humanOffset||0;
   });
   var tz=tankTier();
   var b=tz==='large'?12:tz==='medium'?5:0;
   s.water=Math.min(100,s.water+b*.4); s.bio=Math.min(100,s.bio+b*.3);
   s.env=Math.min(100,s.env+b*.2); s.live=Math.min(100,s.live+b*.3);
-  s.human=Math.min(100,s.human);
+  s.human=Math.min(100,Math.max(0,s.human+humanOffset));
   return s;
 }
 

@@ -72,6 +72,7 @@
    "Cooling": "冷却",
    "Substrate": "底床",
    "Additions": "添加剤",
+   "Automation": "自動化",
    "Monitoring": "モニタリング"
   },
   "items": {
@@ -178,6 +179,10 @@
    "ato": {
     "name": "自動足し水装置",
     "role": "蒸発した分の水を自動補給"
+   },
+   "auto-feeder": {
+    "name": "自動給餌器",
+    "role": "決まった時間に給餌"
    },
    "co2-system": {
     "name": "CO2システム",

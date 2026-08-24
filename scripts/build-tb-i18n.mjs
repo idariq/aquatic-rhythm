@@ -277,7 +277,7 @@ function patchTabs(h, t) {
 
 function patchRack(h, t) {
   const r = t.rack;
-  const cats = ['Filtration', 'Circulation', 'Environment', 'Cooling', 'Substrate', 'Additions', 'Monitoring'];
+  const cats = ['Filtration', 'Circulation', 'Environment', 'Cooling', 'Substrate', 'Additions', 'Automation', 'Monitoring'];
   cats.forEach(c => { h = subOnce(h, `<div class="rack-cat">${c}</div>`, `<div class="rack-cat">${r.categories[c]}</div>`, `rack.cat.${c}`); });
   for (const [id, item] of Object.entries(r.items)) {
     const enItem = ENGLISH_RACK_ITEMS[id];
@@ -320,6 +320,7 @@ const ENGLISH_RACK_ITEMS = {
   'seed': { name: 'Bacteria Starter', role: 'Cycle head-start' },
   'lid': { name: 'Lid / Cover', role: 'Safety + reduces evaporation' },
   'ato': { name: 'Auto Top-Off', role: 'Replaces evaporated water' },
+  'auto-feeder': { name: 'Auto Feeder', role: 'Scheduled feeding' },
   'co2-system': { name: 'CO2 System', role: 'Injected carbon for plants' },
   'liquid-fert': { name: 'Liquid Fertiliser', role: 'Dosed nutrients for plants' },
   'thermometer': { name: 'Thermometer', role: 'Verify temperature daily' },

@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://aquaticrhythm.com/id/articles/tank-builder">
 <meta property="og:title" content="Penyusun Akuarium — Aquatic Rhythm">
 <meta property="og:description" content="Susun akuarium air tawar pertama Anda. Pilih ikan yang Anda sukai dan temukan apa yang mereka butuhkan.">
-<meta property="og:image" content="https://aquaticrhythm.com/og/articles/tank-builder-id.png">
+<meta property="og:image" content="https://aquaticrhythm.com/og/articles/tank-builder.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Aquatic Rhythm">
@@ -2223,7 +2223,7 @@ function showSpeciesInfo(k,item,cat){
   var acts=document.getElementById('bi-actions');
   if(acts){
     acts.innerHTML='';
-    var cb=document.createElement('button');cb.className='bi-btn-use';cb.textContent='Close';
+    var cb=document.createElement('button');cb.className='bi-btn-use';cb.textContent='Tutup';
     cb.onclick=function(){overlay.classList.remove('open');};
     acts.appendChild(cb);
   }
@@ -2624,7 +2624,7 @@ function prepareBiImageForPhoto(){
   }
   if(hero){hero.hidden=true;hero.innerHTML='';}
   if(img){img.style.display='';img.removeAttribute('src');img.className='';}
-  if(skeleton){skeleton.style.display='flex';skeleton.textContent='Loading\u2026';}
+  if(skeleton){skeleton.style.display='flex';skeleton.textContent='Memuat gambar…';}
   if(credit)credit.textContent='';
 }
 

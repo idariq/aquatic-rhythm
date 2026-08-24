@@ -590,6 +590,8 @@ function patchEngine5(h, t, lang) {
   h = subOnce(h, "document.getElementById('t-day').textContent='Day '+S.day;", `document.getElementById('t-day').textContent=${dayConcat(lang, 'S.day')};`, 'engine.tdayLive');
   h = subOnce(h, "e.innerHTML='<span class=\"ld\">Day '+S.day+'</span><span>'+msg+'</span>';",
     `e.innerHTML='<span class="ld">'+${dayConcat(lang, 'S.day')}+'</span><span>'+msg+'</span>';`, 'engine.addLogDay');
+  h = subOnce(h, "first.querySelector('.ld').textContent='Day '+S.day+' ×'+n;",
+    `first.querySelector('.ld').textContent=${dayConcat(lang, 'S.day')}+' ×'+n;`, 'engine.addLogDayRepeat');
   h = subOnce(h, "if(lbl)lbl.textContent='Med';", `if(lbl)lbl.textContent='${m.med}';`, 'engine.medDefault');
   h = subOnce(h, "if(name)name.textContent=val==='fishless'?'Add ammonia':'Add fish';",
     `if(name)name.textContent=val==='fishless'?'${a.sourceAmmonia}':'${a.sourceFish}';`, 'engine.setupSourceName');

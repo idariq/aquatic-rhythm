@@ -426,6 +426,8 @@ function patchEngineStrings(h, t, lang) {
   h = subOnce(h, "eff.push('Releases tannins \\u2014 amber water, lowers pH');", `eff.push('${si.tanninsNote}');`, 'js.tanninsNote');
   h = subOnce(h, "disc.textContent='Parameters reflect general community knowledge and may vary by breeding line or locality.';",
     `disc.textContent='${si.paramsDisclaimer}';`, 'js.paramsDisclaimer');
+  h = subOnce(h, "var cb=document.createElement('button');cb.className='bi-btn-use';cb.textContent='Close';",
+    `var cb=document.createElement('button');cb.className='bi-btn-use';cb.textContent='${si.closeBtn}';`, 'js.closeBtn');
   h = subOnce(h, "var ab=document.createElement('button');ab.className='ph2-card-about';ab.textContent='About';", `var ab=document.createElement('button');ab.className='ph2-card-about';ab.textContent='${si.aboutBtn}';`, 'js.aboutBtn');
   h = subOnce(h, "if(item.schooling&&item.min_school>1)addTag('School '+item.min_school+'+','ok');", `if(item.schooling&&item.min_school>1)addTag('${si.schoolTagPrefix}'+item.min_school+'+','ok');`, 'js.schoolTag');
   h = subOnce(h, "if(item.bioload==='high'||item.bioload==='very-high')addTag(enumLabel('bioload',item.bioload)+' load','warn');",
@@ -493,6 +495,8 @@ function patchEngineStrings(h, t, lang) {
   h = subOnce(h, "if(skeleton){skeleton.textContent='No image found';skeleton.style.display='flex';}", `if(skeleton){skeleton.textContent='${im.noImageFound}';skeleton.style.display='flex';}`, 'js.noImageFound');
   h = subOnce(h, '<div class="bi-img-skeleton" id="bi-img-skeleton">Loading image&#x2026;</div>',
     `<div class="bi-img-skeleton" id="bi-img-skeleton">${bi.loadingImage}</div>`, 'html.loadingImage');
+  h = subOnce(h, "if(skeleton){skeleton.style.display='flex';skeleton.textContent='Loading\\u2026';}",
+    `if(skeleton){skeleton.style.display='flex';skeleton.textContent='${bi.loadingImage}';}`, 'js.loadingImageReset');
 
   return h;
 }

@@ -626,7 +626,7 @@ function updateDots(){
   var bar=document.getElementById('mod-progress-bar');
   var lbl=document.getElementById('mod-progress-label');
   if(bar) bar.style.setProperty('--prog', Math.round((currentMod/totalMods)*100)+'%');
-  if(lbl) lbl.textContent='Module '+currentMod+' / '+totalMods;
+  if(lbl) lbl.textContent=ntsT('moduleProgress', {n: currentMod, total: totalMods});
 }
 
 /* Init — show intro first */
@@ -696,7 +696,8 @@ var NTS_STRINGS = {
     v5_phaseSeeding: 'Seeding',
     v5_phaseNitrosomonasActive: 'Nitrosomonas active',
     v5_phaseNitrospiraEstablishing: 'Nitrospira establishing',
-    v5_phaseCycleStable: 'Cycle stable'
+    v5_phaseCycleStable: 'Cycle stable',
+    moduleProgress: 'Module {n} / {total}'
   },
   id: {
     v1_hint: 'geser untuk melihat perubahan seiring waktu',
@@ -749,7 +750,8 @@ var NTS_STRINGS = {
     v5_phaseSeeding: 'Penempelan',
     v5_phaseNitrosomonasActive: 'Nitrosomonas aktif',
     v5_phaseNitrospiraEstablishing: 'Nitrospira sedang terbentuk',
-    v5_phaseCycleStable: 'Siklus stabil'
+    v5_phaseCycleStable: 'Siklus stabil',
+    moduleProgress: 'Modul {n} / {total}'
   },
   ja: {
     v1_hint: 'ドラッグすると時間の経過を確認できます',
@@ -802,7 +804,8 @@ var NTS_STRINGS = {
     v5_phaseSeeding: '定着期',
     v5_phaseNitrosomonasActive: 'Nitrosomonas 活発化',
     v5_phaseNitrospiraEstablishing: 'Nitrospira 定着中',
-    v5_phaseCycleStable: 'サイクル安定'
+    v5_phaseCycleStable: 'サイクル安定',
+    moduleProgress: 'モジュール {n} / {total}'
   }
 };
 function ntsT(key, subs) {

@@ -2223,7 +2223,7 @@ function showSpeciesInfo(k,item,cat){
   var acts=document.getElementById('bi-actions');
   if(acts){
     acts.innerHTML='';
-    var cb=document.createElement('button');cb.className='bi-btn-use';cb.textContent='Close';
+    var cb=document.createElement('button');cb.className='bi-btn-use';cb.textContent='閉じる';
     cb.onclick=function(){overlay.classList.remove('open');};
     acts.appendChild(cb);
   }
@@ -2624,7 +2624,7 @@ function prepareBiImageForPhoto(){
   }
   if(hero){hero.hidden=true;hero.innerHTML='';}
   if(img){img.style.display='';img.removeAttribute('src');img.className='';}
-  if(skeleton){skeleton.style.display='flex';skeleton.textContent='Loading\u2026';}
+  if(skeleton){skeleton.style.display='flex';skeleton.textContent='画像を読み込み中…';}
   if(credit)credit.textContent='';
 }
 

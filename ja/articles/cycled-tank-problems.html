@@ -556,7 +556,7 @@ function updateDots(){
   var bar=document.getElementById('mod-progress-bar');
   var lbl=document.getElementById('mod-progress-label');
   if(bar) bar.style.setProperty('--prog', Math.round((currentMod/totalMods)*100)+'%');
-  if(lbl) lbl.textContent='Module '+currentMod+' / '+totalMods;
+  if(lbl) lbl.textContent=ctpT('moduleProgress', {n: currentMod, total: totalMods});
 }
 
 function startLearning(){
@@ -652,7 +652,8 @@ var CTP_STRINGS = {
     signal4Meaning: 'Fish huddling near a heat source often indicates the tank is too cold, or that a temperature fluctuation has occurred. Check your heater is functioning and that readings are consistent throughout the day.',
     surfaceLabel: 'surface',
     colourFadedLabel: 'colour faded',
-    behFooter: 'Signal {n} of {total}'
+    behFooter: 'Signal {n} of {total}',
+    moduleProgress: 'Module {n} / {total}'
   },
   id: {
     stressHint: 'ketuk salah satu tekanan untuk menjelajahinya',
@@ -708,7 +709,8 @@ var CTP_STRINGS = {
     signal4Meaning: 'Ikan yang berkerumun di dekat sumber panas sering menandakan akuarium terlalu dingin, atau telah terjadi fluktuasi suhu. Periksa apakah pemanas berfungsi dengan baik dan suhu tetap konsisten sepanjang hari.',
     surfaceLabel: 'permukaan',
     colourFadedLabel: 'warna memudar',
-    behFooter: 'Sinyal {n} dari {total}'
+    behFooter: 'Sinyal {n} dari {total}',
+    moduleProgress: 'Modul {n} / {total}'
   },
   ja: {
     stressHint: 'ストレス要因をタップして詳しく見る',
@@ -764,7 +766,8 @@ var CTP_STRINGS = {
     signal4Meaning: '魚が熱源の近くに集まるのは、水槽が冷えすぎているか、水温が変動していることを示している場合が多いです。ヒーターが正常に動作しているか、一日を通して水温が安定しているかを確認しましょう。',
     surfaceLabel: '水面',
     colourFadedLabel: '色あせ',
-    behFooter: 'サイン {n} / {total}'
+    behFooter: 'サイン {n} / {total}',
+    moduleProgress: 'モジュール {n} / {total}'
   }
 };
 function ctpT(key, subs){

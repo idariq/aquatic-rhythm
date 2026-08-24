@@ -1725,7 +1725,7 @@ function addLog(msg,type){
   if(first&&first.getAttribute('data-msg')===msg&&first.getAttribute('data-day')===String(S.day)){
     var n=parseInt(first.getAttribute('data-count')||'1',10)+1;
     first.setAttribute('data-count',n);
-    first.querySelector('.ld').textContent='Day '+S.day+' ×'+n;
+    first.querySelector('.ld').textContent=S.day+'日目'+' ×'+n;
   } else {
     var e=document.createElement('div');
     e.className='le'+(type==='warn'?' lw':type==='danger'?' ldg':type==='good'?' lgd':'');

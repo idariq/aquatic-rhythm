@@ -369,7 +369,7 @@ function updateDots() {
   var bar = document.getElementById('mod-progress-bar');
   var lbl = document.getElementById('mod-progress-label');
   if (bar) bar.style.setProperty('--prog', Math.round((currentMod / totalMods) * 100) + '%');
-  if (lbl) lbl.textContent = 'Module ' + currentMod + ' / ' + totalMods;
+  if (lbl) lbl.textContent = 'モジュール ' + currentMod + ' / ' + totalMods;
 }
 
 (function(){ updateDots(); })();

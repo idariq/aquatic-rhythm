@@ -438,6 +438,13 @@
    "slight softening": "わずかに軟水化",
    "minimal to slight": "最小限〜わずか",
    "very minimal": "ごくわずか"
+  },
+  "tier": {
+   "Budget": "低価格帯",
+   "Mid": "中価格帯",
+   "Premium": "高価格帯",
+   "Budget–Mid": "低〜中価格帯",
+   "Mid–Premium": "中〜高価格帯"
   }
  },
  "ecosystem": {

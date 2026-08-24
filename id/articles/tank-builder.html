@@ -1204,6 +1204,24 @@ var BRAND_INFO=window.AR_BRAND_INFO;
 
 var EQ=window.AR_EQ;
 
+/* AR_BRAND_INFO prose fields (summary/pros/cons/best_for/tier_note/
+   avoid_if) are {en,id,ja} objects — js/tank-data.js is ONE file shared
+   by all 3 language builds of this page (unlike ECOSYSTEM, which lives
+   inside this HTML and gets a separate JSON-reconstructed copy per
+   language build), so the translation has to live inside the data and
+   get picked at runtime instead of at build time. biLoc() also accepts
+   a plain string/array untouched, so the no-brand-found fallback object
+   literal below (already a plain string) keeps working unchanged. */
+function biLoc(v,empty){
+  if(empty===undefined)empty='';
+  if(v==null)return empty;
+  if(typeof v==='string'||Array.isArray(v))return v;
+  var l=document.documentElement.lang||'en';
+  if(v[l]!=null)return v[l];
+  if(v.en!=null)return v.en;
+  return empty;
+}
+
 /* FISH/INVERTEBRATES demand.{water,bio,env,live,human} — formula-derived
    (not hand-authored per species) from fields already vetted elsewhere in
    this same entry: bioload (Water/Biological Rhythm — ARA Domain 2), pH/temp
@@ -1226,7 +1244,7 @@ var ECOSYSTEM={"SETUP_STYLES":{"community":{"label":"Akuarium Komunitas","desc":
    enumLabel() changes per language build. EN identity values below already
    have dashes replaced with spaces to preserve the pre-existing English
    display text exactly (previously produced via .replace(/-/g,' ')). */
-var TB_ENUM_LABELS={"care_level":{"Beginner":"Pemula","Intermediate":"Menengah","Advanced":"Mahir"},"bioload":{"very-low":"Sangat rendah","low":"Rendah","medium":"Sedang","medium-high":"Sedang-tinggi","high":"Tinggi","very-high":"Sangat tinggi"},"aggression":{"peaceful":"Damai","semi-aggressive":"Agak agresif","aggressive":"Agresif","predatory":"Predator"},"hardness":{"very-soft":"Sangat lunak","soft":"Lunak","soft-medium":"Lunak-sedang","medium":"Sedang","medium-hard":"Sedang-sadah","hard":"Sadah","soft-hard":"Lunak-sadah"},"water_column":{"top":"Atas","upper-middle":"Atas-tengah","middle":"Tengah","lower-middle":"Bawah-tengah","bottom":"Bawah","surface":"Permukaan","all":"Semua","bottom-all":"Bawah-semua","bottom-middle":"Bawah-tengah","middle-bottom":"Tengah-bawah"},"light":{"low":"Rendah","medium":"Sedang","high":"Tinggi","low-medium":"Rendah-sedang","medium-high":"Sedang-tinggi","low-high":"Rendah-tinggi"},"effect_ph":{"neutral":"Netral","neutral to slight increase":"Netral hingga sedikit naik","neutral to very slight increase":"Netral hingga sangat sedikit naik","neutral to variable":"Netral hingga bervariasi"},"effect_hardness":{"none":"Tidak ada","minimal":"Minimal","slight":"Sedikit","slight increase":"Sedikit naik","increases significantly":"Naik signifikan","increases significantly over time":"Naik signifikan seiring waktu","variable":"Bervariasi","softens":"Melunakkan","softening":"Pelunakan","slight softening":"Sedikit melunak","minimal to slight":"Minimal hingga sedikit","very minimal":"Sangat minimal"}};
+var TB_ENUM_LABELS={"care_level":{"Beginner":"Pemula","Intermediate":"Menengah","Advanced":"Mahir"},"bioload":{"very-low":"Sangat rendah","low":"Rendah","medium":"Sedang","medium-high":"Sedang-tinggi","high":"Tinggi","very-high":"Sangat tinggi"},"aggression":{"peaceful":"Damai","semi-aggressive":"Agak agresif","aggressive":"Agresif","predatory":"Predator"},"hardness":{"very-soft":"Sangat lunak","soft":"Lunak","soft-medium":"Lunak-sedang","medium":"Sedang","medium-hard":"Sedang-sadah","hard":"Sadah","soft-hard":"Lunak-sadah"},"water_column":{"top":"Atas","upper-middle":"Atas-tengah","middle":"Tengah","lower-middle":"Bawah-tengah","bottom":"Bawah","surface":"Permukaan","all":"Semua","bottom-all":"Bawah-semua","bottom-middle":"Bawah-tengah","middle-bottom":"Tengah-bawah"},"light":{"low":"Rendah","medium":"Sedang","high":"Tinggi","low-medium":"Rendah-sedang","medium-high":"Sedang-tinggi","low-high":"Rendah-tinggi"},"effect_ph":{"neutral":"Netral","neutral to slight increase":"Netral hingga sedikit naik","neutral to very slight increase":"Netral hingga sangat sedikit naik","neutral to variable":"Netral hingga bervariasi"},"effect_hardness":{"none":"Tidak ada","minimal":"Minimal","slight":"Sedikit","slight increase":"Sedikit naik","increases significantly":"Naik signifikan","increases significantly over time":"Naik signifikan seiring waktu","variable":"Bervariasi","softens":"Melunakkan","softening":"Pelunakan","slight softening":"Sedikit melunak","minimal to slight":"Minimal hingga sedikit","very minimal":"Sangat minimal"},"tier":{"Budget":"Ekonomis","Mid":"Menengah","Premium":"Premium","Budget–Mid":"Ekonomis–Menengah","Mid–Premium":"Menengah–Premium"}};
 function enumLabel(field,value){
   return (TB_ENUM_LABELS[field]&&TB_ENUM_LABELS[field][value])||value;
 }
@@ -2050,7 +2068,7 @@ function openDropdown(id){
     var nm=document.createElement('span');nm.className='dq-item-name';nm.textContent=ex;
     row.appendChild(nm);
     if(info&&info.tier){
-      var tg=document.createElement('span');tg.className='dq-item-tier';tg.textContent=info.tier;
+      var tg=document.createElement('span');tg.className='dq-item-tier';tg.textContent=enumLabel('tier',info.tier);
       row.appendChild(tg);
     }
     row.onclick=function(e){
@@ -2179,19 +2197,20 @@ function showBrandInfo(brandName,eqId){
     items.forEach(function(p){var tg=document.createElement('div');tg.className='bi-tag '+(cls||'');tg.textContent=p;t.appendChild(tg);});
     s.appendChild(t);body.appendChild(s);
   }
-  if(info.summary)addSection('Ringkasan',info.summary);
-  if(info.best_for)addSection('Cocok untuk',info.best_for);
-  addTags('Kelebihan',info.pros,'');addTags('Keterbatasan',info.cons,'warn');
+  var biSummary=biLoc(info.summary),biBestFor=biLoc(info.best_for),biPros=biLoc(info.pros,[]),biCons=biLoc(info.cons,[]),biTierNote=biLoc(info.tier_note),biAvoidIf=biLoc(info.avoid_if);
+  if(biSummary)addSection('Ringkasan',biSummary);
+  if(biBestFor)addSection('Cocok untuk',biBestFor);
+  addTags('Kelebihan',biPros,'');addTags('Keterbatasan',biCons,'warn');
   if(info.tier){
     var pr=document.createElement('div');pr.className='bi-section';
     var pl=document.createElement('div');pl.className='bi-section-lbl';pl.textContent='Kelas harga';
     var pt=document.createElement('div');pt.className='bi-tags';
-    var ptg=document.createElement('div');ptg.className='bi-tag neutral';ptg.textContent=info.tier;
+    var ptg=document.createElement('div');ptg.className='bi-tag neutral';ptg.textContent=enumLabel('tier',info.tier);
     pt.appendChild(ptg);pr.appendChild(pl);pr.appendChild(pt);
-    if(info.tier_note){var pn=document.createElement('div');pn.className='bi-section-text';pn.style.fontSize='.72rem';pn.style.marginTop='.2rem';pn.textContent=info.tier_note;pr.appendChild(pn);}
+    if(biTierNote){var pn=document.createElement('div');pn.className='bi-section-text';pn.style.fontSize='.72rem';pn.style.marginTop='.2rem';pn.textContent=biTierNote;pr.appendChild(pn);}
     body.appendChild(pr);
   }
-  if(info.avoid_if){var av=document.createElement('div');av.className='bi-verdict';av.textContent='\u26a0 Hindari jika: '+info.avoid_if;body.appendChild(av);}
+  if(biAvoidIf){var av=document.createElement('div');av.className='bi-verdict';av.textContent='\u26a0 Hindari jika: '+biAvoidIf;body.appendChild(av);}
   var disc=document.createElement('div');disc.style.cssText='font-size:var(--fs-xs);color:var(--th-ink-4);font-style:italic;font-family:var(--serif);padding:.55rem .85rem;border-top:1px solid var(--th-line);margin-top:.3rem';disc.textContent='Merek yang tercantum adalah contoh. Harga dan ketersediaan bervariasi menurut wilayah.';body.appendChild(disc);
   /* Actions */
   var acts=document.getElementById('bi-actions');

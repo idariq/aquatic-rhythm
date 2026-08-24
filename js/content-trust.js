@@ -1,12 +1,29 @@
 (function () {
   'use strict';
 
-  // Tool pages (tank-builder, tank-simulator, community-stress-lab) have no <main>.
-  // Only inject on standard reading articles.
-  if (!document.querySelector('main')) return;
-
+  // Tool pages (tank-builder, tank-simulator, community-stress-lab) have no
+  // <main>, so the real gate is just "does this page load this script and
+  // have a #bnav to anchor before" — every page that includes this file
+  // wants the disclosure, tool pages included (added 2026-08-24 so
+  // simulator/builder/lab users see the same sourcing disclosure as article
+  // readers, not just a bare interactive tool with no methodology note).
   var nav = document.getElementById('bnav');
   if (!nav) return;
+
+  // Tool pages are a fixed-viewport app shell (html,body{overflow:hidden}),
+  // NOT a normally-scrolling document like articles — inserting before #bnav
+  // (a position:fixed element) would put the section in body-level flow
+  // that the user can never actually scroll to, since body itself doesn't
+  // scroll. Found via Playwright screenshot verification 2026-08-24: the
+  // element existed in the DOM (had a real boundingBox) but was
+  // permanently off-screen with no way to reach it. All three tools share
+  // a #briefing intro overlay with a genuinely scrollable .brief-inner
+  // (overflow-y:auto) shown before the user starts — append there instead,
+  // right after the existing .brief-btn CTA, so every tool user encounters
+  // it at least once. Regular articles have no .brief-inner and keep the
+  // original #bnav-anchored placement.
+  var briefInner = document.querySelector('.brief-inner');
+  var isToolPage = !!briefInner;
 
   // Was hardcoded English on every locale (bug found 2026-08-18, user video) —
   // this section renders on every translated article, so it needs the same
@@ -65,7 +82,8 @@
     'border-bottom:1px solid var(--th-accent-border)}' +
     '.art-trust a:hover{color:var(--th-accent);border-bottom-color:var(--th-accent)}' +
     '.art-trust-meta{margin-top:.9rem;font-size:var(--fs-xs);color:var(--th-ink-4);' +
-    'letter-spacing:.03em}';
+    'letter-spacing:.03em}' +
+    '.art-trust-inline{margin:2rem 0 0;padding:1.2rem 0 0}';
   document.head.appendChild(style);
 
   var isSharePhotosPage = /\/share-photos\.html$/i.test(location.pathname || '');
@@ -74,7 +92,7 @@
     : '<p class="art-trust-photo">' + CT('photo_pre') + '<a href="/share-photos.html">' + CT('photo_link') + '</a>.</p>';
 
   var section = document.createElement('section');
-  section.className = 'art-trust';
+  section.className = isToolPage ? 'art-trust art-trust-inline' : 'art-trust';
   section.setAttribute('aria-label', CT('label'));
   section.innerHTML =
     '<span class="art-trust-label">' + CT('label') + '</span>' +
@@ -85,5 +103,9 @@
     photoInviteHtml +
     '<p class="art-trust-meta">' + CT('meta') + '</p>';
 
-  nav.parentNode.insertBefore(section, nav);
+  if (isToolPage) {
+    briefInner.appendChild(section);
+  } else {
+    nav.parentNode.insertBefore(section, nav);
+  }
 })();

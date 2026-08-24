@@ -2540,6 +2540,50 @@ function updateCompatStrip(){
       msgs.push(item.name+': keeping '+qty+' together risks fighting — doesn’t tolerate its own kind in numbers.');
     }
   });
+  /* Equipment dependency warnings — warnWithout data exists on every
+     AR_EQ item (requiresOne is authored but never populated — 27/27
+     entries are null, so it's skipped here) but was never wired to a
+     compat check until now (bug found + fixed 2026-08-24, same review
+     as aggression above). OR-semantics: warn only if none of the listed
+     dependencies are present — a single-entry array means "needs
+     exactly this" (co2-system needs light-planted), a multi-entry array
+     means "needs any one of these" (seed needs any filter). 'plants'
+     isn't an AR_EQ key — it means the plants rack must have ≥ 1 entry. */
+  Object.keys(active).forEach(function(k){
+    var eq=EQ[k];if(!eq||!eq.warnWithout||!eq.warnWithout.length)return;
+    var satisfied=eq.warnWithout.some(function(dep){
+      return dep==='plants'?Object.keys(ph2Active.plants).length>0:!!active[dep];
+    });
+    if(satisfied)return;
+    var titleCase=function(s){return s.replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});};
+    var eqLabel=titleCase(k);
+    var depLabels=eq.warnWithout.map(function(dep){return dep==='plants'?'plants':titleCase(dep);});
+    msgs.push(eqLabel+' needs '+depLabels.join(' or ')+' to be effective.');
+  });
+  /* Plant light/CO2 requirements — item.light/item.co2 exist on every
+     PLANTS entry (drives the detail-panel/tag display) but were never
+     checked against selected light/CO2 equipment until now. */
+  var plantKeys=Object.keys(ph2Active.plants);
+  if(plantKeys.length&&!active['light-basic']&&!active['light-planted']){
+    msgs.push('Plants selected but no light equipment — add a light for growth.');
+  }
+  plantKeys.forEach(function(k){
+    var item=ph2Active.plants[k];
+    if(item&&item.co2&&!active['co2-system']){
+      msgs.push((item.name||k)+' needs CO₂ injection for healthy growth.');
+    }
+  });
+  /* Hardscape tannin/acidifying effect vs hard-water livestock — mirrors
+     the hasSoft/hasHard livestock-vs-livestock check above, extended to
+     hardscape. item.effect.tannins is a clean boolean shared by all 11
+     driftwood-type items that measurably soften/acidify water (was
+     display-only, in the detail panel and card tags, until now). */
+  var hasTannins=Object.keys(ph2Active.hard).some(function(k){
+    var item=ph2Active.hard[k];return item&&item.effect&&item.effect.tannins;
+  });
+  if(hasTannins&&hasHard){
+    msgs.push('Tannin-releasing hardscape softens and acidifies water — may conflict with hard-water species selected.');
+  }
   var totalBio=0;
   stockKeys.forEach(function(k){
     var item=ph2Active.stock[k];if(!item)return;

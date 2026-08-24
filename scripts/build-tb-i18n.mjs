@@ -453,6 +453,11 @@ function patchEngineStrings(h, t, lang) {
     `if(qty<min)msgs.push(item.name+'${cp.schoolingNeed}'+min+'${cp.schoolingYouHave}'+qty+'${cp.schoolingClose}');`, 'js.schoolingMsg');
   h = subOnce(h, "if(totalBio>8&&!hasCanister&&hasFilter)msgs.push('High bioload \\u2014 canister or overflow filter recommended.');", `if(totalBio>8&&!hasCanister&&hasFilter)msgs.push('${cp.highBioload}');`, 'js.highBioload');
   h = subOnce(h, "if(totalBio>5&&!hasFilter)msgs.push('No filter selected \\u2014 add filtration before stocking.');", `if(totalBio>5&&!hasFilter)msgs.push('${cp.noFilterSelected}');`, 'js.noFilterSelected');
+  h = subOnce(h, "msgs.push(eqLabel+' needs '+depLabels.join(' or ')+' to be effective.');",
+    `msgs.push(eqLabel+'${cp.eqNeedsPrefix}'+depLabels.join('${cp.orWord}')+'${cp.eqNeedsSuffix}');`, 'js.eqWarnWithout');
+  h = subOnce(h, "msgs.push('Plants selected but no light equipment — add a light for growth.');", `msgs.push('${cp.plantsNoLight}');`, 'js.plantsNoLight');
+  h = subOnce(h, "msgs.push((item.name||k)+' needs CO₂ injection for healthy growth.');", `msgs.push((item.name||k)+'${cp.plantNeedsCo2}');`, 'js.plantNeedsCo2');
+  h = subOnce(h, "msgs.push('Tannin-releasing hardscape softens and acidifies water — may conflict with hard-water species selected.');", `msgs.push('${cp.tanninHardnessConflict}');`, 'js.tanninHardnessConflict');
   h = subOnce(h, "if(!msgs.length){el.className='';el.textContent='\\u2713 No issues with current selection.';return;}", `if(!msgs.length){el.className='';el.textContent='${cp.noIssues}';return;}`, 'js.noIssues');
   h = subOnce(h, "window.alert('Create a tank in Keeper\\x27s Log first (main site \\u2192 Log), then save this plan again.');", `window.alert('${cp.saveErrorNoTank}');`, 'js.saveErrorNoTank');
   h = subOnce(h, "window.alert('Could not save \\u2014 storage may be blocked or full.');", `window.alert('${cp.saveErrorGeneric}');`, 'js.saveErrorGeneric');

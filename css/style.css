@@ -596,9 +596,25 @@ footer{padding:3.5rem clamp(1.5rem,5vw,4.5rem);display:flex;align-items:center;j
    hiding the foreground UI, not resizing the background layers). ── */
 .ar-calm-exit{display:none;align-items:center;justify-content:center;position:fixed;top:1rem;right:1rem;z-index:2000;width:36px;height:36px;padding:0;border-radius:50%;background:rgba(8,18,16,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);color:#eaf6f2;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .2s}
 .ar-calm-exit:hover{background:rgba(8,18,16,.72)}
+/* Ambient sound toggle — same visual treatment as .ar-calm-exit, sits to
+   its left. Opt-in only (see js/ui-calm-mode.js): starts muted every time
+   unless the visitor explicitly turned it on last visit (remembered via
+   localStorage), never autoplays without that stored consent + the
+   click that re-enters calm mode (the click itself is the required user
+   gesture for AudioContext). cs-on/cs-off are two whole icon swaps
+   toggled by aria-pressed, not a single icon with a strike-through, so
+   the muted state is unambiguous at a glance. */
+.ar-calm-sound{display:none;align-items:center;justify-content:center;position:fixed;top:1rem;right:4.2rem;z-index:2000;width:36px;height:36px;padding:0;border-radius:50%;background:rgba(8,18,16,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);color:#eaf6f2;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .2s}
+.ar-calm-sound:hover{background:rgba(8,18,16,.72)}
+.ar-calm-sound .cs-off{display:none}
+.ar-calm-sound[aria-pressed="true"] .cs-on{display:block}
+.ar-calm-sound[aria-pressed="true"] .cs-off{display:none}
+.ar-calm-sound[aria-pressed="false"] .cs-on{display:none}
+.ar-calm-sound[aria-pressed="false"] .cs-off{display:block}
 body.calm-mode{overflow:hidden}
 body.calm-mode .ar-calm-exit{display:flex}
-body.calm-mode>*:not(#eco):not(#fish-layer):not(#cd):not(#cr):not(.ar-calm-exit){display:none!important}
+body.calm-mode .ar-calm-sound{display:flex}
+body.calm-mode>*:not(#eco):not(#fish-layer):not(#cd):not(#cr):not(.ar-calm-exit):not(.ar-calm-sound){display:none!important}
 
 /* ── SETTINGS PANEL ── */
 .ar-settings-btn{display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:none;border:none;border-radius:50%;cursor:pointer!important;padding:0;color:var(--th-ink-2);opacity:.52;transition:background .25s,opacity .3s;pointer-events:all!important;-webkit-tap-highlight-color:transparent;flex-shrink:0}

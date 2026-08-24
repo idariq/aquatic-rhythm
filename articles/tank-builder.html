@@ -810,9 +810,14 @@ body.eq-dd-open{overflow:hidden}
   transition:opacity .3s;
 }
 .bi-img-wrap.img-loaded .bi-img-skeleton{opacity:0;pointer-events:none}
-/* Equipment About: category hero (no unrelated Wikipedia thumbnails) */
+/* Equipment About: category hero (no unrelated Wikipedia thumbnails).
+   Uses the same theme-aware --th-water gradient as body::before (was a
+   hardcoded dark gradient — always rendered navy/black even in light
+   theme, ignoring data-theme). --th-accent/--th-ink-4 text below already
+   have correct light/dark variants, so they read fine once the backdrop
+   itself follows theme too. */
 .bi-img-wrap.bi-hero-native{
-  background:linear-gradient(155deg,rgba(6,32,38,.97) 0%,rgba(4,12,20,.94) 48%,rgba(8,22,28,.9) 100%);
+  background:var(--th-water);
 }
 .bi-img-wrap.bi-hero-native #bi-img{display:none!important}
 .bi-img-wrap.bi-hero-native .bi-carousel-viewport{display:none!important}

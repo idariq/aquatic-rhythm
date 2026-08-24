@@ -299,13 +299,30 @@ penyelesaian muktamad, betulkan punca (kod build) macam kes ni.
 atas) turut terpakai pd label PENDEK tanpa perkataan "Rhythm" literal**
 (cth. `tank-builder`'s `briefing.rhythms[].name`="Water"/"Biological"/
 dll, tanpa suffix "Rhythm") — bukan sekadar bila teks penuh "Water
-Rhythm" muncul verbatim. `tank-builder` guna "Human" sbg dimensi ke-5
-(BUKAN "Keeper" spt sistem biasa) tapi konsep SAMA (rujuk medan `desc`
-"Maintenance demand and keeper commitment") — gloss ja pinjam
-"飼育者" (Keeper) sedia ada drpd cipta istilah baharu. Sentiasa SEMAK
+Rhythm" muncul verbatim. `tank-builder` guna "**Keeper**" sbg label
+dimensi ke-5 (3 tempat: `briefing.rhythms[4].name`, `topBand.rhyLabels
+.human`, `report.rhythmLabels.human` — kunci JS/JSON KEKAL `human`
+sbg nama medan dalaman, cuma label PAPARAN yg tukar), sepadan `docs/
+ARA-framework-v2.docx` (manuskrip akademik sumber DOI OSF) — abstrak &
+§3.6 tajuk seksyen eksplisit guna "Keeper" (11×) sbg nama RHYTHM
+ke-5 rasmi ("The Keeper Rhythm is the fifth ecological rhythm").
+**SEBELUM PR #395 (2026-08-24) label ni tersilap "Human"** — justifikasi
+lama (kononnya sepadan Domain 7 "Human Rhythm" drpd 7 Alignment
+Domains) silap percampur DUA lapisan berbeza dlm kertas sumber (5
+Rhythms vs 7 Domains, dua senarai berasingan) — "Human Rhythm" ialah
+nama Domain 7 (lapisan operasi/praktikal, muncul 2× je dlm manuskrip),
+BUKAN sinonim Rhythm ke-5. Gloss ja "（飼育者）" (Keeper) kekal
+digunakan pd sebutan pertama (`briefing.rhythms[4].name`="Keeper（
+飼育者）") — kini SELARAS antara istilah English & gloss sendiri
+(sebelum ni "Human（飼育者）" janggal sbb glosnya sendiri dah
+dedahkan konsep sebenar ialah "keeper", bukan "human"). Sentiasa SEMAK
 CLAUDE.md bahagian ni SEBELUM hantar draf terjemahan agen bila alat
 baharu ada label ringkas rujuk konsep 5-irama — mudah terlepas pandang
-sbb tiada perkataan "Rhythm" literal dlm label pendek.
+sbb tiada perkataan "Rhythm" literal dlm label pendek, & sentiasa
+SAHKAN nama rasmi terus drpd manuskrip sumber (`docs/ARA-framework
+-v2.docx`) kalau ada keraguan lapisan Rhythm vs Domain — jangan
+percaya ingatan/tafsiran drpd nota lama fail ni tanpa semak balik
+sumber, spt yg terlepas pandang di sini.
 
 **Tempat tambahan perlu dikemas kini bila tambah slug templat bespoke
 baharu** (selain 15 tempat `LANGUAGES`/`NAV_LABELS` biasa di atas):

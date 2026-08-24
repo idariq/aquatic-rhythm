@@ -38,7 +38,7 @@
     "desc": "Kecocokan spesies dan kebutuhan penebaran"
    },
    {
-    "name": "Human",
+    "name": "Keeper",
     "desc": "Kebutuhan perawatan dan komitmen penjaga"
    }
   ],
@@ -55,7 +55,7 @@
    "bio": "Biological",
    "env": "Environment",
    "live": "Livestock",
-   "human": "Human"
+   "human": "Keeper"
   }
  },
  "tabs": {
@@ -326,7 +326,7 @@
    "bio": "Biological",
    "env": "Environmental",
    "live": "Livestock",
-   "human": "Human"
+   "human": "Keeper"
   },
   "rhythmDesc": {
    "water": [

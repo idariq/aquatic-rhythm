@@ -38,7 +38,7 @@
     "desc": "種の相性と収容による負荷"
    },
    {
-    "name": "Human（飼育者）",
+    "name": "Keeper（飼育者）",
     "desc": "メンテナンスの手間と飼育者のコミットメント"
    }
   ],
@@ -55,7 +55,7 @@
    "bio": "Biological",
    "env": "Environment",
    "live": "Livestock",
-   "human": "Human"
+   "human": "Keeper"
   }
  },
  "tabs": {
@@ -326,7 +326,7 @@
    "bio": "Biological",
    "env": "Environmental",
    "live": "Livestock",
-   "human": "Human"
+   "human": "Keeper"
   },
   "rhythmDesc": {
    "water": [

@@ -72,6 +72,7 @@
    "Cooling": "Pendinginan",
    "Substrate": "Substrat",
    "Additions": "Tambahan",
+   "Automation": "Otomatisasi",
    "Monitoring": "Pemantauan"
   },
   "items": {
@@ -178,6 +179,10 @@
    "ato": {
     "name": "Auto Top-Off",
     "role": "Mengganti air yang menguap"
+   },
+   "auto-feeder": {
+    "name": "Pemberi Pakan Otomatis",
+    "role": "Pemberian pakan terjadwal"
    },
    "co2-system": {
     "name": "Sistem CO2",

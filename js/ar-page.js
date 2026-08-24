@@ -289,15 +289,38 @@
        just block background scroll, it also stops touch-scroll from
        reaching this panel's own overflow-y:auto — the whole page
        becomes untouchable, panel included. position:fixed + restoring
-       scroll position on close is the standard robust fix. */
+       scroll position on close is the standard robust fix.
+
+       BUT: app-shell pages (tank-builder/tank-simulator/community-
+       stress-lab) already set body{overflow:hidden} permanently in
+       their own CSS — there's no background scroll position to
+       protect there in the first place, since body never scrolls on
+       those pages regardless of this panel's state. Toggling
+       body.style.position='fixed' there anyway — on a body that also
+       has an explicit height:100dvh rule — is a known trigger for
+       mobile Chrome to mis-cache the dynamic viewport height at
+       whatever browser-toolbar state happened to be showing at that
+       instant. Bug found 2026-08-24 (user video): tank-builder's
+       RESET/SEE REPORT buttons shift upward after opening Settings
+       and changing the theme, leaving a gap below them where the
+       button bar used to sit flush — traced to this lock/unlock cycle
+       running unnecessarily on an already-non-scrolling body, not to
+       the theme switch itself. Skip the whole position:fixed hack
+       when body is already non-scrolling by page design; regular
+       articles (body scrolls normally, overflow-y not hidden) are
+       unaffected and keep the original lock. */
     var scrollLockY = 0;
+    var skippedLock = false;
     function lockBodyScroll() {
+      skippedLock = getComputedStyle(document.body).overflowY === 'hidden';
+      if (skippedLock) return;
       scrollLockY = window.scrollY || window.pageYOffset || 0;
       document.body.style.position = 'fixed';
       document.body.style.top = '-' + scrollLockY + 'px';
       document.body.style.width = '100%';
     }
     function unlockBodyScroll() {
+      if (skippedLock) { skippedLock = false; return; }
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
@@ -779,15 +802,26 @@
      mobile: on some Android WebViews/embedded browsers it doesn't just
      block background scroll, it also stops touch-scroll from reaching
      the sheet's own overflow-y:auto thread. position:fixed + restoring
-     scroll position on close is the standard robust fix. */
+     scroll position on close is the standard robust fix.
+
+     Same app-shell exception as the Settings panel's copy of this
+     function above (see its comment for the full 2026-08-24 bug
+     writeup) — skip the position:fixed hack on pages where body is
+     already permanently overflow:hidden (tank-builder/tank-simulator/
+     community-stress-lab), since there's no scroll to protect there
+     and toggling it anyway can mis-cache height:100dvh on mobile. */
   var scrollLockY = 0;
+  var skippedLock = false;
   function lockBodyScroll() {
+    skippedLock = getComputedStyle(document.body).overflowY === 'hidden';
+    if (skippedLock) return;
     scrollLockY = window.scrollY || window.pageYOffset || 0;
     document.body.style.position = 'fixed';
     document.body.style.top = '-' + scrollLockY + 'px';
     document.body.style.width = '100%';
   }
   function unlockBodyScroll() {
+    if (skippedLock) { skippedLock = false; return; }
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.width = '';

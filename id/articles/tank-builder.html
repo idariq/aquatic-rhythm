@@ -1618,28 +1618,56 @@ function drawLabel(ctx,x,y,txt,col){
   ctx.fillStyle=col||'rgba(235,240,236,.38)';ctx.textAlign='center';ctx.textBaseline='middle';
   ctx.fillText(txt,x,y);ctx.restore();
 }
+/* Water/Biological/Environmental are CAPACITY bars — infrastructure you've
+   added, higher = more built-in support, straightforwardly "fuller is
+   better" (matches ARA's System capacity, docs/ARA-framework-v2.docx
+   §Capacity Before Ambition). Livestock and Keeper are DEMAND bars —
+   pressure placed ON that capacity (species/keeper capacity in the same
+   ARA section) — higher there means "more is being asked", not "more is
+   better" (the report screen's own rhyData desc text already reads this
+   way: >70 Livestock is "monitor parameters closely", >70 Keeper is
+   "Demanding setup", while <40 for both reads positively — "good starting
+   point" / "Relatively low maintenance"). Both bar TYPES previously used
+   the exact same fixed-hue fill logic, so a quick glance (without reading
+   the report text) couldn't tell "fuller = more capacity built" apart
+   from "fuller = more being asked of you" — added 2026-08-24 so the two
+   demand bars carry their own green/amber/red gradient instead, using the
+   same 40/70 thresholds as the report desc text, so the distinction reads
+   at a glance without requiring any text. */
+function demandColor(v){
+  var stops=[[0,90,190,110],[40,230,175,60],[70,224,100,80],[100,224,100,80]];
+  for(var i=0;i<stops.length-1;i++){
+    var a=stops[i],b=stops[i+1];
+    if(v>=a[0]&&v<=b[0]){
+      var t=b[0]===a[0]?0:(v-a[0])/(b[0]-a[0]);
+      return Math.round(a[1]+(b[1]-a[1])*t)+','+Math.round(a[2]+(b[2]-a[2])*t)+','+Math.round(a[3]+(b[3]-a[3])*t);
+    }
+  }
+  return '224,100,80';
+}
 function updateRhythmBars(s){
   if(!s)return;
   var spec=[
     {key:'water',rgb:'124,168,156'},
     {key:'bio',rgb:'100,200,82'},
     {key:'env',rgb:'220,160,60'},
-    {key:'live',rgb:'180,120,200'},
-    {key:'human',rgb:'139,189,210'}
+    {key:'live',demand:true},
+    {key:'human',demand:true}
   ];
   spec.forEach(function(d){
     var v=Math.max(0,Math.min(100,Math.round(s[d.key]||0)));
+    var rgb=d.demand?demandColor(v):d.rgb;
     var fill=document.getElementById('rhy-fill-'+d.key);
     var pct=document.getElementById('rhy-pct-'+d.key);
     var dot=document.getElementById('rhy-dot-'+d.key);
     if(fill){
       fill.style.width=v+'%';
-      fill.style.background='rgba('+d.rgb+','+(v>6?.78:.28)+')';
+      fill.style.background='rgba('+rgb+','+(v>6?.78:.28)+')';
     }
     if(pct)pct.textContent=v;
     if(dot){
-      dot.style.background='rgba('+d.rgb+','+(v>10?.85:.24)+')';
-      dot.style.boxShadow=v>45?'0 0 4px rgba('+d.rgb+',.32)':'none';
+      dot.style.background='rgba('+rgb+','+(v>10?.85:.24)+')';
+      dot.style.boxShadow=v>45?'0 0 4px rgba('+rgb+',.32)':'none';
     }
   });
 }
@@ -2579,8 +2607,8 @@ function showFullReport(){
     {label:'Water',color:'rgba(61,214,232,',val:s.water,desc:s.water>70?'Kapasitas filtrasi sudah mapan.':s.water>40?'Filtrasi dasar sudah terpasang.':'Filtrasi perlu diperhatikan sebelum menebar penghuni.'},
     {label:'Biological',color:'rgba(100,200,82,',val:s.bio,desc:s.bio>70?'Area permukaan biologis yang baik.':s.bio>40?'Koloni bakteri dapat terbentuk melalui proses siklus.':'Media biologis tidak mencukupi.'},
     {label:'Environmental',color:'rgba(220,160,60,',val:s.env,desc:s.env>70?'Suhu dan fotoperiode terkendali dengan baik.':s.env>40?'Kendali lingkungan dasar sudah terpasang.':'Konsistensi kondisi perlu diperhatikan.'},
-    {label:'Livestock',color:'rgba(180,120,200,',val:s.live,desc:s.live>70?'Kebutuhan penebaran tinggi — pantau parameter dengan ketat.':s.live>40?'Kebutuhan penebaran sedang.':'Penebaran ringan — titik awal yang baik.'},
-    {label:'Keeper',color:'rgba(139,189,210,',val:s.human,desc:s.human>70?'Pengaturan yang menuntut perhatian konsisten.':s.human>40?'Perawatan sedang diperlukan.':'Perawatan relatif rendah.'}
+    {label:'Livestock',color:'rgba('+demandColor(s.live)+',',val:s.live,desc:s.live>70?'Kebutuhan penebaran tinggi — pantau parameter dengan ketat.':s.live>40?'Kebutuhan penebaran sedang.':'Penebaran ringan — titik awal yang baik.'},
+    {label:'Keeper',color:'rgba('+demandColor(s.human)+',',val:s.human,desc:s.human>70?'Pengaturan yang menuntut perhatian konsisten.':s.human>40?'Perawatan sedang diperlukan.':'Perawatan relatif rendah.'}
   ];
   rhyData.forEach(function(r){
     var pct=Math.round(r.val);

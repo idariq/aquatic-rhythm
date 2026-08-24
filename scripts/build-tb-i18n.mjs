@@ -392,12 +392,12 @@ function patchEngineStrings(h, t, lang) {
   // ── brand info overlay ──
   h = subOnce(h, "var info=BRAND_INFO[brandName]||{summary:'No detailed information available.',pros:[],cons:[],best_for:'',tier:'',tier_note:'',avoid_if:''};",
     `var info=BRAND_INFO[brandName]||{summary:'${bi.noInfo}',pros:[],cons:[],best_for:'',tier:'',tier_note:'',avoid_if:''};`, 'js.noInfo');
-  h = subOnce(h, "if(info.summary)addSection('Overview',info.summary);", `if(info.summary)addSection('${bi.overview}',info.summary);`, 'js.biOverview');
-  h = subOnce(h, "if(info.best_for)addSection('Best for',info.best_for);", `if(info.best_for)addSection('${bi.bestFor}',info.best_for);`, 'js.bestFor');
-  h = subOnce(h, "addTags('Strengths',info.pros,'');addTags('Limitations',info.cons,'warn');", `addTags('${bi.strengths}',info.pros,'');addTags('${bi.limitations}',info.cons,'warn');`, 'js.strengthsLimitations');
+  h = subOnce(h, "if(biSummary)addSection('Overview',biSummary);", `if(biSummary)addSection('${bi.overview}',biSummary);`, 'js.biOverview');
+  h = subOnce(h, "if(biBestFor)addSection('Best for',biBestFor);", `if(biBestFor)addSection('${bi.bestFor}',biBestFor);`, 'js.bestFor');
+  h = subOnce(h, "addTags('Strengths',biPros,'');addTags('Limitations',biCons,'warn');", `addTags('${bi.strengths}',biPros,'');addTags('${bi.limitations}',biCons,'warn');`, 'js.strengthsLimitations');
   h = subOnce(h, "var pl=document.createElement('div');pl.className='bi-section-lbl';pl.textContent='Price tier';", `var pl=document.createElement('div');pl.className='bi-section-lbl';pl.textContent='${bi.priceTier}';`, 'js.priceTier');
-  h = subOnce(h, "if(info.avoid_if){var av=document.createElement('div');av.className='bi-verdict';av.textContent='\\u26a0 Avoid if: '+info.avoid_if;body.appendChild(av);}",
-    `if(info.avoid_if){var av=document.createElement('div');av.className='bi-verdict';av.textContent='\\u26a0 ${bi.avoidIfPrefix}'+info.avoid_if;body.appendChild(av);}`, 'js.avoidIf');
+  h = subOnce(h, "if(biAvoidIf){var av=document.createElement('div');av.className='bi-verdict';av.textContent='\\u26a0 Avoid if: '+biAvoidIf;body.appendChild(av);}",
+    `if(biAvoidIf){var av=document.createElement('div');av.className='bi-verdict';av.textContent='\\u26a0 ${bi.avoidIfPrefix}'+biAvoidIf;body.appendChild(av);}`, 'js.avoidIf');
   h = subOnce(h, "disc.textContent='Brands listed are examples. Prices and availability vary by region.';", `disc.textContent='${bi.brandsDisclaimer}';`, 'js.brandsDisclaimer');
   h = subOnce(h, "useBtn.textContent='Use '+brandName.split(' ')[0]+' \\u2192';", `useBtn.textContent='${bi.useBtnPrefix}'+brandName.split(' ')[0]+'${bi.useBtnSuffix}';`, 'js.biUseBtn');
   h = subOnce(h, "var backBtn=document.createElement('button');backBtn.className='bi-btn-back';backBtn.textContent='\\u2190 Back';",

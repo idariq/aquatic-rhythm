@@ -706,11 +706,29 @@ body.eq-dd-open{overflow:hidden}
 .ph2-diet{font-size:var(--fs-xs);color:var(--th-ink-3);font-style:italic;
   margin-top:.28rem}
 
-/* Selected summary */
-#eco-summary{padding:.5rem .7rem;background:var(--th-surface-2);
-  border-bottom:1px solid var(--th-line);font-size:var(--fs-xs);
-  color:var(--th-ink-3);min-height:36px;display:flex;
-  align-items:center;flex-wrap:wrap;gap:.35rem}
+/* Selection summary bar — persistent across tabs (moved out of
+   #eco-zone 2026-08-24), collapsible so it doesn't eat rack/eco space
+   once a setup has many items. */
+#tb-summary-bar{flex-shrink:0;background:var(--th-surface-2);
+  border-bottom:1px solid var(--th-line)}
+.tb-summary-toggle{width:100%;display:flex;align-items:center;gap:.4rem;
+  padding:.4rem .7rem;background:none;border:none;cursor:pointer;
+  font-family:var(--sans);color:var(--th-ink-2);text-align:left;
+  -webkit-tap-highlight-color:transparent}
+.tb-summary-toggle-lbl{font-size:var(--fs-xs);font-weight:600;
+  letter-spacing:.04em}
+.tb-summary-toggle-count{font-size:var(--fs-2xs);color:var(--th-ink-4);
+  flex:1}
+.tb-summary-toggle-icon{width:14px;height:14px;flex-shrink:0;
+  transition:transform .25s}
+#tb-summary-bar.collapsed .tb-summary-toggle-icon{transform:rotate(-90deg)}
+#eco-summary{padding:0 .7rem .55rem;font-size:var(--fs-xs);
+  color:var(--th-ink-3);display:flex;flex-direction:column;gap:.32rem;
+  max-height:9.5rem;overflow-y:auto}
+#tb-summary-bar.collapsed #eco-summary{display:none}
+.eco-sum-group{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem}
+.eco-sum-group-lbl{font-size:var(--fs-2xs);text-transform:uppercase;
+  letter-spacing:.06em;color:var(--th-ink-4);flex-shrink:0}
 .eco-sum-tag{font-size:var(--fs-2xs);padding:.14rem .42rem;
   background:var(--th-accent-soft);border:1px solid var(--th-accent-border);
   border-radius:6px;color:var(--th-accent);white-space:nowrap}
@@ -731,9 +749,12 @@ body.eq-dd-open{overflow:hidden}
 .phase-dot.active{background:var(--th-accent-soft)}
 
 
-/* Compat strip pinned */
+/* Compat strip — persistent across tabs (moved out of #eco-zone
+   2026-08-24), no longer needs sticky positioning since it now sits
+   as a static flex sibling above the scrolling rack/eco content
+   instead of inside it. */
 #compat-strip{
-  position:sticky;top:0;z-index:10;
+  flex-shrink:0;
   padding:.48rem .75rem;
   background:var(--th-surface-2);
   border-bottom:1px solid var(--th-line);
@@ -1033,6 +1054,21 @@ nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
   <button type="button" class="lab-tab" data-tab="hardscape">レイアウト素材</button>
 </div>
 
+<!-- SELECTION SUMMARY + COMPATIBILITY — persistent across all tabs, not
+     tied to rack-zone/eco-zone so equipment-only warnings (bio-media,
+     chem-media, etc.) stay visible even while browsing Equipment, not
+     just when a fish is added (bug found 2026-08-24: both were nested
+     inside #eco-zone, hidden whenever the Equipment tab was active). -->
+<div id="tb-summary-bar" style="display:none">
+  <button type="button" id="tb-summary-toggle" class="tb-summary-toggle" aria-expanded="true" aria-controls="eco-summary">
+    <span class="tb-summary-toggle-lbl">セットアップ内容</span>
+    <span class="tb-summary-toggle-count" id="tb-summary-count"></span>
+    <svg class="tb-summary-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+  </button>
+  <div id="eco-summary"></div>
+</div>
+<div id="compat-strip">種を選ぶと、相性に関するメモがここに表示されます。</div>
+
 <!-- EQUIPMENT TAB -->
 <div id="rack-zone">
 <div id="rack">
@@ -1130,10 +1166,6 @@ nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 
 <!-- ECOSYSTEM TAB -->
 <div id="eco-zone">
-  <!-- Selected species summary bar -->
-  <div id="eco-summary" style="display:none"></div>
-  <!-- Compatibility -->
-    <div id="compat-strip">種を選ぶと、相性に関するメモがここに表示されます。</div>
   <div class="tb-kofi-hint" id="tb-kofi-hint">
     <span class="tb-kofi-hint-txt">ここでのプランニングは無料ですが、チップはこうしたラボの維持に役立ちます。</span>
     <a href="https://ko-fi.com/aquaticrhythm" class="tb-kofi-hint-link" data-kofi-open rel="noopener noreferrer" aria-label="Ko-fiで支援する">Ko-fi</a>
@@ -1820,6 +1852,15 @@ window.addEventListener('load',function(){
     });
   }
 
+  /* Selection summary collapse toggle */
+  var summaryToggle=document.getElementById('tb-summary-toggle');
+  if(summaryToggle){
+    setTbSummaryCollapsed(tbSummaryCollapsed());
+    summaryToggle.addEventListener('click',function(){
+      setTbSummaryCollapsed(!document.getElementById('tb-summary-bar').classList.contains('collapsed'));
+    });
+  }
+
   /* Reset */
   var resetBtn=document.getElementById('btn-reset');
   if(resetBtn)resetBtn.addEventListener('click',function(){
@@ -2030,6 +2071,58 @@ function calcEcoRhythms(){
 function updateRhythms(){
   var s=isEcoTab(_currentTab)?calcEcoRhythms():calcRhythms();
   updateRhythmBars(s);
+  updateEcoSummary();
+  updateCompatStrip();
+}
+
+/* ═══ SELECTION SUMMARY ═══
+   Persistent chip list of everything currently selected (equipment +
+   livestock + plants + hardscape), independent of which tab is open —
+   see #tb-summary-bar comment in the HTML for why this moved out of
+   #eco-zone. Called from updateRhythms(), which already runs on every
+   state change (equipment toggle, livestock/plant/hardscape add or
+   remove, reset), so this needs no extra call sites of its own. */
+function updateEcoSummary(){
+  var bar=document.getElementById('tb-summary-bar');
+  var wrap=document.getElementById('eco-summary');
+  var countEl=document.getElementById('tb-summary-count');
+  if(!bar||!wrap)return;
+  var eqKeys=Object.keys(active);
+  var stockKeys=Object.keys(ph2Active.stock);
+  var plantKeys=Object.keys(ph2Active.plants);
+  var hardKeys=Object.keys(ph2Active.hard);
+  var total=eqKeys.length+stockKeys.length+plantKeys.length+hardKeys.length;
+  if(!total){bar.style.display='none';return;}
+  bar.style.display='block';
+  if(countEl)countEl.textContent=total+'件選択中';
+  wrap.innerHTML='';
+  function titleCase(s){return s.replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});}
+  function addGroup(label,keys,getName){
+    if(!keys.length)return;
+    var g=document.createElement('div');g.className='eco-sum-group';
+    var l=document.createElement('span');l.className='eco-sum-group-lbl';l.textContent=label;g.appendChild(l);
+    keys.forEach(function(k){
+      var tag=document.createElement('span');tag.className='eco-sum-tag';tag.textContent=getName(k);g.appendChild(tag);
+    });
+    wrap.appendChild(g);
+  }
+  addGroup('設備',eqKeys,function(k){return titleCase(k);});
+  addGroup('生体',stockKeys,function(k){
+    var it=ph2Active.stock[k];var qty=it&&it._qty||1;
+    return (it&&it.name?it.name:k)+(qty>1?' ×'+qty:'');
+  });
+  addGroup('水草',plantKeys,function(k){var it=ph2Active.plants[k];return it&&it.name?it.name:k;});
+  addGroup('レイアウト素材',hardKeys,function(k){var it=ph2Active.hard[k];return it&&it.name?it.name:k;});
+}
+
+var TB_SUMMARY_COLLAPSE_KEY='ar_tb_summary_collapsed';
+function tbSummaryCollapsed(){try{return localStorage.getItem(TB_SUMMARY_COLLAPSE_KEY)==='1';}catch(e){return false;}}
+function setTbSummaryCollapsed(v){
+  try{localStorage.setItem(TB_SUMMARY_COLLAPSE_KEY,v?'1':'0');}catch(e){}
+  var bar=document.getElementById('tb-summary-bar');
+  var toggle=document.getElementById('tb-summary-toggle');
+  if(bar)bar.classList.toggle('collapsed',v);
+  if(toggle)toggle.setAttribute('aria-expanded',v?'false':'true');
 }
 
 function updateSubmitBtn(){
@@ -2548,7 +2641,17 @@ function updateEcoState(){
 function updateCompatStrip(){
   var el=document.getElementById('compat-strip');if(!el)return;
   var stockKeys=Object.keys(ph2Active.stock);
-  if(!stockKeys.length){el.style.display='none';el.className='';return;}
+  /* Gate on ANYTHING selected, not just livestock — equipment-only
+     warnings (bio-media/chem-media/root-tabs/liquid-fert/auto-dosing
+     warnWithout, plant light/CO2 checks, hardscape tannins) don't need
+     a fish to be relevant, and this strip is now visible on every tab
+     (bug found 2026-08-24 — it used to live inside #eco-zone, so an
+     equipment-only warning was computed but never shown until the
+     keeper happened to switch to a livestock tab). Livestock-specific
+     checks below already no-op safely on an empty stockKeys array. */
+  var hasAnything=stockKeys.length||Object.keys(active).length||
+    Object.keys(ph2Active.plants).length||Object.keys(ph2Active.hard).length;
+  if(!hasAnything){el.style.display='none';el.className='';return;}
   el.style.display='block';
   var msgs=[];
   var temps=stockKeys.map(function(k){return ph2Active.stock[k]&&ph2Active.stock[k].temp;}).filter(Boolean);

@@ -339,6 +339,15 @@ function patchEco(h, t) {
   h = subOnce(h, '<div class="eco-section-hdr">Fish &amp; Invertebrates</div>', `<div class="eco-section-hdr">${e.sectionHeaders.stock}</div>`, 'eco.sectionHeaders.stock');
   h = subOnce(h, '<div class="eco-section-hdr">Plants</div>', `<div class="eco-section-hdr">${e.sectionHeaders.plants}</div>`, 'eco.sectionHeaders.plants');
   h = subOnce(h, '<div class="eco-section-hdr">Hardscape</div>', `<div class="eco-section-hdr">${e.sectionHeaders.hardscape}</div>`, 'eco.sectionHeaders.hardscape');
+  h = subOnce(h, '<span class="tb-summary-toggle-lbl">Your setup</span>', `<span class="tb-summary-toggle-lbl">${e.summaryTitle}</span>`, 'eco.summaryTitle');
+  h = subOnce(h, "if(countEl)countEl.textContent=total+' selected';", `if(countEl)countEl.textContent=total+'${e.summarySelectedSuffix}';`, 'js.summarySelectedSuffix');
+  h = subOnce(h, "addGroup('Equipment',eqKeys,function(k){return titleCase(k);});", `addGroup('${t.tabs.equipment}',eqKeys,function(k){return titleCase(k);});`, 'js.summaryGroupEquipment');
+  h = subOnce(h,
+    "addGroup('Livestock',stockKeys,function(k){\n    var it=ph2Active.stock[k];var qty=it&&it._qty||1;\n    return (it&&it.name?it.name:k)+(qty>1?' ×'+qty:'');\n  });",
+    `addGroup('${t.tabs.livestock}',stockKeys,function(k){\n    var it=ph2Active.stock[k];var qty=it&&it._qty||1;\n    return (it&&it.name?it.name:k)+(qty>1?' ×'+qty:'');\n  });`,
+    'js.summaryGroupLivestock');
+  h = subOnce(h, "addGroup('Plants',plantKeys,function(k){var it=ph2Active.plants[k];return it&&it.name?it.name:k;});", `addGroup('${t.tabs.plants}',plantKeys,function(k){var it=ph2Active.plants[k];return it&&it.name?it.name:k;});`, 'js.summaryGroupPlants');
+  h = subOnce(h, "addGroup('Hardscape',hardKeys,function(k){var it=ph2Active.hard[k];return it&&it.name?it.name:k;});", `addGroup('${t.tabs.hardscape}',hardKeys,function(k){var it=ph2Active.hard[k];return it&&it.name?it.name:k;});`, 'js.summaryGroupHardscape');
   return h;
 }
 

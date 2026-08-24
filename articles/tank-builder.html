@@ -105,6 +105,22 @@ body{
   flex-direction:column;
 }
 body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-water)}
+/* Safety net for a real-device bug (2026-08-24, user video): body's
+   height:100dvh can end up shorter than the true viewport after a
+   Settings interaction (root cause not fully pinned down — two earlier
+   fix attempts targeting the mechanism directly did not resolve it, one
+   made it worse), leaving a gap between #status-bar (the last flex
+   child, holds RESET/SEE REPORT) and the real bottom of the screen. In
+   that gap, body::before's fixed full-bleed --th-water background shows
+   through — its dark-theme bottom colour (#020810) reads as an obvious
+   "broken" black gap, while its light-theme bottom colour (#f2f6f5) is
+   near-identical to the surrounding UI and was never noticed, which is
+   why this looked theme-specific when it was likely always there in
+   both. Rather than a fourth attempt at the root cause blind, pin a
+   fixed strip matching #status-bar's own background right behind it —
+   if the gap exists, it now reads as "status bar is a bit tall" instead
+   of an obviously broken empty patch, regardless of theme or cause. */
+body::after{content:'';position:fixed;left:0;right:0;bottom:0;height:140px;z-index:-1;background:var(--th-surface-2);pointer-events:none}
 
 
 /* BRIEFING */

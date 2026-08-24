@@ -46,6 +46,26 @@ window.AR_BRAND_INFO={"Hikari Bacto Surge": {"summary": "A dual-sponge filter wi
 ,"Milwaukee MA957 regulator": {"summary": "A dual-stage CO2 regulator from Milwaukee Instruments. The dual-stage design eliminates the end-of-tank dump — pressure remains stable until the bottle is completely empty.", "pros": ["Dual-stage — no end-of-tank dump risk", "Precise needle valve for fine bubble count adjustment", "Includes solenoid for timer-based on/off scheduling", "Durable build quality"], "cons": ["Higher cost than single-stage regulators", "Heavier and bulkier than mini regulators", "Solenoid can click audibly when switching"], "best_for": "Serious planted tank hobbyists wanting reliable CO2 delivery without end-of-tank dump risk", "tier": "Mid–Premium", "tier_note": "The dual-stage design is worth the cost — end-of-tank dump from single-stage regulators can kill fish. Recommended above beginner level.", "avoid_if": "Budget is the primary concern and you can monitor bottle pressure closely"}
 ,"Rhinox CO2 diffuser": {"summary": "A quality CO2 diffuser from Rhinox available in submersible and inline configurations. Produces fine consistently-sized bubbles for efficient CO2 dissolution.", "pros": ["Fine ceramic disc produces consistent small bubbles", "Available in submersible or invisible inline versions", "Durable ceramic element with long service life", "Good reputation in planted communities across Asia"], "cons": ["Inline version requires cutting filter tubing", "Ceramic disc needs periodic cleaning with bleach solution", "Less widely available than generic diffusers"], "best_for": "Planted tanks where efficient CO2 dissolution and clean aesthetics matter", "tier": "Budget–Mid", "tier_note": "Excellent value for a quality diffuser. Inline version eliminates visible equipment in the tank.", "avoid_if": "You want the absolute cheapest diffuser — generic glass diffusers cost less but produce larger bubbles"}};
 
+/* Each item's water/bio/env/live/human values feed tank-builder's ARA
+   Rhythm bars (see articles/tank-builder.html's calcRhythms()) — hand-set
+   per item, not formula-derived (this set is small/tractable enough for
+   direct curation, unlike the 90-entry FISH/INVERTEBRATES set in
+   ECOSYSTEM which uses a documented formula instead — see that file's
+   comment above `var ECOSYSTEM=`).
+   `human` specifically is "keeper maintenance demand" — corrected
+   2026-08-24 for 'ato' and 'timer': both are automation that the ARA
+   framework's source manuscript explicitly names as REDUCING keeper
+   burden, not adding to it — "a reliable auto top-off... a stable
+   automated lighting system reduces the care burden that falls on
+   keeper rhythm" (docs/ARA-framework-v2.docx §Capacity Before Ambition).
+   Both were previously scored human:14-15 (near the high end, similar to
+   manual-labour equipment like canister filters) before this fix — now
+   scored near the low end (residual demand is the occasional reservoir
+   refill / accuracy check the source text itself notes automation still
+   needs: "confirming that... water levels match ATO expectations"). Other
+   automation-adjacent items (heater, chiller) were left unchanged — no
+   equally direct textual basis was found for those, so don't extend this
+   correction to them without checking the source manuscript first. */
 window.AR_EQ={
   'filter-internal':{cat:'filtration',water:25,bio:25,env:0,live:8,human:12,sizes:['small','medium'],sizeWarn:['large'],conflicts:[],requiresOne:null,warnWithout:null,
     sizeNote:{small:'Good fit. Submersible and hidden — unobtrusive in small tanks.',medium:'Adequate for a lightly stocked medium tank. Consider pairing with a sponge for more bio media.',large:'Underpowered for large tanks. Use canister or HOB instead.'},
@@ -56,7 +76,7 @@ window.AR_EQ={
   'wavemaker':{cat:'circulation',water:12,bio:6,env:4,live:6,human:5,sizes:['medium','large'],sizeWarn:['small'],conflicts:[],requiresOne:null,warnWithout:null,
     sizeNote:{small:'Creates too much turbulence for small tanks. Not recommended below 60L.',medium:'Useful for improving circulation in medium tanks — helps distribute heat and oxygen.',large:'Often essential in large tanks to eliminate dead spots where detritus accumulates.'},
     brands:{type:'named',note:'Wavemakers improve circulation and oxygenation. Adjustable flow is important — you want movement without stressing fish.',examples:['Jebao SLW series','Aquael Circulator','Tunze Turbelle','Hydor Koralia','Ecotech Vortech']}},
-  'ato':{cat:'additions',water:5,bio:0,env:8,live:5,human:15,sizes:['small','medium','large'],sizeWarn:[],conflicts:[],requiresOne:null,warnWithout:null,
+  'ato':{cat:'additions',water:5,bio:0,env:8,live:5,human:4,sizes:['small','medium','large'],sizeWarn:[],conflicts:[],requiresOne:null,warnWithout:null,
     sizeNote:{all:'Auto top-off devices automatically replace evaporated water. Essential if you use a chiller or cooling fan — evaporation in hot climates can drop water level significantly within hours.'},
     brands:{type:'named',note:'ATO systems use a float switch or optical sensor to detect water level and pump from a reservoir automatically. Simple and essential for tanks with high evaporation.',examples:['Tunze Osmolator','AutoAqua Smart ATO','Innovative Marine Desktop ATO','Kalkwasser ATO','Generic float valve ATO']}},
   'filter-sponge':{cat:'filtration',water:25,bio:35,env:0,live:5,human:12,sizes:['small','medium'],sizeWarn:['large'],conflicts:[],requiresOne:null,warnWithout:null,
@@ -122,7 +142,7 @@ window.AR_EQ={
   'siphon':{cat:'additions',water:5,bio:0,env:0,live:8,human:14,sizes:['small','medium','large'],sizeWarn:[],conflicts:[],requiresOne:null,warnWithout:null,
     sizeNote:{all:'The gravel vacuum removes waste that settles in substrate during water changes. Without it detritus accumulates and nitrate rises faster.'},
     brands:{type:'named',note:'Python No Spill is popular for larger tanks and connects to a tap. For smaller tanks a basic hand-start siphon works well.',examples:['Python No Spill Clean and Fill','Fluval Edge Gravel Cleaner','Basic gravel vacuum siphon','Aquael Gravel Cleaner']}},
-  'timer':{cat:'additions',water:0,bio:0,env:12,live:10,human:14,sizes:['small','medium','large'],sizeWarn:[],conflicts:[],requiresOne:null,warnWithout:['light-basic','light-planted'],
+  'timer':{cat:'additions',water:0,bio:0,env:12,live:10,human:3,sizes:['small','medium','large'],sizeWarn:[],conflicts:[],requiresOne:null,warnWithout:['light-basic','light-planted'],
     sizeNote:{all:'Fish and plants orient to consistent light cycles. Manual switching is unreliable. A timer ensures 8-10 hours daily without depending on your schedule.'},
     brands:{type:'generic',note:'Any basic plug-in timer works. Smart plugs with app control are convenient if you already use them.',examples:['Basic analogue plug timer','Digital countdown timer','Smart plug (TP-Link Kasa etc)']}},
   'co2-system':{cat:'additions',water:0,bio:12,env:22,live:0,human:25,

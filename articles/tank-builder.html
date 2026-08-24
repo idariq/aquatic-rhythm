@@ -2470,6 +2470,28 @@ function updateCompatStrip(){
     var item=ph2Active.stock[k];
     if(item&&item.schooling){var qty=item._qty||1;var min=item.min_school||6;if(qty<min)msgs.push(item.name+': need '+min+' (you have '+qty+').');}
   });
+  /* Aggression compatibility — stored on every FISH/INVERTEBRATES entry
+     (drives the aggression badge on cards) but never checked here until now
+     (bug found + fixed 2026-08-24, same review as the demand.* fix above).
+     Two checks: (1) aggressive/predatory species mixed with peaceful ones —
+     the classic "will harm or eat peaceful tankmates" case; (2) a
+     non-schooling, non-peaceful species stocked at qty>1 — the general form
+     of "two male bettas will fight to the death" (every ECOSYSTEM entry with
+     schooling:false already tells this exact story in its own .caution
+     text; this generalises it to all 90 entries instead of relying on the
+     keeper reading prose). */
+  var aggrCounts={};
+  stockKeys.forEach(function(k){var i=ph2Active.stock[k];if(i&&i.aggression)aggrCounts[i.aggression]=(aggrCounts[i.aggression]||0)+1;});
+  if(aggrCounts.peaceful&&(aggrCounts.aggressive||aggrCounts.predatory)){
+    msgs.push('Aggression mismatch — aggressive or predatory species may harm or stress peaceful tankmates.');
+  }
+  stockKeys.forEach(function(k){
+    var item=ph2Active.stock[k];if(!item)return;
+    var qty=item._qty||1;
+    if(!item.schooling&&item.aggression&&item.aggression!=='peaceful'&&qty>1){
+      msgs.push(item.name+': keeping '+qty+' together risks fighting — doesn’t tolerate its own kind in numbers.');
+    }
+  });
   var totalBio=0;
   stockKeys.forEach(function(k){
     var item=ph2Active.stock[k];if(!item)return;

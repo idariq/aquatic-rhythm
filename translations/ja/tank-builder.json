@@ -276,6 +276,9 @@
  "compat": {
   "tempConflict": "選択した種の間で水温の競合があります。",
   "hardnessConflict": "軟水種と硬水種が混在しており、硬度が競合しています。",
+  "aggressionMismatch": "攻撃性の不一致 — 攻撃的・捕食性の種が温和な同居魚を傷つけたり、ストレスを与えたりすることがあります。",
+  "soloAggrPrefix": "：",
+  "soloAggrSuffix": "匹を一緒に飼うと争いのリスクがあります。同種同士では共存しにくい種です。",
   "minTankSuffix": "Lが必要です。",
   "minTankNeeds": "には最低",
   "schoolingNeed": "：最低",

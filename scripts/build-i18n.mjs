@@ -66,6 +66,14 @@ const NAV_LABELS = {
   }
 };
 
+// mod-progress-label JS ("Module N / Total") — shared boilerplate script
+// duplicated verbatim across every article that has a multi-module reading
+// progress bar (23 files as of 2026-08-24). Not part of the modules[]
+// translation schema (it's inline engine JS, not module HTML content), so
+// it was left fully English on id/ja same as BACK_LINK/RH_SHEET below —
+// harmless no-op via h.replace() for any article without this exact line.
+const MOD_PROGRESS_WORD = { id: 'Modul', ja: 'モジュール' };
+
 // One-off "Back to Reading →" back-link (.art-back-link) — only
 // new-tank-syndrome.html uses this exact standalone link outside the
 // normal .art-footer/mod-next patchers, so it stayed fully English on
@@ -314,6 +322,10 @@ function buildArticle(slug, lang, t) {
     h = replaceOnce(h, /(<p class="rh-sheet-note">)[^<]*(<\/p>)/,
       (_, a, b) => `${a}${rh.note}${b}`);
   }
+
+  // ── 4e. mod-progress-label JS ("Module N / Total") ───────────────────────
+  h = h.replace("lbl.textContent = 'Module ' + currentMod + ' / ' + totalMods;",
+    `lbl.textContent = '${MOD_PROGRESS_WORD[lang]} ' + currentMod + ' / ' + totalMods;`);
 
   // ── 5. JSON-LD ────────────────────────────────────────────────────────────
   // Extract dates from English source JSON-LD (already populated by patch-article-seo.mjs)

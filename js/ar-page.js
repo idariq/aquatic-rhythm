@@ -21,32 +21,6 @@
     });
   }
 
-  /* ── APP-SHELL HEIGHT SYNC ──
-     App-shell pages (tank-builder/tank-simulator/community-stress-lab)
-     size body to the full viewport via CSS height:100dvh — but 100dvh is
-     known to go stale on some mobile Chrome versions after certain UI
-     transitions (a sheet/panel opening or closing changes whether the
-     page is "scrollable" from the browser's point of view, which can
-     change the address-bar-visible state), leaving a dead gap between
-     the last flex child and the real bottom of the screen. Bug found
-     2026-08-24 (user video): tank-builder's RESET/SEE REPORT bar
-     detaches from the bottom after opening Settings and changing the
-     theme. A first attempt (skip the settings panel's position:fixed
-     scroll-lock on these pages, since body never scrolls there anyway)
-     did not fix it on the reporter's device — so this doesn't rely on
-     CSS dvh tracking itself at all: compute the real height from
-     visualViewport and set it directly via JS, same pattern already
-     used below for the Rhyssa sheet's own height (fitSheet()). */
-  function syncAppShellHeight() {
-    if (getComputedStyle(document.body).overflowY !== 'hidden') return;
-    var h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-    document.body.style.height = Math.round(h) + 'px';
-  }
-  syncAppShellHeight();
-  window.addEventListener('resize', syncAppShellHeight);
-  window.addEventListener('orientationchange', function () { setTimeout(syncAppShellHeight, 150); });
-  if (window.visualViewport) window.visualViewport.addEventListener('resize', syncAppShellHeight);
-
   /* ── SETTINGS BUTTON + SETTINGS PANEL ── */
   (function(){
     /* Settings panel chrome — was hardcoded English on every locale (bug
@@ -365,13 +339,6 @@
       panel.setAttribute('aria-hidden', 'true');
       if (backdrop) { backdrop.classList.remove('open'); backdrop.setAttribute('aria-hidden', 'true'); }
       unlockBodyScroll();
-      /* Extra safety net for the app-shell height bug (see
-         syncAppShellHeight() above): force a fresh height read right
-         after this panel's own transition finishes, not just on the
-         next resize/visualViewport event (which may not fire at all if
-         the underlying viewport dimension is technically unchanged
-         despite the stale-paint bug). */
-      setTimeout(syncAppShellHeight, 450); /* panel's own close transition is .42s */
     }
 
     /* Wire all settings trigger buttons */
@@ -882,7 +849,6 @@
     unlockBodyScroll();
     if (window.innerWidth < 721) { sh.style.top = ''; sh.style.bottom = ''; sh.style.height = ''; }
     if (window.visualViewport) window.visualViewport.removeEventListener('resize', fitSheet);
-    setTimeout(syncAppShellHeight, 450); /* see syncAppShellHeight() near the top of this file */
     fab.focus();
   }
 

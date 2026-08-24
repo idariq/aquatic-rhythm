@@ -299,6 +299,7 @@ const ENGLISH_RACK_ITEMS = {
   'filter-hang': { name: 'Hang-on Filter', role: 'Mechanical + biological' },
   'filter-canister': { name: 'Canister Filter', role: 'High capacity, external' },
   'filter-overflow': { name: 'Overflow Filter', role: 'Trickle/wet-dry, high O&#x2082;' },
+  'bio-media': { name: 'Bio Media', role: 'Extra bacterial surface' },
   'powerhead': { name: 'Powerhead', role: 'Return pump / flow' },
   'wavemaker': { name: 'Wavemaker', role: 'Circulation, dead zones' },
   'airpump': { name: 'Air Pump', role: 'Oxygen + agitation' },

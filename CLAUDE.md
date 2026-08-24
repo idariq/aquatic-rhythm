@@ -200,15 +200,14 @@ tetapan artikel/alat),
   templat insight mingguan dihantar ke backend AI Rhyssa) — terjemah
   ni akan UBAH TINGKAH LAKU AI, bukan sekadar tukar teks UI.
   Keputusan skop eksplisit user, bukan andaian ejen.
-- **`js/tank-data.js`'s `AR_BRAND_INFO`** (126 entri peralatan,
-  ~11.5k patah perkataan prosa panduan beli) — tugas besar berasingan,
-  belum dimulakan. **JANGAN keliru dgn `tank-builder.html`'s `var
+- **`js/tank-data.js`'s `AR_BRAND_INFO`** (126 entri peralatan) — DAH
+  diterjemah (PR #405, 2026-08-24), rujuk §"Status Terjemahan Semasa"
+  bawah utk senibina. **JANGAN keliru dgn `tank-builder.html`'s `var
   ECOSYSTEM`** (pangkalan data spesies ikan/tumbuhan/hardscape, skop
-  BERBEZA & bersaiz serupa) — ECOSYSTEM DAH diterjemah (medan prosa
-  sahaja, keputusan eksplisit user 2026-08-19 selepas ditanya, rujuk
-  §"Status Terjemahan Semasa" bawah), AR_BRAND_INFO KEKAL dikecualikan.
-  Dua pangkalan data BERASINGAN dlm fail BERBEZA — semak yg mana
-  sebelum anggap "data spesies/peralatan" bermaksud sama.
+  BERBEZA & bersaiz serupa, turut DAH diterjemah tapi via senibina
+  BERBEZA — rujuk bawah) — dua pangkalan data BERASINGAN dlm fail
+  BERBEZA, semak yg mana sebelum anggap "data spesies/peralatan"
+  bermaksud sama.
 
 ## Status Terjemahan Semasa (kemas kini 2026-08-18)
 
@@ -253,8 +252,9 @@ hardscape + 9 gaya persediaan, ~145KB satu baris — skrip
 **BERBEZA drpd `tank-simulator`** dlm dua cara penting:
 
 1. **Skop pangkalan data spesies TERMASUK dlm terjemahan ni** (keputusan
-   eksplisit user selepas ditanya — BEZA drpd `js/tank-data.js`'s
-   `AR_BRAND_INFO` yg KEKAL dikecualikan). Medan prosa sahaja diterjemah
+   eksplisit user selepas ditanya — `js/tank-data.js`'s `AR_BRAND_INFO`
+   pun DAH diterjemah kemudian, PR #405, tapi via senibina berbeza,
+   rujuk bawah). Medan prosa sahaja diterjemah
    (`diet`/`substrate_pref`/`notes_detail`/`caution` ikan-invertebrata,
    `about`/`notes` tumbuhan-hardscape, `label`/`desc` gaya persediaan)
    — nama spesies/Latin/nilai enum berstruktur (`care_level`/`bioload`/
@@ -266,6 +266,38 @@ hardscape + 9 gaya persediaan, ~145KB satu baris — skrip
    substring** — terlalu besar & padat utk regex selamat. Skema
    `translations/<lang>/tank-builder.json`'s `ecosystem{}` cermin
    struktur `ECOSYSTEM` (kunci slug SAMA, hanya medan prosa diganti).
+
+**`AR_BRAND_INFO`** (`js/tank-data.js`, 126 jenama peralatan, ~10k
+patah perkataan panduan beli — summary/pros/cons/best_for/tier_note/
+avoid_if — diterjemah PR #405, 2026-08-24) guna senibina KETIGA,
+BERBEZA drpd ECOSYSTEM/`build-tb-i18n.mjs` di atas: `js/tank-data.js`
+ialah **SATU fail dikongsi SEMUA build bahasa** (`<script
+src="/js/tank-data.js">` sama drpd `articles/`, `id/articles/`,
+`ja/articles/tank-builder.html` — tiada 3 salinan HTML berasingan spt
+ECOSYSTEM yg dibina-semula per-bahasa), jadi tak boleh guna corak
+"regenerate HTML per bahasa". Sebaliknya medan prosa direstruktur
+terus dlm data ke bentuk `{en:'...', id:'...', ja:'...'}` (array
+`pros`/`cons` turut jadi `{en:[...],id:[...],ja:[...]}`), dipilih pd
+**runtime** via `biLoc(v)` (fungsi baharu, `articles/tank-builder.html`
+dkt `var BRAND_INFO=window.AR_BRAND_INFO;`) yg baca
+`document.documentElement.lang` — model SAMA dgn `CSL_STRINGS`/`T()`
+(`js/community-stress-lab.js`) drpd §i18n checklist #6 di atas, cuma
+di sini bukan widget canvas tapi pangkalan data prosa. `tier` (enum
+pendek Budget/Mid/Premium/dll., 5 nilai) KEKAL raw string tunggal
+(bukan `{en,id,ja}`) — dipetakan papar via `enumLabel('tier',...)` +
+`TB_ENUM_LABELS.tier`, ikut pola enum sedia ada (§2 atas), BUKAN
+direstruktur spt medan prosa. **Kandungan diterjemah oleh 6 agen
+subtask (3 batch × id/ja) selari**, disahkan struktur secara program
+lepas tu (bilangan kunci jenama & panjang array pros/cons dibandingkan
+byte-demi-byte drpd EN sumber, BUKAN sekadar terima laporan
+"validation lulus" agen sendiri) — ikut prinsip §i18n checklist "SATU
+fail JS dikongsi ... disahkan struktur ... via skrip perbandingan
+automatik, BUKAN percaya laporan agen terjemah sahaja" yg sama. Turut
+ditemui semasa kerja ni: 2 entri typo `tier` ("Budget-Mid" hyphen vs
+18 entri "Budget–Mid" en dash majoriti) dinormalisasi, & medan
+`disclaimer` (33 entri, duplikat teks statik yg dah dipaparkan sedia
+ada, tak pernah dibaca kod) dibuang — corak "medan data mati/tak
+disambung" yg sama dgn `requiresOne`/`warnWithout` (PR #404).
 
 **Corak baharu — kamus label-paparan utk medan data berenum
 (`TB_ENUM_LABELS` + fungsi `enumLabel(field,value)`, ditambah terus ke

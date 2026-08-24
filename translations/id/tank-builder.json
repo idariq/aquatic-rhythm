@@ -95,6 +95,10 @@
     "name": "Filter Overflow",
     "role": "Trickle/wet-dry, O₂ tinggi"
    },
+   "bio-media": {
+    "name": "Media Bio",
+    "role": "Permukaan bakteri tambahan"
+   },
    "powerhead": {
     "name": "Powerhead",
     "role": "Pompa balik / arus"

@@ -443,6 +443,10 @@ function patchEngineStrings(h, t, lang) {
   // ── compatibility strip ──
   h = subOnce(h, "if(maxLo>minHi)msgs.push('Temperature conflict between selected species.');", `if(maxLo>minHi)msgs.push('${cp.tempConflict}');`, 'js.tempConflict');
   h = subOnce(h, "if(hasSoft&&hasHard)msgs.push('Hardness conflict \\u2014 soft and hard water species together.');", `if(hasSoft&&hasHard)msgs.push('${cp.hardnessConflict}');`, 'js.hardnessConflict');
+  h = subOnce(h, "msgs.push('Aggression mismatch — aggressive or predatory species may harm or stress peaceful tankmates.');",
+    `msgs.push('${cp.aggressionMismatch}');`, 'js.aggressionMismatch');
+  h = subOnce(h, "msgs.push(item.name+': keeping '+qty+' together risks fighting — doesn’t tolerate its own kind in numbers.');",
+    `msgs.push(item.name+'${cp.soloAggrPrefix}'+qty+'${cp.soloAggrSuffix}');`, 'js.soloAggrMsg');
   h = subOnce(h, "if(item&&item.min_tank_l&&item.min_tank_l>tankL)msgs.push(item.name+' needs '+item.min_tank_l+'L minimum.');",
     `if(item&&item.min_tank_l&&item.min_tank_l>tankL)msgs.push(item.name+'${cp.minTankNeeds}'+item.min_tank_l+'${cp.minTankSuffix}');`, 'js.minTank');
   h = subOnce(h, "if(qty<min)msgs.push(item.name+': need '+min+' (you have '+qty+').');",

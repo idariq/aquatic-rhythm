@@ -276,6 +276,9 @@
  "compat": {
   "tempConflict": "Konflik suhu antara spesies yang dipilih.",
   "hardnessConflict": "Konflik kesadahan — spesies air lunak dan air sadah bersama.",
+  "aggressionMismatch": "Konflik agresivitas — spesies agresif atau predator dapat melukai atau menstres penghuni yang damai.",
+  "soloAggrPrefix": ": menyimpan ",
+  "soloAggrSuffix": " ekor bersama berisiko berkelahi — tidak tahan dengan sesamanya dalam jumlah banyak.",
   "minTankSuffix": "L.",
   "minTankNeeds": " membutuhkan minimal ",
   "schoolingNeed": ": perlu ",

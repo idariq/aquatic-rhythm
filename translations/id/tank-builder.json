@@ -184,6 +184,14 @@
     "name": "Pemberi Pakan Otomatis",
     "role": "Pemberian pakan terjadwal"
    },
+   "auto-dosing": {
+    "name": "Dosis Otomatis",
+    "role": "Dosis cairan terjadwal"
+   },
+   "auto-water-changer": {
+    "name": "Penukar Air Otomatis",
+    "role": "Kuras &amp; isi ulang terjadwal"
+   },
    "co2-system": {
     "name": "Sistem CO2",
     "role": "Karbon suntik untuk tanaman"

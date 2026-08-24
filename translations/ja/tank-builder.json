@@ -184,6 +184,14 @@
     "name": "自動給餌器",
     "role": "決まった時間に給餌"
    },
+   "auto-dosing": {
+    "name": "自動添加装置",
+    "role": "液体添加剤を自動投与"
+   },
+   "auto-water-changer": {
+    "name": "自動換水装置",
+    "role": "排水・注水を自動化"
+   },
    "co2-system": {
     "name": "CO2システム",
     "role": "水草への炭素供給"

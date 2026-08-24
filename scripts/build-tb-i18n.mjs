@@ -321,6 +321,8 @@ const ENGLISH_RACK_ITEMS = {
   'lid': { name: 'Lid / Cover', role: 'Safety + reduces evaporation' },
   'ato': { name: 'Auto Top-Off', role: 'Replaces evaporated water' },
   'auto-feeder': { name: 'Auto Feeder', role: 'Scheduled feeding' },
+  'auto-dosing': { name: 'Auto Dosing', role: 'Scheduled liquid dosing' },
+  'auto-water-changer': { name: 'Auto Water Changer', role: 'Scheduled drain &amp; refill' },
   'co2-system': { name: 'CO2 System', role: 'Injected carbon for plants' },
   'liquid-fert': { name: 'Liquid Fertiliser', role: 'Dosed nutrients for plants' },
   'thermometer': { name: 'Thermometer', role: 'Verify temperature daily' },

@@ -238,7 +238,7 @@ function patchBriefing(h, t) {
     ['Biological', 'Bacterial colony and nitrogen cycle stability'],
     ['Environmental', 'Temperature, light, and habitat conditions'],
     ['Livestock', 'Species compatibility and stocking demand'],
-    ['Human', 'Maintenance demand and keeper commitment']
+    ['Keeper', 'Maintenance demand and keeper commitment']
   ];
   rhy.forEach(([name, desc], i) => {
     const r = b.rhythms[i];
@@ -262,7 +262,7 @@ function patchTopBand(h, t) {
   h = subOnce(h, '<span class="rhy-lbl">Biological</span>', `<span class="rhy-lbl">${rl.bio}</span>`, 'topBand.rhyLbl.bio');
   h = subOnce(h, '<span class="rhy-lbl">Environment</span>', `<span class="rhy-lbl">${rl.env}</span>`, 'topBand.rhyLbl.env');
   h = subOnce(h, '<span class="rhy-lbl">Livestock</span>', `<span class="rhy-lbl">${rl.live}</span>`, 'topBand.rhyLbl.live');
-  h = subOnce(h, '<span class="rhy-lbl">Human</span>', `<span class="rhy-lbl">${rl.human}</span>`, 'topBand.rhyLbl.human');
+  h = subOnce(h, '<span class="rhy-lbl">Keeper</span>', `<span class="rhy-lbl">${rl.human}</span>`, 'topBand.rhyLbl.human');
   return h;
 }
 
@@ -480,7 +480,7 @@ function patchEngineStrings(h, t, lang) {
   h = subOnce(h, "if(hardList.length)metaParts.push(hardList.length+' hardscape');", `if(hardList.length)metaParts.push(hardList.length+'${rp.metaHardscape}');`, 'js.metaHardscape');
   h = subOnce(h, "html+='<div class=\"tb-rpt-profile\"><div class=\"tb-rpt-profile-h\">Five Rhythm Profile</div>';", `html+='<div class="tb-rpt-profile"><div class="tb-rpt-profile-h">${rp.fiveRhythmProfile}</div>';`, 'js.fiveRhythmProfile');
   h = subOnce(h,
-    "var rhyData=[\n    {label:'Water',color:'rgba(61,214,232,',val:s.water,desc:s.water>70?'Filtration capacity well established.':s.water>40?'Basic filtration in place.':'Filtration needs attention before stocking.'},\n    {label:'Biological',color:'rgba(100,200,82,',val:s.bio,desc:s.bio>70?'Good biological surface area.':s.bio>40?'Bacterial colony can establish with cycling.':'Insufficient biological media.'},\n    {label:'Environmental',color:'rgba(220,160,60,',val:s.env,desc:s.env>70?'Temperature and photoperiod well controlled.':s.env>40?'Basic environmental control in place.':'Consistency of conditions needs attention.'},\n    {label:'Livestock',color:'rgba(180,120,200,',val:s.live,desc:s.live>70?'High stocking demand \\u2014 monitor parameters closely.':s.live>40?'Moderate stocking demand.':'Light stocking \\u2014 good starting point.'},\n    {label:'Human',color:'rgba(139,189,210,',val:s.human,desc:s.human>70?'Demanding setup requiring consistent attention.':s.human>40?'Moderate maintenance required.':'Relatively low maintenance.'}\n  ];",
+    "var rhyData=[\n    {label:'Water',color:'rgba(61,214,232,',val:s.water,desc:s.water>70?'Filtration capacity well established.':s.water>40?'Basic filtration in place.':'Filtration needs attention before stocking.'},\n    {label:'Biological',color:'rgba(100,200,82,',val:s.bio,desc:s.bio>70?'Good biological surface area.':s.bio>40?'Bacterial colony can establish with cycling.':'Insufficient biological media.'},\n    {label:'Environmental',color:'rgba(220,160,60,',val:s.env,desc:s.env>70?'Temperature and photoperiod well controlled.':s.env>40?'Basic environmental control in place.':'Consistency of conditions needs attention.'},\n    {label:'Livestock',color:'rgba(180,120,200,',val:s.live,desc:s.live>70?'High stocking demand \\u2014 monitor parameters closely.':s.live>40?'Moderate stocking demand.':'Light stocking \\u2014 good starting point.'},\n    {label:'Keeper',color:'rgba(139,189,210,',val:s.human,desc:s.human>70?'Demanding setup requiring consistent attention.':s.human>40?'Moderate maintenance required.':'Relatively low maintenance.'}\n  ];",
     `var rhyData=[\n    {label:'${rp.rhythmLabels.water}',color:'rgba(61,214,232,',val:s.water,desc:s.water>70?'${rp.rhythmDesc.water[0]}':s.water>40?'${rp.rhythmDesc.water[1]}':'${rp.rhythmDesc.water[2]}'},\n    {label:'${rp.rhythmLabels.bio}',color:'rgba(100,200,82,',val:s.bio,desc:s.bio>70?'${rp.rhythmDesc.bio[0]}':s.bio>40?'${rp.rhythmDesc.bio[1]}':'${rp.rhythmDesc.bio[2]}'},\n    {label:'${rp.rhythmLabels.env}',color:'rgba(220,160,60,',val:s.env,desc:s.env>70?'${rp.rhythmDesc.env[0]}':s.env>40?'${rp.rhythmDesc.env[1]}':'${rp.rhythmDesc.env[2]}'},\n    {label:'${rp.rhythmLabels.live}',color:'rgba(180,120,200,',val:s.live,desc:s.live>70?'${rp.rhythmDesc.live[0]}':s.live>40?'${rp.rhythmDesc.live[1]}':'${rp.rhythmDesc.live[2]}'},\n    {label:'${rp.rhythmLabels.human}',color:'rgba(139,189,210,',val:s.human,desc:s.human>70?'${rp.rhythmDesc.human[0]}':s.human>40?'${rp.rhythmDesc.human[1]}':'${rp.rhythmDesc.human[2]}'}\n  ];`,
     'js.rhyData');
   h = subOnce(h, "html+='<div class=\"tb-rpt-section\"><div class=\"tb-rpt-section-h\">Stocking</div><div class=\"tb-rpt-stock\">';", `html+='<div class="tb-rpt-section"><div class="tb-rpt-section-h">${rp.sections.stocking}</div><div class="tb-rpt-stock">';`, 'js.sectionStocking');

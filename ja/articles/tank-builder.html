@@ -959,7 +959,7 @@ nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(100,200,82,.7)">Biological（生物学的）</span><span class="brief-rhy-desc">バクテリアのコロニーと窒素循環の安定性</span></div>
       <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(220,160,60,.7)">Environmental（環境）</span><span class="brief-rhy-desc">水温・照明・生息環境の条件</span></div>
       <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(180,120,200,.7)">Livestock（生体）</span><span class="brief-rhy-desc">種の相性と収容による負荷</span></div>
-      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(61,214,232,.75)">Human（飼育者）</span><span class="brief-rhy-desc">メンテナンスの手間と飼育者のコミットメント</span></div>
+      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(61,214,232,.75)">Keeper（飼育者）</span><span class="brief-rhy-desc">メンテナンスの手間と飼育者のコミットメント</span></div>
     </div>
     <p class="brief-note">5つのリズムはARAの解釈モデルであり、科学的な測定ではなく、考えるためのレンズです。淡水アクアリウムの趣味全体で観察されたパターンを反映しています。</p>
     <button class="brief-btn" id="btn-enter">ラボに入る →</button>
@@ -997,7 +997,7 @@ nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       <div class="rhy-row" data-dim="bio"><div class="rhy-row-head"><span class="rhy-dot" id="rhy-dot-bio"></span><span class="rhy-lbl">Biological</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-bio"></div></div><span class="rhy-pct" id="rhy-pct-bio">0</span></div></div>
       <div class="rhy-row" data-dim="env"><div class="rhy-row-head"><span class="rhy-dot" id="rhy-dot-env"></span><span class="rhy-lbl">Environment</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-env"></div></div><span class="rhy-pct" id="rhy-pct-env">0</span></div></div>
       <div class="rhy-row" data-dim="live"><div class="rhy-row-head"><span class="rhy-dot" id="rhy-dot-live"></span><span class="rhy-lbl">Livestock</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-live"></div></div><span class="rhy-pct" id="rhy-pct-live">0</span></div></div>
-      <div class="rhy-row" data-dim="human"><div class="rhy-row-head"><span class="rhy-dot" id="rhy-dot-human"></span><span class="rhy-lbl">Human</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-human"></div></div><span class="rhy-pct" id="rhy-pct-human">0</span></div></div>
+      <div class="rhy-row" data-dim="human"><div class="rhy-row-head"><span class="rhy-dot" id="rhy-dot-human"></span><span class="rhy-lbl">Keeper</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-human"></div></div><span class="rhy-pct" id="rhy-pct-human">0</span></div></div>
     </div>
   </div>
 </div>
@@ -2580,7 +2580,7 @@ function showFullReport(){
     {label:'Biological',color:'rgba(100,200,82,',val:s.bio,desc:s.bio>70?'良好な生物ろ過表面積があります。':s.bio>40?'サイクリングによってバクテリアのコロニーが定着します。':'生物ろ過材が不足しています。'},
     {label:'Environmental',color:'rgba(220,160,60,',val:s.env,desc:s.env>70?'水温と照明時間がよく管理されています。':s.env>40?'基本的な環境管理が整っています。':'環境条件の一貫性に注意が必要です。'},
     {label:'Livestock',color:'rgba(180,120,200,',val:s.live,desc:s.live>70?'ストッキングの負荷が高い状態のため、水質パラメータを注意深く観察してください。':s.live>40?'ストッキングの負荷は中程度です。':'軽めのストッキングで、始めるにはよい状態です。'},
-    {label:'Human',color:'rgba(139,189,210,',val:s.human,desc:s.human>70?'継続的な手間が必要なセットアップです。':s.human>40?'中程度のメンテナンスが必要です。':'比較的メンテナンスの手間が少ないです。'}
+    {label:'Keeper',color:'rgba(139,189,210,',val:s.human,desc:s.human>70?'継続的な手間が必要なセットアップです。':s.human>40?'中程度のメンテナンスが必要です。':'比較的メンテナンスの手間が少ないです。'}
   ];
   rhyData.forEach(function(r){
     var pct=Math.round(r.val);

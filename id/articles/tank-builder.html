@@ -959,7 +959,7 @@ nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(100,200,82,.7)">Biological</span><span class="brief-rhy-desc">Stabilitas koloni bakteri dan siklus nitrogen</span></div>
       <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(220,160,60,.7)">Environmental</span><span class="brief-rhy-desc">Suhu, cahaya, dan kondisi habitat</span></div>
       <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(180,120,200,.7)">Livestock</span><span class="brief-rhy-desc">Kecocokan spesies dan kebutuhan penebaran</span></div>
-      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(61,214,232,.75)">Human</span><span class="brief-rhy-desc">Kebutuhan perawatan dan komitmen penjaga</span></div>
+      <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(61,214,232,.75)">Keeper</span><span class="brief-rhy-desc">Kebutuhan perawatan dan komitmen penjaga</span></div>
     </div>
     <p class="brief-note">Kelima ritme ini adalah model interpretatif ARA — sebuah lensa untuk berpikir, bukan pengukuran ilmiah. Ritme ini mencerminkan pola yang diamati di seluruh hobi akuarium air tawar.</p>
     <button class="brief-btn" id="btn-enter">Masuk ke lab →</button>
@@ -997,7 +997,7 @@ nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       <div class="rhy-row" data-dim="bio"><div class="rhy-row-head"><span class="rhy-dot" id="rhy-dot-bio"></span><span class="rhy-lbl">Biological</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-bio"></div></div><span class="rhy-pct" id="rhy-pct-bio">0</span></div></div>
       <div class="rhy-row" data-dim="env"><div class="rhy-row-head"><span class="rhy-dot" id="rhy-dot-env"></span><span class="rhy-lbl">Environment</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-env"></div></div><span class="rhy-pct" id="rhy-pct-env">0</span></div></div>
       <div class="rhy-row" data-dim="live"><div class="rhy-row-head"><span class="rhy-dot" id="rhy-dot-live"></span><span class="rhy-lbl">Livestock</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-live"></div></div><span class="rhy-pct" id="rhy-pct-live">0</span></div></div>
-      <div class="rhy-row" data-dim="human"><div class="rhy-row-head"><span class="rhy-dot" id="rhy-dot-human"></span><span class="rhy-lbl">Human</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-human"></div></div><span class="rhy-pct" id="rhy-pct-human">0</span></div></div>
+      <div class="rhy-row" data-dim="human"><div class="rhy-row-head"><span class="rhy-dot" id="rhy-dot-human"></span><span class="rhy-lbl">Keeper</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-human"></div></div><span class="rhy-pct" id="rhy-pct-human">0</span></div></div>
     </div>
   </div>
 </div>
@@ -2580,7 +2580,7 @@ function showFullReport(){
     {label:'Biological',color:'rgba(100,200,82,',val:s.bio,desc:s.bio>70?'Area permukaan biologis yang baik.':s.bio>40?'Koloni bakteri dapat terbentuk melalui proses siklus.':'Media biologis tidak mencukupi.'},
     {label:'Environmental',color:'rgba(220,160,60,',val:s.env,desc:s.env>70?'Suhu dan fotoperiode terkendali dengan baik.':s.env>40?'Kendali lingkungan dasar sudah terpasang.':'Konsistensi kondisi perlu diperhatikan.'},
     {label:'Livestock',color:'rgba(180,120,200,',val:s.live,desc:s.live>70?'Kebutuhan penebaran tinggi — pantau parameter dengan ketat.':s.live>40?'Kebutuhan penebaran sedang.':'Penebaran ringan — titik awal yang baik.'},
-    {label:'Human',color:'rgba(139,189,210,',val:s.human,desc:s.human>70?'Pengaturan yang menuntut perhatian konsisten.':s.human>40?'Perawatan sedang diperlukan.':'Perawatan relatif rendah.'}
+    {label:'Keeper',color:'rgba(139,189,210,',val:s.human,desc:s.human>70?'Pengaturan yang menuntut perhatian konsisten.':s.human>40?'Perawatan sedang diperlukan.':'Perawatan relatif rendah.'}
   ];
   rhyData.forEach(function(r){
     var pct=Math.round(r.val);

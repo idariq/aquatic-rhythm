@@ -99,6 +99,10 @@
     "name": "Media Bio",
     "role": "Permukaan bakteri tambahan"
    },
+   "chem-media": {
+    "name": "Media Kimia",
+    "role": "Karbon, resin — kejernihan air"
+   },
    "powerhead": {
     "name": "Powerhead",
     "role": "Pompa balik / arus"
@@ -151,6 +155,10 @@
     "name": "Aqua Soil",
     "role": "Kaya nutrisi untuk tanaman"
    },
+   "root-tabs": {
+    "name": "Tablet Akar",
+    "role": "Nutrisi tepat di akar"
+   },
    "conditioner": {
     "name": "Kondisioner Air",
     "role": "Menetralkan klorin"
@@ -170,6 +178,10 @@
    "ato": {
     "name": "Auto Top-Off",
     "role": "Mengganti air yang menguap"
+   },
+   "liquid-fert": {
+    "name": "Pupuk Cair",
+    "role": "Nutrisi larut untuk tanaman"
    },
    "thermometer": {
     "name": "Termometer",

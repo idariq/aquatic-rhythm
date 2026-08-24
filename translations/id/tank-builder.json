@@ -179,6 +179,10 @@
     "name": "Auto Top-Off",
     "role": "Mengganti air yang menguap"
    },
+   "co2-system": {
+    "name": "Sistem CO2",
+    "role": "Karbon suntik untuk tanaman"
+   },
    "liquid-fert": {
     "name": "Pupuk Cair",
     "role": "Nutrisi larut untuk tanaman"

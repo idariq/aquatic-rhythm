@@ -320,6 +320,7 @@ const ENGLISH_RACK_ITEMS = {
   'seed': { name: 'Bacteria Starter', role: 'Cycle head-start' },
   'lid': { name: 'Lid / Cover', role: 'Safety + reduces evaporation' },
   'ato': { name: 'Auto Top-Off', role: 'Replaces evaporated water' },
+  'co2-system': { name: 'CO2 System', role: 'Injected carbon for plants' },
   'liquid-fert': { name: 'Liquid Fertiliser', role: 'Dosed nutrients for plants' },
   'thermometer': { name: 'Thermometer', role: 'Verify temperature daily' },
   'testkit': { name: 'Test Kit', role: 'Read the nitrogen cycle' },

@@ -218,7 +218,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .rhy-row{display:flex;flex-direction:column;gap:.1rem;flex-shrink:0;padding:.04rem 0;line-height:1.15}
 .rhy-row-head{display:flex;align-items:center;gap:.28rem;min-width:0}
 .rhy-row-meter{display:flex;align-items:center;gap:.32rem;width:100%;min-width:0}
-.rhy-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;transition:background .45s,box-shadow .45s}
+.rhy-icon{width:11px;height:11px;flex-shrink:0;display:block;transition:color .45s}
 .rhy-lbl{font-size:var(--fs-xs);letter-spacing:.05em;text-transform:uppercase;color:var(--th-ink-2);white-space:normal;overflow:visible;text-overflow:clip;flex:1;min-width:0}
 .rhy-track{flex:1;height:6px;min-width:0;background:var(--th-surface-2);border-radius:4px;overflow:hidden}
 .rhy-fill{height:100%;width:0%;border-radius:4px;transition:width .55s var(--ease)}
@@ -308,6 +308,7 @@ body.eq-dd-open{overflow:hidden}
   .rhy-hdr{width:100%;margin-bottom:.04rem;font-size:var(--fs-2xs)}
   .rhy-row{padding:.03rem 0;gap:.08rem}
   .rhy-lbl{font-size:var(--fs-2xs)}
+  .rhy-icon{width:9px;height:9px}
   .rhy-track{height:5px}
   .rhy-pct{font-size:var(--fs-2xs);min-width:1.2rem}
   #readiness-badge{font-size:var(--fs-xs)!important}
@@ -993,11 +994,11 @@ nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
   <div id="rhy-panel">
     <div class="rhy-hdr"><span>Ritme ARA</span></div>
     <div id="rhy-bars" class="rhy-bars" role="group" aria-label="Lima tingkat ritme">
-      <div class="rhy-row" data-dim="water"><div class="rhy-row-head"><span class="rhy-dot" id="rhy-dot-water"></span><span class="rhy-lbl">Water</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-water"></div></div><span class="rhy-pct" id="rhy-pct-water">0</span></div></div>
-      <div class="rhy-row" data-dim="bio"><div class="rhy-row-head"><span class="rhy-dot" id="rhy-dot-bio"></span><span class="rhy-lbl">Biological</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-bio"></div></div><span class="rhy-pct" id="rhy-pct-bio">0</span></div></div>
-      <div class="rhy-row" data-dim="env"><div class="rhy-row-head"><span class="rhy-dot" id="rhy-dot-env"></span><span class="rhy-lbl">Environment</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-env"></div></div><span class="rhy-pct" id="rhy-pct-env">0</span></div></div>
-      <div class="rhy-row" data-dim="live"><div class="rhy-row-head"><span class="rhy-dot" id="rhy-dot-live"></span><span class="rhy-lbl">Livestock</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-live"></div></div><span class="rhy-pct" id="rhy-pct-live">0</span></div></div>
-      <div class="rhy-row" data-dim="human"><div class="rhy-row-head"><span class="rhy-dot" id="rhy-dot-human"></span><span class="rhy-lbl">Keeper</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-human"></div></div><span class="rhy-pct" id="rhy-pct-human">0</span></div></div>
+      <div class="rhy-row" data-dim="water"><div class="rhy-row-head"><svg class="rhy-icon" id="rhy-icon-water" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.3C8 1.3 3.2 7.3 3.2 10.6a4.8 4.8 0 0 0 9.6 0C12.8 7.3 8 1.3 8 1.3Z"/></svg><span class="rhy-lbl">Water</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-water"></div></div><span class="rhy-pct" id="rhy-pct-water">0</span></div></div>
+      <div class="rhy-row" data-dim="bio"><div class="rhy-row-head"><svg class="rhy-icon" id="rhy-icon-bio" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="6" r="2.3"/><circle cx="10.8" cy="5.3" r="1.9"/><circle cx="7.8" cy="10.6" r="2.5"/></svg><span class="rhy-lbl">Biological</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-bio"></div></div><span class="rhy-pct" id="rhy-pct-bio">0</span></div></div>
+      <div class="rhy-row" data-dim="env"><div class="rhy-row-head"><svg class="rhy-icon" id="rhy-icon-env" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="6.6" y="1.2" width="2.8" height="7.6" rx="1.4"/><circle cx="8" cy="12" r="2.8"/></svg><span class="rhy-lbl">Environment</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-env"></div></div><span class="rhy-pct" id="rhy-pct-env">0</span></div></div>
+      <div class="rhy-row" data-dim="live"><div class="rhy-row-head"><svg class="rhy-icon" id="rhy-icon-live" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M1.5 8c0-2.1 3.2-3.8 5.8-3.8s5.2 1.4 5.2 3.8-2.6 3.8-5.2 3.8S1.5 10.1 1.5 8Z"/><path d="M12 8l3-3.2v6.4L12 8Z"/></svg><span class="rhy-lbl">Livestock</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-live"></div></div><span class="rhy-pct" id="rhy-pct-live">0</span></div></div>
+      <div class="rhy-row" data-dim="human"><div class="rhy-row-head"><svg class="rhy-icon" id="rhy-icon-human" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="4.6" r="2.6"/><path d="M1.5 15c0-4.2 2.9-6.8 6.5-6.8s6.5 2.6 6.5 6.8H1.5Z"/></svg><span class="rhy-lbl">Keeper</span></div><div class="rhy-row-meter"><div class="rhy-track"><div class="rhy-fill" id="rhy-fill-human"></div></div><span class="rhy-pct" id="rhy-pct-human">0</span></div></div>
     </div>
   </div>
 </div>
@@ -1619,23 +1620,25 @@ function drawLabel(ctx,x,y,txt,col){
   ctx.fillText(txt,x,y);ctx.restore();
 }
 /* Water/Biological/Environmental are CAPACITY bars — infrastructure you've
-   added, higher = more built-in support, straightforwardly "fuller is
-   better" (matches ARA's System capacity, docs/ARA-framework-v2.docx
-   §Capacity Before Ambition). Livestock and Keeper are DEMAND bars —
-   pressure placed ON that capacity (species/keeper capacity in the same
-   ARA section) — higher there means "more is being asked", not "more is
-   better" (the report screen's own rhyData desc text already reads this
-   way: >70 Livestock is "monitor parameters closely", >70 Keeper is
-   "Demanding setup", while <40 for both reads positively — "good starting
-   point" / "Relatively low maintenance"). Both bar TYPES previously used
-   the exact same fixed-hue fill logic, so a quick glance (without reading
-   the report text) couldn't tell "fuller = more capacity built" apart
-   from "fuller = more being asked of you" — added 2026-08-24 so the two
-   demand bars carry their own green/amber/red gradient instead, using the
-   same 40/70 thresholds as the report desc text, so the distinction reads
-   at a glance without requiring any text. */
-function demandColor(v){
-  var stops=[[0,90,190,110],[40,230,175,60],[70,224,100,80],[100,224,100,80]];
+   added, higher = more built-in support (matches ARA's System capacity,
+   docs/ARA-framework-v2.docx §Capacity Before Ambition). Livestock and
+   Keeper are DEMAND bars — pressure placed ON that capacity (species/
+   keeper capacity in the same ARA section) — higher means "more is being
+   asked", not "more is better". Both bar TYPES read from the SAME report
+   desc thresholds (40/70) and BOTH have a warning tone at their low end
+   too — capacity bars aren't simply "no downside below 70%": the report
+   text itself says <40 Water is "needs attention", <40 Biological is
+   "Insufficient", <40 Environmental "needs attention" — so capacity bars
+   are just as much red-low/green-high as demand bars are green-low/
+   red-high, not "value-neutral" the way a single fixed hue implied.
+   capacityColor/demandColor are the same gradient mirrored: capacity
+   red->amber->green as v rises (danger at low capacity), demand
+   green->amber->red (danger at high demand) — added 2026-08-24, all 5
+   bars now carry a status colour instead of only the 2 demand bars.
+   Row identity (which rhythm is which) moved OFF the bar colour and onto
+   the small rhy-icon SVGs instead (fixed brand hue, doesn't change with
+   value) — see the icon paths in the HTML markup above and idColor below. */
+function rhythmGradient(v,stops){
   for(var i=0;i<stops.length-1;i++){
     var a=stops[i],b=stops[i+1];
     if(v>=a[0]&&v<=b[0]){
@@ -1643,32 +1646,33 @@ function demandColor(v){
       return Math.round(a[1]+(b[1]-a[1])*t)+','+Math.round(a[2]+(b[2]-a[2])*t)+','+Math.round(a[3]+(b[3]-a[3])*t);
     }
   }
-  return '224,100,80';
+  return stops[stops.length-1][1]+','+stops[stops.length-1][2]+','+stops[stops.length-1][3];
 }
+var DEMAND_STOPS=[[0,90,190,110],[40,230,175,60],[70,224,100,80],[100,224,100,80]];
+var CAPACITY_STOPS=[[0,224,100,80],[40,230,175,60],[70,90,190,110],[100,90,190,110]];
+function demandColor(v){return rhythmGradient(v,DEMAND_STOPS);}
+function capacityColor(v){return rhythmGradient(v,CAPACITY_STOPS);}
 function updateRhythmBars(s){
   if(!s)return;
   var spec=[
-    {key:'water',rgb:'124,168,156'},
-    {key:'bio',rgb:'100,200,82'},
-    {key:'env',rgb:'220,160,60'},
-    {key:'live',demand:true},
-    {key:'human',demand:true}
+    {key:'water',demand:false,idColor:'124,168,156'},
+    {key:'bio',demand:false,idColor:'100,200,82'},
+    {key:'env',demand:false,idColor:'220,160,60'},
+    {key:'live',demand:true,idColor:'180,120,200'},
+    {key:'human',demand:true,idColor:'139,189,210'}
   ];
   spec.forEach(function(d){
     var v=Math.max(0,Math.min(100,Math.round(s[d.key]||0)));
-    var rgb=d.demand?demandColor(v):d.rgb;
+    var rgb=d.demand?demandColor(v):capacityColor(v);
     var fill=document.getElementById('rhy-fill-'+d.key);
     var pct=document.getElementById('rhy-pct-'+d.key);
-    var dot=document.getElementById('rhy-dot-'+d.key);
+    var icon=document.getElementById('rhy-icon-'+d.key);
     if(fill){
       fill.style.width=v+'%';
       fill.style.background='rgba('+rgb+','+(v>6?.78:.28)+')';
     }
     if(pct)pct.textContent=v;
-    if(dot){
-      dot.style.background='rgba('+rgb+','+(v>10?.85:.24)+')';
-      dot.style.boxShadow=v>45?'0 0 4px rgba('+rgb+',.32)':'none';
-    }
+    if(icon)icon.style.color='rgb('+d.idColor+')';
   });
 }
 

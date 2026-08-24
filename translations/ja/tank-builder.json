@@ -215,6 +215,8 @@
   }
  },
  "eco": {
+  "summaryTitle": "セットアップ内容",
+  "summarySelectedSuffix": "件選択中",
   "compatDefault": "種を選ぶと、相性に関するメモがここに表示されます。",
   "kofiHint": "ここでのプランニングは無料ですが、チップはこうしたラボの維持に役立ちます。",
   "kofiLinkAria": "Ko-fiで支援する",

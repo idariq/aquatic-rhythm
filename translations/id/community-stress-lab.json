@@ -38,7 +38,7 @@
     "tank_context_label": "Konteks akuarium",
     "volume_label": "Volume",
     "species_label": "Spesies",
-    "species_hint": "Maksimal 6 spesies · total 24 individu. Cari berdasarkan nama atau id (mis. <code>neon_tetra</code>).",
+    "species_hint": "Maksimal 6 spesies · total 24 individu. Cari berdasarkan nama…",
     "search_placeholder": "Cari spesies…",
     "search_aria": "Cari spesies untuk ditambahkan",
     "add_btn": "Tambah",

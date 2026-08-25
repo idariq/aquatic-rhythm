@@ -38,7 +38,7 @@
     "tank_context_label": "水槽の条件",
     "volume_label": "水量",
     "species_label": "種",
-    "species_hint": "最大 6 種・合計 24 匹まで。名前または ID で検索できます（例：<code>neon_tetra</code>）。",
+    "species_hint": "最大 6 種・合計 24 匹まで。名前で検索できます。",
     "search_placeholder": "種を検索…",
     "search_aria": "追加する種を検索",
     "add_btn": "追加",

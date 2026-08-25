@@ -177,6 +177,16 @@
     'cn_bumblebee_goby': 'Naturally a brackish-water species — thrives with a little aquarium salt added. Will only accept live or frozen food, not dry food.',
     'cn_african_dwarf_frog': 'Fully aquatic — needs a clear path to the surface to breathe air. Frequently confused with the much larger, predatory African Clawed Frog at pet stores; check for four-clawed webbed front feet before buying.',
     'cn_medaka': 'Exceptionally temperature-tolerant — no heater needed, unlike most other species. Extremely prolific breeder; unmanaged populations can quickly overrun a tank.',
+    'cn_oscar': 'Grows to 35cm+ within 12–18 months — most buyers underestimate final size. Produces enormous waste; will eat any tankmate small enough to swallow.',
+    'cn_flowerhorn_cichlid': 'Hybrid cichlid bred for extreme aggression — cannot be safely mixed with virtually any other fish; a single-specimen tank is the only practical approach.',
+    'cn_frontosa_cichlid': 'Exceptionally long-lived (20+ years) — a serious long-term commitment. Needs very hard, alkaline Lake Tanganyika-style water chemistry; incompatible with soft-water community fish.',
+    'cn_peacock_cichlid': 'Requires the same hard, alkaline water as mbuna — incompatible with soft-water community fish. Less aggressive than mbuna cichlids; males may still fight over territory.',
+    'cn_severum': 'Large, personable cichlid that will eat or uproot all but the toughest plants. Compatible with other large, similarly-tempered cichlids.',
+    'cn_geophagus': 'Constantly sifts substrate for food — needs fine sand, not gravel, and will uproot any plants. One of the gentler South American cichlids, but still not for planted community tanks.',
+    'cn_black_ghost_knifefish': 'Extremely sensitive to poor water quality and copper-based medication — any copper treatment is lethal. Nocturnal; needs caves or tubes to shelter during the day. Territorial with its own kind.',
+    'cn_elephant_nose_fish': 'Uses a weak electric field for navigation — highly sensitive to electrical interference and to medication/water quality. Nocturnal and shy; needs shelter. Aggressive toward its own kind.',
+    'cn_fire_eel': 'Grows very large (up to 100cm) and lives 20+ years — a major long-term commitment. Nocturnal burrower; needs deep sand and hiding places. Will eat any tankmate small enough to swallow, including shrimp.',
+    'cn_ropefish': 'Ancient air-breathing fish, active only after lights-out. Genuinely peaceful toward similarly-sized tankmates, but will eat any fish small enough to swallow. Master escape artist — a fully sealed lid is essential.',
     },
     id: {
     'meta_title': 'Peta tekanan teman seakuarium — Community Stress Lab — Aquatic Rhythm',
@@ -338,6 +348,16 @@
     'cn_bumblebee_goby': 'Secara alami spesies air payau — tumbuh lebih baik dengan sedikit garam akuarium. Hanya mau makan pakan hidup atau beku, bukan pakan kering.',
     'cn_african_dwarf_frog': 'Sepenuhnya akuatik — butuh jalur bebas hambatan ke permukaan untuk bernapas. Sering tertukar dengan African Clawed Frog yang jauh lebih besar dan predator di toko hewan; periksa kaki depan berselaput dengan empat cakar sebelum membeli.',
     'cn_medaka': 'Sangat tahan terhadap perubahan suhu — tidak perlu pemanas, berbeda dari kebanyakan spesies lain. Pembiak yang sangat produktif; populasi yang tidak dikendalikan bisa cepat memenuhi akuarium.',
+    'cn_oscar': 'Tumbuh hingga 35cm+ dalam 12–18 bulan — kebanyakan pembeli meremehkan ukuran akhirnya. Menghasilkan limbah yang sangat banyak; akan memakan teman tangki apa pun yang cukup kecil untuk ditelan.',
+    'cn_flowerhorn_cichlid': 'Cichlid hibrida yang dibiakkan untuk agresivitas ekstrem — tidak bisa dicampur dengan hampir semua ikan lain dengan aman; akuarium spesies tunggal adalah satu-satunya pendekatan yang praktis.',
+    'cn_frontosa_cichlid': 'Sangat panjang umur (20+ tahun) — komitmen jangka panjang yang serius. Butuh kimia air sekeras dan sealkali Danau Tanganyika; tidak cocok dengan ikan komunitas air lunak.',
+    'cn_peacock_cichlid': 'Butuh air keras dan alkali yang sama seperti mbuna — tidak cocok dengan ikan komunitas air lunak. Lebih kalem dibanding cichlid mbuna; jantan tetap bisa berkelahi memperebutkan wilayah.',
+    'cn_severum': 'Cichlid besar yang ramah dan akan memakan atau mencabut hampir semua tanaman kecuali yang paling kuat. Cocok dipelihara dengan cichlid besar lain yang temperamennya serupa.',
+    'cn_geophagus': 'Terus-menerus menyaring substrat untuk mencari makanan — butuh pasir halus, bukan kerikil, dan akan mencabut tanaman apa pun. Salah satu cichlid Amerika Selatan yang lebih kalem, tetapi tetap tidak cocok untuk akuarium komunitas bertanaman.',
+    'cn_black_ghost_knifefish': 'Sangat sensitif terhadap kualitas air yang buruk dan obat berbasis tembaga — pengobatan tembaga apa pun bersifat mematikan. Aktif malam hari; butuh gua atau pipa untuk berlindung di siang hari. Teritorial terhadap sesama spesiesnya.',
+    'cn_elephant_nose_fish': 'Menggunakan medan listrik lemah untuk navigasi — sangat sensitif terhadap gangguan listrik dan obat/kualitas air. Aktif malam hari dan pemalu; butuh tempat berlindung. Agresif terhadap sesama spesiesnya.',
+    'cn_fire_eel': 'Tumbuh sangat besar (hingga 100cm) dan hidup 20+ tahun — komitmen jangka panjang yang besar. Penggali nokturnal; butuh pasir dalam dan tempat bersembunyi. Akan memakan teman tangki apa pun yang cukup kecil untuk ditelan, termasuk udang.',
+    'cn_ropefish': 'Ikan pernapas udara kuno, aktif hanya setelah lampu dimatikan. Benar-benar damai terhadap teman tangki berukuran serupa, tetapi akan memakan ikan apa pun yang cukup kecil untuk ditelan. Ahli meloloskan diri; tutup akuarium yang benar-benar rapat wajib.',
     },
     ja: {
     'meta_title': '混泳のストレスマップ — Community Stress Lab — Aquatic Rhythm',
@@ -499,6 +519,16 @@
     'cn_bumblebee_goby': '本来は汽水性の種 — 少量のアクアリウム用塩を加えるとよく育つ。生餌または冷凍餌しか食べず、乾燥飼料は口にしない。',
     'cn_african_dwarf_frog': '完全水生 — 呼吸のため水面までの障害のない経路が必要。ペットショップではより大型で捕食性のあるアフリカツメガエルとよく混同される。購入前に前足に4本の爪と水かきがあるか確認すること。',
     'cn_medaka': '極めて温度耐性が高く、他のほとんどの種と違ってヒーター不要。非常に繁殖力が強く、管理しないと個体数が水槽内で増えすぎることがある。',
+    'cn_oscar': '12〜18か月で35cm以上に成長する — 購入者の多くが最終サイズを見誤る。排泄物が非常に多く、飲み込めるサイズの同居魚は捕食する。',
+    'cn_flowerhorn_cichlid': '極端な攻撃性を持つよう作出されたハイブリッドシクリッド — ほぼどんな魚とも安全に混泳できない。単独飼育用の水槽が唯一現実的な方法。',
+    'cn_frontosa_cichlid': '非常に長寿（20年以上）— 長期的な責任を伴う。タンガニイカ湖のような硬水・アルカリ性の水質が必要で、軟水を好むコミュニティ魚とは相性が悪い。',
+    'cn_peacock_cichlid': 'ムブナと同じ硬水・アルカリ性の水質が必要 — 軟水を好むコミュニティ魚とは相性が悪い。ムブナ系シクリッドより攻撃性は低いが、オス同士は縄張り争いをすることがある。',
+    'cn_severum': '人懐っこい大型シクリッド。特に丈夫な種類を除くほとんどの水草を食べるか引き抜いてしまう。気質の似た他の大型シクリッドとの飼育に向く。',
+    'cn_geophagus': '常に底砂をふるって餌を探す — 砂利ではなく細かい砂が必要で、水草は引き抜かれてしまう。南米シクリッドの中では比較的おとなしいが、水草のあるコミュニティ水槽には不向き。',
+    'cn_black_ghost_knifefish': '水質悪化や銅系薬剤に非常に敏感 — 銅を含む治療は致命的。夜行性で、日中隠れるための洞窟やパイプが必要。同種に対して縄張り意識が強い。',
+    'cn_elephant_nose_fish': '弱い電場を使って移動する — 電気的なノイズや薬剤・水質に非常に敏感。夜行性で臆病なため隠れ家が必要。同種に対して攻撃的。',
+    'cn_fire_eel': '非常に大きく成長し（最大100cm）、20年以上生きる — 大きな長期的責任を伴う。夜行性で穴を掘る習性があり、深い砂と隠れ場所が必要。エビを含め、飲み込めるサイズの同居魚は捕食する。',
+    'cn_ropefish': '消灯後のみ活動する原始的な空気呼吸魚。同程度の大きさの同居魚には本当に穏やかだが、飲み込めるサイズの魚は捕食する。脱走の名人 — 隙間のない蓋が必須。',
     }
   };
   function T(key, subs) {
@@ -567,7 +597,17 @@
     dwarf_puffer: 'dwarf_puffer',
     bumblebee_goby: 'bumblebee_goby',
     african_dwarf_frog: 'african_dwarf_frog',
-    medaka: 'medaka'
+    medaka: 'medaka',
+    oscar: 'oscar',
+    flowerhorn_cichlid: 'flowerhorn_cichlid',
+    frontosa_cichlid: 'frontosa_cichlid',
+    peacock_cichlid: 'peacock_cichlid',
+    severum: 'severum',
+    geophagus: 'geophagus',
+    black_ghost_knifefish: 'black_ghost_knifefish',
+    elephant_nose_fish: 'elephant_nose_fish',
+    fire_eel: 'fire_eel',
+    ropefish: 'ropefish'
   };
   function citationNoteFor(speciesId) {
     return T('cn_' + (CITATION_KEY_BY_SPECIES[speciesId] || 'default'));

@@ -190,7 +190,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 }
 
 /* Search row — sopt-adjacent controls */
-.csl-search-row{display:flex;gap:.38rem;flex-wrap:wrap;margin-top:.12rem}
+.csl-search-row{display:flex;gap:.38rem;flex-wrap:wrap;margin-top:.12rem;position:relative}
 #csl-search{
   flex:1;min-width:140px;background:var(--th-surface-2);border:1px solid var(--th-accent-border);
   border-radius:12px;padding:.52rem .65rem;color:var(--th-ink);font-size:var(--fs-sm-md);font-family:var(--sans);
@@ -204,6 +204,25 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
   border-radius:100px;padding:.45rem 1rem;cursor:pointer;font-family:var(--sans);transition:background .2s,border-color .2s;
 }
 #csl-add:hover{background:var(--th-accent-soft);border-color:var(--th-accent)}
+
+/* Species search suggestions — replaces the native <datalist> dropdown,
+   which on Android Chrome showed the internal species id (option
+   value) as the prominent line and the display name as a subtitle
+   (user report 2026-08-25, screenshot). Custom list here only ever
+   shows displayName/scientificName — id stays an invisible match key. */
+.csl-search-results{
+  position:absolute;top:calc(100% + .3rem);left:0;right:0;z-index:20;
+  background:var(--th-surface-2);border:1px solid var(--th-accent-border);
+  border-radius:12px;box-shadow:var(--panel-shadow),var(--panel-inset);
+  max-height:260px;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  list-style:none;padding:.3rem;margin:0;
+}
+.csl-search-results[hidden]{display:none}
+.csl-sr-item{padding:.5rem .6rem;border-radius:8px;cursor:pointer;transition:background .15s}
+.csl-sr-item:hover,.csl-sr-item.csl-sr-active{background:var(--th-accent-soft)}
+.csl-sr-name{display:block;font-size:var(--fs-sm);color:var(--th-ink)}
+.csl-sr-sci{display:block;font-size:var(--fs-2xs);font-style:italic;color:var(--th-ink-4);margin-top:.05rem}
+.csl-sr-empty{padding:.5rem .6rem;font-size:var(--fs-xs);color:var(--th-ink-4);font-style:italic;font-family:var(--serif)}
 
 #csl-status{min-height:1.1rem;font-size:var(--fs-xs);margin-top:.38rem;color:var(--th-ink-4)}
 
@@ -446,11 +465,11 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
 
         <div class="csl-section">
           <span class="csl-sh"><svg class="csl-sh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12c2-3.5 6-5.5 10-5.5s7 2.5 9 5.5c-2 3-5 5.5-9 5.5s-8-2-10-5.5z"/><circle cx="16.2" cy="10.3" r=".6" fill="currentColor" stroke="none"/></svg>Species</span>
-          <p class="csl-hint">Up to 6 species · 24 individuals total. Search by name or id (e.g. <code>neon_tetra</code>).</p>
+          <p class="csl-hint">Up to 6 species · 24 individuals total. Search by name…</p>
           <div class="csl-search-row">
-            <input type="search" id="csl-search" list="csl-species-datalist" placeholder="Search species…" autocomplete="off" aria-label="Search species to add">
-            <datalist id="csl-species-datalist"></datalist>
+            <input type="search" id="csl-search" placeholder="Search species…" autocomplete="off" aria-label="Search species to add" role="combobox" aria-expanded="false" aria-controls="csl-search-results" aria-autocomplete="list">
             <button type="button" id="csl-add">Add</button>
+            <ul id="csl-search-results" class="csl-search-results" role="listbox" aria-label="Species suggestions" hidden></ul>
           </div>
           <div id="csl-status" aria-live="polite"></div>
           <div id="csl-chips"></div>

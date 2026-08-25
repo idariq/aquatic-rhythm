@@ -990,11 +990,14 @@
     var cctx = canvasEl && canvasEl.getContext('2d');
     var bbStatusEl = document.getElementById('csl-bb-status');
     var resetBtn = document.getElementById('csl-reset');
+    var searchResultsEl = document.getElementById('csl-search-results');
 
     var speciesList = [];
     var speciesById = {};
     var picks = [];
     var lastLaneLevel = emptyLanes();
+    var srMatches = [];
+    var srActiveIndex = -1;
 
     function setStatus(msg, err) {
       if (!statusEl) return;
@@ -1402,20 +1405,122 @@
       if (match) {
         addSpeciesById(match.id);
         searchEl.value = '';
+        closeSearchResults();
       } else {
         setStatus(T('no_species_match'), true);
         setTimeout(function () { setStatus(''); }, 2400);
       }
     }
 
+    /* ── Species search suggestions — replaces the native <datalist>
+       dropdown, which showed the internal species id (option value) as
+       the prominent line on Android Chrome (user report 2026-08-25,
+       screenshot). This custom list only ever renders displayName/
+       scientificName — id is matched against but never shown. */
+    function computeSearchMatches(q) {
+      q = (q || '').trim().toLowerCase();
+      if (!q) return [];
+      var starts = [];
+      var contains = [];
+      for (var i = 0; i < speciesList.length; i++) {
+        var s = speciesList[i];
+        var name = s.displayName.toLowerCase();
+        if (name.indexOf(q) === 0) starts.push(s);
+        else if (name.indexOf(q) !== -1 || s.id.indexOf(q) !== -1) contains.push(s);
+      }
+      return starts.concat(contains).slice(0, 8);
+    }
+
+    function closeSearchResults() {
+      if (!searchResultsEl) return;
+      searchResultsEl.hidden = true;
+      searchResultsEl.innerHTML = '';
+      srMatches = [];
+      srActiveIndex = -1;
+      searchEl.setAttribute('aria-expanded', 'false');
+      searchEl.removeAttribute('aria-activedescendant');
+    }
+
+    function updateActiveDescendant() {
+      var items = searchResultsEl.querySelectorAll('.csl-sr-item');
+      for (var i = 0; i < items.length; i++) {
+        items[i].classList.toggle('csl-sr-active', i === srActiveIndex);
+      }
+      if (srActiveIndex >= 0 && items[srActiveIndex]) {
+        searchEl.setAttribute('aria-activedescendant', items[srActiveIndex].id);
+      } else {
+        searchEl.removeAttribute('aria-activedescendant');
+      }
+    }
+
+    function renderSearchResults() {
+      if (!searchResultsEl) return;
+      var q = searchEl.value;
+      if (!q.trim()) {
+        closeSearchResults();
+        return;
+      }
+      srMatches = computeSearchMatches(q);
+      srActiveIndex = -1;
+      if (!srMatches.length) {
+        searchResultsEl.innerHTML = '<li class="csl-sr-empty">' + escapeHtml(T('no_species_match')) + '</li>';
+      } else {
+        searchResultsEl.innerHTML = srMatches.map(function (s, idx) {
+          var sci = s.scientificName ? '<span class="csl-sr-sci">' + escapeHtml(s.scientificName) + '</span>' : '';
+          return '<li class="csl-sr-item" role="option" id="csl-sr-' + idx + '" data-id="' +
+            escapeHtml(s.id) + '"><span class="csl-sr-name">' + escapeHtml(s.displayName) + '</span>' + sci + '</li>';
+        }).join('');
+      }
+      searchResultsEl.hidden = false;
+      searchEl.setAttribute('aria-expanded', 'true');
+    }
+
+    function selectSearchResult(id) {
+      addSpeciesById(id);
+      searchEl.value = '';
+      closeSearchResults();
+      searchEl.focus();
+    }
+
     volumeEl.addEventListener('input', refresh);
     addBtn.addEventListener('click', tryAddFromSearch);
+    searchEl.addEventListener('input', renderSearchResults);
+    searchEl.addEventListener('focus', function () {
+      if (searchEl.value.trim()) renderSearchResults();
+    });
+    searchEl.addEventListener('blur', function () {
+      // Delay so a click on a result (which also blurs the input)
+      // still registers before the list is torn down.
+      setTimeout(closeSearchResults, 150);
+    });
     searchEl.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') {
+      if (e.key === 'ArrowDown' && srMatches.length) {
         e.preventDefault();
-        tryAddFromSearch();
+        srActiveIndex = Math.min(srActiveIndex + 1, srMatches.length - 1);
+        updateActiveDescendant();
+      } else if (e.key === 'ArrowUp' && srMatches.length) {
+        e.preventDefault();
+        srActiveIndex = Math.max(srActiveIndex - 1, 0);
+        updateActiveDescendant();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (srActiveIndex >= 0 && srMatches[srActiveIndex]) {
+          selectSearchResult(srMatches[srActiveIndex].id);
+        } else {
+          tryAddFromSearch();
+        }
+      } else if (e.key === 'Escape') {
+        closeSearchResults();
       }
     });
+    if (searchResultsEl) {
+      searchResultsEl.addEventListener('mousedown', function (e) {
+        // mousedown (not click) so this fires before the input's blur
+        // handler tears the list down.
+        var item = e.target.closest('.csl-sr-item[data-id]');
+        if (item) selectSearchResult(item.getAttribute('data-id'));
+      });
+    }
     if (resetBtn) {
       resetBtn.addEventListener('click', function () {
         picks = [];
@@ -1446,14 +1551,6 @@
         speciesList = pack.species || [];
         for (var i = 0; i < speciesList.length; i++) {
           speciesById[speciesList[i].id] = speciesList[i];
-        }
-        var dl = document.getElementById('csl-species-datalist');
-        if (dl) {
-          dl.innerHTML = speciesList
-            .map(function (s) {
-              return '<option value="' + escapeHtml(s.id) + '">' + escapeHtml(s.displayName) + '</option>';
-            })
-            .join('');
         }
         setStatus('');
         refresh();

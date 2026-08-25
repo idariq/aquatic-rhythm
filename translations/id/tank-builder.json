@@ -233,13 +233,29 @@
    "all": "Semua",
    "community": "Komunitas",
    "planted": "Bertanaman",
-   "shrimp": "Udang",
    "biotope": "Biotope",
    "coldwater": "Air Dingin",
    "species": "Spesies Tunggal",
    "nano": "Nano",
    "blackwater": "Blackwater",
    "paludarium": "Paludarium"
+  },
+  "filterSetupLabel": "Filter berdasarkan gaya setup",
+  "filterGroupLabel": "Filter berdasarkan kelompok hewan",
+  "groups": {
+   "tetraCharacin": "Tetra & Characin",
+   "rasboraBarbDanio": "Rasbora, Barb & Danio",
+   "livebearer": "Livebearer",
+   "catfishPleco": "Catfish & Pleco",
+   "loachAlgaeEater": "Loach & Pemakan Alga",
+   "bettaGourami": "Betta & Gourami",
+   "cichlid": "Cichlid",
+   "snakehead": "Snakehead",
+   "rainbowKillifish": "Rainbowfish & Killifish",
+   "oddballSpecialty": "Oddball & Spesial",
+   "shrimp": "Udang",
+   "snail": "Siput",
+   "crabCrayfish": "Kepiting & Udang Karang"
   }
  },
  "brandInfo": {

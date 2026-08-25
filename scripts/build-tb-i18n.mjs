@@ -336,6 +336,10 @@ function patchEco(h, t) {
   h = subOnce(h, '<span class="tb-kofi-hint-txt">Planning here is free — tips help maintain labs like this.</span>', `<span class="tb-kofi-hint-txt">${e.kofiHint}</span>`, 'eco.kofiHint');
   h = subOnce(h, 'rel="noopener noreferrer" aria-label="Support on Ko-fi">Ko-fi</a>', `rel="noopener noreferrer" aria-label="${e.kofiLinkAria}">Ko-fi</a>`, 'eco.kofiLinkAria');
   h = subOnce(h, 'placeholder="Search fish &amp; invertebrates&#x2026;"', `placeholder="${e.searchPlaceholderDefault}"`, 'eco.searchPlaceholderDefault');
+  h = subOnce(h, '<label class="visually-hidden" for="ph2-setup-select">Filter by setup style</label>', `<label class="visually-hidden" for="ph2-setup-select">${e.filterSetupLabel}</label>`, 'eco.filterSetupLabel');
+  h = subOnce(h, 'aria-label="Filter by setup style"></select>', `aria-label="${e.filterSetupLabel}"></select>`, 'eco.filterSetupAria');
+  h = subOnce(h, '<label class="visually-hidden" for="ph2-group-select">Filter by animal group</label>', `<label class="visually-hidden" for="ph2-group-select">${e.filterGroupLabel}</label>`, 'eco.filterGroupLabel');
+  h = subOnce(h, 'aria-label="Filter by animal group"></select>', `aria-label="${e.filterGroupLabel}"></select>`, 'eco.filterGroupAria');
   h = subOnce(h, '<div class="eco-section-hdr">Fish &amp; Invertebrates</div>', `<div class="eco-section-hdr">${e.sectionHeaders.stock}</div>`, 'eco.sectionHeaders.stock');
   h = subOnce(h, '<div class="eco-section-hdr">Plants</div>', `<div class="eco-section-hdr">${e.sectionHeaders.plants}</div>`, 'eco.sectionHeaders.plants');
   h = subOnce(h, '<div class="eco-section-hdr">Hardscape</div>', `<div class="eco-section-hdr">${e.sectionHeaders.hardscape}</div>`, 'eco.sectionHeaders.hardscape');
@@ -385,11 +389,16 @@ function patchEngineStrings(h, t, lang) {
   h = subOnce(h, "if(tab==='plants')el.placeholder='Search plants\\u2026';", `if(tab==='plants')el.placeholder='${eco.searchPlaceholderPlants}';`, 'js.searchPlaceholderPlants');
   h = subOnce(h, "else if(tab==='hardscape')el.placeholder='Search hardscape\\u2026';", `else if(tab==='hardscape')el.placeholder='${eco.searchPlaceholderHardscape}';`, 'js.searchPlaceholderHardscape');
   h = subOnce(h, "else el.placeholder='Search fish & invertebrates\\u2026';", `else el.placeholder='${eco.searchPlaceholderDefault}';`, 'js.searchPlaceholderDefault2');
-  h = subOnce(h, "all.textContent='All';", `all.textContent='${eco.chips.all}';`, 'js.chipAll');
   h = subOnce(h,
-    "var STYLES=[{k:'community',l:'Community'},{k:'planted',l:'Planted'},{k:'shrimp',l:'Shrimp'},\n   {k:'biotope',l:'Biotope'},{k:'coldwater',l:'Coldwater'},{k:'species',l:'Species'},\n   {k:'nano',l:'Nano'},{k:'blackwater',l:'Blackwater'},{k:'paludarium',l:'Paludarium'}];",
-    `var STYLES=[{k:'community',l:'${eco.chips.community}'},{k:'planted',l:'${eco.chips.planted}'},{k:'shrimp',l:'${eco.chips.shrimp}'},\n   {k:'biotope',l:'${eco.chips.biotope}'},{k:'coldwater',l:'${eco.chips.coldwater}'},{k:'species',l:'${eco.chips.species}'},\n   {k:'nano',l:'${eco.chips.nano}'},{k:'blackwater',l:'${eco.chips.blackwater}'},{k:'paludarium',l:'${eco.chips.paludarium}'}];`,
+    "var GROUPS=[\n  {k:'tetra-characin',l:'Tetra & Characin'},\n  {k:'rasbora-barb-danio',l:'Rasbora, Barb & Danio'},\n  {k:'livebearer',l:'Livebearer'},\n  {k:'catfish-pleco',l:'Catfish & Pleco'},\n  {k:'loach-algae-eater',l:'Loach & Algae-eater'},\n  {k:'betta-gourami',l:'Betta & Gourami'},\n  {k:'cichlid',l:'Cichlid'},\n  {k:'snakehead',l:'Snakehead'},\n  {k:'rainbow-killifish',l:'Rainbowfish & Killifish'},\n  {k:'oddball-specialty',l:'Oddball & Specialty'},\n  {k:'shrimp',l:'Shrimp'},\n  {k:'snail',l:'Snail'},\n  {k:'crab-crayfish',l:'Crab & Crayfish'}\n];",
+    `var GROUPS=[\n  {k:'tetra-characin',l:'${eco.groups.tetraCharacin}'},\n  {k:'rasbora-barb-danio',l:'${eco.groups.rasboraBarbDanio}'},\n  {k:'livebearer',l:'${eco.groups.livebearer}'},\n  {k:'catfish-pleco',l:'${eco.groups.catfishPleco}'},\n  {k:'loach-algae-eater',l:'${eco.groups.loachAlgaeEater}'},\n  {k:'betta-gourami',l:'${eco.groups.bettaGourami}'},\n  {k:'cichlid',l:'${eco.groups.cichlid}'},\n  {k:'snakehead',l:'${eco.groups.snakehead}'},\n  {k:'rainbow-killifish',l:'${eco.groups.rainbowKillifish}'},\n  {k:'oddball-specialty',l:'${eco.groups.oddballSpecialty}'},\n  {k:'shrimp',l:'${eco.groups.shrimp}'},\n  {k:'snail',l:'${eco.groups.snail}'},\n  {k:'crab-crayfish',l:'${eco.groups.crabCrayfish}'}\n];`,
+    'js.groups');
+  h = subOnce(h, "var allOpt=document.createElement('option');allOpt.value='';allOpt.textContent='All';", `var allOpt=document.createElement('option');allOpt.value='';allOpt.textContent='${eco.chips.all}';`, 'js.setupAll');
+  h = subOnce(h,
+    "var STYLES=[{k:'community',l:'Community'},{k:'planted',l:'Planted'},\n   {k:'biotope',l:'Biotope'},{k:'coldwater',l:'Coldwater'},{k:'species',l:'Species'},\n   {k:'nano',l:'Nano'},{k:'blackwater',l:'Blackwater'},{k:'paludarium',l:'Paludarium'}];",
+    `var STYLES=[{k:'community',l:'${eco.chips.community}'},{k:'planted',l:'${eco.chips.planted}'},\n   {k:'biotope',l:'${eco.chips.biotope}'},{k:'coldwater',l:'${eco.chips.coldwater}'},{k:'species',l:'${eco.chips.species}'},\n   {k:'nano',l:'${eco.chips.nano}'},{k:'blackwater',l:'${eco.chips.blackwater}'},{k:'paludarium',l:'${eco.chips.paludarium}'}];`,
     'js.chips');
+  h = subOnce(h, "var allG=document.createElement('option');allG.value='';allG.textContent='All';", `var allG=document.createElement('option');allG.value='';allG.textContent='${eco.chips.all}';`, 'js.groupAll');
 
   // ── canvas hints ──
   h = subOnce(h, "ctx.fillText('Add a filter to establish your biological rhythm',W/2,ty+th/2);", `ctx.fillText('${ch.addFilterHint}',W/2,ty+th/2);`, 'js.addFilterHint');

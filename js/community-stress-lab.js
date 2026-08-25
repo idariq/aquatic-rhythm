@@ -57,6 +57,7 @@
     'checklist_label': 'Observation checklist',
     'foot_note': 'Aligned with living systems. All tools grow from ARA — they simulate and plan, but they do not replace observation.',
     'empty_chips': 'Add species to map overlapping pressures.',
+    'canvas_empty': 'Add species to map the tank.',
     'decrease_count_aria': 'Decrease count',
     'increase_count_aria': 'Increase count',
     'remove_aria': 'Remove {name}',
@@ -193,6 +194,7 @@
     'checklist_label': 'Daftar periksa pengamatan',
     'foot_note': 'Selaras dengan sistem kehidupan. Semua alat tumbuh dari ARA — alat ini menyimulasikan dan merencanakan, tetapi tidak menggantikan pengamatan.',
     'empty_chips': 'Tambahkan spesies untuk memetakan tekanan yang bertumpang tindih.',
+    'canvas_empty': 'Tambahkan spesies untuk memetakan akuarium.',
     'decrease_count_aria': 'Kurangi jumlah',
     'increase_count_aria': 'Tambah jumlah',
     'remove_aria': 'Hapus {name}',
@@ -329,6 +331,7 @@
     'checklist_label': '観察チェックリスト',
     'foot_note': '生きた系に寄り添って。すべての道具は ARA から育っています。模擬と計画はできても、観察の代わりにはなりません。',
     'empty_chips': '種を追加すると、重なり合う負荷が表示されます。',
+    'canvas_empty': '種を追加すると水槽が表示されます。',
     'decrease_count_aria': '数を減らす',
     'increase_count_aria': '数を増やす',
     'remove_aria': '{name} を削除',
@@ -988,10 +991,13 @@
     var findingsEl = document.getElementById('csl-findings');
     var checklistEl = document.getElementById('csl-checklist');
     var statusEl = document.getElementById('csl-status');
+    var canvasEl = document.getElementById('csl-canvas');
+    var cctx = canvasEl && canvasEl.getContext('2d');
 
     var speciesList = [];
     var speciesById = {};
     var picks = [];
+    var lastLaneLevel = emptyLanes();
 
     function setStatus(msg, err) {
       if (!statusEl) return;
@@ -1068,6 +1074,196 @@
         .replace(/"/g, '&quot;');
     }
 
+    /* ── Visual cockpit — population map ─────────────────────────────────
+       Generic markers (not per-species art), same canvas language as
+       Tank Builder's #tank-zone / Tank Simulator's fish canvas. Redrawn
+       whenever refresh() runs, plus on resize and theme change. */
+    function vcLight() {
+      var d = document.documentElement.getAttribute('data-theme');
+      if (d === 'light') return true;
+      if (d === 'dark') return false;
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    }
+
+    function sizeCanvas() {
+      if (!canvasEl) return;
+      var box = canvasEl.parentElement;
+      if (!box) return;
+      canvasEl.width = box.clientWidth;
+      canvasEl.height = box.clientHeight;
+    }
+
+    function rrPath(x, y, w, h, r) {
+      r = r || 6;
+      cctx.beginPath();
+      cctx.moveTo(x + r, y);
+      cctx.lineTo(x + w - r, y);
+      cctx.arcTo(x + w, y, x + w, y + r, r);
+      cctx.lineTo(x + w, y + h - r);
+      cctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+      cctx.lineTo(x + r, y + h);
+      cctx.arcTo(x, y + h, x, y + h - r, r);
+      cctx.lineTo(x, y + r);
+      cctx.arcTo(x, y, x + r, y, r);
+      cctx.closePath();
+    }
+
+    // Deterministic pseudo-random 0..1 from a string seed, so markers
+    // stay put across redraws (theme toggle, volume change) instead of
+    // reshuffling every time. Seeds here differ only by a trailing index
+    // (e.g. "neon_tetra_0" vs "neon_tetra_1"), and a plain polynomial
+    // string hash leaves that last-char difference nearly unmixed in the
+    // low-order output digits — the avalanche finalizer below (Wang/
+    // murmur-style xorshift-multiply) spreads it properly.
+    function seededRand(seed) {
+      var h = 0;
+      for (var i = 0; i < seed.length; i++) {
+        h = (h << 5) - h + seed.charCodeAt(i);
+        h |= 0;
+      }
+      h ^= h >>> 16;
+      h = Math.imul(h, 0x45d9f3b);
+      h ^= h >>> 16;
+      h = Math.imul(h, 0x45d9f3b);
+      h ^= h >>> 16;
+      return (Math.abs(h) % 1000) / 1000;
+    }
+
+    function zoneBand(zone) {
+      if (zone === 'surface') return [0.12, 0.32];
+      if (zone === 'mid') return [0.38, 0.62];
+      return [0.7, 0.88]; // bottom, benthic
+    }
+
+    function drawFishMarker(x, y, w, h, col, facingLeft) {
+      cctx.save();
+      cctx.fillStyle = col;
+      cctx.beginPath();
+      cctx.ellipse(x, y, w, h, 0, 0, Math.PI * 2);
+      cctx.fill();
+      var tx = facingLeft ? x + w : x - w;
+      cctx.beginPath();
+      if (facingLeft) {
+        cctx.moveTo(x + w * .6, y);
+        cctx.lineTo(tx + w * .7, y - h * 1.1);
+        cctx.lineTo(tx + w * .7, y + h * 1.1);
+      } else {
+        cctx.moveTo(x - w * .6, y);
+        cctx.lineTo(tx - w * .7, y - h * 1.1);
+        cctx.lineTo(tx - w * .7, y + h * 1.1);
+      }
+      cctx.closePath();
+      cctx.globalAlpha = .82;
+      cctx.fill();
+      cctx.restore();
+    }
+
+    function drawInvertMarker(x, y, r, col) {
+      cctx.save();
+      cctx.fillStyle = col;
+      cctx.beginPath();
+      cctx.moveTo(x, y - r);
+      cctx.lineTo(x + r, y);
+      cctx.lineTo(x, y + r);
+      cctx.lineTo(x - r, y);
+      cctx.closePath();
+      cctx.fill();
+      cctx.restore();
+    }
+
+    function drawVisual(volumeL, laneLevel) {
+      if (!canvasEl || !cctx) return;
+      sizeCanvas();
+      var W = canvasEl.width, H = canvasEl.height;
+      if (!W || !H) return;
+      cctx.clearRect(0, 0, W, H);
+
+      var light = vcLight();
+      var pad = 6, tx = pad, ty = pad, tw = W - pad * 2, th = H - pad * 2;
+
+      cctx.save();
+      rrPath(tx, ty, tw, th, 10);
+      cctx.clip();
+
+      var waterGrad = cctx.createLinearGradient(tx, ty, tx, ty + th);
+      if (light) {
+        waterGrad.addColorStop(0, 'rgba(150,205,222,.55)');
+        waterGrad.addColorStop(1, 'rgba(90,160,188,.68)');
+      } else {
+        waterGrad.addColorStop(0, 'rgba(8,62,95,.7)');
+        waterGrad.addColorStop(1, 'rgba(3,20,32,.88)');
+      }
+      cctx.fillStyle = waterGrad;
+      cctx.fillRect(tx, ty, tw, th);
+
+      var sev = 0;
+      for (var li = 0; li < LANES.length; li++) sev = Math.max(sev, laneLevel[LANES[li]] || 0);
+      if (sev >= 2) {
+        cctx.fillStyle = sev >= 3 ? 'rgba(220,90,70,.14)' : 'rgba(210,170,60,.09)';
+        cctx.fillRect(tx, ty, tw, th);
+      }
+
+      if (!picks.length) {
+        cctx.font = '400 ' + (W > 420 ? '12' : '10') + 'px Work Sans,sans-serif';
+        cctx.fillStyle = light ? 'rgba(35,36,32,.4)' : 'rgba(235,240,236,.4)';
+        cctx.textAlign = 'center';
+        cctx.textBaseline = 'middle';
+        cctx.fillText(T('canvas_empty'), tx + tw / 2, ty + th / 2);
+        cctx.restore();
+        return;
+      }
+
+      var colFish = light ? 'rgba(50,90,120,.85)' : 'rgba(150,200,225,.88)';
+      var colPredator = 'rgba(210,90,70,.88)';
+      var colPredatorMid = 'rgba(215,150,60,.88)';
+      var colInvert = 'rgba(139,189,210,.9)';
+
+      for (var i = 0; i < picks.length; i++) {
+        var p = picks[i];
+        var s = speciesById[p.id];
+        if (!s) continue;
+        var band = zoneBand(s.zone);
+        var invert = isInvert(s) || hasTag(s, 'snail');
+        var predLvl = s.mouthPredatorLevel || 0;
+        var col = invert ? colInvert : predLvl >= 2 ? colPredator : predLvl === 1 ? colPredatorMid : colFish;
+        var bodyMm = s.bodyMmAdult || 30;
+        var baseW = 4 + Math.min(bodyMm, 250) / 250 * 9;
+        var baseH = baseW * .56;
+        var shown = Math.min(p.count, 4);
+        var lastX = tx, lastY = ty;
+        for (var n = 0; n < shown; n++) {
+          var rx = seededRand(p.id + '_' + n);
+          var ry = seededRand(p.id + '_' + n + '_y');
+          var mx = tx + tw * (0.08 + rx * 0.84);
+          var my = ty + th * (band[0] + ry * (band[1] - band[0]));
+          var facingLeft = seededRand(p.id + '_' + n + '_f') > 0.5;
+          if (invert) drawInvertMarker(mx, my, baseW * .55, col);
+          else drawFishMarker(mx, my, baseW, baseH, col, facingLeft);
+          lastX = mx; lastY = my;
+        }
+        if (p.count > shown) {
+          cctx.font = '600 9px Work Sans,sans-serif';
+          cctx.fillStyle = light ? 'rgba(35,36,32,.55)' : 'rgba(235,240,236,.6)';
+          cctx.textAlign = 'left';
+          cctx.textBaseline = 'alphabetic';
+          cctx.fillText('+' + (p.count - shown), lastX + baseW + 3, lastY + 3);
+        }
+      }
+
+      cctx.font = '500 9px Work Sans,sans-serif';
+      cctx.fillStyle = light ? 'rgba(35,36,32,.32)' : 'rgba(235,240,236,.32)';
+      cctx.textAlign = 'right';
+      cctx.textBaseline = 'alphabetic';
+      cctx.fillText(volumeL + 'L', tx + tw - 6, ty + th - 6);
+
+      cctx.restore();
+    }
+
+    function redrawVisualOnly() {
+      var vol = parseInt(volumeEl.value, 10) || 60;
+      drawVisual(vol, lastLaneLevel);
+    }
+
     function refresh() {
       var vol = parseInt(volumeEl.value, 10) || 60;
       volumeVal.textContent = vol + ' L';
@@ -1076,6 +1272,8 @@
       renderLanes(result.laneLevel);
       renderFindings(result.findings);
       renderChecklist(result.findings);
+      lastLaneLevel = result.laneLevel;
+      drawVisual(vol, lastLaneLevel);
     }
 
     function renderLanes(laneLevel) {
@@ -1202,6 +1400,17 @@
         tryAddFromSearch();
       }
     });
+
+    window.addEventListener('resize', redrawVisualOnly);
+    if (window.matchMedia) {
+      var lightMq = window.matchMedia('(prefers-color-scheme: light)');
+      if (lightMq.addEventListener) lightMq.addEventListener('change', redrawVisualOnly);
+    }
+    new MutationObserver(redrawVisualOnly).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+    redrawVisualOnly();
 
     fetch(root.getAttribute('data-pack') || '/data/community-stress-lab-species-v1.json')
       .then(function (r) {

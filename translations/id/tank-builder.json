@@ -1288,6 +1288,46 @@
    "hc-cuba": {
     "about": "Hemianthus callitrichoides membentuk carpet hijau yang sangat halus dan padat di bawah cahaya kuat, CO2 stabil, dan substrat kaya nutrisi. Tekan gumpalan kecil ke substrat tanpa mengubur daunnya, dan jaga aliran air tetap lembut di atas carpet hingga menyatu, karena celah lambat terisi.",
     "notes": "Salah satu tanaman carpet terkecil, paling menuntut, dan paling dicari dalam aquascaping kompetitif — daunnya yang kecil dan rapat menciptakan carpet hijau seperti rumput yang sangat halus jika berhasil. Membutuhkan cahaya kuat, injeksi CO2 yang konsisten, dan substrat kaya nutrisi; tanpa ketiganya ia meleleh atau tumbuh longgar alih-alih membentuk carpet. Lebih lambat dan kurang toleran untuk didirikan dibanding Monte Carlo, tapi menghasilkan tekstur akhir yang lebih halus dan padat setelah dewasa. Tanaman tolok ukur untuk tata letak bergaya Nature Aquarium high-tech."
+   },
+   "anacharis": {
+    "about": "Egeria densa (Anacharis) tumbuh sebagai tanaman batang pengoksigen yang cepat dan lebat, mentoleransi air sejuk hingga hangat dan cahaya rendah lebih baik dibanding kebanyakan tanaman batang lain. Pemangkasan rutin dan menanam kembali ujung yang dipotong menjaga pertumbuhan tetap padat, bukan menipis.",
+    "notes": "Salah satu tanaman akuarium paling banyak dijual di dunia, sering diikat dalam untaian berpemberat di toko hewan peliharaan. Pengoksigen yang sangat mudah dan tumbuh cepat, tahan pada rentang suhu luas, termasuk akuarium air sejuk tanpa heater dan tank ikan mas. Pesaing nutrisi yang sangat baik melawan alga. Pangkas ujung dan tanam kembali daripada membiarkan batang tumbuh kurus memanjang dan menggugurkan daun bawah."
+   },
+   "tiger-lotus": {
+    "about": "Tiger Lotus tumbuh dari bawang menjadi roset daun lebar dan berwarna-warni, sesekali mengirim daun ke permukaan jika tidak dipangkas. Jaga mahkota bawang tetap di atas garis substrat dan buang daun yang mencapai permukaan agar pertumbuhan tetap fokus di bawah air.",
+    "notes": "Tanaman bawang centrepiece dramatis dengan daun lebar bergelombang berwarna merah, hijau, atau perunggu mencolok tergantung varietas dan cahaya. Tumbuh daun terendam dan, jika dibiarkan, daun apung di permukaan — pangkas daun permukaan secara rutin agar cahaya tetap menjangkau akuarium di bawah dan memfokuskan pertumbuhan pada roset bawah air. Tanam bawang dengan separuh atas terekspos di atas substrat; menguburnya sepenuhnya menyebabkan busuk."
+   },
+   "red-root-floater": {
+    "about": "Phyllanthus fluitans mengambang dengan daun bundar kecil yang memerah di bawah cahaya kuat dan akar pucat menjuntai di bawahnya. Jaga aliran permukaan tetap lembut, karena percikan atau tenggelam bisa membusukkan daun, dan tipiskan rumpun yang padat agar cahaya menjangkau tanaman apung maupun akuarium di bawah.",
+    "notes": "Tanaman apung kecil dengan daun bundar yang memerah pekat di bawah cahaya kuat, kontras tajam dengan akarnya yang pucat menjuntai di bawah permukaan. Intensitas warna sangat bergantung pada kekuatan cahaya — di bawah cahaya rendah ia tetap kebanyakan hijau. Sensitif terhadap percikan atau terbentur ke bawah permukaan oleh aliran kuat atau output filter; perlu pergerakan permukaan tenang hingga lembut agar bisa berkembang."
+   },
+   "anubias-nana-petite": {
+    "about": "Anubias Nana Petite adalah tanaman rimpang kompak yang tumbuh sangat lambat, cocok untuk potongan hardscape kecil. Ikat atau rekatkan rimpangnya ke kayu atau batu dan jauhkan dari substrat, karena rimpang yang terkubur rentan membusuk.",
+    "notes": "Kultivar mini dari Anubias barteri var. nana, berukuran kira-kira sepertiga dari Anubias standar — cukup kecil untuk diikatkan ke potongan hardscape kompak di tank nano tanpa membebani skala. Tumbuh sangat lambat dan toleran terhadap cahaya rendah, membuatnya hampir bebas perawatan setelah mapan. Seperti semua Anubias, ikat rimpangnya ke hardscape daripada menguburnya di substrat, yang menyebabkan busuk."
+   },
+   "bacopa-monnieri": {
+    "about": "Bacopa monnieri membentuk batang kokoh dengan daun bundar kecil dan tebal, mempertahankan bentuknya lebih baik dibanding kebanyakan tanaman batang dengan perawatan sedang. Pangkas dan tanam kembali ujungnya sesekali agar bagian bawah tetap penuh, bukan gundul.",
+    "notes": "Tanaman batang klasik dan kokoh dengan daun bundar kecil dan berdaging pada batang tebal — salah satu tanaman batang paling toleran untuk pemula. Tumbuh lebih lambat dan lebih tebal dibanding kebanyakan tanaman batang lain, mempertahankan bentuknya dengan baik tanpa roboh. Bisa tumbuh emersed di atas permukaan air maupun sepenuhnya terendam. Jepit dan tanam kembali ujungnya untuk mencegah batang bawah menipis."
+   },
+   "java-fern-windelov": {
+    "about": "Java Fern 'Windelov' berbagi pertumbuhan rimpang mudah dari spesies standarnya tapi dengan ujung daun berumbai dan bercabang untuk tampilan renda. Ikat rimpangnya ke kayu atau batu, jauhkan dari substrat, dan pisahkan plantlet dari tepi daun untuk memperbanyak.",
+    "notes": "Kultivar khas dari Java Fern standar dengan ujung daun berumbai dan bercabang yang memberi tanaman ini siluet renda dan berkerut — langsung dikenali di sebelah varietas standar bertepi polos. Sama mudah dan toleran seperti Java Fern biasa; ikat rimpangnya ke hardscape daripada menguburnya di substrat, yang menyebabkan busuk. Menghasilkan plantlet di sepanjang tepi daun yang bisa dipisahkan dan ditanam kembali."
+   },
+   "micro-sword": {
+    "about": "Lilaeopsis 'Micro Sword' menyebar lewat stolon menjadi rumput pendek, mengisi secara bertahap daripada cepat. Tanam rumpun kecil di sepanjang latar depan dan pangkas helaian yang lebih tinggi untuk mendorong penyebaran lateral, bukan pertumbuhan ke atas.",
+    "notes": "Tanaman carpet berumput dengan helaian sempit menyerupai rumput lawn pendek, berbeda dari hairgrass dalam bentuk daun dan helaian yang sedikit lebih lebar. Menyebar lewat stolon membentuk hamparan rendah seiring waktu. Tumbuh tanpa CO2 tapi membentuk carpet lebih padat dan rapat dengannya. Lebih lambat mapan dibanding Monte Carlo atau hairgrass, tapi lebih toleran terhadap rentang tingkat cahaya yang lebih luas."
+   },
+   "subwassertang": {
+    "about": "Subwassertang membentuk hamparan seperti lumut yang berkerut dan tumbuh dengan baik baik diikat ke kayu, dibiarkan lepas, maupun mengambang. Ia tumbuh kembali dari fragmen yang patah, jadi pangkas dengan percaya diri dan gunakan potongannya untuk memulai rumpun baru di tempat lain.",
+    "notes": "Tanaman seperti lumut yang sebenarnya merupakan fase gametofit dari sebuah paku-pakuan, membentuk hamparan hijau berkerut yang padat. Sangat tidak menuntut dan toleran terhadap cahaya rendah serta perawatan tidak teratur, mirip Java Moss tapi dengan tekstur berumbai khas menyerupai selada. Bisa diikat ke hardscape atau dibiarkan lepas di substrat atau mengambang; mudah pecah dan tumbuh kembali dari fragmen, membuatnya sangat mudah diperbanyak tapi juga rentan menyebar ke tempat yang tidak diinginkan."
+   },
+   "weeping-moss": {
+    "about": "Vesicularia ferriei tumbuh dalam untaian panjang yang menjuntai ke bawah, paling bagus ditampilkan diikat ke cabang kayu apung yang ditinggikan untuk efek menjuntai. Ia lebih lambat dibanding Java Moss, jadi pemangkasan diperlukan lebih jarang, tapi ikat dengan kuat karena untaian lepas akan terurai.",
+    "notes": "Lumut dengan tabiat pertumbuhan menjuntai yang khas — untaian panjang tergantung ke bawah dari titik perlekatannya, berbeda dari pertumbuhan tegak atau menggerombol Java Moss atau Christmas Moss. Menciptakan efek anggun menyerupai pohon willow saat diikat ke cabang kayu apung yang ditinggikan. Tumbuh lebih lambat dibanding Java Moss tapi mempertahankan bentuknya dengan baik. Perlindungan dan permukaan merumput yang sangat baik untuk udang dan anak ikan."
+   },
+   "crinum-calamistratum": {
+    "about": "Crinum calamistratum tumbuh dari bawang menjadi daun panjang menyerupai pita yang berkerinting yang semakin melengkung rapat di bawah cahaya lebih kuat. Ia lambat mapan dan tidak suka diganggu, jadi tanam di tempat permanen daripada area yang sering ditata ulang.",
+    "notes": "Tanaman bawang mencolok dengan daun panjang, sempit, menyerupai pita yang berkerinting dan melengkung dramatis di sepanjang panjangnya, menciptakan centrepiece khas yang tidak seperti tanaman akuarium umum lainnya. Tumbuh lambat dan berumur panjang setelah mapan — paling baik dibiarkan tidak terganggu daripada sering ditanam ulang atau dibagi. Mentoleransi rentang tingkat cahaya yang luas, dengan kerintingan yang semakin jelas di bawah cahaya lebih kuat."
    }
   },
   "HARDSCAPE": {

@@ -401,7 +401,6 @@ function patchEngineStrings(h, t, lang) {
   h = subOnce(h, "ub.textContent=chosen?'Use '+chosen.split(' ')[0]+' \\u2192':'Tap an option above';",
     `ub.textContent=chosen?'${dd.useBtnPrefix}'+chosen.split(' ')[0]+'${dd.useBtnSuffix}':'${dd.tapOption}';`, 'js.dropdownUseBtn');
   h = subOnce(h, "ab.textContent='Details \\u2192';", `ab.textContent='${dd.detailsBtn}';`, 'js.detailsBtn');
-  h = subOnce(h, "sk.className='dq-btn-skip';sk.type='button';sk.textContent='Skip';", `sk.className='dq-btn-skip';sk.type='button';sk.textContent='${dd.skipBtn}';`, 'js.skipBtn');
   h = subOnce(h, "ub.classList.add('ready');ub.textContent='Use '+pick.split(' ')[0]+' \\u2192';",
     `ub.classList.add('ready');ub.textContent='${dd.useBtnPrefix}'+pick.split(' ')[0]+'${dd.useBtnSuffix}';`, 'js.syncBtnsUse');
   h = subOnce(h, "rb.style.color='rgba(220,100,60,.65)';rb.textContent='Remove';", `rb.style.color='rgba(220,100,60,.65)';rb.textContent='${dd.removeBtn}';`, 'js.removeBtn');

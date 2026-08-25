@@ -2173,7 +2173,12 @@ function openDropdown(id){
   if(dd.classList.contains('open')){closeAllDropdowns();return;}
   closeAllDropdowns();
   var eq=EQ[id];if(!eq)return;
-  var examples=eq.brands.examples||[], chosen=selectedBrands[id]||null;
+  var examples=eq.brands.examples||[];
+  /* No prior choice? Default to the last example — by convention the
+     generic/unbranded fallback is always listed last — so "Use" is a
+     one-tap equivalent of the old Skip button without forcing a named
+     brand commitment. */
+  var chosen=selectedBrands[id]||(examples.length?examples[examples.length-1]:null);
   var pick=chosen; dd.innerHTML='';
 
   /* Header */
@@ -2254,14 +2259,6 @@ function openDropdown(id){
     e.stopPropagation();var cur=pick||chosen;if(cur)showBrandInfo(cur,id);
   };
 
-  /* Skip button */
-  var sk=document.createElement('button');sk.className='dq-btn-skip';sk.type='button';sk.textContent='スキップ';
-  sk.onclick=function(e){
-    e.stopPropagation();
-    activateEq();
-    closeAllDropdowns();
-  };
-
   function syncBtns(){
     if(pick){
       ub.classList.add('ready');ub.textContent=''+pick.split(' ')[0]+' を使う →';
@@ -2283,7 +2280,7 @@ function openDropdown(id){
     };
     acts.appendChild(rb);
   }
-  acts.appendChild(ub);acts.appendChild(ab);acts.appendChild(sk);
+  acts.appendChild(ub);acts.appendChild(ab);
   dd.appendChild(acts);
   dd.addEventListener('click',function(e){e.stopPropagation();});
   dd.classList.add('open');

@@ -33,10 +33,12 @@ The framework remains style-agnostic and non-prescriptive. It does not tell you 
 - S5: The Three Ecological Phases
 - S6: Alignment Thinking
   - S6.1: What Alignment Means
-  - S6.2: Alignment vs Control
-  - S6.3: Building Observation Capacity *(new in v2.0)*
-  - S6.4: Stability Over Perfection *(new in v2.0)*
-- S7: Alignment Domains in Practice
+  - S6.2: The Four Alignment Principles *(named explicitly, 2026 academic paper)*
+  - S6.3: Alignment vs Control
+  - S6.4: Building Observation Capacity *(new in v2.0)*
+  - S6.5: Stability Over Perfection *(new in v2.0)*
+  - S6.6: Cross-Rhythm Buffering
+- S7: Reading Through the Rhythms
 - S8: Alignment Pathways
 - S9: Observation, Feedback and Iteration
   - S9.1: Observation as Primary Tool
@@ -326,6 +328,14 @@ Intentional phase reset is different from phase regression in one essential way:
 
 The practical implication: intentional reset requires the same Early Phase care as any new setup — minimal intervention, stability-focused management, patience with developmental events that look alarming. The difference from regression is that the keeper initiated the reset knowingly and can calibrate expectations and care accordingly from the start.
 
+### S5.7: Ecological Forgiveness *(named explicitly, 2026 academic paper)*
+
+Ecological forgiveness is the system property that defines genuine Mature Phase: the capacity to absorb small keeper inconsistencies — a missed water change, a few late feedings, a brief period of reduced attention — and return to coherence without cascading into instability. It is not visual clarity or parameter perfection. A tank can look immaculate and still lack forgiveness; a tank can carry algae and still have it.
+
+Forgiveness is the mirror-image construct to capacity creep (S4.2). Where capacity creep names the gradual, unnoticed erosion of keeper consistency, forgiveness names the system's gradually-built capacity to absorb exactly that erosion without breaking. ARA proposes that forgiveness is not fixed and is not purchased through equipment or chemical management alone — it is built gradually, through consistent, modest care sustained over months and years. A system given reliable, ordinary care develops forgiveness progressively. A system given episodic care — bursts of intensive attention followed by neglect — oscillates between stress and recovery without ever developing the biological depth that makes recovery easier over time.
+
+Because forgiveness is defined by recovery behaviour rather than by any single measured quantity, it shares the same operationalisation challenge as system phase itself (S9 of the companion research agenda): classifying a system as having developed forgiveness requires criteria set before a disturbance occurs, not after — otherwise any system that happens to recover can be called forgiving after the fact, and any system that fails can be called falsely mature, with no observation ever counting against the claim. ARA names this risk openly rather than treating forgiveness as an established, measured property.
+
 ---
 
 ## S6: Alignment Thinking
@@ -338,7 +348,19 @@ A tank in alignment tends toward stability without active effort. Problems that 
 
 Alignment is not a permanent state. It requires maintenance — specifically, the maintenance of keeper rhythm consistency. A tank that has been in alignment can drift into misalignment as keeper rhythm changes, as the tank's biological phase shifts, or as external factors (a new fish, a seasonal temperature change, a life event that affects keeper capacity) alter the system's conditions.
 
-### S6.2: Alignment vs Control
+### S6.2: The Four Alignment Principles *(named explicitly, 2026 academic paper)*
+
+ARA names a handful of principles that guide aligned reasoning across system phases and keeper styles. They are given names because the names are useful — each compresses an orientation into a phrase a keeper can hold in mind at the tank. They are not a fixed, sequential checklist; they are concurrent orientations that shape how any situation is approached.
+
+**Timing before Technique.** When an action is taken matters more than how it is executed. The same action carries different ecological consequences at different moments — an ammonia spike in week one of a new system is a developmental signal requiring no intervention; the same spike in a six-month-old established tank warrants investigation. Phase recognition must precede intervention selection. The aligned question before any intervention is not "what should I do about this?" but "is this the right moment to act at all?"
+
+**Capacity before Ambition.** A system can only sustain what it can genuinely support — not under ideal conditions, but given the system's actual biological capacity at its current phase, the keeper's realistic care capacity in an average and a difficult week, the genuine ecological requirements of the species involved, and the technical infrastructure in place. A system that survives realistic keeper behaviour is more ecologically valuable than one that thrives only under ideal conditions.
+
+**Consistency before Intensity.** Consistency over time produces better ecological outcomes than intensive effort applied occasionally. A 20% water change every week produces a more stable chemical environment than a 50% water change once a month, even at identical total volume replaced. The right rhythm is the one that holds when the keeper is tired, busy, or unmotivated — not only when conditions are ideal. This targets the pattern of neglect followed by compensatory bursts; it does not apply where intensity is a deliberate, keeper-directed strategy (see S4.1's note on intentional intensity).
+
+**Observation before Correction.** Reading what is actually happening must precede any corrective response. Acting on a misreading, or acting before a pattern is clear, frequently produces more disruption than the signal that prompted it. Observation requires a baseline (S6.4): without knowing what a system looks and behaves like when it is well, a keeper cannot reliably distinguish genuine drift from normal variation. This principle also carries what earlier versions of this document named as a separate principle, *Origin before Expression*: observing correctly means tracing what is seen back to where it began, not stopping at where it became visible. A keeper who responds to an algae bloom only by removing algae may improve appearance temporarily while leaving the originating misalignment — inconsistent photoperiod, excessive feeding, a mismatch between biological load and renewal rhythm — unchanged. This discipline is not absolute: it never applies to acute welfare risk (S10.1).
+
+### S6.3: Alignment vs Control
 
 The distinction between alignment and control is explored in detail in the website article. For the source document record:
 
@@ -356,7 +378,7 @@ Three practical contrasts:
 
 The aligned move is almost always the smallest effective adjustment that reduces friction without disrupting what is already settling.
 
-### S6.3: Building Observation Capacity *(new in v2.0)*
+### S6.4: Building Observation Capacity *(new in v2.0)*
 
 The original framework stated that observation is foundational to alignment but did not address how observation capacity is built. This was the most significant practical gap in v1.0.
 
@@ -376,7 +398,7 @@ The original framework stated that observation is foundational to alignment but 
 
 **What observation is not.** Observation is not staring at the tank anxiously. Anxiety-driven observation tends to amplify signals (every small variation looks alarming) while missing patterns (the focus is on isolated events rather than trend). The aligned observation practice is relaxed and systematic: same time, same sequence (scan water, scan plants or hardscape, read each animal briefly), note what is different from last time. Five minutes done this way is more valuable than an hour of anxious scrutiny.
 
-### S6.4: Stability Over Perfection *(new in v2.0)*
+### S6.5: Stability Over Perfection *(new in v2.0)*
 
 
 
@@ -390,7 +412,7 @@ This applies to temperature, pH, hardness, and nitrate levels. It does not apply
 
 The practical application: if a parameter has been stable and the animals are thriving, do not adjust it to meet a published target. Read the animals, not the table.
 
-### S6.5: Cross-Rhythm Buffering *(formalised in 2026 academic paper)*
+### S6.6: Cross-Rhythm Buffering *(formalised in 2026 academic paper)*
 
 The five rhythms do not operate independently. In stable systems, they support one another in a dynamic of cross-rhythm buffering: a strong biological community may compensate for minor water chemistry drift; consistent environmental conditions may reduce livestock stress during a period of keeper inconsistency; mature microbiome depth may absorb a temporary biological disruption that would destabilise a less-developed system.
 
@@ -400,108 +422,51 @@ This integrative view has a direct implication for troubleshooting. Visible prob
 
 ---
 
-## S7: Alignment Domains in Practice
+## S7: Reading Through the Rhythms *(retitled from "Alignment Domains in Practice", 2026 academic paper)*
 
-The seven alignment domains are the specific areas within a working aquarium where alignment or misalignment manifests. They are the operational layer of the five rhythms — where abstract rhythm concepts meet concrete keeper decisions.
+Earlier versions of this document, and of the 2024 academic paper, operationalised diagnosis through seven named "alignment domains" sitting between the five rhythms and everyday keeper decisions. The 2026 academic paper retires that layer explicitly: diagnosis does not require a separate set of categories. The five rhythms already are the diagnostic handles. Reading a system means asking, for each rhythm, whether it is in productive relationship with the others or beginning to pull against them. This section replaces the old seven-domain breakdown; nothing in it is lost, it is simply asked as a question of an existing rhythm rather than of a seventh added category.
 
-### Domain 1: Water
+**Water Rhythm** asks whether chemistry is trending stable or drifting. Read trajectory, not snapshot: is nitrate accumulating faster than three months ago, has temperature stability changed with the season, is pH drifting in one direction over weeks? Where a single rhythm is large enough to carry more than one useful reading, it can be read along internal lines without becoming a separate category — Water Rhythm is the clearest case. It is worth distinguishing the water's expressed chemical state from the way that state is being produced: how feeding input, waste processing, and water-change rhythm combine to generate it. A keeper can find water that tests acceptable while the process producing it is already drifting. These are two readings within one rhythm, not two domains; the distinction earns its place only when it helps locate where a problem begins.
 
-**What it covers:** Temperature, pH, ammonia, nitrite, nitrate, dissolved oxygen, hardness, and conductivity.
+**Biological Rhythm** asks whether stocking, feeding, and waste are within what the microbial community can process at the system's current phase. This is a dynamic relationship, not a volume calculation (litres per fish, inches per gallon): a tank with a mature, diverse microbiome and a consistent keeper rhythm can support more than a technical calculation suggests, while a Developing Phase tank with irregular water changes can be overloaded at a stocking level that would be fine in a Mature Phase tank with consistent care.
 
-**The diagnostic question:** Is the water moving in a stable direction, or is something drifting beyond what the current biological load and keeper rhythm would predict?
+**Environmental Rhythm** asks whether light, flow, hardscape, and layout support the animals' needs, and whether equipment is functioning reliably and scaled to the tank — without assuming low-tech or high-tech is inherently superior. Territory disputes, surface gasping, unusual resting positions, and reduced use of certain tank areas are environmental signals. Equipment aging (a heater with reduced accuracy, compacted filter media, a lighting spectrum that has shifted with bulb age) belongs here too: these are drift sources invisible to standard testing, worth assessing on a schedule rather than only when equipment visibly fails.
 
-**Reading this domain:** Rather than checking individual values against targets, read trajectory. Is nitrate accumulating faster than it was three months ago? Has temperature stability changed with the season? Is pH drifting in one direction over weeks? Trajectory questions often reveal misalignment before absolute values do.
+**Livestock Rhythm** asks whether behaviour is consistent with ease — active at appropriate times, feeding with normal enthusiasm, occupying space without signs of chronic stress or avoidance. Review the preclinical behavioural indicators in S3.4; the goal is to know each animal's normal well enough that subtle changes are readable.
 
-### Domain 2: Biological Load
+**Keeper Rhythm** asks whether the keeper's actual pattern of care, attention, and restraint matches what the system currently requires. Use the self-assessment tool in S4.5. The most common answer to a chronic aquarium problem is found here — not in water chemistry, equipment, or species compatibility.
 
-**What it covers:** The relationship between stocking density, waste production, and the biological community's processing capacity at the tank's current phase.
-
-**The diagnostic question:** Is the stocking level within what the biological community can genuinely process, given this tank's current phase and the keeper's actual maintenance rhythm?
-
-**Reading this domain:** This domain is often misread through pure volume calculations (litres per fish, inches per gallon). Biological load is a dynamic relationship between waste production and processing capacity. A tank with a mature, diverse microbiome and a consistent keeper rhythm can support more than a technical calculation suggests. A tank in the Developing Phase with irregular water changes can be biologically overloaded at a stocking level that would be fine in a Mature Phase tank with consistent care.
-
-### Domain 3: Livestock Behaviour
-
-**What it covers:** Animal behaviour as a real-time indicator of system state.
-
-**The diagnostic question:** Are the animals expressing behaviour consistent with ease — active at appropriate times, feeding with normal enthusiasm, occupying their space without signs of chronic stress or avoidance?
-
-**Reading this domain:** Review the preclinical behavioral indicators listed in S3.4. The goal is to know each animal's normal well enough that subtle changes are readable.
-
-### Domain 4: Nutrient and Chemical
-
-**What it covers:** The nutrient cycle — the flow of organic inputs (feeding), through waste processing (biological rhythm), to outputs (water changes and plant uptake).
-
-**The diagnostic question:** Is the nutrient cycle in balance with the biological load and the keeper's maintenance rhythm?
-
-**Reading this domain:** Nitrate accumulation rate is the most readable indicator of this domain. If nitrate is rising faster than the water change schedule removes it, the nutrient input (feeding, stocking density) exceeds the combined output of water changes and biological/plant processing. The aligned response is to adjust input or output, not to add chemical nitrate reducers.
-
-### Domain 5: Environmental
-
-**What it covers:** The physical and sensory structure of the tank — light, flow, hardscape, territory, plant density and arrangement.
-
-**The diagnostic question:** Does the physical structure support the animals' behavioural and territorial needs, and are the light and flow conditions appropriate to the species and phase?
-
-**Reading this domain:** Territory disputes, surface gasping, unusual resting positions, and reduced use of certain tank areas are environmental domain signals. Check flow distribution, light consistency, and hardscape arrangement before looking elsewhere.
-
-### Domain 6: Technology
-
-**What it covers:** The equipment maintaining the tank — filtration, heating, lighting, CO₂ systems, dosing systems.
-
-**The diagnostic question:** Is the equipment functioning within specification, and is it appropriate for the tank's current demands?
-
-**Reading this domain:** Equipment aging is a common source of gradual drift. A heater that reads correctly but has reduced accuracy, a filter that runs but whose media has compacted beyond effective filtration, a lighting system whose spectrum has shifted with bulb age — these are technology domain misalignments that are invisible to standard testing. Equipment should be assessed on a schedule, not just when it visibly fails.
-
-### Domain 7: Human Rhythm
-
-**What it covers:** The keeper's actual pattern of care as an ecological variable.
-
-**The diagnostic question:** Is the keeper's real rhythm of maintenance, feeding, and observation aligned with what this specific tank currently needs?
-
-**Reading this domain:** The self-assessment tool in S4.5. The most common answer to a chronic aquarium problem is found in this domain — not in water chemistry, equipment, or species compatibility.
+Because the place where a problem becomes visible is often not the place where it began, it helps to trace how misalignment travels from origin to expression across these five rhythms — this is the practice named Observation before Correction in S6.2, and it is developed further as illustrative pathways in S8.
 
 ---
 
-## S8: Alignment Pathways
+## S8: Alignment Pathways *(reframed as illustrative examples, 2026 academic paper)*
 
-An alignment pathway is the route by which a misalignment in one domain propagates through the system and becomes visible as a symptom in another domain. Reading pathways allows a keeper to understand what a problem is pointing at — not just what it looks like.
+A pathway is the route by which misalignment originating in one rhythm propagates through the system and becomes visible as a symptom in another. Reading pathways lets a keeper understand what a problem is pointing at, not just what it looks like. The 2026 academic paper is explicit that the examples below illustrate the idea rather than exhaust it — they are patterns the framework's author has observed repeatedly, offered as worked examples of reading backwards from symptom to origin, not as a fixed or complete taxonomy. Earlier versions of this document framed these as fixed "domain-to-domain" maps; that framing is retired along with the seven-domain layer in S7, but the underlying patterns remain genuinely useful and are kept here in rhythm terms.
 
 ### S8.1: Reading Backwards from Symptoms
 
-When a symptom appears, the aligned approach is to read backwards: which domain is the most likely origin? What in that domain has changed recently, or has been drifting gradually? Is there a secondary domain that has amplified the effect?
+When a symptom appears, the aligned approach is to read backwards: which rhythm is the most likely origin? What in that rhythm has changed recently, or has been drifting gradually? Is a second rhythm amplifying the effect?
 
-The most common diagnostic error is treating symptoms in the domain where they appear rather than tracing them to the domain where they originated. A fish with clamped fins (Livestock domain symptom) is not necessarily a Livestock domain problem — it may be a Water domain origin (temperature drop, ammonia spike), a Biological Load domain origin (overcrowding stress), or an Environmental domain origin (flow too strong, territories inadequate). The symptom is in Livestock. The origin may be anywhere.
+The most common diagnostic error is treating a symptom in the rhythm where it appears rather than tracing it to the rhythm where it originated. A fish with clamped fins is a Livestock Rhythm symptom, but not necessarily a Livestock Rhythm problem — the origin may be Water Rhythm (temperature drop, ammonia spike), Biological Rhythm (overcrowding stress), or Environmental Rhythm (flow too strong, territories inadequate). The symptom is in Livestock. The origin may be anywhere.
 
-### S8.2: Common Pathway Maps
+### S8.2: Recurring Pathways
 
-**Keeper rhythm decline → system drift pathway:**
-Keeper rhythm reduction (irregular water changes, reduced observation) → Nutrient domain imbalance (nitrate accumulation) → Water domain drift (rising nitrate, secondary chemistry changes) → Livestock domain stress signals (reduced activity, minor fin clamping, colour pallor) → potential disease susceptibility.
+**Slow drift** is the most common route: small changes in Keeper Rhythm consistency (irregular water changes, reduced observation) accumulate as Water Rhythm drift (rising nitrate, secondary chemistry changes) that only later shows up as a Livestock Rhythm change (reduced activity, minor fin clamping, colour pallor). This pathway is slow — weeks to months — and each step is small enough that the departure from baseline goes unregistered until the livestock signal triggers alarm, by which point the water-chemistry origin has been present for a long time.
 
-This pathway is slow (weeks to months) and each step is small. The keeper often does not recognise the drift until the Livestock domain signal appears and triggers alarm, by which point the Water domain origin has been present for a long time.
+**Environmental to disease** runs through the Environmental Rhythm: persistent low-level instability (temperature swings, inconsistent photoperiod) depletes immune function over weeks, so a disease outbreak appears to arrive without warning when its origin lies in chronic environmental stress rather than in the pathogen itself.
 
-**Gradual overcrowding → chronic stress pathway:**
-Stocking additions over time (each individually reasonable) → Biological Load domain increasing → Nutrient domain pressure → Water domain nitrate accumulation acceleration → Livestock domain low-level chronic stress → disease susceptibility. No individual step triggers alarm. The cumulative effect is a tank that seems fine but is chronically under pressure.
+**Biological overload to loss of resilience** runs through the Biological Rhythm: a system carrying more biological load than its current phase can process experiences gradual chemistry drift that becomes self-reinforcing, eroding the system's capacity to absorb further inputs as the drift compounds. Stocking creep — additions over time, each individually reasonable — is a common route into this pathway.
 
-**Social disruption → cascade pathway:**
-Addition of new fish or removal of existing fish → Social geometry disruption (Environmental domain) → Aggression or avoidance behaviour (Livestock domain) → Stress accumulation in subordinate animals → reduced feeding, hiding, colour loss → potential disease susceptibility.
+**False maturity to crisis** runs through system phase rather than a single rhythm: a system that looks settled but lacks genuine ecological depth (S5.5) meets a disruption and responds with the fragility of an earlier phase, catching the keeper unprepared.
 
-This pathway is often misread as a disease problem because disease appears at the end of it. The origin is social and environmental, not biological.
-
-**Equipment drift → slow failure pathway:**
-Gradual heater accuracy reduction or filter media compaction → Temperature or flow instability (Environmental/Water domain) → Livestock domain stress signals (often mild and easily attributed to other causes) → Eventual acute failure.
-
-Equipment drift pathways are treacherous because they produce symptoms that appear to have other causes. A gradual 1°C drop in tank temperature over three months as a heater ages may produce livestock stress signals that a keeper investigates through water chemistry testing — finding nothing — before the temperature change is finally noticed.
+A fifth recurring pattern worth naming separately because it is so easy to miss: **social disruption**. Adding or removing fish disrupts the social geometry an established community has settled into (Environmental Rhythm), producing aggression or avoidance behaviour and stress accumulation in subordinate animals (Livestock Rhythm) that is frequently misread as a disease problem because disease appears at the end of the chain, not at its origin.
 
 ### S8.3: Gradual Drift — The Hardest Pathway to Read
 
-Gradual drift is the most common and most under-read pathway type. Because each change is small, each new state becomes the new normal. The keeper loses the ability to compare against original baseline because the baseline itself has shifted through accumulated small changes.
+Gradual drift underlies most of the pathways above and deserves its own note. Because each change is small, each new state becomes the new normal, and the keeper loses the ability to compare against an original baseline because the baseline itself has shifted through accumulated small changes — stocking added gradually over two years, maintenance intervals extending step by step (capacity creep, S4.2), plants growing to block flow, a filter impeller losing efficiency so slowly that no single week looks different from the last.
 
-Gradual drift pathways include:
-- Stocking creep: tanks that began with appropriate stocking and were added to gradually over two years, each addition individually reasonable
-- Maintenance interval creep: linked to capacity creep in S4.2
-- Environmental drift: plants growing to block flow, hardscape slowly shifting through small adjustments, filter impeller gradually losing efficiency
-
-The counter to gradual drift is the periodic fresh-eyes assessment (S6.3) and photographic record review. Comparing a current photograph against one taken six months earlier often reveals drift that daily observation has normalised into invisibility.
+The counter to gradual drift is the periodic fresh-eyes assessment (S6.4) and photographic record review. Comparing a current photograph against one taken six months earlier often reveals drift that daily observation has normalised into invisibility.
 
 ---
 
@@ -509,11 +474,11 @@ The counter to gradual drift is the periodic fresh-eyes assessment (S6.3) and ph
 
 ### S9.1: Observation as Primary Tool
 
-Observation is not a preliminary step before the real diagnostic tool (the test kit). It is the primary tool. The capacity to read the five rhythms — to notice what has changed, to distinguish normal variation from genuine drift — is what the framework is built on. A test kit measures a moment in a single domain. Observation reads the system.
+Observation is not a preliminary step before the real diagnostic tool (the test kit). It is the primary tool. The capacity to read the five rhythms — to notice what has changed, to distinguish normal variation from genuine drift — is what the framework is built on. A test kit measures a moment in a single rhythm. Observation reads the system.
 
 This is not an anti-testing position. Testing is useful and sometimes essential. But testing without observation leads to the common failure mode of treating numbers rather than systems. A keeper who tests every parameter weekly but never sits with the tank and watches the fish is maintaining chemical records, not reading an ecosystem.
 
-The baseline documentation practice in S6.3 is the infrastructure that makes observation effective. Without a baseline, observation produces anxiety-driven scrutiny of momentary states. With a baseline, observation produces pattern recognition across time.
+The baseline documentation practice in S6.4 is the infrastructure that makes observation effective. Without a baseline, observation produces anxiety-driven scrutiny of momentary states. With a baseline, observation produces pattern recognition across time.
 
 ### S9.2: Reading False Signals *(new in v2.0)*
 
@@ -587,11 +552,11 @@ The framework does not hold opinions about tank size, stocking choices, species 
 
 ARA is not a rulebook. The framework does not prescribe tank sizes, specific water change volumes, precise feeding schedules, or correct equipment specifications. It provides a way of reading — a set of lenses applied to what is actually happening in a specific tank with a specific keeper — not a set of standards against which tanks and keepers should be measured.
 
-A high-tech CO₂-injected planted tank and a low-tech walstad bowl are both living systems with five rhythms, three possible phases, and seven alignment domains. The questions ARA asks are applicable to both. The answers will be different. The framework that generates the questions is the same.
+A high-tech CO₂-injected planted tank and a low-tech walstad bowl are both living systems with five rhythms and three possible phases. The questions ARA asks are applicable to both. The answers will be different. The framework that generates the questions is the same.
 
 ### S11.2: Style-Agnostic
 
-ARA is compatible with any keeping style. Natural Method, Dutch style, Walstad method, ULNS, Iwagumi, species-only predator tanks, breeding setups, species biotopes: all are living systems that can be read through ARA's lenses. The framework does not privilege any approach to tank design or maintenance over another. It asks the same questions of all of them: what rhythms are present, what phase is the system in, which domain is under the most pressure, what does this specific system need from this specific keeper right now?
+ARA is compatible with any keeping style. Natural Method, Dutch style, Walstad method, ULNS, Iwagumi, species-only predator tanks, breeding setups, species biotopes: all are living systems that can be read through ARA's lenses. The framework does not privilege any approach to tank design or maintenance over another. It asks the same questions of all of them: what rhythms are present, what phase is the system in, which rhythm is under the most pressure, what does this specific system need from this specific keeper right now?
 
 ### S11.3: Compatible with Any Experience Level
 
@@ -606,8 +571,8 @@ This document is Version 2.0. It will continue to be updated as understanding de
 The original ARA framework (v1.0, 2024) was developed through careful observation of aquarium behaviour patterns, cross-referenced with established aquatic ecology and community keeper knowledge. This version (v2.0, 2025) reflects the additional understanding that has developed through the Aquatic Rhythm website's first year of operation, through keeper feedback and observed failure patterns, and through the framework's use in practice.
 
 The specific updates in v2.0:
-- Building observation capacity formalised as a framework section (S6.3)
-- Stability over perfection stated as an explicit principle (S6.4)
+- Building observation capacity formalised as a framework section (S6.4)
+- Stability over perfection stated as an explicit principle (S6.5)
 - Phase regression and false maturity added to the phase framework (S5.4, S5.5)
 - Reading false signals added as a practical section (S9.2)
 - Keeper rhythm substantially expanded with practical tools (S4)
@@ -621,7 +586,14 @@ Post-v2.0 additions (synced from website content):
 - Technical infrastructure as a capacity-extending dimension added to S4.3
 - Intentional Phase Reset added as S5.6 (distinguishing voluntary reset from disruption-driven regression)
 
-What has not changed: the five ecological rhythms, the three-phase system, the alignment vs control distinction, the seven domains, the foundational assumptions, the style-agnostic and non-prescriptive character of the framework.
+2026-08-25 sync (restructured academic paper, same DOI, updated on OSF):
+- The seven "Alignment Domains" are retired as a separate diagnostic layer. The 2026 paper states plainly that domain-style readings are "two readings within one rhythm, not two domains" — S7 is retitled "Reading Through the Rhythms" and now asks the same diagnostic questions directly of the five rhythms, matching what the live site articles already did (this document had lagged behind the site and the paper on this point)
+- Alignment principles named explicitly for the first time in this document as S6.2, matching the paper's four named principles (Timing before Technique, Capacity before Ambition, Consistency before Intensity, Observation before Correction) — the paper's earlier fifth principle, Origin before Expression, is folded into Observation before Correction rather than named separately
+- Ecological Forgiveness named explicitly as S5.7, the defining property of genuine Mature Phase and the mirror-construct to Capacity Creep (S4.2) — this term was already in use on the live site (e.g. the Five Rhythms article) but had not yet been defined in this reference document
+- S8's pathway maps reframed from fixed "domain-to-domain" routes to illustrative, non-exhaustive examples, per the paper's own framing, and rewritten in rhythm terms consistent with S7's retitling
+- Two appendices present in the 2024/2025 paper (a preliminary Phase Assessment Guide / Domain Friction Checklist / Pre-Intervention Reasoning Template, and a marine/reef structural translation guide) do not appear in the 2026 restructure; this document never carried appendix content of its own, so no change was needed here
+
+What has not changed: the five ecological rhythms, the three-phase system, the alignment vs control distinction, the foundational assumptions, the style-agnostic and non-prescriptive character of the framework. What has changed since the last sync: the seven domains no longer exist as a separate layer above the five rhythms (see 2026-08-25 sync above).
 
 The framework aspires to become more useful with each version — not by becoming more prescriptive, but by more accurately describing what actually happens in living systems and what keepers can do to participate in those systems well.
 

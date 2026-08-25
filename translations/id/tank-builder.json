@@ -1374,6 +1374,24 @@
    },
    "ryuoh-stone": {
     "notes": "Batu abu-abu gelap kehitaman dengan urat mineral putih yang mencolok, salah satu dari dua batu utama dalam layout Iwagumi Jepang bersama Seiryu Stone — sering dibandingkan langsung dengannya karena palet warna yang lebih suram dan dramatis. Berbeda dari Seiryu, pengaruhnya terhadap kekerasan dan pH air minimal, menjadikannya lebih fleksibel untuk planted tank air lunak. Bentuknya yang bersudut dan bertekstur cocok untuk penataan gaya rangkaian pegunungan dengan jumlah batu ganjil (konvensi Iwagumi)."
+   },
+   "hakkai-stone": {
+    "notes": "Batu abu-abu kehijauan hingga zaitun bertekstur dengan permukaan berkerut dan berlipat, populer dalam layout Nature Aquarium Jepang untuk menambah variasi warna earthy di luar abu-abu kebiruan Seiryu atau abu-abu kehitaman Ryuoh. Pengaruh minimal terhadap kimia air dibanding batu berbasis kapur. Cocok dipadukan dengan kayu apung untuk layout hardscape campuran naturalistik daripada susunan Iwagumi murni."
+   },
+   "elephant-skin-stone": {
+    "notes": "Batu abu-abu dengan permukaan berkerut dan berlipat yang khas menyerupai kulit gajah, memberikan tekstur visual dan kesan usia instan pada layout. Inert dengan pengaruh minimal terhadap kimia air. Bentuk bersudut dan blok cocok untuk susunan bergaya Iwagumi maupun hardscape campuran naturalistik. Sering tertukar atau dijual bersamaan dengan Frodo Stone, yang memiliki pola kerutan serupa tapi berbeda."
+   },
+   "fossil-wood-stone": {
+    "notes": "Batu asli (bukan kayu organik yang membatu) dengan guratan alami menyerupai kayu apung tua atau kulit kayu — cara populer untuk menghadirkan centrepiece bertekstur kayu tanpa masalah pelunakan, pelepasan tanin, atau daya apung kayu apung asli. Berbeda dari Petrified Wood sebenar (yang merupakan material organik membatu) walau serupa secara visual; periksa secara lokal karena sebagian potongan bisa sedikit meningkatkan kesadahan."
+   },
+   "frodo-stone": {
+    "notes": "Batu abu-abu dengan tekstur permukaan berkerut halus dan rapat, populer untuk menambah detail rumit pada hardscape bagian tengah dan latar belakang. Secara visual mirip Elephant Skin Stone tapi dengan pola kerutan lebih halus dan padat — penjual terkadang menggunakan kedua nama ini secara bergantian, jadi tampilannya bervariasi menurut pemasok. Inert dengan pengaruh minimal terhadap kimia air."
+   },
+   "unzan-stone": {
+    "notes": "Batu Jepang abu-abu kecoklatan gelap dengan tekstur kasar dan berbatu, sering digunakan untuk membangun layout Iwagumi dan hardscape campuran bergaya rangkaian pegunungan yang dramatis. Kurang bersudut dan tampak lebih lapuk dibanding Seiryu atau Ryuoh, memberikan siluet gunung yang lebih lembut dan naturalistik. Kandungan mineral kecil bisa sedikit memengaruhi kimia air pada setup air lunak seiring waktu."
+   },
+   "rainbow-slate": {
+    "notes": "Batu sedimen berlapis yang berkerabat dengan slate biasa, tapi bergaris warna merah keunguan hangat, abu-abu, dan krem alih-alih abu-abu seragam — alternatif berwarna dari slate abu-abu datar yang lebih umum. Terbelah menjadi lembaran tipis yang mudah disusun seperti slate biasa. Sangat inert tanpa pengaruh terukur terhadap kimia air, membuatnya aman untuk berbagai parameter air."
    }
   },
   "SETUP_STYLES": {

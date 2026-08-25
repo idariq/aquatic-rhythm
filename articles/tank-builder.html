@@ -2228,14 +2228,15 @@ function openDropdown(id){
     [FILTERS,SUBS,COOL].forEach(function(g){
       if(g.indexOf(id)>=0){g.forEach(function(x){
         if(x!==id&&active[x]){
-          delete active[x];
+          delete active[x];delete selectedBrands[x];
           var xe=document.querySelector('[data-eq="'+x+'"]');
           if(xe)xe.classList.remove('active');
+          updateEqChoice(x,null);
         }
       });}
     });
-    if(id==='light-planted'){delete active['light-basic'];var lb=document.querySelector('[data-eq="light-basic"]');if(lb)lb.classList.remove('active');}
-    if(id==='light-basic'){delete active['light-planted'];var lp=document.querySelector('[data-eq="light-planted"]');if(lp)lp.classList.remove('active');}
+    if(id==='light-planted'){delete active['light-basic'];delete selectedBrands['light-basic'];var lb=document.querySelector('[data-eq="light-basic"]');if(lb)lb.classList.remove('active');updateEqChoice('light-basic',null);}
+    if(id==='light-basic'){delete active['light-planted'];delete selectedBrands['light-planted'];var lp=document.querySelector('[data-eq="light-planted"]');if(lp)lp.classList.remove('active');updateEqChoice('light-planted',null);}
     active[id]=true;
     var el=document.querySelector('[data-eq="'+id+'"]');if(el)el.classList.add('active');
     updateRackStates();updateRhythms();updateSubmitBtn();checkAnimNeeded();scheduleRedraw();
@@ -2360,9 +2361,9 @@ function showBrandInfo(brandName,eqId){
         var id=_biCurrentEq;
         var FILTERS=['filter-sponge','filter-hang','filter-canister','filter-internal','filter-overflow'];
         var SUBS=['sub-gravel','sub-sand','sub-soil'];var COOL=['chiller','cooling-fan'];
-        [FILTERS,SUBS,COOL].forEach(function(g){if(g.indexOf(id)>=0){g.forEach(function(x){if(x!==id&&active[x]){delete active[x];var xe=document.querySelector('[data-eq="'+x+'"]');if(xe)xe.classList.remove('active');}});}});
-        if(id==='light-planted'){delete active['light-basic'];var lb=document.querySelector('[data-eq="light-basic"]');if(lb)lb.classList.remove('active');}
-        if(id==='light-basic'){delete active['light-planted'];var lp=document.querySelector('[data-eq="light-planted"]');if(lp)lp.classList.remove('active');}
+        [FILTERS,SUBS,COOL].forEach(function(g){if(g.indexOf(id)>=0){g.forEach(function(x){if(x!==id&&active[x]){delete active[x];delete selectedBrands[x];var xe=document.querySelector('[data-eq="'+x+'"]');if(xe)xe.classList.remove('active');updateEqChoice(x,null);}});}});
+        if(id==='light-planted'){delete active['light-basic'];delete selectedBrands['light-basic'];var lb=document.querySelector('[data-eq="light-basic"]');if(lb)lb.classList.remove('active');updateEqChoice('light-basic',null);}
+        if(id==='light-basic'){delete active['light-planted'];delete selectedBrands['light-planted'];var lp=document.querySelector('[data-eq="light-planted"]');if(lp)lp.classList.remove('active');updateEqChoice('light-planted',null);}
         active[id]=true;var ael=document.querySelector('[data-eq="'+id+'"]');if(ael)ael.classList.add('active');
         selectedBrands[id]=brandName;updateEqChoice(id,brandName);
         updateRackStates();updateRhythms();updateSubmitBtn();checkAnimNeeded();scheduleRedraw();

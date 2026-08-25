@@ -151,6 +151,14 @@
     'cn_glass_catfish': 'Peaceful schooler; dislikes strong currents. Hobby consensus ranges.',
     'cn_assassin_snail': 'Preys on pest snails; may take small shrimp. Hobby consensus ranges.',
     'cn_rosy_barb': 'Cool-tolerant fin nipper; active schooler. Hobby consensus ranges.',
+    'cn_buenos_aires_tetra': 'Hardy and cold-tolerant, but can be mildly nippy in small groups — keep 6+.',
+    'cn_marbled_hatchetfish': 'Surface-only feeder and strong jumper — a gap-free lid is essential.',
+    'cn_pencilfish': 'Genus-level stand-in — species vary widely. Hobby consensus ranges.',
+    'cn_green_tiger_barb': 'Colour morph of tiger barb, same care and fin-nipping risk — keep 8+ to redirect aggression within the group.',
+    'cn_giant_danio': 'Needs open swimming space; occasional fin nipper toward slow tankmates.',
+    'cn_pearl_danio': 'Prefers cooler water than most tropical fish — avoid mixing with warm-water species.',
+    'cn_galaxy_rasbora': 'Prefers cooler highland water — may need cooling in tropical climates.',
+    'cn_fancy_goldfish': 'Round-bodied ornamental strains (ryukin, oranda, ranchu) — more waste-heavy and swim-bladder sensitive than common goldfish; feed sinking food only.',
     },
     id: {
     'meta_title': 'Peta tekanan teman seakuarium — Community Stress Lab — Aquatic Rhythm',
@@ -286,6 +294,14 @@
     'cn_glass_catfish': 'Ikan bergerombol yang damai; tidak menyukai arus kuat. Rentang konsensus hobi.',
     'cn_assassin_snail': 'Memangsa siput hama; bisa memakan udang kecil. Rentang konsensus hobi.',
     'cn_rosy_barb': 'Penggigit sirip yang toleran air sejuk; perenang bergerombol yang aktif. Rentang konsensus hobi.',
+    'cn_buenos_aires_tetra': 'Tangguh dan tahan air dingin, tetapi bisa sedikit menggigit sirip dalam kelompok kecil — pelihara 6+ ekor.',
+    'cn_marbled_hatchetfish': 'Pemakan permukaan saja dan perenang lompat yang kuat — tutup akuarium tanpa celah wajib.',
+    'cn_pencilfish': 'Pengganti tingkat genus — spesies sangat bervariasi. Rentang konsensus hobi.',
+    'cn_green_tiger_barb': 'Varian warna dari tiger barb, perawatan dan risiko menggigit sirip sama — pelihara 8+ ekor untuk mengalihkan agresi dalam kelompok.',
+    'cn_giant_danio': 'Butuh ruang berenang terbuka; kadang menggigit sirip teman tangki yang lambat.',
+    'cn_pearl_danio': 'Lebih menyukai air yang lebih sejuk dibanding kebanyakan ikan tropis — hindari dicampur dengan spesies air hangat.',
+    'cn_galaxy_rasbora': 'Lebih menyukai air sejuk dataran tinggi — mungkin perlu pendinginan di iklim tropis.',
+    'cn_fancy_goldfish': 'Galur hias bertubuh bulat (ryukin, oranda, ranchu) — menghasilkan lebih banyak limbah dan lebih sensitif kandung kemih berenang dibanding ikan mas biasa; beri pakan tenggelam saja.',
     },
     ja: {
     'meta_title': '混泳のストレスマップ — Community Stress Lab — Aquatic Rhythm',
@@ -421,6 +437,14 @@
     'cn_glass_catfish': '穏やかな群泳魚で、強い水流を嫌います。アクアリウムで一般に共有されている範囲。',
     'cn_assassin_snail': 'スネール（害貝）を捕食し、小さなエビを襲うこともあります。アクアリウムで一般に共有されている範囲。',
     'cn_rosy_barb': '低めの水温にも耐え、ヒレをかじることがある活発な群泳魚。アクアリウムで一般に共有されている範囲。',
+    'cn_buenos_aires_tetra': '丈夫で低水温にも耐えるが、小さな群れではヒレをかじることがある。6匹以上で飼育。',
+    'cn_marbled_hatchetfish': '水面でのみ採餌し、跳躍力が強い。隙間のない蓋が必須。',
+    'cn_pencilfish': '属レベルの代表種 — 種によって差が大きい。アクアリウムで一般に共有されている範囲。',
+    'cn_green_tiger_barb': 'タイガーバルブの色彩変異個体。飼育方法とヒレかじりのリスクは同じ — 群れ内の攻撃性を分散させるため8匹以上で飼育。',
+    'cn_giant_danio': '広い遊泳スペースが必要。動きの遅い同居魚のヒレをかじることがある。',
+    'cn_pearl_danio': '一般的な熱帯魚より低めの水温を好む — 温水を好む種との混泳は避ける。',
+    'cn_galaxy_rasbora': '高地の冷涼な水を好む — 熱帯気候では冷却が必要な場合がある。',
+    'cn_fancy_goldfish': '丸みを帯びた観賞用品種（琉金、オランダ獅子頭、蘭鋳など）— 普通の金魚より排泄物が多く、浮き袋のトラブルにも弱い。沈下性の餌のみを与える。',
     }
   };
   function T(key, subs) {
@@ -462,7 +486,15 @@
     threadfin_rainbow: 'threadfin_rainbow',
     glass_catfish: 'glass_catfish',
     assassin_snail: 'assassin_snail',
-    rosy_barb: 'rosy_barb'
+    rosy_barb: 'rosy_barb',
+    buenos_aires_tetra: 'buenos_aires_tetra',
+    marbled_hatchetfish: 'marbled_hatchetfish',
+    pencilfish: 'pencilfish',
+    green_tiger_barb: 'green_tiger_barb',
+    giant_danio: 'giant_danio',
+    pearl_danio: 'pearl_danio',
+    galaxy_rasbora: 'galaxy_rasbora',
+    fancy_goldfish: 'fancy_goldfish'
   };
   function citationNoteFor(speciesId) {
     return T('cn_' + (CITATION_KEY_BY_SPECIES[speciesId] || 'default'));

@@ -269,7 +269,7 @@ body::after{content:'';position:fixed;left:0;right:0;bottom:0;height:140px;z-ind
 /* Dropdown */
 .eq-dropdown{display:none;flex-direction:column;background:var(--th-surface);border:1px solid var(--th-accent-border);border-radius:0 0 2px 2px;margin-top:.22rem;overflow:hidden;grid-column:1/-1}
 .eq-dropdown.open{display:flex}
-.eq-dd-backdrop{display:none;position:fixed;inset:0;background:var(--th-surface-2);z-index:558;-webkit-tap-highlight-color:transparent}
+.eq-dd-backdrop{display:none;position:fixed;inset:0;background:rgba(4,8,10,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:558;-webkit-tap-highlight-color:transparent}
 .eq-dd-backdrop.on{display:block}
 body.eq-dd-open{overflow:hidden}
 .dq-header{display:flex;align-items:center;justify-content:space-between;padding:.42rem .55rem .42rem .6rem;border-bottom:1px solid var(--th-line)}
@@ -397,7 +397,12 @@ body.eq-dd-open{overflow:hidden}
 /* ── BRAND INFO PANEL (aligned with equipment picker sheet) ── */
 #brand-info-overlay{
   position:fixed;inset:0;z-index:600;
-  background:var(--th-surface-2);
+  /* Translucent scrim, not a solid fill — the rack/ecosystem grid stays
+     visible (blurred + dimmed) behind the sheet instead of disappearing
+     entirely, while still fully blocking touch/scroll on that content
+     (a fixed, full-viewport element always intercepts pointer events
+     ahead of whatever sits beneath it, regardless of opacity). */
+  background:rgba(4,8,10,.55);
   display:none;align-items:flex-end;justify-content:center;
   padding:0;
   backdrop-filter:blur(5px);
@@ -490,6 +495,19 @@ body.eq-dd-open{overflow:hidden}
   min-height:42px;
 }
 .bi-btn-back:hover{color:var(--th-ink);background:var(--th-surface-2);border-color:var(--th-ink-5)}
+/* Remove-from-setup action inside the add/edit sheet — same subdued
+   destructive treatment as the equipment dropdown's "Remove" button,
+   so the sheet offers the same remove path as the "Your setup" panel
+   (2026-08-25: user asked for removal to work from both places). */
+.bi-btn-remove{
+  font-size:var(--fs-xs);letter-spacing:.07em;text-transform:uppercase;
+  background:var(--th-surface-2);color:rgba(220,100,60,.75);
+  border:1px solid rgba(220,100,60,.3);
+  padding:.4rem .75rem;border-radius:8px;cursor:pointer;
+  font-family:var(--sans);transition:all .2s;text-align:center;
+  min-height:42px;
+}
+.bi-btn-remove:hover{background:rgba(220,100,60,.1);border-color:rgba(220,100,60,.45)}
 
 
 /* ═══ PHASE 2 — ECOSYSTEM ═══ */
@@ -2671,32 +2689,51 @@ function showEcoAddSheet(k,item,cat,onChange){
 
   if(isActive&&cat!=='stock'){
     var note=document.createElement('div');note.className='bi-verdict';
-    note.textContent='Already in your setup \u2014 remove it from the Your Setup panel above to change your pick.';
+    note.textContent='Already in your setup.';
     body.appendChild(note);
   }
 
+  function removeItem(){
+    delete ph2Active[cat][k];
+    overlay.classList.remove('open');
+    updateEcoState();
+    if(onChange)onChange();
+  }
+
   acts.innerHTML='';
-  if(!(isActive&&cat!=='stock')){
+  if(!isActive){
     var confirmBtn=document.createElement('button');confirmBtn.className='bi-btn-use';
-    confirmBtn.textContent=isActive?'Update quantity':'+ Add to setup';
+    confirmBtn.textContent='+ Add to setup';
     confirmBtn.onclick=function(){
-      if(isActive){
-        if(qcount)ph2Active.stock[k]._qty=parseInt(qcount.textContent);
-      } else {
-        var cl=Object.assign({},item);
-        if(cat==='stock')cl._qty=qcount?parseInt(qcount.textContent):(item.min_school||1);
-        ph2Active[cat][k]=cl;
-      }
+      var cl=Object.assign({},item);
+      if(cat==='stock')cl._qty=qcount?parseInt(qcount.textContent):(item.min_school||1);
+      ph2Active[cat][k]=cl;
       overlay.classList.remove('open');
       updateEcoState();
       if(onChange)onChange();
     };
     acts.appendChild(confirmBtn);
+    var cancelBtn=document.createElement('button');cancelBtn.className='bi-btn-back';
+    cancelBtn.textContent='Cancel';
+    cancelBtn.onclick=function(){overlay.classList.remove('open');};
+    acts.appendChild(cancelBtn);
+  } else {
+    if(cat==='stock'){
+      var updateBtn=document.createElement('button');updateBtn.className='bi-btn-use';
+      updateBtn.textContent='Update quantity';
+      updateBtn.onclick=function(){
+        if(qcount)ph2Active.stock[k]._qty=parseInt(qcount.textContent);
+        overlay.classList.remove('open');
+        updateEcoState();
+        if(onChange)onChange();
+      };
+      acts.appendChild(updateBtn);
+    }
+    var removeBtn=document.createElement('button');removeBtn.className='bi-btn-remove';
+    removeBtn.textContent='\u2715 Remove from setup';
+    removeBtn.onclick=removeItem;
+    acts.appendChild(removeBtn);
   }
-  var closeBtn=document.createElement('button');closeBtn.className='bi-btn-back';
-  closeBtn.textContent=(isActive&&cat!=='stock')?'Close':'Cancel';
-  closeBtn.onclick=function(){overlay.classList.remove('open');};
-  acts.appendChild(closeBtn);
 
   overlay.classList.add('open');
 }

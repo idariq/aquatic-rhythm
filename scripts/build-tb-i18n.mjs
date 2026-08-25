@@ -455,12 +455,16 @@ function patchEngineStrings(h, t, lang) {
     `if(sInfo){var qn=document.createElement('span');qn.className='ph2-qty-note';qn.textContent='${si.suggestedPrefix}'+sInfo;qrow.appendChild(qn);}`, 'js.suggestedPrefix');
   h = subOnce(h, "addBtn.textContent=isActive?'\\u2713 In setup':'+ Add';",
     `addBtn.textContent=isActive?'${si.inSetupBtn}':'${si.addBtnShort}';`, 'js.addBtnCardLabel');
-  h = subOnce(h, "confirmBtn.textContent=isActive?'Update quantity':'+ Add to setup';",
-    `confirmBtn.textContent=isActive?'${si.updateQuantityBtn}':'${si.addToSetup}';`, 'js.sheetConfirmLabel');
-  h = subOnce(h, "note.textContent='Already in your setup \\u2014 remove it from the Your Setup panel above to change your pick.';",
+  h = subOnce(h, "note.textContent='Already in your setup.';",
     `note.textContent='${si.alreadyInSetupNote}';`, 'js.alreadyInSetupNote');
-  h = subOnce(h, "closeBtn.textContent=(isActive&&cat!=='stock')?'Close':'Cancel';",
-    `closeBtn.textContent=(isActive&&cat!=='stock')?'${si.closeBtn}':'${si.cancelBtn}';`, 'js.sheetCloseCancelLabel');
+  h = subOnce(h, "confirmBtn.textContent='+ Add to setup';",
+    `confirmBtn.textContent='${si.addToSetup}';`, 'js.sheetConfirmLabel');
+  h = subOnce(h, "cancelBtn.textContent='Cancel';",
+    `cancelBtn.textContent='${si.cancelBtn}';`, 'js.sheetCancelLabel');
+  h = subOnce(h, "updateBtn.textContent='Update quantity';",
+    `updateBtn.textContent='${si.updateQuantityBtn}';`, 'js.sheetUpdateQtyLabel');
+  h = subOnce(h, "removeBtn.textContent='\\u2715 Remove from setup';",
+    `removeBtn.textContent='${si.removeFromSetupBtn}';`, 'js.sheetRemoveLabel');
   h = subOnce(h, "rm.textContent='×';rm.setAttribute('aria-label','Remove '+getName(k));",
     `rm.textContent='×';rm.setAttribute('aria-label','${eco.removeAria}'+getName(k));`, 'js.summaryRemoveAria');
 

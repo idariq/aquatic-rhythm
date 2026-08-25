@@ -290,8 +290,9 @@
   "addBtnShort": "+ Tambah",
   "inSetupBtn": "✓ Sudah dipilih",
   "updateQuantityBtn": "Perbarui jumlah",
-  "alreadyInSetupNote": "Sudah ada di pengaturan Anda — hapus dari panel \"Setup Anda\" di atas untuk mengubah pilihan.",
-  "cancelBtn": "Batal"
+  "alreadyInSetupNote": "Sudah ada di pengaturan Anda.",
+  "cancelBtn": "Batal",
+  "removeFromSetupBtn": "✕ Hapus dari pengaturan"
  },
  "dropdown": {
   "chooseBrand": "Pilih merek",

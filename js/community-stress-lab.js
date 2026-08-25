@@ -159,6 +159,14 @@
     'cn_pearl_danio': 'Prefers cooler water than most tropical fish — avoid mixing with warm-water species.',
     'cn_galaxy_rasbora': 'Prefers cooler highland water — may need cooling in tropical climates.',
     'cn_fancy_goldfish': 'Round-bodied ornamental strains (ryukin, oranda, ranchu) — more waste-heavy and swim-bladder sensitive than common goldfish; feed sinking food only.',
+    'cn_wild_betta_mouthbrooder': 'Wild mouthbrooding betta, shyer and less territorial than pet-shop Betta splendens — keep as a single bonded pair.',
+    'cn_betta_coccina': 'Peat swamp specialist needing genuinely soft, acidic blackwater — a general community setup will stress it long-term.',
+    'cn_betta_imbellis': 'Distinct wild species from the pet-shop betta — genuinely community-safe, but its fins are still a target for fin-nippers.',
+    'cn_betta_macrostoma': 'Cool hillstream species — avoid running above roughly 26°C. More territorial than other wild bettas; house singly or as a bonded pair only.',
+    'cn_lyretail_killifish': 'Prefers cooler water than most tropical fish — unsuitable above roughly 24°C. Strong jumper; a gap-free lid is essential.',
+    'cn_steelblue_killifish': 'Males are aggressive toward each other and toward females — keep more females than males. Strong jumper; a gap-free lid is essential.',
+    'cn_australian_rainbow': 'Active swimmer needing open horizontal space — not suited to small tanks.',
+    'cn_turquoise_rainbow': 'Active swimmer needing open horizontal space; runs cooler than the average tropical community tank.',
     },
     id: {
     'meta_title': 'Peta tekanan teman seakuarium — Community Stress Lab — Aquatic Rhythm',
@@ -302,6 +310,14 @@
     'cn_pearl_danio': 'Lebih menyukai air yang lebih sejuk dibanding kebanyakan ikan tropis — hindari dicampur dengan spesies air hangat.',
     'cn_galaxy_rasbora': 'Lebih menyukai air sejuk dataran tinggi — mungkin perlu pendinginan di iklim tropis.',
     'cn_fancy_goldfish': 'Galur hias bertubuh bulat (ryukin, oranda, ranchu) — menghasilkan lebih banyak limbah dan lebih sensitif kandung kemih berenang dibanding ikan mas biasa; beri pakan tenggelam saja.',
+    'cn_wild_betta_mouthbrooder': 'Betta liar pengeram mulut, lebih pemalu dan kurang teritorial dibanding Betta splendens toko hewan — pelihara sebagai sepasang yang sudah berjodoh.',
+    'cn_betta_coccina': 'Spesialis rawa gambut yang butuh air blackwater lunak dan asam sungguhan — akuarium komunitas umum akan membuatnya stres dalam jangka panjang.',
+    'cn_betta_imbellis': 'Spesies liar yang berbeda dari betta toko hewan — benar-benar aman untuk komunitas, tetapi siripnya tetap jadi sasaran penggigit sirip.',
+    'cn_betta_macrostoma': 'Spesies sungai pegunungan yang sejuk — hindari suhu di atas sekitar 26°C. Lebih teritorial dibanding betta liar lain; pelihara sendiri atau sepasang saja.',
+    'cn_lyretail_killifish': 'Lebih menyukai air yang lebih sejuk dibanding kebanyakan ikan tropis — tidak cocok di atas sekitar 24°C. Perenang lompat yang kuat; tutup akuarium tanpa celah wajib.',
+    'cn_steelblue_killifish': 'Jantan agresif terhadap sesama jantan maupun betina — pelihara lebih banyak betina daripada jantan. Perenang lompat yang kuat; tutup akuarium tanpa celah wajib.',
+    'cn_australian_rainbow': 'Perenang aktif yang butuh ruang berenang terbuka — tidak cocok untuk akuarium kecil.',
+    'cn_turquoise_rainbow': 'Perenang aktif yang butuh ruang berenang terbuka; lebih menyukai suhu yang lebih sejuk dibanding akuarium komunitas tropis pada umumnya.',
     },
     ja: {
     'meta_title': '混泳のストレスマップ — Community Stress Lab — Aquatic Rhythm',
@@ -445,6 +461,14 @@
     'cn_pearl_danio': '一般的な熱帯魚より低めの水温を好む — 温水を好む種との混泳は避ける。',
     'cn_galaxy_rasbora': '高地の冷涼な水を好む — 熱帯気候では冷却が必要な場合がある。',
     'cn_fancy_goldfish': '丸みを帯びた観賞用品種（琉金、オランダ獅子頭、蘭鋳など）— 普通の金魚より排泄物が多く、浮き袋のトラブルにも弱い。沈下性の餌のみを与える。',
+    'cn_wild_betta_mouthbrooder': '野生のマウスブルーダー系ベタ。ペットショップのベタ・スプレンデンスより臆病で縄張り意識も弱い — ペア1組で飼育する。',
+    'cn_betta_coccina': '軟らかく酸性のブラックウォーターを本当に必要とする泥炭湿地の専門種 — 一般的なコミュニティ水槽では長期的にストレスを受ける。',
+    'cn_betta_imbellis': 'ペットショップのベタとは別の野生種 — 本当にコミュニティ向きだが、ヒレはヒレかじり魚の標的になりやすい。',
+    'cn_betta_macrostoma': '冷涼な渓流に生息する種 — 26℃前後を超えないようにする。他の野生ベタより縄張り意識が強い。単独か、ペア1組のみで飼育する。',
+    'cn_lyretail_killifish': '一般的な熱帯魚より低めの水温を好む — 24℃前後を超えると適さない。跳躍力が強いため、隙間のない蓋が必須。',
+    'cn_steelblue_killifish': 'オス同士、またオスからメスへの攻撃性がある — メスをオスより多く飼育する。跳躍力が強いため、隙間のない蓋が必須。',
+    'cn_australian_rainbow': '広い遊泳スペースを必要とする活発な遊泳魚 — 小型水槽には適さない。',
+    'cn_turquoise_rainbow': '広い遊泳スペースを必要とする活発な遊泳魚。一般的な熱帯コミュニティ水槽より低めの水温を好む。',
     }
   };
   function T(key, subs) {
@@ -494,7 +518,16 @@
     giant_danio: 'giant_danio',
     pearl_danio: 'pearl_danio',
     galaxy_rasbora: 'galaxy_rasbora',
-    fancy_goldfish: 'fancy_goldfish'
+    fancy_goldfish: 'fancy_goldfish',
+    betta_albimarginata: 'wild_betta_mouthbrooder',
+    betta_channoides: 'wild_betta_mouthbrooder',
+    betta_coccina: 'betta_coccina',
+    betta_imbellis: 'betta_imbellis',
+    betta_macrostoma: 'betta_macrostoma',
+    lyretail_killifish: 'lyretail_killifish',
+    steelblue_killifish: 'steelblue_killifish',
+    australian_rainbow: 'australian_rainbow',
+    turquoise_rainbow: 'turquoise_rainbow'
   };
   function citationNoteFor(speciesId) {
     return T('cn_' + (CITATION_KEY_BY_SPECIES[speciesId] || 'default'));

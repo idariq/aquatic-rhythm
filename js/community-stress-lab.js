@@ -167,6 +167,16 @@
     'cn_steelblue_killifish': 'Males are aggressive toward each other and toward females — keep more females than males. Strong jumper; a gap-free lid is essential.',
     'cn_australian_rainbow': 'Active swimmer needing open horizontal space — not suited to small tanks.',
     'cn_turquoise_rainbow': 'Active swimmer needing open horizontal space; runs cooler than the average tropical community tank.',
+    'cn_corydoras_generic': 'Genus-level stand-in — species vary widely. Hobby consensus ranges.',
+    'cn_pygmy_corydoras': 'Very small-bodied — avoid keeping with predatory tankmates that might see it as food.',
+    'cn_dwarf_chain_loach': 'One of the more peaceful, compact loaches — good for community tanks from 60L; captive-bred stock recommended as wild populations are endangered.',
+    'cn_weather_loach': 'Grows much larger than often sold (up to 25cm) — cannot tolerate warm tropical temperatures; becomes very active before barometric pressure drops (normal behaviour).',
+    'cn_siamese_algae_eater': 'One of the few fish that eats black beard algae — frequently mislabelled in stores; verify the black stripe extends into the tail fin before buying.',
+    'cn_flying_fox': 'Territorial with its own species and similar bottom-dwellers — keep only one per tank unless the setup is very large.',
+    'cn_dwarf_puffer': 'Same species commonly sold as both "Dwarf Puffer" and "Pea Puffer" — the world\'s smallest pufferfish. Will nip fins of virtually any tankmate; best in a species-only tank. Needs a steady supply of snails to wear down its ever-growing beak.',
+    'cn_bumblebee_goby': 'Naturally a brackish-water species — thrives with a little aquarium salt added. Will only accept live or frozen food, not dry food.',
+    'cn_african_dwarf_frog': 'Fully aquatic — needs a clear path to the surface to breathe air. Frequently confused with the much larger, predatory African Clawed Frog at pet stores; check for four-clawed webbed front feet before buying.',
+    'cn_medaka': 'Exceptionally temperature-tolerant — no heater needed, unlike most other species. Extremely prolific breeder; unmanaged populations can quickly overrun a tank.',
     },
     id: {
     'meta_title': 'Peta tekanan teman seakuarium — Community Stress Lab — Aquatic Rhythm',
@@ -318,6 +328,16 @@
     'cn_steelblue_killifish': 'Jantan agresif terhadap sesama jantan maupun betina — pelihara lebih banyak betina daripada jantan. Perenang lompat yang kuat; tutup akuarium tanpa celah wajib.',
     'cn_australian_rainbow': 'Perenang aktif yang butuh ruang berenang terbuka — tidak cocok untuk akuarium kecil.',
     'cn_turquoise_rainbow': 'Perenang aktif yang butuh ruang berenang terbuka; lebih menyukai suhu yang lebih sejuk dibanding akuarium komunitas tropis pada umumnya.',
+    'cn_corydoras_generic': 'Pengganti tingkat genus — spesies sangat bervariasi. Rentang konsensus hobi.',
+    'cn_pygmy_corydoras': 'Bertubuh sangat kecil — hindari teman tangki predator yang mungkin menganggapnya makanan.',
+    'cn_dwarf_chain_loach': 'Salah satu loach yang lebih damai dan berukuran kompak — cocok untuk akuarium komunitas mulai 60L; disarankan pilih hasil ternak akuarium karena populasi liar terancam punah.',
+    'cn_weather_loach': 'Tumbuh jauh lebih besar dari yang biasa dijual (hingga 25cm) — tidak tahan suhu tropis yang hangat; menjadi sangat aktif sebelum tekanan udara turun (perilaku normal).',
+    'cn_siamese_algae_eater': 'Salah satu dari sedikit ikan yang memakan alga black beard — sering salah label di toko; pastikan garis hitamnya menyambung hingga ke sirip ekor sebelum membeli.',
+    'cn_flying_fox': 'Teritorial terhadap sesama spesiesnya dan penghuni dasar akuarium yang serupa — pelihara hanya satu ekor per akuarium kecuali setupnya sangat besar.',
+    'cn_dwarf_puffer': 'Spesies yang sama, dijual dengan dua nama umum "Dwarf Puffer" dan "Pea Puffer" — buntal terkecil di dunia. Akan menggigit sirip hampir semua teman tangki; paling baik dipelihara di akuarium spesies tunggal. Butuh pasokan siput tetap untuk mengikis paruhnya yang terus tumbuh.',
+    'cn_bumblebee_goby': 'Secara alami spesies air payau — tumbuh lebih baik dengan sedikit garam akuarium. Hanya mau makan pakan hidup atau beku, bukan pakan kering.',
+    'cn_african_dwarf_frog': 'Sepenuhnya akuatik — butuh jalur bebas hambatan ke permukaan untuk bernapas. Sering tertukar dengan African Clawed Frog yang jauh lebih besar dan predator di toko hewan; periksa kaki depan berselaput dengan empat cakar sebelum membeli.',
+    'cn_medaka': 'Sangat tahan terhadap perubahan suhu — tidak perlu pemanas, berbeda dari kebanyakan spesies lain. Pembiak yang sangat produktif; populasi yang tidak dikendalikan bisa cepat memenuhi akuarium.',
     },
     ja: {
     'meta_title': '混泳のストレスマップ — Community Stress Lab — Aquatic Rhythm',
@@ -469,6 +489,16 @@
     'cn_steelblue_killifish': 'オス同士、またオスからメスへの攻撃性がある — メスをオスより多く飼育する。跳躍力が強いため、隙間のない蓋が必須。',
     'cn_australian_rainbow': '広い遊泳スペースを必要とする活発な遊泳魚 — 小型水槽には適さない。',
     'cn_turquoise_rainbow': '広い遊泳スペースを必要とする活発な遊泳魚。一般的な熱帯コミュニティ水槽より低めの水温を好む。',
+    'cn_corydoras_generic': '属レベルの代表種 — 種によって差が大きい。アクアリウムで一般に共有されている範囲。',
+    'cn_pygmy_corydoras': '非常に小さい体格 — 捕食性のある同居魚とは避ける。',
+    'cn_dwarf_chain_loach': '比較的おとなしくコンパクトなドジョウの仲間 — 60L以上のコミュニティ水槽に向く。野生個体群は絶滅の危機にあるため、繁殖個体の入手が推奨される。',
+    'cn_weather_loach': '販売時より大きく成長する（最大25cm）— 暖かい熱帯水温には耐えられない。低気圧が近づく前に活発になることがある（正常な行動）。',
+    'cn_siamese_algae_eater': '黒ひげ苔を食べる数少ない魚の一種 — 店舗で誤ったラベルが付けられやすい。購入前に黒いラインが尾びれまで続いているか確認すること。',
+    'cn_flying_fox': '同種や似た底棲魚に対して縄張り意識が強い — 非常に大きな水槽でない限り、1匹のみで飼育する。',
+    'cn_dwarf_puffer': '「ドワーフパファー」と「ピーパファー」という2つの通称で販売される同一種 — 世界最小のフグ。ほぼすべての同居魚のヒレをかじるため、単独種水槽での飼育が最適。伸び続けるくちばしを削るため、貝類を継続的に与える必要がある。',
+    'cn_bumblebee_goby': '本来は汽水性の種 — 少量のアクアリウム用塩を加えるとよく育つ。生餌または冷凍餌しか食べず、乾燥飼料は口にしない。',
+    'cn_african_dwarf_frog': '完全水生 — 呼吸のため水面までの障害のない経路が必要。ペットショップではより大型で捕食性のあるアフリカツメガエルとよく混同される。購入前に前足に4本の爪と水かきがあるか確認すること。',
+    'cn_medaka': '極めて温度耐性が高く、他のほとんどの種と違ってヒーター不要。非常に繁殖力が強く、管理しないと個体数が水槽内で増えすぎることがある。',
     }
   };
   function T(key, subs) {
@@ -527,7 +557,17 @@
     lyretail_killifish: 'lyretail_killifish',
     steelblue_killifish: 'steelblue_killifish',
     australian_rainbow: 'australian_rainbow',
-    turquoise_rainbow: 'turquoise_rainbow'
+    turquoise_rainbow: 'turquoise_rainbow',
+    corydoras: 'corydoras_generic',
+    pygmy_corydoras: 'pygmy_corydoras',
+    dwarf_chain_loach: 'dwarf_chain_loach',
+    weather_loach: 'weather_loach',
+    siamese_algae_eater: 'siamese_algae_eater',
+    flying_fox: 'flying_fox',
+    dwarf_puffer: 'dwarf_puffer',
+    bumblebee_goby: 'bumblebee_goby',
+    african_dwarf_frog: 'african_dwarf_frog',
+    medaka: 'medaka'
   };
   function citationNoteFor(speciesId) {
     return T('cn_' + (CITATION_KEY_BY_SPECIES[speciesId] || 'default'));

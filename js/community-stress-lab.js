@@ -58,6 +58,7 @@
     'foot_note': 'Aligned with living systems. All tools grow from ARA — they simulate and plan, but they do not replace observation.',
     'empty_chips': 'Add species to map overlapping pressures.',
     'canvas_empty': 'Add species to map the tank.',
+    'status_summary': '{n}/{maxN} species · {m}/{maxM} individuals',
     'decrease_count_aria': 'Decrease count',
     'increase_count_aria': 'Increase count',
     'remove_aria': 'Remove {name}',
@@ -195,6 +196,7 @@
     'foot_note': 'Selaras dengan sistem kehidupan. Semua alat tumbuh dari ARA — alat ini menyimulasikan dan merencanakan, tetapi tidak menggantikan pengamatan.',
     'empty_chips': 'Tambahkan spesies untuk memetakan tekanan yang bertumpang tindih.',
     'canvas_empty': 'Tambahkan spesies untuk memetakan akuarium.',
+    'status_summary': '{n}/{maxN} spesies · {m}/{maxM} individu',
     'decrease_count_aria': 'Kurangi jumlah',
     'increase_count_aria': 'Tambah jumlah',
     'remove_aria': 'Hapus {name}',
@@ -332,6 +334,7 @@
     'foot_note': '生きた系に寄り添って。すべての道具は ARA から育っています。模擬と計画はできても、観察の代わりにはなりません。',
     'empty_chips': '種を追加すると、重なり合う負荷が表示されます。',
     'canvas_empty': '種を追加すると水槽が表示されます。',
+    'status_summary': '{n}/{maxN}種・{m}/{maxM}匹',
     'decrease_count_aria': '数を減らす',
     'increase_count_aria': '数を増やす',
     'remove_aria': '{name} を削除',
@@ -993,6 +996,8 @@
     var statusEl = document.getElementById('csl-status');
     var canvasEl = document.getElementById('csl-canvas');
     var cctx = canvasEl && canvasEl.getContext('2d');
+    var bbStatusEl = document.getElementById('csl-bb-status');
+    var resetBtn = document.getElementById('csl-reset');
 
     var speciesList = [];
     var speciesById = {};
@@ -1264,6 +1269,16 @@
       drawVisual(vol, lastLaneLevel);
     }
 
+    function renderBottombar() {
+      if (!bbStatusEl) return;
+      bbStatusEl.textContent = T('status_summary', {
+        n: picks.length,
+        maxN: MAX_DISTINCT_SPECIES,
+        m: totalIndividuals(),
+        maxM: MAX_INDIVIDUALS
+      });
+    }
+
     function refresh() {
       var vol = parseInt(volumeEl.value, 10) || 60;
       volumeVal.textContent = vol + ' L';
@@ -1272,6 +1287,7 @@
       renderLanes(result.laneLevel);
       renderFindings(result.findings);
       renderChecklist(result.findings);
+      renderBottombar();
       lastLaneLevel = result.laneLevel;
       drawVisual(vol, lastLaneLevel);
     }
@@ -1400,6 +1416,14 @@
         tryAddFromSearch();
       }
     });
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        picks = [];
+        searchEl.value = '';
+        setStatus('');
+        refresh();
+      });
+    }
 
     window.addEventListener('resize', redrawVisualOnly);
     if (window.matchMedia) {
@@ -1411,6 +1435,7 @@
       attributeFilter: ['data-theme']
     });
     redrawVisualOnly();
+    renderBottombar();
 
     fetch(root.getAttribute('data-pack') || '/data/community-stress-lab-species-v1.json')
       .then(function (r) {

@@ -43,6 +43,7 @@
     "pressure_map_label": "Peta tekanan",
     "findings_label": "Temuan",
     "checklist_label": "Daftar periksa pengamatan",
-    "foot_note": "Selaras dengan sistem kehidupan. Semua alat tumbuh dari ARA — alat ini menyimulasikan dan merencanakan, tetapi tidak menggantikan pengamatan."
+    "foot_note": "Selaras dengan sistem kehidupan. Semua alat tumbuh dari ARA — alat ini menyimulasikan dan merencanakan, tetapi tidak menggantikan pengamatan.",
+    "reset_btn": "Atur ulang"
   }
 }

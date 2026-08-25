@@ -97,7 +97,7 @@ html,body{height:100%;overflow:hidden;font-family:var(--sans);background:var(--t
 body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--th-water)}
 
 /* ── APP (matches Tank Cycle Simulator shell) ── */
-#app{display:grid;grid-template-rows:auto auto 1fr;height:100dvh;max-width:900px;margin:0 auto;padding:0 clamp(.5rem,2vw,1.2rem)}
+#app{display:grid;grid-template-rows:auto auto 1fr auto;height:100dvh;max-width:900px;margin:0 auto;padding:0 clamp(.5rem,2vw,1.2rem)}
 
 /* Topbar — same pattern as tank-simulator */
 #topbar{display:flex;align-items:center;justify-content:space-between;padding:.55rem 0 .48rem;border-bottom:1px solid var(--th-accent-border);gap:.55rem;flex-shrink:0}
@@ -131,6 +131,24 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
   padding:.5rem 0 1rem;
 }
 
+/* Bottom action bar — same pattern as Tank Builder's #status-bar */
+#csl-bottombar{
+  flex-shrink:0;min-height:40px;padding:0 0 env(safe-area-inset-bottom,0px);
+  background:var(--th-surface-2);border-top:1px solid var(--th-line);
+  display:flex;align-items:center;gap:.5rem;
+}
+#csl-bb-status{
+  flex:1;min-width:0;font-size:var(--fs-2xs);letter-spacing:.04em;color:var(--th-ink-4);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+#csl-reset{
+  flex-shrink:0;font-size:var(--fs-xs);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--th-ink-4);background:none;border:1px solid var(--th-line);
+  padding:.22rem .55rem;border-radius:5px;cursor:pointer;font-family:var(--sans);
+  transition:all .18s;min-height:34px;
+}
+#csl-reset:hover{color:var(--th-ink-2);border-color:var(--th-ink-4)}
+
 /* Intro + disclaimer (simulator insight / setup-note) */
 .insight-box{
   background:var(--th-accent-soft);border:1px solid var(--th-accent-border);
@@ -156,8 +174,9 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 }
 .csl-sh{
   font-size:var(--fs-2xs);letter-spacing:.12em;text-transform:uppercase;color:var(--th-accent);
-  display:block;margin-bottom:.48rem;font-weight:500;
+  display:flex;align-items:center;gap:.4rem;margin-bottom:.48rem;font-weight:500;
 }
+.csl-sh-icon{width:14px;height:14px;flex-shrink:0}
 .csl-hint{font-size:var(--fs-xs);font-weight:300;color:var(--th-ink-3);line-height:1.55;margin-bottom:.55rem}
 
 /* Volume row — param-bar + pc feel */
@@ -277,6 +296,7 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
   .btn-sm{padding:.34rem .58rem!important;font-size:var(--fs-xs)!important;min-height:2.35rem}
   #csl-visual{flex-shrink:0;margin:.4rem .65rem .5rem;height:clamp(96px,26vh,150px)}
   #csl-scroll{padding:.45rem .65rem 1rem}
+  #csl-bottombar{padding-left:.65rem;padding-right:.65rem}
   .csl-section{border-radius:10px;padding:.48rem .55rem}
   .csl-lane-name{flex-basis:auto}
   .csl-lane-meter{width:100%}
@@ -385,7 +405,7 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
 
       <div id="csl-root" data-pack="/data/community-stress-lab-species-v1.json">
         <div class="csl-section">
-          <span class="csl-sh">Tank context</span>
+          <span class="csl-sh"><svg class="csl-sh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3 4 6 8 6 11a6 6 0 0 1-12 0c0-3 3-7 6-11z"/></svg>Tank context</span>
           <div class="csl-vol-row">
             <label for="csl-volume">Volume</label>
             <input type="range" id="csl-volume" min="20" max="240" value="80" step="5" aria-valuemin="20" aria-valuemax="240" aria-valuenow="80">
@@ -394,7 +414,7 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
         </div>
 
         <div class="csl-section">
-          <span class="csl-sh">Species</span>
+          <span class="csl-sh"><svg class="csl-sh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12c2-3.5 6-5.5 10-5.5s7 2.5 9 5.5c-2 3-5 5.5-9 5.5s-8-2-10-5.5z"/><circle cx="16.2" cy="10.3" r=".6" fill="currentColor" stroke="none"/></svg>Species</span>
           <p class="csl-hint">Up to 6 species · 24 individuals total. Search by name or id (e.g. <code>neon_tetra</code>).</p>
           <div class="csl-search-row">
             <input type="search" id="csl-search" list="csl-species-datalist" placeholder="Search species…" autocomplete="off" aria-label="Search species to add">
@@ -406,23 +426,28 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
         </div>
 
         <div class="csl-section">
-          <span class="csl-sh">Pressure map</span>
+          <span class="csl-sh"><svg class="csl-sh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16a8 8 0 1 1 16 0"/><path d="M12 16l3.5-5"/><circle cx="12" cy="16" r="1" fill="currentColor" stroke="none"/></svg>Pressure map</span>
           <div id="csl-lanes" aria-label="Pressure by category"></div>
         </div>
 
         <div class="csl-section">
-          <span class="csl-sh">Findings</span>
+          <span class="csl-sh"><svg class="csl-sh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M19 19l-4.3-4.3"/></svg>Findings</span>
           <ul id="csl-findings"></ul>
         </div>
 
         <div class="csl-section">
-          <span class="csl-sh">Observation checklist</span>
+          <span class="csl-sh"><svg class="csl-sh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 3.5h6v2H9z" fill="currentColor" stroke="none"/><path d="M8.5 12.5l2 2 4-4.5"/></svg>Observation checklist</span>
           <ul id="csl-checklist"></ul>
         </div>
       </div>
 
       <p class="csl-foot">Aligned with living systems. All tools grow from ARA — they simulate and plan, but they do not replace observation.</p>
     </div>
+  </div>
+
+  <div id="csl-bottombar">
+    <span id="csl-bb-status" aria-live="polite"></span>
+    <button type="button" id="csl-reset">Reset</button>
   </div>
 
 </div>

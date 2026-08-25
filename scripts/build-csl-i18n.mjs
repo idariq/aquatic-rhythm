@@ -120,20 +120,26 @@ function patchBody(h, t) {
   h = replaceOnce(h, /(<div class="ar-disclosure-body">\s*<p>)[\s\S]*?(<\/p>\s*<p>)[\s\S]*?(<\/p>\s*<p>)[\s\S]*?(<\/p>)/,
     (_, a, mid1, mid2, z) => `${a}${t.disclosure_p1}${mid1}${t.disclosure_p2}${mid2}${t.disclosure_p3}${z}`);
 
-  h = replaceOnce(h, /(<span class="csl-sh">)Tank context(<\/span>)/, (_, a, b) => `${a}${t.tank_context_label}${b}`);
+  // csl-sh header icon (SVG) is optional in the pattern below — the label
+  // text may be preceded by an inline <svg>...</svg> icon (added for the
+  // per-section icon pass) or not; keep the (?:<svg>...</svg>)? group so
+  // this still matches either way instead of failing silently if the
+  // icon markup changes.
+  h = replaceOnce(h, /(<span class="csl-sh">(?:<svg[\s\S]*?<\/svg>)?)Tank context(<\/span>)/, (_, a, b) => `${a}${t.tank_context_label}${b}`);
   h = replaceOnce(h, /(<label for="csl-volume">)[^<]*(<\/label>)/, (_, a, b) => `${a}${t.volume_label}${b}`);
 
-  h = replaceOnce(h, /(<span class="csl-sh">)Species(<\/span>)/, (_, a, b) => `${a}${t.species_label}${b}`);
+  h = replaceOnce(h, /(<span class="csl-sh">(?:<svg[\s\S]*?<\/svg>)?)Species(<\/span>)/, (_, a, b) => `${a}${t.species_label}${b}`);
   h = replaceOnce(h, /(<p class="csl-hint">)[\s\S]*?(<\/p>)/, (_, a, b) => `${a}${t.species_hint}${b}`);
   h = replaceOnce(h, /(<input type="search" id="csl-search"[^>]*placeholder=")[^"]*("[^>]*aria-label=")[^"]*(")/,
     (_, a, mid, z) => `${a}${t.search_placeholder}${mid}${t.search_aria}${z}`);
   h = replaceOnce(h, /(<button type="button" id="csl-add">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.add_btn}${b}`);
 
-  h = replaceOnce(h, /(<span class="csl-sh">)Pressure map(<\/span>)/, (_, a, b) => `${a}${t.pressure_map_label}${b}`);
-  h = replaceOnce(h, /(<span class="csl-sh">)Findings(<\/span>)/, (_, a, b) => `${a}${t.findings_label}${b}`);
-  h = replaceOnce(h, /(<span class="csl-sh">)Observation checklist(<\/span>)/, (_, a, b) => `${a}${t.checklist_label}${b}`);
+  h = replaceOnce(h, /(<span class="csl-sh">(?:<svg[\s\S]*?<\/svg>)?)Pressure map(<\/span>)/, (_, a, b) => `${a}${t.pressure_map_label}${b}`);
+  h = replaceOnce(h, /(<span class="csl-sh">(?:<svg[\s\S]*?<\/svg>)?)Findings(<\/span>)/, (_, a, b) => `${a}${t.findings_label}${b}`);
+  h = replaceOnce(h, /(<span class="csl-sh">(?:<svg[\s\S]*?<\/svg>)?)Observation checklist(<\/span>)/, (_, a, b) => `${a}${t.checklist_label}${b}`);
 
   h = replaceOnce(h, /(<p class="csl-foot">)[\s\S]*?(<\/p>)/, (_, a, b) => `${a}${t.foot_note}${b}`);
+  h = replaceOnce(h, /(<button type="button" id="csl-reset">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.reset_btn}${b}`);
   return h;
 }
 

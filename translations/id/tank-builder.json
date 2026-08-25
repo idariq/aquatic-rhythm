@@ -211,6 +211,14 @@
    "siphon": {
     "name": "Vakum Kerikil",
     "role": "Alat pergantian air"
+   },
+   "fish-food": {
+    "name": "Makanan Ikan",
+    "role": "Nutrisi harian"
+   },
+   "medication": {
+    "name": "Obat",
+    "role": "Mengobati penyakit"
    }
   }
  },

@@ -327,7 +327,9 @@ const ENGLISH_RACK_ITEMS = {
   'liquid-fert': { name: 'Liquid Fertiliser', role: 'Dosed nutrients for plants' },
   'thermometer': { name: 'Thermometer', role: 'Verify temperature daily' },
   'testkit': { name: 'Test Kit', role: 'Read the nitrogen cycle' },
-  'siphon': { name: 'Gravel Vacuum', role: 'Water change tool' }
+  'siphon': { name: 'Gravel Vacuum', role: 'Water change tool' },
+  'fish-food': { name: 'Fish Food', role: 'Daily nutrition' },
+  'medication': { name: 'Medication', role: 'Treats disease' }
 };
 
 function patchEco(h, t) {

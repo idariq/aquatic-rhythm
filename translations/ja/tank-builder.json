@@ -211,6 +211,14 @@
    "siphon": {
     "name": "底床クリーナー",
     "role": "水換え用の道具"
+   },
+   "fish-food": {
+    "name": "餌",
+    "role": "毎日の栄養"
+   },
+   "medication": {
+    "name": "治療薬",
+    "role": "病気の治療"
    }
   }
  },

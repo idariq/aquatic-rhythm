@@ -238,7 +238,8 @@
    "coldwater": "Air Dingin",
    "species": "Spesies Tunggal",
    "nano": "Nano",
-   "blackwater": "Blackwater"
+   "blackwater": "Blackwater",
+   "paludarium": "Paludarium"
   }
  },
  "brandInfo": {
@@ -938,6 +939,12 @@
     "substrate_pref": "Kerikil halus atau pasir dengan tanaman sedang dan ruang berenang terbuka.",
     "notes_detail": "Varian warna dari tiger barb dengan tubuh berwarna hijau gelap merata, bukan emas dengan garis hitam. Semua kebutuhan perawatannya identik dengan tiger barb biasa. Green tiger barb bisa dicampur dengan tiger barb standar dalam kelompok yang sama — mereka bebas saling kawin. Aturan ukuran kelompok yang sama berlaku: pelihara 8 ekor ke atas agar agresivitasnya tersalur dalam kelompok dan meminimalkan gigitan sirip ke ikan lain.",
     "caution": "Menggigit sirip kalau dipelihara dalam kelompok kurang dari 8 ekor. Akan terus-menerus mengganggu ikan bersirip panjang seperti betta, angelfish, dan guppy. Pelihara dalam kelompok 8 ekor ke atas bersama teman seakuarium bersirip pendek dan kuat."
+   },
+   "african-dwarf-frog": {
+    "diet": "Omnivora — pelet tenggelam, cacing darah beku, udang air asin. Penglihatan buruk; beri makan dekat dgn katak, jangan andalkan ia bersaing dgn makanan yang mengapung.",
+    "substrate_pref": "Kerikil halus atau pasir — hindari substrat tajam, karena mereka mencari makan dan menggali dengan kaki depan.",
+    "notes_detail": "Sepenuhnya akuatik — menghabiskan seluruh hidupnya di dalam air tetapi memiliki paru-paru, bukan insang, sehingga harus naik ke permukaan secara berkala untuk menghirup udara; jalur bebas ke permukaan sangat penting. Bersifat sosial dan lebih baik dipelihara dalam kelompok kecil daripada sendirian. Penglihatan yang buruk membuatnya berburu terutama dengan penciuman, jadi makanan tenggelam yang diletakkan dekat dengannya (bukan flake yang bergerak cepat) bekerja paling baik. Lembut dan damai — aman bersama sebagian besar ikan komunitas kecil yang tenang dan udang, meskipun burayak udang yang sangat kecil sesekali bisa berisiko.",
+    "caution": "Sering tertukar dengan Katak Cakar Afrika (Xenopus) yang jauh lebih besar di toko ikan — Katak Cakar tumbuh hingga 10–15cm, predator agresif, dan invasif di beberapa wilayah. Periksa kaki depan berselaput dengan empat cakar (Katak Kerdil) sebelum membeli. Penglihatan yang buruk membuatnya bisa kalah bersaing mendapatkan makanan dari ikan yang cepat."
    }
   },
   "INVERTEBRATES": {

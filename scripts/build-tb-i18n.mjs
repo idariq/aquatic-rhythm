@@ -387,8 +387,8 @@ function patchEngineStrings(h, t, lang) {
   h = subOnce(h, "else el.placeholder='Search fish & invertebrates\\u2026';", `else el.placeholder='${eco.searchPlaceholderDefault}';`, 'js.searchPlaceholderDefault2');
   h = subOnce(h, "all.textContent='All';", `all.textContent='${eco.chips.all}';`, 'js.chipAll');
   h = subOnce(h,
-    "var STYLES=[{k:'community',l:'Community'},{k:'planted',l:'Planted'},{k:'shrimp',l:'Shrimp'},\n   {k:'biotope',l:'Biotope'},{k:'coldwater',l:'Coldwater'},{k:'species',l:'Species'},\n   {k:'nano',l:'Nano'},{k:'blackwater',l:'Blackwater'}];",
-    `var STYLES=[{k:'community',l:'${eco.chips.community}'},{k:'planted',l:'${eco.chips.planted}'},{k:'shrimp',l:'${eco.chips.shrimp}'},\n   {k:'biotope',l:'${eco.chips.biotope}'},{k:'coldwater',l:'${eco.chips.coldwater}'},{k:'species',l:'${eco.chips.species}'},\n   {k:'nano',l:'${eco.chips.nano}'},{k:'blackwater',l:'${eco.chips.blackwater}'}];`,
+    "var STYLES=[{k:'community',l:'Community'},{k:'planted',l:'Planted'},{k:'shrimp',l:'Shrimp'},\n   {k:'biotope',l:'Biotope'},{k:'coldwater',l:'Coldwater'},{k:'species',l:'Species'},\n   {k:'nano',l:'Nano'},{k:'blackwater',l:'Blackwater'},{k:'paludarium',l:'Paludarium'}];",
+    `var STYLES=[{k:'community',l:'${eco.chips.community}'},{k:'planted',l:'${eco.chips.planted}'},{k:'shrimp',l:'${eco.chips.shrimp}'},\n   {k:'biotope',l:'${eco.chips.biotope}'},{k:'coldwater',l:'${eco.chips.coldwater}'},{k:'species',l:'${eco.chips.species}'},\n   {k:'nano',l:'${eco.chips.nano}'},{k:'blackwater',l:'${eco.chips.blackwater}'},{k:'paludarium',l:'${eco.chips.paludarium}'}];`,
     'js.chips');
 
   // ── canvas hints ──

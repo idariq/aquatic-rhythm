@@ -200,8 +200,11 @@ tetapan artikel/alat),
   templat insight mingguan dihantar ke backend AI Rhyssa) — terjemah
   ni akan UBAH TINGKAH LAKU AI, bukan sekadar tukar teks UI.
   Keputusan skop eksplisit user, bukan andaian ejen.
-- **`js/tank-data.js`'s `AR_BRAND_INFO`** (126 entri peralatan) — DAH
-  diterjemah (PR #405, 2026-08-24), rujuk §"Status Terjemahan Semasa"
+- **`js/tank-data.js`'s `AR_BRAND_INFO`** (211 entri peralatan drpd
+  2026-08-25, naik drpd 126 asal PR #405 — 61 jenama baharu ditambah
+  merentas 3 PR susulan #436-#438, rujuk paragraf di bawah) — DAH
+  diterjemah (PR #405, 2026-08-24, & setiap PR susulan yg tambah
+  jenama baharu), rujuk §"Status Terjemahan Semasa"
   bawah utk senibina. **JANGAN keliru dgn `tank-builder.html`'s `var
   ECOSYSTEM`** (pangkalan data spesies ikan/tumbuhan/hardscape, skop
   BERBEZA & bersaiz serupa, turut DAH diterjemah tapi via senibina
@@ -209,7 +212,7 @@ tetapan artikel/alat),
   BERBEZA, semak yg mana sebelum anggap "data spesies/peralatan"
   bermaksud sama.
 
-## Status Terjemahan Semasa (kemas kini 2026-08-18)
+## Status Terjemahan Semasa (kemas kini 2026-08-25)
 
 **Siap**: ~35 artikel biasa, siri kerangka ARA penuh (7 fail), halaman
 utama (SEMUA tab SPA — pg-home/pg-reading/pg-tools/pg-journal/
@@ -246,9 +249,12 @@ dinamik-tersusun (bukan sekadar swap perkataan) — bercabang ikut bahasa
 `build-kyr-i18n.mjs`) — JANGAN cuba paksa satu templat sejagat.
 
 **`tank-builder`** (~2000 baris JS enjin + pangkalan data `var
-ECOSYSTEM={...}` — 75 ikan + 15 invertebrata + 35 tumbuhan + 26
-hardscape + 9 gaya persediaan, ~145KB satu baris — skrip
-`scripts/build-tb-i18n.mjs`, PR akan datang selepas 2026-08-19).
+ECOSYSTEM={...}` — 88 ikan + 19 invertebrata + 49 tumbuhan + 34
+hardscape (kemas kini 2026-08-25, naik drpd 75/15/35/26 asal) + 9 gaya
+persediaan, ~145KB satu baris — skrip `scripts/build-tb-i18n.mjs`,
+PR #318 & susulan, terjemahan id/ja kekal terkini merentas semua
+tambahan spesies/tumbuhan/hardscape susulan — rujuk "Kemas kini
+tank-builder susulan sesi 2026-08-25" di bawah).
 **BERBEZA drpd `tank-simulator`** dlm dua cara penting:
 
 1. **Skop pangkalan data spesies TERMASUK dlm terjemahan ni** (keputusan
@@ -267,9 +273,10 @@ hardscape + 9 gaya persediaan, ~145KB satu baris — skrip
    `translations/<lang>/tank-builder.json`'s `ecosystem{}` cermin
    struktur `ECOSYSTEM` (kunci slug SAMA, hanya medan prosa diganti).
 
-**`AR_BRAND_INFO`** (`js/tank-data.js`, 126 jenama peralatan, ~10k
-patah perkataan panduan beli — summary/pros/cons/best_for/tier_note/
-avoid_if — diterjemah PR #405, 2026-08-24) guna senibina KETIGA,
+**`AR_BRAND_INFO`** (`js/tank-data.js`, 211 jenama peralatan drpd
+2026-08-25 — naik drpd 126 asal, ~10k+ patah perkataan panduan beli —
+summary/pros/cons/best_for/tier_note/avoid_if — diterjemah PR #405,
+2026-08-24, & setiap PR susulan) guna senibina KETIGA,
 BERBEZA drpd ECOSYSTEM/`build-tb-i18n.mjs` di atas: `js/tank-data.js`
 ialah **SATU fail dikongsi SEMUA build bahasa** (`<script
 src="/js/tank-data.js">` sama drpd `articles/`, `id/articles/`,
@@ -298,6 +305,99 @@ ditemui semasa kerja ni: 2 entri typo `tier` ("Budget-Mid" hyphen vs
 `disclaimer` (33 entri, duplikat teks statik yg dah dipaparkan sedia
 ada, tak pernah dibaca kod) dibuang — corak "medan data mati/tak
 disambung" yg sama dgn `requiresOne`/`warnWithout` (PR #404).
+
+### Kemas kini tank-builder susulan sesi 2026-08-25 (PR #421-#438)
+
+Satu sesi berterusan (18 PR) memperluas `tank-builder` merentas
+spesies, tumbuhan, hardscape, UI penapis, & jenama peralatan. Ringkasan
+supaya sesi/ejen akan datang tak anggap fail ni (yg ditulis 2026-08-18)
+masih cerminkan keadaan semasa:
+
+- **ECOSYSTEM**: FISH 75→88 (+13, tumpuan spesies liar/relevan
+  Indonesia-Jepun — Medaka, Asian Arowana, *Betta* liar
+  albimarginata/macrostoma/channoides/coccina/imbellis, *Channa*
+  andrao/maruliodes/pulchra/lucius/bleheri; Koi/Kap sengaja
+  DIKECUALIKAN — luar skop saiz 20-500L/air tawar tangki kecil).
+  INVERTEBRATES 15→19 (+4, udang tasik Sulawesi — *Caridina*
+  dennerli/spongicola/woltereckae/glaubrechti, niche kimia air
+  berbeza drpd udang biasa). PLANTS 35→49 (+15, & 2 duplikat
+  spesies dibetulkan — `pennywort`/`hydrocotyle-leucocephala` &
+  `dwarf-hairgrass`/`eleocharis-parvulus` same-species, tag
+  `Blackwater` mati (0 tumbuhan) dibetulkan). HARDSCAPE 26→34 (+9, &
+  1 duplikat — `dragon-stone`/`ohko-stone` same-rock — dibetulkan;
+  batu baharu termasuk Hakkai, Elephant Skin, Fossil Wood, Frodo,
+  Unzan, Rainbow Slate ikut permintaan eksplisit user utk nama batu
+  aquascape popular yg tertinggal). Setiap tambahan turut medan
+  `group` (taksonomi 13-kumpulan baharu, rujuk bawah).
+
+- **Penapis Livestock/Plants/Hardscape ditulis semula (PR #430)**:
+  drpd 1 baris chip gaya-setup (`.ph2-chips`) kpd **2 dropdown
+  berasingan** (`#ph2-setup-select` "Setup Style" + `#ph2-group-select`
+  "Animal Group", GROUPS 13-kategori baharu — tetra-characin,
+  rasbora-barb-danio, livebearer, catfish-pleco, loach-algae-eater,
+  betta-gourami, cichlid, snakehead, rainbow-killifish,
+  oddball-specialty, shrimp, snail, crab-crayfish). Kedua-dua default
+  "All", **kekal dipilih (persist) sepanjang sesi pengguna** dlm lab
+  (bukan reset bila tukar tab), & carian teks (`_ph2Query`) **abaikan
+  kedua-dua filter serta susun hasil ikut abjad** — 3 keperluan
+  eksplisit user, bukan andaian. `buildAllGrids()` guna `.filter()`+
+  `.sort()` opsyenal drpd corak lama `.forEach()`+skip.
+
+- **Saiz tangki max 300L→500L (PR #431)**: dropdown `#tank-size`
+  tambah 400L/500L, sepadan skop ARA framework sendiri (rujuk
+  `docs/ARA-framework-v2.docx`, dilaporkan skop 20-500L).
+
+- **2 kategori peralatan BAHARU — `fish-food` & `medication` (PR
+  #437)**: sebelum ni TIADA LANGSUNG dlm ~32 kategori EQ (bukan
+  sekadar kurang jenama dlm kategori sedia ada — kategori itu sendiri
+  tiada). Disahkan kena dgn kerangka 5 Irama ARA sblm implementasi
+  (soalan eksplisit user "adakah makanan dan ubat termasuk dalam 5
+  rhythm?"): **Fish Food** → Livestock (nutrisi terus) + Keeper
+  (kemahiran/rutin memberi makan) primer, Water (overfeeding punca
+  #1 masalah kualiti air) + Biological (baki makanan tambah bioload)
+  sekunder. **Medication** → Livestock (rawatan penyakit) + Keeper
+  (kemahiran diagnosis/dos) primer, Biological (byk ubat, terutama
+  antibiotik/kuprum, bunuh bakteria nitrifikasi) + Water (sesetengah
+  ubat ubah kimia) sekunder. Nilai `water/bio/env/live/human` dlm EQ
+  dict ikut mapping ni. `ENGLISH_RACK_ITEMS` (`build-tb-i18n.mjs`) +
+  `rack.items.fish-food`/`rack.items.medication` (translations JSON
+  id/ja) ditambah — corak generik sedia ada (satu entri jadual, tiada
+  kod per-item hardcode), tiada perubahan lain diperlukan.
+
+- **Jenama peralatan +85 (126→211 dlm `AR_BRAND_INFO`)**: PR #436
+  (5 jenama budget/mid popular Asia tapi bukan jenama besar global —
+  AZOO, Ista, GEX, Nisso, Sobo, ikut kriteria eksplisit user "bukan
+  besar tapi popular kalangan pengguna pertengahan/budget & di Asia"),
+  PR #437 (10 jenama utk `fish-food`/`medication` baharu di atas), PR
+  #438 (8 jenama utk 3 kategori paling nipis dikenal pasti — `light-basic`/
+  `cooling-fan`/`siphon`, masing² cuma 4 contoh sblm ni, drpd audit
+  kiraan contoh merentas kesemua 36 kategori).
+
+- **Disiplin verifikasi kelengkapan i18n utk `AR_BRAND_INFO`
+  (WAJIB utk tambahan akan datang)**: PR #437 pd mulanya TERLEPAS
+  terjemahan id/ja pd medan `pros`/`cons` (10 entri, hanya `en` diisi)
+  — ditemui sendiri via skrip Python semakan `set(entry[field].keys())
+  == {'en','id','ja'}` + parity panjang array pros/cons, dijalankan
+  SEBELUM commit. Skrip yg sama dijalankan PROAKTIF (bukan reaktif)
+  dlm PR #438 & lulus bersih first-try. **Jalankan skrip verifikasi
+  ni SEBELUM commit setiap kali tambah entri `AR_BRAND_INFO` baharu**
+  — jangan percaya semakan visual sahaja.
+
+- **Bug persekitaran berulang — checkout git tempatan tersadai
+  (stale)**: berlaku 3× sepanjang sesi ni (punca alam sekitar/tak
+  diketahui, BUKAN disebabkan arahan git sendiri) — `git log` tempatan
+  tiba² kembali ke commit lama (`555a0e7`, PR #407) merentas giliran
+  perbualan/selepas tempoh diam. Kesan: edit disunting atas asas data
+  lapuk (cth. spesies/jenama yg dah wujud di upstream hilang secara
+  senyap drpd tempatan). Cara kesan: `git log --oneline -3` tak
+  sepadan jangkaan, ATAU `git push` ditolak "fetch first"/403. Cara
+  betul: `git fetch origin <cabang>` → bandingkan SHA → `git reset
+  --hard origin/<cabang>` (BUKAN `git cherry-pick` komit yg hilang —
+  dicuba sekali, conflict tak terurus dlm blob JSON satu-baris,
+  `--abort`) → sunting semula kerja yg hilang segar drpd asas betul.
+  **SENTIASA jalankan `git fetch` + `git log --oneline -3` sbg
+  semakan waras SEBELUM mula sunting** bila mula sesi/giliran baharu
+  dlm repo ni, terutama lepas jeda masa.
 
 **Corak baharu — kamus label-paparan utk medan data berenum
 (`TB_ENUM_LABELS` + fungsi `enumLabel(field,value)`, ditambah terus ke

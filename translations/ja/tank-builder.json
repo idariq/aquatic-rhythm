@@ -233,13 +233,29 @@
    "all": "すべて",
    "community": "コミュニティ",
    "planted": "プランテッド",
-   "shrimp": "エビ",
    "biotope": "ビオトープ",
    "coldwater": "低水温",
    "species": "種水槽",
    "nano": "ナノ",
    "blackwater": "ブラックウォーター",
    "paludarium": "パルダリウム"
+  },
+  "filterSetupLabel": "セットアップスタイルで絞り込み",
+  "filterGroupLabel": "動物グループで絞り込み",
+  "groups": {
+   "tetraCharacin": "テトラ&カラシン",
+   "rasboraBarbDanio": "ラスボラ・バルブ&ダニオ",
+   "livebearer": "ライブベアラー",
+   "catfishPleco": "キャットフィッシュ&プレコ",
+   "loachAlgaeEater": "ローチ&コケ取り魚",
+   "bettaGourami": "ベタ&グラミー",
+   "cichlid": "シクリッド",
+   "snakehead": "ライギョ",
+   "rainbowKillifish": "レインボーフィッシュ&キリーフィッシュ",
+   "oddballSpecialty": "オッドボール&特殊種",
+   "shrimp": "シュリンプ",
+   "snail": "貝",
+   "crabCrayfish": "カニ&ザリガニ"
   }
  },
  "brandInfo": {

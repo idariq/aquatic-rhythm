@@ -1217,10 +1217,6 @@
     "about": "Hygrophila difformis bisa tumbuh sebagai tanaman batang atau semak dengan daun yang terbelah halus di bawah cahaya kuat. Tumbuh cepat — pangkas sesering mungkin dan tanam kembali pucuknya agar bentuknya tetap rimbun dan mencegah bagian bawah mati.",
     "notes": "Tanaman yang menarik — bentuk daunnya berubah drastis tergantung intensitas cahaya, mulai dari oval sederhana hingga daun bercuping dalam menyerupai renda. Laju pertumbuhannya yang sangat cepat membuatnya sangat baik untuk tank baru dan pengendalian alga lewat persaingan nutrisi."
    },
-   "pennywort": {
-    "about": "Spesies hydrocotyle merambat secara horizontal dengan daun bundar, berguna untuk tepian wabi-kusa atau tank dangkal. Cahaya terang menjaga daunnya tetap kecil dan rata — cahaya rendah membuat batangnya lebih panjang dan mengarah ke atas.",
-    "notes": "Daun bundar hijau cerah pada batang panjang. Bisa ditanam atau dibiarkan mengambang. Sangat adaptif dan tumbuh cepat. Memberi kontras tekstur yang menarik dengan tanaman berdaun sempit."
-   },
    "pearlweed": {
     "about": "Hemianthus micranthemoides membentuk semak hijau cerah atau karpet longgar tergantung cara pemangkasannya. Tanpa CO2, tanaman ini cenderung tumbuh kurus menjulang — pemangkasan yang sering mendorong percabangan ke samping dan kepadatan.",
     "notes": "Daun kecil bundar hijau cerah. Bisa membentuk karpet rendah tanpa CO2 asal cahayanya tinggi, atau tumbuh sebagai tanaman batang. Lebih mudah dicapai dibanding glossostigma atau monte carlo untuk setup tanpa CO2."
@@ -1272,6 +1268,26 @@
    "aponogeton-crispus": {
     "about": "Aponogeton crispus tumbuh dari umbi, menghasilkan daun panjang bergelombang dan kadang mengalami periode istirahat di mana daunnya layu. Jangan kubur umbinya sepenuhnya — umbi yang setengah terbuka lebih jarang membusuk di setup baru.",
     "notes": "Tanaman umbi dengan daun bergelombang dan keriting yang khas, tumbuh dari umbi yang dibeli dalam kondisi dorman atau aktif. Salah satu tanaman yang tumbuh paling cepat saat aktif — bisa berlipat ganda ukurannya dalam hitungan minggu. Mengalami siklus dorman alami di mana daunnya layu dan umbinya beristirahat. Biarkan umbi beristirahat di dalam tank dan ia akan tumbuh kembali. Tidak butuh CO2 dan tahan di berbagai kondisi air. Tanam umbi setengah terbuka di substrat — mengubur sepenuhnya akan menghambat pertumbuhan."
+   },
+   "cabomba": {
+    "about": "Cabomba membentuk daun berbulu halus melingkar di sepanjang batang tinggi, membutuhkan cahaya stabil dan air bersih agar tidak menggugurkan daun bagian bawah. Tanam beberapa batang bersama untuk tampilan lebih lebat, dan pangkas ujungnya untuk ditanam kembali, menjaga pertumbuhan tetap padat daripada jarang.",
+    "notes": "Salah satu tanaman akuarium paling dikenali, dengan daun berbulu halus melingkar pada batang tinggi. Tanaman batang klasik untuk pemula, meski bisa sensitif terhadap kualitas air buruk dan cahaya rendah, menyebabkan daun rontok seperti jarum. Memberikan perlindungan sangat baik untuk anak ikan dan ikan pemalu. Tumbuh cepat — pangkas secara rutin agar tetap lebat, bukan kurus memanjang."
+   },
+   "water-sprite": {
+    "about": "Ceratopteris tumbuh cepat sebagai paku-pakuan berakar atau mengambang dengan daun renda yang terbagi halus. Tipiskan rumpun yang padat sesekali agar cahaya menjangkau bagian bawah akuarium, dan buang plantlet begitu cukup besar untuk ditanam di tempat lain.",
+    "notes": "Paku-pakuan klasik yang sangat mudah, bisa ditanam di substrat atau dibiarkan mengambang. Daun renda yang terbagi halus memberi perlindungan sangat baik untuk anak ikan dan udang. Pertumbuhan sangat cepat menjadikannya pesaing nutrisi yang kuat melawan alga. Bisa diperbanyak lewat plantlet yang terbentuk di daun tua — cara menyenangkan dan mudah untuk memperbanyak stok."
+   },
+   "rotala-rotundifolia": {
+    "about": "Rotala rotundifolia membentuk batang tegak yang memerah dengan cahaya dan nutrisi lebih kuat, tetap hijau dan sehat di bawah cahaya rendah. Pemangkasan rutin dan menanam kembali ujungnya menjaga rumpun tetap penuh dan mencegah batang bawah gundul.",
+    "notes": "Tanaman batang merah paling ikonik dalam hobi ini, terutama sentral dalam tata letak bergaya Nature Aquarium Jepang, di mana sering digunakan untuk menciptakan kontras warna merah-hijau yang mencolok dengan tanaman carpet hijau. Tumbuh hijau di bawah cahaya rendah-sedang dan semakin merah muda-merah dengan cahaya kuat, CO2, dan nutrisi baik — tidak seperti kebanyakan tanaman batang merah, ia tetap sehat (hanya kurang berwarna) tanpa CO2, menjadikannya titik masuk paling ramah untuk penanaman batang merah. Jepit dan tanam kembali ujungnya secara rutin agar pertumbuhan tetap padat, bukan kurus memanjang."
+   },
+   "riccia-fluitans": {
+    "about": "Riccia fluitans adalah lumut hati mengambang yang diikat ke hardscape untuk membentuk carpet hijau berkilau gelembung di bawah cahaya kuat dan CO2. Pangkas secara rutin dan ikat kembali gumpalan yang lepas, karena riccia yang tidak diikat akan hanyut ke permukaan, bukan mempertahankan bentuknya.",
+    "notes": "Ikon gaya Nature Aquarium Takashi Amano — diikat ke batu atau jaring dengan benang atau jaring untuk menciptakan 'dinding/carpet riccia' hijau terang yang terkenal, yang berkilau dengan gelembung oksigen kecil di bawah cahaya kuat. Secara alami mengambang bebas di alam liar, jadi harus benar-benar diikat ke hardscape daripada ditanam di substrat; riccia yang tidak diikat akan langsung mengambang ke permukaan. Membutuhkan CO2 dan cahaya kuat agar tetap padat dan tidak tumbuh longgar dan berserabut. Perawatan tinggi tapi salah satu efek carpet paling menakjubkan secara visual yang bisa dicapai dalam akuarium bertanaman."
+   },
+   "hc-cuba": {
+    "about": "Hemianthus callitrichoides membentuk carpet hijau yang sangat halus dan padat di bawah cahaya kuat, CO2 stabil, dan substrat kaya nutrisi. Tekan gumpalan kecil ke substrat tanpa mengubur daunnya, dan jaga aliran air tetap lembut di atas carpet hingga menyatu, karena celah lambat terisi.",
+    "notes": "Salah satu tanaman carpet terkecil, paling menuntut, dan paling dicari dalam aquascaping kompetitif — daunnya yang kecil dan rapat menciptakan carpet hijau seperti rumput yang sangat halus jika berhasil. Membutuhkan cahaya kuat, injeksi CO2 yang konsisten, dan substrat kaya nutrisi; tanpa ketiganya ia meleleh atau tumbuh longgar alih-alih membentuk carpet. Lebih lambat dan kurang toleran untuk didirikan dibanding Monte Carlo, tapi menghasilkan tekstur akhir yang lebih halus dan padat setelah dewasa. Tanaman tolok ukur untuk tata letak bergaya Nature Aquarium high-tech."
    }
   },
   "HARDSCAPE": {

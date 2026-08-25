@@ -187,6 +187,11 @@
     'cn_elephant_nose_fish': 'Uses a weak electric field for navigation — highly sensitive to electrical interference and to medication/water quality. Nocturnal and shy; needs shelter. Aggressive toward its own kind.',
     'cn_fire_eel': 'Grows very large (up to 100cm) and lives 20+ years — a major long-term commitment. Nocturnal burrower; needs deep sand and hiding places. Will eat any tankmate small enough to swallow, including shrimp.',
     'cn_ropefish': 'Ancient air-breathing fish, active only after lights-out. Genuinely peaceful toward similarly-sized tankmates, but will eat any fish small enough to swallow. Master escape artist — a fully sealed lid is essential.',
+    'cn_channa_andrao': 'Obligate air-breathing predator — a secure, gap-free lid is non-negotiable. Smaller and calmer than most snakeheads, but will still eat any tankmate small enough to swallow; keep alone. Ownership is restricted in some countries — verify local regulations.',
+    'cn_channa_bleheri': 'Obligate air-breathing predator — a secure, gap-free lid is non-negotiable. Will eat any tankmate small enough to swallow; keep alone. Ownership is restricted in some countries — verify local regulations.',
+    'cn_channa_lucius': 'Ambush predator that sits motionless in cover before striking — obligate air-breather, needs a secure, gap-free lid. Will eat any tankmate small enough to swallow; keep alone. Ownership is restricted in some countries — verify local regulations.',
+    'cn_channa_maruliodes': 'Grows to 60cm+ and needs an eventual tank of 400L or larger — not a fish to buy expecting it to stay small. Obligate air-breather; a secure, gap-free lid is non-negotiable. Ownership is restricted in some countries — verify local regulations.',
+    'cn_channa_pulchra': 'Obligate air-breathing predator — a secure, gap-free lid is non-negotiable. Will eat any tankmate small enough to swallow; keep alone. Ownership is restricted in some countries — verify local regulations.',
     },
     id: {
     'meta_title': 'Peta tekanan teman seakuarium — Community Stress Lab — Aquatic Rhythm',
@@ -358,6 +363,11 @@
     'cn_elephant_nose_fish': 'Menggunakan medan listrik lemah untuk navigasi — sangat sensitif terhadap gangguan listrik dan obat/kualitas air. Aktif malam hari dan pemalu; butuh tempat berlindung. Agresif terhadap sesama spesiesnya.',
     'cn_fire_eel': 'Tumbuh sangat besar (hingga 100cm) dan hidup 20+ tahun — komitmen jangka panjang yang besar. Penggali nokturnal; butuh pasir dalam dan tempat bersembunyi. Akan memakan teman tangki apa pun yang cukup kecil untuk ditelan, termasuk udang.',
     'cn_ropefish': 'Ikan pernapas udara kuno, aktif hanya setelah lampu dimatikan. Benar-benar damai terhadap teman tangki berukuran serupa, tetapi akan memakan ikan apa pun yang cukup kecil untuk ditelan. Ahli meloloskan diri; tutup akuarium yang benar-benar rapat wajib.',
+    'cn_channa_andrao': 'Predator pernapas udara wajib — tutup akuarium yang benar-benar rapat wajib. Lebih kecil dan lebih tenang dibanding kebanyakan snakehead, tetapi tetap akan memakan teman tangki apa pun yang cukup kecil untuk ditelan; pelihara sendiri. Kepemilikan dibatasi di beberapa negara — periksa peraturan setempat.',
+    'cn_channa_bleheri': 'Predator pernapas udara wajib — tutup akuarium yang benar-benar rapat wajib. Akan memakan teman tangki apa pun yang cukup kecil untuk ditelan; pelihara sendiri. Kepemilikan dibatasi di beberapa negara — periksa peraturan setempat.',
+    'cn_channa_lucius': 'Predator penyergap yang diam tak bergerak di tempat perlindungan sebelum menyerang — pernapas udara wajib, butuh tutup akuarium yang benar-benar rapat. Akan memakan teman tangki apa pun yang cukup kecil untuk ditelan; pelihara sendiri. Kepemilikan dibatasi di beberapa negara — periksa peraturan setempat.',
+    'cn_channa_maruliodes': 'Tumbuh hingga 60cm+ dan butuh akuarium 400L atau lebih besar pada akhirnya — bukan ikan untuk dibeli dengan harapan tetap kecil. Pernapas udara wajib; tutup akuarium yang benar-benar rapat wajib. Kepemilikan dibatasi di beberapa negara — periksa peraturan setempat.',
+    'cn_channa_pulchra': 'Predator pernapas udara wajib — tutup akuarium yang benar-benar rapat wajib. Akan memakan teman tangki apa pun yang cukup kecil untuk ditelan; pelihara sendiri. Kepemilikan dibatasi di beberapa negara — periksa peraturan setempat.',
     },
     ja: {
     'meta_title': '混泳のストレスマップ — Community Stress Lab — Aquatic Rhythm',
@@ -529,6 +539,11 @@
     'cn_elephant_nose_fish': '弱い電場を使って移動する — 電気的なノイズや薬剤・水質に非常に敏感。夜行性で臆病なため隠れ家が必要。同種に対して攻撃的。',
     'cn_fire_eel': '非常に大きく成長し（最大100cm）、20年以上生きる — 大きな長期的責任を伴う。夜行性で穴を掘る習性があり、深い砂と隠れ場所が必要。エビを含め、飲み込めるサイズの同居魚は捕食する。',
     'cn_ropefish': '消灯後のみ活動する原始的な空気呼吸魚。同程度の大きさの同居魚には本当に穏やかだが、飲み込めるサイズの魚は捕食する。脱走の名人 — 隙間のない蓋が必須。',
+    'cn_channa_andrao': '空気呼吸が必須の捕食魚 — 隙間のない蓋が絶対に必要。他のチャンナ類より小型でおとなしいが、飲み込めるサイズの同居魚は捕食する。単独飼育。飼育が制限されている国もあるため、事前に現地の規制を確認すること。',
+    'cn_channa_bleheri': '空気呼吸が必須の捕食魚 — 隙間のない蓋が絶対に必要。飲み込めるサイズの同居魚は捕食する。単独飼育。飼育が制限されている国もあるため、事前に現地の規制を確認すること。',
+    'cn_channa_lucius': '物陰でじっと動かず待ち伏せてから襲う捕食魚 — 空気呼吸が必須で、隙間のない蓋が必要。飲み込めるサイズの同居魚は捕食する。単独飼育。飼育が制限されている国もあるため、事前に現地の規制を確認すること。',
+    'cn_channa_maruliodes': '最終的に60cm以上に成長し、400L以上の水槽が必要 — 「小さいまま」を期待して購入する魚ではない。空気呼吸が必須で、隙間のない蓋が絶対に必要。飼育が制限されている国もあるため、事前に現地の規制を確認すること。',
+    'cn_channa_pulchra': '空気呼吸が必須の捕食魚 — 隙間のない蓋が絶対に必要。飲み込めるサイズの同居魚は捕食する。単独飼育。飼育が制限されている国もあるため、事前に現地の規制を確認すること。',
     }
   };
   function T(key, subs) {
@@ -607,7 +622,12 @@
     black_ghost_knifefish: 'black_ghost_knifefish',
     elephant_nose_fish: 'elephant_nose_fish',
     fire_eel: 'fire_eel',
-    ropefish: 'ropefish'
+    ropefish: 'ropefish',
+    channa_andrao: 'channa_andrao',
+    channa_bleheri: 'channa_bleheri',
+    channa_lucius: 'channa_lucius',
+    channa_maruliodes: 'channa_maruliodes',
+    channa_pulchra: 'channa_pulchra'
   };
   function citationNoteFor(speciesId) {
     return T('cn_' + (CITATION_KEY_BY_SPECIES[speciesId] || 'default'));

@@ -290,8 +290,9 @@
   "addBtnShort": "+ 追加",
   "inSetupBtn": "✓ 追加済み",
   "updateQuantityBtn": "数量を更新",
-  "alreadyInSetupNote": "すでにセットアップに追加されています。選択を変更するには、上の「セットアップ内容」パネルから削除してください。",
-  "cancelBtn": "キャンセル"
+  "alreadyInSetupNote": "すでにセットアップに追加されています。",
+  "cancelBtn": "キャンセル",
+  "removeFromSetupBtn": "✕ セットアップから削除"
  },
  "dropdown": {
   "chooseBrand": "ブランドを選択",

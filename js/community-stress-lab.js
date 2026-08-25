@@ -75,9 +75,6 @@
     'lane_level_high': 'high',
     'lane_level_elevated': 'elevated',
     'lane_level_low': 'low',
-    'checklist_static_1': 'Watch feeding response and body condition for 7–10 days after any addition.',
-    'checklist_static_2': 'Note fin damage, hiding, or colour loss at the same time each day.',
-    'checklist_static_3': 'When troubleshooting, change one variable at a time so cause stays readable.',
     'checklist_priority': 'Priority: re-read behaviour for “{title}” before adding more livestock.',
     'r_thermal_gap_title': 'No shared temperature window',
     'r_thermal_gap_body': 'On paper, these species do not overlap in a comfortable temperature range. Re-check sources before attempting a mixed setup.',
@@ -213,9 +210,6 @@
     'lane_level_high': 'tinggi',
     'lane_level_elevated': 'meningkat',
     'lane_level_low': 'rendah',
-    'checklist_static_1': 'Amati respons makan dan kondisi tubuh selama 7–10 hari setelah setiap penambahan.',
-    'checklist_static_2': 'Catat kerusakan sirip, perilaku bersembunyi, atau warna yang memudar pada jam yang sama setiap hari.',
-    'checklist_static_3': 'Saat menelusuri masalah, ubah satu variabel dalam satu waktu agar penyebabnya tetap terbaca.',
     'checklist_priority': 'Prioritas: baca ulang perilaku untuk “{title}” sebelum menambah penghuni baru.',
     'r_thermal_gap_title': 'Tidak ada jendela suhu bersama',
     'r_thermal_gap_body': 'Di atas kertas, spesies ini tidak memiliki irisan rentang suhu yang nyaman. Periksa ulang sumber sebelum mencoba penataan campuran.',
@@ -351,9 +345,6 @@
     'lane_level_high': '高い',
     'lane_level_elevated': 'やや高い',
     'lane_level_low': '低い',
-    'checklist_static_1': '生体を追加したら、7〜10 日は餌への反応と体の状態を観察する。',
-    'checklist_static_2': 'ヒレの傷、隠れる行動、色あせを、毎日同じ時間に記録する。',
-    'checklist_static_3': '問題を追うときは、一度に変える条件を一つに絞り、原因を読み取れるようにする。',
     'checklist_priority': '優先：生体を増やす前に、「{title}」について行動をもう一度確かめる。',
     'r_thermal_gap_title': '共通する水温域がない',
     'r_thermal_gap_body': '資料の上では、これらの種に快適な水温の重なりはありません。混泳を試す前に、出典を確認し直してください。',
@@ -993,6 +984,7 @@
     var lanesEl = document.getElementById('csl-lanes');
     var findingsEl = document.getElementById('csl-findings');
     var checklistEl = document.getElementById('csl-checklist');
+    var checklistSectionEl = document.getElementById('csl-checklist-section');
     var statusEl = document.getElementById('csl-status');
     var canvasEl = document.getElementById('csl-canvas');
     var cctx = canvasEl && canvasEl.getContext('2d');
@@ -1336,11 +1328,16 @@
     function renderFindings(findings) {
       findingsEl.innerHTML = '';
       if (!picks.length) {
-        findingsEl.innerHTML = '<li class="csl-finding csl-finding--low">' + escapeHtml(T('select_species_for_findings')) + '</li>';
+        // Wrapped in <p> so this empty-state line picks up the same
+        // .csl-finding p sizing as a real finding's body text — bare
+        // text here fell back to the inherited base font-size and
+        // rendered noticeably larger than everything else (user report
+        // 2026-08-25, screenshot showing the mismatch).
+        findingsEl.innerHTML = '<li class="csl-finding csl-finding--low"><p>' + escapeHtml(T('select_species_for_findings')) + '</p></li>';
         return;
       }
       if (!findings.length) {
-        findingsEl.innerHTML = '<li class="csl-finding csl-finding--low">' + escapeHtml(T('no_findings')) + '</li>';
+        findingsEl.innerHTML = '<li class="csl-finding csl-finding--low"><p>' + escapeHtml(T('no_findings')) + '</p></li>';
         return;
       }
       for (var i = 0; i < findings.length; i++) {
@@ -1353,18 +1350,21 @@
     }
 
     function renderChecklist(findings) {
-      var staticLines = [
-        T('checklist_static_1'),
-        T('checklist_static_2'),
-        T('checklist_static_3')
-      ];
-      var extra = [];
+      // Used to always show 3 generic tips regardless of picks, which
+      // sat right below "Findings" and read as if it were analysis
+      // specific to the chosen mix when it wasn't (user report
+      // 2026-08-25 — "adakah senarainya unik untuk setiap kombinasi?").
+      // Now this section only ever holds the genuinely per-combination
+      // "Priority" lines, and the whole section hides itself when there
+      // are none, rather than displaying an always-on generic list.
+      var lines = [];
       for (var i = 0; i < findings.length; i++) {
         if (findings[i].severity === 'high') {
-          extra.push(T('checklist_priority', { title: findings[i].title }));
+          lines.push(T('checklist_priority', { title: findings[i].title }));
         }
       }
-      checklistEl.innerHTML = staticLines.concat(extra).map(function (line) {
+      if (checklistSectionEl) checklistSectionEl.style.display = lines.length ? '' : 'none';
+      checklistEl.innerHTML = lines.map(function (line) {
         return '<li>' + escapeHtml(line) + '</li>';
       }).join('');
     }

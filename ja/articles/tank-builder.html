@@ -341,11 +341,20 @@ body.eq-dd-open{overflow:hidden}
   #btn-reset{font-size:var(--fs-xs);padding:.22rem .55rem;min-height:34px}
   #btn-submit{font-size:var(--fs-xs)!important;padding:.26rem .7rem!important;min-height:36px!important}
   .size-select{font-size:var(--fs-2xs)!important;padding:.2rem 1.55rem .2rem .4rem!important;min-height:32px!important;min-width:4.25rem!important;border-radius:5px!important}
+  /* Centered modal, not a bottom sheet (2026-08-25) — a bottom-docked
+     sheet assumes the trigger is already near the bottom edge (a FAB,
+     a bottom toolbar); here the triggering .eq-item can be anywhere in
+     a scrolled grid, so a fixed bottom position can be a long thumb
+     reach from wherever the tap actually happened. Centering removes
+     that inconsistency, and sizing to content (capped, scrolling past
+     the cap) means it grows toward full-height on longer brand lists
+     without needing a separate "full page" code path. */
   .eq-dropdown.eq-dropdown--sheet.open{
-    position:fixed!important;left:0!important;right:0!important;bottom:calc(56px + env(safe-area-inset-bottom,0px))!important;top:auto!important;
-    width:100%!important;max-height:min(70dvh,520px)!important;margin:0!important;z-index:562!important;
-    border-radius:14px 14px 0 0;border:1px solid var(--th-accent-border);
-    box-shadow:0 -10px 40px rgba(0,0,0,.55);
+    position:fixed!important;left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;
+    transform:translate(-50%,-50%)!important;
+    width:calc(100% - 2rem)!important;max-width:480px!important;max-height:min(85dvh,600px)!important;margin:0!important;z-index:562!important;
+    border-radius:14px;border:1px solid var(--th-accent-border);
+    box-shadow:0 20px 60px rgba(0,0,0,.55);
     overflow-y:auto;-webkit-overflow-scrolling:touch;
     grid-column:unset!important;
     padding-bottom:.75rem;
@@ -398,17 +407,27 @@ body.eq-dd-open{overflow:hidden}
 .tb-rpt-btn-ghost:hover{color:var(--th-accent);border-color:var(--th-accent)}
 .tb-rpt-save-toast{font-size:var(--fs-xs);line-height:1.55;color:rgba(124,168,156,.95);text-align:center;padding:.55rem .75rem;margin-bottom:.35rem;border:1px solid rgba(124,168,156,.28);border-radius:8px;background:var(--th-surface-2)}
 
-/* ── BRAND INFO PANEL (aligned with equipment picker sheet) ── */
+/* ── BRAND/SPECIES INFO + ADD-EDIT-REMOVE PANEL — centered modal, not
+   a bottom sheet (2026-08-25). A bottom-docked sheet assumes the
+   trigger is already near the bottom edge; the .eq-item / .ph2-card
+   that opens this panel can be anywhere in a scrolled grid, so a fixed
+   bottom position is an inconsistent thumb reach depending on where
+   the tap actually happened. Centering removes that inconsistency for
+   all three uses of this shared panel (About, equipment brand picker,
+   ecosystem Add/Edit/Remove). Sized to content, capped and internally
+   scrolling — so it grows toward full-height on long content (a full
+   species profile, a long brand list) without a separate "full page"
+   code path. */
 #brand-info-overlay{
   position:fixed;inset:0;z-index:600;
   /* Translucent scrim, not a solid fill — the rack/ecosystem grid stays
-     visible (blurred + dimmed) behind the sheet instead of disappearing
+     visible (blurred + dimmed) behind the modal instead of disappearing
      entirely, while still fully blocking touch/scroll on that content
      (a fixed, full-viewport element always intercepts pointer events
      ahead of whatever sits beneath it, regardless of opacity). */
   background:rgba(4,8,10,.55);
-  display:none;align-items:flex-end;justify-content:center;
-  padding:0;
+  display:none;align-items:center;justify-content:center;
+  padding:1.1rem;box-sizing:border-box;
   backdrop-filter:blur(5px);
   -webkit-backdrop-filter:blur(5px);
 }
@@ -416,12 +435,12 @@ body.eq-dd-open{overflow:hidden}
 #brand-info-card{
   background:var(--th-surface);
   border:1px solid var(--th-accent-border);
-  border-radius:14px 14px 0 0;
-  max-width:520px;width:100%;
-  max-height:min(82dvh,640px);
+  border-radius:14px;
+  max-width:480px;width:100%;
+  max-height:min(85dvh,680px);
   overflow-y:auto;
   display:flex;flex-direction:column;
-  box-shadow:0 -10px 40px rgba(0,0,0,.55);
+  box-shadow:0 20px 60px rgba(0,0,0,.55);
   padding-bottom:max(.5rem,env(safe-area-inset-bottom,0px));
 }
 #brand-info-card::-webkit-scrollbar{width:3px}
@@ -948,9 +967,9 @@ body.eq-dd-open{overflow:hidden}
 }
 .dq-item.selected .dq-item-name{color:var(--th-ink);font-weight:500}
 
-/* Eco card actions — About (info sheet) + Add (add/qty sheet), side by
+/* Eco card actions — About (info panel) + Add (add/qty panel), side by
    side so a collapsed two-column card never needs to expand inline;
-   both open the shared bottom sheet (#brand-info-overlay). */
+   both open the shared centered modal (#brand-info-overlay). */
 .ph2-card-actions{display:flex;gap:.28rem;margin-top:.32rem}
 .ph2-card-actions .ph2-card-about{flex:1}
 .ph2-card-add{
@@ -2632,15 +2651,14 @@ function buildEcoCard(cont,k,item,cat){
   cont.appendChild(card);
 }
 
-/* ═══ ECOSYSTEM ADD SHEET ═══
+/* ═══ ECOSYSTEM ADD/EDIT/REMOVE PANEL ═══
    Replaces the old tap-to-expand card body: tapping "+ Add" (or the
-   "In setup" state, to adjust quantity) opens the shared bottom sheet
-   (#brand-info-overlay, already used for equipment/species "About")
-   instead of growing the card inline. Removing an item from the setup
-   is intentionally NOT offered here — only from the persistent "Your
-   setup" summary panel (updateEcoSummary), per explicit design request
-   2026-08-25: adding and removing now live in two different places on
-   purpose, rather than both being buried in the same card control. */
+   "In setup" state, to adjust quantity or remove) opens the shared
+   centered modal (#brand-info-overlay, already used for equipment/
+   species "About") instead of growing the card inline. Removal is
+   available both here AND from the persistent "Your setup" summary
+   panel (updateEcoSummary) — two paths to the same action, per
+   explicit design request 2026-08-25. */
 function showEcoAddSheet(k,item,cat,onChange){
   var overlay=document.getElementById('brand-info-overlay');
   var body=document.getElementById('bi-body');

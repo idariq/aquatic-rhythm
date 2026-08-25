@@ -654,7 +654,7 @@ body.eq-dd-open{overflow:hidden}
 .ph2-grid{display:grid;grid-template-columns:1fr 1fr;gap:.34rem}
 .ph2-card{
   background:var(--th-surface-2);border:1px solid var(--th-line);
-  border-radius:10px;padding:.5rem .55rem;cursor:pointer;
+  border-radius:10px;padding:.5rem .55rem;
   transition:all .18s;position:relative;min-width:0;
   box-shadow:0 2px 12px rgba(0,0,0,.12);
 }
@@ -662,12 +662,6 @@ body.eq-dd-open{overflow:hidden}
 .ph2-card.active{background:var(--th-accent-soft);border-color:var(--th-accent)}
 .ph2-card.active::before{content:'';position:absolute;left:0;top:0;bottom:0;
   width:3px;background:var(--th-accent-soft);border-radius:10px 0 0 10px}
-/* Expanded card (qty stepper / Add-Remove button visible) needs more
-   room than half a mobile viewport — span both grid columns while open. */
-.ph2-card.expanded{grid-column:1/-1}
-.ph2-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:.4rem}
-.ph2-card-row{display:flex;flex-direction:column;gap:.16rem;min-width:0}
-.ph2-card-meta{display:flex;align-items:center;justify-content:space-between;gap:.32rem;margin-top:.08rem}
 .ph2-card-name{font-size:.72rem;font-weight:600;color:var(--th-ink);letter-spacing:.01em;
   line-height:1.2;overflow-wrap:break-word}
 .ph2-card-latin{font-size:.6rem;font-style:italic;color:var(--th-ink-3);
@@ -740,7 +734,18 @@ body.eq-dd-open{overflow:hidden}
   letter-spacing:.06em;color:var(--th-ink-4);flex-shrink:0}
 .eco-sum-tag{font-size:var(--fs-2xs);padding:.14rem .42rem;
   background:var(--th-accent-soft);border:1px solid var(--th-accent-border);
-  border-radius:6px;color:var(--th-accent);white-space:nowrap}
+  border-radius:6px;color:var(--th-accent);white-space:nowrap;
+  display:inline-flex;align-items:center;gap:.3rem}
+/* Livestock/Plants/Hardscape tags are removable from here only — this
+   is the sole place those three categories can be removed (the card
+   itself only offers Add, per 2026-08-25 design change). */
+.eco-sum-tag.removable{padding-right:.28rem}
+.eco-sum-tag-rm{font-size:.85rem;line-height:1;color:var(--th-accent);
+  background:none;border:none;padding:0;margin:0;cursor:pointer;
+  width:16px;height:16px;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;flex-shrink:0;font-family:var(--sans);
+  -webkit-tap-highlight-color:transparent;transition:background .15s,color .15s}
+.eco-sum-tag-rm:hover{background:rgba(220,100,60,.18);color:rgba(240,130,100,.95)}
 
 /* Compatibility panel */
 #compat-panel{margin:.6rem .7rem;padding:.58rem .75rem;
@@ -921,27 +926,26 @@ body.eq-dd-open{overflow:hidden}
 }
 .dq-item.selected .dq-item-name{color:var(--th-ink);font-weight:500}
 
-/* Eco card add/remove button */
+/* Eco card actions — About (info sheet) + Add (add/qty sheet), side by
+   side so a collapsed two-column card never needs to expand inline;
+   both open the shared bottom sheet (#brand-info-overlay). */
+.ph2-card-actions{display:flex;gap:.28rem;margin-top:.32rem}
+.ph2-card-actions .ph2-card-about{flex:1}
 .ph2-card-add{
-  display:flex;align-items:center;justify-content:center;gap:.35rem;
-  margin-top:.45rem;width:100%;
-  font-size:var(--fs-xs);letter-spacing:.07em;text-transform:uppercase;font-weight:600;
+  flex:1;display:flex;align-items:center;justify-content:center;gap:.3rem;
+  font-size:.56rem;letter-spacing:.04em;text-transform:uppercase;font-weight:600;
   background:var(--th-accent-soft);color:var(--th-accent);
   border:1px solid var(--th-accent-border);
-  padding:.55rem 1rem;border-radius:10px;cursor:pointer;min-height:46px;
-  font-family:var(--sans);transition:all .18s;
+  padding:.22rem .4rem;border-radius:7px;cursor:pointer;min-height:36px;
+  font-family:var(--sans);transition:all .18s;white-space:nowrap;
   -webkit-tap-highlight-color:transparent;
 }
 .ph2-card-add:hover{background:var(--th-accent-soft);color:var(--th-accent)}
 .ph2-card.active .ph2-card-add{
-  background:rgba(220,100,60,.08);color:rgba(220,130,60,.75);
-  border-color:rgba(220,100,60,.25);
+  background:rgba(100,200,150,.1);color:rgba(120,210,150,.9);
+  border-color:rgba(100,200,150,.32);
 }
-.ph2-card.active .ph2-card-add:hover{background:rgba(220,100,60,.16)}
-
-/* Eco card expand on click (not select) */
-.ph2-card-body{display:none;margin-top:.42rem;padding-top:.42rem;border-top:1px solid var(--th-line)}
-.ph2-card.expanded .ph2-card-body{display:block}
+.ph2-card.active .ph2-card-add:hover{background:rgba(100,200,150,.16)}
 
 /* Lab page: drop the site nav (logo/links/burger), bottom nav, and
    Rhyssa fab so they don't overlap the builder UI — keep only the
@@ -2116,22 +2120,42 @@ function updateEcoSummary(){
   if(countEl)countEl.textContent=total+' selected';
   wrap.innerHTML='';
   function titleCase(s){return s.replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});}
-  function addGroup(label,keys,getName){
+  /* onRemove(k) is only passed for the ecosystem groups (Livestock/
+     Plants/Hardscape) — this summary panel is now the ONLY place those
+     three categories can be removed from (the card itself only offers
+     Add, per 2026-08-25 design change). Equipment keeps its existing
+     remove flow (the item's dropdown "Remove" button) untouched. */
+  function addGroup(label,keys,getName,onRemove){
     if(!keys.length)return;
     var g=document.createElement('div');g.className='eco-sum-group';
     var l=document.createElement('span');l.className='eco-sum-group-lbl';l.textContent=label;g.appendChild(l);
     keys.forEach(function(k){
-      var tag=document.createElement('span');tag.className='eco-sum-tag';tag.textContent=getName(k);g.appendChild(tag);
+      var tag=document.createElement('span');tag.className='eco-sum-tag';
+      var nameEl=document.createElement('span');nameEl.textContent=getName(k);tag.appendChild(nameEl);
+      if(onRemove){
+        tag.classList.add('removable');
+        var rm=document.createElement('button');rm.type='button';rm.className='eco-sum-tag-rm';
+        rm.textContent='×';rm.setAttribute('aria-label','Remove '+getName(k));
+        rm.onclick=function(e){e.stopPropagation();onRemove(k);};
+        tag.appendChild(rm);
+      }
+      g.appendChild(tag);
     });
     wrap.appendChild(g);
+  }
+  function removeFrom(cat){
+    return function(k){
+      delete ph2Active[cat][k];
+      updateEcoState();buildAllGrids();
+    };
   }
   addGroup('Equipment',eqKeys,function(k){return titleCase(k);});
   addGroup('Livestock',stockKeys,function(k){
     var it=ph2Active.stock[k];var qty=it&&it._qty||1;
     return (it&&it.name?it.name:k)+(qty>1?' ×'+qty:'');
-  });
-  addGroup('Plants',plantKeys,function(k){var it=ph2Active.plants[k];return it&&it.name?it.name:k;});
-  addGroup('Hardscape',hardKeys,function(k){var it=ph2Active.hard[k];return it&&it.name?it.name:k;});
+  },removeFrom('stock'));
+  addGroup('Plants',plantKeys,function(k){var it=ph2Active.plants[k];return it&&it.name?it.name:k;},removeFrom('plants'));
+  addGroup('Hardscape',hardKeys,function(k){var it=ph2Active.hard[k];return it&&it.name?it.name:k;},removeFrom('hard'));
 }
 
 var TB_SUMMARY_COLLAPSE_KEY='ar_tb_summary_collapsed';
@@ -2549,29 +2573,20 @@ function buildEcoCard(cont,k,item,cat){
   var card=document.createElement('div');
   card.className='ph2-card'+(ph2Active[cat][k]?' active':'');
 
-  /* ── Header row ── */
-  var row=document.createElement('div');row.className='ph2-card-row';
-  var nameCol=document.createElement('div');nameCol.style.cssText='min-width:0;flex:1';
+  /* ── Name ── */
   var nm=document.createElement('div');nm.className='ph2-card-name';nm.textContent=item.name;
-  nameCol.appendChild(nm);
-  if(item.latin){var lt=document.createElement('div');lt.className='ph2-card-latin';lt.textContent=item.latin;nameCol.appendChild(lt);}
-  row.appendChild(nameCol);
-  /* Care badge + About */
-  var meta=document.createElement('div');meta.className='ph2-card-meta';
+  card.appendChild(nm);
+  if(item.latin){var lt=document.createElement('div');lt.className='ph2-card-latin';lt.textContent=item.latin;card.appendChild(lt);}
+
+  /* ── Care badge + spec chips (one wrapped row) ── */
+  var stats=document.createElement('div');stats.className='ph2-stats';
   if(item.care_level){
     var cl=document.createElement('span');
     var isBeg=(item.care_level).indexOf('Beginner')>=0;
     var isAdv=(item.care_level).indexOf('Advanced')>=0;
     cl.className='ph2-care-badge'+(isBeg?' ph2-care-badge--beginner':isAdv?' ph2-care-badge--advanced':' ph2-care-badge--intermediate');
-    cl.textContent=enumLabel('care_level',item.care_level);meta.appendChild(cl);
+    cl.textContent=enumLabel('care_level',item.care_level);stats.appendChild(cl);
   }
-  var ab=document.createElement('button');ab.className='ph2-card-about';ab.textContent='About';
-  ab.onclick=function(e){e.stopPropagation();showSpeciesInfo(k,item,cat);};
-  meta.appendChild(ab);row.appendChild(meta);
-  card.appendChild(row);
-
-  /* ── Tags ── */
-  var stats=document.createElement('div');stats.className='ph2-stats';stats.style.marginTop='.22rem';
   function addTag(txt,cls){if(!txt)return;var t=document.createElement('span');t.className='ph2-tag'+(cls?' '+cls:'');t.textContent=txt;stats.appendChild(t);}
   if(item.temp)addTag(item.temp[0]+'\u2013'+item.temp[1]+'\u00b0C');
   if(item.ph)addTag('pH '+item.ph[0]+'\u2013'+item.ph[1]);
@@ -2584,17 +2599,57 @@ function buildEcoCard(cont,k,item,cat){
   if(item.effect&&item.effect.tannins)addTag('tannins');
   card.appendChild(stats);
 
-  /* ── Expanded body ── */
-  var body=document.createElement('div');body.className='ph2-card-body';
+  /* ── Actions: About (info sheet) + Add (add/qty sheet) ── */
+  var actions=document.createElement('div');actions.className='ph2-card-actions';
+  var ab=document.createElement('button');ab.className='ph2-card-about';ab.type='button';ab.textContent='About';
+  ab.onclick=function(e){e.stopPropagation();showSpeciesInfo(k,item,cat);};
+  actions.appendChild(ab);
+  var addBtn=document.createElement('button');addBtn.className='ph2-card-add';addBtn.type='button';
+  function syncAddBtn(){
+    var isActive=!!ph2Active[cat][k];
+    addBtn.textContent=isActive?'\u2713 In setup':'+ Add';
+  }
+  syncAddBtn();
+  addBtn.onclick=function(e){
+    e.stopPropagation();
+    showEcoAddSheet(k,item,cat,function(){card.classList.toggle('active',!!ph2Active[cat][k]);syncAddBtn();});
+  };
+  actions.appendChild(addBtn);
+  card.appendChild(actions);
 
-  /* Qty stepper (stock only) */
+  cont.appendChild(card);
+}
+
+/* ═══ ECOSYSTEM ADD SHEET ═══
+   Replaces the old tap-to-expand card body: tapping "+ Add" (or the
+   "In setup" state, to adjust quantity) opens the shared bottom sheet
+   (#brand-info-overlay, already used for equipment/species "About")
+   instead of growing the card inline. Removing an item from the setup
+   is intentionally NOT offered here — only from the persistent "Your
+   setup" summary panel (updateEcoSummary), per explicit design request
+   2026-08-25: adding and removing now live in two different places on
+   purpose, rather than both being buried in the same card control. */
+function showEcoAddSheet(k,item,cat,onChange){
+  var overlay=document.getElementById('brand-info-overlay');
+  var body=document.getElementById('bi-body');
+  var bname=document.getElementById('bi-brand-name');
+  var beq=document.getElementById('bi-eq-name');
+  var acts=document.getElementById('bi-actions');
+  if(!overlay||!body||!acts)return;
+  bname.textContent=item.name;
+  beq.textContent=item.latin||'';
+  var biw=document.getElementById('bi-img-wrap');
+  if(biw)biw.style.display='none';
+  body.innerHTML='';
+  var isActive=!!ph2Active[cat][k];
+
   var qcount=null;
   if(cat==='stock'){
-    var qrow=document.createElement('div');qrow.className='ph2-qty';
     var minQ=item.min_school||1;
-    var curQ=ph2Active.stock[k]?ph2Active.stock[k]._qty:minQ;
+    var curQ=isActive?ph2Active.stock[k]._qty:minQ;
     var szKey=stockingKeyFromLiters();
     var sInfo=item.stocking&&item.stocking[szKey];
+    var qrow=document.createElement('div');qrow.className='ph2-qty';qrow.style.display='flex';
     var qtop=document.createElement('div');qtop.className='ph2-qty-top';
     var qlbl=document.createElement('span');qlbl.className='ph2-qty-label';qlbl.textContent='Quantity';
     var qminus=document.createElement('button');qminus.className='ph2-qty-btn';qminus.type='button';qminus.textContent='\u2212';
@@ -2605,48 +2660,45 @@ function buildEcoCard(cont,k,item,cat){
     qtop.appendChild(qlbl);qtop.appendChild(qwrap);
     qrow.appendChild(qtop);
     if(sInfo){var qn=document.createElement('span');qn.className='ph2-qty-note';qn.textContent='Suggested: '+sInfo;qrow.appendChild(qn);}
-    qminus.onclick=function(e){
-      e.stopPropagation();if(!ph2Active.stock[k])return;
-      var n=Math.max(1,parseInt(qcount.textContent)-1);qcount.textContent=n;
-      ph2Active.stock[k]._qty=n;updateEcoState();
-    };
-    qplus.onclick=function(e){
-      e.stopPropagation();if(!ph2Active.stock[k])return;
-      var n=parseInt(qcount.textContent)+1;qcount.textContent=n;
-      ph2Active.stock[k]._qty=n;updateEcoState();
-    };
+    qminus.onclick=function(){var n=Math.max(1,parseInt(qcount.textContent)-1);qcount.textContent=n;};
+    qplus.onclick=function(){var n=parseInt(qcount.textContent)+1;qcount.textContent=n;};
     body.appendChild(qrow);
+  } else if(item.about){
+    var abt=document.createElement('div');abt.className='bi-section';
+    var abtTxt=document.createElement('div');abtTxt.className='bi-section-text';abtTxt.textContent=item.about;
+    abt.appendChild(abtTxt);body.appendChild(abt);
   }
 
-  /* Add / Remove button */
-  var addBtn=document.createElement('button');addBtn.className='ph2-card-add';
-  function syncAddBtn(){
-    addBtn.textContent=ph2Active[cat][k]?'\u2715 Remove from setup':'+ Add to setup';
+  if(isActive&&cat!=='stock'){
+    var note=document.createElement('div');note.className='bi-verdict';
+    note.textContent='Already in your setup \u2014 remove it from the Your Setup panel above to change your pick.';
+    body.appendChild(note);
   }
-  syncAddBtn();
-  addBtn.onclick=function(e){
-    e.stopPropagation();
-    if(ph2Active[cat][k]){
-      delete ph2Active[cat][k];
-    } else {
-      var cl=Object.assign({},item);
-      if(cat==='stock'){cl._qty=item.min_school||1;if(qcount)qcount.textContent=cl._qty;}
-      ph2Active[cat][k]=cl;
-    }
-    card.classList.toggle('active',!!ph2Active[cat][k]);
-    syncAddBtn();updateEcoState();
-  };
-  body.appendChild(addBtn);
-  card.appendChild(body);
 
-  /* Tap = expand/collapse only */
-  card.onclick=function(e){
-    if(e.target.classList.contains('ph2-qty-btn')||
-       e.target.classList.contains('ph2-card-about')||
-       e.target.classList.contains('ph2-card-add'))return;
-    card.classList.toggle('expanded');
-  };
-  cont.appendChild(card);
+  acts.innerHTML='';
+  if(!(isActive&&cat!=='stock')){
+    var confirmBtn=document.createElement('button');confirmBtn.className='bi-btn-use';
+    confirmBtn.textContent=isActive?'Update quantity':'+ Add to setup';
+    confirmBtn.onclick=function(){
+      if(isActive){
+        if(qcount)ph2Active.stock[k]._qty=parseInt(qcount.textContent);
+      } else {
+        var cl=Object.assign({},item);
+        if(cat==='stock')cl._qty=qcount?parseInt(qcount.textContent):(item.min_school||1);
+        ph2Active[cat][k]=cl;
+      }
+      overlay.classList.remove('open');
+      updateEcoState();
+      if(onChange)onChange();
+    };
+    acts.appendChild(confirmBtn);
+  }
+  var closeBtn=document.createElement('button');closeBtn.className='bi-btn-back';
+  closeBtn.textContent=(isActive&&cat!=='stock')?'Close':'Cancel';
+  closeBtn.onclick=function(){overlay.classList.remove('open');};
+  acts.appendChild(closeBtn);
+
+  overlay.classList.add('open');
 }
 
 function updateEcoState(){

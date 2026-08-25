@@ -217,6 +217,7 @@
  "eco": {
   "summaryTitle": "セットアップ内容",
   "summarySelectedSuffix": "件選択中",
+  "removeAria": "削除: ",
   "compatDefault": "種を選ぶと、相性に関するメモがここに表示されます。",
   "kofiHint": "ここでのプランニングは無料ですが、チップはこうしたラボの維持に役立ちます。",
   "kofiLinkAria": "Ko-fiで支援する",
@@ -286,7 +287,11 @@
   "quantityLbl": "数量",
   "suggestedPrefix": "推奨: ",
   "addToSetup": "+ セットアップに追加",
-  "removeFromSetup": "✕ セットアップから削除"
+  "addBtnShort": "+ 追加",
+  "inSetupBtn": "✓ 追加済み",
+  "updateQuantityBtn": "数量を更新",
+  "alreadyInSetupNote": "すでにセットアップに追加されています。選択を変更するには、上の「セットアップ内容」パネルから削除してください。",
+  "cancelBtn": "キャンセル"
  },
  "dropdown": {
   "chooseBrand": "ブランドを選択",

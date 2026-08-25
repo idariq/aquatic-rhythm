@@ -343,11 +343,11 @@ function patchEco(h, t) {
   h = subOnce(h, "if(countEl)countEl.textContent=total+' selected';", `if(countEl)countEl.textContent=total+'${e.summarySelectedSuffix}';`, 'js.summarySelectedSuffix');
   h = subOnce(h, "addGroup('Equipment',eqKeys,function(k){return titleCase(k);});", `addGroup('${t.tabs.equipment}',eqKeys,function(k){return titleCase(k);});`, 'js.summaryGroupEquipment');
   h = subOnce(h,
-    "addGroup('Livestock',stockKeys,function(k){\n    var it=ph2Active.stock[k];var qty=it&&it._qty||1;\n    return (it&&it.name?it.name:k)+(qty>1?' ×'+qty:'');\n  });",
-    `addGroup('${t.tabs.livestock}',stockKeys,function(k){\n    var it=ph2Active.stock[k];var qty=it&&it._qty||1;\n    return (it&&it.name?it.name:k)+(qty>1?' ×'+qty:'');\n  });`,
+    "addGroup('Livestock',stockKeys,function(k){\n    var it=ph2Active.stock[k];var qty=it&&it._qty||1;\n    return (it&&it.name?it.name:k)+(qty>1?' ×'+qty:'');\n  },removeFrom('stock'));",
+    `addGroup('${t.tabs.livestock}',stockKeys,function(k){\n    var it=ph2Active.stock[k];var qty=it&&it._qty||1;\n    return (it&&it.name?it.name:k)+(qty>1?' ×'+qty:'');\n  },removeFrom('stock'));`,
     'js.summaryGroupLivestock');
-  h = subOnce(h, "addGroup('Plants',plantKeys,function(k){var it=ph2Active.plants[k];return it&&it.name?it.name:k;});", `addGroup('${t.tabs.plants}',plantKeys,function(k){var it=ph2Active.plants[k];return it&&it.name?it.name:k;});`, 'js.summaryGroupPlants');
-  h = subOnce(h, "addGroup('Hardscape',hardKeys,function(k){var it=ph2Active.hard[k];return it&&it.name?it.name:k;});", `addGroup('${t.tabs.hardscape}',hardKeys,function(k){var it=ph2Active.hard[k];return it&&it.name?it.name:k;});`, 'js.summaryGroupHardscape');
+  h = subOnce(h, "addGroup('Plants',plantKeys,function(k){var it=ph2Active.plants[k];return it&&it.name?it.name:k;},removeFrom('plants'));", `addGroup('${t.tabs.plants}',plantKeys,function(k){var it=ph2Active.plants[k];return it&&it.name?it.name:k;},removeFrom('plants'));`, 'js.summaryGroupPlants');
+  h = subOnce(h, "addGroup('Hardscape',hardKeys,function(k){var it=ph2Active.hard[k];return it&&it.name?it.name:k;},removeFrom('hard'));", `addGroup('${t.tabs.hardscape}',hardKeys,function(k){var it=ph2Active.hard[k];return it&&it.name?it.name:k;},removeFrom('hard'));`, 'js.summaryGroupHardscape');
   return h;
 }
 
@@ -444,7 +444,7 @@ function patchEngineStrings(h, t, lang) {
     `disc.textContent='${si.paramsDisclaimer}';`, 'js.paramsDisclaimer');
   h = subOnce(h, "var cb=document.createElement('button');cb.className='bi-btn-use';cb.textContent='Close';",
     `var cb=document.createElement('button');cb.className='bi-btn-use';cb.textContent='${si.closeBtn}';`, 'js.closeBtn');
-  h = subOnce(h, "var ab=document.createElement('button');ab.className='ph2-card-about';ab.textContent='About';", `var ab=document.createElement('button');ab.className='ph2-card-about';ab.textContent='${si.aboutBtn}';`, 'js.aboutBtn');
+  h = subOnce(h, "var ab=document.createElement('button');ab.className='ph2-card-about';ab.type='button';ab.textContent='About';", `var ab=document.createElement('button');ab.className='ph2-card-about';ab.type='button';ab.textContent='${si.aboutBtn}';`, 'js.aboutBtn');
   h = subOnce(h, "if(item.schooling&&item.min_school>1)addTag('School '+item.min_school+'+','ok');", `if(item.schooling&&item.min_school>1)addTag('${si.schoolTagPrefix}'+item.min_school+'+','ok');`, 'js.schoolTag');
   h = subOnce(h, "if(item.bioload==='high'||item.bioload==='very-high')addTag(enumLabel('bioload',item.bioload)+' load','warn');",
     `if(item.bioload==='high'||item.bioload==='very-high')addTag(${loadTagExpr(lang, si)},'warn');`, 'js.loadSuffix');
@@ -453,8 +453,16 @@ function patchEngineStrings(h, t, lang) {
     `var qlbl=document.createElement('span');qlbl.className='ph2-qty-label';qlbl.textContent='${si.quantityLbl}';`, 'js.quantityLbl');
   h = subOnce(h, "if(sInfo){var qn=document.createElement('span');qn.className='ph2-qty-note';qn.textContent='Suggested: '+sInfo;qrow.appendChild(qn);}",
     `if(sInfo){var qn=document.createElement('span');qn.className='ph2-qty-note';qn.textContent='${si.suggestedPrefix}'+sInfo;qrow.appendChild(qn);}`, 'js.suggestedPrefix');
-  h = subOnce(h, "addBtn.textContent=ph2Active[cat][k]?'\\u2715 Remove from setup':'+ Add to setup';",
-    `addBtn.textContent=ph2Active[cat][k]?'${si.removeFromSetup}':'${si.addToSetup}';`, 'js.addRemoveSetup');
+  h = subOnce(h, "addBtn.textContent=isActive?'\\u2713 In setup':'+ Add';",
+    `addBtn.textContent=isActive?'${si.inSetupBtn}':'${si.addBtnShort}';`, 'js.addBtnCardLabel');
+  h = subOnce(h, "confirmBtn.textContent=isActive?'Update quantity':'+ Add to setup';",
+    `confirmBtn.textContent=isActive?'${si.updateQuantityBtn}':'${si.addToSetup}';`, 'js.sheetConfirmLabel');
+  h = subOnce(h, "note.textContent='Already in your setup \\u2014 remove it from the Your Setup panel above to change your pick.';",
+    `note.textContent='${si.alreadyInSetupNote}';`, 'js.alreadyInSetupNote');
+  h = subOnce(h, "closeBtn.textContent=(isActive&&cat!=='stock')?'Close':'Cancel';",
+    `closeBtn.textContent=(isActive&&cat!=='stock')?'${si.closeBtn}':'${si.cancelBtn}';`, 'js.sheetCloseCancelLabel');
+  h = subOnce(h, "rm.textContent='×';rm.setAttribute('aria-label','Remove '+getName(k));",
+    `rm.textContent='×';rm.setAttribute('aria-label','${eco.removeAria}'+getName(k));`, 'js.summaryRemoveAria');
 
   // ── compatibility strip ──
   h = subOnce(h, "if(maxLo>minHi)msgs.push('Temperature conflict between selected species.');", `if(maxLo>minHi)msgs.push('${cp.tempConflict}');`, 'js.tempConflict');

@@ -217,6 +217,7 @@
  "eco": {
   "summaryTitle": "Setup Anda",
   "summarySelectedSuffix": " dipilih",
+  "removeAria": "Hapus ",
   "compatDefault": "Catatan kecocokan akan muncul saat Anda memilih spesies.",
   "kofiHint": "Merencanakan di sini gratis — tip membantu menjaga lab seperti ini tetap berjalan.",
   "kofiLinkAria": "Dukung di Ko-fi",
@@ -286,7 +287,11 @@
   "quantityLbl": "Jumlah",
   "suggestedPrefix": "Disarankan: ",
   "addToSetup": "+ Tambah ke pengaturan",
-  "removeFromSetup": "✕ Hapus dari pengaturan"
+  "addBtnShort": "+ Tambah",
+  "inSetupBtn": "✓ Sudah dipilih",
+  "updateQuantityBtn": "Perbarui jumlah",
+  "alreadyInSetupNote": "Sudah ada di pengaturan Anda — hapus dari panel \"Setup Anda\" di atas untuk mengubah pilihan.",
+  "cancelBtn": "Batal"
  },
  "dropdown": {
   "chooseBrand": "Pilih merek",

@@ -1327,9 +1327,6 @@
    "bamboo-decor": {
     "notes": "Dekorasi bambu yang telah dilapisi sealant atau memang aman untuk akuarium. Harus benar-benar dijual sebagai produk yang aman untuk akuarium — bambu segar cepat membusuk di dalam air. Tidak memengaruhi kimia air. Menciptakan estetika biotope bernuansa Asia."
    },
-   "ohko-stone": {
-    "notes": "Batu vulkanik ringan dengan lubang dan alur dramatis di seluruh permukaannya. Varian Dragon Stone yang lebih lunak dan lebih ringan. Tekstur berpori yang tidak beraturan menciptakan tampilan sangat alami, ideal untuk layout aquascape bertema gunung dan lembah. Pengaruhnya pada pH rendah, sehingga cocok untuk spesies air lunak dan planted tank. Sangat populer dalam aquascaping modern karena tekstur visualnya yang dramatis."
-   },
    "limestone": {
     "notes": "Batu sedimen yang secara aktif menaikkan pH dan kesadahan seiring larutnya secara perlahan. Penting untuk setup cichlid Afrika (Danau Malawi, Tanganyika) yang membutuhkan air keras dan basa. Jangan dipakai bersama spesies air lunak, planted tank yang memakai aqua soil, atau ikan mana pun yang butuh pH di bawah 7,0. Uji kimia air setiap minggu setelah dimasukkan."
    },
@@ -1368,6 +1365,15 @@
    },
    "coconut-husk": {
     "notes": "Sabut kelapa kering berserat yang dipakai sebagai penutup alami untuk ikan dan udang penghuni dasar. Melepaskan tanin ringan. Terurai perlahan — ganti begitu mulai melunak. Murah dan mudah ditemukan di negara-negara tropis. Buang semua serat tanaman hijau sepenuhnya sebelum dipakai."
+   },
+   "manzanita-driftwood": {
+    "notes": "Kayu apung bergaya cabang paling ikonik dalam aquascaping, dihargai karena cabangnya yang halus, berliku, menyerupai laba-laba yang menciptakan layout bergaya 'pohon' dan 'hutan' yang dramatis. Sangat keras dan padat — tenggelam dengan cepat tanpa perlu direndam lama dibanding kebanyakan kayu apung lain. Melepaskan tanin minimal. Sering digunakan sebagai centrepiece dengan lumut diikatkan ke cabangnya untuk mensimulasikan dedaunan. Potongan manzanita asli dengan percabangan alami yang mencolok sangat dihargai dan bisa mahal."
+   },
+   "redmoor-root": {
+    "notes": "Kayu apung bercabang halus dan berkelok-kelok yang populer dalam aquascaping Eropa untuk layout akar dan cabang yang naturalistik. Lebih lunak dan berpori dibanding Manzanita — melepaskan tanin jauh lebih banyak, membuat air berwarna kekuningan jika tidak direndam dulu atau digunakan bersama karbon aktif. Permukaan yang sangat baik untuk mengikat lumut, Anubias, atau Bucephalandra. Perlu diberi pemberat atau direndam pada awalnya, karena lebih ringan dan lebih mudah mengambang dibanding kayu apung yang lebih padat."
+   },
+   "ryuoh-stone": {
+    "notes": "Batu abu-abu gelap kehitaman dengan urat mineral putih yang mencolok, salah satu dari dua batu utama dalam layout Iwagumi Jepang bersama Seiryu Stone — sering dibandingkan langsung dengannya karena palet warna yang lebih suram dan dramatis. Berbeda dari Seiryu, pengaruhnya terhadap kekerasan dan pH air minimal, menjadikannya lebih fleksibel untuk planted tank air lunak. Bentuknya yang bersudut dan bertekstur cocok untuk penataan gaya rangkaian pegunungan dengan jumlah batu ganjil (konvensi Iwagumi)."
    }
   },
   "SETUP_STYLES": {

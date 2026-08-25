@@ -103,6 +103,18 @@ function patchBriefing(h, t) {
   return h;
 }
 
+// "Before you begin" gate (#csl-intro) — 2nd screen before the lab
+// (2026-08-25, matches Tank Simulator's #ov-brief pattern). The
+// methodology content inside it (.insight-box/.setup-note/
+// .ar-disclosure) keeps the SAME markup it had when it lived inline in
+// #csl-scroll, so patchBody()'s existing regexes for those still match
+// unchanged — only this title + button are new.
+function patchIntro(h, t) {
+  h = replaceOnce(h, /(<h2 class="csl-intro-title">)[^<]*(<\/h2>)/, (_, a, b) => `${a}${t.csl_intro_title}${b}`);
+  h = replaceOnce(h, /(<button type="button" id="btn-csl-start">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.csl_intro_btn}${b}`);
+  return h;
+}
+
 function patchTopbar(h) {
   // logo aria-label / settings button title/aria-label reuse NAV_LABELS-style
   // strings already established in build-ara-i18n.mjs — kept minimal here
@@ -184,6 +196,7 @@ function buildLang(lang) {
 
   h = patchHead(h, t, lang);
   h = patchBriefing(h, t);
+  h = patchIntro(h, t);
   h = patchTopbar(h);
   h = patchBody(h, t);
   h = patchBnav(h, lang);

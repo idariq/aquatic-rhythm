@@ -318,6 +318,20 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
 .brief-btn{font-size:var(--fs-sm);letter-spacing:.14em;text-transform:uppercase;background:var(--th-accent);color:var(--th-accent-ink);border:1px solid var(--th-accent-border);padding:.85rem 2.2rem;border-radius:2px;cursor:pointer;font-family:var(--sans);transition:background .25s,transform .2s;display:inline-flex;align-items:center;gap:.5rem}
 .brief-btn:hover{opacity:.88;transform:translateY(-1px)}
 
+/* ── INTRO ("Before you begin") — 2nd gate before the lab, same overlay
+   language as Tank Simulator's #ov-brief. Holds the methodology content
+   (what this lab does / disclaimer / how it works) that used to sit at
+   the top of the working scroll (user report 2026-08-25: "tulisan ini
+   tak perlu masuk dalam page lab"). #insight-box/.setup-note/
+   .ar-disclosure keep their existing rules — only the wrapper moved. */
+#csl-intro{position:fixed;inset:0;z-index:490;background:var(--th-surface-2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;transition:opacity .4s;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:2rem 1.2rem}
+#csl-intro.hide{opacity:0;pointer-events:none}
+.csl-intro-card{max-width:480px;width:100%;text-align:left;margin:auto;padding:clamp(1.2rem,4vw,1.75rem) clamp(1.1rem,4vw,1.5rem);border-radius:14px;border:1px solid var(--panel-border);background:var(--panel);box-shadow:var(--panel-shadow),var(--panel-inset)}
+.csl-intro-icon{display:block;text-align:center;margin-bottom:.5rem}
+.csl-intro-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.4rem,4.5vw,1.7rem);color:var(--th-ink);text-align:center;margin-bottom:1rem}
+#btn-csl-start{font-size:var(--fs-xs);font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.72rem 1.35rem;border-radius:10px;cursor:pointer;transition:background .2s,transform .2s;font-family:var(--sans);width:100%;margin-top:.4rem;background:var(--th-accent);color:var(--th-accent-ink);border:1px solid var(--th-accent-border)}
+#btn-csl-start:hover{opacity:.88;transform:translateY(-1px)}
+
 /* Lab page: drop the site bottom nav + Rhyssa fab so they don't overlap
    the lab UI, and slim the topbar to just the settings gear
    (user request 2026-08-18). */
@@ -346,15 +360,50 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
       <div class="brief-rhy-item"><span class="brief-rhy-name" style="color:rgba(139,189,210,.7)">無脊椎</span><span class="brief-rhy-desc">小型シュリンプとの相性と、薬品に対する敏感さ</span></div>
     </div>
     <p class="brief-note">扱うのは簡略化した数値範囲と規則だけです。個体ごとの行動、攻撃性、病気を予測するものではありません。優先されるのは、あなたの実際の水槽と観察です。</p>
-    <button class="brief-btn" id="btn-enter">ラボに入る &#x2192;</button>
+    <button class="brief-btn" id="btn-enter">続ける &#x2192;</button>
+  </div>
+</div>
+
+<!-- ── INTRO ("Before you begin") — methodology gate, matches
+     Tank Simulator's #ov-brief pattern ── -->
+<div id="csl-intro" class="hide">
+  <div class="csl-intro-card">
+    <span class="csl-intro-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14.5c3-6 7-6 10 0s7 6 10 0"/><path d="M2 9.5c3-6 7-6 10 0s7 6 10 0"/></svg></span>
+    <h2 class="csl-intro-title">始める前に</h2>
+
+    <div class="insight-box">
+      <span class="ib-lbl">このラボでできること</span>
+      <p class="ib-txt">想定した淡水の混泳について、水温域、水質、広さと生体量、捕食、社会的な緊張、小型シュリンプの安全性という、<em>重なり合う負荷</em>を地図のように示します。計画と学習のための道具であり、魚を「相性が良い」と断定するためのものではありません。</p>
+    </div>
+
+    <div class="setup-note" role="note">
+      <p>扱うのは簡略化した数値範囲と規則だけです。個体ごとの行動、攻撃性、病気を予測するものではありません。優先されるのは、あなたの実際の水槽と観察です。自宅で実際に起きたことは、<a href="/journal">キーパーの記録</a>に残してください。</p>
+    </div>
+
+    <details class="ar-disclosure" style="margin-bottom:.55rem">
+      <summary>このラボの仕組み</summary>
+      <div class="ar-disclosure-body">
+        <p>各種のパラメータ（水温、pH、体長、行動タグ）は Aquatic Rhythm の種データパックによるもので、アクアリウムで一般に共有されている範囲を、<a href="https://fishbase.se" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">FishBase</a> と <a href="https://www.seriouslyfish.com" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">SeriouslyFish</a> と照合したものです。種ごとの項目には出典メモが付いています。</p>
+        <p>この負荷エンジンが確認するのは、水温域の重なり、pH 範囲の交わり、生体量の係数、捕食における口と体の大きさの対応、ヒレをかじる組み合わせ、そして小型シュリンプの安全性です。個体の性格、攻撃の履歴、病気は扱いません。「やや高い」「高い」という表示は、その項目に注意が必要という意味であり、失敗の予告ではありません。</p>
+        <p>導入の前に、最新の資料で各種のパラメータを確認してください。優先されるのは、いつでもあなたの実際の水槽と観察です。</p>
+      </div>
+    </details>
+
+    <button type="button" id="btn-csl-start">ラボに入る &#x2192;</button>
   </div>
 </div>
 <script>
 (function(){
+  var briefing=document.getElementById('briefing');
+  var intro=document.getElementById('csl-intro');
   document.getElementById('btn-enter').addEventListener('click',function(){
-    var b=document.getElementById('briefing');
-    b.style.opacity='0';b.style.pointerEvents='none';
-    setTimeout(function(){b.style.display='none'},500);
+    briefing.style.opacity='0';briefing.style.pointerEvents='none';
+    setTimeout(function(){briefing.style.display='none'},500);
+    intro.classList.remove('hide');
+  });
+  document.getElementById('btn-csl-start').addEventListener('click',function(){
+    intro.classList.add('hide');
+    setTimeout(function(){intro.style.display='none'},400);
   });
 })();
 </script>
@@ -387,24 +436,6 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
 
   <div id="csl-middle">
     <div id="csl-scroll">
-      <div class="insight-box">
-        <span class="ib-lbl">このラボでできること</span>
-        <p class="ib-txt">想定した淡水の混泳について、水温域、水質、広さと生体量、捕食、社会的な緊張、小型シュリンプの安全性という、<em>重なり合う負荷</em>を地図のように示します。計画と学習のための道具であり、魚を「相性が良い」と断定するためのものではありません。</p>
-      </div>
-
-      <div class="setup-note" role="note">
-        <p>扱うのは簡略化した数値範囲と規則だけです。個体ごとの行動、攻撃性、病気を予測するものではありません。優先されるのは、あなたの実際の水槽と観察です。自宅で実際に起きたことは、<a href="/journal">キーパーの記録</a>に残してください。</p>
-      </div>
-
-      <details class="ar-disclosure" style="margin-bottom:.55rem">
-        <summary>このラボの仕組み</summary>
-        <div class="ar-disclosure-body">
-          <p>各種のパラメータ（水温、pH、体長、行動タグ）は Aquatic Rhythm の種データパックによるもので、アクアリウムで一般に共有されている範囲を、<a href="https://fishbase.se" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">FishBase</a> と <a href="https://www.seriouslyfish.com" target="_blank" rel="noopener noreferrer" style="color:rgba(61,214,232,.6);text-decoration:none">SeriouslyFish</a> と照合したものです。種ごとの項目には出典メモが付いています。</p>
-          <p>この負荷エンジンが確認するのは、水温域の重なり、pH 範囲の交わり、生体量の係数、捕食における口と体の大きさの対応、ヒレをかじる組み合わせ、そして小型シュリンプの安全性です。個体の性格、攻撃の履歴、病気は扱いません。「やや高い」「高い」という表示は、その項目に注意が必要という意味であり、失敗の予告ではありません。</p>
-          <p>導入の前に、最新の資料で各種のパラメータを確認してください。優先されるのは、いつでもあなたの実際の水槽と観察です。</p>
-        </div>
-      </details>
-
       <div id="csl-root" data-pack="/data/community-stress-lab-species-v1.json">
         <div class="csl-section">
           <span class="csl-sh"><svg class="csl-sh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3 4 6 8 6 11a6 6 0 0 1-12 0c0-3 3-7 6-11z"/></svg>水槽の条件</span>

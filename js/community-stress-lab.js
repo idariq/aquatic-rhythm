@@ -60,7 +60,7 @@
     'canvas_empty': 'Add species to map the tank.',
     'status_summary': '{n}/{maxN} species · {m}/{maxM} individuals',
     'species_hint_dyn': 'Up to {maxN} species · {maxM} individuals total. Search by name…',
-    'cap_species_msg': 'Species limit reached for this tank size ({maxN}). Increase volume for more room, or remove a species first.',
+    'cap_species_msg': 'Species limit reached ({maxN}). Remove a species first to add a different one.',
     'cap_individuals_msg': 'Individual limit reached for this tank size ({maxM}). Increase volume for more room, or remove some individuals first.',
     'decrease_count_aria': 'Decrease count',
     'increase_count_aria': 'Increase count',
@@ -250,7 +250,7 @@
     'canvas_empty': 'Tambahkan spesies untuk memetakan akuarium.',
     'status_summary': '{n}/{maxN} spesies · {m}/{maxM} individu',
     'species_hint_dyn': 'Maksimal {maxN} spesies · total {maxM} individu. Cari berdasarkan nama…',
-    'cap_species_msg': 'Batas jumlah spesies tercapai untuk ukuran tangki ini ({maxN}). Tambah volume untuk ruang lebih, atau hapus salah satu spesies dulu.',
+    'cap_species_msg': 'Batas jumlah spesies tercapai ({maxN}). Hapus salah satu spesies dulu untuk menambah yang lain.',
     'cap_individuals_msg': 'Batas jumlah individu tercapai untuk ukuran tangki ini ({maxM}). Tambah volume untuk ruang lebih, atau kurangi jumlah individu dulu.',
     'decrease_count_aria': 'Kurangi jumlah',
     'increase_count_aria': 'Tambah jumlah',
@@ -440,7 +440,7 @@
     'canvas_empty': '種を追加すると水槽が表示されます。',
     'status_summary': '{n}/{maxN}種・{m}/{maxM}匹',
     'species_hint_dyn': '最大 {maxN} 種・合計 {maxM} 匹まで。名前で検索できます。',
-    'cap_species_msg': 'このタンクサイズでの種数の上限（{maxN}）に達しました。水量を増やすか、先に種を減らしてください。',
+    'cap_species_msg': '種数の上限（{maxN}）に達しました。別の種を追加するには、先にどれかを減らしてください。',
     'cap_individuals_msg': 'このタンクサイズでの匹数の上限（{maxM}）に達しました。水量を増やすか、先に匹数を減らしてください。',
     'decrease_count_aria': '数を減らす',
     'increase_count_aria': '数を増やす',
@@ -711,13 +711,17 @@
     thai_micro_crab: 'crab'
   };
 
-  // Caps scale with tank volume so a 500L plan isn't held to the same
-  // ceiling as a 20L one — findings/pressure-map readability is still the
-  // limiting factor at the top tier, not an arbitrary flat number.
+  // Species count and individual count are different kinds of limit and
+  // don't scale the same way. Individuals ~ bioload/physical space, so that
+  // cap scales with tank volume — a 500L plan shouldn't be held to a 20L
+  // ceiling. Species diversity isn't volume-driven the same way (a small
+  // tank can validly run "one of each" at low density), so it gets one
+  // flat, more generous ceiling instead — bounded only by chip-list/
+  // findings-list readability, not by tank size.
+  var MAX_SPECIES = 15;
   function capsForVolume(volumeL) {
-    if (volumeL >= 250) return { species: 10, individuals: 60 };
-    if (volumeL >= 100) return { species: 8, individuals: 40 };
-    return { species: 6, individuals: 24 };
+    var individuals = volumeL >= 250 ? 60 : volumeL >= 100 ? 40 : 24;
+    return { species: MAX_SPECIES, individuals: individuals };
   }
 
   var BIoload_COEFF = 0.35;

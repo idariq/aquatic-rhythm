@@ -680,6 +680,28 @@
     return T('cn_' + (CITATION_KEY_BY_SPECIES[speciesId] || 'default'));
   }
 
+  // Visual-cockpit marker silhouette per species id, for the handful whose
+  // body plan a generic ellipse-blob misrepresents badly (elongated
+  // eel/snakehead body, disc-shaped body, crab claws). Everything not
+  // listed here falls back to a tag/isInvert-based default in shapeFor().
+  var SHAPE_BY_SPECIES = {
+    channa_andrao: 'eel',
+    channa_bleheri: 'eel',
+    channa_lucius: 'eel',
+    channa_maruliodes: 'eel',
+    channa_pulchra: 'eel',
+    black_ghost_knifefish: 'eel',
+    fire_eel: 'eel',
+    ropefish: 'eel',
+    elephant_nose_fish: 'eel',
+    kuhli_loach: 'eel',
+    weather_loach: 'eel',
+    dwarf_puffer: 'disc',
+    pom_pom_crab: 'crab',
+    red_claw_crab: 'crab',
+    thai_micro_crab: 'crab'
+  };
+
   var MAX_DISTINCT_SPECIES = 6;
   var MAX_INDIVIDUALS = 24;
   var BIoload_COEFF = 0.35;
@@ -695,6 +717,17 @@
 
   function isInvert(s) {
     return hasTag(s, 'invert');
+  }
+
+  // 'fish'/'eel'/'disc' swim across the tank; 'shrimp'/'snail'/'crab' idle
+  // in place (matches real behaviour of bottom-dwelling inverts) — see the
+  // swims flag in drawVisual().
+  function shapeFor(s) {
+    if (SHAPE_BY_SPECIES[s.id]) return SHAPE_BY_SPECIES[s.id];
+    if (hasTag(s, 'discus')) return 'disc';
+    if (hasTag(s, 'snail')) return 'snail';
+    if (isInvert(s)) return 'shrimp';
+    return 'fish';
   }
 
   function intersectIntervals(intervals) {
@@ -1210,6 +1243,9 @@
     var lastLaneLevel = emptyLanes();
     var srMatches = [];
     var srActiveIndex = -1;
+    var markerAnim = {};
+    var visualTick = 0;
+    var visualAnimId = null;
 
     function setStatus(msg, err) {
       if (!statusEl) return;
@@ -1370,9 +1406,18 @@
       cctx.restore();
     }
 
+    // Thin outline so pale invert markers (light blue) don't wash out
+    // against the water gradient, which sits in a similar hue range —
+    // especially noticeable in the light theme.
+    function contrastStroke() {
+      return vcLight() ? 'rgba(20,45,60,.5)' : 'rgba(230,245,250,.55)';
+    }
+
     function drawInvertMarker(x, y, r, col) {
       cctx.save();
       cctx.fillStyle = col;
+      cctx.strokeStyle = contrastStroke();
+      cctx.lineWidth = 1;
       cctx.beginPath();
       cctx.moveTo(x, y - r);
       cctx.lineTo(x + r, y);
@@ -1380,7 +1425,99 @@
       cctx.lineTo(x - r, y);
       cctx.closePath();
       cctx.fill();
+      cctx.stroke();
       cctx.restore();
+    }
+
+    // Elongated sinuous body — snakeheads, knifefish, ropefish, eel-bodied loaches.
+    function drawEelMarker(x, y, w, h, col, facingLeft, wave) {
+      cctx.save();
+      cctx.strokeStyle = col;
+      cctx.lineWidth = Math.max(1.4, h * 1.3);
+      cctx.lineCap = 'round';
+      cctx.lineJoin = 'round';
+      var dir = facingLeft ? -1 : 1;
+      var len = w * 2.7;
+      cctx.beginPath();
+      for (var i = 0; i <= 6; i++) {
+        var t = i / 6;
+        var px = x - dir * len * .5 + dir * len * t;
+        var py = y + Math.sin(t * Math.PI * 1.7 + wave) * h * 1.6 * (1 - t * .25);
+        if (i === 0) cctx.moveTo(px, py);
+        else cctx.lineTo(px, py);
+      }
+      cctx.globalAlpha = .85;
+      cctx.stroke();
+      cctx.restore();
+    }
+
+    // Tall round body — discus, puffers.
+    function drawDiscMarker(x, y, r, col, facingLeft) {
+      cctx.save();
+      cctx.fillStyle = col;
+      cctx.beginPath();
+      cctx.arc(x, y, r, 0, Math.PI * 2);
+      cctx.fill();
+      var tx = facingLeft ? x + r * 1.35 : x - r * 1.35;
+      cctx.beginPath();
+      cctx.moveTo(x + (facingLeft ? r * .5 : -r * .5), y);
+      cctx.lineTo(tx, y - r * .55);
+      cctx.lineTo(tx, y + r * .55);
+      cctx.closePath();
+      cctx.globalAlpha = .8;
+      cctx.fill();
+      cctx.restore();
+    }
+
+    // Wide body + two claw legs — crabs.
+    function drawCrabMarker(x, y, w, h, col) {
+      cctx.save();
+      var edge = contrastStroke();
+      cctx.fillStyle = col;
+      cctx.beginPath();
+      cctx.ellipse(x, y, w * .9, h, 0, 0, Math.PI * 2);
+      cctx.fill();
+      cctx.strokeStyle = edge;
+      cctx.lineWidth = Math.max(.75, h * .18);
+      cctx.stroke();
+      cctx.lineWidth = Math.max(1, h * .35);
+      cctx.lineCap = 'round';
+      cctx.beginPath();
+      cctx.moveTo(x - w * .75, y - h * .25);
+      cctx.lineTo(x - w * 1.5, y - h * .9);
+      cctx.moveTo(x + w * .75, y - h * .25);
+      cctx.lineTo(x + w * 1.5, y - h * .9);
+      cctx.stroke();
+      cctx.restore();
+    }
+
+    // Spiral coil — snails.
+    function drawSnailMarker(x, y, r, col) {
+      cctx.save();
+      cctx.strokeStyle = contrastStroke();
+      cctx.fillStyle = col;
+      cctx.lineWidth = Math.max(1, r * .32);
+      cctx.lineCap = 'round';
+      cctx.beginPath();
+      var turns = 2.1, steps = 20;
+      for (var a = 0; a <= steps; a++) {
+        var frac = a / steps;
+        var ang = frac * turns * Math.PI * 2;
+        var rad = r * .18 + r * .82 * frac;
+        var px = x + Math.cos(ang) * rad;
+        var py = y + Math.sin(ang) * rad;
+        if (a === 0) cctx.moveTo(px, py);
+        else cctx.lineTo(px, py);
+      }
+      cctx.stroke();
+      cctx.beginPath();
+      cctx.arc(x, y, r * .26, 0, Math.PI * 2);
+      cctx.fill();
+      cctx.restore();
+    }
+
+    function prefersReducedMotion() {
+      return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
     }
 
     function drawVisual(volumeL, laneLevel) {
@@ -1391,6 +1528,7 @@
       cctx.clearRect(0, 0, W, H);
 
       var light = vcLight();
+      var moving = !prefersReducedMotion();
       var pad = 6, tx = pad, ty = pad, tw = W - pad * 2, th = H - pad * 2;
 
       cctx.save();
@@ -1430,12 +1568,33 @@
       var colPredatorMid = 'rgba(215,150,60,.88)';
       var colInvert = 'rgba(139,189,210,.9)';
 
+      if (moving) visualTick++;
+
+      if (moving) {
+        cctx.save();
+        cctx.globalAlpha = .32;
+        cctx.strokeStyle = light ? 'rgba(255,255,255,.55)' : 'rgba(200,235,255,.55)';
+        cctx.lineWidth = 1;
+        for (var b = 0; b < 5; b++) {
+          var bx = tx + tw * (0.12 + b * 0.19 + Math.sin(b * 2.1) * 0.02);
+          var by = ty + th - ((visualTick * 0.55 + b * 41) % (th + 18)) + 12;
+          var br = 1.1 + (b % 3) * .5;
+          cctx.beginPath();
+          cctx.arc(bx, by, br, 0, Math.PI * 2);
+          cctx.stroke();
+        }
+        cctx.restore();
+      }
+
+      var usedKeys = {};
       for (var i = 0; i < picks.length; i++) {
         var p = picks[i];
         var s = speciesById[p.id];
         if (!s) continue;
         var band = zoneBand(s.zone);
-        var invert = isInvert(s) || hasTag(s, 'snail');
+        var shape = shapeFor(s);
+        var invert = shape === 'shrimp' || shape === 'snail' || shape === 'crab';
+        var swims = shape === 'fish' || shape === 'eel' || shape === 'disc';
         var predLvl = s.mouthPredatorLevel || 0;
         var col = invert ? colInvert : predLvl >= 2 ? colPredator : predLvl === 1 ? colPredatorMid : colFish;
         var bodyMm = s.bodyMmAdult || 30;
@@ -1444,12 +1603,46 @@
         var shown = Math.min(p.count, 4);
         var lastX = tx, lastY = ty;
         for (var n = 0; n < shown; n++) {
-          var rx = seededRand(p.id + '_' + n);
-          var ry = seededRand(p.id + '_' + n + '_y');
-          var mx = tx + tw * (0.08 + rx * 0.84);
-          var my = ty + th * (band[0] + ry * (band[1] - band[0]));
-          var facingLeft = seededRand(p.id + '_' + n + '_f') > 0.5;
-          if (invert) drawInvertMarker(mx, my, baseW * .55, col);
+          var key = p.id + '_' + n;
+          usedKeys[key] = true;
+          var m = markerAnim[key];
+          if (!m) {
+            var initY = band[0] + seededRand(key + '_y') * (band[1] - band[0]);
+            m = markerAnim[key] = {
+              x: 0.08 + seededRand(key) * 0.84,
+              y: initY,
+              targetY: initY,
+              vx: (seededRand(key + '_v') > 0.5 ? 1 : -1) * (0.0009 + seededRand(key + '_s') * 0.0011),
+              bobPhase: seededRand(key + '_p') * Math.PI * 2,
+              pauseTimer: 0
+            };
+          }
+          if (moving) {
+            if (swims) {
+              if (m.pauseTimer > 0) {
+                m.pauseTimer--;
+              } else {
+                m.x += m.vx;
+                m.bobPhase += 0.02;
+                if (Math.random() < 0.004) m.targetY = band[0] + Math.random() * (band[1] - band[0]);
+                m.y += (m.targetY - m.y) * .02 + Math.sin(m.bobPhase) * 0.0006;
+                if (Math.random() < 0.003) m.pauseTimer = 20 + Math.floor(Math.random() * 40);
+                if (m.x < 0.05) { m.x = 0.05; m.vx = Math.abs(m.vx); }
+                if (m.x > 0.92) { m.x = 0.92; m.vx = -Math.abs(m.vx); }
+              }
+            } else {
+              m.bobPhase += 0.015;
+              m.y = m.targetY + Math.sin(m.bobPhase) * 0.004;
+            }
+          }
+          var mx = tx + tw * m.x;
+          var my = ty + th * Math.max(band[0], Math.min(band[1], m.y));
+          var facingLeft = m.vx < 0;
+          if (shape === 'eel') drawEelMarker(mx, my, baseW, baseH * .8, col, facingLeft, m.bobPhase);
+          else if (shape === 'disc') drawDiscMarker(mx, my, baseW * .65, col, facingLeft);
+          else if (shape === 'crab') drawCrabMarker(mx, my, baseW * .6, baseH * .8, col);
+          else if (shape === 'snail') drawSnailMarker(mx, my, baseW * .55, col);
+          else if (shape === 'shrimp') drawInvertMarker(mx, my, baseW * .55, col);
           else drawFishMarker(mx, my, baseW, baseH, col, facingLeft);
           lastX = mx; lastY = my;
         }
@@ -1460,6 +1653,9 @@
           cctx.textBaseline = 'alphabetic';
           cctx.fillText('+' + (p.count - shown), lastX + baseW + 3, lastY + 3);
         }
+      }
+      for (var staleKey in markerAnim) {
+        if (!usedKeys[staleKey]) delete markerAnim[staleKey];
       }
 
       cctx.font = '500 9px Work Sans,sans-serif';
@@ -1474,6 +1670,28 @@
     function redrawVisualOnly() {
       var vol = parseInt(volumeEl.value, 10) || 60;
       drawVisual(vol, lastLaneLevel);
+    }
+
+    function visualLoopStep() {
+      redrawVisualOnly();
+      visualAnimId = requestAnimationFrame(visualLoopStep);
+    }
+
+    // Runs a continuous swim/idle animation loop while there's anything to
+    // animate and the user hasn't asked the OS for reduced motion; otherwise
+    // falls back to a single static render (matching the pre-animation
+    // behaviour exactly — see the `moving` flag in drawVisual()).
+    function syncVisualLoop() {
+      var shouldRun = picks.length > 0 && !prefersReducedMotion();
+      if (shouldRun) {
+        if (visualAnimId === null) visualLoopStep();
+      } else {
+        if (visualAnimId !== null) {
+          cancelAnimationFrame(visualAnimId);
+          visualAnimId = null;
+        }
+        redrawVisualOnly();
+      }
     }
 
     function renderBottombar() {
@@ -1496,7 +1714,7 @@
       renderChecklist(result.findings);
       renderBottombar();
       lastLaneLevel = result.laneLevel;
-      drawVisual(vol, lastLaneLevel);
+      syncVisualLoop();
     }
 
     function renderLanes(laneLevel) {
@@ -1746,12 +1964,14 @@
     if (window.matchMedia) {
       var lightMq = window.matchMedia('(prefers-color-scheme: light)');
       if (lightMq.addEventListener) lightMq.addEventListener('change', redrawVisualOnly);
+      var motionMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (motionMq.addEventListener) motionMq.addEventListener('change', syncVisualLoop);
     }
     new MutationObserver(redrawVisualOnly).observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['data-theme']
     });
-    redrawVisualOnly();
+    syncVisualLoop();
     renderBottombar();
 
     fetch(root.getAttribute('data-pack') || '/data/community-stress-lab-species-v1.json')

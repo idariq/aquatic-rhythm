@@ -59,6 +59,9 @@
     'empty_chips': 'Add species to map overlapping pressures.',
     'canvas_empty': 'Add species to map the tank.',
     'status_summary': '{n}/{maxN} species · {m}/{maxM} individuals',
+    'species_hint_dyn': 'Up to {maxN} species · {maxM} individuals total. Search by name…',
+    'cap_species_msg': 'Species limit reached for this tank size ({maxN}). Increase volume for more room, or remove a species first.',
+    'cap_individuals_msg': 'Individual limit reached for this tank size ({maxM}). Increase volume for more room, or remove some individuals first.',
     'decrease_count_aria': 'Decrease count',
     'increase_count_aria': 'Increase count',
     'remove_aria': 'Remove {name}',
@@ -246,6 +249,9 @@
     'empty_chips': 'Tambahkan spesies untuk memetakan tekanan yang bertumpang tindih.',
     'canvas_empty': 'Tambahkan spesies untuk memetakan akuarium.',
     'status_summary': '{n}/{maxN} spesies · {m}/{maxM} individu',
+    'species_hint_dyn': 'Maksimal {maxN} spesies · total {maxM} individu. Cari berdasarkan nama…',
+    'cap_species_msg': 'Batas jumlah spesies tercapai untuk ukuran tangki ini ({maxN}). Tambah volume untuk ruang lebih, atau hapus salah satu spesies dulu.',
+    'cap_individuals_msg': 'Batas jumlah individu tercapai untuk ukuran tangki ini ({maxM}). Tambah volume untuk ruang lebih, atau kurangi jumlah individu dulu.',
     'decrease_count_aria': 'Kurangi jumlah',
     'increase_count_aria': 'Tambah jumlah',
     'remove_aria': 'Hapus {name}',
@@ -433,6 +439,9 @@
     'empty_chips': '種を追加すると、重なり合う負荷が表示されます。',
     'canvas_empty': '種を追加すると水槽が表示されます。',
     'status_summary': '{n}/{maxN}種・{m}/{maxM}匹',
+    'species_hint_dyn': '最大 {maxN} 種・合計 {maxM} 匹まで。名前で検索できます。',
+    'cap_species_msg': 'このタンクサイズでの種数の上限（{maxN}）に達しました。水量を増やすか、先に種を減らしてください。',
+    'cap_individuals_msg': 'このタンクサイズでの匹数の上限（{maxM}）に達しました。水量を増やすか、先に匹数を減らしてください。',
     'decrease_count_aria': '数を減らす',
     'increase_count_aria': '数を増やす',
     'remove_aria': '{name} を削除',
@@ -702,8 +711,15 @@
     thai_micro_crab: 'crab'
   };
 
-  var MAX_DISTINCT_SPECIES = 6;
-  var MAX_INDIVIDUALS = 24;
+  // Caps scale with tank volume so a 500L plan isn't held to the same
+  // ceiling as a 20L one — findings/pressure-map readability is still the
+  // limiting factor at the top tier, not an arbitrary flat number.
+  function capsForVolume(volumeL) {
+    if (volumeL >= 250) return { species: 10, individuals: 60 };
+    if (volumeL >= 100) return { species: 8, individuals: 40 };
+    return { species: 6, individuals: 24 };
+  }
+
   var BIoload_COEFF = 0.35;
   var BIoload_HIGH = 0.5;
   var SMALL_TANK_L = 60;
@@ -1236,6 +1252,7 @@
     var bbStatusEl = document.getElementById('csl-bb-status');
     var resetBtn = document.getElementById('csl-reset');
     var searchResultsEl = document.getElementById('csl-search-results');
+    var hintEl = root.querySelector('.csl-hint');
 
     var speciesList = [];
     var speciesById = {};
@@ -1251,6 +1268,21 @@
       if (!statusEl) return;
       statusEl.textContent = msg || '';
       statusEl.style.color = err ? 'rgba(220,120,100,.9)' : 'var(--th-ink-3)';
+    }
+
+    function flashStatus(msg) {
+      setStatus(msg, true);
+      setTimeout(function () { setStatus(''); }, 2400);
+    }
+
+    function currentCaps() {
+      return capsForVolume(parseInt(volumeEl.value, 10) || 60);
+    }
+
+    function updateHint() {
+      if (!hintEl) return;
+      var caps = currentCaps();
+      hintEl.innerHTML = T('species_hint_dyn', { maxN: caps.species, maxM: caps.individuals });
     }
 
     function totalIndividuals() {
@@ -1301,7 +1333,11 @@
             refresh();
           });
           row.querySelector('[data-act="plus"]').addEventListener('click', function () {
-            if (totalIndividuals() >= MAX_INDIVIDUALS) return;
+            var caps = currentCaps();
+            if (totalIndividuals() >= caps.individuals) {
+              flashStatus(T('cap_individuals_msg', { maxM: caps.individuals }));
+              return;
+            }
             picks[idx].count++;
             refresh();
           });
@@ -1696,17 +1732,19 @@
 
     function renderBottombar() {
       if (!bbStatusEl) return;
+      var caps = currentCaps();
       bbStatusEl.textContent = T('status_summary', {
         n: picks.length,
-        maxN: MAX_DISTINCT_SPECIES,
+        maxN: caps.species,
         m: totalIndividuals(),
-        maxM: MAX_INDIVIDUALS
+        maxM: caps.individuals
       });
     }
 
     function refresh() {
       var vol = parseInt(volumeEl.value, 10) || 60;
       volumeVal.textContent = vol + ' L';
+      updateHint();
       renderChips();
       var result = runRules(vol, 'med', picks, speciesById);
       renderLanes(result.laneLevel);
@@ -1804,16 +1842,18 @@
 
     function addSpeciesById(id) {
       if (!speciesById[id]) return;
-      if (picks.length >= MAX_DISTINCT_SPECIES && !picks.some(function (p) { return p.id === id; })) return;
-      if (totalIndividuals() >= MAX_INDIVIDUALS) return;
+      var caps = currentCaps();
       var existing = picks.filter(function (p) { return p.id === id; })[0];
-      if (existing) {
-        if (totalIndividuals() >= MAX_INDIVIDUALS) return;
-        existing.count++;
-      } else {
-        if (picks.length >= MAX_DISTINCT_SPECIES) return;
-        picks.push({ id: id, count: 1 });
+      if (!existing && picks.length >= caps.species) {
+        flashStatus(T('cap_species_msg', { maxN: caps.species }));
+        return;
       }
+      if (totalIndividuals() >= caps.individuals) {
+        flashStatus(T('cap_individuals_msg', { maxM: caps.individuals }));
+        return;
+      }
+      if (existing) existing.count++;
+      else picks.push({ id: id, count: 1 });
       refresh();
     }
 
@@ -1837,8 +1877,7 @@
         searchEl.value = '';
         closeSearchResults();
       } else {
-        setStatus(T('no_species_match'), true);
-        setTimeout(function () { setStatus(''); }, 2400);
+        flashStatus(T('no_species_match'));
       }
     }
 
@@ -1972,6 +2011,7 @@
       attributeFilter: ['data-theme']
     });
     syncVisualLoop();
+    updateHint();
     renderBottombar();
 
     fetch(root.getAttribute('data-pack') || '/data/community-stress-lab-species-v1.json')

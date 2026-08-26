@@ -58,10 +58,7 @@
     'foot_note': 'Aligned with living systems. All tools grow from ARA — they simulate and plan, but they do not replace observation.',
     'empty_chips': 'Add species to map overlapping pressures.',
     'canvas_empty': 'Add species to map the tank.',
-    'status_summary': '{n}/{maxN} species · {m}/{maxM} individuals',
-    'species_hint_dyn': 'Up to {maxN} species · {maxM} individuals total. Search by name…',
-    'cap_species_msg': 'Species limit reached ({maxN}). Remove a species first to add a different one.',
-    'cap_individuals_msg': 'Individual limit reached for this tank size ({maxM}). Increase volume for more room, or remove some individuals first.',
+    'status_summary': '{n} species · {m} individuals',
     'decrease_count_aria': 'Decrease count',
     'increase_count_aria': 'Increase count',
     'remove_aria': 'Remove {name}',
@@ -248,10 +245,7 @@
     'foot_note': 'Selaras dengan sistem kehidupan. Semua alat tumbuh dari ARA — alat ini menyimulasikan dan merencanakan, tetapi tidak menggantikan pengamatan.',
     'empty_chips': 'Tambahkan spesies untuk memetakan tekanan yang bertumpang tindih.',
     'canvas_empty': 'Tambahkan spesies untuk memetakan akuarium.',
-    'status_summary': '{n}/{maxN} spesies · {m}/{maxM} individu',
-    'species_hint_dyn': 'Maksimal {maxN} spesies · total {maxM} individu. Cari berdasarkan nama…',
-    'cap_species_msg': 'Batas jumlah spesies tercapai ({maxN}). Hapus salah satu spesies dulu untuk menambah yang lain.',
-    'cap_individuals_msg': 'Batas jumlah individu tercapai untuk ukuran tangki ini ({maxM}). Tambah volume untuk ruang lebih, atau kurangi jumlah individu dulu.',
+    'status_summary': '{n} spesies · {m} individu',
     'decrease_count_aria': 'Kurangi jumlah',
     'increase_count_aria': 'Tambah jumlah',
     'remove_aria': 'Hapus {name}',
@@ -438,10 +432,7 @@
     'foot_note': '生きた系に寄り添って。すべての道具は ARA から育っています。模擬と計画はできても、観察の代わりにはなりません。',
     'empty_chips': '種を追加すると、重なり合う負荷が表示されます。',
     'canvas_empty': '種を追加すると水槽が表示されます。',
-    'status_summary': '{n}/{maxN}種・{m}/{maxM}匹',
-    'species_hint_dyn': '最大 {maxN} 種・合計 {maxM} 匹まで。名前で検索できます。',
-    'cap_species_msg': '種数の上限（{maxN}）に達しました。別の種を追加するには、先にどれかを減らしてください。',
-    'cap_individuals_msg': 'このタンクサイズでの匹数の上限（{maxM}）に達しました。水量を増やすか、先に匹数を減らしてください。',
+    'status_summary': '{n}種・{m}匹',
     'decrease_count_aria': '数を減らす',
     'increase_count_aria': '数を増やす',
     'remove_aria': '{name} を削除',
@@ -711,18 +702,16 @@
     thai_micro_crab: 'crab'
   };
 
-  // Species count and individual count are different kinds of limit and
-  // don't scale the same way. Individuals ~ bioload/physical space, so that
-  // cap scales with tank volume — a 500L plan shouldn't be held to a 20L
-  // ceiling. Species diversity isn't volume-driven the same way (a small
-  // tank can validly run "one of each" at low density), so it gets one
-  // flat, more generous ceiling instead — bounded only by chip-list/
-  // findings-list readability, not by tank size.
-  var MAX_SPECIES = 15;
-  function capsForVolume(volumeL) {
-    var individuals = volumeL >= 250 ? 60 : volumeL >= 100 ? 40 : 24;
-    return { species: MAX_SPECIES, individuals: individuals };
-  }
+  // Both caps are internal safety nets only, not something the tool
+  // teaches the user to plan around — the actual "is this tank too full"
+  // signal is the bioload-weighted Space/Load finding below (bioload =
+  // Σ bioloadUnits×count vs volume), which already accounts for species
+  // size correctly. Flat and generous on purpose: legitimate use (even
+  // "one of each" diversity, or a big school of one small species) should
+  // never come close to hitting either number — these exist only to stop
+  // degenerate input (e.g. holding the + button), not to guide stocking.
+  var SAFETY_CAPS = { species: 15, individuals: 80 };
+
 
   var BIoload_COEFF = 0.35;
   var BIoload_HIGH = 0.5;
@@ -1256,7 +1245,6 @@
     var bbStatusEl = document.getElementById('csl-bb-status');
     var resetBtn = document.getElementById('csl-reset');
     var searchResultsEl = document.getElementById('csl-search-results');
-    var hintEl = root.querySelector('.csl-hint');
 
     var speciesList = [];
     var speciesById = {};
@@ -1277,16 +1265,6 @@
     function flashStatus(msg) {
       setStatus(msg, true);
       setTimeout(function () { setStatus(''); }, 2400);
-    }
-
-    function currentCaps() {
-      return capsForVolume(parseInt(volumeEl.value, 10) || 60);
-    }
-
-    function updateHint() {
-      if (!hintEl) return;
-      var caps = currentCaps();
-      hintEl.innerHTML = T('species_hint_dyn', { maxN: caps.species, maxM: caps.individuals });
     }
 
     function totalIndividuals() {
@@ -1337,11 +1315,7 @@
             refresh();
           });
           row.querySelector('[data-act="plus"]').addEventListener('click', function () {
-            var caps = currentCaps();
-            if (totalIndividuals() >= caps.individuals) {
-              flashStatus(T('cap_individuals_msg', { maxM: caps.individuals }));
-              return;
-            }
+            if (totalIndividuals() >= SAFETY_CAPS.individuals) return;
             picks[idx].count++;
             refresh();
           });
@@ -1736,19 +1710,15 @@
 
     function renderBottombar() {
       if (!bbStatusEl) return;
-      var caps = currentCaps();
       bbStatusEl.textContent = T('status_summary', {
         n: picks.length,
-        maxN: caps.species,
-        m: totalIndividuals(),
-        maxM: caps.individuals
+        m: totalIndividuals()
       });
     }
 
     function refresh() {
       var vol = parseInt(volumeEl.value, 10) || 60;
       volumeVal.textContent = vol + ' L';
-      updateHint();
       renderChips();
       var result = runRules(vol, 'med', picks, speciesById);
       renderLanes(result.laneLevel);
@@ -1846,16 +1816,9 @@
 
     function addSpeciesById(id) {
       if (!speciesById[id]) return;
-      var caps = currentCaps();
       var existing = picks.filter(function (p) { return p.id === id; })[0];
-      if (!existing && picks.length >= caps.species) {
-        flashStatus(T('cap_species_msg', { maxN: caps.species }));
-        return;
-      }
-      if (totalIndividuals() >= caps.individuals) {
-        flashStatus(T('cap_individuals_msg', { maxM: caps.individuals }));
-        return;
-      }
+      if (!existing && picks.length >= SAFETY_CAPS.species) return;
+      if (totalIndividuals() >= SAFETY_CAPS.individuals) return;
       if (existing) existing.count++;
       else picks.push({ id: id, count: 1 });
       refresh();
@@ -2015,7 +1978,6 @@
       attributeFilter: ['data-theme']
     });
     syncVisualLoop();
-    updateHint();
     renderBottombar();
 
     fetch(root.getAttribute('data-pack') || '/data/community-stress-lab-species-v1.json')

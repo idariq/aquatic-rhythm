@@ -916,7 +916,7 @@
             buf = '';
             /* Guard: if the stream closed with no text at all, show a fallback */
             if (!responseText) {
-              responseText = 'Something went wrong — please try again in a moment.';
+              responseText = 'Something went wrong on my end — let\'s try that again in a moment.';
               p.innerHTML = mdToHTML(responseText);
             }
             /* Strip [opt] markers before saving to history */
@@ -952,7 +952,7 @@
     .catch(function (err) {
       hideTyping();
       console.error('[Rhyssa] fetch failed', err && err.message);
-      appendBubble('assistant', 'Something went wrong — please try again in a moment.');
+      appendBubble('assistant', 'Something went wrong on my end — let\'s try that again in a moment.');
       sendBtn.disabled = false;
       isStreaming = false;
       markLastReply();

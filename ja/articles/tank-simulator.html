@@ -836,7 +836,7 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
   <div class="oc" style="max-width:460px;text-align:left;margin-top:auto;margin-bottom:auto;width:100%">
     <div style="text-align:center;margin-bottom:1.2rem">
       <span class="oi" id="ov-icon">🐟</span>
-      <h2 class="ot" id="ov-title">サイクル失敗。</h2>
+      <h2 class="ot" id="ov-title">今回はサイクルが完了しませんでした。</h2>
       <p class="om" id="ov-msg" style="text-align:center"></p>
     </div>
 
@@ -2238,18 +2238,18 @@ function render(){
 function showEnd(type){
   var ov=document.getElementById('ov-end');
   var icons={won:'🌿',crashed:'💀'};
-  var titles={won:'サイクル完了。',crashed:'水槽が崩壊しました。'};
+  var titles={won:'お疲れさまでした。サイクルが完了しました。',crashed:'今回はサイクルが完了しませんでした。'};
   document.getElementById('ov-icon').textContent=icons[type]||'💀';
-  document.getElementById('ov-title').textContent=titles[type]||'水槽が崩壊しました。';
+  document.getElementById('ov-title').textContent=titles[type]||'今回はサイクルが完了しませんでした。';
   var msg='';
   if(type==='won'){
     msg=S.fishless
-      ?''+S.day+'日目。生き物を傷つけることなく、バクテリアが確立しました。'
-      :''+S.day+'日目。魚がいる状態のまま、サイクルが完了しました。';
+      ?''+S.day+'日目、生き物を傷つけることなく、バクテリアの定着に成功しました。'
+      :''+S.day+'日目、魚がいる状態のまま、サイクルを無事に終えることができました。';
   } else {
     msg=S.fishHealth<=0
-      ?'魚は栄養不足とストレスによって弱り、命を落としました。'
-      :'アンモニアまたは亜硝酸塩が、魚が耐えられない水準に達しました。';
+      ?'魚は長い間十分に餌をもらえず、積み重なったストレスが致命的になってしまいました。'
+      :'アンモニアや亜硝酸塩が、魚には耐えられない水準まで上がってしまいました。最初のサイクルではよくあることです。';
   }
   document.getElementById('ov-msg').textContent=msg;
   buildReport(type);

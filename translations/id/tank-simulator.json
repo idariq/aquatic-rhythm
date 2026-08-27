@@ -76,7 +76,7 @@
     "btn": "Mulai simulasi →"
   },
   "end": {
-    "titleDefault": "Siklus gagal.",
+    "titleDefault": "Siklus tidak selesai kali ini.",
     "reportHeading": "Laporan simulasi",
     "reflectionSummary": "Refleksi &amp; pembinaan",
     "goalHeading": "Langkah terbaik berikutnya",
@@ -291,12 +291,12 @@
       "extreme": "{pct}% pergantian air — hampir reset total. Koloni bertahan, tapi guncangan kimia air, hilangnya substrat total, dan gangguan fisik pada filter akan mengaturnya kembali secara signifikan. Simpan ini hanya untuk keadaan darurat sungguhan."
     },
     "report": {
-      "titleWon": "Siklus selesai.",
-      "titleCrashed": "Akuarium mengalami kegagalan.",
-      "msgWonFishless": "Hari {day}. Bakteri terbentuk tanpa ada hewan yang dirugikan.",
-      "msgWonFishIn": "Hari {day}. Siklus selesai dengan ikan hadir di dalamnya.",
-      "msgCrashedStarved": "Ikan melemah akibat kekurangan makanan dan stres yang berujung fatal.",
-      "msgCrashedWater": "Amonia atau nitrit mencapai tingkat yang tidak bisa ditoleransi ikan.",
+      "titleWon": "Bagus sekali — siklus selesai.",
+      "titleCrashed": "Siklus tidak selesai kali ini.",
+      "msgWonFishless": "Hari {day} — koloni bakteri terbentuk dengan aman, tanpa ada yang dirugikan sepanjang jalan.",
+      "msgWonFishIn": "Hari {day} — siklus selesai dengan sukses, lengkap dengan ikan di dalamnya.",
+      "msgCrashedStarved": "Ikan kekurangan makanan terlalu lama, dan stres yang menumpuk akhirnya berujung fatal.",
+      "msgCrashedWater": "Amonia atau nitrit menumpuk hingga tingkat yang tidak bisa ditoleransi ikan — pelajaran berat tapi umum dialami di siklus pertama.",
       "rowDaysElapsed": "Hari berlalu",
       "rowDaysValue": "{day} hari",
       "rowMethod": "Metode",

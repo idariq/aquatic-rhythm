@@ -283,7 +283,7 @@ function patchBrief(h, t) {
 
 function patchEnd(h, t) {
   const e = t.end;
-  h = subOnce(h, '<h2 class="ot" id="ov-title">The cycle crashed.</h2>', `<h2 class="ot" id="ov-title">${e.titleDefault}</h2>`, 'end.titleDefault');
+  h = subOnce(h, '<h2 class="ot" id="ov-title">The cycle didn\'t complete this time.</h2>', `<h2 class="ot" id="ov-title">${e.titleDefault}</h2>`, 'end.titleDefault');
   h = subOnce(h, '<div class="rpt-heading">Simulation report</div>', `<div class="rpt-heading">${e.reportHeading}</div>`, 'end.reportHeading');
   h = subOnce(h, '<summary>Reflection &amp; coaching</summary>', `<summary>${e.reflectionSummary}</summary>`, 'end.reflectionSummary');
   h = subOnce(h, '<div class="goal-card-h">Next best action</div>', `<div class="goal-card-h">${e.goalHeading}</div>`, 'end.goalHeading');
@@ -516,17 +516,17 @@ function patchEngine4(h, t) {
     "var stLabel=S.cycleOk?'Stable \\u2713':\n                sd>0?'Stabilising ('+sd+'/3)':\n                avgBac>.8?'Nearly there':\n                avgBac>.5?'Establishing':\n                avgBac>.2?'Growing':'Seeding';",
     `var stLabel=S.cycleOk?'${m.bacStable}':\n                sd>0?'${m.bacStabilising.split('{n}')[0]}'+sd+'${m.bacStabilising.split('{n}')[1]}':\n                avgBac>.8?'${m.bacNearlyThere}':\n                avgBac>.5?'${m.bacEstablishing}':\n                avgBac>.2?'${m.bacGrowing}':'${m.bacSeeding}';`, 'render.bacStatus');
 
-  h = subOnce(h, "var titles={won:'The cycle is complete.',crashed:'The tank crashed.'};", `var titles={won:'${r.titleWon}',crashed:'${r.titleCrashed}'};`, 'showEnd.titles');
+  h = subOnce(h, "var titles={won:'Nicely done — the cycle is complete.',crashed:'The cycle didn\\'t complete this time.'};", `var titles={won:'${r.titleWon}',crashed:'${r.titleCrashed}'};`, 'showEnd.titles');
   h = subOnce(h, "document.getElementById('ov-title').textContent=titles[type]||'Simulation ended.';",
     `document.getElementById('ov-title').textContent=titles[type]||'${r.titleCrashed}';`, 'showEnd.titleFallback');
   h = subOnce(h,
     "var wcNote=S.totalWc>6?'Too frequent — repeated changes disrupt water chemistry and remove ammonia the colony needs':\n             S.totalWc===0?'None done — nitrate may have accumulated unchecked':\n             S.totalWc<=3?'Well managed — small and targeted':'Reasonable';",
     `var wcNote=S.totalWc>6?'${r.wcNoteFrequent}':\n             S.totalWc===0?'${r.wcNoteNone}':\n             S.totalWc<=3?'${r.wcNoteWell}':'${r.wcNoteReasonable}';`, 'report.wcNote');
   h = subOnce(h,
-    "msg=S.fishless\n      ?'Day '+S.day+'. Bacteria established without any animals being harmed.'\n      :'Day '+S.day+'. The cycle completed with fish present.';",
+    "msg=S.fishless\n      ?'Day '+S.day+' — the bacteria colony established safely, with no losses along the way.'\n      :'Day '+S.day+' — the cycle completed successfully, fish and all.';",
     `msg=S.fishless\n      ?'${r.msgWonFishless.split('{day}')[0]}'+S.day+'${r.msgWonFishless.split('{day}')[1]}'\n      :'${r.msgWonFishIn.split('{day}')[0]}'+S.day+'${r.msgWonFishIn.split('{day}')[1]}';`, 'showEnd.msgWon');
   h = subOnce(h,
-    "msg=S.fishHealth<=0\n      ?'The fish weakened from lack of food and the stress became fatal.'\n      :'Ammonia or nitrite reached a level the fish could not survive.';",
+    "msg=S.fishHealth<=0\n      ?'The fish went without enough food for too long, and the accumulated stress proved fatal.'\n      :'Ammonia or nitrite built up to a level the fish couldn\\'t survive — a hard but common lesson in a first cycle.';",
     `msg=S.fishHealth<=0\n      ?'${r.msgCrashedStarved}'\n      :'${r.msgCrashedWater}';`, 'showEnd.msgCrashed');
 
   h = subOnce(h, "row('Days elapsed', S.day+' days', null, false);", `row('${r.rowDaysElapsed}', S.day+'${r.rowDaysValue.replace('{day}', '')}', null, false);`, 'report.rowDays');

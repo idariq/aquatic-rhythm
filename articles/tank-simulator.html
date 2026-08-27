@@ -836,7 +836,7 @@ details.ar-disclosure[open] > summary{color:var(--th-accent);background:var(--th
   <div class="oc" style="max-width:460px;text-align:left;margin-top:auto;margin-bottom:auto;width:100%">
     <div style="text-align:center;margin-bottom:1.2rem">
       <span class="oi" id="ov-icon">🐟</span>
-      <h2 class="ot" id="ov-title">The cycle crashed.</h2>
+      <h2 class="ot" id="ov-title">The cycle didn't complete this time.</h2>
       <p class="om" id="ov-msg" style="text-align:center"></p>
     </div>
 
@@ -2238,18 +2238,18 @@ function render(){
 function showEnd(type){
   var ov=document.getElementById('ov-end');
   var icons={won:'🌿',crashed:'💀'};
-  var titles={won:'The cycle is complete.',crashed:'The tank crashed.'};
+  var titles={won:'Nicely done — the cycle is complete.',crashed:'The cycle didn\'t complete this time.'};
   document.getElementById('ov-icon').textContent=icons[type]||'💀';
   document.getElementById('ov-title').textContent=titles[type]||'Simulation ended.';
   var msg='';
   if(type==='won'){
     msg=S.fishless
-      ?'Day '+S.day+'. Bacteria established without any animals being harmed.'
-      :'Day '+S.day+'. The cycle completed with fish present.';
+      ?'Day '+S.day+' — the bacteria colony established safely, with no losses along the way.'
+      :'Day '+S.day+' — the cycle completed successfully, fish and all.';
   } else {
     msg=S.fishHealth<=0
-      ?'The fish weakened from lack of food and the stress became fatal.'
-      :'Ammonia or nitrite reached a level the fish could not survive.';
+      ?'The fish went without enough food for too long, and the accumulated stress proved fatal.'
+      :'Ammonia or nitrite built up to a level the fish couldn\'t survive — a hard but common lesson in a first cycle.';
   }
   document.getElementById('ov-msg').textContent=msg;
   buildReport(type);

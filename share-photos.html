@@ -255,14 +255,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:linear-grad
   }
 
   function formspreeMessage(data) {
-    if (!data) return 'Something went wrong — please try again in a moment.';
+    if (!data) return 'Something went wrong on our end — mind trying again in a moment?';
     if (typeof data.error === 'string') return data.error;
     if (data.errors && data.errors.length) {
       var first = data.errors[0];
       if (typeof first === 'string') return first;
       if (first && first.message) return first.message;
     }
-    return 'Please check your entries and try again.';
+    return 'A couple of fields need a second look — please check your entries and try again.';
   }
 
   if (location.search.indexOf('sent=1') !== -1) {
@@ -308,7 +308,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:linear-grad
         });
       })
       .catch(function () {
-        showError('Network error — check your connection and try again.');
+        showError('Couldn\'t reach the server — check your connection and try again.');
         if (btn) btn.disabled = false;
       });
   });

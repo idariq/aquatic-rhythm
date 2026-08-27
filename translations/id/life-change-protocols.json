@@ -1,0 +1,95 @@
+{
+    "_meta": {
+        "slug": "life-change-protocols",
+        "lang": "id",
+        "sourceFile": "articles/life-change-protocols.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Protokol Perubahan Hidup — Aquatic Rhythm",
+        "description": "Perjalanan, sakit, pekerjaan baru, bayi baru lahir: tangki tidak berhenti ketika hidup berubah. Apa yang sebenarnya disarankan ARA untuk penurunan kapasitas penjaga jangka pendek, jangka panjang, dan permanen.",
+        "ogTitle": "Protokol Perubahan Hidup",
+        "ogDescription": "Tangki tidak menunggu hidup Anda selesai berubah. Tiga jenis perubahan kapasitas penjaga, dan respons ARA yang selaras untuk masing-masing."
+    },
+    "intro": {
+        "eyebrow": "Refleksi",
+        "titleHtml": "Protokol<br><em>Perubahan Hidup</em>",
+        "subtitle": "Tangki tidak berhenti ketika hidup berubah. Ia tidak perlu berhenti, asalkan responsnya jujur.",
+        "texts": [
+            "Pekerjaan baru. Sebuah penyakit. Bayi yang baru lahir. Orang tua yang tiba-tiba butuh lebih banyak waktu Anda dari biasanya. Semua ini tidak ada hubungannya dengan memelihara ikan, dan semuanya bisa diam-diam mengubah apa yang sebenarnya bisa diberikan seorang penjaga kepada tangkinya. Ketika itu terjadi, kebanyakan saran jatuh ke salah satu dari dua titik ekstrem: tetap jalankan rutinitas lama apa pun yang terjadi, atau anggap gangguan ini sebagai bukti bahwa Anda memang tidak seharusnya memulai hobi ini.",
+            "Tak satu pun dari keduanya adalah respons yang selaras. ARA memperlakukan penurunan kapasitas penjaga sebagai peristiwa ekologis yang perlu dikelola, bukan kegagalan pribadi yang perlu disembunyikan. Respons yang tepat sepenuhnya bergantung pada seberapa lama perubahan itu sebenarnya berlangsung."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~8 menit",
+        "metaLevel": "Refleksi",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Bagian normal dari memelihara",
+            "titleHtml": "Ini bukan<br><em>kegagalan dedikasi</em>",
+            "body": [
+                "Keeper Rhythm bukan sifat yang tetap. Ia adalah pola nyata dan terkini dari waktu dan perhatian yang diberikan seorang penjaga kepada tangkinya, dan seperti bagian lain dari kehidupan seseorang, ia bergerak ketika keadaan berubah. Penjaga yang rutin melakukan tiga kali ganti air sebulan selama masa hidup yang stabil, secara ekologis bukan penjaga yang sama ketika ia menjalani sebulan penuh shift dua belas jam atau minggu-minggu pertama bersama bayi yang baru lahir.",
+                "Perlu dikatakan dengan jelas: ini bukan kasus khusus yang hanya terjadi pada penjaga yang tidak teratur. Setiap hobi jangka panjang berpotongan dengan kehidupan yang terus berjalan di sekitarnya, dan hobi yang hanya berjalan baik ketika tidak ada apa pun yang berubah bukanlah hobi yang realistis untuk dibangun di sekitar sebuah tangki. Perubahan hidup bukan pengecualian dari memelihara tangki dengan baik. Ia adalah kondisi yang harus diperhitungkan sejak awal dalam praktik ini.",
+                "Alasan mengapa ini layak dipikirkan tersendiri, bukan sekadar dilebur ke dalam pemecahan masalah umum, adalah karena respons yang tepat berbeda tergantung berapa lama perubahan itu berlangsung. Protokol yang dirancang untuk perjalanan dua minggu justru bisa merugikan tangki jika diterapkan pada perubahan keadaan enam bulan, dan perancangan ulang permanen berlebihan untuk perubahan yang singkat. Membaca garis waktu dengan tepat adalah bagian terbesar dari pekerjaan ini."
+            ],
+            "pullQuote": "Tangki tidak butuh penjaga yang tidak pernah berubah. Ia butuh penjaga yang jujur tentang bagaimana dirinya berubah, dan menyesuaikan diri dengan sengaja, bukan bergeser begitu saja tanpa disadari.",
+            "prevBtn": "← Intro",
+            "nextBtn": "Penurunan jangka pendek"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Penurunan jangka pendek",
+            "titleHtml": "Beberapa hari hingga dua minggu:<br><em>jembatani, jangan berlebihan</em>",
+            "body": [
+                "Sebagian besar tangki yang stabil dan selaras bisa menyerap penurunan perawatan jangka pendek tanpa kerusakan ekologis yang berarti. Masa kerja yang padat, perjalanan singkat, minggu yang berat: tangki yang sudah stabil punya toleransi nyata yang sering tidak disadari kebanyakan penjaga. Pemberi pakan otomatis yang disetel dengan porsi sedikit konservatif, ganti air yang dijadwalkan tepat sebelum keberangkatan, dan seseorang yang dipercaya untuk memeriksa jika ketidakhadiran memanjang lebih dari beberapa hari, biasanya sudah cukup.",
+                "Kesalahan yang paling sering dibuat penjaga di sini bukan terjadi selama ketidakhadiran. Justru terjadi saat kembali. Kembali setelah jeda singkat lalu langsung melakukan ganti air besar, membersihkan kerikil dalam-dalam, dan membongkar filter sekaligus terasa seperti menebus waktu yang hilang, padahal justru sebaliknya: ini menghantam sistem yang diam-diam sudah menyeimbangkan diri dengan input yang berkurang, tepat ketika sistem itu sedang stabil.",
+                "Kepulangan yang selaras adalah ganti air ukuran normal, memeriksa ikan dan hasil pembacaan parameter, lalu melanjutkan ritme rutin dari sana. Bukan satu koreksi dramatis yang mencoba menutup celah itu dalam satu langkah."
+            ],
+            "hintLabel": "Kepulangan lebih penting daripada ketidakhadirannya",
+            "hintText": [
+                "Penurunan jangka pendek jarang melukai tangki yang stabil dengan sendirinya. Yang melukai adalah penjaga yang kembali lalu berlebihan mengoreksi karena rasa bersalah: memperlakukan tangki dengan pembersihan intensif yang sebenarnya lebih soal ketidaknyamanan penjaga karena sempat pergi, bukan soal apa yang sungguh dibutuhkan tangki."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Penurunan jangka panjang"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Penurunan jangka panjang",
+            "titleHtml": "Beberapa minggu hingga bulan:<br><em>sederhanakan tangkinya, bukan standarnya</em>",
+            "body": [
+                "Penurunan jangka panjang adalah situasi yang sama sekali berbeda, dan perlu diberi nama sebagai situasi tersendiri. Berminggu-minggu atau berbulan-bulan dengan ritme yang benar-benar lebih rendah, entah karena proyek kerja yang menuntut, masalah kesehatan, atau tanggung jawab mengasuh yang baru, menghasilkan pergeseran ekologis nyata jika tangki dibiarkan berjalan dengan asumsi lama. Di sinilah dorongan untuk \"berusaha lebih keras mengejar ketertinggalan\" biasanya menimbulkan kerusakan paling besar, karena ia menjebak penjaga untuk berulang kali gagal memenuhi standar yang saat ini tidak bisa ia capai, alih-alih dengan jujur memenuhi standar yang lebih rendah secara konsisten.",
+                "Respons yang selaras adalah menata ulang tangki agar sesuai dengan ritme yang benar-benar tersedia, bukan ritme yang dulu tersedia. Itu bisa berarti memindahkan sebagian ikan ke tempat lain untuk mengurangi bioload, menambah kepadatan tanaman untuk membantu penyerapan nitrogen di antara ganti air yang lebih jarang, atau meningkatkan filtrasi untuk memperpanjang interval yang aman. Ini semua bukan menyerah pada tangki. Ini merancang ulang agar ritme yang lebih rendah namun jujur tetap menjadi ritme yang sepenuhnya memadai untuk apa yang tersisa.",
+                "Penjaga yang berhasil melewati penurunan jangka panjang dengan tangki yang tetap sehat, hampir tanpa kecuali, adalah mereka yang menyesuaikan tangkinya lebih awal, bukan mereka yang memaksakan diri mempertahankan rutinitas lama sampai sesuatu akhirnya rusak."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Perubahan kapasitas yang permanen"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Perubahan kapasitas yang permanen",
+            "titleHtml": "Ketika perubahan itu<br><em>tidak sementara</em>",
+            "body": [
+                "Kadang jawaban jujurnya adalah keadaan sudah berubah untuk selamanya: pergantian karier, pindah tempat tinggal secara permanen, kondisi kesehatan yang berkelanjutan, peran mengasuh yang tidak akan berakhir. Dalam situasi itu, tangki sebaiknya tidak dipertahankan dengan harapan bahwa kapasitas lama akan kembali. Ia sebaiknya dirancang ulang di sekitar kapasitas yang benar-benar ada sekarang, sama seperti seorang penjaga akan merancang tangki baru di sekitar kehidupan nyatanya saat ini, bukan kehidupan yang diidam-idamkan.",
+                "Ini bisa berarti memperkecil ukuran menjadi setup yang perawatannya lebih ringan. Bisa berarti mengandalkan lebih banyak otomasi dan pemantauan agar beban manual berkurang tanpa membuat kebutuhan nyata tangki terabaikan, dengan mengingat bahwa penjaga yang benar-benar memahami dan merawat infrastruktur itu punya kapasitas nyata yang tidak akan terlihat hanya dari jadwal kosongnya. Bagi sebagian penjaga, ini bisa berarti memindahtangankan tangki sepenuhnya. Ketiganya adalah hasil yang sah dari proses jujur yang sama, dan tak satu pun dari itu adalah kegagalan.",
+                "Yang benar-benar menjadi hasil yang tidak terkelola dengan baik adalah jalan keempat: mempertahankan tangki berukuran untuk kehidupan yang sudah tidak ada lagi, dan diam-diam merawatnya di bawah standar tanpa batas waktu karena merancang ulang terasa seperti mengakui kekalahan. Tangki yang lebih kecil dan lebih sederhana, yang benar-benar sesuai dengan kapasitas nyata dan permanen, adalah hasil yang lebih baik bagi penjaga maupun bagi ikan, dibanding tangki yang lebih besar namun berada dalam ketidakselarasan kronis dan permanen."
+            ],
+            "hintLabel": "Pergeseran yang berkaitan: erosi kapasitas",
+            "hintText": [
+                "Perubahan kapasitas permanen adalah versi mendadak dan bisa dikenali dari sesuatu yang juga bisa terjadi secara perlahan dan tak terlihat. Jika sebuah ritme bergeser tanpa ada satu peristiwa hidup tertentu di baliknya, <a href=\"/articles/capacity-creep\" style=\"color:var(--th-accent);text-decoration:none\">Erosi Kapasitas</a> membahas pola yang lebih diam-diam itu."
+            ],
+            "prevBtn": "← Kembali"
+        }
+    ],
+    "relatedLinks": [
+        { "text": "Menjaga Akuarium Saat Anda Bepergian →" },
+        { "text": "Erosi Kapasitas →" },
+        { "text": "Merawat Tanpa Rasa Bersalah →" },
+        { "text": "Kerangka ARA →" }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
+    }
+}

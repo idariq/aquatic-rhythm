@@ -1,0 +1,101 @@
+{
+    "_meta": {
+        "slug": "capacity-creep",
+        "lang": "id",
+        "sourceFile": "articles/capacity-creep.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Erosi Kapasitas — Aquatic Rhythm",
+        "description": "Penurunan kualitas perawatan yang perlahan dan tak disadari, terjadi tanpa satu pun keputusan buruk. Mengapa ia tak terlihat dari dalam, dan cara mengenalinya sebelum tangki yang merasakannya.",
+        "ogTitle": "Erosi Kapasitas",
+        "ogDescription": "Tangki jarang gagal sekaligus. Kenali pola pergeseran perawatan yang diam-diam terjadi, dan dua cara jujur untuk mengatasinya."
+    },
+    "intro": {
+        "eyebrow": "Refleksi",
+        "titleHtml": "Erosi<br><em>Kapasitas</em>",
+        "subtitle": "Tangki jarang gagal sekaligus. Biasanya, ritme perawatannya yang perlahan bergeser.",
+        "texts": [
+            "Tidak ada penjaga yang sengaja memutuskan untuk menelantarkan tangkinya. Hampir tidak ada masalah akuarium kronis yang dimulai dari keputusan sadar untuk melewatkan ganti air atau mengabaikan filter. Biasanya berawal jauh lebih kecil dari itu: rutinitas tujuh hari yang sekali waktu menjadi sepuluh hari, karena alasan yang masuk akal. Lalu itu menjadi kebiasaan baru, dan tidak ada yang menyadari kapan tepatnya itu terjadi.",
+            "Inilah erosi kapasitas — pergeseran perlahan dan tak disadari antara perawatan yang seharusnya diterima tangki dan perawatan yang benar-benar ia dapatkan. Ini salah satu penyebab paling umum masalah akuarium jangka panjang, dan salah satu yang paling sulit dikenali, karena tidak pernah terasa seperti sebuah keputusan. Ia terasa seperti kehidupan yang berjalan seperti biasa."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~7 menit",
+        "metaLevel": "Refleksi",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Pola yang terjadi",
+            "titleHtml": "Bagaimana pergeseran<br><em>ini sebenarnya terjadi</em>",
+            "body": [
+                "Erosi kapasitas mengikuti bentuk yang bisa dikenali. Seorang penjaga menyiapkan tangki dan, di bulan-bulan awal, berpegang pada rutinitas: ganti air di hari tetap, media filter diperiksa sesuai jadwal, pakan ditakar bukan diperkirakan. Ini fase keterlibatan penuh, dan biasanya inilah masa tangki paling terawat sepanjang usianya — cukup baru untuk menyita perhatian penuh penjaga, cukup mapan untuk punya kebutuhan nyata.",
+                "Lalu sesuatu yang biasa terjadi. Minggu yang sibuk. Sebuah perjalanan. Suatu masa ketika tangki terlihat baik-baik saja, sehingga ganti air bergeser dari hari Minggu ke hari Rabu berikutnya. Tidak terjadi apa-apa yang buruk — dan justru di situlah masalahnya: toleransi tangki terhadap hari yang terlewat itu menjadi bukti, bagi penjaga, bahwa hari yang terlewat itu memang tidak masalah. Interval sepuluh hari menjadi standar baru. Beberapa bulan kemudian, hal yang sama terjadi lagi, dan sepuluh hari menjadi dua minggu.",
+                "Tak satu pun dari langkah-langkah ini adalah keputusan buruk. Masing-masing, dilihat sendiri-sendiri, adalah respons yang wajar terhadap masa sibuk dalam hidup. Yang membedakan erosi kapasitas dari sekadar satu minggu yang terlewat adalah interval itu tidak pernah kembali seperti semula. Pergeseran ini terus bertumpuk secara diam-diam, dan tangki yang dulu dirawat dengan ritme tujuh hari setahun lalu kini mungkin berjalan pada sesuatu yang mendekati tiga minggu — tanpa satu momen pun ketika penjaga benar-benar memutuskan bahwa itu boleh diterima."
+            ],
+            "pullQuote": "Erosi kapasitas bukan tentang penjaga yang jadi malas. Ini tentang ritme nyata penjaga yang perlahan menjauh dari ritme yang ia niatkan sejak awal — satu langkah kecil dan masuk akal demi satu langkah, sampai keduanya bukan lagi hal yang sama.",
+            "prevBtn": "← Intro",
+            "nextBtn": "Mengapa tak terlihat dari dalam"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Mengapa tak terlihat dari dalam",
+            "titleHtml": "Anda membandingkan<br><em>dengan patokan yang keliru</em>",
+            "body": [
+                "Alasan erosi kapasitas begitu sulit dikenali ada hubungannya dengan apa yang dijadikan pembanding oleh penjaga untuk rutinitasnya sendiri. Tanyakan pada kebanyakan penjaga apakah mereka merawat tangkinya dengan baik, dan mereka akan menjawab jujur — berdasarkan standar terbaru mereka sendiri. Apakah ganti air minggu ini kurang lebih sama dengan bulan lalu? Ya. Apakah takaran pakan kurang lebih sama seperti biasanya? Ya. Semuanya terasa aman, karena pembandingnya adalah patokan yang sudah lebih dulu bergeser.",
+                "Yang hampir tak pernah dilakukan siapa pun, kecuali diminta, adalah membandingkan praktik saat ini dengan rutinitas yang benar-benar direncanakan sejak tangki masih baru. Itu pertanyaan yang berbeda, dan justru itulah yang mengungkap pergeseran — karena perbandingan dengan praktik terbaru akan selalu terlihat baik-baik saja. Praktik terbaru, menurut definisinya, adalah apa pun yang sedang dilakukan penjaga saat ini. Ia tidak bisa mendeteksi penurunannya sendiri.",
+                "Inilah sebagian alasan mengapa erosi kapasitas berada dalam ranah Keeper Rhythm sebagai variabel ekologis, bukan variabel moral. Ini bukan bukti bahwa seorang penjaga peduli lebih sedikit dibanding saat ia memulai. Ini bukti bahwa rutinitas manusia bergeser di bawah tekanan hidup yang normal, dengan cara yang tidak dimaafkan biologi tangki selembut yang diasumsikan penjaga. Tangki tidak membandingkan dengan bulan lalu. Ia hanya merespons apa yang sungguh sedang terjadi sekarang."
+            ],
+            "hintLabel": "Masalah patokan, dalam satu kalimat",
+            "hintText": [
+                "\"Apakah saya melakukan apa yang selama ini saya lakukan?\" selalu berujung ya. Pertanyaan yang benar-benar mengungkap pergeseran adalah \"apakah saya melakukan apa yang sejak awal saya rencanakan?\" — perbandingan yang hampir tidak pernah dijalankan penjaga mana pun, kecuali sesuatu memaksanya."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Membaca indikatornya"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Membaca indikatornya",
+            "titleHtml": "Empat pertanyaan jujur,<br><em>bukan daftar periksa</em>",
+            "body": [
+                "Karena erosi kapasitas tidak bisa dikenali hanya dengan membandingkan ingatan terbaru, ia butuh cara pemeriksaan yang berbeda — yang meminta fakta, bukan kesan. Beberapa pertanyaan cenderung mengungkap pergeseran ini secara andal, justru karena cukup spesifik sehingga jawaban samar seperti \"saya rasa sudah cukup terjaga\" tidak lolos begitu saja.",
+                "Ini bukan tes lulus-gagal. Seorang penjaga bisa menjawab jujur satu atau dua pertanyaan saja dan tangkinya tetap sehat. Yang berguna dari pertanyaan ini adalah menyadari saat jawabannya diam-diam bergeser — saat \"ditakar\" berubah menjadi \"kira-kira,\" atau saat tanggal yang dulu mudah diingat kini butuh usaha untuk dipikirkan.",
+                "Pertanyaan terakhir di kotak sebelah itu lebih penting dari kelihatannya. Observasi adalah tempat kebanyakan penjaga pertama kali menyadari ada yang bergeser, dan di situ pula pergeseran biasanya bermula — sekilas pandangan dua menit menggantikan apa yang dulu beberapa menit yang tenang, benar-benar memperhatikan tangki. Ini berkaitan dengan perawatan minimum yang layak: batas jujur dan spesifik dari apa yang benar-benar dibutuhkan sebuah tangki agar tetap sehat secara ekologis, yang berbeda untuk setiap setup dan tidak bergeser hanya karena jadwal penjaga jadi lebih sibuk.",
+                "Mengetahui batas itulah yang membuat empat pertanyaan tadi berguna, bukan membuat cemas. Tangki dengan kepadatan ikan rendah dan tanaman lebat mungkin punya kelonggaran nyata dalam perawatan minimumnya. Tangki yang berjalan mendekati batas biologisnya mungkin nyaris tak punya kelonggaran sama sekali. Interval ganti air delapan belas hari yang sama bisa jadi bukan masalah di satu tangki, tapi jadi masalah yang merayap perlahan di tangki lain — dan itulah sebabnya \"apakah saya masih baik-baik saja\" adalah pertanyaan yang keliru, sementara \"apa yang benar-benar dibutuhkan tangki ini\" adalah pertanyaan yang tepat."
+            ],
+            "hintLabel": "Empat pertanyaan yang layak dijawab jujur",
+            "hintText": [
+                "Apakah interval ganti air saya sudah memanjang tanpa ada keputusan eksplisit untuk memanjangkannya? Apakah saya benar-benar tahu tanggal terakhir memeriksa filter — atau saya hanya memperkirakan?",
+                "Apakah takaran pakan saya benar-benar ditakar, atau sudah menjadi tebakan? Dan ketika saya melihat tangki sekarang, apakah saya sedang membacanya, atau sekadar melirik untuk memastikan tidak ada yang jelas-jelas salah?"
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Mengatasinya, tanpa rasa malu"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Mengatasinya, tanpa rasa malu",
+            "titleHtml": "Dua cara jujur<br><em>menutup celah itu</em>",
+            "body": [
+                "Begitu pergeseran ini terlihat, sebenarnya hanya ada dua respons yang selaras, dan keduanya sah-sah saja. Yang pertama adalah kembali: pilih hari ganti air yang nyata dan sesuai kondisi sekarang, catat di tempat yang bukan sekadar ingatan, dan bangun kembali kebiasaan itu dengan sengaja, bukan berharap kemauan saja yang membuatnya bertahan. Otomasi membantu di sini — pengingat terjadwal, sistem top-off otomatis, pompa dosis untuk hal-hal yang sensitif waktu — karena ia mengubah \"mengingat\" menjadi \"memeriksa,\" kebiasaan yang jauh lebih mudah dijaga di tengah hidup yang sibuk.",
+                "Respons kedua adalah merancang ulang. Jika jawaban jujurnya adalah rutinitas awal itu sudah tidak lagi cocok dengan kapasitas nyata dan berkelanjutan penjaga — bukan sekadar masa sibuk sementara, melainkan perubahan yang nyata dan bertahan lama — maka langkah yang selaras adalah mengubah tangkinya, bukan terus gagal menjalankan rutinitas lama. Kepadatan ikan yang lebih ringan, tanaman yang lebih lebat untuk menyerap nitrogen, upgrade filter yang memperpanjang interval aman antar pemeriksaan: semua ini menurunkan perawatan minimum tangki agar sesuai dengan kapasitas yang benar-benar ada, alih-alih membiarkan kesenjangan yang terus melebar secara diam-diam.",
+                "Yang tidak selaras adalah pilihan ketiga yang paling sering diambil penjaga secara default: menyadari pergeseran itu, merasa bersalah secara pribadi, lalu tidak mengubah apa pun. Erosi kapasitas adalah hasil wajar dari kehidupan yang wajar, bukan cacat karakter, dan memperlakukannya sebagai kegagalan pribadi justru cenderung memicu jenis keterputusan yang membiarkan pergeseran itu terus berlanjut tanpa terkendali."
+            ],
+            "hintLabel": "Ketika hidup itu sendiri jadi alasan kapasitas berubah",
+            "hintText": [
+                "Kadang celah itu bukan kebiasaan yang tergelincir — melainkan perubahan nyata dan bertahan lama dalam apa yang bisa diberikan penjaga: pekerjaan baru, peran mengasuh yang baru, perubahan kesehatan. Itu situasi yang berbeda dari pergeseran biasa, dan layak mendapat prosesnya sendiri yang jujur, bukan solusi cepat. <a href=\"/articles/life-change-protocols\" style=\"color:var(--th-accent);text-decoration:none\">Protokol Perubahan Hidup</a> membahasnya secara langsung."
+            ],
+            "prevBtn": "← Kembali"
+        }
+    ],
+    "relatedLinks": [
+        { "text": "Kenali Ritme Anda →" },
+        { "text": "Protokol Perubahan Hidup →" },
+        { "text": "Merawat Tanpa Rasa Bersalah →" },
+        { "text": "Kerangka ARA →" }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
+    }
+}

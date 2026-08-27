@@ -328,6 +328,20 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://aquaticrhythm.com/articles/hard-to-quit</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aquaticrhythm.com/articles/keeper-your-tank-needs</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Interactive tools -->
   <url>
     <loc>https://aquaticrhythm.com/articles/tank-simulator</loc>

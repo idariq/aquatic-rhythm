@@ -1,0 +1,95 @@
+{
+    "_meta": {
+        "slug": "hard-to-quit",
+        "lang": "id",
+        "sourceFile": "articles/hard-to-quit.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Kenapa Sukar Berhenti Memelihara Akuarium — Aquatic Rhythm",
+        "description": "Bukan ikannya yang membuat Anda bertahan. Tapi keinginan tahu apa yang terjadi selanjutnya. Kenapa hobi ini bertahan melewati kesulitan nyata dengan cara yang tak dimiliki kebanyakan hobi lain, dan apa sebenarnya tarikan itu.",
+        "ogTitle": "Kenapa Sukar Berhenti Memelihara Akuarium",
+        "ogDescription": "Kebanyakan hobi ditinggalkan begitu benar-benar merepotkan. Yang ini cenderung bertahan melewati momen itu, berulang kali."
+    },
+    "intro": {
+        "eyebrow": "Refleksi",
+        "titleHtml": "Kenapa Sukar<br><em>Berhenti Memelihara Akuarium</em>",
+        "subtitle": "Bukan ikannya yang membuat Anda bertahan. Tapi keinginan tahu apa yang terjadi selanjutnya.",
+        "texts": [
+            "Tanya penjaga yang sudah bertahun-tahun menjalani ini kenapa mereka belum berhenti, dan jawabannya jarang berupa semangat. Lebih dekat ke: tangkinya menghabiskan biaya lebih dari yang diperkirakan, memakan waktu lebih dari yang direncanakan, dan sudah pernah menimbulkan setidaknya satu krisis yang lebih baik tak terulang, dan mereka masih belum membongkarnya. Banyak hobi ditinggalkan begitu benar-benar merepotkan. Yang ini, anehnya, cenderung tidak.",
+            "Ini sebenarnya bukan soal ikannya, atau bukan cuma soal itu. Ini soal satu kualitas khusus yang dimiliki hobi ini dan tak dimiliki kebanyakan hobi lain: benda yang Anda pelihara terus berubah entah Anda melakukan sesuatu atau tidak, dan itu ternyata jadi semacam kail yang sangat spesifik dan sangat efektif."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~7 menit",
+        "metaLevel": "Refleksi",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Pola yang tak sesuai",
+            "titleHtml": "Mengeluh soal itu <em>dan tetap tak pergi</em>",
+            "body": [
+                "Ada bentuk yang familiar dalam cara penjaga bicara soal tangkinya: keluhan yang nyata dan spesifik, biaya filter yang rusak di saat paling buruk, ledakan alga yang butuh berbulan-bulan diberesi, jadwal ganti air yang lebih sulit dijaga daripada yang diperkirakan, disampaikan oleh seseorang yang, dari segi praktis mana pun, masih sepenuhnya menjalani hobi ini. Mereka bukan sedang menggambarkan hobi yang akan mereka tinggalkan. Mereka menggambarkan hobi yang benar-benar sulit dan yang, entah kenapa, tak mereka tinggalkan.",
+                "Ini layak dibedakan dengan jelas dari kelelahan (burnout), yang merupakan pola nyata dan berbeda: penjaga yang sudah berhenti menikmati tangkinya, merasa berat menjalani perawatan, dan sedang mempertimbangkan apakah akan berhenti. Yang digambarkan di sini berbeda. Ini penjaga yang sama sekali belum sampai di titik itu, yang akan jujur mengatakan hobi ini menuntut lebih dari yang mereka inginkan, dan yang tak punya rencana nyata untuk berhenti.",
+                "Kombinasi itu, kesulitan nyata dipadukan dengan keterlibatan yang bertahan, bukan sesuatu yang umum pada hobi secara umum. Kebanyakan hal yang diambil orang akan ditinggalkan begitu jadi lebih merepotkan daripada manfaatnya. Ada sesuatu pada hobi ini yang bekerja berbeda, dan itu layak dipahami."
+            ],
+            "pullQuote": "Kebanyakan hobi ditinggalkan begitu benar-benar merepotkan. Yang ini cenderung bertahan melewati momen itu, berulang kali, dengan cara yang mengatakan sesuatu soal apa sebenarnya hobi ini.",
+            "prevBtn": "← Intro",
+            "nextBtn": "Yang sebenarnya menarik"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Yang sebenarnya menarik",
+            "titleHtml": "Sistem hidup <em>tak pernah diam</em>",
+            "body": [
+                "Sebagian dari yang terjadi ada hubungannya dengan apa itu tangki sebenarnya: sistem hidup yang terus berkembang entah penjaga melakukan sesuatu padanya atau tidak. Puzzle yang selesai tetap selesai. Model yang rampung tetap rampung. Tangki, bahkan yang stabil dan selaras, tetap diam-diam melakukan sesuatu: biologi yang matang, tanaman yang tumbuh, ikan yang menetap dalam perilaku baru, dan penjaga yang memperhatikan mendapat aliran kecil dan tetap dari sesuatu untuk diperhatikan. Itu hubungan yang sangat berbeda dari kebanyakan hobi, di mana objek hobinya statis dan minat yang berkelanjutan harus dihasilkan sepenuhnya oleh penjaga.",
+                "Ada juga kurva penguasaan di sini yang tak mendatar seperti pada banyak hobi lain. Di awal, penjaga belajar mekanismenya: siklus, kimia air, kepadatan ikan. Begitu itu sudah mantap, masih ada pembacaan yang perlu dipelajari: apa arti sebenarnya perilaku ikan tertentu, bagaimana tangki spesifik ini merespons gangguan spesifik ini, apa yang diberitahukan pergeseran halus dalam sistem yang sudah mapan. Kompetensi semacam itu terus mendalam selama bertahun-tahun, yang membuat hobi ini tetap menarik lama setelah dasar-dasarnya berhenti terasa baru.",
+                "Dan ada tarikan yang lebih sederhana di balik keduanya: memperhatikan sistem hidup, bahkan yang kecil, melibatkan perhatian dengan cara yang terbukti benar-benar memulihkan, bukan kiasan, efek yang bisa diukur. Tangki bukan sekadar proyek dengan biaya perawatan berkelanjutan. Bagi banyak penjaga, ia melakukan sesuatu untuk mereka yang tak banyak hubungannya dengan ikan secara spesifik dan banyak hubungannya dengan apa artinya memperhatikan sesuatu yang hidup."
+            ],
+            "hintLabel": "Kurva penguasaan adalah bagian yang tak dimiliki kebanyakan hobi",
+            "hintText": [
+                "Hobi di mana kompetensi terus mendalam tanpa batas menahan perhatian dengan cara yang sangat berbeda dari hobi yang akhirnya mencapai plafon. Memelihara akuarium, dibaca dengan baik, sebenarnya tak punya plafon; selalu ada sinyal yang lebih halus untuk dipelajari."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Kenapa hobi ini secara khusus"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Kenapa hobi ini secara khusus",
+            "titleHtml": "Ini hubungan, <em>bukan kepemilikan</em>",
+            "body": [
+                "Bandingkan ini dengan hobi yang dibangun di sekitar mengoleksi atau menyelesaikan: begitu setnya lengkap, displaynya terpasang, keterlibatan secara alami menurun, karena tak ada lagi yang masih terjadi. Tangki nyaris tak pernah benar-benar mencapai keadaan itu, atau kalaupun terlihat begitu, penampilan itu biasanya justru sinyal yang layak dibaca, bukan titik henti sungguhan. Selalu ada hal berikutnya yang sedang dilakukan sistem, yang berarti selalu ada alasan untuk terus memperhatikan.",
+                "Ini sebagian alasan kenapa penjaga yang sudah lama menjalani ini menggambarkan hubungan dengan tangkinya lebih dekat ke merawat daripada memiliki. Kepemilikan diam di situ sampai Anda memutuskan berinteraksi dengannya. Sistem hidup meminta sesuatu dari Anda menurut jadwalnya sendiri, bukan jadwal Anda, dan perbedaan itu mengubah jenis tarikan yang ditimbulkannya. Ini lebih mirip menjadi bagian dari sebuah pengaturan yang berkelanjutan daripada memiliki sebuah benda.",
+                "Tak satu pun ini membuat kesulitannya jadi khayalan. Biayanya nyata. Komitmen waktunya nyata. Tapi alasan penjaga menanggung biaya itu dan terus melanjutkan bukan keras kepala atau pemikiran sunk-cost. Ini karena hal yang menghasilkan kesulitan itu adalah hal yang sama yang menghasilkan tarikan itu. Anda tak bisa dengan mudah punya satu tanpa yang lain."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Apa ini, dan apa bukan ini"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Apa ini, dan apa bukan ini",
+            "titleHtml": "Bukan cacat <em>yang perlu dikendalikan</em>",
+            "body": [
+                "Layak dikatakan secara terus terang: merasa sulit berhenti dari hobi ini bukan sesuatu yang perlu diwaspadai, dan bukan bukti adanya sesuatu yang tak sehat. Hubungan dengan sistem hidup yang keterlibatannya makin dalam seiring waktu, yang terus menawarkan sesuatu yang baru untuk diperhatikan, dan yang menghasilkan efek pemulihan yang bisa diukur hanya dari observasi sederhana: itu hobi yang berjalan sebagaimana mestinya, bukan tanda peringatan.",
+                "Yang layak diperiksa adalah skalanya, bukan keterikatannya sendiri. Tarikan yang sama yang membuat penjaga terlibat dengan satu tangki yang terkelola baik bisa, kalau tak dikendalikan, berubah jadi dorongan menambah tangki lebih cepat daripada kapasitas nyata untuk mengelolanya dengan baik, yang merupakan masalah berbeda dengan namanya sendiri, bukan alasan untuk curiga pada tarikan dasar menuju hobi ini.",
+                "Dan kalau yang dirasakan bukan tarikan yang terus-menerus tapi sesuatu yang lebih dekat ke rasa berat, kalau tangki sudah berhenti jadi sumber perhatian yang memulihkan itu dan mulai jadi sekadar sumber kewajiban, itu situasi yang benar-benar berbeda, dan jenis pandangan jujur yang berbeda layak diambil. Keduanya bisa sulit dibedakan dari dalam, dan menuntut respons yang berbeda."
+            ],
+            "hintLabel": "Dua perasaan berbeda yang sering tertukar",
+            "hintText": [
+                "Merasa sulit pergi karena Anda penasaran apa yang akan dilakukan tangki selanjutnya adalah satu hal. Merasa sulit pergi karena Anda merasa wajib, walau rasa penasaran itu sudah hilang, adalah hal lain. Kalau itu yang kedua, itu percakapan yang berbeda."
+            ],
+            "prevBtn": "← Kembali"
+        }
+    ],
+    "relatedLinks": [
+        { "text": "Merawat Tanpa Rasa Bersalah →" },
+        { "text": "Satu Tangki Lagi Saja →" },
+        { "text": "Ketika Hobi Berhenti Terasa Menyenangkan →" },
+        { "text": "Kerangka ARA →" }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
+    }
+}

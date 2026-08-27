@@ -28,6 +28,7 @@
     "@fontsource/noto-serif-jp": "^5.2.8",
     "@resvg/resvg-js": "^2.6.2",
     "eslint": "^9.0.0",
+    "playwright": "^1.62.1",
     "satori": "^0.26.0",
     "wawoff2": "^2.0.1"
   }

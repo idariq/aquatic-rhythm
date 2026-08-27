@@ -38,6 +38,8 @@ const PRIORITY_SLUGS = [
   'when-hobby-stops-feeling-good',
   'know-your-rhythm',
   'aquarium-not-a-project',
+  'capacity-creep',
+  'life-change-protocols',
   'tank-crash-recovery',
   'adding-new-fish',
   'algae-in-aquarium',

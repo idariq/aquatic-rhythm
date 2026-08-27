@@ -48,6 +48,8 @@ const SLUG_ORDER = [
   'aquarium-travel-vacation',
   'aquarium-maintenance-routine',
   'aquarium-not-a-project',
+  'capacity-creep',
+  'life-change-protocols',
   'when-is-tank-ready-for-fish',
   'know-your-rhythm',
   'four-principles-of-ara',

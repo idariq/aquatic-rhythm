@@ -2824,19 +2824,19 @@ function updateCompatStrip(){
   if(temps.length>1){
     var minHi=Math.min.apply(null,temps.map(function(t){return t[1];}));
     var maxLo=Math.max.apply(null,temps.map(function(t){return t[0];}));
-    if(maxLo>minHi)msgs.push('Konflik suhu antara spesies yang dipilih.');
+    if(maxLo>minHi)msgs.push('Spesies yang dipilih tidak berbagi rentang suhu yang sama.');
   }
   var hasSoft=stockKeys.some(function(k){var i=ph2Active.stock[k];return i&&(i.hardness==='soft'||i.hardness==='very-soft');});
   var hasHard=stockKeys.some(function(k){var i=ph2Active.stock[k];return i&&(i.hardness==='hard'||i.hardness==='medium-hard');});
-  if(hasSoft&&hasHard)msgs.push('Konflik kesadahan — spesies air lunak dan air sadah bersama.');
+  if(hasSoft&&hasHard)msgs.push('Spesies air lunak dan air sadah digabungkan — kebutuhan kesadahan tidak sejalan.');
   var tankL=tankLiters;
   stockKeys.forEach(function(k){
     var item=ph2Active.stock[k];
-    if(item&&item.min_tank_l&&item.min_tank_l>tankL)msgs.push(item.name+' membutuhkan minimal '+item.min_tank_l+'L.');
+    if(item&&item.min_tank_l&&item.min_tank_l>tankL)msgs.push(item.name+' membutuhkan minimal '+item.min_tank_l+'L agar bisa berkembang baik.');
   });
   stockKeys.forEach(function(k){
     var item=ph2Active.stock[k];
-    if(item&&item.schooling){var qty=item._qty||1;var min=item.min_school||6;if(qty<min)msgs.push(item.name+': perlu '+min+' ekor (Anda punya '+qty+' ekor).');}
+    if(item&&item.schooling){var qty=item._qty||1;var min=item.min_school||6;if(qty<min)msgs.push(item.name+' paling baik dipelihara berkelompok '+min+'+ ekor — saat ini Anda punya '+qty+' ekor.');}
   });
   /* Aggression compatibility — stored on every FISH/INVERTEBRATES entry
      (drives the aggression badge on cards) but never checked here until now
@@ -2851,13 +2851,13 @@ function updateCompatStrip(){
   var aggrCounts={};
   stockKeys.forEach(function(k){var i=ph2Active.stock[k];if(i&&i.aggression)aggrCounts[i.aggression]=(aggrCounts[i.aggression]||0)+1;});
   if(aggrCounts.peaceful&&(aggrCounts.aggressive||aggrCounts.predatory)){
-    msgs.push('Konflik agresivitas — spesies agresif atau predator dapat melukai atau menstres penghuni yang damai.');
+    msgs.push('Spesies agresif atau predator di sini bisa menstres atau melukai yang lebih damai.');
   }
   stockKeys.forEach(function(k){
     var item=ph2Active.stock[k];if(!item)return;
     var qty=item._qty||1;
     if(!item.schooling&&item.aggression&&item.aggression!=='peaceful'&&qty>1){
-      msgs.push(item.name+': menyimpan '+qty+' ekor bersama berisiko berkelahi — tidak tahan dengan sesamanya dalam jumlah banyak.');
+      msgs.push(item.name+': menyimpan '+qty+' ekor bersama berisiko berkelahi — jenis ini lebih baik dipelihara sendirian.');
     }
   });
   /* Equipment dependency warnings — warnWithout data exists on every
@@ -2878,19 +2878,19 @@ function updateCompatStrip(){
     var titleCase=function(s){return s.replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});};
     var eqLabel=titleCase(k);
     var depLabels=eq.warnWithout.map(function(dep){return dep==='plants'?'plants':titleCase(dep);});
-    msgs.push(eqLabel+' membutuhkan '+depLabels.join(' atau ')+' agar efektif.');
+    msgs.push(eqLabel+' bekerja paling baik jika dipasangkan dengan '+depLabels.join(' atau ')+'.');
   });
   /* Plant light/CO2 requirements — item.light/item.co2 exist on every
      PLANTS entry (drives the detail-panel/tag display) but were never
      checked against selected light/CO2 equipment until now. */
   var plantKeys=Object.keys(ph2Active.plants);
   if(plantKeys.length&&!active['light-basic']&&!active['light-planted']){
-    msgs.push('Tumbuhan dipilih tetapi tidak ada peralatan cahaya — tambahkan lampu untuk pertumbuhan.');
+    msgs.push('Tumbuhan butuh cahaya untuk tumbuh — ada baiknya menambahkan lampu ke daftar ini.');
   }
   plantKeys.forEach(function(k){
     var item=ph2Active.plants[k];
     if(item&&item.co2&&!active['co2-system']){
-      msgs.push((item.name||k)+' membutuhkan injeksi CO₂ untuk pertumbuhan yang sehat.');
+      msgs.push((item.name||k)+' tumbuh paling baik dengan injeksi CO₂.');
     }
   });
   /* Hardscape tannin/acidifying effect vs hard-water livestock — mirrors
@@ -2902,7 +2902,7 @@ function updateCompatStrip(){
     var item=ph2Active.hard[k];return item&&item.effect&&item.effect.tannins;
   });
   if(hasTannins&&hasHard){
-    msgs.push('Hardscape yang melepaskan tanin melunakkan dan mengasamkan air — dapat bertentangan dengan spesies air sadah yang dipilih.');
+    msgs.push('Hardscape yang melepaskan tanin melunakkan dan mengasamkan air — ada baiknya diperiksa terhadap spesies air sadah di sini.');
   }
   var totalBio=0;
   stockKeys.forEach(function(k){
@@ -2913,9 +2913,9 @@ function updateCompatStrip(){
   });
   var hasCanister=active['filter-canister']||active['filter-overflow'];
   var hasFilter=active['filter-sponge']||active['filter-hang']||active['filter-internal']||hasCanister;
-  if(totalBio>8&&!hasCanister&&hasFilter)msgs.push('Beban biologis tinggi — filter kanister atau overflow direkomendasikan.');
-  if(totalBio>5&&!hasFilter)msgs.push('Tidak ada filter dipilih — tambahkan filtrasi sebelum menebar penghuni.');
-  if(!msgs.length){el.className='';el.textContent='✓ Tidak ada masalah dengan pilihan saat ini.';return;}
+  if(totalBio>8&&!hasCanister&&hasFilter)msgs.push('Daftar penghuni ini punya beban biologis tinggi — filter kanister atau overflow akan membantu mengimbanginya.');
+  if(totalBio>5&&!hasFilter)msgs.push('Belum ada filter dipilih — ada baiknya menambahkan satu sebelum menebar penghuni.');
+  if(!msgs.length){el.className='';el.textContent='✓ Pilihan ini terlihat seimbang sejauh ini.';return;}
   el.className='has-warn';el.innerHTML='';
   msgs.forEach(function(m,i){
     var p=document.createElement('div');p.style.cssText=i?'margin-top:.18rem':'';p.textContent='\u26a0 '+m;el.appendChild(p);
@@ -2928,7 +2928,7 @@ function savePlanToJournal(){
     var raw=localStorage.getItem('ar_journal');
     var d=raw?JSON.parse(raw):{};
     if(!d.tanks||!d.tanks.length){
-      window.alert('Buat akuarium di Catatan Penjaga terlebih dahulu (situs utama → Log), lalu simpan rencana ini lagi.');
+      window.alert('Anda perlu membuat akuarium di Catatan Penjaga dulu (situs utama → Log) — siapkan itu, lalu simpan rencana ini lagi.');
       return;
     }
     var tid=d.activeTankId;
@@ -2962,14 +2962,14 @@ function savePlanToJournal(){
     if(act){
       var ok=document.createElement('div');
       ok.className='tb-rpt-save-toast';
-      ok.textContent='Disimpan ke '+((tank.profile&&tank.profile.name)||'akuarium aktif Anda')+' — buka Log (situs utama) untuk meninjau Pengaturan Saya.';
+      ok.textContent='Disimpan ke '+((tank.profile&&tank.profile.name)||'akuarium aktif Anda')+'. Buka Log (situs utama) kapan saja untuk meninjau Pengaturan Saya.';
       var old=act.querySelector('.tb-rpt-save-toast');
       if(old)old.remove();
       act.insertBefore(ok,act.firstChild);
       setTimeout(function(){if(ok.parentNode)ok.remove();},6000);
     }
   }catch(err){
-    window.alert('Tidak dapat menyimpan — penyimpanan mungkin diblokir atau penuh.');
+    window.alert('Tidak dapat menyimpan setelan Anda — penyimpanan browser Anda mungkin diblokir atau penuh.');
   }
 }
 

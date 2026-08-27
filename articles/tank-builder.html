@@ -2830,19 +2830,19 @@ function updateCompatStrip(){
   if(temps.length>1){
     var minHi=Math.min.apply(null,temps.map(function(t){return t[1];}));
     var maxLo=Math.max.apply(null,temps.map(function(t){return t[0];}));
-    if(maxLo>minHi)msgs.push('Temperature conflict between selected species.');
+    if(maxLo>minHi)msgs.push('Selected species don’t share a temperature range.');
   }
   var hasSoft=stockKeys.some(function(k){var i=ph2Active.stock[k];return i&&(i.hardness==='soft'||i.hardness==='very-soft');});
   var hasHard=stockKeys.some(function(k){var i=ph2Active.stock[k];return i&&(i.hardness==='hard'||i.hardness==='medium-hard');});
-  if(hasSoft&&hasHard)msgs.push('Hardness conflict \u2014 soft and hard water species together.');
+  if(hasSoft&&hasHard)msgs.push('Soft and hard water species together \u2014 hardness needs don\u2019t line up.');
   var tankL=tankLiters;
   stockKeys.forEach(function(k){
     var item=ph2Active.stock[k];
-    if(item&&item.min_tank_l&&item.min_tank_l>tankL)msgs.push(item.name+' needs '+item.min_tank_l+'L minimum.');
+    if(item&&item.min_tank_l&&item.min_tank_l>tankL)msgs.push(item.name+' needs at least '+item.min_tank_l+'L to do well.');
   });
   stockKeys.forEach(function(k){
     var item=ph2Active.stock[k];
-    if(item&&item.schooling){var qty=item._qty||1;var min=item.min_school||6;if(qty<min)msgs.push(item.name+': need '+min+' (you have '+qty+').');}
+    if(item&&item.schooling){var qty=item._qty||1;var min=item.min_school||6;if(qty<min)msgs.push(item.name+' does best in groups of '+min+'+ — you have '+qty+' so far.');}
   });
   /* Aggression compatibility — stored on every FISH/INVERTEBRATES entry
      (drives the aggression badge on cards) but never checked here until now
@@ -2857,13 +2857,13 @@ function updateCompatStrip(){
   var aggrCounts={};
   stockKeys.forEach(function(k){var i=ph2Active.stock[k];if(i&&i.aggression)aggrCounts[i.aggression]=(aggrCounts[i.aggression]||0)+1;});
   if(aggrCounts.peaceful&&(aggrCounts.aggressive||aggrCounts.predatory)){
-    msgs.push('Aggression mismatch — aggressive or predatory species may harm or stress peaceful tankmates.');
+    msgs.push('Aggressive or predatory species may stress or harm the more peaceful ones here.');
   }
   stockKeys.forEach(function(k){
     var item=ph2Active.stock[k];if(!item)return;
     var qty=item._qty||1;
     if(!item.schooling&&item.aggression&&item.aggression!=='peaceful'&&qty>1){
-      msgs.push(item.name+': keeping '+qty+' together risks fighting — doesn’t tolerate its own kind in numbers.');
+      msgs.push(item.name+': keeping '+qty+' together risks fighting — this one prefers to be the only one of its kind.');
     }
   });
   /* Equipment dependency warnings — warnWithout data exists on every
@@ -2884,19 +2884,19 @@ function updateCompatStrip(){
     var titleCase=function(s){return s.replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});};
     var eqLabel=titleCase(k);
     var depLabels=eq.warnWithout.map(function(dep){return dep==='plants'?'plants':titleCase(dep);});
-    msgs.push(eqLabel+' needs '+depLabels.join(' or ')+' to be effective.');
+    msgs.push(eqLabel+' works best paired with '+depLabels.join(' or ')+'.');
   });
   /* Plant light/CO2 requirements — item.light/item.co2 exist on every
      PLANTS entry (drives the detail-panel/tag display) but were never
      checked against selected light/CO2 equipment until now. */
   var plantKeys=Object.keys(ph2Active.plants);
   if(plantKeys.length&&!active['light-basic']&&!active['light-planted']){
-    msgs.push('Plants selected but no light equipment — add a light for growth.');
+    msgs.push('Plants need light to grow — worth adding one to this list.');
   }
   plantKeys.forEach(function(k){
     var item=ph2Active.plants[k];
     if(item&&item.co2&&!active['co2-system']){
-      msgs.push((item.name||k)+' needs CO₂ injection for healthy growth.');
+      msgs.push((item.name||k)+' grows best with CO₂ injection.');
     }
   });
   /* Hardscape tannin/acidifying effect vs hard-water livestock — mirrors
@@ -2908,7 +2908,7 @@ function updateCompatStrip(){
     var item=ph2Active.hard[k];return item&&item.effect&&item.effect.tannins;
   });
   if(hasTannins&&hasHard){
-    msgs.push('Tannin-releasing hardscape softens and acidifies water — may conflict with hard-water species selected.');
+    msgs.push('Tannin-releasing hardscape softens and acidifies water — worth checking against the hard-water species here.');
   }
   var totalBio=0;
   stockKeys.forEach(function(k){
@@ -2919,9 +2919,9 @@ function updateCompatStrip(){
   });
   var hasCanister=active['filter-canister']||active['filter-overflow'];
   var hasFilter=active['filter-sponge']||active['filter-hang']||active['filter-internal']||hasCanister;
-  if(totalBio>8&&!hasCanister&&hasFilter)msgs.push('High bioload \u2014 canister or overflow filter recommended.');
-  if(totalBio>5&&!hasFilter)msgs.push('No filter selected \u2014 add filtration before stocking.');
-  if(!msgs.length){el.className='';el.textContent='\u2713 No issues with current selection.';return;}
+  if(totalBio>8&&!hasCanister&&hasFilter)msgs.push('This stocking list runs a high bioload \u2014 a canister or overflow filter will help keep up.');
+  if(totalBio>5&&!hasFilter)msgs.push('No filter selected yet \u2014 worth adding one before stocking.');
+  if(!msgs.length){el.className='';el.textContent='\u2713 This selection looks balanced so far.';return;}
   el.className='has-warn';el.innerHTML='';
   msgs.forEach(function(m,i){
     var p=document.createElement('div');p.style.cssText=i?'margin-top:.18rem':'';p.textContent='\u26a0 '+m;el.appendChild(p);
@@ -2934,7 +2934,7 @@ function savePlanToJournal(){
     var raw=localStorage.getItem('ar_journal');
     var d=raw?JSON.parse(raw):{};
     if(!d.tanks||!d.tanks.length){
-      window.alert('Create a tank in Keeper\x27s Log first (main site \u2192 Log), then save this plan again.');
+      window.alert('You\x27ll need a tank in Keeper\x27s Log first (main site \u2192 Log) \u2014 set that up, then save this plan again.');
       return;
     }
     var tid=d.activeTankId;
@@ -2968,7 +2968,7 @@ function savePlanToJournal(){
     if(act){
       var ok=document.createElement('div');
       ok.className='tb-rpt-save-toast';
-      ok.textContent='Saved to '+((tank.profile&&tank.profile.name)||'your active tank')+' \u2014 open Log (main site) to review My Setup.';
+      ok.textContent='Saved to '+((tank.profile&&tank.profile.name)||'your active tank')+'. Open Log (main site) anytime to review My Setup.';
       var old=act.querySelector('.tb-rpt-save-toast');
       if(old)old.remove();
       act.insertBefore(ok,act.firstChild);

@@ -480,27 +480,27 @@ function patchEngineStrings(h, t, lang) {
     `rm.textContent='×';rm.setAttribute('aria-label','${eco.removeAria}'+getName(k));`, 'js.summaryRemoveAria');
 
   // ── compatibility strip ──
-  h = subOnce(h, "if(maxLo>minHi)msgs.push('Temperature conflict between selected species.');", `if(maxLo>minHi)msgs.push('${cp.tempConflict}');`, 'js.tempConflict');
-  h = subOnce(h, "if(hasSoft&&hasHard)msgs.push('Hardness conflict \\u2014 soft and hard water species together.');", `if(hasSoft&&hasHard)msgs.push('${cp.hardnessConflict}');`, 'js.hardnessConflict');
-  h = subOnce(h, "msgs.push('Aggression mismatch — aggressive or predatory species may harm or stress peaceful tankmates.');",
+  h = subOnce(h, "if(maxLo>minHi)msgs.push('Selected species don’t share a temperature range.');", `if(maxLo>minHi)msgs.push('${cp.tempConflict}');`, 'js.tempConflict');
+  h = subOnce(h, "if(hasSoft&&hasHard)msgs.push('Soft and hard water species together \\u2014 hardness needs don\\u2019t line up.');", `if(hasSoft&&hasHard)msgs.push('${cp.hardnessConflict}');`, 'js.hardnessConflict');
+  h = subOnce(h, "msgs.push('Aggressive or predatory species may stress or harm the more peaceful ones here.');",
     `msgs.push('${cp.aggressionMismatch}');`, 'js.aggressionMismatch');
-  h = subOnce(h, "msgs.push(item.name+': keeping '+qty+' together risks fighting — doesn’t tolerate its own kind in numbers.');",
+  h = subOnce(h, "msgs.push(item.name+': keeping '+qty+' together risks fighting — this one prefers to be the only one of its kind.');",
     `msgs.push(item.name+'${cp.soloAggrPrefix}'+qty+'${cp.soloAggrSuffix}');`, 'js.soloAggrMsg');
-  h = subOnce(h, "if(item&&item.min_tank_l&&item.min_tank_l>tankL)msgs.push(item.name+' needs '+item.min_tank_l+'L minimum.');",
+  h = subOnce(h, "if(item&&item.min_tank_l&&item.min_tank_l>tankL)msgs.push(item.name+' needs at least '+item.min_tank_l+'L to do well.');",
     `if(item&&item.min_tank_l&&item.min_tank_l>tankL)msgs.push(item.name+'${cp.minTankNeeds}'+item.min_tank_l+'${cp.minTankSuffix}');`, 'js.minTank');
-  h = subOnce(h, "if(qty<min)msgs.push(item.name+': need '+min+' (you have '+qty+').');",
+  h = subOnce(h, "if(qty<min)msgs.push(item.name+' does best in groups of '+min+'+ — you have '+qty+' so far.');",
     `if(qty<min)msgs.push(item.name+'${cp.schoolingNeed}'+min+'${cp.schoolingYouHave}'+qty+'${cp.schoolingClose}');`, 'js.schoolingMsg');
-  h = subOnce(h, "if(totalBio>8&&!hasCanister&&hasFilter)msgs.push('High bioload \\u2014 canister or overflow filter recommended.');", `if(totalBio>8&&!hasCanister&&hasFilter)msgs.push('${cp.highBioload}');`, 'js.highBioload');
-  h = subOnce(h, "if(totalBio>5&&!hasFilter)msgs.push('No filter selected \\u2014 add filtration before stocking.');", `if(totalBio>5&&!hasFilter)msgs.push('${cp.noFilterSelected}');`, 'js.noFilterSelected');
-  h = subOnce(h, "msgs.push(eqLabel+' needs '+depLabels.join(' or ')+' to be effective.');",
+  h = subOnce(h, "if(totalBio>8&&!hasCanister&&hasFilter)msgs.push('This stocking list runs a high bioload \\u2014 a canister or overflow filter will help keep up.');", `if(totalBio>8&&!hasCanister&&hasFilter)msgs.push('${cp.highBioload}');`, 'js.highBioload');
+  h = subOnce(h, "if(totalBio>5&&!hasFilter)msgs.push('No filter selected yet \\u2014 worth adding one before stocking.');", `if(totalBio>5&&!hasFilter)msgs.push('${cp.noFilterSelected}');`, 'js.noFilterSelected');
+  h = subOnce(h, "msgs.push(eqLabel+' works best paired with '+depLabels.join(' or ')+'.');",
     `msgs.push(eqLabel+'${cp.eqNeedsPrefix}'+depLabels.join('${cp.orWord}')+'${cp.eqNeedsSuffix}');`, 'js.eqWarnWithout');
-  h = subOnce(h, "msgs.push('Plants selected but no light equipment — add a light for growth.');", `msgs.push('${cp.plantsNoLight}');`, 'js.plantsNoLight');
-  h = subOnce(h, "msgs.push((item.name||k)+' needs CO₂ injection for healthy growth.');", `msgs.push((item.name||k)+'${cp.plantNeedsCo2}');`, 'js.plantNeedsCo2');
-  h = subOnce(h, "msgs.push('Tannin-releasing hardscape softens and acidifies water — may conflict with hard-water species selected.');", `msgs.push('${cp.tanninHardnessConflict}');`, 'js.tanninHardnessConflict');
-  h = subOnce(h, "if(!msgs.length){el.className='';el.textContent='\\u2713 No issues with current selection.';return;}", `if(!msgs.length){el.className='';el.textContent='${cp.noIssues}';return;}`, 'js.noIssues');
-  h = subOnce(h, "window.alert('Create a tank in Keeper\\x27s Log first (main site \\u2192 Log), then save this plan again.');", `window.alert('${cp.saveErrorNoTank}');`, 'js.saveErrorNoTank');
-  h = subOnce(h, "window.alert('Could not save \\u2014 storage may be blocked or full.');", `window.alert('${cp.saveErrorGeneric}');`, 'js.saveErrorGeneric');
-  h = subOnce(h, "ok.textContent='Saved to '+((tank.profile&&tank.profile.name)||'your active tank')+' \\u2014 open Log (main site) to review My Setup.';",
+  h = subOnce(h, "msgs.push('Plants need light to grow — worth adding one to this list.');", `msgs.push('${cp.plantsNoLight}');`, 'js.plantsNoLight');
+  h = subOnce(h, "msgs.push((item.name||k)+' grows best with CO₂ injection.');", `msgs.push((item.name||k)+'${cp.plantNeedsCo2}');`, 'js.plantNeedsCo2');
+  h = subOnce(h, "msgs.push('Tannin-releasing hardscape softens and acidifies water — worth checking against the hard-water species here.');", `msgs.push('${cp.tanninHardnessConflict}');`, 'js.tanninHardnessConflict');
+  h = subOnce(h, "if(!msgs.length){el.className='';el.textContent='\\u2713 This selection looks balanced so far.';return;}", `if(!msgs.length){el.className='';el.textContent='${cp.noIssues}';return;}`, 'js.noIssues');
+  h = subOnce(h, "window.alert('You\\x27ll need a tank in Keeper\\x27s Log first (main site \\u2192 Log) \\u2014 set that up, then save this plan again.');", `window.alert('${cp.saveErrorNoTank}');`, 'js.saveErrorNoTank');
+  h = subOnce(h, "window.alert('Couldn\\'t save your setup \\u2014 your browser\\'s storage may be blocked or full.');", `window.alert('${cp.saveErrorGeneric}');`, 'js.saveErrorGeneric');
+  h = subOnce(h, "ok.textContent='Saved to '+((tank.profile&&tank.profile.name)||'your active tank')+'. Open Log (main site) anytime to review My Setup.';",
     `ok.textContent='${cp.savedToPrefix}'+((tank.profile&&tank.profile.name)||'${cp.savedToFallback}')+'${cp.savedToSuffix}';`, 'js.savedToast');
 
   // ── equipment category label maps (2 identical maps) ──

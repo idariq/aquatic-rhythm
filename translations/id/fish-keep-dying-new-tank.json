@@ -47,7 +47,7 @@
             "tag": "Apa yang sistem sedang lakukan",
             "titleHtml": "Bakteri yang melindungi ikan<br><em>belum ada.</em>",
             "body": [
-                "Setiap akuarium berjalan pada proses biologis yang disebut siklus nitrogen. Ini bukan daftar periksa — ini adalah urutan kehidupan yang membutuhkan empat hingga delapan minggu untuk terbentuk, dan tidak bisa dipaksakan.",
+                "Setiap akuarium berjalan pada proses biologis yang disebut siklus nitrogen — sebuah urutan kehidupan, bukan daftar periksa, yang butuh empat hingga delapan minggu untuk terbentuk dan tidak bisa dipaksakan.",
                 "Ketika ikan ada di tank, mereka menghasilkan amonia. Amonia itu beracun. Di tank yang sudah matang, koloni bakteri mengubahnya terlebih dahulu menjadi nitrit — yang juga beracun — lalu koloni bakteri kedua mengubah nitrit itu menjadi nitrat, yang jauh lebih tidak berbahaya dan bisa dikelola dengan ganti air rutin. Tapi koloni bakteri itu perlu tumbuh dari hampir tidak ada. Mereka membutuhkan beberapa minggu untuk membangun kepadatan yang diperlukan untuk menyeimbangkan limbah yang dihasilkan tank.",
                 "Sampai kedua koloni matang, ikan hidup dalam kondisi yang drift antara stres dan berbahaya — sering secara diam-diam. Amonia dan nitrit tidak berwarna, tidak berbau, dan tidak memberi peringatan sebelum mencapai tingkat yang berbahaya bagi ikan. Air bisa terlihat jernih sempurna sambil diam-diam melewati ambang yang merusak ikan.",
                 "Suhu adalah faktor lain yang jarang disebutkan. Bahkan perbedaan 2°C antara air dalam kantong pengangkutan dan air di tank sudah cukup menyebabkan stres fisiologis pada ikan. Banyak pemelihara tidak tahu ini. Banyak toko hewan tidak menyebutkannya. Ikan tiba dengan stres transportasi yang ada, dan ketidakcocokan suhu menambah satu lapisan lagi sebelum mereka sempat beristirahat.",
@@ -91,12 +91,12 @@
         {
             "id": "mod-4",
             "tag": "Apa yang datang selanjutnya",
-            "titleHtml": "Tank tidak berakhir.<br><em>Ini masih awal.</em>",
+            "titleHtml": "Masih awal,<br><em>bukan berakhir.</em>",
             "body": [
                 "Jika ikan mati tapi tank masih berjalan, siklus mungkin masih berlangsung. Uji air. Jika amonia atau nitrit masih tinggi, sistem belum siap — tunggu, dan beri makan sangat sedikit atau tidak sama sekali. Ganti air sedang 20 hingga 25% bisa membantu jika amonia tinggi, tapi jangan lakukan reset penuh. Ganti air lengkap membuang kemajuan bakteri yang sudah dibangun di media filter dan permukaan. Kemajuan itu nyata, meski tidak lagi terlihat.",
                 "Jika Anda berpikir untuk mulai dari awal — atau tentang apa yang harus dilakukan selanjutnya — pertimbangkan fishless cycling terlebih dahulu. Tambahkan sedikit amonia murni ke tank kosong dan pantau setiap hari. Ketika amonia turun ke nol dalam 24 jam dan nitrit ikut, siklus selesai. Ikan yang dimasukkan ke sistem itu memasuki air yang secara biologis disiapkan untuk menerima mereka.",
                 "Sistem memiliki kapasitas untuk pulih. Bakteri yang sudah ada di sana — di media filter, di kaca, di permukaan apapun yang sudah berada di air — sedang bekerja. Mereka nyata adanya. Tank yang sudah berjalan beberapa minggu, bahkan melalui kehilangan, memiliki lebih banyak fondasi biologis dari tank di hari pertama.",
-                "Ini bukan tank yang gagal. Ini adalah tank yang masih dalam proses menjadi sesuatu."
+                "Tank ini belum gagal. Ia cuma belum selesai menjadi sebuah tank."
             ],
             "hintLabel": "Ecological forgiveness",
             "hintText": [

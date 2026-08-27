@@ -7,81 +7,77 @@
     },
     "head": {
         "title": "Akuarium Bukan Proyek — Aquatic Rhythm",
-        "description": "Akuarium yang sehat bukan tentang mencapai 'selesai'. Cara penjaga berpikir tentang akuariumnya — sebagai proyek atau sebagai sistem hidup — menentukan cara ia merespons, dan apa yang ia lakukan ketika semuanya sudah stabil.",
+        "description": "Tahu kapan harus berhenti memperbaiki adalah bagian dari praktiknya. Ini tentang membedakan perubahan yang benar-benar melayani ekosistem, dan perubahan yang sebenarnya melayani kegelisahan pemeliharanya.",
         "ogTitle": "Akuarium Bukan Proyek",
-        "ogDescription": "Tank yang sudah sampai tidak perlu diubah. Pelajari perbedaan antara berpikir seperti proyek dan berpikir seperti penjaga."
+        "ogDescription": "Tahu kapan harus berhenti memperbaiki adalah bagian dari praktiknya — bukan tentang tank yang butuh perubahan, tapi tentang pemelihara yang gelisah."
     },
     "intro": {
-        "eyebrow": "Bacaan · Semua Tingkat",
+        "eyebrow": "Bacaan · Refleksi",
         "titleHtml": "Akuarium<br><em>Bukan Proyek</em>",
-        "subtitle": "Proyek punya titik akhir. Akuarium hidup tidak.",
+        "subtitle": "Tahu kapan harus berhenti memperbaiki adalah bagian dari praktiknya.",
         "texts": [
-            "Ada pola yang hampir universal di kalangan penghobi akuarium: tank baru disetup, parameter mulai stabil, ikan mulai berkembang — dan kemudian muncul dorongan untuk mengubah sesuatu. Menambah ikan lagi. Meredesain hardscape. Upgrade filter. Coba substrat baru.",
-            "Dorongan itu sering terasa seperti kemajuan. Padahal sering kali ia adalah pola pikir proyek yang menyusup ke dalam hobi yang tidak bekerja seperti proyek."
+            "Ada tipe pemelihara yang rasanya tidak pernah benar-benar 'selesai' dengan akuariumnya. Peralatan diganti sebelum rusak. Ikan ditambah sebelum komunitas yang ada sempat menetap. Dekorasi digeser. Profil pencahayaan diubah. Akuarium terus-menerus dalam revisi — stabil, tapi tidak pernah benar-benar tenang.",
+            "Ini bukan cacat karakter. Ini konsekuensi alami dari rasa peduli. Tapi ini layak diperiksa, karena akuarium yang benar-benar selaras justru minta lebih sedikit intervensi daripada yang biasanya diberikan kebanyakan pemelihara — dan dorongan untuk memperbaiki itu sendiri bisa jadi bentuk gangguan."
         ],
         "metaModules": "4 modul",
-        "metaTime": "Semua tingkat",
-        "metaLevel": "~7 menit",
+        "metaTime": "~8 menit",
+        "metaLevel": "Refleksi",
         "cta": "Mulai membaca"
     },
     "modules": [
         {
             "id": "mod-1",
-            "tag": "Pikiran proyek vs pikiran penjaga",
-            "titleHtml": "Proyek punya titik akhir.<br><em>Akuarium hidup tidak.</em>",
+            "tag": "Pola pikir proyek",
+            "titleHtml": "Pola pikir<br><em>proyek.</em>",
             "body": [
-                "Proyek dirancang untuk selesai. Ada visi di awal, ada milestone di tengah, ada momen ketika Anda bisa berkata 'sudah jadi.' Pola pikir ini berguna untuk banyak hal — tapi tidak untuk akuarium.",
-                "Akuarium hidup bukan bergerak menuju selesai. Ia bergerak terus: ikan tumbuh, bakteri beradaptasi, tanaman merespons cahaya dan nutrisi yang berubah, bioload bergeser saat ikan tua mati dan ikan muda tumbuh. Tidak ada titik di mana sistem berhenti berubah.",
-                "Penjaga yang berpikir seperti proyek cenderung mengalami frustrasi di fase stabil — karena tidak ada lagi yang 'dilakukan.' Tank sudah setup, parameter oke, ikan sehat. Dan justru di situlah dorongan muncul: tambah sesuatu, ubah sesuatu, buat sesuatu terjadi. Bukan karena tank butuh itu. Tapi karena penjaga belum belajar menikmati fase yang bukan konstruksi.",
-                "Penjaga yang berpikir seperti penjaga belajar membaca sistem — bukan membangun menuju titik akhir, tapi memperhatikan apa yang sistem sedang katakan. Ikan yang aktif saat waktu makan adalah sinyal. Tanaman yang tumbuh perlahan tapi konsisten adalah sinyal. Filter yang mengalir dengan baik adalah sinyal. Membaca sinyal-sinyal itu adalah keterampilan, bukan hiburan sementara antara upgrade."
+                "Proyek punya tujuan akhir. Anda kumpulkan bahan, bangun menuju satu visi, selesaikan, lalu pindah ke hal berikutnya. Cara pikir ini cocok untuk menyiapkan akuarium — siklus nitrogen, mengisi ikan, membangun hardscape. Di fase-fase awal itu, keterlibatan aktif pemelihara memang benar-benar dibutuhkan. Akuarium masih berubah-ubah dan perlu arahan.",
+                "Cara pikir proyek ini justru jadi beban begitu akuarium melewati fase awal dan masuk stabilitas yang sesungguhnya. Akuarium yang sudah bersiklus dan stabil, dengan ikan yang sudah settle, filtrasi yang berfungsi, dan kimia air yang konsisten — itu bukan proyek yang belum selesai. Itu sistem hidup yang sedang seimbang. Peran pemelihara bergeser dari pembangun jadi pengamat — dan pergeseran ini lebih sulit dari kedengarannya, karena mengamati terasa pasif, sementara membangun terasa seperti bentuk kepedulian.",
+                "Banyak perubahan yang dilakukan pemelihara pada akuarium yang sudah mapan sebenarnya bukan dorongan dari kebutuhan tank, tapi dari kegelisahan pemeliharanya sendiri. Filter baru karena yang lama terasa 'sudah tua.' Ganti substrat karena lihat sesuatu di internet. Tambah ikan karena tank 'masih ada ruang.' Perubahan-perubahan ini tidak selalu merugikan, tapi layak dipertanyakan dulu sebelum bertindak: ini untuk tank, atau untuk Anda?"
             ],
-            "pullQuote": "Penjaga yang berpikir seperti proyek mencari momen 'sudah jadi.' Akuarium yang hidup tidak menuju ke sana.",
+            "pullQuote": "Akuarium yang stabil bukan akuarium yang sedang menunggu. Ia akuarium yang sudah sampai. Kerja perawatan itu berbeda dari kerja menyelesaikan — dan mengenali perbedaan itu adalah keterampilan Keeper Rhythm.",
             "prevBtn": "← Intro",
-            "nextBtn": "Biaya gangguan"
+            "nextBtn": "Bagaimana perbaikan berubah jadi gangguan"
         },
         {
             "id": "mod-2",
-            "tag": "Biaya gangguan",
-            "titleHtml": "Setiap perubahan pada tank yang stabil<br><em>adalah gangguan.</em>",
+            "tag": "Bagaimana perbaikan berubah jadi gangguan",
+            "titleHtml": "Bagaimana perbaikan<br><em>berubah jadi gangguan.</em>",
             "body": [
-                "Tank yang stabil memiliki ritme yang sudah terbentuk: Environmental Rhythm (suhu, cahaya, aliran yang konsisten), Biological Rhythm (koloni bakteri yang berfungsi, proses nitrogen yang stabil), Livestock Rhythm (pola makan, pola aktivitas, hubungan sosial antar penghuni yang sudah settled). Perubahan apapun — sekecil apapun — mengganggu ritme itu.",
-                "Ini bukan alasan untuk tidak pernah berubah. Beberapa perubahan diperlukan: ganti air rutin, perawatan filter, mengganti ikan yang sakit. Tapi perubahan yang dipilih sendiri oleh penjaga — bukan karena tank butuh, tapi karena penjaga bosan atau ingin mencoba sesuatu — punya biaya yang sering tidak kelihatan.",
-                "Menambahkan ikan baru mengubah bioload dan dinamika sosial. Memindahkan dekorasi mengganggu pola teritorial yang sudah stabil. Mengganti substrat adalah intervensi besar yang bisa membutuhkan berminggu-minggu untuk sistem pulih. Bahkan meningkatkan frekuensi ganti air tanpa alasan yang jelas bisa mengganggu parameter yang sudah menemukan keseimbangannya.",
-                "Pertanyaan yang berguna sebelum perubahan apapun bukan 'apakah ini akan membuat tank lebih baik?' tapi 'apakah tank membutuhkan ini, atau ini yang saya butuhkan?' Jawaban yang jujur sering berbeda dari jawaban yang ingin Anda dengar."
+                "Setiap perubahan pada akuarium yang stabil adalah gangguan. Sebagian gangguan memang perlu dan terkendali — ganti air terjadwal, ganti media filter dengan air akuarium, penyesuaian suhu yang perlahan. Ini semua ritme perawatan yang sudah diadaptasi oleh tank. Sistem biologis dan kimianya sudah memasukkan hal-hal ini sebagai input yang bisa diprediksi.",
+                "Perubahan di luar rutin itu berbeda. Ikan baru membawa patogen yang belum punya kekebalan pada penghuni lama, dan mengganggu dinamika sosial yang mungkin butuh berbulan-bulan untuk menetap. Filter baru, sekalipun lebih bagus, berarti membangun koloni media dari nol — dan selama periode itu, filtrasi biologis jadi rentan. Substrat baru mengaduk kantong anaerobik, melepaskan gas yang terperangkap, dan membuat partikel melayang yang menaungi tanaman serta menyumbat insang. Perubahan pencahayaan bisa memicu ledakan alga atau menekan tanaman yang sudah beradaptasi dengan spektrum sebelumnya.",
+                "Masing-masing dampak ini tidak fatal kalau berdiri sendiri, tapi semuanya menumpuk. Pemelihara yang terus-menerus 'memperbaiki' akuariumnya sebenarnya terus-menerus memasukkan gangguan baru — dan akuarium yang terus-menerus mengalami gangguan ringan tidak pernah bisa membangun keselarasan mendalam yang bikin ia tangguh. Ikan terus-menerus menyesuaikan diri. Bakteri terus-menerus membangun ulang koloninya. Kimia airnya tidak pernah benar-benar stabil."
             ],
-            "hintLabel": "Gangguan sukarela vs gangguan yang perlu",
+            "hintLabel": "Stabilitas butuh waktu yang tidak terganggu",
             "hintText": [
-                "Gangguan sukarela adalah perubahan yang dipilih penjaga tanpa sinyal yang jelas dari sistem. Berbeda dengan respons terhadap sinyal nyata (ikan sakit, parameter bergeser, filter tersumbat), gangguan sukarela berasal dari kebutuhan penjaga — bukan kebutuhan tangki. Mengenali perbedaan itu bagian dari kematangan seorang pemelihara."
+                "Perubahan sukarela yang terlalu sering membuat biologi dan susunan fisik akuarium tidak sempat mendalam. Akuarium yang stabil selama enam bulan tanpa intervensi jauh lebih tangguh secara kualitatif dibanding akuarium yang 'dioptimalkan' setiap bulan. Biologinya butuh waktu tanpa gangguan untuk benar-benar matang."
             ],
             "prevBtn": "← Kembali",
-            "nextBtn": "Kapasitas sebelum ambisi"
+            "nextBtn": "Capacity before Ambition"
         },
         {
             "id": "mod-3",
-            "tag": "Kapasitas sebelum ambisi",
-            "titleHtml": "Baca kapasitas sistem<br><em>sebelum perubahan apapun.</em>",
+            "tag": "Capacity before Ambition",
+            "titleHtml": "Capacity before<br><em>Ambition.</em>",
             "body": [
-                "Salah satu prinsip ARA adalah Kapasitas sebelum Ambisi — membaca apa yang sistem benar-benar bisa tanggung sebelum menambah atau mengubah apapun. Dalam praktik, ini berarti bertanya bukan 'apa yang ingin saya tambahkan?' tapi 'apa yang tank ini sebenarnya bisa tampung?'",
-                "Kapasitas bukan hanya ukuran liter. Ia adalah kombinasi dari bioload yang ada, kemampuan filtrasi, kestabilan parameter, kondisi penghuni saat ini — dan kapasitas penjaga sendiri: waktu, perhatian, serta infrastruktur teknis (otomasi, pemantauan, peralatan) yang benar-benar dipahami dan dirawat. Tank 100 liter yang sudah penuh dengan ikan aktif dan filter yang sudah di batas kapasitasnya punya kapasitas yang berbeda dari tank 100 liter dengan dua ikan damai dan filter yang masih punya ruang.",
-                "Pola yang paling umum: penjaga melihat tank yang stabil dan menyimpulkan bahwa ada 'ruang' untuk lebih banyak. Tapi kestabilan itu sendiri adalah bukti bahwa sistem sedang berjalan baik pada kapasitas yang ada — bukan undangan untuk menambah lebih.",
-                "Membaca kapasitas dengan jujur sering memerlukan lebih banyak keberanian dari menambah sesuatu. Karena ia berarti mengakui bahwa tank yang sedang oke — mungkin sudah baik. Tidak perlu diubah. Tidak perlu ditambah. Ia sudah sampai."
+                "Salah satu dari empat prinsip ARA adalah Capacity before Ambition. Artinya, pertanyaan yang tepat sebelum perubahan apa pun bukan 'apakah ini ide yang bagus secara prinsip?' tapi 'apakah sistem ini sekarang punya kapasitas untuk menyerap perubahan ini?' Akuarium yang sudah berjalan di batas biologis dan sosialnya — populasi penuh, wilayah yang sudah mapan, tanaman dewasa yang tumbuh maksimal — hanya punya sedikit sekali kapasitas cadangan. Perubahan yang mungkin cocok untuk akuarium yang populasinya masih jarang atau baru saja terganggu, bisa justru mengguncang akuarium yang sebenarnya sedang berkembang baik.",
+                "Kapasitas bukan cuma soal biologi. Ia juga mencakup waktu, perhatian, dan infrastruktur teknis yang dimiliki pemelihara — otomasi, sistem pemantauan, dan peralatan yang benar-benar dipahami dan dirawatnya. Upgrade yang didukung infrastruktur teknis yang andal dan sudah dipasang dengan benar itu beda ceritanya dari upgrade yang sepenuhnya bergantung pada konsistensi manual pemelihara. Tapi sehebat apa pun otomasinya, itu tidak bisa menggantikan kehadiran pemelihara saat terjadi gangguan besar. Upgrade yang butuh pemantauan ketat selama dua minggu, sementara pemeliharanya sedang bepergian, kerja lembur, atau sedang kehabisan energi — itu upgrade tanpa kapasitas, apa pun peralatannya.",
+                "Ambisi dalam hobi ini bukan hal yang buruk. Justru itu yang mendorong pemelihara menuju akuarium yang lebih kompleks dan lebih indah. Tapi ambisi yang melampaui kapasitas — kapasitas tank, kapasitas pemelihara, atau keduanya, termasuk infrastruktur teknis yang menopang sistemnya — hampir selalu menghasilkan kebalikan dari yang diinginkan. Pertanyaan sebelum perubahan besar apa pun bukan 'apakah setup ini bagus?' tapi 'apakah saya benar-benar punya kapasitas — manual, teknis, atau keduanya — untuk menopang apa yang sebenarnya dibutuhkan setup ini?'"
             ],
             "prevBtn": "← Kembali",
-            "nextBtn": "Tanda-tanda kedatangan"
+            "nextBtn": "Mengenali kapan akuarium sudah cukup"
         },
         {
             "id": "mod-4",
-            "tag": "Tanda-tanda kedatangan",
-            "titleHtml": "Tank memberitahu Anda<br><em>ketika ia sudah sampai.</em>",
+            "tag": "Ketika akuarium sudah cukup",
+            "titleHtml": "Ketika akuarium<br><em>sudah cukup.</em>",
             "body": [
-                "Ada tanda-tanda yang bisa dikenali ketika akuarium sudah menemukan keseimbangannya: parameter konsisten dari minggu ke minggu tanpa koreksi aktif, ikan makan dengan antusias dan menunjukkan perilaku yang sesuai spesies, tanaman (kalau ada) tumbuh perlahan tapi tidak mati, tidak ada sinyal stres yang perlu direspons.",
-                "Di titik itu, keterampilan yang paling berguna bukan keterampilan teknis — bukan pengetahuan tentang kimia air atau ilmu filter. Keterampilan yang paling berguna adalah kemampuan untuk diam dan mengamati. Duduk di depan tank selama beberapa menit tanpa agenda. Perhatikan apa yang terjadi. Bukan mencari masalah — tapi membiarkan sistem berbicara.",
-                "Ini bukan pasif. Ini adalah bentuk perhatian yang lebih tinggi dari intervensi aktif. Penjaga yang bisa duduk dengan tank yang stabil dan menikmatinya — tanpa dorongan untuk mengubah, tanpa kecemasan bahwa sesuatu harus dilakukan — telah melewati salah satu transisi terpenting dalam hobi ini.",
-                "Akuarium yang hidup tidak perlu menuju ke mana-mana. Ia sudah ada di sini. Keterampilan penjaganya adalah belajar ada di sini bersamanya."
+                "Akuarium akan memberi tahu Anda kapan ia sudah sampai. Ikan-ikan terlihat jelas, tidak bersembunyi. Mereka berenang di seluruh kolom air. Respons makannya percaya diri dan langsung. Parameter air konsisten dalam rentang normal, minggu demi minggu. Alga tetap minim dan terkendali. Tanaman tumbuh, biar pun perlahan. Tidak ada yang minta perhatian — bukan karena Anda berhenti mengamati, tapi karena memang tidak ada yang perlu diperhatikan.",
+                "Begitulah keselarasan terlihat dari luar. Tenang. Tidak ada yang istimewa. Dan bagi pemelihara yang terbiasa menyamakan kesibukan dengan kepedulian, ini bisa terasa seperti kelalaian. Naluri yang muncul adalah melakukan sesuatu — tambah ikan, pindahkan tanaman, upgrade lampu. Tapi akuarium dalam kondisi ini bukan sedang minta diperbaiki. Ia sedang minta dibiarkan terus berjalan.",
+                "Kemampuan mengenali ini — membedakan akuarium yang butuh intervensi dari akuarium yang sekadar sedang diamati — adalah keterampilan tersendiri. Ia berkembang sama seperti kemampuan observasi lainnya: perlahan, lewat pengulangan, dan hanya kalau Anda memang mencarinya. Akuarium bukan proyek yang harus diselesaikan. Ia ritme yang harus dijaga. Dan kadang menjaga ritme berarti meletakkan alat-alat dan membiarkan airnya tenang."
             ],
-            "hintLabel": "Ketika tangki stabil masih terasa belum selesai",
+            "hintLabel": "Ketika akuarium yang stabil masih terasa belum selesai",
             "hintText": [
-                "Dorongan untuk terus memperbaiki tangki yang sudah stabil bukan cacat pada penjaga — itu tampilan kepedulian ketika semua tugas yang diperlukan telah selesai. Tangki yang benar-benar seimbang tidak meminta banyak. Bagi beberapa penjaga, keheningan itu menenangkan. Bagi yang lain, itu menghasilkan kecemasan tingkat rendah bahwa ada sesuatu yang terlewat, bahwa tangki bisa lebih baik, bahwa penjaga lain akan menemukan sesuatu untuk diperbaiki. Kecemasan itu cenderung muncul ketika hubungan penjaga dengan tangki dibangun di sekitar intervensi aktif daripada observasi. Tangki yang sudah cukup meminta perhatian yang berbeda — satu yang mengamati tanpa perlu menemukan sesuatu untuk diperbaiki."
+                "Dorongan untuk terus memperbaiki akuarium yang sudah stabil bukan cacat pada pemeliharanya — itu wujud kepedulian ketika semua tugas yang diperlukan sudah selesai dikerjakan. Akuarium yang benar-benar seimbang tidak minta banyak. Bagi sebagian pemelihara, ketenangan itu terasa melegakan. Bagi yang lain, itu memicu kecemasan tingkat rendah — perasaan ada yang terlewat, tank sebenarnya bisa lebih baik lagi, pemelihara lain pasti menemukan sesuatu untuk diperbaiki. Kecemasan semacam ini cenderung muncul kalau hubungan Anda dengan akuarium dibangun di atas intervensi aktif, bukan observasi. Akuarium yang sudah cukup sedang minta jenis perhatian yang berbeda — perhatian yang mengamati tanpa perlu mencari-cari sesuatu untuk diperbaiki."
             ],
             "prevBtn": "← Kembali"
         }

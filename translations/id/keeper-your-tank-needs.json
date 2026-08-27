@@ -1,0 +1,91 @@
+{
+    "_meta": {
+        "slug": "keeper-your-tank-needs",
+        "lang": "id",
+        "sourceFile": "articles/keeper-your-tank-needs.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Penjaga yang Sebenarnya Dibutuhkan Tangki Anda — Aquatic Rhythm",
+        "description": "Bukan yang tak pernah salah. Tapi yang terus belajar membacanya. Kenapa cita-cita kepatuhan-aturan yang dikejar kebanyakan penjaga justru membuat mereka kurang siap dibanding model yang lebih berantakan dan lebih jujur.",
+        "ogTitle": "Penjaga yang Sebenarnya Dibutuhkan Tangki Anda",
+        "ogDescription": "Penjaga yang mengikuti setiap aturan dengan sempurna siap menghadapi persis situasi yang diantisipasi aturan itu. Setiap tangki, cepat atau lambat, menghasilkan satu yang tak diantisipasi."
+    },
+    "intro": {
+        "eyebrow": "Refleksi",
+        "titleHtml": "Penjaga yang<br><em>Sebenarnya Dibutuhkan Tangki Anda</em>",
+        "subtitle": "Bukan yang tak pernah salah. Tapi yang terus belajar membacanya.",
+        "texts": [
+            "Kebanyakan penjaga baru datang dengan gambaran yang cukup spesifik soal seperti apa penjaga yang baik itu: seseorang yang tahu angka yang tepat, mengikuti jadwal yang tepat, dan tak membuat kesalahan yang muncul di thread forum sebagai peringatan. Ini tujuan yang terdengar masuk akal, dibangun dari daftar periksa dan lembar perawatan yang menyajikan hobi ini sebagai serangkaian jawaban benar yang tinggal dipelajari dan diterapkan.",
+            "Masalahnya bukan cita-cita itu salah untuk dikejar. Masalahnya, ia menggambarkan jenis penjaga yang sebenarnya tak dibutuhkan tangki mana pun, dan mengejarnya cenderung membuat penjaga kurang siap menghadapi momen-momen yang penting dibanding model yang lebih berantakan dan lebih jujur."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~7 menit",
+        "metaLevel": "Refleksi",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Penjaga yang dibayangkan kebanyakan orang",
+            "titleHtml": "Seseorang yang <em>tak pernah perlu menebak</em>",
+            "body": [
+                "Penjaga ideal yang dibayangkan punya bentuk spesifik: mereka tahu jadwal ganti air yang tepat, angka kepadatan ikan yang tepat, takaran pakan yang tepat, dan mengikuti semuanya dengan cukup persis sampai tak pernah ada yang salah. Ketika ada yang salah, dalam gambaran ini, itu karena ada aturan yang dilanggar, sebuah langkah terlewat, sebuah angka terlewat, dan perbaikannya adalah mengenali aturan mana dan mengikutinya lebih hati-hati lain kali.",
+                "Model ini muncul dari sesuatu yang masuk akal. Kebanyakan panduan perawatan ditulis sebagai instruksi, karena instruksi memang yang dibutuhkan pemula tanpa titik acuan lain di awal sekali. Masalahnya bukan instruksi itu ada. Masalahnya, banyak penjaga tak pernah memperbarui modelnya setelah mereka sebenarnya sudah melampaui kebutuhan itu, dan terus memperlakukan hobi ini sebagai serangkaian aturan yang harus diikuti dengan benar, bukan sistem yang harus dibaca.",
+                "Celah yang tercipta ini tak terlihat di awal, karena pada mulanya, aturan-aturan itu kebanyakan berhasil. Tangki baru yang mengikuti jadwal siklus yang baik dan rencana kepadatan ikan yang masuk akal biasanya baik-baik saja. Yang tak dipersiapkan model kepatuhan-aturan bagi penjaga adalah ruang situasi yang jauh lebih besar yang tak sepenuhnya tercakup aturan mana pun, yang, untuk tangki mana pun yang dipelihara cukup lama, akhirnya tiba juga."
+            ],
+            "pullQuote": "Penjaga yang mengikuti setiap aturan dengan sempurna siap menghadapi persis situasi-situasi yang diantisipasi aturan itu. Setiap tangki, cepat atau lambat, menghasilkan satu situasi yang tak diantisipasi.",
+            "prevBtn": "← Intro",
+            "nextBtn": "Kenapa model itu retak"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Kenapa model itu retak",
+            "titleHtml": "Aturan berhasil <em>sampai tak lagi begitu</em>",
+            "body": [
+                "Setiap aturan yang diikuti penjaga ditulis untuk tangki generik, dan tak ada tangki yang benar-benar generik. Saran ganti air mengasumsikan tingkat kepadatan ikan, kapasitas filtrasi, sumber air tertentu yang mungkin cocok atau tidak dengan tangki di depan penjaga. Panduan pemberian pakan mengasumsikan kebutuhan khas suatu spesies, bukan ikan spesifik yang sudah makan lebih sedikit minggu ini karena alasan yang tak bisa diantisipasi panduan itu. Aturan adalah pengalaman yang dipadatkan, berguna sebagai titik awal, tapi tak pernah dibangun untuk mencakup setiap tangki yang sebenarnya ada.",
+                "Ini baik-baik saja selama celah antara aturan dan situasi spesifik tetap kecil. Ini berhenti baik-baik saja begitu tangki menghasilkan sesuatu yang benar-benar khas baginya, dan di titik itu, penjaga yang hanya pernah berlatih kepatuhan tak punya cadangan. Aturannya tak berlaku dengan bersih, tak ada versi \"ikuti lebih hati-hati\" yang menyelesaikan ketidaksesuaian itu, dan penjaga tertinggal tanpa cara untuk melanjutkan yang tak bergantung pada orang lain memberi aturan berikutnya.",
+                "Ini juga tempat siklus rasa malu cenderung bermula. Penjaga yang percaya perawatan yang baik berarti kepatuhan aturan yang benar menafsirkan masalah yang tak terselesaikan sebagai bukti mereka melanggar aturan di suatu tempat, bahkan ketika masalah sebenarnya adalah situasi itu sekadar tak tercakup aturan mana pun yang diberikan pada mereka. Itu penjelasan yang mematahkan semangat dan sebagian besar tak akurat soal apa yang terjadi, dan itu akibat langsung dari model itu sendiri, bukan dari usaha penjaga."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Seperti apa kompetensi sebaliknya"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Seperti apa kompetensi sebaliknya",
+            "titleHtml": "Sinyal yang sama, <em>dua respons berbeda</em>",
+            "body": [
+                "Bayangkan ikan yang makan lebih sedikit dari biasanya. Penjaga yang bekerja dari aturan memeriksa apakah jadwal pemberian pakan sudah diikuti dengan benar, mendapati itu benar, lalu mentok: daftar periksanya kembali bersih, jadi tak ada lagi yang perlu diperiksa. Penjaga yang sudah membangun kompetensi membaca mengajukan jenis pertanyaan yang berbeda: apa lagi yang baru berubah, bagaimana ini cocok dengan perilaku ikan yang lain, apakah ini masih dalam rentang variasi normal untuk spesies dan tangki ini, atau apakah ini terlihat seperti ujung awal sesuatu yang layak diamati lebih dekat.",
+                "Tak satu pun dari kedua penjaga itu perlu punya lebih banyak pengetahuan mentah. Bedanya adalah apa yang dilakukan masing-masing ketika daftar periksa yang jelas tak menyelesaikan situasinya. Yang mengikuti aturan kehabisan langkah. Yang membaca punya cara untuk terus mengumpulkan informasi dan mempersempit menuju jawaban, karena mereka memperlakukan tangki sebagai sistem yang sedang menyampaikan sesuatu, bukan daftar periksa yang tinggal terpenuhi atau tidak.",
+                "Inilah perbedaan sebenarnya yang dimaksud ARA ketika ia mengutamakan membaca dibanding kepatuhan: bukan bahwa aturan itu buruk, tapi bahwa penjaga yang sudah menginternalisasi alasan di balik sebuah aturan bisa menyesuaikan diri ketika aturan itu tak berlaku dengan bersih, sementara penjaga yang hanya menghafal aturan tak bisa. Tujuannya tak pernah nol kesalahan. Tujuannya adalah kemampuan untuk menyadari, menafsirkan, dan menyesuaikan diri ketika sesuatu berada di luar apa pun yang diantisipasi aturan mana pun."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Membangun ini, bukan itu"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Membangun ini, bukan itu",
+            "titleHtml": "Kompetensi dibangun, <em>bukan dipasang</em>",
+            "body": [
+                "Kompetensi membaca tak datang dengan menemukan serangkaian aturan yang lebih baik. Ia dibangun dengan cara yang lambat, lewat siklus berulang menyadari sesuatu, membentuk dugaan soal artinya, memeriksa dugaan itu terhadap apa yang terjadi selanjutnya, lalu memperbarui. Ini tak nyaman dengan cara yang spesifik yang tak dimiliki kepatuhan aturan, karena ia menuntut kadang-kadang salah sebagai bagian dari prosesnya, bukan memperlakukan setiap dugaan yang salah sebagai kegagalan yang harus dihindari.",
+                "Dalam praktiknya, ini terlihat kurang dramatis daripada kedengarannya: memperhatikan tangki tanpa agenda langsung, menyadari ketika sesuatu sedikit berbeda dari biasanya sebelum itu jadi masalah yang jelas, dan menjadi nyaman memegang pembacaan yang masih tentatif alih-alih butuh jawaban yang langsung dan yakin. Tak satu pun ini butuh lebih banyak pengetahuan mentah daripada yang dibutuhkan model kepatuhan aturan. Ini butuh hubungan yang berbeda dengan ketidakpastian.",
+                "Ini juga, bukan kebetulan, keterampilan yang terus memberi hasil seiring bertambahnya usia tangki, sementara buku aturan yang dihafal tak berskala dengan cara yang sama. Penjaga yang benar-benar belajar membaca sebuah sistem membawa kemampuan itu ke tangki baru, spesies baru, setup yang sama sekali baru. Ini versi keahlian yang bertahan melewati situasi yang tak pernah dicakup instruksi asli, yang, akhirnya, dihasilkan setiap tangki."
+            ],
+            "hintLabel": "Titik awal untuk membaca ritme Anda sendiri",
+            "hintText": [
+                "Membangun kompetensi semacam ini dimulai dengan pandangan jujur soal bagaimana Anda sebenarnya terlibat dengan tangki Anda, bukan bagaimana kata sebuah panduan seharusnya. <a href=\"/articles/know-your-rhythm\" style=\"color:var(--th-accent);text-decoration:none\">Kenali Ritme Anda</a> adalah cara singkat dan tanpa menghakimi untuk memulai penilaian itu."
+            ],
+            "prevBtn": "← Kembali"
+        }
+    ],
+    "relatedLinks": [
+        { "text": "Kenali Ritme Anda →" },
+        { "text": "Akuarium Bukan Proyek →" },
+        { "text": "Merawat Tanpa Rasa Bersalah →" },
+        { "text": "Kerangka ARA →" }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
+    }
+}

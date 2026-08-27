@@ -54,6 +54,8 @@ const SLUG_ORDER = [
   'just-one-more-tank',
   'social-comparison',
   'asking-for-help',
+  'hard-to-quit',
+  'keeper-your-tank-needs',
   'when-is-tank-ready-for-fish',
   'know-your-rhythm',
   'four-principles-of-ara',

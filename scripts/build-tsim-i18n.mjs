@@ -357,36 +357,43 @@ function patchEngine(h, t) {
   const addLogPairs = [
     ['Ammonia source is running low — organic matter has nearly finished decomposing. Add more ammonia if the cycle is not yet established.', e.ammLow],
     ['Ammonia source exhausted. No new ammonia is entering the tank. Bacteria will process what remains.', e.ammDone],
-    ['Day 5 without food. Fish begin showing stress — clamped fins, reduced movement. Glycogen stores are depleted.', e.hungry5],
-    ['Fish critically malnourished. Muscle tissue is being metabolised. Immune function is failing.', e.hungry7],
+    ['Day 5 without food — fish are starting to show stress: clamped fins, less movement. Their energy reserves are running low.', e.hungry5],
+    ['Fish are critically malnourished now — the body is breaking down muscle for energy, and immune function is failing. This needs feeding right away.', e.hungry7],
     ['Ammonia above 3 ppm is beginning to inhibit Nitrospira activity. High ammonia is not just dangerous for fish — at extreme levels it also slows the second stage of the cycle.', e.inhib],
     ['Ammonia spike detected. This can happen when organic matter decomposes faster than bacteria can process — a normal part of an unstable cycle.', e.spikeAmmonia],
     ['Nitrite spike. Nitrosomonas are converting ammonia faster than Nitrospira can process the nitrite. The second colony is still establishing.', e.spikeNitrite],
     ['Plants are not receiving light. Without photosynthesis they cannot grow — and will begin to decay, adding to the organic load.', e.noLight],
     ['Algae is proliferating. High light intensity combined with elevated nitrate creates ideal conditions for rapid algae growth.', e.algaeBloom],
     ['Cycle established. Parameters have been stable for several consecutive days. Both colonies are self-sustaining.', e.cycleEstablished],
-    ['The fish have died from starvation and stress. Without regular feeding, metabolic function collapsed.', e.fishStarved],
     ['Heater on. Tank temperature returning to 26°C. Bacterial activity will increase.', e.heaterOn],
     ['Heater off. Water temperature will begin to drop. Below 20°C, bacterial growth slows significantly.', e.heaterOff],
     ['Filter on. Water circulation restored. Bacteria colonising filter media will resume processing.', e.filterOn],
     ['Filter off. Bacteria on the media are losing their oxygen supply — they are aerobic and depend on oxygenated water flowing through the filter. Without it, the colony becomes dormant. The cycle will stall.', e.filterOff],
-    ['Bacteria starter already added.', e.seedAlready],
+    ['You’ve already added a bacteria starter — no need to add more.', e.seedAlready],
     ['Bacteria starter added. Nitrosomonas and Nitrospira seeded onto surfaces. Expect noticeably faster colonisation.', e.seedAdded],
     ['Light off. Plants will begin to suffer — photosynthesis requires light. Algae will shift toward low-light tolerant species.', e.light0],
     ['Low light. Plants grow slowly. Diatoms (brown algae) may increase — they thrive under low light conditions.', e.light1],
     ['Medium light. A good balance for most planted tanks. Algae is manageable if nutrients are not excessive.', e.light2],
     ['High light. Plants grow faster — but so does algae, especially if CO₂ and nutrients are not matched. Watch for outbreaks.', e.light3],
-    ['Ammonia source is already sufficient.', e.ammSourceSufficient],
-    ['The tank is carrying enough fish for now.', e.enoughFishNow],
-    ['Nothing to feed yet — no fish in a fishless cycle.', e.nothingToFeedFishless],
-    ['Add fish first.', e.addFishFirst],
-    ['Fed again. Excess food decomposes faster than bacteria can process — ammonia is rising.', e.fedAgainOverfeed],
-    ['Overfeeding. Uneaten food is polluting the water. Bacteria cannot keep up with this load.', e.overfeeding],
-    ['Tank is well planted.', e.tankWellPlanted],
+    ['There’s already enough ammonia source in the tank for now.', e.ammSourceSufficient],
+    ['This tank has enough fish for now — no need to add more yet.', e.enoughFishNow],
+    ['There’s nothing to feed yet — this is a fishless cycle, so no fish are waiting on food.', e.nothingToFeedFishless],
+    ['Add a fish first, then feeding will do something.', e.addFishFirst],
+    ['Fed again — with this much food in the water, it’s decomposing faster than the bacteria can keep up, and ammonia is climbing.', e.fedAgainOverfeed],
+    ['There’s more food going in than the tank can handle — the uneaten portion is breaking down and the bacteria can’t keep pace.', e.overfeeding],
+    ['This tank already has plenty of plants.', e.tankWellPlanted],
     ['Plants added. Will absorb nitrate over time.', e.plantsAddedGood],
     ['A brown film is forming on surfaces — diatom algae (Bacillariophyceae). Normal in new tanks. They feed on silicates and excess light. Will fade as the tank matures.', e.diatomStart]
   ];
   addLogPairs.forEach(([oldS, newS], i) => { h = subOnce(h, oldS, newS, `engine.addLog.${i}`); });
+
+  // Same wording as report.msgCrashedStarved by design (both describe the
+  // same event, log line vs end-screen) — that text-identity means the bare
+  // string now matches two places in the file, so this needs its own
+  // subOnce scoped to the addLog(...) call specifically, not the generic
+  // addLogPairs loop (which would hit "AMBIGUOUS (multiple matches)").
+  h = subOnce(h, "addLog('The fish went without enough food for too long, and the accumulated stress proved fatal.','danger');",
+    `addLog('${e.fishStarved}','danger');`, 'engine.fishStarved');
 
   h = subOnce(h, "'Temperature at '+S.temp.toFixed(0)+'°C. Bacterial metabolism is slowing — Nitrospira are especially temperature-sensitive.'",
     `'${e.coldTemp.split('{temp}')[0]}'+S.temp.toFixed(0)+'${e.coldTemp.split('{temp}')[1]}'`, 'engine.coldTemp');
@@ -450,7 +457,7 @@ function patchEngine2(h, t, lang) {
 
 function patchEngine3(h, t) {
   const e = t.engine, g = t.engine.genLog;
-  h = subOnce(h, "addLog('Ammonia critically high.'+( S.fish>0?' Fish in acute danger — gills are being damaged.':''),'danger');",
+  h = subOnce(h, "addLog('Ammonia is critically high.'+( S.fish>0?' The fish are in real danger here — their gills are being affected. This needs attention now.':''),'danger');",
     `addLog('${g.ammCritical}'+( S.fish>0?'${g.ammCriticalFishSuffix}':''),'danger');`, 'genLog.ammCritical');
   h = subOnce(h, "addLog('Ammonia elevated. Bacteria are building but not yet sufficient.','warn');", `addLog('${g.ammElevated}','warn');`, 'genLog.ammElevated');
   h = subOnce(h, "addLog('Nitrite spike. Nitrospira colonies are still establishing — this is the normal mid-cycle pattern, but dangerous for fish.','warn');", `addLog('${g.no2Spike}','warn');`, 'genLog.no2Spike');
@@ -459,10 +466,10 @@ function patchEngine3(h, t) {
   h = subOnce(h, "addLog('Nitrosomonas colonies growing. Nitrite will begin rising soon.','');", `addLog('${g.nitrosomonasGrowing}','');`, 'genLog.nitrosomonasGrowing');
   h = subOnce(h, "addLog('Nitrospira colonies are growing. Nitrite should begin falling soon.','');", `addLog('${g.nitrospiraGrowing}','');`, 'genLog.nitrospiraGrowing');
   h = subOnce(h,
-    "addLog('Fish showing stress signs — slower movement, reduced colour. Health: '+((S.fishHealth||100)).toFixed(0)+'%.','warn');",
+    "addLog('The fish are showing signs of stress — slower movement, duller colour. Health: '+((S.fishHealth||100)).toFixed(0)+'%.','warn');",
     `addLog('${g.fishStressSigns.split('{pct}')[0]}'+((S.fishHealth||100)).toFixed(0)+'${g.fishStressSigns.split('{pct}')[1]}','warn');`, 'genLog.fishStressSigns');
   h = subOnce(h,
-    "addLog('Fish in poor condition. Immune function compromised — disease risk rising. Health: '+((S.fishHealth||100)).toFixed(0)+'%.','danger');",
+    "addLog('The fish are in poor condition — their immune defences are compromised and disease risk is climbing. Health: '+((S.fishHealth||100)).toFixed(0)+'%.','danger');",
     `addLog('${g.fishPoorCondition.split('{pct}')[0]}'+((S.fishHealth||100)).toFixed(0)+'${g.fishPoorCondition.split('{pct}')[1]}','danger');`, 'genLog.fishPoorCondition');
 
   const narrEn = [
@@ -485,13 +492,13 @@ function patchEngine4(h, t) {
 
   h = subOnce(h, "icon=S.fishless?'🧪':'🐠'; text=S.fishless?'Add an ammonia source to begin':'Add fish to begin the cycle';",
     `icon=S.fishless?'🧪':'🐠'; text=S.fishless?'${gu.addAmmonia}':'${gu.addFish}';`, 'guide.begin');
-  h = subOnce(h, "icon='🥣'; text='Fish need feeding — don\\'t skip days';", `icon='🥣'; text='${gu.feedNeeded.replace(/'/g, "\\'")}';`, 'guide.feed');
+  h = subOnce(h, "icon='🥣'; text='Fish need feeding — try not to miss a day';", `icon='🥣'; text='${gu.feedNeeded.replace(/'/g, "\\'")}';`, 'guide.feed');
   h = subOnce(h, "icon='⏳'; text='The cycle is seeding. Leave it alone for now.';", `icon='⏳'; text='${gu.seeding}';`, 'guide.seeding');
-  h = subOnce(h, "icon='🚨'; text='Ammonia critical — water change now';", `icon='🚨'; text='${gu.ammoniaCritical}';`, 'guide.ammCritical');
+  h = subOnce(h, "icon='🚨'; text='Ammonia is critical — a water change now would help';", `icon='🚨'; text='${gu.ammoniaCritical}';`, 'guide.ammCritical');
   h = subOnce(h, "icon='💧'; text='Ammonia elevated — consider a water change';", `icon='💧'; text='${gu.ammoniaElevatedConsider}';`, 'guide.ammElevated');
   h = subOnce(h, "icon='⏳'; text='Bacteria are working — nothing to do but wait';", `icon='⏳'; text='${gu.bacteriaWorking}';`, 'guide.bacWorking');
   h = subOnce(h, "icon='💧'; text='Nitrate is building — the tank needs a water change';", `icon='💧'; text='${gu.nitrateBuilding}';`, 'guide.no3Building');
-  h = subOnce(h, "icon='⛔'; text='Too many changes. Stop intervening — let bacteria recover.';", `icon='⛔'; text='${gu.tooManyChanges}';`, 'guide.tooManyChanges');
+  h = subOnce(h, "icon='⛔'; text='That’s a lot of changes recently — giving the bacteria some room to recover might help now.';", `icon='⛔'; text='${gu.tooManyChanges.replace(/'/g, "\\'")}';`, 'guide.tooManyChanges');
 
   h = subOnce(h,
     "msg=pct+'% water change. Parameters diluted. Bacteria remain on filter media — small changes like this have no meaningful impact on the colony.';",

@@ -1267,11 +1267,11 @@ function tick(){
         S.fishHealth=clamp(S.fishHealth-starveRate,0,100);
         if(!S.warned['hungry5']&&S.daysSinceFed===5){
           S.warned['hungry5']=true;
-          addLog('Day 5 without food. Fish begin showing stress — clamped fins, reduced movement. Glycogen stores are depleted.','warn');
+          addLog('Day 5 without food — fish are starting to show stress: clamped fins, less movement. Their energy reserves are running low.','warn');
         }
         if(!S.warned['hungry7']&&S.daysSinceFed>=7){
           S.warned['hungry7']=true;
-          addLog('Fish critically malnourished. Muscle tissue is being metabolised. Immune function is failing.','danger');
+          addLog('Fish are critically malnourished now — the body is breaking down muscle for energy, and immune function is failing. This needs feeding right away.','danger');
         }
       } else {
         /* Healthy recovery if fed regularly */
@@ -1421,7 +1421,7 @@ function tick(){
   /* ── FISH DEATH FROM STARVATION ── */
   if(S.fish>0&&S.fishHealth<=0&&!S.dead){
     S.dead=true;S.fish=0;running=false;
-    addLog('The fish have died from starvation and stress. Without regular feeding, metabolic function collapsed.','danger');
+    addLog('The fish went without enough food for too long, and the accumulated stress proved fatal.','danger');
     showEnd('crashed');return;
   }
 
@@ -1492,7 +1492,7 @@ function cycleLight(){
 
 function doSeed(){
   if(S.dead||S.won)return;
-  if(S.seeded){addLog('Bacteria starter already added.','');return;}
+  if(S.seeded){addLog('You’ve already added a bacteria starter — no need to add more.','');return;}
   S.seeded=true;
   S.bacA=Math.min(S.bacA+0.18,1);
   S.bacB=Math.min(S.bacB+0.10,1);
@@ -1567,19 +1567,19 @@ function doAct(a){
   if(S.dead||S.won)return;
   if(a==='source'){
     if(S.fishless){
-      if(S.ammSource>=5){addLog('Ammonia source is already sufficient.','warn');return;}
+      if(S.ammSource>=5){addLog('There’s already enough ammonia source in the tank for now.','warn');return;}
       S.ammSource++;
       S.nh3=clamp(S.nh3+.4,0,8);
       addLog('Ammonia added. Cycle progressing.'+( S.ammSource===1?' Bacteria will begin arriving soon.':''),'');
     } else {
-      if(S.fish>=5){addLog('The tank is carrying enough fish for now.','warn');return;}
+      if(S.fish>=5){addLog('This tank has enough fish for now — no need to add more yet.','warn');return;}
       S.fish++;
       addLog('Added a fish. Total: '+S.fish+'.'+( S.fish>2?' Watch ammonia carefully.':''),S.fish>2?'warn':'');
     }
   }
   if(a==='feed'){
-    if(S.fish===0&&S.fishless){addLog('Nothing to feed yet — no fish in a fishless cycle.','');return;}
-    if(S.fish===0){addLog('Add fish first.','');return;}
+    if(S.fish===0&&S.fishless){addLog('There’s nothing to feed yet — this is a fishless cycle, so no fish are waiting on food.','');return;}
+    if(S.fish===0){addLog('Add a fish first, then feeding will do something.','');return;}
     S.feedCount=(S.feedCount||0)+1;
     /* Feeding resets hunger clock */
     S.daysSinceFed=0;
@@ -1598,11 +1598,11 @@ function doAct(a){
       /* Overfeeding always causes problems regardless of cycle stage */
       var overLoad = cycleActive ? S.fish * 0.08 : S.fish * 0.22;
       S.nh3 = clamp(S.nh3 + overLoad, 0, 8);
-      addLog('Fed again. Excess food decomposes faster than bacteria can process — ammonia is rising.', 'warn');
+      addLog('Fed again — with this much food in the water, it’s decomposing faster than the bacteria can keep up, and ammonia is climbing.', 'warn');
     } else if(S.feedCount > 2){
       var bigLoad = cycleActive ? S.fish * 0.14 : S.fish * 0.35;
       S.nh3 = clamp(S.nh3 + bigLoad, 0, 8);
-      addLog('Overfeeding. Uneaten food is polluting the water. Bacteria cannot keep up with this load.', 'danger');
+      addLog('There’s more food going in than the tank can handle — the uneaten portion is breaking down and the bacteria can’t keep pace.', 'danger');
     } else {
       S.nh3 = clamp(S.nh3 + baseLoad, 0, 8);
       var feedMsg = cycleActive
@@ -1613,7 +1613,7 @@ function doAct(a){
   }
   /* water handled by doWaterChange() */
   if(a==='plant'){
-    if(S.plants>=4){addLog('Tank is well planted.','');return;}
+    if(S.plants>=4){addLog('This tank already has plenty of plants.','');return;}
     S.plants++;
     addLog('Plants added. Will absorb nitrate over time.','good');
   }
@@ -1746,7 +1746,7 @@ function updateMiniLog(){
 }
 
 function genLog(){
-  if(S.nh3>2&&S.nh3<=4.5)addLog('Ammonia critically high.'+( S.fish>0?' Fish in acute danger — gills are being damaged.':''),'danger');
+  if(S.nh3>2&&S.nh3<=4.5)addLog('Ammonia is critically high.'+( S.fish>0?' The fish are in real danger here — their gills are being affected. This needs attention now.':''),'danger');
   else if(S.nh3>.5&&S.day%3===0)addLog('Ammonia elevated. Bacteria are building but not yet sufficient.','warn');
   if(S.no2>2&&S.day%2===0)addLog('Nitrite spike. Nitrospira colonies are still establishing — this is the normal mid-cycle pattern, but dangerous for fish.','warn');
   if(S.no3>40&&S.day%5===0)addLog('Nitrate accumulating. A partial water change would help.','warn');
@@ -1755,9 +1755,9 @@ function genLog(){
   if(S.bacB>.3&&S.bacB<.7&&S.day%5===0)addLog('Nitrospira colonies are growing. Nitrite should begin falling soon.','');
   /* Fish health status */
   if(S.fish>0&&S.fishHealth<70&&S.fishHealth>=40&&S.day%3===0)
-    addLog('Fish showing stress signs — slower movement, reduced colour. Health: '+((S.fishHealth||100)).toFixed(0)+'%.','warn');
+    addLog('The fish are showing signs of stress — slower movement, duller colour. Health: '+((S.fishHealth||100)).toFixed(0)+'%.','warn');
   if(S.fish>0&&S.fishHealth<40&&S.day%2===0)
-    addLog('Fish in poor condition. Immune function compromised — disease risk rising. Health: '+((S.fishHealth||100)).toFixed(0)+'%.','danger');
+    addLog('The fish are in poor condition — their immune defences are compromised and disease risk is climbing. Health: '+((S.fishHealth||100)).toFixed(0)+'%.','danger');
 
   /* Narrative logs — biology explanations every few days */
   var narratives=[
@@ -1814,7 +1814,7 @@ function updateGuide(){
   } else if(!S.fishless&&S.fish>0&&S.daysSinceFed>=4){
     /* Fish need feeding */
     pulseBtn='act-feed'; pulseClass='ar-warn';
-    icon='🥣'; text='Fish need feeding — don\'t skip days';
+    icon='🥣'; text='Fish need feeding — try not to miss a day';
     hintShow=true;
   } else if(S.nh3<.3&&S.bacA<.15&&S.day<8){
     pulseBtn=null;
@@ -1824,7 +1824,7 @@ function updateGuide(){
   } else if(S.nh3>3&&S.fish>0){
     /* Ammonia dangerously high with fish — urgent water change */
     pulseBtn='act-water'; pulseClass='ar-stop';
-    icon='🚨'; text='Ammonia critical — water change now';
+    icon='🚨'; text='Ammonia is critical — a water change now would help';
     hintShow=true;
 
   } else if(S.nh3>1.5&&S.no2<.5&&!S.cycleOk){
@@ -1849,7 +1849,7 @@ function updateGuide(){
   } else if(S.totalWc>3&&S.day<20&&!S.cycleOk){
     /* Too many water changes */
     pulseBtn=null;
-    icon='⛔'; text='Too many changes. Stop intervening — let bacteria recover.';
+    icon='⛔'; text='That’s a lot of changes recently — giving the bacteria some room to recover might help now.';
     hintShow=true;
   }
 

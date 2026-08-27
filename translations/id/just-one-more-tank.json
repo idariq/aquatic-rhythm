@@ -1,0 +1,95 @@
+{
+    "_meta": {
+        "slug": "just-one-more-tank",
+        "lang": "id",
+        "sourceFile": "articles/just-one-more-tank.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Satu Tangki Lagi Saja — Aquatic Rhythm",
+        "description": "Ambisi jarang datang sebagai keputusan buruk: ia datang sebagai tawaran murah yang menggiurkan untuk tangki tujuh puluh lima liter. Bagaimana Kapasitas sebelum Ambisi berlaku pada berapa banyak tangki yang diambil penjaga, bukan hanya seberapa menuntut satu tangki.",
+        "ogTitle": "Satu Tangki Lagi Saja",
+        "ogDescription": "Setiap tangki dalam koleksi masuk akal sendiri-sendiri. Yang menentukan adalah apakah totalnya masih muat dalam ritme nyata seorang penjaga."
+    },
+    "intro": {
+        "eyebrow": "Refleksi",
+        "titleHtml": "Satu Tangki<br><em>Lagi Saja</em>",
+        "subtitle": "Ambisi jarang datang sebagai keputusan buruk. Ia datang sebagai tawaran murah yang menggiurkan untuk tangki tujuh puluh lima liter.",
+        "texts": [
+            "Hampir tidak ada penjaga yang memutuskan, dalam satu momen, untuk memelihara lebih banyak tangki daripada yang bisa ia tangani dengan baik. Ini terjadi satu tangki yang terdengar masuk akal demi satu tangki. Seekor ikan selamatan yang butuh tempat tinggal. Spesies yang ternyata tidak bisa sekandang dengan yang sudah ada. Setup yang selalu ingin dicoba, sedang diskon, dengan rak gratis. Setiap tangki secara individu mudah dijustifikasi. Totalnya itulah yang jadi masalah.",
+            "ARA tidak memperlakukan keinginan menambah tangki sebagai cacat karakter. Rasa ingin tahu dan ambisi bagian dari yang membuat hobi ini layak dijalani. Tapi Kapasitas sebelum Ambisi, prinsip yang mengatur seberapa banyak satu tangki boleh menuntut dari penjaga, berlaku sama langsungnya pada berapa banyak tangki yang diambil seorang penjaga, dan ini pertanyaan yang hampir tak pernah ditanyakan siapa pun sebelum tangki berikutnya datang."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~7 menit",
+        "metaLevel": "Refleksi",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Bagaimana ini sebenarnya bertambah",
+            "titleHtml": "Setiap tangki masuk akal <em>dengan sendirinya</em>",
+            "body": [
+                "Pola ini jarang terlihat seperti keberlebihan dari dalam. Tangki kedua menyelesaikan masalah nyata: ikan yang sudah kebesaran untuk setup pertama, atau dua spesies yang ternyata tidak akur. Tangki ketiga harga bagus untuk peralatan yang kalau tidak akan menganggur. Tangki keempat spesies yang sudah lama ingin dipelihara, dan sekarang akhirnya momen yang tepat. Di setiap langkah, keputusannya masuk akal, kadang benar-benar perlu, dan jarang impulsif.",
+                "Yang tidak ditanyakan di langkah mana pun adalah pertanyaan tentang total: bukan \"apakah tangki ini masuk akal,\" tapi \"apakah waktu dan perhatian saya yang tersedia, tersebar di semua tangki yang sudah saya punya, masih cukup untuk satu lagi.\" Pertanyaan pertama mudah dijawab dengan baik. Pertanyaan kedua yang sebenarnya menentukan apakah setiap tangki dalam koleksi mendapat ritme yang ia butuhkan.",
+                "Inilah sebabnya jumlah tangki cenderung tumbuh melampaui apa yang benar-benar bisa ditopang seorang penjaga tanpa pernah terasa seperti satu keputusan buruk terjadi. Tak seorang pun berniat merawat empat tangki di bawah standar. Mereka berniat merawat tangki keempat dengan baik, satu per satu, tanpa menyadari tiga tangki lainnya sudah berjalan mendekati batasnya."
+            ],
+            "pullQuote": "Setiap tangki dalam sebuah koleksi, secara individu, adalah keputusan yang baik. Yang penting adalah apakah jumlah dari semua keputusan baik itu masih muat dalam ritme nyata seorang penjaga.",
+            "prevBtn": "← Intro",
+            "nextBtn": "Ritme tidak berlipat ganda"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Ritme tidak berlipat ganda",
+            "titleHtml": "Satu penjaga, <em>satu ritme yang terbatas</em>",
+            "body": [
+                "Kapasitas sebelum Ambisi biasanya dibahas dalam konteks satu tangki: apakah tingkat kepadatan ikan ini, peralatan ini, tingkat kerumitan ini muat dengan apa yang benar-benar bisa diberikan penjaga. Prinsip yang sama berlaku pada skala sebuah koleksi, dan ini mudah terlewat karena satuan pengukurannya berubah. Kapasitas satu tangki diukur dalam bioload dan filtrasi. Kapasitas sebuah koleksi diukur dengan sesuatu yang lebih blak-blakan: total waktu dan perhatian penjaga yang tersedia, yang tidak bertambah hanya karena satu tangki lagi ditambahkan.",
+                "Penjaga yang secara konsisten memberi perawatan sangat baik pada satu tangki punya sejumlah Keeper Rhythm tertentu untuk dikerjakan. Menambah tangki kedua tidak menciptakan lebih banyak ritme itu. Ia membagi ritme yang sama ke dua sistem. Tangki ketiga membaginya lagi. Tidak ada yang bertambah dari total waktu penjaga setiap minggu hanya karena tangki baru diperoleh; yang bertambah hanyalah jumlah hal yang memperebutkan waktu itu.",
+                "Ini mudah terlewat karena tahap-tahap awal tangki baru biasanya bagian hobi yang paling menarik. Setup yang baru dipasang mendapat perhatian dekat hampir secara otomatis, yang bisa membuat penjaga merasa kapasitas totalnya benar-benar bertambah. Yang sebenarnya terjadi adalah perhatian sementara bergeser ke sistem terbaru, sering kali dengan mengorbankan diam-diam tangki yang dulu mendapat perhatian itu."
+            ],
+            "hintLabel": "Tangki terbaru selalu menang perhatian, untuk sementara",
+            "hintText": [
+                "Setup baru menarik dengan cara yang tidak dimiliki setup yang sudah mapan: ada lebih banyak yang bisa diamati, lebih banyak yang bisa disesuaikan, lebih banyak kemajuan yang terlihat. Tarikan itu normal, tapi layak disebutkan: perhatian yang ditarik tangki baru sering kali dipinjam dari tangki yang, sampai baru-baru ini, mendapatkannya."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Membaca hitungan yang jujur"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Membaca hitungan yang jujur",
+            "titleHtml": "Tangki yang selalu <em>ditunda 'nanti saja'</em>",
+            "body": [
+                "Tanda paling jelas bahwa jumlah tangki sudah melampaui kapasitas bukan krisis di satu tangki tertentu. Biasanya ada satu tangki spesifik yang diam-diam menjadi tangki yang selalu akan diurus nanti. Ganti airnya yang paling dulu tertunda kalau minggu sedang sibuk. Filternya yang belum diperiksa lebih lama daripada yang mau diakui penjaga. Tidak ada yang jelas-jelas bermasalah padanya. Ia hanya konsisten paling terakhir.",
+                "Pola ini layak diperhatikan serius justru karena tidak terlihat seperti penelantaran dari minggu ke minggu. Ganti air yang terlewat pada tangki stabil jarang menyebabkan kerugian yang langsung terlihat, yang membuatnya mudah untuk terus ditunda tanpa pernah menyadari penundaan itu sebagai sebuah keputusan. Erosi Kapasitas menggambarkan pergeseran yang sama dalam satu tangki; di seluruh koleksi, ini muncul sebagai satu tangki yang menyerap kekurangan itu sementara yang lain masih terlihat baik-baik saja.",
+                "Pemeriksaan yang berguna adalah sekadar menyebutkan dengan jujur, tangki mana dalam koleksi yang saat ini mendapat perhatian paling sedikit, dan bertanya kenapa. Kadang jawabannya situasional dan sementara. Tapi sering kali, jawaban jujurnya adalah koleksi itu sudah tumbuh melampaui apa yang bisa ditutupi ritme nyata penjaga secara merata, dan satu tangki sudah diam-diam menyerap celah itu."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Sebelum tangki berikutnya"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Sebelum tangki berikutnya, dan sesudahnya",
+            "titleHtml": "Ambisi tanpa <em>rasa malu</em>",
+            "body": [
+                "Respons yang selaras terhadap ini bukan aturan melarang keinginan menambah tangki. Ini pertanyaan jujur, ditanyakan dengan sungguh-sungguh sebelum tangki berikutnya datang: apakah tangki spesifik ini punya klaim nyata atas waktu yang saat ini tidak sedang dipinjam dari yang lain. Kalau jawaban jujurnya adalah tangki terbaru akan begitu saja mengalahkan tangki yang sudah ada dalam perebutan perhatian, itu layak diketahui sebelum hari pemasangan, bukan ditemukan tiga bulan kemudian.",
+                "Bagi koleksi yang sudah melampaui ritmenya, konsolidasi adalah langkah yang sah dan sering kali paling selaras yang tersedia, bukan sebuah kompromi, dan bukan kegagalan. Memindahtangankan satu tangki ke penjaga yang punya kapasitas untuknya, atau menggabungkan dua setup berkepadatan ringan jadi satu tangki yang dirawat dengan baik, bisa mengubah koleksi sistem yang diam-diam kurang terawat menjadi jumlah yang lebih kecil yang benar-benar mendapat apa yang mereka butuhkan. Koleksi tiga tangki yang terawat baik adalah hasil yang lebih baik, bagi setiap ikan yang terlibat, daripada lima tangki yang masing-masing berjalan sedikit di bawah standar.",
+                "Semua ini bukan tentang ambisi yang salah. Ini tentang mengakui bahwa ambisi, seperti input lain apa pun bagi sebuah tangki, harus ditimbang terhadap kapasitas nyata dan terbatas seorang penjaga, dan bahwa jawaban jujurnya kadang mengarah ke lebih sedikit tangki yang dirawat dengan baik, bukan lebih banyak tangki yang dirawat sekadarnya."
+            ],
+            "hintLabel": "Satu pertanyaan jujur sebelum tangki berikutnya",
+            "hintText": [
+                "Kalau setiap tangki yang Anda punya sekarang mendapat perhitungan yang sepenuhnya jujur tentang waktu yang benar-benar ia terima, apakah tangki baru ini masih akan muat? Bukan secara prinsip, dan bukan dengan disiplin yang lebih baik ke depannya. Dengan ritme yang benar-benar Anda jalani, sekarang."
+            ],
+            "prevBtn": "← Kembali"
+        }
+    ],
+    "relatedLinks": [
+        { "text": "Kenali Ritme Anda →" },
+        { "text": "Erosi Kapasitas →" },
+        { "text": "Merawat Tanpa Rasa Bersalah →" },
+        { "text": "Kerangka ARA →" }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
+    }
+}

@@ -40,6 +40,8 @@ const PRIORITY_SLUGS = [
   'aquarium-not-a-project',
   'capacity-creep',
   'life-change-protocols',
+  'false-maturity',
+  'just-one-more-tank',
   'tank-crash-recovery',
   'adding-new-fish',
   'algae-in-aquarium',

@@ -50,6 +50,8 @@ const SLUG_ORDER = [
   'aquarium-not-a-project',
   'capacity-creep',
   'life-change-protocols',
+  'false-maturity',
+  'just-one-more-tank',
   'when-is-tank-ready-for-fish',
   'know-your-rhythm',
   'four-principles-of-ara',

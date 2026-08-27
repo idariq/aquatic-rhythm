@@ -362,7 +362,7 @@
             buf.split('\n').forEach(feedSseLine);
             buf = '';
             if (!responseText) {
-              responseText = 'Something went wrong — please try again in a moment.';
+              responseText = 'Something went wrong on my end — let\'s try that again in a moment.';
               p.innerHTML = cpMdToHTML(responseText);
             }
             var cleanResponse = responseText.replace(/\[opt\][\s\S]*?\[\/opt\]/g, '').trim() || responseText;
@@ -391,7 +391,7 @@
     .catch(function (err) {
       cpHideTyping();
       console.error('[Rhyssa companion] fetch failed', err && err.message);
-      cpAppendBubble('assistant', 'Something went wrong — please try again in a moment.');
+      cpAppendBubble('assistant', 'Something went wrong on my end — let\'s try that again in a moment.');
       if (cpSendBtn) cpSendBtn.disabled = false;
       cpStreaming = false;
       cpMarkLastReply();

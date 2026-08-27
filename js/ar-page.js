@@ -963,7 +963,7 @@
             buf += dec.decode(chunk.value || new Uint8Array(0), { stream: false });
             buf.split('\n').forEach(feedLine); buf = '';
             if (!responseText) {
-              responseText = 'Something went wrong — please try again in a moment.';
+              responseText = 'Something went wrong on my end — let\'s try that again in a moment.';
               p.innerHTML = mdToHTML(responseText);
             }
             /* Strip [opt] markers before saving to history */
@@ -988,7 +988,7 @@
       return read();
     }).catch(function () {
       hideTyping();
-      appendBubble('assistant', 'Something went wrong — please try again in a moment.');
+      appendBubble('assistant', 'Something went wrong on my end — let\'s try that again in a moment.');
       if (snd) snd.disabled = false;
       isStreaming = false;
     });

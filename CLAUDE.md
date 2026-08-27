@@ -55,6 +55,43 @@ selaras 2-bahasa ni — kalau tambah bahasa baharu di masa depan,
 kemas kini SEMUA tempat ni serentak (senarai penuh dlm §"Pipeline
 Build" di bawah), bukan sebahagian.
 
+### EN sumber KEBENARAN, BUKAN sumber STRUKTUR (keputusan user, 2026-08-27)
+
+`en` kekal sumber kebenaran utk **fakta/skop/maklumat produk** (apa yg
+disebut, angka, nama konsep rasmi ARA) — id/ja MESTI sepadan fakta ni,
+& `subOnce`/`subAll` (padanan exact-substring drpd EN sumber ke fail
+build) kekal senibina asas, BUKAN dibuang. TAPI `en` **BUKAN** sumber
+struktur ayat — id/ja **WAJIB restruktur bebas** (susunan ayat/klausa,
+pemisahan/gabungan perenggan, penekanan, gaya kolokial semula jadi
+bahasa masing²) drpd apa yg terjemahan literal frasa-demi-frasa drpd
+EN akan hasilkan. Terjemah literal struktur EN (subjek — klausa —
+klausa, urutan senarai bertitik, dll.) ke id/ja kedengaran janggal
+walau setiap perkataan betul — pendekatan "pertengahan" ni ditolak
+drpd 2 alternatif ekstrem: (a) terjemah literal penuh (janggal, spt
+bug di bawah), (b) 3 bahasa dicipta serentak tanpa EN sbg sumber
+langsung (ditolak sbb kos senibina — akan pecahkan mekanisme
+`subOnce`/`subAll`, ~35 artikel + 4 templat build sedia ada bergantung
+padanya, & hilang keupayaan kesan-drift automatik `check-i18n-sync.mjs`
+antara EN & id/ja).
+
+Bug konkrit yg justifikasi peraturan ni (dibetulkan PR #462,
+2026-08-27): perenggan Reading tab halaman utama (`.bt.sr.d1`/`.bt.sr.d2`)
+sebelum ni terjemah id/ja frasa-demi-frasa ikut struktur ayat EN
+(termasuk butiran "Latin name only when they help" yg tak perlu
+dinyatakan langsung dlm id/ja) — dikenal pasti janggal oleh user &
+diperbetulkan dgn restruktur ayat, bukan tukar perkataan sahaja.
+**Ni SAMA prinsip** dgn §"AWAS — susunan tatabahasa TIDAK universal
+merentas templat konkatenasi dinamik" & bug Prefix/Suffix Tank Builder
+dlm §"Status Terjemahan Semasa" di bawah (nombor-dulu ja vs
+perkataan-dulu en/id, prefix id vs suffix en/ja utk label enum) — bug²
+tu khusus templat konkatenasi dinamik JS; peraturan ni lanjutkan
+prinsip yg sama ke SEMUA kandungan id/ja (prosa artikel, UI copy,
+tajuk/perenggan statik), bukan setakat templat berubah-ubah. Bila
+terjemah/semak kandungan id/ja baharu, tanya "adakah ayat ni akan
+ditulis begini oleh penutur natif id/ja, atau ia kedengaran spt EN
+diterjemah?" — kalau jawapannya yg kedua, restruktur, jangan sekadar
+tukar istilah.
+
 ### Senibina — TIGA templat halaman berasingan, TIGA skrip build
 
 Laman ni ada 3 "bentuk" HTML struktur berbeza, masing² skrip build

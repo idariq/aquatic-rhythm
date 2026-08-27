@@ -1,0 +1,95 @@
+{
+    "_meta": {
+        "slug": "social-comparison",
+        "lang": "id",
+        "sourceFile": "articles/social-comparison.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Tangki yang Anda Jadikan Pembanding — Aquatic Rhythm",
+        "description": "Anda bukan membandingkan tangki. Anda membandingkan satu foto bagus dengan seluruh minggu biasa Anda. Kenapa budaya aquascape membuat perbandingan ini terasa sangat tajam, dan cara melihat tangki lain tanpa itu merugikan Anda.",
+        "ogTitle": "Tangki yang Anda Jadikan Pembanding",
+        "ogDescription": "Anda bukan membandingkan tangki. Anda membandingkan lima menit terbaik orang lain dengan minggu rata-rata Anda sendiri."
+    },
+    "intro": {
+        "eyebrow": "Refleksi",
+        "titleHtml": "Tangki yang Anda<br><em>Jadikan Pembanding</em>",
+        "subtitle": "Anda bukan membandingkan tangki. Anda membandingkan satu foto bagus dengan seluruh minggu biasa Anda.",
+        "texts": [
+            "Scroll feed aquascape mana pun selama sepuluh menit, dan perasaan yang familiar muncul: tangki Anda sendiri, yang tadi terlihat baik-baik saja sejam lalu, tiba-tiba terasa kurang mengesankan. Tanamannya tak sepadat itu. Layoutnya tak serapi itu. Airnya tak sejernih itu. Tak ada yang berubah pada tangki Anda dalam sepuluh menit itu. Yang berubah adalah apa yang sedang Anda lihat.",
+            "Ini bukan kesombongan, dan ini bukan tanda Anda memelihara tangki dengan alasan yang salah. Ini respons yang bisa diperkirakan terhadap satu jenis ketidaksepadanan tertentu: yang sedang Anda bandingkan bukan tangki lain. Ini satu bingkai yang dipilih dengan cermat dari tangki orang lain, dihadapkan dengan pengalaman penuh dan tanpa saringan dari tangki Anda sendiri."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~7 menit",
+        "metaLevel": "Refleksi",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Yang sebenarnya dibandingkan",
+            "titleHtml": "Sorotan, <em>bukan tangki</em>",
+            "body": [
+                "Foto yang diunggah di internet adalah hasil dari proses seleksi yang tak dilihat kebanyakan orang: puluhan sudut yang dicoba, momen tepat setelah ganti air ketika kaca bersih kinclong dan substrat belum keruh, pencahayaan diatur sampai warna hijaunya terlihat seperti yang diinginkan penjaga. Ini bukan kebohongan. Ini sekadar satu bingkai terbaik dari realitas yang jauh lebih panjang dan jauh lebih berantakan, realitas yang sama yang dimiliki setiap tangki, termasuk yang sedang difoto.",
+                "Tangki Anda sendiri, sebaliknya, adalah sesuatu yang Anda alami secara utuh: alga yang belum sempat Anda bereskan, tanaman yang masih pulih setelah dipindah, silau dari jendela yang tak pernah bagus difoto, hari Selasa biasa ketika tak ada yang terlihat istimewa. Anda bukan membandingkan dua tangki. Anda membandingkan lima menit terbaik orang lain dengan minggu rata-rata Anda sendiri.",
+                "Ketidaksepadanan ini tak hilang dengan kemauan keras. Ia melekat pada apa itu foto dan apa itu pengalaman yang dijalani. Menyadarinya tak menghilangkan dorongan untuk membandingkan, tapi ia mengubah apa yang sebenarnya sedang diukur oleh perbandingan itu, yang ternyata jauh lebih sedikit soal tangki Anda daripada yang terasa pada saat itu."
+            ],
+            "pullQuote": "Tangki dalam foto dan tangki yang sedang Anda hadapi sebenarnya tak pernah dibandingkan dengan setara. Satu adalah momen yang dipilih seseorang untuk disimpan. Yang satu lagi adalah segalanya, termasuk bagian yang tak difoto siapa pun.",
+            "prevBtn": "← Intro",
+            "nextBtn": "Kenapa hobi ini khususnya"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Kenapa hobi ini khususnya",
+            "titleHtml": "Hobi yang dibangun <em>di sekitar momen pamer</em>",
+            "body": [
+                "Beberapa hobi lebih rentan terhadap ini dibanding yang lain, dan memelihara ikan, khususnya aquascape, ada di dekat ujung ekstremnya. Budaya di sekitarnya berjalan atas dasar foto transformasi, entri kontes, dan unggahan \"tur tangki\" yang memang dibuat khusus untuk menunjukkan sistem pada momen paling fotogeniknya. Tak satu pun ini dilakukan dengan niat buruk. Ini sekadar apa yang dihargai oleh format itu, sama seperti platform visual mana pun menghargai satu gambar paling mencolok dibanding rata-ratanya yang jujur.",
+                "Komunitas akuarium daring juga bisa jadi ruang yang tak biasa kritisnya. Tangki yang diunggah untuk minta masukan sering menarik komentar tajam soal pilihan stocking, keputusan hardscape, atau kejernihan air, kadang berguna, kadang cuma keras. Penjaga yang pernah mengalami itu sekali cenderung bersiap menghadapinya setiap kali melihat tangki orang lain juga, yang diam-diam mengarahkan perbandingan ke arah menghakimi ketimbang mengapresiasi.",
+                "Tak satu pun ini membuat hobi ini aneh dengan cara yang buruk; banyak hobi kreatif lain berjalan seperti ini. Tapi ini layak disebut secara khusus, karena penjaga yang tak sadar feednya adalah kumpulan momen terbaik yang memang dirancang begitu akan terus mengukur tangkinya sendiri terhadap itu seolah itu patokan yang adil, dan akan terus kalah dalam perbandingan itu karena cara ia dibangun, bukan karena ada kekurangan nyata pada tangkinya sendiri."
+            ],
+            "hintLabel": "Budaya kritik ini berjalan dua arah",
+            "hintText": [
+                "Penjaga yang pernah menerima kritik keras sekali sering kali jadi lebih keras juga saat mengomentari tangki orang lain, tanpa bermaksud begitu. Menyadari siklus ini sering kali jadi langkah pertama untuk memilih tidak ikut serta di dalamnya, ke arah mana pun."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Jalur yang dibuka perbandingan"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Jalur yang dibuka perbandingan",
+            "titleHtml": "Perbandingan adalah <em>jalan termudah bagi rasa malu</em>",
+            "body": [
+                "Posisi ARA soal rasa malu jelas: rasa malu tak memperbaiki tangki, ia menghasilkan keterputusan, dan keterputusan itulah yang sebenarnya membiarkan masalah tak tertangani. Yang kurang jelas adalah jalur ini tak butuh siapa pun mengucapkan satu kata kritik pun. Scroll melewati tangki yang terlihat lebih mengesankan dari milik Anda bisa memicu rasa tak memadai yang sama seperti yang dipicu komentar keras. Rasa malu itu datang dari perbandingan pribadi, bukan dari apa pun yang benar-benar dilakukan siapa pun terhadap Anda.",
+                "Begitu perasaan itu muncul, urutan biasanya mengikuti: penjaga yang merasa tangkinya kurang mulai sedikit menghindarinya, yang berarti observasi berkurang, yang berarti masalah kecil tak disadari lebih lama, yang akhirnya menghasilkan tepat hasil yang diam-diam disiratkan perbandingan tadi: tangki yang benar-benar tak lagi dibaca dengan saksama. Perbandingan itu menjadi kisah yang mewujudkan dirinya sendiri.",
+                "Ini layak diperhatikan serius justru karena tak terlihat dari luar. Tak seorang pun perlu tahu sebuah perbandingan terjadi agar itu mengubah cara penjaga berhubungan dengan tangkinya sendiri. Seluruh urutan ini bisa berjalan sepenuhnya dalam satu malam scrolling, tanpa pemicu eksternal yang bisa ditunjuk penjaga setelahnya."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Membaca, bukan menilai"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Membaca, bukan menilai",
+            "titleHtml": "Tangki lain sebagai <em>latihan, bukan vonis</em>",
+            "body": [
+                "Cara yang selaras melihat tangki penjaga lain bukan berhenti melihat: ada nilai nyata dalam melihat apa yang dilakukan setup lain, susunan tanaman apa yang berhasil, pilihan hardscape apa yang bertahan baik seiring waktu. Yang berubah adalah untuk apa melihat itu dilakukan. Tangki yang dilihat untuk apa yang bisa diajarkannya adalah sumber daya. Tangki yang dilihat untuk peringkatnya dibanding milik Anda adalah papan skor, dan papan skor dengan satu entri selalu kalah dari kumpulan sorotan dengan ribuan entri.",
+                "Kemanusiaan bersama adalah penawar praktis di sini, dan mudah diterapkan: setiap tangki di setiap foto punya versinya sendiri dari alga yang belum Anda bereskan, tanaman yang berjuang, minggu biasa ketika tak ada yang terlihat istimewa. Versi itu sekadar tak masuk bingkai. Mengingat ini tak perlu mengenal penjaga spesifiknya; ini benar untuk hobi ini secara umum, sama seperti benar untuk tangki Anda.",
+                "Dalam praktiknya, ini bisa sekecil satu kebiasaan: sebelum membandingkan, tanyakan apa yang sebenarnya ditunjukkan sebuah foto, sebuah momen atau sebuah sistem. Momen bisa dikagumi tanpa perlu ditandingi. Sistem bisa dipelajari tanpa perlu dinilai terhadapnya. Kebanyakan yang memicu perbandingan daring adalah jenis pertama yang diperlakukan seolah jenis kedua."
+            ],
+            "hintLabel": "Kalau perbandingan terus menarik Anda keluar jalur",
+            "hintText": [
+                "Menyortir apa yang Anda ikuti bukan penghindaran: ini jenis penilaian kapasitas jujur yang sama yang diterapkan ARA di tempat lain. Kalau satu feed tertentu terus-menerus menghasilkan pola rasa malu-keterputusan ketimbang ide berguna, mundur darinya adalah respons yang selaras, bukan kegagalan tekad."
+            ],
+            "prevBtn": "← Kembali"
+        }
+    ],
+    "relatedLinks": [
+        { "text": "Merawat Tanpa Rasa Bersalah →" },
+        { "text": "Kenapa Penjaga Enggan Minta Tolong →" },
+        { "text": "Ketika Hobi Berhenti Terasa Menyenangkan →" },
+        { "text": "Kerangka ARA →" }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
+    }
+}

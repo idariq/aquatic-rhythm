@@ -52,6 +52,8 @@ const SLUG_ORDER = [
   'life-change-protocols',
   'false-maturity',
   'just-one-more-tank',
+  'social-comparison',
+  'asking-for-help',
   'when-is-tank-ready-for-fish',
   'know-your-rhythm',
   'four-principles-of-ara',

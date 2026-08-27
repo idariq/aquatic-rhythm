@@ -314,6 +314,20 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://aquaticrhythm.com/articles/social-comparison</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aquaticrhythm.com/articles/asking-for-help</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Interactive tools -->
   <url>
     <loc>https://aquaticrhythm.com/articles/tank-simulator</loc>

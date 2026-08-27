@@ -31,7 +31,7 @@
             "titleHtml": "Air keruh adalah salah satu hal<br><em>yang paling umum terjadi.</em>",
             "body": [
                 "Hampir setiap pemelihara pernah mengalami ini. Air berubah warna atau kehilangan kejernihannya, sering tanpa alasan yang jelas. Ikan terlihat baik-baik saja, atau mungkin sedikit tidak bersemangat. Tank itu terlihat salah dengan cara yang sulit dijelaskan.",
-                "Naluri pertama adalah melakukan sesuatu — ganti air besar-besaran, tambahkan produk, mulai dari awal. Itu bisa dipahami. Tapi kekeruhan bukan hukuman. Ini adalah informasi. Dan pertanyaan pertama bukan 'apa yang harus saya lakukan?' — melainkan 'jenis kekeruhan seperti apa ini?'",
+                "Naluri pertama adalah langsung melakukan sesuatu — ganti air besar-besaran, tambahkan produk, mulai dari awal lagi. Itu wajar, tapi terlalu terburu-buru: kekeruhan sendiri cuma memberi tahu bahwa ada yang berubah, bukan apa yang berubah. Sebelum buru-buru mencari solusi, langkah pertama yang lebih berguna adalah kenali dulu jenis kekeruhan yang sebenarnya sedang Anda hadapi.",
                 "Ada tiga jenis kekeruhan utama di akuarium, masing-masing dengan penyebab berbeda dan respons yang berbeda:",
                 "<strong>Putih atau seperti susu</strong> — biasanya ledakan bakteri (bacterial bloom). Jenis yang paling umum di tank baru atau tank yang baru saja terganggu. <strong>Hijau</strong> — alga bersel satu yang melayang di kolom air, biasanya karena terlalu banyak cahaya atau nutrisi berlebih. <strong>Kuning atau kecokelatan</strong> — tanin yang keluar dari kayu apung atau daun kering, yang sepenuhnya aman dan alami."
             ],
@@ -75,9 +75,9 @@
             "hintText": [
                 "Tidak setiap perubahan yang terlihat adalah sinyal untuk intervensi. Beberapa adalah transisi, beberapa adalah adaptasi, dan beberapa perlu diamati dulu sebelum bisa dibaca dengan jujur. Air keruh biasanya termasuk dalam kategori ini."
             ],
-            "hintLabel2": "Telusuri penyebabnya, bukan sekadar angka",
+            "hintLabel2": "Kekeruhan menyebut kategori, bukan penyebab",
             "hintText2": [
-                "Kekeruhan itu yang Anda lihat. Apa yang menghasilkannya — gangguan pada koloni bakteri, nutrisi berlebih, bahan yang larut — adalah yang sebenarnya terjadi. Membaca jenis kekeruhan adalah langkah pertama menuju apa yang menghasilkannya. Respons yang menangani penyebabnya mencegah kekeruhan dari berulang."
+                "Yang Anda lihat adalah airnya sendiri. Apa yang sebenarnya menghasilkannya — koloni bakteri yang masih menyesuaikan diri, nutrisi yang menumpuk, sesuatu yang baru dan sedang larut — terjadi di tempat yang tidak bisa Anda lihat langsung. Mengenali jenis kekeruhannya dulu itulah yang menunjukkan penyebab sebenarnya, dan respons yang menangani penyebab itulah yang mencegah kekeruhan datang lagi."
             ],
             "prevBtn": "← Kembali",
             "nextBtn": "Apa yang perlu dilakukan sekarang"

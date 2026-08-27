@@ -528,8 +528,8 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
 
 
     <div class="hn">
-      <span class="hn-label">Fase ini bukan penilaian tentang diri Anda</span>
-      <p>Melihat ikan berjuang atau mati selama fase cycling menghasilkan jenis tekanan tertentu — perasaan bahwa Anda melakukan sesuatu yang salah meskipun Anda mengikuti setiap saran yang bisa Anda temukan. Perasaan itu nyata, dan layak diakui. Yang bukan adalah umpan balik akurat tentang kompetensi Anda sebagai penjaga. New tank syndrome adalah fase biologis yang dilalui setiap tangki, bukan cerminan tentang siapa yang merawatnya. Dorongan untuk bertindak — menambahkan sesuatu, mengubah sesuatu, memperbaiki sesuatu — adalah wajar. Duduk dengan observasi ketika nalurinya adalah untuk berintervensi adalah salah satu keterampilan yang lebih sulit dalam hobi ini, dan fase inilah di mana sebagian besar penjaga pertama kali mempelajarinya.</p>
+      <span class="hn-label">Tekanannya nyata; menyalahkan diri tidak beralasan</span>
+      <p>Melihat ikan berjuang selama proses cycling menghasilkan tekanan tertentu — perasaan bahwa Anda pasti melakukan sesuatu yang salah, meski sudah mengikuti semua saran yang ada. Perasaan itu layak diakui. Tapi itu tidak mencerminkan kompetensi Anda sebagai pemelihara: setiap tangki melewati fase biologis ini, siapa pun yang merawatnya. Belajar duduk dengan pengamatan, bukan langsung berintervensi, adalah salah satu keterampilan yang lebih sulit dalam hobi ini — dan fase inilah biasanya tempat pemelihara pertama kali mempraktikkannya.</p>
     </div>
     <div class="hn">
       <span class="hn-label">Perspektif Aquatic Rhythm</span>
@@ -628,11 +628,6 @@ function updateDots(){
   if(bar) bar.style.setProperty('--prog', Math.round((currentMod/totalMods)*100)+'%');
   if(lbl) lbl.textContent=ntsT('moduleProgress', {n: currentMod, total: totalMods});
 }
-
-/* Init — show intro first */
-(function(){
-  updateDots();
-})();
 
 /* ═══════════════════════════════════════
    CANVAS VISUALS — user controlled
@@ -824,6 +819,12 @@ function ntsDay(n) {
   if (lang === 'id') return 'Hari ' + n;
   return 'Day ' + n;
 }
+
+/* Init — show intro first. Must run after NTS_STRINGS/ntsT above are
+   defined, since updateDots() reads from that table. */
+(function(){
+  updateDots();
+})();
 
 /* Theme-aware canvas colors — light mode gets an aqua-toned backdrop
    instead of the dark "night water" gradient. Registered draw() calls

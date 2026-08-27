@@ -42,6 +42,8 @@ const PRIORITY_SLUGS = [
   'life-change-protocols',
   'false-maturity',
   'just-one-more-tank',
+  'social-comparison',
+  'asking-for-help',
   'tank-crash-recovery',
   'adding-new-fish',
   'algae-in-aquarium',

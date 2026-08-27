@@ -35,7 +35,7 @@
                 "Lakukan ganti air 25–30% dengan air yang disesuaikan suhu dan sudah dechlorinate — ini mengurangi konsentrasi zat beracun tanpa mengganggu koloni bakteri yang tersisa. Jangan lakukan ganti air penuh: itu membuang bakteri di media filter dan permukaan, dan bisa mengubah kimia air secara mendadak. Ganti air sebagian adalah tindakan yang seimbang.",
                 "Jika CO2 diinjeksikan, hentikan injeksi segera. Jika Anda mencurigai kontaminan kimia (detergen, insektisida dari ruangan sebelah, obat yang overdosis), ganti air yang lebih besar mungkin diperlukan — tapi lakukan secara bertahap, bukan sekaligus."
             ],
-            "pullQuote": "Dalam crash, naluri adalah untuk bertindak. Respons yang tepat adalah membaca — dan bertindak berdasarkan apa yang bacaan katakan, bukan apa yang panik sarankan.",
+            "pullQuote": "Dalam crash, naluri adalah untuk bertindak. Respons yang tepat adalah membaca — dan bertindak berdasarkan apa yang bacaan katakan, bukan dorongan panik semata.",
             "prevBtn": "← Intro",
             "nextBtn": "Apa yang menyebabkannya"
         },
@@ -61,8 +61,8 @@
             "titleHtml": "Kebanyakan crash<br><em>bisa dipulihkan.</em>",
             "body": [
                 "Kebanyakan crash bisa dipulihkan dengan waktu dan respons yang konsisten. Pertanyaannya adalah apakah biologi bisa dibentuk kembali lebih cepat dari penghuni yang tersisa bisa menanggung tekanan yang berkelanjutan.",
-                "Faktor yang mendukung pemulihan: koloni bakteri hanya terganggu sebagian, tidak dihapus (filter masih berjalan sepanjang waktu, meski terlalu terbebani); ikan yang tersisa tidak dalam kesusahan berat (masih makan, bergerak normal, tidak terus-menerus megap-megap); penyebab crash teridentifikasi dan bisa ditangani; akuarium memiliki sejarah stabilitas sebelum crash.",
-                "Faktor yang membuat pemulihan sulit: filter berjalan kering untuk waktu yang lama (koloni mati sepenuhnya, perlu siklus ulang); ikan yang tersisa dalam kondisi buruk (terus megap-megap, berbaring di substrat, tidak merespons); penyebab crash tidak bisa diidentifikasi; akuarium baru dan tidak pernah stabil sepenuhnya.",
+                "Beberapa faktor mendukung pemulihan. Koloni bakteri cuma terganggu sebagian, bukan hilang total — filter tetap berjalan meski kewalahan. Ikan yang tersisa juga tidak dalam kondisi kritis: masih mau makan, gerakannya normal, tidak terus-menerus megap-megap. Penyebab crash sudah diketahui dan bisa ditangani. Akuarium ini juga punya rekam jejak stabil sebelum crash terjadi.",
+                "Sebaliknya, beberapa faktor membuat pemulihan lebih sulit. Filter yang mati total dalam waktu lama — koloni bakterinya sudah habis sepenuhnya, perlu siklus ulang dari awal. Ikan yang tersisa dalam kondisi buruk: terus megap-megap, berbaring di substrat, tidak merespons. Penyebab crash tidak bisa diidentifikasi. Akuarium masih baru dan belum pernah benar-benar stabil.",
                 "Jika koloni bakteri perlu dibentuk kembali, prosesnya memerlukan waktu seperti siklus baru — empat hingga delapan minggu. Selama itu, ikan yang ada dalam bahaya jika tetap di sistem. Pilihan yang sulit: pertahankan ikan di akuarium yang sedang dipulihkan dengan manajemen intensif (ganti air harian, pemberian makan minimum), atau pindahkan sementara ke setup lain."
             ],
             "hintLabel": "Kabar baiknya",

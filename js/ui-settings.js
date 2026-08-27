@@ -301,7 +301,7 @@
           closePanel();
           location.reload();
         } catch (e) {
-          alert('Could not import — file does not appear to be a valid Aquatic Rhythm journal backup.');
+          alert('Couldn\'t import this file — it doesn\'t look like a valid Aquatic Rhythm journal backup. Your existing journal here hasn\'t been touched.');
         }
       };
       reader.readAsText(file);

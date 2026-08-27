@@ -531,8 +531,8 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
 
 
     <div class="hn">
-      <span class="hn-label">This phase isn't a verdict on you</span>
-      <p>Watching fish struggle or die during the cycling phase produces a specific kind of distress — the feeling that you are doing something wrong even when you are following every piece of advice you could find. That feeling is real, and it is worth acknowledging. What it is not is accurate feedback about your competence as a keeper. New tank syndrome is a biological phase every tank moves through, not a reflection on who is tending it. The impulse to act — to add something, change something, fix something — is natural. Sitting with observation when the instinct is to intervene is one of the harder skills in this hobby, and this phase is where most keepers first learn it.</p>
+      <span class="hn-label">The distress is real; the self-blame isn't warranted</span>
+      <p>Watching fish struggle during cycling produces a specific kind of distress — the sense that you must be doing something wrong, even while following every piece of advice you could find. That deserves acknowledgment. What it doesn't track is your competence as a keeper: every tank passes through this biological phase, regardless of who's tending it. Learning to sit with observation instead of reaching to intervene is one of the harder skills in this hobby, and this phase is usually where keepers first practice it.</p>
     </div>
     <div class="hn">
       <span class="hn-label">Aquatic Rhythm perspective</span>
@@ -631,11 +631,6 @@ function updateDots(){
   if(bar) bar.style.setProperty('--prog', Math.round((currentMod/totalMods)*100)+'%');
   if(lbl) lbl.textContent=ntsT('moduleProgress', {n: currentMod, total: totalMods});
 }
-
-/* Init — show intro first */
-(function(){
-  updateDots();
-})();
 
 /* ═══════════════════════════════════════
    CANVAS VISUALS — user controlled
@@ -827,6 +822,12 @@ function ntsDay(n) {
   if (lang === 'id') return 'Hari ' + n;
   return 'Day ' + n;
 }
+
+/* Init — show intro first. Must run after NTS_STRINGS/ntsT above are
+   defined, since updateDots() reads from that table. */
+(function(){
+  updateDots();
+})();
 
 /* Theme-aware canvas colors — light mode gets an aqua-toned backdrop
    instead of the dark "night water" gradient. Registered draw() calls

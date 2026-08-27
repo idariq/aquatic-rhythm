@@ -530,8 +530,8 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
 
 
     <div class="hn">
-      <span class="hn-label">この段階は、あなたへの評価ではありません</span>
-      <p>サイクル中に魚が苦しんだり死んだりするのを見るのは、独特のつらさを生みます。見つけられる限りのアドバイスに従っていても、何か間違ったことをしているのではないかという感覚です。その感覚は本物であり、認める価値があります。ただし、それは飼育者としての力量を正しく示すものではありません。ニュータンクシンドロームは、どの水槽も通る生物学的な段階であって、世話をしている人を映すものではありません。何かを加えたい、変えたい、直したいという衝動は自然なものです。介入したい本能を抑えて見守ることは、この趣味の中でも難しいスキルのひとつであり、多くの飼育者が最初にそれを学ぶのがこの段階です。</p>
+      <span class="hn-label">その苦しさは本物です。でも自分を責める必要はありません</span>
+      <p>サイクリング中に魚が苦しむのを見るのは、独特のつらさを生みます——見つけられる限りのアドバイスに従っていても、何か間違ったことをしているに違いないという感覚です。それは認める価値のある感覚です。ただ、それはあなたの飼育者としての力量を示すものではありません。どの水槽も、世話をしているのが誰であれ、この生物学的な段階を通過します。介入したい衝動を抑えて観察に徹することは、この趣味の中でも難しいスキルのひとつであり、たいていの飼育者が最初にそれを練習するのがこの段階です。</p>
     </div>
     <div class="hn">
       <span class="hn-label">Aquatic Rhythmの視点</span>
@@ -630,11 +630,6 @@ function updateDots(){
   if(bar) bar.style.setProperty('--prog', Math.round((currentMod/totalMods)*100)+'%');
   if(lbl) lbl.textContent=ntsT('moduleProgress', {n: currentMod, total: totalMods});
 }
-
-/* Init — show intro first */
-(function(){
-  updateDots();
-})();
 
 /* ═══════════════════════════════════════
    CANVAS VISUALS — user controlled
@@ -826,6 +821,12 @@ function ntsDay(n) {
   if (lang === 'id') return 'Hari ' + n;
   return 'Day ' + n;
 }
+
+/* Init — show intro first. Must run after NTS_STRINGS/ntsT above are
+   defined, since updateDots() reads from that table. */
+(function(){
+  updateDots();
+})();
 
 /* Theme-aware canvas colors — light mode gets an aqua-toned backdrop
    instead of the dark "night water" gradient. Registered draw() calls

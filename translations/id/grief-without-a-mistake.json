@@ -1,0 +1,95 @@
+{
+  "_meta": {
+    "slug": "grief-without-a-mistake",
+    "lang": "id",
+    "sourceFile": "articles/grief-without-a-mistake.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Duka Tanpa Kesalahan — Aquatic Rhythm",
+    "description": "Bukan setiap kehilangan adalah crash yang perlu diselidiki. Ketika ikan tua mencapai akhir hidup yang panjang, tak ada jejak untuk ditelusuri dan tak ada pelajaran untuk diambil — hanya sebuah akhir, dan duka yang tetap nyata walau tanpa kesalahan di baliknya.",
+    "ogTitle": "Duka Tanpa Kesalahan",
+    "ogDescription": "Bukan setiap kehilangan adalah masalah yang perlu didiagnosis."
+  },
+  "intro": {
+    "eyebrow": "Refleksi",
+    "titleHtml": "Duka Tanpa<br><em>Kesalahan</em>",
+    "subtitle": "Bukan setiap kehilangan adalah masalah yang perlu didiagnosis.",
+    "texts": [
+      "Kebanyakan tulisan tentang kehilangan ikan mengasumsikan ada sesuatu untuk dipelajari darinya: parameter yang bergeser, langkah yang terlewat, pelajaran untuk lain kali. Itu sungguh berguna ketika memang ada yang keliru.",
+      "Sebagian kehilangan tidak seperti itu. Seekor ikan tua, dipelihara bertahun-tahun, sekadar mencapai akhir dari hidup yang panjang. Tak ada jejak untuk ditelusuri dan tak ada kesalahan di baliknya. Artikel ini membahas jenis kehilangan itu, dan mengapa duka yang menyertainya layak mendapat tempatnya sendiri juga."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~6 menit",
+    "metaLevel": "Refleksi",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Kematian yang bukan misteri",
+      "titleHtml": "Ketika tak ada <em>yang perlu diselidiki</em>",
+      "body": [
+        "Hampir semua yang ditulis tentang kehilangan ikan dibangun di atas satu pertanyaan: apa yang terjadi, dan apa artinya untuk lain kali. Pertanyaan itu sungguh berguna setelah crash, penyakit, atau parameter air yang diam-diam bergeser ke tempat yang seharusnya tidak. Membaca kehilangan untuk mencari pelajaran sering kali hal paling produktif yang bisa dilakukan seorang penjaga dengannya.",
+        "Sebagian kehilangan sama sekali tidak menawarkan pertanyaan itu. Seekor ikan yang dipelihara bertahun-tahun, jauh melampaui perkiraan kebanyakan panduan untuk spesiesnya, sekadar melambat lalu berhenti. Tak ada apa pun sebelumnya yang bisa ditunjuk siapa pun. Tak ada tes yang bisa menangkapnya lebih awal, karena memang tak ada yang perlu ditangkap. Ini sekadar hewan tua yang mencapai akhir dari hidup yang panjang, sama seperti setiap makhluk lain pada akhirnya.",
+        "Kehilangan semacam ini nyaris tak pernah disebut di mana pun dalam hobi ini. Tak ada solusi yang bisa ditawarkan untuknya dan tak ada kesalahan yang bisa dihindari siapa pun, sehingga kebanyakan panduan begitu saja melewatinya menuju bagian pemecahan masalah berikutnya."
+      ],
+      "pullQuote": "Sebagian kematian adalah pelajaran yang menunggu untuk dibaca. Sebagian lagi sekadar sebuah akhir. Keduanya nyata, dan hanya satu yang membawa sesuatu untuk dipelajari.",
+      "prevBtn": "← Intro",
+      "nextBtn": "Duka tanpa izin"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Duka tanpa izin",
+      "titleHtml": "Kehilangan yang terasa <em>sulit dijelaskan</em>",
+      "body": [
+        "Ikan tidak mendapat kedudukan sosial yang sama seperti kucing atau anjing. Kebanyakan orang tidak akan berpikir dua kali kalau seseorang mengambil cuti sehari setelah kehilangan anjing yang lama dipeliharanya. Reaksi yang sama terhadap kehilangan seekor ikan, bahkan yang diamati dekat bertahun-tahun, bisa memancing kebingungan tulus dari orang-orang yang sebenarnya bermaksud baik tapi tidak memahami konteksnya.",
+        "Jarak antara apa yang sebenarnya dirasakan sebuah kehilangan dan apa yang diharapkan orang lain untuk dirasakan punya nama: duka yang tak diakui (disenfranchised grief), duka yang tidak diakui secara sosial sebagai duka. Itu tidak membuat perasaannya kurang nyata. Ia hanya berarti seorang penjaga yang sedang menjalaninya sering melakukannya dengan dukungan yang lebih sedikit daripada yang seharusnya diterima kehilangan itu, dan kadang dengan perasaan pribadi bahwa reaksinya entah bagaimana berlebihan.",
+        "Biasanya tidak. Seorang penjaga yang mengamati satu hewan selama bertahun-tahun mempelajari kebiasaan khususnya: di mana ia beristirahat, bagaimana ia menyambut waktu makan, seperti apa keadaan normalnya cukup baik untuk menyadari ketika ada yang berubah. Kedekatan semacam itu adalah hubungan yang nyata, dibangun dengan cara yang sama seperti hubungan dengan makhluk hidup mana pun dibangun, melalui perhatian berulang sepanjang waktu. Kehilangannya adalah kehilangan yang nyata, terlepas dari apakah orang-orang di sekitar penjaga segera memahaminya."
+      ],
+      "hintLabel": "Apa yang TIDAK diklaim di sini",
+      "hintText": [
+        "Ini tentang pengalaman penjaga, bukan klaim tentang apa yang dirasakan atau dipahami seekor ikan. Hubungan yang dibangun penjaga melalui bertahun-tahun mengamati satu hewan itu nyata di pihak penjaga, terlepas dari apa yang terjadi di pihak ikan, dan itu sudah cukup untuk membuat duka itu sah."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Kenapa kehilangan ini terasa lebih asing"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Kenapa kehilangan ini terasa lebih asing",
+      "titleHtml": "Tak ada jejak <em>untuk disalurkan</em>",
+      "body": [
+        "Setelah sebuah crash, biasanya ada proses. Uji airnya. Telusuri apa yang berubah. Baca urutan kejadiannya sampai masuk akal. Proses itu praktis, dan ia juga kebetulan memberi duka tempat untuk disalurkan. Menyelidiki sebuah kehilangan adalah, antara lain, cara untuk duduk bersamanya tanpa harus duduk bersamanya secara langsung.",
+        "Kehilangan karena usia tua tidak menawarkan jalan keluar itu. Tak ada air untuk diuji dan tak ada protokol untuk ditinjau, karena tak ada yang gagal. Tangkinya baik-baik saja. Rutinitasnya baik-baik saja. Satu-satunya yang terjadi adalah sebuah hidup yang panjang berakhir seperti hidup yang panjang biasa berakhir. Tanpa tugas untuk menyibukkan kesedihan itu, duka bisa terasa lebih asing dan lebih sulit ditempatkan dibanding kehilangan dengan penyebab yang jelas, meski sebenarnya sering kali jauh lebih sederhana dalam segala hal lain."
+      ],
+      "pullQuote": "Sebuah crash memberi duka sebuah tugas untuk dikerjakan. Usia tua tidak, dan tugas yang hilang itu sering kali yang membuat jenis kehilangan ini terasa jauh lebih sulit ditemukan tempatnya.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Apa yang sebenarnya tepat di sini"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Apa yang sebenarnya tepat di sini",
+      "titleHtml": "Tak ada yang <em>perlu diperbaiki</em>",
+      "body": [
+        "Tak ada daftar periksa untuk yang satu ini, karena tak ada yang perlu dikoreksi. Yang sebenarnya berguna lebih kecil dari itu: mengakui bahwa duka ini nyata, terlepas dari apakah hobi ini secara luas biasa membicarakannya, dan membiarkannya menjadi apa adanya tanpa mencari-cari pelajaran yang memang tidak ada.",
+        "Sebagian penjaga merasa terbantu dengan menandai kehilangan itu dengan cara kecil. Catatan terakhir di jurnal. Semenit hening di depan tangki sebelum mengubah apa pun. Tak ada cara yang salah untuk melakukan ini, dan tak ada kewajiban untuk melakukannya sama sekali. Yang lebih penting adalah tidak buru-buru menuju ikan berikutnya pada jadwal tertentu, entah itu hari yang sama atau berbulan-bulan kemudian. Menambah stok baru sesuai jadwal orang lain, atau di bawah tekanan halus untuk \"melanjutkan hidup,\" cenderung merugikan baik dukanya maupun tangkinya.",
+        "Tangkinya sendiri tidak butuh apa pun yang berbeda selama ini berlangsung. Ia terus berjalan persis seperti sebelumnya, tetap stabil, tetap layak untuk didatangi. Duka dan tangki yang selaras dengan baik tidak saling bertentangan. Tangkinya sekadar terus melakukan apa yang biasa ia lakukan, sementara sisanya diproses dengan waktunya sendiri."
+      ],
+      "hintLabel": "Kalau kehilangan itu datang lewat crash, bukan usia tua",
+      "hintText": [
+        "Ketika sebuah kehilangan mengikuti crash tangki, bukan usia tua, ada sisi teknis yang juga perlu dijalani selain yang ini. <a href=\"/articles/tank-crash-recovery\" style=\"color:var(--th-accent);text-decoration:none\">Pemulihan Akuarium Setelah Crash</a> membahas respons langsungnya, berdampingan dengan dukanya sendiri."
+      ],
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Merawat Tanpa Rasa Bersalah →" },
+    { "text": "Apa yang Diberikan Tangki Kepada Anda →" },
+    { "text": "Ketika Hobi Berhenti Terasa Menyenangkan →" },
+    { "text": "Kerangka ARA →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

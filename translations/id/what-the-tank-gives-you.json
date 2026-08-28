@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "slug": "what-the-tank-gives-you",
+    "lang": "id",
+    "sourceFile": "articles/what-the-tank-gives-you.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Apa yang Diberikan Tangki Kepada Anda — Aquatic Rhythm",
+    "description": "Kebanyakan panduan menjelaskan apa yang dibutuhkan tangki dari penjaganya. Yang ini membahas arah sebaliknya — apa yang diam-diam diberikan kembali oleh perhatian yang konsisten terhadap akuarium kecil.",
+    "ogTitle": "Apa yang Diberikan Tangki Kepada Anda",
+    "ogDescription": "Perawatan itu bukan cuma mengalir satu arah."
+  },
+  "intro": {
+    "eyebrow": "Refleksi",
+    "titleHtml": "Apa yang Diberikan<br><em>Tangki Kepada Anda</em>",
+    "subtitle": "Perawatan itu bukan cuma mengalir satu arah.",
+    "texts": [
+      "Hampir semua panduan akuarium menggambarkan hubungan satu arah. Penjaga menyediakan: ganti air, pemberian pakan, pengujian, koreksi. Tangki menerima. Itu tidak salah, tapi ia melewatkan separuh dari apa yang sebenarnya terjadi di ruangan itu.",
+      "Yang ini membahas arah sebaliknya. Bukan apa yang dibutuhkan tangki dari penjaga, melainkan apa yang diam-diam diberikan kembali oleh perhatian yang konsisten terhadap sistem hidup yang kecil — dan mengapa ini klaim yang nyata, bukan sekadar kalimat manis di penutup panduan perawatan."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~7 menit",
+    "metaLevel": "Refleksi",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Arah yang diasumsikan kebanyakan panduan",
+      "titleHtml": "Hubungan yang <em>ditulis satu arah</em>",
+      "body": [
+        "Lembar perawatan, panduan parameter air, kalkulator kepadatan ikan — hampir semua yang ditulis tentang merawat tangki menggambarkannya dari satu arah saja. Penjaga melakukan sesuatu, dan tangki merespons dengan tetap hidup atau tidak. Kerangka itu masuk akal untuk mengatasi masalah. Tapi ia deskripsi yang buruk untuk apa yang sebenarnya dirasakan saat duduk bersama tangki yang stabil dan sudah selaras, setelah masalah yang jadi fokus kerangka itu sebagian besar sudah teratasi.",
+        "Tangki dalam kondisi itu tidak sekadar meminta lebih sedikit. Ia juga menjadi sesuatu yang dihabiskan waktu bersamanya, bukan sekadar dihabiskan waktu untuknya. Pergeseran itu jarang disebut langsung, karena kebanyakan konten ada untuk memperbaiki sesuatu, dan hubungan yang berjalan baik dengan sebuah tangki bukan masalah yang perlu diperbaiki. Mudah saja terus menulis panduan yang tidak pernah menyebutnya sama sekali.",
+        "Menyebutnya penting karena alasan praktis. Penjaga yang hanya pernah mendengar tentang apa yang dibutuhkan tangki mulai mengalami waktunya sendiri bersama tangki sebagai biaya murni, sesuatu yang harus diminimalkan. Sebagian dari biaya itu memang nyata. Tapi sebagian waktu yang dihabiskan mengamati tangki sebenarnya juga memberi sesuatu kepada penjaga, dan memperlakukan semuanya sebagai overhead melewatkan apa yang sebenarnya terjadi."
+      ],
+      "pullQuote": "Kebanyakan yang ditulis tentang merawat tangki menjelaskan apa yang dibutuhkan tangki dari Anda. Jauh lebih sedikit yang membahas apa yang sebenarnya Anda terima dari memberi perhatian padanya — dan itu bukan kelalaian kecil.",
+      "prevBtn": "← Intro",
+      "nextBtn": "Jenis perhatian yang memulihkan"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Jenis perhatian yang memulihkan",
+      "titleHtml": "Tidak semua perhatian <em>berharga sama</em>",
+      "body": [
+        "Riset tentang perhatian membedakan dua mode. Yang pertama adalah perhatian terarah, fokus yang disengaja dan penuh usaha, dipakai untuk bekerja, mengambil keputusan, dan apa pun yang menuntut konsentrasi aktif. Ini berguna, dan juga terbatas. Sehari penuh perhatian terarah membuat kebanyakan orang jadi lebih mudah tersinggung, sulit berkonsentrasi, dan lebih rentan membuat kesalahan kecil, perubahan yang bisa diukur.",
+        "Yang kedua adalah perhatian tak sengaja, keterlibatan yang terjadi tanpa usaha karena sesuatu secara alami menarik minat. Mengamati air yang bergerak. Mengikuti seekor hewan yang melayang melewati sebuah pemandangan. Mode ini tidak menguras cadangan yang sama. Dalam kondisi yang tepat, ia bahkan bisa memulihkan mode pertama tadi.",
+        "Tangki ternyata cocok untuk menghasilkan mode kedua ini. Ada cukup banyak hal yang terjadi untuk menahan minat, jalur seekor ikan melewati air, kemiringan perlahan sebuah tanaman ke arah cahaya, tanpa satu pun menuntut keputusan pada saat mengamatinya. Tidak ada yang perlu diselesaikan. Itulah kualitas yang membuatnya memulihkan, bukan melelahkan, dan ini efek nyata yang bisa diukur secara fisiologis, bukan sekadar metafora."
+      ],
+      "hintLabel": "Apa yang benar-benar didukung riset",
+      "hintText": [
+        "Studi tentang pengamatan akuarium menemukan penurunan denyut jantung dan tekanan darah yang terukur saat mengamati, dengan efek lebih besar pada tangki yang lebih beragam secara biologis. Ini efek modulasi pada penanda stres, bukan pengobatan untuk kondisi klinis apa pun. Lebih mirip efek jalan kaki singkat di luar ruangan daripada sesuatu yang bersifat medis."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Satu-satunya alam yang didapat sebagian penjaga"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Satu-satunya alam yang didapat sebagian penjaga",
+      "titleHtml": "Sistem hidup, <em>di dalam ruangan, sesuai jadwal</em>",
+      "body": [
+        "Bagi banyak penjaga, terutama di apartemen dan kota padat, kontak rutin dengan sesuatu yang hidup dan bukan manusia sungguh jarang terjadi. Hari-hari bisa berlalu sepenuhnya di dalam ruangan, sepenuhnya di antara benda-benda yang dibangun, bukan yang tumbuh. Tangki yang berjalan tenang di sebuah ruangan akhirnya mengisi celah yang jarang disadari kebanyakan orang.",
+        "Ini bukan pengganti waktu di luar ruangan, dan tidak perlu ada yang berpura-pura begitu. Ini bentuk kontak yang nyata dengan sistem hidup, yang kebetulan tersedia setiap hari, di rumah, tanpa perlu rencana atau perjalanan. Manusia tampaknya punya orientasi bawaan terhadap makhluk hidup yang tidak dipenuhi lingkungan tak hidup dengan cara yang sama, dan akuarium adalah salah satu cara paling andal bagi kehidupan di dalam ruangan untuk memenuhi kebutuhan itu.",
+        "Tak satu pun dari ini bergantung pada seberapa rumit tangkinya. Tampilan aquascape yang padat maupun tangki yang ditata sederhana sama-sama memenuhi syarat, karena yang penting adalah ada sesuatu yang hidup di ruangan itu, merespons dunia dengan caranya sendiri. Ini juga tidak bergantung pada bagaimana penjaga mendekati perawatan. Tangki yang diperiksa dengan rutinitas ketat dan terjadwal memberikan efek ini sama besarnya dengan tangki yang diamati secara longgar dan sering, karena yang menghasilkan efek ini adalah sistem hidup itu sendiri, bukan gaya perawatan tertentu."
+      ],
+      "pullQuote": "Akuarium bukan pengganti alam terbuka. Bagi banyak penjaga, ia sekadar alam yang benar-benar terjangkau pada hari Selasa yang biasa.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Apa yang sebenarnya berubah"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Apa yang sebenarnya berubah",
+      "titleHtml": "Bukan pengganti <em>perawatan rutin</em>",
+      "body": [
+        "Tak satu pun dari ini berargumen untuk menukar perawatan rutin dengan sekadar duduk dan mengamati. Keduanya tidak saling bersaing. Penjaga yang menguji air sesuai jadwal tetap, mencatat parameter dengan cermat, dan menjaga rutinitas yang ketat dan disiplin tidak kehilangan apa pun dari ini hanya karena perhatiannya terorganisir, bukan longgar. Efeknya tidak khusus untuk momen yang tak terstruktur. Ia muncul di menit biasa saat mengamati ikan sambil menambah air, atau melirik tangki selama pemeriksaan rutin.",
+        "Yang layak disadari lebih kecil dari sekadar praktik baru untuk ditambahkan. Waktu bersama tangki bukan sekadar biaya murni yang harus dipangkas setiap kali hidup jadi sibuk. Sebagian darinya juga memberi sesuatu kepada penjaga, diam-diam, terlepas dari apakah mereka pernah memikirkannya dengan istilah itu. Itu layak dihitung sebagai hal nyata, bukan disimpan sebagai perasaan bonus lembut yang agak berlebihan untuk dinikmati.",
+        "Lain kali sebuah malam mencakup beberapa menit tanpa tergesa di depan kaca, waktu itu tidak terbuang, dan ia tidak terpisah dari perawatan itu sendiri. Ia bagian dari apa hubungan ini sebenarnya."
+      ],
+      "hintLabel": "Dari mana riset di balik ini berasal",
+      "hintText": [
+        "Artikel ini merujuk pada teori pemulihan perhatian (Kaplan &amp; Kaplan) dan riset biofilia (Wilson; Nisbet, Zelenski &amp; Murphy) — basis bukti yang sama yang membuat ARA memperlakukan observasi sebagai bagian nyata dari praktik, bukan sekadar langkah diagnostik. <a href=\"/articles/ara-s6-ethics\" style=\"color:var(--th-accent);text-decoration:none\">Etika &amp; Kerangka yang Hidup</a> membahas gambaran lebih lengkapnya."
+      ],
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Kenali Ritme Anda →" },
+    { "text": "Kenapa Sukar Berhenti Memelihara Akuarium →" },
+    { "text": "Merawat Tanpa Rasa Bersalah →" },
+    { "text": "Kerangka ARA →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

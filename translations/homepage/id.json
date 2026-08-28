@@ -317,6 +317,14 @@
             "keeper-your-tank-needs": {
                 "title": "Penjaga yang Sebenarnya Dibutuhkan Tangki Anda<br><em>Bukan yang tak pernah salah.</em>",
                 "desc": "Melainkan yang terus belajar membacanya. Kenapa ideal mengikuti aturan yang dikejar banyak pemelihara justru membuat mereka kurang siap, dibanding model yang lebih jujur meski tak serapi itu."
+            },
+            "what-the-tank-gives-you": {
+                "title": "Apa yang Diberikan Tangki Kepada Anda<br><em>Perawatan itu bukan cuma mengalir satu arah.</em>",
+                "desc": "Kebanyakan panduan menjelaskan apa yang dibutuhkan tangki dari penjaganya. Yang ini membahas arah sebaliknya — apa yang diam-diam diberikan kembali oleh perhatian yang konsisten, dan mengapa ini klaim yang nyata, bukan sekadar kalimat manis."
+            },
+            "grief-without-a-mistake": {
+                "title": "Duka Tanpa Kesalahan<br><em>Bukan setiap kehilangan adalah masalah yang perlu didiagnosis.</em>",
+                "desc": "Ketika ikan tua mencapai akhir hidup yang panjang, tak ada jejak untuk ditelusuri dan tak ada pelajaran untuk diambil — hanya sebuah akhir, dan duka yang tetap nyata walau tanpa kesalahan di baliknya."
             }
         },
         "closing_cta": {

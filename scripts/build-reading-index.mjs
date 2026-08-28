@@ -43,6 +43,8 @@ const SLUG_ORDER = [
   'ich-keeps-coming-back',
   'fish-flashing-scratching',
   'ph-keeps-crashing',
+  'clamped-fins-fin-rot',
+  'white-fuzz-driftwood',
   'tank-crash-recovery',
   'aquarium-plants-not-growing',
   'low-tech-planted-tank',

@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "slug": "white-fuzz-driftwood",
+    "lang": "id",
+    "sourceFile": "articles/white-fuzz-driftwood.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Bulu Putih di Kayu Apung Anda — Aquatic Rhythm",
+    "description": "Kayu apung baru sering menumbuhkan bulu putih seperti kapas dalam beberapa minggu pertama di tank. Apa sebenarnya itu, kenapa tidak berbahaya, dan satu situasi di mana layak diperhatikan lebih dekat.",
+    "ogTitle": "Bulu Putih di Kayu Apung Anda",
+    "ogDescription": "Ini bukan jamur, dan bukan kesalahan."
+  },
+  "intro": {
+    "eyebrow": "Semua level",
+    "titleHtml": "Bulu Putih<br><em>di Kayu Apung Anda</em>",
+    "subtitle": "Ini bukan jamur, dan bukan kesalahan.",
+    "texts": [
+      "Satu-dua minggu setelah menambahkan kayu apung baru, muncul pertumbuhan putih lembut seperti kapas di sebagian permukaannya — kadang berbercak, kadang menutupi area yang luas. Kelihatannya persis seperti hal yang seharusnya tidak ada di akuarium.",
+      "Panduan ini menjelaskan apa sebenarnya bulu itu, kenapa ia bukan tanda ada yang salah, dan satu situasi di mana layak diamati lebih dekat."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~6 menit",
+    "metaLevel": "Semua level",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Membaca sinyal",
+      "titleHtml": "Kelihatannya persis<br><em>seperti jamur. Itulah masalahnya.</em>",
+      "body": [
+        "Kayu apung baru di tank yang baru disiapkan sering menumbuhkan lapisan putih lembut seperti kapas dalam satu sampai tiga minggu pertama — kadang berbercak, kadang menutupi hampir seluruh permukaan yang terendam. Di bawah pencahayaan akuarium, ini bisa terlihat sangat mirip jamur yang mungkin ditemukan seseorang di roti basi, dan asosiasi itulah yang bikin ini mengkhawatirkan.",
+        "Naluri yang muncul setelahnya hampir selalu sama: menggosoknya sampai hilang, mencabut kayunya dan merebusnya lagi, atau mulai mencari water conditioner yang katanya bisa mengatasinya. Tidak satu pun respons itu sepenuhnya salah, tapi tidak satu pun juga benar-benar perlu, dan menggosoknya secara khusus bisa membatalkan sesuatu yang sebenarnya sedang bekerja untuk kebaikan kayu itu.",
+        "Pertumbuhan ini salah satu sinyal \"tank baru\" yang paling dapat diandalkan dalam hobi ini — cukup umum sampai kebanyakan pemelihara berpengalaman nyaris tidak menyadarinya lagi, dan cukup membingungkan sampai hampir setiap pemelihara baru mengalaminya setidaknya sekali dan jadi khawatir."
+      ],
+      "hintLabel": "Apa yang bukan",
+      "hintText": [
+        "Ini bukan hal yang sama dengan jamur yang tumbuh di ikan sakit, dan bukan sama dengan alga. Ini biofilm — koloni mikroorganisme yang hidup di permukaan kayu — dan biofilm jenis ini adalah salah satu hal paling wajar yang dihasilkan sistem akuatik tertutup."
+      ],
+      "prevBtn": "← Intro",
+      "nextBtn": "Apa yang sebenarnya terjadi"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Apa yang sebenarnya terjadi",
+      "titleHtml": "Kayunya melepaskan<br><em>persis apa yang seharusnya.</em>",
+      "body": [
+        "Kayu apung bukan benda mati. Bahkan setelah dikeringkan dan diproses, ia masih menyimpan gula, pati, dan senyawa organik lain yang larut di dalam strukturnya — sisa dari waktu ia masih jaringan tumbuhan hidup. Terendam air, senyawa itu perlahan larut keluar lewat permukaan kayu, dan itu sumber makanan yang sangat baik dan mudah diakses buat bakteri dan jamur yang secara alami sudah ada di tank mana pun yang sedang cycle atau sudah mapan.",
+        "Bulu putih itu adalah koloni yang memakan persis materi yang dilepaskan kayu tadi. Ini paling umum terjadi pada kayu yang belum sepenuhnya jenuh air sebelum dimasukkan ke tank, karena kayu yang lebih kering cenderung menyimpan lebih banyak gula yang bisa diakses di permukaan dibanding kayu yang sudah direndam atau direbus lama sebelumnya.",
+        "Karena ia memakan pasokan yang terbatas, pertumbuhan ini mengikuti pola yang bisa diprediksi: muncul dalam satu-dua minggu pertama, sering kelihatan paling dramatis di suatu titik dalam jendela itu, lalu menipis dan akhirnya hilang sendiri begitu gula yang mudah diakses di kayu itu habis dimakan."
+      ],
+      "pullQuote": "Bulu itu bukan tanda kayu mencemari tank. Ini tanda biologi tank menemukan sesuatu untuk dimakan — yang lebih dekat ke sistem yang bekerja dibanding sistem yang gagal.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Amati dulu sebelum menghilangkan"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Amati dulu sebelum menghilangkan",
+      "titleHtml": "Biarkan, dan amati<br><em>siapa yang tertarik padanya.</em>",
+      "body": [
+        "Di sebagian besar kasus, respons yang selaras adalah cukup membiarkannya. Menggosoknya sampai hilang tidak mempercepat proses yang mendasarinya — kayunya masih punya gula yang sama untuk dilepaskan — dan bisa mengganggu sementara permukaan kayu beserta biofilm bermanfaat apapun yang sudah mulai terbentuk di situ. Bulu itu hampir selalu tumbuh lagi dalam beberapa hari setelah dihilangkan, persis karena alasan ini.",
+        "Banyak udang, siput, otocinclus, dan bristlenose pleco menganggap biofilm ini sebagai hal baik yang aktif, bukan masalah — ini sumber makanan gratis yang sungguhan, dan tank dengan spesies-spesies ini sering melihat bulu itu dimakan habis lebih cepat dibanding kalau dibiarkan hilang sendiri. Kalau ada yang akan menghilangkannya untuk Anda, biasanya penghuni tank itu sendiri, bukan sikat gosok.",
+        "Satu situasi yang layak diperhatikan lebih dekat adalah kayu apung baru yang ditambahkan ke tank yang sudah mapan dan stabil, bukan setup yang baru — materi permukaan yang terurai bisa sedikit menggeser kadar amonia atau tanin seiring ia menyesuaikan diri. Itu alasan untuk mengamati parameter selama satu-dua minggu setelah menambahkan kayu ke tank yang sudah ada, bukan alasan untuk khawatir soal bulunya sendiri."
+      ],
+      "hintLabel": "Kapan sebenarnya layak diperhatikan lebih dekat",
+      "hintText": [
+        "Tanda kekhawatiran yang sungguhan terlihat berbeda dari bulu biasa: pertumbuhan yang menyebar jauh melewati kayu ke substrat atau dekorasi, bau busuk yang kuat, atau ikan yang menunjukkan tekanan bersamaan dengannya. Biofilm kayu apung biasa tidak berbau atau berbau tanah samar, terbatas di kayunya sendiri, dan sama sekali tidak berhubungan dengan bagaimana ikan berperilaku."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Respons yang selaras"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Respons yang selaras",
+      "titleHtml": "Biarkan prosesnya berjalan.<br><em>Ia punya titik akhir.</em>",
+      "body": [
+        "Respons yang selaras, di kasus biasa, adalah tidak melakukan apapun di luar perawatan normal dan membiarkan kayu menghabiskan gula permukaannya sendiri — biasanya soal beberapa minggu. Tidak ada perawatan yang benar-benar mempercepat ini secara berarti, dan tidak ada kerugian cuma dengan menunggunya.",
+        "Kalau penampilannya benar-benar mengganggu dan Anda tidak mau menunggu, sikat lembut dengan sikat gigi lama saat ganti air rutin menghilangkan bulu yang terlihat tanpa perlu mencabut kayunya. Ia sangat mungkin tumbuh lagi sampai gula yang mudah diakses habis, yang memang diharapkan begitu, bukan tanda upaya pertama gagal.",
+        "Kalau kayu apung baru ditambahkan ke tank yang sudah mapan, jalankan cek parameter normal selama satu-dua minggu setelahnya — bukan karena bulunya, tapi karena materi baru yang terurai apapun layak dipastikan tidak menggeser sistem yang sebelumnya stabil. Kayunya sendiri tidak butuh apapun dari Anda di luar itu."
+      ],
+      "pullQuote": "Sepotong kayu baru yang mencari pijakannya di tank kelihatan lebih berantakan dibanding tank yang sudah mapan. Itu jadwal, bukan masalah yang perlu diselesaikan.",
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "New Tank Syndrome →" },
+    { "text": "Kenapa air akuarium saya keruh? →" },
+    { "text": "Kerangka ARA →" },
+    { "text": "Tanya Rhyssa →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

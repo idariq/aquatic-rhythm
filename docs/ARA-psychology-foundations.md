@@ -9,7 +9,9 @@ This document establishes the psychological grounding of the ARA framework. It i
 
 The psychological foundations documented here are not decorative additions to the framework. They explain *why* ARA is structured the way it is: why observation is positioned as a primary tool, why shame is explicitly rejected, why the framework builds keeper competence rather than prescribing rules, and why the keeper-as-participant framing is not just philosophical but functionally important.
 
-This document is the source for future articles, tools, and features that address keeper psychology. Content derived from it should be grounded here, not invented independently.
+This document is the primary source for future articles, tools, and features that address keeper psychology, and remains the required grounding for any *specific* psychological claim — a named theory, a cited study, an effect size. It stays the authority on those.
+
+The sourcing rule is not a hard gate on topic choice, though. Content that serves ARA's actual end goal — guiding keepers, and giving them a non-judgmental, safe place to land — can be considered even when it isn't traceable to one of the four foundations below, as long as it doesn't borrow psychological authority it hasn't earned (no invented studies, no unsupported claims dressed as research). New territory should be checked against the ethics in "Principles for ARA Content and Language" below (no shame, competence over compliance, difficulty framed as investigable, not evidential) rather than requiring a literal citation match to this document.
 
 ---
 
@@ -282,4 +284,4 @@ Based on these foundations, the following articles would be grounded in this psy
 ---
 
 *Internal reference — Aquatic Rhythm, 2025*
-*For content derived from this document: ensure claims are traceable to the research cited here, not to popularised secondary sources.*
+*For content making a specific psychological claim (a named theory, a cited study, an effect size): ensure it's traceable to the research cited here, not to popularised secondary sources. Content that doesn't make that kind of claim, but still serves the end goal of guiding keepers with a non-judgmental, safe place to land, doesn't need a literal source match here — it needs to uphold the ethics above (no shame, competence not compliance, difficulty framed as investigable, not evidential).*

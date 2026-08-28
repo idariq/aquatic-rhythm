@@ -325,6 +325,14 @@
             "grief-without-a-mistake": {
                 "title": "Duka Tanpa Kesalahan<br><em>Bukan setiap kehilangan adalah masalah yang perlu didiagnosis.</em>",
                 "desc": "Ketika ikan tua mencapai akhir hidup yang panjang, tak ada jejak untuk ditelusuri dan tak ada pelajaran untuk diambil — hanya sebuah akhir, dan duka yang tetap nyata walau tanpa kesalahan di baliknya."
+            },
+            "learning-to-read-not-fix": {
+                "title": "Belajar Membaca, Bukan Belajar Memperbaiki<br><em>Keduanya terlihat seperti perawatan yang sama dari luar.</em>",
+                "desc": "Aturan dan membaca terlihat seperti keterampilan yang sama. Sebenarnya tidak. Kenapa yang satu berhenti berkembang di batas apa yang ditulis untuknya, dan kenapa yang lain terus mendalam."
+            },
+            "the-tank-you-didnt-start": {
+                "title": "Tangki yang Bukan Anda yang Memulainya<br><em>Membaca sistem yang bukan Anda bangun sendiri punya kesulitannya tersendiri.</em>",
+                "desc": "Mengambil alih akuarium milik orang lain berarti membaca sistem tanpa patokan Anda sendiri. Kenapa ini lebih sulit dari kelihatannya, dan apa yang benar-benar membantu."
             }
         },
         "closing_cta": {

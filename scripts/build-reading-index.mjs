@@ -58,6 +58,8 @@ const SLUG_ORDER = [
   'keeper-your-tank-needs',
   'what-the-tank-gives-you',
   'grief-without-a-mistake',
+  'learning-to-read-not-fix',
+  'the-tank-you-didnt-start',
   'when-is-tank-ready-for-fish',
   'know-your-rhythm',
   'four-principles-of-ara',

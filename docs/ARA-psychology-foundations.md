@@ -243,6 +243,8 @@ Derived from these four foundations, the following principles govern how ARA con
 
 **6. Keeper rhythm is ecological, not moral.** Inconsistent maintenance is a variable to understand and work with, not a character flaw to correct. Language reflects this.
 
+**7. Convention is not the enemy.** Principle 3 ("competence, not compliance") describes what ARA *teaches* — it is not licence to cast keepers who follow checklists, keep a strict schedule, or stay active in forums as naive foils to a wiser "reader." Those are valid, often excellent, approaches, and many of the most capable keepers in the hobby practise them well. Content that questions rule-following as a strategy should aim at the anxiety or shame a keeper feels toward *themselves* when the rules don't hold up, not at a caricature of the rule-following keeper. Watch for this especially in ART- and SDT-grounded pieces (reading vs. rules, observation vs. checklists), where the contrast is easiest to overstate into disrespect for convention.
+
 ---
 
 ## Implications for Future Articles

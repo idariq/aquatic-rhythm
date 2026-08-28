@@ -67,6 +67,8 @@ const PRIORITY_SLUGS = [
   'low-tech-planted-tank',
   'community-fish-tank',
   'ich-keeps-coming-back',
+  'fish-flashing-scratching',
+  'ph-keeps-crashing',
   'why-is-my-aquarium-water-cloudy',
   'aquarium-travel-vacation',
   'when-is-tank-ready-for-fish',

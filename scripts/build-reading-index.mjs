@@ -41,6 +41,8 @@ const SLUG_ORDER = [
   'fish-keep-dying-new-tank',
   'perfect-parameters-fish-dying',
   'ich-keeps-coming-back',
+  'fish-flashing-scratching',
+  'ph-keeps-crashing',
   'tank-crash-recovery',
   'aquarium-plants-not-growing',
   'low-tech-planted-tank',

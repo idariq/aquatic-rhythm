@@ -342,6 +342,20 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://aquaticrhythm.com/articles/what-the-tank-gives-you</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aquaticrhythm.com/articles/grief-without-a-mistake</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Interactive tools -->
   <url>
     <loc>https://aquaticrhythm.com/articles/tank-simulator</loc>

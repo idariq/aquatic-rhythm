@@ -46,6 +46,8 @@ const PRIORITY_SLUGS = [
   'asking-for-help',
   'hard-to-quit',
   'keeper-your-tank-needs',
+  'what-the-tank-gives-you',
+  'grief-without-a-mistake',
   'tank-crash-recovery',
   'adding-new-fish',
   'algae-in-aquarium',

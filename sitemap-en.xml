@@ -377,6 +377,13 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://aquaticrhythm.com/articles/two-people-one-tank</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Interactive tools -->
   <url>
     <loc>https://aquaticrhythm.com/articles/tank-simulator</loc>

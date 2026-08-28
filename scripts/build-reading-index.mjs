@@ -61,6 +61,7 @@ const SLUG_ORDER = [
   'learning-to-read-not-fix',
   'the-tank-you-didnt-start',
   'the-tank-nobody-else-sees',
+  'two-people-one-tank',
   'when-is-tank-ready-for-fish',
   'know-your-rhythm',
   'four-principles-of-ara',

@@ -1,0 +1,97 @@
+{
+  "_meta": {
+    "slug": "ph-keeps-crashing",
+    "lang": "id",
+    "sourceFile": "articles/ph-keeps-crashing.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Kenapa pH Terus Anjlok — Aquatic Rhythm",
+    "description": "pH bisa anjlok tiba-tiba di tank yang kelihatan benar-benar stabil sehari sebelumnya. Apa sebenarnya yang dilindungi KH, kenapa ia diam-diam habis, dan cara memperbaiki anjlok pH tanpa mengejutkan tank untuk kedua kalinya.",
+    "ogTitle": "Kenapa pH Terus Anjlok",
+    "ogDescription": "Parameter yang stabil dan buffer yang stabil bukan hal yang sama."
+  },
+  "intro": {
+    "eyebrow": "Semua level",
+    "titleHtml": "Kenapa pH<br><em>Terus Anjlok</em>",
+    "subtitle": "Parameter yang stabil dan buffer yang stabil bukan hal yang sama.",
+    "texts": [
+      "Tank yang beberapa hari lalu hasil tesnya benar-benar normal sekarang menunjukkan pH turun satu poin penuh, dengan ikan megap-megap, berenang liar, atau diam di dasar. Amonia dan nitrit sama-sama nol. Tidak ada yang jelas-jelas ditambahkan atau diubah.",
+      "Panduan ini menjelaskan apa yang sebenarnya menjaga pH tetap stabil, kenapa perlindungan itu diam-diam habis bahkan di tank yang dirawat dengan baik, dan cara memperbaiki anjlok pH tanpa mengejutkan tank untuk kedua kalinya."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~8 menit",
+    "metaLevel": "Semua level",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Membaca sinyal",
+      "titleHtml": "Tank yang baik-baik saja<br><em>kemarin, tapi tidak hari ini.</em>",
+      "body": [
+        "Anjlok pH jarang kelihatan seperti masalah yang bertahap. Amonia yang naik pelan-pelan setidaknya memberi peringatan seiring kenaikannya. Anjlok pH biasanya muncul sebagai tank yang beberapa hari lalu hasil tesnya benar-benar normal, lalu sekarang menunjukkan angka satu poin penuh lebih rendah atau lebih, dengan ikan megap-megap di permukaan, berenang liar, atau diam di dasar.",
+        "Bagian yang membingungkan adalah tidak ada hal lain yang kelihatan salah. Amonia dan nitrit sama-sama bisa terbaca nol. Filter berjalan normal. Tidak ada yang jelas-jelas ditambahkan atau diubah. Itulah yang bikin anjlok pH terasa tidak adil — tank kelihatan stabil sampai tiba-tiba tidak lagi.",
+        "Sebenarnya ia tidak pernah benar-benar stabil. pH tidak bertahan stabil dengan sendirinya — ada sesuatu yang lain yang menjaganya, bekerja diam-diam di latar belakang, dan sesuatu itu habis sebelum ada yang sempat mengeceknya."
+      ],
+      "hintLabel": "Apa sebenarnya yang diukur",
+      "hintText": [
+        "Tes pH cuma memberi tahu di mana posisi air saat ini. Ia tidak memberi tahu berapa banyak kapasitas yang tersisa untuk menjaganya tetap di situ — itu pengukuran yang berbeda, dan itulah yang jarang dilakukan kebanyakan pemelihara."
+      ],
+      "prevBtn": "← Intro",
+      "nextBtn": "Apa yang sebenarnya terjadi"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Apa yang sebenarnya terjadi",
+      "titleHtml": "KH adalah buffernya.<br><em>pH cuma yang dilindunginya.</em>",
+      "body": [
+        "Yang menjaga pH tetap stabil adalah kesadahan karbonat, atau KH — ukuran seberapa banyak asam yang bisa diserap air sebelum pH benar-benar bergeser. Anggap saja sebagai bantalan: selama KH di atas nol, asam yang masuk diserap bantalan itu, bukan langsung menggeser pH. Begitu KH mencapai nol, tidak ada lagi yang tersisa untuk menyerap asam berikutnya, dan pH turun cepat — sering kali dalam semalam.",
+        "<strong>Nitrifikasi sendiri menghasilkan asam.</strong> Bakteri yang sama yang mengubah amonia jadi nitrat menghabiskan KH sebagai hasil sampingan dari proses itu. Tank yang padat penghuni dengan siklus nitrogen yang sehat terus-menerus menghabiskan buffer-nya sendiri, ada atau tidak ada yang menambahkan sesuatu yang asam.",
+        "<strong>Air sumber yang lunak sejak awal cuma punya sedikit buffer.</strong> Air RO, air hujan, atau air keran yang secara alami lunak di beberapa daerah membawa KH nyaris nol sejak awal — tidak ada bantalan untuk dihabiskan sejak awal.",
+        "<strong>Tanin kayu apung dan CO2 injeksi</strong> sama-sama mendorong ke arah asam juga, dan di tank berbunga tanaman dengan CO2 injeksi, efeknya bertambah bersamaan dengan KH yang sudah dihabiskan siklus nitrogen."
+      ],
+      "pullQuote": "pH tidak anjlok karena ada sesuatu yang asam ditambahkan. Ia anjlok karena sesuatu yang diam-diam melindunginya akhirnya habis.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Amati dulu sebelum memperbaiki"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Amati dulu sebelum memperbaiki",
+      "titleHtml": "Tes buffernya,<br><em>bukan cuma angkanya.</em>",
+      "body": [
+        "Kalau anjlok pH sudah terjadi, naluri pertama adalah memperbaiki pH langsung dan segera — biasanya dengan ganti air besar-besaran. Naluri itu masuk akal, tapi perlu satu langkah hati-hati dulu: cek pH dan KH air sumber Anda sendiri sebelum memakainya dalam volume besar.",
+        "Ganti air besar ke tank yang sudah anjlok ke pH 5.5 memakai air keran di pH 7.5 menciptakan lonjakan mendadak dan besar ke arah sebaliknya, yang jadi guncangan tersendiri — kadang lebih buruk buat ikan dibanding anjlok pelan sebelumnya. Ganti air sebagian yang lebih kecil dan lebih sering memindahkan tank kembali secara bertahap, bukan mengoreksi berlebihan dalam satu langkah.",
+        "Tes KH bersamaan dengan pH ke depannya, bukan cuma ketika sesuatu sudah terlanjur salah. Test kit KH murah, dan bacaan yang trennya menuju nol adalah peringatan dini yang sebenarnya — terlihat berminggu-minggu sebelum pH sendiri menunjukkan perubahan apapun."
+      ],
+      "hintLabel": "Kebiasaan dua angka",
+      "hintText": [
+        "Tes pH saja memberi tahu di mana posisi air. Tes KH bersamaan memberi tahu berapa banyak sisa waktu sebelum ia bergeser lagi. Pemelihara yang memantau keduanya jarang kaget dengan anjlok mendadak — mereka melihat buffernya menipis jauh sebelum pH benar-benar turun."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Respons yang selaras"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Respons yang selaras",
+      "titleHtml": "Bangun kembali buffernya,<br><em>lalu jaga stoknya.</em>",
+      "body": [
+        "Segera setelah anjlok, prioritaskan koreksi bertahap dibanding satu perbaikan dramatis. Beberapa ganti air kecil selama satu-dua hari, cek pH dan KH di antaranya, memindahkan tank kembali tanpa menumpuk guncangan kedua di atas yang pertama.",
+        "Untuk perbaikan jangka panjang, tambahkan KH kembali ke sistem secara sengaja, bukan berharap ganti air berikutnya kebetulan mengandung cukup. Karang hancur atau aragonit di filter atau substrat larut perlahan dan menaikkan KH secara pasif seiring waktu. Produk buffer cair atau bubuk memberi kontrol yang lebih langsung dan segera kalau butuh koreksi lebih cepat.",
+        "Kalau air sumber yang lunak adalah penyebab utamanya, menyesuaikan remineralizer dengan air Anda di setiap ganti air menjaga KH tidak mulai dari nyaris nol setiap kali, alih-alih baru bereaksi setelah ia sudah terhabiskan lagi."
+      ],
+      "pullQuote": "Solusinya bukan memaksa pH tetap diam. Solusinya adalah memberi air itu kembali sesuatu untuk menjaganya sendiri.",
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Kenapa nitrat terus naik? →" },
+    { "text": "Seberapa sering ganti air? →" },
+    { "text": "Kerangka ARA →" },
+    { "text": "Tanya Rhyssa →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

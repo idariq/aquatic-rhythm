@@ -155,9 +155,9 @@
             "ey": "Bacaan",
             "h1": "Baca sesuai<br><em style=\"font-style:italic;color:var(--th-accent)\">ritme Anda sendiri.</em>",
             "sub1": "Panduan ekologi singkat — dipecah menjadi blok-blok kecil agar Anda bisa membaca di ponsel, berhenti sejenak, lalu lanjut lagi. Bahasa sederhana dulu; nama Latin hanya bila membantu.",
-            "sub2_pre": "Ekologi dan perilaku dalam bahasa sederhana · keeper rhythm dan ARA. ",
+            "sub2_pre": "Ini mencakup ekologi, perilaku, ritme perawatan, dan ARA. Kalau Anda lebih suka mencoba langsung, ",
             "sub2_link": "Lab &amp; alat",
-            "sub2_post": " untuk simulator ada di tab sendiri."
+            "sub2_post": " interaktif tersedia di tab sendiri."
         },
         "misc": {
             "interactive_tag": "Interaktif",
@@ -285,6 +285,38 @@
             "aquarium-not-a-project": {
                 "title": "Akuarium Bukan Sebuah Proyek<br><em>Tahu kapan harus berhenti menyempurnakan adalah bagian dari praktiknya.</em>",
                 "desc": "Dorongan untuk meningkatkan, menambah, dan mengoptimalkan adalah bagian dari menjadi seorang penjaga — tapi itu juga bisa jadi hal yang paling mengganggu tangki yang sudah selaras dengan baik. Panduan ini menelusuri perbedaan antara perubahan yang melayani ekosistem dan perubahan yang melayani kegelisahan penjaga."
+            },
+            "capacity-creep": {
+                "title": "Erosi Kapasitas<br><em>Penurunan kualitas perawatan yang perlahan dan tak disadari.</em>",
+                "desc": "Hampir tak ada masalah akuarium kronis yang bermula dari satu keputusan buruk. Biasanya bermula dari rutinitas yang perlahan bergeser, satu langkah kecil yang selalu terasa masuk akal. Kenapa pergeseran ini sulit disadari dari dalam, dan dua cara jujur untuk menangkapnya."
+            },
+            "life-change-protocols": {
+                "title": "Protokol Perubahan Hidup<br><em>Tangki tidak berhenti ketika hidup berubah.</em>",
+                "desc": "Bepergian, sakit, pekerjaan baru, bayi baru lahir — apa yang sebenarnya disarankan ARA untuk penurunan kapasitas pemelihara yang singkat, berkepanjangan, atau permanen, dan kenapa respons yang tepat sepenuhnya bergantung pada berapa lama perubahan itu berlangsung."
+            },
+            "false-maturity": {
+                "title": "Kematangan Palsu<br><em>Tangki bisa lulus semua tes dan tetap belum siap.</em>",
+                "desc": "Sebagian tangki terbaca stabil di angka tanpa pernah membangun kedalaman ekologis yang jadi dasar kestabilan sesungguhnya. Kenapa test kit tak bisa menangkapnya, satu-satunya tes yang benar-benar berhasil, dan apa yang harus dilakukan begitu Anda mengenalinya."
+            },
+            "just-one-more-tank": {
+                "title": "Satu Tangki Lagi Saja<br><em>Ambisi jarang datang sebagai keputusan buruk.</em>",
+                "desc": "Kapasitas sebelum Ambisi juga berlaku pada berapa banyak tangki yang dipelihara seseorang, bukan sekadar seberapa menuntut satu tangki. Kenapa ritme perawatan terbagi, bukan berlipat ganda, dan cara mengenali saat koleksi sudah melampaui kapasitas."
+            },
+            "social-comparison": {
+                "title": "Tangki yang Anda Jadikan Pembanding<br><em>Anda bukan membandingkan tangki.</em>",
+                "desc": "Anda membandingkan satu foto bagus dengan seluruh minggu biasa Anda sendiri. Kenapa budaya aquascaping membuat perbandingan ini terasa lebih tajam, dan cara melihat tangki orang lain tanpa harus membayar harganya."
+            },
+            "asking-for-help": {
+                "title": "Kenapa Penjaga Enggan Minta Tolong<br><em>Pertanyaan yang paling lama tak terucap.</em>",
+                "desc": "Tangki crash tiga hari lalu, dan Anda masih belum mengunggahnya. Kenapa keraguan itu biasanya bukan soal pertanyaan tersulit, dan seperti apa sebenarnya bertanya dengan baik."
+            },
+            "hard-to-quit": {
+                "title": "Kenapa Sukar Berhenti Memelihara Akuarium<br><em>Bukan ikannya yang membuat Anda bertahan.</em>",
+                "desc": "Tapi keinginan tahu apa yang terjadi selanjutnya. Kenapa hobi ini tetap bertahan melewati kesulitan nyata dengan cara yang jarang dimiliki hobi lain, dan apa sebenarnya daya tarik itu."
+            },
+            "keeper-your-tank-needs": {
+                "title": "Penjaga yang Sebenarnya Dibutuhkan Tangki Anda<br><em>Bukan yang tak pernah salah.</em>",
+                "desc": "Melainkan yang terus belajar membacanya. Kenapa ideal mengikuti aturan yang dikejar banyak pemelihara justru membuat mereka kurang siap, dibanding model yang lebih jujur meski tak serapi itu."
             }
         },
         "closing_cta": {
@@ -364,7 +396,7 @@
             "state_just_starting": "Baru mulai",
             "filter_care_label": "Perawatan dilakukan",
             "filter_clear_btn": "Hapus semua filter",
-            "filter_no_results": "Tidak ada entri yang cocok dengan filter ini.",
+            "filter_no_results": "Tidak ada entri yang cocok dengan filter ini — coba longgarkan sedikit.",
             "load_more_btn": "Tampilkan entri lama",
             "export_json_btn": "Ekspor JSON",
             "export_csv_btn": "Ekspor CSV",

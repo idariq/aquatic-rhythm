@@ -581,8 +581,8 @@ def build_reading(h, lang, u):
     h = replace_once(h, r'(<p class="bt sr d1"[^>]*>)[\s\S]*?(<\/p>)',
                       lambda m: m.group(1) + hdr["sub1"] + m.group(2), "reading sub1")
     h = replace_once(h,
-        r'(<p class="bt sr d2"[^>]*>)Ecology and behaviour in plain language · keeper rhythm and ARA\. '
-        r'(<a href="/tools"[^>]*>)Labs &amp; tools(<\/a>) for simulators live on their own tab\.(<\/p>)',
+        r'(<p class="bt sr d2"[^>]*>)This covers ecology, behaviour, keeper rhythm, and ARA\. If you.d rather try things hands-on, the interactive '
+        r'(<a href="/tools"[^>]*>)Labs &amp; tools(<\/a>) live on their own tab\.(<\/p>)',
         lambda m: m.group(1) + hdr["sub2_pre"] + m.group(2) + hdr["sub2_link"] + m.group(3) + hdr["sub2_post"] + m.group(4),
         "reading sub2")
 
@@ -893,7 +893,7 @@ def build_tank_log_dashboard(h, lang, u):
         block = t1(block, r'(data-filter-state="just-starting">)Just starting(<\/button>)', x["state_just_starting"], "state just-starting")
         block = t1(block, r'(jn-filter-label">)Care done(<\/span>)', x["filter_care_label"], "filter care label")
         block = t1(block, r'(id="jn-filter-clear"[^>]*>)Clear all filters(<\/button>)', x["filter_clear_btn"], "filter clear btn")
-        block = t1(block, r'(id="jn-filter-no-results"[^>]*>)No entries match these filters\.(<\/p>)',
+        block = t1(block, r'(id="jn-filter-no-results"[^>]*>)No entries match these filters — try loosening them a little\.(<\/p>)',
                    x["filter_no_results"], "filter no results")
         h = h[:ia] + block + h[ib:]
 

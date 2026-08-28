@@ -50,6 +50,7 @@ const PRIORITY_SLUGS = [
   'grief-without-a-mistake',
   'learning-to-read-not-fix',
   'the-tank-you-didnt-start',
+  'the-tank-nobody-else-sees',
   'tank-crash-recovery',
   'adding-new-fish',
   'algae-in-aquarium',

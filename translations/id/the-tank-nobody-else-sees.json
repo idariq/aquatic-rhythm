@@ -1,0 +1,92 @@
+{
+  "_meta": {
+    "slug": "the-tank-nobody-else-sees",
+    "lang": "id",
+    "sourceFile": "articles/the-tank-nobody-else-sees.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Tangki yang Tak Dilihat Siapa Pun — Aquatic Rhythm",
+    "description": "Sebagian besar tangki yang ada tidak pernah diunggah, difoto, atau ditunjukkan kepada siapa pun. Kenapa tangki dengan penonton tetap hanya satu orang tetap jadi praktik yang utuh dan sah, bukan versi lebih kecil dari yang sebenarnya.",
+    "ogTitle": "Tangki yang Tak Dilihat Siapa Pun",
+    "ogDescription": "Ia tidak perlu disaksikan untuk menjadi praktik yang nyata."
+  },
+  "intro": {
+    "eyebrow": "Refleksi",
+    "titleHtml": "Tangki yang<br><em>Tak Dilihat Siapa Pun</em>",
+    "subtitle": "Ia tidak perlu disaksikan untuk menjadi praktik yang nyata.",
+    "texts": [
+      "Hampir semua yang ditulis dan dibagikan tentang hobi ini berasal dari tangki yang, pada suatu titik, pernah ditunjukkan kepada seseorang. Sebuah unggahan di forum, sebuah foto, sebuah pertanyaan yang diucapkan. Itu fondasi yang aneh, karena sebagian besar tangki yang benar-benar ada tidak pernah mengalami satu pun dari itu.",
+      "Tulisan ini untuk tangki di kamar cadangan yang tidak pernah difoto siapa pun, yang sudah berjalan bertahun-tahun tanpa satu pun unggahan tentangnya di mana pun. Kenapa itu bukan versi hobi yang lebih kecil atau kurang serius — itu sebagian besar dari hobi ini, hanya bagian yang tidak meninggalkan jejak daring."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~6 menit",
+    "metaLevel": "Refleksi",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Apa sebenarnya catatan publik hobi ini",
+      "titleHtml": "Sampel dari hobi ini, <em>bukan hobi itu sendiri</em>",
+      "body": [
+        "Cari soal memelihara akuarium dan yang muncul adalah forum, saluran video, kompetisi aquascaping, dan aliran foto tangki yang tak putus. Kelihatannya seperti gambaran yang cukup lengkap tentang apa itu hobi ini. Sebenarnya tidak. Itu pecahan yang terlihat — tangki milik penjaga yang kebetulan juga jadi tipe orang yang mengunggah, merekam, atau bertanya di depan umum — dan pecahan itu adalah sepotong kecil dan spesifik dari semua orang yang benar-benar memelihara tangki.",
+        "Kelompok yang jauh lebih besar tidak pernah muncul dalam catatan itu sama sekali. Tangki di kamar tidur, ruang istirahat kantor, ruang tamu orang tua yang sudah pensiun, berjalan dengan rutinitas yang belum pernah didengar siapa pun di luar rumah itu. Tidak ada yang tidak lengkap atau belum selesai dari tangki itu. Itu sekadar bukan jenis tangki yang menghasilkan konten, dan memang tidak pernah berusaha begitu.",
+        "Ini penting karena pecahan yang terlihat itu diam-diam menetapkan titik acuan tentang seperti apa memelihara tangki yang \"sungguhan\", bahkan bagi orang yang tidak pernah berniat membandingkan diri dengannya. Wajah publik sebuah hobi bukan otomatis kasus yang tipikal. Sebagian besar dari apa yang sebenarnya terjadi dalam hobi ini terjadi di ruangan yang tidak akan pernah dilihat siapa pun di luar itu, dan itu sudah benar jauh sebelum semua ini dituliskan di sini."
+      ],
+      "pullQuote": "Konten akuarium yang pernah Anda lihat adalah sampel, dipilih berdasarkan tepat satu sifat — bahwa seseorang memutuskan untuk menunjukkannya kepada Anda. Apa pun yang dipilih berdasarkan sifat itu akan terlihat lebih tertata dibanding yang tidak terpilih, karena yang tidak terpilih memang tidak pernah berusaha untuk dilihat.",
+      "prevBtn": "← Intro",
+      "nextBtn": "Kenapa penonton tetap diasumsikan ada"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Kenapa penonton tetap diasumsikan ada",
+      "titleHtml": "Kebiasaan diam-diam <em>memelihara untuk penonton</em>",
+      "body": [
+        "Catatan publik sepadat ini punya efek samping yang tidak ada hubungannya dengan satu unggahan mana pun. Mudah saja mulai menceritakan hobi ini kepada penonton bayangan padahal tidak ada penonton sama sekali — menata hardscape dengan foto di kepala, memilih ikan sebagian karena bagaimana tangki akan terlihat bagi penonton, merasakan sedikit kekecewaan karena minggu yang baik bersama tangki tidak punya siapa pun untuk diceritakan. Tidak satu pun dari itu perlu benar-benar diunggah. Kebiasaan memelihara <em>untuk</em> penonton bisa berjalan diam-diam di latar belakang tangki yang tidak pernah ditunjukkan ke satu orang pun.",
+        "Bias survivorship adalah nama baku untuk salah satu versi dari ini: menilai sebuah kategori berdasarkan contoh yang terpilih untuk terlihat, sambil melupakan bahwa seleksi itu sendirilah yang membuatnya terlihat seperti itu. Diterapkan di sini, artinya aquascape dan setup yang paling sering dilihat terlihat matang dan disengaja sebagian karena terlihat seperti itu adalah bagian dari alasan ia ditunjukkan sejak awal — bukan karena tangki yang tidak diunggah kurang matang.",
+        "Biaya dari kebiasaan ini spesifik. Penjaga yang bercerita untuk penonton bayangan mulai mengoptimalkan untuk apa yang akan terlihat bagus dalam cerita itu, yang merupakan target berbeda dari apa yang sebenarnya dibutuhkan ikan dan air. Kedua target itu sering tumpang tindih. Keduanya bukan target yang sama, dan memperlakukannya seolah bisa saling menggantikan adalah titik di mana praktik pribadi yang sudah selaras bisa diam-diam mulai melenceng."
+      ],
+      "hintLabel": "Pola yang layak dinamai dengan tepat",
+      "hintText": [
+        "Bias survivorship tidak mengharuskan siapa pun tidak jujur. Ia menjelaskan apa yang terjadi secara otomatis begitu sebuah kategori dinilai hanya dari anggotanya yang cukup terlihat untuk dinilai. Konten akuarium adalah satu contoh dari pola statistik yang sangat biasa, bukan bukti bahwa tangki yang tidak diunggah entah bagaimana salah."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Seperti apa sebenarnya tangki tanpa saksi"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Seperti apa sebenarnya tangki tanpa saksi",
+      "titleHtml": "Keputusan yang dibuat <em>untuk sistem, bukan untuk cerita</em>",
+      "body": [
+        "Tangki yang tidak pernah dilihat siapa pun punya satu keunggulan struktural yang mudah terlewat: setiap keputusan tentangnya harus dibuat untuk tangki itu sendiri, karena tidak ada penonton lain untuk dijadikan pertimbangan. Penebaran yang lebih lambat, tata hardscape yang lebih sederhana, seekor ikan yang tetap dipelihara meski tidak terlalu menonjol dilihat — tidak satu pun dari itu perlu dipertanggungjawabkan kepada siapa pun, jadi ia memang tidak pernah ditimbang terhadap apa pun selain apa yang sebenarnya dibutuhkan sistem itu.",
+        "Itulah lingkaran tertutup yang sama yang digambarkan ARA sebagai inti dari praktik ini — amati, sesuaikan, amati lagi — berjalan tanpa tambahan apa pun. Tidak ada langkah di mana penyesuaian juga harus masuk akal bagi penonton, tidak ada momen di mana keputusan yang benar-benar tepat dipertanyakan ulang karena tidak akan terlihat bagus difoto. Lingkaran itu tetap sekecil yang seharusnya.",
+        "Ini bukan argumen menentang berbagi tangki, dan banyak penjaga yang rutin mengunggah tetap menjaga lingkaran yang sama ini tetap utuh di baliknya. Intinya lebih sempit: tangki dengan penonton tetap satu orang tidak kehilangan apa pun karena tidak ada orang lain yang melihatnya. Justru, ia hanya kehilangan satu hal yang kadang harus benar-benar dijaga oleh praktik yang disaksikan."
+      ],
+      "pullQuote": "Tidak ada apa pun dari praktik ini yang mengharuskan adanya saksi untuk dianggap utuh. Kelima ritme tidak memeriksa apakah ada yang menonton sebelum merespons apa yang sebenarnya dilakukan seorang penjaga.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Apa yang tidak perlu terjadi pada ini"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Apa yang tidak perlu terjadi pada ini",
+      "titleHtml": "Ia tidak berutang <em>sebuah pengungkapan</em> kepada siapa pun",
+      "body": [
+        "Ada satu pemikiran khusus dan umum yang layak disebut langsung: bahwa tangki yang dipelihara diam-diam selama bertahun-tahun entah bagaimana sedang menuju momen ketika akhirnya dibagikan — seolah tahun-tahun perawatan yang tidak diunggah itu belum lengkap sampai sebuah foto membuatnya terhitung. Itu tidak belum lengkap. Tangki yang sudah stabil dan terawat baik selama tiga tahun tanpa satu pun foto yang diambil sudah menjadi persis itu, sepenuhnya, sepanjang waktu.",
+        "Jika membagikannya suatu saat terasa benar-benar menarik, itu alasan yang baik untuk melakukannya. Itu bukan utang yang diam-diam menumpuk pada tangki itu, dan tidak ada catatan di mana pun yang menghitung tahun-tahun yang tidak diunggah. Satu-satunya hal yang sebenarnya pernah diperlukan — perawatan yang penuh perhatian dan konsisten untuk sebuah sistem hidup — sudah terjadi di ruangan itu sepanjang waktu, terlepas dari apakah itu meninggalkan catatan yang bisa ditemukan siapa pun.",
+        "Jadi tangki yang tidak dilihat siapa pun bukanlah versi sederhana dari hobi ini, menunggu momen yang lebih besar. Bagi kebanyakan orang yang memeliharanya, itu sekadar keseluruhan dari hobi ini."
+      ],
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Tangki yang Anda Jadikan Pembanding →" },
+    { "text": "Kenapa Penjaga Enggan Minta Tolong →" },
+    { "text": "Merawat Tanpa Rasa Bersalah →" },
+    { "text": "Kerangka ARA →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

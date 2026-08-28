@@ -512,6 +512,53 @@ fail rujukan-silang (cth. artikel lain yg pautkan ke alat bespoke) utk
 pastikan bilangan baris berubah MASUK AKAL (~1-2 baris utk pautan
 sahaja), bukan ratusan baris (tanda skrip salah dipakai).
 
+## Panduan Kualiti Prosa EN (elak bug PR #470/#471 berulang, dibetulkan PR #477/#478)
+
+**Bila kurangkan/buang em-dash "—" berlebihan drpd prosa EN, JANGAN
+gantikan tanda dash tu terus dgn koma/kolon di TEMPAT YG SAMA.**
+Kaedah tu nampak selamat (buang dash, kekalkan struktur ayat) tapi
+sebenarnya **cantumkan 2 klausa yg asalnya dipisah jeda visual (dash,
+hampir spt noktah) jadi SATU ayat panjang bersambung koma/kolon** —
+punca corak "ayat panjang + kolon bertindih + koma banyak" yg
+ditemui user (2026-08-28) merentas ~39 artikel lama, disebabkan
+tepat oleh kaedah swap-di-tempat ni semasa audit "kualiti prosa EN"
+awal sesi (PR #467-470 pd 8 artikel terpadat + PR #471 pd 5 fail
+siri ARA + halaman utama). Contoh bug sebenar:
+
+```
+- "The parameters look fine — and yet something is not quite right."
++ "The parameters look fine, and yet something is not quite right."
+```
+
+**Kaedah BETUL bila em-dash tu memisahkan 2 klausa lengkap (bukan
+label pendek/senarai ringkas)**: pecah kpd 2 ayat berasingan guna
+noktah, bukan gantikan dash dgn koma/kolon di tempat yg sama —
+```
++ "The parameters look fine. And yet something is not quite right."
+```
+(atau restruktur ayat sepenuhnya kalau noktah mentah janggal). Dash
+yg memisahkan LABEL pendek drpd penerangan ringkas (cth. "Reducing
+photoperiod — the most common aligned response...") BOLEH kekal
+sbg "Label: penerangan" (kolon) — tu bukan run-on, ia corak
+label-definisi berfungsi, bukan cantuman 2 klausa panjang. Beza
+antara dua kes ni: kalau kedua-dua belah dash boleh berdiri sbg ayat
+lengkap sendiri (subjek + kata kerja), ia MESTI dipecah ke 2 ayat,
+bukan disambung koma/kolon.
+
+**Sentiasa sahkan pembetulan em-dash/tanda baca dgn skrip audit
+kuantitatif** (purata patah perkataan/ayat, bilangan ayat ≥30 patah
+perkataan, bilangan kolon/koma per ayat — pola Python guna
+`re.split(r'(?<=[.!?])\s+(?=[A-Z"])', text)` pd kandungan
+`mod-body`/`.hn`/`.pq`, dijalankan sesi ni), BUKAN cuma kira bilangan
+em-dash dibuang. Kiraan em-dash turun boleh nampak spt kejayaan
+(cth. commit log PR #470: "cycled-tank-problems: 51→29") walhal
+purata panjang ayat & kepadatan kolon/koma sebenarnya NAIK pd fail
+yg sama — dua metrik ni bercanggah, kiraan dash sahaja BUKAN ukuran
+kualiti yg mencukupi. Jalankan skrip audit SEBELUM & SELEPAS
+pembetulan em-dash/tanda baca utk pastikan purata patah
+perkataan/ayat & bilangan ayat panjang turun jugak, bukan setakat
+kiraan dash.
+
 ## Panduan Kualiti ja (elak bug audit 2026-08-19 berulang, PR #350-356)
 
 Audit kualiti ja (2026-08-19, susulan pertanyaan user "adakah dah

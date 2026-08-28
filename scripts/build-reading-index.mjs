@@ -60,6 +60,7 @@ const SLUG_ORDER = [
   'grief-without-a-mistake',
   'learning-to-read-not-fix',
   'the-tank-you-didnt-start',
+  'the-tank-nobody-else-sees',
   'when-is-tank-ready-for-fish',
   'know-your-rhythm',
   'four-principles-of-ara',

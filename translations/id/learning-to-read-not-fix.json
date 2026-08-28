@@ -1,0 +1,95 @@
+{
+  "_meta": {
+    "slug": "learning-to-read-not-fix",
+    "lang": "id",
+    "sourceFile": "articles/learning-to-read-not-fix.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Belajar Membaca, Bukan Belajar Memperbaiki — Aquatic Rhythm",
+    "description": "Aturan dan membaca terlihat seperti keterampilan yang sama dari luar. Sebenarnya tidak. Mengapa yang satu berhenti berkembang di batas apa yang ditulis untuknya, mengapa yang lain terus mendalam, dan mengapa rutinitas ketat dan kemampuan membaca yang nyata tidak saling bersaing.",
+    "ogTitle": "Belajar Membaca, Bukan Belajar Memperbaiki",
+    "ogDescription": "Keduanya terlihat seperti perawatan yang sama dari luar."
+  },
+  "intro": {
+    "eyebrow": "Refleksi",
+    "titleHtml": "Belajar Membaca,<br><em>Bukan Belajar Memperbaiki</em>",
+    "subtitle": "Keduanya terlihat seperti perawatan yang sama dari luar.",
+    "texts": [
+      "\"Tahu apa yang harus dilakukan untuk tangki Anda\" terlihat seperti satu keterampilan dari luar. Dari dalam, sebenarnya ini dua hal berbeda, berkembang di dua jalur yang jarang benar-benar dipisahkan kebanyakan penjaga.",
+      "Yang satu adalah sekumpulan jawaban yang benar. Yang lain adalah kemampuan membaca satu tangki tertentu, tangki ini, dan menyadari apa yang sebenarnya sedang terjadi di dalamnya. Keduanya penting. Ini tentang mengapa keduanya berperilaku sangat berbeda begitu seorang penjaga menghadapi situasi yang tak pernah dicakup aturan mana pun."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~7 menit",
+    "metaLevel": "Refleksi",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Dua hal yang terlihat seperti satu keterampilan",
+      "titleHtml": "Keterampilan yang <em>terbelah dua</em>",
+      "body": [
+        "Dari luar, \"tahu apa yang harus dilakukan untuk tangki Anda\" terlihat seperti satu keterampilan tunggal. Dari dalam, ini sebenarnya dua hal, berkembang di jalur berbeda. Yang satu adalah sekumpulan jawaban yang benar: ganti air sekian banyak di hari ini, beri pakan sebanyak ini, obati gejala ini dengan produk ini. Yang lain adalah kemampuan membaca satu tangki tertentu, tangki ini, sekarang, dan menyadari apa yang sebenarnya terjadi di dalamnya.",
+        "Hampir semua penjaga memulai hampir sepenuhnya di jalur pertama, dan itu sepenuhnya masuk akal. Tangki baru jauh lebih membutuhkan informasi yang andal dan benar daripada mata yang belum terlatih. Belum ada apa pun untuk dibaca yang bisa dikenali seorang pemula sekalipun.",
+        "Kedua jalur ini cenderung berpisah kemudian, bukan karena yang satu lebih baik dari yang lain, melainkan karena keduanya berperilaku berbeda begitu terjadi sesuatu yang tidak sepenuhnya diantisipasi aturan."
+      ],
+      "pullQuote": "Sebuah aturan dan kebiasaan membaca bisa terlihat identik dari luar. Hanya satu yang tetap bekerja begitu situasinya berhenti sesuai dengan apa yang tertulis untuknya.",
+      "prevBtn": "← Intro",
+      "nextBtn": "Apa yang terjadi ketika aturan habis"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Apa yang terjadi ketika aturan habis",
+      "titleHtml": "Batas <em>yang tak dijangkau aturan</em>",
+      "body": [
+        "Sebuah aturan bekerja sebaik situasi yang untuknya ia ditulis. Kebanyakan waktu itu tidak masalah, karena kebanyakan situasi memang biasa, dan situasi biasa itulah yang dibuat untuk ditangani aturan. Masalah dimulai di batasnya: ikan berperilaku dengan cara yang tidak sepenuhnya dijelaskan panduan mana pun, dua saran yang benar-benar bertentangan satu sama lain, tangki yang secara teknis mengikuti semua pedoman dan tetap saja tidak beres.",
+        "Di batas itu, seorang penjaga yang sudah membangun kemampuan membaca yang nyata punya tempat untuk melangkah. Baca polanya. Apakah ini baru? Apakah pernah terjadi sebelumnya? Apa lagi yang berubah di sekitar waktu yang sama? Seorang penjaga yang kompetensinya sepenuhnya bergantung pada aturan yang dihafal tidak punya jalan cadangan itu, bukan karena mereka melakukan sesuatu yang salah, melainkan karena aturan tidak meluas dengan sendirinya untuk mencakup situasi yang tidak pernah ditulis untuknya. Celah itu adalah ciri struktural cara kerja aturan. Bukan vonis terhadap siapa pun yang mengikutinya dengan cermat."
+      ],
+      "hintLabel": "Ini bukan soal keeper checklist lawan keeper \"alami\"",
+      "hintText": [
+        "Rutinitas yang ketat dan disiplin sering kali justru yang dibutuhkan sebuah tangki, dan banyak penjaga paling andal dalam hobi ini menjalankannya. Yang dibahas di sini adalah keterampilan lain yang tumbuh berdampingan dengan rutinitas itu, bukan menggantikannya: kemampuan menyadari ketika asumsi rutinitas itu sudah tidak lagi sesuai dengan apa yang sebenarnya terjadi di depan mata Anda."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Kenapa yang satu terus mendalam dan yang lain berhenti"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Kenapa yang satu terus mendalam dan yang lain berhenti",
+      "titleHtml": "Dari mana masing-masing <em>keterampilan sebenarnya dibangun</em>",
+      "body": [
+        "Alasannya ada hubungannya dengan bahan pembentuk masing-masing keterampilan. Aturan bersifat eksternal. Orang lain menuliskannya, untuk tangki secara umum, dan menerapkannya dengan benar tidak menuntut pemahaman mengapa aturan itu bekerja. Ini efisien, dan juga sebuah batas atas. Ada jumlah tetap jawaban benar untuk dihafal, dan begitu seorang penjaga mengetahuinya, tidak banyak lagi ruang untuk mengembangkan keterampilan spesifik itu.",
+        "Kemampuan membaca tidak punya batas atas semacam itu, karena ia dibangun dari sesuatu yang sama sekali berbeda: jam-jam yang benar-benar dihabiskan mengamati satu tangki tertentu. Setiap bulan tambahan bersama tangki yang sama menambah lebih banyak dari bahan yang membentuk keterampilan ini. Inilah perbedaan antara kompetensi yang benar-benar milik sendiri dan bisa dibawa ke mana-mana, dengan kompetensi yang hanya bekerja selama situasinya sesuai dengan buku panduan.",
+        "Tidak satu pun keterampilan menggantikan yang lain, dan penjaga tidak perlu memilih. Kebanyakan penjaga berpengalaman akhirnya menjalankan keduanya sekaligus: rutinitas yang andal untuk hari-hari biasa, dan pemahaman yang perlahan mendalam tentang tangki spesifik mereka yang memberi tahu ketika sebuah hari ternyata tidak biasa."
+      ],
+      "pullQuote": "Aturan sama untuk setiap tangki yang untuknya ia ditulis. Kemampuan membaca berbeda untuk setiap penjaga yang membangunnya, karena ia terbentuk dari jam-jam bersama satu tangki tertentu dan tak ada yang lain.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Apa yang sebenarnya berubah, secara praktis"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Apa yang sebenarnya berubah, secara praktis",
+      "titleHtml": "Bukan argumen <em>menentang aturan</em>",
+      "body": [
+        "Tak satu pun dari ini berargumen untuk meninggalkan aturan atau rutinitas. Aturan adalah yang membuat tangki baru bisa bertahan, dan yang menjaga perawatan dasar penjaga berpengalaman tidak bergantung pada suasana hati atau ingatan di minggu yang buruk. Membuangnya tidak akan mempercepat pembangunan kemampuan membaca. Itu hanya akan menghilangkan struktur yang menjadi tempat kemampuan membaca itu tumbuh berdampingan.",
+        "Yang layak ditambahkan lebih kecil dari sebuah sistem baru. Ini soal memperhatikan apa yang sebenarnya terjadi, bukan sekadar apakah checklist sudah selesai, sehingga kemampuan membaca punya ruang untuk tumbuh diam-diam di latar belakang sementara rutinitas menangani sisanya. Ganti air yang dilakukan sesuai jadwal dan ganti air yang dilakukan sambil benar-benar mengamati ikan adalah tugas yang sama di atas kertas, dan praktik yang berbeda di baliknya.",
+        "Selama bertahun-tahun, itu menghasilkan penjaga yang tidak butuh aturan untuk setiap situasi, karena mereka sudah membangun sesuatu yang menjangkau lebih jauh dari yang bisa dicapai aturan tetap mana pun sendirian. Itu bukan pengganti disiplin. Itu lebih dekat pada apa yang cenderung dihasilkan disiplin dengan sendirinya, ketika dijaga cukup lama sambil benar-benar memperhatikan."
+      ],
+      "hintLabel": "Di mana ini terhubung dengan ARA",
+      "hintText": [
+        "Ini kompetensi yang sama dengan yang dijelaskan Self-Determination Theory: keterlibatan yang membangun kemampuan nyata dan bisa dibawa ke mana-mana, bukan kepatuhan pada standar dari luar. <a href=\"/articles/keeper-your-tank-needs\" style=\"color:var(--th-accent);text-decoration:none\">Penjaga yang Sebenarnya Dibutuhkan Tangki Anda</a> membahas dasar yang sama dari sudut berbeda."
+      ],
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Penjaga yang Sebenarnya Dibutuhkan Tangki Anda →" },
+    { "text": "Apa yang Diberikan Tangki Kepada Anda →" },
+    { "text": "Kenali Ritme Anda →" },
+    { "text": "Kerangka ARA →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

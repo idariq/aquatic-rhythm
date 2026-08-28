@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "slug": "the-tank-you-didnt-start",
+    "lang": "id",
+    "sourceFile": "articles/the-tank-you-didnt-start.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Tangki yang Bukan Anda yang Memulainya — Aquatic Rhythm",
+    "description": "Mengambil alih akuarium milik orang lain — milik teman sekamar, anggota keluarga, atau set terpakai yang dibeli apa adanya — berarti membaca sistem tanpa patokan Anda sendiri. Kenapa ini lebih sulit dari kelihatannya, dan apa yang benar-benar membantu.",
+    "ogTitle": "Tangki yang Bukan Anda yang Memulainya",
+    "ogDescription": "Membaca sistem yang bukan Anda bangun sendiri punya kesulitannya tersendiri."
+  },
+  "intro": {
+    "eyebrow": "Refleksi",
+    "titleHtml": "Tangki yang Bukan<br><em>Anda yang Memulainya</em>",
+    "subtitle": "Membaca sistem yang bukan Anda bangun sendiri punya kesulitannya tersendiri.",
+    "texts": [
+      "Teman sekamar pindah dan meninggalkan sebuah tangki. Orang tua tidak lagi sanggup mengurus tangkinya. Sebuah iklan set terpakai mencantumkan ikan dan tanaman yang sudah ada di dalamnya, dijual apa adanya. Bagaimanapun terjadinya, seorang penjaga akhirnya bertanggung jawab atas tangki yang bukan ia yang menyiapkan, dengan ikan yang bukan ia yang memilih, berjalan di atas sejarah yang tidak ia saksikan.",
+      "Kebanyakan panduan mengasumsikan tangki dimulai kosong dan membangun sejarahnya berdampingan dengan penjaga yang menyiapkannya. Ini untuk tangki yang tiba di tengah ceritanya sendiri, dan jenis ketidaktahuan tersendiri yang menyertainya."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~7 menit",
+    "metaLevel": "Refleksi",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Sistem yang tiba di tengah cerita",
+      "titleHtml": "Tanpa patokan <em>milik Anda sendiri</em>",
+      "body": [
+        "Membaca tangki dengan baik bergantung pada tahu seperti apa tampilannya ketika baik-baik saja. Warna khas air pada cahaya yang familiar. Cara setiap ikan biasanya berperilaku pada setiap bagian hari. Tampilan normal substrat seminggu setelah ganti air. Patokan itu dibangun perlahan, dengan mengamati tangki yang sama cukup sering sampai keadaan biasanya menjadi jelas tanpa perlu dipikirkan.",
+        "Seorang penjaga yang mewarisi tangki tidak punya patokan itu. Mereka melihat ikan ini, substrat ini, air ini untuk pertama kalinya, pada momen apa pun saat serah terima kebetulan terjadi. Tak ada cara untuk tahu apakah yang mereka lihat benar-benar normal untuk sistem spesifik ini atau justru tanda pertama sesuatu yang sudah mulai keliru, karena tak ada sejarah pribadi tangki itu untuk dibandingkan.",
+        "Ini kesenjangan yang nyata, bukan kekurangan pribadi. Tak ada hubungannya dengan level pengalaman penjaga secara umum. Ini khusus untuk tangki tertentu ini, dan tetap ada berapa pun banyak tangki lain yang pernah berhasil dijalankan penjaga itu sebelumnya."
+      ],
+      "pullQuote": "Tangki baru dan tangki warisan bisa terlihat identik pada hari pertama. Hanya satu yang datang bersama penjaga yang belum tahu seperti apa normalnya bagi tangki spesifik itu.",
+      "prevBtn": "← Intro",
+      "nextBtn": "Apa yang bisa dan tak bisa dipercaya"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Apa yang bisa dan tak bisa dipercaya",
+      "titleHtml": "Informasi warisan <em>bukan informasi hasil membaca sendiri</em>",
+      "body": [
+        "Serah terima biasanya disertai beberapa informasi. Penjaga sebelumnya menyebut jadwal pemberian pakan, rutinitas ganti air, atau catatan bahwa satu ikan \"memang selalu begitu.\" Ini sungguh berguna, dan juga jenis pengetahuan yang berbeda dari membaca tangki secara langsung. Ini kisah dari tangan kedua, disaring lewat apa yang kebetulan disadari, diingat, dan dianggap layak disebut penjaga sebelumnya.",
+        "Celah itu lebih penting dari kelihatannya. \"Memang selalu begitu\" bisa berarti kepribadian asli dan tak berbahaya seekor ikan, atau bisa berarti kemunduran perlahan yang sudah berhenti disadari jelas oleh penjaga sebelumnya, sama seperti pengamat jangka panjang mana pun bisa berhenti menyadari perubahan bertahap. Tak ada cara membedakan keduanya hanya dari kisah tangan kedua itu saja. Informasinya bukan salah, tepatnya. Ia sekadar hal berbeda dari pembacaan langsung penjaga baru sendiri, dan tidak sepatutnya diperlakukan setara dengannya.",
+        "Langkah yang selaras bukan mencurigai apa yang diserahkan. Ini soal memperlakukannya sebagai dugaan awal, bukan patokan yang sudah mapan, sesuatu untuk dipegang longgar sampai pengamatan penjaga baru sendiri mengonfirmasi atau mengoreksinya."
+      ],
+      "hintLabel": "Catatan khusus soal ikan yang berpindah tangan",
+      "hintText": [
+        "Ikan yang baru saja berganti penjaga juga sedang menyesuaikan diri dengan orang baru, rutinitas baru, dan sering kali lokasi baru, sekaligus. Sebagian yang terlihat asing di minggu-minggu pertama adalah ikannya sendiri, bukan keadaan dasar tangkinya. Beri waktu sebelum membaca perilakunya sebagai sinyal yang bisa diandalkan, ke arah mana pun."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Membangun patokan dari awal"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Membangun patokan dari awal",
+      "titleHtml": "Memulai jam <em>pengamatan Anda sendiri</em>",
+      "body": [
+        "Jawaban praktisnya sama dengan yang berlaku untuk tangki baru mana pun: bangun patokan, mulai sekarang, dari pengamatan langsung, bukan deskripsi tangan kedua. Uji airnya dan catat pembacaan sebenarnya, bukan sekadar apakah terlihat wajar. Amati setiap ikan pada beberapa waktu berbeda dalam sehari dan sadari kebiasaan khususnya sendiri, bukan ringkasan dari penjaga sebelumnya. Foto substrat dan hardscape seperti tampilannya hari ini.",
+        "Ini butuh waktu berminggu-minggu, sama seperti tangki yang benar-benar baru, dan tak ada cara jujur untuk mempersingkatnya. Yang berbeda pada tangki warisan adalah godaan untuk melewatkan langkah ini, karena tangkinya sudah terlihat mapan dan penjaga sebelumnya sudah memberi ringkasan. Melewatkannya tidak benar-benar menghemat waktu. Ia hanya berarti patokan yang akhirnya terbentuk muncul lebih lambat, dan sering kali setelah sesuatu sudah terlanjur tak disadari.",
+        "Layak bersabar dengan bagian yang terasa lambat. Penjaga yang membaca tangkinya sendiri selama enam bulan sudah punya keunggulan yang tidak dimiliki penjaga yang membaca tangki orang lain selama tiga tahun, karena beberapa bulan pengamatan langsung penjaga yang lebih baru itu mengungguli sejarah orang lain yang tak pernah ia saksikan sendiri."
+      ],
+      "pullQuote": "Usia tangki dan pengetahuan penjaga tentangnya adalah dua jam yang berbeda. Mewarisi tangki mereset salah satunya, apa pun kata jam yang lain.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Apa yang sebenarnya wajar diharapkan"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Apa yang sebenarnya wajar diharapkan",
+      "titleHtml": "Bukan tertinggal. <em>Sekadar mulai lebih lambat.</em>",
+      "body": [
+        "Mudah bagi penjaga dalam posisi ini mengukur diri dengan standar yang tidak adil: bersikap seolah mereka seharusnya sudah mengenal tangki ini sebaik penjaga sebelumnya, dan memperlakukan celah itu sebagai kegagalan pribadi, padahal sebenarnya hanya perbedaan berapa lama masing-masing sudah mengamati. Tak ada yang membaca sebuah sistem secara instan, warisan atau bukan. Stabilitas tampak luar tangki tidak mengubah itu.",
+        "Juga tak ada jangka waktu tetap untuk ini terasa nyaman. Sebagian penjaga menyesuaikan diri dengan tangki warisan dalam beberapa minggu. Sebagian lain butuh lebih lama, terutama dengan setup yang lebih rumit atau ikan yang datang dengan keunikan perilaku nyata untuk dipelajari. Tak satu pun kecepatan itu mengatakan apa pun tentang seberapa mampu seorang penjaga secara umum. Ia hanya mengatakan berapa lama tangki tertentu ini sebenarnya sudah dibaca oleh orang tertentu ini, yang jauh lebih sempit cakupannya.",
+        "Yang sebenarnya membantu adalah memperlakukan minggu-minggu awal sesuai apa adanya: sejarah tangki itu milik orang lain, tapi pembacaannya, sejak sekarang, sepenuhnya milik siapa pun yang sedang mengamatinya."
+      ],
+      "hintLabel": "Di mana ini terhubung",
+      "hintText": [
+        "Membangun patokan semacam ini adalah keterampilan yang sama dengan yang dijelaskan di <a href=\"/articles/learning-to-read-not-fix\" style=\"color:var(--th-accent);text-decoration:none\">Belajar Membaca, Bukan Belajar Memperbaiki</a> — hanya saja dimulai dari titik yang lebih belakang dari biasanya, dengan tangki yang sudah punya masa lalu yang tidak disaksikan penjaga barunya."
+      ],
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Belajar Membaca, Bukan Belajar Memperbaiki →" },
+    { "text": "Kenali Ritme Anda →" },
+    { "text": "Merawat Tanpa Rasa Bersalah →" },
+    { "text": "Kerangka ARA →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

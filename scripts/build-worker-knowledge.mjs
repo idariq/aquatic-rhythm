@@ -69,6 +69,8 @@ const PRIORITY_SLUGS = [
   'ich-keeps-coming-back',
   'fish-flashing-scratching',
   'ph-keeps-crashing',
+  'clamped-fins-fin-rot',
+  'white-fuzz-driftwood',
   'why-is-my-aquarium-water-cloudy',
   'aquarium-travel-vacation',
   'when-is-tank-ready-for-fish',

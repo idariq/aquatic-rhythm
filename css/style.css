@@ -791,6 +791,19 @@ body.ar-reduce-motion #driftwood-layer{opacity:0!important;transition:opacity .5
 .rd-coming{padding:1.6rem 2rem;border:1px dashed var(--th-line);background:var(--th-surface-2)}
 .rd-coming p{font-family:var(--serif);font-style:italic;font-size:var(--fs-md);color:var(--th-ink-4)}
 
+/* ── READING PAGE SEARCH (client-side title/tag filter, no data change) ── */
+.rd-search-wrap{position:relative;margin-bottom:2.4rem;max-width:480px}
+.rd-search{width:100%;box-sizing:border-box;background:var(--panel);border:1px solid var(--panel-border);border-radius:100px;padding:.7rem 2.6rem;font-size:var(--fs-sm-md);color:var(--th-ink);font-family:var(--sans);outline:none;box-shadow:var(--panel-shadow),var(--panel-inset);transition:border-color .2s}
+.rd-search::placeholder{color:var(--th-ink-4)}
+.rd-search:focus{border-color:var(--th-accent)}
+.rd-search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:var(--fs-md);color:var(--th-ink-4);pointer-events:none}
+.rd-search-clear{position:absolute;right:.6rem;top:50%;transform:translateY(-50%);width:1.7rem;height:1.7rem;font-size:var(--fs-sm);color:var(--th-ink-4);background:none;border:none;cursor:pointer;display:none;border-radius:50%}
+.rd-search-clear:hover{color:var(--th-ink-2)}
+.rd-search-clear.visible{display:block}
+.rd-card--acc.rd-hidden{display:none}
+.rd-cat.rd-cat--empty{display:none}
+.rd-search-empty{font-size:var(--fs-base);font-style:italic;color:var(--th-ink-4);padding:.5rem 0 1rem}
+
 /* ── ARA PAGE: learning module shell ── */
 #pg-ara .ara-mod-chapter[id]{scroll-margin-top:clamp(5.5rem,12vh,7.25rem)}
 .araph--mod{padding:clamp(6.5rem,14vh,9rem) clamp(1.5rem,5vw,4.5rem) clamp(2.25rem,5vh,3rem);display:block}

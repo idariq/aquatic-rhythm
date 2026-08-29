@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "slug": "smell-from-your-substrate",
+    "lang": "id",
+    "sourceFile": "articles/smell-from-your-substrate.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Bau dari Substrat Anda — Aquatic Rhythm",
+    "description": "Bau telur busuk saat Anda mengaduk substrat ketika ganti air bukan sekadar tidak sedap — ini sinyal spesifik tentang oksigen dan pembusukan yang terjadi di bawah permukaan. Apa yang sebenarnya terjadi, dan apa yang perlu dilakukan.",
+    "ogTitle": "Bau dari Substrat Anda",
+    "ogDescription": "Bau telur busuk saat perawatan adalah tank yang memberi tahu sesuatu yang spesifik."
+  },
+  "intro": {
+    "eyebrow": "Semua level",
+    "titleHtml": "Bau dari<br><em>Substrat Anda</em>",
+    "subtitle": "Bau telur busuk saat perawatan adalah tank yang memberi tahu sesuatu yang spesifik.",
+    "texts": [
+      "Anda sedang menyedot kerikil, atau memindahkan dekorasi, dan tiba-tiba tercium bau belerang — bau telur busuk yang khas — muncul dari substrat. Tidak sedap, agak mengkhawatirkan, dan hilang lagi dalam hitungan detik.",
+      "Panduan ini menjelaskan apa sebenarnya yang menghasilkan bau itu, kenapa ia terkumpul tanpa bahaya di bawah permukaan sebagian besar waktu, dan satu situasi di mana pelepasan besar-besaran layak ditanggapi serius."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~6 menit",
+    "metaLevel": "Semua level",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Membaca sinyal",
+      "titleHtml": "Bau yang cuma muncul<br><em>ketika Anda mengganggu sesuatu.</em>",
+      "body": [
+        "Bau yang dimaksud ini spesifik, bukan bau umum \"tank matang\" yang dimiliki sebagian besar akuarium — aroma samar, seperti tanah, agak mineral yang normal dan konstan. Ini berbeda: semburan belerang khas bau telur busuk yang muncul cuma ketika substrat diganggu — menyedot bagian kerikil, memindahkan batu, mendorong batang tanaman — lalu memudar lagi dalam sekejap.",
+        "Pola yang terlokalisasi dan dipicu gangguan itu sendiri informatif. Artinya apapun yang menghasilkan bau itu tidak menyebar merata di seluruh tank; ia terkonsentrasi di suatu tempat spesifik di bawah permukaan, tersegel sampai sesuatu secara fisik membuka segel itu.",
+        "Satu semburan singkat saat perawatan rutin cukup umum sampai kebanyakan pemelihara berpengalaman nyaris tidak bereaksi. Yang layak diperhatikan lebih seksama adalah seberapa kuat baunya, seberapa luas, dan apakah bertepatan dengan hal lain yang berubah di tank."
+      ],
+      "hintLabel": "Bau yang perlu dibedakan darinya",
+      "hintText": [
+        "Tank matang yang sehat punya aroma ringan seperti tanah yang selalu ada, bukan sesuatu yang cuma muncul saat Anda mengaduk kerikil. Kalau yang Anda cium konstan bukan dipicu gangguan, itu situasi yang berbeda drpd yang dibahas panduan ini."
+      ],
+      "prevBtn": "← Intro",
+      "nextBtn": "Apa yang sebenarnya terjadi"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Apa yang sebenarnya terjadi",
+      "titleHtml": "Oksigen tidak pernah<br><em>mencapai kantung itu.</em>",
+      "body": [
+        "Substrat yang dalam atau padat bisa membentuk kantung di mana oksigen sama sekali tidak menembus — air di atasnya tetap beroksigen, tapi beberapa sentimeter ke bawah, di bagian yang padat atau tidak pernah diganggu, tidak ada oksigen yang mencapainya. Jenis bakteri yang berbeda berkembang biak khusus di lingkungan tanpa oksigen itu: bakteri pereduksi sulfat, yang menghasilkan gas hidrogen sulfida sebagai hasil sampingan metabolismenya sendiri.",
+        "Gas itulah yang Anda cium. Selama kantungnya tetap tersegel, ia terkumpul tanpa bahaya di bawah permukaan. Begitu sesuatu mengganggunya — sedot kerikil, dekorasi dipindahkan, penanaman ulang — segelnya pecah dan gas yang terperangkap lepas sekaligus, itulah kenapa baunya muncul tiba-tiba dan singkat, bukan bertahan lama.",
+        "Kantung-kantung ini paling mudah terbentuk di substrat yang dalam, berbutir halus, atau padat tanpa aliran yang melewatinya — sudut di belakang dekorasi yang tidak pernah disedot, lapisan tebal substrat lama dengan bertahun-tahun kotoran terkumpul, atau area dengan sistem akar tebal yang menciptakan zona padat tak terganggu di bawahnya."
+      ],
+      "pullQuote": "Baunya bukan substrat yang membusuk. Ini kantung kecil yang tersegel, tempat biologi tank diam-diam terus bekerja tanpa oksigen untuk dijawab.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Amati dulu sebelum bertindak"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Amati dulu sebelum bertindak",
+      "titleHtml": "Kecil dan singkat<br><em>beda kasus dgn besar dan mendadak.</em>",
+      "body": [
+        "Semburan samar yang hilang dalam beberapa detik saat penyedotan kerikil biasa adalah versi umum dan berisiko rendah dari sinyal ini. Tidak perlu tindakan apapun selain terus menyedot area itu sedikit lebih rutin dibanding sebelumnya, supaya kantung yang menghasilkannya tidak sempat membesar kembali ke ukuran yang sama.",
+        "Bau kuat dan meluas, bercak substrat gelap atau menghitam, atau ikan yang tiba-tiba menunjukkan tekanan tepat setelah gangguan besar adalah skenario yang berbeda. Hidrogen sulfida memang beracun bagi ikan pada konsentrasi tinggi, dan satu kantung besar terkubur yang dilepaskan sekaligus — misalnya, saat perombakan substrat penuh dibanding penyedotan spot rutin — bisa melepaskan cukup banyak untuk jadi masalah.",
+        "Perbedaan yang penting adalah skala: kantung kecil yang sesekali terganggu bersifat mengatur dirinya sendiri dan sebagian besar tidak berbahaya. Kantung besar yang terkumpul lama lalu dilepaskan sekaligus adalah versi yang layak direspons cepat."
+      ],
+      "hintLabel": "Kalau baru saja terjadi pelepasan besar",
+      "hintText": [
+        "Perhatikan ikan dengan seksama selama satu jam ke depan dan lakukan ganti air sebagian segera kalau ada yang terlihat tidak beres — napas berat, berenang liar, atau lesu tidak biasa tepat setelah gangguan substrat besar. Menambah gerakan permukaan sementara juga membantu menambah oksigen air lebih cepat."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Respons yang selaras"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Respons yang selaras",
+      "titleHtml": "Gangguan kecil rutin<br><em>mencegah gangguan besar.</em>",
+      "body": [
+        "Kebiasaan yang selaras adalah rutinitas: sedot bagian sudut dan zona mati yang biasanya dilewatkan, bukan cuma area terbuka yang mudah dijangkau, supaya kantung tidak pernah sempat membesar sebelum diganggu. Ini menjaga setiap pelepasan tetap kecil dan singkat, yang persis versi berisiko rendah dari sinyal ini.",
+        "Penghuni dasar yang menyaring substrat — corydoras dan spesies sejenis — dan tanaman yang makan lewat akar sama-sama membantu menjaga substrat terus teraduk ringan secara berkelanjutan, mengurangi kemudahan kantung besar tersegel terbentuk sejak awal.",
+        "Kalau ada rencana gangguan substrat penuh — rescape, menambah substrat baru, membersihkan area yang lama tidak tersentuh — melakukannya bertahap selama beberapa sesi dibanding sekaligus menghindari pelepasan kantung besar terkumpul dalam satu waktu."
+      ],
+      "pullQuote": "Membaca sinyal kecil secara rutin itulah yang mencegah Anda harus menangani yang besar. Sedikit bau tiap beberapa minggu adalah substrat yang mengatur dirinya sendiri. Banyak sekaligus adalah substrat yang akhirnya dipaksa melakukannya.",
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Filter Anda bukan apa yang Anda kira →" },
+    { "text": "Rutinitas Perawatan yang Benar-Benar Berhasil →" },
+    { "text": "Kerangka ARA →" },
+    { "text": "Tanya Rhyssa →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

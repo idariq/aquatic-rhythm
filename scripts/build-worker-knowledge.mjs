@@ -42,6 +42,8 @@ const PRIORITY_SLUGS = [
   'minimum-viable-care',
   'missed-water-change',
   'missed-fertiliser-dosing',
+  'topping-off-vs-water-change',
+  'light-schedule-drift',
   'is-your-setup-too-demanding',
   'life-change-protocols',
   'false-maturity',

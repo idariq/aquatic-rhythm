@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "slug": "light-schedule-drift",
+    "lang": "id",
+    "sourceFile": "articles/light-schedule-drift.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Jadwal Lampu Anda Juga Rutin — Aquatic Rhythm",
+    "description": "Menyalakan dan mematikan lampu tank sesuka hati tidak terlihat seperti rutin, tapi fotoperiod yang tidak konsisten berperilaku seperti rutin apapun yang terlepas — cuma tidak terlihat seperti perawatan. Kenapa pergeseran lama hari penting, dan cara timer menghilangkannya sepenuhnya.",
+    "ogTitle": "Jadwal Lampu Anda Juga Rutin",
+    "ogDescription": "Menyalakan dan mematikan lampu sesuka hati adalah jenis rutin terlepas tersendiri."
+  },
+  "intro": {
+    "eyebrow": "Praktis",
+    "titleHtml": "Jadwal Lampu Anda<br><em>Juga Rutin</em>",
+    "subtitle": "Menyalakan dan mematikan lampu sesuka hati adalah jenis rutin terlepas tersendiri.",
+    "texts": [
+      "Kebanyakan pemelihara mencatat hari ganti air dengan cermat tapi memperlakukan saklar lampu sebagai renungan belakangan — nyala kalau ada orang di rumah dan melihat tanknya, mati kapan pun sempat.",
+      "Panduan ini menjelaskan kenapa fotoperiod yang tidak konsisten berperilaku seperti rutin apapun yang bergeser, kenapa tidak terasa begitu saat itu terjadi, dan cara timer murah menghilangkan seluruh masalahnya sekaligus."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~6 menit",
+    "metaLevel": "Praktis",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Rutin yang sering terlewat",
+      "titleHtml": "Jadwal lampu<br><em>juga rutin.</em>",
+      "body": [
+        "Ganti air dapat hari dalam seminggu. Pemberian makan dapat jumlah yang terukur. Lampu, lebih sering dibanding tidak, cuma dinyalakan kalau ada orang di sekitar dan dimatikan kapan pun sempat. Ia jarang diperlakukan seperti jadwal sama sekali.",
+        "Itu bukan karena kurang penting. Ini karena tidak terlihat seperti perawatan. Tidak ada yang dituang, diukur, atau dibersihkan, jadi ia tidak terdaftar sama seperti tugas yang bisa terlewat.",
+        "Tapi fotoperiod yang berubah dari enam jam satu hari jadi sebelas jam hari berikutnya persis kategori masalah yang sama dengan interval ganti air yang terus bergeser. Cuma jauh kurang terlihat, karena tidak ada momen jelas di mana siapapun melakukan kesalahan."
+      ],
+      "hintLabel": "Cek cepat",
+      "hintText": [
+        "Coba ingat jam berapa persisnya lampu nyala dan mati sepanjang minggu lalu. Kebanyakan pemelihara tidak bisa, dengan presisi yang sungguhan — dan itu sendiri tanda jadwalnya tidak sekonsisten yang terasa."
+      ],
+      "prevBtn": "← Intro",
+      "nextBtn": "Apa yang sebenarnya dilakukan ketidakkonsistenan"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Apa yang sebenarnya dilakukan ketidakkonsistenan",
+      "titleHtml": "Tanaman dan alga<br><em>sama-sama membaca lama hari.</em>",
+      "body": [
+        "Tanaman tumbuh mengikuti ritme yang terkait seberapa lama dan seberapa dapat diprediksi ia disinari, bukan cuma seberapa terang cahayanya. Lama hari yang terus bergeser mengganggu ritme itu bahkan ketika total jamnya, dirata-ratakan, kelihatan kira-kira benar.",
+        "Alga cenderung kurang pemilih soal ritme dan lebih oportunis soal ketidakteraturan. Satu hari tiba-tiba lebih panjang, jangka waktu yang tidak biasa terang, atau jadwal yang berubah-ubah tak terduga sering memberi alga peluang lebih besar dibanding jadwal yang sedikit terlalu panjang tapi konsisten.",
+        "Ikan juga terpengaruh, dengan cara yang lebih diam. Banyak spesies memakai transisi cahaya sebagai isyarat perilaku harian normal, dan jadwal yang tidak menentu menghilangkan sinyal yang seharusnya bisa mereka andalkan."
+      ],
+      "pullQuote": "Jarang sekali jumlah jamnya yang menyebabkan masalah. Yang menyebabkan masalah adalah tidak tahu, dari satu hari ke hari berikutnya, angka itu akan jadi berapa.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Kenapa penyalaan manual bergeser"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Kenapa penyalaan manual bergeser",
+      "titleHtml": "Jadwal yang bergantung pada ingatan<br><em>selalu bergeser cepat atau lambat.</em>",
+      "body": [
+        "Menyalakan-mematikan lampu secara manual mengaitkan jadwalnya dengan apapun yang terjadi di ruangan, bukan dengan tanknya. Malam yang larut mendorong lampu mati lebih lambat. Pagi yang sibuk mendorong lampu nyala lebih lambat juga. Tidak satu pun ini terasa seperti keputusan soal tanknya sama sekali — ia cuma keputusan soal harinya.",
+        "Ini pola dasar yang sama dengan <a href=\"/id/articles/capacity-creep\" style=\"color:var(--th-accent);text-decoration:none\">capacity creep</a>, cuma diterapkan ke lampu alih-alih ganti air. Setiap pergeseran individu kecil dan wajar. Tidak satu pun terasa seperti pengabaian. Pergeserannya cuma jadi terlihat pada hasilnya — alga, pertumbuhan tanaman tidak merata — jauh setelah jadwalnya sendiri kehilangan bentuknya.",
+        "Ini rutin yang sungguhan sulit dijaga secara manual, bukan karena rumit, tapi karena ia bersaing dengan selusin keputusan kecil harian lain yang semuanya terasa lebih mendesak pada saat itu."
+      ],
+      "hintLabel": "Ini bukan soal kemauan",
+      "hintText": [
+        "Pemelihara yang lupa menyalakan lampu pada waktu yang konsisten bukan sedang ceroboh. Tugasnya memang kurang cocok dengan ingatan sejak awal — tidak ada pengingat alami terbangun di dalamnya seperti permukaan air yang terlihat rendah."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Kembali ke ritme"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Kembali ke ritme",
+      "titleHtml": "Timer menghilangkan<br><em>ketergantungan pada ingatan sepenuhnya.</em>",
+      "body": [
+        "Respons yang selaras di sini tidak biasa sederhananya dibanding kebanyakan masalah rutin di situs ini. Timer stopkontak dasar, disetel ke durasi tetap yang sesuai buat tanknya, menghilangkan seluruh mode kegagalan sekaligus. Tidak ada kebiasaan lagi yang perlu dijaga, karena jadwalnya tidak lagi bergantung pada siapapun mengingatnya.",
+        "Pilih durasi dalam rentang yang cocok buat tanaman dan ikan yang terlibat, setel timernya sekali, lalu biarkan saja. Intinya adalah ia berhenti jadi keputusan harian.",
+        "Kalau jadwalnya sudah bergeser untuk sementara waktu, masuk secara bertahap ke durasi tetap baru selama beberapa hari alih-alih langsung lompat ke angka yang sangat berbeda. Langkah kecil membiarkan tanaman dan spesies yang sensitif cahaya menyesuaikan diri tanpa guncangan mendadak di atas koreksinya."
+      ],
+      "pullQuote": "Konsistensi sebenarnya bukan tujuan sungguhannya di sini. Menghilangkan kebutuhan untuk mengingat itulah tujuannya — dan timer melakukan itu lebih baik dibanding niat baik sebanyak apapun.",
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Capacity Creep →" },
+    { "text": "Alga di Akuarium →" },
+    { "text": "Kerangka ARA →" },
+    { "text": "Tanya Rhyssa →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

@@ -60,6 +60,8 @@ const SLUG_ORDER = [
   'missed-fertiliser-dosing',
   'is-your-setup-too-demanding',
   'minimum-viable-care',
+  'topping-off-vs-water-change',
+  'light-schedule-drift',
   'aquarium-plants-not-growing',
   'low-tech-planted-tank',
   'community-fish-tank',

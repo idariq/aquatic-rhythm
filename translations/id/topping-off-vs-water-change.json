@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "slug": "topping-off-vs-water-change",
+    "lang": "id",
+    "sourceFile": "articles/topping-off-vs-water-change.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Menambah Air Penguapan Bukan Ganti Air — Aquatic Rhythm",
+    "description": "Mengganti air yang menguap menjaga tank tetap penuh dan terasa seperti perawatan, tapi tidak melakukan apa yang dilakukan ganti air. Kenapa top-off bisa menyembunyikan penumpukan lambat, dan cara dua rutin ini sebenarnya bekerja bersama.",
+    "ogTitle": "Menambah Air Penguapan Bukan Ganti Air",
+    "ogDescription": "Mengganti air yang menguap menjaga tank tetap penuh. Ia tidak melakukan apa yang dilakukan ganti air."
+  },
+  "intro": {
+    "eyebrow": "Praktis",
+    "titleHtml": "Menambah Air Penguapan<br><em>Bukan Ganti Air</em>",
+    "subtitle": "Mengganti air yang menguap menjaga tank tetap penuh. Ia tidak melakukan apa yang dilakukan ganti air.",
+    "texts": [
+      "Air menguap, permukaannya turun, dan mengisinya kembali terasa seperti perawatan tank biasa. Kelihatannya seperti perawatan, dan dalam satu makna sempit memang begitu — tapi diam-diam ini tugas berbeda dari yang menyerupainya.",
+      "Panduan ini menjelaskan apa sebenarnya yang dilakukan menambah air penguapan, kenapa ia bisa menyembunyikan penumpukan lambat alih-alih mencegahnya, dan cara kedua rutin ini seharusnya bekerja bersama, bukan saling menggantikan."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~6 menit",
+    "metaLevel": "Praktis",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Naluri yang terasa seperti perawatan",
+      "titleHtml": "Menambah air penguapan terasa seperti perawatan.<br><em>Ia bukan perawatan yang sama.</em>",
+      "body": [
+        "Air menguap dari setiap tank terbuka. Permukaannya turun selama beberapa hari, dan mengisinya kembali terasa persis seperti kebiasaan kecil dan bertanggung jawab yang dipegang pemelihara yang baik. Tanknya terlihat penuh lagi, jadi terasa terurus.",
+        "Perasaan itu wajar, tapi ia menjawab pertanyaan yang salah. Menambah air penguapan mengembalikan volume. Ganti air juga mengembalikan volume, tapi ia juga melakukan sesuatu yang tidak pernah dilakukan menambah air penguapan. Ia mengeluarkan apapun yang sudah menumpuk di air dan menggantinya dengan sesuatu yang lebih bersih.",
+        "Mencampuradukkan keduanya bukan benar-benar kesalahan. Ini lebih ke soal tanknya tidak memberi sinyal jelas bahwa keduanya tugas berbeda. Keduanya sama-sama menuangkan air masuk. Cuma satu yang mengeluarkan sesuatu lebih dulu."
+      ],
+      "hintLabel": "Cara cepat membedakan keduanya",
+      "hintText": [
+        "Ganti air mengeluarkan sejumlah volume air lama yang sudah dipakai sebelum menambahkan apapun kembali. Menambah air penguapan cuma menambahkan. Kalau tidak ada yang keluar lebih dulu, tidak ada yang dikeluarkan — permukaannya naik kembali, tapi airnya sendiri tidak berubah."
+      ],
+      "prevBtn": "← Intro",
+      "nextBtn": "Apa yang sebenarnya dilakukan"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Apa yang sebenarnya dilakukan",
+      "titleHtml": "Ia mengencerkan konsentrasi.<br><em>Ia tidak mengeluarkan kotoran.</em>",
+      "body": [
+        "Saat air menguap, cuma airnya sendiri yang keluar. Semua yang terlarut di dalamnya — mineral, nitrat, tanin, apapun yang lain — tertinggal dalam volume yang lebih kecil. Itu berarti jadi lebih pekat, walau tidak ada yang baru ditambahkan ke tank.",
+        "Menambah air penguapan dengan air biasa mengencerkan konsentrasi itu kembali sebagian, karena air barunya mulai dari nol untuk semuanya. Ini bisa kelihatan seperti perbaikan di test kit, tapi massa nitrat atau mineral sebenarnya di tank tidak pergi ke mana-mana. Ia cuma tersebar lagi di air yang sedikit lebih banyak.",
+        "Ganti air sungguhan bekerja berbeda. Mengeluarkan sebagian air yang ada secara fisik membawa keluar sebagian penumpukan terlarut itu dari tank sepenuhnya, sebelum air baru masuk kembali. Itulah langkah yang dilewati menambah air penguapan."
+      ],
+      "pullQuote": "Menambah air penguapan menjawab \"apakah tanknya penuh,\" bukan \"apakah airnya bersih.\" Itu pertanyaan berbeda, dan cuma satu yang sebenarnya jadi tujuan ganti air.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Kenapa ini menyembunyikan pergeseran"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Kenapa ini menyembunyikan pergeseran",
+      "titleHtml": "Tank bisa terlihat stabil<br><em>sambil diam-diam memburuk.</em>",
+      "body": [
+        "Pemelihara yang setia menambah air penguapan tiap beberapa hari benar-benar melakukan sesuatu, dan gampang salah mengira konsistensi itu sebagai keseluruhan tugas. Tanknya tetap penuh, rutinnya terasa terjaga, dan tidak ada momen jelas di mana apapun terlihat terabaikan.",
+        "Sementara itu, jadwal ganti air sebenarnya bisa diam-diam bergeser — pergeseran yang sama yang dijelaskan <a href=\"/id/articles/capacity-creep\" style=\"color:var(--th-accent);text-decoration:none\">capacity creep</a>. Nitrat dan kesadahan bisa naik terus-menerus di bawah stabilitas yang kelihatan itu. Menambah air penguapan tidak menyebabkan ini, tapi ia bisa menutupinya, karena tanknya tidak pernah kelihatan jelas rendah atau terabaikan di antaranya.",
+        "Ini persis jenis rutin yang terasa aktif tanpa melakukan hal spesifik yang sebenarnya dibutuhkan. Ketekunan di satu tugas tidak menggantikan tugas berbeda yang terlewat."
+      ],
+      "hintLabel": "Tank yang selalu terlihat penuh masih bisa terlambat",
+      "hintText": [
+        "Permukaan air yang stabil tidak bilang apa-apa tentang berapa lama sejak air lama benar-benar dikeluarkan. Catat tanggal ganti air terpisah dari bagaimana tanknya kelihatan, apalagi di setup yang cepat menguap."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Membetulkan rutinnya"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Membetulkan rutinnya",
+      "titleHtml": "Tambah air penguapan di antara ganti air.<br><em>Jangan biarkan ia menggantikannya.</em>",
+      "body": [
+        "Menambah air penguapan benar-benar berguna, dan sering perlu di antara ganti air, apalagi di tank yang cepat menguap. Ia cuma perlu berdampingan dengan jadwal ganti air, bukan menggantikannya.",
+        "Kedua rutin ini punya ritme dan tugas berbeda. Tambah air penguapan kapan pun permukaannya terlihat turun, sesering yang dibutuhkan. Jaga jadwal ganti air pada pencatatannya sendiri yang terpisah, tidak peduli seberapa penuh tanknya kelihatan pada hari tertentu.",
+        "Kalau pernah tidak jelas apakah jadwal sebenarnya sudah bergeser, tes nitrat menyelesaikannya langsung. Tank yang setia ditambah air penguapannya tapi tidak benar-benar diganti airnya untuk sementara waktu biasanya akan menunjukkannya, jauh sebelum apapun kelihatan jelas salah."
+      ],
+      "pullQuote": "Tank tidak butuh Anda menjaganya tetap penuh. Ia butuh Anda terus mengeluarkan apa yang menumpuk — dan tetap penuh bukan hal yang sama dengan melakukan itu.",
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Tukar Air yang Terlepas →" },
+    { "text": "Seberapa sering ganti air? →" },
+    { "text": "Kerangka ARA →" },
+    { "text": "Tanya Rhyssa →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

@@ -233,6 +233,49 @@
     });
   }
 
+  /* Client-side filter for the /reading accordion list — matches the query
+     against each card's full text (title, description, tags) via
+     textContent, which still works while the panel is display:none, so no
+     dependence on accordion open/close state or on initReadingAccordionTitles
+     having run yet. A category with zero matching cards hides itself rather
+     than showing an empty header. */
+  function filterReadingCards(query) {
+    var root = document.getElementById('pg-reading');
+    if (!root) return;
+    var q = (query || '').trim().toLowerCase();
+    var anyVisible = false;
+    root.querySelectorAll('.rd-cat').forEach(function (cat) {
+      var catHasVisible = false;
+      cat.querySelectorAll('.rd-card--acc').forEach(function (card) {
+        var match = !q || card.textContent.toLowerCase().indexOf(q) !== -1;
+        card.classList.toggle('rd-hidden', !match);
+        if (match) catHasVisible = true;
+      });
+      cat.classList.toggle('rd-cat--empty', !catHasVisible);
+      if (catHasVisible) anyVisible = true;
+    });
+    var empty = document.getElementById('rd-search-empty');
+    if (empty) empty.hidden = !q || anyVisible;
+  }
+
+  (function () {
+    var input = document.getElementById('rd-search');
+    var clearBtn = document.getElementById('rd-search-clear');
+    if (!input) return;
+    input.addEventListener('input', function () {
+      filterReadingCards(input.value);
+      if (clearBtn) clearBtn.classList.toggle('visible', !!input.value);
+    });
+    if (clearBtn) {
+      clearBtn.addEventListener('click', function () {
+        input.value = '';
+        filterReadingCards('');
+        clearBtn.classList.remove('visible');
+        input.focus();
+      });
+    }
+  }());
+
   function go(id, push) {
     var path = id === 'home' ? '/' : '/' + id;
 
@@ -262,6 +305,10 @@
     else {
       closeAllReadingAccordions();
       initReadingAccordionTitles();
+      var rdSearchInput = document.getElementById('rd-search');
+      var rdSearchClear = document.getElementById('rd-search-clear');
+      if (rdSearchInput) { rdSearchInput.value = ''; filterReadingCards(''); }
+      if (rdSearchClear) rdSearchClear.classList.remove('visible');
     }
 
     if (localizedTitle(id)) document.title = localizedTitle(id);

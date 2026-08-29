@@ -1,0 +1,104 @@
+{
+  "_meta": {
+    "slug": "dropsy-when-treatment-isnt-working",
+    "lang": "id",
+    "sourceFile": "articles/dropsy-when-treatment-isnt-working.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Dropsy: Saat Perawatan Tak Lagi Berhasil — Aquatic Rhythm",
+    "description": "Sisik terangkat dan perut bengkak adalah tanda retensi cairan internal yang parah, bukan penyakit itu sendiri. Apa yang sebenarnya dibutuhkan tahap awal dan tahap lanjut, dan apa yang direkomendasikan sumber veteriner begitu perawatan terus gagal.",
+    "ogTitle": "Dropsy: Saat Perawatan Tak Lagi Berhasil",
+    "ogDescription": "Sisik yang terangkat bukan penyakitnya sendiri — itu tanda ada yang lebih besar sedang terjadi."
+  },
+  "intro": {
+    "eyebrow": "Semua level",
+    "titleHtml": "Dropsy<br><em>Saat Perawatan Tak Lagi Berhasil</em>",
+    "subtitle": "Sisik yang terangkat bukan penyakitnya sendiri — itu tanda ada yang lebih besar sedang terjadi.",
+    "texts": [
+      "Ikan dengan perut bengkak dan sisik yang berdiri menjauh dari tubuhnya — tampilan yang sering disebut \"pinecone\" — sedang menggambarkan sesuatu yang terjadi di dalam tubuhnya, bukan di permukaan. Tampilan itu disebut dropsy, dan ia bukan penyakit tersendiri. Dropsy adalah hasil yang terlihat dari retensi cairan parah, biasanya dipicu oleh kegagalan ginjal, infeksi sistemik, atau kerusakan organ yang sebenarnya sudah berkembang sejak sebelumnya.",
+      "Bagian ini membahas apa yang sebenarnya disampaikan dropsy, kenapa kasus awal dan kasus lanjut butuh respons yang benar-benar berbeda, dan apa yang harus dilakukan begitu seekor ikan terus kambuh lewat setiap perawatan yang sudah dicoba dengan urutan yang benar — termasuk pilihan yang selalu dilewatkan hampir semua panduan."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~7 menit",
+    "metaLevel": "Semua level",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Membaca sinyalnya",
+      "titleHtml": "Gejala, <em>bukan diagnosis</em>",
+      "body": [
+        "Dropsy adalah cairan yang menumpuk di rongga tubuh dan di bawah sisik lebih cepat daripada yang bisa diproses ginjal ikan — sisiknya berdiri menjauh karena jaringan di bawahnya membengkak, bukan karena ada masalah pada sisik itu sendiri. Biasanya ini akibat lanjutan dari kegagalan ginjal, infeksi bakteri sistemik, atau kadang mycobacteriosis, bukan satu penyakit spesifik dengan satu penyebab tunggal. Itulah kenapa saran perawatan dropsy sangat berbeda-beda antar sumber — masing-masing sering menggambarkan pemicu dasar yang berbeda, yang kebetulan menghasilkan pembengkakan terlihat yang sama.",
+        "Begitu sisik terlihat terangkat, proses di baliknya biasanya sudah berjalan cukup lama. Dropsy punya reputasi hasil yang buruk sebagian karena ia tanda tahap lanjut, bukan tanda peringatan dini — kerusakan internal yang mendorong pembengkakan itu sudah berlangsung jauh sebelum pembengkakannya sendiri cukup terlihat untuk disadari saat pemeriksaan biasa.",
+        "Itu tak berarti gejalanya tak bermakna. Ia mengonfirmasi separah apa yang terjadi di dalam, dan pada kasus awal — pembengkakan ringan, sisik masih relatif rata — layak diselidiki pemicunya kalau bisa: masalah kualitas air baru-baru ini, ikan baru yang ditambah tanpa karantina, atau ikan lain di tangki yang sama menunjukkan tanda awal, yang mengarah ke penyebab menular daripada masalah organ terisolasi."
+      ],
+      "hintLabel": "Mudah terlewat sebelum pembengkakan terlihat",
+      "hintText": [
+        "Lesu, warna memudar, dan nafsu makan menurun sering muncul beberapa hari sebelum dropsy terlihat, tapi jarang dikaitkan dengannya sampai pembengkakannya sendiri muncul. Pada saat itu prosesnya biasanya sudah punya \"awalan\" yang tak bisa dikejar penuh oleh jadwal perawatan apa pun."
+      ],
+      "prevBtn": "← Intro",
+      "nextBtn": "Dua titik awal yang sangat berbeda"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Awal vs lanjut",
+      "titleHtml": "Dua titik awal yang <em>sangat berbeda</em>",
+      "body": [
+        "Dropsy tahap awal — pembengkakan ringan, sisik masih relatif rata ke tubuh, ikan masih makan dan cukup responsif — adalah kasus di mana percobaan perawatan terstruktur masuk akal. Biasanya berarti antibakteri yang sesuai dengan kemungkinan penyebab, rendaman garam Epsom untuk bantu menarik cairan keluar secara osmotik, dan kualitas air yang sempurna sepanjang waktu, dijalankan dalam periode tertentu (umumnya sekitar 7 sampai 10 hari) sambil diawasi ketat untuk perbaikan nyata, bukan sekadar tak memburuk lagi.",
+        "Dropsy tahap lanjut terlihat beda dengan cara yang penting: sisik pinecone penuh, tulang belakang melengkung, ikan berhenti makan dan nyaris tak bisa mempertahankan posisinya di air. Pada tahap ini, sumber-sumber secara konsisten menggambarkan kerusakan organ dalam sebagai sudah meluas, dan pemulihan sebagai langka apa pun perawatan yang dicoba. Ini bukan klaim bahwa mencoba tak ada gunanya sebagai prinsip — ini gambaran tentang bagaimana peluangnya sebenarnya begitu penyakit sudah sampai tahap ini.",
+        "Perbedaan ini penting karena merawat ikan tahap lanjut dengan urgensi dan harapan yang sama seperti ikan tahap awal bisa memperpanjang prosesnya tanpa benar-benar mengubah ke mana ia berakhir. Ini dua situasi berbeda, dan keduanya butuh respons yang berbeda — bukan respons yang sama, dicoba lebih keras."
+      ],
+      "pullQuote": "Dropsy tak menguji seberapa keras sebuah perawatan dicoba. Ia menguji seberapa banyak fungsi organ yang masih tersisa sebelum perawatan itu dimulai.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Saat perawatan berhenti jadi jawaban"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Saat perawatan berhenti jadi jawaban",
+      "titleHtml": "Kekambuhan berulang <em>juga sebuah pembacaan</em>",
+      "body": [
+        "Ikan yang membaik sebentar dengan perawatan lalu kambuh lagi, atau sama sekali tak merespons perawatan yang dijalankan dengan benar walau kualitas air baik dan obatnya sesuai, sedang menyampaikan sesuatu sejelas gejala lain mana pun yang biasa dibahas laman ini — hanya saja ini yang lebih sulit diterima. Membaca daripada sekadar ikut aturan adalah pendekatan utuh di sini, dan kekambuhan berulang setelah perawatan yang benar adalah sebuah pembacaan. Itu bukan kegagalan usaha penjaga.",
+        "Sumber veteriner dan kesejahteraan hewan cukup terus terang tentang langkah berikutnya begitu seekor ikan sampai dropsy tahap lanjut — sisik pinecone, tak nafsu makan, gerakan minimal — tanpa respons berarti terhadap perawatan yang sesuai. Euthanasia digambarkan sebagai pilihan sah dan sering lebih baik pada titik itu, bukan pengakuan kalah sebagai jalan terakhir.",
+        "Apa yang mengikuti ini bukan pengganti pembacaan itu. Ini apa yang dilakukan begitu pembacaannya sudah mengarah ke sana, supaya bisa dijalankan tanpa menambah ketidakpastian pada momen yang sudah sulit."
+      ],
+      "hintLabel": "Tanda perawatan sudah berhenti jadi respons yang tepat",
+      "hintText": [
+        "Tak ada perbaikan nyata setelah satu putaran penuh perawatan yang sesuai dan dijalankan benar; ikan memburuk walau parameter air tetap baik sepanjang waktu; ikan berhenti makan atau tak bisa lagi mempertahankan posisinya tanpa usaha keras. Tak satu pun ini kegagalan di pihak penjaga — semuanya adalah pembacaan itu sendiri."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Akhir yang singkat dan disengaja, dilakukan dengan benar"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Metode manusiawi",
+      "titleHtml": "Akhir yang singkat & disengaja — <em>dilakukan dengan benar</em>",
+      "body": [
+        "Metode yang paling konsisten direkomendasikan untuk euthanasia ikan di rumah adalah overdosis clove oil (eugenol) yang dilarutkan dalam air. Clove oil tak larut langsung dalam air, jadi campur dulu dengan sedikit air hangat, baru tambahkan campuran itu perlahan ke wadah ikan selama kira-kira lima menit, bukan sekaligus — menambahkannya terlalu cepat sendiri adalah tekanan tambahan pada momen yang tak perlu itu.",
+        "Pastikan kematian dengan mengamati gerakan insang (operculum), dan jangan pindahkan atau ganggu ikan sampai sekurang-kurangnya 30 menit berlalu tanpa gerakan sama sekali. Saran lama yang menyarankan rendaman es saja kini diperlakukan lebih hati-hati oleh riset kesejahteraan terbaru, yang menemukan hilangnya kesadaran bisa jauh lebih lama daripada yang diperkirakan dan kontak langsung dengan es sendiri bisa menyebabkan rasa sakit sebelum benar-benar tak sadar. Kalau ada dokter hewan akuatik yang bisa dihubungi, menghubungi dulu sangat berharga — panduan langsung mereka lebih diutamakan daripada rujukan umum mana pun, termasuk ini.",
+        "Tak satu pun dari ini membuat keputusannya sendiri jadi lebih mudah, dan memang bukan itu tujuannya. Yang dihilangkan adalah lapisan kedua penderitaan yang sebenarnya bisa dihindari: melakukannya dengan cara yang justru menyebabkan lebih banyak penderitaan daripada sekadar menunggu, hanya karena tak ada yang pernah menjelaskan seperti apa alternatifnya."
+      ],
+      "hintLabel": "Sumber",
+      "hintText": [
+        "Prosedur ini mencerminkan panduan dari <a href=\"https://www.in.gov/boah/files/AVMA_Euthanasia_Guidelines.pdf\" target=\"_blank\" rel=\"noopener\">AVMA Guidelines for the Euthanasia of Animals</a> (Edisi 2020), basis pengetahuan ikan akuarium <a href=\"https://kb.rspca.org.au/categories/companion-animals/fish/what-is-the-most-humane-way-to-euthanase-aquarium-fish\" target=\"_blank\" rel=\"noopener\">RSPCA</a>, dan <a href=\"https://ornamentalfish.org/fish-keeper/useful-information/how-can-i-humanely-kill-my-fish/\" target=\"_blank\" rel=\"noopener\">Ornamental Aquatic Trade Association (OATA)</a> Inggris — bukan penilaian laman ini sendiri. Ketiganya secara eksplisit menyarankan mencari nasihat dokter hewan berpengalaman akuatik kalau tersedia, sebelum metode rumahan mana pun."
+      ],
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    {
+      "text": "Rasa Lega yang Tak Seharusnya Anda Rasakan →"
+    },
+    {
+      "text": "Duka Tanpa Kesalahan →"
+    },
+    {
+      "text": "Merawat Tanpa Rasa Bersalah →"
+    }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

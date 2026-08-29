@@ -303,6 +303,10 @@
                 "title": "Ich atau Velvet?<br><em>Dua penyakit yang terlihat nyaris sama, tapi diobati dengan cara yang sama sekali berbeda.</em>",
                 "desc": "Bintik putih dan debu emas bisa terlihat nyaris identik sekilas, tapi keduanya parasit berbeda yang butuh obat berbeda. Cara membedakannya dengan satu cek sederhana sebelum mengobati yang salah."
             },
+            "dropsy-when-treatment-isnt-working": {
+                "title": "Dropsy<br><em>Saat perawatan tak lagi berhasil.</em>",
+                "desc": "Sisik terangkat dan perut bengkak adalah tanda retensi cairan yang parah, bukan penyakit itu sendiri. Apa yang dibutuhkan kasus awal dan kasus lanjut, dan apa yang direkomendasikan sumber veteriner begitu perawatan terus gagal."
+            },
             "aquarium-maintenance-routine": {
                 "title": "Cara Membangun Rutinitas Akuarium<br><em>Yang benar-benar sesuai dengan hidup Anda.</em>",
                 "desc": "Jadwal perawatan generik gagal karena mengabaikan keeper rhythm. Panduan ini membantu Anda menemukan pola yang sesuai dengan cara Anda sebenarnya merawat tangki — bukan cara yang Anda bayangkan akan Anda lakukan."
@@ -417,6 +421,10 @@
             "the-fish-that-doesnt-fit": {
                 "title": "Ikan yang Tak Cocok dengan Desain Baru<br><em>Menginginkan tampilan baru, padahal masih ada yang hidup di desain lama.</em>",
                 "desc": "Sebuah tangki berhenti terasa menarik, dan tangki lain mulai terbayang — tapi ikan yang sudah ada tidak masuk dalam gambaran baru itu. Kenapa memilih untuk menunggu mereka tersingkir sendiri sebenarnya melakukan sesuatu yang tidak pernah diminta oleh keinginan mendesain ulang."
+            },
+            "the-relief-youre-not-supposed-to-feel": {
+                "title": "Rasa Lega yang Tak Seharusnya Anda Rasakan<br><em>Menyaksikan ikan menderita dalam diam, dan merasakan sesuatu selain sedih saat akhirnya berakhir.</em>",
+                "desc": "Perawatan yang gagal berulang kali bisa berubah jadi menonton dan menunggu dalam diam, bukan keputusan yang diucapkan siapa pun. Kenapa rasa lega di ujungnya bukan lawan dari peduli, dan seperti apa opsi ketiga yang jujur itu sebenarnya."
             }
         },
         "closing_cta": {

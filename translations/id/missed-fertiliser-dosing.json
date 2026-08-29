@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "slug": "missed-fertiliser-dosing",
+    "lang": "id",
+    "sourceFile": "articles/missed-fertiliser-dosing.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Dosis Pupuk yang Terlepas — Aquatic Rhythm",
+    "description": "Dosis pupuk yang terlewat di tank berbunga tanaman berperilaku sama sekali beda dari ganti air yang terlepas. Apa sebenarnya yang terjadi saat nutrient menipis, kenapa risikonya sering alga bukan cuma pertumbuhan lambat, dan cara kembali ke jadwal.",
+    "ogTitle": "Dosis Pupuk yang Terlepas",
+    "ogDescription": "Dosis yang terlewat berperilaku sama sekali beda dari ganti air yang terlepas."
+  },
+  "intro": {
+    "eyebrow": "Praktis",
+    "titleHtml": "Dosis Pupuk<br><em>yang Terlepas</em>",
+    "subtitle": "Dosis yang terlewat berperilaku sama sekali beda dari ganti air yang terlepas.",
+    "texts": [
+      "Ganti air yang terlepas berarti kotoran menumpuk. Dosis pupuk yang terlepas adalah jenis jurang sebaliknya — tanaman terus menghabiskan nutrient yang tidak pernah diisi ulang.",
+      "Panduan ini menjelaskan apa sebenarnya yang terjadi saat satu dosis terlewat, kenapa risikonya sering alga bukan sekadar pertumbuhan lebih lambat, dan cara kembali ke jadwal tanpa overdosis demi kompensasi."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~6 menit",
+    "metaLevel": "Praktis",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Jenis keterlambatan yang berbeda",
+      "titleHtml": "Nutrient tidak menumpuk.<br><em>Ia habis.</em>",
+      "body": [
+        "Ganti air yang terlepas dan dosis pupuk yang terlepas terasa mirip, tapi keduanya bekerja ke arah berlawanan. Lewatkan ganti air, dan kotoran serta nitrat menumpuk di air. Lewatkan dosis, dan sesuatu malah dikeluarkan dari air lebih cepat dibanding digantikan.",
+        "Tanaman tidak berhenti mengonsumsi nutrient cuma karena dosisnya terhenti. Ia terus menarik apapun yang sudah terlarut di air sampai habis. Dosis yang terlepas tidak menambah masalah ke tank. Ia diam-diam mengosongkan sumber daya yang sudah diandalkan tanamannya.",
+        "Beda itu penting buat cara Anda merespons. Naluri yang cocok buat ganti air yang terlepas — lakukan yang ukuran normal lalu lanjut — tidak sepenuhnya tepat di sini. Tidak ada yang perlu dibilas keluar. Yang ada cuma jurang yang perlu diisi kembali."
+      ],
+      "hintLabel": "Jangan menggandakan dosis berikutnya",
+      "hintText": [
+        "Menggandakan dosis untuk \"mengejar ketinggalan\" mendorong beberapa nutrient naik sekaligus, dan rasio antar nutrient itulah, bukan satu angka tunggal, yang sebenarnya direspons tanaman dan alga. Melanjutkan dosis normal berbuat lebih baik dibanding mengompensasi jurangnya."
+      ],
+      "prevBtn": "← Intro",
+      "nextBtn": "Apa yang sebenarnya terjadi"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Apa yang sebenarnya terjadi",
+      "titleHtml": "Jurang singkat tak terlihat.<br><em>Jurang panjang muncul sebagai alga.</em>",
+      "body": [
+        "Sehari-dua tanpa dosis jarang terasa. Tanaman menarik apapun yang masih terlarut di kolom air, dan cadangan itu menyerap jurang singkat tanpa perubahan terlihat.",
+        "Jurang lebih panjang cerita lain. Lewat sekitar seminggu, gejala defisiensi spesifik bisa muncul — menguning di antara urat daun, lubang kecil, atau pertumbuhan baru yang lebih kecil dan pucat dari biasanya. Gejala mana yang muncul lebih dulu bergantung pada nutrient mana yang habis lebih dulu, dan itu bervariasi tergantung rutin dosis dan campuran tanaman.",
+        "Risiko yang kurang terlihat adalah alga, bukan cuma pertumbuhan lebih lambat. Alga sering memanfaatkan ketidakstabilan nutrient lebih mudah dibanding tanaman. Ini terutama berlaku di tank dengan CO2 injeksi, di mana cahaya, CO2, dan nutrient semua perlu tetap proporsional. Jurang yang menggeser keseimbangan itu bisa memicu alga bahkan ketika level nutrient keseluruhan kelihatan baik-baik saja di atas kertas."
+      ],
+      "pullQuote": "Dosis yang terlepas tidak menghukum tank seperti ganti air yang terlepas bisa. Ia cuma diam-diam meminta tanaman menunggu sedikit lebih lama untuk makanan berikutnya — dan menunggu terlalu lama itulah yang sebenarnya menyebabkan masalah.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Kapan ini paling penting"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Kapan ini paling penting",
+      "titleHtml": "Tank high-tech<br><em>merasakannya paling cepat.</em>",
+      "body": [
+        "Tank cahaya tinggi dengan CO2 injeksi merasakan dosis yang terlepas paling cepat. Pertumbuhan cepat di bawah cahaya kuat berarti tanaman menarik nutrient dengan cepat, dan metode dosis yang dirancang berjalan pas-pasan, seperti dosis EI, sengaja punya sedikit ruang cadangan. Dosis yang terlepas di sana muncul dalam hitungan hari, bukan minggu.",
+        "Tank berbunga tanaman lebat secara umum menghabiskan nutrient lebih cepat dibanding yang tanamannya sedikit, sederhananya karena lebih banyak massa tanaman yang mengonsumsinya. Tank dengan sedikit tanaman yang tumbuh lambat di bawah cahaya sedang punya jauh lebih banyak ruang.",
+        "Tank low-tech dengan tanaman sedikit punya ruang paling banyak untuk menyerap jurang. Pertumbuhan di sana memang sengaja lebih lambat, jadi permintaan nutrient juga lebih rendah, dan satu-dua minggu terlepas sering lewat tanpa efek terlihat sama sekali."
+      ],
+      "hintLabel": "Amati tanamannya, bukan cuma test kit",
+      "hintText": [
+        "Test kit nutrient memang ada, tapi kurang diandalkan dan kurang umum dipakai dibanding test kit amonia atau nitrat. Pertumbuhan baru sering jadi sinyal yang lebih praktis — cek warna dan ukurannya dibanding apa yang dihasilkan tanaman itu beberapa minggu lalu."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Kembali ke jadwal"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Kembali ke jadwal",
+      "titleHtml": "Lanjutkan dosis normal.<br><em>Jangan kejar jurangnya.</em>",
+      "body": [
+        "Di sebagian besar kasus, respons yang selaras adalah cukup melanjutkan dosis di jumlah dan jadwal normal. Tidak ada defisit yang perlu dihapus sekaligus, dan mendorong dosis lebih besar demi kompensasi justru berisiko menggeser rasio nutrient alih-alih memulihkannya.",
+        "Kalau pertumbuhan baru sudah menunjukkan gejala defisiensi yang jelas, satu dosis yang sedikit lebih besar bisa membantu memperbaikinya, tapi tetap tidak boleh jadi kebiasaan baru. Amati putaran pertumbuhan berikutnya selama satu-dua minggu ke depan untuk melihat apakah gejalanya membaik sebelum menyesuaikan apapun lagi.",
+        "Ke depannya, solusinya sama dengan yang membantu rutin apapun yang terlepas: hilangkan ketergantungan pada ingatan. Pompa dosis, atau pengingat yang ditaruh di tempat yang benar-benar akan Anda lihat, berbuat lebih banyak buat konsistensi jangka panjang dibanding dosis koreksi apapun."
+      ],
+      "pullQuote": "Tanaman juga tidak menilai Anda berdasarkan dosis yang terlepas. Ia cuma merespons keseimbangan apapun yang benar-benar diberikan, satu minggu sekaligus.",
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Tukar Air yang Terlepas →" },
+    { "text": "Memulai Planted Tank Low-Tech →" },
+    { "text": "Kerangka ARA →" },
+    { "text": "Tanya Rhyssa →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

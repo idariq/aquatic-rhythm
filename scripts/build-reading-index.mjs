@@ -45,6 +45,8 @@ const SLUG_ORDER = [
   'ph-keeps-crashing',
   'clamped-fins-fin-rot',
   'white-fuzz-driftwood',
+  'sudden-colour-loss-fish',
+  'snails-suddenly-everywhere',
   'tank-crash-recovery',
   'aquarium-plants-not-growing',
   'low-tech-planted-tank',

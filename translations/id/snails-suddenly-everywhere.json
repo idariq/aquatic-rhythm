@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "slug": "snails-suddenly-everywhere",
+    "lang": "id",
+    "sourceFile": "articles/snails-suddenly-everywhere.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Kenapa Siput Anda Tiba-Tiba Ada di Mana-Mana — Aquatic Rhythm",
+    "description": "Ledakan mendadak jumlah siput hama jarang benar-benar soal siputnya. Apa yang sebenarnya memberi makan ledakan itu, kenapa mengambilnya satu-satu dengan tangan tidak menyelesaikan masalah, dan apa yang benar-benar menurunkan populasinya kembali.",
+    "ogTitle": "Kenapa Siput Anda Tiba-Tiba Ada di Mana-Mana",
+    "ogDescription": "Ledakan populasi adalah sinyal pemberian makan, bukan masalah hama."
+  },
+  "intro": {
+    "eyebrow": "Semua level",
+    "titleHtml": "Kenapa Siput Anda<br><em>Tiba-Tiba Ada di Mana-Mana</em>",
+    "subtitle": "Ledakan populasi adalah sinyal pemberian makan, bukan masalah hama.",
+    "texts": [
+      "Tank yang selama berbulan-bulan mungkin cuma punya satu-dua siput hidup diam-diam tiba-tiba kelihatan punya siput di setiap permukaan — kaca, substrat, bagian bawah tiap daun. Tidak ada yang berubah dari siputnya sendiri. Ada hal lain yang berubah.",
+      "Panduan ini menjelaskan apa yang sebenarnya mendorong ledakan populasi siput, kenapa mengambilnya satu-satu dengan tangan jarang menyelesaikannya, dan apa yang benar-benar menurunkan jumlahnya untuk seterusnya."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~6 menit",
+    "metaLevel": "Semua level",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Membaca sinyal",
+      "titleHtml": "Siputnya tidak baru datang.<br><em>Ia sudah ada di situ.</em>",
+      "body": [
+        "Siput hama kecil — ramshorn, pond snail, dan bladder snail termasuk yang paling umum — hampir selalu masuk ke tank sebagai penumpang gelap, terselip di tanaman baru, dekorasi, atau substrat sebagai bayi kecil atau telur yang tidak terlihat mata saat itu. Tank bisa membawa populasi kecil bertingkat rendah selama berbulan-bulan tanpa pemelihara pernah menyadarinya.",
+        "Yang berubah bukan siputnya baru muncul. Yang berubah adalah populasi yang sudah ada di situ tiba-tiba jadi terlihat — menutupi kaca, memenuhi substrat, berkerumun di daun — dalam waktu yang terasa cuma seminggu.",
+        "Pergeseran dari tidak terlihat ke tidak bisa diabaikan itulah sinyal sebenarnya yang layak dibaca. Siputnya bukan kejadiannya. Perubahan jumlah mereka yang jadi kejadiannya."
+      ],
+      "hintLabel": "Hal pertama yang perlu diperhatikan",
+      "hintText": [
+        "Ledakan jumlah, bukan sekadar keberadaan siput, yang informatif di sini. Tank dengan segelintir siput yang diam-diam memakan alga adalah situasi yang sama sekali berbeda dari tank yang populasinya jelas meledak dalam satu-dua minggu terakhir."
+      ],
+      "prevBtn": "← Intro",
+      "nextBtn": "Apa yang sebenarnya menyebabkannya"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Apa yang sebenarnya menyebabkannya",
+      "titleHtml": "Siput berkembang biak<br><em>menyesuaikan pasokan makanan.</em>",
+      "body": [
+        "Siput-siput ini hermafrodit dan berkembang biak terus-menerus dalam jumlah kecil di kondisi biasa — tapi laju perkembangbiakannya berskala langsung dengan seberapa banyak makanan yang tersedia. Beri populasinya kelebihan tiba-tiba sesuatu untuk dimakan, dan jumlahnya bisa berlipat ganda drastis dalam hitungan minggu.",
+        "Kelebihan itu hampir selalu sisa makanan. Pemberian makan berlebihan, memberi lebih banyak dari yang dihabiskan ikan dalam beberapa menit, atau kenaikan pemberian makan belakangan — ikan baru ditambahkan, ganti ke pakan yang lebih kaya, pemberian makan yang lebih sering — membanjiri tank dengan persis materi organik yang dibutuhkan populasi siput untuk berkembang. Materi tanaman yang membusuk dari daun yang mati atau tanaman yang baru ditambahkan menambah pasokan yang sama.",
+        "Semua ini sebenarnya tidak sungguh-sungguh soal siputnya. Ledakan jumlah yang terlihat adalah sinyal beban biologis yang memakai cangkang — pola dasar yang sama yang muncul sebagai nitrat naik atau air keruh, cuma dibaca lewat indikator yang berbeda."
+      ],
+      "pullQuote": "Siput tidak berkembang biak karena tank punya masalah siput. Mereka berkembang biak karena tank punya lebih banyak makanan dibanding yang bisa dihabiskan yang lain.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Amati dulu sebelum menghilangkan"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Amati dulu sebelum menghilangkan",
+      "titleHtml": "Mengambilnya satu-satu<br><em>menangani angka yang salah.</em>",
+      "body": [
+        "Menghilangkan siput yang terlihat dengan tangan adalah naluri pertama yang umum, dan itu sendiri cuma memberi efek sangat sedikit. Kelebihan makanan yang bikin populasinya meledak sejak awal masih ada, jadi yang tersisa — ditambah telur apapun yang sudah bertelur — cuma repopulasi mengisi ruang yang sama dalam satu-dua minggu.",
+        "Sebelum melakukan hal lain, perhatikan pemberian makan secara langsung. Apakah makanan habis dalam beberapa menit, atau ada yang tersisa melayang ke substrat atau menempel di daun tanaman? Apakah jumlah atau frekuensi pemberian makan naik belakangan — ikan baru, pakan yang lebih kaya, satu kali pemberian makan tambahan di rutinitas? Apakah ada yang organik ditambahkan belakangan, seperti tanaman baru atau dekorasi yang mungkin sedang membusuk?",
+        "Ini layak dicek bahkan di tank yang kelihatannya baik-baik saja. Ledakan siput sering muncul sebelum nitrat atau kejernihan air berubah cukup untuk disadari, menjadikannya salah satu tanda paling awal yang bisa dibaca dari penumpukan kelebihan makanan."
+      ],
+      "hintLabel": "Cek lima menit",
+      "hintText": [
+        "Pada pemberian makan berikutnya, perhatikan waktunya. Kalau makanan masih terlihat di substrat atau melayang di air setelah lima menit, itu lebih banyak dari yang benar-benar dipakai penghuni tank lain — apapun yang sedang dilakukan populasi siputnya soal itu."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Respons yang selaras"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Respons yang selaras",
+      "titleHtml": "Sesuaikan pemberian makan dengan nafsu makan.<br><em>Populasinya akan mengikuti.</em>",
+      "body": [
+        "Respons yang selaras adalah mengembalikan pemberian makan sesuai dengan apa yang benar-benar dimakan — porsi lebih kecil, habis dalam satu-dua menit, dengan sisa yang jelas terlihat dihilangkan segera, bukan dibiarkan terurai di tank. Ini menangani kelebihan sebenarnya, bukan siput yang cuma mewakilinya.",
+        "Populasinya tidak perlu dimusnahkan untuk turun kembali — ia butuh kelebihan makanannya dihilangkan. Begitu pemberian makan diperbaiki, jumlah siput biasanya kembali turun ke level rendah yang tidak terlihat dalam beberapa minggu seiring perkembangbiakannya melambat menyesuaikan pasokan yang lebih kecil. Tidak perlu obat siput kimia untuk ini, dan produk-produk itu justru menambah beban kimia sendiri ke air tanpa mengatasi pola pemberian makan yang menyebabkan ledakannya.",
+        "Kalau jumlah yang terlihat benar-benar mengganggu sementara ini, penghilangan manual atau spesies predator seperti assassin snail bisa mempercepat pembersihan yang terlihat — tapi keduanya tidak menggantikan perbaikan pemberian makan, dan keduanya menangani gejala sementara perbaikan yang sesungguhnya melakukan pekerjaan yang sebenarnya."
+      ],
+      "pullQuote": "Siputnya tidak pernah jadi hal yang perlu diselesaikan. Pemberian makannya yang perlu — siputnya cuma bagian paling mudah dilihat dari itu.",
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Memberi makan berlebihan →" },
+    { "text": "Rutinitas Perawatan yang Benar-Benar Berhasil →" },
+    { "text": "Kerangka ARA →" },
+    { "text": "Tanya Rhyssa →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

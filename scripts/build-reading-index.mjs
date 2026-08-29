@@ -49,6 +49,8 @@ const SLUG_ORDER = [
   'snails-suddenly-everywhere',
   'understanding-gh-and-kh',
   'smell-from-your-substrate',
+  'cloudy-eyes-fish',
+  'ich-vs-velvet',
   'tank-crash-recovery',
   'aquarium-plants-not-growing',
   'low-tech-planted-tank',

@@ -75,6 +75,8 @@ const PRIORITY_SLUGS = [
   'snails-suddenly-everywhere',
   'understanding-gh-and-kh',
   'smell-from-your-substrate',
+  'cloudy-eyes-fish',
+  'ich-vs-velvet',
   'why-is-my-aquarium-water-cloudy',
   'aquarium-travel-vacation',
   'when-is-tank-ready-for-fish',

@@ -1,0 +1,100 @@
+{
+  "_meta": {
+    "slug": "the-fish-that-doesnt-fit",
+    "lang": "id",
+    "sourceFile": "articles/the-fish-that-doesnt-fit.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Ikan yang Tak Cocok dengan Desain Baru — Aquatic Rhythm",
+    "description": "Ingin tampilan baru untuk akuarium, padahal masih ada makhluk hidup di desain lama itu — hal yang sering terjadi tapi jarang diakui terus terang. Jalan keluar yang jujur dari ketegangan itu bukan menunggu.",
+    "ogTitle": "Ikan yang Tak Cocok dengan Desain Baru",
+    "ogDescription": "Menginginkan tampilan baru, padahal masih ada yang hidup di desain lama."
+  },
+  "intro": {
+    "eyebrow": "Refleksi",
+    "titleHtml": "Ikan yang Tak Cocok <em>dengan Desain Baru</em>",
+    "subtitle": "Menginginkan tampilan baru, padahal masih ada yang hidup di desain lama.",
+    "texts": [
+      "Ada titik di mana sebuah akuarium berhenti terasa menarik seperti dulu, dan bayangan tangki yang berbeda mulai terbentuk di kepala — hardscape lain, suasana lain, ikan yang benar-benar cocok dengan visi itu. Sejauh ini wajar. Yang lebih jarang diungkapkan terus terang adalah apa yang terjadi ketika ikan yang sudah ada di tangki ternyata tidak masuk dalam gambaran baru itu, dan tidak ada yang salah dengan mereka selain waktunya yang tidak pas.",
+      "Tulisan ini membahas jeda yang bisa muncul setelahnya: bukan sebuah keputusan yang diambil, tapi keputusan yang sengaja ditunda sampai terjadi sendiri. Kenapa penundaan semacam itu sebenarnya melakukan sesuatu yang tidak pernah diminta oleh keinginan mendesain ulang, dan seperti apa jalan keluar yang jujur dari situasi ini."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~7 menit",
+    "metaLevel": "Refleksi",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Pola yang layak diakui terus terang",
+      "titleHtml": "Desain ulang <em>yang masih punya detak jantung</em>",
+      "body": [
+        "Membongkar akuarium lalu membangunnya lagi adalah salah satu hal paling wajar dalam hobi ini. Budaya aquascaping dibangun di atas kebiasaan itu — layout kompetisi dibongkar tiap musim, hardscape dipakai ulang, satu aliran desain bisa berputar di sekitar proses membangun ulang sampai komposisinya benar-benar pas. Semua itu tidak masalah. Kayu, batu, dan substrat tidak punya kepentingan soal versi tangki mana yang akhirnya menang.",
+        "Ikan punya kepentingan itu. Situasi khusus yang dibahas di sini dimulai begitu seorang penjaga sadar bahwa visi barunya tidak lagi menyertakan ikan yang sudah berenang di tangki lama — warnanya tidak cocok dengan palet baru, sifatnya tidak sesuai rencana stok baru, ukurannya tidak pas untuk tangki yang lebih kecil — padahal sebenarnya tidak ada yang salah dengan ikan itu selain kenyataan bahwa ia datang untuk tangki yang berbeda dari yang sekarang sedang dibayangkan.",
+        "Ini pilihan sulit yang nyata, bukan hal sepele. Ikannya sehat. Mencarikan rumah baru yang layak butuh usaha dan tidak selalu berhasil. Mempertahankannya berarti desain ulang harus ditunda, mungkin bertahun-tahun. Diletakkan seperti itu, muncul opsi keempat yang tampak nyaris masuk akal dibanding yang lain: tidak memutuskan apa-apa, dan biarkan ikan itu berhenti jadi penghalang menurut jadwalnya sendiri."
+      ],
+      "pullQuote": "Desain ulang adalah keputusan tentang tangkinya. Ikan yang sudah ada di dalamnya butuh keputusan tersendiri — dan \"nanti saja\" bukan salah satu pilihan dalam daftar itu.",
+      "prevBtn": "← Intro",
+      "nextBtn": "Bagaimana keputusan itu menghilang"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Bagaimana keputusan itu menghilang",
+      "titleHtml": "Kelalaian yang <em>datang dengan alibinya sendiri</em>",
+      "body": [
+        "Hampir tidak ada yang sengaja menelantarkan seekor ikan hanya karena warnanya tidak cocok dengan layout baru. Yang sebenarnya terjadi lebih kecil dan lebih pelan dari itu, dan tidak butuh satu keputusan pun. Penggantian air molor beberapa hari. Pemberian pakan jadi sedikit kurang telaten. Sirip yang mulai robek atau mata yang mulai keruh sempat diperhatikan lalu tidak benar-benar ditindaklanjuti, padahal beberapa bulan lalu pasti langsung ditangani. Masing-masing, sendirian, terlihat seperti kelalaian biasa — jenis yang pernah dialami setiap penjaga.",
+        "Yang membedakan versi ini adalah arah kelalaian itu mengarah ke mana. Bukan pergeseran acak; semuanya, walau tidak pernah diakui pada diri sendiri, mengarah ke satu hasil yang membuka jalan bagi tangki yang benar-benar diinginkan. Itulah yang membuat seseorang bisa melewati semua ini tanpa pernah merasa jadi orang yang memutuskan berhenti merawat ikan yang sehat — karena tidak pernah ada satu momen yang benar-benar jadi keputusan itu. Hasilnya datang lewat seratus kelalaian kecil, bukan satu pilihan, dan seratus kelalaian kecil jauh lebih mudah untuk tidak terlalu dipikirkan.",
+        "Ini layak dinamai dengan tepat karena alibi itulah seluruh mekanismenya. Kerugian yang disengaja akan terasa seperti keputusan dan menuntut pembenaran. Menunggu tidak terasa seperti keputusan sama sekali — rasanya seperti waktu yang berjalan, seperti sesuatu yang memang sudah pasti akan terjadi. Perasaan itu sedang bekerja secara nyata. Hanya saja bukan pekerjaan yang tampaknya sedang dilakukannya."
+      ],
+      "hintLabel": "Layak diperiksa secara jujur",
+      "hintText": [
+        "Beberapa tanda bahwa ini sudah mulai terjadi, bukan sekadar terpikirkan: menyadari sudah jarang memeriksa satu ikan tertentu dibanding ikan lain di tangki yang sama, merasa lebih lega daripada khawatir saat terakhir kali ikan itu terlihat kurang sehat, atau mendapati diri berpikir tentang ikan tertentu sebagai penghalang menuju daftar stok berikutnya, bukan sebagai salah satu makhluk yang sedang dalam perawatan."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Apa yang sebenarnya diminta kerangka ARA"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Apa yang sebenarnya diminta kerangka ARA",
+      "titleHtml": "Livestock Rhythm tidak berhenti <em>demi mood board</em>",
+      "body": [
+        "ARA memperlakukan Livestock Rhythm sebagai komitmen yang skalanya mengikuti hewannya, bukan mengikuti seberapa semangat penjaga pada satu layout tertentu saat ini. Umur seekor ikan tidak memendek hanya karena tangkinya memasuki fase estetika baru, dan standar perawatan yang jadi haknya tidak punya klausul \"sampai ada yang lebih baik datang\". Ingin mendesain ulang adalah keputusan yang sah tentang sistemnya. Itu bukan, dengan sendirinya, keputusan tentang hewan yang kebetulan sedang hidup di sistem itu sekarang.",
+        "Begitu keduanya dipisahkan, pilihan yang jujur jadi cukup jelas, dan tidak satu pun mengharuskan berpura-pura bahwa keinginan akan sesuatu yang berbeda itu tidak ada. Tunda desain ulang sampai stok yang ada mencapai akhir alaminya atau menemukan rumah baru yang benar-benar diusahakan dan diperiksa dengan baik — tanggal yang nyata atau penempatan yang nyata, bukan yang tanpa batas waktu. Rancang ulang di sekitar ikan yang sudah ada, menjadikan kebutuhan mereka sebagai acuan sesungguhnya, bukan batasan bagi proyek yang \"sungguhan\". Atau carikan rumah baru secara aktif, dengan standar pencarian yang sama seperti untuk bagian tangki lainnya, bukan menerima tawaran pertama yang datang hanya demi menyingkirkan masalah dari daftar.",
+        "Yang mempersatukan ketiganya adalah adanya langkah berikutnya yang benar-benar ada sekarang, yang bisa ditanyakan orang lain. Menunggu tidak punya langkah seperti itu. Itulah ujian jujur untuk menentukan sebuah rencana sebenarnya termasuk kategori yang mana."
+      ],
+      "pullQuote": "Capacity before Ambition tidak cuma berlaku pada seberapa banyak isi tangki. Ia juga berlaku pada berapa lama seorang penjaga rela membiarkan sebuah keputusan menggantung sebelum akhirnya diambil.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Menginginkan sesuatu yang baru bukan masalahnya"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Menginginkan sesuatu yang baru bukan masalahnya",
+      "titleHtml": "Ketegangannya jujur. <em>Penundaannya tidak.</em>",
+      "body": [
+        "Menginginkan tangki yang tampil berbeda dari yang sekarang bukan tanda kurang bersyukur atau kurang komitmen. Itu kegelisahan yang sama yang mendorong sebagian besar hal baik dalam hobi ini — layout yang lebih baik, stok yang lebih serasi, penjaga yang sekadar sudah berkembang melampaui apa yang membuatnya bersemangat dua tahun lalu. Tidak ada yang perlu dibela dari semua itu, dan tidak ada penjaga yang mempertahankan ikan sehat selama desain ulang yang belum siap dilakukannya berbuat salah hanya karena menginginkan desain ulang itu.",
+        "Bagian yang menuntut sesuatu dari seorang penjaga lebih sempit dari keseluruhan perasaan itu: bukan soal apakah dorongan menuju sesuatu yang baru itu boleh ada, tapi siapa yang berhak bertindak atas ikan yang sudah ada selagi dorongan itu sedang dipikirkan matang-matang. Penjaga yang jujur, memilih salah satu dari beberapa jalan nyata secara terbuka — atau jam yang berjalan tanpa diawasi, diam-diam membuat pilihan itu untuknya.",
+        "Ikan itu tidak tahu ada desain ulang yang akan datang. Ia hanya tahu apakah minggu ini terasa sama seperti minggu-minggu lain yang pernah dilaluinya di sini. Itu pertanyaan kecil yang bisa dijawab, dan tetap bisa dijawab selama keputusan yang lebih besar itu masih terbuka."
+      ],
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    {
+      "text": "Erosi Kapasitas →"
+    },
+    {
+      "text": "Akuarium Bukan Proyek →"
+    },
+    {
+      "text": "Merawat Tanpa Rasa Bersalah →"
+    },
+    {
+      "text": "Kerangka ARA →"
+    }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "slug": "ich-vs-velvet",
+    "lang": "id",
+    "sourceFile": "articles/ich-vs-velvet.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Ich atau Velvet? — Aquatic Rhythm",
+    "description": "Bintik putih dan debu emas bisa terlihat nyaris identik sekilas, tapi keduanya parasit berbeda yang butuh obat berbeda. Cara membedakannya dengan satu cek sederhana sebelum mengobati yang salah.",
+    "ogTitle": "Ich atau Velvet?",
+    "ogDescription": "Dua penyakit. Satu tes cepat membedakan keduanya."
+  },
+  "intro": {
+    "eyebrow": "Semua level",
+    "titleHtml": "Ich atau<br><em>Velvet?</em>",
+    "subtitle": "Dua penyakit yang terlihat nyaris sama, tapi diobati dengan cara yang sama sekali berbeda.",
+    "texts": [
+      "Seekor ikan tiba-tiba menumbuhkan bintik-bintik kecil atau lapisan berdebu dalam satu-dua hari, dan dua penjelasan paling umum — ich dan velvet — bisa terlihat membingungkan mirip dari jarak pandang normal.",
+      "Panduan ini menjelaskan cara membedakan keduanya dengan cek senter sederhana, kenapa mengobati yang salah membuang waktu yang tidak dimiliki ikannya, dan cara mengobati yang mana pun yang sebenarnya sedang Anda lihat."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~7 menit",
+    "metaLevel": "Semua level",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Membaca sinyal",
+      "titleHtml": "Bintik, atau debu —<br><em>bedanya gampang terlewat.</em>",
+      "body": [
+        "Ich (penyakit bintik putih) dan velvet sama-sama membuat kulit ikan terlihat tidak normal dalam satu-dua hari. Kedua penyakit ini juga sama-sama cenderung memicu gerakan menggosok dan menggesek ke dekorasi. Sekilas, dari seberang ruangan, keduanya bisa sulit dibedakan.",
+        "Ikan dengan salah satu penyakit ini biasanya bernapas sedikit lebih berat dari normal, karena kedua parasit bisa mengiritasi insang selain kulit. Gejala itu saja tidak membedakan keduanya.",
+        "Kedua penyakit ini butuh obat yang benar-benar berbeda. Perawatan yang menargetkan yang salah menunda ikan mendapat obat yang tepat, sekaligus menambah beban kimia yang tidak perlu ke tank sementara itu."
+      ],
+      "hintLabel": "Jangan mengobati berdasarkan ingatan",
+      "hintText": [
+        "Kalau sudah lama sejak terakhir kali Anda melihat salah satu penyakit ini, perhatikan baik-baik sebelum mengambil botol obat. Perbedaan visualnya sungguhan dan bisa dicek dalam beberapa menit — cuma tidak terlihat jelas dari pandangan sekilas ke tank."
+      ],
+      "prevBtn": "← Intro",
+      "nextBtn": "Apa yang sebenarnya berbeda"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Apa yang sebenarnya berbeda",
+      "titleHtml": "Yang satu butiran garam.<br><em>Yang lain debu.</em>",
+      "body": [
+        "<strong>Ich.</strong> Ich menghasilkan bintik putih yang jelas dan menonjol seukuran butiran garam. Setiap bintik terpisah dari yang lain. Anda biasanya bisa menghitung bintik satu-satu walau jumlahnya banyak.",
+        "<strong>Velvet.</strong> Velvet menghasilkan lapisan yang jauh lebih halus, lebih mirip taburan bubuk emas atau warna karat dibanding bintik-bintik terpisah. Di bawah pencahayaan ruangan normal ini bisa sama sekali terlewat, atau disalahartikan sebagai ikan yang sedikit kusam warnanya.",
+        "Cara paling jelas membedakan keduanya adalah tes senter. Matikan lampu tank dan ruangan, lalu sorotkan senter ke ikan dengan sudut rendah, nyaris sejajar permukaan. Ich tetap terlihat sebagai benjolan putih terpisah di bawah cahaya ini. Velvet menyala sebagai lapisan debu emas berkilau halus di seluruh badan."
+      ],
+      "pullQuote": "Ich adalah sebaran bintik-bintik terpisah. Velvet adalah lapisan. Perbedaan itu adalah keseluruhan diagnosisnya, dan cuma butuh sekitar dua menit dengan senter untuk mengeceknya.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Amati dulu sebelum mengobati"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Amati dulu sebelum mengobati",
+      "titleHtml": "Pastikan dengan cahaya<br><em>sebelum memastikan dengan obat.</em>",
+      "body": [
+        "Jalankan tes senter di ruangan gelap sebelum melakukan hal lain. Ini cara paling diandalkan untuk membedakan keduanya, dan cuma butuh beberapa menit.",
+        "Perhatikan seberapa berat napasnya. Velvet cenderung memukul insang lebih keras dibanding ich, jadi gerakan insang yang jelas lebih berat atau lebih cepat sedikit condong ke velvet, bahkan sebelum senter memastikannya.",
+        "Siklus hidup ich juga melambat atau mempercepat mengikuti suhu, yang penting untuk pengaturan waktu perawatan. Velvet tidak mengikuti siklus bergantung suhu yang sama — sebagian alasan kenapa perawatan yang dibuat untuk satu tidak bekerja diandalkan pada yang lain."
+      ],
+      "hintLabel": "Kedua penyakit ini layak dapat tank karantina kalau memungkinkan",
+      "hintText": [
+        "Mengisolasi ikan yang terkena, kalau memungkinkan, membatasi paparan obat ke penghuni tank lain dan memudahkan mengamati bagaimana bintik atau debunya merespons perawatan hari demi hari."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Respons yang selaras"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Respons yang selaras",
+      "titleHtml": "Obati yang mana<br><em>yang sebenarnya sudah Anda pastikan.</em>",
+      "body": [
+        "Kalau tes senter menunjukkan bintik putih terpisah, obati ich secara spesifik. Kenaikan suhu bertahap yang aman untuk spesiesnya mempercepat siklus hidup parasitnya, dan obat ich perlu dijalankan selama masa perawatan penuh, bukan cuma sampai bintiknya hilang.",
+        "Kalau tes senter menunjukkan kilau debu emas, obati velvet secara spesifik, biasanya dengan obat berbasis tembaga atau yang ditargetkan khusus untuk velvet. Meredupkan lampu tank selama perawatan juga membantu, karena parasit penyebab velvet sebagian bergantung pada cahaya.",
+        "Bagaimanapun, selesaikan masa perawatan penuh alih-alih berhenti begitu gejala terlihat hilang. Kedua parasit ini punya tahap siklus hidup yang bertahan di substrat atau dekorasi bahkan setelah ikannya terlihat lebih baik. Berhenti lebih awal adalah salah satu alasan paling umum kenapa salah satu penyakit ini kelihatan \"kambuh lagi.\""
+      ],
+      "pullQuote": "Bintiknya tidak pernah jadi keseluruhan cerita. Parasit mana yang menyebabkannya itulah ceritanya — dan itu satu hal yang layak dipastikan sebelum apapun yang lain.",
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Ich Terus Kembali →" },
+    { "text": "Kenapa Ikan Saya Menggosokkan Badan? →" },
+    { "text": "Kerangka ARA →" },
+    { "text": "Tanya Rhyssa →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

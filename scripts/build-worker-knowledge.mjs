@@ -73,6 +73,8 @@ const PRIORITY_SLUGS = [
   'white-fuzz-driftwood',
   'sudden-colour-loss-fish',
   'snails-suddenly-everywhere',
+  'understanding-gh-and-kh',
+  'smell-from-your-substrate',
   'why-is-my-aquarium-water-cloudy',
   'aquarium-travel-vacation',
   'when-is-tank-ready-for-fish',

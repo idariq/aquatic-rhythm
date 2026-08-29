@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "slug": "understanding-gh-and-kh",
+    "lang": "id",
+    "sourceFile": "articles/understanding-gh-and-kh.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Memahami GH dan KH — Aquatic Rhythm",
+    "description": "GH dan KH kedengaran seperti variasi dari pengukuran yang sama, tapi keduanya menjawab pertanyaan yang sama sekali berbeda tentang air Anda. Apa yang sebenarnya diukur masing-masing, dan kenapa mencampuradukkannya berujung pada perbaikan yang salah.",
+    "ogTitle": "Memahami GH dan KH",
+    "ogDescription": "Dua angka yang mengukur dua hal yang sama sekali berbeda."
+  },
+  "intro": {
+    "eyebrow": "Semua level",
+    "titleHtml": "Memahami<br><em>GH dan KH</em>",
+    "subtitle": "Dua angka yang mengukur dua hal yang sama sekali berbeda.",
+    "texts": [
+      "GH dan KH muncul di test kit yang sama, dites di waktu yang sama, dan kedengaran seperti variasi dari pengukuran yang sama. Tidak. Masing-masing menjawab pertanyaan berbeda tentang air, dan memperbaiki satu jarang menyelesaikan masalah yang disebabkan yang lain.",
+      "Panduan ini menjelaskan apa sebenarnya yang diukur masing-masing, kenapa keduanya bisa bergerak sendiri-sendiri tanpa saling terkait, dan cara membaca keduanya bersama alih-alih memperlakukannya sebagai satu angka."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~7 menit",
+    "metaLevel": "Semua level",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Membaca sinyal",
+      "titleHtml": "Dua huruf,<br><em>dua pertanyaan berbeda.</em>",
+      "body": [
+        "GH dan KH berdampingan di sebagian besar test kit cair, dites dalam beberapa menit yang sama, dan namanya cukup mirip sampai gampang menganggap keduanya mengukur hal yang sama dengan cara sedikit berbeda. Tidak. Keduanya bisa bergerak ke arah yang sama sekali berlawanan satu sama lain, di air yang sama, pada waktu yang sama.",
+        "Di sinilah biasanya kebingungan mulai. Seorang pemelihara menambahkan remineralizer untuk memperbaiki satu masalah, dan parameter yang sama sekali berbeda yang bergeser, bukan yang sedang ditarget. Atau KH sudah diperbaiki tapi GH tetap sama persis seperti sebelumnya, karena menaikkan satu tidak otomatis menyentuh yang lain.",
+        "Kebingungan ini bukan soal kurang pengetahuan, tapi lebih ke masalah penamaan — \"kesadahan\" kedengaran seperti seharusnya satu hal saja, dan singkatan dua huruf di test kit tidak jelas-jelas menunjukkan bahwa keduanya menjawab pertanyaan yang sama sekali terpisah tentang segelas air yang sama."
+      ],
+      "hintLabel": "Versi singkatnya",
+      "hintText": [
+        "GH bertanya \"berapa banyak mineral terlarut di air ini?\" KH bertanya \"berapa banyak asam yang bisa diserap air ini sebelum pH-nya benar-benar bergeser?\" Tidak ada satu jawaban yang memberi tahu yang lain."
+      ],
+      "prevBtn": "← Intro",
+      "nextBtn": "Apa yang sebenarnya diukur masing-masing"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Apa yang sebenarnya diukur masing-masing",
+      "titleHtml": "Mineral untuk ikan.<br><em>Buffer untuk pH.</em>",
+      "body": [
+        "<strong>GH (general hardness/kesadahan umum)</strong> mengukur kalsium dan magnesium terlarut — mineral yang penting langsung bagi makhluk hidup di tank. Ikan memakainya untuk osmoregulasi, udang dan siput memakai kalsium untuk membangun dan menjaga cangkangnya, dan tanaman menyerap keduanya sebagai nutrisi. GH adalah angka biologis: ia menjelaskan apa yang tersedia untuk dipakai tubuh dan cangkang.",
+        "<strong>KH (kesadahan karbonat)</strong> mengukur kapasitas buffer air — berapa banyak asam yang bisa diserap sebelum pH benar-benar bergeser. Ini angka kimia, bukan biologis: tidak ada yang di dalam tank mengonsumsi KH seperti udang mengonsumsi kalsium. Tugas KH bersifat protektif, menjaga pH tetap stabil melawan asam yang terus-menerus dihasilkan proses nitrifikasi dan lainnya.",
+        "Karena keduanya mengukur hal berbeda, keduanya bergerak sendiri-sendiri. Remineralizer yang dibuat untuk udang mungkin menaikkan GH secara signifikan sambil nyaris tidak menyentuh KH. Air RO mulai dari nyaris nol untuk keduanya. Air keran di daerah berbeda bisa membawa GH tinggi dengan KH rendah, GH rendah dengan KH tinggi, atau kombinasi lain apapun — tidak ada aturan yang mengikat keduanya bersama."
+      ],
+      "pullQuote": "GH adalah apa yang terlarut di air untuk dipakai penghuni tank. KH adalah apa yang terlarut di air untuk menjaga air itu sendiri tetap stabil. Satu soal biologi. Satu lagi soal kimia yang menjaga diam.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Amati dulu sebelum menyesuaikan"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Amati dulu sebelum menyesuaikan",
+      "titleHtml": "Tes keduanya.<br><em>Sesuaikan keduanya dgn apa yang Anda pelihara.</em>",
+      "body": [
+        "Apa yang dianggap \"benar\" untuk kedua angka ini sepenuhnya bergantung pada apa yang hidup di tank, jadi langkah pertama yang berguna adalah mengetahui apa yang sebenarnya dibutuhkan spesies Anda, bukan mengejar target umum. Ikan air lunak dan banyak spesies udang Caridina beradaptasi dengan GH rendah dan kesulitan di air yang mendekati kadar mineral tinggi yang diharapkan spesies air keras. Cichlid danau Rift dan sebagian besar livebearer justru mengharapkan sebaliknya — air keras berkadar mineral tinggi yang memang mereka adaptasikan.",
+        "Tanda ketidakcocokan GH cenderung muncul langsung pada penghuninya: udang dengan ganti kulit yang buruk atau gagal, tanaman menunjukkan gejala nutrient-lockout walau dosis pupuk sudah benar, atau ikan yang tidak pernah benar-benar nyaman walau air bersih dan parameter stabil. Tanda masalah KH cenderung muncul sebagai ketidakstabilan sebaliknya — pH yang tidak mau stabil, atau jenis anjlok mendadak yang dibahas di panduan situs ini tentang stabilitas pH.",
+        "Tes GH dan KH air sumber Anda sebelum menganggap masalahnya berasal dari dalam tank. Sejumlah besar masalah ketidakstabilan sebenarnya berakar dari air keran yang memang rendah salah satu atau keduanya, bukan apapun yang terjadi di dalam akuarium itu sendiri."
+      ],
+      "hintLabel": "Empat kombinasi, bukan dua",
+      "hintText": [
+        "GH tinggi dengan KH rendah, GH rendah dengan KH tinggi, keduanya tinggi, keduanya rendah — keempat kombinasi ini terjadi di air keran sungguhan. Menguji cuma satu dan menganggap itu memberi tahu yang lain justru melewatkan kasus-kasus yang paling sering bikin bingung."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Respons yang selaras"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Respons yang selaras",
+      "titleHtml": "Sesuaikan masing-masing<br><em>menurut caranya sendiri.</em>",
+      "body": [
+        "Kalau GH perlu dinaikkan untuk spesies yang dipelihara, remineralizer mineral yang dirancang untuk tujuan itu melakukan tugasnya tanpa harus menyentuh KH — cek angka produknya sendiri alih-alih menganggap ia menangani keduanya, karena formulasi memang berbeda-beda seberapa banyak masing-masing yang ditambahkannya.",
+        "Kalau KH perlu dinaikkan untuk menstabilkan pH, karang hancur, aragonit, atau produk buffer khusus menargetkan itu secara spesifik. Baca artikel pendamping situs ini tentang stabilitas pH untuk gambaran lebih lengkap kenapa KH bisa habis dan cara membangunnya kembali secara bertahap.",
+        "Kebiasaan yang selaras ke depannya adalah menguji kedua angka bersamaan sebagai rutinitas, bukan cuma ketika sesuatu sudah terlanjur salah — memperlakukan keduanya sebagai satu bacaan gabungan justru asumsi yang bikin Anda memperbaiki yang salah."
+      ],
+      "pullQuote": "Dua angka di test kit yang sama tidak berarti satu cerita. Membacanya secara terpisah itulah yang sebenarnya menjelaskan apa yang sedang dilakukan airnya.",
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Kenapa pH Terus Anjlok →" },
+    { "text": "Kenapa Udang Saya Mati? →" },
+    { "text": "Kerangka ARA →" },
+    { "text": "Tanya Rhyssa →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

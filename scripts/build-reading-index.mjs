@@ -47,6 +47,8 @@ const SLUG_ORDER = [
   'white-fuzz-driftwood',
   'sudden-colour-loss-fish',
   'snails-suddenly-everywhere',
+  'understanding-gh-and-kh',
+  'smell-from-your-substrate',
   'tank-crash-recovery',
   'aquarium-plants-not-growing',
   'low-tech-planted-tank',

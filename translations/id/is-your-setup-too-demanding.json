@@ -1,0 +1,97 @@
+{
+  "_meta": {
+    "slug": "is-your-setup-too-demanding",
+    "lang": "id",
+    "sourceFile": "articles/is-your-setup-too-demanding.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Apakah Setup Anda Terlalu Menuntut? — Aquatic Rhythm",
+    "description": "Tidak ada yang sengaja membangun tank yang butuh perhatian tinggi. Beberapa pilihan wajar, ditambahkan satu-satu, bisa diam-diam membangun setup yang butuh konsistensi lebih dari yang bisa diberikan hidup Anda. Cara mengeceknya secara jujur.",
+    "ogTitle": "Apakah Setup Anda Terlalu Menuntut?",
+    "ogDescription": "Sebagian tank diam-diam butuh lebih dari rutin yang sebenarnya Anda punya."
+  },
+  "intro": {
+    "eyebrow": "Praktis",
+    "titleHtml": "Apakah Setup Anda<br><em>Terlalu Menuntut?</em>",
+    "subtitle": "Sebagian tank diam-diam butuh lebih dari rutin yang sebenarnya Anda punya.",
+    "texts": [
+      "Tidak ada yang duduk lalu memutuskan membangun tank yang butuh perhatian setiap hari. Itu terjadi satu upgrade wajar sekaligus — sedikit CO2 di sini, spesies sensitif di sana — sampai setupnya diam-diam butuh lebih banyak dari yang bisa diberikan pemeliharanya.",
+      "Panduan ini menjelaskan bagaimana ketidaksesuaian itu terbentuk, pilihan-pilihan yang paling cepat menaikkannya, dan cara mengecek secara jujur apakah setup Anda masih sesuai dengan rutin sebenarnya."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~7 menit",
+    "metaLevel": "Praktis",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Bagaimana ini terjadi",
+      "titleHtml": "Tidak ada yang sengaja memilih tank<br><em>yang menuntut.</em>",
+      "body": [
+        "Hampir tidak ada yang berniat membangun setup yang butuh perhatian harian dan presisi. Ini terbentuk bertahap, satu upgrade sekaligus, masing-masing wajar dengan sendirinya. CO2 ditambahkan karena tanaman akan tumbuh lebih baik. Spesies wild-caught yang menawan ditambahkan karena ia indah.",
+        "Setiap pilihan masuk akal sendirian. Tidak satu pun terasa seperti komitmen ke rutin yang lebih berat. Tapi tuntutannya menumpuk. Tank yang mulai sebagai setup sederhana dan pemaaf bisa berakhir butuh pemantauan harian, dosis presisi, dan kontrol parameter ketat. Jarang ada satu momen tunggal di mana pemelihara memutuskan itulah rencananya.",
+        "Ini kebalikan dari <a href=\"/id/articles/capacity-creep\" style=\"color:var(--th-accent);text-decoration:none\">capacity creep</a>. Capacity creep adalah rutin pemelihara yang diam-diam menurun. Ini adalah kebutuhan sebenarnya setup yang diam-diam naik. Kedua arah membuka jurang yang sama antara apa yang dibutuhkan tank dan apa yang sebenarnya diterimanya."
+      ],
+      "hintLabel": "Soal jurangnya, bukan alatnya",
+      "hintText": [
+        "Tidak satu pun upgrade ini salah dengan sendirinya. Masalahnya tidak pernah satu alat atau spesies tertentu. Yang penting apakah total tuntutan yang menumpuk masih sesuai dengan rutin yang benar-benar sempat dipunyai pemelihara."
+      ],
+      "prevBtn": "← Intro",
+      "nextBtn": "Pengganda tuntutan"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Pengganda tuntutan",
+      "titleHtml": "Beberapa pilihan menaikkan standar<br><em>jauh lebih dari kelihatannya.</em>",
+      "body": [
+        "<strong>Injeksi CO2.</strong> Selain alatnya sendiri, CO2 butuh pemantauan rutin supaya tidak pernah bergeser cukup tinggi hingga menstres ikan semalaman, dan biasanya dibarengi jadwal dosis pupuk. Melewatkan salah satunya bahkan beberapa hari bisa jelas mengganggu pertumbuhan tanaman atau memicu alga.",
+        "<strong>Rutin dosis presisi.</strong> Jadwal pupuk yang didosis beberapa kali seminggu, atau rejimen obat dengan waktu tepat, mengubah perawatan jadi sesuatu yang harus terjadi di hari tertentu, bukan kapan pun sempat.",
+        "<strong>Spesies sensitif atau wild-caught.</strong> Ikan yang beradaptasi dengan kondisi alami yang sempit dan stabil cenderung jauh kurang toleran terhadap pergeseran parameter dibanding spesies komunitas hasil ternak tank. Ganti air yang terlewat yang dianggap enteng oleh spesies tangguh bisa benar-benar menstres spesies dengan rentang nyaman yang sempit.",
+        "<strong>Bioload tinggi dibanding ukuran tank.</strong> Tank berisi padat punya lebih sedikit ruang untuk keterlambatan apapun, jadi keseluruhan setup jadi kurang memaafkan jadwal yang tidak konsisten, bahkan sebelum apapun yang lain ditambahkan."
+      ],
+      "pullQuote": "Setiap pilihan ini menaikkan apa yang dibutuhkan tank dari setiap minggu, bukan cuma sekali saja. Itulah yang bikin semuanya pengganda, bukan biaya satu kali.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Membaca setup Anda sendiri"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Membaca setup Anda sendiri",
+      "titleHtml": "Beberapa pertanyaan jujur,<br><em>bukan checklist untuk gagal.</em>",
+      "body": [
+        "Karena pilihan-pilihan ini menumpuk bertahap, mengecek ketidaksesuaian butuh pertanyaan langsung. Perasaan samar \"saya masih mengatasinya kok\" tidak akan menangkapnya — beberapa pertanyaan jujur cenderung memunculkannya dengan jelas.",
+        "Ini bukan lulus-atau-gagal. Menjawab jujur satu-dua pertanyaan, dan tidak suka jawabannya, tidak berarti setupnya harus berubah hari ini. Artinya ketidaksesuaian itu layak diperhatikan sebelum hidup makin sibuk, bukan sesudahnya."
+      ],
+      "hintLabel": "Pertanyaan yang layak ditanyakan dengan jujur",
+      "hintText": [
+        "Kalau dua minggu sibuk terjadi sekarang juga — deadline kerja, travel, sakit — apakah tank ini masih baik-baik saja begitu Anda kembali menanganinya? Apakah Anda pernah menambahkan alat atau spesies tertentu demi satu hasil, tanpa memikirkan siapa yang menjaga konsistensinya saat Anda sedang kewalahan?",
+        "Apakah rutin perawatannya terasa seperti tugas yang Anda jadwalkan di sela hidup, atau hidup Anda yang mulai dijadwalkan di sekitarnya? Dan sejujurnya, apakah merawat tank ini masih terasa seperti hobi yang Anda mulai, atau terasa seperti pekerjaan kedua di sebagian besar minggu?"
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Menyesuaikan setup dengan kapasitas"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Menyesuaikan setup dengan kapasitas",
+      "titleHtml": "Kecilkan setupnya,<br><em>bukan naikkan rutinnya.</em>",
+      "body": [
+        "Kalau pertanyaan-pertanyaan itu memunculkan ketidaksesuaian sungguhan, langkah yang selaras biasanya menyederhanakan setup alih-alih memaksakan rutin lebih berat ke hidup yang sudah penuh. Melepas CO2 dan beralih ke tanaman low-tech cahaya rendah menjaga tank tetap menarik tanpa pemantauan harian. Merelokasikan spesies yang butuh kondisi lebih ketat dibanding yang bisa diberikan rutin secara diandalkan adalah kebaikan buat ikan itu, bukan kegagalan.",
+        "Ini bukan menyerah pada hobinya. Ini menyesuaikan ambisi dengan kapasitas sebenarnya sekarang — prinsip yang sama dengan <a href=\"/id/articles/aquarium-maintenance-routine\" style=\"color:var(--th-accent);text-decoration:none\">Rutinitas Perawatan yang Benar-Benar Berhasil</a>. Di sini cuma diterapkan ke sisi setup dari persamaan itu, bukan sisi jadwal.",
+        "Tank yang tahan minggu yang tidak konsisten tanpa konsekuensi nyata lebih berkelanjutan dalam jangka panjang, dibanding tank mengesankan yang cuma bertahan dengan jadwal sempurna. Jenis kedua kelihatan bagus di foto, sampai minggu di mana ia tidak lagi begitu."
+      ],
+      "pullQuote": "Tank seharusnya tidak butuh pemelihara yang tidak pernah punya minggu sulit. Setup yang sesuai hidup sebenarnya Anda mengalahkan yang cuma berfungsi kalau semuanya berjalan sempurna.",
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Capacity Creep →" },
+    { "text": "Rutinitas Perawatan yang Benar-Benar Berhasil →" },
+    { "text": "Kerangka ARA →" },
+    { "text": "Tanya Rhyssa →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

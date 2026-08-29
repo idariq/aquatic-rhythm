@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "slug": "missed-water-change",
+    "lang": "id",
+    "sourceFile": "articles/missed-water-change.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Tukar Air yang Terlepas — Aquatic Rhythm",
+    "description": "Ganti air yang terlewat terasa seperti darurat, tapi jarang benar-benar begitu. Apa sebenarnya yang menumpuk selama Anda terlambat, setup mana yang lebih cepat terdampak, dan cara kembali ke rutin tanpa koreksi berlebihan.",
+    "ogTitle": "Tukar Air yang Terlepas",
+    "ogDescription": "Satu minggu terlewat jarang berarti seperti yang Anda kira."
+  },
+  "intro": {
+    "eyebrow": "Praktis",
+    "titleHtml": "Tukar Air<br><em>yang Terlepas</em>",
+    "subtitle": "Satu minggu terlewat jarang berarti seperti yang Anda kira.",
+    "texts": [
+      "Hidup jadi sibuk dan jadwal ganti air pun terlewat. Naluri yang muncul setelahnya sering panik — ganti air besar-besaran terburu-buru untuk \"mengejar ketinggalan\", didorong rasa bersalah, bukan kebutuhan sebenarnya.",
+      "Panduan ini menjelaskan apa sebenarnya yang menumpuk selama Anda terlambat jadwal, setup mana yang lebih cepat terdampak, dan cara kembali ke rutin tanpa mengoreksi secara berlebihan."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~6 menit",
+    "metaLevel": "Praktis",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Naluri vs kenyataan",
+      "titleHtml": "Terlewat satu kali tidak menghapus<br><em>stabilitas berbulan-bulan.</em>",
+      "body": [
+        "Ganti air yang terlewat sering memicu respons yang tidak sepadan. Pemelihara memperlakukan tugas perawatan rutin seperti tenggat yang terlewat dengan konsekuensi nyata, lalu buru-buru mengoreksi. Tank yang stabil selama berbulan-bulan tiba-tiba terasa seolah tinggal sehari lagi menuju krisis.",
+        "Reaksi itu jarang sepadan dengan biologinya. Interval ganti air adalah ritme perawatan, bukan hitungan mundur life-support. Di tank yang sebelumnya sudah diisi sesuai kapasitas dan stabil, satu minggu terlewat jarang menyebabkan kerugian yang terukur dengan sendirinya.",
+        "Respons panik itu sendiri bisa lebih merusak dibanding keterlambatannya. Ganti air \"kejar ketinggalan\" yang terlalu besar, dilakukan sekaligus demi menghapus rasa bersalah, menggeser suhu dan kimia air lebih cepat dibanding ganti air normal. Itu guncangan yang lebih besar buat tank dibanding sekadar melanjutkan jadwal normal beberapa hari terlambat."
+      ],
+      "hintLabel": "Pertanyaan yang layak ditanyakan lebih dulu",
+      "hintText": [
+        "Sebelum melakukan apapun, tes airnya alih-alih menebak-nebak. Tank yang hasil tesnya masih bersih setelah satu minggu terlewat butuh ganti air normal, bukan ganti air darurat."
+      ],
+      "prevBtn": "← Intro",
+      "nextBtn": "Apa yang sebenarnya menumpuk"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Apa yang sebenarnya menumpuk",
+      "titleHtml": "Nitrat naik pelan-pelan.<br><em>Bukan jatuh dari tebing.</em>",
+      "body": [
+        "Apa yang sebenarnya berubah selama satu minggu terlewat sifatnya bertahap, bukan mendadak. Nitrat naik dengan laju yang cukup stabil, bergantung pada bioload dan pemberian makan, bukan laju yang melonjak tepat saat tenggat lewat. Sampah organik dan kotoran menumpuk sedikit lebih banyak dari biasanya, tapi itu soal derajat, bukan saklar yang tiba-tiba beralih.",
+        "Seberapa besar dampaknya sangat bergantung pada kondisi tank sebelum keterlambatan itu terjadi. Tank berisi ringan, banyak tanaman, berjalan nyaman jauh di bawah batasnya, punya ruang nyata untuk menyerap satu minggu tambahan. Tank yang nitratnya sudah cenderung naik, atau sudah dekat batas bioload-nya, punya jauh lebih sedikit ruang sebelum minggu yang terlewat itu jadi terasa.",
+        "Ini gagasan dasar yang sama dengan <a href=\"/id/articles/capacity-creep\" style=\"color:var(--th-accent);text-decoration:none\">capacity creep</a>. Risiko dari satu rutin yang terlewat berskala dengan seberapa banyak ruang yang dimiliki tank sejak awal — bukan dengan keterlambatannya itu sendiri."
+      ],
+      "pullQuote": "Ganti air yang terlewat adalah titik data, bukan vonis. Artinya sepenuhnya bergantung pada kondisi tank sehari sebelumnya.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Kapan ini sebenarnya penting"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Kapan ini sebenarnya penting",
+      "titleHtml": "Beberapa setup<br><em>punya jauh lebih sedikit ruang dibanding kebanyakan.</em>",
+      "body": [
+        "Beberapa setup merasakan minggu yang terlewat jauh lebih cepat dibanding yang lain. Tank berisi padat yang berjalan dekat batas bioload-nya punya sedikit ruang, jadi keterlambatan lebih cepat terlihat pada nitrat dan kejernihan air. Tank pembesaran burayak mirip — ikan muda lebih sensitif, dan pemberian makan biasanya lebih banyak dibanding ukuran tanknya.",
+        "Tank berbunga tanaman dengan CO2 injeksi menambah jenis urgensi lain. Ganti air yang terlewat di sana sering berarti dosis pupuk juga terlewat, dan pergeseran nutrient bisa memicu alga lebih cepat dibanding di setup low-tech. Tank yang baru atau baru saja selesai cycle juga punya biologi yang lebih belum mapan untuk diandalkan.",
+        "Tes selalu lebih baik dibanding menebak di semua kasus ini. Bacaan amonia, nitrit, dan nitrat memberi tahu langsung apakah minggu yang terlewat itu benar-benar berarti buat tank spesifik ini. Itu lebih diandalkan dibanding aturan umum yang mungkin tidak sesuai."
+      ],
+      "hintLabel": "Setup di mana satu minggu jarang berarti",
+      "hintText": [
+        "Tank mapan, berisi ringan, banyak tanaman, berjalan jauh di bawah batas bioload-nya biasanya menyerap satu minggu terlewat tanpa perubahan terukur sama sekali. Ruang lebih, bukan keberuntungan, yang membuat perbedaannya."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Kembali ke rutin"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Kembali ke rutin",
+      "titleHtml": "Lanjutkan normal.<br><em>Jangan koreksi berlebihan.</em>",
+      "body": [
+        "Kalau hasil tes airnya bersih, respons yang selaras adalah cukup melakukan ganti air ukuran normal lalu lanjut. Tidak ada yang perlu dikompensasi, jadi tidak ada alasan menggandakan volumenya atau buru-buru ganti air kedua beberapa hari kemudian.",
+        "Kalau nitrat sudah naik cukup terlihat, satu ganti air yang sedikit lebih besar membawanya turun kembali, tapi tetap tidak perlu dramatis. Menurunkan nitrat bertahap lewat satu-dua ganti air yang sedikit lebih besar lebih lembut buat tank dibanding satu koreksi ekstrem.",
+        "Ke depannya, solusinya bukan menghukum keterlambatannya — tapi membuat keterlambatan berikutnya lebih kecil kemungkinannya. Pengingat yang tidak bergantung pada ingatan, atau mengotomatiskan bagian yang paling gampang terlupa, berbuat lebih banyak buat konsistensi jangka panjang dibanding ganti air kejar ketinggalan apapun."
+      ],
+      "pullQuote": "Tank tidak menilai Anda berdasarkan minggu yang terlewat. Ia mencerminkan ritme yang sebenarnya Anda pegang selama berbulan-bulan, bukan pengecualian sesekali.",
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Seberapa sering ganti air? →" },
+    { "text": "Capacity Creep →" },
+    { "text": "Kerangka ARA →" },
+    { "text": "Tanya Rhyssa →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

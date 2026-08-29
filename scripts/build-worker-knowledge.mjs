@@ -39,6 +39,8 @@ const PRIORITY_SLUGS = [
   'know-your-rhythm',
   'aquarium-not-a-project',
   'capacity-creep',
+  'missed-water-change',
+  'is-your-setup-too-demanding',
   'life-change-protocols',
   'false-maturity',
   'just-one-more-tank',

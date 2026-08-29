@@ -557,15 +557,26 @@ def article_meta_tags(lang, slug):
     """(level_text, modules_time_text) pulled from the article's OWN already-
     shipped translations/<lang>/<slug>.json — reused verbatim rather than
     retranslated, so the reading-index badge can never drift from what the
-    article itself displays. Field names in the JSON are historically
-    mislabeled (metaTime actually holds the level text, metaLevel actually
-    holds the duration text) — this mirrors the EXACT mapping build-i18n.mjs
-    uses to fill the article's own <div class="art-intro-meta"> spans."""
+    article itself displays.
+
+    Which of metaTime/metaLevel actually holds the duration string versus
+    the level string is NOT consistent across the site's own history:
+    articles shipped before 2026-08-29 store the duration in metaLevel and
+    the level text in metaTime (a historical mislabeling that build-i18n.mjs
+    fills positionally regardless of name), while articles shipped from
+    2026-08-29 onward use the fields as their names suggest. Detect the
+    duration field directly instead of trusting either field's name — every
+    duration string in every language contains a digit ("~7 min", "~7 menit",
+    "約7分") and no level string ever does ("All levels", "Semua level",
+    "Practical", "実践的", "入門・中級"). Found via a homepage rebuild that
+    silently swapped the level/duration tags for every article shipped in the
+    2026-08-29 session (PR #501)."""
     p = TRANS_DIR / lang / f"{slug}.json"
     d = json.loads(p.read_text(encoding="utf-8"))
     intro = d["intro"]
-    level = intro.get("metaTime", "")
-    modules_time = f'{intro.get("metaModules", "")} · {intro.get("metaLevel", "")}'
+    meta_time, meta_level = intro.get("metaTime", ""), intro.get("metaLevel", "")
+    duration, level = (meta_time, meta_level) if re.search(r"[0-9]", meta_time) else (meta_level, meta_time)
+    modules_time = f'{intro.get("metaModules", "")} · {duration}'
     return level, modules_time
 
 
@@ -585,6 +596,20 @@ def build_reading(h, lang, u):
         r'(<a href="/tools"[^>]*>)Labs &amp; tools(<\/a>) live on their own tab\.(<\/p>)',
         lambda m: m.group(1) + hdr["sub2_pre"] + m.group(2) + hdr["sub2_link"] + m.group(3) + hdr["sub2_post"] + m.group(4),
         "reading sub2")
+
+    # Reading-page search bar (added 2026-08-29, PR #492) — client-side
+    # title/tag filter with no rd-* CSS class overlap with anything else on
+    # the page, so plain literal replacement is safe here (unlike the
+    # per-card blocks below, which need the split-and-rebuild approach
+    # because multiple cards share the same class names).
+    h = replace_once(h, r'(placeholder=")Search guides…(")',
+                      lambda m: m.group(1) + misc["search_placeholder"] + m.group(2), "reading search placeholder")
+    h = replace_once(h, r'(aria-label=")Search reading guides(")',
+                      lambda m: m.group(1) + misc["search_aria"] + m.group(2), "reading search aria")
+    h = replace_once(h, r'(aria-label=")Clear search(")',
+                      lambda m: m.group(1) + misc["search_clear_aria"] + m.group(2), "reading search clear aria")
+    h = replace_once(h, r'(<p class="rd-search-empty"[^>]*>)No guides match your search\. Try a different word\.(<\/p>)',
+                      lambda m: m.group(1) + misc["search_empty"] + m.group(2), "reading search empty message")
 
     cat_labels = iter([c["label"] for c in x["categories"]])
     cat_descs = iter([c["desc"] for c in x["categories"]])

@@ -162,12 +162,20 @@
         "misc": {
             "interactive_tag": "Interaktif",
             "urgent_tag": "Darurat",
-            "open_article_cta": "Buka artikel →"
+            "open_article_cta": "Buka artikel →",
+            "search_placeholder": "Cari panduan…",
+            "search_aria": "Cari panduan bacaan",
+            "search_clear_aria": "Hapus pencarian",
+            "search_empty": "Tidak ada panduan yang cocok. Coba kata kunci lain."
         },
         "categories": [
             {
                 "label": "Membaca akuarium",
                 "desc": "Apa yang air, ikan, tanaman, dan biologi coba sampaikan kepada Anda — sebelum masalah terlihat."
+            },
+            {
+                "label": "Rutin sebenar",
+                "desc": "Rutin yang terlepas, komitmen yang tidak sepadan, dan apa yang sebenarnya terjadi saat hidup nyata bertemu kebutuhan tank."
             },
             {
                 "label": "Pikiran penjaga",
@@ -255,6 +263,90 @@
                 "title": "Kenapa Nitrat Terus Naik<br><em>Tangki yang sudah cycle bukan tangki yang seimbang.</em>",
                 "desc": "Sebuah tangki bisa sudah sepenuhnya cycle dan tetap menumpuk nitrat lebih cepat daripada yang bisa dibersihkan oleh pergantian air. Panduan ini menjelaskan dari mana penumpukan itu berasal, apa yang ditandakannya sebagai pola Chemical Rhythm, dan apa yang benar-benar bisa mengubahnya — lebih dari sekadar mengganti air lebih sering."
             },
+            "fish-flashing-scratching": {
+                "title": "Kenapa Ikan Saya Menggosokkan Badan?<br><em>Menggosokkan badan ke kerikil atau dekorasi jarang terjadi tanpa sebab.</em>",
+                "desc": "Ikan yang menggosokkan badan ke kerikil, kaca, atau dekorasi adalah sinyal spesifik, bukan sekadar kebiasaan aneh. Panduan tiga penyebab paling umum — parasit, kimia air, dan iritasi fisik — dan cara membedakannya sebelum mengobati apapun."
+            },
+            "ph-keeps-crashing": {
+                "title": "Kenapa pH Terus Anjlok<br><em>Parameter yang stabil dan buffer yang stabil bukan hal yang sama.</em>",
+                "desc": "pH bisa anjlok tiba-tiba di tangki yang kelihatan benar-benar stabil sehari sebelumnya. Apa sebenarnya yang dilindungi KH, kenapa ia diam-diam habis, dan cara memperbaiki anjlok pH tanpa mengejutkan tangki untuk kedua kalinya."
+            },
+            "clamped-fins-fin-rot": {
+                "title": "Sirip Terlipat dan Fin Rot<br><em>Membaca penyakit sebelum ia menyebar.</em>",
+                "desc": "Sirip terlipat bisa berarti banyak hal, dan fin rot cuma salah satunya. Panduan membedakan stres biasa dari infeksi bakteri yang benar-benar berkembang — sebelum menyebar."
+            },
+            "white-fuzz-driftwood": {
+                "title": "Bulu Putih di Kayu Apung Anda<br><em>Ini bukan jamur, dan bukan kesalahan.</em>",
+                "desc": "Kayu apung baru sering menumbuhkan bulu putih seperti kapas dalam beberapa minggu pertama di tank. Apa sebenarnya itu, kenapa tidak berbahaya, dan satu situasi di mana layak diperhatikan lebih dekat."
+            },
+            "sudden-colour-loss-fish": {
+                "title": "Kehilangan Warna Mendadak pada Ikan<br><em>Memudar dan menggelap bicara sebelum perilaku.</em>",
+                "desc": "Ikan yang terlihat jelas lebih pucat atau lebih gelap dari biasanya sedang menunjukkan salah satu tanda stres paling awal dan paling sering diabaikan dalam hobi ini — sering sebelum bersembunyi atau kehilangan nafsu makan mulai terjadi."
+            },
+            "snails-suddenly-everywhere": {
+                "title": "Kenapa Siput Anda Tiba-Tiba Ada di Mana-Mana<br><em>Ledakan populasi adalah sinyal pemberian makan, bukan masalah hama.</em>",
+                "desc": "Ledakan mendadak jumlah siput hama jarang benar-benar soal siputnya. Apa yang sebenarnya memberi makan ledakan itu, kenapa mengambilnya satu-satu dengan tangan tidak menyelesaikan masalah, dan apa yang benar-benar menurunkan populasinya kembali."
+            },
+            "understanding-gh-and-kh": {
+                "title": "Memahami GH dan KH<br><em>Dua angka yang mengukur dua hal yang sama sekali berbeda.</em>",
+                "desc": "GH dan KH kedengaran seperti variasi dari pengukuran yang sama, tapi keduanya menjawab pertanyaan yang sama sekali berbeda tentang air Anda. Apa yang sebenarnya diukur masing-masing, dan kenapa mencampuradukkannya berujung pada perbaikan yang salah."
+            },
+            "smell-from-your-substrate": {
+                "title": "Bau dari Substrat Anda<br><em>Bau telur busuk saat perawatan adalah tank yang memberi tahu sesuatu yang spesifik.</em>",
+                "desc": "Bau telur busuk saat Anda mengaduk substrat ketika ganti air bukan sekadar tidak sedap — ini sinyal spesifik tentang oksigen dan pembusukan yang terjadi di bawah permukaan. Apa yang sebenarnya terjadi, dan apa yang perlu dilakukan."
+            },
+            "cloudy-eyes-fish": {
+                "title": "Mata Berkabus pada Ikan<br><em>Satu mata atau dua-duanya mengubah apa yang sedang Anda lihat.</em>",
+                "desc": "Mata yang berkabus atau berselaput bisa berarti luka lama, air yang mengiritasi, atau sesuatu yang butuh perawatan cepat — dan ketiganya tidak sama kalau dilihat dari dekat. Cara membedakannya sebelum mengobati yang salah."
+            },
+            "ich-vs-velvet": {
+                "title": "Ich atau Velvet?<br><em>Dua penyakit yang terlihat nyaris sama, tapi diobati dengan cara yang sama sekali berbeda.</em>",
+                "desc": "Bintik putih dan debu emas bisa terlihat nyaris identik sekilas, tapi keduanya parasit berbeda yang butuh obat berbeda. Cara membedakannya dengan satu cek sederhana sebelum mengobati yang salah."
+            },
+            "aquarium-maintenance-routine": {
+                "title": "Cara Membangun Rutinitas Akuarium<br><em>Yang benar-benar sesuai dengan hidup Anda.</em>",
+                "desc": "Jadwal perawatan generik gagal karena mengabaikan keeper rhythm. Panduan ini membantu Anda menemukan pola yang sesuai dengan cara Anda sebenarnya merawat tangki — bukan cara yang Anda bayangkan akan Anda lakukan."
+            },
+            "capacity-creep": {
+                "title": "Erosi Kapasitas<br><em>Penurunan kualitas perawatan yang perlahan dan tak disadari.</em>",
+                "desc": "Hampir tak ada masalah akuarium kronis yang bermula dari satu keputusan buruk. Biasanya bermula dari rutinitas yang perlahan bergeser, satu langkah kecil yang selalu terasa masuk akal. Kenapa pergeseran ini sulit disadari dari dalam, dan dua cara jujur untuk menangkapnya."
+            },
+            "life-change-protocols": {
+                "title": "Protokol Perubahan Hidup<br><em>Tangki tidak berhenti ketika hidup berubah.</em>",
+                "desc": "Bepergian, sakit, pekerjaan baru, bayi baru lahir — apa yang sebenarnya disarankan ARA untuk penurunan kapasitas pemelihara yang singkat, berkepanjangan, atau permanen, dan kenapa respons yang tepat sepenuhnya bergantung pada berapa lama perubahan itu berlangsung."
+            },
+            "aquarium-travel-vacation": {
+                "title": "Merawat Tangki Saat Anda Bepergian<br><em>Tangki yang selaras dengan baik lebih tangguh dari yang Anda kira.</em>",
+                "desc": "Sebagian besar kecemasan penjaga soal bepergian adalah tentang apa yang bisa salah selama mereka tidak ada. Panduan ini menjelaskan apa yang sebenarnya dibutuhkan tangki yang stabil ketika penjaganya pergi — dan kenapa sistem yang selaras bertahan seminggu tanpa intervensi lebih andal daripada yang dibayangkan kebanyakan penjaga."
+            },
+            "tank-crash-recovery": {
+                "title": "Ketika Tangki Crash<br><em>Apa yang harus dilakukan, apa yang harus dirasakan, dan apa yang harus diputuskan.</em>",
+                "desc": "Crash adalah kondisi darurat sekaligus kehilangan pada saat yang sama. Panduan ini membahas triase jam pertama, cara menilai apakah tangki bisa pulih, dan cara memproses apa yang terjadi — memperlakukan crash sebagai informasi, bukan kegagalan."
+            },
+            "missed-water-change": {
+                "title": "Tukar Air yang Terlepas<br><em>Satu minggu terlewat jarang berarti seperti yang Anda kira.</em>",
+                "desc": "Ganti air yang terlewat terasa seperti darurat, tapi jarang benar-benar begitu. Apa sebenarnya yang menumpuk selama Anda terlambat, setup mana yang lebih cepat terdampak, dan cara kembali ke rutin tanpa koreksi berlebihan."
+            },
+            "is-your-setup-too-demanding": {
+                "title": "Apakah Setup Anda Terlalu Menuntut?<br><em>Sebagian tank diam-diam butuh lebih dari rutin yang sebenarnya Anda punya.</em>",
+                "desc": "Tidak ada yang sengaja membangun tank yang butuh perhatian tinggi. Beberapa pilihan wajar, ditambahkan satu-satu, bisa diam-diam membangun setup yang butuh konsistensi lebih dari yang bisa diberikan hidup Anda. Cara mengeceknya secara jujur."
+            },
+            "missed-fertiliser-dosing": {
+                "title": "Dosis Pupuk yang Terlepas<br><em>Dosis yang terlewat berperilaku sama sekali beda dari ganti air yang terlepas.</em>",
+                "desc": "Dosis pupuk yang terlewat di tank berbunga tanaman berperilaku sama sekali beda dari ganti air yang terlepas. Apa sebenarnya yang terjadi saat nutrient menipis, kenapa risikonya sering alga bukan cuma pertumbuhan lambat, dan cara kembali ke jadwal."
+            },
+            "minimum-viable-care": {
+                "title": "Perawatan Minimum yang Layak untuk Tank Anda<br><em>Ambang jujurnya beda tiap setup.</em>",
+                "desc": "Kebanyakan pemelihara tahu rutin idealnya. Nyaris tidak ada yang bisa bilang, dengan jujur, minggu terburuk yang bisa diserap tanknya tanpa konsekuensi. Apa sebenarnya perawatan minimum yang layak, kenapa beda tiap setup, dan cara menemukan milik Anda."
+            },
+            "topping-off-vs-water-change": {
+                "title": "Menambah Air Penguapan Bukan Ganti Air<br><em>Mengganti air yang menguap menjaga tank tetap penuh. Ia tidak melakukan apa yang dilakukan ganti air.</em>",
+                "desc": "Mengganti air yang menguap menjaga tank tetap penuh dan terasa seperti perawatan, tapi tidak melakukan apa yang dilakukan ganti air. Kenapa top-off bisa menyembunyikan penumpukan lambat, dan cara dua rutin ini sebenarnya bekerja bersama."
+            },
+            "light-schedule-drift": {
+                "title": "Jadwal Lampu Anda Juga Rutin<br><em>Menyalakan dan mematikan lampu sesuka hati adalah jenis rutin terlepas tersendiri.</em>",
+                "desc": "Menyalakan dan mematikan lampu tank sesuka hati tidak terlihat seperti rutin, tapi fotoperiod yang tidak konsisten berperilaku seperti rutin apapun yang terlepas. Kenapa pergeseran lama hari penting, dan cara timer menghilangkannya sepenuhnya."
+            },
             "know-your-rhythm": {
                 "title": "Kenali Ritme Anda<br><em>Sebelum Anda memilih tangki.</em>",
                 "desc": "Tujuh pertanyaan sederhana tentang bagaimana Anda sebenarnya merawat tangki — sebelum volume, lampu, atau daftar stok.",
@@ -266,33 +358,13 @@
                 "title": "Merawat Tanpa Rasa Bersalah<br><em>Ketika pikiran penjaga adalah bagian dari ekosistem.</em>",
                 "desc": "Kenapa rasa bersalah membuat tangki makin buruk — dan apa kata ARA tentang hubungan sebenarnya Anda dengan sistem yang Anda rawat."
             },
-            "aquarium-maintenance-routine": {
-                "title": "Cara Membangun Rutinitas Akuarium<br><em>Yang benar-benar sesuai dengan hidup Anda.</em>",
-                "desc": "Jadwal perawatan generik gagal karena mengabaikan keeper rhythm. Panduan ini membantu Anda menemukan pola yang sesuai dengan cara Anda sebenarnya merawat tangki — bukan cara yang Anda bayangkan akan Anda lakukan."
-            },
             "when-hobby-stops-feeling-good": {
                 "title": "Ketika Hobi Ini Berhenti Terasa Menyenangkan<br><em>Burnout dalam memelihara ikan itu nyata. Tidak ada yang membicarakannya secara jujur.</em>",
                 "desc": "Beban perawatan, kesedihan karena kehilangan, rasa bersalah karena merasa belum cukup berbuat. Tiga jalan jujur: merancang ulang, menyederhanakan, atau berhenti dengan bermartabat — tak satu pun dari itu kegagalan."
             },
-            "tank-crash-recovery": {
-                "title": "Ketika Tangki Crash<br><em>Apa yang harus dilakukan, apa yang harus dirasakan, dan apa yang harus diputuskan.</em>",
-                "desc": "Crash adalah kondisi darurat sekaligus kehilangan pada saat yang sama. Panduan ini membahas triase jam pertama, cara menilai apakah tangki bisa pulih, dan cara memproses apa yang terjadi — memperlakukan crash sebagai informasi, bukan kegagalan."
-            },
-            "aquarium-travel-vacation": {
-                "title": "Merawat Tangki Saat Anda Bepergian<br><em>Tangki yang selaras dengan baik lebih tangguh dari yang Anda kira.</em>",
-                "desc": "Sebagian besar kecemasan penjaga soal bepergian adalah tentang apa yang bisa salah selama mereka tidak ada. Panduan ini menjelaskan apa yang sebenarnya dibutuhkan tangki yang stabil ketika penjaganya pergi — dan kenapa sistem yang selaras bertahan seminggu tanpa intervensi lebih andal daripada yang dibayangkan kebanyakan penjaga."
-            },
             "aquarium-not-a-project": {
                 "title": "Akuarium Bukan Sebuah Proyek<br><em>Tahu kapan harus berhenti menyempurnakan adalah bagian dari praktiknya.</em>",
                 "desc": "Dorongan untuk meningkatkan, menambah, dan mengoptimalkan adalah bagian dari menjadi seorang penjaga — tapi itu juga bisa jadi hal yang paling mengganggu tangki yang sudah selaras dengan baik. Panduan ini menelusuri perbedaan antara perubahan yang melayani ekosistem dan perubahan yang melayani kegelisahan penjaga."
-            },
-            "capacity-creep": {
-                "title": "Erosi Kapasitas<br><em>Penurunan kualitas perawatan yang perlahan dan tak disadari.</em>",
-                "desc": "Hampir tak ada masalah akuarium kronis yang bermula dari satu keputusan buruk. Biasanya bermula dari rutinitas yang perlahan bergeser, satu langkah kecil yang selalu terasa masuk akal. Kenapa pergeseran ini sulit disadari dari dalam, dan dua cara jujur untuk menangkapnya."
-            },
-            "life-change-protocols": {
-                "title": "Protokol Perubahan Hidup<br><em>Tangki tidak berhenti ketika hidup berubah.</em>",
-                "desc": "Bepergian, sakit, pekerjaan baru, bayi baru lahir — apa yang sebenarnya disarankan ARA untuk penurunan kapasitas pemelihara yang singkat, berkepanjangan, atau permanen, dan kenapa respons yang tepat sepenuhnya bergantung pada berapa lama perubahan itu berlangsung."
             },
             "false-maturity": {
                 "title": "Kematangan Palsu<br><em>Tangki bisa lulus semua tes dan tetap belum siap.</em>",
@@ -333,6 +405,14 @@
             "the-tank-you-didnt-start": {
                 "title": "Tangki yang Bukan Anda yang Memulainya<br><em>Membaca sistem yang bukan Anda bangun sendiri punya kesulitannya tersendiri.</em>",
                 "desc": "Mengambil alih akuarium milik orang lain berarti membaca sistem tanpa patokan Anda sendiri. Kenapa ini lebih sulit dari kelihatannya, dan apa yang benar-benar membantu."
+            },
+            "the-tank-nobody-else-sees": {
+                "title": "Tangki yang Tak Dilihat Siapa Pun<br><em>Ia tidak perlu disaksikan untuk menjadi praktik yang nyata.</em>",
+                "desc": "Sebagian besar tangki yang ada tidak pernah diunggah, difoto, atau ditunjukkan kepada siapa pun. Kenapa tangki dengan penonton tetap hanya satu orang tetap jadi praktik yang utuh dan sah, bukan versi lebih kecil dari yang sebenarnya."
+            },
+            "two-people-one-tank": {
+                "title": "Dua Orang, Satu Tangki<br><em>Tangki tidak peduli siapa yang seharusnya melakukannya.</em>",
+                "desc": "Banyak akuarium dirawat oleh lebih dari satu orang — pasangan, teman sekamar, atau satu rumah tangga penuh — tapi hampir semua panduan perawatan ditulis untuk tepat satu penjaga. Di mana celah itu benar-benar menyebabkan masalah, dan apa yang menutupnya."
             }
         },
         "closing_cta": {

@@ -92,6 +92,61 @@ ditulis begini oleh penutur natif id/ja, atau ia kedengaran spt EN
 diterjemah?" — kalau jawapannya yg kedua, restruktur, jangan sekadar
 tukar istilah.
 
+### AWAS — ejen terjemah boleh tulis dlm BAHASA SESI, bukan bahasa sasaran (PR #512, 2026-08-30)
+
+**Kegagalan sebenar, 3 fail tersiar ke laman langsung sblm dikesan.**
+Terjemahan `id` utk 3 artikel terbaharu (PR #507/#509/#510) bukan Bahasa
+Indonesia langsung — ia **Bahasa Melayu dgn singkatan gaya sembang**
+(`yg`, `dgn`, `utk`, `dlm`, `sbg`, `pd`, `ttg`, `thd`, `scr`, `org`,
+`&`, `benar²`) — sbb ejen terjemah menulis ikut konvensyen bahasa SESI
+(§"Bahasa" di atas: commit/PR/balasan dlm BM, ikut gaya bersingkatan
+fail CLAUDE.md ni sendiri) & bukan ikut bahasa SASARAN fail. Skala:
+113/106/95 hit setiap fail. Pengesahan sedia ada **lulus** sbb ia semak
+STRUKTUR (bilangan kunci, panjang array) & bukan BAHASA.
+
+**Bukan sekadar singkatan** — ada perkataan BM tulen yg perlu padanan
+Indonesia sebenar: `berbeza`→`berbeda`, `kemahiran`→`keterampilan`,
+`haiwan`→`hewan`, `kelajuan`→`kecepatan`, `pemboleh ubah`→`variabel`,
+`keamatan`→`intensitas`, `siling`→`plafon`, `jadual`→`jadwal`,
+`kapasiti`→`kapasitas`, `kos`→`biaya`, `soalan`→`pertanyaan`,
+`sama ada`→`apakah`, `kedua-duanya`→`keduanya`, `tarikh akhir`→`tenggat`,
+`laman ni`→`situs ini`, `tanpa kira`→`terlepas dari`, `fasa`→`fase`,
+`berkongsi`→`berbagi`, `keperluan`→`kebutuhan`, `kerap`→`sering`,
+`pantas`→`cepat`, `penyelenggaraan`→`perawatan`, `julat`→`rentang`,
+`lestari`→`berkelanjutan`, `dijejak`→`dilacak`, `kraf`→`keahlian`.
+
+**WAJIB lepas mana-mana kerja terjemah id** (sendiri atau ejen), grep
+senarai singkatan + BM di atas merentas `translations/id/*.json`. Murah
+& menangkap kegagalan ni terus. **Positif palsu yg SAH & jangan
+"dibetulkan"**: `wujud` (Indonesia betul dlm "itu wujud kepedulian"),
+`org` dlm URL (`rspca.org.au`), `²` dlm unit saintifik (`umol/m²/s`).
+Semak konteks setiap hit sblm ubah.
+
+### AWAS — `json.dump(indent=2)` MEROSAKKAN fail translations lama (indent BERCAMPUR dlm repo)
+
+Fail dlm `translations/<lang>/` **tidak seragam indentasinya** — sebahagian
+`indent=2`, sebahagian `indent=4`. Menyunting via `json.load` →
+`json.dumps(..., indent=2)` akan **reformat SELURUH fail** yg asalnya
+indent=4 (ditemui PR #512: pembetulan **satu perkataan** dlm
+`ich-keeps-coming-back.json` jadi diff **242 baris**). Menyahkan
+round-trip pd SATU fail & anggap ia sejagat **tidak memadai** — itu
+tepat silap yg dibuat dlm PR #512 & terpaksa dipatah balik.
+
+**Kaedah selamat utk suntingan kecil**: gantian teks **MENTAH** pd
+kandungan fail (`raw.replace(a, b)`), diikuti `json.loads(raw)` sbg
+pengesahan JSON kekal sah — JANGAN round-trip. Utk penulisan semula
+besar (banyak medan), sahkan dulu round-trip fail ITU sendiri
+(`json.dumps(d, ensure_ascii=False, indent=N)+'\n' == raw_asal`) & guna
+`N` yg padan. Corak SAMA dgn amaran `translations/homepage/*.json`
+sedia ada (§"Pipeline Build"), cuma di direktori berbeza — sekarang
+terpakai kpd **kedua-dua** direktori.
+
+**Pengesahan struktur WAJIB lepas apa-apa suntingan translations**:
+bilangan modul, panjang `body[]`, kewujudan `pullQuote`, panjang
+`hintText[]` MESTI sama dgn HEAD — build id/ja isi slot `<p>` ikut
+KEDUDUKAN, jadi tambah/buang perenggan merosakkan terjemahan
+senyap-senyap tanpa sebarang ralat.
+
 ### Senibina — TIGA templat halaman berasingan, TIGA skrip build
 
 Laman ni ada 3 "bentuk" HTML struktur berbeza, masing² skrip build
@@ -558,6 +613,153 @@ kualiti yg mencukupi. Jalankan skrip audit SEBELUM & SELEPAS
 pembetulan em-dash/tanda baca utk pastikan purata patah
 perkataan/ayat & bilangan ayat panjang turun jugak, bukan setakat
 kiraan dash.
+
+**TAPI purata rendah + sedikit ayat panjang MASIH belum memadai —
+ukur VARIASI irama jugak (PR #511, 2026-08-30).** Pembetulan ayat
+run-on dlm PR #511 (8 artikel) menurunkan purata dlm kesemua fail
+& hapuskan semua ayat ≥30 patah perkataan, lulus setiap semakan yg
+disenaraikan di atas — tapi **meratakan irama dlm kesemua 8 fail**
+sbb memecah ayat 40-patah jadi dua ayat 16-patah menghasilkan lebih
+banyak ayat bersaiz SEDERHANA, bukan ayat PELBAGAI:
+
+```
+the-fish-that-sell-the-tank   purata 23.3→16.6  TAPI  CV 0.53→0.35
+the-relief-youre-not-...      purata 20.8→16.0  TAPI  CV 0.60→0.38
+the-tank-nobody-else-sees     purata 21.8→17.4  TAPI  CV 0.55→0.40
+(CV = sisihan piawai panjang ayat ÷ purata; rendah = semua ayat sama panjang)
+```
+
+Prosa manusia berselang-seli — ayat 30 patah perkataan, kemudian
+ayat 4 patah perkataan yg menghentak. Prosa mesin tidak. **Sasaran
+sebenar bukan "ayat pendek" tetapi "ayat PELBAGAI"**: CV ≥ 0.55 dgn
+≥15% ayat ≤6 patah perkataan. Ayat 35 patah perkataan TIDAK salah
+kalau ayat selepasnya 5 patah perkataan. Tambah CV & peratus ayat
+pendek kpd skrip audit — tanpanya, "pembetulan" boleh lulus semua
+semakan sambil memburukkan bacaan.
+
+## Lima Keluarga Nada — TAKLIMAT sebelum tulis, BUKAN rubrik selepas (audit 2026-08-30)
+
+**Penemuan yg justifikasi bahagian ni**: audit stilometrik 62 artikel
+prosa EN (67k patah perkataan) jumpa hanyutan suara seragam — dlm
+**setiap** keluarga nada tanpa pengecualian, artikel terbaik ialah
+tulisan awal laman & yg terjauh ialah tulisan terbaharu. Artikel lama
+bercakap **KEPADA** seorang penjaga ("You come home to find fish on
+the surface."); artikel baharu menulis **TENTANG** penjaga. Kadar
+sapaan jatuh drpd 14–30 per 1k patah perkataan kpd 5.1 — **7 artikel
+kini SIFAR sapaan** (`false-maturity`, `grief-without-a-mistake`,
+`light-schedule-drift`, `snails-suddenly-everywhere`,
+`the-honest-cost-of-going-high-tech`,
+`the-relief-youre-not-supposed-to-feel`, `the-tank-you-didnt-start`).
+Ini BUKAN masalah kecerdasan/ketepatan — artikel baharu berhujah lebih
+rapi. Yg hilang ialah **sapaan**.
+
+**PERATURAN: pilih keluarga nada SEBELUM tulis artikel baharu**, & tulis
+pembukaannya ikut gerakan wajib keluarga tu. Suara jauh lebih murah
+ditulis drpd ditampal balik.
+
+### Keluarga & artikel rujukannya
+
+1. **Diagnostik segera** (23 artikel — gejala di depan mata, pembaca
+   RISAU SEKARANG & sedang mengimbas, bukan membaca). Buka dlm adegan,
+   orang kedua, kala kini. **Jawapan dlm perenggan PERTAMA**, bukan
+   selepas 3 modul konteks. Nombor sebenar (ppm, hari, darjah).
+   Rujuk: `perfect-parameters-fish-dying`, `fish-hiding-what-does-it-mean`.
+2. **Penjelas sabar** (11 — pembaca INGIN TAHU, tiada krisis, mahu model
+   mental). Nafas lebih panjang dibenarkan, analogi & mekanisme, boleh
+   bina hujah merentas 4 modul. Rujuk: `how-often-water-changes`,
+   `new-tank-syndrome`. *(Keluarga paling sihat dlm korpus.)*
+3. **Rakan praktikal** (8 — pembaca RASA BERSALAH SIKIT: terlepas
+   penukaran air, lampu tak berjadual. Mahu kelegaan + satu nombor).
+   Pantas, tidak berlagak, sedikit jenaka kering. Sapaan TERTINGGI
+   antara semua keluarga. **Beri kebenaran awal**, jangan suruh baca
+   esei dulu. Rujuk: `aquarium-maintenance-routine`.
+4. **Teman reflektif** (19 — pembaca LETIH, MALU, atau BERKABUNG).
+   Kelompok paling banyak ditulis kebelakangan & paling teruk terjejas.
+   Kehangatan & sapaan WAJIB. Konkrit boleh rendah (ini bukan tentang
+   ppm) tapi **tidak boleh sifar** — perlu sekurang-kurangnya satu imej
+   yg boleh DILIHAT. Namakan perasaan dlm perkataan pembaca sendiri
+   SEBELUM menganalisisnya. Rujuk: `caring-without-guilt` (masih
+   terbaik di laman ni: sapaan 22.1, 24.7% ayat pendek).
+5. **Pembela pembaca** (1 — pembaca mahu SESEORANG MENYEBUTNYA
+   KUAT-KUAT: kritikan iklan, amalan industri, apa yg dijual kpd
+   pemula). Dibenarkan lebih tajam drpd 4 keluarga lain — kata kerja
+   kuat, sasaran dinamakan, ayat pendek yg menghentak. Satu-satunya
+   tempat di laman ni yg kemarahan terkawal sesuai. Rujuk (percubaan
+   pertama, masih terlalu berhati-hati): `the-fish-that-sell-the-tank`.
+
+### Gerakan pembukaan — 2 formula yg SUDAH berulang, elakkan
+
+23 artikel buka dgn adegan yg pembaca sedang berdiri di dalamnya. Tu
+kekuatan sebenar laman ni. Tapi 13 lagi kini buka dgn salah satu drpd
+dua cop ni:
+
+- **Generalisasi populasi** (8 artikel) — "Almost nobody gets into this
+  hobby through…", "Most keepers can describe their ideal routine…",
+  "Nobody decides to neglect a tank." Berkesan SEKALI; 8 kali jadi cop.
+  Ia jugak letak pembaca dlm kumpulan statistik sblm letak dia dlm
+  biliknya sendiri.
+- **Mengkritik penulisan lain** (5 artikel) — "Almost every care guide
+  is written for a single 'you'…", "Most of what's written about losing
+  fish assumes…". Lebih membimbangkan: artikel yg buka dgn mengkritik
+  genre panduan akuarium sedang bercakap dgn KESUSASTERAAN, bukan dgn
+  PEMBACA. Pembaca tak datang utk perbincangan tentang panduan lain —
+  dia datang sbb ada sesuatu berlaku pd tangkinya.
+
+### Tik yg perlu dijaring & dibuang
+
+`actually` ×227 merentas korpus (3.4 per 1k), `genuinely` ×79,
+`quietly` ×61, `exactly` ×58 — terburuk 8× `actually` dlm 900 patah
+perkataan. Hampir kesemuanya boleh dibuang tanpa ubah makna, & setiap
+satunya melembutkan ayat yg patut berdiri sendiri. Sama utk `worth`
+sbg isyarat kepentingan (×68 dlm prosa; `hard-to-quit` guna 7× dlm
+1,100 patah perkataan: *worth separating, worth understanding, worth
+saying plainly, worth checking*) — tu penulis MEMBERITAHU pembaca
+sesuatu itu penting, bukan MENUNJUKKANNYA. Ayat pembuka spt "It's
+worth naming plainly." ialah bunyi berdeham; buang terus.
+
+Corak berkait: ayat bermula subjek kosong (`It's` / `That's` /
+`This is` / `There's`). **Skop ukuran: `.mod-body`/`.pq`/`.hn` sahaja**
+(tanpa `.art-intro-text`) — purata korpus **11.0%**; kelompok reflektif
+purata **16.8%** (sehingga 23.9% — hampir satu drpd empat ayat),
+diagnostik purata 7.8%. Kesannya prosa yg berpusing sekeliling
+subjeknya & bukan bergerak melaluinya. **Nota: hanyutan ni bukan
+eksklusif kelompok reflektif** — artikel diagnostik BAHARU pun terjejas
+(`white-fuzz-driftwood` 22.2%, lebih tinggi drpd majoriti reflektif),
+manakala diagnostik lama duduk 2–6%. Punca sebenar ialah TARIKH tulis,
+bukan topik.
+
+### Ambang = TRIPWIRE, BUKAN sasaran (Goodhart — bukti dlm repo ni sendiri)
+
+| Semakan | Baca semula kalau |
+|---|---|
+| sapaan `you`/1k | < 8 (reflektif/diagnostik/praktikal) |
+| ayat ≤6 patah perkataan | < 15% |
+| CV panjang ayat | < 0.50 |
+| pembuka subjek kosong | > 12% |
+| tik adverba /1k | > 12 |
+
+**Angka ni menjerit "BACA artikel ni", & TAK PERNAH "tambah 4 lagi
+you".** Kalau ia jadi rubrik pemarkahan, hasilnya artikel yg menabur
+"you" utk capai ambang — lebih teruk drpd sekarang. Buktinya ada dlm
+repo ni: PR #511 optimumkan satu metrik (ayat panjang), lulus setiap
+semakan, & meratakan irama dlm kesemua 8 fail (§"Panduan Kualiti Prosa
+EN" di atas).
+
+**Ujian terbaik bukan metrik — BACA KUAT.** Irama rata kedengaran dlm
+20 saat; skrip audit ambil 20 minit & masih boleh tertipu. Stilometri
+kesan sapaan hilang & irama rata; ia TAK BOLEH kesan sama ada satu
+perenggan bergerak atau tidak.
+
+### Lompang: tiada satu pun artikel BERCERITA
+
+Imbasan 62 artikel utk penanda naratif (satu tangki dijejaki merentas
+masa, seorang penjaga tertentu, satu keputusan & akibatnya) = hampir
+sifar. Semua artikel ialah analisis atau diagnosis; tiada satu pun
+kisah. Ini bertepatan dgn matlamat pembezaan user (raikan pembaca
+senyap yg sampai ke laman ni): forum penuh soal-jawab pantas, YouTube
+penuh tangki siap — yg hampir tiada di mana-mana ialah **rekod jujur
+satu tangki merentas dua tahun**, termasuk bulan yg teruk & keputusan
+yg salah. Lorong keenam yg belum wujud, & paling sukar disalin.
 
 ## Panduan Kualiti ja (elak bug audit 2026-08-19 berulang, PR #350-356)
 

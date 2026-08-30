@@ -16,8 +16,8 @@
     "titleHtml": "Dua Orang, <em>Satu Tangki</em>",
     "subtitle": "Tangki tidak peduli siapa yang seharusnya melakukannya.",
     "texts": [
-      "Hampir semua panduan perawatan ditulis untuk satu \"Anda\" — satu penjaga, menguji air dan menambah air sendirian. Sebagian besar tangki yang benar-benar ada tidak berjalan seperti itu sama sekali. Tangki itu milik pasangan, teman sekamar, seluruh rumah tangga yang berbagi tugas tanpa pernah benar-benar menyepakatinya.",
-      "Di mana tangki yang dirawat bersama benar-benar mengalami masalah, dan biasanya bukan di tempat yang diduga siapa pun."
+      "Hampir semua panduan perawatan ditulis untuk satu orang. Satu penjaga, menguji air, menambah air, memutuskan kapan waktunya. Tangki Anda mungkin tidak berjalan seperti itu. Ia mungkin milik Anda dan pasangan, Anda dan teman sekamar, Anda dan siapa pun di rumah yang menjangkaunya — pekerjaan yang tidak pernah benar-benar disepakati pembagiannya.",
+      "Bagian ini tentang di mana tangki yang dirawat bersama benar-benar mengalami masalah. Bukan di tempat yang diduga kebanyakan orang, dan bukan karena ada yang kurang peduli."
     ],
     "metaModules": "4 modul",
     "metaTime": "~6 menit",
@@ -30,9 +30,9 @@
       "tag": "Apa yang diasumsikan hampir semua panduan perawatan",
       "titleHtml": "Ditulis untuk <em>satu penjaga, selalu</em>",
       "body": [
-        "Lembar perawatan, jadwal dosis, rutinitas pemberian pakan — hampir semua yang ditulis tentang merawat tangki ditujukan kepada satu \"Anda\". Itu asumsi yang masuk akal untuk sebuah panduan; ia harus ditujukan kepada seseorang, dan bentuk tunggal lebih sederhana untuk ditulis. Tapi sebagian besar tangki yang benar-benar ada tidak dijalankan oleh satu orang sama sekali. Tangki itu dirawat oleh sepasang kekasih, dua teman sekamar, orang tua dan anak, kadang seluruh rumah tangga yang bergiliran tanpa pernah benar-benar menyepakatinya.",
-        "Tidak satu pun dari susunan itu tidak biasa atau sekadar cara sementara. Tangki di apartemen bersama atau rumah keluarga, secara struktural, menjadi sumber daya bersama begitu lebih dari satu orang bisa menjangkaunya — memberi makan, menambah air, menyadari ada yang tidak beres. Kerangka satu-penjaga yang jadi asumsi default setiap panduan tidak salah untuk tangki yang digambarkannya. Ia hanya menggambarkan sebagian kecil dari susunan hidup sebenarnya tempat tangki-tangki itu berada.",
-        "Celah ini penting karena tangki yang dirawat dua orang tidak gagal dengan cara yang diduga panduan satu-penjaga. Biasanya bukan pengetahuan yang hilang — kedua orang sering bisa menyebutkan rutinitas perawatan yang sama jika diminta. Yang hilang adalah sesuatu yang tidak pernah perlu dibahas panduan itu, karena panduan yang ditulis untuk satu orang tidak punya tempat untuk itu."
+        "Lembar perawatan, jadwal dosis, rutinitas pemberian pakan — hampir semua yang ditulis tentang merawat tangki ditujukan kepada satu \"Anda\". Itu asumsi yang wajar untuk sebuah panduan. Ia harus ditujukan kepada seseorang, dan bentuk tunggal lebih sederhana untuk ditulis. Tapi sebagian besar tangki tidak dijalankan satu orang. Tangki itu dirawat sepasang kekasih, dua teman sekamar, orang tua dan anak, kadang seluruh rumah tangga yang bergiliran tanpa pernah benar-benar menyepakatinya.",
+        "Tak satu pun susunan itu tidak biasa, dan tak satu pun sekadar cara sementara. Tangki di apartemen bersama atau rumah keluarga menjadi sumber daya bersama begitu lebih dari satu orang bisa menjangkaunya. Memberi makan terhitung. Menambah air terhitung. Menyadari ada yang tidak beres terhitung. Kerangka satu-penjaga tidak salah untuk tangki yang digambarkannya. Ia hanya menggambarkan sebagian kecil dari rumah tempat tangki sebenarnya berada.",
+        "Celah ini penting karena tangki dua orang tidak gagal dengan cara yang diduga panduan satu-penjaga. Pengetahuan jarang jadi yang hilang — kalian berdua mungkin bisa menyebutkan rutinitas perawatan yang sama kalau diminta. Yang hilang adalah sesuatu yang tidak pernah perlu dibahas panduan itu, karena panduan yang ditulis untuk satu orang tidak punya tempat untuknya."
       ],
       "pullQuote": "Sebuah panduan perawatan harus mengasumsikan seseorang. Mengasumsikan tepat satu orang adalah kemudahan menulis, bukan fakta tentang bagaimana sebagian besar tangki sebenarnya dirawat.",
       "prevBtn": "← Intro",
@@ -43,13 +43,13 @@
       "tag": "Di mana koordinasi benar-benar gagal",
       "titleHtml": "Celah dalam <em>asumsi, bukan dalam kemampuan</em>",
       "body": [
-        "Pola kegagalan dalam tangki bersama jarang terlihat seperti perselisihan. Yang terlihat adalah dua orang yang sama-sama mampu, masing-masing menjalankan bagiannya dengan benar, sampai berakhir pada penggantian air yang terlewat, yang tidak ada satu pun dari mereka bermaksud melewatkannya. Satu orang mengira yang lain sudah menguji air minggu ini. Yang lain mengira yang pertama akan bilang kalau ada yang terlihat tidak beres. Kedua asumsi itu masuk akal. Tidak satu pun dicek terhadap apa pun.",
-        "Difusi tanggung jawab adalah nama baku untuk ini — makin banyak orang yang mungkin saja jadi yang bertindak, makin ringan beban bertindak yang dirasakan satu orang tertentu, bahkan ketika semua orang benar-benar peduli pada hasilnya. Ini bukan cacat karakter pada salah satu penjaga. Ini yang terjadi secara terduga ketika sebuah tugas bukan tanggung jawab siapa pun secara khusus, karena dari sudut pandang masing-masing orang, tugas itu terlihat seperti tanggung jawab seseorang.",
-        "Tangki membuat ini sangat mudah terlewat, karena ia tetap berjalan sementara berdasarkan inersia bahkan setelah celah itu terbuka. Nitrat naik perlahan. Filter jadi sedikit lebih kotor tiap minggu tanpa ada yang menanganinya. Tidak ada satu momen dramatis di mana koordinasi yang hilang itu mengumumkan dirinya — biasanya hanya pergeseran perlahan yang akhirnya muncul sebagai masalah dengan penyebab yang jauh kurang jelas."
+        "Kegagalan dalam tangki bersama jarang terlihat seperti perselisihan. Yang terlihat adalah dua orang yang sama-sama mampu, masing-masing menjalankan bagiannya dengan benar, berakhir pada penggantian air yang terlewat yang tak seorang pun bermaksud melewatkannya. Anda mengira mereka sudah menguji air minggu ini. Mereka mengira Anda akan bilang kalau ada yang terlihat tidak beres. Kedua asumsi itu masuk akal. Tidak satu pun dicek terhadap apa pun.",
+        "Ada namanya: difusi tanggung jawab. Makin banyak orang yang mungkin bertindak, makin ringan beban bertindak yang dirasakan satu orang — bahkan ketika semua orang peduli pada hasilnya. Ini bukan cacat pada salah satu penjaga. Ini yang terjadi ketika sebuah tugas bukan tanggung jawab siapa pun secara khusus, karena dari masing-masing sisi ia terlihat seperti tanggung jawab seseorang.",
+        "Tangki menyembunyikan ini dengan sangat baik, karena ia tetap berjalan dengan inersia setelah celah itu terbuka. Nitrat naik perlahan. Filter jadi sedikit lebih kotor tiap minggu tanpa ada yang menanganinya. Tidak ada momen di mana koordinasi yang hilang mengumumkan dirinya. Ia pergeseran perlahan yang muncul belakangan sebagai masalah dengan penyebab yang jauh kurang jelas."
       ],
       "hintLabel": "Pola yang layak dinamai dengan tepat",
       "hintText": [
-        "Difusi tanggung jawab tidak mengharuskan siapa pun ceroboh atau tidak peduli. Ini muncul justru di antara orang-orang yang masing-masing mengharapkan kompetensi dari yang lain — situasi yang biasanya persis dialami dua penjaga yang sama-sama mampu."
+        "Difusi tanggung jawab tidak mengharuskan siapa pun ceroboh atau tidak peduli. Ia muncul justru di antara orang-orang yang masing-masing mengharapkan kompetensi dari yang lain — dan itu persis posisi dua penjaga yang sama-sama mampu."
       ],
       "prevBtn": "← Kembali",
       "nextBtn": "Apa yang benar-benar menutup celah itu"
@@ -59,9 +59,9 @@
       "tag": "Apa yang benar-benar menutup celah itu",
       "titleHtml": "Pencatatan yang terlihat, <em>bukan sinkronisasi yang diasumsikan</em>",
       "body": [
-        "Solusinya bukan percakapan yang lebih baik tentang siapa yang lebih bertanggung jawab, dan bukan menugaskan satu orang jadi \"penjaga sungguhan\" sementara yang lain sekadar membantu sesekali. Keduanya menyelesaikan masalah yang salah. Yang benar-benar menutup celah koordinasi adalah membuat kondisi tangki terlihat bagi kedua orang, sehingga tidak satu pun perlu menebak apa yang sudah diketahui atau dilakukan yang lain.",
-        "Dalam praktiknya biasanya sesuatu yang kecil dan tidak mewah: catatan bersama tentang penggantian air terakhir, pengujian terakhir, pemberian pakan terakhir — sesuatu yang bisa dicek siapa pun dalam lima detik, bukan ditanyakan atau diasumsikan. Alat seperti Catatan Penjaga memenuhi tujuan ini persis ketika lebih dari satu orang memakainya untuk tangki yang sama. Ia mengubah \"saya kira kamu sudah melakukannya\" menjadi \"saya bisa lihat kamu sudah melakukannya\", yang merupakan jenis koordinasi yang sama sekali berbeda dan jauh lebih bisa diandalkan.",
-        "Ini berhasil karena menghilangkan bagian dari tugas yang sebenarnya gagal. Perawatannya sendiri — menguji, memberi makan, mengganti air — tidak pernah jadi bagian yang sulit bagi kedua penjaga. Bagian yang sulit adalah mengetahui, tanpa bertanya, apa yang sudah ditangani yang lain. Catatan bersama yang terlihat menjawab pertanyaan itu secara langsung, alih-alih menyerahkannya kepada siapa pun yang kebetulan ingat untuk membicarakannya."
+        "Solusinya bukan percakapan yang lebih baik tentang siapa yang lebih bertanggung jawab. Bukan juga menunjuk salah satu dari kalian jadi \"penjaga sungguhan\" sementara yang lain sekadar membantu. Keduanya menyelesaikan masalah yang salah. Yang menutup celah koordinasi adalah membuat kondisi tangki terlihat oleh kalian berdua, sehingga tidak ada yang perlu menebak apa yang sudah diketahui atau dilakukan yang lain.",
+        "Dalam praktiknya itu sesuatu yang kecil dan tidak mewah. Catatan bersama tentang penggantian air terakhir, pengujian terakhir, pemberian pakan terakhir — sesuatu yang bisa dicek siapa pun dari kalian dalam lima detik, bukan ditanyakan atau diasumsikan. Catatan Penjaga melakukan persis ini ketika dua orang memakainya untuk tangki yang sama. Ia mengubah \"saya kira kamu sudah melakukannya\" menjadi \"saya bisa lihat kamu sudah melakukannya\", dan itu hal yang berbeda serta jauh lebih bisa diandalkan.",
+        "Ia berhasil karena menghilangkan bagian yang sebenarnya gagal. Perawatannya sendiri — menguji, memberi makan, mengganti air — tidak pernah sulit bagi kalian berdua. Yang sulit adalah mengetahui, tanpa bertanya, apa yang sudah ditangani yang lain. Catatan bersama menjawab itu secara langsung, alih-alih menyerahkannya kepada siapa pun yang kebetulan ingat membicarakannya."
       ],
       "pullQuote": "Dua penjaga yang penuh perhatian tidak perlu menyelaraskan naluri mereka. Mereka butuh satu catatan yang tidak perlu ditanggung sepenuhnya sendiri-sendiri di kepala masing-masing.",
       "prevBtn": "← Kembali",
@@ -72,18 +72,26 @@
       "tag": "Apa yang tidak dimaksudkan oleh ini",
       "titleHtml": "Struktur yang <em>berbeda</em>, bukan lebih sulit",
       "body": [
-        "Tidak satu pun dari ini berarti tangki bersama secara bawaan lebih sulit dirawat dibanding tangki sendirian, atau perlu pemilihan pasangan yang lebih cermat untuk berhasil. Dua orang yang nyaris tidak saling mencatat apa pun bisa berakhir dengan pergeseran perlahan yang sama seperti dua orang yang sekadar tidak seimbang dalam seberapa peduli mereka — masalah koordinasinya terlihat sama, apa pun alasan hilangnya keterlihatan itu.",
-        "Ini juga tidak berarti setiap tangki bersama butuh sistem formal. Banyak rumah tangga merawat tangki dengan baik hanya dengan kebiasaan menyebutkan sesuatu secara lisan, karena menyebutkan sesuatu secara lisan adalah bentuk pencatatan terlihat tersendiri — ia hanya hidup dalam percakapan, bukan catatan tertulis. Yang penting bukan metode spesifiknya. Yang penting apakah kondisi tangki benar-benar terlihat bagi semua orang yang mungkin bertindak atasnya, bukan diam-diam diasumsikan.",
-        "Tangki dengan dua penjaga bukan versi yang lebih sulit dari praktik yang sama. Ia versi yang secara struktural berbeda, dengan tepat satu kebutuhan tambahan yang tidak pernah perlu diselesaikan versi sendirian: memastikan apa yang diketahui satu orang tidak hanya tersimpan di kepala orang itu."
+        "Tak satu pun dari ini berarti tangki bersama lebih sulit dirawat daripada tangki sendirian, atau perlu pemilihan pasangan yang lebih cermat. Dua orang yang tidak mencatat apa pun antara mereka bergeser dengan cara yang sama seperti dua orang yang tidak seimbang dalam seberapa peduli mereka. Masalah koordinasinya terlihat identik.",
+        "Ini juga tidak berarti kalian butuh sistem formal. Banyak rumah tangga merawat tangki dengan baik hanya dengan kebiasaan menyebutkan sesuatu secara lisan. Mengatakannya keras-keras adalah bentuk pencatatan terlihat tersendiri — ia hanya hidup dalam percakapan, bukan catatan tertulis. Metodenya tidak penting. Yang penting adalah apakah kondisi tangki terlihat oleh semua orang yang mungkin bertindak atasnya, bukan diam-diam diasumsikan.",
+        "Tangki dengan dua penjaga bukan versi yang lebih sulit dari praktik yang sama. Ia versi yang secara struktural berbeda, dengan tepat satu kebutuhan tambahan yang tidak pernah perlu diselesaikan versi sendirian: memastikan apa yang diketahui salah satu dari kalian tidak hanya tersimpan di kepala orang itu."
       ],
       "prevBtn": "← Kembali"
     }
   ],
   "relatedLinks": [
-    { "text": "Penjaga yang Sebenarnya Dibutuhkan Tangki Anda →" },
-    { "text": "Rutinitas Perawatan yang Benar-Benar Berhasil →" },
-    { "text": "Merawat Tanpa Rasa Bersalah →" },
-    { "text": "Kerangka ARA →" }
+    {
+      "text": "Penjaga yang Sebenarnya Dibutuhkan Tangki Anda →"
+    },
+    {
+      "text": "Rutinitas Perawatan yang Benar-Benar Berhasil →"
+    },
+    {
+      "text": "Merawat Tanpa Rasa Bersalah →"
+    },
+    {
+      "text": "Kerangka ARA →"
+    }
   ],
   "footer": {
     "allArticles": "← Semua artikel",

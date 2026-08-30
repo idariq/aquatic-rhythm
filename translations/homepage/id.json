@@ -433,6 +433,10 @@
             "the-relief-youre-not-supposed-to-feel": {
                 "title": "Rasa Lega yang Tak Seharusnya Anda Rasakan<br><em>Menyaksikan ikan menderita dalam diam, dan merasakan sesuatu selain sedih saat akhirnya berakhir.</em>",
                 "desc": "Perawatan yang gagal berulang kali bisa berubah jadi menonton dan menunggu dalam diam, bukan keputusan yang diucapkan siapa pun. Kenapa rasa lega di ujungnya bukan lawan dari peduli, dan seperti apa opsi ketiga yang jujur itu sebenarnya."
+            },
+            "starting-before-youre-ready": {
+                "title": "Memulai Sebelum Anda Siap<br><em>Tangki yang membuat Anda ingin memulai hobi ini jarang jadi tangki yang benar-benar siap Anda bangun lebih dulu.</em>",
+                "desc": "Menginginkan mulai dengan layout impian, bukan sesuatu yang lebih kecil, bukan hal dangkal. Kenapa itu tetap sering berakhir dengan kegagalan, dan cara menyimpan impian itu utuh tanpa memulainya di hari pertama."
             }
         },
         "closing_cta": {

@@ -83,6 +83,7 @@ const SLUG_ORDER = [
   'two-people-one-tank',
   'the-fish-that-doesnt-fit',
   'the-relief-youre-not-supposed-to-feel',
+  'starting-before-youre-ready',
   'when-is-tank-ready-for-fish',
   'know-your-rhythm',
   'four-principles-of-ara',

@@ -1,0 +1,95 @@
+{
+  "_meta": {
+    "slug": "the-fish-that-sell-the-tank",
+    "lang": "id",
+    "sourceFile": "articles/the-fish-that-sell-the-tank.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Ikan yang Menjual Tangki Itu — Aquatic Rhythm",
+    "description": "Seekor ikan schooling sendirian dalam foto produk bukan pilihan stok — itu pilihan warna. Kenapa pemasaran 'smart aquarium' yang mengeksploitasi dua titik lemah sebenar hobi ini layak dinamai secara terus terang, dan cara membaca iklan seperti membaca tangki.",
+    "ogTitle": "Ikan yang Menjual Tangki Itu",
+    "ogDescription": "Ikan schooling sendirian dalam foto produk bukan pilihan stok — itu pilihan warna."
+  },
+  "intro": {
+    "eyebrow": "Semua level",
+    "titleHtml": "Ikan yang <em>Menjual Tangki Itu</em>",
+    "subtitle": "Ikan schooling sendirian dalam foto produk bukan pilihan stok. Itu pilihan warna.",
+    "texts": [
+      "Sebuah iklan akuarium nano \"pintar\" menampilkan auto feeder, filter built-in, lampu berubah warna, kerikil polos atau warna-warni cerah — dan segelintir ikan, satu ini satu itu, disebar utk kontras. Satu neon tetra sendirian. Satu guppy sendirian. Tak ada yang menyusun stok tangki itu. Ada yang menata gayanya.",
+      "Bagian ini menamai pola itu secara terus terang, kenapa ia menyasar tepat dua titik lemah sebenar dlm cara orang memasuki hobi ini, dan seperti apa respons yang selaras — utk industri yang terus melakukannya, & utk penjaga yang memutuskan sama ada mempercayai iklan berikutnya yang terlihat persis sama."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~7 menit",
+    "metaLevel": "Semua level",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Pola yang layak dinamai secara terus terang",
+      "titleHtml": "Hewan hidup, ditata <em>sebagai palet warna</em>",
+      "body": [
+        "Neon tetra adalah ikan yang hidup berkelompok. Dipelihara sendirian, ia bukan versi lebih kecil dari ikan yang terlihat dlm kelompok — ia ikan yang stres, tanpa kelompok utk berorientasi & tanpa perlindungan jumlah utk merasa aman. Seekor guppy yang ditaruh di sebelahnya utk kontras adalah hewan kedua dgn kebutuhan terpisahnya sendiri, bukan aksesori yang serasi. Siapa pun yang menyusun foto produk itu membuat serangkaian pilihan kecil & spesifik — ikan ini di sini utk kilau warna itu, yang itu di sana utk menyeimbangkan bingkai — & setiap pilihan menukar kos kesejahteraan hewan yang sudah diketahui dgn gambar yang terlihat lebih baik.",
+        "Sebut saja apa adanya: hewan hidup dipakai sbg prop utk menjual perangkat keras, bukan distok sbg komunitas yang benar² direncanakan siapa pun utk dipelihara. Substrat polos atau berwarna dekoratif di bawahnya, tanpa pertimbangan tanaman sungguhan atau garis pandang, mengonfirmasinya — ini set yang dibangun utk satu foto, bukan rumah yang dibangun utk seumur hidup.",
+        "Tak semua orang di balik pemotretan itu membuat pilihan ini dgn niat jahat. Banyak fotografi produk spt ini mengikuti konvensi industri yang tak pernah dipertanyakan siapa pun yang terlibat — satu tangki, satu dari setiap warna, ditata spt katalog furnitur menata sebuah ruangan. Perbedaan itu penting utk seberapa bisa dihindarinya hasil ini seharusnya. Ia tak mengubah apa pun dari hasil itu sendiri."
+      ],
+      "prevBtn": "← Intro",
+      "nextBtn": "Dua titik lemah yang sedang dijual"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Dua titik lemah yang sedang dijual",
+      "titleHtml": "Iklan yang cuma berhasil <em>pada orang yang belum tahu lebih baik</em>",
+      "body": [
+        "Dua hal membuat hobi ini khususnya mudah dijual dgn cara ini. Kebanyakan orang memilih tangki pertama mereka spt memilih sepotong furnitur — dari bagaimana foto yang sudah jadi & ditata membuat sudut ruangan terlihat, bukan dari kecocokan spesies yang sudah diteliti. Dan kebanyakan pembeli pertama kali sungguh belum tahu bahwa \"neon tetra\" butuh kelompok, bahwa tangki butuh berminggu-minggu utk matang sblm bisa aman menampung ikan, atau bahwa auto feeder cuma menangani satu dari banyak tugas yang sebenarnya dibutuhkan tangki. Tak satu pun ini kegagalan moral pd pemula. Itu cuma titik awal semua orang.",
+        "Masalah spesifiknya adalah seluruh kekuatan persuasif iklan itu bergantung pd celah itu tetap terbuka. \"Pintar,\" \"otomatis,\" & \"tanpa ribet\" cuma terdengar spt masalah yang sudah selesai bagi org yang belum tahu apa yang sebenarnya dibutuhkan tangki — bagi yang sudah tahu, bahasa itu terbaca sbg peringatan, bukan daftar fitur. Iklan yang cuma berhasil sekali — sblm pembeli belajar lebih baik, & tak pernah lagi setelahnya — bukan menjual kenyamanan. Ia menjual celah itu sendiri, diatur waktunya utk menutup penjualan sblm celah itu bisa menutup dgn sendirinya.",
+        "Itulah yang membedakan ini dari pemasaran optimis biasa. Kebanyakan pemasaran produk membesar-besarkan manfaat nyata. Pola spesifik ini butuh ketidaktahuan pembeli tetap benar agar pitch-nya berhasil sama sekali, yang menaruh insentif nyata di sisi berlawanan dari edukasi pembeli, bukan sekadar ketidakpedulian terhadapnya."
+      ],
+      "pullQuote": "Iklan yang cuma berhasil pada orang yang belum tahu lebih baik bukan menjual kenyamanan. Ia menjual celahnya sendiri, sblm celah itu bisa menutup.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Capacity before Ambition, dijual sebelum hari pertama"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Capacity before Ambition, dijual sebelum hari pertama",
+      "titleHtml": "Kapasitas palsu, <em>ditanam sebelum tangki ada</em>",
+      "body": [
+        "Capacity before Ambition biasanya menggambarkan pengendalian diri seorang penjaga sendiri — tahu apa yang sebenarnya dibutuhkan sebuah setup sblm menambah lebih banyak lagi. Pola ini menamai versi kegagalan yang sama yang terjadi lebih awal, & demi keuntungan pihak lain: rasa pembeli ttg apa yang akan dibutuhkan tangki dibentuk oleh iklan sblm mereka melakukan satu pun penggantian air, & dibentuk salah dgn sengaja. \"Tanpa perlu penggantian air\" & \"sepenuhnya otomatis\" bukan sekadar berlebihan kecil. Itu pembacaan kapasitas palsu, ditanam tepat di momen ketika pembacaan sungguhan seharusnya mulai terbentuk.",
+        "Ini berkaitan langsung dgn kenapa begitu banyak penjaga baru menstok tangki di hari yang sama ia tiba, & kenapa ikan mulai mati di minggu kedua. Tangki yang difoto sbg sudah jadi di hari pertama mengajarkan, tanpa kata, bahwa tangki begitu saja tiba dlm keadaan jadi — tak ada sebutan cycling, tak ada kesan bahwa airnya sendiri butuh berminggu-minggu utk jadi aman sblm apa pun ditambahkan. Iklan itu tak cuma salah soal perawatan. Ia menyembunyikan seluruh periode tunggu itu dari pandangan.",
+        "Begitu keputusan kapasitas sungguhan akhirnya datang — penggantian air yang terlambat, alga yang menyebar, seekor ikan menunjukkan tanda stres pertama — penjaga yang mempercayai iklan itu sering tak mengenalinya sbg keputusan sama sekali, krn mereka diberitahu sistemnya sudah menanganinya. Itu bukan kerugian hipotetis yang ditelusuri kembali ke sebuah foto. Itu mekanisme yang sama di balik hampir setiap post panik \"kenapa ikan saya terus mati\" dari org di bulan pertamanya, satu langkah lebih jauh ke hulu, di momen pembelian."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Membaca iklan seperti membaca tangki"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Membaca iklan seperti membaca tangki",
+      "titleHtml": "Kemahiran membaca yang sama, <em>diarahkan satu langkah lebih awal</em>",
+      "body": [
+        "Tak satu pun dari ini berarti setiap tangki nano ide buruk, atau setiap fitur otomatis layak dicurigai — banyak penjaga berpengalaman memakai auto feeder atau filter built-in dgn baik, utk perjalanan atau setup bioload rendah yang sudah mereka pahami. Yang dinamai di sini adalah pilihan yang lebih sempit & spesifik: menata iklan di sekitar fantasi ketiadaan, ditujukan pd org yang belum tahu apa yang sebenarnya dibutuhkan kehadiran. Pilihan itu milik siapa pun yang membangun iklan itu. Itu bukan milik hobi ini, & itu bukan kesalahan pemula yang mempercayainya.",
+        "Beberapa tanda layak dibaca sblm mempercayai iklan berikutnya yang terlihat serupa: spesies schooling — tetra, rasbora, danio — difoto sbg satu ekor sendirian; bahasa yang menjanjikan tanpa penggantian air atau otomasi penuh tanpa sebutan cycling sama sekali; tangki yang ditampilkan sudah penuh stok dlm apa yang jelas kemunculan pertamanya, tanpa penjelasan berapa lama waktu utk sampai ke sana; bioload yang tersirat dari apa yang bisa dikeluarkan auto feeder, bukan dari apa yang sebenarnya dibutuhkan hewan di dlm tangki.",
+        "Menyadari ini tak perlu keahlian — cuma beberapa pertanyaan spesifik yang ditanyakan sblm checkout, bukan sesudah ikan pertama menunjukkan tanda masalah. Membaca iklan dgn cara ini adalah kemahiran yang sama yang coba dibangun laman ini utk membaca tangki itu sendiri: apa yang benar² ditunjukkan, berbanding apa yang cuma tersirat."
+      ],
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    {
+      "text": "New Tank Syndrome →"
+    },
+    {
+      "text": "Cara Tahu Kapan Tangki Anda Siap untuk Ikan →"
+    },
+    {
+      "text": "Erosi Kapasitas →"
+    },
+    {
+      "text": "Kerangka ARA →"
+    }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

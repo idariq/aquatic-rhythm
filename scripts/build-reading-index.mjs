@@ -52,6 +52,7 @@ const SLUG_ORDER = [
   'cloudy-eyes-fish',
   'ich-vs-velvet',
   'dropsy-when-treatment-isnt-working',
+  'the-fish-that-sell-the-tank',
   'aquarium-maintenance-routine',
   'capacity-creep',
   'life-change-protocols',

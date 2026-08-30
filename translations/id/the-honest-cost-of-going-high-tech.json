@@ -16,8 +16,8 @@
     "titleHtml": "Biaya Jujur <em>Beralih ke High-Tech</em>",
     "subtitle": "High-tech bukan pilihan sok-sokan. Itu pilihan jujur — bagi penjaga yang kapasitas hariannya benar-benar sepadan.",
     "texts": [
-      "Tangki bertanam low-tech disebut pilihan jujur di laman ini, dan itu benar — bagi penjaga yang kapasitasnya memang sederhana. Itu tak pernah dimaksudkan sebaliknya soal high-tech. Layout taraf kompetisi dengan injeksi CO2 & pencahayaan berdaya tinggi sama jujurnya, bagi penjaga yang daya tampung hariannya memang sepadan dengan tuntutannya.",
-      "Bagian ini untuk penjaga itu. Apa yang sebenarnya dituntut \"high-tech\" hari demi hari, di mana bahkan disiplin sungguhan masih bisa bergeser dari keselarasan, dan cara membedakan kapasitas sungguhan dari dorongan yang masih sebatas estetika."
+      "Tangki bertanam low-tech disebut pilihan jujur di situs ini, dan itu benar — bagi penjaga yang kapasitasnya memang sederhana. Itu tidak pernah dimaksudkan sebagai kebalikannya soal high-tech. Layout taraf kompetisi dengan injeksi CO2 dan pencahayaan berdaya tinggi sama jujurnya, bagi penjaga yang daya tampung hariannya memang sepadan dengan tuntutannya.",
+      "Bagian ini untuk penjaga itu. Apa yang sebenarnya dituntut \"high-tech\" dari hari ke hari, di mana bahkan disiplin sungguhan masih bisa bergeser dari keselarasan, dan cara membedakan kapasitas sungguhan dari dorongan yang masih sebatas estetika."
     ],
     "metaModules": "4 modul",
     "metaTime": "~7 menit",
@@ -27,12 +27,12 @@
   "modules": [
     {
       "id": "mod-1",
-      "tag": "Prinsip yang sama, langit-langit berbeza",
-      "titleHtml": "Bukan kenaikan tingkat. <em>Kapasitas yang berbeza.</em>",
+      "tag": "Prinsip yang sama, langit-langit berbeda",
+      "titleHtml": "Bukan kenaikan tingkat. <em>Kapasitas yang berbeda.</em>",
       "body": [
-        "High-tech sering digambarkan sbg tingkat yang \"dinaiki\" penjaga begitu dianggap cukup serius — injeksi CO2, pencahayaan berdaya tinggi, jadual dosis, layout dibangun ke taraf kompetisi. Gambaran itu terbalik. Ia bukan versi lebih lanjut drpd komitmen yang sama. Ia komitmen yang sama sekali berbeza, dgn ruang kesalahan yang jauh lebih sempit di hampir semua irama sekaligus.",
-        "Tak ada dari itu yg buat high-tech kurang jujur drpd tangki low-tech. Setup low-tech selaras bila tuntutannya sepadan dgn kapasitas sederhana penjaga sesungguhnya. Setup high-tech selaras ikut ujian yg SAMA persis — cuma perlu kapasitas jauh lebih tinggi utk lulus ujian itu. Tak satu pun versi \"asli\" dari penjagaan tangki bertanam yg satu lagi jadi penggantinya yg kurang.",
-        "Apa yg berikut bukan pembelaan utk beralih ke high-tech, atau menentangnya. Ini apa yg sebenarnya dituntut versi jujur drpd pilihan itu, supaya keputusan diambil atas maklumat sebenar, bukan atas bagaimana layout siap kelihatan dlm foto."
+        "High-tech sering digambarkan sebagai tingkat yang \"dinaiki\" penjaga begitu ia dianggap cukup serius — injeksi CO2, pencahayaan berdaya tinggi, jadwal dosis, layout yang dibangun sampai taraf kompetisi. Gambaran itu membalik hubungannya. Ini bukan versi yang lebih lanjut dari komitmen yang sama. Ini komitmen yang sama sekali berbeda, dengan ruang kesalahan yang jauh lebih sempit di hampir semua irama sekaligus.",
+        "Tidak ada dari itu yang membuat high-tech kurang jujur dibanding tangki low-tech. Setup low-tech selaras ketika tuntutannya sepadan dengan kapasitas penjaga yang sesungguhnya, betapapun sederhananya. Setup high-tech selaras menurut ujian yang persis sama — hanya saja ia menuntut kapasitas jauh lebih tinggi untuk lulus ujian itu. Tidak ada satu pun di antaranya yang merupakan versi \"asli\" dari penjagaan tangki bertanam, dengan yang lain sebagai pengganti yang lebih rendah.",
+        "Yang berikut ini bukan pembelaan untuk beralih ke high-tech, bukan pula penentangan terhadapnya. Ini soal apa yang sebenarnya dituntut oleh versi jujur dari pilihan tersebut, supaya keputusan diambil berdasarkan informasi nyata, bukan berdasarkan bagaimana sebuah layout yang sudah jadi terlihat di dalam foto."
       ],
       "prevBtn": "← Intro",
       "nextBtn": "Apa yang dituntut sebenarnya hari demi hari"
@@ -42,11 +42,11 @@
       "tag": "Apa yang dituntut sebenarnya hari demi hari",
       "titleHtml": "Lebih banyak input, <em>bukan lebih banyak ampunan</em>",
       "body": [
-        "Injeksi CO2 perlu perhatian harian, bukan setup sekali jalan. Drop checker atau kiraan gelembung perlu dibaca & disesuaikan cukup kerap utk jaga tahap yg cukup tinggi supaya bermakna tanpa hanyut ke julat yg buat ikan stres di malam hari, saat fotosintesis berhenti menarik keluar CO2 dari air. Pencahayaan berdaya tinggi berlaku sebaliknya: fotoperiod yg berjalan sedikit terlalu lama, pd tangki yg sudah kaya nutrien & karbon, jadi salah satu jalan tercepat ke ledakan alga yg dibahas sendiri dlm diagnostik laman ini.",
-        "Dosis ikut corak yg sama. Tangki bertanam high-tech yg tumbuh dgn kelajuan sebenar perlu nutrien diganti ikut jadual ketat, hampir harian, bukan ditambah bila sempat. Pertumbuhan pantas turut bermakna penyelenggaraan pantas: tanaman karpet & batang di bawah cahaya kuat & CO2 boleh perlu dipangkas mingguan, bukan bulanan. Pangkasan yg terlepas bukan sekadar kelihatan tak kemas — ia menaungi lapisan di bawahnya cukup cepat utk ubah trajektori keseluruhan tangki dlm hitungan hari.",
-        "Tak satu pun dari ini buat tangki high-tech lebih \"automatik\" begitu dah settle. Ia menuntut perhatian lebih tepat merentas lebih banyak pemboleh ubah, dlm jadual dgn ruang tergelincir yg lebih kecil, drpd tangki low-tech mana pun. Itu bukan kritikan thd gaya ini. Itu bentuk sebenar komitmennya, dinyatakan terus terang drpd sekadar tersirat dari foto siap."
+        "Injeksi CO2 membutuhkan perhatian harian, bukan pemasangan sekali jalan. Drop checker atau hitungan gelembung harus dibaca dan disesuaikan cukup sering untuk menjaga kadarnya tetap tinggi supaya bermakna. Kadar itu juga harus tetap di bawah rentang yang membuat ikan stres pada malam hari, ketika fotosintesis berhenti menarik CO2 keluar dari air. Pencahayaan berdaya tinggi bekerja ke arah sebaliknya. Fotoperiode yang berjalan sedikit saja terlalu lama, pada tangki yang sudah kaya nutrien dan karbon, adalah salah satu jalan tercepat menuju ledakan alga. Diagnostik di situs ini sendiri membahas pola tersebut.",
+        "Pemberian dosis mengikuti pola yang sama. Tangki bertanam high-tech yang tumbuh dengan kecepatan sungguhan membutuhkan nutrien yang diganti menurut jadwal ketat, hampir harian, bukan ditambah kapan pun sempat. Pertumbuhan cepat juga berarti perawatan yang cepat: tanaman karpet dan tanaman batang di bawah cahaya kuat dan CO2 bisa perlu dipangkas mingguan, bukan bulanan. Pemangkasan yang terlewat bukan sekadar terlihat tidak rapi — ia menaungi lapisan di bawahnya cukup cepat untuk mengubah keseluruhan arah tangki dalam hitungan hari.",
+        "Tidak satu pun dari ini membuat tangki high-tech lebih \"otomatis\" begitu ia sudah mapan. Ia menuntut perhatian yang lebih presisi pada lebih banyak variabel, dalam jadwal dengan ruang tergelincir yang lebih kecil, dibanding tangki low-tech mana pun. Itu bukan kritik terhadap gaya ini. Itu bentuk sebenarnya dari komitmen tersebut, dinyatakan terus terang alih-alih hanya tersirat dari sebuah foto yang sudah jadi."
       ],
-      "pullQuote": "Tangki high-tech tak kurangkan berapa kerap penjaga perlu hadir. Ia naikkan setepat mana penjaga perlu hadir, merentas lebih banyak perkara, pd masa yang sama.",
+      "pullQuote": "Tangki high-tech tidak mengurangi seberapa sering penjaga perlu hadir. Ia menaikkan seberapa presisi penjaga harus hadir, pada lebih banyak hal, di waktu yang bersamaan.",
       "prevBtn": "← Kembali",
       "nextBtn": "Di mana ambisi masih melepasi langit-langit tinggi"
     },
@@ -55,9 +55,9 @@
       "tag": "Di mana ambisi masih melepasi langit-langit tinggi",
       "titleHtml": "Kapasitas tinggi <em>masih ada tepinya</em>",
       "body": [
-        "Disiplin sungguhan tak buat penjaga kebal drpd misalignment. Ia cuma pindahkan titik kegagalan lebih tinggi. Layout yg dibangun menuju tarikh akhir kompetisi boleh kelihatan siap difoto padahal ekologinya di bawah masih muda & belum stabil — jurang yg sama dibahas laman ni sbg kematangan palsu, cuma dicapai lewat kemahiran & usaha lebih besar drpd yg kurang. Tangki yg lulus dlm foto pd minggu penyerahan bukan sama dgn tangki yg benar² stabil.",
-        "Dorongan menuju layout yg mengagumkan turut boleh mula mengatasi keperluan apa yg hidup di dalamnya. Tanaman atau ikan dipilih krn komposisi perlukan bentuk atau warna tepat itu di situ, bukan krn ia cocok utk air yg akan benar² dihuninya. Itu naluri yg sama dinamai laman ni di tempat lain bila hewan diperlakukan sbg elemen reka bentuk drpd haiwan dgn keperluannya sendiri — cuma tiba di sini lewat kraf sebenar drpd penataan ceroboh.",
-        "Erosi kapasitas turut berlaku pd puncak julat. Satu tangki menuntut, dijalankan penjaga yg benar² bina daya tampungnya, boleh sepenuhnya lestari. Mengejar keamatan yg sama merentas beberapa tangki sekaligus, atau menaikkan ketepatan satu tangki setiap musim tanpa siling terfikir, akhirnya boleh melepasi kapasitas sebenar yg dah dibina susah payah. Itu corak yg sama dijejak laman ni pd penjaga dgn setup jauh lebih sederhana — cuma dgn angka jauh lebih tinggi sblm ia muncul."
+        "Disiplin yang sungguhan tidak membuat penjaga kebal dari ketidakselarasan. Ia hanya memindahkan titik kegagalan ke tempat yang lebih tinggi. Layout yang dibangun menuju tenggat kompetisi bisa terlihat siap difoto padahal ekologi di bawahnya masih muda dan belum stabil. Itu jurang yang sama yang dibahas situs ini sebagai kematangan palsu, hanya saja dicapai lewat keterampilan dan usaha yang lebih besar, bukan yang lebih sedikit. Tangki yang lolos di foto pada minggu penyerahan bukanlah hal yang sama dengan tangki yang benar-benar stabil.",
+        "Dorongan menuju layout yang memukau juga bisa mulai mengalahkan kebutuhan makhluk yang hidup di dalamnya. Tanaman atau ikan dipilih karena komposisinya menuntut bentuk atau warna tertentu di titik itu. Ia tidak dipilih karena cocok dengan air yang nantinya benar-benar ia huni. Itu naluri yang sama yang dinamai situs ini di tempat lain, ketika hewan diperlakukan sebagai elemen desain alih-alih sebagai makhluk dengan kebutuhannya sendiri. Di sini ia hanya datang lewat keahlian sungguhan, bukan lewat penataan yang ceroboh.",
+        "Erosi kapasitas juga berlaku di puncak rentang. Satu tangki yang menuntut, dijalankan oleh penjaga yang benar-benar sudah membangun daya tampungnya, bisa sepenuhnya berkelanjutan. Mengejar intensitas yang sama pada beberapa tangki sekaligus pada akhirnya bisa melampaui kapasitas nyata yang dibangun susah payah sekalipun. Begitu pula menaikkan presisi satu tangki setiap musim tanpa plafon yang terpikirkan. Ini pola yang sama yang dilacak situs ini pada penjaga dengan setup yang jauh lebih sederhana — hanya saja dengan angka yang jauh lebih tinggi sebelum ia muncul."
       ],
       "prevBtn": "← Kembali",
       "nextBtn": "Kapasitas sungguhan, dibaca jujur"
@@ -65,11 +65,11 @@
     {
       "id": "mod-4",
       "tag": "Kapasitas sungguhan, dibaca jujur",
-      "titleHtml": "Dorongan & daya tampung <em>dua hal berbeza</em>",
+      "titleHtml": "Dorongan dan daya tampung <em>dua hal berbeda</em>",
       "body": [
-        "Menginginkan tangki high-tech & memiliki kapasitas tetap utknya bukan hal yg sama, & jurang antara keduanya mudah terlepas dari dlm keghairahan merancangnya. Semakan jujur yg berguna: bolehkah jadual dosis & pemantauan ini bertahan sebulan yg benar² sibuk & tanpa semangat, bukan cuma minggu² pertama saat semuanya masih baru. Adakah kesabaran utk kematangan ekologi yg perlahan bertahan tanpa tarikh akhir atau penonton yg mendesaknya. Tak satu pun soalan ni ada jawapan betul — ia cuma beza antara \"ya\" yg selaras & \"ya\" yg penuh harapan.",
-        "Dorongan yg kebanyakannya estetik & belum disokong daya tampung tetap sebegitu bukan kegagalan, & ia bukan ambisi lebih kecil. Ia biasanya isyarat awal kapasitas yg belum dibina — titik mula yg sama yg dimiliki kebanyakan penjaga high-tech sebenarnya, sama ada ia muncul dlm cara mereka bercerita ttg diri sekarang atau tidak.",
-        "Di mana tangki low-tech sesuai dlm semua ni bukan sbg persinggahan lebih rendah dlm perjalanan ke \"yg sebenar\". Ia cara sungguhan & lengkap utk bina kebiasaan harian — membaca air, membaca tanaman, kekal konsisten tanpa semangat utk menariknya — yg kelak dituntut tangki high-tech pd jumlah jauh lebih besar. Dibaca dgn jujur, kedua-duanya amalan yg sama. Cuma diselaraskan ke kapasitas berbeza."
+        "Menginginkan tangki high-tech dan memiliki kapasitas yang mapan untuknya bukanlah hal yang sama. Jurang di antara keduanya mudah terlewat dari dalam kegembiraan saat merencanakannya. Satu pemeriksaan jujur yang berguna: bisakah jadwal dosis dan pemantauan ini bertahan melewati sebulan yang benar-benar sibuk dan tanpa semangat, bukan hanya minggu-minggu pertama ketika semuanya masih baru. Bertahankah kesabaran untuk kematangan ekologi yang lambat tanpa tenggat atau penonton yang mendorongnya. Tidak ada pertanyaan itu yang punya jawaban benar — keduanya hanya membedakan antara \"ya\" yang selaras dan \"ya\" yang penuh harapan.",
+        "Dorongan yang sebagian besar bersifat estetis dan belum ditopang daya tampung yang mapan bukanlah kegagalan, dan ia bukan ambisi yang lebih kecil. Ia biasanya isyarat awal dari kapasitas yang belum dibangun. Itu titik mula yang sama yang sebenarnya dimiliki kebanyakan penjaga high-tech, terlepas dari apakah hal itu terlihat dalam cara mereka bercerita sekarang.",
+        "Posisi tangki low-tech dalam semua ini bukan sebagai persinggahan yang lebih rendah dalam perjalanan menuju \"yang sebenarnya\". Ia cara yang sungguh-sungguh dan utuh untuk membangun kebiasaan harian — membaca air, membaca tanaman, tetap konsisten tanpa kegembiraan yang menopangnya. Tangki high-tech nantinya menuntut kebiasaan yang sama persis, hanya dalam takaran yang jauh lebih besar. Dibaca dengan jujur, keduanya adalah praktik yang sama. Keduanya hanya disetel untuk kapasitas yang berbeda."
       ],
       "prevBtn": "← Kembali"
     }

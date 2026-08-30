@@ -53,6 +53,7 @@ const SLUG_ORDER = [
   'ich-vs-velvet',
   'dropsy-when-treatment-isnt-working',
   'the-fish-that-sell-the-tank',
+  'the-honest-cost-of-going-high-tech',
   'aquarium-maintenance-routine',
   'capacity-creep',
   'life-change-protocols',

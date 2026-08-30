@@ -196,12 +196,19 @@ def replace_once(html, pattern, repl_fn, label, flags=0):
 
 
 def fix_asset_paths(h):
-    for rel in ["favicon.png", "css/style.css", "css/kofi-sheet.css",
-                "js/ecosystem.js", "js/fauna.js", "js/ui.js", "js/ui-eco-toggle.js",
-                "js/ui-reading-pathways.js", "js/ui-rhyssa-sheet.js", "js/ui-rhyssa-page.js",
-                "js/ui-settings.js", "js/kofi-sheet.js", "js/rhyssa-fab-ext.js"]:
-        h = h.replace(f'"{rel}?v=', f'"/{rel}?v=')
-        h = h.replace(f'href="{rel}"', f'href="/{rel}"')
+    """Absolutise every relative asset reference.
+
+    index.html is served from /, but the localized copies live at /id/ and
+    /ja/, so a relative src="js/x.js" resolves to /id/js/x.js and 404s.
+
+    This used to be a hardcoded list of filenames, and it drifted: when
+    js/ui-calm-mode.js was added to index.html it was never added here, so
+    calm mode silently 404'd on BOTH localized homepages while the English
+    one worked. Derive the rewrite instead of listing it, so the next asset
+    added to index.html is handled without touching this script.
+    """
+    h = re.sub(r'((?:src|href)=")((?:js|css|og|img)/)', r'\1/\2', h)
+    h = h.replace('href="favicon.png"', 'href="/favicon.png"')
     return h
 
 

@@ -80,6 +80,7 @@ const SLUG_ORDER = [
   'learning-to-read-not-fix',
   'the-tank-you-didnt-start',
   'the-tank-nobody-else-sees',
+  'two-years-one-tank',
   'two-people-one-tank',
   'the-fish-that-doesnt-fit',
   'the-relief-youre-not-supposed-to-feel',

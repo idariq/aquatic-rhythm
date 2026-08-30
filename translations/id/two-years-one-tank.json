@@ -1,0 +1,104 @@
+{
+  "_meta": {
+    "slug": "two-years-one-tank",
+    "lang": "id",
+    "sourceFile": "articles/two-years-one-tank.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Dua Tahun, Satu Tangki — Aquatic Rhythm",
+    "description": "Seperti apa sebenarnya dua tahun bersama satu akuarium, bulan demi bulan — termasuk rentang waktu saat ia mulai melenceng, kehilangan yang menyusul, dan seperti apa rasanya stabil.",
+    "ogTitle": "Dua Tahun, Satu Tangki",
+    "ogDescription": "Sebagian besarnya bukan sesuatu yang akan difoto siapa pun."
+  },
+  "intro": {
+    "eyebrow": "Refleksi",
+    "titleHtml": "Dua Tahun, <em>Satu Tangki</em>",
+    "subtitle": "Sebagian besarnya bukan sesuatu yang akan difoto siapa pun.",
+    "texts": [
+      "Minggu ketiga. Lapisan cokelat menyebar di kaca yang kemarin belum ada, angka amonia akhirnya mulai turun, dan belum ada satu ikan pun di dalam tangki. Di situlah cerita ini dimulai. Yang menyusul adalah apa yang biasanya terjadi selama dua tahun berikutnya — termasuk bulan-bulan yang tidak pernah dicatat siapa pun.",
+      "Ini bukan buku harian satu tangki tertentu. Ini bentuk yang biasanya diambil dua tahun itu, disusun dari apa yang umumnya terjadi dan kira-kira kapan. Bulan-bulan Anda tidak akan persis sama. Urutannya akan terasa familier."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~8 menit",
+    "metaLevel": "Refleksi",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Bulan 1–3",
+      "titleHtml": "Bagian <em>yang terdokumentasi</em>",
+      "body": [
+        "Anda mengisinya, menanam tanaman, lalu mulai memberi dosis amonia. Selama sekitar dua minggu tidak ada apa pun yang terlihat terjadi. Lalu nitrit muncul, naik, dan bertahan tinggi lebih lama daripada yang terasa masuk akal. Sekitar minggu ketiga lapisan cokelat menyebar di kaca dan daun-daun baru — diatom, yang memakan silikat yang masih dilepaskan substrat baru. Kelihatannya seperti masalah. Itu tangki yang sedang bekerja.",
+        "Pada minggu kelima atau keenam, amonia dan nitrit sama-sama menunjukkan nol dalam sehari setelah dosis, dan nitrat mulai naik. Itulah siklusnya. Ikan pertama masuk, satu kelompok kecil, lebih sedikit daripada daya tampung tangki. Selama tiga atau empat minggu semuanya baik-baik saja, dan Anda memeriksanya jauh lebih sering daripada yang ia butuhkan.",
+        "Bulan ketiga adalah tempat kesalahan diam-diam yang pertama biasanya terjadi. Tangki terlihat mapan, angkanya bersih, dan masih ada ruang. Maka kelompok kedua masuk, mungkin kelompok ketiga di minggu yang sama. Tidak ada yang dramatis menyusul. Amonia mungkin naik ke 0,25 selama sehari lalu turun lagi. Bakterinya menyusul. Pelajarannya tidak sampai, karena tidak ada yang cukup salah untuk mengajarkannya."
+      ],
+      "pullQuote": "Tiga bulan pertama adalah satu-satunya bagian dari hidup sebuah tangki yang pasti terfoto. Itu juga bagian yang paling sedikit mengajari penjaganya.",
+      "prevBtn": "← Intro",
+      "nextBtn": "Bulan 4–9"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Bulan 4–9",
+      "titleHtml": "Tidak ada yang terjadi. <em>Anda paling banyak belajar.</em>",
+      "body": [
+        "Sekitar bulan keempat alga datang dengan serius. Bintik hijau di daun-daun tua dan sepanjang kaca. Penyebab biasanya adalah fotoperiode yang merambat lebih panjang — delapan jam menjadi sembilan, lalu lampunya menyala sepanjang malam ketika Anda di rumah. Anda memotongnya kembali ke tujuh. Butuh sekitar tiga minggu sebelum bedanya terlihat, dan itu hal nyata pertama yang diajarkan tangki kepada Anda: hampir semua yang Anda ubah di sini menjawab dengan lambat.",
+        "Pada bulan keenam Anda bisa tahu, hanya dengan lewat di depannya, apakah tangki itu baik-baik saja. Bukan dari test kit. Dari bagaimana ikan menempati kolom air, apakah tanaman mengeluarkan gelembung di sore hari, apakah lapisan permukaan terlihat seperti minggu lalu. Anda tidak akan bisa menjelaskan satu pun dari itu di bulan kedua. Tidak ada yang mengajarkannya. Anda membangunnya dengan menatap tangki yang sama beberapa ratus kali.",
+        "Pada bulan kedelapan atau kesembilan tangki terlihat selesai. Tanaman sudah memenuhi ruang, ikan sudah menetap, setiap angka berada di tempatnya. Di sinilah sebuah tangki paling mungkin disangka sudah matang. Ia punya tampilannya tanpa punya cadangannya — kedalaman biologis terkumpul yang membuat sebuah sistem sanggup menyerap satu minggu yang buruk. Perbedaan itu tidak muncul di test strip. Ia muncul belakangan, pertama kali ada yang salah."
+      ],
+      "hintLabel": "Kaitannya di sini",
+      "hintText": [
+        "Jarak antara terlihat mapan dan benar-benar tangguh adalah apa yang situs ini sebut <a href=\"/id/articles/false-maturity\" style=\"color:var(--th-accent);text-decoration:none\">kematangan palsu</a>. Itu bukan kegagalan tangki. Itu tahap yang dilalui setiap tangki, dan bulan kedelapan kira-kira tempat ia paling meyakinkan."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Bulan 10–16"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Bulan 10–16",
+      "titleHtml": "Rentang waktu <em>yang tak dicatat siapa pun</em>",
+      "body": [
+        "Bulan kesepuluh sibuk. Pekerjaan, atau pindahan, atau sesuatu di rumah. Penggantian air mingguan terjadi di hari kesembilan, lalu hari kedua belas, lalu kapan pun Anda menyadari kacanya. Anda tidak memutuskan berhenti merawat tangki. Anda hanya tidak pernah benar-benar kembali ke interval lama — dan tangki tetap terlihat baik-baik saja, yang menghapus satu-satunya sinyal yang bisa memberi tahu Anda.",
+        "Sekitar bulan kesebelas atau kedua belas seekor ikan mati. Sering kali salah satu ikan pertama, sering kali tanpa sebab yang jelas. Anda menguji airnya dan nitrat menunjukkan 40 atau lebih. Angka itu sudah naik selama dua bulan. Tidak ada yang dramatis di sini. Tidak ada orang yang melihat tangki itu akan menemukan masalah. Pergeserannya tidak terlihat dari dalam, dan justru itu yang membuatnya layak dinamai.",
+        "Yang menyusul adalah bagian yang jarang diunggah. Bukan kehilangannya, melainkan perhitungannya: menyadari bahwa tangki itu sudah melenceng selama delapan minggu sementara Anda menatapnya langsung. Itu hal yang tidak nyaman untuk ditulis. Itu juga catatan paling berguna dalam dua tahun itu. Dan itulah kenapa perbaikannya bukan rasa bersalah — melainkan penggantian air yang lebih kecil yang benar-benar bisa Anda lakukan setiap minggu, alih-alih yang lebih besar yang terus Anda tunda."
+      ],
+      "pullQuote": "Tangki itu tidak pernah memburuk tiba-tiba. Ia memburuk sedikit dari minggu lalu, empat puluh kali, sambil terlihat persis sama.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Bulan 17–24"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Bulan 17–24",
+      "titleHtml": "Lebih sunyi <em>daripada yang Anda kira</em>",
+      "body": [
+        "Bulan ketiga belas sampai keenam belas tidak menarik. Penggantian air lebih kecil di hari yang tetap. Nitrat kembali di bawah 20 dan bertahan di sana. Untuk sementara tidak ada yang terlihat membaik, karena tangki itu memang tidak pernah terlihat buruk. Lalu, perlahan, ia mulai bertahan lebih stabil di antara penggantian dibanding sebelumnya.",
+        "Bulan kedelapan belas adalah saat tangki menunjukkan apa yang sudah ia bangun. Anda pergi sembilan hari dan seseorang memberinya makan dua kali. Anda pulang dengan harapan menemukan sesuatu yang salah. Tidak ada. Amonia nol, nitrit nol, nitrat nyaris tidak bergerak, tanaman baik-baik saja. Itulah cadangan yang tidak dimiliki bulan kedelapan. Ia tidak dibeli dengan peralatan atau pengetahuan. Ia terkumpul karena tangki berjalan pada ritme yang bisa ia andalkan selama hampir setahun.",
+        "Pada bulan kedua puluh empat tangki itu tidak menarik untuk dilihat dengan cara apa pun yang akan bagus difoto. Ia sistem stabil yang mengerjakan tugasnya, dirawat seseorang yang bisa membacanya. Tidak ada unggahan tentangnya di mana pun dan tidak ada yang meminta melihatnya. Setelah dua tahun, seperti itulah bentuknya ketika semuanya berjalan baik — dan itu sebagian besar alasan kenapa bagian tengah hobi ini tidak pernah ditulis, sekaligus sebagian besar alasan kenapa ia layak ditulis."
+      ],
+      "hintLabel": "Kaitannya di sini",
+      "hintText": [
+        "Pergeseran di bulan kesepuluh sampai kedua belas adalah <a href=\"/id/articles/capacity-creep\" style=\"color:var(--th-accent);text-decoration:none\">erosi kapasitas</a>, dan cadangan yang muncul pada bulan kedelapan belas adalah apa yang ARA sebut ecological forgiveness. Keduanya tidak aneh. Keduanya lebih mudah dikenali begitu Anda melihat di mana posisinya dalam garis waktu sebuah tangki."
+      ],
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    {
+      "text": "Kematangan Palsu →"
+    },
+    {
+      "text": "Erosi Kapasitas →"
+    },
+    {
+      "text": "Perawatan Minimum yang Layak →"
+    },
+    {
+      "text": "Kerangka ARA →"
+    }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

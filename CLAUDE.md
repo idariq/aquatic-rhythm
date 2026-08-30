@@ -205,6 +205,25 @@ SEBELUM percaya output. Bug ni ditemui & dibetulkan sekali (PR #303,
 dlm fail ni bila CSS/HTML sumber disunting di masa depan tanpa
 regenerate homepage serentak.
 
+**AWAS KEDUA — SENARAI KERAS dlm skrip ni pun boleh hanyut, & ia GAGAL
+LEBIH SENYAP drpd regex** (ditemui PR #517). `fix_asset_paths()` dulu
+simpan senarai keras nama fail aset utk ditukar kpd laluan absolut.
+`index.html` guna laluan RELATIF (`src="js/x.js"`) yg betul drpd root,
+tapi salinan terjemahan duduk di `/id/` & `/ja/` — jadi laluan relatif
+menyelesai ke `/id/js/x.js` & **404**. Bila `js/ui-calm-mode.js`
+ditambah kpd `index.html`, ia tak pernah ditambah kpd senarai tu, jadi
+**calm mode MATI SENYAP pd KEDUA-DUA halaman utama terjemahan** —
+tiada amaran console drpd skrip, EN berfungsi normal, & ia hanya
+ditemui bila Playwright memantau respons 404 (bukan sekadar ralat JS).
+Dibetulkan dgn regex TERBITAN (`(src|href)="(js|css|og|img)/` →
+absolut) supaya aset SETERUSNYA dikendali tanpa sentuh skrip ni.
+
+**Pengajaran am**: mana-mana SENARAI KERAS dlm skrip build (nama fail,
+slug, kunci) ialah titik hanyut. Bila boleh, terbitkan drpd sumber.
+Bila tak boleh, senaraikan tempat tu dlm CLAUDE.md (spt §"15 tempat
+`LANGUAGES`" di bawah). **Dan semasa Playwright, pantau respons 404 —
+bukan setakat ralat JS** — sbb aset hilang tak semestinya lempar ralat.
+
 **`localizeArticleLinks(h, lang)`** — fungsi kecil (duplikat dgn
 sengaja kpd kesemua 4 skrip build, sama pola "kekal segerak scr
 manual") yg jadi LANGKAH TERAKHIR setiap fungsi `buildLang()`/
@@ -750,16 +769,75 @@ EN" di atas).
 kesan sapaan hilang & irama rata; ia TAK BOLEH kesan sama ada satu
 perenggan bergerak atau tidak.
 
-### Lompang: tiada satu pun artikel BERCERITA
+**Contoh konkrit bila ambang SALAH & mesti diabaikan** (ditemui PR #517,
+& PR #516 utk kes kedua):
 
-Imbasan 62 artikel utk penanda naratif (satu tangki dijejaki merentas
-masa, seorang penjaga tertentu, satu keputusan & akibatnya) = hampir
-sifar. Semua artikel ialah analisis atau diagnosis; tiada satu pun
-kisah. Ini bertepatan dgn matlamat pembezaan user (raikan pembaca
-senyap yg sampai ke laman ni): forum penuh soal-jawab pantas, YouTube
-penuh tangki siap — yg hampir tiada di mana-mana ialah **rekod jujur
-satu tangki merentas dua tahun**, termasuk bulan yg teruk & keputusan
-yg salah. Lorong keenam yg belum wujud, & paling sukar disalin.
+1. **`pembuka kosong` tinggi boleh jadi BAIK.** `two-years-one-tank`
+   trip 12.8% (ambang ≤12) — tapi kesemua pembukanya ayat pendek yg
+   menghentak: "It's the tank working." (4 patah perkataan) · "That's
+   the cycle." (3) · "That's the buffer month eight didn't have." Tu
+   irama, bukan prosa berpusing. Kadar tinggi drpd ayat PANJANG yg
+   berligar = buruk; drpd ayat PENDEK yg menghentak = baik. **Skrip tak
+   boleh bezakan dua kes ni; manusia boleh.** Baca sebelum ubah.
+2. **Tik boleh jadi TESIS.** Dlm `two-people-one-tank`, "structurally
+   different one" ialah tesis artikel & "exactly one extra requirement"
+   bilangannya penting — kedua-duanya dikekalkan walau ia naikkan
+   kiraan tik. Periksa SETIAP tik dlm konteks; jaring buta akan buang
+   perkataan yg memikul makna.
+
+Peraturan am: bila artikel trip ambang, **cari sebab prosa dulu**. Kalau
+sebabnya bagus, biarkan & jangan laras. Melaras ayat semata-mata utk
+lepas ambang ialah tepat tingkah laku yg seluruh sistem ni dibina utk
+elak.
+
+### Keluarga KEENAM — Naratif (dibuka PR #517, `two-years-one-tank`)
+
+Audit 2026-08-30 jumpa lompang: imbasan 62 artikel utk penanda naratif
+(satu tangki dijejaki merentas masa, satu keputusan & akibatnya) =
+hampir sifar. Semua analisis atau diagnosis; tiada satu pun kisah.
+Ini bertepatan dgn matlamat pembezaan user: forum penuh soal-jawab
+pantas, YouTube penuh tangki siap — yg hampir tiada ialah **rekod jujur
+satu tangki merentas masa**, termasuk bulan yg teruk & keputusan salah.
+Lorong ni dibuka PR #517. Rujuk: `two-years-one-tank`.
+
+**KEKANGAN KEJUJURAN — baca ni SEBELUM tulis apa-apa naratif.**
+Lorong naratif secara semula jadi menjemput "kisah tangki saya" orang
+pertama. **JANGAN tulis itu.** Kita tiada rekod tangki sebenar user, &
+mereka-reka testimoni peribadi lalu menerbitkannya sbg benar
+bertentangan TERUS dgn postur kejujuran laman — footer
+`js/content-trust.js` sendiri kata kandungan berasaskan "hobby
+consensus and field observation", & Rhyssa disclaimer kata "can be
+wrong". Testimoni palsu memusnahkan tepat perkara yg laman ni jual.
+Kredibiliti USER yg tergadai, bukan ejen.
+
+**Bentuk yg dibenarkan**: naratif **ORANG KEDUA** yg mengikut satu
+tangki merentas masa dgn bulan/angka/kejadian konkrit. Naratif betul
+drpd segi bentuk (masa berlalu, keputusan ada akibat, bahagian teruk
+dimasukkan) tanpa mendakwa ia diari sesiapa. **Kerangka WAJIB
+dinyatakan terus terang dlm intro** — model ayat sedia ada:
+"This isn't one particular tank's diary. It's the shape those two years
+usually take, assembled from what typically happens and roughly when."
+Kejujuran ni TIDAK melemahkan artikel; ia membebaskan penulisan drpd
+perlu berpura-pura.
+
+**Apa yg buat naratif berbaloi (bukan sekadar artikel tambahan)**:
+setiap peristiwa MESTI memetakan konsep yg laman dah ajar, supaya
+artikel jadi tulang belakang yg menyambung katalog, bukan cerita
+terapung. Peta dlm `two-years-one-tank`: diatom minggu 3 → new tank
+syndrome; bulan 8 "nampak siap" → false maturity; bulan 10-12 hanyut →
+capacity creep; bulan 18 tahan 9 hari tanpa penjaga → ecological
+forgiveness. **Dan MESTI masukkan bahagian yg tak pernah dipos** —
+bulan yg melencong, kehilangan tanpa sebab dramatik, pengakuan bahawa
+tangki dah slip 8 minggu sambil ditatap tiap hari. Tu tepat kandungan
+yg `asking-for-help` sendiri kata penjaga tak pernah kongsi; laman ni
+menerbitkan rekod yg ia sendiri namakan sbg tiada. Naratif tanpa
+bahagian teruk = katalog produk, bukan rekod.
+
+**Nada**: hibrid Penjelas sabar + Teman reflektif. Sapaan tinggi scr
+semula jadi (orang kedua), konkrit MESTI tinggi (bulan, angka ujian,
+peristiwa) — `two-years-one-tank` lahir pd sapaan 23.4/1k, CV 0.57,
+konkrit 42.5/1k tanpa lulusan pembetulan. Kalau draf naratif keluar
+rendah konkrit, ia belum jadi naratif; ia masih esei bersamaran.
 
 ## Panduan Kualiti ja (elak bug audit 2026-08-19 berulang, PR #350-356)
 
@@ -906,3 +984,11 @@ via `.github/workflows/deploy-worker.yml`).
   bukan bug sebenar) — uji fungsian merentas SEMUA bahasa (termasuk
   `en` sbg semakan regresi, sbb fail JS alat interaktif DIKONGSI semua
   bahasa) lepas apa-apa perubahan JS/HTML i18n.
+
+  **PANTAU RESPONS 404, bukan setakat ralat JS** (`page.on('response',
+  r => r.status()===404)`). Aset hilang tak semestinya lempar ralat JS
+  — `js/ui-calm-mode.js` 404 pd halaman utama id/ja utk tempoh yg tak
+  diketahui & tiada semakan sedia ada menangkapnya sehingga jejak 404
+  ditambah (PR #517, rujuk §"AWAS KEDUA — SENARAI KERAS" di atas).
+  **Uji halaman utama id/ja juga**, bukan setakat halaman artikel:
+  laluan aset relatif berkelakuan berbeza pd `/id/` berbanding root.

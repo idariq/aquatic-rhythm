@@ -874,10 +874,31 @@ via `.github/workflows/deploy-worker.yml`).
 
 - `npm run check` (`check:syntax` + `test` [Node test runner,
   `tests/*.test.mjs`] + `lint` [ESLint `js/`/`scripts/`/`worker/`/
-  `tests/`]) — mesti 0 ralat (amaran `no-unused-vars` dsb. ditoleransi,
-  byk pre-existing).
+  `tests/`] + `check-prose.mjs --errors`) — mesti 0 ralat (amaran
+  `no-unused-vars` dsb. ditoleransi, byk pre-existing).
 - `npm run i18n:check` — jalankan DUA kali, diff-stat mesti SAMA
   (idempoten) sblm commit; selepas commit patut kosong.
+- `npm run prose:check` (`scripts/check-prose.mjs`) — **DUA tahap
+  keterukan, sengaja diasingkan**:
+  - **RALAT (exit 1, tersemat dlm `npm run check` via `--errors`)** —
+    singkatan gaya sembang dlm prosa terjemahan tersiar (`yg`/`dgn`/
+    `utk`/`&`/`benar²`) & istilah ja yg hanyut (`低床`/`低テク` →
+    `ローテク`, katakana alignment → `整合`). Objektif salah, kini SIFAR,
+    mesti kekal sifar. Ni yg melindungi kerja PR #512 drpd regresi
+    senyap. URL & unit saintifik (`m²`) dikecualikan automatik.
+  - **AMARAN (exit 0, cuma dlm `npm run prose:check` penuh)** —
+    tripwire nada (sapaan, ayat pendek, variasi irama, pembuka kosong,
+    tik). Dipaparkan hanya bila artikel trip **≥3 ambang serentak**
+    (satu ambang = variasi biasa; tiga serentak = tandatangan suara
+    esei yg hanyut). Kini 32/62 artikel — itu memang penemuan audit,
+    bukan bug skrip.
+
+  **SEBAB diasingkan**: kalau tripwire nada gagalkan build, ia gagal
+  setiap hari & terus diabaikan; kalau ia dicetak pd setiap
+  `npm run check`, 32 baris amaran mengubur output lint. Ralat = gate,
+  amaran = atas permintaan masa buat kerja nada. Amaran TAK PERNAH
+  bermaksud "tambah 4 lagi you" — rujuk §"Lima Keluarga Nada"
+  (Goodhart).
 - Playwright (`node_modules/.bin/playwright`, guna
   `executablePath: '/opt/pw-browsers/chromium'` dlm sandbox agen — CDN
   luar cth. `fonts.googleapis.com`/analitik disekat, `ERR_TUNNEL_

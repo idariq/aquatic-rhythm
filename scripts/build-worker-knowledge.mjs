@@ -57,6 +57,7 @@ const PRIORITY_SLUGS = [
   'learning-to-read-not-fix',
   'the-tank-you-didnt-start',
   'the-tank-nobody-else-sees',
+  'two-years-one-tank',
   'two-people-one-tank',
   'tank-crash-recovery',
   'adding-new-fish',

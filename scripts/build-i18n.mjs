@@ -155,7 +155,20 @@ function buildHreflangTags(slug, currentLang) {
 // new-tank-syndrome, so Google's Article rich-result image is the actual
 // tank photo rather than the text-only social-share card.
 const HERO_IMAGE_SLUGS = {
-  'new-tank-syndrome': 'hero-1200w.webp'
+  'new-tank-syndrome': 'hero-1200w.webp',
+  'cycled-tank-problems': 'hero-1200w.webp',
+  'why-is-my-aquarium-water-cloudy': 'hero-1200w.webp',
+  'how-often-water-changes': 'hero-1200w.webp',
+  'fish-hiding-what-does-it-mean': 'hero-1200w.webp',
+  'fish-keep-dying-new-tank': 'hero-1200w.webp',
+  'algae-in-aquarium': 'hero-1200w.webp',
+  'perfect-parameters-fish-dying': 'hero-1200w.webp',
+  'betta-fish-behaviour': 'hero-1200w.webp',
+  'aquarium-plants-not-growing': 'hero-1200w.webp',
+  'shrimp-dying-aquarium': 'hero-1200w.webp',
+  'low-tech-planted-tank': 'hero-1200w.webp',
+  'community-fish-tank': 'hero-1200w.webp',
+  'when-is-tank-ready-for-fish': 'hero-1200w.webp'
 };
 
 function buildJsonLd(t, lang, slug, dates) {

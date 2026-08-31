@@ -30,7 +30,7 @@
 <meta name="twitter:title" content="Community Fish Tank — Who Actually Gets Along — Aquatic Rhythm">
 <meta name="twitter:description" content="Compatibility charts tell you which fish won't kill each other. They don't tell you which fish will stress each other slowly.">
 <meta name="twitter:image" content="https://aquaticrhythm.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"コミュニティ水槽 — 相性チャートを超えて","description":"相性チャートは「攻撃し合わないか」という最小限の問いに答えるだけです。コミュニティ水槽の問題のほとんどは、チャートの外側から来ます。生体リズム（Livestock Rhythm）を通じて、水槽が本当に何を伝えているかを読み解きます。","url":"https://aquaticrhythm.com/ja/articles/community-fish-tank","inLanguage":"ja","image":"https://aquaticrhythm.com/og/articles/community-fish-tank-ja.png","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com"},"datePublished":"2026-05-22","dateModified":"2026-05-23"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"コミュニティ水槽 — 相性チャートを超えて","description":"相性チャートは「攻撃し合わないか」という最小限の問いに答えるだけです。コミュニティ水槽の問題のほとんどは、チャートの外側から来ます。生体リズム（Livestock Rhythm）を通じて、水槽が本当に何を伝えているかを読み解きます。","url":"https://aquaticrhythm.com/ja/articles/community-fish-tank","inLanguage":"ja","image":"https://aquaticrhythm.com/img/articles/community-fish-tank/hero-1200w.webp","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com"},"datePublished":"2026-05-22","dateModified":"2026-05-23"}</script>
 <script>if(localStorage.getItem('ar_analytics_opt')==='1'){window['ga-disable-G-8MDN065WNW']=true}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8MDN065WNW"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8MDN065WNW');</script>
@@ -111,7 +111,9 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}
 .art-footer a:hover{color:var(--th-accent)}
 
-.art-intro{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
+.art-intro{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
+.art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
+.art-intro .art-hero-figure{margin-bottom:0}
 /* mobile art-intro height override (fix-art-intro-mobile-height.mjs) */
 @media(max-width:720px){.art-intro{min-height:auto;align-items:flex-start;padding-top:calc(68px + 1.75rem)}}
 .art-intro.hidden{display:none}
@@ -188,6 +190,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
 
 <div class="art-intro">
+  <div class="art-intro-stack">
+    <figure class="art-hero-figure">
+      <picture>
+        <source srcset="/img/articles/community-fish-tank/hero-720w.webp 720w, /img/articles/community-fish-tank/hero-1200w.webp 1200w" sizes="(max-width:900px) 100vw, 900px" type="image/webp">
+        <img class="art-img" src="/img/articles/community-fish-tank/hero-1200w.webp" alt="複数の異なる群泳魚とグラミーが同じ水草水槽で共存している、やや大きめの水槽です。" width="1200" height="670" fetchpriority="high">
+      </picture>
+    </figure>
+  </div>
   <div class="art-intro-inner">
     <span class="art-eyebrow">実践的</span>
     <h1 class="art-main-title">コミュニティ水槽 —<br><em>相性チャートを超えて</em></h1>

@@ -30,7 +30,7 @@
 <meta name="twitter:title" content="An Established Tank Is Not a Finished Tank">
 <meta name="twitter:description" content="Why long-running tanks still struggle — and what they are usually telling you.">
 <meta name="twitter:image" content="https://aquaticrhythm.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"サイクルが終わった水槽は、 完成した水槽じゃない。","description":"長く稼働している水槽は、また別の種類のシステムです。成熟した水槽がそれでも問題を抱える理由と、そこから何を読み取ればいいのかをわかりやすく解説します。","url":"https://aquaticrhythm.com/ja/articles/cycled-tank-problems","inLanguage":"ja","image":"https://aquaticrhythm.com/og/articles/cycled-tank-problems-ja.png","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com"},"datePublished":"2026-05-22","dateModified":"2026-05-25"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"サイクルが終わった水槽は、 完成した水槽じゃない。","description":"長く稼働している水槽は、また別の種類のシステムです。成熟した水槽がそれでも問題を抱える理由と、そこから何を読み取ればいいのかをわかりやすく解説します。","url":"https://aquaticrhythm.com/ja/articles/cycled-tank-problems","inLanguage":"ja","image":"https://aquaticrhythm.com/img/articles/cycled-tank-problems/hero-1200w.webp","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com"},"datePublished":"2026-05-22","dateModified":"2026-05-25"}</script>
 <script>if(localStorage.getItem('ar_analytics_opt')==='1'){window['ga-disable-G-8MDN065WNW']=true}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8MDN065WNW"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8MDN065WNW');</script>
@@ -74,7 +74,9 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
 
 /* INTRO */
-.art-intro{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative}
+.art-intro{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative}
+.art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
+.art-intro .art-hero-figure{margin-bottom:0}
 /* mobile art-intro height override (fix-art-intro-mobile-height.mjs) */
 @media(max-width:720px){.art-intro{min-height:auto;align-items:flex-start;padding-top:calc(68px + 1.75rem)}}
 .art-intro::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--th-bg));pointer-events:none}
@@ -251,6 +253,14 @@ canvas{display:block;width:100%}
 
 <!-- INTRO -->
 <div class="art-intro" id="art-intro">
+  <div class="art-intro-stack">
+    <figure class="art-hero-figure">
+      <picture>
+        <source srcset="/img/articles/cycled-tank-problems/hero-720w.webp 720w, /img/articles/cycled-tank-problems/hero-1200w.webp 1200w" sizes="(max-width:900px) 100vw, 900px" type="image/webp">
+        <img class="art-img" src="/img/articles/cycled-tank-problems/hero-1200w.webp" alt="水草がびっしりと茂り、流木と小さなテトラの群れがいる、長期間維持されてきた水槽です。" width="1200" height="670" fetchpriority="high">
+      </picture>
+    </figure>
+  </div>
   <div class="art-intro-inner">
     <span class="art-eyebrow">読む · 成熟した水槽</span>
     <h1 class="art-main-title">サイクルが終わった水槽は、<br><em>完成した水槽じゃない。</em></h1>

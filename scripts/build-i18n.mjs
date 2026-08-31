@@ -150,8 +150,17 @@ function buildHreflangTags(slug, currentLang) {
   return lines.join('\n');
 }
 
+// Articles whose JSON-LD 'image' should point to their real in-content hero
+// photo (.art-hero-figure) instead of the generated OG card — e.g.
+// new-tank-syndrome, so Google's Article rich-result image is the actual
+// tank photo rather than the text-only social-share card.
+const HERO_IMAGE_SLUGS = {
+  'new-tank-syndrome': 'hero-1200w.webp'
+};
+
 function buildJsonLd(t, lang, slug, dates) {
   const headline = t.intro.titleHtml.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  const heroFile = HERO_IMAGE_SLUGS[slug];
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -159,7 +168,9 @@ function buildJsonLd(t, lang, slug, dates) {
     'description': t.head.description,
     'url': `${BASE_URL}/${lang}/articles/${slug}`,
     'inLanguage': lang,
-    'image': `${BASE_URL}/og/articles/${slug}-${lang}.png`,
+    'image': heroFile
+      ? `${BASE_URL}/img/articles/${slug}/${heroFile}`
+      : `${BASE_URL}/og/articles/${slug}-${lang}.png`,
     'author': { '@type': 'Organization', 'name': 'Aquatic Rhythm' },
     'publisher': { '@type': 'Organization', 'name': 'Aquatic Rhythm', 'url': BASE_URL }
   };

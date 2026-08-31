@@ -171,11 +171,13 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
 
 /* ARTICLE INTRO */
 .art-intro{
-  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
   padding:8rem clamp(1.5rem,5vw,3rem) 5rem;
   position:relative;
   transition:opacity .4s ease;
 }
+.art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
+.art-intro .art-hero-figure{margin-bottom:0}
 /* mobile art-intro height override (fix-art-intro-mobile-height.mjs) */
 @media(max-width:720px){.art-intro{min-height:auto;align-items:flex-start;padding-top:calc(68px + 1.75rem)}}
 .art-intro.hidden{display:none}
@@ -311,6 +313,14 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
 
 <!-- ARTICLE INTRO -->
 <div class="art-intro">
+  <div class="art-intro-stack">
+    <figure class="art-hero-figure">
+      <picture>
+        <source srcset="/img/articles/new-tank-syndrome/hero-720w.webp 720w, /img/articles/new-tank-syndrome/hero-1200w.webp 1200w" sizes="(max-width:900px) 100vw, 900px" type="image/webp">
+        <img class="art-img" src="/img/articles/new-tank-syndrome/hero-1200w.webp" alt="Akuarium yang baru disiapkan dengan air sedikit keruh dan sekumpulan kecil ikan, kondisi umum pada fase awal siklus akuarium baru." width="1200" height="670" fetchpriority="high">
+      </picture>
+    </figure>
+  </div>
   <div class="art-intro-inner">
     <span class="art-eyebrow">Artikel · New Tank Syndrome</span>
     <h1 class="art-main-title">New Tank Syndrome —<br><em>Apa yang Sebenarnya Terjadi</em></h1>

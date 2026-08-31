@@ -352,6 +352,13 @@ function buildArticle(slug, lang, t) {
   // ── 7. Intro section ─────────────────────────────────────────────────────
   const intro = t.intro;
 
+  // Optional hero image alt text (only present on articles with an
+  // .art-hero-figure intro image, e.g. new-tank-syndrome) — no-op elsewhere.
+  if (intro.heroAlt) {
+    h = replaceOnce(h, /(<figure class="art-hero-figure">[\s\S]*?<img[^>]*\balt=")[^"]*(")/,
+      (_, a, b) => `${a}${intro.heroAlt}${b}`);
+  }
+
   h = replaceOnce(h, /(<span class="art-eyebrow">)[^<]*(<\/span>)/,
     (_, a, b) => `${a}${intro.eyebrow}${b}`);
 

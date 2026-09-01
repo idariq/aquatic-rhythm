@@ -494,18 +494,8 @@
     var root = document.getElementById('pg-reading');
     if (!card || !root || !root.contains(card)) return;
     e.preventDefault();
-    var panel = card.querySelector('.rd-card-panel');
-    if (card.classList.contains('is-expanded')) {
-      card.classList.remove('is-expanded');
-      hit.setAttribute('aria-expanded', 'false');
-      if (panel) panel.hidden = true;
-      return;
-    }
-    closeAllReadingAccordions();
-    card.classList.add('is-expanded');
-    hit.setAttribute('aria-expanded', 'true');
-    if (panel) panel.hidden = false;
-    initReadingAccordionTitles();
+    var go = card.querySelector('.rd-card-go');
+    if (go && go.href) window.location.href = go.href;
   }, true);
 
   document.addEventListener('keydown', function (e) {

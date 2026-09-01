@@ -1,97 +1,106 @@
 {
-  "_meta": {
-    "slug": "cloudy-eyes-fish",
-    "lang": "id",
-    "sourceFile": "articles/cloudy-eyes-fish.html",
-    "status": "ready"
-  },
-  "head": {
-    "title": "Mata Berkabus pada Ikan — Aquatic Rhythm",
-    "description": "Mata yang berkabus atau berselaput bisa berarti luka lama, air yang mengiritasi, atau sesuatu yang butuh perawatan cepat — dan ketiganya tidak sama kalau dilihat dari dekat. Cara membedakannya sebelum mengobati yang salah.",
-    "ogTitle": "Mata Berkabus pada Ikan",
-    "ogDescription": "Satu mata atau dua-duanya mengubah apa yang sedang Anda lihat."
-  },
-  "intro": {
-    "eyebrow": "Semua level",
-    "titleHtml": "Mata Berkabus<br><em>pada Ikan</em>",
-    "subtitle": "Satu mata atau dua-duanya mengubah apa yang sedang Anda lihat.",
-    "texts": [
-      "Mata ikan yang berubah jadi berkabus, putih, atau agak kebiruan di permukaannya bikin resah, dan gampang terlewat sampai sudah jelas terlihat. Kelihatannya seperti lensa yang berembun di ikan yang sebenarnya kelihatan normal.",
-      "Panduan ini menjelaskan bedanya satu mata dengan dua-duanya, beberapa penyebab yang bisa menghasilkan tampilan ini, dan kenapa respons yang selaras sepenuhnya bergantung pada penyebab mana yang sebenarnya Anda lihat."
+    "_meta": {
+        "slug": "cloudy-eyes-fish",
+        "lang": "id",
+        "sourceFile": "articles/cloudy-eyes-fish.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Mata Berkabus pada Ikan — Aquatic Rhythm",
+        "description": "Mata yang berkabus atau berselaput bisa berarti luka lama, air yang mengiritasi, atau sesuatu yang butuh perawatan cepat — dan ketiganya tidak sama kalau dilihat dari dekat. Cara membedakannya sebelum mengobati yang salah.",
+        "ogTitle": "Mata Berkabus pada Ikan",
+        "ogDescription": "Satu mata atau dua-duanya mengubah apa yang sedang Anda lihat."
+    },
+    "intro": {
+        "heroAlt": "Close-up ikan gurami kerdil dan ikan cupang bersebelahan, menunjukkan mata dan wajah mereka.",
+        "eyebrow": "Semua level",
+        "titleHtml": "Mata Berkabus<br><em>pada Ikan</em>",
+        "subtitle": "Satu mata atau dua-duanya mengubah apa yang sedang Anda lihat.",
+        "texts": [
+            "Mata ikan yang berubah jadi berkabus, putih, atau agak kebiruan di permukaannya bikin resah, dan gampang terlewat sampai sudah jelas terlihat. Kelihatannya seperti lensa yang berembun di ikan yang sebenarnya kelihatan normal.",
+            "Panduan ini menjelaskan bedanya satu mata dengan dua-duanya, beberapa penyebab yang bisa menghasilkan tampilan ini, dan kenapa respons yang selaras sepenuhnya bergantung pada penyebab mana yang sebenarnya Anda lihat."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~6 menit",
+        "metaLevel": "Semua level",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Membaca sinyal",
+            "titleHtml": "Satu mata, atau dua-duanya —<br><em>itu hal pertama yang perlu dicek.</em>",
+            "body": [
+                "Mata berkabus persis seperti namanya. Permukaan mata menjadi berselaput putih atau kebiruan, kadang disebut seperti lensa berembun. Bisa mengenai satu mata atau dua-duanya, dan perbedaan itu adalah hal paling berguna untuk diperhatikan lebih dulu.",
+                "Mata berkabus sendiri belum bilang banyak. Ini deskripsi apa yang Anda lihat, bukan diagnosis kenapa itu terjadi. Penyebab di baliknya yang menentukan respons apa yang sebenarnya membantu.",
+                "Sebagian ikan juga membawa mata yang secara alami agak tembus pandang atau sedikit berkabus sebagai bagian dari penampilan normalnya — beberapa varietas ikan mas telescope-eye, misalnya. Mengetahui apa yang normal buat ikan spesifik Anda penting sebelum menganggap setiap perubahan sebagai hal baru."
+            ],
+            "hintLabel": "Bandingkan kedua mata berdampingan",
+            "hintText": [
+                "Lihat dulu mata yang tidak terkena, lalu mata yang berkabus, di bawah cahaya yang sama. Perubahan yang sungguhan akan terlihat jelas bersebelahan dengan mata normal di ikan yang sama. Perbandingan itu lebih diandalkan dibanding mencoba mengingat bagaimana matanya kelihatan minggu lalu."
+            ],
+            "prevBtn": "← Intro",
+            "nextBtn": "Apa yang sebenarnya menyebabkannya"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Apa yang sebenarnya menyebabkannya",
+            "titleHtml": "Empat hal berbeda<br><em>bisa menghasilkan tampilan yang sama.</em>",
+            "body": [
+                "<strong>Cedera fisik.</strong> Goresan atau benturan ke dekorasi, substrat, atau ikan lain bisa membuat satu mata berkabus. Ini penyebab paling umum dari mata berkabus sebelah, dan sifatnya mekanis, bukan infeksi. Muncul tepat setelah kejadiannya, kalau kebetulan Anda melihatnya.",
+                "<strong>Iritasi kimia air.</strong> Amonia, nitrit, atau perubahan pH mendadak bisa mengiritasi permukaan kedua mata sekaligus, sama seperti senyawa ini mengiritasi kulit dan insang di bagian tubuh lain. Versi ini cenderung mengenai kedua mata secara merata, bukan cuma satu.",
+                "<strong>Infeksi bakteri atau parasit.</strong> Sebagian infeksi menyebabkan penyakit mata berkabus yang sungguhan, biasanya dibarengi gejala lain — sirip terlipat, nafsu makan berkurang, atau bercak kemerahan dekat mata. Ini versi yang butuh perawatan spesifik, bukan cuma waktu.",
+                "<strong>Sifat alami atau bawaan varietas.</strong> Sebagian ikan, termasuk beberapa individu yang lebih tua dan sebagian varietas fancy, secara alami membawa mata yang berkabus atau berselaput permanen. Kalau sudah begitu sejak lama dan tidak ada yang lain berubah, kemungkinan besar itu memang penampilan ikan itu."
+            ],
+            "pullQuote": "Mata berkabus adalah gejala, bukan diagnosis. Kabut yang sama bisa berarti luka yang sudah sembuh atau infeksi yang butuh obat — itulah kenapa layak diperlambat dulu sebelum mengobatinya.",
+            "prevBtn": "← Kembali",
+            "nextBtn": "Amati dulu sebelum mengobati"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Amati dulu sebelum mengobati",
+            "titleHtml": "Apa lagi yang terjadi<br><em>lebih banyak bicara dibanding matanya sendiri.</em>",
+            "body": [
+                "Mulai dari hitungannya: satu mata atau dua-duanya? Satu mata, apalagi tanpa gejala lain, menunjuk ke cedera fisik. Kedua mata bersamaan menunjuk ke kualitas air atau, lebih jarang, infeksi sistemik.",
+                "Cek gejala lain berikutnya. Sirip terlipat, nafsu makan berkurang, bersembunyi tidak biasa, atau kulit kemerahan dekat mata semuanya menunjukkan ada lebih dari sekadar goresan biasa. Mata berkabus tanpa perubahan lain sama sekali adalah versi paling ringan dari sinyal ini.",
+                "Tes amonia, nitrit, dan pH apapun yang Anda amati lainnya. Kualitas air adalah salah satu pendorong paling umum dari mata berkabus dua-duanya, dan juga hal yang paling cepat untuk dipastikan atau disingkirkan."
+            ],
+            "hintLabel": "Beri waktu beberapa hari sebelum menganggap yang terburuk",
+            "hintText": [
+                "Mata berkabus sebelah akibat goresan ringan sering membaik dalam satu-dua minggu dengan sendirinya, apalagi begitu kualitas air dipastikan bersih. Mengamati beberapa hari dulu sebelum mengobati apapun jarang jadi pilihan yang salah."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Respons yang selaras"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Respons yang selaras",
+            "titleHtml": "Sesuaikan perawatan<br><em>dengan mana dari empat penyebab ini.</em>",
+            "body": [
+                "Kalau satu mata tanpa gejala lain dan air tes bersih, respons yang selaras adalah cukup menjaga kualitas air tetap tinggi dan menunggu. Cedera fisik pada mata biasanya sembuh sendiri dalam satu-dua minggu.",
+                "Kalau kedua mata dan tes air menunjukkan amonia, nitrit, atau pH yang tidak stabil, perbaiki parameter itu dulu. Kabutnya biasanya reda sebagai efek samping dari memperbaiki air, bukan sebagai sesuatu yang diobati langsung.",
+                "Kalau ada gejala lain bersamaan kabutnya — sirip terlipat, kehilangan nafsu makan, kemerahan — obati infeksi bakteri secara spesifik, dan pertimbangkan memisahkan ikannya selama pemulihan. Ini satu-satunya versi di mana menunggu bukan pilihan yang tepat."
+            ],
+            "pullQuote": "Matanya tidak pernah minta diobati sendirian. Ia minta Anda melihat apa lagi yang sedang terjadi di sekelilingnya.",
+            "prevBtn": "← Kembali"
+        }
     ],
-    "metaModules": "4 modul",
-    "metaTime": "~6 menit",
-    "metaLevel": "Semua level",
-    "cta": "Mulai membaca"
-  },
-  "modules": [
-    {
-      "id": "mod-1",
-      "tag": "Membaca sinyal",
-      "titleHtml": "Satu mata, atau dua-duanya —<br><em>itu hal pertama yang perlu dicek.</em>",
-      "body": [
-        "Mata berkabus persis seperti namanya. Permukaan mata menjadi berselaput putih atau kebiruan, kadang disebut seperti lensa berembun. Bisa mengenai satu mata atau dua-duanya, dan perbedaan itu adalah hal paling berguna untuk diperhatikan lebih dulu.",
-        "Mata berkabus sendiri belum bilang banyak. Ini deskripsi apa yang Anda lihat, bukan diagnosis kenapa itu terjadi. Penyebab di baliknya yang menentukan respons apa yang sebenarnya membantu.",
-        "Sebagian ikan juga membawa mata yang secara alami agak tembus pandang atau sedikit berkabus sebagai bagian dari penampilan normalnya — beberapa varietas ikan mas telescope-eye, misalnya. Mengetahui apa yang normal buat ikan spesifik Anda penting sebelum menganggap setiap perubahan sebagai hal baru."
-      ],
-      "hintLabel": "Bandingkan kedua mata berdampingan",
-      "hintText": [
-        "Lihat dulu mata yang tidak terkena, lalu mata yang berkabus, di bawah cahaya yang sama. Perubahan yang sungguhan akan terlihat jelas bersebelahan dengan mata normal di ikan yang sama. Perbandingan itu lebih diandalkan dibanding mencoba mengingat bagaimana matanya kelihatan minggu lalu."
-      ],
-      "prevBtn": "← Intro",
-      "nextBtn": "Apa yang sebenarnya menyebabkannya"
-    },
-    {
-      "id": "mod-2",
-      "tag": "Apa yang sebenarnya menyebabkannya",
-      "titleHtml": "Empat hal berbeda<br><em>bisa menghasilkan tampilan yang sama.</em>",
-      "body": [
-        "<strong>Cedera fisik.</strong> Goresan atau benturan ke dekorasi, substrat, atau ikan lain bisa membuat satu mata berkabus. Ini penyebab paling umum dari mata berkabus sebelah, dan sifatnya mekanis, bukan infeksi. Muncul tepat setelah kejadiannya, kalau kebetulan Anda melihatnya.",
-        "<strong>Iritasi kimia air.</strong> Amonia, nitrit, atau perubahan pH mendadak bisa mengiritasi permukaan kedua mata sekaligus, sama seperti senyawa ini mengiritasi kulit dan insang di bagian tubuh lain. Versi ini cenderung mengenai kedua mata secara merata, bukan cuma satu.",
-        "<strong>Infeksi bakteri atau parasit.</strong> Sebagian infeksi menyebabkan penyakit mata berkabus yang sungguhan, biasanya dibarengi gejala lain — sirip terlipat, nafsu makan berkurang, atau bercak kemerahan dekat mata. Ini versi yang butuh perawatan spesifik, bukan cuma waktu.",
-        "<strong>Sifat alami atau bawaan varietas.</strong> Sebagian ikan, termasuk beberapa individu yang lebih tua dan sebagian varietas fancy, secara alami membawa mata yang berkabus atau berselaput permanen. Kalau sudah begitu sejak lama dan tidak ada yang lain berubah, kemungkinan besar itu memang penampilan ikan itu."
-      ],
-      "pullQuote": "Mata berkabus adalah gejala, bukan diagnosis. Kabut yang sama bisa berarti luka yang sudah sembuh atau infeksi yang butuh obat — itulah kenapa layak diperlambat dulu sebelum mengobatinya.",
-      "prevBtn": "← Kembali",
-      "nextBtn": "Amati dulu sebelum mengobati"
-    },
-    {
-      "id": "mod-3",
-      "tag": "Amati dulu sebelum mengobati",
-      "titleHtml": "Apa lagi yang terjadi<br><em>lebih banyak bicara dibanding matanya sendiri.</em>",
-      "body": [
-        "Mulai dari hitungannya: satu mata atau dua-duanya? Satu mata, apalagi tanpa gejala lain, menunjuk ke cedera fisik. Kedua mata bersamaan menunjuk ke kualitas air atau, lebih jarang, infeksi sistemik.",
-        "Cek gejala lain berikutnya. Sirip terlipat, nafsu makan berkurang, bersembunyi tidak biasa, atau kulit kemerahan dekat mata semuanya menunjukkan ada lebih dari sekadar goresan biasa. Mata berkabus tanpa perubahan lain sama sekali adalah versi paling ringan dari sinyal ini.",
-        "Tes amonia, nitrit, dan pH apapun yang Anda amati lainnya. Kualitas air adalah salah satu pendorong paling umum dari mata berkabus dua-duanya, dan juga hal yang paling cepat untuk dipastikan atau disingkirkan."
-      ],
-      "hintLabel": "Beri waktu beberapa hari sebelum menganggap yang terburuk",
-      "hintText": [
-        "Mata berkabus sebelah akibat goresan ringan sering membaik dalam satu-dua minggu dengan sendirinya, apalagi begitu kualitas air dipastikan bersih. Mengamati beberapa hari dulu sebelum mengobati apapun jarang jadi pilihan yang salah."
-      ],
-      "prevBtn": "← Kembali",
-      "nextBtn": "Respons yang selaras"
-    },
-    {
-      "id": "mod-4",
-      "tag": "Respons yang selaras",
-      "titleHtml": "Sesuaikan perawatan<br><em>dengan mana dari empat penyebab ini.</em>",
-      "body": [
-        "Kalau satu mata tanpa gejala lain dan air tes bersih, respons yang selaras adalah cukup menjaga kualitas air tetap tinggi dan menunggu. Cedera fisik pada mata biasanya sembuh sendiri dalam satu-dua minggu.",
-        "Kalau kedua mata dan tes air menunjukkan amonia, nitrit, atau pH yang tidak stabil, perbaiki parameter itu dulu. Kabutnya biasanya reda sebagai efek samping dari memperbaiki air, bukan sebagai sesuatu yang diobati langsung.",
-        "Kalau ada gejala lain bersamaan kabutnya — sirip terlipat, kehilangan nafsu makan, kemerahan — obati infeksi bakteri secara spesifik, dan pertimbangkan memisahkan ikannya selama pemulihan. Ini satu-satunya versi di mana menunggu bukan pilihan yang tepat."
-      ],
-      "pullQuote": "Matanya tidak pernah minta diobati sendirian. Ia minta Anda melihat apa lagi yang sedang terjadi di sekelilingnya.",
-      "prevBtn": "← Kembali"
+    "relatedLinks": [
+        {
+            "text": "Kenapa Nitrat Terus Naik? →"
+        },
+        {
+            "text": "Kehilangan Warna Mendadak pada Ikan →"
+        },
+        {
+            "text": "Kerangka ARA →"
+        },
+        {
+            "text": "Tanya Rhyssa →"
+        }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
     }
-  ],
-  "relatedLinks": [
-    { "text": "Kenapa Nitrat Terus Naik? →" },
-    { "text": "Kehilangan Warna Mendadak pada Ikan →" },
-    { "text": "Kerangka ARA →" },
-    { "text": "Tanya Rhyssa →" }
-  ],
-  "footer": {
-    "allArticles": "← Semua artikel",
-    "araLink": "Aquatic Rhythm Alignment"
-  }
 }

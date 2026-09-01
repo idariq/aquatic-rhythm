@@ -184,7 +184,10 @@ const HERO_IMAGE_SLUGS = {
   'understanding-gh-and-kh': 'hero-1200w.webp',
   'smell-from-your-substrate': 'hero-1200w.webp',
   'cloudy-eyes-fish': 'hero-1200w.webp',
-  'ich-vs-velvet': 'hero-1200w.webp'
+  'ich-vs-velvet': 'hero-1200w.webp',
+  'dropsy-when-treatment-isnt-working': 'hero-1200w.webp',
+  'the-fish-that-sell-the-tank': 'hero-1200w.webp',
+  'the-honest-cost-of-going-high-tech': 'hero-1200w.webp'
 };
 
 function buildJsonLd(t, lang, slug, dates) {

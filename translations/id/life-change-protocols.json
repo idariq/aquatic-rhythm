@@ -12,6 +12,7 @@
         "ogDescription": "Tangki tidak menunggu hidup Anda selesai berubah. Tiga jenis perubahan kapasitas penjaga, dan respons ARA yang selaras untuk masing-masing."
     },
     "intro": {
+        "heroAlt": "Akuarium di samping tempat tidur bayi dan meja yang penuh kertas serta laptop, menunjukkan rumah tangga yang sibuk.",
         "eyebrow": "Refleksi",
         "titleHtml": "Protokol<br><em>Perubahan Hidup</em>",
         "subtitle": "Tangki tidak berhenti ketika hidup berubah. Ia tidak perlu berhenti, asalkan responsnya jujur.",
@@ -83,10 +84,18 @@
         }
     ],
     "relatedLinks": [
-        { "text": "Menjaga Akuarium Saat Anda Bepergian →" },
-        { "text": "Erosi Kapasitas →" },
-        { "text": "Merawat Tanpa Rasa Bersalah →" },
-        { "text": "Kerangka ARA →" }
+        {
+            "text": "Menjaga Akuarium Saat Anda Bepergian →"
+        },
+        {
+            "text": "Erosi Kapasitas →"
+        },
+        {
+            "text": "Merawat Tanpa Rasa Bersalah →"
+        },
+        {
+            "text": "Kerangka ARA →"
+        }
     ],
     "footer": {
         "allArticles": "← Semua artikel",

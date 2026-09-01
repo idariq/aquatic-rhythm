@@ -1,97 +1,106 @@
 {
-  "_meta": {
-    "slug": "fish-flashing-scratching",
-    "lang": "id",
-    "sourceFile": "articles/fish-flashing-scratching.html",
-    "status": "ready"
-  },
-  "head": {
-    "title": "Kenapa Ikan Saya Menggosokkan Badan? — Aquatic Rhythm",
-    "description": "Ikan yang menggosokkan badan ke kerikil, kaca, atau dekorasi adalah sinyal spesifik, bukan sekadar kebiasaan aneh. Panduan membaca perilaku ini sebelum jadi wabah penuh.",
-    "ogTitle": "Kenapa Ikan Saya Menggosokkan Badan?",
-    "ogDescription": "Menggosokkan badan ke kerikil atau dekorasi jarang terjadi tanpa sebab."
-  },
-  "intro": {
-    "eyebrow": "Semua level",
-    "titleHtml": "Kenapa Ikan Saya<br><em>Menggosokkan Badan?</em>",
-    "subtitle": "Menggosokkan badan ke kerikil atau dekorasi jarang terjadi tanpa sebab.",
-    "texts": [
-      "Seekor ikan tiba-tiba berbelok ke samping dan menggesekkan badannya ke kerikil, batu, atau kaca, lalu berenang lagi seolah tidak terjadi apa-apa. Kelihatannya tiba-tiba, agak mengkhawatirkan, dan gampang diabaikan kalau cuma terjadi sekali.",
-      "Panduan ini menjelaskan apa sebenarnya yang disinyalkan gerakan menggosok ini, tiga penyebab paling umum di baliknya, dan cara membedakannya sebelum buru-buru memberi obat yang mungkin tidak sesuai dengan masalah sebenarnya."
+    "_meta": {
+        "slug": "fish-flashing-scratching",
+        "lang": "id",
+        "sourceFile": "articles/fish-flashing-scratching.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Kenapa Ikan Saya Menggosokkan Badan? — Aquatic Rhythm",
+        "description": "Ikan yang menggosokkan badan ke kerikil, kaca, atau dekorasi adalah sinyal spesifik, bukan sekadar kebiasaan aneh. Panduan membaca perilaku ini sebelum jadi wabah penuh.",
+        "ogTitle": "Kenapa Ikan Saya Menggosokkan Badan?",
+        "ogDescription": "Menggosokkan badan ke kerikil atau dekorasi jarang terjadi tanpa sebab."
+    },
+    "intro": {
+        "heroAlt": "Ikan berenang rapat dengan substrat kerikil berdekatan batu, seolah-olah menggosok badan pada dasar tangki.",
+        "eyebrow": "Semua level",
+        "titleHtml": "Kenapa Ikan Saya<br><em>Menggosokkan Badan?</em>",
+        "subtitle": "Menggosokkan badan ke kerikil atau dekorasi jarang terjadi tanpa sebab.",
+        "texts": [
+            "Seekor ikan tiba-tiba berbelok ke samping dan menggesekkan badannya ke kerikil, batu, atau kaca, lalu berenang lagi seolah tidak terjadi apa-apa. Kelihatannya tiba-tiba, agak mengkhawatirkan, dan gampang diabaikan kalau cuma terjadi sekali.",
+            "Panduan ini menjelaskan apa sebenarnya yang disinyalkan gerakan menggosok ini, tiga penyebab paling umum di baliknya, dan cara membedakannya sebelum buru-buru memberi obat yang mungkin tidak sesuai dengan masalah sebenarnya."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~7 menit",
+        "metaLevel": "Semua level",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Membaca sinyal",
+            "titleHtml": "Menggosok kelihatan seperti<br><em>gatal biasa. Jarang cuma itu.</em>",
+            "body": [
+                "Istilah yang dipakai pemelihara untuk ini adalah \"flashing\" — ikan tiba-tiba memutar badan ke samping dan menggesekkannya ke kerikil, batu, dekorasi, atau kaca. Kelihatannya tiba-tiba — ikan yang tadinya berenang normal menggesek badannya ke permukaan keras, lalu lanjut berenang seolah tidak terjadi apa-apa.",
+                "Satu kali gosokan, sesekali saja, nyaris tidak berarti apa-apa. Ikan memang kadang menggesekkan badan tanpa sebab jelas, mirip orang menggaruk gatal yang tidak menandakan ada yang salah. Yang benar-benar penting adalah frekuensi dan polanya: apakah terjadi sekali sehari, atau setiap beberapa menit? Satu ikan, atau beberapa? Baru mulai belakangan ini, atau memang sudah dari dulu?",
+                "Gosokan berulang, apalagi di beberapa ikan sekaligus, adalah cara tank memberi tahu ada sesuatu yang mengiritasi kulit atau insang. Perilaku itu sendiri tidak bilang apa penyebabnya — itu pertanyaan berikutnya — tapi ia cukup dapat diandalkan untuk menunjukkan ada yang tidak beres sebelum tanda-tanda lain muncul."
+            ],
+            "hintLabel": "Pertanyaan pertama yang perlu ditanyakan",
+            "hintText": [
+                "Apakah ini satu ikan atau beberapa? Satu ikan yang sesekali menggosok badan biasanya bukan apa-apa. Beberapa ikan menggosok badan dalam satu atau dua hari yang sama hampir selalu menunjuk ke sesuatu yang dialami bersama — air itu sendiri, bukan satu ikan tertentu."
+            ],
+            "prevBtn": "← Intro",
+            "nextBtn": "Apa yang sebenarnya menyebabkannya"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Apa yang sebenarnya menyebabkannya",
+            "titleHtml": "Tiga hal<br><em>biasanya menjelaskannya.</em>",
+            "body": [
+                "Menggosokkan badan berasal dari iritasi pada kulit atau insang, dan ada tiga sumber umum di baliknya. Mengetahui yang mana yang berlaku mengubah langkah selanjutnya — mengobati yang salah bisa memperburuk kondisi ikan, bukan memperbaikinya.",
+                "<strong>Parasit luar.</strong> Ich, flukes, anchor worm, dan parasit sejenis mengiritasi kulit secara langsung. Ich akhirnya menimbulkan bintik putih yang terlihat, tapi gosokan itu sendiri biasanya mulai sebelum bintiknya jelas terlihat — gatalnya muncul sebelum ruamnya. Flukes seringkali sama sekali tidak terlihat mata telanjang; gosokan tanpa bintik yang terlihat sama sekali adalah salah satu tanda yang lebih umum.",
+                "<strong>Iritasi kimia air.</strong> Amonia, klorin atau kloramin dari air ganti yang belum ditreatment, dan perubahan pH mendadak semuanya bisa mengiritasi jaringan insang dan kulit secara langsung. Ini menghasilkan perilaku menggosok yang sama, tanpa ada parasit sama sekali.",
+                "<strong>Iritasi fisik.</strong> Substrat baru yang tajam, ornamen yang baru ditambahkan dengan tepi kasar, atau lapisan lendir ikan yang bereaksi terhadap sumber air baru semuanya bisa memicu gosokan sesekali. Semua itu bukan parasit maupun masalah kimia."
+            ],
+            "pullQuote": "Menggosokkan badan adalah gejala iritasi, bukan diagnosis. Ich, amonia, dan batu baru yang kasar semuanya menghasilkan perilaku yang sama. Itulah kenapa air dan penampilan ikan lebih penting dibanding gosokan itu sendiri.",
+            "prevBtn": "← Kembali",
+            "nextBtn": "Amati dulu sebelum mengobati"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Amati dulu sebelum mengobati",
+            "titleHtml": "Cari tanda pendamping<br><em>sebelum langsung memberi obat.</em>",
+            "body": [
+                "Naluri terhadap gosokan sering langsung mengarah ke obat parasit. Itu langkah pertama yang salah di sebagian besar kasus. Obat spektrum luas yang diberikan untuk penyebab yang salah menambah stres — dan kadang toksisitas — ke tank yang mungkin sama sekali tidak punya masalah parasit.",
+                "Sebelum mengobati apapun, perhatikan apa yang menyertai gosokan itu. Bintik putih yang terlihat, kilau keemasan berdebu di bawah cahaya miring, sirip terlipat, atau napas yang berat menunjuk ke parasit. Ganti air baru yang belum ditreatment, dosis dechlorinator yang terlewat, atau berminggu-minggu tanpa cek parameter menunjuk ke kimia air. Substrat baru atau batu yang baru ditambahkan tanpa gejala lain menunjuk ke iritasi fisik yang biasanya reda sendiri dalam beberapa hari.",
+                "Tes amonia, nitrit, dan pH apapun dugaan Anda. Cuma butuh beberapa menit, dan ini menyingkirkan atau memastikan kemungkinan kimia air secara jelas, sehingga mempersempit apa yang sebenarnya sedang Anda cari."
+            ],
+            "hintLabel": "Cek insang",
+            "hintText": [
+                "Gosokan yang disertai gerakan insang cepat dan berat adalah sinyal yang lebih kuat dibanding gosokan saja. Ini biasanya berarti apapun yang mengiritasi kulit juga mencapai insang — layak ditangani cepat apapun penyebab pastinya."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Respons yang selaras"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Respons yang selaras",
+            "titleHtml": "Sesuaikan solusi<br><em>dengan apa yang Anda temukan.</em>",
+            "body": [
+                "Jika kimia air adalah penyebab yang paling mungkin, ganti air dengan air yang sudah ditreatment dengan benar plus cek parameter ulang adalah solusi lengkapnya di sebagian besar kasus — tanpa perlu obat. Beri waktu satu-dua hari sebelum menganggap tidak berhasil; iritasi akibat kimia air tidak selalu langsung reda begitu pemicunya dihilangkan.",
+                "Jika parasit terlihat atau sangat dicurigai, obati parasit spesifik itu, bukan langsung pakai produk spektrum luas generik. Ich, flukes, dan parasit lain merespons obat yang berbeda-beda, dan memakai yang salah menunda ikan mendapat obat yang tepat sekaligus menambah beban kimia ke tank.",
+                "Jika tidak ada yang menunjuk ke mana-mana — tes air bersih, tidak ada gejala terlihat, cuma satu ikan, cuma sesekali — respons yang selaras adalah terus mengamati, bukan mengobati lebih dulu. Gosokan tanpa pola biasanya memang begitu saja: ikan yang menggaruk gatal sekali, seperti hewan mana pun kadang lakukan."
+            ],
+            "pullQuote": "Tank tidak sedang menyuruh Anda menebak. Ia menyuruh Anda melihat sedikit lebih lama sebelum memutuskan apa yang Anda lihat.",
+            "prevBtn": "← Kembali"
+        }
     ],
-    "metaModules": "4 modul",
-    "metaTime": "~7 menit",
-    "metaLevel": "Semua level",
-    "cta": "Mulai membaca"
-  },
-  "modules": [
-    {
-      "id": "mod-1",
-      "tag": "Membaca sinyal",
-      "titleHtml": "Menggosok kelihatan seperti<br><em>gatal biasa. Jarang cuma itu.</em>",
-      "body": [
-        "Istilah yang dipakai pemelihara untuk ini adalah \"flashing\" — ikan tiba-tiba memutar badan ke samping dan menggesekkannya ke kerikil, batu, dekorasi, atau kaca. Kelihatannya tiba-tiba — ikan yang tadinya berenang normal menggesek badannya ke permukaan keras, lalu lanjut berenang seolah tidak terjadi apa-apa.",
-        "Satu kali gosokan, sesekali saja, nyaris tidak berarti apa-apa. Ikan memang kadang menggesekkan badan tanpa sebab jelas, mirip orang menggaruk gatal yang tidak menandakan ada yang salah. Yang benar-benar penting adalah frekuensi dan polanya: apakah terjadi sekali sehari, atau setiap beberapa menit? Satu ikan, atau beberapa? Baru mulai belakangan ini, atau memang sudah dari dulu?",
-        "Gosokan berulang, apalagi di beberapa ikan sekaligus, adalah cara tank memberi tahu ada sesuatu yang mengiritasi kulit atau insang. Perilaku itu sendiri tidak bilang apa penyebabnya — itu pertanyaan berikutnya — tapi ia cukup dapat diandalkan untuk menunjukkan ada yang tidak beres sebelum tanda-tanda lain muncul."
-      ],
-      "hintLabel": "Pertanyaan pertama yang perlu ditanyakan",
-      "hintText": [
-        "Apakah ini satu ikan atau beberapa? Satu ikan yang sesekali menggosok badan biasanya bukan apa-apa. Beberapa ikan menggosok badan dalam satu atau dua hari yang sama hampir selalu menunjuk ke sesuatu yang dialami bersama — air itu sendiri, bukan satu ikan tertentu."
-      ],
-      "prevBtn": "← Intro",
-      "nextBtn": "Apa yang sebenarnya menyebabkannya"
-    },
-    {
-      "id": "mod-2",
-      "tag": "Apa yang sebenarnya menyebabkannya",
-      "titleHtml": "Tiga hal<br><em>biasanya menjelaskannya.</em>",
-      "body": [
-        "Menggosokkan badan berasal dari iritasi pada kulit atau insang, dan ada tiga sumber umum di baliknya. Mengetahui yang mana yang berlaku mengubah langkah selanjutnya — mengobati yang salah bisa memperburuk kondisi ikan, bukan memperbaikinya.",
-        "<strong>Parasit luar.</strong> Ich, flukes, anchor worm, dan parasit sejenis mengiritasi kulit secara langsung. Ich akhirnya menimbulkan bintik putih yang terlihat, tapi gosokan itu sendiri biasanya mulai sebelum bintiknya jelas terlihat — gatalnya muncul sebelum ruamnya. Flukes seringkali sama sekali tidak terlihat mata telanjang; gosokan tanpa bintik yang terlihat sama sekali adalah salah satu tanda yang lebih umum.",
-        "<strong>Iritasi kimia air.</strong> Amonia, klorin atau kloramin dari air ganti yang belum ditreatment, dan perubahan pH mendadak semuanya bisa mengiritasi jaringan insang dan kulit secara langsung. Ini menghasilkan perilaku menggosok yang sama, tanpa ada parasit sama sekali.",
-        "<strong>Iritasi fisik.</strong> Substrat baru yang tajam, ornamen yang baru ditambahkan dengan tepi kasar, atau lapisan lendir ikan yang bereaksi terhadap sumber air baru semuanya bisa memicu gosokan sesekali. Semua itu bukan parasit maupun masalah kimia."
-      ],
-      "pullQuote": "Menggosokkan badan adalah gejala iritasi, bukan diagnosis. Ich, amonia, dan batu baru yang kasar semuanya menghasilkan perilaku yang sama. Itulah kenapa air dan penampilan ikan lebih penting dibanding gosokan itu sendiri.",
-      "prevBtn": "← Kembali",
-      "nextBtn": "Amati dulu sebelum mengobati"
-    },
-    {
-      "id": "mod-3",
-      "tag": "Amati dulu sebelum mengobati",
-      "titleHtml": "Cari tanda pendamping<br><em>sebelum langsung memberi obat.</em>",
-      "body": [
-        "Naluri terhadap gosokan sering langsung mengarah ke obat parasit. Itu langkah pertama yang salah di sebagian besar kasus. Obat spektrum luas yang diberikan untuk penyebab yang salah menambah stres — dan kadang toksisitas — ke tank yang mungkin sama sekali tidak punya masalah parasit.",
-        "Sebelum mengobati apapun, perhatikan apa yang menyertai gosokan itu. Bintik putih yang terlihat, kilau keemasan berdebu di bawah cahaya miring, sirip terlipat, atau napas yang berat menunjuk ke parasit. Ganti air baru yang belum ditreatment, dosis dechlorinator yang terlewat, atau berminggu-minggu tanpa cek parameter menunjuk ke kimia air. Substrat baru atau batu yang baru ditambahkan tanpa gejala lain menunjuk ke iritasi fisik yang biasanya reda sendiri dalam beberapa hari.",
-        "Tes amonia, nitrit, dan pH apapun dugaan Anda. Cuma butuh beberapa menit, dan ini menyingkirkan atau memastikan kemungkinan kimia air secara jelas, sehingga mempersempit apa yang sebenarnya sedang Anda cari."
-      ],
-      "hintLabel": "Cek insang",
-      "hintText": [
-        "Gosokan yang disertai gerakan insang cepat dan berat adalah sinyal yang lebih kuat dibanding gosokan saja. Ini biasanya berarti apapun yang mengiritasi kulit juga mencapai insang — layak ditangani cepat apapun penyebab pastinya."
-      ],
-      "prevBtn": "← Kembali",
-      "nextBtn": "Respons yang selaras"
-    },
-    {
-      "id": "mod-4",
-      "tag": "Respons yang selaras",
-      "titleHtml": "Sesuaikan solusi<br><em>dengan apa yang Anda temukan.</em>",
-      "body": [
-        "Jika kimia air adalah penyebab yang paling mungkin, ganti air dengan air yang sudah ditreatment dengan benar plus cek parameter ulang adalah solusi lengkapnya di sebagian besar kasus — tanpa perlu obat. Beri waktu satu-dua hari sebelum menganggap tidak berhasil; iritasi akibat kimia air tidak selalu langsung reda begitu pemicunya dihilangkan.",
-        "Jika parasit terlihat atau sangat dicurigai, obati parasit spesifik itu, bukan langsung pakai produk spektrum luas generik. Ich, flukes, dan parasit lain merespons obat yang berbeda-beda, dan memakai yang salah menunda ikan mendapat obat yang tepat sekaligus menambah beban kimia ke tank.",
-        "Jika tidak ada yang menunjuk ke mana-mana — tes air bersih, tidak ada gejala terlihat, cuma satu ikan, cuma sesekali — respons yang selaras adalah terus mengamati, bukan mengobati lebih dulu. Gosokan tanpa pola biasanya memang begitu saja: ikan yang menggaruk gatal sekali, seperti hewan mana pun kadang lakukan."
-      ],
-      "pullQuote": "Tank tidak sedang menyuruh Anda menebak. Ia menyuruh Anda melihat sedikit lebih lama sebelum memutuskan apa yang Anda lihat.",
-      "prevBtn": "← Kembali"
+    "relatedLinks": [
+        {
+            "text": "Ich terus kembali →"
+        },
+        {
+            "text": "Ikan saya bersembunyi →"
+        },
+        {
+            "text": "Kerangka ARA →"
+        },
+        {
+            "text": "Tanya Rhyssa →"
+        }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
     }
-  ],
-  "relatedLinks": [
-    { "text": "Ich terus kembali →" },
-    { "text": "Ikan saya bersembunyi →" },
-    { "text": "Kerangka ARA →" },
-    { "text": "Tanya Rhyssa →" }
-  ],
-  "footer": {
-    "allArticles": "← Semua artikel",
-    "araLink": "Aquatic Rhythm Alignment"
-  }
 }

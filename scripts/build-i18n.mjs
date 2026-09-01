@@ -168,7 +168,23 @@ const HERO_IMAGE_SLUGS = {
   'shrimp-dying-aquarium': 'hero-1200w.webp',
   'low-tech-planted-tank': 'hero-1200w.webp',
   'community-fish-tank': 'hero-1200w.webp',
-  'when-is-tank-ready-for-fish': 'hero-1200w.webp'
+  'when-is-tank-ready-for-fish': 'hero-1200w.webp',
+  'ich-keeps-coming-back': 'hero-1200w.webp',
+  'overfeeding-aquarium': 'hero-1200w.webp',
+  'aquarium-filter-maintenance': 'hero-1200w.webp',
+  'fish-gasping-surface': 'hero-1200w.webp',
+  'adding-new-fish': 'hero-1200w.webp',
+  'nitrate-keeps-rising': 'hero-1200w.webp',
+  'fish-flashing-scratching': 'hero-1200w.webp',
+  'ph-keeps-crashing': 'hero-1200w.webp',
+  'clamped-fins-fin-rot': 'hero-1200w.webp',
+  'white-fuzz-driftwood': 'hero-1200w.webp',
+  'sudden-colour-loss-fish': 'hero-1200w.webp',
+  'snails-suddenly-everywhere': 'hero-1200w.webp',
+  'understanding-gh-and-kh': 'hero-1200w.webp',
+  'smell-from-your-substrate': 'hero-1200w.webp',
+  'cloudy-eyes-fish': 'hero-1200w.webp',
+  'ich-vs-velvet': 'hero-1200w.webp'
 };
 
 function buildJsonLd(t, lang, slug, dates) {

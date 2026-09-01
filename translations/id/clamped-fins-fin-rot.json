@@ -1,96 +1,105 @@
 {
-  "_meta": {
-    "slug": "clamped-fins-fin-rot",
-    "lang": "id",
-    "sourceFile": "articles/clamped-fins-fin-rot.html",
-    "status": "ready"
-  },
-  "head": {
-    "title": "Sirip Terlipat dan Fin Rot — Aquatic Rhythm",
-    "description": "Sirip terlipat bisa berarti banyak hal, dan fin rot cuma salah satunya. Panduan membedakan stres biasa dari infeksi bakteri yang benar-benar berkembang — sebelum menyebar.",
-    "ogTitle": "Sirip Terlipat dan Fin Rot",
-    "ogDescription": "Membaca penyakit sebelum ia menyebar."
-  },
-  "intro": {
-    "eyebrow": "Semua level",
-    "titleHtml": "Sirip Terlipat<br><em>dan Fin Rot</em>",
-    "subtitle": "Membaca penyakit sebelum ia menyebar.",
-    "texts": [
-      "Ikan yang menahan siripnya rapat ke badan, bukannya santai dan mekar, kelihatan jelas tidak sehat — tapi sirip terlipat saja tidak menjelaskan kenapa. Stres biasa dan infeksi bakteri yang aktif bisa terlihat identik selama satu-dua hari pertama.",
-      "Panduan ini menjelaskan apa sebenarnya yang disinyalkan sirip terlipat, cara membedakannya dari fin rot yang benar-benar berkembang, dan kenapa keduanya butuh respons yang sangat berbeda."
+    "_meta": {
+        "slug": "clamped-fins-fin-rot",
+        "lang": "id",
+        "sourceFile": "articles/clamped-fins-fin-rot.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Sirip Terlipat dan Fin Rot — Aquatic Rhythm",
+        "description": "Sirip terlipat bisa berarti banyak hal, dan fin rot cuma salah satunya. Panduan membedakan stres biasa dari infeksi bakteri yang benar-benar berkembang — sebelum menyebar.",
+        "ogTitle": "Sirip Terlipat dan Fin Rot",
+        "ogDescription": "Membaca penyakit sebelum ia menyebar."
+    },
+    "intro": {
+        "heroAlt": "Ikan kucing corydoras dilihat dari dekat menghadap kamera di antara kayu apung dan tanaman.",
+        "eyebrow": "Semua level",
+        "titleHtml": "Sirip Terlipat<br><em>dan Fin Rot</em>",
+        "subtitle": "Membaca penyakit sebelum ia menyebar.",
+        "texts": [
+            "Ikan yang menahan siripnya rapat ke badan, bukannya santai dan mekar, kelihatan jelas tidak sehat — tapi sirip terlipat saja tidak menjelaskan kenapa. Stres biasa dan infeksi bakteri yang aktif bisa terlihat identik selama satu-dua hari pertama.",
+            "Panduan ini menjelaskan apa sebenarnya yang disinyalkan sirip terlipat, cara membedakannya dari fin rot yang benar-benar berkembang, dan kenapa keduanya butuh respons yang sangat berbeda."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~7 menit",
+        "metaLevel": "Semua level",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Membaca sinyal",
+            "titleHtml": "Sirip tertarik rapat<br><em>ke badan.</em>",
+            "body": [
+                "Ikan dengan sirip terlipat menahannya rapat ke badan, dilipat ke bawah dan ke dalam. Ikan yang nyaman dan sehat biasanya membawa siripnya terbentang, bukan begitu. Ini salah satu tanda umum paling dapat diandalkan bahwa ada yang tidak beres, sekaligus salah satu yang paling tidak spesifik — sirip terlipat muncul di hampir semua jenis tekanan, dari ganti air yang kasar sampai infeksi sungguhan.",
+                "Ketidakspesifikan itulah yang bikin sirip terlipat saja tidak cukup untuk dijadikan dasar bertindak. Dua ikan bisa menunjukkan postur yang identik karena alasan yang sama sekali berbeda. Satu karena tank mengalami minggu yang berat; yang lain karena infeksi bakteri sedang aktif memakan jaringan sirip. Tidak ada yang membedakan keduanya dari sirip terlipat itu sendiri di hari pertama atau kedua.",
+                "Yang membedakan keduanya adalah apa yang terjadi selanjutnya. Apakah siripnya sendiri mulai terlihat memburuk, atau apakah cuma ditahan rapat sementara semua hal lain tentangnya tetap utuh."
+            ],
+            "hintLabel": "Hal pertama yang perlu dicek",
+            "hintText": [
+                "Perhatikan tepi siripnya secara khusus, bukan cuma posturnya. Apakah tepinya halus dan utuh, cuma dilipat rapat? Atau tepinya kelihatan compang-camping, kusut, keputihan, atau terlihat lebih pendek dibanding beberapa hari lalu? Perbedaan itu lebih penting dibanding sirip terlipatnya sendiri."
+            ],
+            "prevBtn": "← Intro",
+            "nextBtn": "Stres atau infeksi"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Stres atau infeksi",
+            "titleHtml": "Yang satu reda dalam beberapa hari.<br><em>Yang lain terus memakan.</em>",
+            "body": [
+                "<strong>Sirip terlipat akibat stres.</strong> Kualitas air yang buruk, perubahan suhu mendadak, penghuni baru yang mengganggu tank, atau agresi dari sesama penghuni tank semuanya bisa membuat ikan melipat siripnya tanpa infeksi sama sekali. Sirip itu sendiri tetap utuh secara fisik — bentuk dan tepinya tidak berubah dari hari ke hari, walau ikannya jelas tidak nyaman. Hilangkan sumber stresnya dan posturnya biasanya kembali santai dalam beberapa hari.",
+                "<strong>Fin rot.</strong> Ini infeksi bakteri (kadang jamur) yang benar-benar mengikis jaringan sirip dari tepi ke dalam. Biasanya dimulai sebagai garis tipis keputihan atau kemerahan di sepanjang tepi sirip, lalu berkembang jadi tepi yang terlihat compang-camping, memendek, atau hancur dalam hari-hari berikutnya. Beda dengan sirip terlipat akibat stres, fin rot punya arah — ia benar-benar memburuk kalau dibiarkan, bukan cuma terlihat tidak nyaman.",
+                "<strong>Kerusakan fisik.</strong> Gigitan dari sesama penghuni tank atau cedera dari dekorasi merobek jaringan sirip secara tidak merata. Kerusakannya sering terkonsentrasi di satu sisi atau satu sirip tertentu, bukan tersebar merata di semuanya. Ini bisa terlihat mirip fin rot awal tapi penyebab dan solusinya berbeda."
+            ],
+            "pullQuote": "Fin rot jarang jadi masalah aslinya. Biasanya ini infeksi oportunistik yang masuk begitu kualitas air atau stres sudah melemahkan ikan lebih dulu. Itulah kenapa menangani air sering lebih penting dibanding menangani siripnya.",
+            "prevBtn": "← Kembali",
+            "nextBtn": "Amati dulu sebelum mengobati"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Amati dulu sebelum mengobati",
+            "titleHtml": "Bandingkan hari ini<br><em>dengan satu-dua hari lalu.</em>",
+            "body": [
+                "Hal paling berguna yang bisa dilakukan terhadap sirip terlipat adalah membandingkan tepi siripnya dengan bagaimana kelihatannya satu-dua hari sebelumnya. Foto cepat dari sudut yang kira-kira sama tiap hari bikin perbandingan ini jauh lebih diandalkan dibanding mengandalkan ingatan. Kalau tepinya tidak berubah, kemungkinan besar Anda sedang melihat stres. Kalau terlihat makin compang-camping atau makin pendek, itu perkembangan sungguhan.",
+                "Tes amonia, nitrit, nitrat, dan suhu apapun dugaan Anda. Fin rot bersifat oportunistik — ia jauh lebih mudah muncul di tank yang sudah mengalami tekanan kimia atau suhu, jadi air itu sendiri hampir selalu bagian dari gambaran besar bahkan ketika infeksi sungguhan memang ada.",
+                "Perhatikan juga agresi. Penghuni dominan yang mengejar dan menggigit ikan yang lebih lemah menghasilkan kerusakan yang bisa disalahartikan sebagai infeksi, dan tidak ada obat yang bisa memperbaiki masalah yang sebenarnya perilaku."
+            ],
+            "hintLabel": "Kenapa foto lebih penting dari yang kelihatannya",
+            "hintText": [
+                "Perkembangan fin rot sering terlalu lambat untuk disadari mata dari satu hari ke hari berikutnya. Perubahannya baru terlihat jelas belakangan. Foto dari sudut yang sama tiap hari mengubah pergeseran bertahap yang mungkin Anda maklumi jadi perbandingan yang tidak bisa dibantah."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Respons yang selaras"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Respons yang selaras",
+            "titleHtml": "Perbaiki air dulu,<br><em>baru obati sisanya.</em>",
+            "body": [
+                "Kalau siripnya utuh dan kelihatan seperti stres, respons yang selaras adalah mencari dan menghilangkan sumber stresnya. Perbaiki parameter yang tidak beres, kembalikan suhu yang stabil, atau pisahkan penghuni yang agresif. Tidak perlu obat — siripnya biasanya santai kembali dengan sendirinya dalam beberapa hari begitu penyebabnya hilang.",
+                "Kalau fin rot benar-benar berkembang, mulai dari air, bukan dari siripnya. Ganti air yang signifikan plus pemeriksaan ketat terhadap amonia, nitrit, dan nitrat menyelesaikan sebagian besar kasus fin rot awal dengan sendirinya. Ini menghilangkan kondisi yang dimanfaatkan infeksinya sejak awal.",
+                "Kalau tepinya terus terlihat memburuk setelah beberapa hari air yang bersih dan stabil, itulah saatnya obat antibakteri yang spesifik dibutuhkan. Langsung memakai obat sebagai langkah pertama, sebelum menyingkirkan kemungkinan kualitas air, cuma mengobati gejala sambil membiarkan penyebab sebenarnya tidak tersentuh."
+            ],
+            "pullQuote": "Sirip ikan tidak rusak tanpa alasan di baliknya. Mengejar siripnya sambil mengabaikan airnya cuma menangani bagian yang bisa dilihat pemelihara, bukan bagian yang sebenarnya mendorongnya.",
+            "prevBtn": "← Kembali"
+        }
     ],
-    "metaModules": "4 modul",
-    "metaTime": "~7 menit",
-    "metaLevel": "Semua level",
-    "cta": "Mulai membaca"
-  },
-  "modules": [
-    {
-      "id": "mod-1",
-      "tag": "Membaca sinyal",
-      "titleHtml": "Sirip tertarik rapat<br><em>ke badan.</em>",
-      "body": [
-        "Ikan dengan sirip terlipat menahannya rapat ke badan, dilipat ke bawah dan ke dalam. Ikan yang nyaman dan sehat biasanya membawa siripnya terbentang, bukan begitu. Ini salah satu tanda umum paling dapat diandalkan bahwa ada yang tidak beres, sekaligus salah satu yang paling tidak spesifik — sirip terlipat muncul di hampir semua jenis tekanan, dari ganti air yang kasar sampai infeksi sungguhan.",
-        "Ketidakspesifikan itulah yang bikin sirip terlipat saja tidak cukup untuk dijadikan dasar bertindak. Dua ikan bisa menunjukkan postur yang identik karena alasan yang sama sekali berbeda. Satu karena tank mengalami minggu yang berat; yang lain karena infeksi bakteri sedang aktif memakan jaringan sirip. Tidak ada yang membedakan keduanya dari sirip terlipat itu sendiri di hari pertama atau kedua.",
-        "Yang membedakan keduanya adalah apa yang terjadi selanjutnya. Apakah siripnya sendiri mulai terlihat memburuk, atau apakah cuma ditahan rapat sementara semua hal lain tentangnya tetap utuh."
-      ],
-      "hintLabel": "Hal pertama yang perlu dicek",
-      "hintText": [
-        "Perhatikan tepi siripnya secara khusus, bukan cuma posturnya. Apakah tepinya halus dan utuh, cuma dilipat rapat? Atau tepinya kelihatan compang-camping, kusut, keputihan, atau terlihat lebih pendek dibanding beberapa hari lalu? Perbedaan itu lebih penting dibanding sirip terlipatnya sendiri."
-      ],
-      "prevBtn": "← Intro",
-      "nextBtn": "Stres atau infeksi"
-    },
-    {
-      "id": "mod-2",
-      "tag": "Stres atau infeksi",
-      "titleHtml": "Yang satu reda dalam beberapa hari.<br><em>Yang lain terus memakan.</em>",
-      "body": [
-        "<strong>Sirip terlipat akibat stres.</strong> Kualitas air yang buruk, perubahan suhu mendadak, penghuni baru yang mengganggu tank, atau agresi dari sesama penghuni tank semuanya bisa membuat ikan melipat siripnya tanpa infeksi sama sekali. Sirip itu sendiri tetap utuh secara fisik — bentuk dan tepinya tidak berubah dari hari ke hari, walau ikannya jelas tidak nyaman. Hilangkan sumber stresnya dan posturnya biasanya kembali santai dalam beberapa hari.",
-        "<strong>Fin rot.</strong> Ini infeksi bakteri (kadang jamur) yang benar-benar mengikis jaringan sirip dari tepi ke dalam. Biasanya dimulai sebagai garis tipis keputihan atau kemerahan di sepanjang tepi sirip, lalu berkembang jadi tepi yang terlihat compang-camping, memendek, atau hancur dalam hari-hari berikutnya. Beda dengan sirip terlipat akibat stres, fin rot punya arah — ia benar-benar memburuk kalau dibiarkan, bukan cuma terlihat tidak nyaman.",
-        "<strong>Kerusakan fisik.</strong> Gigitan dari sesama penghuni tank atau cedera dari dekorasi merobek jaringan sirip secara tidak merata. Kerusakannya sering terkonsentrasi di satu sisi atau satu sirip tertentu, bukan tersebar merata di semuanya. Ini bisa terlihat mirip fin rot awal tapi penyebab dan solusinya berbeda."
-      ],
-      "pullQuote": "Fin rot jarang jadi masalah aslinya. Biasanya ini infeksi oportunistik yang masuk begitu kualitas air atau stres sudah melemahkan ikan lebih dulu. Itulah kenapa menangani air sering lebih penting dibanding menangani siripnya.",
-      "prevBtn": "← Kembali",
-      "nextBtn": "Amati dulu sebelum mengobati"
-    },
-    {
-      "id": "mod-3",
-      "tag": "Amati dulu sebelum mengobati",
-      "titleHtml": "Bandingkan hari ini<br><em>dengan satu-dua hari lalu.</em>",
-      "body": [
-        "Hal paling berguna yang bisa dilakukan terhadap sirip terlipat adalah membandingkan tepi siripnya dengan bagaimana kelihatannya satu-dua hari sebelumnya. Foto cepat dari sudut yang kira-kira sama tiap hari bikin perbandingan ini jauh lebih diandalkan dibanding mengandalkan ingatan. Kalau tepinya tidak berubah, kemungkinan besar Anda sedang melihat stres. Kalau terlihat makin compang-camping atau makin pendek, itu perkembangan sungguhan.",
-        "Tes amonia, nitrit, nitrat, dan suhu apapun dugaan Anda. Fin rot bersifat oportunistik — ia jauh lebih mudah muncul di tank yang sudah mengalami tekanan kimia atau suhu, jadi air itu sendiri hampir selalu bagian dari gambaran besar bahkan ketika infeksi sungguhan memang ada.",
-        "Perhatikan juga agresi. Penghuni dominan yang mengejar dan menggigit ikan yang lebih lemah menghasilkan kerusakan yang bisa disalahartikan sebagai infeksi, dan tidak ada obat yang bisa memperbaiki masalah yang sebenarnya perilaku."
-      ],
-      "hintLabel": "Kenapa foto lebih penting dari yang kelihatannya",
-      "hintText": [
-        "Perkembangan fin rot sering terlalu lambat untuk disadari mata dari satu hari ke hari berikutnya. Perubahannya baru terlihat jelas belakangan. Foto dari sudut yang sama tiap hari mengubah pergeseran bertahap yang mungkin Anda maklumi jadi perbandingan yang tidak bisa dibantah."
-      ],
-      "prevBtn": "← Kembali",
-      "nextBtn": "Respons yang selaras"
-    },
-    {
-      "id": "mod-4",
-      "tag": "Respons yang selaras",
-      "titleHtml": "Perbaiki air dulu,<br><em>baru obati sisanya.</em>",
-      "body": [
-        "Kalau siripnya utuh dan kelihatan seperti stres, respons yang selaras adalah mencari dan menghilangkan sumber stresnya. Perbaiki parameter yang tidak beres, kembalikan suhu yang stabil, atau pisahkan penghuni yang agresif. Tidak perlu obat — siripnya biasanya santai kembali dengan sendirinya dalam beberapa hari begitu penyebabnya hilang.",
-        "Kalau fin rot benar-benar berkembang, mulai dari air, bukan dari siripnya. Ganti air yang signifikan plus pemeriksaan ketat terhadap amonia, nitrit, dan nitrat menyelesaikan sebagian besar kasus fin rot awal dengan sendirinya. Ini menghilangkan kondisi yang dimanfaatkan infeksinya sejak awal.",
-        "Kalau tepinya terus terlihat memburuk setelah beberapa hari air yang bersih dan stabil, itulah saatnya obat antibakteri yang spesifik dibutuhkan. Langsung memakai obat sebagai langkah pertama, sebelum menyingkirkan kemungkinan kualitas air, cuma mengobati gejala sambil membiarkan penyebab sebenarnya tidak tersentuh."
-      ],
-      "pullQuote": "Sirip ikan tidak rusak tanpa alasan di baliknya. Mengejar siripnya sambil mengabaikan airnya cuma menangani bagian yang bisa dilihat pemelihara, bukan bagian yang sebenarnya mendorongnya.",
-      "prevBtn": "← Kembali"
+    "relatedLinks": [
+        {
+            "text": "Ikan saya bersembunyi →"
+        },
+        {
+            "text": "Kenapa ikan saya menggosokkan badan? →"
+        },
+        {
+            "text": "Kerangka ARA →"
+        },
+        {
+            "text": "Tanya Rhyssa →"
+        }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
     }
-  ],
-  "relatedLinks": [
-    { "text": "Ikan saya bersembunyi →" },
-    { "text": "Kenapa ikan saya menggosokkan badan? →" },
-    { "text": "Kerangka ARA →" },
-    { "text": "Tanya Rhyssa →" }
-  ],
-  "footer": {
-    "allArticles": "← Semua artikel",
-    "araLink": "Aquatic Rhythm Alignment"
-  }
 }

@@ -1,98 +1,107 @@
 {
-  "_meta": {
-    "slug": "sudden-colour-loss-fish",
-    "lang": "id",
-    "sourceFile": "articles/sudden-colour-loss-fish.html",
-    "status": "ready"
-  },
-  "head": {
-    "title": "Kehilangan Warna Mendadak pada Ikan — Aquatic Rhythm",
-    "description": "Ikan yang terlihat jelas lebih pucat atau lebih gelap dari biasanya sedang menunjukkan salah satu tanda stres paling awal dan paling sering diabaikan dalam hobi ini — sering sebelum bersembunyi atau kehilangan nafsu makan mulai terjadi.",
-    "ogTitle": "Kehilangan Warna Mendadak pada Ikan",
-    "ogDescription": "Memudar dan menggelap bicara sebelum perilaku."
-  },
-  "intro": {
-    "eyebrow": "Semua level",
-    "titleHtml": "Kehilangan Warna<br><em>Mendadak pada Ikan</em>",
-    "subtitle": "Memudar dan menggelap bicara sebelum perilaku.",
-    "texts": [
-      "Ikan yang tiba-tiba terlihat jelas lebih pucat, atau tidak biasa gelap dan kusam, belum mengubah perilakunya — ia masih makan, masih berenang normal. Warna sering jadi hal pertama yang berubah, dan hal yang paling mudah diabaikan.",
-      "Panduan ini menjelaskan kenapa perubahan warna terjadi sama sekali, cara membedakan respons kaget sebentar dari sesuatu yang butuh perhatian, dan kenapa mengejar warna secara langsung jarang jadi solusi yang tepat."
+    "_meta": {
+        "slug": "sudden-colour-loss-fish",
+        "lang": "id",
+        "sourceFile": "articles/sudden-colour-loss-fish.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Kehilangan Warna Mendadak pada Ikan — Aquatic Rhythm",
+        "description": "Ikan yang terlihat jelas lebih pucat atau lebih gelap dari biasanya sedang menunjukkan salah satu tanda stres paling awal dan paling sering diabaikan dalam hobi ini — sering sebelum bersembunyi atau kehilangan nafsu makan mulai terjadi.",
+        "ogTitle": "Kehilangan Warna Mendadak pada Ikan",
+        "ogDescription": "Memudar dan menggelap bicara sebelum perilaku."
+    },
+    "intro": {
+        "heroAlt": "Ikan berwarna perak pucat berenang berdekatan substrat dalam akuarium bertanam.",
+        "eyebrow": "Semua level",
+        "titleHtml": "Kehilangan Warna<br><em>Mendadak pada Ikan</em>",
+        "subtitle": "Memudar dan menggelap bicara sebelum perilaku.",
+        "texts": [
+            "Ikan yang tiba-tiba terlihat jelas lebih pucat, atau tidak biasa gelap dan kusam, belum mengubah perilakunya — ia masih makan, masih berenang normal. Warna sering jadi hal pertama yang berubah, dan hal yang paling mudah diabaikan.",
+            "Panduan ini menjelaskan kenapa perubahan warna terjadi sama sekali, cara membedakan respons kaget sebentar dari sesuatu yang butuh perhatian, dan kenapa mengejar warna secara langsung jarang jadi solusi yang tepat."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~7 menit",
+        "metaLevel": "Semua level",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Membaca sinyal",
+            "titleHtml": "Lebih pucat, atau lebih gelap —<br><em>keduanya sinyal yang sama jenisnya.</em>",
+            "body": [
+                "Perubahan warna pada ikan berjalan dua arah, dan keduanya sama pentingnya. Memudar adalah ikan yang terlihat pudar, lebih pucat, atau kurang cerah dari warna biasanya. Menggelap adalah kebalikannya: ikan yang terlihat tidak biasa kusam, gelap, atau berbercak dibanding penampilan normalnya. Tidak ada yang lebih atau kurang serius dibanding yang lain — keduanya dua ekspresi dari mekanisme dasar yang sama.",
+                "Alasan warna layak diamati dengan seksama adalah karena ia sering bergeser sebelum hal lain berubah. Ikan bisa terlihat warnanya tidak beres selama satu-dua hari sementara masih makan normal, masih berenang dengan energi biasanya, masih tidak menunjukkan gejala terlihat lain sama sekali. Pada saat bersembunyi atau kehilangan nafsu makan muncul, warna sering sudah memberi sinyal sejak lama.",
+                "Sebelum menafsirkan terlalu jauh dari satu pengamatan, ada baiknya kenal dulu kondisi dasar ikan itu. Beberapa spesies secara alami menggelap di malam hari atau saat istirahat, ikan muda sering belum mengembangkan warna dewasanya, dan kondisi kawin bisa mengintensifkan atau menggeser warna sementara. Semua ini sama sekali tidak berhubungan dengan stres."
+            ],
+            "hintLabel": "Kenal dulu kondisi dasarnya",
+            "hintText": [
+                "Rentang warna normal ikan sehari-hari layak diketahui sebelum menganggap satu perubahan sebagai berarti. Beberapa cichlid dan killifish menggelap jelas di malam hari dengan jadwal yang benar-benar bisa diprediksi — itu ritme, bukan tekanan."
+            ],
+            "prevBtn": "← Intro",
+            "nextBtn": "Apa yang sebenarnya menyebabkannya"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Apa yang sebenarnya menyebabkannya",
+            "titleHtml": "Warna bukan pilihan.<br><em>Ini bacaan.</em>",
+            "body": [
+                "Warna ikan berasal dari sel pigmen di kulit yang melebar atau menyusut merespons sinyal sistem saraf dan hormon — jalur fisiologis yang sama yang dipakai tubuh untuk merespons stres. Ikan tidak memilih untuk terlihat pucat, sama seperti orang tidak memilih untuk memerah wajahnya. Perubahan warna adalah hasil dari sesuatu yang sudah dilakukan tubuh.",
+                "<strong>Kaget sebentar.</strong> Gangguan mendadak — tangan dekat tank, suara keras, bayangan berbentuk predator — bisa memicu pergeseran warna yang cepat dan sementara, kadang disebut respons kaget atau stress bars. Ini reda dalam beberapa menit sampai satu-dua jam begitu ikannya tenang kembali, tanpa efek jangka panjang.",
+                "<strong>Stres kualitas air atau lingkungan yang berkelanjutan.</strong> Kondisi air yang terus buruk, suhu yang tidak stabil, atau tekanan dari sesama penghuni tank yang terus-menerus bisa menghasilkan perubahan warna yang tidak reda sendiri, karena pemicunya belum hilang ke mana-mana.",
+                "<strong>Sakit.</strong> Warna yang kusam adalah salah satu tanda umum paling sering bahwa ikan tidak sehat, walau jarang muncul sendirian — biasanya dibarengi berkurangnya aktivitas atau nafsu makan begitu masalah dasarnya berkembang.",
+                "<strong>Diet.</strong> Sebagian pigmen, khususnya karotenoid di balik warna oranye dan merah, bergantung langsung pada diet. Memudar bertahap selama beberapa minggu, bukan perubahan mendadak, lebih sering menunjuk ke sini dibanding stres akut."
+            ],
+            "pullQuote": "Warna ikan lebih mirip monitor detak jantung dibanding cincin suasana hati. Ia memberi tahu apa yang sudah dilakukan sistem sarafnya, bukan membuat pilihan tentang bagaimana ia ingin terlihat.",
+            "prevBtn": "← Kembali",
+            "nextBtn": "Amati dulu sebelum mengobati"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Amati dulu sebelum mengobati",
+            "titleHtml": "Waktu dan teman-temannya<br><em>lebih penting dibanding warnanya sendiri.</em>",
+            "body": [
+                "Pertanyaan paling berguna terhadap perubahan warna apapun adalah berapa lama ia bertahan. Pergeseran yang muncul tepat setelah kejadian mengagetkan yang jelas dan memudar dalam satu-dua jam hampir pasti respons kaget — tidak perlu tindakan apapun selain membiarkan ikannya tenang. Pergeseran yang bertahan sehari penuh atau lebih, apalagi tanpa pemicu jelas, menunjuk ke sesuatu yang berkelanjutan, bukan sesaat.",
+                "Warna saja jarang menceritakan keseluruhan kisah, jadi cek apa yang terjadi bersamaan dengannya. Apakah ikannya masih makan normal? Masih berenang dengan energi biasanya dan memakai seluruh tank? Apakah siripnya utuh dan tidak terlipat? Perubahan warna yang dibarengi salah satu pergeseran lain ini adalah sinyal yang lebih kuat dibanding warna saja. Ia menunjuk lebih jelas ke kualitas air, penyakit, atau agresi sebagai pendorongnya.",
+                "Tes amonia, nitrit, nitrat, dan suhu apapun yang Anda amati lainnya. Kualitas air adalah salah satu pendorong paling umum dari pergeseran warna yang berkelanjutan, dan juga hal yang paling cepat untuk dipastikan atau disingkirkan."
+            ],
+            "hintLabel": "Jangan langsung mengejar warnanya",
+            "hintText": [
+                "Makanan dan aditif penguat warna menangani bacaannya, bukan penyebabnya. Kalau sumber stresnya masih ada, senyawa warna tambahan tidak akan mengembalikan pigmentasi normal — dan kalau sudah teratasi, warna ikan sendiri biasanya pulih dalam satu-dua minggu tanpa produk khusus apapun."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Respons yang selaras"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Respons yang selaras",
+            "titleHtml": "Perbaiki apa yang sebenarnya<br><em>ditunjukkan warnanya.</em>",
+            "body": [
+                "Kalau perubahannya singkat dan terkait kejadian mengagetkan yang jelas, respons yang selaras adalah cukup membiarkan ikannya sendiri dan biarkan ia tenang — tidak ada apapun dalam situasi ini yang butuh intervensi.",
+                "Kalau perubahan warnanya berkelanjutan dan dibarengi pergeseran perilaku lain, tangani apapun yang ditunjukkan sinyal-sinyal lain itu: perbaiki parameter air kalau tidak beres, pisahkan penghuni yang agresif, atau selidiki penyakit kalau ada gejala fisik yang terlihat bersamaan perubahan warnanya. Warnanya sendiri pulih sebagai efek samping dari memperbaiki penyebab sebenarnya, bukan sebagai target tersendiri.",
+                "Kalau pudarnya bertahap selama berminggu-minggu tanpa gejala lain sama sekali, dan ikannya spesies yang warnanya bergantung diet, meninjau variasi pemberian makan layak dilakukan. Ini ujung spektrum yang lebih lambat dan kurang mendesak dibanding pergeseran mendadak."
+            ],
+            "pullQuote": "Warnanya tidak pernah jadi masalahnya. Ia cuma tempat pertama masalahnya kebetulan muncul.",
+            "prevBtn": "← Kembali"
+        }
     ],
-    "metaModules": "4 modul",
-    "metaTime": "~7 menit",
-    "metaLevel": "Semua level",
-    "cta": "Mulai membaca"
-  },
-  "modules": [
-    {
-      "id": "mod-1",
-      "tag": "Membaca sinyal",
-      "titleHtml": "Lebih pucat, atau lebih gelap —<br><em>keduanya sinyal yang sama jenisnya.</em>",
-      "body": [
-        "Perubahan warna pada ikan berjalan dua arah, dan keduanya sama pentingnya. Memudar adalah ikan yang terlihat pudar, lebih pucat, atau kurang cerah dari warna biasanya. Menggelap adalah kebalikannya: ikan yang terlihat tidak biasa kusam, gelap, atau berbercak dibanding penampilan normalnya. Tidak ada yang lebih atau kurang serius dibanding yang lain — keduanya dua ekspresi dari mekanisme dasar yang sama.",
-        "Alasan warna layak diamati dengan seksama adalah karena ia sering bergeser sebelum hal lain berubah. Ikan bisa terlihat warnanya tidak beres selama satu-dua hari sementara masih makan normal, masih berenang dengan energi biasanya, masih tidak menunjukkan gejala terlihat lain sama sekali. Pada saat bersembunyi atau kehilangan nafsu makan muncul, warna sering sudah memberi sinyal sejak lama.",
-        "Sebelum menafsirkan terlalu jauh dari satu pengamatan, ada baiknya kenal dulu kondisi dasar ikan itu. Beberapa spesies secara alami menggelap di malam hari atau saat istirahat, ikan muda sering belum mengembangkan warna dewasanya, dan kondisi kawin bisa mengintensifkan atau menggeser warna sementara. Semua ini sama sekali tidak berhubungan dengan stres."
-      ],
-      "hintLabel": "Kenal dulu kondisi dasarnya",
-      "hintText": [
-        "Rentang warna normal ikan sehari-hari layak diketahui sebelum menganggap satu perubahan sebagai berarti. Beberapa cichlid dan killifish menggelap jelas di malam hari dengan jadwal yang benar-benar bisa diprediksi — itu ritme, bukan tekanan."
-      ],
-      "prevBtn": "← Intro",
-      "nextBtn": "Apa yang sebenarnya menyebabkannya"
-    },
-    {
-      "id": "mod-2",
-      "tag": "Apa yang sebenarnya menyebabkannya",
-      "titleHtml": "Warna bukan pilihan.<br><em>Ini bacaan.</em>",
-      "body": [
-        "Warna ikan berasal dari sel pigmen di kulit yang melebar atau menyusut merespons sinyal sistem saraf dan hormon — jalur fisiologis yang sama yang dipakai tubuh untuk merespons stres. Ikan tidak memilih untuk terlihat pucat, sama seperti orang tidak memilih untuk memerah wajahnya. Perubahan warna adalah hasil dari sesuatu yang sudah dilakukan tubuh.",
-        "<strong>Kaget sebentar.</strong> Gangguan mendadak — tangan dekat tank, suara keras, bayangan berbentuk predator — bisa memicu pergeseran warna yang cepat dan sementara, kadang disebut respons kaget atau stress bars. Ini reda dalam beberapa menit sampai satu-dua jam begitu ikannya tenang kembali, tanpa efek jangka panjang.",
-        "<strong>Stres kualitas air atau lingkungan yang berkelanjutan.</strong> Kondisi air yang terus buruk, suhu yang tidak stabil, atau tekanan dari sesama penghuni tank yang terus-menerus bisa menghasilkan perubahan warna yang tidak reda sendiri, karena pemicunya belum hilang ke mana-mana.",
-        "<strong>Sakit.</strong> Warna yang kusam adalah salah satu tanda umum paling sering bahwa ikan tidak sehat, walau jarang muncul sendirian — biasanya dibarengi berkurangnya aktivitas atau nafsu makan begitu masalah dasarnya berkembang.",
-        "<strong>Diet.</strong> Sebagian pigmen, khususnya karotenoid di balik warna oranye dan merah, bergantung langsung pada diet. Memudar bertahap selama beberapa minggu, bukan perubahan mendadak, lebih sering menunjuk ke sini dibanding stres akut."
-      ],
-      "pullQuote": "Warna ikan lebih mirip monitor detak jantung dibanding cincin suasana hati. Ia memberi tahu apa yang sudah dilakukan sistem sarafnya, bukan membuat pilihan tentang bagaimana ia ingin terlihat.",
-      "prevBtn": "← Kembali",
-      "nextBtn": "Amati dulu sebelum mengobati"
-    },
-    {
-      "id": "mod-3",
-      "tag": "Amati dulu sebelum mengobati",
-      "titleHtml": "Waktu dan teman-temannya<br><em>lebih penting dibanding warnanya sendiri.</em>",
-      "body": [
-        "Pertanyaan paling berguna terhadap perubahan warna apapun adalah berapa lama ia bertahan. Pergeseran yang muncul tepat setelah kejadian mengagetkan yang jelas dan memudar dalam satu-dua jam hampir pasti respons kaget — tidak perlu tindakan apapun selain membiarkan ikannya tenang. Pergeseran yang bertahan sehari penuh atau lebih, apalagi tanpa pemicu jelas, menunjuk ke sesuatu yang berkelanjutan, bukan sesaat.",
-        "Warna saja jarang menceritakan keseluruhan kisah, jadi cek apa yang terjadi bersamaan dengannya. Apakah ikannya masih makan normal? Masih berenang dengan energi biasanya dan memakai seluruh tank? Apakah siripnya utuh dan tidak terlipat? Perubahan warna yang dibarengi salah satu pergeseran lain ini adalah sinyal yang lebih kuat dibanding warna saja. Ia menunjuk lebih jelas ke kualitas air, penyakit, atau agresi sebagai pendorongnya.",
-        "Tes amonia, nitrit, nitrat, dan suhu apapun yang Anda amati lainnya. Kualitas air adalah salah satu pendorong paling umum dari pergeseran warna yang berkelanjutan, dan juga hal yang paling cepat untuk dipastikan atau disingkirkan."
-      ],
-      "hintLabel": "Jangan langsung mengejar warnanya",
-      "hintText": [
-        "Makanan dan aditif penguat warna menangani bacaannya, bukan penyebabnya. Kalau sumber stresnya masih ada, senyawa warna tambahan tidak akan mengembalikan pigmentasi normal — dan kalau sudah teratasi, warna ikan sendiri biasanya pulih dalam satu-dua minggu tanpa produk khusus apapun."
-      ],
-      "prevBtn": "← Kembali",
-      "nextBtn": "Respons yang selaras"
-    },
-    {
-      "id": "mod-4",
-      "tag": "Respons yang selaras",
-      "titleHtml": "Perbaiki apa yang sebenarnya<br><em>ditunjukkan warnanya.</em>",
-      "body": [
-        "Kalau perubahannya singkat dan terkait kejadian mengagetkan yang jelas, respons yang selaras adalah cukup membiarkan ikannya sendiri dan biarkan ia tenang — tidak ada apapun dalam situasi ini yang butuh intervensi.",
-        "Kalau perubahan warnanya berkelanjutan dan dibarengi pergeseran perilaku lain, tangani apapun yang ditunjukkan sinyal-sinyal lain itu: perbaiki parameter air kalau tidak beres, pisahkan penghuni yang agresif, atau selidiki penyakit kalau ada gejala fisik yang terlihat bersamaan perubahan warnanya. Warnanya sendiri pulih sebagai efek samping dari memperbaiki penyebab sebenarnya, bukan sebagai target tersendiri.",
-        "Kalau pudarnya bertahap selama berminggu-minggu tanpa gejala lain sama sekali, dan ikannya spesies yang warnanya bergantung diet, meninjau variasi pemberian makan layak dilakukan. Ini ujung spektrum yang lebih lambat dan kurang mendesak dibanding pergeseran mendadak."
-      ],
-      "pullQuote": "Warnanya tidak pernah jadi masalahnya. Ia cuma tempat pertama masalahnya kebetulan muncul.",
-      "prevBtn": "← Kembali"
+    "relatedLinks": [
+        {
+            "text": "Ikan saya bersembunyi →"
+        },
+        {
+            "text": "Perilaku Betta →"
+        },
+        {
+            "text": "Kerangka ARA →"
+        },
+        {
+            "text": "Tanya Rhyssa →"
+        }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
     }
-  ],
-  "relatedLinks": [
-    { "text": "Ikan saya bersembunyi →" },
-    { "text": "Perilaku Betta →" },
-    { "text": "Kerangka ARA →" },
-    { "text": "Tanya Rhyssa →" }
-  ],
-  "footer": {
-    "allArticles": "← Semua artikel",
-    "araLink": "Aquatic Rhythm Alignment"
-  }
 }

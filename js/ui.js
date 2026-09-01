@@ -230,6 +230,12 @@
         sub.textContent = subtitle;
         hitText.appendChild(sub);
       }
+      var tagsSrc = card.querySelector('.rd-card-panel .rd-card-tags');
+      if (tagsSrc) {
+        var tagsClone = tagsSrc.cloneNode(true);
+        tagsClone.className = 'rd-hit-tags';
+        hitText.appendChild(tagsClone);
+      }
     });
   }
 

@@ -1,96 +1,105 @@
 {
-  "_meta": {
-    "slug": "minimum-viable-care",
-    "lang": "id",
-    "sourceFile": "articles/minimum-viable-care.html",
-    "status": "ready"
-  },
-  "head": {
-    "title": "Perawatan Minimum yang Layak untuk Tank Anda — Aquatic Rhythm",
-    "description": "Kebanyakan pemelihara tahu rutin idealnya. Nyaris tidak ada yang bisa bilang, dengan jujur, minggu terburuk yang bisa diserap tanknya tanpa konsekuensi. Apa sebenarnya perawatan minimum yang layak, kenapa beda tiap setup, dan cara menemukan milik Anda.",
-    "ogTitle": "Perawatan Minimum yang Layak untuk Tank Anda",
-    "ogDescription": "Ambang jujurnya beda tiap setup, dan tidak bergeser cuma karena Anda jadi sibuk."
-  },
-  "intro": {
-    "eyebrow": "Praktis",
-    "titleHtml": "Perawatan Minimum yang Layak<br><em>untuk Tank Anda</em>",
-    "subtitle": "Ambang jujurnya beda tiap setup, dan tidak bergeser cuma karena Anda jadi sibuk.",
-    "texts": [
-      "Kebanyakan pemelihara bisa menjelaskan rutin idealnya tanpa ragu. Tanyakan pertanyaan yang lebih sulit — minggu terburuk yang bisa diserap tanknya tanpa konsekuensi nyata — dan kebanyakan belum pernah benar-benar menghitungnya.",
-      "Panduan ini menjelaskan apa sebenarnya ambang itu, kenapa beda tiap setup, dan cara menemukan milik Anda sendiri alih-alih menebak-nebak saat minggu sibuk memaksanya."
+    "_meta": {
+        "slug": "minimum-viable-care",
+        "lang": "id",
+        "sourceFile": "articles/minimum-viable-care.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Perawatan Minimum yang Layak untuk Tank Anda — Aquatic Rhythm",
+        "description": "Kebanyakan pemelihara tahu rutin idealnya. Nyaris tidak ada yang bisa bilang, dengan jujur, minggu terburuk yang bisa diserap tanknya tanpa konsekuensi. Apa sebenarnya perawatan minimum yang layak, kenapa beda tiap setup, dan cara menemukan milik Anda.",
+        "ogTitle": "Perawatan Minimum yang Layak untuk Tank Anda",
+        "ogDescription": "Ambang jujurnya beda tiap setup, dan tidak bergeser cuma karena Anda jadi sibuk."
+    },
+    "intro": {
+        "heroAlt": "Empat akuarium kecil dengan pengaturan berbeda berjajar di atas meja, menunjukkan tingkat perawatan dan kematangan yang berbeda.",
+        "eyebrow": "Praktis",
+        "titleHtml": "Perawatan Minimum yang Layak<br><em>untuk Tank Anda</em>",
+        "subtitle": "Ambang jujurnya beda tiap setup, dan tidak bergeser cuma karena Anda jadi sibuk.",
+        "texts": [
+            "Kebanyakan pemelihara bisa menjelaskan rutin idealnya tanpa ragu. Tanyakan pertanyaan yang lebih sulit — minggu terburuk yang bisa diserap tanknya tanpa konsekuensi nyata — dan kebanyakan belum pernah benar-benar menghitungnya.",
+            "Panduan ini menjelaskan apa sebenarnya ambang itu, kenapa beda tiap setup, dan cara menemukan milik Anda sendiri alih-alih menebak-nebak saat minggu sibuk memaksanya."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~7 menit",
+        "metaLevel": "Praktis",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Apa sebenarnya ambang itu",
+            "titleHtml": "Setiap tank punya ambang.<br><em>Sedikit pemelihara yang menamainya.</em>",
+            "body": [
+                "Perawatan minimum yang layak adalah ambang jujur dan spesifik dari apa yang benar-benar dibutuhkan tank tertentu untuk tetap sehat secara ekologis. Bukan rutin ideal yang diaspirasikan pemelihara. Garis di mana keadaan sungguhan mulai memburuk.",
+                "Kebanyakan pemelihara bisa menjelaskan minggu ideal mereka secara detail — hari ganti air, jumlah pemberian makan, jadwal cek filter. Nyaris tidak ada yang bisa bilang, dengan keyakinan yang sama, seberapa jauh di bawah ideal itu tanknya bisa turun sebelum benar-benar berarti. Pertanyaan itu cuma muncul kalau minggu sibuk memaksanya.",
+                "Mengetahui ambangnya bukan soal menurunkan standar. Ini soal tahu di mana margin sebenarnya berada, supaya minggu yang tidak konsisten bisa dibaca secara akurat, bukan ditebak-tebak dengan panik yang tidak perlu atau percaya diri yang keliru."
+            ],
+            "hintLabel": "Ambangnya bukan target",
+            "hintText": [
+                "Perawatan minimum yang layak menjelaskan titik di mana keadaan mulai memburuk, bukan level yang layak dituju dengan sengaja. Mengetahui di mana posisinya melindungi dari melewatinya tanpa sadar — bukan izin untuk tinggal di situ."
+            ],
+            "prevBtn": "← Intro",
+            "nextBtn": "Kenapa beda tiap tank"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Kenapa beda tiap tank",
+            "titleHtml": "Dua tank, dua ambang<br><em>yang sama sekali berbeda.</em>",
+            "body": [
+                "Ambang tank bergantung pada beberapa variabel yang menumpuk bersamaan. Seberapa padat isinya. Seberapa banyak massa tanaman yang menarik nitrogen dari air. Seberapa besar kapasitas filtrasi yang berjalan, dan seberapa besar volume air dibanding bioload di dalamnya.",
+                "Dua tank yang menjalankan interval ganti air delapan belas hari yang sama bisa berada dalam situasi yang sama sekali berbeda. Tank berisi ringan dan banyak tanaman punya margin nyata terbangun sejak awal. Tanamannya sudah mengerjakan sebagian tugas siklus nitrogen, jadi ambangnya jauh lebih rendah. Tank berisi padat dengan tanaman minimal nyaris tidak punya ruang, dan delapan belas hari yang sama bisa sudah melewati ambangnya.",
+                "Inilah kenapa nasihat generik seperti \"ganti 25% tiap minggu\" bisa aman dan konservatif buat satu tank tapi diam-diam tidak cukup buat tank lain. Angkanya bukan yang penting. Ambang tank itu sendiri yang penting."
+            ],
+            "pullQuote": "Dua tank bisa berbagi rutin yang sama dan tetap jauh berbeda jaraknya dari masalah. Rutin memberi tahu apa yang sedang terjadi. Ambang memberi tahu apa artinya.",
+            "prevBtn": "← Kembali",
+            "nextBtn": "Menemukan ambang Anda sendiri"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Menemukan ambang Anda sendiri",
+            "titleHtml": "Anda tidak perlu menebak.<br><em>Datanya sudah ada.</em>",
+            "body": [
+                "Menemukan ambang tidak perlu sengaja mengabaikan tank untuk melihat apa yang rusak. Kebanyakan pemelihara sudah punya bukti yang dibutuhkan, tersimpan di catatan tes air mereka sendiri, kalau pernah menyimpannya. Ada di minggu-minggu biasa yang sedikit terlambat atau sedikit kurang pemberian makannya.",
+                "Melihat kembali minggu-minggu itu secara jujur adalah latihan yang berguna. Ganti air yang tertunda mana yang benar-benar mendorong nitrat naik terlihat? Yang mana yang sama sekali tidak membuat perbedaan terlihat? Pola itu, dibaca sepanjang beberapa bulan, memberi jawaban kasar dan nyata yang spesifik buat tank ini, bukan angka yang dipinjam dari nasihat umum.",
+                "Buat tank yang lebih baru tanpa banyak riwayat, tes sedikit lebih sering di beberapa bulan pertama melayani tujuan yang sama. Ini kurang soal menangkap masalah lebih awal dan lebih soal belajar, dengan sengaja, apa yang sebenarnya bisa diserap setup spesifik ini."
+            ],
+            "hintLabel": "Ini bukan undangan untuk bermalas-malasan",
+            "hintText": [
+                "Menemukan ambangnya soal menghilangkan tebak-tebakan dari minggu yang sudah tidak sempurna, bukan menurunkan rutin dengan sengaja. Pemelihara yang tahu ambangnya tetap membidik jauh di atasnya — ia cuma tidak panik, atau overcorrect, kalau satu minggu mendarat lebih dekat ke ambang dibanding rencananya."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Memakai ambangnya"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Memakai ambangnya",
+            "titleHtml": "Mengetahuinya menghentikan Anda<br><em>bereaksi berlebihan pada bising normal.</em>",
+            "body": [
+                "Begitu ambangnya kira-kira diketahui, minggu yang tidak konsisten jadi sesuatu yang benar-benar bisa Anda baca, bukan sesuatu yang bikin cemas. Minggu yang mendarat nyaman di atas ambang adalah variasi normal, bukan tanda peringatan, dan tidak perlu respons dramatis.",
+                "Minggu yang mendarat di atau di bawah ambang adalah sinyal sungguhan yang layak ditindaklanjuti. Itulah momen untuk tes parameter, mengejar ketinggalan dengan benar, atau melihat apakah rutinnya sudah bergeser seperti yang dijelaskan <a href=\"/id/articles/capacity-creep\" style=\"color:var(--th-accent);text-decoration:none\">capacity creep</a>.",
+                "Ada dua cara jujur untuk melebarkan jarak antara rutin dan ambang. Naikkan margin ambangnya — lebih banyak tanaman, isi lebih ringan, upgrade filtrasi — atau buat rutinnya sendiri lebih diandalkan berada di atas posisinya sekarang. Keduanya berhasil. Menebak mana yang dibutuhkan, tanpa tahu ambangnya, biasanya tidak."
+            ],
+            "pullQuote": "Ambangnya bukan target untuk dicapai. Ini garis yang memberi tahu kapan minggu sibuk biasa berhenti cukup — dan kapan itu sejujurnya masih tidak ada yang perlu dikhawatirkan.",
+            "prevBtn": "← Kembali"
+        }
     ],
-    "metaModules": "4 modul",
-    "metaTime": "~7 menit",
-    "metaLevel": "Praktis",
-    "cta": "Mulai membaca"
-  },
-  "modules": [
-    {
-      "id": "mod-1",
-      "tag": "Apa sebenarnya ambang itu",
-      "titleHtml": "Setiap tank punya ambang.<br><em>Sedikit pemelihara yang menamainya.</em>",
-      "body": [
-        "Perawatan minimum yang layak adalah ambang jujur dan spesifik dari apa yang benar-benar dibutuhkan tank tertentu untuk tetap sehat secara ekologis. Bukan rutin ideal yang diaspirasikan pemelihara. Garis di mana keadaan sungguhan mulai memburuk.",
-        "Kebanyakan pemelihara bisa menjelaskan minggu ideal mereka secara detail — hari ganti air, jumlah pemberian makan, jadwal cek filter. Nyaris tidak ada yang bisa bilang, dengan keyakinan yang sama, seberapa jauh di bawah ideal itu tanknya bisa turun sebelum benar-benar berarti. Pertanyaan itu cuma muncul kalau minggu sibuk memaksanya.",
-        "Mengetahui ambangnya bukan soal menurunkan standar. Ini soal tahu di mana margin sebenarnya berada, supaya minggu yang tidak konsisten bisa dibaca secara akurat, bukan ditebak-tebak dengan panik yang tidak perlu atau percaya diri yang keliru."
-      ],
-      "hintLabel": "Ambangnya bukan target",
-      "hintText": [
-        "Perawatan minimum yang layak menjelaskan titik di mana keadaan mulai memburuk, bukan level yang layak dituju dengan sengaja. Mengetahui di mana posisinya melindungi dari melewatinya tanpa sadar — bukan izin untuk tinggal di situ."
-      ],
-      "prevBtn": "← Intro",
-      "nextBtn": "Kenapa beda tiap tank"
-    },
-    {
-      "id": "mod-2",
-      "tag": "Kenapa beda tiap tank",
-      "titleHtml": "Dua tank, dua ambang<br><em>yang sama sekali berbeda.</em>",
-      "body": [
-        "Ambang tank bergantung pada beberapa variabel yang menumpuk bersamaan. Seberapa padat isinya. Seberapa banyak massa tanaman yang menarik nitrogen dari air. Seberapa besar kapasitas filtrasi yang berjalan, dan seberapa besar volume air dibanding bioload di dalamnya.",
-        "Dua tank yang menjalankan interval ganti air delapan belas hari yang sama bisa berada dalam situasi yang sama sekali berbeda. Tank berisi ringan dan banyak tanaman punya margin nyata terbangun sejak awal. Tanamannya sudah mengerjakan sebagian tugas siklus nitrogen, jadi ambangnya jauh lebih rendah. Tank berisi padat dengan tanaman minimal nyaris tidak punya ruang, dan delapan belas hari yang sama bisa sudah melewati ambangnya.",
-        "Inilah kenapa nasihat generik seperti \"ganti 25% tiap minggu\" bisa aman dan konservatif buat satu tank tapi diam-diam tidak cukup buat tank lain. Angkanya bukan yang penting. Ambang tank itu sendiri yang penting."
-      ],
-      "pullQuote": "Dua tank bisa berbagi rutin yang sama dan tetap jauh berbeda jaraknya dari masalah. Rutin memberi tahu apa yang sedang terjadi. Ambang memberi tahu apa artinya.",
-      "prevBtn": "← Kembali",
-      "nextBtn": "Menemukan ambang Anda sendiri"
-    },
-    {
-      "id": "mod-3",
-      "tag": "Menemukan ambang Anda sendiri",
-      "titleHtml": "Anda tidak perlu menebak.<br><em>Datanya sudah ada.</em>",
-      "body": [
-        "Menemukan ambang tidak perlu sengaja mengabaikan tank untuk melihat apa yang rusak. Kebanyakan pemelihara sudah punya bukti yang dibutuhkan, tersimpan di catatan tes air mereka sendiri, kalau pernah menyimpannya. Ada di minggu-minggu biasa yang sedikit terlambat atau sedikit kurang pemberian makannya.",
-        "Melihat kembali minggu-minggu itu secara jujur adalah latihan yang berguna. Ganti air yang tertunda mana yang benar-benar mendorong nitrat naik terlihat? Yang mana yang sama sekali tidak membuat perbedaan terlihat? Pola itu, dibaca sepanjang beberapa bulan, memberi jawaban kasar dan nyata yang spesifik buat tank ini, bukan angka yang dipinjam dari nasihat umum.",
-        "Buat tank yang lebih baru tanpa banyak riwayat, tes sedikit lebih sering di beberapa bulan pertama melayani tujuan yang sama. Ini kurang soal menangkap masalah lebih awal dan lebih soal belajar, dengan sengaja, apa yang sebenarnya bisa diserap setup spesifik ini."
-      ],
-      "hintLabel": "Ini bukan undangan untuk bermalas-malasan",
-      "hintText": [
-        "Menemukan ambangnya soal menghilangkan tebak-tebakan dari minggu yang sudah tidak sempurna, bukan menurunkan rutin dengan sengaja. Pemelihara yang tahu ambangnya tetap membidik jauh di atasnya — ia cuma tidak panik, atau overcorrect, kalau satu minggu mendarat lebih dekat ke ambang dibanding rencananya."
-      ],
-      "prevBtn": "← Kembali",
-      "nextBtn": "Memakai ambangnya"
-    },
-    {
-      "id": "mod-4",
-      "tag": "Memakai ambangnya",
-      "titleHtml": "Mengetahuinya menghentikan Anda<br><em>bereaksi berlebihan pada bising normal.</em>",
-      "body": [
-        "Begitu ambangnya kira-kira diketahui, minggu yang tidak konsisten jadi sesuatu yang benar-benar bisa Anda baca, bukan sesuatu yang bikin cemas. Minggu yang mendarat nyaman di atas ambang adalah variasi normal, bukan tanda peringatan, dan tidak perlu respons dramatis.",
-        "Minggu yang mendarat di atau di bawah ambang adalah sinyal sungguhan yang layak ditindaklanjuti. Itulah momen untuk tes parameter, mengejar ketinggalan dengan benar, atau melihat apakah rutinnya sudah bergeser seperti yang dijelaskan <a href=\"/id/articles/capacity-creep\" style=\"color:var(--th-accent);text-decoration:none\">capacity creep</a>.",
-        "Ada dua cara jujur untuk melebarkan jarak antara rutin dan ambang. Naikkan margin ambangnya — lebih banyak tanaman, isi lebih ringan, upgrade filtrasi — atau buat rutinnya sendiri lebih diandalkan berada di atas posisinya sekarang. Keduanya berhasil. Menebak mana yang dibutuhkan, tanpa tahu ambangnya, biasanya tidak."
-      ],
-      "pullQuote": "Ambangnya bukan target untuk dicapai. Ini garis yang memberi tahu kapan minggu sibuk biasa berhenti cukup — dan kapan itu sejujurnya masih tidak ada yang perlu dikhawatirkan.",
-      "prevBtn": "← Kembali"
+    "relatedLinks": [
+        {
+            "text": "Capacity Creep →"
+        },
+        {
+            "text": "Tukar Air yang Terlepas →"
+        },
+        {
+            "text": "Kerangka ARA →"
+        },
+        {
+            "text": "Tanya Rhyssa →"
+        }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
     }
-  ],
-  "relatedLinks": [
-    { "text": "Capacity Creep →" },
-    { "text": "Tukar Air yang Terlepas →" },
-    { "text": "Kerangka ARA →" },
-    { "text": "Tanya Rhyssa →" }
-  ],
-  "footer": {
-    "allArticles": "← Semua artikel",
-    "araLink": "Aquatic Rhythm Alignment"
-  }
 }

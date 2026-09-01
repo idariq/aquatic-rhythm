@@ -187,7 +187,18 @@ const HERO_IMAGE_SLUGS = {
   'ich-vs-velvet': 'hero-1200w.webp',
   'dropsy-when-treatment-isnt-working': 'hero-1200w.webp',
   'the-fish-that-sell-the-tank': 'hero-1200w.webp',
-  'the-honest-cost-of-going-high-tech': 'hero-1200w.webp'
+  'the-honest-cost-of-going-high-tech': 'hero-1200w.webp',
+  'aquarium-maintenance-routine': 'hero-1200w.webp',
+  'capacity-creep': 'hero-1200w.webp',
+  'life-change-protocols': 'hero-1200w.webp',
+  'aquarium-travel-vacation': 'hero-1200w.webp',
+  'tank-crash-recovery': 'hero-1200w.webp',
+  'missed-water-change': 'hero-1200w.webp',
+  'is-your-setup-too-demanding': 'hero-1200w.webp',
+  'missed-fertiliser-dosing': 'hero-1200w.webp',
+  'minimum-viable-care': 'hero-1200w.webp',
+  'topping-off-vs-water-change': 'hero-1200w.webp',
+  'light-schedule-drift': 'hero-1200w.webp'
 };
 
 function buildJsonLd(t, lang, slug, dates) {

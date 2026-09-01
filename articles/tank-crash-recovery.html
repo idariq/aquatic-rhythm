@@ -30,7 +30,7 @@
 <meta name="twitter:title" content="When the Tank Crashes — Aquatic Rhythm">
 <meta name="twitter:description" content="A tank crash is more than a technical emergency. It is the tank communicating, loudly, something it has been saying quietly for some time.">
 <meta name="twitter:image" content="https://aquaticrhythm.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"When the Tank Crashes","description":"A tank crash is more than a technical emergency. It is the tank communicating, loudly, something it has been saying quietly for some time.","url":"https://aquaticrhythm.com/articles/tank-crash-recovery","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com"},"image":"https://aquaticrhythm.com/og-image.png","datePublished":"2026-05-22","dateModified":"2026-05-25"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"When the Tank Crashes","description":"A tank crash is more than a technical emergency. It is the tank communicating, loudly, something it has been saying quietly for some time.","url":"https://aquaticrhythm.com/articles/tank-crash-recovery","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com"},"image":"https://aquaticrhythm.com/img/articles/tank-crash-recovery/hero-1200w.webp","datePublished":"2026-05-22","dateModified":"2026-05-25"}</script>
 <script>if(localStorage.getItem('ar_analytics_opt')==='1'){window['ga-disable-G-8MDN065WNW']=true}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8MDN065WNW"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8MDN065WNW');</script>
@@ -111,7 +111,9 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}
 .art-footer a:hover{color:var(--th-accent)}
 
-.art-intro{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
+.art-intro{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
+.art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
+.art-intro .art-hero-figure{margin-bottom:0}
 /* mobile art-intro height override (fix-art-intro-mobile-height.mjs) */
 @media(max-width:720px){.art-intro{min-height:auto;align-items:flex-start;padding-top:calc(68px + 1.75rem)}}
 .art-intro.hidden{display:none}
@@ -185,6 +187,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <main>
 
 <div class="art-intro">
+  <div class="art-intro-stack">
+    <figure class="art-hero-figure">
+      <picture>
+        <source srcset="/img/articles/tank-crash-recovery/hero-720w.webp 720w, /img/articles/tank-crash-recovery/hero-1200w.webp 1200w" sizes="(max-width:900px) 100vw, 900px" type="image/webp">
+        <img class="art-img" src="/img/articles/tank-crash-recovery/hero-1200w.webp" alt="A cloudy aquarium with fish gasping near the surface and water test vials on the side." width="1200" height="670" fetchpriority="high">
+      </picture>
+    </figure>
+  </div>
   <div class="art-intro-inner">
     <span class="art-eyebrow">All levels</span>
     <h1 class="art-main-title">When the Tank<br><em>Crashes</em></h1>

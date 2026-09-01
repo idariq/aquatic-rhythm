@@ -12,6 +12,7 @@
         "ogDescription": "Tangki jarang gagal sekaligus. Kenali pola pergeseran perawatan yang diam-diam terjadi, dan dua cara jujur untuk mengatasinya."
     },
     "intro": {
+        "heroAlt": "Tangki ikan di atas meja yang berantakan dengan buku, cangkir, kunci, dan sepatu, menunjukkan rutinitas perawatan yang terabaikan.",
         "eyebrow": "Refleksi",
         "titleHtml": "Erosi<br><em>Kapasitas</em>",
         "subtitle": "Tangki jarang gagal sekaligus. Biasanya, ritme perawatannya yang perlahan bergeser.",
@@ -89,10 +90,18 @@
         }
     ],
     "relatedLinks": [
-        { "text": "Kenali Ritme Anda →" },
-        { "text": "Protokol Perubahan Hidup →" },
-        { "text": "Merawat Tanpa Rasa Bersalah →" },
-        { "text": "Kerangka ARA →" }
+        {
+            "text": "Kenali Ritme Anda →"
+        },
+        {
+            "text": "Protokol Perubahan Hidup →"
+        },
+        {
+            "text": "Merawat Tanpa Rasa Bersalah →"
+        },
+        {
+            "text": "Kerangka ARA →"
+        }
     ],
     "footer": {
         "allArticles": "← Semua artikel",

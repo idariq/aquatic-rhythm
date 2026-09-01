@@ -12,6 +12,7 @@
         "ogDescription": "水槽は、たいてい一度に壊れません。静かに進むケアのずれのパターンと、それに正直に向き合う二つの方法です。"
     },
     "intro": {
+        "heroAlt": "本やマグカップ、鍵、靴が散らかったテーブルの上に置かれた水槽で、手入れが行き届いていない様子が伝わってきます。",
         "eyebrow": "振り返り",
         "titleHtml": "Capacity Creep<br><em>（ケアの静かな低下）</em>",
         "subtitle": "水槽は、たいてい一度に壊れません。たいていは、リズムが静かにずれていくだけです。",
@@ -89,10 +90,18 @@
         }
     ],
     "relatedLinks": [
-        { "text": "リズムを知る →" },
-        { "text": "Life Change Protocols →" },
-        { "text": "罪悪感なく世話をする →" },
-        { "text": "ARAフレームワーク →" }
+        {
+            "text": "リズムを知る →"
+        },
+        {
+            "text": "Life Change Protocols →"
+        },
+        {
+            "text": "罪悪感なく世話をする →"
+        },
+        {
+            "text": "ARAフレームワーク →"
+        }
     ],
     "footer": {
         "allArticles": "← 記事一覧",

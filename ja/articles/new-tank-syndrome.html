@@ -30,7 +30,7 @@
 <meta name="twitter:title" content="New Tank Syndrome — What's Actually Happening and Why Waiting Is the Right Answer">
 <meta name="twitter:description" content="A guided introduction to the nitrogen cycle — with visuals and a live simulator.">
 <meta name="twitter:image" content="https://aquaticrhythm.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"ニュータンクシンドローム","description":"ニュータンクシンドロームはあなたのせいじゃない。新しい水槽のほぼすべてが通る段階です。窒素サイクルの全体像と、なぜ「待つこと」が正解なのかをわかりやすく解説します。","url":"https://aquaticrhythm.com/ja/articles/new-tank-syndrome","inLanguage":"ja","image":"https://aquaticrhythm.com/og/articles/new-tank-syndrome-ja.png","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com"},"datePublished":"2026-05-22","dateModified":"2026-05-25"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"ニュータンクシンドローム","description":"ニュータンクシンドロームはあなたのせいじゃない。新しい水槽のほぼすべてが通る段階です。窒素サイクルの全体像と、なぜ「待つこと」が正解なのかをわかりやすく解説します。","url":"https://aquaticrhythm.com/ja/articles/new-tank-syndrome","inLanguage":"ja","image":"https://aquaticrhythm.com/img/articles/new-tank-syndrome/hero-1200w.webp","author":{"@type":"Organization","name":"Aquatic Rhythm"},"publisher":{"@type":"Organization","name":"Aquatic Rhythm","url":"https://aquaticrhythm.com"},"datePublished":"2026-05-22","dateModified":"2026-05-25"}</script>
 <script>if(localStorage.getItem('ar_analytics_opt')==='1'){window['ga-disable-G-8MDN065WNW']=true}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8MDN065WNW"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8MDN065WNW');</script>
@@ -171,11 +171,13 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
 
 /* ARTICLE INTRO */
 .art-intro{
-  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
   padding:8rem clamp(1.5rem,5vw,3rem) 5rem;
   position:relative;
   transition:opacity .4s ease;
 }
+.art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
+.art-intro .art-hero-figure{margin-bottom:0}
 /* mobile art-intro height override (fix-art-intro-mobile-height.mjs) */
 @media(max-width:720px){.art-intro{min-height:auto;align-items:flex-start;padding-top:calc(68px + 1.75rem)}}
 .art-intro.hidden{display:none}
@@ -313,6 +315,14 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
 
 <!-- ARTICLE INTRO -->
 <div class="art-intro">
+  <div class="art-intro-stack">
+    <figure class="art-hero-figure">
+      <picture>
+        <source srcset="/img/articles/new-tank-syndrome/hero-720w.webp 720w, /img/articles/new-tank-syndrome/hero-1200w.webp 1200w" sizes="(max-width:900px) 100vw, 900px" type="image/webp">
+        <img class="art-img" src="/img/articles/new-tank-syndrome/hero-1200w.webp" alt="水がわずかに濁った、セットアップしたばかりの水槽と小さな魚の群れ。新しい水槽の立ち上げ期によく見られる状態です。" width="1200" height="670" fetchpriority="high">
+      </picture>
+    </figure>
+  </div>
   <div class="art-intro-inner">
     <span class="art-eyebrow">読む · ニュータンクシンドローム</span>
     <h1 class="art-main-title">ニュータンクシンドローム</h1>

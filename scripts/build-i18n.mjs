@@ -150,8 +150,30 @@ function buildHreflangTags(slug, currentLang) {
   return lines.join('\n');
 }
 
+// Articles whose JSON-LD 'image' should point to their real in-content hero
+// photo (.art-hero-figure) instead of the generated OG card — e.g.
+// new-tank-syndrome, so Google's Article rich-result image is the actual
+// tank photo rather than the text-only social-share card.
+const HERO_IMAGE_SLUGS = {
+  'new-tank-syndrome': 'hero-1200w.webp',
+  'cycled-tank-problems': 'hero-1200w.webp',
+  'why-is-my-aquarium-water-cloudy': 'hero-1200w.webp',
+  'how-often-water-changes': 'hero-1200w.webp',
+  'fish-hiding-what-does-it-mean': 'hero-1200w.webp',
+  'fish-keep-dying-new-tank': 'hero-1200w.webp',
+  'algae-in-aquarium': 'hero-1200w.webp',
+  'perfect-parameters-fish-dying': 'hero-1200w.webp',
+  'betta-fish-behaviour': 'hero-1200w.webp',
+  'aquarium-plants-not-growing': 'hero-1200w.webp',
+  'shrimp-dying-aquarium': 'hero-1200w.webp',
+  'low-tech-planted-tank': 'hero-1200w.webp',
+  'community-fish-tank': 'hero-1200w.webp',
+  'when-is-tank-ready-for-fish': 'hero-1200w.webp'
+};
+
 function buildJsonLd(t, lang, slug, dates) {
   const headline = t.intro.titleHtml.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  const heroFile = HERO_IMAGE_SLUGS[slug];
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -159,7 +181,9 @@ function buildJsonLd(t, lang, slug, dates) {
     'description': t.head.description,
     'url': `${BASE_URL}/${lang}/articles/${slug}`,
     'inLanguage': lang,
-    'image': `${BASE_URL}/og/articles/${slug}-${lang}.png`,
+    'image': heroFile
+      ? `${BASE_URL}/img/articles/${slug}/${heroFile}`
+      : `${BASE_URL}/og/articles/${slug}-${lang}.png`,
     'author': { '@type': 'Organization', 'name': 'Aquatic Rhythm' },
     'publisher': { '@type': 'Organization', 'name': 'Aquatic Rhythm', 'url': BASE_URL }
   };
@@ -351,6 +375,13 @@ function buildArticle(slug, lang, t) {
 
   // ── 7. Intro section ─────────────────────────────────────────────────────
   const intro = t.intro;
+
+  // Optional hero image alt text (only present on articles with an
+  // .art-hero-figure intro image, e.g. new-tank-syndrome) — no-op elsewhere.
+  if (intro.heroAlt) {
+    h = replaceOnce(h, /(<figure class="art-hero-figure">[\s\S]*?<img[^>]*\balt=")[^"]*(")/,
+      (_, a, b) => `${a}${intro.heroAlt}${b}`);
+  }
 
   h = replaceOnce(h, /(<span class="art-eyebrow">)[^<]*(<\/span>)/,
     (_, a, b) => `${a}${intro.eyebrow}${b}`);

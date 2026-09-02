@@ -323,6 +323,18 @@
     }, RD_PAGE_FADE_MS);
   }
 
+  var RD_NAV_HEIGHT = 68;
+
+  /* After a swipe commits to a new page, scroll so the category's first
+     card sits just under the fixed nav — a swipe is often made partway
+     down a long card list, and landing on the new page's first card
+     (rather than wherever the old scroll position happens to now show)
+     means the keeper never has to scroll back up to see it from the top. */
+  function scrollReadingWrapToTop(wrap) {
+    var top = wrap.getBoundingClientRect().top + window.pageYOffset - RD_NAV_HEIGHT - 16;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+  }
+
   /* Touch swipe for paginated categories — the cards track the finger 1:1
      during the drag (translateX, no transition) instead of only reacting
      once the finger lifts, with rubber-band resistance past the first/last
@@ -387,6 +399,7 @@
         wrap.style.transition = 'none';
         wrap.style.transform = 'translateX(' + (-dir * width) + 'px)';
         applyReadingPageDOM(wrap, cur + (goNext ? 1 : -1));
+        scrollReadingWrapToTop(wrap);
         void wrap.offsetWidth; // force reflow so the next transform starts from here
         wrap.style.transition = 'transform ' + RD_SWIPE_MS + 'ms ease';
         wrap.style.transform = 'translateX(0)';

@@ -815,6 +815,7 @@ body.ar-reduce-motion #driftwood-layer{opacity:0!important;transition:opacity .5
 #pg-reading.rd-searching .rd-card--acc.rd-page-hidden:not(.rd-hidden){display:block}
 #pg-reading.rd-searching .rd-page-dots{display:none}
 .rd-cards.rd-acc-wrap{transition:opacity .15s ease}
+.rd-cards.rd-acc-wrap.rd-page-fade{opacity:0}
 .rd-page-dots{display:flex;align-items:center;justify-content:center;gap:.55rem;margin:1.5rem 0 .3rem}
 .rd-page-dot{width:.5rem;height:.5rem;padding:0;border:none;border-radius:50%;background:var(--th-line-2);cursor:pointer;transition:background .2s,transform .2s}
 .rd-page-dot:hover{background:var(--th-accent-border)}

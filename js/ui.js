@@ -262,7 +262,7 @@
       if (catHasVisible) anyVisible = true;
       if (!q) {
         var wrap = cat.querySelector('.rd-cards.rd-acc-wrap');
-        if (wrap && wrap._rdPages) setReadingPage(wrap, 0);
+        if (wrap && wrap._rdPages) setReadingPage(wrap, 0, { animate: false });
       }
     });
     var empty = document.getElementById('rd-search-empty');
@@ -278,19 +278,47 @@
      the query, so results are never trapped on an unseen page; clearing the
      query resets each category back to page 1. */
   var RD_PAGE_SIZE = 8;
+  var RD_PAGE_FADE_MS = 160;
 
-  function setReadingPage(wrap, pageIdx) {
-    wrap._rdCurrentPage = pageIdx;
-    wrap._rdPages.forEach(function (pageCards, i) {
-      pageCards.forEach(function (card) {
-        card.classList.toggle('rd-page-hidden', i !== pageIdx);
+  /* Switches a category to pageIdx. By default (opts.animate !== false, the
+     interactive path — dot click, swipe) this fades the card list out,
+     swaps which cards are rd-page-hidden while invisible, then scrolls by
+     however much the dots row moved (pages have uneven card counts, so
+     switching page changes the wrap's height) so the row the user just
+     touched stays under their finger/cursor instead of the whole page
+     jumping, then fades back in. opts.animate:false (initial paint, and
+     the reset-to-page-1 on search-clear in filterReadingCards above) skips
+     all of that and applies the page instantly. */
+  function setReadingPage(wrap, pageIdx, opts) {
+    var animate = !opts || opts.animate !== false;
+    var dotsEl = wrap._rdDots;
+
+    function applyPage() {
+      var anchorTop = dotsEl ? dotsEl.getBoundingClientRect().top : null;
+      wrap._rdCurrentPage = pageIdx;
+      wrap._rdPages.forEach(function (pageCards, i) {
+        pageCards.forEach(function (card) {
+          card.classList.toggle('rd-page-hidden', i !== pageIdx);
+        });
       });
-    });
-    if (wrap._rdDots) {
-      Array.prototype.forEach.call(wrap._rdDots.children, function (dot, i) {
-        dot.classList.toggle('active', i === pageIdx);
-      });
+      if (dotsEl) {
+        Array.prototype.forEach.call(dotsEl.children, function (dot, i) {
+          dot.classList.toggle('active', i === pageIdx);
+        });
+        if (anchorTop !== null) {
+          var delta = dotsEl.getBoundingClientRect().top - anchorTop;
+          if (delta) window.scrollBy(0, delta);
+        }
+      }
     }
+
+    if (!animate) { applyPage(); return; }
+
+    wrap.classList.add('rd-page-fade');
+    setTimeout(function () {
+      applyPage();
+      requestAnimationFrame(function () { wrap.classList.remove('rd-page-fade'); });
+    }, RD_PAGE_FADE_MS);
   }
 
   function paginateReadingCards() {
@@ -303,10 +331,20 @@
       var cards = Array.prototype.slice.call(wrap.querySelectorAll('.rd-card--acc'));
       if (cards.length <= RD_PAGE_SIZE) return;
 
+      // Even-sized pages (remainder spread across the first few) instead of
+      // fixed RD_PAGE_SIZE chunks — a flat chunk size leaves a lonely
+      // 1-card last page for e.g. 33 cards (8,8,8,8,1), which made the
+      // height swing (and the resulting jump before the fix above) far
+      // worse than switching between two ~7-card pages.
       var totalPages = Math.ceil(cards.length / RD_PAGE_SIZE);
+      var baseSize = Math.floor(cards.length / totalPages);
+      var remainder = cards.length % totalPages;
       wrap._rdPages = [];
+      var idx = 0;
       for (var p = 0; p < totalPages; p++) {
-        wrap._rdPages.push(cards.slice(p * RD_PAGE_SIZE, (p + 1) * RD_PAGE_SIZE));
+        var size = baseSize + (p < remainder ? 1 : 0);
+        wrap._rdPages.push(cards.slice(idx, idx + size));
+        idx += size;
       }
 
       var dots = document.createElement('div');
@@ -325,7 +363,7 @@
       }
       wrap.parentNode.insertBefore(dots, wrap.nextSibling);
       wrap._rdDots = dots;
-      setReadingPage(wrap, 0);
+      setReadingPage(wrap, 0, { animate: false });
 
       var touchStartX = null;
       wrap.addEventListener('touchstart', function (e) {

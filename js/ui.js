@@ -279,46 +279,120 @@
      query resets each category back to page 1. */
   var RD_PAGE_SIZE = 8;
   var RD_PAGE_FADE_MS = 160;
+  var RD_SWIPE_MS = 220;
 
-  /* Switches a category to pageIdx. By default (opts.animate !== false, the
-     interactive path — dot click, swipe) this fades the card list out,
-     swaps which cards are rd-page-hidden while invisible, then scrolls by
-     however much the dots row moved (pages have uneven card counts, so
-     switching page changes the wrap's height) so the row the user just
+  /* Core page swap, shared by the dot-click fade path (setReadingPage
+     below) and the swipe-drag path (initReadingSwipe below): toggles which
+     cards are rd-page-hidden, updates the active dot, and — since pages
+     have uneven card counts, so switching page changes the wrap's height —
+     scrolls by however much the dots row just moved, so the row the user
      touched stays under their finger/cursor instead of the whole page
-     jumping, then fades back in. opts.animate:false (initial paint, and
-     the reset-to-page-1 on search-clear in filterReadingCards above) skips
-     all of that and applies the page instantly. */
-  function setReadingPage(wrap, pageIdx, opts) {
-    var animate = !opts || opts.animate !== false;
+     jumping. Both callers apply this while the wrap is not visibly
+     changing (fully faded out, or fully slid off-screen), so the
+     compensating scroll is never itself seen happening. */
+  function applyReadingPageDOM(wrap, pageIdx) {
     var dotsEl = wrap._rdDots;
-
-    function applyPage() {
-      var anchorTop = dotsEl ? dotsEl.getBoundingClientRect().top : null;
-      wrap._rdCurrentPage = pageIdx;
-      wrap._rdPages.forEach(function (pageCards, i) {
-        pageCards.forEach(function (card) {
-          card.classList.toggle('rd-page-hidden', i !== pageIdx);
-        });
+    var anchorTop = dotsEl ? dotsEl.getBoundingClientRect().top : null;
+    wrap._rdCurrentPage = pageIdx;
+    wrap._rdPages.forEach(function (pageCards, i) {
+      pageCards.forEach(function (card) {
+        card.classList.toggle('rd-page-hidden', i !== pageIdx);
       });
-      if (dotsEl) {
-        Array.prototype.forEach.call(dotsEl.children, function (dot, i) {
-          dot.classList.toggle('active', i === pageIdx);
-        });
-        if (anchorTop !== null) {
-          var delta = dotsEl.getBoundingClientRect().top - anchorTop;
-          if (delta) window.scrollBy(0, delta);
-        }
+    });
+    if (dotsEl) {
+      Array.prototype.forEach.call(dotsEl.children, function (dot, i) {
+        dot.classList.toggle('active', i === pageIdx);
+      });
+      if (anchorTop !== null) {
+        var delta = dotsEl.getBoundingClientRect().top - anchorTop;
+        if (delta) window.scrollBy(0, delta);
       }
     }
+  }
 
-    if (!animate) { applyPage(); return; }
-
+  /* Switches a category to pageIdx via a cross-fade (dot click, and the
+     non-interactive paths below — initial paint, search-clear reset —
+     which pass { animate:false } to skip the fade and apply instantly). */
+  function setReadingPage(wrap, pageIdx, opts) {
+    var animate = !opts || opts.animate !== false;
+    if (!animate) { applyReadingPageDOM(wrap, pageIdx); return; }
     wrap.classList.add('rd-page-fade');
     setTimeout(function () {
-      applyPage();
+      applyReadingPageDOM(wrap, pageIdx);
       requestAnimationFrame(function () { wrap.classList.remove('rd-page-fade'); });
     }, RD_PAGE_FADE_MS);
+  }
+
+  /* Touch swipe for paginated categories — the cards track the finger 1:1
+     during the drag (translateX, no transition) instead of only reacting
+     once the finger lifts, with rubber-band resistance past the first/last
+     page. On release: past the distance threshold, the current page slides
+     fully off in the swipe direction, the page swap (applyReadingPageDOM)
+     happens while it's off-screen — positioned at the opposite edge first
+     — then it slides in to rest; short of the threshold, it just springs
+     back to place with nothing swapped. A vertical-scroll intent (the
+     touch's dy exceeds its dx early on) releases the gesture back to the
+     page instead of claiming it, so swiping to scroll past a category
+     still works normally. */
+  function initReadingSwipe(wrap, root) {
+    var startX = null, startY = null, dragX = 0, decided = null, width = 0;
+
+    wrap.addEventListener('touchstart', function (e) {
+      if (root.classList.contains('rd-searching')) return;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      dragX = 0;
+      decided = null;
+      width = wrap.getBoundingClientRect().width;
+      wrap.style.transition = 'none';
+    }, { passive: true });
+
+    wrap.addEventListener('touchmove', function (e) {
+      if (startX === null) return;
+      var curDx = e.touches[0].clientX - startX;
+      var curDy = e.touches[0].clientY - startY;
+      if (decided === null) {
+        if (Math.abs(curDx) < 8 && Math.abs(curDy) < 8) return;
+        decided = Math.abs(curDx) > Math.abs(curDy);
+        if (!decided) { startX = null; return; }
+      }
+      e.preventDefault();
+      dragX = curDx;
+      var cur = wrap._rdCurrentPage;
+      var atStart = cur === 0 && dragX > 0;
+      var atEnd = cur === wrap._rdPages.length - 1 && dragX < 0;
+      wrap.style.transform = 'translateX(' + (atStart || atEnd ? dragX * .3 : dragX) + 'px)';
+    }, { passive: false });
+
+    wrap.addEventListener('touchend', function () {
+      if (startX === null) return;
+      startX = null;
+      if (!decided) return;
+
+      var cur = wrap._rdCurrentPage;
+      var threshold = Math.max(44, width * .18);
+      var goNext = dragX < -threshold && cur < wrap._rdPages.length - 1;
+      var goPrev = dragX > threshold && cur > 0;
+
+      wrap.style.transition = 'transform ' + RD_SWIPE_MS + 'ms ease';
+      if (!goNext && !goPrev) {
+        wrap.style.transform = 'translateX(0)';
+        setTimeout(function () { wrap.style.transition = ''; wrap.style.transform = ''; }, RD_SWIPE_MS + 20);
+        return;
+      }
+
+      var dir = goNext ? -1 : 1;
+      wrap.style.transform = 'translateX(' + (dir * width) + 'px)';
+      setTimeout(function () {
+        wrap.style.transition = 'none';
+        wrap.style.transform = 'translateX(' + (-dir * width) + 'px)';
+        applyReadingPageDOM(wrap, cur + (goNext ? 1 : -1));
+        void wrap.offsetWidth; // force reflow so the next transform starts from here
+        wrap.style.transition = 'transform ' + RD_SWIPE_MS + 'ms ease';
+        wrap.style.transform = 'translateX(0)';
+        setTimeout(function () { wrap.style.transition = ''; wrap.style.transform = ''; }, RD_SWIPE_MS + 20);
+      }, RD_SWIPE_MS);
+    });
   }
 
   function paginateReadingCards() {
@@ -365,20 +439,7 @@
       wrap._rdDots = dots;
       setReadingPage(wrap, 0, { animate: false });
 
-      var touchStartX = null;
-      wrap.addEventListener('touchstart', function (e) {
-        if (root.classList.contains('rd-searching')) return;
-        touchStartX = e.touches[0].clientX;
-      }, { passive: true });
-      wrap.addEventListener('touchend', function (e) {
-        if (touchStartX === null || root.classList.contains('rd-searching')) return;
-        var dx = e.changedTouches[0].clientX - touchStartX;
-        touchStartX = null;
-        if (Math.abs(dx) < 40) return;
-        var cur = wrap._rdCurrentPage;
-        if (dx < 0 && cur < wrap._rdPages.length - 1) setReadingPage(wrap, cur + 1);
-        else if (dx > 0 && cur > 0) setReadingPage(wrap, cur - 1);
-      }, { passive: true });
+      initReadingSwipe(wrap, root);
     });
   }
 

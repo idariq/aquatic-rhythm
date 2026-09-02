@@ -806,6 +806,20 @@ body.ar-reduce-motion #driftwood-layer{opacity:0!important;transition:opacity .5
 .rd-cat.rd-cat--empty{display:none}
 .rd-search-empty{font-size:var(--fs-base);font-style:italic;color:var(--th-ink-4);padding:.5rem 0 1rem}
 
+/* ── READING PAGE — per-category pagination (dots, groups of RD_PAGE_SIZE
+   cards) for long categories, js/ui.js's paginateReadingCards(). Search
+   overrides pagination entirely: #pg-reading.rd-searching reveals every
+   card still matching the query regardless of which page it sits on, and
+   hides the dots for that duration. ── */
+.rd-card--acc.rd-page-hidden{display:none}
+#pg-reading.rd-searching .rd-card--acc.rd-page-hidden:not(.rd-hidden){display:block}
+#pg-reading.rd-searching .rd-page-dots{display:none}
+.rd-cards.rd-acc-wrap{transition:opacity .15s ease}
+.rd-page-dots{display:flex;align-items:center;justify-content:center;gap:.55rem;margin:1.5rem 0 .3rem}
+.rd-page-dot{width:.5rem;height:.5rem;padding:0;border:none;border-radius:50%;background:var(--th-line-2);cursor:pointer;transition:background .2s,transform .2s}
+.rd-page-dot:hover{background:var(--th-accent-border)}
+.rd-page-dot.active{background:var(--th-accent);transform:scale(1.35)}
+
 /* ── ARA PAGE: learning module shell ── */
 #pg-ara .ara-mod-chapter[id]{scroll-margin-top:clamp(5.5rem,12vh,7.25rem)}
 .araph--mod{padding:clamp(6.5rem,14vh,9rem) clamp(1.5rem,5vw,4.5rem) clamp(2.25rem,5vh,3rem);display:block}

@@ -249,6 +249,7 @@
     var root = document.getElementById('pg-reading');
     if (!root) return;
     var q = (query || '').trim().toLowerCase();
+    root.classList.toggle('rd-searching', !!q);
     var anyVisible = false;
     root.querySelectorAll('.rd-cat').forEach(function (cat) {
       var catHasVisible = false;
@@ -259,9 +260,88 @@
       });
       cat.classList.toggle('rd-cat--empty', !catHasVisible);
       if (catHasVisible) anyVisible = true;
+      if (!q) {
+        var wrap = cat.querySelector('.rd-cards.rd-acc-wrap');
+        if (wrap && wrap._rdPages) setReadingPage(wrap, 0);
+      }
     });
     var empty = document.getElementById('rd-search-empty');
     if (empty) empty.hidden = !q || anyVisible;
+  }
+
+  /* Pagination for long /reading categories — groups cards into pages of
+     RD_PAGE_SIZE with dot navigation (click a dot, or swipe on touch)
+     instead of one long scroll. Categories with RD_PAGE_SIZE cards or fewer
+     are left untouched (no dots). Search (filterReadingCards above)
+     disables pagination for its duration via the .rd-searching class on
+     #pg-reading — CSS reveals every rd-page-hidden card that still matches
+     the query, so results are never trapped on an unseen page; clearing the
+     query resets each category back to page 1. */
+  var RD_PAGE_SIZE = 8;
+
+  function setReadingPage(wrap, pageIdx) {
+    wrap._rdCurrentPage = pageIdx;
+    wrap._rdPages.forEach(function (pageCards, i) {
+      pageCards.forEach(function (card) {
+        card.classList.toggle('rd-page-hidden', i !== pageIdx);
+      });
+    });
+    if (wrap._rdDots) {
+      Array.prototype.forEach.call(wrap._rdDots.children, function (dot, i) {
+        dot.classList.toggle('active', i === pageIdx);
+      });
+    }
+  }
+
+  function paginateReadingCards() {
+    var root = document.getElementById('pg-reading');
+    if (!root) return;
+    root.querySelectorAll('.rd-cat').forEach(function (cat) {
+      var wrap = cat.querySelector('.rd-cards.rd-acc-wrap');
+      if (!wrap || wrap.dataset.rdPaginated) return;
+      wrap.dataset.rdPaginated = '1';
+      var cards = Array.prototype.slice.call(wrap.querySelectorAll('.rd-card--acc'));
+      if (cards.length <= RD_PAGE_SIZE) return;
+
+      var totalPages = Math.ceil(cards.length / RD_PAGE_SIZE);
+      wrap._rdPages = [];
+      for (var p = 0; p < totalPages; p++) {
+        wrap._rdPages.push(cards.slice(p * RD_PAGE_SIZE, (p + 1) * RD_PAGE_SIZE));
+      }
+
+      var dots = document.createElement('div');
+      dots.className = 'rd-page-dots';
+      dots.setAttribute('role', 'tablist');
+      dots.setAttribute('aria-label', 'Pages');
+      for (var i = 0; i < totalPages; i++) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'rd-page-dot';
+        dot.setAttribute('aria-label', 'Page ' + (i + 1) + ' of ' + totalPages);
+        dot.addEventListener('click', (function (idx) {
+          return function () { setReadingPage(wrap, idx); };
+        })(i));
+        dots.appendChild(dot);
+      }
+      wrap.parentNode.insertBefore(dots, wrap.nextSibling);
+      wrap._rdDots = dots;
+      setReadingPage(wrap, 0);
+
+      var touchStartX = null;
+      wrap.addEventListener('touchstart', function (e) {
+        if (root.classList.contains('rd-searching')) return;
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+      wrap.addEventListener('touchend', function (e) {
+        if (touchStartX === null || root.classList.contains('rd-searching')) return;
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        touchStartX = null;
+        if (Math.abs(dx) < 40) return;
+        var cur = wrap._rdCurrentPage;
+        if (dx < 0 && cur < wrap._rdPages.length - 1) setReadingPage(wrap, cur + 1);
+        else if (dx > 0 && cur > 0) setReadingPage(wrap, cur - 1);
+      }, { passive: true });
+    });
   }
 
   (function () {
@@ -311,6 +391,7 @@
     else {
       closeAllReadingAccordions();
       initReadingAccordionTitles();
+      paginateReadingCards();
       var rdSearchInput = document.getElementById('rd-search');
       var rdSearchClear = document.getElementById('rd-search-clear');
       if (rdSearchInput) { rdSearchInput.value = ''; filterReadingCards(''); }
@@ -512,6 +593,7 @@
   });
 
   initReadingAccordionTitles();
+  paginateReadingCards();
 
   /* ── READING PROGRESS ── */
   var _rpBar  = document.getElementById('reading-progress');

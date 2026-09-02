@@ -759,7 +759,7 @@ body.ar-reduce-motion #driftwood-layer{opacity:0!important;transition:opacity .5
 }
 
 /* ── READING PAGE CATEGORIES ── */
-.rd-cat{margin-bottom:.5rem}
+.rd-cat{margin-bottom:.5rem;overflow-x:hidden}
 .rd-cat-header{margin-bottom:1.8rem}
 .rd-cat-label{display:inline-block;font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--th-accent);border-bottom:1px solid var(--th-accent-border);padding-bottom:.3rem;margin-bottom:.7rem}
 .rd-cat-desc{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.75;max-width:480px}

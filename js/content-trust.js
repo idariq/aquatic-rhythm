@@ -39,7 +39,7 @@
       body_or: ', or consult a local aquarium specialist. Your tank and your observations always come first.',
       photo_pre: 'If you would like to offer your aquarium photos for editorial consideration in future guides, use ',
       photo_link: 'Share your tank photos',
-      photo_ai: 'AI-generated images may be used in this article for illustrative, educational purposes — not real photographs of an actual aquarium.',
+      photo_ai: 'AI-generated images may be used in this article for illustrative, educational purposes.',
       meta: 'Content by Aquatic Rhythm · ARA framework · aquaticrhythm.com'
     },
     id: {
@@ -51,7 +51,7 @@
       body_or: ', atau konsultasikan dengan spesialis akuarium setempat. Tangki dan pengamatan Anda selalu diutamakan.',
       photo_pre: 'Jika Anda ingin menawarkan foto akuarium Anda untuk dipertimbangkan secara editorial dalam panduan mendatang, gunakan ',
       photo_link: 'Bagikan foto tangki Anda',
-      photo_ai: 'Gambar hasil AI mungkin digunakan dalam artikel ini untuk tujuan ilustrasi dan edukasi — bukan foto akuarium sungguhan.',
+      photo_ai: 'Gambar hasil AI mungkin digunakan dalam artikel ini untuk tujuan ilustrasi dan edukasi.',
       meta: 'Konten oleh Aquatic Rhythm · Kerangka kerja ARA · aquaticrhythm.com'
     },
     ja: {
@@ -63,7 +63,7 @@
       body_or: 'で確認するか、地元の専門家にご相談ください。あなたの水槽とあなたの観察が常に最優先です。',
       photo_pre: '今後のガイドで編集用に水槽の写真を提供したい場合は、',
       photo_link: '水槽の写真を共有する',
-      photo_ai: 'この記事では説明・教育目的でAI生成画像を使用している場合があります。実際の水槽を撮影した写真ではありません。',
+      photo_ai: 'この記事では説明・教育目的でAI生成画像を使用している場合があります。',
       meta: 'コンテンツ提供：Aquatic Rhythm · ARAフレームワーク · aquaticrhythm.com'
     }
   };

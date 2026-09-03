@@ -200,7 +200,7 @@ nav:not(.bnav){position:fixed;z-index:800}
 body:not(.tier-low) .fish-oscar svg,body:not(.tier-low) .fish-geo svg{filter:drop-shadow(0 3px 4px rgba(0,0,0,.22))}
 
 /* ── TEXT PROTECTION ── */
-.ht,.pst,.bt,.hk,.api,.rhd,.apq,.snt,.sco,.stit,.starr,.stco,.home-ara-lead,.home-ara-card h3,.home-ara-card p,.home-strip q,.home-tile h3,.home-tile p,.home-hero-note,.home-ara-pr-list li,.home-ara-rf p,.home-ara-rf span,.home-tile-tag,.home-tile-cta,.rd-card-hit-text,.home-keeper-lead,.home-keeper-body{text-shadow:var(--th-halo-sm)}
+.ht,.pst,.bt,.hk,.api,.rhd,.apq,.snt,.sco,.stit,.starr,.stco,.home-ara-lead,.home-ara-psych-lead,.home-ara-card h3,.home-ara-card p,.home-strip q,.home-tile h3,.home-tile p,.home-hero-note,.home-ara-pr-list li,.home-ara-rf p,.home-ara-rf span,.home-tile-tag,.home-tile-cta,.rd-card-hit-text,.home-keeper-lead,.home-keeper-body{text-shadow:var(--th-halo-sm)}
 .dxl,.dlg,.dmd,.rhtit{text-shadow:var(--th-halo-lg)}
 .pc,.snb,.eg,.scv,.rhr,.qi,.pb{background:var(--panel)}
 
@@ -316,6 +316,8 @@ nav:not(.bnav){position:fixed;top:0;left:0;right:0;z-index:800;height:68px;displ
 .home-ara-head{max-width:36rem;margin-bottom:clamp(2rem,5vw,3rem)}
 .home-ara-head .pst{font-size:clamp(1.45rem,4vw,2.15rem);margin-top:.5rem}
 .home-ara-lead{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.9;margin-top:1.1rem;max-width:36rem}
+.home-ara-psych{margin-top:clamp(2rem,5vw,2.75rem)}
+.home-ara-psych-lead{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.9;max-width:36rem}
 .home-ara-reframe{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--th-line);border-radius:16px;overflow:hidden;margin:clamp(1.75rem,4vw,2.5rem) 0;box-shadow:var(--panel-shadow)}
 .home-ara-rf{padding:clamp(1.35rem,3.5vw,1.85rem) clamp(1.25rem,3vw,1.75rem);background:var(--th-surface-2);backdrop-filter:blur(10px)}
 .home-ara-rf span{display:block;font-size:var(--fs-xs);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.75rem;color:var(--th-ink-4)}

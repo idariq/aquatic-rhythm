@@ -345,6 +345,8 @@ def build_home(h, lang, u):
                       lambda m: m.group(1) + x["principle_rhythm"] + m.group(2), "principle rhythm")
     h = replace_once(h, r'(<li>)<strong>Observation<\/strong>[\s\S]*?(<\/li>)',
                       lambda m: m.group(1) + x["principle_observation"] + m.group(2), "principle observation")
+    h = replace_once(h, r'(<p class="home-ara-psych-lead">)[\s\S]*?(<\/p>)',
+                      lambda m: m.group(1) + x["ara_psych"] + m.group(2), "ara psych lead")
     h = replace_once(h, r'(<a href="/articles/ara-full-framework" class="btn bf">)[^<]*(<\/a>)',
                       lambda m: m.group(1) + x["ara_foot_cta"] + m.group(2), "ara foot cta")
 

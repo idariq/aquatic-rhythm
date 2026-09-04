@@ -1,0 +1,104 @@
+{
+    "_meta": {
+        "slug": "bottled-bacteria",
+        "lang": "id",
+        "sourceFile": "articles/bottled-bacteria.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Apakah Bakteri Botolan Benar-Benar Bisa Mempercepat Siklus Akuarium? — Aquatic Rhythm",
+        "description": "Bakteri botolan menjanjikan siklus instan. Apa sebenarnya isi botol itu, kenapa biologinya tak bisa secepat klaim di label, dan cara memakainya sebagai dorongan sungguhan, bukan jalan pintas.",
+        "ogTitle": "Apakah Bakteri Botolan Benar-Benar Bisa Mempercepat Siklus Akuarium?",
+        "ogDescription": "Ia memang bisa membantu. Ia tidak bisa menggantikan waktu berminggu-minggu yang benar-benar dibutuhkan koloni untuk tumbuh."
+    },
+    "intro": {
+        "eyebrow": "Praktis",
+        "titleHtml": "Apakah Bakteri Botolan<br><em>Benar-Benar Mempercepat Siklus?</em>",
+        "subtitle": "Ia memang bisa membantu. Ia tidak bisa menggantikan waktu berminggu-minggu yang benar-benar dibutuhkan koloni untuk tumbuh.",
+        "texts": [
+            "Akuarium baru masih kosong, dan botol di rak toko menjanjikan siklus instan, membuat air keran aman dalam hitungan menit, dan memungkinkan Anda menambahkan ikan sore itu juga. Membelinya bukan tindakan naif — itu justru yang sedang dicari seorang pemelihara pemula yang gugup, dan itu tertulis jelas di labelnya.",
+            "Panduan ini membahas apa sebenarnya isi botol-botol ini, kenapa bakteri yang jadi tumpuan sebuah siklus tak bisa bergerak secepat klaim pemasarannya, dan cara memakai produk ini sebagai dorongan sungguhan, bukan jalan pintas mengelak waktu tunggu."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~7 menit",
+        "metaLevel": "Praktis",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Refleksnya",
+            "titleHtml": "Labelnya bilang<br><em>instan. Biologinya bilang sebaliknya.</em>",
+            "body": [
+                "Kebanyakan produk bakteri botolan membuat janji yang berani dan spesifik: siklus akuarium Anda secara instan, hilangkan racun berbahaya dalam hitungan detik, aman menambahkan ikan segera. Bagi pemelihara pemula yang menatap akuarium kosong dan menghadapi masa tunggu berminggu-minggu, janji itu sulit dilewatkan — dan mempercayainya bukan hal yang bodoh. Itu tertulis di kemasan sebagai pernyataan pasti, bukan mungkin.",
+                "Apa yang sebenarnya ada di dalam botol-botol ini memang bisa membantu. Yang tercetak soal waktunya biasanya tak bisa menepati janji, karena organisme yang jadi tumpuan sebuah siklus bergerak menurut jam biologis yang tak bisa dipersingkat oleh botol mana pun jadi nol.",
+                "Berikut versi singkatnya sebelum sisa panduan ini: bakteri botolan adalah dorongan yang nyata dan berguna ketika ia bekerja sesuai rencana. Ia memang tidak pernah bisa membuat \"instan\" sama artinya dengan \"aman\"."
+            ],
+            "hintLabel": "Dua jam yang berbeda",
+            "hintText": [
+                "Label menggambarkan menambahkan kultur ke air Anda — bagian itu memang bisa terjadi dalam hitungan detik. Ia tidak bilang apa-apa soal berapa lama kultur itu perlu berkembang biak sampai mencapai jumlah populasi yang sepadan dengan beban limbah akuarium Anda yang sebenarnya. Itu dua garis waktu yang terpisah, dan cuma yang pertama yang instan."
+            ],
+            "prevBtn": "← Intro",
+            "nextBtn": "Apa sebenarnya isi botol itu"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Apa sebenarnya isi botol itu",
+            "titleHtml": "Bakteri yang lambat,<br><em>dijual dengan janji yang cepat.</em>",
+            "body": [
+                "Bakteri yang jadi tumpuan sebuah siklus — yang mengubah amonia jadi nitrit, lalu nitrit jadi nitrat — memang lambat secara alami. Dalam kondisi baik, populasinya kira-kira berlipat ganda tiap 15 sampai 24 jam. Bakteri heterotrof biasa, sebagai perbandingan, bisa berlipat ganda dalam waktu kurang dari satu jam. Kelambatan itu bukan cacat pada produk tertentu. Itu memang sifat dasar organismenya.",
+                "Bakteri ini juga terkenal sulit dijaga tetap hidup dalam botol tertutup yang duduk di rak toko selama berbulan-bulan. Pengujian independen dari kalangan penghobi selama bertahun-tahun berulang kali menemukan variasi nyata antar produk: sebagian benar-benar mengandung kultur hidup dan berfungsi saat dipakai, sementara yang lain terbukti hampir mati semua, atau justru didominasi bakteri lain sama sekali begitu sampai di akuarium. Seorang pemelihara tak punya cara pasti membedakan keduanya hanya dengan membaca label.",
+                "Bahkan botol yang bekerja persis seperti yang dijanjikan — kultur hidup sungguhan, berhasil ditambahkan ke air — tetap butuh waktu berhari-hari hingga berminggu-minggu agar populasi awal itu tumbuh sampai ukuran yang benar-benar dibutuhkan oleh limbah akuarium yang sudah terisi ikan. \"Instan\" menggambarkan tindakan menuangnya. Ia memang tak pernah bisa menggambarkan biologinya."
+            ],
+            "pullQuote": "Sebuah botol bisa menambahkan bakteri ke air dalam sedetik. Ia tidak bisa menambahkan jumlah populasi yang dibutuhkan akuarium yang sudah terisi. Hanya waktu dan sumber amonia yang bisa melakukan itu.",
+            "prevBtn": "← Kembali",
+            "nextBtn": "Di mana janjinya patah"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Di mana janjinya patah",
+            "titleHtml": "Tambah ikan hari itu juga,<br><em>dan Anda kembali menebak-nebak.</em>",
+            "body": [
+                "Baris paling berisiko di kebanyakan label ini juga yang paling bersemangat diikuti pemelihara: tambahkan seluruh stok ikan Anda hari itu juga. Apa pun isi botol itu sebenarnya, populasinya belum sempat mencapai ukuran yang dibutuhkan untuk mengolah limbah dari stok penuh — dan celah itulah, tepatnya, sumber lonjakan amonia dan nitrit, baik akuarium itu \"dibantu\" bakteri botolan atau tidak.",
+                "Produk-produk ini sangat bervariasi dalam kinerja nyatanya, dan biasanya tak ada cara untuk tahu dari rak toko apakah botol di tangan Anda termasuk formulasi yang kuat atau yang lemah. Labelnya membuat klaim yang sama percaya dirinya, apa pun isinya.",
+                "Begitulah cara perasaan \"saya sudah melakukan hal yang membuatnya aman\" dan kondisi air yang sebenarnya diam-diam saling menjauh. Alat uji air langsung menangkap celah itu. Percaya pada label saja sama sekali tidak menangkapnya."
+            ],
+            "hintLabel": "Pendinginan lebih penting daripada merek",
+            "hintText": [
+                "Untuk produk mana pun yang memang dibangun di sekitar kultur hidup, penyimpanan dingin dan lamanya di rak toko memengaruhi kelangsungan hidupnya jauh lebih besar dibanding nama apa yang tertera di botol. Botol yang tak pernah didinginkan dan sudah lewat setahun dari tanggal pengisiannya adalah produk yang berbeda dari botol segar yang dijaga rantai dingin — apa pun yang masih tertulis di labelnya."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Tindakan yang selaras"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Tindakan yang selaras",
+            "titleHtml": "Pakai sebagai dorongan.<br><em>Pertahankan jendela pengamatan.</em>",
+            "body": [
+                "Bakteri botolan pantas mendapat tempat sungguhan dalam rutinitas siklus kalau dipakai sebagai pemercepat, bukan pengganti — didosis ke dalam siklus fishless bersama sumber amonia yang sungguhan, supaya kultur apa pun yang ada di dalamnya punya makanan sekaligus waktu untuk mapan sebelum ikan mana pun terpapar.",
+                "Uji dulu sebelum menambahkan ikan, apa pun janji labelnya. Amonia nol dan nitrit nol pada alat uji sungguhan, bertahan beberapa hari berturut-turut, itulah yang membuktikan koloni sedang bekerja — bukan tanggal yang tercetak di botol yang Anda tambahkan seminggu lalu.",
+                "Kalau ikan sudah ada di akuarium, bakteri botolan tetap bisa membantu, tapi itu tidak menghapus kebutuhan untuk terus mengamati. Cek amonia dan nitrit tiap hari selama dua sampai empat minggu pertama tetap jadi tindakan yang selaras, dibantu bakteri botolan atau tidak."
+            ],
+            "pullQuote": "Anggap bakteri botolan sebagai dorongan, bukan jalan pintas. Ia bisa memperpendek waktu tunggu. Ia memang tak pernah bisa menghapusnya.",
+            "prevBtn": "← Kembali"
+        }
+    ],
+    "relatedLinks": [
+        {
+            "text": "New Tank Syndrome →"
+        },
+        {
+            "text": "Kenapa Ikan Saya Terus Mati di Tank Baru? →"
+        },
+        {
+            "text": "Simulator Siklus Akuarium →"
+        },
+        {
+            "text": "Kerangka ARA →"
+        }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
+    }
+}

@@ -3,7 +3,7 @@
     "slug": "read-your-rhythm",
     "lang": "ja",
     "sourceFile": "articles/read-your-rhythm.html",
-    "status": "in-progress",
+    "status": "ready",
     "rhythmsComplete": [
       "water",
       "biological",
@@ -16,11 +16,11 @@
   "head": {
     "title": "リズムを読む — Aquatic Rhythm",
     "description": "水槽が今どの段階にあるのかを、リズムごとに読み解く。まずはWater Rhythmから。合格を目指す診断ではなく、短い内省です。",
-    "ogTitle": "リズムを読む — Aquatic Rhythm",
+    "ogTitle": "リズムを読む",
     "ogDescription": "水槽が今どの段階にあるのかを、リズムごとに読み解く。まずはWater Rhythmから。",
-    "twitterTitle": "リズムを読む — Aquatic Rhythm",
+    "twitterTitle": "リズムを読む",
     "twitterDescription": "水槽が今どの段階にあるのかを、リズムごとに読み解く。まずはWater Rhythmから。",
-    "jsonLdHeadline": "リズムを読む — Aquatic Rhythm",
+    "jsonLdHeadline": "リズムを読む",
     "jsonLdDescription": "水槽が今どの段階にあるのかを、リズムごとに読み解く。まずはWater Rhythmから。合格を目指す診断ではなく、短い内省です。"
   },
   "intro": {
@@ -914,14 +914,14 @@
               "d": "自動化がルーティンを回してくれますが、実際に動いているか自分でも確認します。"
             },
             {
-              "v": "set-and-forget",
-              "l": "設置したら、ほぼそのまま忘れている",
-              "d": "動き出したら、意識は他に向いてしまいます。"
-            },
-            {
               "v": "no-automation",
               "l": "自動化は使っていない。すべて手動",
               "d": "自分が直接やらないと動くものは何もありません。"
+            },
+            {
+              "v": "set-and-forget",
+              "l": "設置したら、ほぼそのまま忘れている",
+              "d": "動き出したら、意識は他に向いてしまいます。"
             },
             {
               "v": "unsure-checking",

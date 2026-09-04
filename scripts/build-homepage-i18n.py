@@ -758,7 +758,7 @@ def build_tools(h, lang, u):
     # every loop iteration instead of advancing to the next card. Verified
     # this actually happened (card 1 ended up overwritten 3x with the last
     # card's title; cards 2 and 3 stayed raw English) before this fix.
-    cards_meta = [(1, "tank-simulator"), (2, "tank-builder"), (3, "community-stress-lab")]
+    cards_meta = [(1, "tank-simulator"), (2, "tank-builder"), (3, "community-stress-lab"), (4, "read-your-rhythm")]
     for i, (n, slug) in enumerate(cards_meta):
         # Recompute positions against the CURRENT (possibly already-edited)
         # h each iteration — hrefs never change, but everything after an

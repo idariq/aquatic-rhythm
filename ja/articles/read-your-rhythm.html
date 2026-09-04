@@ -114,6 +114,12 @@ main{min-height:100vh;padding-top:64px}
 #ryr-result{display:none;padding:5rem clamp(1.5rem,5vw,3rem) 7rem}
 .ryr-result-wrap{max-width:580px;margin:0 auto}
 .ryr-result-eyebrow{font-size:var(--fs-2xs);letter-spacing:.24em;text-transform:uppercase;color:rgba(157,191,154,.6);display:block;margin-bottom:1.5rem}
+.ryr-chart-wrap{margin-bottom:1.6rem;padding:1.6rem 1.4rem 1.2rem;border:1px solid var(--th-line);background:var(--th-surface-2);border-radius:6px}
+.ryr-chart-eyebrow{font-size:var(--fs-2xs);letter-spacing:.2em;text-transform:uppercase;color:var(--th-ink-4);display:block;text-align:center;margin-bottom:.6rem}
+.ryr-chart-svg{display:block;width:100%;max-width:280px;margin:0 auto;overflow:visible}
+.ryr-chart-svg text{font-family:var(--sans);font-size:9px;font-weight:500;fill:var(--th-ink-3);text-transform:uppercase;letter-spacing:.02em}
+.ryr-chart-svg text.ryr-chart-label-pending{fill:var(--th-ink-4)}
+.ryr-chart-hint{font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;margin-top:.6rem;line-height:1.6}
 .ryr-result-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,4vw,2.9rem);color:var(--th-ink);line-height:1.12;margin-bottom:2.8rem}
 .ryr-result-title em{font-style:italic;color:var(--th-accent)}
 .ryr-reflection{margin-bottom:2.4rem}
@@ -234,6 +240,11 @@ main{min-height:100vh;padding-top:64px}
   <div id="ryr-result">
     <div class="ryr-result-wrap">
       <span class="ryr-result-eyebrow" id="ryr-result-eyebrow">Water Rhythm — あなたの内省</span>
+      <div class="ryr-chart-wrap">
+        <span class="ryr-chart-eyebrow" id="ryr-chart-eyebrow">五つのリズム全体で</span>
+        <div id="ryr-chart-svg-slot"></div>
+        <p class="ryr-chart-hint" id="ryr-chart-hint">空いているリズムをタップすると、そのまま確認を始められます。どこから始めても構いません。</p>
+      </div>
       <h2 class="ryr-result-title" id="ryr-result-title"></h2>
       <div class="ryr-reflection" id="ryr-reflection"></div>
       <div class="ryr-divider"></div>
@@ -933,6 +944,64 @@ function ryrRespondentId(){
     return 'ryr-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
   }
 }
+var RYR_AXIS_ORDER=['water','biological','environmental','livestock','keeper'];
+var RYR_PHASE_COLOR={Early:'#d9a441',Developing:'#5b9bd5',Mature:'#5fb054'};
+var RYR_PHASE_FRAC={Early:1/3,Developing:2/3,Mature:1};
+function ryrGetProgress(){
+  try{
+    var raw=localStorage.getItem('ryr_progress');
+    return raw?JSON.parse(raw):{};
+  }catch(e){return {};}
+}
+function ryrSetProgress(key,phase){
+  try{
+    var p=ryrGetProgress();
+    p[key]=phase;
+    localStorage.setItem('ryr_progress',JSON.stringify(p));
+  }catch(e){}
+}
+function ryrRenderChart(){
+  var progress=ryrGetProgress();
+  var cx=110,cy=110,R=80;
+  var rings=[];
+  [1/3,2/3,1].forEach(function(frac){
+    var ringPts=RYR_AXIS_ORDER.map(function(_,i){
+      var a=(-90+i*72)*Math.PI/180;
+      return (cx+frac*R*Math.cos(a)).toFixed(1)+','+(cy+frac*R*Math.sin(a)).toFixed(1);
+    }).join(' ');
+    rings.push('<polygon points="'+ringPts+'" fill="none" stroke="var(--th-line-2)" stroke-width="1"/>');
+  });
+  var spokes=[],markers=[],labels=[],polyPts=[];
+  RYR_AXIS_ORDER.forEach(function(key,i){
+    var a=(-90+i*72)*Math.PI/180;
+    var phase=progress[key]||null;
+    var isCurrent=key===curRhythm;
+    var frac=phase?RYR_PHASE_FRAC[phase]:0.5;
+    var mx=cx+frac*R*Math.cos(a),my=cy+frac*R*Math.sin(a);
+    var lx=cx+1.24*R*Math.cos(a),ly=cy+1.24*R*Math.sin(a);
+    spokes.push('<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+R*Math.cos(a)).toFixed(1)+'" y2="'+(cy+R*Math.sin(a)).toFixed(1)+'" stroke="var(--th-line-2)" stroke-width="1"'+(phase?'':' stroke-dasharray="2,3"')+'/>');
+    if(phase){
+      polyPts.push(mx.toFixed(1)+','+my.toFixed(1));
+      if(isCurrent)markers.push('<circle cx="'+mx.toFixed(1)+'" cy="'+my.toFixed(1)+'" r="10" fill="'+RYR_PHASE_COLOR[phase]+'" fill-opacity=".22"/>');
+      markers.push('<circle cx="'+mx.toFixed(1)+'" cy="'+my.toFixed(1)+'" r="6" fill="'+RYR_PHASE_COLOR[phase]+'" stroke="'+RYR_PHASE_COLOR[phase]+'"/>');
+    } else {
+      markers.push('<circle class="ryr-chart-node" data-rhythm="'+key+'" cx="'+mx.toFixed(1)+'" cy="'+my.toFixed(1)+'" r="7" fill="var(--th-surface)" stroke="var(--th-ink-4)" stroke-width="1.5" stroke-dasharray="2,2" style="cursor:pointer"/>');
+    }
+    var label=RHYTHMS[key].name.replace(' Rhythm','');
+    var anchor=Math.cos(a)>0.3?'start':Math.cos(a)<-0.3?'end':'middle';
+    labels.push('<text class="'+(phase?'':'ryr-chart-label-pending')+'"'+(phase?'':' data-rhythm="'+key+'" style="cursor:pointer"')+' x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" text-anchor="'+anchor+'" dominant-baseline="middle">'+label+'</text>');
+  });
+  var poly = polyPts.length>1
+    ? '<polygon points="'+polyPts.join(' ')+'" fill="var(--th-accent)" fill-opacity=".08" stroke="var(--th-accent)" stroke-width="1.5"/>'
+    : '';
+  var svg='<svg viewBox="0 0 220 220" class="ryr-chart-svg" role="img" aria-label="Progress across the five rhythms">'
+    +rings.join('')+poly+spokes.join('')+markers.join('')+labels.join('')+'</svg>';
+  var slot=document.getElementById('ryr-chart-svg-slot');
+  slot.innerHTML=svg;
+  slot.querySelectorAll('[data-rhythm]').forEach(function(el){
+    el.addEventListener('click',function(){startRhythm(el.getAttribute('data-rhythm'));});
+  });
+}
 function showIntro(){
   document.getElementById('ryr-intro').style.display='flex';
   document.getElementById('ryr-screen').style.display='none';
@@ -983,6 +1052,8 @@ function showResult(){
   document.getElementById('ryr-closing-q').textContent=ref.closing;
   document.getElementById('ryr-phase-text').textContent=ref.phase;
   lastRef=ref;
+  ryrSetProgress(curRhythm,ref.phaseLabel);
+  ryrRenderChart();
   var shareBtn=document.getElementById('ryr-share-btn');
   var shareConsent=document.getElementById('ryr-share-consent');
   var shareStatus=document.getElementById('ryr-share-status');

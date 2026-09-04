@@ -247,7 +247,7 @@ main{min-height:100vh;padding-top:64px}
       </div>
       <p class="ryr-note-end">この内省が扱うのは一つのリズムだけです。水槽は五つのリズムそれぞれで違う段階にあることがあります。これは全体像ではなく、その中の正直な一部分にすぎません。</p>
       <div class="ryr-share" id="ryr-share">
-        <p class="ryr-share-text" id="ryr-share-text">任意:今後のARA研究に役立てるためのご協力です。共有すると、これらの質問への回答と上記のフェーズの結果が送信されます。それ以外の情報(お名前やメールアドレスなど)は送信されません。送信には第三者のフォームサービスであるFormspreeを使用します。これは今後の研究デザインのための初期的な土台であり、正式なデータセットや、本文中の主張を裏付ける証拠ではありません。</p>
+        <p class="ryr-share-text" id="ryr-share-text">任意:今後のARA研究に役立てるためのご協力です。共有すると、これらの質問への回答と上記のフェーズの結果が送信されます。それ以外の情報(お名前やメールアドレスなど)は送信されません。この端末で確認した異なるリズムの回答をまとめて読めるように、ランダムな識別コード(ご本人を特定するものではありません)も一緒に送信されます。送信には第三者のフォームサービスであるFormspreeを使用します。これは今後の研究デザインのための初期的な土台であり、正式なデータセットや、本文中の主張を裏付ける証拠ではありません。</p>
         <label class="ryr-share-check">
           <input type="checkbox" id="ryr-share-consent">
           <span id="ryr-share-consent-label">この目的のために、自分の回答とフェーズの結果を匿名で共有します。</span>
@@ -920,6 +920,19 @@ reflect:function(ans){
 /* ═══ FLOW ═══ */
 var curQ=0,ans={},curRhythm=null,lastRef=null;
 var RYR_FORMSPREE_ENDPOINT='https://formspree.io/f/xoeqleyo';
+function ryrRespondentId(){
+  var k='ryr_respondent_id';
+  try{
+    var id=localStorage.getItem(k);
+    if(!id){
+      id=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():'ryr-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
+      localStorage.setItem(k,id);
+    }
+    return id;
+  }catch(e){
+    return 'ryr-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
+  }
+}
 function showIntro(){
   document.getElementById('ryr-intro').style.display='flex';
   document.getElementById('ryr-screen').style.display='none';
@@ -1010,6 +1023,7 @@ document.getElementById('ryr-share-btn').addEventListener('click',function(){
   fd.append('phase',lastRef.phaseLabel);
   fd.append('answers',JSON.stringify(ans));
   fd.append('lang',document.documentElement.lang);
+  fd.append('respondent_id',ryrRespondentId());
   fetch(RYR_FORMSPREE_ENDPOINT,{method:'POST',body:fd,headers:{Accept:'application/json'}})
     .then(function(res){
       if(res.ok){

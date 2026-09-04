@@ -245,7 +245,7 @@ main{min-height:100vh;padding-top:64px}
       </div>
       <p class="ryr-note-end">Refleksi ini hanya mencakup satu ritme. Sebuah akuarium bisa berada di fase berbeda pada tiap-tiap dari lima ritmenya — ini bukan gambaran penuh, hanya satu bagian jujur darinya.</p>
       <div class="ryr-share" id="ryr-share">
-        <p class="ryr-share-text" id="ryr-share-text">Opsional: bantu menyempurnakan riset ARA di masa depan. Membagikan jawaban akan mengirim jawaban Anda untuk pertanyaan-pertanyaan ini beserta hasil fase di atas — tidak ada yang lain, tanpa nama atau email — melalui Formspree, layanan formulir pihak ketiga. Ini adalah langkah awal untuk merancang penelitian ke depan, bukan kumpulan data formal atau bukti dari klaim apa pun.</p>
+        <p class="ryr-share-text" id="ryr-share-text">Opsional: bantu menyempurnakan riset ARA di masa depan. Membagikan jawaban akan mengirim jawaban Anda untuk pertanyaan-pertanyaan ini beserta hasil fase di atas — tidak ada yang lain, tanpa nama atau email — melalui Formspree, layanan formulir pihak ketiga. Sebuah kode acak (tidak terkait dengan identitas Anda) turut disertakan agar jawaban dari ritme berbeda yang diperiksa di perangkat ini bisa dibaca bersama-sama. Ini adalah langkah awal untuk merancang penelitian ke depan, bukan kumpulan data formal atau bukti dari klaim apa pun.</p>
         <label class="ryr-share-check">
           <input type="checkbox" id="ryr-share-consent">
           <span id="ryr-share-consent-label">Saya ingin membagikan jawaban dan hasil fase saya secara anonim untuk tujuan ini.</span>
@@ -918,6 +918,19 @@ reflect:function(ans){
 /* ═══ FLOW ═══ */
 var curQ=0,ans={},curRhythm=null,lastRef=null;
 var RYR_FORMSPREE_ENDPOINT='https://formspree.io/f/xoeqleyo';
+function ryrRespondentId(){
+  var k='ryr_respondent_id';
+  try{
+    var id=localStorage.getItem(k);
+    if(!id){
+      id=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():'ryr-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
+      localStorage.setItem(k,id);
+    }
+    return id;
+  }catch(e){
+    return 'ryr-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
+  }
+}
 function showIntro(){
   document.getElementById('ryr-intro').style.display='flex';
   document.getElementById('ryr-screen').style.display='none';
@@ -1008,6 +1021,7 @@ document.getElementById('ryr-share-btn').addEventListener('click',function(){
   fd.append('phase',lastRef.phaseLabel);
   fd.append('answers',JSON.stringify(ans));
   fd.append('lang',document.documentElement.lang);
+  fd.append('respondent_id',ryrRespondentId());
   fetch(RYR_FORMSPREE_ENDPOINT,{method:'POST',body:fd,headers:{Accept:'application/json'}})
     .then(function(res){
       if(res.ok){

@@ -243,7 +243,7 @@ main{min-height:100vh;padding-top:64px}
       </div>
       <p class="ryr-note-end">This reflection covers one rhythm only. A tank can sit at a different phase in each of the five rhythms — this isn't the whole picture, just one honest piece of it.</p>
       <div class="ryr-share" id="ryr-share">
-        <p class="ryr-share-text" id="ryr-share-text">Optional: help refine future ARA research. Sharing sends your answers to these questions and the phase reading above — nothing else, no name or email — through Formspree, a third-party form service. This is early groundwork for future study design, not a formal dataset or proof of any claim.</p>
+        <p class="ryr-share-text" id="ryr-share-text">Optional: help refine future ARA research. Sharing sends your answers to these questions and the phase reading above — nothing else, no name or email — through Formspree, a third-party form service. A random code (not tied to your identity) is included so answers from different rhythms checked on this device can be read together. This is early groundwork for future study design, not a formal dataset or proof of any claim.</p>
         <label class="ryr-share-check">
           <input type="checkbox" id="ryr-share-consent">
           <span id="ryr-share-consent-label">I'd like to share my answers and phase reading anonymously for this purpose.</span>
@@ -916,6 +916,19 @@ reflect:function(ans){
 /* ═══ FLOW ═══ */
 var curQ=0,ans={},curRhythm=null,lastRef=null;
 var RYR_FORMSPREE_ENDPOINT='https://formspree.io/f/xoeqleyo';
+function ryrRespondentId(){
+  var k='ryr_respondent_id';
+  try{
+    var id=localStorage.getItem(k);
+    if(!id){
+      id=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():'ryr-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
+      localStorage.setItem(k,id);
+    }
+    return id;
+  }catch(e){
+    return 'ryr-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
+  }
+}
 function showIntro(){
   document.getElementById('ryr-intro').style.display='flex';
   document.getElementById('ryr-screen').style.display='none';
@@ -1006,6 +1019,7 @@ document.getElementById('ryr-share-btn').addEventListener('click',function(){
   fd.append('phase',lastRef.phaseLabel);
   fd.append('answers',JSON.stringify(ans));
   fd.append('lang',document.documentElement.lang);
+  fd.append('respondent_id',ryrRespondentId());
   fetch(RYR_FORMSPREE_ENDPOINT,{method:'POST',body:fd,headers:{Accept:'application/json'}})
     .then(function(res){
       if(res.ok){

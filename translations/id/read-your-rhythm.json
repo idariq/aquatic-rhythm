@@ -8,11 +8,10 @@
       "water",
       "biological",
       "environmental",
-      "livestock"
-    ],
-    "rhythmsPending": [
+      "livestock",
       "keeper"
-    ]
+    ],
+    "rhythmsPending": []
   },
   "head": {
     "title": "Baca Ritme Anda — Aquatic Rhythm",
@@ -791,6 +790,193 @@
           "Early": "Livestock Rhythm di sini berada pada Early Phase — sinyal perilaku paling awal (minat makan, warna halus, posisi berdiam, postur sirip) belum menjadi bagian dari yang benar-benar diamati secara aktif. Ini irama paling mudah dipelajari untuk mulai dibangun dengan sengaja, karena sebagian besar hanya membutuhkan perhatian, bukan peralatan.",
           "Developing": "Livestock Rhythm di sini berada pada Developing Phase — sebagian sinyal sudah dibaca, tapi belum cukup konsisten untuk menangkap pola sebelum membutuhkan lebih dari sekadar pengamatan.",
           "Mature": "Livestock Rhythm di sini berada pada Mature Phase — perilaku dibaca sebagai sinyal paling awal yang sebenarnya, mendahului kimia yang terukur, dan perubahan kecil tertangkap sebelum berkembang menjadi sesuatu yang lebih besar."
+        }
+      }
+    },
+    "keeper": {
+      "questions": [
+        {
+          "id": "wc-interval-awareness",
+          "text": "Apakah selang waktu penukaran air akuarium ini berubah sejak awal dipasang?",
+          "sub": "Bandingkan titik awal Anda dengan kondisi sekarang yang sebenarnya.",
+          "opts": [
+            {
+              "v": "same-or-decided",
+              "l": "Tetap sama, atau saya ubah dengan sengaja",
+              "d": "Perubahan apa pun adalah keputusan sadar, bukan sesuatu yang begitu saja terjadi."
+            },
+            {
+              "v": "drifted-aware",
+              "l": "Sudah merenggang, dan saya sudah lama menyadarinya",
+              "d": "Saya sadar selangnya sudah memanjang, hanya belum saya tangani."
+            },
+            {
+              "v": "drifted-unnoticed",
+              "l": "Sudah merenggang, dan baru saya sadari sekarang",
+              "d": "Mingguan jadi sepuluh hari, lalu jadi dua minggu — tanpa saya memutuskannya."
+            },
+            {
+              "v": "not-sure",
+              "l": "Saya tidak bisa memastikan selang waktunya sekarang",
+              "d": "Saya melakukannya 'kalau sempat' alih-alih mengikuti selang tertentu."
+            }
+          ]
+        },
+        {
+          "id": "filter-check-date",
+          "text": "Kapan terakhir kali Anda benar-benar memeriksa filter — media, aliran, impeller?",
+          "sub": "Tanggal atau kerangka waktu yang sungguhan, bukan perkiraan yang baru Anda buat sekarang.",
+          "opts": [
+            {
+              "v": "recent-known",
+              "l": "Saya tahu kira-kira kapan, dan itu baru-baru ini",
+              "d": "Ini bagian dari rutinitas yang benar-benar saya lacak."
+            },
+            {
+              "v": "know-but-a-while",
+              "l": "Saya tahu kira-kira kapan, dan sudah cukup lama",
+              "d": "Saya bisa memberi tahu, dan jawaban jujurnya lebih lama dari yang saya inginkan."
+            },
+            {
+              "v": "no-idea",
+              "l": "Saya sungguh tidak bisa memastikan",
+              "d": "Tidak ada tanggal terakhir periksa yang jelas dalam ingatan saya."
+            },
+            {
+              "v": "new-tank",
+              "l": "Akuariumnya masih terlalu baru untuk ini berlaku",
+              "d": "Filternya belum cukup lama berjalan untuk perlu diperiksa."
+            }
+          ]
+        },
+        {
+          "id": "feeding-precision",
+          "text": "Bagaimana Anda sebenarnya mengukur seberapa banyak pakan yang diberikan?",
+          "sub": "Bukan yang ideal — kebiasaan yang sebenarnya.",
+          "opts": [
+            {
+              "v": "measured",
+              "l": "Terukur — jumlah tertentu, cukup konsisten",
+              "d": "Saya punya jumlah pasti dalam pikiran dan cukup konsisten menjalankannya."
+            },
+            {
+              "v": "estimated-consistent",
+              "l": "Diperkirakan, tapi saya konsisten soal itu",
+              "d": "Sejumput, kurang lebih sama setiap kali, cuma tidak diukur presisi."
+            },
+            {
+              "v": "estimated-variable",
+              "l": "Diperkirakan, dan cukup bervariasi",
+              "d": "Kadang lebih banyak, kadang lebih sedikit, tergantung harinya."
+            },
+            {
+              "v": "not-tracked",
+              "l": "Saya belum pernah memikirkannya dengan cara begitu",
+              "d": "Pemberian pakan terjadi begitu saja; saya tidak bisa menjelaskan jumlahnya dengan presisi."
+            }
+          ]
+        },
+        {
+          "id": "observation-quality",
+          "text": "Saat Anda melihat akuarium dari hari ke hari, apa yang sebenarnya terjadi?",
+          "sub": "Versi jujur dari yang ada di pikiran Anda.",
+          "opts": [
+            {
+              "v": "reading",
+              "l": "Saya membacanya — memperhatikan apa yang berbeda dari kemarin",
+              "d": "Perilaku, pertumbuhan tanaman, apa pun yang berubah sejak terakhir kali."
+            },
+            {
+              "v": "checking",
+              "l": "Saya memeriksanya — memastikan tidak ada yang jelas-jelas salah",
+              "d": "Sekilas pandang untuk mencari yang mencurigakan, lalu saya lanjut."
+            },
+            {
+              "v": "glancing",
+              "l": "Saya melirik sekilas, lebih karena kebiasaan daripada perhatian",
+              "d": "Kelihatan, jadi saya lihat, tanpa benar-benar mencermati."
+            },
+            {
+              "v": "rarely-look",
+              "l": "Jujur, saya tidak terlalu sering melihatnya",
+              "d": "Beberapa hari bisa berlalu tanpa benar-benar melihatnya."
+            }
+          ]
+        },
+        {
+          "id": "automation-reliance",
+          "text": "Kalau Anda memakai otomatisasi apa pun — pemberi pakan otomatis, penambah air otomatis, pompa dosing, timer — bagaimana Anda memperlakukannya setelah terpasang?",
+          "sub": "Kalau tidak ada yang berlaku di sini, pilih jawaban yang paling mendekati jujurnya.",
+          "opts": [
+            {
+              "v": "trust-but-verify",
+              "l": "Saya percaya, dan tetap sengaja memeriksanya",
+              "d": "Otomatisasi menjalankan rutinitasnya; saya tetap memastikan ia benar-benar bekerja."
+            },
+            {
+              "v": "set-and-forget",
+              "l": "Saya pasang lalu hampir melupakannya",
+              "d": "Begitu berjalan, perhatian saya beralih ke hal lain."
+            },
+            {
+              "v": "no-automation",
+              "l": "Saya tidak pakai otomatisasi — semuanya manual",
+              "d": "Tidak ada yang berjalan tanpa saya lakukan sendiri secara langsung."
+            },
+            {
+              "v": "unsure-checking",
+              "l": "Saya tidak yakin seberapa sering saya benar-benar memeriksanya",
+              "d": "Kemungkinan lebih jarang dari yang akan saya duga kalau ditanya langsung."
+            }
+          ]
+        }
+      ],
+      "reflect": {
+        "titles": {
+          "drifted-unnoticed-not-mature": "Ritme yang merenggang <em>tanpa sebuah keputusan.</em>",
+          "mature": "Ritme yang terukur, <em>bukan diperkirakan.</em>",
+          "developing": "Sebagian besar bertahan, <em>diam-diam merenggang.</em>",
+          "early": "Perawatan yang berjalan atas ingatan, <em>bukan rutinitas.</em>"
+        },
+        "wc": {
+          "same-or-decided": "Mempertahankan selang penukaran air tetap sama, atau mengubahnya dengan sengaja, adalah pengecualian, bukan kebiasaan umum. Capacity creep, penurunan kualitas perawatan yang perlahan dan tidak disadari, biasanya bergerak persis ke arah sebaliknya: mingguan jadi sepuluh hari, lalu jadi dua minggu, tanpa pernah menjadi keputusan yang eksplisit.",
+          "drifted-unnoticed": "Baru menyadari pergeseran itu sekarang, saat menjawab ini, sebenarnya adalah cara capacity creep biasanya tertangkap. Sulit dideteksi dari dalamnya sendiri, karena setiap selang baru diam-diam menjadi patokan baru yang dibandingkan. Menamai pergeseran itu adalah langkah pertama untuk keluar darinya.",
+          "drifted-aware": "Menyadari selangnya sudah memanjang, dan belum menanganinya, adalah posisi yang lebih jujur dibanding tidak menyadarinya sama sekali. Tapi kerusakan sesungguhnya dari capacity creep terjadi selama bulan-bulan kesadaran itu dibiarkan tanpa ditangani. Jarak antara tahu dan menyesuaikan adalah tempat ekologi akuarium ini sebenarnya sedang berubah.",
+          "not-sure": "Tidak punya gambaran jelas soal selang saat ini berarti tidak ada lagi patokan untuk mengukur pergeseran, dan itu sendiri adalah tanda capacity creep sudah cukup jauh, sampai-sampai kebiasaan terkini, apa pun itu, diam-diam menjadi satu-satunya acuan."
+        },
+        "fc": {
+          "recent-known": "Punya jawaban nyata dan baru-baru ini soal kapan filter terakhir diperiksa adalah salah satu indikator capacity creep yang paling bisa diandalkan, justru karena 'tanggal terakhir periksa filter tidak diketahui jelas' adalah salah satu tanda spesifik yang disebut ARA untuk creep yang sedang berlangsung.",
+          "know-but-a-while": "Bisa menyebut tanggalnya, meski lebih lama dari yang ideal, adalah posisi yang jauh berbeda dari tidak tahu sama sekali. Jaraknya jelas dan spesifik, yang membuatnya sesuatu yang benar-benar bisa dipersempit.",
+          "no-idea": "Tidak punya tanggal terakhir periksa yang jelas adalah salah satu indikator spesifik capacity creep, bukan detail kecil, tapi salah satu tanda yang disebut secara eksplisit bahwa selang perawatan sudah diam-diam melebihi yang awalnya dimaksudkan.",
+          "new-tank": "Akuarium yang masih terlalu baru untuk ini muncul adalah posisi yang wajar. Momen yang lebih berguna adalah menyadari, beberapa bulan dari sekarang, apakah tanggal periksa yang nyata tetap bisa dilacak atau mulai kabur."
+        },
+        "fd": {
+          "measured": "Memberi pakan dalam jumlah tertentu yang cukup konsisten lebih dekat pada minimum viable care dari yang terasa. Tahu kira-kira apa yang benar-benar dibutuhkan akuarium ini, dan memenuhinya secara andal, adalah tujuannya. Bukan soal memberi lebih banyak. Ini soal jumlahnya diketahui, bukan ditebak.",
+          "estimated-consistent": "Memperkirakan secara konsisten, meski tanpa pengukuran presisi, tetap memberi akuarium sesuatu yang bisa diandalkan untuk beradaptasi. Risiko dari perkiraan bukan pada kurangnya presisi, tapi ketika perkiraan itu sendiri mulai bergeser tanpa ada yang memutuskannya.",
+          "estimated-variable": "Jumlah yang cukup bervariasi dari hari ke hari adalah salah satu bentuk pergeseran yang lebih halus. Jumlah pakan yang diperkirakan alih-alih diukur disebut langsung sebagai indikator capacity creep, dan variasi di atas perkiraan itu makin memperbesarnya.",
+          "not-tracked": "Tidak punya bahasa untuk jumlahnya sama sekali membuat sulit menyadari kalau ada pergeseran, yang justru kondisi yang dibutuhkan capacity creep untuk tidak dikenali. Angka kasar, sekalipun perkiraan, memberi acuan untuk dibandingkan nanti."
+        },
+        "obq": {
+          "reading": "Membaca akuarium, memperhatikan apa yang berbeda sejak kemarin, alih-alih sekadar memeriksanya, dekat dengan tujuan sebenarnya dari pengamatan harian. Memeriksa memastikan tidak ada yang jelas-jelas salah. Membaca adalah yang menangkap pergeseran sebelum menjadi jelas.",
+          "checking": "Memindai untuk mencari yang mengkhawatirkan, lalu melanjutkan, menangkap keadaan darurat sungguhan tapi cenderung melewatkan pergeseran perlahan, jenis perubahan yang tidak pernah terlihat mengkhawatirkan pada satu hari saja, hanya terlihat lewat beberapa hari sekaligus.",
+          "glancing": "Sekilas pandang karena kebiasaan, tanpa benar-benar mencermati, tetap menaruh mata pada akuarium, yang lebih baik dari tidak sama sekali, tapi tidak mungkin menangkap sesuatu yang berkembang perlahan alih-alih tiba-tiba.",
+          "rarely-look": "Beberapa hari berlalu tanpa benar-benar melihat berarti sebagian besar yang seharusnya disinyalkan livestock rhythm dan environmental rhythm luput tak terbaca, bukan karena tidak ada, tapi karena saat ini tidak ada yang membacanya."
+        },
+        "auto": {
+          "trust-but-verify": "Mempercayai otomatisasi sambil tetap sengaja memeriksanya persis keseimbangan yang ditunjuk ARA: otomatisasi menjalankan tugas, tapi tidak mengamati. Penjaga yang memahami infrastrukturnya dan aktif memverifikasinya punya kapasitas nyata yang tidak akan terlihat kalau cuma dinilai dari jadwal manual, selama pemeriksaannya tetap disengaja.",
+          "set-and-forget": "Memasang otomatisasi lalu membiarkan perhatian beralih adalah satu-satunya risiko nyata dalam mengandalkannya: kegagalan otomatis berlangsung diam-diam, pemberi pakan yang macet, pompa dosing yang salah kalibrasi, justru karena tidak ada yang mengawasinya. Otomatisasi seharusnya berarti mengamati dengan lebih sengaja, bukan lebih sedikit.",
+          "no-automation": "Menjalankan semuanya secara manual berarti tidak ada mode kegagalan otomatis yang perlu dikhawatirkan. Kompensasinya, setiap celah perhatian adalah celah perawatan, tanpa ada yang mengisinya.",
+          "unsure-checking": "Menduga frekuensi pemeriksaan sebenarnya lebih rendah dari yang akan terdengar kalau diucapkan adalah hal yang umum dan berguna untuk disadari. Otomatisasi memperluas kapasitas, tapi hanya selama ada yang tetap mengawasinya. Sistem yang tidak diawasi bisa gagal untuk sementara sebelum ada yang terlihat menunjukkannya."
+        },
+        "closing": {
+          "early": "Bagian rutinitas akuarium ini yang mana yang saat ini berjalan atas ingatan, yang bisa Anda ubah jadi jadwal yang benar-benar bisa diperiksa?",
+          "developing": "Angka spesifik apa — tanggal, jumlah, selang waktu — yang akan mengubah salah satu dari ini dari perkiraan menjadi sesuatu yang diketahui?",
+          "mature": "Sekarang setelah angka-angka ini diketahui, bukan diperkirakan, apa yang benar-benar akan Anda lakukan kalau keadaan hidup membuat ritme saat ini lebih sulit dipertahankan untuk sementara?"
+        },
+        "phaseText": {
+          "Early": "Keeper Rhythm di sini berada pada Early Phase — beberapa indikator spesifik capacity creep hadir: selang yang meregang, tanggal periksa yang tidak jelas, jumlah yang diperkirakan alih-alih diukur. Menamainya di sini adalah bagian yang berguna; tidak satu pun membutuhkan lebih dari sekadar perhatian untuk ditutup.",
+          "Developing": "Keeper Rhythm di sini berada pada Developing Phase — sebagian perawatan akuarium ini berjalan atas angka yang diketahui, sebagian lagi masih berjalan atas perkiraan atau ingatan.",
+          "Mature": "Keeper Rhythm di sini berada pada Mature Phase — angka spesifiknya (selang, tanggal, jumlah) diketahui, bukan diperkirakan, dan pengamatan sedang membaca akuarium ini, bukan sekadar memeriksanya."
         }
       }
     }

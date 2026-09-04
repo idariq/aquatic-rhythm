@@ -24,15 +24,20 @@
     "jsonLdDescription": "Sejauh mana akuarium Anda sebenarnya sudah berkembang, dibaca ritme demi ritme. Mulai dari Water Rhythm — refleksi singkat, bukan ujian untuk dilulusi."
   },
   "intro": {
-    "eyebrow": "Coba Sendiri",
+    "eyebrow": "Aquatic Rhythm Lab",
     "titleHtml": "Baca<br><em>Ritme Anda.</em>",
     "subtitle": "Sejauh mana akuarium Anda sebenarnya sudah berkembang — dibaca ritme demi ritme.",
     "body1": "Alat ini membaca akuarium yang sudah Anda miliki — bukan yang baru akan Anda bangun. Kalau belum ada akuarium sama sekali, <a href=\"/id/articles/know-your-rhythm\" style=\"color:var(--th-accent)\">Kenali Ritme Anda</a> tempat yang lebih tepat untuk mulai: pertanyaannya hanya tentang diri Anda, dan tidak perlu ada apa pun yang sudah berjalan.",
-    "body2": "ARA membaca sebuah akuarium lewat lima ritme — Water, Biological, Environmental, Livestock, dan Keeper — dan masing-masing bisa berada di fase berbeda pada saat yang sama. Filter bisa sudah matang sementara jadwal lampunya baru berubah seminggu lalu. Periksa satu ritme sekarang dan langsung dapat jawabannya, atau kembali lagi nanti untuk melengkapi gambaran penuhnya. Tidak ada yang harus dikerjakan berurutan, dan tidak ada yang sedang dinilai di sini.",
-    "note": "Water Rhythm sudah siap di bawah. Empat ritme lainnya masih dalam pengerjaan. Yang Anda dapatkan di akhir adalah refleksi yang berpijak pada kerangka ARA — bukan diagnosis, dan bukan skor untuk dikalahkan.",
+    "body2": "Setiap ritme bisa berada di fase yang berbeda pada saat bersamaan — filter bisa sudah matang sementara jadwal lampunya baru berubah seminggu lalu. Periksa satu ritme sekarang dan langsung dapat jawabannya, atau kembali lagi nanti untuk melengkapi gambaran penuhnya. Tidak ada yang harus dikerjakan berurutan, dan tidak ada yang sedang dinilai di sini.",
+    "note": "Kelima ritme sudah siap di bawah. Yang Anda dapatkan di akhir adalah refleksi yang berpijak pada kerangka ARA — bukan diagnosis, dan bukan skor untuk dikalahkan.",
     "pickerLabel": "Pilih ritme untuk dibaca",
     "cardTagQuestions": "5 pertanyaan →",
-    "cardTagSoon": "Segera hadir"
+    "cardTagSoon": "Segera hadir",
+    "dimWater": "Kimia air dibaca sebagai tren dari waktu ke waktu, bukan satu angka saja",
+    "dimBiological": "Kedalaman mikroba, dan seberapa baik gangguan kecil bisa diserap",
+    "dimEnvironmental": "Cahaya, aliran, suhu, dan tata letak sebagai masukan nyata",
+    "dimLivestock": "Perilaku dibaca sebagai sinyal paling awal, mendahului parameter",
+    "dimKeeper": "Pola perawatan Anda sendiri — konsistensi, bukan kesempurnaan"
   },
   "chrome": {
     "resultEyebrowSuffix": " — refleksi Anda",

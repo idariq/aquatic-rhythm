@@ -76,6 +76,10 @@ main{min-height:100vh;padding-top:64px}
 .ryr-title em{font-style:italic;color:var(--th-accent)}
 .ryr-subtitle{font-family:var(--serif);font-style:italic;font-size:clamp(.98rem,1.6vw,1.14rem);font-weight:300;color:var(--th-ink-3);line-height:1.88;margin-bottom:1rem}
 .ryr-body{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.4rem}
+.ryr-dims{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.4rem;padding:1rem 1.2rem;background:var(--th-surface-2);border:1px solid var(--th-line);border-radius:2px}
+.ryr-dim-item{display:flex;align-items:flex-start;gap:.7rem}
+.ryr-dim-name{font-size:var(--fs-2xs);letter-spacing:.1em;text-transform:uppercase;font-weight:500;flex-shrink:0;width:100px}
+.ryr-dim-desc{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-3);font-family:var(--serif);font-style:italic;line-height:1.55}
 .ryr-note{font-size:var(--fs-sm);color:var(--th-ink-4);line-height:1.72;margin-bottom:2.4rem;font-style:italic;font-family:var(--serif);padding-left:1rem;border-left:1px solid var(--th-line)}
 
 /* RHYTHM PICKER */
@@ -193,12 +197,19 @@ main{min-height:100vh;padding-top:64px}
 <main>
   <div id="ryr-intro" class="ryr-intro">
     <div class="ryr-intro-inner">
-      <span class="ryr-eyebrow">自分で試してみる</span>
+      <span class="ryr-eyebrow">Aquatic Rhythm ラボ</span>
       <h1 class="ryr-title">水槽の<br><em>リズムを読む。</em></h1>
       <p class="ryr-subtitle">水槽が今どこにいるかを、リズムごとに読み解く。</p>
       <p class="ryr-body">このツールが読み解くのは、すでにある水槽です。これから作る水槽ではありません。まだ水槽がないなら、<a href="/ja/articles/know-your-rhythm" style="color:var(--th-accent)">リズムを知る</a>から始めるほうが向いています。尋ねられるのはあなた自身のことだけで、何かが動き出している必要すらありません。</p>
-      <p class="ryr-body">ARAは水槽を、Water、Biological、Environmental、Livestock、Keeperという五つのリズムを通して読み解きます。それぞれが同時に違う段階にあることもあります。フィルターは十分に成熟していても、照明のスケジュールを変えたのはまだ一週間前かもしれません。今すぐ一つのリズムを確認してすぐに答えを得ることもできますし、後で戻ってきて全体像を組み立てていくこともできます。順番通りに進める必要はなく、ここで採点されるものは何もありません。</p>
-      <p class="ryr-note">Water Rhythmはこの下からすぐに始められます。残り四つのリズムは現在制作中です。最後に得られるのは、ARAフレームワークに基づいた内省であり、診断でも、競うためのスコアでもありません。</p>
+      <div class="ryr-dims">
+        <div class="ryr-dim-item"><span class="ryr-dim-name" style="color:rgba(61,214,232,.74)">Water</span><span class="ryr-dim-desc" id="ryr-dim-desc-water">水質を一つの数値ではなく、時間の流れの中の傾向として読み取ります</span></div>
+        <div class="ryr-dim-item"><span class="ryr-dim-name" style="color:rgba(100,200,82,.7)">Biological</span><span class="ryr-dim-desc" id="ryr-dim-desc-biological">微生物の厚みと、ちょっとした乱れをどれだけ吸収できるかを見ます</span></div>
+        <div class="ryr-dim-item"><span class="ryr-dim-name" style="color:rgba(220,160,60,.7)">Environmental</span><span class="ryr-dim-desc" id="ryr-dim-desc-environmental">光、水流、温度、レイアウトを実際の入力として読み取ります</span></div>
+        <div class="ryr-dim-item"><span class="ryr-dim-name" style="color:rgba(180,120,200,.7)">Livestock</span><span class="ryr-dim-desc" id="ryr-dim-desc-livestock">行動を、数値より先に現れる最も早いサインとして読み取ります</span></div>
+        <div class="ryr-dim-item"><span class="ryr-dim-name" style="color:rgba(139,189,210,.7)">Keeper</span><span class="ryr-dim-desc" id="ryr-dim-desc-keeper">ご自身のお世話のリズムです。完璧さではなく、一貫性を見ます</span></div>
+      </div>
+      <p class="ryr-body" id="ryr-body-2">それぞれのリズムは、同時に違う段階にあることもあります。フィルターは十分に成熟していても、照明のスケジュールを変えたのはまだ一週間前かもしれません。今すぐ一つのリズムを確認してすぐに答えを得ることもできますし、後で戻ってきて全体像を組み立てていくこともできます。順番通りに進める必要はなく、ここで採点されるものは何もありません。</p>
+      <p class="ryr-note">五つのリズムはすべて、この下からすぐに始められます。最後に得られるのは、ARAフレームワークに基づいた内省であり、診断でも、競うためのスコアでもありません。</p>
       <span class="ryr-picker-label">読み解くリズムを選ぶ</span>
       <div class="ryr-picker">
         <button type="button" class="ryr-rcard" id="ryr-pick-water">

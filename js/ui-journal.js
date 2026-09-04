@@ -129,7 +129,7 @@
     'cat_plants': 'Plants',
     'cat_hardscape': 'Hardscape',
     'ov_empty_title': 'Start your log',
-    'ov_empty_desc': 'Set up your first aquarium to begin writing entries, tracking your rhythm, and reading your ARA phase.',
+    'ov_empty_desc': 'Set up your first aquarium to begin writing entries, tracking your rhythm, and reading your cycle stage.',
     'ov_empty_btn': 'Set up my aquarium',
     'ov_add_tank': '+ Add aquarium',
     'add_short': 'Add',
@@ -154,10 +154,10 @@
     'found_new_home': '{name} has found a new home.',
     'based_on_params': 'Based on water parameters',
     'estimated_from_rhythm': 'Estimated from keeper rhythm',
-    'no_phase_no_entries': 'Write your first entry, and your ARA phase tracking begins from there.',
+    'no_phase_no_entries': 'Write your first entry, and your cycle stage tracking begins from there.',
     'no_phase_no_setup': 'Add at least one resident and your tank\'s setup date, and you\'ll get your first reading.',
-    'no_phase_insufficient': 'A few more entries — or logging water parameters — will give a clearer picture of your ARA phase.',
-    'no_phase_default': 'Write your first entry, and your ARA phase reading will follow.',
+    'no_phase_insufficient': 'A few more entries — or logging water parameters — will give a clearer picture of your cycle stage.',
+    'no_phase_default': 'Write your first entry, and your cycle stage reading will follow.',
     'week_this': 'This week',
     'week_last': 'Last week',
     'week_2ago': '2w ago',
@@ -262,7 +262,7 @@
     'cat_plants': 'Tanaman',
     'cat_hardscape': 'Hardscape',
     'ov_empty_title': 'Mulai log Anda',
-    'ov_empty_desc': 'Siapkan akuarium pertama Anda untuk mulai menulis entri, melacak ritme Anda, dan membaca fase ARA Anda.',
+    'ov_empty_desc': 'Siapkan akuarium pertama Anda untuk mulai menulis entri, melacak ritme Anda, dan membaca tahap siklus Anda.',
     'ov_empty_btn': 'Siapkan akuarium saya',
     'ov_add_tank': '+ Tambah akuarium',
     'add_short': 'Tambah',
@@ -287,10 +287,10 @@
     'found_new_home': '{name} telah menemukan rumah baru.',
     'based_on_params': 'Berdasarkan parameter air',
     'estimated_from_rhythm': 'Diperkirakan dari ritme penjaga',
-    'no_phase_no_entries': 'Tulis entri pertama Anda, dan pelacakan fase ARA mulai dari situ.',
+    'no_phase_no_entries': 'Tulis entri pertama Anda, dan pelacakan tahap siklus mulai dari situ.',
     'no_phase_no_setup': 'Tambahkan setidaknya satu penghuni dan tanggal penyiapan akuarium Anda, dan Anda akan mendapat bacaan pertama.',
-    'no_phase_insufficient': 'Beberapa entri lagi — atau mencatat parameter air — akan memberi gambaran fase ARA yang lebih jelas.',
-    'no_phase_default': 'Tulis entri pertama Anda, dan bacaan fase ARA akan menyusul.',
+    'no_phase_insufficient': 'Beberapa entri lagi — atau mencatat parameter air — akan memberi gambaran tahap siklus yang lebih jelas.',
+    'no_phase_default': 'Tulis entri pertama Anda, dan bacaan tahap siklus akan menyusul.',
     'week_this': 'Minggu ini',
     'week_last': 'Minggu lalu',
     'week_2ago': '2mgg lalu',
@@ -395,7 +395,7 @@
     'cat_plants': '水草',
     'cat_hardscape': 'ハードスケープ',
     'ov_empty_title': 'ログを始めましょう',
-    'ov_empty_desc': '最初の水槽をセットアップして、記録を書き始め、リズムを記録し、ARAフェーズを確認しましょう。',
+    'ov_empty_desc': '最初の水槽をセットアップして、記録を書き始め、リズムを記録し、サイクル段階を確認しましょう。',
     'ov_empty_btn': '水槽をセットアップする',
     'ov_add_tank': '+ 水槽を追加',
     'add_short': '追加',
@@ -420,10 +420,10 @@
     'found_new_home': '{name}は新しい家を見つけました。',
     'based_on_params': '水質パラメーターに基づく',
     'estimated_from_rhythm': '飼育者のリズムから推定',
-    'no_phase_no_entries': '最初の記録を書けば、そこからARAフェーズの追跡が始まります。',
+    'no_phase_no_entries': '最初の記録を書けば、そこからサイクル段階の追跡が始まります。',
     'no_phase_no_setup': '住人を少なくとも1つ追加し、水槽のセットアップ日を設定すれば、最初の判定が届きます。',
-    'no_phase_insufficient': 'もう少し記録を書くか、水質パラメーターを記録しておくと、ARAフェーズの姿がより見えやすくなります。',
-    'no_phase_default': '最初の記録を書けば、ARAフェーズの判定はそのあとについてきます。',
+    'no_phase_insufficient': 'もう少し記録を書くか、水質パラメーターを記録しておくと、サイクル段階の姿がより見えやすくなります。',
+    'no_phase_default': '最初の記録を書けば、サイクル段階の判定はそのあとについてきます。',
     'week_this': '今週',
     'week_last': '先週',
     'week_2ago': '2週間前',
@@ -1795,7 +1795,7 @@
     if (entries.length >= 2) fetchWeeklyInsight(tank);
     else { var wc = document.getElementById('jn-weekly-insight-card'); if (wc) wc.style.display = 'none'; }
 
-    /* ARA phase card: Rhyssa touchpoint */
+    /* Cycle stage card: Rhyssa touchpoint */
     var phaseRhEl = document.getElementById('jn-phase-rh-btn');
     if (phaseRhEl && info) {
       var phaseRhMsg = encodeURIComponent('My tank is in the ' + info.label + ' phase. ' + info.next + ' What should I be watching for?');

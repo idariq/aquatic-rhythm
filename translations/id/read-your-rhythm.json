@@ -3,7 +3,7 @@
     "slug": "read-your-rhythm",
     "lang": "id",
     "sourceFile": "articles/read-your-rhythm.html",
-    "status": "in-progress",
+    "status": "ready",
     "rhythmsComplete": [
       "water",
       "biological",
@@ -16,11 +16,11 @@
   "head": {
     "title": "Baca Ritme Anda — Aquatic Rhythm",
     "description": "Sejauh mana akuarium Anda sebenarnya sudah berkembang, dibaca ritme demi ritme. Mulai dari Water Rhythm — refleksi singkat, bukan ujian untuk dilulusi.",
-    "ogTitle": "Baca Ritme Anda — Aquatic Rhythm",
+    "ogTitle": "Baca Ritme Anda",
     "ogDescription": "Sejauh mana akuarium Anda sebenarnya sudah berkembang, dibaca ritme demi ritme. Mulai dari Water Rhythm.",
-    "twitterTitle": "Baca Ritme Anda — Aquatic Rhythm",
+    "twitterTitle": "Baca Ritme Anda",
     "twitterDescription": "Sejauh mana akuarium Anda sebenarnya sudah berkembang, dibaca ritme demi ritme. Mulai dari Water Rhythm.",
-    "jsonLdHeadline": "Baca Ritme Anda — Aquatic Rhythm",
+    "jsonLdHeadline": "Baca Ritme Anda",
     "jsonLdDescription": "Sejauh mana akuarium Anda sebenarnya sudah berkembang, dibaca ritme demi ritme. Mulai dari Water Rhythm — refleksi singkat, bukan ujian untuk dilulusi."
   },
   "intro": {
@@ -914,14 +914,14 @@
               "d": "Otomatisasi menjalankan rutinitasnya; saya tetap memastikan ia benar-benar bekerja."
             },
             {
-              "v": "set-and-forget",
-              "l": "Saya pasang lalu hampir melupakannya",
-              "d": "Begitu berjalan, perhatian saya beralih ke hal lain."
-            },
-            {
               "v": "no-automation",
               "l": "Saya tidak pakai otomatisasi — semuanya manual",
               "d": "Tidak ada yang berjalan tanpa saya lakukan sendiri secara langsung."
+            },
+            {
+              "v": "set-and-forget",
+              "l": "Saya pasang lalu hampir melupakannya",
+              "d": "Begitu berjalan, perhatian saya beralih ke hal lain."
             },
             {
               "v": "unsure-checking",

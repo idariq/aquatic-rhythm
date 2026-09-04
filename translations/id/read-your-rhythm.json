@@ -6,10 +6,10 @@
     "status": "in-progress",
     "rhythmsComplete": [
       "water",
-      "biological"
+      "biological",
+      "environmental"
     ],
     "rhythmsPending": [
-      "environmental",
       "livestock",
       "keeper"
     ]
@@ -417,6 +417,193 @@
           "Early": "Biological Rhythm di sini berada pada Early Phase — mikrobioma masih terbentuk, atau kebiasaan yang melindunginya (biofilm, substrat, media filter) justru lebih banyak merugikan daripada membantu. Ini bukan vonis. Ini titik yang paling layak mendapat perhatian sekarang.",
           "Developing": "Biological Rhythm di sini berada pada Developing Phase — biologinya sudah berfungsi dan sebagian kebiasaan pelindung sudah ada, tapi kedalaman yang lahir dari waktu dan beberapa ujian nyata belum sepenuhnya terkumpul.",
           "Mature": "Biological Rhythm di sini berada pada Mature Phase — bukan karena angkanya sempurna, tapi karena sistemnya sudah menunjukkan bisa menyerap kelalaian biasa tanpa banyak drama. Itu ecological forgiveness, bukan keberuntungan."
+        }
+      }
+    },
+    "environmental": {
+      "questions": [
+        {
+          "id": "light-schedule",
+          "text": "Lampu akuarium Anda sebenarnya menyala dan mati bagaimana setiap harinya?",
+          "sub": "Bukan yang Anda niatkan — tapi yang benar-benar terjadi kebanyakan hari.",
+          "opts": [
+            {
+              "v": "timer",
+              "l": "Pakai timer, jam yang sama setiap hari",
+              "d": "Jadwalnya tidak bergantung pada apakah saya ingat atau tidak."
+            },
+            {
+              "v": "by-feel-consistent",
+              "l": "Manual, tapi saya cukup konsisten soal waktunya",
+              "d": "Tidak pakai timer, tapi saya jaga agar jamnya tetap mirip tanpa itu."
+            },
+            {
+              "v": "by-feel-variable",
+              "l": "Manual, dan cukup bervariasi",
+              "d": "Ada hari yang menyala jauh lebih lama atau lebih singkat dari hari lain."
+            },
+            {
+              "v": "rarely-tracked",
+              "l": "Jujur, saya tidak benar-benar melacaknya",
+              "d": "Lampu menyala dan mati kapan pun saya kebetulan ingat."
+            }
+          ]
+        },
+        {
+          "id": "light-consequence",
+          "text": "Kalau jadwal lampu sebuah akuarium berubah-ubah antara 8 dan 16 jam dari hari ke hari, apa yang Anda kira akan terjadi?",
+          "sub": "Dugaan jujur Anda, bukan hasil mencari tahu.",
+          "opts": [
+            {
+              "v": "chronic-stress-aware",
+              "l": "Warna memudar, minat makan menurun, lebih rentan sakit",
+              "d": "Semacam stres kronis yang perlahan, bukan satu gejala dramatis."
+            },
+            {
+              "v": "algae-only",
+              "l": "Sebagian besar cuma alga bertambah",
+              "d": "Itu konsekuensi utama yang terpikir oleh saya."
+            },
+            {
+              "v": "no-real-effect",
+              "l": "Tidak terlalu berpengaruh — asal cahayanya cukup",
+              "d": "Saya tidak akan menduga jadwalnya sendiri terlalu berarti."
+            },
+            {
+              "v": "not-sure",
+              "l": "Saya benar-benar tidak tahu",
+              "d": "Saya belum pernah memikirkan apa yang sebenarnya akan terjadi akibat jadwal yang tidak menentu."
+            }
+          ]
+        },
+        {
+          "id": "hardscape-moves",
+          "text": "Seberapa sering Anda menyusun ulang hardscape atau dekorasi di akuarium yang sudah mapan dan berisi ikan?",
+          "sub": "Frekuensi yang sebenarnya, bukan yang ideal.",
+          "opts": [
+            {
+              "v": "rarely-once-set",
+              "l": "Jarang — sekali diletakkan, biasanya tetap di situ",
+              "d": "Saya anggap tata letaknya sudah selesai begitu ikan-ikan terbiasa dengannya."
+            },
+            {
+              "v": "occasional-reason",
+              "l": "Sesekali, karena alasan tertentu",
+              "d": "Ada penghuni baru, tanaman yang tumbuh melebihi tempatnya — bukan sekadar ingin suasana baru."
+            },
+            {
+              "v": "frequent-aesthetic",
+              "l": "Cukup sering, saat ingin tampilan baru",
+              "d": "Saya suka menata ulang tata letaknya dari waktu ke waktu."
+            },
+            {
+              "v": "no-hardscape",
+              "l": "Setup saya tidak benar-benar punya hardscape tetap",
+              "d": "Tidak banyak yang bisa disusun ulang sejak awal."
+            }
+          ]
+        },
+        {
+          "id": "flow-deadspots",
+          "text": "Sudut-sudut, dan ruang di balik hardscape yang tinggi — seberapa besar perhatian yang didapat bagian-bagian itu?",
+          "sub": "Tempat detritus biasanya menumpuk kalau aliran air tidak sampai ke situ.",
+          "opts": [
+            {
+              "v": "checks-regularly",
+              "l": "Saya periksa secara khusus, secara rutin",
+              "d": "Saya tahu itu titik yang biasanya terlewat aliran air, jadi saya sengaja memeriksanya."
+            },
+            {
+              "v": "notices-eventually",
+              "l": "Saya akan sadar kalau ada yang menumpuk, cepat atau lambat",
+              "d": "Bukan pemeriksaan rutin, tapi tidak akan luput selamanya."
+            },
+            {
+              "v": "rarely-looks",
+              "l": "Saya jarang melihat ke sana",
+              "d": "Bagian-bagian itu kebanyakan luput dari perhatian."
+            },
+            {
+              "v": "never-considered",
+              "l": "Saya belum pernah berpikir aliran air bisa tidak merata ke tiap sudut",
+              "d": "Ini bukan sesuatu yang pernah saya pertimbangkan."
+            }
+          ]
+        },
+        {
+          "id": "temp-stability",
+          "text": "Seberapa banyak suhu akuarium Anda sebenarnya berubah-ubah dari hari ke hari?",
+          "sub": "Perkiraan jujur terbaik Anda, entah Anda mengukurnya atau tidak.",
+          "opts": [
+            {
+              "v": "stable-monitored",
+              "l": "Nyaris tidak berubah — saya cek dan hasilnya stabil",
+              "d": "Heater dan termometer bekerja dengan baik, dan saya cukup sering memeriksanya untuk tahu itu."
+            },
+            {
+              "v": "stable-assumed",
+              "l": "Kemungkinan stabil, meski saya tidak sering mengecek",
+              "d": "Saya percaya pada peralatannya, tapi tidak bisa memastikan kapan terakhir kali saya konfirmasi."
+            },
+            {
+              "v": "noticeable-swings",
+              "l": "Berubah-ubah dalam jumlah yang cukup terasa",
+              "d": "Suhu ruangan, peralatan, atau hal lain membuatnya berubah-ubah lebih dari sedikit."
+            },
+            {
+              "v": "unsure-swings",
+              "l": "Saya sungguh tidak tahu",
+              "d": "Tidak ada termometer di akuarium, atau saya tidak pernah mengeceknya."
+            }
+          ]
+        }
+      ],
+      "reflect": {
+        "titles": {
+          "frequent-aesthetic-not-mature": "Ditata ulang lebih sering dari <em>yang diharapkan penghuninya.</em>",
+          "mature": "Lingkungan yang dibaca sebagai <em>infrastruktur, bukan dekorasi.</em>",
+          "developing": "Stabil di sebagian sudut, <em>belum teruji di sudut lain.</em>",
+          "early": "Lingkungan yang masih <em>mencari polanya.</em>"
+        },
+        "lit": {
+          "timer": "Menjalankan lampu dengan timer menghilangkan satu variabel yang paling sering diremehkan penjaga akuarium: konsistensi fotoperiode. Ikan punya ritme sirkadian yang diatur oleh siklus cahaya, dan jadwal yang tidak bergantung pada ingatan sedang melakukan pekerjaan ekologis yang nyata, bukan sekadar soal kepraktisan.",
+          "by-feel-consistent": "Menjaga jadwal tetap konsisten secara manual, tanpa timer, berjalan baik sampai suatu saat tidak lagi begitu. Risikonya bukan pada satu malam yang terlewat, tapi pada pergeseran perlahan yang terjadi tanpa titik acuan tetap. Timer di sini bukan kemewahan. Itulah yang membuat 'konsisten' benar-benar bisa diandalkan.",
+          "by-feel-variable": "Jadwal yang berubah-ubah beberapa jam dari hari ke hari adalah salah satu celah Environmental Rhythm yang paling umum, sekaligus paling tidak kentara. Tidak ada satu gejala dramatis. Yang muncul adalah stres kronis tingkat rendah yang terlihat lewat warna memudar, minat makan menurun, dan kerentanan terhadap penyakit yang meningkat seiring waktu.",
+          "rarely-tracked": "Tidak melacak jadwal lampu sama sekali berarti variabel ini sedang tidak terkelola, dan itu lebih umum dari yang terdengar. Cahaya sering diperlakukan sebagai latar belakang, padahal ia adalah masukan yang benar-benar dibaca oleh hewan-hewan di dalamnya."
+        },
+        "con": {
+          "chronic-stress-aware": "Menyebut warna memudar, minat makan menurun, dan kerentanan terhadap penyakit, bukan satu kejadian dramatis, persis tepat. Siklus cahaya yang tidak menentu menghasilkan stres kronis tingkat rendah, bukan satu krisis yang terlihat jelas, dan itulah sebagian alasan kenapa hal ini jarang dikenali.",
+          "algae-only": "Alga memang konsekuensi nyata dari jadwal cahaya yang tidak bisa diprediksi, tapi itu cuma bagian yang terlihat di permukaan. Bagian yang kurang terlihat adalah stres yang perlahan terbentuk pada hewan itu sendiri, warna memudar, minat makan menurun, lebih rentan sakit, berlangsung diam-diam di balik apa pun yang terjadi di kaca.",
+          "no-real-effect": "Cahaya sering dianggap kurang penting dibanding kimia air, padahal fotoperiode yang tidak konsisten menghasilkan stres yang nyata meski tidak mencolok. Ikan membaca siklus cahaya sebagai sinyal sirkadian, dan siklus yang tidak bisa diprediksi lama-kelamaan muncul sebagai warna memudar, minat makan menurun, dan kerentanan terhadap penyakit yang meningkat.",
+          "not-sure": "Tidak punya dugaan di sini adalah jawaban yang jujur, dan layak direnungkan: jadwal cahaya yang tidak menentu menghasilkan stres kronis tingkat rendah, warna memudar, minat makan menurun, kerentanan terhadap penyakit, semuanya tidak cukup dramatis untuk langsung dikaitkan dengan cahaya."
+        },
+        "hsc": {
+          "rarely-once-set": "Memperlakukan tata letak yang sudah mapan sebagai sesuatu yang selesai, begitu ikan-ikan terbiasa dengannya, melindungi sesuatu yang mudah diremehkan: geometri sosial yang mereka bangun di sekitarnya. Wilayah kekuasaan, garis pandang, tempat berlindung — struktur stabil yang benar-benar dipetakan dan diandalkan oleh hewan-hewan itu, bukan sekadar dekorasi.",
+          "occasional-reason": "Menata ulang karena alasan tertentu, bukan sekadar demi suasana baru, adalah keseimbangan yang masuk akal. Gangguannya tetap nyata, tapi lebih kecil dan lebih beralasan ketika benar-benar menyelesaikan masalah, bukan sekadar menyegarkan tampilan.",
+          "frequent-aesthetic": "Menata ulang cukup sering demi tampilan baru menimbulkan biaya nyata yang ditanggung hewan-hewan di dalamnya: wilayah kekuasaan, garis pandang, dan tempat berlindung adalah struktur yang sudah mereka petakan dan andalkan. Pada spesies teritorial atau semi-agresif, gangguan berulang seperti ini bisa memicu rentetan konflik. Posisi hardscape yang sudah mapan bersifat fungsional, bukan sekadar dekoratif.",
+          "no-hardscape": "Tanpa banyak hardscape tetap, gangguan jenis ini tidak berlaku dengan cara yang sama. Meski begitu, prinsip yang sama tetap berlaku pada struktur apa pun yang ada: begitu hewan-hewan memetakannya, perlakukan sebagai sesuatu yang fungsional, bukan sekadar visual."
+        },
+        "flw": {
+          "checks-regularly": "Sengaja memeriksa sudut-sudut dan ruang di balik hardscape yang tinggi lebih maju dari kebanyakan rutinitas. Aliran yang tidak merata menciptakan titik mati di mana detritus menumpuk dan oksigen menjadi rendah, masalah yang tetap tidak terlihat justru karena berada di luar garis pandang utama.",
+          "notices-eventually": "Menyadari penumpukan cepat atau lambat, meski tanpa rutinitas khusus, tetap lebih baik dari tidak sama sekali. Tapi titik mati di balik hardscape atau di sudut cenderung menumpuk diam-diam untuk sementara waktu sebelum cukup terlihat untuk disadari dengan sendirinya.",
+          "rarely-looks": "Jarang memeriksa di balik hardscape atau di sudut-sudut berarti titik mati punya ruang untuk berkembang tanpa disadari. Aliran yang tidak merata menciptakan persis kantong-kantong seperti ini, oksigen rendah, penumpukan detritus, dan itu masalah Environmental Rhythm yang nyata, bukan sekadar soal tampilan.",
+          "never-considered": "Belum pernah mempertimbangkan distribusi aliran sebagai variabel tersendiri adalah hal yang umum. Kebanyakan perhatian tertuju pada apakah filternya menyala, bukan ke mana sebenarnya alirannya sampai. Sudut-sudut dan ruang di balik hardscape yang tinggi adalah tempat aliran paling sering gagal menjangkau."
+        },
+        "tmp": {
+          "stable-monitored": "Memeriksa cukup sering untuk benar-benar memastikan kestabilan, bukan sekadar mengasumsikannya, adalah bentuk pengelolaan suhu yang lebih lengkap. Kestabilan itu sendiri yang menjadi tujuan. Ikan dan komunitas mikroba beradaptasi dengan kondisi yang konsisten dan tertekan oleh fluktuasi, prinsip yang sama seperti pada kimia air.",
+          "stable-assumed": "Mempercayai peralatan tanpa sering mengecek adalah kebiasaan yang wajar, tapi itu berarti pergeseran perlahan, heater yang mulai melemah, ruangan yang jadi lebih dingin, bisa tidak disadari untuk sementara waktu. Sesekali memeriksa mengubah asumsi menjadi kepastian yang sebenarnya.",
+          "noticeable-swings": "Suhu yang berubah-ubah dalam jumlah yang terasa adalah sinyal Environmental Rhythm yang nyata, bukan sekadar variasi latar belakang. Ikan beradaptasi dengan kondisi yang konsisten. Fluktuasinya sendiri, lebih dari angka pastinya, yang cenderung menyebabkan stres.",
+          "unsure-swings": "Tidak tahu seberapa banyak suhu sebenarnya berubah berarti variabel ini saat ini tidak punya titik acuan, dan itu layak diselesaikan, karena fluktuasi suhu adalah salah satu sumber stres kronis yang paling sering luput dari perhatian."
+        },
+        "closing": {
+          "early": "Bagian mana dari lingkungan akuarium ini yang belum pernah Anda perlakukan sebagai sesuatu yang benar-benar dibaca oleh penghuninya?",
+          "developing": "Dari semua ini — cahaya, tata letak, aliran, suhu — mana yang paling layak dijadikan rutinitas nyata, bukan sekadar asumsi?",
+          "mature": "Sekarang setelah lingkungan dibaca sebagai infrastruktur, apa lagi yang layak diperiksa dengan perhatian yang sama?"
+        },
+        "phaseText": {
+          "Early": "Environmental Rhythm di sini berada pada Early Phase — beberapa variabel fisik dan sensorik ini (cahaya, tata letak, aliran, suhu) masih belum terkelola atau terlacak. Ini hal yang umum, dan juga irama yang paling mudah untuk mulai dibentuk secara sengaja.",
+          "Developing": "Environmental Rhythm di sini berada pada Developing Phase — sebagian variabel ini sudah ditangani dengan baik, sebagian lagi masih berupa asumsi, bukan kebiasaan yang sudah dipastikan.",
+          "Mature": "Environmental Rhythm di sini berada pada Mature Phase — cahaya, tata letak, aliran, dan suhu dibaca dan dikelola sebagai masukan struktural yang sesungguhnya, bukan diperlakukan sebagai latar belakang."
         }
       }
     }

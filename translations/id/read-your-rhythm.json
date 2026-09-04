@@ -5,10 +5,10 @@
     "sourceFile": "articles/read-your-rhythm.html",
     "status": "in-progress",
     "rhythmsComplete": [
-      "water"
+      "water",
+      "biological"
     ],
     "rhythmsPending": [
-      "biological",
       "environmental",
       "livestock",
       "keeper"
@@ -230,6 +230,193 @@
           "Early": "Water Rhythm di sini berada pada Early Phase — siklusnya sendiri belum stabil, atau belum ada garis dasar yang jelas untuk dibandingkan. Ini bukan ketinggalan. Ini titik awal setiap akuarium.",
           "Developing": "Water Rhythm di sini berada pada Developing Phase — kimianya sudah berfungsi, dan kebiasaan yang mengubah hasil uji menjadi kesadaran akan tren masih dalam pembentukan atau belum sempat teruji.",
           "Mature": "Water Rhythm di sini berada pada Mature Phase — bukan karena angkanya sempurna, tapi karena angkanya dibaca sebagai tren, dengan stabilitas yang lebih dipercaya dibanding mengejar angka ideal."
+        }
+      }
+    },
+    "biological": {
+      "questions": [
+        {
+          "id": "biofilm-read",
+          "text": "Anda melihat lapisan tipis berwarna cokelat keabu-abuan mulai terbentuk di kaca atau hardscape akuarium yang masih baru.",
+          "sub": "Apa naluri pertama Anda saat melihatnya?",
+          "opts": [
+            {
+              "v": "leave-it",
+              "l": "Biarkan saja. Sepertinya bagian dari akuarium yang sedang menyesuaikan diri",
+              "d": "Saya tidak langsung mengambil alat pembersih begitu melihatnya."
+            },
+            {
+              "v": "worried-contamination",
+              "l": "Jadi khawatir itu tanda kontaminasi",
+              "d": "Pikiran pertama saya adalah ada yang salah dengan airnya."
+            },
+            {
+              "v": "wipe-immediately",
+              "l": "Langsung membersihkannya",
+              "d": "Terlihat seperti kotoran atau alga bagi saya, jadi saya bersihkan."
+            },
+            {
+              "v": "never-noticed",
+              "l": "Saya belum pernah benar-benar memperhatikan hal ini",
+              "d": "Belum bisa dibilang saya memperhatikan hal ini secara khusus."
+            }
+          ]
+        },
+        {
+          "id": "substrate-clean",
+          "text": "Bagaimana Anda menangani pembersihan substrat — pasir atau tanah, bukan rutinitas vakum kerikil biasa?",
+          "sub": "Pikirkan apa yang benar-benar terjadi, bukan apa yang menurut Anda seharusnya terjadi.",
+          "opts": [
+            {
+              "v": "spot-clean",
+              "l": "Bersihkan sebagian saja, biarkan sebagian besar tidak terganggu",
+              "d": "Saya mengaduk atau menyedot hanya bagian yang terlihat perlu."
+            },
+            {
+              "v": "never-touch",
+              "l": "Saya hampir tidak pernah menyentuhnya",
+              "d": "Begitu sudah dipasang, saya biarkan hampir sepenuhnya."
+            },
+            {
+              "v": "full-clean-routine",
+              "l": "Membersihkannya menyeluruh secara rutin, seperti kaca",
+              "d": "Saya perlakukan substrat sama seperti permukaan lain yang perlu dibersihkan rutin."
+            },
+            {
+              "v": "not-applicable",
+              "l": "Setup saya tidak benar-benar punya jenis substrat ini",
+              "d": "Dasar kosong, atau substrat yang tidak relevan dengan ini."
+            }
+          ]
+        },
+        {
+          "id": "recovery-awareness",
+          "text": "Setelah sesuatu yang mengganggu — pengobatan, lonjakan amonia yang parah, atau pembersihan filter menyeluruh — bagaimana Anda memperlakukan akuarium di hari-hari berikutnya?",
+          "sub": "Bayangkan terakhir kali hal semacam ini benar-benar terjadi.",
+          "opts": [
+            {
+              "v": "ease-back",
+              "l": "Kembali ke kehati-hatian ala Early Phase untuk sementara",
+              "d": "Lebih sedikit penambahan, lebih banyak pengamatan, ekspektasi lebih rendah sampai semuanya kembali stabil."
+            },
+            {
+              "v": "back-to-normal",
+              "l": "Langsung kembali ke rutinitas normal",
+              "d": "Begitu masalah utamanya teratasi, saya perlakukan akuarium seperti sebelumnya."
+            },
+            {
+              "v": "push-forward",
+              "l": "Mendorong lebih untuk mengejar ketertinggalan",
+              "d": "Saya cenderung mengompensasi — pemberian pakan ekstra, penambahan ekstra — agar cepat kembali normal."
+            },
+            {
+              "v": "never-happened",
+              "l": "Ini belum pernah terjadi pada saya",
+              "d": "Belum pernah ada gangguan seperti ini di akuarium ini."
+            }
+          ]
+        },
+        {
+          "id": "maturity-marker",
+          "text": "Apa yang benar-benar menunjukkan bahwa sebuah akuarium punya kedalaman biologis sesungguhnya, bukan sekadar angka yang bagus?",
+          "sub": "Bukan jawaban buku teks. Apa yang secara pribadi akan Anda tunjuk.",
+          "opts": [
+            {
+              "v": "resilience",
+              "l": "Ia bisa mengatasi kesalahan kecil tanpa banyak drama",
+              "d": "Telat mengganti air atau memberi pakan berlebih sedikit tidak sampai mengguncangnya."
+            },
+            {
+              "v": "zero-readings",
+              "l": "Amonia dan nitrit terbaca nol",
+              "d": "Kalau kedua angka itu bersih, saya akan menyebutnya matang."
+            },
+            {
+              "v": "time-elapsed",
+              "l": "Waktu yang sudah berlalu cukup lama",
+              "d": "Usia sebenarnya hal utama yang akan saya tunjuk."
+            },
+            {
+              "v": "unsure-marker",
+              "l": "Jujur, saya tidak tahu cara menilainya",
+              "d": "Saya belum pernah memikirkan apa yang membedakan 'lulus ujian' dari 'benar-benar dalam'."
+            }
+          ]
+        },
+        {
+          "id": "filter-media",
+          "text": "Bagaimana Anda membersihkan media filter atau spons filter?",
+          "sub": "Kebiasaan yang sebenarnya, bukan yang ideal.",
+          "opts": [
+            {
+              "v": "rinse-tank-water",
+              "l": "Bilas perlahan dengan air akuarium bekas, simpan sebagian besar medianya",
+              "d": "Saya berusaha menjaga sebanyak mungkin koloni bakterinya."
+            },
+            {
+              "v": "rarely-touch",
+              "l": "Jarang memikirkannya sampai alirannya melemah",
+              "d": "Perawatan filter tidak benar-benar jadi perhatian saya sampai ada yang jelas-jelas salah."
+            },
+            {
+              "v": "tap-water-rinse",
+              "l": "Bilas menyeluruh di bawah air keran",
+              "d": "Saya ingin benar-benar bersih, jadi saya bilas baik-baik di bawah keran."
+            },
+            {
+              "v": "replace-regularly",
+              "l": "Ganti media secara rutin",
+              "d": "Media baru secara berkala, seperti mengganti filter mobil."
+            }
+          ]
+        }
+      ],
+      "reflect": {
+        "titles": {
+          "zero-readings-not-mature": "Lebih bersih dari <em>biologinya yang sebenarnya.</em>",
+          "mature": "Mikrobioma yang memaafkan <em>kelalaian biasa.</em>",
+          "developing": "Biologi yang berfungsi, <em>belum dalam.</em>",
+          "early": "Koloni yang masih mencari <em>pijakannya.</em>"
+        },
+        "bio": {
+          "leave-it": "Membiarkan lapisan tipis kecokelatan itu, alih-alih langsung mengambil alat pembersih, adalah naluri yang lebih tepat. Lapisan itu adalah biofilm — bakteri heterotrofik yang sedang membangun diri di permukaan keras — dan merupakan salah satu tanda paling awal bahwa komunitas biologis benar-benar sedang terbentuk, bukan bukti adanya kotoran.",
+          "wipe-immediately": "Membersihkan lapisan itu begitu muncul adalah hal yang umum, dan bisa dimengerti. Terlihat seperti sesuatu yang tidak seharusnya ada di sana. Tapi lapisan itu adalah biofilm: bakteri yang sedang membangun diri di permukaan keras, salah satu tanda paling awal komunitas biologis sedang terbentuk. Membersihkannya berulang kali justru memperlambat proses yang paling dibutuhkan akuarium baru.",
+          "worried-contamination": "Membaca lapisan itu sebagai tanda bahaya adalah reaksi awal yang wajar. Kenyataannya justru sebaliknya: biofilm di kaca dan hardscape, terutama pada akuarium yang masih baru, adalah bakteri yang membangun komunitas di permukaan, tanda biologi sedang terbentuk, bukan biologi yang bermasalah.",
+          "never-noticed": "Belum memperhatikan biofilm secara khusus tidak terlalu berarti dengan sendirinya. Sifatnya memang halus, dan mudah dibaca sebagai kotoran biasa kalau belum pernah ada yang menunjukkannya. Layak diperhatikan lain kali muncul: lapisan tipis cokelat keabu-abuan di kaca atau hardscape pada akuarium baru biasanya adalah kabar baik."
+        },
+        "sub": {
+          "spot-clean": "Membersihkan sebagian saja, alih-alih mengganggu seluruh substrat, melindungi sesuatu yang butuh berbulan-bulan untuk terbentuk: biologi substrat. Pada setup pasir dan tanah khususnya, lapisan di bawah permukaan mengembangkan komunitas bakterinya sendiri yang turut menjaga kualitas air dan stabilitas — komunitas yang bisa sangat terganggu oleh pembersihan menyeluruh.",
+          "full-clean-routine": "Memperlakukan substrat sama seperti kaca, dibersihkan menyeluruh secara rutin, menghilangkan sesuatu yang tidak dimiliki kaca: biologi substrat. Pada pasir dan tanah khususnya, lapisan itu mengembangkan komunitas bakteri selama berbulan-bulan yang berarti nyata bagi kualitas air. Membersihkannya sesuai jadwal terus-menerus mengulang proses yang butuh waktu, bukan perhatian, untuk selesai.",
+          "never-touch": "Membiarkan substrat hampir sepenuhnya tidak tersentuh melindungi biologi yang sedang terbentuk di dalamnya, dan itu naluri yang tepat. Lapisan di bawah permukaan, terutama pada pasir atau tanah, membangun komunitas bakteri selama berbulan-bulan. Satu-satunya yang perlu diperhatikan adalah kalau memang ada penumpukan kotoran yang nyata dan butuh sedikit sentuhan ringan, bukan pembersihan menyeluruh.",
+          "not-applicable": "Tanpa jenis substrat ini, bagian Biological Rhythm yang satu ini tidak berlaku dengan cara yang sama. Pertanyaan setaranya menjadi seberapa besar permukaan keras lain di akuarium, terutama hardscape dan media filter, diperlakukan dengan naluri yang sama untuk melindungi apa yang sedang terbentuk, bukan membersihkannya begitu saja."
+        },
+        "rec": {
+          "ease-back": "Kembali ke kehati-hatian ala Early Phase setelah gangguan — pengobatan, lonjakan amonia, pembersihan filter menyeluruh — adalah respons yang justru paling selaras. Ritme biologis butuh waktu pemulihan setelah kejadian semacam itu, dan memperlakukan akuarium seolah berada di fase lebih awal untuk sementara, alih-alih langsung mengharapkan ketahanan setara akuarium matang, adalah yang sebenarnya mempercepat pemulihan.",
+          "back-to-normal": "Langsung kembali ke rutinitas normal begitu masalah utamanya teratasi adalah naluri yang umum, tapi biologinya tidak pulih secepat itu. Setelah gangguan seperti pengobatan, lonjakan amonia, atau pembersihan filter menyeluruh, akuarium akan berperilaku seperti fase yang lebih awal untuk sementara waktu. Perawatan yang disesuaikan dengan itu lebih tepat, dibanding memperlakukannya seperti sebelum gangguan terjadi.",
+          "push-forward": "Mendorong lebih untuk mengejar ketertinggalan, lewat pemberian pakan ekstra atau penambahan ekstra, bisa dimengerti, tapi hampir berlawanan dengan yang dibutuhkan ritme biologis yang sedang terganggu. Sistem butuh waktu pemulihan setelah kejadian seperti pengobatan, lonjakan, atau pembersihan filter. Menambah tekanan justru pada saat itu cenderung memperpanjang pemulihan, bukan mempercepatnya.",
+          "never-happened": "Belum pernah menghadapi gangguan sungguhan berarti ini belum pernah teruji, dan itu wajar saja. Layak diingat untuk saat itu terjadi nanti: setelah pengobatan, lonjakan yang parah, atau pembersihan filter menyeluruh, akuarium akan berperilaku seperti fase yang lebih awal untuk sementara, dan perawatan yang disesuaikan dengan itu adalah yang sebenarnya mengembalikannya ke kondisi semula."
+        },
+        "mat": {
+          "resilience": "Menyebut ketahanan, telat mengganti air atau memberi pakan berlebih sedikit yang tidak sampai mengguncang akuarium, sebagai tanda kedalaman sesungguhnya sangat dekat dengan definisi ARA. Ecological forgiveness, kemampuan menyerap ketidakkonsistenan kecil penjaga tanpa berujung pada ketidakstabilan, adalah wujud sebenarnya dari Mature Phase yang genuine. Itu hal yang berbeda dari sekadar angka yang bersih.",
+          "zero-readings": "Membaca amonia dan nitrit nol sebagai bukti kematangan adalah bentuk paling umum dari sebuah jebakan nyata: false maturity. Sebuah akuarium bisa memiliki angka yang bersih secara kasat mata tanpa pernah benar-benar mengembangkan kedalaman ekologis dari Mature Phase yang genuine, sering kali karena diberi bibit bakteri secara besar-besaran, atau sekadar sudah berjalan lama tanpa banyak beban biologis yang mengujinya. Angka yang bersih memang perlu. Tapi itu saja tidak cukup.",
+          "time-elapsed": "Menunjuk pada waktu yang sudah berlalu masuk akal secara intuitif, tapi waktu saja tidak menjamin kedalaman. Sebuah akuarium bisa berjalan setahun tanpa pernah benar-benar diuji, tanpa penghuni, tanpa banyak beban biologis, dan tetap tidak memiliki ketahanan yang lahir dari riwayat nyata menghadapi tekanan dan pulih darinya. Usia adalah kondisi awal menuju kedalaman, bukan buktinya.",
+          "unsure-marker": "Tidak punya jawaban jelas soal apa yang membedakan 'lulus ujian' dari 'benar-benar dalam' adalah jawaban yang jujur. Kebanyakan penjaga akuarium memang belum pernah diminta menarik garis itu. Singkatnya: itu soal ketahanan, bukan angka. Sistem yang matang menyerap telat mengganti air atau hari yang kurang ideal tanpa banyak drama. Sistem yang hanya terlihat baik dalam kondisi sempurna belum benar-benar diuji."
+        },
+        "med": {
+          "rinse-tank-water": "Membilas media filter dengan air akuarium bekas, bukan air keran, melindungi hal yang paling penting: koloni bakteri yang hidup di dalamnya. Koloni itu melakukan sebagian besar kerja biologis sesungguhnya di akuarium, dan jauh lebih rentan terhadap klorin dan kejutan suhu daripada yang terlihat.",
+          "tap-water-rinse": "Membilas media filter secara menyeluruh di bawah keran adalah salah satu cara paling umum seorang penjaga tanpa sadar mengatur ulang ritme biologisnya sendiri. Air keran biasanya mengandung klorin atau kloramin, dan bilasan menyeluruh di bawahnya bisa membunuh sebagian besar koloni bakteri yang melakukan kerja biologis sesungguhnya di akuarium, koloni yang butuh berminggu-minggu siklus penuh untuk terbentuk.",
+          "replace-regularly": "Mengganti media secara berkala, seperti mengganti filter mobil, memperlakukannya sebagai komponen mekanis, padahal sebenarnya bukan itu: media adalah rumah fisik bagi koloni bakteri akuarium. Media baru berarti koloni itu mulai dari nol lagi. Media yang dibilas dan dipakai ulang, bukan diganti, menjaga kesinambungan biologinya.",
+          "rarely-touch": "Tidak memikirkan media filter sampai alirannya jelas-jelas melemah berarti koloni bakteri di dalamnya sebagian besar dibiarkan, yang justru melindunginya. Risikonya hanya di sisi lain: kalau aliran yang berkurang akibat filter tersumbat tidak disadari cukup lama hingga memengaruhi oksigen atau sirkulasi."
+        },
+        "closing": {
+          "early": "Seperti apa rasanya membiarkan biologi akuarium ini selesai terbentuk sebelum dinilai dari tampilannya?",
+          "developing": "Kebiasaan mana di sini — biofilm, substrat, media filter — yang ingin Anda lindungi lebih sengaja mulai sekarang?",
+          "mature": "Sekarang setelah ketahanan menjadi tanda yang dipercaya, asumsi apa lagi tentang akuarium ini yang layak diperiksa dengan standar yang sama?"
+        },
+        "phaseText": {
+          "Early": "Biological Rhythm di sini berada pada Early Phase — mikrobioma masih terbentuk, atau kebiasaan yang melindunginya (biofilm, substrat, media filter) justru lebih banyak merugikan daripada membantu. Ini bukan vonis. Ini titik yang paling layak mendapat perhatian sekarang.",
+          "Developing": "Biological Rhythm di sini berada pada Developing Phase — biologinya sudah berfungsi dan sebagian kebiasaan pelindung sudah ada, tapi kedalaman yang lahir dari waktu dan beberapa ujian nyata belum sepenuhnya terkumpul.",
+          "Mature": "Biological Rhythm di sini berada pada Mature Phase — bukan karena angkanya sempurna, tapi karena sistemnya sudah menunjukkan bisa menyerap kelalaian biasa tanpa banyak drama. Itu ecological forgiveness, bukan keberuntungan."
         }
       }
     }

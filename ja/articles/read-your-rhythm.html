@@ -65,8 +65,6 @@ html{font-size:17px;scroll-behavior:smooth}
 :root{--fs-3xs:.5rem;--fs-2xs:.65rem;--fs-xs:.7rem;--fs-sm:.8rem;--fs-sm-md:.85rem;--fs-md:.9rem;--fs-base:1rem;--fs-md-lg:1.1rem;--fs-lg:1.35rem;--fs-xl:1.6rem;--fs-2xl:2.2rem;--fs-3xl:2.8rem;--fs-4xl:3rem;--fs-5xl:3.5rem;--abyss:#030b09;--serif:'Fraunces',Georgia,serif;--sans:'Work Sans','Noto Sans JP',system-ui,sans-serif;--accent:#3DD6E8;--ease:cubic-bezier(0.19,1,0.22,1)}
 body{font-family:var(--sans);background:var(--th-bg);color:var(--th-ink);overflow-x:hidden;line-height:1.72}
 body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-water)}
-#ryr-progress{height:2px;background:var(--th-surface-2);position:sticky;top:calc(68px + 41px);z-index:79}
-#ryr-prog-fill{height:100%;width:0%;background:var(--th-accent-soft);transition:width .7s var(--ease)}
 main{min-height:100vh;padding-top:64px}
 
 /* INTRO */
@@ -176,7 +174,6 @@ main{min-height:100vh;padding-top:64px}
     <li><a href="/ja/?p=terms">利用規約</a></li>
   </ul>
 </div>
-<div id="ryr-progress"><div id="ryr-prog-fill"></div></div>
 <main>
   <div id="ryr-intro" class="ryr-intro">
     <div class="ryr-intro-inner">
@@ -907,7 +904,6 @@ function showIntro(){
   document.getElementById('ryr-intro').style.display='flex';
   document.getElementById('ryr-screen').style.display='none';
   document.getElementById('ryr-result').style.display='none';
-  document.getElementById('ryr-prog-fill').style.width='0%';
 }
 function startRhythm(key){
   curRhythm=key;ans={};
@@ -923,7 +919,6 @@ function showQ(i){
   document.getElementById('ryr-q-num').textContent='質問 '+(i+1)+'/'+Q.length;
   document.getElementById('ryr-q-text').textContent=q.text;
   document.getElementById('ryr-q-sub').textContent=q.sub;
-  document.getElementById('ryr-prog-fill').style.width=((i/Q.length)*100)+'%';
   var oc=document.getElementById('ryr-options');oc.innerHTML='';
   q.opts.forEach(function(opt){
     var btn=document.createElement('button');
@@ -947,7 +942,6 @@ function showResult(){
   document.getElementById('ryr-intro').style.display='none';
   document.getElementById('ryr-screen').style.display='none';
   document.getElementById('ryr-result').style.display='block';
-  document.getElementById('ryr-prog-fill').style.width='100%';
   var ref=RHYTHMS[curRhythm].reflect(ans);
   document.getElementById('ryr-result-eyebrow').textContent=RHYTHMS[curRhythm].name+" — あなたの内省";
   document.getElementById('ryr-result-title').innerHTML=ref.title;

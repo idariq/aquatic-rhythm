@@ -1,0 +1,237 @@
+{
+  "_meta": {
+    "slug": "read-your-rhythm",
+    "lang": "id",
+    "sourceFile": "articles/read-your-rhythm.html",
+    "status": "in-progress",
+    "rhythmsComplete": [
+      "water"
+    ],
+    "rhythmsPending": [
+      "biological",
+      "environmental",
+      "livestock",
+      "keeper"
+    ]
+  },
+  "head": {
+    "title": "Baca Ritme Anda — Aquatic Rhythm",
+    "description": "Sejauh mana akuarium Anda sebenarnya sudah berkembang, dibaca ritme demi ritme. Mulai dari Water Rhythm — refleksi singkat, bukan ujian untuk dilulusi.",
+    "ogTitle": "Baca Ritme Anda — Aquatic Rhythm",
+    "ogDescription": "Sejauh mana akuarium Anda sebenarnya sudah berkembang, dibaca ritme demi ritme. Mulai dari Water Rhythm.",
+    "twitterTitle": "Baca Ritme Anda — Aquatic Rhythm",
+    "twitterDescription": "Sejauh mana akuarium Anda sebenarnya sudah berkembang, dibaca ritme demi ritme. Mulai dari Water Rhythm.",
+    "jsonLdHeadline": "Baca Ritme Anda — Aquatic Rhythm",
+    "jsonLdDescription": "Sejauh mana akuarium Anda sebenarnya sudah berkembang, dibaca ritme demi ritme. Mulai dari Water Rhythm — refleksi singkat, bukan ujian untuk dilulusi."
+  },
+  "intro": {
+    "eyebrow": "Coba Sendiri",
+    "titleHtml": "Baca<br><em>Ritme Anda.</em>",
+    "subtitle": "Sejauh mana akuarium Anda sebenarnya sudah berkembang — dibaca ritme demi ritme.",
+    "body1": "Alat ini membaca akuarium yang sudah Anda miliki — bukan yang baru akan Anda bangun. Kalau belum ada akuarium sama sekali, <a href=\"/id/articles/know-your-rhythm\" style=\"color:var(--th-accent)\">Kenali Ritme Anda</a> tempat yang lebih tepat untuk mulai: pertanyaannya hanya tentang diri Anda, dan tidak perlu ada apa pun yang sudah berjalan.",
+    "body2": "ARA membaca sebuah akuarium lewat lima ritme — Water, Biological, Environmental, Livestock, dan Keeper — dan masing-masing bisa berada di fase berbeda pada saat yang sama. Filter bisa sudah matang sementara jadwal lampunya baru berubah seminggu lalu. Periksa satu ritme sekarang dan langsung dapat jawabannya, atau kembali lagi nanti untuk melengkapi gambaran penuhnya. Tidak ada yang harus dikerjakan berurutan, dan tidak ada yang sedang dinilai di sini.",
+    "note": "Water Rhythm sudah siap di bawah. Empat ritme lainnya masih dalam pengerjaan. Yang Anda dapatkan di akhir adalah refleksi yang berpijak pada kerangka ARA — bukan diagnosis, dan bukan skor untuk dikalahkan.",
+    "pickerLabel": "Pilih ritme untuk dibaca",
+    "cardTagQuestions": "5 pertanyaan →",
+    "cardTagSoon": "Segera hadir"
+  },
+  "chrome": {
+    "resultEyebrowSuffix": " — refleksi Anda",
+    "questionCloseLabel": "Pertanyaan untuk direnungkan",
+    "phaseNoteLabel": "Tahap ritme ini",
+    "noteEnd": "Refleksi ini hanya mencakup satu ritme. Sebuah akuarium bisa berada di fase berbeda pada tiap-tiap dari lima ritmenya — ini bukan gambaran penuh, hanya satu bagian jujur darinya.",
+    "restartBtn": "Baca lagi",
+    "ctaFiveRhythms": "Baca tentang kelima ritme →",
+    "ctaBackToTools": "← Kembali ke Laboratorium & Alat",
+    "questionOfWord1": "Pertanyaan",
+    "questionOfWord2": "dari",
+    "seeReflectionBtn": "Lihat refleksi →",
+    "nextBtn": "Lanjut →",
+    "backBtn": "← Kembali"
+  },
+  "rhythms": {
+    "water": {
+      "questions": [
+        {
+          "id": "cycle-status",
+          "text": "Apakah siklus nitrogen akuarium Anda benar-benar sudah selesai?",
+          "sub": "Bukan soal berapa lama sudah berjalan — tapi apakah amonia dan nitrit sudah sama-sama nol, dengan nitrat yang ada dan stabil.",
+          "opts": [
+            {
+              "v": "still-cycling",
+              "l": "Belum — masih terlihat amonia atau nitrit",
+              "d": "Siklusnya belum selesai. Angkanya masih bergerak."
+            },
+            {
+              "v": "recently-done",
+              "l": "Baru saja selesai, atau sepertinya sudah",
+              "d": "Amonia dan nitrit terbaca nol, tapi masih baru — saya masih mengamati dengan saksama."
+            },
+            {
+              "v": "established",
+              "l": "Sudah — dan stabil selama berbulan-bulan",
+              "d": "Amonia nol, nitrit nol, nitrat stabil, sudah cukup lama begitu."
+            },
+            {
+              "v": "not-sure",
+              "l": "Jujur, saya belum pernah menguji ini",
+              "d": "Saya tidak punya jawaban pasti soal ini."
+            }
+          ]
+        },
+        {
+          "id": "testing-habit",
+          "text": "Seberapa sering Anda benar-benar menguji air?",
+          "sub": "Bukan seberapa sering seharusnya — tapi seberapa sering kenyataannya.",
+          "opts": [
+            {
+              "v": "routine",
+              "l": "Rutin, terlepas dari ada yang terlihat aneh atau tidak",
+              "d": "Mingguan, dua mingguan, sesuatu yang teratur dan saya patuhi."
+            },
+            {
+              "v": "reactive",
+              "l": "Saat ada yang terlihat tidak beres",
+              "d": "Air keruh, ikan berperilaku aneh — biasanya itu yang membuat saya mengambil alat uji."
+            },
+            {
+              "v": "rarely",
+              "l": "Jarang, kalau pernah",
+              "d": "Menguji air bukan bagian dari rutinitas saya saat ini."
+            },
+            {
+              "v": "too-new",
+              "l": "Akuariumnya masih terlalu baru untuk punya rutinitas",
+              "d": "Saya masih mencari tahu rutinitas yang cocok."
+            }
+          ]
+        },
+        {
+          "id": "trend-read",
+          "text": "Saat hasil ujian keluar, Anda sebenarnya membandingkannya dengan apa?",
+          "sub": "Jawaban jujur, bukan jawaban buku teks.",
+          "opts": [
+            {
+              "v": "history",
+              "l": "Beberapa hasil sebelumnya — saya memperhatikan arahnya",
+              "d": "Satu angka yang naik selama tiga minggu berarti lain bagi saya dibanding angka yang sama muncul sekali saja."
+            },
+            {
+              "v": "ideal-number",
+              "l": "Angka yang seharusnya saya capai",
+              "d": "Saya bandingkan dengan apa yang dikatakan bagan atau artikel sebagai ideal."
+            },
+            {
+              "v": "gut-feeling",
+              "l": "Tidak dengan apa-apa secara khusus — saya cuma melihat angkanya",
+              "d": "Saya baca angkanya, tapi tidak benar-benar melacaknya terhadap apa pun."
+            },
+            {
+              "v": "unsure",
+              "l": "Saya tidak yakin akan menyadari tren sekalipun ada",
+              "d": "Saya belum pernah berpikir soal ini dengan cara begitu."
+            }
+          ]
+        },
+        {
+          "id": "stable-response",
+          "text": "Satu parameter berada sedikit di luar rentang \"ideal\" — tapi sudah stabil di situ selama berminggu-minggu. Apa yang Anda lakukan?",
+          "sub": "Bayangkan ini terjadi di akuarium Anda sendiri, sekarang.",
+          "opts": [
+            {
+              "v": "leave-stable",
+              "l": "Biarkan saja — stabil ya stabil",
+              "d": "Kalau tidak bergerak dan tidak ada yang terlihat salah, saya tidak mengejar angka buku teks."
+            },
+            {
+              "v": "nudge-toward-ideal",
+              "l": "Coba dorong perlahan menuju angka ideal",
+              "d": "Meski sudah stabil, saya lebih suka kalau sesuai dengan rentang yang pernah saya baca."
+            },
+            {
+              "v": "multiple-fixes",
+              "l": "Coba beberapa cara sekaligus untuk memperbaikinya",
+              "d": "Melihat angka yang tidak beres membuat saya ingin bertindak, bukan menunggu."
+            },
+            {
+              "v": "would-research",
+              "l": "Berhenti dulu dan cari tahu sebelum bertindak",
+              "d": "Saya tidak akan bertindak sebelum paham kenapa angkanya begitu."
+            }
+          ]
+        },
+        {
+          "id": "oxygen-read",
+          "text": "Ikan-ikan berkumpul di dekat permukaan, bernapas dengan berat, di pagi hari.",
+          "sub": "Apa dugaan pertama Anda soal yang sedang terjadi?",
+          "opts": [
+            {
+              "v": "oxygen-aware",
+              "l": "Oksigen terlarut rendah — respirasi tumbuhan semalaman atau aliran permukaan yang lemah",
+              "d": "Pola ini, di jam segini, mengarah ke oksigen sebelum hal lain."
+            },
+            {
+              "v": "disease-assume",
+              "l": "Ada yang salah dengan ikannya — kemungkinan sakit",
+              "d": "Naluri pertama saya adalah melihat hewannya, bukan airnya."
+            },
+            {
+              "v": "ammonia-assume",
+              "l": "Lonjakan amonia atau nitrit",
+              "d": "Napas berat biasanya berarti masalah kimia bagi saya, dan itu yang pertama saya pikirkan."
+            },
+            {
+              "v": "no-idea",
+              "l": "Saya tidak akan tahu harus mulai dari mana",
+              "d": "Saya belum pernah mengalami ini, atau belum punya gambaran soal ini."
+            }
+          ]
+        }
+      ],
+      "reflect": {
+        "titles": {
+          "still-cycling": "Akuarium yang masih menjadi <em>dirinya yang nanti.</em>",
+          "not-sure": "Ritme yang belum pernah <em>dibaca.</em>",
+          "mature": "Ritme yang dibaca lewat <em>tren, bukan sekilas.</em>",
+          "established-not-mature": "Lebih tua dari yang <em>disiratkan kebiasaan bacanya.</em>",
+          "default-developing": "Akuarium yang sedang <em>mencari pijakannya.</em>"
+        },
+        "cyc": {
+          "still-cycling": "Siklusnya belum selesai, yang membuat Water Rhythm di sini berada pada Early Phase — karena definisinya, bukan karena penilaian. Amonia dan nitrit pada tahap ini adalah produk sampingan normal dari bakteri yang masih membangun dirinya, bukan tanda ada yang salah. Sebuah siklus biasanya selesai dalam tiga sampai delapan minggu pada setup yang belum diberi bibit bakteri. Satu hal yang perlu dihindari sekarang adalah bereaksi pada setiap angka: kondisi yang stabil dan campur tangan seminimal mungkin adalah yang sebenarnya dibutuhkan fase ini.",
+          "not-sure": "Tidak tahu apakah siklusnya sudah selesai adalah masalah yang berbeda dari siklus yang lambat — artinya belum ada garis dasar untuk membandingkan apa pun. Satu kali uji hari ini akan memberi tahu lebih banyak dibanding berbulan-bulan mengamati tanpa pernah mengujinya: amonia, nitrit, dan nitrat, diuji sekali, akan menempatkan akuarium ini di suatu titik pada gambaran keseluruhan.",
+          "recently-done": "Siklus yang baru saja selesai menempatkan Water Rhythm pada Developing Phase — kimianya sudah bekerja, tapi belum teruji oleh waktu. Inilah saat pengamatan yang cermat benar-benar terbayar: biologinya sudah berfungsi, tapi belum kokoh.",
+          "established": "Berbulan-bulan hasil uji yang stabil menempatkan siklusnya sendiri sudah jauh melewati Early Phase. Yang perlu dipertanyakan sekarang adalah apakah kebiasaan membaca hasil uji sudah sejalan dengan usia akuarium ini — dan itulah yang sebenarnya ditanyakan oleh pertanyaan-pertanyaan berikutnya."
+        },
+        "testTrend": {
+          "routine-history": "Menguji secara rutin, dan membaca arah pergerakan angka alih-alih sekadar nilainya, mendekati wujud Water Rhythm begitu tren menggantikan sekilas pandang. Hasil nitrat 20 ppm yang datar selama tiga bulan berarti lain dari angka 20 ppm yang sama tapi naik 5 ppm setiap minggu — dan sepertinya perbedaan itu tidak akan terlewat di sini.",
+          "routine-other": "Menguji secara rutin sudah lebih baik dari kebanyakan penjaga akuarium — tapi angkanya tampak dibaca satu per satu, bukan dibandingkan dengan yang sebelumnya. Di situlah informasi sesungguhnya berada: hasil uji yang sama bisa berarti sangat berbeda tergantung ke mana arahnya sebulan terakhir.",
+          "reactive": "Menguji terutama saat ada yang terlihat tidak beres berarti air dibaca untuk konfirmasi, bukan untuk pola. Uji reaktif menangkap krisis. Uji rutin menangkap pergeseran yang berujung pada krisis, berhari-hari atau berminggu-minggu lebih awal.",
+          "rarely": "Tanpa uji rutin, pergeseran tidak punya tempat untuk tertangkap sampai muncul lewat cara lain — biasanya lewat hewannya sendiri. Ini bukan kegagalan merawat. Ini jarak antara kimia yang sebenarnya sedang terjadi dan apa yang sedang dibaca saat ini.",
+          "too-new": "Rutinitas uji belum sempat terbentuk, dan itu wajar di tahap sedini ini. Kebiasaan yang terbentuk di minggu-minggu pertama ini biasanya yang akan bertahan."
+        },
+        "resp": {
+          "leave-stable": "Membiarkan hasil uji yang stabil tapi tidak sempurna, alih-alih mengejar angka buku teks, dekat dengan pendirian ARA soal kimia air secara langsung: pH 7,2 yang stabil selama enam bulan lebih baik secara ekologis dibanding pH 7,0 yang berayun antara 6,8 dan 7,4. Ikan dan komunitas mikroba beradaptasi dengan kondisi yang konsisten. Mereka tertekan justru oleh koreksinya, bukan sekadar oleh angka yang dikoreksi.",
+          "nudge-toward-ideal": "Dorongan untuk mengejar angka buku teks, bahkan saat hasil uji sudah stabil, adalah hal yang umum — dan biasanya justru intervensi itu sendiri, bukan angka aslinya, yang membuat kondisi goyah. Hasil uji yang stabil namun sedikit di luar rentang ideal umumnya lebih aman dibanding ayunan yang ditimbulkan oleh usaha mengoreksinya.",
+          "multiple-fixes": "Mengambil beberapa cara sekaligus saat angka terlihat salah bisa dimengerti, tapi itu menghapus satu hal yang sebenarnya bisa mengajarkan sesuatu: perubahan mana yang berpengaruh. Satu penyesuaian, diamati selama beberapa hari, memberi tahu lebih banyak dibanding tiga perubahan sekaligus.",
+          "would-research": "Berhenti dulu untuk memahami sebelum bertindak adalah naluri yang masuk akal. Satu-satunya risiko adalah memperlakukan hasil uji yang stabil namun tidak sempurna sebagai masalah yang perlu diselesaikan sama sekali — ada angka yang lebih layak dibaca ketimbang diperbaiki."
+        },
+        "o2": {
+          "oxygen-aware": "Membaca napas berat di permukaan pada pagi hari sebagai sinyal oksigen terlarut rendah — bukan penyakit, bukan amonia — menempatkan Anda di depan kebanyakan rutinitas uji air. Oksigen adalah satu-satunya variabel Water Rhythm yang jarang diuji secara langsung, padahal respirasi tumbuhan semalaman dan aliran permukaan yang lemah terus-menerus menyebabkannya.",
+          "disease-or-ammonia": "Napas berat di permukaan pada pagi hari adalah salah satu sinyal yang paling sering salah dibaca dalam hobi ini. Penyakit dan amonia biasanya jadi dugaan pertama, padahal penurunan oksigen semalaman — akibat respirasi tumbuhan atau aliran permukaan yang lemah — sering kali penyebab sesungguhnya. Ini jarang diuji karena memang tidak muncul di alat uji standar.",
+          "no-idea": "Oksigen terlarut tidak muncul di alat uji standar, jadi wajar kalau belum pernah dianggap sebagai variabel tersendiri. Napas berat di permukaan pada pagi hari biasanya tanda pertama yang terlihat — layak disimpan dalam ingatan bahkan sebelum menjadi relevan."
+        },
+        "closing": {
+          "still-cycling": "Seperti apa rasanya membiarkan beberapa minggu ke depan menjadi soal kesabaran, bukan koreksi?",
+          "not-sure": "Uji apa yang bisa Anda lakukan hari ini yang akan memberi tahu lebih banyak dibanding semua yang sudah Anda baca sejauh ini?",
+          "mature": "Sekarang setelah angka-angka ini dibaca sebagai tren — apa lagi tentang akuarium ini yang layak dibaca dengan cara yang sama?",
+          "developing": "Satu hal apa tentang air akuarium ini yang ingin Anda lacak trennya, tiga bulan dari sekarang?"
+        },
+        "phaseText": {
+          "Early": "Water Rhythm di sini berada pada Early Phase — siklusnya sendiri belum stabil, atau belum ada garis dasar yang jelas untuk dibandingkan. Ini bukan ketinggalan. Ini titik awal setiap akuarium.",
+          "Developing": "Water Rhythm di sini berada pada Developing Phase — kimianya sudah berfungsi, dan kebiasaan yang mengubah hasil uji menjadi kesadaran akan tren masih dalam pembentukan atau belum sempat teruji.",
+          "Mature": "Water Rhythm di sini berada pada Mature Phase — bukan karena angkanya sempurna, tapi karena angkanya dibaca sebagai tren, dengan stabilitas yang lebih dipercaya dibanding mengejar angka ideal."
+        }
+      }
+    }
+  }
+}

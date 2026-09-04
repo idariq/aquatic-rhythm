@@ -66,8 +66,6 @@ html{font-size:17px;scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--th-bg);color:var(--th-ink);overflow-x:hidden;line-height:1.72}
 body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-water)}
 @media(max-width:600px){}
-#kyr-progress{height:2px;background:var(--th-surface-2);position:sticky;top:calc(68px + 41px);z-index:79}
-#kyr-prog-fill{height:100%;width:0%;background:var(--th-accent-soft);transition:width .7s var(--ease)}
 main{min-height:100vh;padding-top:64px}
 
 /* INTRO */
@@ -171,7 +169,6 @@ main{min-height:100vh;padding-top:64px}
     <li><a href="/ja/?p=terms">利用規約</a></li>
   </ul>
 </div>
-<div id="kyr-progress"><div id="kyr-prog-fill"></div></div>
 <main>
   <div id="kyr-intro" class="kyr-intro">
     <div class="kyr-intro-inner">
@@ -462,7 +459,6 @@ function showIntro(){
   document.getElementById('kyr-intro').style.display='flex';
   document.getElementById('kyr-screen').style.display='none';
   document.getElementById('kyr-result').style.display='none';
-  document.getElementById('kyr-prog-fill').style.width='0%';
 }
 function showQ(i){
   document.getElementById('kyr-intro').style.display='none';
@@ -472,7 +468,6 @@ function showQ(i){
   document.getElementById('kyr-q-num').textContent='質問 '+(i+1)+' / '+Q.length;
   document.getElementById('kyr-q-text').textContent=q.text;
   document.getElementById('kyr-q-sub').textContent=q.sub;
-  document.getElementById('kyr-prog-fill').style.width=((i/Q.length)*100)+'%';
   var oc=document.getElementById('kyr-options');oc.innerHTML='';
   q.opts.forEach(function(opt){
     var btn=document.createElement('button');
@@ -498,7 +493,6 @@ function showResult(){
   document.getElementById('kyr-intro').style.display='none';
   document.getElementById('kyr-screen').style.display='none';
   document.getElementById('kyr-result').style.display='block';
-  document.getElementById('kyr-prog-fill').style.width='100%';
   var ref=reflect(ans);
   document.getElementById('kyr-result-title').innerHTML=ref.title;
   var re=document.getElementById('kyr-reflection');re.innerHTML='';

@@ -70,10 +70,6 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 /* BACK BAR */
 @media(max-width:600px){}
 
-/* PROGRESS BAR */
-#cwg-progress{height:2px;background:var(--th-surface-2);position:sticky;top:calc(64px + 41px);z-index:79}
-#cwg-prog-fill{height:100%;width:0%;background:var(--th-accent-soft);transition:width .7s var(--ease)}
-
 main{min-height:100vh;padding-top:64px}
 
 /* MODULE SYSTEM */
@@ -184,7 +180,6 @@ main{min-height:100vh;padding-top:64px}
     <li><a href="/id/?p=terms">Syarat Penggunaan</a></li>
   </ul>
 </div>
-<div id="cwg-progress"><div id="cwg-prog-fill"></div></div>
 
 <main>
 
@@ -402,7 +397,6 @@ main{min-height:100vh;padding-top:64px}
   var TOTAL = 5;
   var intro  = document.getElementById('cwg-intro');
   var wrap   = document.getElementById('cwg-wrap');
-  var fill   = document.getElementById('cwg-prog-fill');
   var burger = document.getElementById('cwg-burger');
   var nmob   = document.getElementById('cwg-nmob');
   var current = 0;
@@ -421,7 +415,6 @@ main{min-height:100vh;padding-top:64px}
         });
       });
     }
-    fill.style.width = Math.round((n / TOTAL) * 100) + '%';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 

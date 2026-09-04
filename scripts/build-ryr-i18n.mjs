@@ -463,6 +463,22 @@ for (const lang of targetLangs) {
   h = replaceOnce(h, /(data-cta="water_rhythm_to_five_rhythms">)Read about all five rhythms →(<\/a>)/, (_, a, b) => `${a}${t.chrome.ctaFiveRhythms}${b}`);
   h = replaceOnce(h, /(<a href="\/tools" class="ryr-link-reading">)← Back to Labs &amp; Tools(<\/a>)/, (_, a, b) => `${a}${t.chrome.ctaBackToTools}${b}`);
 
+  // 11b. Share/consent block (opt-in reflection data — Formspree). Button
+  // text has 3 states set only via JS at runtime (initial/sending/sent),
+  // and the reset-on-restart line in showResult() also writes the initial
+  // state — same "static swap isn't enough" class of bug as nextBtn/
+  // resultEyebrowSuffix above, so every JS string literal is patched too.
+  h = replaceOnce(h, /(<p class="ryr-share-text" id="ryr-share-text">)[^<]*(<\/p>)/, (_, a, b) => `${a}${t.chrome.shareText}${b}`);
+  h = replaceOnce(h, /(<span id="ryr-share-consent-label">)[^<]*(<\/span>)/, (_, a, b) => `${a}${t.chrome.shareConsentLabel}${b}`);
+  h = replaceOnce(h, /(<button class="ryr-share-btn" id="ryr-share-btn" disabled>)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.shareBtn}${b}`);
+  h = h.replace(/textContent='Share this reflection'/g, () => `textContent=${JSON.stringify(t.chrome.shareBtn)}`);
+  h = h.replace("btn.textContent='Sending…';", `btn.textContent=${JSON.stringify(t.chrome.shareBtnSending)};`);
+  h = h.replace("btn.textContent='Shared';", `btn.textContent=${JSON.stringify(t.chrome.shareBtnSent)};`);
+  h = h.replace("statusEl.textContent='Thank you — this helps shape what gets asked next.';",
+    `statusEl.textContent=${JSON.stringify(t.chrome.shareSuccessMsg)};`);
+  h = h.replace(/statusEl\.textContent='Couldn\\'t send that — check your connection and try again\.';/g,
+    () => `statusEl.textContent=${JSON.stringify(t.chrome.shareErrorMsg)};`);
+
   // 12. RHYTHMS content (questions + reflect strings) — subOnce/subAll on the
   // exact EN strings extracted from the live source via vm execution.
   const pairs = buildSubstitutionPairs(enExtracted.rhythms, t.rhythms);

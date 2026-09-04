@@ -124,6 +124,16 @@ main{min-height:100vh;padding-top:64px}
 .ryr-phase-note{margin-top:1.6rem;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2)}
 .ryr-phase-note p{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-2);line-height:1.85;margin:0}
 .ryr-note-end{font-size:var(--fs-sm);color:var(--th-ink-4);line-height:1.7;margin-top:2.5rem;font-style:italic;font-family:var(--serif)}
+.ryr-share{margin-top:2rem;padding:1.4rem 1.6rem;border:1px solid var(--th-line);background:var(--th-surface-2);border-radius:4px}
+.ryr-share-text{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.75;margin-bottom:1.1rem}
+.ryr-share-check{display:flex;align-items:flex-start;gap:.65rem;cursor:pointer;margin-bottom:1.1rem}
+.ryr-share-check input{margin-top:.2rem;flex-shrink:0;accent-color:var(--th-accent)}
+.ryr-share-check span{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.ryr-share-btn{font-size:var(--fs-2xs);font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--th-accent);border:1px solid var(--th-accent-border);padding:.7rem 1.6rem;border-radius:2px;cursor:pointer;font-family:var(--sans);transition:background .25s,color .25s,opacity .25s}
+.ryr-share-btn:disabled{opacity:.4;cursor:not-allowed}
+.ryr-share-btn:not(:disabled):hover{background:var(--th-accent-soft);color:#fff}
+.ryr-share-status{font-size:var(--fs-xs);color:var(--th-ink-4);margin-top:.8rem;line-height:1.6}
+.ryr-share-status.err{color:rgba(255,190,175,.92)}
 .ryr-actions{margin-top:2.8rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
 .ryr-btn-restart{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-accent);background:none;border:1px solid var(--th-accent-border);padding:.7rem 1.6rem;border-radius:2px;cursor:pointer;font-family:var(--sans);transition:color .25s,border-color .25s}
 .ryr-btn-restart:hover{color:var(--th-accent);border-color:var(--th-accent)}
@@ -232,6 +242,15 @@ main{min-height:100vh;padding-top:64px}
         <p id="ryr-phase-text"></p>
       </div>
       <p class="ryr-note-end">This reflection covers one rhythm only. A tank can sit at a different phase in each of the five rhythms — this isn't the whole picture, just one honest piece of it.</p>
+      <div class="ryr-share" id="ryr-share">
+        <p class="ryr-share-text" id="ryr-share-text">Optional: help refine future ARA research. Sharing sends your answers to these questions and the phase reading above — nothing else, no name or email — through Formspree, a third-party form service. This is early groundwork for future study design, not a formal dataset or proof of any claim.</p>
+        <label class="ryr-share-check">
+          <input type="checkbox" id="ryr-share-consent">
+          <span id="ryr-share-consent-label">I'd like to share my answers and phase reading anonymously for this purpose.</span>
+        </label>
+        <button class="ryr-share-btn" id="ryr-share-btn" disabled>Share this reflection</button>
+        <p class="ryr-share-status" id="ryr-share-status" hidden></p>
+      </div>
       <div class="ryr-actions">
         <button class="ryr-btn-restart" id="ryr-btn-restart">Read it again</button>
         <a href="/articles/ara-s2-five-rhythms" class="ryr-link-reading" data-analytics-event="cta_rhythm_next_action" data-cta="water_rhythm_to_five_rhythms">Read about all five rhythms →</a>
@@ -367,7 +386,7 @@ reflect:function(ans){
   else if(phase==='Developing')phaseText='Water Rhythm here reads as Developing Phase — the chemistry is functional, and the habits that turn readings into trend-awareness are either still forming or haven\'t had time to be tested yet.';
   else phaseText='Water Rhythm here reads as Mature Phase — not because the numbers are perfect, but because they\'re being read as a trend, with stability trusted over the pursuit of an ideal figure.';
 
-  return{title:title,paras:paras,closing:closing,phase:phaseText};
+  return{title:title,paras:paras,closing:closing,phase:phaseText,phaseLabel:phase};
 }};
 
 RHYTHMS.biological={name:'Biological Rhythm',questions:[
@@ -498,7 +517,7 @@ reflect:function(ans){
   else if(phase==='Developing')phaseText='Biological Rhythm here reads as Developing Phase — the biology is functional and some of the protective habits are in place, but the depth that comes from time and a few real tests hasn\'t fully accumulated yet.';
   else phaseText='Biological Rhythm here reads as Mature Phase — not because the readings are perfect, but because the system has shown it can absorb an ordinary lapse without much drama. That\'s ecological forgiveness, not luck.';
 
-  return{title:title,paras:paras,closing:closing,phase:phaseText};
+  return{title:title,paras:paras,closing:closing,phase:phaseText,phaseLabel:phase};
 }};
 
 RHYTHMS.environmental={name:'Environmental Rhythm',questions:[
@@ -629,7 +648,7 @@ reflect:function(ans){
   else if(phase==='Developing')phaseText='Environmental Rhythm here reads as Developing Phase — some of these variables are handled well, others are still assumptions rather than confirmed habits.';
   else phaseText='Environmental Rhythm here reads as Mature Phase — light, layout, flow, and temperature are being read and managed as the structural inputs they actually are, not treated as background.';
 
-  return{title:title,paras:paras,closing:closing,phase:phaseText};
+  return{title:title,paras:paras,closing:closing,phase:phaseText,phaseLabel:phase};
 }};
 
 RHYTHMS.livestock={name:'Livestock Rhythm',questions:[
@@ -760,7 +779,7 @@ reflect:function(ans){
   else if(phase==='Developing')phaseText='Livestock Rhythm here reads as Developing Phase — some signals are being read, but not consistently enough yet to catch a pattern before it needs a lot more than watching.';
   else phaseText='Livestock Rhythm here reads as Mature Phase — behaviour is being read as the earliest signal it actually is, ahead of measurable chemistry, and small changes are getting caught before they build into something larger.';
 
-  return{title:title,paras:paras,closing:closing,phase:phaseText};
+  return{title:title,paras:paras,closing:closing,phase:phaseText,phaseLabel:phase};
 }};
 
 RHYTHMS.keeper={name:'Keeper Rhythm',questions:[
@@ -891,11 +910,12 @@ reflect:function(ans){
   else if(phase==='Developing')phaseText='Keeper Rhythm here reads as Developing Phase — some of this tank\'s care is running on known numbers, some is still running on estimate or memory.';
   else phaseText='Keeper Rhythm here reads as Mature Phase — the specific numbers (intervals, dates, amounts) are known rather than estimated, and observation is reading the tank, not just checking it.';
 
-  return{title:title,paras:paras,closing:closing,phase:phaseText};
+  return{title:title,paras:paras,closing:closing,phase:phaseText,phaseLabel:phase};
 }};
 
 /* ═══ FLOW ═══ */
-var curQ=0,ans={},curRhythm=null;
+var curQ=0,ans={},curRhythm=null,lastRef=null;
+var RYR_FORMSPREE_ENDPOINT='https://formspree.io/f/xoeqleyo';
 function showIntro(){
   document.getElementById('ryr-intro').style.display='flex';
   document.getElementById('ryr-screen').style.display='none';
@@ -945,6 +965,13 @@ function showResult(){
   ref.paras.forEach(function(p){var el=document.createElement('p');el.textContent=p;re.appendChild(el);});
   document.getElementById('ryr-closing-q').textContent=ref.closing;
   document.getElementById('ryr-phase-text').textContent=ref.phase;
+  lastRef=ref;
+  var shareBtn=document.getElementById('ryr-share-btn');
+  var shareConsent=document.getElementById('ryr-share-consent');
+  var shareStatus=document.getElementById('ryr-share-status');
+  shareConsent.checked=false;shareConsent.disabled=false;
+  shareBtn.disabled=true;shareBtn.textContent='Share this reflection';
+  shareStatus.hidden=true;shareStatus.textContent='';shareStatus.classList.remove('err');
   window.scrollTo({top:0,behavior:'auto'});
 }
 document.getElementById('ryr-pick-water').addEventListener('click',function(){startRhythm('water');});
@@ -962,6 +989,40 @@ document.getElementById('ryr-btn-back').addEventListener('click',function(){
 });
 document.getElementById('ryr-btn-restart').addEventListener('click',function(){
   ans={};showIntro();
+});
+document.getElementById('ryr-share-consent').addEventListener('change',function(){
+  document.getElementById('ryr-share-btn').disabled=!this.checked;
+});
+document.getElementById('ryr-share-btn').addEventListener('click',function(){
+  var btn=this;
+  var consent=document.getElementById('ryr-share-consent');
+  if(!consent.checked||!lastRef)return;
+  var statusEl=document.getElementById('ryr-share-status');
+  btn.disabled=true;consent.disabled=true;
+  btn.textContent='Sending…';
+  var fd=new FormData();
+  fd.append('_subject','Aquatic Rhythm — Read Your Rhythm reflection data');
+  fd.append('rhythm',RHYTHMS[curRhythm].name);
+  fd.append('phase',lastRef.phaseLabel);
+  fd.append('answers',JSON.stringify(ans));
+  fd.append('lang',document.documentElement.lang);
+  fetch(RYR_FORMSPREE_ENDPOINT,{method:'POST',body:fd,headers:{Accept:'application/json'}})
+    .then(function(res){
+      if(res.ok){
+        statusEl.textContent='Thank you — this helps shape what gets asked next.';
+        statusEl.hidden=false;statusEl.classList.remove('err');
+        btn.textContent='Shared';
+      }else{
+        statusEl.textContent='Couldn\'t send that — check your connection and try again.';
+        statusEl.hidden=false;statusEl.classList.add('err');
+        btn.textContent='Share this reflection';btn.disabled=false;consent.disabled=false;
+      }
+    })
+    .catch(function(){
+      statusEl.textContent='Couldn\'t send that — check your connection and try again.';
+      statusEl.hidden=false;statusEl.classList.add('err');
+      btn.textContent='Share this reflection';btn.disabled=false;consent.disabled=false;
+    });
 });
 </script>
 

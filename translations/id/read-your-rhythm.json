@@ -46,7 +46,14 @@
     "questionOfWord2": "dari",
     "seeReflectionBtn": "Lihat refleksi →",
     "nextBtn": "Lanjut →",
-    "backBtn": "← Kembali"
+    "backBtn": "← Kembali",
+    "shareText": "Opsional: bantu menyempurnakan riset ARA di masa depan. Membagikan jawaban akan mengirim jawaban Anda untuk pertanyaan-pertanyaan ini beserta hasil fase di atas — tidak ada yang lain, tanpa nama atau email — melalui Formspree, layanan formulir pihak ketiga. Ini adalah langkah awal untuk merancang penelitian ke depan, bukan kumpulan data formal atau bukti dari klaim apa pun.",
+    "shareConsentLabel": "Saya ingin membagikan jawaban dan hasil fase saya secara anonim untuk tujuan ini.",
+    "shareBtn": "Bagikan refleksi ini",
+    "shareBtnSending": "Mengirim…",
+    "shareBtnSent": "Terkirim",
+    "shareSuccessMsg": "Terima kasih — ini membantu membentuk pertanyaan yang akan diajukan berikutnya.",
+    "shareErrorMsg": "Gagal mengirim — periksa koneksi Anda dan coba lagi."
   },
   "rhythms": {
     "water": {

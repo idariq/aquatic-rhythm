@@ -1,0 +1,105 @@
+{
+    "_meta": {
+        "slug": "aquarium-salt",
+        "lang": "id",
+        "sourceFile": "articles/aquarium-salt.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Perlukah Menambahkan Garam Akuarium? — Aquatic Rhythm",
+        "description": "Garam akuarium selalu jadi pilihan pertama begitu ada yang terlihat salah. Apa sebenarnya yang bisa diatasinya, situasi mana yang benar-benar terbantu, dan efeknya pada tanaman serta invertebrata di sisa waktu lainnya.",
+        "ogTitle": "Perlukah Menambahkan Garam Akuarium?",
+        "ogDescription": "Ia menyelesaikan beberapa masalah nyata, dan dipakai untuk selusin masalah lain yang bukan bidangnya."
+    },
+    "intro": {
+        "eyebrow": "Praktis",
+        "titleHtml": "Perlukah Menambahkan<br><em>Garam Akuarium?</em>",
+        "subtitle": "Ia menyelesaikan beberapa masalah nyata, dan dipakai untuk selusin masalah lain yang bukan bidangnya.",
+        "texts": [
+            "Seekor ikan terlihat tidak beres, sirip tampak compang-camping, atau ikan baru belum juga tenang — dan toples garam akuarium pun keluar dari lemari. Ini salah satu refleks tertua dalam hobi ini, diturunkan dari satu pemelihara ke pemelihara berikutnya jauh sebelum ada yang menjelaskan apa sebenarnya yang terjadi begitu garam itu masuk ke air Anda.",
+            "Panduan ini membahas beberapa situasi di mana garam benar-benar membantu, kenapa ia tidak menyentuh sebagian besar hal yang membuat orang mencarinya, dan apa efeknya pada tanaman serta invertebrata yang berbagi air yang sama."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~7 menit",
+        "metaLevel": "Praktis",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Refleksnya",
+            "titleHtml": "Labelnya bilang<br><em>aman untuk semua akuarium.</em>",
+            "body": [
+                "Kemasannya biasanya membuat janji besar: tidak membahayakan ikan, tanaman, atau filtrasi, aman dipakai di setiap ganti air. Klaim itu menyimpan banyak hal yang tidak diungkapkan. Biasanya itu diuji terhadap toleransi ikan pada dosis yang tertera di label — bukan terhadap apa yang bisa ditahan koloni udang atau sekumpulan tanaman batang pada kepekatan yang sama.",
+                "Meraihnya bukan hal yang aneh untuk dilakukan. Anda akan mendapatinya murah, dijual di rak yang sama dengan test kit sebagai bahan pokok dasar, dan diwariskan oleh pemelihara yang juga tidak pernah dijelaskan mekanismenya. Kebiasaan ini lebih tua dari penjelasannya.",
+                "Berikut versi singkatnya sebelum sisa panduan ini: garam akuarium punya peran nyata dalam tiga situasi spesifik, dan tidak berbuat apa-apa untuk sebagian besar hal yang jadi alasan orang memakainya. Untuk semua makhluk lain yang hidup di air itu, ia juga bukan sesuatu yang netral."
+            ],
+            "hintLabel": "Apa arti sebenarnya \"aman untuk akuarium\" di label",
+            "hintText": [
+                "Klaim itu mencakup ikan pada dosis tertentu, diuji dalam konteks akuarium khusus ikan saja. Ia tidak bilang apa-apa soal tanaman, udang, atau siput yang berbagi akuarium Anda — toleransi mereka jauh lebih rendah, dan label itu memang tidak pernah ditulis dengan mereka dalam pikiran."
+            ],
+            "prevBtn": "← Intro",
+            "nextBtn": "Apa yang sebenarnya ia lakukan"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Apa yang sebenarnya ia lakukan",
+            "titleHtml": "Tiga peran nyata.<br><em>Bukan selusin yang diminta orang.</em>",
+            "body": [
+                "Ikan yang stres — akibat cedera, perjalanan yang kasar, atau penurunan mendadak kualitas air — menghabiskan energi nyata untuk menjaga keseimbangan garam internalnya tetap stabil melawan air di sekelilingnya. Kenaikan salinitas akuarium yang ringan dan sementara mempersempit jarak itu, memberi ikan yang sedang lemah lebih sedikit kerja internal selama ia pulih. Dukungan osmotik ini nyata. Tapi sifatnya juga sementara — jembatan, bukan perawatan tetap.",
+                "Saat terjadi lonjakan selama cycling, klorida yang terlarut bersaing dengan nitrit untuk jalur penyerapan yang sama di insang ikan, jadi menjaga kadar garam sedang bisa menumpulkan efek racun nitrit sementara koloni bakteri kedua mengejar ketertinggalannya. Pemelihara masih memakai teknik ini untuk satu situasi — lonjakan nitrit yang sedang aktif, bukan bahan tambahan permanen.",
+                "Pada kepekatan yang dipertahankan, garam juga bisa memperpendek fase berenang bebas beberapa parasit eksternal, termasuk ich — tapi itu perlu dosis terapeutik yang sungguhan, umumnya disebut sekitar satu sampai tiga sendok teh per galon, dipertahankan selama sepuluh sampai empat belas hari dan biasanya dibarengi kenaikan suhu ke kisaran 26–30°C (79–86°F). Sejumput yang ditambahkan di setiap ganti air tidak mencapai kepekatan itu, apalagi durasinya. Ia cuma diam di situ."
+            ],
+            "pullQuote": "Garam pada dosis terapeutik adalah obat, dipertahankan karena alasan tertentu dan dihilangkan sesuai jadwal. Garam pada dosis tonik bukan obat, tapi juga bukan sesuatu yang tidak berbahaya. Ia cuma ada di situ.",
+            "prevBtn": "← Kembali",
+            "nextBtn": "Di mana ia jadi lawan Anda"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Di mana ia jadi lawan Anda",
+            "titleHtml": "Ia tidak hilang<br><em>dengan sendirinya.</em>",
+            "body": [
+                "Air menguap. Garam tidak. Setiap penambahan air segar mengembalikan volume tanpa membuang sebutir pun garam yang terlarut, jadi kalau Anda menambahkan \"sedikit garam, jaga-jaga saja\" di setiap ganti air, kadarnya cuma akan terus naik dari situ. Berbeda dari kebanyakan hal yang ditambahkan ke akuarium — obat yang terurai, amonia yang berubah bentuk — garam yang terlarut tidak punya jalan keluar kecuali ganti air sungguhan yang membuang air berkadar garam itu sendiri.",
+                "Banyak tanaman batang dan roset umum menunjukkan stres jauh di bawah kepekatan yang dipasarkan sebagai aman-untuk-ikan: daun menggulung, tepi menguning kecoklatan, pertumbuhan yang macet tanpa sebab yang jelas. Klaim \"aman\" itu diukur terhadap ikan, bukan terhadap mereka.",
+                "Udang dan siput berada di skala yang bahkan lebih rendah lagi. Kadar yang tidak akan disentuh oleh dosis aman-untuk-ikan yang tertera di label bisa membuat koloni udang stres secara nyata dalam hitungan hari — salah satu penyebab kematian massal yang paling umum dan paling jarang dijelaskan di akuarium campuran.",
+                "Dan untuk masalah jamur atau bakteri yang paling sering jadi alasan orang mencari garam — sirip compang-camping, bercak keruh, hal-hal yang kelihatannya butuh sesuatu sekarang juga — biasanya garam sama sekali tidak berbuat apa-apa. Garam bekerja melawan sekelompok kecil parasit dan stres osmotik. Ia memang bukan alat untuk dua masalah lainnya."
+            ],
+            "hintLabel": "Tumpang tindih yang sering bikin orang terjebak",
+            "hintText": [
+                "Akuarium komunitas dengan ikan, tanaman, dan udang berbagi air yang sama jarang punya dosis yang membantu satu kelompok tanpa membahayakan kelompok lain. Itu bukan tanda Anda kurang riset — itu keterbatasan nyata dari memelihara makhluk dengan toleransi berbeda dalam satu wadah air yang sama, dan layak diperlakukan sebagai itu."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Tindakan yang selaras"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Tindakan yang selaras",
+            "titleHtml": "Diagnosis dulu.<br><em>Garam itu alat, bukan pilihan pertama.</em>",
+            "body": [
+                "Sebelum meraihnya, kenali dulu apa yang sebenarnya terjadi. Bintik putih dan gerakan menggosokkan badan yang terlihat menunjuk ke parasit, di mana dosis terapeutik sungguhan mungkin membantu. Bacaan nitrit yang baru muncul saat cycling menunjuk ke penggunaan mitigasi nitrit. Ikan yang pulih dari cedera atau perpindahan yang kasar menunjuk ke dukungan osmotik singkat. Sirip compang-camping atau bercak keruh biasanya menunjuk ke tempat yang tidak bisa dijangkau garam sama sekali. Ketahui itu sebelum Anda menambahkan apa pun.",
+                "Periksa dulu siapa lagi yang hidup di akuarium Anda sebelum memutuskan. Tanaman dan invertebrata mengubah seluruh perhitungan, bahkan ketika setiap ikan di akuarium itu bisa menoleransi dosisnya tanpa masalah.",
+                "Kalau garam memang alat yang tepat untuk yang sedang Anda hadapi, perlakukan ia sebagai campur tangan yang berbatas: ketahui kepekatan yang Anda tuju, ketahui berapa lama itu perlu dipertahankan, dan siapkan rencana ganti air untuk mengeluarkannya kembali begitu tugasnya selesai — bukan membiarkannya jadi bahan tetap yang disimpan \"jaga-jaga saja\"."
+            ],
+            "pullQuote": "Pemelihara yang memakai garam dengan baik bukan yang menghindarinya sama sekali. Mereka yang bisa bilang untuk apa garam itu ada di sana, dan kapan ia akan dikeluarkan lagi.",
+            "prevBtn": "← Kembali"
+        }
+    ],
+    "relatedLinks": [
+        {
+            "text": "Ich atau Velvet? →"
+        },
+        {
+            "text": "Sirip Terlipat dan Fin Rot →"
+        },
+        {
+            "text": "Belajar Membaca, Bukan Belajar Memperbaiki →"
+        },
+        {
+            "text": "Kerangka ARA →"
+        }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
+    }
+}

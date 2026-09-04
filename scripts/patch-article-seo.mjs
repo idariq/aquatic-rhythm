@@ -44,7 +44,7 @@ const ARTICLE_DATES = {
   'four-principles-of-ara':      { pub: '2026-05-22', mod: '2026-05-22' },
   'how-often-water-changes':     { pub: '2026-05-22', mod: '2026-05-23' },
   'ich-keeps-coming-back':       { pub: '2026-05-22', mod: '2026-05-25' },
-  'know-your-rhythm':            { pub: '2026-05-22', mod: '2026-05-23' },
+  'keeper-readiness-check':            { pub: '2026-05-22', mod: '2026-05-23' },
   'low-tech-planted-tank':       { pub: '2026-05-22', mod: '2026-05-25' },
   'new-tank-syndrome':           { pub: '2026-05-22', mod: '2026-05-25' },
   'nitrate-keeps-rising':        { pub: '2026-05-22', mod: '2026-05-25' },

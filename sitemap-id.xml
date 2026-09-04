@@ -268,14 +268,14 @@
   </url>
 
   <url>
-    <loc>https://aquaticrhythm.com/id/articles/keeper-your-tank-needs</loc>
+    <loc>https://aquaticrhythm.com/id/articles/keeper-readiness-check</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://aquaticrhythm.com/id/articles/know-your-rhythm</loc>
+    <loc>https://aquaticrhythm.com/id/articles/keeper-your-tank-needs</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -367,6 +367,13 @@
 
   <url>
     <loc>https://aquaticrhythm.com/id/articles/reading-the-five-rhythms</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://aquaticrhythm.com/id/articles/rhythm-tracker</loc>
     <lastmod>2026-09-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

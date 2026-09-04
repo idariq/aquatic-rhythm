@@ -28,7 +28,7 @@ const PATCHES = [
      Theme: guilt when real routine diverges from "ideal" schedule. */
   {
     file: 'aquarium-maintenance-routine.html',
-    anchor: '    <div class="hn">\n      <span class="hn-label">Know Your Rhythm</span>',
+    anchor: '    <div class="hn">\n      <span class="hn-label">Keeper Readiness Check</span>',
     insert: hn(KEEPER, 'The gap between the routine you intend to have and the one you actually manage is one of the most common sources of keeper guilt in this hobby. It is worth naming: feeling behind on water changes is not a character flaw — it is information about the match between the tank\'s demands and your actual available rhythm. When that gap creates guilt, keepers often swing between over-compensating (large emergency changes) and avoidance — both of which produce more instability than a modest, imperfect routine would. The misalignment between keeper and tank is adjustable. The guilt about it is optional.'),
   },
 

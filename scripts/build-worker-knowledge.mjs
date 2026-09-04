@@ -36,7 +36,7 @@ const PRIORITY_SLUGS = [
   'perfect-parameters-fish-dying',
   'caring-without-guilt',
   'when-hobby-stops-feeling-good',
-  'know-your-rhythm',
+  'keeper-readiness-check',
   'aquarium-not-a-project',
   'capacity-creep',
   'minimum-viable-care',

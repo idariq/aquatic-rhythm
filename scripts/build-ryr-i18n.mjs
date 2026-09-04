@@ -1,5 +1,5 @@
 /**
- * Generates localized HTML for articles/read-your-rhythm.html (bespoke
+ * Generates localized HTML for articles/rhythm-tracker.html (bespoke
  * 5-rhythm interactive tool — NOT the normal head/intro/modules[] article
  * schema, so build-i18n.mjs cannot process it; see BESPOKE_SLUGS there).
  *
@@ -10,7 +10,7 @@
  * calls each rhythm's real reflect() with crafted answer combinations to
  * extract the *exact* shipped English string for every branch — the same
  * text is then subOnce/subAll-replaced with its translations/<lang>/
- * read-your-rhythm.json counterpart. This guarantees byte-exact EN
+ * rhythm-tracker.json counterpart. This guarantees byte-exact EN
  * matching (no risk of a transcription slip breaking a substitution).
  *
  * Usage: node scripts/build-ryr-i18n.mjs [--lang id|ja]
@@ -24,7 +24,7 @@ const ROOT      = path.join(import.meta.dirname, '..');
 const TRANS_DIR = path.join(ROOT, 'translations');
 const BASE_URL  = 'https://aquaticrhythm.com';
 const LANGUAGES = ['id', 'ja'];
-const SLUG      = 'read-your-rhythm';
+const SLUG      = 'rhythm-tracker';
 const SRC_PATH  = path.join(ROOT, 'articles', `${SLUG}.html`);
 
 const args    = process.argv.slice(2);
@@ -348,7 +348,7 @@ for (const lang of targetLangs) {
   h = replaceOnce(h, /(<link rel="canonical"[^>]*>)/, (_, canon) => `${canon}\n${buildHreflangTags(lang)}`);
 
   // 5. window.__arI18n (both langs now available for the settings switcher)
-  h = h.replace(/window\.__arI18n=\{basePath:'articles\/read-your-rhythm',avail:\[\]\};/,
+  h = h.replace(/window\.__arI18n=\{basePath:'articles\/rhythm-tracker',avail:\[\]\};/,
     `window.__arI18n={basePath:'articles/${SLUG}',avail:${JSON.stringify(LANGUAGES)}};`);
 
   // 6. JSON-LD
@@ -399,7 +399,7 @@ for (const lang of targetLangs) {
   // window.__arI18n script sits right before the burger button already
   // (matches build-i18n.mjs's injection slot) — already lang-generic (step 5).
 
-  // Script tag: window.__arI18n={basePath:'articles/read-your-rhythm',...}
+  // Script tag: window.__arI18n={basePath:'articles/rhythm-tracker',...}
   // is set at the top of <nav> (already substituted in step 5).
 
   h = replaceOnce(h, /(<nav class="bnav" id="bnav"[^>]*>)([\s\S]*?)(<\/nav>)/, (_, open, inner, close) => {

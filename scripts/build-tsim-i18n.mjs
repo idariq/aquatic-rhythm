@@ -1,6 +1,6 @@
 /**
  * Builds localized HTML for the Tank Cycle Simulator — a self-contained
- * single-file interactive page (like know-your-rhythm) whose engine logic
+ * single-file interactive page (like keeper-readiness-check) whose engine logic
  * (~1400 lines: addLog narration, insight-group rotations, guide hints,
  * end-of-run report/coaching generation) is embedded as inline JS string
  * literals, not DOM-templated HTML. Gets its own script (largest/most

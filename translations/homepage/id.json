@@ -360,8 +360,8 @@
                 "title": "Jadwal Lampu Anda Juga Rutin<br><em>Menyalakan dan mematikan lampu sesuka hati adalah jenis rutin terlepas tersendiri.</em>",
                 "desc": "Menyalakan dan mematikan lampu tank sesuka hati tidak terlihat seperti rutin, tapi fotoperiod yang tidak konsisten berperilaku seperti rutin apapun yang terlepas. Kenapa pergeseran lama hari penting, dan cara timer menghilangkannya sepenuhnya."
             },
-            "know-your-rhythm": {
-                "title": "Kenali Ritme Anda<br><em>Sebelum Anda memilih tangki.</em>",
+            "keeper-readiness-check": {
+                "title": "Periksa Kesiapan Penjaga<br><em>Sebelum Anda memilih tangki.</em>",
                 "desc": "Tujuh pertanyaan sederhana tentang bagaimana Anda sebenarnya merawat tangki — sebelum volume, lampu, atau daftar stok.",
                 "extra_cta": "Mulai refleksi →",
                 "level_manual": "Semua level",
@@ -470,7 +470,7 @@
         "card3_desc": "Petakan tekanan yang tumpang tindih saat mencampur spesies — suhu, kimia, ruang, predasi, ketegangan sosial, dan keamanan invertebrata. Bersifat edukatif, bukan skor kompatibilitas.",
         "card3_cta": "Buka peta tekanan →",
         "card4_tag": "Refleksi diri",
-        "card4_title": "Baca Ritme Anda",
+        "card4_title": "Pelacak Ritme",
         "card4_desc": "Periksa sejauh mana akuarium Anda sebenarnya berada di lima ritme ekologis — Water, Biological, Environmental, Livestock, Keeper. Satu sekarang, atau semua lima untuk gambaran penuh.",
         "card4_cta": "Mulai pemeriksaan →",
         "closing_note": "Semua alat tumbuh dari ARA — Aquatic Rhythm Alignment. Alat ini mensimulasikan dan merencanakan, tapi tidak menggantikan observasi.",

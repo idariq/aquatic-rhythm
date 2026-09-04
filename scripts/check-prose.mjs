@@ -38,7 +38,7 @@ const errorsOnly = process.argv.includes('--errors');
 /* Article templates that aren't standard prose (own build scripts, embedded
    JS strings, framework files) — same exclusion list the audit used. */
 const SKIP_SLUGS = new Set([
-  'tank-builder', 'tank-simulator', 'community-stress-lab', 'know-your-rhythm',
+  'tank-builder', 'tank-simulator', 'community-stress-lab', 'keeper-readiness-check',
   'ara-full-framework', 'ara-s1-foundation', 'ara-s2-five-rhythms',
   'ara-s3-phases', 'ara-s4-alignment', 'ara-s5-observation', 'ara-s6-ethics',
   'four-principles-of-ara', 'reading-the-five-rhythms',

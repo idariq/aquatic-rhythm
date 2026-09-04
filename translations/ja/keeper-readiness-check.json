@@ -1,21 +1,21 @@
 {
   "_meta": {
-    "slug": "know-your-rhythm",
+    "slug": "keeper-readiness-check",
     "lang": "ja",
-    "sourceFile": "articles/know-your-rhythm.html",
+    "sourceFile": "articles/keeper-readiness-check.html",
     "status": "ready"
   },
   "head": {
-    "title": "リズムを知る — Aquatic Rhythm",
+    "title": "飼育者の準備チェック — Aquatic Rhythm",
     "description": "水槽を選ぶ前に、飼育者としての自分を理解する。7つの内省的な問い。正解はありません。電卓ではなく、鏡です。",
-    "ogTitle": "リズムを知る — Aquatic Rhythm",
+    "ogTitle": "飼育者の準備チェック",
     "ogDescription": "水槽を選ぶ前に、飼育者としての自分を理解する。7つの内省的な問い。正解はありません。",
-    "twitterTitle": "リズムを知る — Aquatic Rhythm",
+    "twitterTitle": "飼育者の準備チェック — Aquatic Rhythm",
     "twitterDescription": "水槽を選ぶ前に、飼育者としての自分を理解する。7つの内省的な問い。正解はありません。"
   },
   "intro": {
     "eyebrow": "自分で試してみる",
-    "titleHtml": "自分の<br><em>リズムを知る。</em>",
+    "titleHtml": "飼育者の<br><em>準備チェック。</em>",
     "subtitle": "水槽を選ぶ前に、飼育者としての自分を理解する。",
     "body": [
       "たいていの人は水槽から始めます。サイズ、魚、器材。そして、数週間後のこともあれば数か月後のこともありますが、自分が作り上げたシステムが実際の生活に合っていなかったことに気づくのです。",

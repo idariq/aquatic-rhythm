@@ -86,7 +86,7 @@ const SLUG_ORDER = [
   'the-relief-youre-not-supposed-to-feel',
   'starting-before-youre-ready',
   'when-is-tank-ready-for-fish',
-  'know-your-rhythm',
+  'keeper-readiness-check',
   'four-principles-of-ara',
   'reading-the-five-rhythms',
   'when-hobby-stops-feeling-good',

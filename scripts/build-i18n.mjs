@@ -778,8 +778,8 @@ function patchEnglishArticle(slug) {
 const BESPOKE_SLUGS = new Set([
   'ara-full-framework', 'ara-s1-foundation', 'ara-s2-five-rhythms', 'ara-s3-phases',
   'ara-s4-alignment', 'ara-s5-observation', 'ara-s6-ethics',
-  'community-stress-lab', 'know-your-rhythm', 'tank-simulator', 'tank-builder',
-  'read-your-rhythm'
+  'community-stress-lab', 'keeper-readiness-check', 'tank-simulator', 'tank-builder',
+  'rhythm-tracker'
 ]);
 
 function getTranslatedSlugs(lang) {

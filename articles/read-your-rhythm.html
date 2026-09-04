@@ -181,17 +181,29 @@ main{min-height:100vh;padding-top:64px}
       <p class="ryr-subtitle">Where your tank actually is, one rhythm at a time.</p>
       <p class="ryr-body">This tool reads the tank you already have — not the one you're about to build. If there's no tank yet, <a href="/articles/know-your-rhythm" style="color:var(--th-accent)">Know Your Rhythm</a> is the better place to start: it only asks about you, and needs nothing running yet.</p>
       <p class="ryr-body">ARA reads a tank through five rhythms — Water, Biological, Environmental, Livestock, and Keeper — and each one can sit at a different phase at the same time. A filter can be mature while the lighting schedule is barely a week old. Check one rhythm now and get an answer immediately, or come back later and build toward the full picture. Nothing here needs to be done in order, and nothing here is being graded.</p>
-      <p class="ryr-note">Water Rhythm is ready below. The other four rhythms are still being built. What you get at the end is a reflection grounded in the ARA framework — not a diagnosis, and not a score to beat.</p>
+      <p class="ryr-note">All five rhythms are ready below. What you get at the end is a reflection grounded in the ARA framework — not a diagnosis, and not a score to beat.</p>
       <span class="ryr-picker-label">Choose a rhythm to read</span>
       <div class="ryr-picker">
         <button type="button" class="ryr-rcard" id="ryr-pick-water">
           <span class="ryr-rcard-name">Water Rhythm</span>
           <span class="ryr-rcard-tag">5 questions →</span>
         </button>
-        <div class="ryr-rcard ryr-soon"><span class="ryr-rcard-name">Biological Rhythm</span><span class="ryr-rcard-tag">Coming soon</span></div>
-        <div class="ryr-rcard ryr-soon"><span class="ryr-rcard-name">Environmental Rhythm</span><span class="ryr-rcard-tag">Coming soon</span></div>
-        <div class="ryr-rcard ryr-soon"><span class="ryr-rcard-name">Livestock Rhythm</span><span class="ryr-rcard-tag">Coming soon</span></div>
-        <div class="ryr-rcard ryr-soon"><span class="ryr-rcard-name">Keeper Rhythm</span><span class="ryr-rcard-tag">Coming soon</span></div>
+        <button type="button" class="ryr-rcard" id="ryr-pick-biological">
+          <span class="ryr-rcard-name">Biological Rhythm</span>
+          <span class="ryr-rcard-tag">5 questions →</span>
+        </button>
+        <button type="button" class="ryr-rcard" id="ryr-pick-environmental">
+          <span class="ryr-rcard-name">Environmental Rhythm</span>
+          <span class="ryr-rcard-tag">5 questions →</span>
+        </button>
+        <button type="button" class="ryr-rcard" id="ryr-pick-livestock">
+          <span class="ryr-rcard-name">Livestock Rhythm</span>
+          <span class="ryr-rcard-tag">5 questions →</span>
+        </button>
+        <button type="button" class="ryr-rcard" id="ryr-pick-keeper">
+          <span class="ryr-rcard-name">Keeper Rhythm</span>
+          <span class="ryr-rcard-tag">5 questions →</span>
+        </button>
       </div>
     </div>
   </div>
@@ -210,7 +222,7 @@ main{min-height:100vh;padding-top:64px}
   </div>
   <div id="ryr-result">
     <div class="ryr-result-wrap">
-      <span class="ryr-result-eyebrow">Water Rhythm — your reflection</span>
+      <span class="ryr-result-eyebrow" id="ryr-result-eyebrow">Water Rhythm — your reflection</span>
       <h2 class="ryr-result-title" id="ryr-result-title"></h2>
       <div class="ryr-reflection" id="ryr-reflection"></div>
       <div class="ryr-divider"></div>
@@ -222,7 +234,7 @@ main{min-height:100vh;padding-top:64px}
         <span class="ryr-q-close-label">Where this rhythm reads</span>
         <p id="ryr-phase-text"></p>
       </div>
-      <p class="ryr-note-end">This reflection covers Water Rhythm only. A tank can sit at a different phase in each of the five rhythms — this isn't the whole picture, just one honest piece of it.</p>
+      <p class="ryr-note-end">This reflection covers one rhythm only. A tank can sit at a different phase in each of the five rhythms — this isn't the whole picture, just one honest piece of it.</p>
       <div class="ryr-actions">
         <button class="ryr-btn-restart" id="ryr-btn-restart">Read it again</button>
         <a href="/articles/ara-s2-five-rhythms" class="ryr-link-reading" data-analytics-event="cta_rhythm_next_action" data-cta="water_rhythm_to_five_rhythms">Read about all five rhythms →</a>
@@ -232,8 +244,9 @@ main{min-height:100vh;padding-top:64px}
   </div>
 </main>
 <script>
-/* ═══ WATER RHYTHM QUESTIONS ═══ */
-var Q=[
+/* ═══ RHYTHMS ═══ */
+var RHYTHMS={};
+RHYTHMS.water={name:'Water Rhythm',questions:[
   {id:'cycle-status',
    text:'Has your tank\'s nitrogen cycle actually finished?',
    sub:'Not how long it\'s been running — whether ammonia and nitrite have both settled at zero, with nitrate present and steady.',
@@ -279,10 +292,8 @@ var Q=[
      {v:'ammonia-assume', l:'An ammonia or nitrite spike', d:'Gasping usually means a chemistry problem to me, and that\'s the first one I think of.'},
      {v:'no-idea', l:'I wouldn\'t know where to start', d:'I haven\'t run into this, or I don\'t have a read on it yet.'}
    ]}
-];
-
-/* ═══ REFLECTION LOGIC ═══ */
-function reflect(ans){
+],
+reflect:function(ans){
   var cyc=ans['cycle-status'], test=ans['testing-habit'], trend=ans['trend-read'];
   var resp=ans['stable-response'], o2=ans['oxygen-read'];
 
@@ -360,20 +371,550 @@ function reflect(ans){
   else phaseText='Water Rhythm here reads as Mature Phase — not because the numbers are perfect, but because they\'re being read as a trend, with stability trusted over the pursuit of an ideal figure.';
 
   return{title:title,paras:paras,closing:closing,phase:phaseText};
-}
+}};
+
+RHYTHMS.biological={name:'Biological Rhythm',questions:[
+  {id:'biofilm-read',
+   text:'You notice a thin, brownish-grey film starting to form on the glass or hardscape in a newer tank.',
+   sub:'What\'s your instinct when you see it?',
+   opts:[
+     {v:'leave-it', l:'Leave it — it looks like part of the tank settling in', d:'I don\'t reach for a scraper the moment I see it.'},
+     {v:'worried-contamination', l:'Get concerned it\'s contamination', d:'My first thought is that something\'s wrong with the water.'},
+     {v:'wipe-immediately', l:'Wipe it off right away', d:'It looks like dirt or algae to me, so I clean it off.'},
+     {v:'never-noticed', l:'I haven\'t really noticed this happening', d:'Can\'t say I\'ve paid attention to this specifically.'}
+   ]},
+  {id:'substrate-clean',
+   text:'How do you handle substrate cleaning — sand or soil, not the gravel-vac-and-test routine?',
+   sub:'Think about what actually happens, not what you think should.',
+   opts:[
+     {v:'spot-clean', l:'Spot-clean, leave most of it undisturbed', d:'I stir or vacuum only the areas that visibly need it.'},
+     {v:'never-touch', l:'I basically never touch it', d:'Once it\'s in, it\'s in — I leave it alone almost entirely.'},
+     {v:'full-clean-routine', l:'Deep-clean it on a routine, like the glass', d:'I treat the substrate the same as any other surface that needs regular cleaning.'},
+     {v:'not-applicable', l:'My setup doesn\'t really have this kind of substrate', d:'Bare-bottom, or a substrate this doesn\'t apply to.'}
+   ]},
+  {id:'recovery-awareness',
+   text:'After something disruptive — a round of medication, a bad ammonia spike, a full filter clean — how do you treat the tank in the days after?',
+   sub:'Picture the last time something like this actually happened.',
+   opts:[
+     {v:'ease-back', l:'Ease back toward Early-Phase caution for a while', d:'Fewer additions, more watching, lower expectations until things settle.'},
+     {v:'back-to-normal', l:'Go straight back to the normal routine', d:'Once the acute problem is handled, I treat the tank as it was before.'},
+     {v:'push-forward', l:'Push forward to make up for lost time', d:'I tend to compensate — extra feeding, extra additions — to get back on track quickly.'},
+     {v:'never-happened', l:'This hasn\'t come up for me yet', d:'No disruption like this has happened in this tank so far.'}
+   ]},
+  {id:'maturity-marker',
+   text:'What would actually tell you a tank has real biological depth — not just good numbers?',
+   sub:'Not the textbook answer. What you\'d personally point to.',
+   opts:[
+     {v:'resilience', l:'It shrugs off small mistakes without much drama', d:'A missed water change or an extra feeding doesn\'t visibly rattle it.'},
+     {v:'zero-readings', l:'Ammonia and nitrite reading zero', d:'If those two numbers are clean, I\'d call it mature.'},
+     {v:'time-elapsed', l:'Enough time has simply passed', d:'Age is really the main thing I\'d point to.'},
+     {v:'unsure-marker', l:'Honestly, I wouldn\'t know how to tell', d:'I haven\'t thought about what separates “passes the test” from “actually deep.”'}
+   ]},
+  {id:'filter-media',
+   text:'How do you handle cleaning the filter media or sponge?',
+   sub:'The actual habit, not the ideal one.',
+   opts:[
+     {v:'rinse-tank-water', l:'Rinse gently in old tank water, keep most of the media', d:'I try to preserve as much of the bacterial colony as I can.'},
+     {v:'rarely-touch', l:'Rarely think about it until flow drops', d:'Filter maintenance isn\'t really on my radar until something\'s clearly wrong.'},
+     {v:'tap-water-rinse', l:'Rinse thoroughly under tap water', d:'I want it properly clean, so I rinse it well under the tap.'},
+     {v:'replace-regularly', l:'Replace media on a regular schedule', d:'New media on a routine, like changing a car filter.'}
+   ]}
+],
+reflect:function(ans){
+  var bio=ans['biofilm-read'], sub=ans['substrate-clean'], rec=ans['recovery-awareness'];
+  var mat=ans['maturity-marker'], med=ans['filter-media'];
+
+  var score=0;
+  if(bio==='leave-it')score+=2; else if(bio==='worried-contamination'||bio==='never-noticed')score+=1;
+  if(sub==='spot-clean')score+=2; else if(sub==='never-touch'||sub==='not-applicable')score+=1;
+  if(rec==='ease-back')score+=2; else if(rec==='back-to-normal'||rec==='never-happened')score+=1;
+  if(mat==='resilience')score+=2; else if(mat==='time-elapsed'||mat==='zero-readings')score+=1;
+  if(med==='rinse-tank-water')score+=2; else if(med==='rarely-touch'||med==='replace-regularly')score+=1;
+
+  var phase=(score>=7)?'Mature':(score>=4)?'Developing':'Early';
+
+  var title;
+  if(mat==='zero-readings'&&phase!=='Mature')title='Cleaner than its biology <em>actually is.</em>';
+  else if(phase==='Mature')title='A microbiome that forgives <em>the ordinary lapses.</em>';
+  else if(phase==='Developing')title='Biology that works, <em>not yet deep.</em>';
+  else title='A colony still finding <em>its footing.</em>';
+
+  var paras=[];
+
+  if(bio==='leave-it'){
+    paras.push('Leaving a thin brownish film alone, rather than reaching for a scraper, is the more informed instinct. That film is biofilm — heterotrophic bacteria assembling on hard surfaces — and it\'s one of the earliest visible signs a biological community is actually forming, not evidence of dirt.');
+  } else if(bio==='wipe-immediately'){
+    paras.push('Wiping the film away as soon as it appears is common, and understandable — it looks like something that shouldn\'t be there. But that film is biofilm: bacteria establishing themselves on hard surfaces, one of the first visible signs of a biological community forming. Removing it repeatedly slows down exactly the process a new tank needs most.');
+  } else if(bio==='worried-contamination'){
+    paras.push('Reading that film as a warning sign is a natural first reaction. It\'s actually closer to the opposite: biofilm on glass and hardscape, especially in newer tanks, is bacteria establishing surface communities — a sign of biology assembling, not biology going wrong.');
+  } else {
+    paras.push('Not having paid particular attention to biofilm doesn\'t mean much on its own — it\'s subtle, and easy to read as ordinary residue if no one\'s pointed it out. Worth a look next time it appears: a thin brownish-grey film on glass or hardscape in a newer tank is usually good news.');
+  }
+
+  if(sub==='spot-clean'){
+    paras.push('Spot-cleaning rather than fully disturbing the substrate protects something that takes months to build: substrate biology. In sand and soil setups especially, the layer below the surface develops its own bacterial communities that contribute to water quality and stability — communities a full clean can set back substantially.');
+  } else if(sub==='full-clean-routine'){
+    paras.push('Treating the substrate the same as the glass — routine deep-cleaning — removes something the glass doesn\'t carry: substrate biology. In sand and soil especially, that layer develops bacterial communities over months that meaningfully support water quality. Cleaning it on a schedule keeps resetting a process that needs time, not attention, to finish.');
+  } else if(sub==='never-touch'){
+    paras.push('Leaving the substrate almost entirely alone protects the biology developing in it, which is the right instinct — the layer below the surface, especially in sand or soil, builds bacterial communities over months. The only thing worth watching for is genuine detritus buildup that needs an occasional light pass, not a deep clean.');
+  } else {
+    paras.push('Without this kind of substrate, this particular piece of Biological Rhythm doesn\'t apply the same way — the equivalent question becomes how much of the tank\'s other hard surfaces, hardscape and filter media especially, are handled with the same instinct to protect what\'s developing rather than clean it away.');
+  }
+
+  if(rec==='ease-back'){
+    paras.push('Easing back toward Early-Phase caution after a disruption — a medication course, an ammonia spike, a full filter clean — is exactly the aligned response. The biological rhythm needs recovery time after an event like that, and treating the tank as an earlier phase temporarily, rather than expecting mature-tank resilience immediately, is what actually shortens the recovery.');
+  } else if(rec==='back-to-normal'){
+    paras.push('Returning straight to the normal routine once the acute problem clears is a common instinct, but the biology doesn\'t reset that quickly. After a disruption like medication, an ammonia spike, or a full filter clean, the tank behaves more like an earlier phase for a while — worth calibrating care to that for a bit, rather than to how the tank was behaving before.');
+  } else if(rec==='push-forward'){
+    paras.push('Pushing forward to make up for lost time — extra feeding, extra additions — is understandable, but it\'s close to the opposite of what a disrupted biological rhythm needs. The system needs recovery time after something like medication, a spike, or a filter clean; adding more pressure during that window tends to extend it rather than close the gap.');
+  } else {
+    paras.push('Not having faced a real disruption yet means this hasn\'t been tested, which is fine. Worth remembering for when it does happen: after medication, a bad spike, or a full filter clean, the tank temporarily behaves like an earlier phase, and care calibrated to that is what actually gets it back to where it was.');
+  }
+
+  if(mat==='resilience'){
+    paras.push('Naming resilience — a missed water change or an extra feeding not visibly rattling the tank — as the real marker of depth is close to how ARA defines it. Ecological forgiveness, the capacity to absorb small keeper inconsistencies without cascading into instability, is what genuine Mature Phase actually looks like. It\'s a different thing from clean numbers.');
+  } else if(mat==='zero-readings'){
+    paras.push('Reading zero ammonia and zero nitrite as proof of maturity is the single most common version of a real trap: false maturity. A tank can hold clean numbers by surface indicators while never developing the ecological depth of genuine Mature Phase, often because it was heavily seeded or has simply run a long time without much biological load to test it. Clean numbers are necessary. They\'re not sufficient on their own.');
+  } else if(mat==='time-elapsed'){
+    paras.push('Pointing to elapsed time makes intuitive sense, but time alone doesn\'t guarantee depth. A tank can run for a year without ever being tested, without livestock, without much biological load, and still lack the resilience that comes from an actual history of stress and recovery. Age is a starting condition for depth, not proof of it.');
+  } else {
+    paras.push('Not having a clear answer for what separates “passes the test” from “actually deep” is an honest one — most keepers haven\'t been asked to draw that line. The short version: it\'s resilience, not numbers. A mature system absorbs a missed water change or an off day without much drama. A system that only looks fine under perfect conditions hasn\'t been tested yet.');
+  }
+
+  if(med==='rinse-tank-water'){
+    paras.push('Rinsing filter media in old tank water rather than under the tap protects exactly what matters — the bacterial colony living in it. That colony does most of the actual biological work in the tank, and it\'s far more fragile to chlorine and temperature shock than it looks.');
+  } else if(med==='tap-water-rinse'){
+    paras.push('Rinsing filter media thoroughly under the tap is one of the more common ways a keeper unintentionally resets their own biological rhythm. Tap water usually carries chlorine or chloramine, and a full rinse under it can kill a meaningful share of the bacterial colony doing the tank\'s actual biological work — the same colony a full cycle took weeks to build.');
+  } else if(med==='replace-regularly'){
+    paras.push('Replacing media on a fixed schedule, like a car filter, treats it as a mechanical part rather than what it actually is: the physical home of the tank\'s bacterial colony. New media starts that colony over. Media that\'s rinsed and reused, rather than replaced, keeps the biology continuous.');
+  } else {
+    paras.push('Not thinking about filter media until flow visibly drops means the bacterial colony living in it is mostly left alone, which protects it. The only risk runs the other way: if reduced flow from a clogged filter goes unnoticed long enough to affect oxygen or circulation.');
+  }
+
+  var closing;
+  if(phase==='Early')closing='What would it look like to let this tank\'s biology finish forming before judging it by how it looks?';
+  else if(phase==='Developing')closing='What\'s one habit here — biofilm, substrate, filter media — you\'d want to protect a little more deliberately from now on?';
+  else closing='Now that resilience is the marker being trusted — what\'s the next assumption about this tank worth checking against that same standard?';
+
+  var phaseText;
+  if(phase==='Early')phaseText='Biological Rhythm here reads as Early Phase — the microbiome is still assembling, or the habits that protect it (biofilm, substrate, filter media) are working against it more than for it. That\'s not a verdict. It\'s where the attention is best spent right now.';
+  else if(phase==='Developing')phaseText='Biological Rhythm here reads as Developing Phase — the biology is functional and some of the protective habits are in place, but the depth that comes from time and a few real tests hasn\'t fully accumulated yet.';
+  else phaseText='Biological Rhythm here reads as Mature Phase — not because the readings are perfect, but because the system has shown it can absorb an ordinary lapse without much drama. That\'s ecological forgiveness, not luck.';
+
+  return{title:title,paras:paras,closing:closing,phase:phaseText};
+}};
+
+RHYTHMS.environmental={name:'Environmental Rhythm',questions:[
+  {id:'light-schedule',
+   text:'How do your tank lights actually turn on and off each day?',
+   sub:'Not what you intend — what actually happens most days.',
+   opts:[
+     {v:'timer', l:'On a timer, same hours every day', d:'The schedule doesn\'t depend on whether I remember.'},
+     {v:'by-feel-consistent', l:'By hand, but I\'m pretty consistent about timing', d:'No timer, but I\'ve kept it close to the same hours without one.'},
+     {v:'by-feel-variable', l:'By hand, and it varies a fair bit', d:'Some days it\'s on for hours longer or shorter than others.'},
+     {v:'rarely-tracked', l:'Honestly, I don\'t really track it', d:'Lights go on and off whenever I happen to notice.'}
+   ]},
+  {id:'light-consequence',
+   text:'If a tank\'s light schedule swung between 8 and 16 hours from one day to the next, what would you expect to see?',
+   sub:'Your honest guess, not a lookup.',
+   opts:[
+     {v:'chronic-stress-aware', l:'Colour fading, less interest in food, more susceptibility to illness', d:'A slow, chronic kind of stress rather than one dramatic symptom.'},
+     {v:'algae-only', l:'Mostly just more algae', d:'That\'s the main consequence that comes to mind.'},
+     {v:'no-real-effect', l:'Not much — light is light, as long as it gets enough', d:'I wouldn\'t expect the schedule itself to matter much.'},
+     {v:'not-sure', l:'I genuinely don\'t know', d:'I haven\'t thought about what an irregular schedule would actually do.'}
+   ]},
+  {id:'hardscape-moves',
+   text:'How often do you rearrange hardscape or decor in an established, stocked tank?',
+   sub:'The actual frequency, not the ideal one.',
+   opts:[
+     {v:'rarely-once-set', l:'Rarely — once it\'s placed, it mostly stays', d:'I treat the layout as settled once the animals are used to it.'},
+     {v:'occasional-reason', l:'Occasionally, for a specific reason', d:'A new addition, a plant that outgrew its spot — not just for a refresh.'},
+     {v:'frequent-aesthetic', l:'Fairly often, when I want a fresh look', d:'I enjoy redesigning the layout every so often.'},
+     {v:'no-hardscape', l:'My setup doesn\'t really have fixed hardscape', d:'Not much to rearrange in the first place.'}
+   ]},
+  {id:'flow-deadspots',
+   text:'Corners, and the space behind tall hardscape — how much attention do those spots get?',
+   sub:'Where detritus tends to collect if flow doesn\'t reach it.',
+   opts:[
+     {v:'checks-regularly', l:'I check them specifically, on a routine', d:'I know those are the spots flow tends to miss, so I look there deliberately.'},
+     {v:'notices-eventually', l:'I notice if something builds up, eventually', d:'Not a routine check, but it doesn\'t go unnoticed forever.'},
+     {v:'rarely-looks', l:'I rarely look back there', d:'Those spots mostly stay out of sight, out of mind.'},
+     {v:'never-considered', l:'I hadn\'t thought about flow reaching different spots unevenly', d:'This isn\'t something I\'ve considered before.'}
+   ]},
+  {id:'temp-stability',
+   text:'How much does your tank\'s temperature actually move around day to day?',
+   sub:'Best honest estimate, whether or not you measure it.',
+   opts:[
+     {v:'stable-monitored', l:'Barely at all — I check it and it holds steady', d:'A heater and thermometer doing their job, and I look often enough to know.'},
+     {v:'stable-assumed', l:'Probably stable, though I don\'t check often', d:'I trust the equipment, but I couldn\'t say the last time I confirmed it.'},
+     {v:'noticeable-swings', l:'It swings a noticeable amount', d:'Room temperature, equipment, or something else moves it around more than a little.'},
+     {v:'unsure-swings', l:'I honestly wouldn\'t know', d:'No thermometer in the tank, or I don\'t check it.'}
+   ]}
+],
+reflect:function(ans){
+  var lit=ans['light-schedule'], con=ans['light-consequence'], hsc=ans['hardscape-moves'];
+  var flw=ans['flow-deadspots'], tmp=ans['temp-stability'];
+
+  var score=0;
+  if(lit==='timer')score+=2; else if(lit==='by-feel-consistent')score+=1;
+  if(con==='chronic-stress-aware')score+=2; else if(con==='algae-only')score+=1;
+  if(hsc==='rarely-once-set')score+=2; else if(hsc==='occasional-reason'||hsc==='no-hardscape')score+=1;
+  if(flw==='checks-regularly')score+=2; else if(flw==='notices-eventually')score+=1;
+  if(tmp==='stable-monitored')score+=2; else if(tmp==='stable-assumed')score+=1;
+
+  var phase=(score>=7)?'Mature':(score>=4)?'Developing':'Early';
+
+  var title;
+  if(hsc==='frequent-aesthetic'&&phase!=='Mature')title='Rearranged more than <em>the animals expect.</em>';
+  else if(phase==='Mature')title='An environment read as <em>infrastructure, not decor.</em>';
+  else if(phase==='Developing')title='Steady in some corners, <em>untested in others.</em>';
+  else title='An environment still settling <em>into a pattern.</em>';
+
+  var paras=[];
+
+  if(lit==='timer'){
+    paras.push('Running lights on a timer removes the one variable most keepers underestimate: photoperiod consistency. Fish have circadian rhythms governed by light cycles, and a schedule that doesn\'t depend on memory is doing real ecological work, not just convenience.');
+  } else if(lit==='by-feel-consistent'){
+    paras.push('Keeping the schedule close to consistent by hand, without a timer, works until it doesn\'t — the risk isn\'t any single late night, it\'s the slow drift that happens without a fixed reference point. A timer isn\'t a luxury here. It\'s what makes “consistent” actually reliable.');
+  } else if(lit==='by-feel-variable'){
+    paras.push('A schedule that swings by hours from day to day is one of the more common environmental rhythm gaps, and one of the least visible ones. There\'s no single dramatic symptom, just chronic low-level stress that shows up as colour fading, reduced feeding interest, and higher disease susceptibility over time.');
+  } else {
+    paras.push('Not tracking the light schedule at all means this variable is currently unmanaged, which is more common than it sounds. Light is easy to treat as background rather than as an input the animals are actually reading.');
+  }
+
+  if(con==='chronic-stress-aware'){
+    paras.push('Naming colour fading, reduced feeding interest, and disease susceptibility — rather than one dramatic event — is exactly right. Irregular light cycles produce a chronic, low-level kind of stress, not a single visible crisis, which is part of why it goes unrecognised as often as it does.');
+  } else if(con==='algae-only'){
+    paras.push('Algae is a real consequence of an unpredictable light schedule, but it\'s the visible tip of something larger. The less visible part is chronic stress in the animals themselves — colour fading, reduced feeding interest, more susceptibility to illness — building quietly underneath whatever\'s happening on the glass.');
+  } else if(con==='no-real-effect'){
+    paras.push('Light is often treated as less consequential than water chemistry, but an inconsistent photoperiod produces real, if quiet, stress. Fish read light cycles as a circadian signal, and an unpredictable one shows up over time as colour fading, reduced feeding interest, and higher disease susceptibility.');
+  } else {
+    paras.push('Not having a guess here is honest, and worth sitting with: an irregular light schedule produces chronic low-level stress — colour fading, reduced feeding interest, higher disease susceptibility — none of it dramatic enough to point straight back to the light.');
+  }
+
+  if(hsc==='rarely-once-set'){
+    paras.push('Treating an established layout as settled, once the animals are used to it, protects something easy to underestimate: the social geometry they\'ve built around it. Territories, sight lines, refugia — a stable structure the animals actually map and depend on, not just decoration.');
+  } else if(hsc==='occasional-reason'){
+    paras.push('Rearranging for a specific reason, rather than for its own sake, is a reasonable balance. The disruption is real either way, but it\'s smaller and more justified when it\'s solving an actual problem rather than refreshing a look.');
+  } else if(hsc==='frequent-aesthetic'){
+    paras.push('Rearranging fairly often for a fresh look comes at a real cost the animals pay: territories, sight lines, and refugia are structure they\'ve mapped and depend on. In territorial or semi-aggressive species, disrupting that repeatedly can trigger conflict cascades. Established hardscape positions are functional, not just decorative.');
+  } else {
+    paras.push('Without much fixed hardscape, this particular disruption doesn\'t apply the same way — though the same principle carries over to whatever structure does exist: once animals have mapped it, it\'s functional, not just visual.');
+  }
+
+  if(flw==='checks-regularly'){
+    paras.push('Deliberately checking corners and the space behind tall hardscape is ahead of most routines. Uneven flow creates dead spots where detritus accumulates and oxygen runs low — problems that stay invisible exactly because they\'re out of the main sightline.');
+  } else if(flw==='notices-eventually'){
+    paras.push('Catching buildup eventually, even without a deliberate routine, is better than never — but dead spots behind hardscape or in corners tend to accumulate quietly for a while before anything is visible enough to notice on its own.');
+  } else if(flw==='rarely-looks'){
+    paras.push('Rarely checking behind hardscape or in corners means dead spots have room to develop unnoticed. Uneven flow creates exactly these pockets — low oxygen, detritus buildup — and they\'re a genuine environmental rhythm problem, not just a cosmetic one.');
+  } else {
+    paras.push('Not having considered flow distribution as its own variable is common — most attention goes to whether the filter is running, not where its output actually reaches. Corners and the space behind tall hardscape are where flow most often fails to arrive.');
+  }
+
+  if(tmp==='stable-monitored'){
+    paras.push('Checking often enough to actually confirm stability, rather than assuming it, is the more complete version of temperature management. Stability itself is the goal — fish and microbial communities adapt to consistent conditions and are stressed by fluctuation, the same principle that applies to water chemistry.');
+  } else if(tmp==='stable-assumed'){
+    paras.push('Trusting the equipment without checking often is a reasonable default, but it means a slow drift — a failing heater, a room that\'s gotten colder — could go unnoticed for a while. An occasional check turns an assumption into an actual confirmation.');
+  } else if(tmp==='noticeable-swings'){
+    paras.push('A temperature that swings a noticeable amount is a real environmental rhythm signal, not just background variation. Fish adapt to consistent conditions; it\'s the fluctuation itself, more than the exact number, that tends to cause stress.');
+  } else {
+    paras.push('Not knowing how much temperature actually moves means this variable currently has no baseline, which is worth closing — temperature swings are one of the more common overlooked sources of chronic stress.');
+  }
+
+  var closing;
+  if(phase==='Early')closing='What\'s one part of this tank\'s environment you\'ve never treated as something the animals are actually reading?';
+  else if(phase==='Developing')closing='Which of these — light, layout, flow, temperature — is most worth turning into an actual routine, rather than an assumption?';
+  else closing='Now that the environment is read as infrastructure — what\'s the next thing worth checking with the same attention?';
+
+  var phaseText;
+  if(phase==='Early')phaseText='Environmental Rhythm here reads as Early Phase — several of these physical and sensory variables (light, layout, flow, temperature) are still unmanaged or untracked. That\'s common, and it\'s also the most straightforward rhythm to start deliberately shaping.';
+  else if(phase==='Developing')phaseText='Environmental Rhythm here reads as Developing Phase — some of these variables are handled well, others are still assumptions rather than confirmed habits.';
+  else phaseText='Environmental Rhythm here reads as Mature Phase — light, layout, flow, and temperature are being read and managed as the structural inputs they actually are, not treated as background.';
+
+  return{title:title,paras:paras,closing:closing,phase:phaseText};
+}};
+
+RHYTHMS.livestock={name:'Livestock Rhythm',questions:[
+  {id:'observation-baseline',
+   text:'Could you tell if one specific fish had been slightly less active for the past three days?',
+   sub:'Not a dramatic change — just quieter than usual.',
+   opts:[
+     {v:'yes-know-baseline', l:'Yes — I know their normal enough to notice', d:'I\'d pick up on it within a day or two.'},
+     {v:'maybe-eventually', l:'Maybe, if it went on for a while', d:'A day or two might slip by before I clocked it.'},
+     {v:'only-dramatic', l:'Only if it became obvious', d:'Subtle changes would probably pass me by.'},
+     {v:'dont-know-individuals', l:'Honestly, I don\'t track individual fish that closely', d:'I watch the tank more than any one animal.'}
+   ]},
+  {id:'preclinical-signs',
+   text:'Reduced feeding interest, subtle colour pallor, resting in an unusual spot, mildly clamped fins — none of these confirm a problem on their own. What do you do when you spot ONE of them?',
+   sub:'Be honest about your actual first move.',
+   opts:[
+     {v:'watch-pattern', l:'Note it and watch for a pattern over the next day or two', d:'One sign isn\'t a verdict, but it\'s worth tracking.'},
+     {v:'dismiss-single', l:'Not think much of it', d:'A single sign like that doesn\'t usually register as significant.'},
+     {v:'immediate-treatment', l:'Start treating for something right away', d:'One sign is usually enough for me to act.'},
+     {v:'wouldnt-notice', l:'I probably wouldn\'t catch something that subtle', d:'These are finer details than I typically track.'}
+   ]},
+  {id:'stress-accumulation',
+   text:'A fish sits in slightly-too-warm water, mild stocking pressure, an irregular feeding schedule, and occasional chemistry fluctuation — but never shows one dramatic symptom. What\'s actually happening?',
+   sub:'Pick the answer closest to how you\'d actually read this.',
+   opts:[
+     {v:'chronic-cumulative', l:'It\'s under real, chronic stress — the small things add up', d:'None of these alone would harm it, but together they do.'},
+     {v:'unsure-cumulative', l:'I\'m not sure multiple small things can add up like that', d:'This framing is new to me.'},
+     {v:'fine-if-no-symptom', l:'Probably fine, since nothing dramatic has shown up', d:'No clear symptom usually means no real problem to me.'},
+     {v:'one-cause-only', l:'One of those factors is the real issue, the rest don\'t matter much', d:'I\'d look for the single cause rather than the combination.'}
+   ]},
+  {id:'new-addition-disruption',
+   text:'You add a new fish to an established, settled community tank. What do you expect for the existing residents?',
+   sub:'The ones already there, not the newcomer.',
+   opts:[
+     {v:'expects-disruption', l:'Some disruption to all of them, not just the new arrival', d:'The social order gets reshuffled, at least for a while.'},
+     {v:'no-real-disruption', l:'Not much disruption either way, if the new fish is compatible', d:'Compatibility is really the main thing that matters.'},
+     {v:'only-newcomer-stressed', l:'The new fish will be stressed, the rest should be unaffected', d:'The existing residents are already settled, so I wouldn\'t expect much change in them.'},
+     {v:'havent-considered', l:'I hadn\'t thought about the existing fish\'s side of it', d:'My attention usually goes to whether the newcomer settles in.'}
+   ]},
+  {id:'behaviour-vs-chemistry',
+   text:'Something feels slightly off about the tank, but you can\'t say exactly what yet. What do you check first?',
+   sub:'Your actual first instinct.',
+   opts:[
+     {v:'watch-animals-first', l:'Watch the animals — behaviour usually tells me something before the numbers do', d:'I look at how they\'re acting before I reach for a test kit.'},
+     {v:'test-water-first', l:'Test the water first', d:'Numbers feel like the more objective starting point.'},
+     {v:'check-equipment-first', l:'Check the equipment — filter, heater, light', d:'I look for a mechanical explanation before anything else.'},
+     {v:'wait-and-see', l:'Wait to see if it becomes clearer', d:'I don\'t usually act on a vague feeling that something\'s off.'}
+   ]}
+],
+reflect:function(ans){
+  var obs=ans['observation-baseline'], pre=ans['preclinical-signs'], acc=ans['stress-accumulation'];
+  var add=ans['new-addition-disruption'], beh=ans['behaviour-vs-chemistry'];
+
+  var score=0;
+  if(obs==='yes-know-baseline')score+=2; else if(obs==='maybe-eventually')score+=1;
+  if(pre==='watch-pattern')score+=2; else if(pre==='dismiss-single')score+=1;
+  if(acc==='chronic-cumulative')score+=2; else if(acc==='unsure-cumulative')score+=1;
+  if(add==='expects-disruption')score+=2; else if(add==='no-real-disruption')score+=1;
+  if(beh==='watch-animals-first')score+=2; else if(beh==='test-water-first'||beh==='check-equipment-first')score+=1;
+
+  var phase=(score>=7)?'Mature':(score>=4)?'Developing':'Early';
+
+  var title;
+  if(pre==='immediate-treatment'&&phase!=='Mature')title='Reacting to signals <em>before they\'re a pattern.</em>';
+  else if(phase==='Mature')title='Behaviour read <em>before the numbers ask for it.</em>';
+  else if(phase==='Developing')title='Reading some signs, <em>missing the pattern.</em>';
+  else title='Signals still passing <em>unread.</em>';
+
+  var paras=[];
+
+  if(obs==='yes-know-baseline'){
+    paras.push('Knowing an individual animal\'s baseline well enough to notice a few quiet days is one of the more valuable things a keeper can build. Livestock rhythm is often the earliest readable indicator of system drift — behavioural changes appear before anything measurable does, and noticing them depends entirely on knowing what normal looks like first.');
+  } else if(obs==='maybe-eventually'){
+    paras.push('Catching a change after a while, rather than right away, still works — the pattern usually holds for more than a day or two before it matters. The gap is in how early the signal gets read, not whether it ever does.');
+  } else if(obs==='only-dramatic'){
+    paras.push('Catching only the obvious changes means the earliest signals — the ones that show up before anything measurable does — are mostly being missed. That\'s not a lack of care. It\'s a gap between how subtly these signs present and how closely they\'re currently being watched.');
+  } else {
+    paras.push('Watching the tank as a whole rather than tracking individuals means the earliest signals, which tend to show up in one animal first, have less chance of being caught before they become a pattern across several.');
+  }
+
+  if(pre==='watch-pattern'){
+    paras.push('Noting a single sign and watching for a pattern, rather than reacting to it alone, matches exactly how these signals are meant to be read. None of them individually confirms a problem — persistence over a day or two, or several signs together, is what actually turns a maybe into something worth acting on.');
+  } else if(pre==='immediate-treatment'){
+    paras.push('Reaching for treatment at the first sign is understandable, but a single subtle signal — reduced feeding interest, mild pallor, a clamped fin — isn\'t meant to be read alone. Acting on it in isolation risks treating for the wrong thing before the pattern has actually shown itself.');
+  } else if(pre==='dismiss-single'){
+    paras.push('Not reacting to a single subtle sign is reasonable on its own — these signals genuinely don\'t confirm anything individually. The only risk is if the same instinct carries forward once a second or third sign joins it; that\'s the point these signals are actually meant to be read together.');
+  } else {
+    paras.push('These signals are genuinely subtle by design — reduced feeding interest, faint pallor, a slightly unusual resting spot. Not catching them isn\'t unusual. Knowing they exist as a category is often the first step toward noticing them at all.');
+  }
+
+  if(acc==='chronic-cumulative'){
+    paras.push('Reading several small stressors as cumulative, even without one dramatic symptom, matches current understanding of fish stress physiology directly. Chronic low-level stress is cumulative — multiple sub-threshold factors can combine into real disease susceptibility and shortened lifespan without ever producing a single visible crisis.');
+  } else if(acc==='fine-if-no-symptom'){
+    paras.push('Taking the absence of a dramatic symptom as reassurance is a common read, but chronic stress often builds exactly this way: several small factors, each below its own harm threshold, combining into something real without ever announcing itself as one clear event.');
+  } else if(acc==='one-cause-only'){
+    paras.push('Looking for the one real cause is a reasonable instinct, but chronic stress frequently doesn\'t have one. Several sub-threshold stressors — slightly warm water, mild stocking pressure, an irregular feeding schedule — can combine into genuine harm even though no single one of them would do it alone.');
+  } else {
+    paras.push('This framing — several small things combining into something real — is genuinely underrepresented in most hobby advice, which tends to look for one cause. Multiple sub-threshold stressors adding up is well-established in current understanding of fish stress physiology.');
+  }
+
+  if(add==='expects-disruption'){
+    paras.push('Expecting disruption across the whole existing community, not just the newcomer, matches how social structure actually works in a tank. Established hierarchies and territorial arrangements tend toward self-maintenance once settled — adding a new fish disrupts that geometry, and the resulting stress affects everyone already there, not only the animal being introduced.');
+  } else if(add==='only-newcomer-stressed'){
+    paras.push('Expecting the stress to sit mainly with the newcomer is a natural assumption, but the existing residents have usually built a settled social structure — hierarchies, territories, feeding order — that a new addition disrupts for everyone, not just the fish arriving.');
+  } else if(add==='no-real-disruption'){
+    paras.push('Compatibility matters, but it doesn\'t fully prevent disruption. Even compatible additions reshuffle an established social structure — hierarchies, territories, feeding order — that the existing residents had settled into and were relying on.');
+  } else {
+    paras.push('Attention naturally goes to whether the newcomer settles in, but the existing residents are affected too — a new addition disrupts a social structure they\'d already built and were depending on, not just the animal being introduced.');
+  }
+
+  if(beh==='watch-animals-first'){
+    paras.push('Checking behaviour before reaching for a test kit matches the actual order these signals tend to appear in: behavioural changes precede physiological changes, which precede measurable chemical changes. Livestock rhythm is frequently the earliest readable indicator of drift elsewhere in the system.');
+  } else if(beh==='test-water-first'){
+    paras.push('Testing the water first is a reasonable, methodical instinct, but it\'s often not where the earliest signal actually shows up. Behavioural changes tend to precede physiological changes, which precede measurable chemical ones — by the time a parameter moves, the animals have usually been signalling for a while.');
+  } else if(beh==='check-equipment-first'){
+    paras.push('Checking equipment first rules out a real category of cause, but it\'s rarely the first place a genuine drift shows up. Behaviour tends to move before chemistry does, and chemistry tends to move before anything visibly fails mechanically.');
+  } else {
+    paras.push('Not acting on a vague sense that something\'s off means the earliest, most flexible window to investigate often passes before anything clearer appears. Behavioural changes are frequently the first readable signal — waiting for something more definite usually means waiting for a later, less forgiving stage.');
+  }
+
+  var closing;
+  if(phase==='Early')closing='What would it take to know one animal\'s ordinary baseline well enough to notice three quiet days?';
+  else if(phase==='Developing')closing='Which single preclinical sign, if you saw it tomorrow, would you actually watch rather than act on immediately — or the other way around?';
+  else closing='Now that behaviour is read before the numbers ask for it — what\'s the next early signal worth learning to recognise?';
+
+  var phaseText;
+  if(phase==='Early')phaseText='Livestock Rhythm here reads as Early Phase — the early behavioural signals (feeding interest, subtle colour, resting position, fin posture) aren\'t yet part of what\'s being actively watched. That\'s the most learnable rhythm to start building deliberately, since it mostly asks for attention, not equipment.';
+  else if(phase==='Developing')phaseText='Livestock Rhythm here reads as Developing Phase — some signals are being read, but not consistently enough yet to catch a pattern before it needs a lot more than watching.';
+  else phaseText='Livestock Rhythm here reads as Mature Phase — behaviour is being read as the earliest signal it actually is, ahead of measurable chemistry, and small changes are getting caught before they build into something larger.';
+
+  return{title:title,paras:paras,closing:closing,phase:phaseText};
+}};
+
+RHYTHMS.keeper={name:'Keeper Rhythm',questions:[
+  {id:'wc-interval-awareness',
+   text:'Has your water-change interval for this tank changed since you set it up?',
+   sub:'Compare where you started to where you actually are now.',
+   opts:[
+     {v:'same-or-decided', l:'It\'s the same, or I changed it on purpose', d:'Any shift was a deliberate decision, not something that just happened.'},
+     {v:'drifted-aware', l:'It\'s crept longer, and I\'ve known for a while', d:'I\'m aware the interval has extended, I just haven\'t addressed it.'},
+     {v:'drifted-unnoticed', l:'It\'s crept longer, and I only just noticed', d:'Weekly became ten days, then two weeks — without me deciding that.'},
+     {v:'not-sure', l:'I couldn\'t say what the actual interval is right now', d:'I do it "when I get to it" rather than on any interval.'}
+   ]},
+  {id:'filter-check-date',
+   text:'When did you last actually check the filter — media, flow, impeller?',
+   sub:'A real date or timeframe, not an estimate you\'re generating right now.',
+   opts:[
+     {v:'recent-known', l:'I know roughly when, and it was recent', d:'It\'s part of a routine I actually track.'},
+     {v:'know-but-a-while', l:'I know roughly when, and it\'s been a while', d:'I could tell you, and the honest answer is longer than I\'d like.'},
+     {v:'no-idea', l:'I genuinely couldn\'t say', d:'There\'s no clear last-checked date in my memory.'},
+     {v:'new-tank', l:'The tank\'s too new for this to apply yet', d:'Filter hasn\'t been running long enough to need a check.'}
+   ]},
+  {id:'feeding-precision',
+   text:'How do you actually measure how much you feed?',
+   sub:'Not the ideal — the real habit.',
+   opts:[
+     {v:'measured', l:'Measured — a set amount, fairly consistent', d:'I have a specific quantity in mind and stick close to it.'},
+     {v:'estimated-consistent', l:'Estimated, but I\'m consistent about it', d:'A pinch, roughly the same each time, just not measured precisely.'},
+     {v:'estimated-variable', l:'Estimated, and it varies a fair bit', d:'Sometimes more, sometimes less, depending on the day.'},
+     {v:'not-tracked', l:'I haven\'t really thought about it in these terms', d:'Feeding happens; I couldn\'t describe the amount with any precision.'}
+   ]},
+  {id:'observation-quality',
+   text:'When you look at the tank day to day, what\'s actually happening?',
+   sub:'The honest version of what goes through your head.',
+   opts:[
+     {v:'reading', l:'I\'m reading it — noticing what\'s different from yesterday', d:'Behaviour, plant growth, anything that shifted since last time.'},
+     {v:'checking', l:'I\'m checking it — confirming nothing\'s obviously wrong', d:'A quick scan for anything alarming, then I move on.'},
+     {v:'glancing', l:'I glance at it, more out of habit than attention', d:'It\'s in view, so I look, without really registering much.'},
+     {v:'rarely-look', l:'I don\'t look at it that often, honestly', d:'Days can pass without a real look.'}
+   ]},
+  {id:'automation-reliance',
+   text:'If you use any automation — auto feeder, auto top-off, dosing pump, timer — how do you treat it once it\'s set up?',
+   sub:'If none of this applies, pick the closest honest answer anyway.',
+   opts:[
+     {v:'trust-but-verify', l:'I trust it, and still check on it deliberately', d:'Automation runs the routine; I still confirm it\'s actually working.'},
+     {v:'no-automation', l:'I don\'t use automation — everything is manual', d:'Nothing here is running without me doing it directly.'},
+     {v:'set-and-forget', l:'I set it up and mostly forget about it', d:'Once it\'s running, my attention moves elsewhere.'},
+     {v:'unsure-checking', l:'I\'m not sure how often I actually check on it', d:'It\'s probably less often than I\'d guess if asked directly.'}
+   ]}
+],
+reflect:function(ans){
+  var wc=ans['wc-interval-awareness'], fc=ans['filter-check-date'], fd=ans['feeding-precision'];
+  var obq=ans['observation-quality'], auto=ans['automation-reliance'];
+
+  var score=0;
+  if(wc==='same-or-decided')score+=2; else if(wc==='drifted-aware'||wc==='drifted-unnoticed')score+=1;
+  if(fc==='recent-known')score+=2; else if(fc==='know-but-a-while'||fc==='new-tank')score+=1;
+  if(fd==='measured')score+=2; else if(fd==='estimated-consistent')score+=1;
+  if(obq==='reading')score+=2; else if(obq==='checking')score+=1;
+  if(auto==='trust-but-verify')score+=2; else if(auto==='no-automation')score+=1;
+
+  var phase=(score>=7)?'Mature':(score>=4)?'Developing':'Early';
+
+  var title;
+  if(wc==='drifted-unnoticed'&&phase!=='Mature')title='A rhythm that drifted <em>without a decision.</em>';
+  else if(phase==='Mature')title='A rhythm measured, <em>not estimated.</em>';
+  else if(phase==='Developing')title='Mostly holding, <em>quietly loosening.</em>';
+  else title='Care running on memory, <em>not a routine.</em>';
+
+  var paras=[];
+
+  if(wc==='same-or-decided'){
+    paras.push('Keeping the water-change interval the same, or changing it on purpose, is the exception rather than the rule. Capacity creep — the gradual, unnoticed reduction in care quality — usually moves in exactly the direction this doesn\'t: weekly becoming ten days, then two weeks, without it ever being an explicit decision.');
+  } else if(wc==='drifted-unnoticed'){
+    paras.push('Noticing the drift only just now, while answering this, is actually how capacity creep is usually caught. It\'s difficult to detect from inside it, because each new interval quietly becomes the new baseline being compared against. Naming the drift is the first step back out of it.');
+  } else if(wc==='drifted-aware'){
+    paras.push('Knowing the interval has extended, and not yet addressing it, is a more honest position than not noticing at all — but capacity creep\'s actual damage happens in the months the awareness sits unaddressed. The gap between knowing and adjusting is where the tank\'s ecology is actually changing.');
+  } else {
+    paras.push('Not having a clear sense of the current interval means there\'s no baseline left to measure drift against — which is itself the signature of capacity creep advancing far enough that recent practice, whatever it is, has quietly become the only reference point.');
+  }
+
+  if(fc==='recent-known'){
+    paras.push('Having a real, recent answer to when the filter was last checked is one of the more reliable signs there is — precisely because an unclear last-check date is one of the specific indicators ARA names for capacity creep already underway.');
+  } else if(fc==='know-but-a-while'){
+    paras.push('Being able to name the date, even if it\'s further back than ideal, is a meaningfully different position from not knowing at all. The gap is visible and specific, which makes it something that can actually be closed.');
+  } else if(fc==='no-idea'){
+    paras.push('Not having a clear last-checked date is one of the specific indicators of capacity creep — not a minor detail, but one of the named signs that maintenance intervals have quietly extended past what was originally intended.');
+  } else {
+    paras.push('A tank too new for this to have come up yet is a fine place to be. The more useful moment is noticing, a few months from now, whether an actual check date stays trackable or starts to blur.');
+  }
+
+  if(fd==='measured'){
+    paras.push('Feeding a set, fairly consistent amount is closer to minimum viable care than it might feel — knowing roughly what a tank actually needs, and meeting that reliably, is the target. It\'s not about feeding more. It\'s about the amount being known rather than guessed.');
+  } else if(fd==='estimated-consistent'){
+    paras.push('Estimating consistently, even without a precise measurement, still gives the tank something reliable to adapt to. The risk with estimation isn\'t the lack of precision — it\'s when the estimate itself starts moving without anyone deciding it should.');
+  } else if(fd==='estimated-variable'){
+    paras.push('An amount that varies a fair bit day to day is one of the quieter forms of drift: an estimated rather than measured feeding amount is named directly as a capacity-creep indicator, and variability on top of estimation compounds it further.');
+  } else {
+    paras.push('Not having language for the amount at all makes it hard to notice if it\'s drifting, which is exactly the condition capacity creep needs to go unrecognised. A rough number, even approximate, gives future reference something to compare against.');
+  }
+
+  if(obq==='reading'){
+    paras.push('Reading the tank — noticing what\'s different since yesterday — rather than just checking it is close to the actual goal of daily observation. Checking confirms nothing\'s obviously wrong. Reading is what catches the drift before it becomes obvious.');
+  } else if(obq==='checking'){
+    paras.push('Scanning for anything alarming, then moving on, catches real emergencies but tends to miss slow drift — the kind of change that never looks alarming on any single day, only across several of them.');
+  } else if(obq==='glancing'){
+    paras.push('A glance out of habit, without much registering, still puts eyes on the tank, which is more than nothing — but it\'s unlikely to catch anything that develops gradually rather than suddenly.');
+  } else {
+    paras.push('Days passing without a real look means most of what the other rhythms would be signalling is going unread — not because it isn\'t there, but because there\'s no one currently reading it.');
+  }
+
+  if(auto==='trust-but-verify'){
+    paras.push('Trusting automation while still checking on it deliberately is exactly the balance ARA points to: automation executes, but it doesn\'t observe. A keeper who understands their infrastructure and actively verifies it has real capacity a manual schedule alone wouldn\'t show — as long as the checking stays deliberate.');
+  } else if(auto==='set-and-forget'){
+    paras.push('Setting up automation and letting attention move elsewhere is the one real risk in relying on it: automated failures compound silently — a jammed feeder, a miscalibrated dosing pump — precisely because nothing is watching for them. Automation should mean observing with more intention, not less.');
+  } else if(auto==='no-automation'){
+    paras.push('Running everything manually means there\'s no automated failure mode to worry about. The tradeoff is that every gap in attention is a gap in care, with nothing filling in behind it.');
+  } else {
+    paras.push('Suspecting the real checking frequency is lower than it would sound out loud is a common and useful thing to notice. Automation extends capacity, but only while someone is still watching it — an unwatched system can fail for a while before anything visible shows it.');
+  }
+
+  var closing;
+  if(phase==='Early')closing='What\'s one part of this tank\'s routine currently running on memory that you could put on an actual, checkable schedule?';
+  else if(phase==='Developing')closing='Which specific number — a date, an amount, an interval — would turn one of these from an estimate into something known?';
+  else closing='Now that these numbers are known rather than estimated — what would you actually do if life circumstances made the current rhythm harder to sustain for a while?';
+
+  var phaseText;
+  if(phase==='Early')phaseText='Keeper Rhythm here reads as Early Phase — several of the specific indicators of capacity creep are present: extended intervals, unclear check dates, estimated rather than measured amounts. Naming them here is the useful part; none of them require anything beyond attention to close.';
+  else if(phase==='Developing')phaseText='Keeper Rhythm here reads as Developing Phase — some of this tank\'s care is running on known numbers, some is still running on estimate or memory.';
+  else phaseText='Keeper Rhythm here reads as Mature Phase — the specific numbers (intervals, dates, amounts) are known rather than estimated, and observation is reading the tank, not just checking it.';
+
+  return{title:title,paras:paras,closing:closing,phase:phaseText};
+}};
 
 /* ═══ FLOW ═══ */
-var curQ=0,ans={};
+var curQ=0,ans={},curRhythm=null;
 function showIntro(){
   document.getElementById('ryr-intro').style.display='flex';
   document.getElementById('ryr-screen').style.display='none';
   document.getElementById('ryr-result').style.display='none';
   document.getElementById('ryr-prog-fill').style.width='0%';
 }
+function startRhythm(key){
+  curRhythm=key;ans={};
+  document.getElementById('ryr-q-rhythm').textContent=RHYTHMS[key].name;
+  showQ(0);
+}
 function showQ(i){
   document.getElementById('ryr-intro').style.display='none';
   document.getElementById('ryr-screen').style.display='block';
   document.getElementById('ryr-result').style.display='none';
+  var Q=RHYTHMS[curRhythm].questions;
   curQ=i;var q=Q[i];
   document.getElementById('ryr-q-num').textContent='Question '+(i+1)+' of '+Q.length;
   document.getElementById('ryr-q-text').textContent=q.text;
@@ -403,7 +944,8 @@ function showResult(){
   document.getElementById('ryr-screen').style.display='none';
   document.getElementById('ryr-result').style.display='block';
   document.getElementById('ryr-prog-fill').style.width='100%';
-  var ref=reflect(ans);
+  var ref=RHYTHMS[curRhythm].reflect(ans);
+  document.getElementById('ryr-result-eyebrow').textContent=RHYTHMS[curRhythm].name+' — your reflection';
   document.getElementById('ryr-result-title').innerHTML=ref.title;
   var re=document.getElementById('ryr-reflection');re.innerHTML='';
   ref.paras.forEach(function(p){var el=document.createElement('p');el.textContent=p;re.appendChild(el);});
@@ -411,9 +953,14 @@ function showResult(){
   document.getElementById('ryr-phase-text').textContent=ref.phase;
   window.scrollTo({top:0,behavior:'auto'});
 }
-document.getElementById('ryr-pick-water').addEventListener('click',function(){showQ(0);});
+document.getElementById('ryr-pick-water').addEventListener('click',function(){startRhythm('water');});
+document.getElementById('ryr-pick-biological').addEventListener('click',function(){startRhythm('biological');});
+document.getElementById('ryr-pick-environmental').addEventListener('click',function(){startRhythm('environmental');});
+document.getElementById('ryr-pick-livestock').addEventListener('click',function(){startRhythm('livestock');});
+document.getElementById('ryr-pick-keeper').addEventListener('click',function(){startRhythm('keeper');});
 document.getElementById('ryr-btn-next').addEventListener('click',function(){
   if(!this.classList.contains('active'))return;
+  var Q=RHYTHMS[curRhythm].questions;
   if(curQ<Q.length-1)showQ(curQ+1);else showResult();
 });
 document.getElementById('ryr-btn-back').addEventListener('click',function(){

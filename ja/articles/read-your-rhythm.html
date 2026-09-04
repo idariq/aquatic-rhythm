@@ -66,11 +66,16 @@ html{font-size:17px;scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--th-bg);color:var(--th-ink);overflow-x:hidden;line-height:1.72}
 body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-water)}
 main{min-height:100vh;padding-top:64px}
+/* Minimal nav chrome, matching tank-builder/tank-simulator's lab identity
+   — logo/links hidden, only the settings button remains. */
+nav:not(.bnav){background:none;backdrop-filter:none;-webkit-backdrop-filter:none;height:auto;justify-content:space-between;padding:.6rem clamp(1rem,3vw,1.5rem)}
+nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 
-/* INTRO */
-.ryr-intro{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:6rem clamp(1.5rem,5vw,3rem) 5rem;position:relative}
-.ryr-intro::after{content:'';position:absolute;bottom:0;left:0;right:0;height:140px;background:linear-gradient(to bottom,transparent,var(--th-bg));pointer-events:none}
-.ryr-intro-inner{max-width:620px;margin:0 auto}
+/* INTRO — full-screen overlay, matching tank-simulator/tank-builder's
+   #briefing pattern (covers the top nav entirely, content starts near
+   the top rather than vertically centered in 100vh). */
+.ryr-intro{position:fixed;inset:0;z-index:500;background:var(--th-bg);display:flex;align-items:flex-start;justify-content:center;padding-top:max(4rem,env(safe-area-inset-top,4rem));padding-left:1.2rem;padding-right:1.2rem;padding-bottom:calc(56px + env(safe-area-inset-bottom,0px) + 1rem);overflow-y:auto;transition:opacity .5s}
+.ryr-intro-inner{max-width:620px;width:100%;margin:0 auto;padding:1rem 0 2rem}
 .ryr-eyebrow{display:block;font-size:var(--fs-xs);font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(157,191,154,.75);margin-bottom:1.4rem}
 .ryr-title{font-family:var(--serif);font-weight:300;font-size:clamp(2.4rem,5vw,3.8rem);color:var(--th-ink);line-height:1.06;margin-bottom:1.8rem}
 .ryr-title em{font-style:italic;color:var(--th-accent)}
@@ -1014,17 +1019,25 @@ function ryrRenderChart(){
   });
 }
 function showIntro(){
-  document.getElementById('ryr-intro').style.display='flex';
+  var intro=document.getElementById('ryr-intro');
+  intro.style.display='flex';
+  intro.style.opacity='1';
   document.getElementById('ryr-screen').style.display='none';
   document.getElementById('ryr-result').style.display='none';
+}
+function hideIntro(){
+  var intro=document.getElementById('ryr-intro');
+  if(intro.style.display==='none')return;
+  intro.style.opacity='0';
+  setTimeout(function(){intro.style.display='none';intro.style.opacity='1';},500);
 }
 function startRhythm(key){
   curRhythm=key;ans={};
   document.getElementById('ryr-q-rhythm').textContent=RHYTHMS[key].name;
+  hideIntro();
   showQ(0);
 }
 function showQ(i){
-  document.getElementById('ryr-intro').style.display='none';
   document.getElementById('ryr-screen').style.display='block';
   document.getElementById('ryr-result').style.display='none';
   var Q=RHYTHMS[curRhythm].questions;
@@ -1052,7 +1065,6 @@ function showQ(i){
   window.scrollTo({top:0,behavior:'auto'});
 }
 function showResult(){
-  document.getElementById('ryr-intro').style.display='none';
   document.getElementById('ryr-screen').style.display='none';
   document.getElementById('ryr-result').style.display='block';
   var ref=RHYTHMS[curRhythm].reflect(ans);

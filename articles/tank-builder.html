@@ -994,14 +994,15 @@ body.eq-dd-open{overflow:hidden}
 }
 .ph2-card.active .ph2-card-add:hover{background:rgba(100,200,150,.16)}
 
-/* Lab page: drop the site nav (logo/links/burger), bottom nav, and
-   Rhyssa fab so they don't overlap the builder UI — keep only the
-   settings gear that js/ar-page.js injects into <nav> (user request
-   2026-08-18). */
+/* Lab page: drop the site nav links/burger, bottom nav, and Rhyssa fab
+   so they don't overlap the builder UI — keep the logo (links home)
+   and the settings gear that js/ar-page.js injects into <nav>. Logo
+   was dropped entirely per a 2026-08-18 request; restored per a later
+   explicit request to keep it visible across all lab tools. */
 .bnav{display:none!important}
 .rh-fab{display:none!important}
-nav:not(.bnav){background:none;backdrop-filter:none;-webkit-backdrop-filter:none;height:auto;justify-content:flex-end;padding:.6rem clamp(1rem,3vw,1.5rem)}
-nav:not(.bnav) .nl,nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
+nav:not(.bnav){background:none;backdrop-filter:none;-webkit-backdrop-filter:none;height:auto;justify-content:space-between;padding:.6rem clamp(1rem,3vw,1.5rem)}
+nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 </style>
 <body>
 <nav>

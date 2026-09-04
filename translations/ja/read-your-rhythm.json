@@ -53,7 +53,9 @@
     "shareBtnSending": "送信中…",
     "shareBtnSent": "送信済み",
     "shareSuccessMsg": "ありがとうございます。今後どのような質問をすべきかを考えるうえで役立ちます。",
-    "shareErrorMsg": "送信できませんでした。接続を確認してもう一度お試しください。"
+    "shareErrorMsg": "送信できませんでした。接続を確認してもう一度お試しください。",
+    "chartEyebrow": "五つのリズム全体で",
+    "chartHint": "空いているリズムをタップすると、そのまま確認を始められます。どこから始めても構いません。"
   },
   "rhythms": {
     "water": {

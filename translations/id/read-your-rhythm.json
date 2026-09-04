@@ -53,7 +53,9 @@
     "shareBtnSending": "Mengirim…",
     "shareBtnSent": "Terkirim",
     "shareSuccessMsg": "Terima kasih — ini membantu membentuk pertanyaan yang akan diajukan berikutnya.",
-    "shareErrorMsg": "Gagal mengirim — periksa koneksi Anda dan coba lagi."
+    "shareErrorMsg": "Gagal mengirim — periksa koneksi Anda dan coba lagi.",
+    "chartEyebrow": "Di seluruh lima ritme",
+    "chartHint": "Ketuk salah satu ritme yang masih kosong untuk mulai memeriksanya juga — tidak ada urutan yang harus diikuti di sini."
   },
   "rhythms": {
     "water": {

@@ -450,6 +450,8 @@ for (const lang of targetLangs) {
     `nb.textContent=i<Q.length-1?${JSON.stringify(t.chrome.nextBtn)}:${JSON.stringify(t.chrome.seeReflectionBtn)};`);
   h = replaceOnce(h, /(<span class="ryr-result-eyebrow" id="ryr-result-eyebrow">)Water Rhythm — your reflection(<\/span>)/,
     (_, a, b) => `${a}Water Rhythm${t.chrome.resultEyebrowSuffix}${b}`);
+  h = replaceOnce(h, /(<span class="ryr-chart-eyebrow" id="ryr-chart-eyebrow">)[^<]*(<\/span>)/, (_, a, b) => `${a}${t.chrome.chartEyebrow}${b}`);
+  h = replaceOnce(h, /(<p class="ryr-chart-hint" id="ryr-chart-hint">)[^<]*(<\/p>)/, (_, a, b) => `${a}${t.chrome.chartHint}${b}`);
   // Runtime JS also rebuilds this eyebrow on every showResult() call
   // (RHYTHMS[curRhythm].name+' — your reflection') — the static HTML swap
   // above only fixes the pre-JS initial markup, so the suffix must be

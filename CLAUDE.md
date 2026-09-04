@@ -851,6 +851,82 @@ peristiwa) — `two-years-one-tank` lahir pd sapaan 23.4/1k, CV 0.57,
 konkrit 42.5/1k tanpa lulusan pembetulan. Kalau draf naratif keluar
 rendah konkrit, ia belum jadi naratif; ia masih esei bersamaran.
 
+## Diplomasi thd produk/rutin komersial — JANGAN jadi radikal spt MACI (audit 2026-09-04)
+
+Audit dicetuskan drpd bandingan `docs/ARA-framework-v2.docx` dgn MACI
+(*Marco de Acuario de Circuito Integrado*, Riveiro de la Peña) — satu
+lagi kerangka restraint-oriented, dibangun berasingan drpd ARA & disebut
+dlm §3.2 dokumen sbg "further evidence that this sensibility recurs
+across the hobby, not as a source drawn upon". MACI memasarkan dirinya
+dgn nada jauh lebih konfrontasi drpd ARA (tajuk buku pertama literal:
+*"Most Aquariums Do Not Fail… They're Spoiled"* — dakwa penyelenggaraan
+kerap ITU SENDIRI puncanya). Keputusan user selepas kaji: **ARA/laman
+ni MESTI kekal lebih diplomasi** — bukan sbb hujah MACI salah, tapi sbb
+ia serang produk/rutin yg pengguna dah LABUR (duit + identiti), yg
+cetus penentangan defensif (sunk cost + ego terancam) berbanding
+sekadar penolakan idea. Rasa bersalah yg bertukar arah (drpd "anda tak
+buat cukup" kpd "usaha/peralatan anda sendiri puncanya") sama toksik,
+cuma arah terbalik — bercanggah terus dgn `caring-without-guilt`.
+
+**Audit 2026-09-04 dgn grep menyeluruh (77 artikel + 7 fail ARA +
+`js/tank-data.js`) sahkan laman ni SUDAH diplomasi** (tiada
+`spoil`/`crutch`/`gadget`/`waste of money`/`gimmick` langsung), &
+automation/high-tech dilayan SAMA taraf dgn low-tech scr eksplisit
+(`ara-s2-five-rhythms.html`: *"ARA is not partial to low-tech; it is
+partial to honest alignment"*). Corak yg buat ni berjaya: **setiap
+kritikan thd peralatan/rutin/gaya penjagaan MESTI disusuli ayat
+pencegah-rasa-bersalah/pengesahan pilihan lain sbg sah** dlm
+perenggan/ayat SAMA atau seterusnya — bukan dibiar berdiri sendiri.
+Contoh sedia ada: `aquarium-not-a-project.html` (*"a tank in genuine
+alignment asks for less intervention than most keepers give it"*
+disusuli SEGERA *"This is not a character flaw. It is a natural
+consequence of caring."*), `capacity-creep.html` (*"Nobody decides to
+neglect a tank"*), `the-honest-cost-of-going-high-tech.html`
+(*"It was never meant to say the opposite about high-tech... equally
+honest"*). **WAJIB kekalkan corak ni bila tulis/sunting kandungan
+baharu** yg sentuh peralatan, automasi, atau gaya penjagaan (high-tech
+vs low-tech, manual vs automated) — jangan biar kritikan/pemerhatian
+tajam berdiri sendiri tanpa pengesahan segera yg pilihan lain (atau
+pilihan lama pembaca) turut sah.
+
+**Corak TAJUK "X Bukan/Tidak Y"** (5 artikel guna: `aquarium-filter-
+maintenance` "Your Filter Is Not What You Think", `cycled-tank-
+problems` "An Established Tank Is Not a Finished Tank",
+`aquarium-not-a-project` "The Aquarium Is Not a Project",
+`topping-off-vs-water-change` "Topping Off Isn't a Water Change",
+`grief-without-a-mistake` "The Grief That Isn't About a Mistake") —
+kandungan setiap satu SAH (bukan clickbait kosong), tapi struktur tajuk
+ni scr formula beritahu pembaca "apa yg anda percaya/ada tu salah"
+SEBELUM apa² konteks — akar masalah yg SAMA dgn MACI, cuma versi lebih
+lembut. Ini **corak ke-3** selain 2 corak pembukaan formula yg dah
+direkod dlm §"Lima Keluarga Nada" (generalisasi populasi, kritik
+penulisan lain). **JANGAN tambah artikel ke-6 dgn corak tajuk ni** —
+5 dah cukup drpd 77 artikel; kalau idea artikel baharu secara semula
+jadi jatuh ke corak "X Bukan Y", cari sudut tajuk lain. **5 artikel
+sedia ada TIDAK ditukar tajuk** (risiko SEO drpd tajuk yg dah diindeks,
+berbeza drpd rename slug `rhythm-tracker`/`keeper-readiness-check` yg
+selamat sbb belum diindeks — rujuk §"Status Terjemahan Semasa") — ini
+sekadar had kuota utk tajuk BAHARU, bukan arahan pembetulan retroaktif.
+
+**AWAS — pautan silang CTA polos (`btn-ar`) pd topik sensitif kos/
+peralatan boleh terdedah tanpa reframe diplomatik**, walau artikel
+SASARAN sendiri dah diplomasi penuh. Ditemui: `the-honest-cost-of-
+going-high-tech` (subtajuk & meta description dah reframe *"It's the
+honest one"*) dipautkan drpd `starting-before-youre-ready.html` sbg
+butang CTA POLOS *"The Honest Cost of Going High-Tech →"* — tiada
+subtajuk/konteks di sebelahnya (beza drpd kad Reading/homepage yg
+SENTIASA papar tajuk+subtajuk bersama). Pembaca yg nampak butang ni
+sahaja (tanpa klik) terima rangka "kos" mentah. Dibetulkan dgn tukar
+teks BUTANG sahaja (bukan `<title>`/H1/slug artikel sasaran — jadi
+ZERO risiko SEO) ke "Going High-Tech, Honestly →" (id: "Beralih ke
+High-Tech Secara Jujur →", ja: "ハイテックという誠実な選択 →"),
+pinjam rangka "honest choice" yg dah sedia ada dlm subtajuk artikel tu
+sendiri. **Semak corak sama bila tambah pautan `btn-ar` baharu ke
+artikel bertajuk sensitif** (kos, kritikan produk/rutin) — kalau
+butang jadi satu-satunya pendedahan (tiada subtajuk/kad menyertainya),
+teks butang WAJIB bawa reframe, bukan sekadar salin tajuk `<title>`
+verbatim.
+
 ## Panduan Kualiti ja (elak bug audit 2026-08-19 berulang, PR #350-356)
 
 Audit kualiti ja (2026-08-19, susulan pertanyaan user "adakah dah

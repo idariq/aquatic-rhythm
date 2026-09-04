@@ -7,10 +7,10 @@
     "rhythmsComplete": [
       "water",
       "biological",
-      "environmental"
+      "environmental",
+      "livestock"
     ],
     "rhythmsPending": [
-      "livestock",
       "keeper"
     ]
   },
@@ -604,6 +604,193 @@
           "Early": "Environmental Rhythm di sini berada pada Early Phase — beberapa variabel fisik dan sensorik ini (cahaya, tata letak, aliran, suhu) masih belum terkelola atau terlacak. Ini hal yang umum, dan juga irama yang paling mudah untuk mulai dibentuk secara sengaja.",
           "Developing": "Environmental Rhythm di sini berada pada Developing Phase — sebagian variabel ini sudah ditangani dengan baik, sebagian lagi masih berupa asumsi, bukan kebiasaan yang sudah dipastikan.",
           "Mature": "Environmental Rhythm di sini berada pada Mature Phase — cahaya, tata letak, aliran, dan suhu dibaca dan dikelola sebagai masukan struktural yang sesungguhnya, bukan diperlakukan sebagai latar belakang."
+        }
+      }
+    },
+    "livestock": {
+      "questions": [
+        {
+          "id": "observation-baseline",
+          "text": "Bisakah Anda tahu kalau satu ekor ikan tertentu sedikit kurang aktif selama tiga hari terakhir?",
+          "sub": "Bukan perubahan yang dramatis — cuma lebih diam dari biasanya.",
+          "opts": [
+            {
+              "v": "yes-know-baseline",
+              "l": "Ya — saya cukup tahu kebiasaan normalnya untuk menyadarinya",
+              "d": "Saya akan menyadarinya dalam satu atau dua hari."
+            },
+            {
+              "v": "maybe-eventually",
+              "l": "Mungkin, kalau berlangsung cukup lama",
+              "d": "Satu atau dua hari mungkin terlewat sebelum saya menyadarinya."
+            },
+            {
+              "v": "only-dramatic",
+              "l": "Hanya kalau sudah jelas terlihat",
+              "d": "Perubahan yang halus mungkin akan terlewat oleh saya."
+            },
+            {
+              "v": "dont-know-individuals",
+              "l": "Jujur, saya tidak mengamati tiap ekor ikan sedetail itu",
+              "d": "Saya lebih memperhatikan akuarium secara keseluruhan dibanding satu hewan."
+            }
+          ]
+        },
+        {
+          "id": "preclinical-signs",
+          "text": "Minat makan yang menurun, warna sedikit pucat, berdiam di tempat yang tidak biasa, sirip yang sedikit terkatup — tidak satu pun dari ini membuktikan ada masalah dengan sendirinya. Apa yang Anda lakukan saat melihat SATU tanda saja?",
+          "sub": "Jujur soal langkah pertama Anda yang sebenarnya.",
+          "opts": [
+            {
+              "v": "watch-pattern",
+              "l": "Catat dan amati apakah muncul pola dalam satu-dua hari ke depan",
+              "d": "Satu tanda bukan vonis, tapi layak dipantau."
+            },
+            {
+              "v": "dismiss-single",
+              "l": "Tidak terlalu menganggapnya serius",
+              "d": "Satu tanda seperti itu biasanya tidak terlalu berarti bagi saya."
+            },
+            {
+              "v": "immediate-treatment",
+              "l": "Langsung mulai mengobati",
+              "d": "Satu tanda biasanya sudah cukup bagi saya untuk bertindak."
+            },
+            {
+              "v": "wouldnt-notice",
+              "l": "Sepertinya saya tidak akan menangkap hal sehalus itu",
+              "d": "Ini detail yang lebih halus dari yang biasanya saya perhatikan."
+            }
+          ]
+        },
+        {
+          "id": "stress-accumulation",
+          "text": "Seekor ikan berada di air yang sedikit terlalu hangat, tekanan populasi ringan, jadwal makan yang tidak teratur, dan fluktuasi kimia sesekali — tapi tidak pernah menunjukkan satu gejala dramatis. Apa yang sebenarnya sedang terjadi?",
+          "sub": "Pilih jawaban yang paling mendekati cara Anda membaca situasi ini.",
+          "opts": [
+            {
+              "v": "chronic-cumulative",
+              "l": "Ia mengalami stres kronis sesungguhnya — hal-hal kecil itu terakumulasi",
+              "d": "Tidak satu pun dari ini sendirian akan mencelakainya, tapi digabungkan, iya."
+            },
+            {
+              "v": "unsure-cumulative",
+              "l": "Saya tidak yakin beberapa hal kecil bisa terakumulasi seperti itu",
+              "d": "Cara pandang ini baru bagi saya."
+            },
+            {
+              "v": "fine-if-no-symptom",
+              "l": "Kemungkinan baik-baik saja, karena tidak ada yang dramatis muncul",
+              "d": "Bagi saya, tidak ada gejala jelas biasanya berarti tidak ada masalah nyata."
+            },
+            {
+              "v": "one-cause-only",
+              "l": "Salah satu dari faktor itu yang benar-benar jadi masalah, sisanya tidak terlalu penting",
+              "d": "Saya akan mencari satu penyebab tunggal, bukan gabungannya."
+            }
+          ]
+        },
+        {
+          "id": "new-addition-disruption",
+          "text": "Anda menambahkan ikan baru ke akuarium komunitas yang sudah mapan dan tenang. Apa yang Anda perkirakan akan terjadi pada penghuni yang sudah ada?",
+          "sub": "Yang sudah ada, bukan pendatang barunya.",
+          "opts": [
+            {
+              "v": "expects-disruption",
+              "l": "Ada gangguan pada semuanya, bukan cuma pendatang baru",
+              "d": "Tatanan sosialnya akan terguncang untuk sementara, setidaknya."
+            },
+            {
+              "v": "no-real-disruption",
+              "l": "Tidak terlalu terganggu, asal ikan barunya cocok",
+              "d": "Kecocokan sebenarnya hal utama yang menentukan bagi saya."
+            },
+            {
+              "v": "only-newcomer-stressed",
+              "l": "Ikan barunya yang akan stres, yang lain seharusnya tidak terpengaruh",
+              "d": "Penghuni yang sudah ada sudah mapan, jadi saya tidak menduga banyak perubahan pada mereka."
+            },
+            {
+              "v": "havent-considered",
+              "l": "Saya belum memikirkan sisi ikan yang sudah ada",
+              "d": "Perhatian saya biasanya tertuju pada apakah pendatang barunya bisa menyesuaikan diri."
+            }
+          ]
+        },
+        {
+          "id": "behaviour-vs-chemistry",
+          "text": "Ada yang terasa sedikit tidak beres dengan akuarium, tapi Anda belum bisa memastikan apa. Apa yang Anda periksa pertama kali?",
+          "sub": "Naluri pertama Anda yang sebenarnya.",
+          "opts": [
+            {
+              "v": "watch-animals-first",
+              "l": "Amati hewannya — perilaku biasanya memberi tahu saya sebelum angka-angkanya",
+              "d": "Saya lihat cara mereka bertingkah dulu sebelum mengambil alat uji."
+            },
+            {
+              "v": "test-water-first",
+              "l": "Uji air dulu",
+              "d": "Angka terasa seperti titik awal yang lebih objektif."
+            },
+            {
+              "v": "check-equipment-first",
+              "l": "Periksa peralatan — filter, heater, lampu",
+              "d": "Saya cari penjelasan mekanis dulu sebelum yang lain."
+            },
+            {
+              "v": "wait-and-see",
+              "l": "Menunggu sampai lebih jelas",
+              "d": "Saya biasanya tidak bertindak atas perasaan samar bahwa ada yang tidak beres."
+            }
+          ]
+        }
+      ],
+      "reflect": {
+        "titles": {
+          "immediate-treatment-not-mature": "Bereaksi pada sinyal <em>sebelum jadi pola.</em>",
+          "mature": "Perilaku dibaca <em>sebelum angka memintanya.</em>",
+          "developing": "Membaca sebagian tanda, <em>melewatkan polanya.</em>",
+          "early": "Sinyal yang masih <em>lewat tanpa terbaca.</em>"
+        },
+        "obs": {
+          "yes-know-baseline": "Mengenal kebiasaan normal seekor hewan cukup baik untuk menyadari beberapa hari yang lebih diam adalah salah satu hal paling berharga yang bisa dibangun seorang penjaga. Livestock Rhythm sering jadi indikator paling awal dari pergeseran sistem — perubahan perilaku muncul sebelum apa pun yang bisa diukur, dan menyadarinya sepenuhnya bergantung pada tahu dulu seperti apa keadaan normalnya.",
+          "maybe-eventually": "Menyadari perubahan setelah beberapa waktu, alih-alih langsung, tetap berhasil. Polanya biasanya bertahan lebih dari satu-dua hari sebelum benar-benar berarti. Bedanya cuma soal seberapa dini sinyal itu terbaca, bukan soal apakah akhirnya terbaca.",
+          "only-dramatic": "Hanya menangkap perubahan yang jelas berarti sinyal paling awal, yang muncul sebelum apa pun bisa diukur, sebagian besar terlewat. Ini bukan soal kurang perhatian. Ini soal jarak antara betapa halusnya tanda-tanda ini muncul dan seberapa dekat pengamatan yang sedang dilakukan sekarang.",
+          "dont-know-individuals": "Mengamati akuarium secara keseluruhan alih-alih melacak tiap individu berarti sinyal paling awal, yang biasanya muncul dulu pada satu hewan, punya peluang lebih kecil untuk tertangkap sebelum menjadi pola pada beberapa ekor sekaligus."
+        },
+        "pre": {
+          "watch-pattern": "Mencatat satu tanda dan mengamati apakah muncul pola, alih-alih langsung bereaksi terhadapnya, persis sesuai cara sinyal-sinyal ini seharusnya dibaca. Tidak satu pun membuktikan masalah dengan sendirinya. Bertahan selama satu-dua hari, atau munculnya beberapa tanda sekaligus, itulah yang sebenarnya mengubah kemungkinan jadi sesuatu yang layak ditindaklanjuti.",
+          "immediate-treatment": "Langsung mengambil pengobatan pada tanda pertama bisa dimengerti, tapi satu sinyal halus saja, minat makan menurun, sedikit pucat, sirip yang terkatup, tidak dimaksudkan untuk dibaca sendirian. Bertindak atasnya secara terpisah berisiko mengobati hal yang salah sebelum polanya benar-benar menunjukkan diri.",
+          "dismiss-single": "Tidak bereaksi pada satu tanda halus cukup masuk akal dengan sendirinya. Sinyal-sinyal ini memang tidak membuktikan apa pun secara individu. Risikonya hanya kalau naluri yang sama berlanjut begitu tanda kedua atau ketiga bergabung. Di situlah sinyal-sinyal ini sebenarnya dimaksudkan untuk dibaca bersama-sama.",
+          "wouldnt-notice": "Sinyal-sinyal ini memang halus: minat makan menurun, warna sedikit pucat, posisi berdiam yang agak tidak biasa. Tidak menangkapnya bukan hal yang aneh. Mengetahui bahwa mereka ada sebagai satu kategori sering kali menjadi langkah pertama untuk mulai menyadarinya."
+        },
+        "acc": {
+          "chronic-cumulative": "Membaca beberapa stresor kecil sebagai akumulatif, bahkan tanpa satu gejala dramatis, sesuai langsung dengan pemahaman saat ini tentang fisiologi stres ikan. Stres kronis tingkat rendah bersifat akumulatif. Beberapa faktor di bawah ambang batas bisa gabung menjadi kerentanan penyakit nyata dan usia yang lebih pendek tanpa pernah menghasilkan satu krisis yang terlihat.",
+          "fine-if-no-symptom": "Menganggap tidak adanya gejala dramatis sebagai tanda aman adalah cara membaca yang umum, tapi stres kronis sering terbentuk persis seperti ini. Beberapa faktor kecil, masing-masing di bawah ambang bahayanya sendiri, bergabung menjadi sesuatu yang nyata tanpa pernah tampil sebagai satu kejadian yang jelas.",
+          "one-cause-only": "Mencari satu penyebab yang benar-benar bermasalah adalah naluri yang masuk akal, tapi stres kronis sering kali tidak punya satu penyebab tunggal. Beberapa stresor di bawah ambang batas, air yang sedikit terlalu hangat, tekanan populasi ringan, jadwal makan tidak teratur, bisa gabung menjadi kerugian nyata meski tidak satu pun cukup untuk melakukannya sendirian.",
+          "unsure-cumulative": "Cara pandang ini, beberapa hal kecil yang bergabung menjadi sesuatu yang nyata, memang jarang muncul dalam kebanyakan saran hobi, yang cenderung mencari satu penyebab. Beberapa stresor di bawah ambang batas yang terakumulasi sudah cukup mapan dalam pemahaman saat ini tentang fisiologi stres ikan."
+        },
+        "add": {
+          "expects-disruption": "Memperkirakan gangguan pada seluruh komunitas yang sudah ada, bukan cuma pendatang baru, sesuai dengan cara struktur sosial sebenarnya bekerja di sebuah akuarium. Hierarki dan wilayah kekuasaan yang sudah mapan cenderung mempertahankan dirinya sendiri setelah terbentuk. Menambah ikan baru mengganggu geometri itu, dan stres yang muncul memengaruhi semua penghuni yang sudah ada, bukan cuma hewan yang baru diperkenalkan.",
+          "only-newcomer-stressed": "Menduga stres akan terpusat pada pendatang baru adalah asumsi yang wajar, tapi penghuni yang sudah ada biasanya sudah membangun struktur sosial yang mapan, hierarki, wilayah, urutan makan, yang terganggu oleh penambahan baru untuk semua pihak, bukan cuma ikan yang baru datang.",
+          "no-real-disruption": "Kecocokan memang penting, tapi tidak sepenuhnya mencegah gangguan. Bahkan penambahan yang cocok pun mengacak ulang struktur sosial yang mapan, hierarki, wilayah, urutan makan, yang sudah dibangun dan diandalkan oleh penghuni yang ada.",
+          "havent-considered": "Perhatian secara alami tertuju pada apakah pendatang baru bisa menyesuaikan diri, tapi penghuni yang sudah ada juga terpengaruh. Penambahan baru mengganggu struktur sosial yang sudah mereka bangun dan andalkan, bukan cuma hewan yang baru diperkenalkan."
+        },
+        "beh": {
+          "watch-animals-first": "Memeriksa perilaku sebelum mengambil alat uji sesuai dengan urutan sebenarnya munculnya sinyal-sinyal ini: perubahan perilaku mendahului perubahan fisiologis, yang mendahului perubahan kimia yang bisa diukur. Livestock Rhythm sering menjadi indikator paling awal dari pergeseran di tempat lain dalam sistem.",
+          "test-water-first": "Menguji air lebih dulu adalah naluri yang masuk akal dan sistematis, tapi sering kali bukan tempat sinyal paling awal muncul. Perubahan perilaku cenderung mendahului perubahan fisiologis, yang mendahului perubahan kimia. Pada saat sebuah parameter bergerak, hewan-hewan biasanya sudah memberi sinyal untuk sementara waktu.",
+          "check-equipment-first": "Memeriksa peralatan lebih dulu menyingkirkan satu kategori penyebab yang nyata, tapi jarang menjadi tempat pergeseran sesungguhnya pertama kali muncul. Perilaku cenderung bergerak sebelum kimia berubah, dan kimia cenderung bergerak sebelum apa pun gagal secara mekanis dengan terlihat.",
+          "wait-and-see": "Tidak bertindak atas perasaan samar bahwa ada yang tidak beres berarti jendela paling awal dan paling fleksibel untuk menyelidiki sering kali sudah lewat sebelum sesuatu yang lebih jelas muncul. Perubahan perilaku sering menjadi sinyal paling awal yang bisa dibaca. Menunggu sesuatu yang lebih pasti biasanya berarti menunggu hingga tahap yang lebih lambat dan kurang memberi ruang untuk pulih."
+        },
+        "closing": {
+          "early": "Apa yang dibutuhkan untuk mengenal kebiasaan normal seekor hewan cukup baik hingga menyadari tiga hari yang lebih diam?",
+          "developing": "Tanda pra-klinis mana yang, kalau muncul besok, akan benar-benar Anda amati alih-alih langsung ditindaklanjuti — atau sebaliknya?",
+          "mature": "Sekarang setelah perilaku dibaca sebelum angka-angka memintanya, sinyal awal apa lagi yang layak dipelajari untuk dikenali?"
+        },
+        "phaseText": {
+          "Early": "Livestock Rhythm di sini berada pada Early Phase — sinyal perilaku paling awal (minat makan, warna halus, posisi berdiam, postur sirip) belum menjadi bagian dari yang benar-benar diamati secara aktif. Ini irama paling mudah dipelajari untuk mulai dibangun dengan sengaja, karena sebagian besar hanya membutuhkan perhatian, bukan peralatan.",
+          "Developing": "Livestock Rhythm di sini berada pada Developing Phase — sebagian sinyal sudah dibaca, tapi belum cukup konsisten untuk menangkap pola sebelum membutuhkan lebih dari sekadar pengamatan.",
+          "Mature": "Livestock Rhythm di sini berada pada Mature Phase — perilaku dibaca sebagai sinyal paling awal yang sebenarnya, mendahului kimia yang terukur, dan perubahan kecil tertangkap sebelum berkembang menjadi sesuatu yang lebih besar."
         }
       }
     }

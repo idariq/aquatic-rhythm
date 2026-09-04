@@ -301,7 +301,7 @@ Smallest effective adjustment: match the intervention to the actual gap, not the
 
 Hold incomplete pictures open: never collapse to one diagnosis before the picture is clear. What you have not been told is as important as what you have.
 
-ARA phases and parameter cues:
+Cycle stages and parameter cues (tank chemistry only — distinct from the ARA Early/Developing/Mature phase system):
 • Establishing (NH₃ > 0.5 or NO₂ > 0.25): minimal intervention, high sensitivity, biological fragility — patience and stability first.
 • Stabilising (trace NH₃/NO₂ or NO₃ > 20): cycle functional but microbiome still assembling — observe before adjusting.
 • Optimising (NO₃ 10–20, parameters settling): system building capacity — gradual, consistent care.
@@ -465,7 +465,7 @@ function buildTankContextText(tankContext) {
     ? tankContext.ageWeeks + ' weeks old' : null;
   const header = [vol, tankContext.type, age].filter(Boolean).join(', ');
   if (header)                                         lines.push('Tank: ' + header);
-  if (tankContext.phase)                              lines.push('ARA phase: ' + tankContext.phase);
+  if (tankContext.phase)                              lines.push('Cycle stage: ' + tankContext.phase);
   if (tankContext.residents?.length)                  lines.push('Residents: ' + tankContext.residents.join(', '));
   if (tankContext.equipment?.length)                  lines.push('Equipment: ' + tankContext.equipment.join(', '));
   if (tankContext.plants?.length)                     lines.push('Plants: ' + tankContext.plants.join(', '));

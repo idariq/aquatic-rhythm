@@ -859,11 +859,11 @@ def build_tank_log_dashboard(h, lang, u):
     ia, ib = slice_between(h, 'id="jn-phase-card"', 'id="jn-weekly-insight-card"', "dashboard phase card")
     if ia is not None:
         block = h[ia:ib]
-        block = t1(block, r'(tl-card-eyebrow">)ARA Phase(<\/div>)', x["phase_eyebrow"], "phase eyebrow")
+        block = t1(block, r'(tl-card-eyebrow">)Cycle Stage(<\/div>)', x["phase_eyebrow"], "phase eyebrow")
         for step_key, en_text in [("phase_step_1", "Establishing"), ("phase_step_2", "Stabilising"),
                                    ("phase_step_3", "Optimising"), ("phase_step_4", "Sustaining")]:
             block = t1(block, rf'(jn-phase-journey-step">){en_text}(<\/span>)', x[step_key], step_key)
-        block = t1(block, r'(id="jn-phase-note">)Write your first entry to get an ARA phase reading\.(<\/p>)',
+        block = t1(block, r'(id="jn-phase-note">)Write your first entry to get a cycle stage reading\.(<\/p>)',
                    x["phase_note_default"], "phase note default")
         block = t1(block, r'(>)Ask Rhyssa about this phase(<\/button>)', x["phase_rh_btn"], "phase rh btn")
         h = h[:ia] + block + h[ib:]

@@ -1572,7 +1572,7 @@ body[data-active-page="companion"] #rh-backdrop{display:none!important}
 .jn-care-chips-more{background:none;border:1px dashed var(--th-line-2);border-radius:20px;color:var(--th-ink-4);font-size:var(--fs-xs);padding:.38rem .8rem;cursor:pointer;font-family:var(--sans);transition:all .2s;-webkit-tap-highlight-color:transparent}
 .jn-care-chips-more:hover{border-color:var(--th-ink-4);color:var(--th-ink-2)}
 
-/* ── ARA Phase: faded journey indicator (no entries) ── */
+/* ── Cycle Stage: faded journey indicator (no entries) ── */
 .jn-phase-journey{display:flex;align-items:center;gap:.28rem;margin:.5rem 0 .65rem;flex-wrap:nowrap;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}
 .jn-phase-journey::-webkit-scrollbar{display:none}
 .jn-phase-journey-step{font-size:var(--fs-2xs);letter-spacing:.1em;text-transform:uppercase;color:var(--th-ink-5);white-space:nowrap}

@@ -105,7 +105,7 @@
     'reading':   'Short aquarium ecology guides — modular, mobile-friendly, grounded in ARA. Expand a title for details; simulators live under Labs & tools.',
     'tools':     'Interactive aquarium simulators and planners. Try decisions on screen before you make them in the tank.',
     'journal':   'A keeper\'s log for your aquarium. Observe, reflect, and track your ARA rhythm — stored privately on your device.',
-    'tank-log':  'Your aquarium\'s keeper log — ARA phase, rhythm, tank family, and private entries. Stored on your device.'
+    'tank-log':  'Your aquarium\'s keeper log — cycle stage, rhythm, tank family, and private entries. Stored on your device.'
   };
 
   /* Only routes actually translated so far (home/companion/about/privacy/terms —

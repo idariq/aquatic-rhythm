@@ -74,6 +74,10 @@ main{min-height:100vh;padding-top:64px}
 .ryr-title em{font-style:italic;color:var(--th-accent)}
 .ryr-subtitle{font-family:var(--serif);font-style:italic;font-size:clamp(.98rem,1.6vw,1.14rem);font-weight:300;color:var(--th-ink-3);line-height:1.88;margin-bottom:1rem}
 .ryr-body{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.4rem}
+.ryr-dims{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.4rem;padding:1rem 1.2rem;background:var(--th-surface-2);border:1px solid var(--th-line);border-radius:2px}
+.ryr-dim-item{display:flex;align-items:flex-start;gap:.7rem}
+.ryr-dim-name{font-size:var(--fs-2xs);letter-spacing:.1em;text-transform:uppercase;font-weight:500;flex-shrink:0;width:100px}
+.ryr-dim-desc{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-3);font-family:var(--serif);font-style:italic;line-height:1.55}
 .ryr-note{font-size:var(--fs-sm);color:var(--th-ink-4);line-height:1.72;margin-bottom:2.4rem;font-style:italic;font-family:var(--serif);padding-left:1rem;border-left:1px solid var(--th-line)}
 
 /* RHYTHM PICKER */
@@ -189,11 +193,18 @@ main{min-height:100vh;padding-top:64px}
 <main>
   <div id="ryr-intro" class="ryr-intro">
     <div class="ryr-intro-inner">
-      <span class="ryr-eyebrow">Try It Yourself</span>
+      <span class="ryr-eyebrow">Aquatic Rhythm Lab</span>
       <h1 class="ryr-title">Read Your<br><em>Rhythm.</em></h1>
       <p class="ryr-subtitle">Where your tank actually is, one rhythm at a time.</p>
       <p class="ryr-body">This tool reads the tank you already have — not the one you're about to build. If there's no tank yet, <a href="/articles/know-your-rhythm" style="color:var(--th-accent)">Know Your Rhythm</a> is the better place to start: it only asks about you, and needs nothing running yet.</p>
-      <p class="ryr-body">ARA reads a tank through five rhythms — Water, Biological, Environmental, Livestock, and Keeper — and each one can sit at a different phase at the same time. A filter can be mature while the lighting schedule is barely a week old. Check one rhythm now and get an answer immediately, or come back later and build toward the full picture. Nothing here needs to be done in order, and nothing here is being graded.</p>
+      <div class="ryr-dims">
+        <div class="ryr-dim-item"><span class="ryr-dim-name" style="color:rgba(61,214,232,.74)">Water</span><span class="ryr-dim-desc" id="ryr-dim-desc-water">Chemistry read as a trend over time, not a single number</span></div>
+        <div class="ryr-dim-item"><span class="ryr-dim-name" style="color:rgba(100,200,82,.7)">Biological</span><span class="ryr-dim-desc" id="ryr-dim-desc-biological">Microbial depth, and how well disruption is absorbed</span></div>
+        <div class="ryr-dim-item"><span class="ryr-dim-name" style="color:rgba(220,160,60,.7)">Environmental</span><span class="ryr-dim-desc" id="ryr-dim-desc-environmental">Light, flow, temperature, and layout as real inputs</span></div>
+        <div class="ryr-dim-item"><span class="ryr-dim-name" style="color:rgba(180,120,200,.7)">Livestock</span><span class="ryr-dim-desc" id="ryr-dim-desc-livestock">Behaviour read as the earliest signal, ahead of parameters</span></div>
+        <div class="ryr-dim-item"><span class="ryr-dim-name" style="color:rgba(139,189,210,.7)">Keeper</span><span class="ryr-dim-desc" id="ryr-dim-desc-keeper">Your own pattern of care — consistency, not perfection</span></div>
+      </div>
+      <p class="ryr-body" id="ryr-body-2">Each rhythm can sit at a different phase at the same time — a filter can be mature while the lighting schedule is barely a week old. Check one now and get an answer immediately, or come back later and build toward the full picture. Nothing here needs to be done in order, and nothing here is being graded.</p>
       <p class="ryr-note">All five rhythms are ready below. What you get at the end is a reflection grounded in the ARA framework — not a diagnosis, and not a score to beat.</p>
       <span class="ryr-picker-label">Choose a rhythm to read</span>
       <div class="ryr-picker">

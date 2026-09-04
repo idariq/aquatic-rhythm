@@ -76,6 +76,10 @@ main{min-height:100vh;padding-top:64px}
 .ryr-title em{font-style:italic;color:var(--th-accent)}
 .ryr-subtitle{font-family:var(--serif);font-style:italic;font-size:clamp(.98rem,1.6vw,1.14rem);font-weight:300;color:var(--th-ink-3);line-height:1.88;margin-bottom:1rem}
 .ryr-body{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.4rem}
+.ryr-dims{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.4rem;padding:1rem 1.2rem;background:var(--th-surface-2);border:1px solid var(--th-line);border-radius:2px}
+.ryr-dim-item{display:flex;align-items:flex-start;gap:.7rem}
+.ryr-dim-name{font-size:var(--fs-2xs);letter-spacing:.1em;text-transform:uppercase;font-weight:500;flex-shrink:0;width:100px}
+.ryr-dim-desc{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-3);font-family:var(--serif);font-style:italic;line-height:1.55}
 .ryr-note{font-size:var(--fs-sm);color:var(--th-ink-4);line-height:1.72;margin-bottom:2.4rem;font-style:italic;font-family:var(--serif);padding-left:1rem;border-left:1px solid var(--th-line)}
 
 /* RHYTHM PICKER */
@@ -191,12 +195,19 @@ main{min-height:100vh;padding-top:64px}
 <main>
   <div id="ryr-intro" class="ryr-intro">
     <div class="ryr-intro-inner">
-      <span class="ryr-eyebrow">Coba Sendiri</span>
+      <span class="ryr-eyebrow">Aquatic Rhythm Lab</span>
       <h1 class="ryr-title">Baca<br><em>Ritme Anda.</em></h1>
       <p class="ryr-subtitle">Sejauh mana akuarium Anda sebenarnya sudah berkembang — dibaca ritme demi ritme.</p>
       <p class="ryr-body">Alat ini membaca akuarium yang sudah Anda miliki — bukan yang baru akan Anda bangun. Kalau belum ada akuarium sama sekali, <a href="/id/articles/know-your-rhythm" style="color:var(--th-accent)">Kenali Ritme Anda</a> tempat yang lebih tepat untuk mulai: pertanyaannya hanya tentang diri Anda, dan tidak perlu ada apa pun yang sudah berjalan.</p>
-      <p class="ryr-body">ARA membaca sebuah akuarium lewat lima ritme — Water, Biological, Environmental, Livestock, dan Keeper — dan masing-masing bisa berada di fase berbeda pada saat yang sama. Filter bisa sudah matang sementara jadwal lampunya baru berubah seminggu lalu. Periksa satu ritme sekarang dan langsung dapat jawabannya, atau kembali lagi nanti untuk melengkapi gambaran penuhnya. Tidak ada yang harus dikerjakan berurutan, dan tidak ada yang sedang dinilai di sini.</p>
-      <p class="ryr-note">Water Rhythm sudah siap di bawah. Empat ritme lainnya masih dalam pengerjaan. Yang Anda dapatkan di akhir adalah refleksi yang berpijak pada kerangka ARA — bukan diagnosis, dan bukan skor untuk dikalahkan.</p>
+      <div class="ryr-dims">
+        <div class="ryr-dim-item"><span class="ryr-dim-name" style="color:rgba(61,214,232,.74)">Water</span><span class="ryr-dim-desc" id="ryr-dim-desc-water">Kimia air dibaca sebagai tren dari waktu ke waktu, bukan satu angka saja</span></div>
+        <div class="ryr-dim-item"><span class="ryr-dim-name" style="color:rgba(100,200,82,.7)">Biological</span><span class="ryr-dim-desc" id="ryr-dim-desc-biological">Kedalaman mikroba, dan seberapa baik gangguan kecil bisa diserap</span></div>
+        <div class="ryr-dim-item"><span class="ryr-dim-name" style="color:rgba(220,160,60,.7)">Environmental</span><span class="ryr-dim-desc" id="ryr-dim-desc-environmental">Cahaya, aliran, suhu, dan tata letak sebagai masukan nyata</span></div>
+        <div class="ryr-dim-item"><span class="ryr-dim-name" style="color:rgba(180,120,200,.7)">Livestock</span><span class="ryr-dim-desc" id="ryr-dim-desc-livestock">Perilaku dibaca sebagai sinyal paling awal, mendahului parameter</span></div>
+        <div class="ryr-dim-item"><span class="ryr-dim-name" style="color:rgba(139,189,210,.7)">Keeper</span><span class="ryr-dim-desc" id="ryr-dim-desc-keeper">Pola perawatan Anda sendiri — konsistensi, bukan kesempurnaan</span></div>
+      </div>
+      <p class="ryr-body" id="ryr-body-2">Setiap ritme bisa berada di fase yang berbeda pada saat bersamaan — filter bisa sudah matang sementara jadwal lampunya baru berubah seminggu lalu. Periksa satu ritme sekarang dan langsung dapat jawabannya, atau kembali lagi nanti untuk melengkapi gambaran penuhnya. Tidak ada yang harus dikerjakan berurutan, dan tidak ada yang sedang dinilai di sini.</p>
+      <p class="ryr-note">Kelima ritme sudah siap di bawah. Yang Anda dapatkan di akhir adalah refleksi yang berpijak pada kerangka ARA — bukan diagnosis, dan bukan skor untuk dikalahkan.</p>
       <span class="ryr-picker-label">Pilih ritme untuk dibaca</span>
       <div class="ryr-picker">
         <button type="button" class="ryr-rcard" id="ryr-pick-water">

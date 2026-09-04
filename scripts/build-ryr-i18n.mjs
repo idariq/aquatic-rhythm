@@ -435,7 +435,12 @@ for (const lang of targetLangs) {
   h = replaceOnce(h, /(<h1 class="ryr-title">)[\s\S]*?(<\/h1>)/, (_, a, b) => `${a}${intro.titleHtml}${b}`);
   h = replaceOnce(h, /(<p class="ryr-subtitle">)[^<]*(<\/p>)/, (_, a, b) => `${a}${intro.subtitle}${b}`);
   h = replaceOnce(h, /(<p class="ryr-body">)This tool reads[\s\S]*?(<\/p>)/, (_, a, b) => `${a}${intro.body1}${b}`);
-  h = replaceOnce(h, /(<p class="ryr-body">)ARA reads a tank[\s\S]*?(<\/p>)/, (_, a, b) => `${a}${intro.body2}${b}`);
+  h = replaceOnce(h, /(<span class="ryr-dim-desc" id="ryr-dim-desc-water">)[^<]*(<\/span>)/, (_, a, b) => `${a}${intro.dimWater}${b}`);
+  h = replaceOnce(h, /(<span class="ryr-dim-desc" id="ryr-dim-desc-biological">)[^<]*(<\/span>)/, (_, a, b) => `${a}${intro.dimBiological}${b}`);
+  h = replaceOnce(h, /(<span class="ryr-dim-desc" id="ryr-dim-desc-environmental">)[^<]*(<\/span>)/, (_, a, b) => `${a}${intro.dimEnvironmental}${b}`);
+  h = replaceOnce(h, /(<span class="ryr-dim-desc" id="ryr-dim-desc-livestock">)[^<]*(<\/span>)/, (_, a, b) => `${a}${intro.dimLivestock}${b}`);
+  h = replaceOnce(h, /(<span class="ryr-dim-desc" id="ryr-dim-desc-keeper">)[^<]*(<\/span>)/, (_, a, b) => `${a}${intro.dimKeeper}${b}`);
+  h = replaceOnce(h, /(<p class="ryr-body" id="ryr-body-2">)Each rhythm can sit[\s\S]*?(<\/p>)/, (_, a, b) => `${a}${intro.body2}${b}`);
   h = replaceOnce(h, /(<p class="ryr-note">)[^<]*(<\/p>)/, (_, a, b) => `${a}${intro.note}${b}`);
   h = replaceOnce(h, /(<span class="ryr-picker-label">)[^<]*(<\/span>)/, (_, a, b) => `${a}${intro.pickerLabel}${b}`);
   h = h.replace(/(<span class="ryr-rcard-tag">)5 questions →(<\/span>)/g, (_, a, b) => `${a}${intro.cardTagQuestions}${b}`);

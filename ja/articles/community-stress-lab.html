@@ -325,6 +325,9 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
 /* ── BRIEFING (design identity — matches tank-builder) ── */
 #briefing{position:fixed;inset:0;z-index:500;background:var(--th-bg);display:flex;align-items:flex-start;justify-content:center;padding-top:max(4rem,env(safe-area-inset-top,4rem));padding-left:1.2rem;padding-right:1.2rem;padding-bottom:2rem;overflow-y:auto;transition:opacity .5s}
 .brief-inner{max-width:540px;width:100%;padding:2rem clamp(1.2rem,4vw,2.5rem) 3rem}
+.brief-logo{display:flex;align-items:center;text-decoration:none;margin-bottom:1.6rem;transition:opacity .3s}
+.brief-logo:hover{opacity:.75}
+.brief-logo svg{display:block;width:132px;height:auto}
 .brief-eyebrow{font-size:var(--fs-2xs);letter-spacing:.22em;text-transform:uppercase;color:var(--th-accent);display:block;margin-bottom:1.2rem}
 .brief-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.6rem,4.5vw,2.5rem);color:var(--th-ink);line-height:1.1;margin-bottom:1.4rem}
 .brief-title em{font-style:italic;color:var(--th-accent)}
@@ -352,12 +355,12 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
 #btn-csl-start:hover{opacity:.88;transform:translateY(-1px)}
 
 /* Lab page: drop the site bottom nav + Rhyssa fab so they don't overlap
-   the lab UI, and slim the topbar to just the settings gear
-   (user request 2026-08-18). */
+   the lab UI. Logo was dropped from the topbar entirely per a
+   2026-08-18 request; restored per a later explicit request to keep
+   it visible across all lab tools. */
 .bnav{display:none!important}
 .rh-fab{display:none!important}
-.tb-logo{display:none}
-#topbar{justify-content:flex-end;border-bottom:none;padding:.3rem 0}
+#topbar{justify-content:space-between;border-bottom:none;padding:.3rem 0}
 </style>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet"></noscript>
@@ -367,6 +370,19 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
 <!-- ── BRIEFING (design identity — matches tank-builder) ── -->
 <div id="briefing">
   <div class="brief-inner">
+    <a href="/" class="brief-logo" aria-label="Aquatic Rhythm">
+      <svg viewBox="0 0 175 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="13" cy="15" r="11.5" stroke="rgba(61,214,232,0.22)" stroke-width="1" fill="none"/>
+        <line x1="16.8" y1="24.5" x2="16.8" y2="9" stroke="rgba(100,200,82,0.82)" stroke-width="1.6" stroke-linecap="round"/>
+        <line x1="19.8" y1="23" x2="19.8" y2="17" stroke="rgba(100,200,82,0.65)" stroke-width="1.3" stroke-linecap="round"/>
+        <ellipse cx="12" cy="15" rx="4" ry="2.3" fill="rgba(40,120,150,0.85)"/>
+        <path d="M8.2 15 L6 12.5 L6 17.5 Z" fill="rgba(40,120,150,0.78)"/>
+        <path d="M2 15 C5 8.5 9 8.5 12 15 C15 21.5 19 21.5 22 15" stroke="rgba(61,214,232,0.96)" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+        <circle cx="14.8" cy="14.2" r=".9" fill="rgba(255,255,255,0.96)"/>
+        <text x="32" y="13" font-family="Work Sans,system-ui,sans-serif" font-size="6" font-weight="300" fill="var(--th-ink-4)" letter-spacing="2.5">AQUATIC</text>
+        <text x="32" y="27" font-family="Fraunces,Georgia,serif" font-size="17" font-weight="300" font-style="italic" fill="var(--th-ink)">Rhythm</text>
+      </svg>
+    </a>
     <span class="brief-eyebrow">Aquatic Rhythm ラボ</span>
     <h1 class="brief-title">混泳の組み合わせを<br><em>地図にする。</em></h1>
     <p class="brief-body">想定した淡水の混泳水槽について、水温域、水質、広さ、捕食、社会的な緊張、そして小型シュリンプの安全性という、生態的な負荷を重ね合わせて表示します。計画と学習のための道具であり、魚を「相性が良い」と断定するためのものではありません。</p>

@@ -325,7 +325,8 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
 /* ── BRIEFING (design identity — matches tank-builder) ── */
 #briefing{position:fixed;inset:0;z-index:500;background:var(--th-bg);display:flex;align-items:flex-start;justify-content:center;padding-top:max(4rem,env(safe-area-inset-top,4rem));padding-left:1.2rem;padding-right:1.2rem;padding-bottom:2rem;overflow-y:auto;transition:opacity .5s}
 .brief-inner{max-width:540px;width:100%;padding:.5rem clamp(1.2rem,4vw,2.5rem) 3rem}
-.brief-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.6rem}
+.brief-header{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:.6rem clamp(1.2rem,4vw,2.5rem);background:var(--th-bg)}
+.brief-header-spacer{height:56px}
 .brief-logo{display:flex;align-items:center;text-decoration:none;transition:opacity .3s}
 .brief-logo:hover{opacity:.75}
 .brief-logo svg{display:block;width:175px;height:auto}
@@ -389,6 +390,7 @@ code{font-size:var(--fs-xs);color:var(--th-accent)}
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>
       </button>
     </div>
+    <div class="brief-header-spacer"></div>
     <span class="brief-eyebrow">Aquatic Rhythm ラボ</span>
     <h1 class="brief-title">混泳の組み合わせを<br><em>地図にする。</em></h1>
     <p class="brief-body">想定した淡水の混泳水槽について、水温域、水質、広さ、捕食、社会的な緊張、そして小型シュリンプの安全性という、生態的な負荷を重ね合わせて表示します。計画と学習のための道具であり、魚を「相性が良い」と断定するためのものではありません。</p>

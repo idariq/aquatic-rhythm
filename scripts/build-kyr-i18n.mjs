@@ -1,5 +1,5 @@
 /**
- * Builds localized HTML for the "Know Your Rhythm" reflective quiz —
+ * Builds localized HTML for the "Keeper Readiness Check" reflective quiz —
  * a self-contained single-file interactive page (like community-stress-lab)
  * whose quiz content (7 questions + the reflect() scoring/copy engine) is
  * embedded as inline JS string literals, not DOM-templated HTML. Doesn't
@@ -7,7 +7,7 @@
  * ara-hub template, or build-csl-i18n.mjs's external-shared-JS pattern —
  * gets its own script.
  *
- * Source: translations/<lang>/know-your-rhythm.json — bespoke schema
+ * Source: translations/<lang>/keeper-readiness-check.json — bespoke schema
  * {head, intro, screen, result, questions[], reflect{titles,paras,closings,phases}}.
  *
  * The Q[] array is fully REGENERATED from the questions[] JSON (safe —
@@ -29,7 +29,7 @@ const ART_DIR   = path.join(ROOT, 'articles');
 const TRANS_DIR = path.join(ROOT, 'translations');
 const BASE_URL  = 'https://aquaticrhythm.com';
 const LANGUAGES = ['id', 'ja'];
-const SLUG      = 'know-your-rhythm';
+const SLUG      = 'keeper-readiness-check';
 
 const args    = process.argv.slice(2);
 const langIdx = args.indexOf('--lang');
@@ -123,7 +123,7 @@ function patchHead(h, t, lang) {
 
   h = replaceOnce(h, /("headline":")[^"]*(")/, (_, a, b) => `${a}${jsonLdEscape(t.head.title)}${b}`);
   h = replaceOnce(h, /("description":")[^"]*(","url")/, (_, a, b) => `${a}${jsonLdEscape(t.head.description)}${b}`);
-  h = replaceOnce(h, /("url":")https:\/\/aquaticrhythm\.com\/articles\/know-your-rhythm(")/, (_, a, b) => `${a}${BASE_URL}/${lang}/articles/${SLUG}${b}`);
+  h = replaceOnce(h, /("url":")https:\/\/aquaticrhythm\.com\/articles\/keeper-readiness-check(")/, (_, a, b) => `${a}${BASE_URL}/${lang}/articles/${SLUG}${b}`);
 
   if (lang === 'ja') {
     const notoLink = `\n<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">\n<noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet"></noscript>`;

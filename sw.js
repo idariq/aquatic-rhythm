@@ -39,7 +39,7 @@ var WARM_ARTICLES = [
   '/articles/algae-in-aquarium.html',
   '/articles/cycled-tank-problems.html',
   '/articles/aquarium-maintenance-routine.html',
-  '/articles/know-your-rhythm.html',
+  '/articles/keeper-readiness-check.html',
   '/articles/caring-without-guilt.html',
   '/articles/betta-fish-behaviour.html',
   '/articles/community-stress-lab.html'

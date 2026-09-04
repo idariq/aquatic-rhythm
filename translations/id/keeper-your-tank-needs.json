@@ -73,13 +73,13 @@
             ],
             "hintLabel": "Titik awal untuk membaca ritme Anda sendiri",
             "hintText": [
-                "Membangun kompetensi semacam ini dimulai dengan pandangan jujur soal bagaimana Anda sebenarnya terlibat dengan tangki Anda, bukan bagaimana kata sebuah panduan seharusnya. <a href=\"/articles/know-your-rhythm\" style=\"color:var(--th-accent);text-decoration:none\">Kenali Ritme Anda</a> adalah cara singkat dan tanpa menghakimi untuk memulai penilaian itu."
+                "Membangun kompetensi semacam ini dimulai dengan pandangan jujur soal bagaimana Anda sebenarnya terlibat dengan tangki Anda, bukan bagaimana kata sebuah panduan seharusnya. <a href=\"/articles/keeper-readiness-check\" style=\"color:var(--th-accent);text-decoration:none\">Periksa Kesiapan Penjaga</a> adalah cara singkat dan tanpa menghakimi untuk memulai penilaian itu."
             ],
             "prevBtn": "← Kembali"
         }
     ],
     "relatedLinks": [
-        { "text": "Kenali Ritme Anda →" },
+        { "text": "Periksa Kesiapan Penjaga →" },
         { "text": "Akuarium Bukan Proyek →" },
         { "text": "Merawat Tanpa Rasa Bersalah →" },
         { "text": "Kerangka ARA →" }

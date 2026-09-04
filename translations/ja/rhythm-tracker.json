@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "slug": "read-your-rhythm",
+    "slug": "rhythm-tracker",
     "lang": "ja",
-    "sourceFile": "articles/read-your-rhythm.html",
+    "sourceFile": "articles/rhythm-tracker.html",
     "status": "ready",
     "rhythmsComplete": [
       "water",
@@ -14,20 +14,20 @@
     "rhythmsPending": []
   },
   "head": {
-    "title": "リズムを読む — Aquatic Rhythm",
+    "title": "リズムトラッカー — Aquatic Rhythm",
     "description": "水槽が今どの段階にあるのかを、リズムごとに読み解く。まずはWater Rhythmから。合格を目指す診断ではなく、短い内省です。",
-    "ogTitle": "リズムを読む",
+    "ogTitle": "リズムトラッカー",
     "ogDescription": "水槽が今どの段階にあるのかを、リズムごとに読み解く。まずはWater Rhythmから。",
-    "twitterTitle": "リズムを読む",
+    "twitterTitle": "リズムトラッカー",
     "twitterDescription": "水槽が今どの段階にあるのかを、リズムごとに読み解く。まずはWater Rhythmから。",
-    "jsonLdHeadline": "リズムを読む",
+    "jsonLdHeadline": "リズムトラッカー",
     "jsonLdDescription": "水槽が今どの段階にあるのかを、リズムごとに読み解く。まずはWater Rhythmから。合格を目指す診断ではなく、短い内省です。"
   },
   "intro": {
     "eyebrow": "Aquatic Rhythm ラボ",
-    "titleHtml": "水槽の<br><em>リズムを読む。</em>",
+    "titleHtml": "リズム<br><em>トラッカー。</em>",
     "subtitle": "水槽が今どこにいるかを、リズムごとに読み解く。",
-    "body1": "このツールが読み解くのは、すでにある水槽です。これから作る水槽ではありません。まだ水槽がないなら、<a href=\"/ja/articles/know-your-rhythm\" style=\"color:var(--th-accent)\">リズムを知る</a>から始めるほうが向いています。尋ねられるのはあなた自身のことだけで、何かが動き出している必要すらありません。",
+    "body1": "このツールが読み解くのは、すでにある水槽です。これから作る水槽ではありません。まだ水槽がないなら、<a href=\"/ja/articles/keeper-readiness-check\" style=\"color:var(--th-accent)\">飼育者の準備チェック</a>から始めるほうが向いています。尋ねられるのはあなた自身のことだけで、何かが動き出している必要すらありません。",
     "body2": "それぞれのリズムは、同時に違う段階にあることもあります。フィルターは十分に成熟していても、照明のスケジュールを変えたのはまだ一週間前かもしれません。今すぐ一つのリズムを確認してすぐに答えを得ることもできますし、後で戻ってきて全体像を組み立てていくこともできます。順番通りに進める必要はなく、ここで採点されるものは何もありません。",
     "note": "五つのリズムはすべて、この下からすぐに始められます。最後に得られるのは、ARAフレームワークに基づいた内省であり、診断でも、競うためのスコアでもありません。",
     "pickerLabel": "読み解くリズムを選ぶ",

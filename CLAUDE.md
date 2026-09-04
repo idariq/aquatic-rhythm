@@ -334,15 +334,27 @@ dah LAPUK, dibetulkan), panel Settings (laman utama & artikel/ARA,
 30+ label), sembang Rhyssa (semua templat + laman utama), footer
 "About this content" (`js/content-trust.js`, mekanisme CT_STRINGS/
 CT() baharu) — `community-stress-lab` (alat interaktif rintis pertama,
-JS kongsi + `CSL_STRINGS`/`T()`), kuiz **Know Your Rhythm**
-(`know-your-rhythm.html` — 7 soalan + enjin refleksi, kandungan
+JS kongsi + `CSL_STRINGS`/`T()`), kuiz **Keeper Readiness Check**
+(`keeper-readiness-check.html` — 7 soalan + enjin refleksi, kandungan
 ditanam sbg literal JS inline per-fail, BUKAN JS kongsi; skrip
 `scripts/build-kyr-i18n.mjs` regenerate `var Q=[...]` drpd data &
 gantikan string dlm `reflect()` IKUT KEDUDUKAN, bukan padanan teks),
 **Tank Cycle Simulator** (`tank-simulator.html` — briefing/setup/
 pra-permainan/gameplay + enjin JS ~1400 baris, 150+ string tertanam,
 skrip `scripts/build-tsim-i18n.mjs`, padanan exact-substring
-`subOnce`/`subAll` bukan regex-by-posisi, PR #318 2026-08-18).
+`subOnce`/`subAll` bukan regex-by-posisi, PR #318 2026-08-18), **Rhythm
+Tracker** (`rhythm-tracker.html` — soal-selidik reflektif merentas
+5 Irama ARA, satu-per-satu atau kesemuanya, radar chart SVG papar
+kemajuan, opt-in hantar hasil anonymous ke Formspree via
+`respondent_id` (`crypto.randomUUID()`+localStorage, JOIN merentas
+hantaran TANPA PII) — konsen 2-langkah (checkbox default OFF + butang
+berasingan, TIADA auto-submit); skrip `scripts/build-ryr-i18n.mjs`,
+sama pola `subOnce`/`subAll` spt tank-simulator. **Rhythm Tracker**
+& **Keeper Readiness Check** DUA tool BERPASANGAN sengaja (nama
+ditukar serentak PR ni drpd "Read Your Rhythm"/"Know Your Rhythm"
+2026-09-04 — nama asal tak unik berbanding lab lain, & slug turut
+ditukar sbb belum diindex enjin carian; setiap satu ada pautan
+silang ke satu sama lain dlm `intro.body1`).
 
 **AWAS — susunan tatabahasa TIDAK universal merentas templat
 konkatenasi dinamik**, ditemui bina `tank-simulator` (turut menjejaskan
@@ -578,7 +590,7 @@ tanpa pengecualian ni — ditemui via `npm run i18n:check` (build
 build BESPOKE lain (`build-kyr-i18n.mjs`, `build-tsim-i18n.mjs`,
 `build-tb-i18n.mjs`) TIDAK saling menggantikan** — masing-masing
 templat halaman berbeza, guna skrip SALAH pd fail SALAH (cth.
-`build-i18n.mjs --slug know-your-rhythm`, bukan `build-kyr-i18n.mjs`)
+`build-i18n.mjs --slug keeper-readiness-check`, bukan `build-kyr-i18n.mjs`)
 akan "berjaya" tanpa ralat TAPI hasilkan output CORRUPT (buildArticle()
 proses skema bespoke sbg skema artikel biasa secara senyap-senyap
 salah, bukan crash) — SENTIASA semak `git diff --stat` lepas regenerate

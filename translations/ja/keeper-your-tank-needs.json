@@ -73,13 +73,13 @@
             ],
             "hintLabel": "自分自身のリズムを読み取るための出発点",
             "hintText": [
-                "この種の力量を築くことは、ガイドがどうすべきだと言っているかではなく、あなたが実際に水槽とどう関わっているかを、正直に見つめることから始まります。<a href=\"/articles/know-your-rhythm\" style=\"color:var(--th-accent);text-decoration:none\">Know Your Rhythm</a>は、その見極めを始めるための、短く、裁かない方法です。"
+                "この種の力量を築くことは、ガイドがどうすべきだと言っているかではなく、あなたが実際に水槽とどう関わっているかを、正直に見つめることから始まります。<a href=\"/articles/keeper-readiness-check\" style=\"color:var(--th-accent);text-decoration:none\">飼育者の準備チェック</a>は、その見極めを始めるための、短く、裁かない方法です。"
             ],
             "prevBtn": "← 戻る"
         }
     ],
     "relatedLinks": [
-        { "text": "リズムを知る →" },
+        { "text": "飼育者の準備チェック →" },
         { "text": "水槽はプロジェクトではない →" },
         { "text": "罪悪感なく世話をする →" },
         { "text": "ARAフレームワーク →" }

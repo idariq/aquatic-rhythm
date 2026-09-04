@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "slug": "read-your-rhythm",
+    "slug": "rhythm-tracker",
     "lang": "id",
-    "sourceFile": "articles/read-your-rhythm.html",
+    "sourceFile": "articles/rhythm-tracker.html",
     "status": "ready",
     "rhythmsComplete": [
       "water",
@@ -14,20 +14,20 @@
     "rhythmsPending": []
   },
   "head": {
-    "title": "Baca Ritme Anda — Aquatic Rhythm",
+    "title": "Pelacak Ritme — Aquatic Rhythm",
     "description": "Sejauh mana akuarium Anda sebenarnya sudah berkembang, dibaca ritme demi ritme. Mulai dari Water Rhythm — refleksi singkat, bukan ujian untuk dilulusi.",
-    "ogTitle": "Baca Ritme Anda",
+    "ogTitle": "Pelacak Ritme",
     "ogDescription": "Sejauh mana akuarium Anda sebenarnya sudah berkembang, dibaca ritme demi ritme. Mulai dari Water Rhythm.",
-    "twitterTitle": "Baca Ritme Anda",
+    "twitterTitle": "Pelacak Ritme",
     "twitterDescription": "Sejauh mana akuarium Anda sebenarnya sudah berkembang, dibaca ritme demi ritme. Mulai dari Water Rhythm.",
-    "jsonLdHeadline": "Baca Ritme Anda",
+    "jsonLdHeadline": "Pelacak Ritme",
     "jsonLdDescription": "Sejauh mana akuarium Anda sebenarnya sudah berkembang, dibaca ritme demi ritme. Mulai dari Water Rhythm — refleksi singkat, bukan ujian untuk dilulusi."
   },
   "intro": {
     "eyebrow": "Aquatic Rhythm Lab",
-    "titleHtml": "Baca<br><em>Ritme Anda.</em>",
+    "titleHtml": "Pelacak<br><em>Ritme.</em>",
     "subtitle": "Sejauh mana akuarium Anda sebenarnya sudah berkembang — dibaca ritme demi ritme.",
-    "body1": "Alat ini membaca akuarium yang sudah Anda miliki — bukan yang baru akan Anda bangun. Kalau belum ada akuarium sama sekali, <a href=\"/id/articles/know-your-rhythm\" style=\"color:var(--th-accent)\">Kenali Ritme Anda</a> tempat yang lebih tepat untuk mulai: pertanyaannya hanya tentang diri Anda, dan tidak perlu ada apa pun yang sudah berjalan.",
+    "body1": "Alat ini membaca akuarium yang sudah Anda miliki — bukan yang baru akan Anda bangun. Kalau belum ada akuarium sama sekali, <a href=\"/id/articles/keeper-readiness-check\" style=\"color:var(--th-accent)\">Periksa Kesiapan Penjaga</a> tempat yang lebih tepat untuk mulai: pertanyaannya hanya tentang diri Anda, dan tidak perlu ada apa pun yang sudah berjalan.",
     "body2": "Setiap ritme bisa berada di fase yang berbeda pada saat bersamaan — filter bisa sudah matang sementara jadwal lampunya baru berubah seminggu lalu. Periksa satu ritme sekarang dan langsung dapat jawabannya, atau kembali lagi nanti untuk melengkapi gambaran penuhnya. Tidak ada yang harus dikerjakan berurutan, dan tidak ada yang sedang dinilai di sini.",
     "note": "Kelima ritme sudah siap di bawah. Yang Anda dapatkan di akhir adalah refleksi yang berpijak pada kerangka ARA — bukan diagnosis, dan bukan skor untuk dikalahkan.",
     "pickerLabel": "Pilih ritme untuk dibaca",

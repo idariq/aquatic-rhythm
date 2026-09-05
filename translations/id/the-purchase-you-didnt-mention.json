@@ -1,0 +1,104 @@
+{
+    "_meta": {
+        "slug": "the-purchase-you-didnt-mention",
+        "lang": "id",
+        "sourceFile": "articles/the-purchase-you-didnt-mention.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Barang yang Dibeli Diam-Diam — Aquatic Rhythm",
+        "description": "Bukan benar-benar bohong. Cuma sesuatu yang tidak pernah sempat Anda ceritakan. Kenapa menyembunyikan satu pembelian terasa berbeda dari berbohong soal itu, dan cara menutup jaraknya sebelum orang lain menemukannya lebih dulu.",
+        "ogTitle": "Barang yang Dibeli Diam-Diam",
+        "ogDescription": "Bukan benar-benar bohong. Cuma sesuatu yang tidak pernah sempat Anda ceritakan."
+    },
+    "intro": {
+        "eyebrow": "Refleksi",
+        "titleHtml": "Barang yang<br><em>Dibeli Diam-Diam</em>",
+        "subtitle": "Bukan benar-benar bohong. Cuma sesuatu yang tidak pernah sempat Anda ceritakan.",
+        "texts": [
+            "Paketnya datang, dan Anda sudah punya rencana untuknya — disimpan di balik rak, dimasukkan lemari, dipasang sebelum siapa pun pulang dan sadar benda itu belum ada kemarin. Anda tidak berniat berbohong kalau ditanya. Anda cuma tidak berniat menceritakannya duluan, dan sekarang perbedaan itu terasa lebih penting daripada seharusnya.",
+            "Ini bukan soal jadi orang yang suka menyembunyikan sesuatu. Ini soal bagaimana pengeluaran untuk hobi diam-diam terbagi jadi dua tumpukan — yang Anda ceritakan, dan yang cuma Anda biarkan datang begitu saja — dan berapa harga yang harus dibayar belakangan karena pembagian itu."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~6 menit",
+        "metaLevel": "Refleksi",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Polanya",
+            "titleHtml": "Paket datang,<br><em>tak ada yang mendengar soal itu.</em>",
+            "body": [
+                "Biasanya dimulai dari tab yang dibiarkan terbuka agak terlalu lama. Sesuatu yang benar-benar memperbaiki masalah — filter yang jadi lebih berisik dari seharusnya, lampu yang sudah tidak lagi cukup untuk kebutuhan tangki — muncul lagi diskon, muncul bekas pakai, atau cuma muncul begitu saja. Memasukkannya ke keranjang tidak terasa seperti keputusan soal kejujuran. Itu terasa seperti menyelesaikan masalah.",
+                "Paketnya dibongkar sebelum orang lain pulang, atau bagian barunya dipasang pelan-pelan sampai jadi seperti sudah ada di sana selamanya. Kalau pun disinggung, jawabannya lebih kecil dari kenyataan — \"sudah lama kok,\" \"nggak seberapa mahal.\" Semua ini tidak membuat Anda pembohong. Setiap pembelian, dilihat sendiri-sendiri, memang mudah dijustifikasi. Masalahnya tidak pernah ada di satu pembelian mana pun.",
+                "Di antara pembelian yang Anda ceritakan dan yang tidak, \"belum sempat cerita\" pelan-pelan berubah jadi \"memang tidak berniat cerita.\" Tidak ada satu momen pun yang terasa seperti saat itu terjadi — dan justru itu sebabnya tidak pernah terasa seperti menyimpan rahasia selagi itu berlangsung."
+            ],
+            "hintLabel": "Total yang sama, mata uang berbeda",
+            "hintText": [
+                "<a href=\"/id/articles/just-one-more-tank\" style=\"color:var(--th-accent)\">Satu Tangki Lagi Saja</a> bicara soal bagaimana setiap tangki tambahan mudah dijustifikasi sendiri-sendiri, sementara totalnya yang justru jadi beban sebenarnya. Ini bentuk yang sama, cuma mata uangnya berbeda — satu pembelian terasa wajar, dan totalnya yang tidak pernah benar-benar dilacak siapa pun, kecuali di sini, ada orang lain yang turut menanggungnya."
+            ],
+            "prevBtn": "← Intro",
+            "nextBtn": "Kenapa itu tidak terasa seperti bohong"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Kenapa itu tidak terasa seperti bohong",
+            "titleHtml": "Diam dan bohong<br><em>tidak terasa sama dari dalam.</em>",
+            "body": [
+                "Bohong punya satu momen yang bisa ditunjuk — saat tertentu ketika Anda memilih mengatakan sesuatu yang tidak benar. Tidak menyebutkan sesuatu tidak punya momen seperti itu. Anda bisa cukup lama tidak menyebut satu pembelian tanpa pernah sadar sedang memilih diam, karena tidak ada satu titik pasti tempat \"belum sempat\" berubah jadi \"tidak akan.\" Itu bahkan tidak pernah terasa seperti sebuah keputusan.",
+                "Bedaan itu hilang begitu sampai ke orang lain. Seseorang yang baru tahu soal pembelian itu belakangan tidak merasakan beda antara bohong dan diam saja — yang dia rasakan cuma baru tahu. Sesuatu yang dari dalam terasa seperti sekadar belum sempat cerita, dari luar terasa persis seperti sengaja tidak diberi tahu.",
+                "Kecilnya setiap pembelian justru jadi lawan Anda di sini. Satu barang kecil gampang dianggap tidak perlu disebut. Tidak ada orang yang menerapkan batas itu dengan cara sama setiap kali, jadi polanya tetap tak terlihat selagi berlangsung, dan baru kelihatan begitu sudah jadi total."
+            ],
+            "pullQuote": "Tidak ada satu pembelian pun yang terasa seperti keputusan menyembunyikan sesuatu. Itu cuma tidak pernah cukup mendesak untuk diucapkan — sampai akhirnya mengucapkannya jadi pilihan yang lebih berat.",
+            "prevBtn": "← Kembali",
+            "nextBtn": "Yang sebenarnya sedang dihindari"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Yang sebenarnya sedang dihindari",
+            "titleHtml": "Ini sebenarnya<br><em>bukan soal uang.</em>",
+            "body": [
+                "Yang biasanya dihindari bukan pengeluarannya sendiri — melainkan percakapan yang akan mengikutinya. Menjelaskan satu pembelian, membelanya kenapa itu penting, mendengarnya dijumlahkan dengan semua yang datang sebelumnya: semua itu tidak nyaman, bahkan ketika setiap pilihan masuk akal dengan caranya sendiri.",
+                "Menghindari percakapan itu tidak membuat totalnya lebih kecil. Itu cuma menundanya, dan penundaan itu punya harganya sendiri. Satu penyebutan kecil yang gampang di hari pertama berubah jadi penjelasan yang mencakup berbulan-bulan begitu akhirnya terungkap, dan jarak itu — antara yang diduga seseorang dan yang sebenarnya terjadi — yang benar-benar melukai, bukan angka di dalamnya.",
+                "Begitu akhirnya terungkap — lewat mutasi rekening, paket yang tak sengaja terlihat, teman yang menyebut sesuatu tanpa sadar — totalnya jarang jadi bagian yang paling terasa. Yang paling terasa adalah menyadari ada sekelompok keputusan yang dibuat tanpa melibatkannya sama sekali."
+            ],
+            "hintLabel": "Yang terungkap bukan totalnya",
+            "hintText": [
+                "Angkanya jarang jadi bagian yang paling terasa. Yang paling terasa adalah menemukan bahwa ada sekelompok keputusan yang berlangsung tanpa dirinya di dalamnya — luka yang berbeda dari sekadar total yang lebih besar, dan tidak ada \"kok nggak semahal itu\" yang bisa menjawabnya."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Tindakan yang selaras"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Tindakan yang selaras",
+            "titleHtml": "Biarkan totalnya<br><em>tetap terlihat, bukan disembunyikan.</em>",
+            "body": [
+                "<a href=\"/id/articles/two-people-one-tank\" style=\"color:var(--th-accent)\">Dua Orang, Satu Tangki</a> menyelesaikan masalah koordinasi dengan sesuatu yang kecil dan sederhana: catatan bersama, yang bisa dilihat kedua orang, soal apa yang sudah terjadi pada tangki. Cara yang sama berlaku di sini. Catatan pengeluaran tangki yang bisa dilihat kalian berdua melakukan hal yang tidak bisa dilakukan pengakuan besar sekaligus — itu membuat keterbukaan jadi hal biasa, bukan hal langka, sampai tidak ada lagi yang perlu ditumpuk sebelum diungkapkan.",
+                "Angka yang jelas lebih membantu daripada niat yang samar. Apa pun di atas jumlah tertentu disebutkan sebelum barangnya datang, bukan sesudahnya — bukan karena butuh izin, tapi karena \"sebelum\" dan \"sesudah\" adalah dua pengalaman yang sama sekali berbeda bagi orang yang baru tahu.",
+                "Semua ini bukan ajakan untuk belanja lebih sedikit. Ini soal siapa yang tahu, dan kapan. Satu penyebutan kecil hari ini jauh lebih murah daripada penjelasan yang dituntut total yang disembunyikan nanti."
+            ],
+            "pullQuote": "Tidak pernah ada versi cerita ini di mana paketnya tidak datang. Yang tersisa untuk diputuskan cuma siapa yang memberi tahu lebih dulu.",
+            "prevBtn": "← Kembali"
+        }
+    ],
+    "relatedLinks": [
+        {
+            "text": "Dua Orang, Satu Tangki →"
+        },
+        {
+            "text": "Satu Tangki Lagi Saja →"
+        },
+        {
+            "text": "Sepuluh Menit yang Berubah Jadi Satu Jam →"
+        },
+        {
+            "text": "Kerangka ARA →"
+        }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
+    }
+}

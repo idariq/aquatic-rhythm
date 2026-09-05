@@ -761,7 +761,8 @@ body.ar-reduce-motion #driftwood-layer{opacity:0!important;transition:opacity .5
 }
 
 /* ── READING PAGE CATEGORIES ── */
-.rd-cat{margin-bottom:.5rem;overflow-x:hidden}
+.rd-cat{margin-bottom:.5rem}
+.rd-swipe-clip{overflow-x:hidden}
 .rd-cat-header{margin-bottom:1.8rem}
 .rd-cat-label{display:inline-block;font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--th-accent);border-bottom:1px solid var(--th-accent-border);padding-bottom:.3rem;margin-bottom:.7rem}
 .rd-cat-desc{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.75;max-width:480px}
@@ -818,10 +819,23 @@ body.ar-reduce-motion #driftwood-layer{opacity:0!important;transition:opacity .5
 #pg-reading.rd-searching .rd-page-dots{display:none}
 .rd-cards.rd-acc-wrap{transition:opacity .15s ease}
 .rd-cards.rd-acc-wrap.rd-page-fade{opacity:0}
-.rd-page-dots{display:flex;align-items:center;justify-content:center;gap:.55rem;margin:1.5rem 0 .3rem}
+/* Sticky, not static: while a category's card list scrolls past, these
+   dots pin to the bottom of the viewport instead of vanishing above or
+   below it — the containing block for that stickiness is .rd-cat (this
+   element's actual parent once js/ui.js moves the card list into its own
+   .rd-swipe-clip sibling), so the dots un-stick and resume normal flow
+   the moment that category's bottom edge scrolls past, handing the
+   sticky slot to whichever category comes next. */
+.rd-page-dots{display:flex;align-items:center;justify-content:center;gap:.55rem;width:fit-content;margin:1.5rem auto .3rem;padding:.45rem .8rem;position:sticky;bottom:1rem;background:var(--th-surface-2);border:1px solid var(--th-line);border-radius:100px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 6px 20px rgba(0,0,0,.22);z-index:5}
 .rd-page-dot{width:.5rem;height:.5rem;padding:0;border:none;border-radius:50%;background:var(--th-line-2);cursor:pointer;transition:background .2s,transform .2s}
 .rd-page-dot:hover{background:var(--th-accent-border)}
 .rd-page-dot.active{background:var(--th-accent);transform:scale(1.35)}
+@media(max-width:720px){
+  .rd-page-dots{bottom:calc(56px + env(safe-area-inset-bottom) + .75rem)}
+}
+@media(display-mode:standalone){
+  .rd-page-dots{bottom:calc(56px + env(safe-area-inset-bottom) + .75rem)}
+}
 
 /* ── ARA PAGE: learning module shell ── */
 #pg-ara .ara-mod-chapter[id]{scroll-margin-top:clamp(5.5rem,12vh,7.25rem)}

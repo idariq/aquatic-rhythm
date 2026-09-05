@@ -434,6 +434,19 @@
         idx += size;
       }
 
+      // Wrap the card list in its own horizontal-clip container so the
+      // swipe transform (below) never bleeds past the category, without
+      // relying on .rd-cat itself for that clip — .rd-cat needs to stay
+      // overflow:visible so .rd-page-dots (a sibling of this clip, not a
+      // descendant of it) can use position:sticky against .rd-cat as its
+      // containing block (see .rd-page-dots CSS: a sticky element's range
+      // is bounded by its own parent's box, and a non-visible overflow
+      // anywhere between it and the viewport breaks stickiness).
+      var clip = document.createElement('div');
+      clip.className = 'rd-swipe-clip';
+      wrap.parentNode.insertBefore(clip, wrap);
+      clip.appendChild(wrap);
+
       var dots = document.createElement('div');
       dots.className = 'rd-page-dots';
       dots.setAttribute('role', 'tablist');
@@ -448,7 +461,7 @@
         })(i));
         dots.appendChild(dot);
       }
-      wrap.parentNode.insertBefore(dots, wrap.nextSibling);
+      clip.parentNode.insertBefore(dots, clip.nextSibling);
       wrap._rdDots = dots;
       setReadingPage(wrap, 0, { animate: false });
 

@@ -336,25 +336,23 @@
     renderSuggestions();
   }
 
-  /* ── Suggestion chips click handler ── */
+  /* ── Suggestion chips click handler ──
+     Draft the message into the input instead of sending it straight
+     away, so the user can edit or pick a different chip before
+     committing (user request 2026-09-05: chips were sending immediately
+     on click, no chance to review first). */
   var suggestChipsEl = document.getElementById('rh-suggest-chips');
   if (suggestChipsEl) {
     suggestChipsEl.addEventListener('click', function (e) {
       var chip = e.target.closest('.rh-suggest-chip');
       if (!chip) return;
       var msg = chip.dataset.msg;
-      if (!msg) return;
-      var chips = document.getElementById('rh-suggest-chips');
-      if (chips) chips.style.display = 'none';
-      if (inp) {
-        inp.value = msg;
-        inp.style.height = 'auto';
-        inp.style.height = Math.min(inp.scrollHeight, 120) + 'px';
-      }
-      if (typeof sendMsg === 'function') {
-        sendMsg(msg);
-        if (inp) { inp.value = ''; inp.style.height = 'auto'; }
-      }
+      if (!msg || !inp) return;
+      inp.value = msg;
+      inp.style.height = 'auto';
+      inp.style.height = Math.min(inp.scrollHeight, 120) + 'px';
+      inp.focus();
+      inp.setSelectionRange(inp.value.length, inp.value.length);
     });
   }
 

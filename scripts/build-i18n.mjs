@@ -207,7 +207,8 @@ const HERO_IMAGE_SLUGS = {
   'missed-fertiliser-dosing': 'hero-1200w.webp',
   'minimum-viable-care': 'hero-1200w.webp',
   'topping-off-vs-water-change': 'hero-1200w.webp',
-  'light-schedule-drift': 'hero-1200w.webp'
+  'light-schedule-drift': 'hero-1200w.webp',
+  'false-maturity': 'hero-1200w.webp'
 };
 
 function buildJsonLd(t, lang, slug, dates) {

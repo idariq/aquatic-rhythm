@@ -915,13 +915,22 @@ guna formula tajuk SAMA, & duduk BERSEBELAHAN dlm senarai Reading
 (kategori "Keeper's Mind") — nampak spt satu templat diulang walau
 kandungan 100% berbeza. **`two-years-one-tank` ditukar tajuk** (bukan
 `two-people-one-tank`, sbb lebih baharu & tiada pautan silang masuk
-drpd artikel lain) → **"The Shape of Two Years"** (id: "Bentuk Dua
-Tahun Itu", ja: "2年間の形") — pinjam frasa dari intro artikel sendiri
-("It's the shape those two years usually take"), bukan tajuk
-sebarangan. **Slug KEKAL** `two-years-one-tank` (zero risiko SEO —
-hanya `<title>`/H1/OG/JSON-LD/kad Reading yg berubah, URL tak
-tersentuh). **JANGAN guna formula "Two [X], One Tank" utk tajuk
-baharu** — kuota dah 1 (two-people-one-tank).
+drpd artikel lain) → percubaan pertama **"The Shape of Two Years"**
+ditolak user (*"nampak pelik... tidak jelas apa yang bentuk dua
+tahun"* — hilang konteks "tangki" sepenuhnya, jadi bunyi macam esei
+umum). Tajuk MUKTAMAD: **"A Tank's First Two Years"** (id: "Dua Tahun
+Pertama Sebuah Tangki", ja: "ある水槽の最初の2年間"). **AWAS — elak
+perkataan "diary"/"log" literal dlm tajuk** (user mula-mula cadang
+rasa "diari tangki 2 tahun"): artikel ni SENDIRI menafikan ia diari
+sebenar dlm ayat pembukaan (*"This isn't one particular tank's
+diary"* — komposit typical timeline, bukan rekod satu tangki benar,
+ikut §"Keluarga KEENAM — Naratif"'s kekangan kejujuran) — tajuk yg
+dakwa "diary"/"log" akan bercanggah dgn penafian sendiri ARTIKEL & boleh
+keliru dgn ciri produk **"Keeper's Log"** (`/journal`) sedia ada.
+**Slug KEKAL** `two-years-one-tank` (zero risiko SEO — hanya
+`<title>`/H1/OG/JSON-LD/kad Reading yg berubah, URL tak tersentuh).
+**JANGAN guna formula "Two [X], One Tank" utk tajuk baharu** — kuota
+dah 1 (two-people-one-tank).
 
 **AWAS — pautan silang CTA polos (`btn-ar`) pd topik sensitif kos/
 peralatan boleh terdedah tanpa reframe diplomatik**, walau artikel

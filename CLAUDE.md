@@ -802,6 +802,53 @@ sebabnya bagus, biarkan & jangan laras. Melaras ayat semata-mata utk
 lepas ambang ialah tepat tingkah laku yg seluruh sistem ni dibina utk
 elak.
 
+### Tik FRASA (bukan sekadar tik PERKATAAN) — "not a character flaw"
+(audit user 2026-09-05)
+
+Skrip audit prosa (§tik atas) sasar PERKATAAN tunggal (`actually`/
+`genuinely`/dll.) — tapi ejen boleh juga bina tik pd tahap FRASA
+(kombinasi 3+ perkataan) yg skrip kata-tunggal tak kesan langsung.
+Ditemui user: frasa **"not a character flaw"** (klausa pengesah
+guilt-prevention, rujuk §"Diplomasi" di atas) muncul 11× merentas 9
+fail. 4 penggunaan drpd 3 fail ASAL (22 Mei — `aquarium-not-a-project`,
+`ara-s6-ethics` x2, `caring-without-guilt`) ialah SAH — ia memetik
+KEDUDUKAN PSIKOLOGI RASMI kerangka ARA sendiri (*"the shame spiral is
+not a character flaw"*, `ara-s6-ethics`), bukan pilihan gaya bebas,
+jadi konsisten = betul. TAPI 5 penggunaan BAHARU (27 Ogos – 5 Sept, 9
+hari terakhir) masing² capai perkataan SAMA secara bebas sbg reflex
+guilt-prevention generik — bukti paling kukuh: `ten-minutes-into-an-hour`
+(artikel yg diterbitkan HARI SAMA) guna frasa ni **DUA KALI dlm SATU
+artikel**. Turut ditemui semasa pembetulan: varian `"character
+defect"` (1×, `capacity-creep`, drpd kluster tarikh sama 27 Ogos) —
+jaring `character flaw` sahaja terlepas varian ni; kena grep
+`character (flaw|defect)` utk kedua-dua ejaan.
+
+**Punca kemungkinan**: CLAUDE.md's §"Diplomasi" petik
+`aquarium-not-a-project`'s *"This is not a character flaw. It is a
+natural consequence of caring."* sbg CONTOH rujukan corak
+guilt-prevention. Ejen yg ikut arahan tu nampaknya menyalin balik
+frasa CONTOH tu verbatim drpd ingatan setiap kali tulis guilt-prevention
+baharu, bukan reka frasa baharu ikut konteks artikel tu — **contoh
+rujukan dlm arahan sendiri boleh jadi punca tik berulang** kalau
+disalin literal drpd memori, bukan sekadar dijadikan model corak.
+
+**Pembetulan**: 6 penggunaan baharu (5 fail + 1 varian) ditulis semula
+dgn frasa BERBEZA setiap satu (bukan swap ke SATU sinonim sejagat,
+yg sekadar pindah tik) — cth. "not the problem" (`just-one-more-tank`,
+gema tesis "The total is where the trouble starts"), "not a lack of
+care" (`life-change-protocols`), "not a moral one" (`the-relief-
+youre-not-supposed-to-feel`), "something to apologize for"
+(`starting-before-youre-ready`), "not a mark against you" +
+"not something anyone chose on purpose" (`ten-minutes-into-an-hour`,
+2 frasa BEZA dlm artikel sama), "not evidence of neglect"
+(`capacity-creep`). 4 penggunaan ASAL (rujukan ARA rasmi) TIDAK
+disentuh. **Pengajaran utk audit tik akan datang**: bila CLAUDE.md
+petik satu ayat/frasa CONTOH utk ilustrasikan corak, semak balik
+selepas beberapa PR sama ada frasa CONTOH tu sendiri jadi disalin
+verbatim merentas kandungan baharu — kalau ya, itu tanda arahan perlu
+digambarkan sbg PRINSIP (\"validating clause selepas kritikan\"), bukan
+diikuti sbg templat perkataan tetap.
+
 ### Keluarga KEENAM — Naratif (dibuka PR #517, `two-years-one-tank`)
 
 Audit 2026-08-30 jumpa lompang: imbasan 62 artikel utk penanda naratif

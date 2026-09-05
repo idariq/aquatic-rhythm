@@ -1,0 +1,104 @@
+{
+    "_meta": {
+        "slug": "the-tank-you-cant-just-abandon",
+        "lang": "id",
+        "sourceFile": "articles/the-tank-you-cant-just-abandon.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Tangki yang Tidak Bisa Begitu Saja Ditinggalkan — Aquatic Rhythm",
+        "description": "Hobi yang disimpan tidak perlu Anda jaga supaya tetap hidup. Tangki ini perlu. Kenapa memutuskan berhenti dan benar-benar menjalankan keputusan itu adalah dua masalah berbeda, dan kenapa yang kedua begitu lambat.",
+        "ogTitle": "Tangki yang Tidak Bisa Begitu Saja Ditinggalkan",
+        "ogDescription": "Hobi yang disimpan tidak perlu Anda jaga supaya tetap hidup. Tangki ini perlu."
+    },
+    "intro": {
+        "eyebrow": "Refleksi",
+        "titleHtml": "Tangki yang Tidak Bisa<br><em>Begitu Saja Ditinggalkan</em>",
+        "subtitle": "Hobi yang disimpan tidak perlu Anda jaga supaya tetap hidup. Tangki ini perlu.",
+        "texts": [
+            "Memutuskan untuk berhenti terasa seperti bagian tersulit — mengakui hobi ini sudah sampai batasnya, tangkinya tidak lagi dapat perhatian yang dibutuhkan, sudah waktunya berhenti. Lalu keputusan itu selesai, dan tangkinya masih berjalan di sudut ruangan, karena ternyata memutuskan cuma separuh yang mudah.",
+            "Ini bukan soal tidak mau pergi. Ingin pergi, dan tidak bisa begitu saja pergi, adalah dua masalah berbeda — dan hobi ini punya alasan struktural untuk masalah kedua yang tidak dimiliki kebanyakan hobi lain."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~6 menit",
+        "metaLevel": "Refleksi",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Polanya",
+            "titleHtml": "Keputusan sudah dibuat.<br><em>Tangkinya masih berjalan.</em>",
+            "body": [
+                "Gitar dimasukkan ke lemari dan tetap seperti itu, selama apa pun sampai ada keputusan mau diapakan. Puzzle yang belum selesai kembali ke kotaknya. Dua-duanya tidak butuh apa-apa dari Anda selama menunggu. Tangki tidak punya pilihan itu. Begitu Anda berhenti, airnya tetap perlu diganti, ikannya tetap perlu makan, dan filternya tetap perlu listrik — entah Anda sudah berdamai dengan keputusan berhenti atau belum.",
+                "Jadi tangkinya duduk di situ, setengah diputuskan, lebih lama dari yang direncanakan siapa pun. Bukan karena Anda belum yakin soal hobi ini — Anda sudah yakin — tapi karena berhenti ternyata perlu proyeknya sendiri: mencari tempat yang bertanggung jawab untuk setiap ikan, setiap tumbuhan, kadang peralatannya sendiri, dan melakukannya dengan cara yang tidak sekadar memindahkan masalah ke orang yang kurang siap menanganinya.",
+                "Ini jenis \"susah berhenti\" yang berbeda dari yang biasa dibahas. Ini bukan tarikan hobi yang masih terasa menyenangkan. Ini beban keputusan yang tidak bisa dijalankan dalam satu sore, sesiap apa pun Anda untuk mengambilnya."
+            ],
+            "hintLabel": "Jenis \"susah berhenti\" yang berbeda",
+            "hintText": [
+                "<a href=\"/id/articles/hard-to-quit\" style=\"color:var(--th-accent)\">Kenapa Sukar Berhenti Memelihara Akuarium</a> bicara soal penjaga yang tidak mau pergi — hobi yang terus menghasilkan alasan untuk tetap terlibat. Ini separuh yang lain: penjaga yang sudah memutuskan untuk pergi, lalu menyadari pergi secara bertanggung jawab bukan sesuatu yang bisa dilakukan tangki dalam satu langkah saja."
+            ],
+            "prevBtn": "← Intro",
+            "nextBtn": "Kenapa tidak ada tombol mati"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Kenapa tidak ada tombol mati",
+            "titleHtml": "Kebanyakan hobi berhenti<br><em>saat Anda berhenti. Ini tidak.</em>",
+            "body": [
+                "Menyimpan sebuah hobi biasanya berarti persis itu: Anda berhenti, dan objek hobi itu berhenti butuh apa pun dari Anda pada saat yang sama. Model kit tidak lapuk di rak. Lukisan setengah jadi tidak perlu diberi makan. Perhatian apa pun yang tadinya diberikan cukup berhenti begitu saja, dan tidak ada yang menderita karenanya.",
+                "Tangki melanggar aturan itu sepenuhnya. Ia sistem hidup yang terus butuh campur tangan sesuai jadwalnya sendiri, bukan jadwal Anda, selama masih ada sesuatu di dalamnya yang hidup. Memutuskan berhenti tidak mematikan jadwal itu. Itu cuma berarti Anda tidak mau lagi jadi orang yang memenuhinya — masalah yang sangat berbeda dari hobi yang begitu saja diam saat Anda pergi.",
+                "Jarak antara keputusan itu dan tangki yang benar-benar selesai diberesi, di situlah sebagian besar kesulitan sebenarnya berada. Bukan pada memilih untuk berhenti, tapi pada kenyataan bahwa memilih saja tidak menyelesaikan pekerjaannya."
+            ],
+            "pullQuote": "Hobi yang disimpan menunggu Anda. Tangki terus berjalan. Berhenti dari yang satu itu satu keputusan. Berhenti dari yang lain itu proyek dengan tenggatnya sendiri, dan tidak ada orang lain yang akan menentukannya untuk Anda.",
+            "prevBtn": "← Kembali",
+            "nextBtn": "Yang sebenarnya sedang ditimbang"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Yang sebenarnya sedang ditimbang",
+            "titleHtml": "Ini bukan menunda-nunda.<br><em>Ini beban akibatnya.</em>",
+            "body": [
+                "Mencarikan rumah baru untuk ikan tidak seperti menjual gitar. Gitar tidak punya akibat yang perlu dikhawatirkan begitu berpindah tangan. Ikan punya — apakah tangki berikutnya benar-benar cocok, apakah orang yang menerimanya akan merawatnya dengan baik, apakah menunggu pilihan yang lebih baik sepadan dengan tangki yang tetap menggantung lebih lama.",
+                "Beban itulah yang sebenarnya menghambat prosesnya, jauh lebih dari sekadar kurang motivasi. Memutuskan penempatan yang tidak sempurna terasa seperti keputusan yang tanggung jawabnya ada di pundak Anda sendiri. Tidak melakukan apa-apa, setidaknya untuk sementara, tidak terasa seperti keputusan sama sekali — walau setiap hari itu berlanjut, tangkinya tetap butuh perawatan yang sama seperti sebelum Anda memutuskan berhenti.",
+                "Ini jenis rasa bersalah yang berbeda dari yang muncul soal berhenti dari hobi secara umum. Ini tidak ada hubungannya dengan menyerah pada sesuatu yang dulu Anda nikmati. Ini soal jadi orang yang harus memilih apa yang terjadi selanjutnya pada sesuatu yang tidak bisa memilih untuk dirinya sendiri."
+            ],
+            "hintLabel": "Keputusan pendamping, bukan pengulangan",
+            "hintText": [
+                "<a href=\"/id/articles/life-change-protocols\" style=\"color:var(--th-accent)\">Protokol Perubahan Hidup</a> menyebut mencarikan rumah baru sebagai salah satu dari tiga hasil yang sah begitu kapasitas berubah untuk selamanya. Ini melanjutkan dari situ — bukan soal apakah harus mencarikan rumah baru, tapi apa yang sebenarnya dibutuhkan untuk melakukannya secara bertanggung jawab setelah keputusan itu diambil."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Tindakan yang selaras"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Tindakan yang selaras",
+            "titleHtml": "Perlakukan penyudahan<br><em>sebagai proyek sendiri, dengan tenggatnya sendiri.</em>",
+            "body": [
+                "Tenggat waktu yang nyata lebih membantu daripada niat tanpa batas. \"Suatu saat, kalau sudah ketemu rumah yang tepat\" bisa berlarut berbulan-bulan dengan tangki tetap berjalan seperti biasa. Tanggal yang jelas, sekalipun longgar, mengubah niat samar jadi sesuatu yang punya titik akhir sungguhan.",
+                "Penempatan yang cukup baik yang ditemukan bulan ini sering lebih baik untuk ikan daripada yang sempurna yang tak kunjung ditemukan. Klub lokal, forum, dan toko yang menerima tukar-tambah ada karena masalah persis ini cukup umum sampai infrastrukturnya sudah tersedia. Memakainya bukan berarti asal-asalan. Itu menyelesaikan pekerjaan alih-alih membiarkannya menggantung tanpa batas.",
+                "Semua ini tidak membuat hobinya jadi kurang menyenangkan selagi masih berjalan. Ini cuma berarti bagian terakhir dari merawat tangki dengan baik adalah menyudahinya dengan hati-hati seperti saat mendirikannya — bagian terakhir dari pekerjaannya, bukan sesuatu yang ditempel begitu saja setelah pekerjaannya selesai."
+            ],
+            "pullQuote": "Tangkinya tidak pernah minta dijaga selamanya. Ia cuma minta dirawat selama ia ada di sana. Menyelesaikannya dengan benar tetap bagian dari pekerjaan itu.",
+            "prevBtn": "← Kembali"
+        }
+    ],
+    "relatedLinks": [
+        {
+            "text": "Kenapa Sukar Berhenti Memelihara Akuarium →"
+        },
+        {
+            "text": "Protokol Perubahan Hidup →"
+        },
+        {
+            "text": "Ketika Hobi Berhenti Terasa Menyenangkan →"
+        },
+        {
+            "text": "Kerangka ARA →"
+        }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
+    }
+}

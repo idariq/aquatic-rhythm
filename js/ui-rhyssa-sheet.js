@@ -241,21 +241,24 @@
       titleSpan.style.cssText = 'overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:90px;display:block';
       titleSpan.textContent = conv.title || RHT('newChat');
       tab.appendChild(titleSpan);
-      if (data.list.length > 1) {
-        var del = document.createElement('button');
-        del.className = 'rh-tab-del';
-        del.type = 'button';
-        del.setAttribute('aria-label', RHT('deleteConv'));
-        del.style.cssText = 'background:none;border:none;color:var(--th-ink-4);cursor:pointer;font-size:var(--fs-sm-md);padding:0;line-height:1;flex-shrink:0;-webkit-tap-highlight-color:transparent';
-        del.textContent = '×';
-        ;(function (id) {
-          del.addEventListener('click', function (e) {
-            e.stopPropagation();
-            deleteConv(id);
-          });
-        }(conv.id));
-        tab.appendChild(del);
-      }
+      // Always render delete, even as the only/first conversation —
+      // deleteConv() already handles that case by resetting it to a
+      // fresh empty conversation, so there's no reason to force a "New
+      // chat" detour first just to make a delete button appear (user
+      // report 2026-09-05).
+      var del = document.createElement('button');
+      del.className = 'rh-tab-del';
+      del.type = 'button';
+      del.setAttribute('aria-label', RHT('deleteConv'));
+      del.style.cssText = 'background:none;border:none;color:var(--th-ink-4);cursor:pointer;font-size:var(--fs-sm-md);padding:0;line-height:1;flex-shrink:0;-webkit-tap-highlight-color:transparent';
+      del.textContent = '×';
+      ;(function (id) {
+        del.addEventListener('click', function (e) {
+          e.stopPropagation();
+          deleteConv(id);
+        });
+      }(conv.id));
+      tab.appendChild(del);
       ;(function (id) {
         tab.addEventListener('click', function () {
           var cur = getConvs();

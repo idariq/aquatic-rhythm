@@ -277,7 +277,6 @@ function patchTopBand(h, t) {
   const tb = t.topBand;
   h = subOnce(h, '<label class="visually-hidden" for="tank-volume-select">Tank volume (litres)</label>', `<label class="visually-hidden" for="tank-volume-select">${tb.volumeLabel}</label>`, 'topBand.volumeLabel');
   h = subOnce(h, 'aria-label="Tank volume in litres">', `aria-label="${tb.volumeAria}">`, 'topBand.volumeAria');
-  h = subOnce(h, '<div class="rhy-hdr"><span>ARA Rhythm</span></div>', `<div class="rhy-hdr"><span>${tb.rhyHeading}</span></div>`, 'topBand.rhyHeading');
   h = subOnce(h, 'role="group" aria-label="Five rhythm levels">', `role="group" aria-label="${tb.rhyBarsAria}">`, 'topBand.rhyBarsAria');
   const rl = tb.rhyLabels;
   h = subOnce(h, '<span class="rhy-lbl">Water</span>', `<span class="rhy-lbl">${rl.water}</span>`, 'topBand.rhyLbl.water');

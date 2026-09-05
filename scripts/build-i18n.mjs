@@ -86,15 +86,19 @@ const BACK_LINK = {
 
 // Rhyssa chat sliding sheet (.rh-sheet) — shared sitewide UI injected on
 // every article, same convention as NAV_LABELS. Was left fully English on
-// id/ja (bug found 2026-08-18, user video) even though the separate full
-// Companion page's chat shell (pg-companion, build-homepage-i18n.py) was
-// already translated — welcome/note text below reuses that exact phrasing
-// for consistency.
+// id/ja (bug found 2026-08-18, user video). This is now the ONLY Rhyssa
+// chat UI (the separate full-page Companion experience, pg-companion, was
+// removed 2026-09-05 and consolidated into this sheet).
 const RH_SHEET = {
   id: {
     dialogAria: 'Chat dengan Rhyssa', closeAria: 'Tutup obrolan', sub: 'Pendamping Akuarium',
     resetAria: 'Atur ulang percakapan', threadAria: 'Percakapan dengan Rhyssa',
     welcome: 'Ceritakan apa yang Anda lihat — air, perilaku, apa pun yang berubah — dan kita bisa memahaminya bersama sebelum memperbaiki apa pun.',
+    chip1Label: 'Ada yang tidak beres', chip1Msg: 'Ada yang terlihat tidak beres di akuarium saya — saya tidak yakin harus menyimpulkan apa.',
+    chip2Label: 'Ikan terlihat stres', chip2Msg: 'Ikan saya terlihat stres atau berperilaku berbeda dari biasanya.',
+    chip3Label: 'Air terlihat berbeda', chip3Msg: 'Air saya terlihat berbeda hari ini — tidak yakin apakah ini masalah.',
+    chip4Label: 'Akuarium baru', chip4Msg: 'Saya sedang menyiapkan akuarium baru dan tidak yakin apa yang perlu saya ketahui.',
+    chip5Label: 'Sekadar mengamati', chip5Msg: 'Saya hanya mengamati akuarium saya. Tidak ada yang mendesak — sekadar mengamati.',
     alsoPre: 'Rhyssa yang sama — juga ada di ', alsoPost: ' jika Anda lebih suka.',
     inputPlaceholder: 'Tanyakan tentang akuarium Anda…', inputAria: 'Pesan untuk Rhyssa',
     sendAria: 'Kirim',
@@ -104,6 +108,11 @@ const RH_SHEET = {
     dialogAria: 'Rhyssaとチャット', closeAria: 'チャットを閉じる', sub: 'アクアリウムコンパニオン',
     resetAria: '会話をリセット', threadAria: 'Rhyssaとの会話',
     welcome: '見えているものを教えてください。水、行動、変わったことなら何でも構いません。何かを直す前に、一緒に読み解いていきましょう。',
+    chip1Label: '何かおかしい', chip1Msg: '水槽の様子が何かおかしい気がしますが、どう考えればいいのか分かりません。',
+    chip2Label: '魚がストレスを感じている', chip2Msg: 'うちの魚がストレスを感じているようで、いつもと様子が違います。',
+    chip3Label: '水の様子が違う', chip3Msg: '今日は水の様子がいつもと違いますが、問題かどうか分かりません。',
+    chip4Label: '新しい水槽', chip4Msg: '新しい水槽をセットアップ中で、何を知っておくべきか分かりません。',
+    chip5Label: 'ただ見守っている', chip5Msg: '特に急ぎではありませんが、水槽をただ見守っています。',
     alsoPre: '同じRhyssaは、', alsoPost: 'でもご利用いただけます。',
     inputPlaceholder: '水槽について質問する…', inputAria: 'Rhyssaへのメッセージ',
     sendAria: '送信',
@@ -367,6 +376,22 @@ function buildArticle(slug, lang, t) {
       (_, a, b) => `${a}${rh.threadAria}${b}`);
     h = replaceOnce(h, /(<p class="rh-sheet-welcome-txt">)[^<]*(<\/p>)/,
       (_, a, b) => `${a}${rh.welcome}${b}`);
+    // Suggest chips (#rh-suggest-chips) — added to the standard article
+    // template 2026-09-05 (was previously only on the SPA's own sheet and
+    // community-stress-lab.html's bespoke set). Exact-substring swap per
+    // chip, same pattern as tank-simulator/keeper-readiness-check's
+    // subOnce — not present on the handful of ARA framework pages that
+    // have no #rh-sheet at all, where this is a harmless no-op.
+    const RH_CHIPS = [
+      ["Something looks off in my tank — I'm not sure what to make of it.", "Something's off", 1],
+      ["My fish seem stressed or are acting differently than usual.", "Fish seem stressed", 2],
+      ["My water looks different today — not sure if it's a problem.", "Water looks different", 3],
+      ["I'm setting up a new tank and I'm not sure what I should know.", "New tank", 4],
+      ["I'm just sitting with my tank. Nothing urgent — just watching.", "Just watching", 5]
+    ];
+    for (const [enMsg, enLabel, n] of RH_CHIPS) {
+      h = h.replace(`data-msg="${enMsg}">${enLabel}<`, `data-msg="${rh[`chip${n}Msg`]}">${rh[`chip${n}Label`]}<`);
+    }
     h = replaceOnce(h, /(>)Same Rhyssa — also on\s*(<a href="https:\/\/chatgpt\.com[^"]*"[^>]*>)ChatGPT ↗(<\/a>) if you prefer\./,
       (_, a, link, close) => `${a}${rh.alsoPre}${link}ChatGPT ↗${close}${rh.alsoPost}`);
     h = replaceOnce(h, /(<textarea id="rh-sheet-inp" class="rh-sheet-inp" placeholder=")[^"]*("[^>]*aria-label=")[^"]*(")/,

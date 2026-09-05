@@ -9,10 +9,13 @@ once here from a units JSON drafted for this task. Re-run this script only
 if index.html's structure changes and the localized copies need resyncing.
 
 Phase 1 scope: nav (top/mobile/bottom/settings/PWA prompt), meta/head,
-pg-home, pg-companion (chat shell text only), pg-terms, pg-privacy,
-pg-about — translated. pg-reading, pg-tools, pg-journal, pg-tank-log are
-left in English (flagged in a comment in the output) — their JS-driven
-interactive strings need a different i18n mechanism, tracked separately.
+pg-home, pg-terms, pg-privacy, pg-about — translated. pg-reading,
+pg-tools, pg-journal, pg-tank-log are left in English (flagged in a
+comment in the output) — their JS-driven interactive strings need a
+different i18n mechanism, tracked separately. pg-companion (the
+separate full-page Rhyssa chat shell) was removed 2026-09-05 and
+consolidated into the shared #rh-sheet (build_rh_sheet() below), so
+it's no longer a section here.
 
 Usage: python3 scripts/build-homepage-i18n.py
 Reads: index.html, translations/homepage/<lang>.json
@@ -75,9 +78,9 @@ BNAV_ARIA = {
 
 # Rhyssa chat sliding sheet (.rh-sheet) — shared sitewide UI, same convention
 # as NAV/BNAV_ARIA. Was left entirely English on id/ja (bug found 2026-08-18,
-# user video) even though the separate full Companion page's own chat shell
-# (pg-companion, build_companion() below) was already translated — welcome/
-# note/sub reuse that exact phrasing for consistency.
+# user video). This is now the ONE Rhyssa chat UI (the separate full-page
+# Companion experience, pg-companion, was removed 2026-09-05 and
+# consolidated into this sheet).
 RH_SHEET = {
     "id": {
         "dialog_aria": "Chat dengan Rhyssa", "close_aria": "Tutup obrolan", "sub": "Pendamping Akuarium",
@@ -402,36 +405,6 @@ def build_home(h, lang, u):
 
     h = re.sub(r'<a href="/articles/([a-z0-9-]+)">([^<]*)</a>', seo_link_sub, h)
 
-    return h
-
-
-def build_companion(h, lang, u):
-    x = u["companion"]
-    h = replace_once(h, r'(<span class="rh-page-name">Rhyssa<\/span>\s*<span class="rh-page-sub">)[^<]*(<\/span>)',
-                      lambda m: m.group(1) + x["sub"] + m.group(2), "companion sub")
-    h = replace_once(h, r'(<button class="rh-hist-btn" id="rh-cp-back" aria-label=")[^"]*(")',
-                      lambda m: m.group(1) + x["back_aria"] + m.group(2), "companion back aria")
-    h = replace_once(h, r'(<button class="rh-new-btn" id="rh-cp-new" aria-label=")[^"]*(" title=")[^"]*(")',
-                      lambda m: m.group(1) + x["new_aria"] + m.group(2) + x["new_aria"] + m.group(3), "companion new aria")
-    h = replace_once(h, r'(<p class="rh-welcome-text">)[^<]*(<\/p>)',
-                      lambda m: m.group(1) + x["welcome"] + m.group(2), "companion welcome")
-
-    starters = [
-        ("Something looks off in my tank — I'm not sure where to start reading it", "Something looks off", "starter1_data", "starter1_btn"),
-        ("Can you explain the nitrogen cycle in plain terms?", "Nitrogen cycle", "starter2_data", "starter2_btn"),
-        ("I'm setting up my first aquarium — what should I know?", "First tank setup", "starter3_data", "starter3_btn"),
-        ("My fish seem stressed. Where do I start?", "Fish seem stressed", "starter4_data", "starter4_btn"),
-    ]
-    for en_data, en_btn, data_key, btn_key in starters:
-        h = h.replace(f'data-starter="{en_data}">{en_btn}<',
-                       f'data-starter="{x[data_key]}">{x[btn_key]}<')
-
-    h = replace_once(h, r'(<textarea id="rh-cp-inp" class="rh-page-inp" placeholder=")[^"]*(")',
-                      lambda m: m.group(1) + x["placeholder"] + m.group(2), "companion placeholder")
-    h = replace_once(h, r'(<button type="submit" class="rh-page-send" id="rh-cp-send" aria-label=")[^"]*(")',
-                      lambda m: m.group(1) + x["send_aria"] + m.group(2), "companion send aria")
-    h = replace_once(h, r'(<p class="rh-page-note">)[^<]*(<\/p>)',
-                      lambda m: m.group(1) + x["note"] + m.group(2), "companion note")
     return h
 
 
@@ -1132,8 +1105,8 @@ def build_pwa_settings(h, lang, u):
 def build_rh_sheet(h, lang):
     """The Rhyssa chat sliding sheet (#rh-sheet) — a single shared element
     injected once in the page, not a pg-* section, so it can't go through
-    apply_scoped(). Distinct from pg-companion's own full-page chat shell
-    (translated separately by build_companion())."""
+    apply_scoped(). This is the ONE Rhyssa chat UI (the separate full-page
+    Companion experience, pg-companion, was removed 2026-09-05)."""
     r = RH_SHEET[lang]
 
     h = replace_once(h, r'(<div id="rh-sheet" class="rh-sheet" role="dialog" aria-label=")[^"]*(")',
@@ -1395,8 +1368,7 @@ def main():
         h = build_pwa_settings(h, lang, u)
         h = build_rh_sheet(h, lang)
         h = build_settings_panel(h, lang, u)
-        h = apply_scoped(h, "pg-home", "pg-companion", build_home, lang, u, "home")
-        h = apply_scoped(h, "pg-companion", "pg-terms", build_companion, lang, u, "companion")
+        h = apply_scoped(h, "pg-home", "pg-terms", build_home, lang, u, "home")
         h = apply_scoped(h, "pg-terms", "pg-privacy", build_terms, lang, u, "terms")
         h = apply_scoped(h, "pg-privacy", "pg-about", build_privacy, lang, u, "privacy")
         h = apply_scoped(h, "pg-about", "pg-reading", build_about, lang, u, "about")

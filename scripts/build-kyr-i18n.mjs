@@ -72,11 +72,38 @@ const STATIC_QNUM = {
   ja: (n, total) => `質問 ${n} / ${total}`
 };
 
-function loadCompanionChrome(lang) {
-  const p = path.join(TRANS_DIR, 'homepage', `${lang}.json`);
-  const j = JSON.parse(fs.readFileSync(p, 'utf8'));
-  return j.companion;
-}
+// Rhyssa chat sheet (#rh-sheet) chrome — this is the ONE Rhyssa chat UI
+// site-wide (the separate full-page Companion experience this used to be
+// read from, translations/homepage/<lang>.json's "companion" section, was
+// removed 2026-09-05 and consolidated into this sheet, taking that key
+// with it). Self-contained here now, same pattern as build-tb-i18n.mjs /
+// build-tsim-i18n.mjs's own RH_SHEET — values match what "companion" used
+// to hold, plus the 5 suggest-chip labels/messages added to the shared
+// article template the same day.
+const RH_SHEET = {
+  id: {
+    back_aria: 'Tutup obrolan', sub: 'Pendamping Akuarium', new_aria: 'Percakapan baru',
+    welcome: 'Ceritakan apa yang Anda lihat — air, perilaku, apa pun yang berubah — dan kita bisa memahaminya bersama sebelum memperbaiki apa pun.',
+    chip1Label: 'Ada yang tidak beres', chip1Msg: 'Ada yang terlihat tidak beres di akuarium saya — saya tidak yakin harus menyimpulkan apa.',
+    chip2Label: 'Ikan terlihat stres', chip2Msg: 'Ikan saya terlihat stres atau berperilaku berbeda dari biasanya.',
+    chip3Label: 'Air terlihat berbeda', chip3Msg: 'Air saya terlihat berbeda hari ini — tidak yakin apakah ini masalah.',
+    chip4Label: 'Akuarium baru', chip4Msg: 'Saya sedang menyiapkan akuarium baru dan tidak yakin apa yang perlu saya ketahui.',
+    chip5Label: 'Sekadar mengamati', chip5Msg: 'Saya hanya mengamati akuarium saya. Tidak ada yang mendesak — sekadar mengamati.',
+    placeholder: 'Tanyakan tentang akuarium Anda…', send_aria: 'Kirim',
+    note: 'AI bisa saja salah — untuk keadaan darurat pada ikan, konsultasikan dengan spesialis'
+  },
+  ja: {
+    back_aria: 'チャットを閉じる', sub: 'アクアリウムの相棒', new_aria: '新しい会話',
+    welcome: '見えているものを教えてください。水、行動、変わったことなら何でも構いません。何かを直す前に、一緒に読み解いていきましょう。',
+    chip1Label: '何かおかしい', chip1Msg: '水槽の様子が何かおかしい気がしますが、どう考えればいいのか分かりません。',
+    chip2Label: '魚がストレスを感じている', chip2Msg: 'うちの魚がストレスを感じているようで、いつもと様子が違います。',
+    chip3Label: '水の様子が違う', chip3Msg: '今日は水の様子がいつもと違いますが、問題かどうか分かりません。',
+    chip4Label: '新しい水槽', chip4Msg: '新しい水槽をセットアップ中で、何を知っておくべきか分かりません。',
+    chip5Label: 'ただ見守っている', chip5Msg: '特に急ぎではありませんが、水槽をただ見守っています。',
+    placeholder: '水槽について質問する…', send_aria: '送信',
+    note: 'AIは間違えることがあります。魚の緊急事態では、専門家に相談してください'
+  }
+};
 
 function replaceOnce(html, pattern, fn) {
   let done = false;
@@ -177,11 +204,23 @@ function patchBnav(h, lang) {
 }
 
 function patchRhyssaSheet(h, lang) {
-  const c = loadCompanionChrome(lang);
+  const c = RH_SHEET[lang];
   h = replaceOnce(h, /(id="rh-sheet-cls" aria-label=")[^"]*(")/, (_, a, b) => `${a}${c.back_aria}${b}`);
   h = replaceOnce(h, /(<span class="rh-sheet-sub">)[^<]*(<\/span>)/, (_, a, b) => `${a}${c.sub}${b}`);
   h = replaceOnce(h, /(id="rh-sheet-clear" aria-label=")[^"]*(" title=")[^"]*(")/, (_, a, mid, z) => `${a}${c.new_aria}${mid}${c.new_aria}${z}`);
   h = replaceOnce(h, /(<p class="rh-sheet-welcome-txt">)[\s\S]*?(<\/p>)/, (_, a, b) => `${a}${c.welcome}${b}`);
+  // Suggest chips (#rh-suggest-chips), added to the shared article template
+  // 2026-09-05 — same exact-substring swap as build-i18n.mjs.
+  const RH_CHIPS = [
+    ["Something looks off in my tank — I'm not sure what to make of it.", "Something's off", 1],
+    ["My fish seem stressed or are acting differently than usual.", "Fish seem stressed", 2],
+    ["My water looks different today — not sure if it's a problem.", "Water looks different", 3],
+    ["I'm setting up a new tank and I'm not sure what I should know.", "New tank", 4],
+    ["I'm just sitting with my tank. Nothing urgent — just watching.", "Just watching", 5]
+  ];
+  for (const [enMsg, enLabel, n] of RH_CHIPS) {
+    h = h.replace(`data-msg="${enMsg}">${enLabel}<`, `data-msg="${c[`chip${n}Msg`]}">${c[`chip${n}Label`]}<`);
+  }
   h = replaceOnce(h, /(<textarea id="rh-sheet-inp"[^>]*placeholder=")[^"]*("[^>]*aria-label=")[^"]*(")/,
     (_, a, mid, z) => `${a}${c.placeholder}${mid}Rhyssa${z}`);
   h = replaceOnce(h, /(id="rh-sheet-send" aria-label=")[^"]*(")/, (_, a, b) => `${a}${c.send_aria}${b}`);

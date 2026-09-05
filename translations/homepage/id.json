@@ -52,23 +52,6 @@
         "tile4_p": "Catat apa yang Anda perhatikan, apa yang Anda lakukan, dan bagaimana ritme Anda terasa minggu ini. Disimpan secara pribadi di browser Anda — tidak ada yang meninggalkan perangkat Anda.",
         "tile4_cta": "Buka Log →"
     },
-    "companion": {
-        "sub": "Pendamping Akuarium",
-        "back_aria": "Kembali",
-        "new_aria": "Percakapan baru",
-        "welcome": "Ceritakan apa yang Anda lihat — air, perilaku, apa pun yang berubah — dan kita bisa memahaminya bersama sebelum memperbaiki apa pun.",
-        "starter1_btn": "Ada yang terlihat tidak beres",
-        "starter1_data": "Ada yang terlihat tidak beres di akuarium saya — saya tidak yakin harus mulai memahaminya dari mana",
-        "starter2_btn": "Siklus nitrogen",
-        "starter2_data": "Bisakah kamu jelaskan siklus nitrogen dengan bahasa sederhana?",
-        "starter3_btn": "Setup akuarium pertama",
-        "starter3_data": "Saya sedang menyiapkan akuarium pertama saya — apa yang perlu saya ketahui?",
-        "starter4_btn": "Ikan terlihat stres",
-        "starter4_data": "Ikan saya terlihat stres. Dari mana saya harus mulai?",
-        "placeholder": "Tanyakan tentang akuarium Anda…",
-        "send_aria": "Kirim",
-        "note": "AI bisa saja salah — untuk keadaan darurat pada ikan, konsultasikan dengan spesialis"
-    },
     "terms": {
         "h1": "Ketentuan Penggunaan",
         "date": "Terakhir diperbarui: Maret 2026",
@@ -107,7 +90,7 @@
         "li_third1_label": "GitHub Pages",
         "li_third1_text": " — menghosting situs web ini. GitHub mungkin mengumpulkan log server termasuk alamat IP dan informasi browser Anda.",
         "li_third2_label": "Pendamping AI Rhyssa",
-        "li_third2_text": " — saat Anda mengobrol dengan Rhyssa di situs ini (dalam artikel, di halaman Companion, atau di wawasan mingguan Keeper's Log), pesan Anda dikirim ke server kami sendiri (Cloudflare Worker), yang meneruskannya ke API Claude milik Anthropic untuk menghasilkan balasan. Kami tidak mencatat atau menyimpan pesan itu secara permanen; percakapan selanjutnya tunduk pada Kebijakan Privasi Anthropic. Ada juga versi terpisah \"Rhyssa di ChatGPT\" kalau Anda membukanya langsung di ChatGPT — memakai versi itu berarti percakapan Anda berlangsung di platform OpenAI dan tunduk pada Kebijakan Privasi OpenAI.",
+        "li_third2_text": " — saat Anda mengobrol dengan Rhyssa di situs ini (dalam artikel, lewat tombol obrolan di halaman mana pun, atau di wawasan mingguan Keeper's Log), pesan Anda dikirim ke server kami sendiri (Cloudflare Worker), yang meneruskannya ke API Claude milik Anthropic untuk menghasilkan balasan. Kami tidak mencatat atau menyimpan pesan itu secara permanen; percakapan selanjutnya tunduk pada Kebijakan Privasi Anthropic. Ada juga versi terpisah \"Rhyssa di ChatGPT\" kalau Anda membukanya langsung di ChatGPT — memakai versi itu berarti percakapan Anda berlangsung di platform OpenAI dan tunduk pada Kebijakan Privasi OpenAI.",
         "li_third3_label": "Google Search Console",
         "li_third3_text": " — digunakan untuk memantau bagaimana situs ini muncul di Google Search. Alat ini mengumpulkan data agregat dan teranonimkan tentang performa pencarian.",
         "li_third4_label": "Google Analytics",

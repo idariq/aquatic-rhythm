@@ -854,6 +854,7 @@
 
   /* Expose for rhyssa-fab-ext.js back-button intercept */
   window.__rhCloseSheet = closeSheet;
+  window.__rhOpenSheet  = openSheet;
 
   /* ── Event wiring ── */
   fab.addEventListener('click', function () {
@@ -862,6 +863,25 @@
   if (bd) bd.addEventListener('click', closeSheet);
   if (cls) cls.addEventListener('click', closeSheet);
   if (tabsNewBtn) tabsNewBtn.addEventListener('click', newConv);
+
+  /* Nav "Companion" links (top nav + mobile menu) used to navigate to a
+     separate full-page Rhyssa experience (pg-companion / /companion). That
+     page was removed 2026-09-05 — one Rhyssa design only, this sheet — so
+     these links now just open the same sheet instead of leaving the
+     article. Matches both the English clean path (/companion, /rhyssa)
+     and the id/ja query-param form (?p=companion, ?p=rhyssa). */
+  document.querySelectorAll(
+    '.nlinks a[href*="companion"], .nlinks a[href*="rhyssa"], .nmob a[href*="companion"], .nmob a[href*="rhyssa"]'
+  ).forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (burger && nmob) {
+        burger.classList.remove('open'); nmob.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false'); nmob.setAttribute('aria-hidden', 'true');
+      }
+      openSheet();
+    });
+  });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && sh.classList.contains('open')) closeSheet();
   });

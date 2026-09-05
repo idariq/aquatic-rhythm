@@ -488,6 +488,17 @@
   }());
 
   function go(id, push) {
+    /* "Companion" used to be its own full page (pg-companion). Removed
+       2026-09-05 — one Rhyssa design only, the chat sheet also used by
+       the FAB and the home tile — so nav links / the "Meet Rhyssa"
+       button that used to route here now just open that same sheet on
+       top of whatever page is already showing, no navigation. */
+    if (id === 'companion') {
+      closeMenu();
+      if (typeof window.__rhOpenSheet === 'function') window.__rhOpenSheet();
+      return;
+    }
+
     var path = id === 'home' ? '/' : '/' + id;
 
     if (!hasSpaPages) {
@@ -582,6 +593,23 @@
       var params = new URLSearchParams(location.search);
       var pParam = params.get('p');
       var id = (pParam && pageMap['/' + pParam]) ? pageMap['/' + pParam] : pageMap[location.pathname] || 'home';
+
+      /* Old bookmarked/shared /companion, /rhyssa, ?p=companion links —
+         that page is gone (see go()'s companion branch above). Land on
+         home instead and open the one Rhyssa sheet once its script
+         (loaded after this one, see script order at bottom of file) has
+         initialized, so the link still ends up somewhere useful. */
+      if (id === 'companion') {
+        var pathPartsCo = location.pathname.replace(/^\/+|\/+$/g, '').split('/').filter(Boolean);
+        var localePrefixCo = (pathPartsCo.length && ['id', 'ja'].indexOf(pathPartsCo[0]) !== -1) ? '/' + pathPartsCo[0] : '';
+        try { history.replaceState({ page: 'home' }, '', localePrefixCo + '/'); } catch (e) {}
+        (function tryOpenSheet(attemptsLeft) {
+          if (typeof window.__rhOpenSheet === 'function') window.__rhOpenSheet();
+          else if (attemptsLeft > 0) setTimeout(function () { tryOpenSheet(attemptsLeft - 1); }, 60);
+        })(20);
+        return;
+      }
+
       if (pParam) {
         /* Preserve the locale prefix (/id/, /ja/) when cleaning the URL —
            this used to always rewrite to the bare English path ("/tools"),

@@ -1,0 +1,104 @@
+{
+  "_meta": {
+    "slug": "the-value-they-cant-see-from-the-doorway",
+    "lang": "id",
+    "sourceFile": "articles/the-value-they-cant-see-from-the-doorway.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Nilai yang Tak Terlihat dari Pintu — Aquatic Rhythm",
+    "description": "Dari pintu, yang terlihat cuma uang dan waktu yang habis. Kenapa kekhawatiran orang tua soal biaya dan waktu itu wajar dari sudut pandang mereka, dan apa yang benar-benar bisa menutup jaraknya.",
+    "ogTitle": "Nilai yang Tak Terlihat dari Pintu",
+    "ogDescription": "Dari pintu, yang terlihat cuma uang dan waktu yang habis. Yang keluar darinya lebih sulit dilihat."
+  },
+  "intro": {
+    "eyebrow": "Refleksi",
+    "titleHtml": "Nilai yang Tak Terlihat<br><em>dari Pintu</em>",
+    "subtitle": "Dari pintu, yang terlihat cuma uang dan waktu yang habis. Yang keluar darinya lebih sulit dilihat.",
+    "texts": [
+      "Kotak filter baru tergeletak di meja dapur. Satu lagi malam berlalu dengan kamu di depan akuarium, bukan di meja makan. Dari tempat orang tuamu berdiri, itulah keseluruhan gambarannya: uang yang keluar, waktu yang hilang, dan kotak kaca yang tidak menjelaskan dirinya sendiri.",
+      "Ini bukan soal membuktikan hobi ini berharga. Sesuatu bisa benar-benar sedang membangun keterampilan dan kesabaran, tapi dari luar kamar, tetap kelihatan seperti tidak menghasilkan apa-apa. Jarak itu tidak akan tertutup lewat argumen."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~6 menit",
+    "metaLevel": "Refleksi",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Polanya",
+      "titleHtml": "\"Memangnya itu<br><em>habis berapa sih?\"</em>",
+      "body": [
+        "Biasanya muncul secara tidak langsung, bukan sebagai pertanyaan sungguhan. Sindiran soal tagihan listrik. Guyonan tentang kursi kosong saat makan malam. Kadang langsung: memangnya itu habis berapa, bukannya kamu sudah kebanyakan waktu di situ. Refleksnya adalah menjelaskan kenapa hobi ini penting, soal biologinya, hewannya, hal yang bikin kamu jatuh cinta sejak awal. Jawaban itu jujur. Tapi bukan jawaban untuk pertanyaan yang sebenarnya diajukan.",
+        "Yang sebenarnya sedang direaksi biasanya lebih sederhana dari sekadar menilai hobinya: uang dan waktu yang terlihat keluar, tanpa ada hasil yang terlihat sebagai imbangannya. Orang tua yang melirik dari pintu hanya melihat kotaknya, tagihannya, jam-jam yang terpakai. Mereka tidak melihat apa yang sedang dibangun dari semua itu.",
+        "Orang tuamu bukan sedang bersikap tidak adil atau berpikiran sempit. Jaraknya memang nyata: dari yang bisa dilihat sekilas, memang belum ada hasil yang bisa ditunjuk. Bagian yang sungguh nyata, yaitu keterampilan dan kesabaran itu, memang tidak kelihatan dari tempat mereka berdiri."
+      ],
+      "hintLabel": "Imbalan yang mengalir dua arah",
+      "hintText": [
+        "<a href=\"/id/articles/what-the-tank-gives-you\" style=\"color:var(--th-accent)\">Apa yang Diberikan Tangki Kepada Anda</a> bicara soal kepedulian dalam hobi ini yang mengalir dua arah, bukan cuma dari penjaga ke tangki. Imbalan itu nyata. Orang tua yang berdiri di depan pintu memang tidak bisa melihatnya."
+      ],
+      "prevBtn": "← Intro",
+      "nextBtn": "Kenapa hasilnya tak terlihat"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Kenapa hasilnya tak terlihat",
+      "titleHtml": "Proyek sekolah<br><em>berakhir dengan nilai. Tangki tidak.</em>",
+      "body": [
+        "Tugas sekolah berakhir dengan nilai. Kerja paruh waktu berakhir dengan gaji yang bisa dilihat masuk ke rekening. Hampir semua hal lain yang dihabiskan waktu dan uangnya oleh anak muda menghasilkan sesuatu yang bisa ditunjuk orang tua: nah, ini yang dibeli dari situ. Tangki tidak bekerja seperti itu. Tidak ada sertifikat untuk kemampuan membaca sistem dengan teliti, tidak ada rapor untuk kesabaran yang masih terus tumbuh.",
+        "Hasil yang sesungguhnya, tahu artinya perubahan kecil pada perilaku hewan, bertahan menghadapi masalah yang lambat alih-alih panik, memikul tanggung jawab penuh atas sesuatu yang sepenuhnya bergantung padamu, cuma kelihatan setelah berbulan-bulan, dan cuma oleh orang yang menjalaninya sendiri. Dari luar, sekali lirik saja, semua itu tidak kelihatan sama sekali. Bukan berarti hobinya cacat. Cuma begitulah wujud jenis pembelajaran ini kalau dilihat dari pintu.",
+        "Ini bukan berarti biaya dan waktunya tidak nyata. Keduanya nyata. Ini cuma berarti catatan yang bisa dilihat orang tua baru terisi di satu kolom saja."
+      ],
+      "pullQuote": "Proyek yang selesai memberimu sesuatu untuk ditunjukkan. Tangki tidak memberimu apa pun yang bisa dibawa keluar kamar dan diletakkan di depan orang yang berdiri di pintu.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Pertanyaan yang sebenarnya"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Pertanyaan yang sebenarnya",
+      "titleHtml": "Ini sebenarnya<br><em>bukan pertanyaan soal ikan.</em>",
+      "body": [
+        "\"Bukannya itu buang-buang uang\" dan \"bukannya kamu sudah kebanyakan waktu di situ\" jarang benar-benar bermaksud seperti kata-katanya. Yang biasanya tersembunyi di baliknya adalah kekhawatiran yang lebih sempit dan spesifik: apakah ini mengambil sesuatu dari hal yang sekarang lebih penting, tugas sekolah, tidur, orang-orang di sekitarmu. Pertanyaan itu sendiri wajar. Menjelaskan serunya siklus nitrogen tidak menjawabnya.",
+        "Menjawab pertanyaan yang salah, sesungguh apa pun niatnya, biasanya malah kedengaran seperti mengalihkan topik. Itu juga melewatkan satu titik di mana introspeksi jujur sebetulnya berguna: bukan \"apakah hobi ini sepadan secara umum\", yang tidak perlu diyakinkan pada siapa pun yang berdiri di pintu, tapi \"apakah ada hal lain yang diam-diam mulai terabaikan selama ini\". Tanyakan itu pada dirimu sendiri sebelum orang lain menanyakannya untukmu.",
+        "Kalau jawaban jujurnya adalah tidak ada yang terabaikan, itu sudah cukup jelas. Bagus. Kalau ternyata ada, lebih baik tahu sekarang, sebelum itu jadi bahan pertengkaran besar."
+      ],
+      "hintLabel": "Cek yang berguna, bukan ceramah",
+      "hintText": [
+        "<a href=\"/id/articles/keeper-readiness-check\" style=\"color:var(--th-accent)\">Periksa Kesiapan Penjaga</a> dibuat untuk pertanyaan yang berbeda, apakah sebuah tangki cocok dengan apa yang bisa kamu berikan untuknya, tapi introspeksi jujur yang sama juga berlaku di sini: seperti apa sebenarnya jejak hobi ini pada sisa minggumu, diukur, bukan sekadar diterka."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Tindakan yang selaras"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Tindakan yang selaras",
+      "titleHtml": "Tutup jaraknya dengan bukti,<br><em>bukan dengan argumen.</em>",
+      "body": [
+        "Membuat biaya terlihat atas inisiatifmu sendiri, jauh berbeda rasanya dibanding ketahuan begitu saja. Catatan berjalan soal apa yang sedang dikeluarkan, ditunjukkan sebelum diminta, mengubah kecurigaan samar soal uang yang menghilang menjadi angka spesifik yang bisa dicek, dan biasanya lebih kecil dari yang dibayangkan orang tua.",
+        "Hal yang sama berlaku untuk apa yang sedang dipelajari. Menyebutnya dengan jelas, dengan kata-kata biasa, bukan soal semangat pada hobi ini tapi hal konkret yang kamu lakukan, membaca masalah yang lambat dengan tepat alih-alih panik dan bereaksi berlebihan, adalah bukti yang tidak bisa dihasilkan cuma dengan sekali lirik dari pintu.",
+        "Lebih dari itu, konsistensi bekerja lebih baik daripada penjelasan apa pun. Nilai yang tetap stabil, tugas rumah yang tetap dikerjakan, waktu bersama orang lain yang tetap berjalan, semua itu bicara lebih banyak soal apakah hobi ini bermasalah atau tidak dibanding pembelaan apa pun. Tangkinya tidak perlu dibela. Yang perlu dibuktikan adalah bahwa tidak ada hal lain yang diam-diam terkorbankan."
+      ],
+      "pullQuote": "Mereka tidak perlu menyukai ikan untuk bisa mempercayakannya padamu. Mereka cuma perlu melihat bahwa tidak ada hal lain yang diam-diam terkorbankan.",
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    {
+      "text": "Apa yang Diberikan Tangki Kepada Anda →"
+    },
+    {
+      "text": "Periksa Kesiapan Penjaga →"
+    },
+    {
+      "text": "Barang yang Dibeli Diam-Diam →"
+    },
+    {
+      "text": "Kerangka ARA →"
+    }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

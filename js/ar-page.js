@@ -886,16 +886,22 @@
     if (e.key === 'Escape' && sh.classList.contains('open')) closeSheet();
   });
 
-  /* Suggest chips */
+  /* Suggest chips — draft the message into the input instead of sending
+     it straight away, so the user can edit or pick a different chip
+     before committing (user request 2026-09-05: chips were sending
+     immediately on click, no chance to review first). */
   var chipsEl = document.getElementById('rh-suggest-chips');
   if (chipsEl) {
     chipsEl.addEventListener('click', function (e) {
       var chip = e.target.closest('.rh-suggest-chip');
       if (!chip) return;
       var msg = chip.dataset.msg || chip.textContent.trim();
-      if (!msg) return;
-      chipsEl.style.display = 'none';
-      sendMsg(msg);
+      if (!msg || !inp) return;
+      inp.value = msg;
+      inp.style.height = 'auto';
+      inp.style.height = Math.min(inp.scrollHeight, 120) + 'px';
+      inp.focus();
+      inp.setSelectionRange(inp.value.length, inp.value.length);
     });
   }
 

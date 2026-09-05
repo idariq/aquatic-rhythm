@@ -908,6 +908,21 @@ berbeza drpd rename slug `rhythm-tracker`/`keeper-readiness-check` yg
 selamat sbb belum diindeks — rujuk §"Status Terjemahan Semasa") — ini
 sekadar had kuota utk tajuk BAHARU, bukan arahan pembetulan retroaktif.
 
+**Corak TAJUK "Two [X], One Tank"** (ditemui user 2026-09-05) — corak
+ke-4 selain 3 di atas. `two-people-one-tank` (lama, koordinasi 2
+penjaga) & `two-years-one-tank` (baharu, PR #517, naratif 2-tahun)
+guna formula tajuk SAMA, & duduk BERSEBELAHAN dlm senarai Reading
+(kategori "Keeper's Mind") — nampak spt satu templat diulang walau
+kandungan 100% berbeza. **`two-years-one-tank` ditukar tajuk** (bukan
+`two-people-one-tank`, sbb lebih baharu & tiada pautan silang masuk
+drpd artikel lain) → **"The Shape of Two Years"** (id: "Bentuk Dua
+Tahun Itu", ja: "2年間の形") — pinjam frasa dari intro artikel sendiri
+("It's the shape those two years usually take"), bukan tajuk
+sebarangan. **Slug KEKAL** `two-years-one-tank` (zero risiko SEO —
+hanya `<title>`/H1/OG/JSON-LD/kad Reading yg berubah, URL tak
+tersentuh). **JANGAN guna formula "Two [X], One Tank" utk tajuk
+baharu** — kuota dah 1 (two-people-one-tank).
+
 **AWAS — pautan silang CTA polos (`btn-ar`) pd topik sensitif kos/
 peralatan boleh terdedah tanpa reframe diplomatik**, walau artikel
 SASARAN sendiri dah diplomasi penuh. Ditemui: `the-honest-cost-of-

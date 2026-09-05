@@ -497,15 +497,19 @@ def build_privacy(h, lang, u):
     h = replace_once(h,
         r'(<h3>' + re.escape(x["h_third"]) + r'<\/h3><p>)[\s\S]*?(<\/p><ul>'
         r'<li><strong[^>]*>)GitHub Pages(<\/strong>)[\s\S]*?(<\/li>'
-        r'<li><strong[^>]*>)ChatGPT / OpenAI(<\/strong>)[\s\S]*?(<\/li>'
+        r'<li><strong[^>]*>)Rhyssa AI companion(<\/strong>)[\s\S]*?(<\/li>'
         r'<li><strong[^>]*>)Google Search Console(<\/strong>)[\s\S]*?(<\/li>'
         r'<li><strong[^>]*>)Google Analytics(<\/strong>)[\s\S]*?(<\/li>'
+        r'<li><strong[^>]*>)Google Fonts(<\/strong>)[\s\S]*?(<\/li>'
+        r'<li><strong[^>]*>)Formspree \(optional result-sharing\)(<\/strong>)[\s\S]*?(<\/li>'
         r'<li><strong[^>]*>)Ko-fi \(optional tips\)(<\/strong>)[\s\S]*?(<\/li><\/ul><\/div>)',
         lambda m: (m.group(1) + x["p_third_intro"] + m.group(2) + x["li_third1_label"] + m.group(3) + x["li_third1_text"]
                    + m.group(4) + x["li_third2_label"] + m.group(5) + x["li_third2_text"]
                    + m.group(6) + x["li_third3_label"] + m.group(7) + x["li_third3_text"]
                    + m.group(8) + x["li_third4_label"] + m.group(9) + x["li_third4_text"]
-                   + m.group(10) + x["li_third5_label"] + m.group(11) + x["li_third5_text"] + m.group(12)),
+                   + m.group(10) + x["li_third5_label"] + m.group(11) + x["li_third5_text"]
+                   + m.group(12) + x["li_third6_label"] + m.group(13) + x["li_third6_text"]
+                   + m.group(14) + x["li_third7_label"] + m.group(15) + x["li_third7_text"] + m.group(16)),
         "privacy third-party body")
 
     h = replace_once(h, r'(<h3>' + re.escape(x["h_cookies"]) + r'<\/h3><p>)[\s\S]*?(<\/p><p>)[\s\S]*?(<\/p><\/div>)',

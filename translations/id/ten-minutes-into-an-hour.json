@@ -1,0 +1,104 @@
+{
+    "_meta": {
+        "slug": "ten-minutes-into-an-hour",
+        "lang": "id",
+        "sourceFile": "articles/ten-minutes-into-an-hour.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Sepuluh Menit yang Berubah Jadi Satu Jam — Aquatic Rhythm",
+        "description": "Tidak ada yang sengaja menghilang ke dalam akuarium selama satu malam penuh. Itu terjadi satu pengecekan singkat demi satu pengecekan singkat. Kenapa waktu hobi begitu mudah membesar, dan cara memberinya batas nyata sebelum orang lain yang harus menyadarinya duluan.",
+        "ogTitle": "Sepuluh Menit yang Berubah Jadi Satu Jam",
+        "ogDescription": "Tidak ada yang sengaja menghilang ke dalam akuarium selama satu malam penuh. Itu terjadi satu pengecekan singkat demi satu pengecekan singkat."
+    },
+    "intro": {
+        "eyebrow": "Refleksi",
+        "titleHtml": "Sepuluh Menit<br><em>yang Berubah Jadi Satu Jam</em>",
+        "subtitle": "Tidak ada yang sengaja menghilang ke dalam akuarium selama satu malam penuh. Itu terjadi satu pengecekan singkat demi satu pengecekan singkat.",
+        "texts": [
+            "Anda bilang cuma mau cek akuarium sebentar sebelum makan malam. Satu tanaman perlu dipindah. Lalu ada utas forum soal spesies yang baru saja Anda tanam. Lalu perbandingan dua filter yang bahkan tidak Anda miliki. Begitu Anda mendongak, makanan sudah dingin, atau seseorang sudah berhenti menunggu Anda kembali.",
+            "Ini bukan soal terlalu mencintai hobi ini. Ini soal betapa mudahnya perhatian tanpa batas berubah jadi satu jam yang sebenarnya tidak pernah disepakati siapa pun, dan apa yang dibutuhkan untuk memberinya batas nyata sebelum orang lain harus melakukannya untuk Anda."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~6 menit",
+        "metaLevel": "Refleksi",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Polanya",
+            "titleHtml": "Sepuluh menit,<br><em>lalu tahu-tahu sudah satu jam.</em>",
+            "body": [
+                "Jarang dimulai sebagai keputusan untuk menghilang. Dimulai sebagai tugas kecil yang sungguhan — menambah air, mengecek ikan yang tadi pagi terlihat agak lesu — yang kebetulan duduk di sebelah lautan hal lain yang layak dilihat. Satu tanaman perlu dipindah. Itu membawa ke utas forum soal spesies yang baru saja Anda tanam. Itu membawa ke perbandingan dua filter yang bahkan tidak Anda miliki. Tidak satu pun dari itu terasa seperti menyimpang saat sedang terjadi.",
+                "Itu bukan cacat karakter, dan bukan tanda Anda lebih mencintai akuarium daripada orang-orang yang menunggu Anda. Mengamati dan membaca soal sistem hidup yang Anda rawat memang benar-benar menyerap perhatian — itulah sebagian besar yang membuat hobi ini layak dijalani. Rasa ingin tahu yang sama yang membuat seorang pemelihara jadi baik, itu juga yang sama sekali tidak punya tombol berhenti alami.",
+                "Yang layak dikatakan dengan jelas lebih sederhana daripada penilaian karakter: sepuluh menit yang Anda perkirakan tadi tidak pernah didasarkan pada apa pun. Itu cuma tebakan, dibuat sebelum Anda tahu apa yang akan Anda temukan begitu sudah di sana."
+            ],
+            "hintLabel": "Hanyutan yang sama, arah yang berbeda",
+            "hintText": [
+                "<a href=\"/id/articles/capacity-creep\" style=\"color:var(--th-accent)\">Erosi kapasitas</a> adalah perawatan yang diam-diam menyusut di bawah apa yang benar-benar dibutuhkan akuarium, satu lewatan kecil demi satu lewatan kecil sampai tidak ada yang sadar kapan itu mulai. Ini adalah cerminan dari hanyutan itu — waktu hobi diam-diam membesar melewati apa yang bisa disisihkan sebuah hubungan, dengan cara yang sama, untuk alasan yang sama: tidak ada yang mengumumkan dirinya sendiri selagi itu terjadi."
+            ],
+            "prevBtn": "← Intro",
+            "nextBtn": "Kenapa begitu mudah kehilangan hitungan"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Kenapa begitu mudah kehilangan hitungan",
+            "titleHtml": "Mengamati<br><em>tidak punya titik henti alami.</em>",
+            "body": [
+                "Ganti air punya akhir. Anda bisa menunjuk momen itu selesai — embernya kosong, air barunya sudah masuk, selesai. Mengamati akuarium, membaca soal akuarium, mengutak-atik akuarium, tidak bekerja seperti itu. Selalu ada satu hal lagi yang layak diperhatikan, satu utas lagi yang layak dibaca, satu perbaikan kecil lagi yang cuma butuh sedetik. Tugas yang punya garis akhir akan selesai. Tugas yang tidak, terus diam-diam mengundang Anda untuk tinggal sebentar lagi.",
+                "Ini persis kesabaran yang paling sering dibela laman ini — membaca sebuah sistem dengan cermat alih-alih bereaksi terhadapnya, menahan dorongan untuk menyebut sesuatu selesai sebelum benar-benar selesai. Naluri itu benar-benar berguna kalau diarahkan ke akuarium. Diarahkan ke malam Anda sendiri, tanpa apa pun lain yang menjaga waktu, itu tidak punya batas untuk berhenti dengan sendirinya.",
+                "Jadi sepuluh menit itu bukan kebohongan. Tidak ada yang berniat menghilang selama satu jam. Cuma saja tidak ada apa pun dalam kegiatan itu sendiri yang akan pernah memberi tahu Anda kapan sepuluh menit sudah berlalu."
+            ],
+            "pullQuote": "Anda tidak memutuskan untuk mengambil satu jam. Anda cuma tidak pernah mengecek, karena tidak ada apa pun di depan Anda yang dibuat untuk mengingatkan Anda.",
+            "prevBtn": "← Kembali",
+            "nextBtn": "Apa yang sebenarnya terpakai"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Apa yang sebenarnya terpakai",
+            "titleHtml": "Waktu akuarium,<br><em>dan waktu orang lain, dari kolam yang sama.</em>",
+            "body": [
+                "Satu malam cuma punya sekian jam, dan akuarium bukan satu-satunya yang memperebutkannya. Pekerjaan juga. Ponsel juga. Banyak hobi lain menarik orang menjauh dari ruangan untuk sementara, dan akuarium tidak istimewa bersalah cuma karena kebetulan itu yang ada di depan Anda sekarang. Menyebut ini dengan jujur bukan sama dengan menyatakan hobi ini bermasalah.",
+                "Tapi kalau seseorang di rumah Anda pernah bilang, dalam bentuk apa pun, bahwa Anda menghabiskan lebih banyak waktu dengan akuarium daripada dengan mereka, jawaban yang akurat jarang \"itu tidak benar\". Lebih dekat ke \"kamu benar, dan aku tidak sadar itu terjadi\" — karena Anda memang mungkin tidak sadar. Tidak ada yang duduk lalu memutuskan sebuah akuarium lebih penting dari seseorang. Jam-jam itu cuma datang dari tempat yang sama, dan cuma satu pihak yang mencatatnya.",
+                "Itulah bentuk lengkap masalahnya. Bukan cacat karakter, bukan hobi yang kebablasan — sumber daya nyata dan terbatas yang diambil dari dua arah, dengan cuma satu pihak yang menyimpan totalnya."
+            ],
+            "hintLabel": "Keluhannya biasanya bukan soal ikan",
+            "hintText": [
+                "Saat seseorang bilang Anda lebih peduli pada akuarium daripada pada mereka, ikan jarang jadi sasaran sebenarnya. Yang sedang disebut adalah perasaan kalah penting dari sesuatu yang bahkan tidak bisa menyadari dirinya menang. Menjawab dengan alasan kenapa hobi ini berharga menjawab keluhan yang tidak pernah diucapkan siapa pun. Menjawab dengan \"aku tidak sadar itu makan waktu sebanyak itu\" menjawab keluhan yang sebenarnya diucapkan."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Tindakan yang selaras"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Tindakan yang selaras",
+            "titleHtml": "Beri batas nyata<br><em>pada bagian yang tanpa batas.</em>",
+            "body": [
+                "Karena kegiatannya sendiri tidak punya titik henti bawaan, batasnya harus datang dari tempat lain. Timer sungguhan, bukan perkiraan di kepala, mengubah bentuk seluruh malam — dua puluh menit yang berakhir saat memang seharusnya berakhir adalah komitmen yang sama sekali berbeda dari \"cuma cek sebentar\" yang memang tidak pernah benar-benar sebentar.",
+                "Ucapkan angka yang jujur sebelum mulai, bukan yang penuh harapan. \"Aku butuh dua puluh menit dengan akuarium\" yang sampai ke seseorang sebelum Anda menghilang adalah pengalaman yang sama sekali berbeda bagi mereka dibanding satu jam tanpa pemberitahuan yang baru mereka sadari begitu makan malam sudah dingin. Waktunya mungkin sama saja pada akhirnya. Diberitahu lebih dulu, tidak.",
+                "Tidak satu pun dari ini meminta Anda peduli lebih sedikit pada akuarium. Ini pemikiran kapasitas-sebelum-ambisi yang sama yang diterapkan laman ini pada stok akuarium, diterapkan sebaliknya pada satu malam — waktu itu terbatas entah Anda merencanakannya atau tidak berdasarkan fakta itu, dan berpura-pura sebaliknya tidak menciptakan lebih banyak waktu. Itu cuma diam-diam memindahkan kekurangannya ke siapa pun yang sedang menunggu."
+            ],
+            "pullQuote": "Akuarium akan selalu mengambil waktu sebanyak yang Anda izinkan. Ia memang tidak pernah akan jadi pihak yang menarik batasnya.",
+            "prevBtn": "← Kembali"
+        }
+    ],
+    "relatedLinks": [
+        {
+            "text": "Erosi Kapasitas →"
+        },
+        {
+            "text": "Dua Orang, Satu Tangki →"
+        },
+        {
+            "text": "Kenapa Sukar Berhenti Memelihara Akuarium →"
+        },
+        {
+            "text": "Kerangka ARA →"
+        }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
+    }
+}

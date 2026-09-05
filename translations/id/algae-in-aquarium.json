@@ -40,6 +40,11 @@
                 "<strong>Alga biru-hijau / sianobakteri</strong> — seperti lendir, biru-hijau, dengan bau khas. Bukan alga sejati — ini adalah bakteri fotosintetik. Sinyal nitrat yang sangat rendah (sering setelah ganti air berat atau bioload yang sangat rendah) dikombinasikan dengan fosfat berlebih, atau area aliran stagnan."
             ],
             "pullQuote": "Sebelum bertanya bagaimana cara membuangnya, tanyakan dulu jenis apa ini — dan apa sebenarnya yang sedang ia baca di tank Anda.",
+            "hintLabel": "Kenapa nasihat bercanggah",
+            "hintText": [
+                "Kalau Anda pernah baca panduan yang terus bercanggah tentang ini — satu suruh kurangi nutrisi, satu lagi suruh tambah dosis — Anda bukan salah paham apa-apa. Percanggahan itu memang ada dalam hobi ini sendiri, bukan sekadar nasihat kurang berpengalaman. Satu mazhab menganggap alga sebagai respons langsung terhadap nutrisi berlebihan. Mazhab lain (metode Estimative Index, umum di kalangan penghobi tanaman berpengalaman) sengaja mendosis nutrisi jauh melebihi kebutuhan sebenar tanaman, dengan alasan tanaman yang kekurangan nutrisi terlalu lemah untuk bersaing — dan tanaman yang lemah itu, bukan kadar nutrisinya, yang membuka ruang bagi alga.",
+                "Kedua pendekatan sama-sama berhasil untuk banyak penghobi, karena keduanya sebenarnya menyelesaikan masalah yang sama dari arah berbeda: membuat tanaman cukup sehat untuk memenangkan persaingan cahaya dan CO2 melawan alga. Khusus untuk green spot algae, hair algae, dan green water, tidak ada satu jawaban pasti tentang nutrisi mana yang tepatnya terlalu tinggi atau rendah. Yang lebih bisa diandalkan dibanding mengejar satu angka adalah memperhatikan apakah cahaya, CO2, dan nutrisi bergerak bersamaan — bukan apakah salah satunya cocok dengan tabel."
+            ],
             "prevBtn": "← Intro",
             "nextBtn": "Apa yang tank sedang sampaikan"
         },

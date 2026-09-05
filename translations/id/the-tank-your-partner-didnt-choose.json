@@ -1,0 +1,104 @@
+{
+    "_meta": {
+        "slug": "the-tank-your-partner-didnt-choose",
+        "lang": "id",
+        "sourceFile": "articles/the-tank-your-partner-didnt-choose.html",
+        "status": "ready"
+    },
+    "head": {
+        "title": "Tangki yang Bukan Pilihan Pasangan Anda — Aquatic Rhythm",
+        "description": "Bukan soal mereka tidak suka ikannya. Soalnya, tidak ada yang bertanya dulu. Kenapa ruang bersama yang berubah tanpa keputusan bersama adalah masalah berbeda dari membagi tugas merawat tangki.",
+        "ogTitle": "Tangki yang Bukan Pilihan Pasangan Anda",
+        "ogDescription": "Bukan soal mereka tidak suka ikannya. Soalnya, tidak ada yang bertanya dulu."
+    },
+    "intro": {
+        "eyebrow": "Refleksi",
+        "titleHtml": "Tangki yang Bukan<br><em>Pilihan Pasangan Anda</em>",
+        "subtitle": "Bukan soal mereka tidak suka ikannya. Soalnya, tidak ada yang bertanya dulu.",
+        "texts": [
+            "Tangkinya ada persis di tempat Anda meletakkannya — sudut yang dulu diisi rak buku, dinding di seberang sofa, meja dapur yang sekarang tidak dipakai untuk apa-apa lagi. Anda yang memilih letaknya, ukurannya, standnya, jadwal lampunya. Entah di titik mana, pasangan Anda berubah jadi orang yang hidup bersama akuarium, bukan orang yang memilikinya.",
+            "Ini bukan soal suka atau tidak suka ikan. Ini soal bagaimana sebuah hobi bisa diam-diam menggambar ulang bagian rumah yang dipakai bersama, satu keputusan wajar demi satu keputusan wajar, tanpa orang yang tinggal di rumah itu benar-benar pernah ditanya."
+        ],
+        "metaModules": "4 modul",
+        "metaTime": "~6 menit",
+        "metaLevel": "Refleksi",
+        "cta": "Mulai membaca"
+    },
+    "modules": [
+        {
+            "id": "mod-1",
+            "tag": "Polanya",
+            "titleHtml": "Sebuah hobi masuk rumah,<br><em>tanpa ada yang ikut tanda tangan.</em>",
+            "body": [
+                "Biasanya dimulai dari sesuatu yang kecil sampai gampang diabaikan — setup lima galon di atas meja kerja, gampang disiasati. Lalu stand yang layak, karena mejanya memang bukan dibuat untuk itu. Lalu tangki yang lebih besar, karena yang kecil tadi ternyata kurang berhasil. Setiap langkah menyelesaikan masalah nyata dan masuk akal sendiri-sendiri. Tidak pernah ada momen Anda duduk bersama pasangan dan benar-benar bertanya apakah ruang tamu boleh permanen berisi kotak menyala berisi air yang bergerak.",
+                "Ini masalah yang berbeda dari membagi tugas merawat tangki. Ini bukan soal siapa yang mengecek air atau siapa yang ingat memberi makan. Sebuah keputusan yang mengubah ruang bersama dibuat oleh hanya satu dari dua orang yang berbagi ruang itu — bukan karena Anda berniat mengambil alih, tapi karena setiap pilihan terasa terlalu kecil sendiri-sendiri untuk dianggap sebagai sesuatu yang perlu disetujui pasangan Anda.",
+                "Membiarkan tangki itu ada dan benar-benar menyetujuinya bukan hal yang sama, walau keduanya gampang tertukar. Dilihat dari seberang ruangan, dua-duanya kelihatan persis sama."
+            ],
+            "hintLabel": "Nama mirip, masalah berbeda",
+            "hintText": [
+                "<a href=\"/id/articles/two-people-one-tank\" style=\"color:var(--th-accent)\">Dua Orang, Satu Tangki</a> bicara soal dua orang yang sama-sama merawat tangki, mengoordinasikan siapa mengerjakan apa. Di sini beda ceritanya: cuma satu orang yang merawat tangki, dan yang satu lagi tidak pernah setuju untuk itu — tetap berbagi ruangan tempat tangki itu berada, tanpa pernah berbagi keputusan untuk meletakkannya di sana."
+            ],
+            "prevBtn": "← Intro",
+            "nextBtn": "Kenapa ruang berbeda"
+        },
+        {
+            "id": "mod-2",
+            "tag": "Kenapa ruang berbeda",
+            "titleHtml": "Ruang tidak bekerja<br><em>seperti waktu atau uang.</em>",
+            "body": [
+                "Satu malam bersama tangki berakhir, dan ingatannya memudar. Satu pembelian muncul sekali di mutasi rekening, lalu jadi sejarah. Tangki di ruang tamu tidak melakukan dua-duanya. Ia ada saat sarapan. Ia ada saat lampunya menyala sebelum orang lain bangun. Ia ada setiap hari, entah ada yang memikirkannya atau tidak.",
+                "Sifat permanen itu mengubah arti sebenarnya dari kata setuju. Bilang ya untuk satu malam, atau satu pembelian, berarti bilang ya untuk sesuatu yang ada batasnya. Bilang ya untuk tempat seratus liter air berarti bilang ya untuk bagaimana sebuah ruangan terlihat dan terdengar selama bertahun-tahun — bukan keputusan yang dibuat sekali lalu tidak pernah dipikirkan lagi.",
+                "Semua ini tidak membuat tangki jadi ide buruk. Ini cuma berarti besarnya persetujuan yang dibutuhkan tidak pernah sama dengan besarnya persetujuan yang benar-benar didapat pasangan Anda."
+            ],
+            "pullQuote": "Tangki yang cuma ditoleransi seseorang dan tangki yang benar-benar disetujuinya kelihatan persis sama dari seberang ruangan. Dua-duanya bukan hal yang sama untuk dijalani setiap hari.",
+            "prevBtn": "← Kembali",
+            "nextBtn": "Yang sebenarnya dipertaruhkan"
+        },
+        {
+            "id": "mod-3",
+            "tag": "Yang sebenarnya dipertaruhkan",
+            "titleHtml": "Ini sebenarnya<br><em>bukan soal ikan.</em>",
+            "body": [
+                "Kalau keluhannya akhirnya muncul, jarang kedengarannya soal akuarium. Bunyinya lebih seperti \"aku nggak pernah mau itu ada di tempat yang harus kulihat tiap hari,\" atau \"kamu nggak nanya, kamu cuma kasih tahu.\" Yang sedang disebut bukan ketidaksukaan pada ikan. Ada ruang bersama yang berubah di sini tanpa keputusan bersama di baliknya.",
+                "Diajak bicara setelah tangki sudah ada bukan hal yang sama dengan diajak bicara sebelum tangki itu ada. Begitu sudah terpasang, berjalan, dan terisi, pilihan jujur yang tersisa buat pasangan Anda menyempit jadi \"terima saja\" atau \"minta dibongkar\" — dan pilihan kedua membawa harga yang tidak ada satu pun dari kalian mau tanggung. Itu cuma formalitas, bukan pilihan sungguhan.",
+                "Masukan yang sungguhan harus datang selagi lokasi, ukuran, dan bentuknya masih jadi pertanyaan terbuka. Begitu semua itu sudah mengeras jadi tangki yang berjalan di sudut ruangan, tidak banyak lagi yang tersisa untuk ditanyakan."
+            ],
+            "hintLabel": "Yang sebenarnya dibutuhkan persetujuan",
+            "hintText": [
+                "Menanyakan \"ini nggak apa-apa, kan?\" soal tangki yang sudah berjalan itu pertanyaan yang berbeda dari menanyakannya soal tangki yang belum ada. Yang pertama minta seseorang menerima sebuah fakta. Yang kedua benar-benar memberinya sesuatu untuk diputuskan."
+            ],
+            "prevBtn": "← Kembali",
+            "nextBtn": "Tindakan yang selaras"
+        },
+        {
+            "id": "mod-4",
+            "tag": "Tindakan yang selaras",
+            "titleHtml": "Biarkan mereka memilih<br><em>sebelum tidak ada lagi yang bisa dipilih.</em>",
+            "body": [
+                "Letak, ukuran, dan suara tangki pantas dapat percakapan sungguhan sebelum apa pun dibeli — bukan sekadar pemberitahuan soal keputusan yang sudah dibuat. Pasangan yang bisa bilang \"jangan di situ\" atau \"jangan sebesar itu\" sebelum tangki itu ada, sudah benar-benar diajak bicara. Yang cuma dengar soal itu setelah tangki berjalan, cuma diberi tahu — itu hal yang sama sekali berbeda.",
+                "Pertumbuhan pantas dapat perlakuan sama seperti tangki pertama, bukan lolos begitu saja karena preseden sudah ada. Tangki kedua, atau yang lebih besar, membuka lagi besarnya persetujuan yang diminta — bukan otomatis dapat izin dari apa yang sudah disetujui pertama kali.",
+                "Semua ini bukan berarti rumah bersama tidak boleh memuat hobi satu orang. Ini berarti ruangan itu tetap jadi milik bersama hanya kalau meletakkan sesuatu di dalamnya benar-benar keputusan yang dibuat berdua, bukan keputusan yang Anda serahkan begitu saja ke pasangan setelah semuanya selesai."
+            ],
+            "pullQuote": "Ruang tamu itu tetap milik mereka juga. Itu harus benar sebelum tangkinya dipasang, bukan dirundingkan sesudahnya.",
+            "prevBtn": "← Kembali"
+        }
+    ],
+    "relatedLinks": [
+        {
+            "text": "Dua Orang, Satu Tangki →"
+        },
+        {
+            "text": "Sepuluh Menit yang Berubah Jadi Satu Jam →"
+        },
+        {
+            "text": "Barang yang Dibeli Diam-Diam →"
+        },
+        {
+            "text": "Kerangka ARA →"
+        }
+    ],
+    "footer": {
+        "allArticles": "← Semua artikel",
+        "araLink": "Aquatic Rhythm Alignment"
+    }
+}

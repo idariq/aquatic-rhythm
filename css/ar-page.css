@@ -185,8 +185,8 @@ nav:not(.bnav){position:fixed;top:0;left:0;right:0;z-index:800;height:68px;displ
    of growing past it — .rh-sheet itself is overflow:hidden (only this
    inner thread scrolls), so without min-height:0 a long conversation
    could silently clip instead of scroll on some mobile browsers. */
-.rh-sheet-thread{flex:1;min-height:0;overflow-y:auto;padding:.9rem 1rem;display:flex;flex-direction:column;gap:.55rem;-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior:contain}
-.rh-sheet-thread .rh-bubble{border-left:none;border-radius:14px;max-width:82%;padding:.72rem .95rem}
+.rh-sheet-thread{flex:1;min-height:0;overflow-y:auto;padding:1.25rem clamp(.9rem,4vw,1.6rem);display:flex;flex-direction:column;gap:.75rem;-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior:contain}
+.rh-sheet-thread .rh-bubble{border-left:none;border-radius:14px;max-width:82%;padding:.75rem 1rem}
 .rh-sheet-thread .rh-bubble-you{align-self:flex-end;background:var(--th-accent-soft);border:1px solid var(--th-accent-border)}
 .rh-sheet-thread .rh-bubble-rh{align-self:flex-start;background:var(--th-surface-2);border:1px solid var(--th-line);max-width:92%}
 .rh-sheet-thread .rh-bubble-you .rh-bubble-who{text-align:right;color:var(--th-accent)}
@@ -233,7 +233,7 @@ nav:not(.bnav){position:fixed;top:0;left:0;right:0;z-index:800;height:68px;displ
 .rh-date-sep::before,.rh-date-sep::after{content:'';flex:1;height:1px;background:var(--th-line)}
 .rh-date-sep span{font-size:var(--fs-2xs);letter-spacing:.13em;text-transform:uppercase;color:var(--th-ink-4);white-space:nowrap}
 .rh-sheet-welcome{display:flex;flex-direction:column;align-items:center;text-align:center;padding:1.4rem .5rem .6rem;gap:.7rem;margin:auto}
-.rh-sheet-welcome-txt{font-size:var(--fs-sm-md);line-height:1.68;color:var(--th-ink-2);max-width:280px;margin:0;font-weight:300}
+.rh-sheet-welcome-txt{font-size:var(--fs-sm-md);line-height:1.68;color:var(--th-ink-2);max-width:320px;margin:0;font-weight:300}
 .rh-sheet-also{font-size:var(--fs-2xs);color:var(--th-ink-4);text-align:center;margin:.5rem 0 0;line-height:1.6}
 .rh-sheet-also a{color:var(--th-accent);text-decoration:none;transition:color .2s}
 .rh-sheet-also a:hover{opacity:.8}

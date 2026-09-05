@@ -21,7 +21,6 @@ var SHELL_URLS = [
   '/js/ui-eco-toggle.js?v=74',
   '/js/ui-reading-pathways.js?v=74',
   '/js/ui-rhyssa-sheet.js?v=74',
-  '/js/ui-rhyssa-page.js?v=74',
   '/js/ui-settings.js?v=74',
   '/js/ar-page.js?v=74',
   '/js/content-trust.js?v=74',

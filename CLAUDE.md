@@ -1078,6 +1078,82 @@ supaya bug yg sama tak berulang:
    `ntsDay()`/`ctpWeekLabel()`/`dayConcat()` (§i18n "AWAS — susunan
    tatabahasa" di atas utk butiran penuh).
 
+## Rhyssa — SATU UI chat sahaja (`#rh-sheet`), halaman Companion penuh DIBUANG (2026-09-05)
+
+**Keputusan produk eksplisit user**: laman ni dulu ada **DUA** reka bentuk
+chat Rhyssa berbeza — laman penuh berasingan (`pg-companion` dlm SPA,
+diakses via "Meet Rhyssa"/ikon nav Companion, JS `js/ui-rhyssa-page.js`,
+CSS `.rh-page*`) DAN overlay bottom-sheet (`#rh-sheet`, dibuka via FAB
+`#rh-fab`, wujud di SETIAP halaman termasuk semua 84 artikel). User
+nampak dua versi ni dlm rakaman skrin & minta digabung jadi **satu**
+sahaja. Keputusan: KEKALKAN `#rh-sheet` (overlay), BUANG `pg-companion`
+sepenuhnya — sbb overlay dah wujud di SEMUA 84 artikel + SPA (jangkauan
+lebih luas), manakala halaman penuh cuma boleh diakses dlm konteks SPA.
+
+**Apa yg dibuang**: div `#pg-companion` (index.html), fail
+`js/ui-rhyssa-page.js` (dipadam terus), CSS `.rh-page*`/`.rh-hist-*`/
+`.rh-welcome*`/`.rh-starter-chip` (css/style.css), fungsi
+`build_companion()` + panggilan `apply_scoped(..., "pg-companion", ...)`
+(scripts/build-homepage-i18n.py), kunci `"companion"` dlm
+`translations/homepage/id.json`/`ja.json`, entri dlm `sw.js`'s
+`SHELL_URLS`, & entri `js/ui-rhyssa-page.js` dlm senarai `EXTRACTED`
+`tests/ui-modules.test.mjs`.
+
+**Apa yg KEKAL & cara kelakuan ditukar (BUKAN 250+ fail HTML disunting)**:
+pautan nav "Companion"/"AI Companion" (top nav + mobile nav, wujud di
+SETIAP fail EN/id/ja — ~250 fail) & butang "Meet Rhyssa →" KEKAL teks &
+`href`/`data-page="companion"` sedia ada — cuma **kelakuan** ditukar via
+JS SEDIA ADA dikongsi (bukan sunting per-fail):
+- **SPA** (`js/ui.js`'s `go(id, push)`): `id === 'companion'` kini terus
+  panggil `window.__rhOpenSheet()` (didedahkan drpd `js/ui-rhyssa-sheet.js`)
+  & `return` awal — TIADA navigasi/tukar URL, overlay je dibuka atas
+  halaman semasa. IIFE routing awal (`?p=companion`/URL `/companion`
+  lama) turut disemak: `history.replaceState` balik ke `/` + cuba buka
+  sheet dgn retry-loop (skrip Rhyssa muat lepas `ui.js`, jadi
+  `window.__rhOpenSheet` mungkin belum wujud lg).
+- **Artikel** (`js/ar-page.js`, SATU fail dikongsi SEMUA 84 artikel):
+  event listener BAHARU pd `.nlinks a[href*="companion"]`/`.nmob
+  a[href*="companion"]` (padan `href*="rhyssa"` jugak, utk pautan
+  `/rhyssa` & SEO footer link) → `preventDefault()` + panggil `openSheet()`
+  tempatan terus (kini didedahkan sbg `window.__rhOpenSheet` jugak, utk
+  konsisten). Padanan berdasarkan SUBSTRING href, BUKAN sunting setiap
+  fail — jadi berfungsi utk kedua-dua bentuk href EN (`/companion`,
+  clean path via 404.html) DAN id/ja (`/id/?p=companion`, terus).
+- URL lama `/companion`, `/rhyssa`, `?p=companion` yg dikongsi/di-bookmark
+  TETAP berfungsi (bukan 404) — 404.html's mekanisme redirect SPA sedia
+  ada (`/companion` → `/?p=companion`) tak disentuh, cuma destinasi akhir
+  (router) kini buka overlay drpd cuba render halaman yg dah tiada.
+
+**5 chip starter ditambah ke `#rh-sheet` di SEMUA 84 artikel** (skrip
+bulk sesi ni) — sebelum ni cuma 1/84 (`community-stress-lab.html`, set
+bespoke sendiri, KEKAL tak disentuh) ada chip walau `js/ar-page.js` dah
+ada logik penuh menunggu `#rh-suggest-chips` (no-op senyap kalau markup
+tiada — bug drift template lama, ditemui semasa audit sesi ni). Guna
+SET GENERIK yg sama dgn SPA punya (`index.html`'s rh-sheet sedia ada):
+*Something's off / Fish seem stressed / Water looks different / New
+tank / Just watching*. **PENGECUALIAN**: 6 fail siri ARA (`ara-s1-
+foundation`..`ara-s6-ethics`) TIADA `#rh-sheet`/`#rh-fab` LANGSUNG (pra-
+wujud, bukan disebabkan kerja ni) — pautan Companion di fail ni jatuh
+balik ke navigasi biasa (404.html → `/?p=companion` → SPA buka overlay),
+tak rosak, cuma laluan berbeza sikit drpd artikel lain.
+
+**5 skrip build BESPOKE turut kena kemas kini serentak** (setiap satu
+ada `patchRhyssaSheet()`/`RH_SHEET` dict SENDIRI, berasingan drpd
+`build-i18n.mjs`'s — ikut senibina "TIGA/EMPAT templat, skrip
+berasingan" §"Senibina" atas): `build-ara-i18n.mjs` (ara-full-framework)
+& `build-kyr-i18n.mjs` (keeper-readiness-check) **CRASH** lepas
+`"companion"` JSON key dibuang (`loadCompanionChrome()` baca terus drpd
+`translations/homepage/<lang>.json`'s kunci tu) — dibetulkan dgn dict
+`RH_SHEET` swadaya (self-contained) ikut pola `build-tb-i18n.mjs`/
+`build-tsim-i18n.mjs` yg dah sedia guna dict sendiri (tak crash, tapi
+turut perlu tambah field chip1-5). `build-ryr-i18n.mjs` (rhythm-tracker)
+tak crash (tak baca kunci companion) tapi turut perlu field chip
+ditambah. **Bila tambah slug bespoke baharu dgn `#rh-sheet` di masa
+depan**: JANGAN baca `translations/homepage/<lang>.json`'s kunci lapuk
+apa pun (companion dah tiada) — guna dict `RH_SHEET` swadaya dlm skrip
+build slug tu sendiri, salin field drpd `build-i18n.mjs`'s `RH_SHEET`
+utk konsisten kandungan.
+
 ## Pengetahuan Rhyssa (`worker/knowledge.js`) — TIGA lapisan sync MANUAL, tiada pipeline auto
 
 Kandungan kerangka ARA wujud di **TIGA tempat berasingan**, tiada skrip build

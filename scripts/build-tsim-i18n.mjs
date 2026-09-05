@@ -51,7 +51,12 @@ const RH_SHEET = {
     also_pre: 'Rhyssa yang sama — juga ada di ', also_post: ' jika Anda lebih suka.',
     placeholder: 'Tanyakan tentang akuarium Anda…', msgAria: 'Pesan untuk Rhyssa', sendAria: 'Kirim',
     note: 'AI bisa saja salah — untuk keadaan darurat pada ikan, konsultasikan dengan spesialis',
-    chatAria: 'Obrolan dengan Rhyssa', threadAria: 'Percakapan dengan Rhyssa'
+    chatAria: 'Obrolan dengan Rhyssa', threadAria: 'Percakapan dengan Rhyssa',
+    chip1Label: 'Ada yang tidak beres', chip1Msg: 'Ada yang terlihat tidak beres di akuarium saya — saya tidak yakin harus menyimpulkan apa.',
+    chip2Label: 'Ikan terlihat stres', chip2Msg: 'Ikan saya terlihat stres atau berperilaku berbeda dari biasanya.',
+    chip3Label: 'Air terlihat berbeda', chip3Msg: 'Air saya terlihat berbeda hari ini — tidak yakin apakah ini masalah.',
+    chip4Label: 'Akuarium baru', chip4Msg: 'Saya sedang menyiapkan akuarium baru dan tidak yakin apa yang perlu saya ketahui.',
+    chip5Label: 'Sekadar mengamati', chip5Msg: 'Saya hanya mengamati akuarium saya. Tidak ada yang mendesak — sekadar mengamati.'
   },
   ja: {
     closeAria: 'チャットを閉じる', subLbl: 'アクアリウムコンパニオン', resetAria: '会話をリセット',
@@ -59,7 +64,12 @@ const RH_SHEET = {
     also_pre: '同じRhyssaは、', also_post: 'でもご利用いただけます。',
     placeholder: '水槽について質問する…', msgAria: 'Rhyssaへのメッセージ', sendAria: '送信',
     note: 'AIは間違えることがあります。魚の緊急事態では、専門家に相談してください',
-    chatAria: 'Rhyssaとチャット', threadAria: 'Rhyssaとの会話'
+    chatAria: 'Rhyssaとチャット', threadAria: 'Rhyssaとの会話',
+    chip1Label: '何かおかしい', chip1Msg: '水槽の様子が何かおかしい気がしますが、どう考えればいいのか分かりません。',
+    chip2Label: '魚がストレスを感じている', chip2Msg: 'うちの魚がストレスを感じているようで、いつもと様子が違います。',
+    chip3Label: '水の様子が違う', chip3Msg: '今日は水の様子がいつもと違いますが、問題かどうか分かりません。',
+    chip4Label: '新しい水槽', chip4Msg: '新しい水槽をセットアップ中で、何を知っておくべきか分かりません。',
+    chip5Label: 'ただ見守っている', chip5Msg: '特に急ぎではありませんが、水槽をただ見守っています。'
   }
 };
 
@@ -133,6 +143,18 @@ function patchRhyssaSheet(h, lang) {
   h = subOnce(h, 'aria-label="Reset conversation" title="Reset conversation"', `aria-label="${c.resetAria}" title="${c.resetAria}"`, 'rh.resetAria');
   h = subOnce(h, '<p class="rh-sheet-welcome-txt">Tell me what you see — water, behaviour, anything that changed — and we can read it together before we fix anything.</p>',
     `<p class="rh-sheet-welcome-txt">${c.welcome}</p>`, 'rh.welcome');
+  // Suggest chips (#rh-suggest-chips), added to the shared article template
+  // 2026-09-05 — same exact-substring swap as build-i18n.mjs.
+  const RH_CHIPS = [
+    ["Something looks off in my tank — I'm not sure what to make of it.", "Something's off", 1],
+    ["My fish seem stressed or are acting differently than usual.", "Fish seem stressed", 2],
+    ["My water looks different today — not sure if it's a problem.", "Water looks different", 3],
+    ["I'm setting up a new tank and I'm not sure what I should know.", "New tank", 4],
+    ["I'm just sitting with my tank. Nothing urgent — just watching.", "Just watching", 5]
+  ];
+  for (const [enMsg, enLabel, n] of RH_CHIPS) {
+    h = subOnce(h, `data-msg="${enMsg}">${enLabel}<`, `data-msg="${c[`chip${n}Msg`]}">${c[`chip${n}Label`]}<`, `rh.chip${n}`);
+  }
   h = subOnce(h, '>Same Rhyssa — also on <a href="https://chatgpt.com/g/g-6a09401c8ef48191b18deb53565a7fe1-rhyssa-aquarium-companion" target="_blank" rel="noopener" style="color:var(--th-accent);text-decoration:none">ChatGPT ↗</a> if you prefer.</p>',
     `>${c.also_pre}<a href="https://chatgpt.com/g/g-6a09401c8ef48191b18deb53565a7fe1-rhyssa-aquarium-companion" target="_blank" rel="noopener" style="color:var(--th-accent);text-decoration:none">ChatGPT ↗</a>${c.also_post}</p>`, 'rh.also');
   h = subOnce(h, 'placeholder="Ask about your tank…" rows="1" maxlength="1200" aria-label="Message to Rhyssa"',

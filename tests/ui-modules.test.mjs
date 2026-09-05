@@ -4,7 +4,11 @@
  * The original `js/ui.js` was ~4100 lines. PR #233 extracted six self-
  * contained IIFEs into sibling files (ECOSYSTEM TOGGLE, READING PATHWAYS,
  * JOURNAL, RHYSSA BOTTOM SHEET, RHYSSA COMPANION PAGE, SETTINGS PANEL).
- * These tests guard the extraction contract:
+ * RHYSSA COMPANION PAGE (js/ui-rhyssa-page.js) was later removed entirely
+ * (2026-09-05) — the separate full-page Rhyssa experience was consolidated
+ * into the one chat sheet (RHYSSA BOTTOM SHEET) also used by the FAB and
+ * the home tile, so this list is down to five. These tests guard the
+ * extraction contract:
  *
  *   1. Each extracted file is a top-level IIFE (`(function () { ... })();`)
  *      so DOM-ready execution semantics match the original.
@@ -29,7 +33,6 @@ const EXTRACTED = [
   'js/ui-reading-pathways.js',
   'js/ui-journal.js',
   'js/ui-rhyssa-sheet.js',
-  'js/ui-rhyssa-page.js',
   'js/ui-settings.js'
 ];
 

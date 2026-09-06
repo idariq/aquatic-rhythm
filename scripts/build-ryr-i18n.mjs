@@ -534,6 +534,12 @@ for (const lang of targetLangs) {
   h = h.replace("btn.textContent='Sent — thank you';", `btn.textContent=${JSON.stringify(t.chrome.shareBtnSent)};`);
   h = h.replace("var RYR_CODE_LABEL='Your code: ';", `var RYR_CODE_LABEL=${JSON.stringify(t.chrome.shareCodeLabel)};`);
   // Tank context block (covariates v1.2, outcome + intent items v1.3).
+  // Moved from the end-of-flow share modal to the picker screen, ahead of
+  // the rhythm cards, on 2026-09-06 (still fully optional, still unscored,
+  // still only transmitted if the respondent later opts into sharing) — the
+  // owner's fix for multi-tank keepers otherwise having no cue to anchor all
+  // five rhythms to the same tank. `heading`/`note` text changed accordingly;
+  // field ids/values did not, so nothing else below needed touching.
   // Volume buckets are numeric ("20–60 L") and stay as-is in every language.
   // Everything else in the block is discovered from the translation file
   // rather than listed here: `labels` is keyed by the span's own id, and every
@@ -541,6 +547,7 @@ for (const lang of targetLangs) {
   // across the block). Adding a question later needs markup plus a JSON key —
   // no edit to this script, which is where a hardcoded list would rot.
   const tc = t.chrome.tankContext || {};
+  h = replaceOnce(h, /(<span class="ryr-picker-label" id="ryr-tank-context-label">)[^<]*(<\/span>)/, (_, a, b) => `${a}${tc.heading}${b}`);
   h = replaceOnce(h, /(<p class="ryr-share-cov-note" id="ryr-share-cov-note">)[^<]*(<\/p>)/, (_, a, b) => `${a}${tc.note}${b}`);
   Object.entries(tc.labels || {}).forEach(([id, label]) => {
     h = replaceOnce(h, new RegExp(`(<span class="ryr-cov-label" id="${id}">)[^<]*(</span>)`), (_, a, b) => `${a}${label}${b}`);

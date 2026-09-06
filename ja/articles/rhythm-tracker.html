@@ -145,6 +145,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 .ryr-phase-note p{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-2);line-height:1.85;margin:0}
 .ryr-note-end{font-size:var(--fs-sm);color:var(--th-ink-4);line-height:1.7;margin-top:2.5rem;font-style:italic;font-family:var(--serif)}
 .ryr-share{margin-top:2rem;padding:1.4rem 1.6rem;border:1px solid var(--th-line);background:var(--th-surface-2);border-radius:4px}
+.ryr-share-congrats{font-family:var(--serif);font-style:italic;font-weight:300;font-size:var(--fs-lg);color:var(--th-ink);line-height:1.4;margin-bottom:.9rem}
 .ryr-share-text{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.75;margin-bottom:1.1rem}
 .ryr-share-check{display:flex;align-items:flex-start;gap:.65rem;cursor:pointer;margin-bottom:1.1rem}
 .ryr-share-check input{margin-top:.2rem;flex-shrink:0;accent-color:var(--th-accent)}
@@ -154,6 +155,11 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 .ryr-share-btn:not(:disabled):hover{background:var(--th-accent-soft);color:#fff}
 .ryr-share-status{font-size:var(--fs-xs);color:var(--th-ink-4);margin-top:.8rem;line-height:1.6}
 .ryr-share-status.err{color:rgba(255,190,175,.92)}
+.ryr-share-dismiss{display:none;font-size:var(--fs-xs);color:var(--th-ink-4);background:none;border:none;cursor:pointer;padding:.7rem 0 0;margin-left:.9rem;font-family:var(--sans);text-decoration:underline;transition:color .2s}
+.ryr-share-dismiss:hover{color:var(--th-ink-2)}
+.ryr-share-backdrop{position:fixed;inset:0;background:rgba(4,8,10,.6);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);z-index:600}
+.ryr-share.ryr-share-modal-active{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:601;max-width:460px;width:calc(100% - 2.4rem);max-height:calc(100vh - 4rem);overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.ryr-share.ryr-share-modal-active .ryr-share-dismiss{display:inline}
 .ryr-actions{margin-top:2.8rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
 .ryr-btn-restart{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-accent);background:none;border:1px solid var(--th-accent-border);padding:.7rem 1.6rem;border-radius:2px;cursor:pointer;font-family:var(--sans);transition:color .25s,border-color .25s}
 .ryr-btn-restart:hover{color:var(--th-accent);border-color:var(--th-accent)}
@@ -253,8 +259,20 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
           <span class="ryr-rcard-tag">5つの質問 →</span>
         </button>
       </div>
+      <div class="ryr-share" id="ryr-share" hidden>
+        <p class="ryr-share-congrats" id="ryr-share-congrats">五つのリズム、すべて読み終えました。</p>
+        <p class="ryr-share-text" id="ryr-share-text">一度にここまで読み切る飼育者は多くありません。たいていは一つ確認したら、また今度、というところで止まります。もしよければ、回答を共有することで今後役立てさせてください。共有すると、五つのリズムすべての回答と上記のフェーズの結果が、第三者のフォームサービスであるFormspreeを通じて送信されます。それ以外の情報(お名前やメールアドレスなど)は送信されません。ご本人を特定しないランダムな識別コードにより、回答をまとめて確認できるようになります。これは今後の研究デザインのための初期的な土台であり、正式なデータセットや、本文中の主張を裏付ける証拠ではありません。</p>
+        <label class="ryr-share-check">
+          <input type="checkbox" id="ryr-share-consent">
+          <span id="ryr-share-consent-label">この目的のために、自分の回答とフェーズの結果を匿名で共有します。</span>
+        </label>
+        <button class="ryr-share-btn" id="ryr-share-btn" disabled>五つの内省をすべて共有する</button>
+        <button type="button" class="ryr-share-dismiss" id="ryr-share-dismiss">またあとで</button>
+        <p class="ryr-share-status" id="ryr-share-status" hidden></p>
+      </div>
     </div>
   </div>
+  <div class="ryr-share-backdrop" id="ryr-share-backdrop" hidden></div>
   <div id="ryr-screen">
     <div class="ryr-wrap">
       <span class="ryr-q-rhythm" id="ryr-q-rhythm">Water Rhythm</span>
@@ -288,15 +306,6 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
         <p id="ryr-phase-text"></p>
       </div>
       <p class="ryr-note-end">この内省が扱うのは一つのリズムだけです。水槽は五つのリズムそれぞれで違う段階にあることがあります。これは全体像ではなく、その中の正直な一部分にすぎません。</p>
-      <div class="ryr-share" id="ryr-share">
-        <p class="ryr-share-text" id="ryr-share-text">任意:今後のARA研究に役立てるためのご協力です。共有すると、これらの質問への回答と上記のフェーズの結果が送信されます。それ以外の情報(お名前やメールアドレスなど)は送信されません。この端末で確認した異なるリズムの回答をまとめて読めるように、ランダムな識別コード(ご本人を特定するものではありません)も一緒に送信されます。送信には第三者のフォームサービスであるFormspreeを使用します。これは今後の研究デザインのための初期的な土台であり、正式なデータセットや、本文中の主張を裏付ける証拠ではありません。</p>
-        <label class="ryr-share-check">
-          <input type="checkbox" id="ryr-share-consent">
-          <span id="ryr-share-consent-label">この目的のために、自分の回答とフェーズの結果を匿名で共有します。</span>
-        </label>
-        <button class="ryr-share-btn" id="ryr-share-btn" disabled>この内省を共有する</button>
-        <p class="ryr-share-status" id="ryr-share-status" hidden></p>
-      </div>
       <div class="ryr-actions">
         <button class="ryr-btn-restart" id="ryr-btn-restart">もう一度読む</button>
         <a href="/ja/articles/ara-s2-five-rhythms" class="ryr-link-reading" data-analytics-event="cta_rhythm_next_action" data-cta="water_rhythm_to_five_rhythms">五つのリズムについて読む →</a>
@@ -960,7 +969,7 @@ reflect:function(ans){
 }};
 
 /* ═══ FLOW ═══ */
-var curQ=0,ans={},curRhythm=null,lastRef=null;
+var curQ=0,ans={},curRhythm=null;
 var RYR_FORMSPREE_ENDPOINT='https://formspree.io/f/xoeqleyo';
 function ryrRespondentId(){
   var k='ryr_respondent_id';
@@ -990,6 +999,73 @@ function ryrSetProgress(key,phase){
     p[key]=phase;
     localStorage.setItem('ryr_progress',JSON.stringify(p));
   }catch(e){}
+}
+function ryrGetAllAnswers(){
+  try{
+    var raw=localStorage.getItem('ryr_all_answers');
+    return raw?JSON.parse(raw):{};
+  }catch(e){return {};}
+}
+function ryrSetAllAnswers(key,answers){
+  try{
+    var all=ryrGetAllAnswers();
+    all[key]=answers;
+    localStorage.setItem('ryr_all_answers',JSON.stringify(all));
+  }catch(e){}
+}
+function ryrShareModalShow(){
+  var shareEl=document.getElementById('ryr-share');
+  // #ryr-share normally lives inside #ryr-picker-screen so it sits quietly
+  // at the bottom of that page. But this modal can be triggered right after
+  // finishing the fifth rhythm, while the RESULT screen is what's showing —
+  // and #ryr-picker-screen is display:none at that point, which hides its
+  // entire subtree regardless of #ryr-share's own position:fixed. Move it
+  // up to <body> for the duration of the modal so it renders on top of
+  // whichever screen is currently active; ryrShareModalDismiss() moves it
+  // back to its resting place.
+  document.body.appendChild(shareEl);
+  shareEl.hidden=false;
+  shareEl.classList.add('ryr-share-modal-active');
+  document.getElementById('ryr-share-backdrop').hidden=false;
+  try{localStorage.setItem('ryr_share_prompted','1');}catch(e){}
+}
+function ryrShareModalDismiss(){
+  var shareEl=document.getElementById('ryr-share');
+  shareEl.classList.remove('ryr-share-modal-active');
+  document.getElementById('ryr-share-backdrop').hidden=true;
+  var rest=document.querySelector('#ryr-picker-screen .ryr-intro-inner');
+  if(rest&&shareEl.parentNode!==rest)rest.appendChild(shareEl);
+}
+function ryrShareUIRefresh(){
+  var allDone=Object.keys(ryrGetProgress()).length>=5;
+  var shareEl=document.getElementById('ryr-share');
+  if(!allDone){shareEl.hidden=true;return;}
+  shareEl.hidden=false;
+  var btn=document.getElementById('ryr-share-btn');
+  var consent=document.getElementById('ryr-share-consent');
+  var statusEl=document.getElementById('ryr-share-status');
+  var sentHash=null;
+  try{sentHash=localStorage.getItem('ryr_share_sent_hash');}catch(e){}
+  var curHash=JSON.stringify(ryrGetAllAnswers());
+  if(sentHash&&sentHash===curHash){
+    btn.textContent="送信済み — ありがとうございます";
+    btn.disabled=true;
+    consent.checked=false;consent.disabled=true;
+    statusEl.hidden=false;statusEl.textContent="共有済みです。回答が変わったら、いつでもここに戻ってきてください。";
+    statusEl.classList.remove('err');
+  }else{
+    btn.textContent="五つの内省をすべて共有する";
+    btn.disabled=!consent.checked;
+    consent.disabled=false;
+    statusEl.hidden=true;
+  }
+}
+function ryrShareCheckpoint(){
+  ryrShareUIRefresh();
+  var allDone=Object.keys(ryrGetProgress()).length>=5;
+  var alreadyPrompted=false;
+  try{alreadyPrompted=!!localStorage.getItem('ryr_share_prompted');}catch(e){}
+  if(allDone&&!alreadyPrompted)ryrShareModalShow();
 }
 function ryrRenderChart(slotId){
   var progress=ryrGetProgress();
@@ -1047,6 +1123,7 @@ function showPicker(){
   picker.style.display='flex';
   picker.style.opacity='1';
   ryrRenderChart('ryr-picker-chart-slot');
+  ryrShareUIRefresh();
 }
 function hidePicker(){
   var picker=document.getElementById('ryr-picker-screen');
@@ -1098,15 +1175,10 @@ function showResult(){
   ref.paras.forEach(function(p){var el=document.createElement('p');el.textContent=p;re.appendChild(el);});
   document.getElementById('ryr-closing-q').textContent=ref.closing;
   document.getElementById('ryr-phase-text').textContent=ref.phase;
-  lastRef=ref;
   ryrSetProgress(curRhythm,ref.phaseLabel);
+  ryrSetAllAnswers(curRhythm,ans);
   ryrRenderChart('ryr-chart-svg-slot');
-  var shareBtn=document.getElementById('ryr-share-btn');
-  var shareConsent=document.getElementById('ryr-share-consent');
-  var shareStatus=document.getElementById('ryr-share-status');
-  shareConsent.checked=false;shareConsent.disabled=false;
-  shareBtn.disabled=true;shareBtn.textContent="この内省を共有する";
-  shareStatus.hidden=true;shareStatus.textContent='';shareStatus.classList.remove('err');
+  ryrShareCheckpoint();
   window.scrollTo({top:0,behavior:'auto'});
 }
 document.getElementById('ryr-pick-water').addEventListener('click',function(){startRhythm('water');});
@@ -1141,34 +1213,41 @@ document.getElementById('ryr-share-consent').addEventListener('change',function(
 document.getElementById('ryr-share-btn').addEventListener('click',function(){
   var btn=this;
   var consent=document.getElementById('ryr-share-consent');
-  if(!consent.checked||!lastRef)return;
+  if(!consent.checked)return;
   var statusEl=document.getElementById('ryr-share-status');
   btn.disabled=true;consent.disabled=true;
   btn.textContent="送信中…";
+  var allAnswers=ryrGetAllAnswers();
+  var progress=ryrGetProgress();
   var fd=new FormData();
-  fd.append('_subject','Aquatic Rhythm — Rhythm Tracker reflection data');
-  fd.append('rhythm',RHYTHMS[curRhythm].name);
-  fd.append('phase',lastRef.phaseLabel);
-  fd.append('answers',JSON.stringify(ans));
+  fd.append('_subject','Aquatic Rhythm — Rhythm Tracker reflection data (all five rhythms)');
+  fd.append('phases',JSON.stringify(progress));
+  fd.append('answers',JSON.stringify(allAnswers));
   fd.append('lang',document.documentElement.lang);
   fd.append('respondent_id',ryrRespondentId());
   fetch(RYR_FORMSPREE_ENDPOINT,{method:'POST',body:fd,headers:{Accept:'application/json'}})
     .then(function(res){
       if(res.ok){
-        statusEl.textContent="ありがとうございます。今後どのような質問をすべきかを考えるうえで役立ちます。";
-        statusEl.hidden=false;statusEl.classList.remove('err');
-        btn.textContent="送信済み";
+        try{localStorage.setItem('ryr_share_sent_hash',JSON.stringify(allAnswers));}catch(e){}
+        ryrShareModalDismiss();
+        ryrShareUIRefresh();
       }else{
         statusEl.textContent="送信できませんでした。接続を確認してもう一度お試しください。";
         statusEl.hidden=false;statusEl.classList.add('err');
-        btn.textContent="この内省を共有する";btn.disabled=false;consent.disabled=false;
+        btn.textContent="五つの内省をすべて共有する";btn.disabled=false;consent.disabled=false;
       }
     })
     .catch(function(){
       statusEl.textContent="送信できませんでした。接続を確認してもう一度お試しください。";
       statusEl.hidden=false;statusEl.classList.add('err');
-      btn.textContent="この内省を共有する";btn.disabled=false;consent.disabled=false;
+      btn.textContent="五つの内省をすべて共有する";btn.disabled=false;consent.disabled=false;
     });
+});
+document.getElementById('ryr-share-dismiss').addEventListener('click',function(){
+  ryrShareModalDismiss();
+});
+document.getElementById('ryr-share-backdrop').addEventListener('click',function(){
+  ryrShareModalDismiss();
 });
 </script>
 

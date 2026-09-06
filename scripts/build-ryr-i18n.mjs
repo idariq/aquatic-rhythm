@@ -503,18 +503,24 @@ for (const lang of targetLangs) {
   h = replaceOnce(h, /(data-cta="water_rhythm_to_five_rhythms">)Read about all five rhythms →(<\/a>)/, (_, a, b) => `${a}${t.chrome.ctaFiveRhythms}${b}`);
   h = replaceOnce(h, /(<a href="\/tools" class="ryr-link-reading">)← Back to Labs &amp; Tools(<\/a>)/, (_, a, b) => `${a}${t.chrome.ctaBackToTools}${b}`);
 
-  // 11b. Share/consent block (opt-in reflection data — Formspree). Button
-  // text has 3 states set only via JS at runtime (initial/sending/sent),
-  // and the reset-on-restart line in showResult() also writes the initial
-  // state — same "static swap isn't enough" class of bug as nextBtn/
-  // resultEyebrowSuffix above, so every JS string literal is patched too.
+  // 11b. Share/consent block (opt-in reflection data for all five rhythms —
+  // Formspree). Lives at the bottom of the picker screen (not the result
+  // screen — moved there so it prompts once, after all five are done,
+  // rather than once per rhythm; see #ryr-share/#ryr-share-backdrop and
+  // ryrShareUIRefresh()/ryrShareCheckpoint()). Button/status text has
+  // several states set only via JS at runtime (initial/sending/sent/
+  // already-shared/error) — same "static swap isn't enough" class of bug
+  // as nextBtn/resultEyebrowSuffix above, so every JS string literal is
+  // patched too.
+  h = replaceOnce(h, /(<p class="ryr-share-congrats" id="ryr-share-congrats">)[^<]*(<\/p>)/, (_, a, b) => `${a}${t.chrome.shareCongrats}${b}`);
   h = replaceOnce(h, /(<p class="ryr-share-text" id="ryr-share-text">)[^<]*(<\/p>)/, (_, a, b) => `${a}${t.chrome.shareText}${b}`);
   h = replaceOnce(h, /(<span id="ryr-share-consent-label">)[^<]*(<\/span>)/, (_, a, b) => `${a}${t.chrome.shareConsentLabel}${b}`);
   h = replaceOnce(h, /(<button class="ryr-share-btn" id="ryr-share-btn" disabled>)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.shareBtn}${b}`);
-  h = h.replace(/textContent='Share this reflection'/g, () => `textContent=${JSON.stringify(t.chrome.shareBtn)}`);
+  h = replaceOnce(h, /(<button type="button" class="ryr-share-dismiss" id="ryr-share-dismiss">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.shareDismissBtn}${b}`);
+  h = h.replace(/textContent='Share all five reflections'/g, () => `textContent=${JSON.stringify(t.chrome.shareBtn)}`);
   h = h.replace("btn.textContent='Sending…';", `btn.textContent=${JSON.stringify(t.chrome.shareBtnSending)};`);
-  h = h.replace("btn.textContent='Shared';", `btn.textContent=${JSON.stringify(t.chrome.shareBtnSent)};`);
-  h = h.replace("statusEl.textContent='Thank you — this helps shape what gets asked next.';",
+  h = h.replace("btn.textContent='Sent — thank you';", `btn.textContent=${JSON.stringify(t.chrome.shareBtnSent)};`);
+  h = h.replace("statusEl.textContent='Already shared. Come back here anytime if your answers change.';",
     `statusEl.textContent=${JSON.stringify(t.chrome.shareSuccessMsg)};`);
   h = h.replace(/statusEl\.textContent='Couldn\\'t send that — check your connection and try again\.';/g,
     () => `statusEl.textContent=${JSON.stringify(t.chrome.shareErrorMsg)};`);

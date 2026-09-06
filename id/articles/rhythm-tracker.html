@@ -165,6 +165,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 .ryr-btn-restart:hover{color:var(--th-accent);border-color:var(--th-accent)}
 .ryr-link-reading{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;font-family:var(--sans);transition:color .25s}
 .ryr-link-reading:hover{color:var(--th-ink-2)}
+.ryr-btn-link{background:none;border:none;padding:0;cursor:pointer}
 @media(max-width:600px){.ryr-opt-desc{display:none}}
 
 /* Lab page: drop the site bottom nav + Rhyssa fab so they don't overlap
@@ -311,6 +312,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       </div>
       <p class="ryr-note-end">Refleksi ini hanya mencakup satu ritme. Sebuah akuarium bisa berada di fase berbeda pada tiap-tiap dari lima ritmenya — ini bukan gambaran penuh, hanya satu bagian jujur darinya.</p>
       <div class="ryr-actions">
+        <button type="button" class="ryr-link-reading ryr-btn-link" id="ryr-btn-to-picker">← Pilih ritme lain</button>
         <button class="ryr-btn-restart" id="ryr-btn-restart">Baca lagi</button>
         <a href="/id/articles/ara-s2-five-rhythms" class="ryr-link-reading" data-analytics-event="cta_rhythm_next_action" data-cta="water_rhythm_to_five_rhythms">Baca tentang kelima ritme →</a>
         <a href="/tools" class="ryr-link-reading">← Kembali ke Laboratorium & Alat</a>
@@ -1141,7 +1143,31 @@ function startRhythm(key){
   hideIntro();
   hidePicker();
   showQ(0);
+  ryrArmHistoryGuard();
 }
+// Phone/browser back button used to leave the tool entirely once inside a
+// rhythm's questions or its result — no history entry existed to step back
+// through, since every screen here is just a div toggled with JS, not a
+// real navigation. This arms exactly one history entry per rhythm attempt
+// so the first back press (hardware or the in-app "back" controls, via
+// ryrReturnToPicker below) returns to the picker screen instead of exiting;
+// a second press from the picker itself (unguarded) leaves the page as
+// normal. Re-arms on demand next time startRhythm() runs.
+var ryrHistoryArmed=false;
+function ryrArmHistoryGuard(){
+  if(ryrHistoryArmed)return;
+  ryrHistoryArmed=true;
+  history.pushState({ryrGuard:true},'',location.href);
+}
+function ryrReturnToPicker(){
+  if(ryrHistoryArmed){history.back();}else{showPicker();}
+}
+window.addEventListener('popstate',function(){
+  if(ryrHistoryArmed){
+    ryrHistoryArmed=false;
+    showPicker();
+  }
+});
 function showQ(i){
   document.getElementById('ryr-screen').style.display='block';
   document.getElementById('ryr-result').style.display='none';
@@ -1166,7 +1192,12 @@ function showQ(i){
   var nb=document.getElementById('ryr-btn-next');
   nb.classList.toggle('active',!!ans[q.id]);
   nb.textContent=i<Q.length-1?"Lanjut →":"Lihat refleksi →";
-  document.getElementById('ryr-btn-back').style.visibility=i===0?'hidden':'visible';
+  // Was hidden on Q1 (nothing to step back to within the same rhythm) —
+  // but that left the click handler's "curQ===0 -> picker" branch
+  // permanently unreachable by click/tap, since a visibility:hidden
+  // element takes no clicks. Now that "back" from Q1 has a real
+  // destination (the picker screen), keep it visible at every question.
+  document.getElementById('ryr-btn-back').style.visibility='visible';
   window.scrollTo({top:0,behavior:'auto'});
 }
 function showResult(){
@@ -1196,10 +1227,13 @@ document.getElementById('ryr-btn-next').addEventListener('click',function(){
   if(curQ<Q.length-1)showQ(curQ+1);else showResult();
 });
 document.getElementById('ryr-btn-back').addEventListener('click',function(){
-  if(curQ>0)showQ(curQ-1);else showPicker();
+  if(curQ>0)showQ(curQ-1);else ryrReturnToPicker();
 });
 document.getElementById('ryr-btn-restart').addEventListener('click',function(){
-  ans={};showPicker();
+  ans={};ryrReturnToPicker();
+});
+document.getElementById('ryr-btn-to-picker').addEventListener('click',function(){
+  ryrReturnToPicker();
 });
 document.getElementById('ryr-begin-btn').addEventListener('click',function(){
   hideIntro();

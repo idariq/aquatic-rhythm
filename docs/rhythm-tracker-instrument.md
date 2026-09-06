@@ -1027,14 +1027,39 @@ already uses (`env.ALLOWED_ORIGIN` check, `Origin` must equal
 `https://aquaticrhythm.com`; `/id/` and `/ja/` pages are the same origin,
 just a different path, so no per-language CORS handling is needed).
 
-The `/forms/*` path is not arbitrary: `docs/waf-github-pages.md` §4 already
+The `/forms/*` path was chosen because `docs/waf-github-pages.md` §4
 documents a rate-limiting rule **template** for exactly this shape of
 endpoint (`/api/contact`, `/forms/*`, `/subscribe` — `>10 req/min/IP`,
-Managed Challenge) with its own note that it is "prepared, not yet
-activated — activate when the endpoint is published." Landing on `/forms/*`
-means that rule ships by *activating* a decision already made, not by
-inventing a new one — found by reading that doc rather than assuming a rule
-would need to be designed from scratch.
+Managed Challenge). **Corrected 2026-09-06, checked against the account's
+actual dashboard**: that rule cannot be activated without a plan upgrade —
+Security → WAF → Rate limiting rules shows `1/1 rules`, and the one slot is
+already held by the `/chat` rule, with a locked "Upgrade plan" button on
+anything further. This does not block the plan; it changes what "abuse
+handling" means for this endpoint, and on inspection the WAF rule was never
+actually load-bearing here the way it is for `/chat`.
+
+**Why `/chat`'s WAF rule is load-bearing and this endpoint's would only be
+nice-to-have.** The WAF doc's own text marks `/chat`'s rule "WAJIB, bukan
+opsional" for one specific reason: `/chat` calls a *paid* upstream (the
+Anthropic API), so a request spread across edge colos — which the in-Worker
+limiter's per-isolate memory can't see — has a real cost per hit that
+compounds while it's unblocked. `/forms/rhythm-tracker` calls nothing paid;
+it writes one row to D1, which has a generous free tier. The worst case of
+an attacker spread across colos is junk rows in an early-stage exploratory
+dataset (S7's own framing), not a runaway bill. The WAF doc's own §4 already
+places `/api/contact`/`/forms/*`/`/subscribe` in a separate, lower-urgency
+bucket from `/chat` — this was true before the plan limit was discovered, it
+just wasn't load-bearing to notice until the account's actual rule quota did.
+
+**Revised abuse-handling stack, none of it gated by the rate-limiting rule
+quota**: the in-Worker limiter alone (adequate given no paid-API exposure,
+per the reasoning above) + **Cloudflare Turnstile** (a separate free
+Cloudflare product, not counted against the WAF "Rate limiting rules" quota
+shown as full) on the share/consent step + **Bot Fight Mode** (WAF doc §3 —
+typically free on the same plan, a different feature from the paid-tier
+rate-limiting rules) + the honeypot field below. Together these cover the
+same failure mode (scripted spam floods) the WAF rule would have, without
+needing a plan upgrade.
 
 **No IP or identifying metadata persisted.** This is a decision, not an
 oversight: S6 states plainly "No name, email, IP-linked identifier... is
@@ -1081,12 +1106,16 @@ received-date was already the fallback for identifying pre-v1.1 submissions
 misreport is a genuine improvement, not just parity.
 
 **Abuse handling**, reusing patterns already in this codebase rather than
-inventing new ones: the `/chat` in-memory rate-limiter
+inventing new ones, and — per the correction above — not depending on the
+WAF rate-limiting rule quota: the `/chat` in-memory rate-limiter
 (`isRateLimited`/`rateLimitHits`), tuned lower since this is a free form
-endpoint, not a paid-API call it protects; a honeypot field, mirroring
-`share-photos.html`'s `_gotcha` pattern (new for Rhythm Tracker — it has none
-today); and payload validation with length caps, mirroring
-`sanitizeTankContext`'s existing approach of stripping unexpected fields.
+endpoint, not a paid-API call it protects; **Cloudflare Turnstile**, verified
+server-side in the new handler before any D1 write (a free product,
+independent of the WAF rate-limiting quota); **Bot Fight Mode** at the
+account level (WAF doc §3); a honeypot field, mirroring `share-photos.html`'s
+`_gotcha` pattern (new for Rhythm Tracker — it has none today); and payload
+validation with length caps, mirroring `sanitizeTankContext`'s existing
+approach of stripping unexpected fields.
 
 **Response contract:** `{ok:true}` on success, `{error:'...'}` on failure —
 the client's existing status-message logic (`Sending…` / `Sent — thank you` /
@@ -1099,15 +1128,20 @@ matching `/chat`'s convention), not its UI.
   provisions the database once; see S12.4).
 - `worker/schema.sql` (new) — the table above.
 - `worker/index.js` — new `url.pathname === '/forms/rhythm-tracker'` branch
-  and handler, alongside the existing `/health` and `/chat` ones.
+  and handler (Turnstile verification, honeypot check, payload validation,
+  then the D1 insert), alongside the existing `/health` and `/chat` ones.
 - `articles/rhythm-tracker.html` — swap `RYR_FORMSPREE_ENDPOINT` for the new
-  Worker URL; encode the payload as JSON instead of `FormData`.
+  Worker URL; encode the payload as JSON instead of `FormData`; add the
+  Turnstile widget + honeypot field to the share/consent markup.
 - `.github/workflows/deploy-worker.yml` — add a `wrangler d1 migrations
   apply --remote` step, so future schema changes ship through the same
   PR → merge → auto-deploy path as everything else in this repo, rather than
   becoming a manual side-channel step.
-- `docs/waf-github-pages.md` §4 — mark the `/forms/*` rule as activated/live,
-  matching how `/chat`'s rule note already reads "sudah live."
+- `docs/waf-github-pages.md` §4 — **no change needed**, per the correction
+  above: the `/forms/*` template stays exactly as documented (prepared, not
+  activated) for whenever a form endpoint's risk profile actually needs it.
+  Worth a note there that Rhythm Tracker deliberately did not draw on it and
+  why, so a future reader doesn't wonder whether it was forgotten.
 - **This document, S6** — the consent text quoted there says *"It goes
   through Formspree, a third-party form service."* That sentence becomes
   false the moment this ships and is respondent-facing copy people actually
@@ -1125,8 +1159,14 @@ access this session doesn't have:
 2. **Confirm `CLOUDFLARE_API_TOKEN`** (already used by
    `deploy-worker.yml`) has D1 edit permission — may need its scope widened
    in the Cloudflare dashboard where the token was issued.
-3. **Activate the `/forms/*` WAF rate-limiting rule** (§4 of the WAF doc) in
-   the Cloudflare dashboard — a UI action, not something in git.
+3. **Create a Turnstile site key** (Cloudflare dashboard → Turnstile —
+   confirmed 2026-09-06 to be a separate free product from the WAF "Rate
+   limiting rules" quota, which this account has already spent its one slot
+   on for `/chat`) and hand me the site key + secret key (the secret goes
+   in via `wrangler secret put`, same mechanism already used for
+   `ANTHROPIC_API_KEY`). Confirm **Bot Fight Mode** (WAF doc §3) is turned
+   on while there — also account-level, also not gated by the rate-limiting
+   rule quota that's full.
 4. **Decide on historical Formspree data** — export existing submissions
    from the Formspree dashboard (CSV; only the owner can reach it) if a
    unified dataset is wanted. I can turn that export into a `wrangler d1

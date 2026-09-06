@@ -5,6 +5,17 @@ compatibility_date = "2024-01-01"
 [vars]
 ALLOWED_ORIGIN = "https://aquaticrhythm.com"
 
+# Rhythm Tracker data pipeline (docs/rhythm-tracker-instrument.md §S12) —
+# replaces Formspree. Binding name is explicit rather than a generic "DB"
+# since a second database is plausible later (e.g. share-photos.html, if
+# that migration ever happens too — see §S12.1's note on why it's separate).
+[[d1_databases]]
+binding = "RHYTHM_TRACKER_DB"
+database_name = "aquatic-rhythm-rhythm-tracker"
+database_id = "229d9ab5-dd47-407e-8595-6373a0715fb3"
+
 # Deploy: wrangler deploy
 # Set API key: wrangler secret put ANTHROPIC_API_KEY
+# Set Turnstile secret: wrangler secret put TURNSTILE_SECRET_KEY
+# Apply D1 schema: wrangler d1 execute aquatic-rhythm-rhythm-tracker --remote --file=schema.sql
 # Route: wrangler routes add "api.aquaticrhythm.com/*" aquatic-rhythm-rhyssa

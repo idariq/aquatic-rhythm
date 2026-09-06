@@ -177,7 +177,32 @@ Rough thresholds, meant as prompts to look closer rather than as rules:
 
 ## S10: Status
 
-**Not yet run.** When it is, record here: dates, how many participants, how they
-were recruited, and where the raw notes live. If it is decided not to run it,
-record that decision and the reason — the same standard this protocol asks of
-its own findings.
+**Not run. Deferred by the owner, 2026-09-06, for capacity reasons.**
+
+Recorded here rather than left silent, because this protocol asks the same of
+its own findings: an unrecorded decision not to act is indistinguishable from an
+oversight later.
+
+**What deferring costs, stated plainly.** Every other gap found in this
+instrument was fixable going forward — version stamps, missing-data coding,
+covariates, outcome items were all added in v1.1–v1.4 and improved the data from
+that point on. This one is different: if respondents systematically misread an
+item, their answers are answers to a different question, and no later analysis
+recovers that. Data collected from now on carries that risk, and the risk grows
+with the amount collected.
+
+**What that does not mean.** It does not invalidate the data, and it does not
+block the exploratory use the instrument is for (instrument record, S10 purpose
+note). It is a limitation of the same kind as the others already recorded in S7
+of that document — it belongs in any write-up, alongside self-report and
+self-selection.
+
+**If capacity appears later, the cheapest useful version** is three English
+participants covering the eight items in S5, plus the consent comprehension
+check. Two afternoons. The consent check in particular has an ethical rather
+than methodological character, since data is being collected under that consent
+now, and it is a single question that can be asked of two or three people in ten
+minutes each. A language strategy for id/ja was discussed and is not yet written
+into S2 — those translations have never been read by a native speaker outside
+this repo, and PR #512 is a documented instance of that exact gap producing
+published errors that structural checks passed.

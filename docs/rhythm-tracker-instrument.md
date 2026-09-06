@@ -327,6 +327,22 @@ off: an unchecked checkbox plus a separate send button. There is no auto-submit.
 Dismissal ("Maybe later") leaves the option available at the bottom of the
 picker screen indefinitely.
 
+**Updated 2026-09-06 — tank-context fields moved ahead of the consent
+trigger.** `tank_volume`/`tank_age`/`temp_swing`/`stocking_change`/
+`life_change`/`outcome_slip`/`outcome_intervention`/`care_intent` used to
+sit inside the share modal itself (asked only once all five rhythms were
+done, right above the consent checkbox). They now sit on the picker screen,
+ahead of the rhythm cards — visible to every visitor, not only those who
+reach the share step. The owner's reasoning: a keeper with more than one
+tank had no cue that all five rhythms should be answered about the *same*
+tank, and answering that cue upfront (rather than being told about it only
+after finishing) is what actually fixes the ambiguity. Still fully optional,
+still unscored, and — this is the part that could easily have drifted
+without saying so — **still not transmitted anywhere until the respondent
+separately opts in and sends at the end**: moving the fields earlier in the
+screen flow did not move *when* the data leaves the browser. The consent
+trigger condition above (all five rhythms complete) is unchanged.
+
 ### Participant-facing text (verbatim, v1, EN — see the note below for what changed)
 
 > All five rhythms, read.

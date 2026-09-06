@@ -257,6 +257,96 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
         <div id="ryr-picker-chart-slot"></div>
         <p class="ryr-chart-hint" id="ryr-picker-chart-hint">Ketuk salah satu ritme yang masih kosong untuk mulai memeriksanya juga — tidak ada urutan yang harus diikuti di sini.</p>
       </div>
+      <span class="ryr-picker-label" id="ryr-tank-context-label">Tentang akuarium yang Anda refleksikan (opsional)</span>
+      <p class="ryr-share-cov-note" id="ryr-share-cov-note">Langsung lewati saja ke pemilihan ritme di bawah kalau Anda mau — semua ini tidak wajib. Kalau Anda punya lebih dari satu akuarium, mengisi ini membantu memastikan kelima ritme yang akan Anda baca memang tentang akuarium yang sama. Tidak ada yang dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti.</p>
+      <div class="ryr-share-cov">
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-volume-label">Volume akuarium</span>
+          <select class="ryr-cov-select" id="ryr-cov-volume" data-field="tank_volume">
+            <option value="">—</option>
+            <option value="lt20">&lt; 20 L</option>
+            <option value="20-60">20–60 L</option>
+            <option value="60-120">60–120 L</option>
+            <option value="120-250">120–250 L</option>
+            <option value="250-500">250–500 L</option>
+            <option value="gt500">&gt; 500 L</option>
+          </select>
+        </label>
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-age-label">Sudah berapa lama berjalan</span>
+          <select class="ryr-cov-select" id="ryr-cov-age" data-field="tank_age">
+            <option value="">—</option>
+            <option value="lt1m">< 1 bulan</option>
+            <option value="1-3m">1–3 bulan</option>
+            <option value="3-6m">3–6 bulan</option>
+            <option value="6-12m">6–12 bulan</option>
+            <option value="1-3y">1–3 tahun</option>
+            <option value="gt3y">> 3 tahun</option>
+          </select>
+        </label>
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-tempswing-label">Seberapa banyak suhu sebenarnya berubah</span>
+          <select class="ryr-cov-select" id="ryr-cov-tempswing" data-field="temp_swing">
+            <option value="">—</option>
+            <option value="temp-barely">Nyaris tidak berubah, sejauh yang saya tahu</option>
+            <option value="temp-mild">Sedikit berubah, tapi tidak drastis</option>
+            <option value="temp-noticeable">Berubah-ubah dalam jumlah yang cukup terasa</option>
+            <option value="temp-unsure">Saya sungguh tidak tahu</option>
+          </select>
+        </label>
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-stocking-label">Bagaimana isi tebaran berubah</span>
+          <select class="ryr-cov-select" id="ryr-cov-stocking" data-field="stocking_change">
+            <option value="">—</option>
+            <option value="stock-same">Sama seperti rencana, atau diubah dengan sengaja</option>
+            <option value="stock-grew-aware">Bertambah seiring waktu, dan saya menyadarinya</option>
+            <option value="stock-grew-unnoticed">Bertambah lebih banyak daripada yang saya kira</option>
+            <option value="stock-reduced">Sudah dikurangi</option>
+            <option value="stock-too-new">Terlalu baru untuk ditanyakan</option>
+          </select>
+        </label>
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-life-label">Ada yang mengganggu ritme Anda sekarang</span>
+          <select class="ryr-cov-select" id="ryr-cov-life" data-field="life_change">
+            <option value="">—</option>
+            <option value="life-none">Tidak — ini periode yang normal</option>
+            <option value="life-short">Gangguan singkat (beberapa hari sampai dua minggu)</option>
+            <option value="life-extended">Gangguan panjang (berminggu sampai berbulan)</option>
+            <option value="life-permanent">Waktu yang saya punya sudah berubah untuk seterusnya</option>
+          </select>
+        </label>
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-slip-label">Saat perawatan sempat kendur</span>
+          <select class="ryr-cov-select" id="ryr-cov-slip" data-field="outcome_slip">
+            <option value="">—</option>
+            <option value="slip-held">Tidak banyak berubah — akuariumnya bertahan</option>
+            <option value="slip-settled">Ada perubahan kecil yang mereda sendiri</option>
+            <option value="slip-needed-help">Saya harus turun tangan memulihkannya</option>
+            <option value="slip-not-yet">Perawatan belum pernah kendur, jadi saya belum tahu</option>
+          </select>
+        </label>
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-intervene-label">Turun tangan membenahi sesuatu, bulan lalu</span>
+          <select class="ryr-cov-select" id="ryr-cov-intervene" data-field="outcome_intervention">
+            <option value="">—</option>
+            <option value="int-none">Tidak sekali pun — berjalan sendiri</option>
+            <option value="int-once">Sekali</option>
+            <option value="int-few">Beberapa kali</option>
+            <option value="int-most-weeks">Hampir tiap minggu</option>
+            <option value="int-too-new">Terlalu baru untuk dinilai</option>
+          </select>
+        </label>
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-intent-label">Apakah ini ritme yang Anda niatkan</span>
+          <select class="ryr-cov-select" id="ryr-cov-intent" data-field="care_intent">
+            <option value="">—</option>
+            <option value="intent-chosen">Ya — ini ritme yang saya pilih</option>
+            <option value="intent-drifted">Sebagian besar, meski sudah bergeser</option>
+            <option value="intent-circumstances">Tidak — keadaan yang mendorongnya begitu</option>
+            <option value="intent-intensive">Ini memang fase intensif yang disengaja</option>
+          </select>
+        </label>
+      </div>
       <span class="ryr-picker-label">Pilih ritme untuk dibaca</span>
       <div class="ryr-picker">
         <button type="button" class="ryr-rcard" id="ryr-pick-water">
@@ -284,95 +374,6 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
         <p class="ryr-share-congrats" id="ryr-share-congrats">Kelima ritme, sudah dibaca.</p>
         <p class="ryr-share-text" id="ryr-share-text">Itu perlukan perhatian sungguh-sungguh. Terima kasih sudah bertahan sampai selesai. Kalau Anda berkenan, berbagi apa yang Anda temukan di sini — jawaban Anda dan hasil fase di atas — membantu riset ARA maju, dan membantu alat ini bertanya lebih baik lagi untuk siapa pun yang membaca setelah ini.</p>
         <p class="ryr-share-detail" id="ryr-share-detail">Data dikirim langsung ke server kami sendiri — tanpa pihak ketiga di antaranya — tanpa apa pun yang lain: tanpa nama, tanpa email, hanya kode acak agar kelima jawaban Anda bisa dibaca sebagai satu kesatuan. Ini masih langkah awal yang jujur — bukan kumpulan data formal, dan bukan bukti apa pun. Yang ingin dibangun dari sini adalah gambaran awal yang nyata sebagai dasar penelitian formal nanti, dan temuan yang sudah dirangkum bisa saja dipublikasikan atau dibagikan secara terbuka sebagai bagian dari itu. Tidak ada yang bisa mengidentifikasi Anda ikut terkirim. Kode Anda muncul di sini setelah pengiriman: simpan saja, dan kalau sewaktu-waktu Anda berubah pikiran, kirim pesan ke hello@aquaticrhythm.com dan jawaban Anda akan kami hapus.</p>
-        <p class="ryr-share-cov-note" id="ryr-share-cov-note">Semua opsional, dan tidak satu pun mengubah refleksi di atas. Ini ada supaya jawaban bisa dikelompokkan dan dibandingkan nanti — hasil pada minggu keenam dan hasil pada tahun ketiga berarti hal yang berbeda, dan apa yang dilakukan akuariumnya sendiri justru bagian yang belum pernah ditanyakan alat ini.</p>
-        <div class="ryr-share-cov">
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-volume-label">Volume akuarium</span>
-            <select class="ryr-cov-select" id="ryr-cov-volume" data-field="tank_volume">
-              <option value="">—</option>
-              <option value="lt20">&lt; 20 L</option>
-              <option value="20-60">20–60 L</option>
-              <option value="60-120">60–120 L</option>
-              <option value="120-250">120–250 L</option>
-              <option value="250-500">250–500 L</option>
-              <option value="gt500">&gt; 500 L</option>
-            </select>
-          </label>
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-age-label">Sudah berapa lama berjalan</span>
-            <select class="ryr-cov-select" id="ryr-cov-age" data-field="tank_age">
-              <option value="">—</option>
-              <option value="lt1m">< 1 bulan</option>
-              <option value="1-3m">1–3 bulan</option>
-              <option value="3-6m">3–6 bulan</option>
-              <option value="6-12m">6–12 bulan</option>
-              <option value="1-3y">1–3 tahun</option>
-              <option value="gt3y">> 3 tahun</option>
-            </select>
-          </label>
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-tempswing-label">Seberapa banyak suhu sebenarnya berubah</span>
-            <select class="ryr-cov-select" id="ryr-cov-tempswing" data-field="temp_swing">
-              <option value="">—</option>
-              <option value="temp-barely">Nyaris tidak berubah, sejauh yang saya tahu</option>
-              <option value="temp-mild">Sedikit berubah, tapi tidak drastis</option>
-              <option value="temp-noticeable">Berubah-ubah dalam jumlah yang cukup terasa</option>
-              <option value="temp-unsure">Saya sungguh tidak tahu</option>
-            </select>
-          </label>
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-stocking-label">Bagaimana isi tebaran berubah</span>
-            <select class="ryr-cov-select" id="ryr-cov-stocking" data-field="stocking_change">
-              <option value="">—</option>
-              <option value="stock-same">Sama seperti rencana, atau diubah dengan sengaja</option>
-              <option value="stock-grew-aware">Bertambah seiring waktu, dan saya menyadarinya</option>
-              <option value="stock-grew-unnoticed">Bertambah lebih banyak daripada yang saya kira</option>
-              <option value="stock-reduced">Sudah dikurangi</option>
-              <option value="stock-too-new">Terlalu baru untuk ditanyakan</option>
-            </select>
-          </label>
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-life-label">Ada yang mengganggu ritme Anda sekarang</span>
-            <select class="ryr-cov-select" id="ryr-cov-life" data-field="life_change">
-              <option value="">—</option>
-              <option value="life-none">Tidak — ini periode yang normal</option>
-              <option value="life-short">Gangguan singkat (beberapa hari sampai dua minggu)</option>
-              <option value="life-extended">Gangguan panjang (berminggu sampai berbulan)</option>
-              <option value="life-permanent">Waktu yang saya punya sudah berubah untuk seterusnya</option>
-            </select>
-          </label>
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-slip-label">Saat perawatan sempat kendur</span>
-            <select class="ryr-cov-select" id="ryr-cov-slip" data-field="outcome_slip">
-              <option value="">—</option>
-              <option value="slip-held">Tidak banyak berubah — akuariumnya bertahan</option>
-              <option value="slip-settled">Ada perubahan kecil yang mereda sendiri</option>
-              <option value="slip-needed-help">Saya harus turun tangan memulihkannya</option>
-              <option value="slip-not-yet">Perawatan belum pernah kendur, jadi saya belum tahu</option>
-            </select>
-          </label>
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-intervene-label">Turun tangan membenahi sesuatu, bulan lalu</span>
-            <select class="ryr-cov-select" id="ryr-cov-intervene" data-field="outcome_intervention">
-              <option value="">—</option>
-              <option value="int-none">Tidak sekali pun — berjalan sendiri</option>
-              <option value="int-once">Sekali</option>
-              <option value="int-few">Beberapa kali</option>
-              <option value="int-most-weeks">Hampir tiap minggu</option>
-              <option value="int-too-new">Terlalu baru untuk dinilai</option>
-            </select>
-          </label>
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-intent-label">Apakah ini ritme yang Anda niatkan</span>
-            <select class="ryr-cov-select" id="ryr-cov-intent" data-field="care_intent">
-              <option value="">—</option>
-              <option value="intent-chosen">Ya — ini ritme yang saya pilih</option>
-              <option value="intent-drifted">Sebagian besar, meski sudah bergeser</option>
-              <option value="intent-circumstances">Tidak — keadaan yang mendorongnya begitu</option>
-              <option value="intent-intensive">Ini memang fase intensif yang disengaja</option>
-            </select>
-          </label>
-        </div>
         <label class="ryr-share-check">
           <input type="checkbox" id="ryr-share-consent">
           <span id="ryr-share-consent-label">Saya ingin membagikan jawaban dan hasil fase saya secara anonim untuk tujuan ini.</span>

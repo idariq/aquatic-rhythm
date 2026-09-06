@@ -259,6 +259,96 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
         <div id="ryr-picker-chart-slot"></div>
         <p class="ryr-chart-hint" id="ryr-picker-chart-hint">空いているリズムをタップすると、そのまま確認を始められます。どこから始めても構いません。</p>
       </div>
+      <span class="ryr-picker-label" id="ryr-tank-context-label">振り返る水槽について（任意）</span>
+      <p class="ryr-share-cov-note" id="ryr-share-cov-note">そのまま下のリズム選択に進んでいただいても構いません。ここはすべて任意です。もし水槽を複数お持ちの場合、ここに記入しておくと、これから読む五つのリズムが同じ水槽についてのものだと確認しやすくなります。ここでの内容は、後で内省を共有することを選ばない限り、どこにも送信されません。</p>
+      <div class="ryr-share-cov">
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-volume-label">水槽の容量</span>
+          <select class="ryr-cov-select" id="ryr-cov-volume" data-field="tank_volume">
+            <option value="">—</option>
+            <option value="lt20">&lt; 20 L</option>
+            <option value="20-60">20–60 L</option>
+            <option value="60-120">60–120 L</option>
+            <option value="120-250">120–250 L</option>
+            <option value="250-500">250–500 L</option>
+            <option value="gt500">&gt; 500 L</option>
+          </select>
+        </label>
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-age-label">稼働してからの期間</span>
+          <select class="ryr-cov-select" id="ryr-cov-age" data-field="tank_age">
+            <option value="">—</option>
+            <option value="lt1m">1か月未満</option>
+            <option value="1-3m">1〜3か月</option>
+            <option value="3-6m">3〜6か月</option>
+            <option value="6-12m">6〜12か月</option>
+            <option value="1-3y">1〜3年</option>
+            <option value="gt3y">3年以上</option>
+          </select>
+        </label>
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-tempswing-label">実際どのくらい温度が変動するか</span>
+          <select class="ryr-cov-select" id="ryr-cov-tempswing" data-field="temp_swing">
+            <option value="">—</option>
+            <option value="temp-barely">ほとんど変わらないと感じている</option>
+            <option value="temp-mild">少し変わるが、大きくはない</option>
+            <option value="temp-noticeable">かなりの幅で変動している</option>
+            <option value="temp-unsure">正直、分かりません</option>
+          </select>
+        </label>
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-stocking-label">生体の数の変化</span>
+          <select class="ryr-cov-select" id="ryr-cov-stocking" data-field="stocking_change">
+            <option value="">—</option>
+            <option value="stock-same">計画どおり、または意図して変えました</option>
+            <option value="stock-grew-aware">少しずつ増えていて、それは分かっています</option>
+            <option value="stock-grew-unnoticed">思っていたより増えていました</option>
+            <option value="stock-reduced">減らしました</option>
+            <option value="stock-too-new">新しすぎて当てはまりません</option>
+          </select>
+        </label>
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-life-label">今、リズムを乱しているもの</span>
+          <select class="ryr-cov-select" id="ryr-cov-life" data-field="life_change">
+            <option value="">—</option>
+            <option value="life-none">いいえ。いつもどおりの時期です</option>
+            <option value="life-short">短期間の中断（数日から2週間ほど）</option>
+            <option value="life-extended">長めの中断（数週間から数か月）</option>
+            <option value="life-permanent">使える時間が今後ずっと変わりました</option>
+          </select>
+        </label>
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-slip-label">世話が滞ったとき</span>
+          <select class="ryr-cov-select" id="ryr-cov-slip" data-field="outcome_slip">
+            <option value="">—</option>
+            <option value="slip-held">大きな変化はなく、持ちこたえました</option>
+            <option value="slip-settled">小さな変化はあったが自然に収まりました</option>
+            <option value="slip-needed-help">手を入れて立て直す必要がありました</option>
+            <option value="slip-not-yet">まだ滞ったことがないので分かりません</option>
+          </select>
+        </label>
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-intervene-label">先月、手を入れて直した回数</span>
+          <select class="ryr-cov-select" id="ryr-cov-intervene" data-field="outcome_intervention">
+            <option value="">—</option>
+            <option value="int-none">一度もなく、そのまま動いていました</option>
+            <option value="int-once">1回</option>
+            <option value="int-few">数回</option>
+            <option value="int-most-weeks">ほぼ毎週</option>
+            <option value="int-too-new">新しすぎて判断できません</option>
+          </select>
+        </label>
+        <label class="ryr-cov-field">
+          <span class="ryr-cov-label" id="ryr-cov-intent-label">これは意図しているリズムですか</span>
+          <select class="ryr-cov-select" id="ryr-cov-intent" data-field="care_intent">
+            <option value="">—</option>
+            <option value="intent-chosen">はい。自分で選んだリズムです</option>
+            <option value="intent-drifted">おおむねそうですが、ずれてきています</option>
+            <option value="intent-circumstances">いいえ。状況に押される形になっています</option>
+            <option value="intent-intensive">今は意図的に集中して手をかけている時期です</option>
+          </select>
+        </label>
+      </div>
       <span class="ryr-picker-label">読み解くリズムを選ぶ</span>
       <div class="ryr-picker">
         <button type="button" class="ryr-rcard" id="ryr-pick-water">
@@ -286,95 +376,6 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
         <p class="ryr-share-congrats" id="ryr-share-congrats">五つのリズム、すべて読み終えました。</p>
         <p class="ryr-share-text" id="ryr-share-text">ここまで、しっかり向き合ってくださいました。最後まで進めてくださり、ありがとうございます。よろしければ、ここで見えてきたこと、つまりあなたの回答と上記のフェーズの結果を共有していただけると、ARAの研究を前に進める助けになりますし、この先読む誰かのために、このツールがより良い問いを立てられるようにもなります。</p>
         <p class="ryr-share-detail" id="ryr-share-detail">データは第三者を介さず、私たち自身のサーバーに直接送られ、それ以外の情報は一切含まれません。お名前もメールアドレスも不要で、五つの回答をまとめて読めるようランダムな識別コードだけが添えられます。これはまだ正式なデータセットでも、何かを証明するものでもない、正直な最初の一歩です。ここから育てていきたいのは、いずれ正式な研究の土台となる、最初の実像です。まとめられた結果は、その一環として公開・共有されることがあります。あなたを特定できる情報が一緒に送られることはありません。送信後、この場所にあなたのコードが表示されます。控えておいていただければ、もし気が変わったときは hello@aquaticrhythm.com までご連絡いただくことで、回答を削除いたします。</p>
-        <p class="ryr-share-cov-note" id="ryr-share-cov-note">すべて任意で、上の内省が変わることはありません。あとで回答をグループ分けして比べられるようにするためのもので、6週間目の結果と3年目の結果とでは意味が違いますし、水槽自体がどう振る舞ったかは、このツールがこれまで一度も尋ねてこなかった部分です。</p>
-        <div class="ryr-share-cov">
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-volume-label">水槽の容量</span>
-            <select class="ryr-cov-select" id="ryr-cov-volume" data-field="tank_volume">
-              <option value="">—</option>
-              <option value="lt20">&lt; 20 L</option>
-              <option value="20-60">20–60 L</option>
-              <option value="60-120">60–120 L</option>
-              <option value="120-250">120–250 L</option>
-              <option value="250-500">250–500 L</option>
-              <option value="gt500">&gt; 500 L</option>
-            </select>
-          </label>
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-age-label">稼働してからの期間</span>
-            <select class="ryr-cov-select" id="ryr-cov-age" data-field="tank_age">
-              <option value="">—</option>
-              <option value="lt1m">1か月未満</option>
-              <option value="1-3m">1〜3か月</option>
-              <option value="3-6m">3〜6か月</option>
-              <option value="6-12m">6〜12か月</option>
-              <option value="1-3y">1〜3年</option>
-              <option value="gt3y">3年以上</option>
-            </select>
-          </label>
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-tempswing-label">実際どのくらい温度が変動するか</span>
-            <select class="ryr-cov-select" id="ryr-cov-tempswing" data-field="temp_swing">
-              <option value="">—</option>
-              <option value="temp-barely">ほとんど変わらないと感じている</option>
-              <option value="temp-mild">少し変わるが、大きくはない</option>
-              <option value="temp-noticeable">かなりの幅で変動している</option>
-              <option value="temp-unsure">正直、分かりません</option>
-            </select>
-          </label>
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-stocking-label">生体の数の変化</span>
-            <select class="ryr-cov-select" id="ryr-cov-stocking" data-field="stocking_change">
-              <option value="">—</option>
-              <option value="stock-same">計画どおり、または意図して変えました</option>
-              <option value="stock-grew-aware">少しずつ増えていて、それは分かっています</option>
-              <option value="stock-grew-unnoticed">思っていたより増えていました</option>
-              <option value="stock-reduced">減らしました</option>
-              <option value="stock-too-new">新しすぎて当てはまりません</option>
-            </select>
-          </label>
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-life-label">今、リズムを乱しているもの</span>
-            <select class="ryr-cov-select" id="ryr-cov-life" data-field="life_change">
-              <option value="">—</option>
-              <option value="life-none">いいえ。いつもどおりの時期です</option>
-              <option value="life-short">短期間の中断（数日から2週間ほど）</option>
-              <option value="life-extended">長めの中断（数週間から数か月）</option>
-              <option value="life-permanent">使える時間が今後ずっと変わりました</option>
-            </select>
-          </label>
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-slip-label">世話が滞ったとき</span>
-            <select class="ryr-cov-select" id="ryr-cov-slip" data-field="outcome_slip">
-              <option value="">—</option>
-              <option value="slip-held">大きな変化はなく、持ちこたえました</option>
-              <option value="slip-settled">小さな変化はあったが自然に収まりました</option>
-              <option value="slip-needed-help">手を入れて立て直す必要がありました</option>
-              <option value="slip-not-yet">まだ滞ったことがないので分かりません</option>
-            </select>
-          </label>
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-intervene-label">先月、手を入れて直した回数</span>
-            <select class="ryr-cov-select" id="ryr-cov-intervene" data-field="outcome_intervention">
-              <option value="">—</option>
-              <option value="int-none">一度もなく、そのまま動いていました</option>
-              <option value="int-once">1回</option>
-              <option value="int-few">数回</option>
-              <option value="int-most-weeks">ほぼ毎週</option>
-              <option value="int-too-new">新しすぎて判断できません</option>
-            </select>
-          </label>
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-intent-label">これは意図しているリズムですか</span>
-            <select class="ryr-cov-select" id="ryr-cov-intent" data-field="care_intent">
-              <option value="">—</option>
-              <option value="intent-chosen">はい。自分で選んだリズムです</option>
-              <option value="intent-drifted">おおむねそうですが、ずれてきています</option>
-              <option value="intent-circumstances">いいえ。状況に押される形になっています</option>
-              <option value="intent-intensive">今は意図的に集中して手をかけている時期です</option>
-            </select>
-          </label>
-        </div>
         <label class="ryr-share-check">
           <input type="checkbox" id="ryr-share-consent">
           <span id="ryr-share-consent-label">この目的のために、自分の回答とフェーズの結果を匿名で共有します。</span>

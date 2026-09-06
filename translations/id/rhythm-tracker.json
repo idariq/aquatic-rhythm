@@ -63,7 +63,8 @@
     "shareBtnSent": "Terkirim — terima kasih",
     "shareCodeLabel": "Kode Anda: ",
     "tankContext": {
-      "note": "Semua opsional, dan tidak satu pun mengubah refleksi di atas. Ini ada supaya jawaban bisa dikelompokkan dan dibandingkan nanti — hasil pada minggu keenam dan hasil pada tahun ketiga berarti hal yang berbeda, dan apa yang dilakukan akuariumnya sendiri justru bagian yang belum pernah ditanyakan alat ini.",
+      "heading": "Tentang akuarium yang Anda refleksikan (opsional)",
+    "note": "Langsung lewati saja ke pemilihan ritme di bawah kalau Anda mau — semua ini tidak wajib. Kalau Anda punya lebih dari satu akuarium, mengisi ini membantu memastikan kelima ritme yang akan Anda baca memang tentang akuarium yang sama. Tidak ada yang dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti.",
       "labels": {
         "ryr-cov-volume-label": "Volume akuarium",
         "ryr-cov-age-label": "Sudah berapa lama berjalan",

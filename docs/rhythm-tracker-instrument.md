@@ -3,7 +3,7 @@
 ## Internal Reference Document — Aquatic Rhythm
 
 **Instrument:** Rhythm Tracker (`articles/rhythm-tracker.html`)
-**Instrument version:** v1.3
+**Instrument version:** v1.4
 **Status:** Published and collecting opt-in data. Not validated.
 **Record started:** 2026-09-06
 
@@ -311,6 +311,8 @@ POST to `https://formspree.io/f/xoeqleyo` with four fields:
 | `outcome_slip` | *(v1.3+)* what the system did after care slipped |
 | `outcome_intervention` | *(v1.3+)* times the keeper had to step in, last month |
 | `care_intent` | *(v1.3+)* whether the current pattern is deliberate |
+| `stocking_change` | *(v1.4+)* how stocking has changed, and whether noticed |
+| `life_change` | *(v1.4+)* disruption to keeper rhythm right now |
 | `submission_index` | *(v1.3+)* 1 for a first submission, 2 for a second, … |
 | `days_since_first` / `days_since_previous` | *(v1.3+)* empty on a first submission |
 | `answer_dates` | *(v1.3+)* when each rhythm was last answered |
@@ -558,6 +560,34 @@ classify a past recovery — which is close to the after-the-fact reasoning §S5
 of the framework warns about when it says forgiveness must be classified by
 criteria set *before* a disturbance. It is a first handle on the claim, not a
 measurement of it.
+
+**v1.4 — 2026-09-06** — Stocking and life change. Two more optional, unscored
+context items: `stocking_change` and `life_change`. **No scored item changed;
+scoring re-verified across all 5,120 combinations, 0 mismatches.**
+
+These were the two largest content holes the hypothesis inventory found. Stocking
+carries *Capacity before Ambition*, the biological-overload pathway and
+false-maturity failure; §S4.4 is an entire section on life disruption. Neither
+was asked anywhere.
+
+`stocking_change` asks about **change, not level** — self-reported density is
+close to meaningless without species, adult size and filtration, while what the
+framework actually claims is about creep ("additions over time, each
+individually reasonable", §S8.2). It deliberately mirrors
+`wc-interval-awareness`'s grown-and-knew / grown-more-than-realised split, which
+is the instrument's strongest existing fit.
+
+`life_change` maps onto §S4.4's own three categories. It resolves the validity
+threat that a keeper mid-disruption is scored as though their current rhythm
+were their settled one — now a recorded fact rather than an invisible confound.
+
+Coverage effect: three claims moved off *none* (H-K8, H-A3, H-X3 — the first
+pathway row ever to move), no new direct hits, 21 ecological claims still
+unreachable.
+
+`scripts/build-ryr-i18n.mjs` needed **no edit** for either item — it discovers
+labels by span id and options by option value, a generalisation made in v1.3
+specifically so the next question would not require touching it.
 
 ---
 

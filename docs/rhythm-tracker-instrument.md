@@ -766,6 +766,20 @@ naming the types and treating each on its own terms.
 | **ORD** | a genuine low-to-high axis (frequency, precision, recency) | candidate for explicit ranked anchors |
 | **KNOW** | one framework-keyed correct answer; other options are wrong beliefs, not "less aligned" ones | reported as an accuracy rate, never a degree |
 
+**The NOM/KNOW line, stated as a rule** (settled 2026-09-06, resolving both
+judgment calls flagged when this table was first drafted): nearly every item
+in this instrument has a framework-preferred answer — that alone does not
+make it KNOW. The test is what the *wrong* options represent. If they are
+false beliefs about how the system works (biofilm is contamination; zero
+readings mean maturity), the item is KNOW. If they are alternative actions or
+priorities that are merely less aligned — not factually wrong, just a
+different choice (test the water first instead of watching the animal;
+push forward after a disruption instead of easing back) — the item is NOM.
+Stem shape is a reliable tell: "what's actually happening" or "what would you
+expect" asks for a belief (KNOW); "what do you check first" or "what do you
+do" asks for an action (NOM), even when the framework ranks one action above
+the others.
+
 | Rhythm | Item | v1 type (S3) | v2 type | Note |
 |---|---|---|---|---|
 | Water | `cycle-status` | factual system state (gate) | STATE/GATE | outside the taxonomy by design |
@@ -787,8 +801,8 @@ naming the types and treating each on its own terms.
 | Livestock | `preclinical-signs` | situational judgment | NOM | the aligned answer (`watch-pattern`) sits in the *middle*; `dismiss-single` and `immediate-treatment` are opposite failure directions, and `wouldnt-notice` is a separate detection-failure axis — see callout below |
 | Livestock | `stress-accumulation` | conceptual knowledge | KNOW | `chronic-cumulative` is the borrowed physiology claim (H-L2) asserted as fact; the other three are named wrong beliefs |
 | Livestock | `new-addition-disruption` | expectation / knowledge | KNOW | `expects-disruption` is the framework's stated fact about social geometry (§S3.4, H-L3); the rest are wrong expectations |
-| Livestock | `behaviour-vs-chemistry` | prioritisation strategy | NOM | four different first-checks; the framework does name a claimed correct sequence (H-L1, borrowed), which pulls toward KNOW, but the item asks for the respondent's own habit rather than a factual belief — the one item where the NOM/KNOW line is genuinely arguable |
-| Keeper | `wc-interval-awareness` | self-monitoring / recall | NOM | four distinct state-plus-awareness combinations, not a frequency — the instrument's strongest existing fit to a framework claim (H-K2/K3); lowest priority for any wording change |
+| Livestock | `behaviour-vs-chemistry` | prioritisation strategy | NOM | **resolved 2026-09-06**: an action stem ("what do you check first"), not a belief stem — its three non-preferred options are alternative priorities, not false beliefs about mechanism. H-L1 (borrowed) gives the framework a favoured order, but the type rule above turns on what the *wrong* options represent, not on whether a preferred answer exists — parallel to `stable-response` and `preclinical-signs`, also NOM despite each having a framework-favoured option |
+| Keeper | `wc-interval-awareness` | self-monitoring / recall | NOM | **confirmed 2026-09-06**: H-K2/K3's claim is that drift-awareness is categorical — noticed vs unnoticed — not a matter of how much interval has drifted, so no ORD conversion applies. Remains the instrument's strongest existing framework fit; lowest priority for any wording change. (`same-or-decided` bundles two different scenarios — no drift, and deliberate change — as equally aligned; defensible under S4.1's intentional-intensity carve-out, but noted here as a possible future refinement, not a blocker.) |
 | Keeper | `filter-check-date` | self-monitoring / recall | ORD | recent>a-while>no-idea is a clean recency axis; `new-tank` is N/A |
 | Keeper | `feeding-precision` | behavioural practice | ORD | measured>estimated-consistent>estimated-variable>not-tracked is a clean precision axis |
 | Keeper | `observation-quality` | self-reported attention quality | ORD | reading>checking>glancing>rarely-look is a clean attention-quality axis |
@@ -887,10 +901,12 @@ not before), not how much of the instrument it needs to cover.
 
 ### S11.6: Sequencing From Here
 
-1. Owner review of S11.1 and S11.2 — in particular the two flagged judgment
-   calls (`behaviour-vs-chemistry`'s NOM/KNOW line; whether
-   `wc-interval-awareness` should stay NOM given it is the strongest existing
-   framework fit).
+1. ~~Owner review of S11.1 and S11.2's two flagged judgment calls.~~
+   **Resolved 2026-09-06** — both confirmed NOM, on the stated type rule
+   (S11.2): `behaviour-vs-chemistry` is an action stem with non-belief wrong
+   options; `wc-interval-awareness`'s claim is categorical, not a matter of
+   degree. Construct definitions and the type table now stand without open
+   judgment calls.
 2. Write and pretest the `temp-stability` split (the only new respondent-
    facing text this section produces), alongside the eight items already in
    `docs/rhythm-tracker-pretest-protocol.md`.

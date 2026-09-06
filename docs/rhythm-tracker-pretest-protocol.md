@@ -3,7 +3,7 @@
 ## Internal Working Document — Aquatic Rhythm
 
 **For:** Rhythm Tracker v2.1
-**Companions:** `docs/rhythm-tracker-instrument.md`, `docs/rhythm-tracker-hypothesis-inventory.md`
+**Companions:** `docs/rhythm-tracker-instrument.md`, `docs/rhythm-tracker-hypothesis-inventory.md`, `docs/rhythm-tracker-language-review.md`
 **Written:** 2026-09-06 · **Not yet run**
 
 ---
@@ -96,6 +96,7 @@ hypothesis inventory, and each has a specific thing to listen for.
 
 | Item | Listen for |
 |---|---|
+| `cycle-status` *(added post-review, see `rhythm-tracker-language-review.md` §S2.1)* | Ask them to read the "established" and "still-cycling" options back in their own words. Nitrite and nitrate differ by one syllable and look nearly identical on the page in all three languages (id: nitrit/nitrat; ja: 亜硝酸塩/硝酸塩) — check whether the two get swapped, especially by a newer keeper who hasn't internalised the distinction yet. |
 | `maturity-marker` | Do they answer what they *believe* marks maturity, or what *their tank* does? The inventory names belief-for-behaviour substitution as the instrument's most common defect. |
 | `outcome_slip` | Are they reconstructing a recovery after the fact, and confidently? §S5.7 of the framework warns that forgiveness judged retrospectively can never be contradicted by evidence. Listen for how much they are inventing. |
 | `stocking_change` | Can a person actually tell *grown-and-I-knew* from *grown-more-than-I-realised*? The whole item rests on that being answerable from the inside. |

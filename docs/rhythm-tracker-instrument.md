@@ -829,6 +829,19 @@ importance.
    (`temp-check-freq`, `temp_swing`) — add both to
    `docs/rhythm-tracker-pretest-protocol.md`'s §S5 probe table alongside the
    original eight before running it. Still not yet run.
+   **Language/comprehensibility desk review done 2026-09-06** — before
+   spending pretest sessions on problems a close read could catch for free,
+   `docs/rhythm-tracker-language-review.md` audited every scored item's
+   wording across en/id/ja. Findings: `cycle-status`'s nitrite/nitrate
+   distinction is genuinely confusable in all three languages and not
+   fixable by rewording (added to the pretest's §S5 instead); `impeller`
+   and `detritus` are kept as unglossed jargon/loanwords in all three
+   languages where a plainer word would do; and `preclinical-signs`'s
+   English ("pallor", "clamped fins") is more jargon-heavy than its own
+   id/ja translations, which already use plain phrasing for the same signs.
+   None of this has been applied yet — accepting any of the wording
+   suggestions is a v2.2 decision, not a v2.1 patch, since §S8 counts it as
+   a change to what's asked. Still not yet run.
 
 ### Purpose note (recorded 2026-09-06)
 

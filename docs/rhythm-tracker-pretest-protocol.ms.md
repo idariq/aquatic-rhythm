@@ -3,7 +3,7 @@
 ## Dokumen Kerja Dalaman — Aquatic Rhythm
 
 **Untuk:** Rhythm Tracker v2.1
-**Dokumen berkaitan:** `docs/rhythm-tracker-instrument.md`, `docs/rhythm-tracker-hypothesis-inventory.md`
+**Dokumen berkaitan:** `docs/rhythm-tracker-instrument.md`, `docs/rhythm-tracker-hypothesis-inventory.md`, `docs/rhythm-tracker-language-review.md`
 **Ditulis:** 2026-09-06 · **Belum dijalankan**
 
 > **Nota skop:** Ini terjemahan kerja (working translation) drpd
@@ -116,6 +116,7 @@ didengar.
 
 | Item | Dengar utk |
 |---|---|
+| `cycle-status` *(ditambah lepas kajian bahasa, rujuk `rhythm-tracker-language-review.md` §S2.1)* | Minta mereka baca semula pilihan "established" & "still-cycling" dgn perkataan sendiri. Nitrit & nitrat beza satu suku kata & nampak hampir sama di skrin dlm ketiga-tiga bahasa (id: nitrit/nitrat; ja: 亜硝酸塩/硝酸塩) — semak sama ada dua istilah ni tertukar, terutama drpd penjaga baharu yg belum benar² faham beza tu. |
 | `maturity-marker` | Adakah mereka jawab apa yg mereka *percaya* menandakan kematangan, atau apa yg *tangki mereka* buat? Inventori namakan penggantian kepercayaan-utk-tingkah laku sbg kecacatan paling biasa instrumen ni. |
 | `outcome_slip` | Adakah mereka membina semula ingatan pemulihan selepas kejadian, & dgn yakin? §S5.7 kerangka beri amaran bahawa "ecological forgiveness" yg dinilai secara retrospektif tak pernah boleh disangkal oleh bukti. Dengar berapa banyak yg mereka reka-reka. |
 | `stocking_change` | Bolehkah seseorang benar-benar bezakan *bertambah-&-saya-tahu* drpd *bertambah-lebih-drpd-yg-saya-sedar*? Seluruh item ni bergantung pd andaian itu boleh dijawab dari dalam diri sendiri. |

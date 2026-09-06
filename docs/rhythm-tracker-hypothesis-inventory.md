@@ -4,8 +4,8 @@
 
 **Companion to:** `docs/rhythm-tracker-instrument.md`
 **Source of claims:** `docs/ARA-framework-v2.md` (v2.0)
-**Instrument assessed:** Rhythm Tracker v2.0 (25 scored items + 8 unscored context items)
-**Last revised:** 2026-09-06 — S5's tank-state item count updated for v2.0's `temp-stability` split (coverage table itself last re-scored after v1.3/v1.4, see S9, S10 — v2.0 changed scoring mechanics, not hypothesis coverage)
+**Instrument assessed:** Rhythm Tracker v2.1 (25 scored items + 9 unscored context items)
+**Last revised:** 2026-09-06 — H-W3 moved from partial to direct for v2.1's `oxygen_testing` item (see S11); S5's tank-state item count previously updated for v2.0's `temp-stability` split (see S9, S10)
 **Written:** 2026-09-06
 
 ---
@@ -92,7 +92,7 @@ reached it at all; `outcome_intervention` now gives it a first, weak handle.
 |---|---|---|---|---|
 | H-W1 | "Parameter trajectory matters more than parameter value" | ecological | partial | `trend-read` (measures whether the keeper reads trends, not whether trends predict better) |
 | H-W2 | "Stable suboptimal outperforms unstable optimal" **[borrowed]** | ecological | partial | `stable-response` (measures the keeper's stated response, not the outcome) |
-| H-W3 | "Most hobbyists test nitrogen cycle parameters but not dissolved oxygen" | **descriptive** | partial | `oxygen-read` (measures DO *reasoning*, not DO *testing*) |
+| H-W3 | "Most hobbyists test nitrogen cycle parameters but not dissolved oxygen" | **descriptive** | **direct** | `oxygen_testing` *(v2.1)* — asks the testing behaviour itself, not reasoning about it |
 | H-W4 | Early-morning surface gasping is "often misread as disease" | **descriptive** | **direct** | `oxygen-read` |
 | H-W5 | Diurnal pH swings of 0.3–0.8 units are normal in planted/CO₂ systems | ecological (quantitative) | none | — |
 
@@ -366,9 +366,11 @@ framework author:
 - **What counts as a distinct claim.** Some of the 41 could reasonably be merged
   or split; the count is a convenience, not a fact about the framework.
 - **The direct / partial / none calls.** These reflect one reading of what each
-  item measures. `oxygen-read` is called *direct* for H-W4 and *partial* for
-  H-W3 on the grounds that it tests reasoning rather than testing behaviour —
-  an arguable line.
+  item measures. `oxygen-read` is called *direct* for H-W4, on the grounds
+  that it tests reasoning about a symptom rather than testing behaviour.
+  H-W3, the descriptive claim about testing behaviour itself, was *partial*
+  via `oxygen-read` for the same reason until v2.1 added `oxygen_testing`,
+  which asks the behaviour directly (S11).
 
 Nothing here has been pre-registered, and the coverage table should not be
 quoted as a validation result. It is a map of what has not been done.
@@ -452,3 +454,35 @@ unreachable.
 needed markup and translation keys only. `scripts/build-ryr-i18n.mjs` was not
 edited, because it discovers labels by span id and options by option value. The
 hardcoded list that would have needed updating no longer exists.
+
+---
+
+## S11: v2.1 — Direct Reach for H-W3
+
+One new unscored context item, `oxygen_testing` (three options: tests
+dissolved oxygen directly, aware it matters but doesn't test it, or hasn't
+considered it), asked on Water Rhythm's result screen.
+
+| Item | Reaches | Shape |
+|---|---|---|
+| `oxygen_testing` | H-W3 | Asks the testing behaviour the claim is actually about, rather than `oxygen-read`'s test of whether a respondent can reason correctly about an oxygen-related symptom. |
+
+**Why this gap specifically.** Of the instrument's context additions so far
+(S9, S10), all reached *ecological* or *pathway* claims. H-W3 is the one
+**descriptive** claim about hobbyist behaviour that was still only *partial*
+— `oxygen-read` measures whether a respondent can reason about low-oxygen
+symptoms, not whether they test for oxygen at all. A respondent can score
+well on `oxygen-read` by knowing what gasping at the surface means while
+never having tested dissolved oxygen in their life; the two are correlated
+at best, not the same fact.
+
+**Coverage effect:** one claim moves from *partial* to **direct** (H-W3). No
+claim moves off *none* — this closes a measurement-quality gap on an
+already-partial claim, not a content hole, which is why it took a version
+bump rather than staying deferred like the ecological gaps in S6. 21
+ecological claims remain unreachable, unchanged from S10.
+
+**Confirmation that the v1.3/v1.4 i18n refactor keeps paying off:** the new
+item needed markup and translation keys only, plus one line in
+`scripts/build-ryr-i18n.mjs` adding `'water'` to the list of rhythms with an
+inline context block — the label/option discovery itself needed no change.

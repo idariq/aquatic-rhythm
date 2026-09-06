@@ -602,6 +602,7 @@ async function handleRhythmTrackerSubmit(request, env, origin, ip) {
     response_coding:      json(body.response_coding),
     tank_volume:          str(body.tank_volume),
     tank_age:             str(body.tank_age),
+    oxygen_testing:       str(body.oxygen_testing),
     temp_swing:           str(body.temp_swing),
     stocking_change:      str(body.stocking_change),
     life_change:          str(body.life_change),
@@ -617,14 +618,14 @@ async function handleRhythmTrackerSubmit(request, env, origin, ip) {
     await env.RHYTHM_TRACKER_DB.prepare(
       `INSERT INTO rhythm_tracker_submissions (
         respondent_id, submission_index, instrument_version, lang, submitted_at,
-        phases, answers, response_coding, tank_volume, tank_age, temp_swing,
-        stocking_change, life_change, outcome_slip, outcome_intervention,
+        phases, answers, response_coding, tank_volume, tank_age, oxygen_testing,
+        temp_swing, stocking_change, life_change, outcome_slip, outcome_intervention,
         care_intent, days_since_first, days_since_previous, answer_dates
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     ).bind(
       row.respondent_id, row.submission_index, row.instrument_version, row.lang, row.submitted_at,
-      row.phases, row.answers, row.response_coding, row.tank_volume, row.tank_age, row.temp_swing,
-      row.stocking_change, row.life_change, row.outcome_slip, row.outcome_intervention,
+      row.phases, row.answers, row.response_coding, row.tank_volume, row.tank_age, row.oxygen_testing,
+      row.temp_swing, row.stocking_change, row.life_change, row.outcome_slip, row.outcome_intervention,
       row.care_intent, row.days_since_first, row.days_since_previous, row.answer_dates
     ).run();
   } catch {

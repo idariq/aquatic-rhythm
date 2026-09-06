@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS rhythm_tracker_submissions (
   response_coding       TEXT,  -- JSON
   tank_volume           TEXT,
   tank_age              TEXT,
+  oxygen_testing        TEXT,  -- v2.1
   temp_swing            TEXT,
   stocking_change       TEXT,
   life_change           TEXT,
@@ -36,3 +37,16 @@ CREATE TABLE IF NOT EXISTS rhythm_tracker_submissions (
 );
 
 CREATE INDEX IF NOT EXISTS idx_rts_respondent ON rhythm_tracker_submissions(respondent_id);
+
+-- ── Migration: v2.1 adds oxygen_testing ─────────────────────────────────
+-- The CREATE TABLE above is IF NOT EXISTS, so it is a no-op against a
+-- database that already has the table — it will NOT add this column to an
+-- existing table. Run the line below ONCE against a database created
+-- before this column existed (SQLite/D1 has no "ADD COLUMN IF NOT EXISTS",
+-- so running it a second time errors with "duplicate column name" — that
+-- error means it already applied, not that anything is wrong):
+--
+--   ALTER TABLE rhythm_tracker_submissions ADD COLUMN oxygen_testing TEXT;
+--
+-- A fresh database created from this file today gets the column from the
+-- CREATE TABLE above and never needs this line.

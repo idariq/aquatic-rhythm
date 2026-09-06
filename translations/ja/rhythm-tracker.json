@@ -72,6 +72,7 @@
         "ryr-cov-tempswing-label": "実際どのくらい温度が変動するか",
         "ryr-cov-stocking-label": "生体の数の変化",
         "ryr-cov-life-label": "今、リズムを乱しているもの",
+        "ryr-cov-oxygentest-label": "溶存酸素を直接測定していますか",
         "ryr-cov-slip-label": "世話が滞ったとき",
         "ryr-cov-intervene-label": "先月、手を入れて直した回数",
         "ryr-cov-intent-label": "これは意図しているリズムですか"
@@ -103,6 +104,11 @@
           "life-short": "短期間の中断（数日から2週間ほど）",
           "life-extended": "長めの中断（数週間から数か月）",
           "life-permanent": "使える時間が今後ずっと変わりました"
+        },
+        "oxygenTesting": {
+          "o2-tested": "はい、専用の測定器や試薬で測っています",
+          "o2-aware-untested": "いいえ、でも今回初めてその存在を知りました",
+          "o2-unaware-untested": "いいえ、これまで考えたこともありませんでした"
         },
         "outcomeSlip": {
           "slip-held": "大きな変化はなく、持ちこたえました",

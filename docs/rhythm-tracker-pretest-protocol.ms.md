@@ -2,7 +2,7 @@
 
 ## Dokumen Kerja Dalaman — Aquatic Rhythm
 
-**Untuk:** Rhythm Tracker v2.0
+**Untuk:** Rhythm Tracker v2.1
 **Dokumen berkaitan:** `docs/rhythm-tracker-instrument.md`, `docs/rhythm-tracker-hypothesis-inventory.md`
 **Ditulis:** 2026-09-06 · **Belum dijalankan**
 
@@ -125,7 +125,8 @@ didengar.
 | `oxygen-read` | Adakah ia terasa spt kuiz dgn satu jawapan betul? Kalau ya, tekanan kehendak-sosial (social-desirability) sedang mengherotkan jawapan — satu had terbuka (#11). |
 | Teks konsen | Adakah mereka tahu apa yg mereka setuju? Minta mereka ulang semula dgn kata sendiri. Khususnya: adakah apa-apa sampai kpd pihak ketiga, bolehkah ia diterbitkan, bolehkah mereka tarik diri? |
 | `temp-check-freq` *(ditambah v2.0)* | Adakah "berapa kerap awak semak" dibaca sbg jelas berbeza drpd "berapa stabil suhunya" (item yg ia gantikan)? Pemisahan ni (`docs/rhythm-tracker-instrument.md` §S9/§S11) andaikan orang boleh asingkan tabiat pemantauan drpd kepercayaan ttg keadaan tangki — semak sama ada andaian ni benar. |
-| `temp_swing` *(ditambah v2.0)* | Oleh sbb item ni tak berskor & ditanya sekali sahaja dlm modal share (bukan setiap irama), adakah responden perasan ia jenis soalan yg berbeza drpd aliran lima-per-irama, atau ia bercampur dgn `tank_volume`/`tank_age`? |
+| `temp_swing` *(ditambah v2.0, dipindah v2.1)* | Semenjak v2.1 item ni terpapar sebaris pd skrin keputusan Environmental, bukan dlm modal share lagi — adakah responden perasan ia sambungan irama yg baru mereka jawab, atau ia masih terasa spt soalan kaji selidik berasingan yg diselitkan? |
+| `oxygen_testing` *(ditambah v2.1)* | Terpapar sebaris pd skrin keputusan Water. Adakah "menguji oksigen terlarut secara langsung" dibaca sbg amalan sebenar yg dikenali, atau ia berbunyi spt jargon dipinjam drpd teks refleksi `oxygen-read`? Responden patut boleh jawab ni tanpa baru sahaja jawab `oxygen-read` dgn betul — semak mereka tak mengelirukan "saya boleh nalar ttg tu" dgn "saya menguji utk tu". |
 
 ---
 

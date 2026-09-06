@@ -144,7 +144,12 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 .ryr-note-end{font-size:var(--fs-sm);color:var(--th-ink-4);line-height:1.7;margin-top:2.5rem;font-style:italic;font-family:var(--serif)}
 .ryr-share{margin-top:2rem;padding:1.4rem 1.6rem;border:1px solid var(--th-line);background:var(--th-surface-2);border-radius:4px}
 .ryr-share-congrats{font-family:var(--serif);font-style:italic;font-weight:300;font-size:var(--fs-lg);color:var(--th-ink);line-height:1.4;margin-bottom:.9rem}
-.ryr-share-text{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.75;margin-bottom:1.1rem}
+.ryr-share-text{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.75;margin-bottom:.9rem}
+/* The procedural half of the consent copy — third-party service, publication,
+   withdrawal route. Same information, demoted a step so the two warm opening
+   sentences stay the first thing read rather than the head of a wall. Nothing
+   is hidden or truncated: this is presentation, not a change to what is said. */
+.ryr-share-detail{font-size:var(--fs-xs);font-weight:300;color:var(--th-ink-4);line-height:1.72;margin-bottom:1.1rem}
 .ryr-share-check{display:flex;align-items:flex-start;gap:.65rem;cursor:pointer;margin-bottom:1.1rem}
 .ryr-share-check input{margin-top:.2rem;flex-shrink:0;accent-color:var(--th-accent)}
 .ryr-share-check span{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
@@ -271,7 +276,8 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       </div>
       <div class="ryr-share" id="ryr-share" hidden>
         <p class="ryr-share-congrats" id="ryr-share-congrats">All five rhythms, read.</p>
-        <p class="ryr-share-text" id="ryr-share-text">That took real attention. Thank you for staying with it. If you're willing, sharing what you found here — your answers and the phase readings above — helps ARA research move forward, and helps this tool ask better questions for whoever reads next. It goes through Formspree, a third-party form service, with nothing else attached: no name, no email, just a random code so your five answers can be read as one set. This is early, honest groundwork — not a formal dataset, and not proof of anything yet. What it is meant to become is the first real picture behind a proper study later, and grouped findings from it may be published or shared openly as part of that. Nothing that could identify you travels with it. Your code appears here after you send: keep it, and if you change your mind at any point, write to hello@aquaticrhythm.com and we'll remove your answers.</p>
+        <p class="ryr-share-text" id="ryr-share-text">That took real attention. Thank you for staying with it. If you're willing, sharing what you found here — your answers and the phase readings above — helps ARA research move forward, and helps this tool ask better questions for whoever reads next.</p>
+        <p class="ryr-share-detail" id="ryr-share-detail">It goes through Formspree, a third-party form service, with nothing else attached: no name, no email, just a random code so your five answers can be read as one set. This is early, honest groundwork — not a formal dataset, and not proof of anything yet. What it is meant to become is the first real picture behind a proper study later, and grouped findings from it may be published or shared openly as part of that. Nothing that could identify you travels with it. Your code appears here after you send: keep it, and if you change your mind at any point, write to hello@aquaticrhythm.com and we'll remove your answers.</p>
         <p class="ryr-share-cov-note" id="ryr-share-cov-note">All optional, and none of it changes the reflections above. They exist so answers can be grouped and compared later — a reading at six weeks and one at three years mean different things, and what the tank itself did is the part this tool has never asked about.</p>
         <div class="ryr-share-cov">
           <label class="ryr-cov-field">

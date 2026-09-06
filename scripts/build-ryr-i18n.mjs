@@ -515,6 +515,7 @@ for (const lang of targetLangs) {
   // patched too.
   h = replaceOnce(h, /(<p class="ryr-share-congrats" id="ryr-share-congrats">)[^<]*(<\/p>)/, (_, a, b) => `${a}${t.chrome.shareCongrats}${b}`);
   h = replaceOnce(h, /(<p class="ryr-share-text" id="ryr-share-text">)[^<]*(<\/p>)/, (_, a, b) => `${a}${t.chrome.shareText}${b}`);
+  h = replaceOnce(h, /(<p class="ryr-share-detail" id="ryr-share-detail">)[^<]*(<\/p>)/, (_, a, b) => `${a}${t.chrome.shareDetail}${b}`);
   h = replaceOnce(h, /(<span id="ryr-share-consent-label">)[^<]*(<\/span>)/, (_, a, b) => `${a}${t.chrome.shareConsentLabel}${b}`);
   h = replaceOnce(h, /(<button class="ryr-share-btn" id="ryr-share-btn" disabled>)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.shareBtn}${b}`);
   h = replaceOnce(h, /(<button type="button" class="ryr-share-dismiss" id="ryr-share-dismiss">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.shareDismissBtn}${b}`);

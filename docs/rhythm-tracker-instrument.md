@@ -522,12 +522,12 @@ importance.
 2. ~~Separate "don't know" / "not applicable" from low scores.~~ **Done in v1.1.**
 3. ~~Offer a withdrawal route in the consent text.~~ **Done in v1.1.**
 4. ~~Collect minimum covariates — tank volume, tank age.~~ **Done in v1.2.**
-5. **Build a hypothesis inventory.** Next up. Items are currently mapped to framework
-   *sections* (descriptive content), not to testable propositions. Enumerate what
-   ARA actually asserts that could later be tested, then check which of those any
-   current item could ever give a signal about. Expect some assertions to have no
-   corresponding item — that gap is the finding, and it is a better basis for
-   revision than "improve the questions".
+5. ~~Build a hypothesis inventory.~~ **Done** —
+   `docs/rhythm-tracker-hypothesis-inventory.md`, 58 claims. The gap turned out
+   to be structural rather than a matter of missing items: all 5 claims the
+   instrument reaches directly are about *keepers*, and **0 of the 48 ecological
+   claims are directly reachable**, because no outcome variable and no time
+   dimension exist. Its S7 supersedes the ordering below for items 6-9.
 6. **Write operational construct definitions** per rhythm (S2), derived from
    item 5. Item revision without them repeats the original error.
 7. **Resolve the §S4.5 contradiction** — Keeper items are scored against a

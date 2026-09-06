@@ -148,6 +148,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 .ryr-phase-note{margin-top:1.6rem;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2)}
 .ryr-phase-note p{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-2);line-height:1.85;margin:0}
 .ryr-note-end{font-size:var(--fs-sm);color:var(--th-ink-4);line-height:1.7;margin-top:2.5rem;font-style:italic;font-family:var(--serif)}
+.ryr-ctx-inline{margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
 .ryr-share{margin-top:2rem;padding:1.4rem 1.6rem;border:1px solid var(--th-line);background:var(--th-surface-2);border-radius:4px}
 .ryr-share-congrats{font-family:var(--serif);font-style:italic;font-weight:300;font-size:var(--fs-lg);color:var(--th-ink);line-height:1.4;margin-bottom:.9rem}
 .ryr-share-text{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.75;margin-bottom:.9rem}
@@ -260,7 +261,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
         <p class="ryr-chart-hint" id="ryr-picker-chart-hint">空いているリズムをタップすると、そのまま確認を始められます。どこから始めても構いません。</p>
       </div>
       <span class="ryr-picker-label" id="ryr-tank-context-label">振り返る水槽について（任意）</span>
-      <p class="ryr-share-cov-note" id="ryr-share-cov-note">そのまま下のリズム選択に進んでいただいても構いません。ここはすべて任意です。もし水槽を複数お持ちの場合、ここに記入しておくと、これから読む五つのリズムが同じ水槽についてのものだと確認しやすくなります。ここでの内容は、後で内省を共有することを選ばない限り、どこにも送信されません。</p>
+      <p class="ryr-share-cov-note" id="ryr-share-cov-note">そのまま下のリズム選択に進んでいただいても構いません。ここはすべて任意です。もし水槽を複数お持ちの場合、ここに記入しておくと、これから読む五つのリズムが同じ水槽についてのものだと確認しやすくなります。ここでの内容は、後で内省を共有することを選ばない限り、どこにも送信されません。同じような任意の質問が、下の特定のリズムのところにもいくつか出てきます。そちらは、ちょうどお読みいただいた内容に関係する質問です。</p>
       <div class="ryr-share-cov">
         <label class="ryr-cov-field">
           <span class="ryr-cov-label" id="ryr-cov-volume-label">水槽の容量</span>
@@ -284,68 +285,6 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
             <option value="6-12m">6〜12か月</option>
             <option value="1-3y">1〜3年</option>
             <option value="gt3y">3年以上</option>
-          </select>
-        </label>
-        <label class="ryr-cov-field">
-          <span class="ryr-cov-label" id="ryr-cov-tempswing-label">実際どのくらい温度が変動するか</span>
-          <select class="ryr-cov-select" id="ryr-cov-tempswing" data-field="temp_swing">
-            <option value="">—</option>
-            <option value="temp-barely">ほとんど変わらないと感じている</option>
-            <option value="temp-mild">少し変わるが、大きくはない</option>
-            <option value="temp-noticeable">かなりの幅で変動している</option>
-            <option value="temp-unsure">正直、分かりません</option>
-          </select>
-        </label>
-        <label class="ryr-cov-field">
-          <span class="ryr-cov-label" id="ryr-cov-stocking-label">生体の数の変化</span>
-          <select class="ryr-cov-select" id="ryr-cov-stocking" data-field="stocking_change">
-            <option value="">—</option>
-            <option value="stock-same">計画どおり、または意図して変えました</option>
-            <option value="stock-grew-aware">少しずつ増えていて、それは分かっています</option>
-            <option value="stock-grew-unnoticed">思っていたより増えていました</option>
-            <option value="stock-reduced">減らしました</option>
-            <option value="stock-too-new">新しすぎて当てはまりません</option>
-          </select>
-        </label>
-        <label class="ryr-cov-field">
-          <span class="ryr-cov-label" id="ryr-cov-life-label">今、リズムを乱しているもの</span>
-          <select class="ryr-cov-select" id="ryr-cov-life" data-field="life_change">
-            <option value="">—</option>
-            <option value="life-none">いいえ。いつもどおりの時期です</option>
-            <option value="life-short">短期間の中断（数日から2週間ほど）</option>
-            <option value="life-extended">長めの中断（数週間から数か月）</option>
-            <option value="life-permanent">使える時間が今後ずっと変わりました</option>
-          </select>
-        </label>
-        <label class="ryr-cov-field">
-          <span class="ryr-cov-label" id="ryr-cov-slip-label">世話が滞ったとき</span>
-          <select class="ryr-cov-select" id="ryr-cov-slip" data-field="outcome_slip">
-            <option value="">—</option>
-            <option value="slip-held">大きな変化はなく、持ちこたえました</option>
-            <option value="slip-settled">小さな変化はあったが自然に収まりました</option>
-            <option value="slip-needed-help">手を入れて立て直す必要がありました</option>
-            <option value="slip-not-yet">まだ滞ったことがないので分かりません</option>
-          </select>
-        </label>
-        <label class="ryr-cov-field">
-          <span class="ryr-cov-label" id="ryr-cov-intervene-label">先月、手を入れて直した回数</span>
-          <select class="ryr-cov-select" id="ryr-cov-intervene" data-field="outcome_intervention">
-            <option value="">—</option>
-            <option value="int-none">一度もなく、そのまま動いていました</option>
-            <option value="int-once">1回</option>
-            <option value="int-few">数回</option>
-            <option value="int-most-weeks">ほぼ毎週</option>
-            <option value="int-too-new">新しすぎて判断できません</option>
-          </select>
-        </label>
-        <label class="ryr-cov-field">
-          <span class="ryr-cov-label" id="ryr-cov-intent-label">これは意図しているリズムですか</span>
-          <select class="ryr-cov-select" id="ryr-cov-intent" data-field="care_intent">
-            <option value="">—</option>
-            <option value="intent-chosen">はい。自分で選んだリズムです</option>
-            <option value="intent-drifted">おおむねそうですが、ずれてきています</option>
-            <option value="intent-circumstances">いいえ。状況に押される形になっています</option>
-            <option value="intent-intensive">今は意図的に集中して手をかけている時期です</option>
           </select>
         </label>
       </div>
@@ -423,6 +362,88 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
         <p id="ryr-phase-text"></p>
       </div>
       <p class="ryr-note-end">この内省が扱うのは一つのリズムだけです。水槽は五つのリズムそれぞれで違う段階にあることがあります。これは全体像ではなく、その中の正直な一部分にすぎません。</p>
+      <div class="ryr-ctx-inline" id="ryr-ctx-environmental" hidden>
+        <p class="ryr-share-cov-note" id="ryr-ctx-environmental-note">任意です。後で内省を共有することを選ばない限り、どこにも送信されません。</p>
+        <div class="ryr-share-cov">
+          <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-tempswing-label">実際どのくらい温度が変動するか</span>
+            <select class="ryr-cov-select" id="ryr-cov-tempswing" data-field="temp_swing">
+              <option value="">—</option>
+              <option value="temp-barely">ほとんど変わらないと感じている</option>
+              <option value="temp-mild">少し変わるが、大きくはない</option>
+              <option value="temp-noticeable">かなりの幅で変動している</option>
+              <option value="temp-unsure">正直、分かりません</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="ryr-ctx-inline" id="ryr-ctx-livestock" hidden>
+        <p class="ryr-share-cov-note" id="ryr-ctx-livestock-note">任意です。後で内省を共有することを選ばない限り、どこにも送信されません。</p>
+        <div class="ryr-share-cov">
+          <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-stocking-label">生体の数の変化</span>
+            <select class="ryr-cov-select" id="ryr-cov-stocking" data-field="stocking_change">
+              <option value="">—</option>
+              <option value="stock-same">計画どおり、または意図して変えました</option>
+              <option value="stock-grew-aware">少しずつ増えていて、それは分かっています</option>
+              <option value="stock-grew-unnoticed">思っていたより増えていました</option>
+              <option value="stock-reduced">減らしました</option>
+              <option value="stock-too-new">新しすぎて当てはまりません</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="ryr-ctx-inline" id="ryr-ctx-biological" hidden>
+        <p class="ryr-share-cov-note" id="ryr-ctx-biological-note">任意です。後で内省を共有することを選ばない限り、どこにも送信されません。</p>
+        <div class="ryr-share-cov">
+          <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-slip-label">世話が滞ったとき</span>
+            <select class="ryr-cov-select" id="ryr-cov-slip" data-field="outcome_slip">
+              <option value="">—</option>
+              <option value="slip-held">大きな変化はなく、持ちこたえました</option>
+              <option value="slip-settled">小さな変化はあったが自然に収まりました</option>
+              <option value="slip-needed-help">手を入れて立て直す必要がありました</option>
+              <option value="slip-not-yet">まだ滞ったことがないので分かりません</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="ryr-ctx-inline" id="ryr-ctx-keeper" hidden>
+        <p class="ryr-share-cov-note" id="ryr-ctx-keeper-note">任意です。後で内省を共有することを選ばない限り、どこにも送信されません。</p>
+        <div class="ryr-share-cov">
+          <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-life-label">今、リズムを乱しているもの</span>
+            <select class="ryr-cov-select" id="ryr-cov-life" data-field="life_change">
+              <option value="">—</option>
+              <option value="life-none">いいえ。いつもどおりの時期です</option>
+              <option value="life-short">短期間の中断（数日から2週間ほど）</option>
+              <option value="life-extended">長めの中断（数週間から数か月）</option>
+              <option value="life-permanent">使える時間が今後ずっと変わりました</option>
+            </select>
+          </label>
+          <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-intervene-label">先月、手を入れて直した回数</span>
+            <select class="ryr-cov-select" id="ryr-cov-intervene" data-field="outcome_intervention">
+              <option value="">—</option>
+              <option value="int-none">一度もなく、そのまま動いていました</option>
+              <option value="int-once">1回</option>
+              <option value="int-few">数回</option>
+              <option value="int-most-weeks">ほぼ毎週</option>
+              <option value="int-too-new">新しすぎて判断できません</option>
+            </select>
+          </label>
+          <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-intent-label">これは意図しているリズムですか</span>
+            <select class="ryr-cov-select" id="ryr-cov-intent" data-field="care_intent">
+              <option value="">—</option>
+              <option value="intent-chosen">はい。自分で選んだリズムです</option>
+              <option value="intent-drifted">おおむねそうですが、ずれてきています</option>
+              <option value="intent-circumstances">いいえ。状況に押される形になっています</option>
+              <option value="intent-intensive">今は意図的に集中して手をかけている時期です</option>
+            </select>
+          </label>
+        </div>
+      </div>
       <div class="ryr-actions">
         <button type="button" class="ryr-link-reading ryr-btn-link" id="ryr-btn-to-picker">← 別のリズムを選ぶ</button>
         <button class="ryr-btn-restart" id="ryr-btn-restart">もう一度読む</button>
@@ -1197,11 +1218,35 @@ function ryrTrack(name,params){
   try{if(typeof gtag==='function')gtag('event',name,params||{});}catch(e){}
 }
 /* Tank context: covariates (v1.2) plus outcome and intent items (v1.3).
-   Asked here rather than in the question flow so readers who never share are
-   not made to answer them, and placed above the consent box so what is being
-   consented to is visible. All optional: an unanswered select submits an empty
-   string, distinguishable from every bucket. Remembered locally so a
-   respondent re-sending after revising an answer doesn't have to re-pick.
+   Originally one block in the share modal (asked only after all five
+   rhythms, right above consent). Split across two locations 2026-09-06:
+
+   1. `tank_volume`/`tank_age` stay on the picker screen, ahead of the
+      rhythm cards — pure tank facts that don't depend on having read any
+      rhythm, and the fix for a multi-tank keeper otherwise having no cue
+      that all five rhythms should be about the same tank.
+   2. `temp_swing`/`stocking_change`/`outcome_slip`/`life_change`/
+      `outcome_intervention`/`care_intent` moved to inline blocks on the
+      specific rhythm's OWN result screen (`.ryr-ctx-inline`,
+      `ryrShowInlineContext()` below) — each is thematically paired with
+      that rhythm (`temp_swing` with Environmental's `temp-check-freq`;
+      `stocking_change` with Livestock's bioload theme; `outcome_slip` with
+      Biological's false-maturity/forgiveness theme; the other three with
+      Keeper's capacity/intent theme) and is more legibly "about what you
+      just read" asked there than bundled upfront. Water has no paired
+      field and shows none.
+
+   Deliberately still optional and still unscored throughout, despite now
+   being shown before/alongside specific rhythms rather than only to
+   respondents who reach the share step: filling any of these in is a
+   private aid to the respondent's own consistency, not a data-collection
+   ask — nothing here is transmitted unless the respondent separately opts
+   in and sends at the end, exactly as before. An unanswered select submits
+   an empty string, distinguishable from every bucket. Remembered locally
+   (one shared `ryr_tank_context` object regardless of which screen a field
+   lives on) so a respondent re-sending after revising an answer doesn't
+   have to re-pick, and so a field answered on one visit still has its value
+   when its rhythm's result screen is viewed again later.
 
    NONE OF THESE FEED SCORING, and they must not. The outcome items exist to
    give the ecological claims something to be checked against; scoring a
@@ -1210,7 +1255,11 @@ function ryrTrack(name,params){
 
    Collected from the DOM by [data-field], not from a list here — a hardcoded
    field list is the drift point that lets a new question be added to the
-   markup and silently never transmitted. */
+   markup and silently never transmitted. This also means it does not matter
+   that most `.ryr-ctx-inline` blocks sit `hidden` at any given moment: a
+   hidden field's current value is still read (and still restored on page
+   load), only its own visibility depends on which rhythm's result is
+   showing. */
 function ryrTankContext(){
   var out={};
   Array.prototype.forEach.call(document.querySelectorAll('.ryr-cov-select[data-field]'),function(el){
@@ -1230,6 +1279,15 @@ function ryrRestoreTankContext(){
   Array.prototype.forEach.call(document.querySelectorAll('.ryr-cov-select[data-field]'),function(el){
     var v=c[el.getAttribute('data-field')];
     if(v)el.value=v;
+  });
+}
+/* Which rhythm's result screen shows which inline context block — see the
+   comment above ryrTankContext() for why each field is paired the way it
+   is. Water has no entry, so its result screen shows none. */
+var RYR_CTX_BY_RHYTHM={environmental:'ryr-ctx-environmental',livestock:'ryr-ctx-livestock',biological:'ryr-ctx-biological',keeper:'ryr-ctx-keeper'};
+function ryrShowInlineContext(rhythm){
+  Object.keys(RYR_CTX_BY_RHYTHM).forEach(function(k){
+    document.getElementById(RYR_CTX_BY_RHYTHM[k]).hidden=(k!==rhythm);
   });
 }
 /* Repeat submission (v1.3). A single snapshot cannot show a sequence, and
@@ -1565,6 +1623,7 @@ function showResult(){
   ref.paras.forEach(function(p){var el=document.createElement('p');el.textContent=p;re.appendChild(el);});
   document.getElementById('ryr-closing-q').textContent=ref.closing;
   document.getElementById('ryr-phase-text').textContent=ref.phase;
+  ryrShowInlineContext(curRhythm);
   ryrSetProgress(curRhythm,ref.phaseLabel);
   ryrSetAllAnswers(curRhythm,ans);
   ryrSetAnswerDate(curRhythm,new Date().toISOString());

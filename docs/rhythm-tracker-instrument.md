@@ -988,3 +988,168 @@ not before), not how much of the instrument it needs to cover.
 5. ~~Version bump to v2 per S8~~ **Done 2026-09-06** — `v2.0`,
    `instrument_version` ships in the same commit, i18n rebuilt via
    `scripts/build-ryr-i18n.mjs`, S9 change-log entry written.
+
+---
+
+## S12: Data Pipeline — Formspree → Worker+D1 (Proposal, 2026-09-06)
+
+**Status: draft, not implemented.** Raised because Formspree's actual
+notification behaviour for this form (does a submission email the owner, or
+sit dashboard-only?) is an account-dashboard setting with no trace in this
+repo — unlike everything else this record documents, it cannot be verified
+from git. The fix that removes the unknown is removing the third party.
+
+### S12.1: Why this, why now
+
+`worker/index.js` already exists, already auto-deploys on `worker/**` → `main`
+(`.github/workflows/deploy-worker.yml`), and already proxies a
+privacy-sensitive flow (Rhyssa chat) with an established CORS/rate-limit
+pattern. Routing Rhythm Tracker's submissions through it removes Formspree
+entirely rather than trading one opaque vendor for another — a Google
+Forms/Sheets webhook or a different form host (considered and rejected when
+this was first discussed) has exactly the same "settings live outside the
+repo" property Formspree does.
+
+**Scope: Rhythm Tracker only.** `share-photos.html`'s Formspree form is a
+different case — it needs a human to be notified and to review submissions
+(credit name is collected *to be published*, and links must actually be
+opened and judged), which Formspree's dashboard/email currently does for
+free. Migrating it would mean building a notification path (Cloudflare Email
+Workers/Routing — itself first-party, not a new third party) **and** a
+submission-review surface, which Worker+D1 alone doesn't give you. That is a
+separate, larger piece of work and is deliberately out of scope here.
+
+### S12.2: Target architecture
+
+**Route:** `POST https://api.aquaticrhythm.com/forms/rhythm-tracker` — new
+pathname branch in the existing Worker, same domain and CORS pattern `/chat`
+already uses (`env.ALLOWED_ORIGIN` check, `Origin` must equal
+`https://aquaticrhythm.com`; `/id/` and `/ja/` pages are the same origin,
+just a different path, so no per-language CORS handling is needed).
+
+The `/forms/*` path is not arbitrary: `docs/waf-github-pages.md` §4 already
+documents a rate-limiting rule **template** for exactly this shape of
+endpoint (`/api/contact`, `/forms/*`, `/subscribe` — `>10 req/min/IP`,
+Managed Challenge) with its own note that it is "prepared, not yet
+activated — activate when the endpoint is published." Landing on `/forms/*`
+means that rule ships by *activating* a decision already made, not by
+inventing a new one — found by reading that doc rather than assuming a rule
+would need to be designed from scratch.
+
+**No IP or identifying metadata persisted.** This is a decision, not an
+oversight: S6 states plainly "No name, email, IP-linked identifier... is
+collected," and D1 must keep that true, not just Formspree. `CF-Connecting-IP`
+is used only transiently, in-memory, for the rate-limiter — exactly the
+`/chat` pattern (§`isRateLimited`/`rateLimitHits`) — and is never written to
+a row.
+
+**D1 schema** (one table, columns mapped 1:1 from S6's payload table):
+
+```sql
+CREATE TABLE rhythm_tracker_submissions (
+  id                    INTEGER PRIMARY KEY AUTOINCREMENT,
+  respondent_id         TEXT NOT NULL,
+  submission_index      INTEGER,
+  instrument_version    TEXT NOT NULL,
+  lang                  TEXT,
+  submitted_at          TEXT NOT NULL,  -- client clock, kept for parity with Formspree-era rows
+  received_at           TEXT NOT NULL DEFAULT (datetime('now')),  -- server clock, authoritative
+  phases                TEXT,  -- JSON
+  answers               TEXT,  -- JSON
+  response_coding       TEXT,  -- JSON
+  tank_volume           TEXT,
+  tank_age              TEXT,
+  temp_swing            TEXT,
+  stocking_change       TEXT,
+  life_change           TEXT,
+  outcome_slip          TEXT,
+  outcome_intervention  TEXT,
+  care_intent           TEXT,
+  days_since_first      TEXT,
+  days_since_previous   TEXT,
+  answer_dates          TEXT   -- JSON
+);
+CREATE INDEX idx_rts_respondent ON rhythm_tracker_submissions(respondent_id);
+```
+
+JSON-shaped fields (`phases`, `answers`, `response_coding`, `answer_dates`)
+stay as TEXT columns holding JSON rather than being split into child tables —
+D1 is SQLite, this is the low-friction option, and nothing here needs SQL-side
+querying into those blobs yet. `received_at` is new: Formspree's own
+received-date was already the fallback for identifying pre-v1.1 submissions
+(S6), so a server-assigned timestamp neither Formspree nor a client clock can
+misreport is a genuine improvement, not just parity.
+
+**Abuse handling**, reusing patterns already in this codebase rather than
+inventing new ones: the `/chat` in-memory rate-limiter
+(`isRateLimited`/`rateLimitHits`), tuned lower since this is a free form
+endpoint, not a paid-API call it protects; a honeypot field, mirroring
+`share-photos.html`'s `_gotcha` pattern (new for Rhythm Tracker — it has none
+today); and payload validation with length caps, mirroring
+`sanitizeTankContext`'s existing approach of stripping unexpected fields.
+
+**Response contract:** `{ok:true}` on success, `{error:'...'}` on failure —
+the client's existing status-message logic (`Sending…` / `Sent — thank you` /
+error text) needs its fetch target and encoding changed (FormData → JSON,
+matching `/chat`'s convention), not its UI.
+
+### S12.3: What changes where
+
+- `worker/wrangler.toml` — add a `[[d1_databases]]` binding (owner
+  provisions the database once; see S12.4).
+- `worker/schema.sql` (new) — the table above.
+- `worker/index.js` — new `url.pathname === '/forms/rhythm-tracker'` branch
+  and handler, alongside the existing `/health` and `/chat` ones.
+- `articles/rhythm-tracker.html` — swap `RYR_FORMSPREE_ENDPOINT` for the new
+  Worker URL; encode the payload as JSON instead of `FormData`.
+- `.github/workflows/deploy-worker.yml` — add a `wrangler d1 migrations
+  apply --remote` step, so future schema changes ship through the same
+  PR → merge → auto-deploy path as everything else in this repo, rather than
+  becoming a manual side-channel step.
+- `docs/waf-github-pages.md` §4 — mark the `/forms/*` rule as activated/live,
+  matching how `/chat`'s rule note already reads "sudah live."
+- **This document, S6** — the consent text quoted there says *"It goes
+  through Formspree, a third-party form service."* That sentence becomes
+  false the moment this ships and is respondent-facing copy people actually
+  read before consenting — it must be rewritten in the same change, not
+  left stale. New version bump reasoning: see S12.6.
+
+### S12.4: What only the account owner can do
+
+None of this is something I can run from here — it needs Cloudflare account
+access this session doesn't have:
+
+1. **Create the D1 database once**: `wrangler d1 create
+   aquatic-rhythm-rhythm-tracker`, then paste the returned `database_id`
+   into the `wrangler.toml` block I'd prepare with a placeholder.
+2. **Confirm `CLOUDFLARE_API_TOKEN`** (already used by
+   `deploy-worker.yml`) has D1 edit permission — may need its scope widened
+   in the Cloudflare dashboard where the token was issued.
+3. **Activate the `/forms/*` WAF rate-limiting rule** (§4 of the WAF doc) in
+   the Cloudflare dashboard — a UI action, not something in git.
+4. **Decide on historical Formspree data** — export existing submissions
+   from the Formspree dashboard (CSV; only the owner can reach it) if a
+   unified dataset is wanted. I can turn that export into a `wrangler d1
+   execute --file=import.sql` migration once handed the file.
+
+### S12.5: Decisions needing sign-off before I implement
+
+- No IP or identifying metadata stored at all — my recommendation, matching
+  S6's existing promise exactly. Confirm before I write it that way.
+- CLI-based data access (`wrangler d1 execute ... --json`) is acceptable for
+  now, versus building a small authenticated export/admin page — a larger,
+  separate feature I'd want scoped on its own.
+- Historical Formspree submissions: leave archived in Formspree untouched,
+  or import into D1 for one unified dataset going forward.
+- Cut over directly, verified by one real test submission before merge —
+  recommended over a dual-write period, given current volume is small and
+  this is still exploratory-stage data collection (S7's own framing).
+
+### S12.6: Versioning
+
+Per S8, this is **not** an `instrument_version` bump on its own — no item,
+wording, scoring, or question changes. It gets a dated note in S6 instead,
+since the transmission mechanism and the consent text describing it change
+materially even though what is asked does not — the same distinction S8
+already draws between "layout/styling/translation" (no bump) and
+"the administered questionnaire" (bump).

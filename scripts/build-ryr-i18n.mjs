@@ -514,7 +514,8 @@ for (const lang of targetLangs) {
   h = replaceOnce(h, /(<a href="\/tools" class="ryr-link-reading">)← Back to Labs &amp; Tools(<\/a>)/, (_, a, b) => `${a}${t.chrome.ctaBackToTools}${b}`);
 
   // 11b. Share/consent block (opt-in reflection data for all five rhythms —
-  // Formspree). Lives at the bottom of the picker screen (not the result
+  // sent to our own Worker+D1 pipeline since v2.0's §S12, not Formspree).
+  // Lives at the bottom of the picker screen (not the result
   // screen — moved there so it prompts once, after all five are done,
   // rather than once per rhythm; see #ryr-share/#ryr-share-backdrop and
   // ryrShareUIRefresh()/ryrShareCheckpoint()). Button/status text has

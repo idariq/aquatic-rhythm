@@ -327,7 +327,7 @@ off: an unchecked checkbox plus a separate send button. There is no auto-submit.
 Dismissal ("Maybe later") leaves the option available at the bottom of the
 picker screen indefinitely.
 
-### Participant-facing text (verbatim, v1, EN)
+### Participant-facing text (verbatim, v1, EN — see the note below for what changed)
 
 > All five rhythms, read.
 >
@@ -342,9 +342,28 @@ picker screen indefinitely.
 Checkbox label: *"I'd like to share my answers and phase readings anonymously
 for this purpose."*
 
+**Updated 2026-09-06, §S12 shipped.** The sentence naming Formspree is now
+*"It goes straight to our own server — no third party in between — with
+nothing else attached: ..."* — everything else in the quoted text is
+unchanged. Recorded here rather than editing the quote above silently: the
+quote above is what v1–v2.0 respondents actually saw and consented to: it is
+a historical record, not a live copy of current copy, and should not be
+quietly rewritten to match whatever the site currently says. The current
+text lives in `articles/rhythm-tracker.html`'s `#ryr-share-detail`, as
+always.
+
 ### What is transmitted
 
-POST to `https://formspree.io/f/xoeqleyo` with four fields:
+**Updated 2026-09-06 (§S12).** POST to
+`https://api.aquaticrhythm.com/forms/rhythm-tracker` (our own Cloudflare
+Worker, verified with Cloudflare Turnstile) as a single JSON body, replacing
+the Formspree endpoint below that all v1–v2.0 submissions before this date
+went to. The field list is unchanged — same names, same meanings — only the
+transport changed. Historical field-by-field notes below, kept as written
+for older versions:
+
+POST to `https://formspree.io/f/xoeqleyo` *(pre-2026-09-06 — see the update
+note above)* with four fields:
 
 | Field | Content |
 |---|---|
@@ -991,13 +1010,32 @@ not before), not how much of the instrument it needs to cover.
 
 ---
 
-## S12: Data Pipeline — Formspree → Worker+D1 (Proposal, 2026-09-06)
+## S12: Data Pipeline — Formspree → Worker+D1 (2026-09-06)
 
-**Status: draft, not implemented.** Raised because Formspree's actual
-notification behaviour for this form (does a submission email the owner, or
-sit dashboard-only?) is an account-dashboard setting with no trace in this
-repo — unlike everything else this record documents, it cannot be verified
-from git. The fix that removes the unknown is removing the third party.
+**Status: implemented and shipped 2026-09-06.** Raised because Formspree's
+actual notification behaviour for this form (does a submission email the
+owner, or sit dashboard-only?) was an account-dashboard setting with no
+trace in this repo — unlike everything else this record documents, it could
+not be verified from git. The fix that removes the unknown is removing the
+third party.
+
+**What actually happened, briefly** (full detail stays in S12.2–S12.4 below,
+written before implementation and left as the design record; this paragraph
+is the after-the-fact summary): the account owner created the D1 database
+and a Turnstile widget by hand in the Cloudflare dashboard and handed over
+the `database_id` and site key; the WAF rate-limiting assumption in S12.2
+turned out to be wrong once checked against the account's actual plan (see
+the dated correction inline) and was replaced with Turnstile + Bot Fight
+Mode + the in-Worker limiter instead, none of it gated by the rule quota
+that turned out to be full. `worker/index.js`, `worker/wrangler.toml`,
+`worker/schema.sql`, `articles/rhythm-tracker.html`, `_headers` (CSP, to
+allow the Turnstile script/frame), and both translation files were updated
+in the same change. **Not yet done**: the owner still needs to run
+`wrangler secret put TURNSTILE_SECRET_KEY` — until then, `verifyTurnstile()`
+in `worker/index.js` deliberately allows submissions through unverified
+(see its comment) rather than silently rejecting everyone over a
+deploy-ordering gap; and the historical-Formspree-data decision (S12.4 #4)
+is still open.
 
 ### S12.1: Why this, why now
 
@@ -1153,37 +1191,48 @@ matching `/chat`'s convention), not its UI.
 None of this is something I can run from here — it needs Cloudflare account
 access this session doesn't have:
 
-1. **Create the D1 database once**: `wrangler d1 create
-   aquatic-rhythm-rhythm-tracker`, then paste the returned `database_id`
-   into the `wrangler.toml` block I'd prepare with a placeholder.
+1. ~~Create the D1 database once~~ **Done 2026-09-06** — `wrangler d1 create
+   aquatic-rhythm-rhythm-tracker`, `database_id` handed over and bound in
+   `wrangler.toml`.
 2. **Confirm `CLOUDFLARE_API_TOKEN`** (already used by
    `deploy-worker.yml`) has D1 edit permission — may need its scope widened
-   in the Cloudflare dashboard where the token was issued.
-3. **Create a Turnstile site key** (Cloudflare dashboard → Turnstile —
-   confirmed 2026-09-06 to be a separate free product from the WAF "Rate
-   limiting rules" quota, which this account has already spent its one slot
-   on for `/chat`) and hand me the site key + secret key (the secret goes
-   in via `wrangler secret put`, same mechanism already used for
-   `ANTHROPIC_API_KEY`). Confirm **Bot Fight Mode** (WAF doc §3) is turned
-   on while there — also account-level, also not gated by the rate-limiting
-   rule quota that's full.
+   in the Cloudflare dashboard where the token was issued. **Still open** —
+   only surfaces as a failure the first time `wrangler d1 migrations apply`
+   (or an equivalent manual `wrangler d1 execute --file=schema.sql`) actually
+   needs to run against the remote database; not yet confirmed either way.
+3. ~~Create a Turnstile site key~~ **Done 2026-09-06** — site key handed
+   over and now in `articles/rhythm-tracker.html`; **secret key still
+   needs** `wrangler secret put TURNSTILE_SECRET_KEY` run by the owner
+   (never pasted into chat or git) — until then `verifyTurnstile()` allows
+   submissions through unverified rather than rejecting everyone, per its
+   comment in `worker/index.js`. **Bot Fight Mode** (WAF doc §3) — confirm
+   it's on; not verified either way yet.
 4. **Decide on historical Formspree data** — export existing submissions
    from the Formspree dashboard (CSV; only the owner can reach it) if a
    unified dataset is wanted. I can turn that export into a `wrangler d1
-   execute --file=import.sql` migration once handed the file.
+   execute --file=import.sql` migration once handed the file. **Still
+   open.**
 
-### S12.5: Decisions needing sign-off before I implement
+### S12.5: Decisions (implemented on the recommended default; not all explicitly re-confirmed)
 
-- No IP or identifying metadata stored at all — my recommendation, matching
-  S6's existing promise exactly. Confirm before I write it that way.
-- CLI-based data access (`wrangler d1 execute ... --json`) is acceptable for
-  now, versus building a small authenticated export/admin page — a larger,
-  separate feature I'd want scoped on its own.
-- Historical Formspree submissions: leave archived in Formspree untouched,
-  or import into D1 for one unified dataset going forward.
-- Cut over directly, verified by one real test submission before merge —
-  recommended over a dual-write period, given current volume is small and
-  this is still exploratory-stage data collection (S7's own framing).
+Implementation proceeded on these once the owner started executing the
+account-side steps (creating D1, creating Turnstile) without objection —
+worth recording plainly that "proceeded without objection" and "explicitly
+confirmed" are not the same thing, so a future reader doesn't read more
+agreement into this than actually happened:
+
+- **No IP or identifying metadata stored at all** — implemented this way
+  (`worker/schema.sql`'s header comment states it explicitly); matches S6's
+  existing promise.
+- **CLI-based data access** (`wrangler d1 execute ... --json`) — no
+  admin/export page was built; this is the access path until/unless one is
+  requested.
+- **Historical Formspree submissions** — not yet decided (S12.4 #4, still
+  open); nothing has been imported.
+- **Cut over directly**, no dual-write period — implemented this way.
+  **Not yet verified with one real test submission**, because
+  `TURNSTILE_SECRET_KEY` hasn't been set yet (S12.4 #3) — do that end-to-end
+  check as part of setting it, not as a separate step.
 
 ### S12.6: Versioning
 

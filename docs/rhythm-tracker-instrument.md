@@ -328,20 +328,43 @@ Dismissal ("Maybe later") leaves the option available at the bottom of the
 picker screen indefinitely.
 
 **Updated 2026-09-06 — tank-context fields moved ahead of the consent
-trigger.** `tank_volume`/`tank_age`/`temp_swing`/`stocking_change`/
-`life_change`/`outcome_slip`/`outcome_intervention`/`care_intent` used to
-sit inside the share modal itself (asked only once all five rhythms were
-done, right above the consent checkbox). They now sit on the picker screen,
-ahead of the rhythm cards — visible to every visitor, not only those who
-reach the share step. The owner's reasoning: a keeper with more than one
-tank had no cue that all five rhythms should be answered about the *same*
-tank, and answering that cue upfront (rather than being told about it only
-after finishing) is what actually fixes the ambiguity. Still fully optional,
-still unscored, and — this is the part that could easily have drifted
-without saying so — **still not transmitted anywhere until the respondent
-separately opts in and sends at the end**: moving the fields earlier in the
-screen flow did not move *when* the data leaves the browser. The consent
-trigger condition above (all five rhythms complete) is unchanged.
+trigger, then split further by theme.** `tank_volume`/`tank_age`/
+`temp_swing`/`stocking_change`/`life_change`/`outcome_slip`/
+`outcome_intervention`/`care_intent` used to sit inside the share modal
+itself (asked only once all five rhythms were done, right above the
+consent checkbox). First move: all eight to the picker screen, ahead of the
+rhythm cards — visible to every visitor, not only those who reach the share
+step. The owner's reasoning: a keeper with more than one tank had no cue
+that all five rhythms should be answered about the *same* tank, and
+answering that cue upfront (rather than being told about it only after
+finishing) is what actually fixes the ambiguity.
+
+**Second move, same day, on the owner's further judgement**: only
+`tank_volume`/`tank_age` stayed on the picker screen — pure tank facts
+needed as context for every rhythm. The other six moved again, this time to
+an inline block on the *specific* rhythm's own result screen, thematically
+paired: `temp_swing` appears after Environmental Rhythm (companion to
+`temp-check-freq`, the item it was split from — S9's v2.0 entry);
+`stocking_change` after Livestock Rhythm (bioload theme); `outcome_slip`
+after Biological Rhythm (false-maturity/forgiveness theme, §S5.7 of the
+framework); `life_change`/`outcome_intervention`/`care_intent` together
+after Keeper Rhythm (capacity/intent theme). Water has no paired field and
+shows none. Because the tool is explicitly order-free (a respondent can
+answer any rhythm in any sequence, days apart, and re-read any of them —
+"nothing here needs to happen in order" is the picker screen's own text),
+each inline block is simply shown or hidden based on which rhythm's result
+is currently displayed (`ryrShowInlineContext()` in
+`articles/rhythm-tracker.html`), not tracked as "seen once" — a respondent
+revisiting a rhythm's result sees its paired field again, pre-filled if
+already answered, which needed no new state beyond what `ryrTankContext()`/
+`ryrRestoreTankContext()` already did.
+
+Still fully optional, still unscored throughout, and — this is the part
+that could easily have drifted without saying so — **still not transmitted
+anywhere until the respondent separately opts in and sends at the end**:
+neither move changed *when* the data leaves the browser, only where on the
+page each field is asked. The consent trigger condition above (all five
+rhythms complete) is unchanged.
 
 ### Participant-facing text (verbatim, v1, EN — see the note below for what changed)
 

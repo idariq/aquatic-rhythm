@@ -35,27 +35,37 @@ const MAX_HISTORY    = 10;
    blocks the common case (one script hammering /chat from one IP) with no
    extra infra to provision. */
 const RATE_LIMIT_WINDOW_MS = 60_000;
-const RATE_LIMIT_MAX_REQ   = 12;
-const rateLimitHits        = new Map(); /* ip -> { count, windowStart } */
+const CHAT_RATE_LIMIT_MAX  = 12;
+const chatRateLimitHits    = new Map(); /* ip -> { count, windowStart } */
 
-function isRateLimited(ip) {
+/* Rhythm Tracker submissions (docs/rhythm-tracker-instrument.md §S12) — a
+   separate map and a lower cap than /chat's. Not because a lower number is
+   inherently safer, but because a legitimate respondent submits once, maybe
+   twice after revising an answer; /chat's 12/min is sized for a real
+   back-and-forth conversation, which this endpoint has no equivalent of. A
+   shared map/threshold would let a burst on one endpoint spuriously throttle
+   the other. */
+const FORM_RATE_LIMIT_MAX  = 6;
+const formRateLimitHits    = new Map();
+
+function isRateLimited(map, maxReq, ip) {
   const now   = Date.now();
-  const entry = rateLimitHits.get(ip);
+  const entry = map.get(ip);
   if (!entry || now - entry.windowStart >= RATE_LIMIT_WINDOW_MS) {
-    rateLimitHits.set(ip, { count: 1, windowStart: now });
+    map.set(ip, { count: 1, windowStart: now });
     return false;
   }
   entry.count += 1;
-  return entry.count > RATE_LIMIT_MAX_REQ;
+  return entry.count > maxReq;
 }
 
-/* Opportunistic cleanup so rateLimitHits doesn't grow unbounded over an
-   isolate's lifetime — cheap enough to run on a small random fraction of
-   requests instead of wiring up a timer/alarm. */
-function pruneRateLimiter() {
+/* Opportunistic cleanup so a map doesn't grow unbounded over an isolate's
+   lifetime — cheap enough to run on a small random fraction of requests
+   instead of wiring up a timer/alarm. */
+function pruneRateLimiter(map) {
   const now = Date.now();
-  for (const [ip, entry] of rateLimitHits) {
-    if (now - entry.windowStart >= RATE_LIMIT_WINDOW_MS) rateLimitHits.delete(ip);
+  for (const [ip, entry] of map) {
+    if (now - entry.windowStart >= RATE_LIMIT_WINDOW_MS) map.delete(ip);
   }
 }
 
@@ -95,11 +105,20 @@ export default {
       /* Cloudflare sets CF-Connecting-IP itself on every edge request —
          unlike Origin, the client cannot forge this header. */
       const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-      if (Math.random() < 0.02) pruneRateLimiter();
-      if (isRateLimited(ip)) {
+      if (Math.random() < 0.02) pruneRateLimiter(chatRateLimitHits);
+      if (isRateLimited(chatRateLimitHits, CHAT_RATE_LIMIT_MAX, ip)) {
         return rateLimitResponse(origin);
       }
       return handleChat(request, env, origin);
+    }
+
+    if (request.method === 'POST' && url.pathname === '/forms/rhythm-tracker') {
+      const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+      if (Math.random() < 0.02) pruneRateLimiter(formRateLimitHits);
+      if (isRateLimited(formRateLimitHits, FORM_RATE_LIMIT_MAX, ip)) {
+        return rateLimitResponse(origin);
+      }
+      return handleRhythmTrackerSubmit(request, env, origin, ip);
     }
 
     return new Response('Not found', { status: 404 });
@@ -492,6 +511,130 @@ function buildTankContextText(tankContext) {
   }
   if (!lines.length) return '';
   return '\n\nKeeper\'s current tank (use for personalised responses — no need to ask again):\n' + lines.join('\n');
+}
+
+/* ── Rhythm Tracker submission (docs/rhythm-tracker-instrument.md §S12) ──
+   Replaces Formspree. No IP or other identifying metadata is written to a
+   row — `ip` above is used only by the in-memory rate limiter and by
+   Turnstile's own siteverify call (which Cloudflare does not persist on our
+   side either); it never reaches the INSERT below. See §S12.2's "No IP or
+   identifying metadata persisted" note — this keeps that true of D1 exactly
+   as it was true of the Formspree payload. */
+const RYR_MAX_FIELD_LEN = 200;
+const RYR_MAX_JSON_LEN  = 20_000; /* generous — five rhythms' worth of answers and dates */
+
+async function verifyTurnstile(token, ip, env) {
+  /* Not yet configured (TURNSTILE_SECRET_KEY unset) — don't brick
+     submissions over a deploy-ordering gap between this code shipping and
+     the owner running `wrangler secret put`. Once set, verification is
+     enforced for real. */
+  if (!env.TURNSTILE_SECRET_KEY) return true;
+  if (!token || typeof token !== 'string') return false;
+  try {
+    const body = new URLSearchParams({ secret: env.TURNSTILE_SECRET_KEY, response: token });
+    if (ip && ip !== 'unknown') body.set('remoteip', ip);
+    const resp = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body,
+    });
+    const data = await resp.json();
+    return !!data.success;
+  } catch {
+    return false;
+  }
+}
+
+async function handleRhythmTrackerSubmit(request, env, origin, ip) {
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return errorResponse('Invalid JSON', 400, origin);
+  }
+  if (!body || typeof body !== 'object') {
+    return errorResponse('Invalid payload', 400, origin);
+  }
+
+  /* Honeypot — mirrors share-photos.html's `_gotcha` field. A filled value
+     means a bot, not a person; respond as if it worked so the bot gets no
+     signal it was caught, but skip verification and the D1 write. */
+  if (typeof body._gotcha === 'string' && body._gotcha.length > 0) {
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': origin },
+    });
+  }
+
+  if (!(await verifyTurnstile(body.turnstileToken, ip, env))) {
+    return errorResponse('Verification failed — please try again', 403, origin);
+  }
+
+  if (typeof body.respondent_id !== 'string' || !body.respondent_id) {
+    return errorResponse('Missing respondent_id', 400, origin);
+  }
+  if (typeof body.instrument_version !== 'string' || !body.instrument_version) {
+    return errorResponse('Missing instrument_version', 400, origin);
+  }
+  if (typeof body.submitted_at !== 'string' || !body.submitted_at) {
+    return errorResponse('Missing submitted_at', 400, origin);
+  }
+
+  const str  = (v) => (typeof v === 'string' ? v.slice(0, RYR_MAX_FIELD_LEN) : null);
+  const json = (v) => {
+    if (v === undefined || v === null) return null;
+    try {
+      const s = JSON.stringify(v);
+      return s.length > RYR_MAX_JSON_LEN ? null : s;
+    } catch {
+      return null;
+    }
+  };
+
+  const row = {
+    respondent_id:        str(body.respondent_id),
+    submission_index:     Number.isInteger(body.submission_index) ? body.submission_index : null,
+    instrument_version:   str(body.instrument_version),
+    lang:                 str(body.lang),
+    submitted_at:         str(body.submitted_at),
+    phases:               json(body.phases),
+    answers:              json(body.answers),
+    response_coding:      json(body.response_coding),
+    tank_volume:          str(body.tank_volume),
+    tank_age:             str(body.tank_age),
+    temp_swing:           str(body.temp_swing),
+    stocking_change:      str(body.stocking_change),
+    life_change:          str(body.life_change),
+    outcome_slip:         str(body.outcome_slip),
+    outcome_intervention: str(body.outcome_intervention),
+    care_intent:          str(body.care_intent),
+    days_since_first:     str(body.days_since_first),
+    days_since_previous:  str(body.days_since_previous),
+    answer_dates:         json(body.answer_dates),
+  };
+
+  try {
+    await env.RHYTHM_TRACKER_DB.prepare(
+      `INSERT INTO rhythm_tracker_submissions (
+        respondent_id, submission_index, instrument_version, lang, submitted_at,
+        phases, answers, response_coding, tank_volume, tank_age, temp_swing,
+        stocking_change, life_change, outcome_slip, outcome_intervention,
+        care_intent, days_since_first, days_since_previous, answer_dates
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    ).bind(
+      row.respondent_id, row.submission_index, row.instrument_version, row.lang, row.submitted_at,
+      row.phases, row.answers, row.response_coding, row.tank_volume, row.tank_age, row.temp_swing,
+      row.stocking_change, row.life_change, row.outcome_slip, row.outcome_intervention,
+      row.care_intent, row.days_since_first, row.days_since_previous, row.answer_dates
+    ).run();
+  } catch {
+    return errorResponse('Storage error', 502, origin);
+  }
+
+  return new Response(JSON.stringify({ ok: true }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': origin },
+  });
 }
 
 function corsResponse(status, origin) {

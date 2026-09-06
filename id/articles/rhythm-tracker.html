@@ -34,6 +34,10 @@
 <script>if(localStorage.getItem('ar_analytics_opt')==='1'){window['ga-disable-G-8MDN065WNW']=true}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8MDN065WNW"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8MDN065WNW');</script>
+<!-- Turnstile — docs/rhythm-tracker-instrument.md §S12. Verifies the share/
+     consent submission server-side before it reaches D1; see ryrTurnstileReady
+     below and worker/index.js's verifyTurnstile(). -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
 (function(){
   try{
@@ -279,7 +283,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       <div class="ryr-share" id="ryr-share" hidden>
         <p class="ryr-share-congrats" id="ryr-share-congrats">Kelima ritme, sudah dibaca.</p>
         <p class="ryr-share-text" id="ryr-share-text">Itu perlukan perhatian sungguh-sungguh. Terima kasih sudah bertahan sampai selesai. Kalau Anda berkenan, berbagi apa yang Anda temukan di sini — jawaban Anda dan hasil fase di atas — membantu riset ARA maju, dan membantu alat ini bertanya lebih baik lagi untuk siapa pun yang membaca setelah ini.</p>
-        <p class="ryr-share-detail" id="ryr-share-detail">Data dikirim lewat Formspree, layanan formulir pihak ketiga, tanpa apa pun yang lain: tanpa nama, tanpa email, hanya kode acak agar kelima jawaban Anda bisa dibaca sebagai satu kesatuan. Ini masih langkah awal yang jujur — bukan kumpulan data formal, dan bukan bukti apa pun. Yang ingin dibangun dari sini adalah gambaran awal yang nyata sebagai dasar penelitian formal nanti, dan temuan yang sudah dirangkum bisa saja dipublikasikan atau dibagikan secara terbuka sebagai bagian dari itu. Tidak ada yang bisa mengidentifikasi Anda ikut terkirim. Kode Anda muncul di sini setelah pengiriman: simpan saja, dan kalau sewaktu-waktu Anda berubah pikiran, kirim pesan ke hello@aquaticrhythm.com dan jawaban Anda akan kami hapus.</p>
+        <p class="ryr-share-detail" id="ryr-share-detail">Data dikirim langsung ke server kami sendiri — tanpa pihak ketiga di antaranya — tanpa apa pun yang lain: tanpa nama, tanpa email, hanya kode acak agar kelima jawaban Anda bisa dibaca sebagai satu kesatuan. Ini masih langkah awal yang jujur — bukan kumpulan data formal, dan bukan bukti apa pun. Yang ingin dibangun dari sini adalah gambaran awal yang nyata sebagai dasar penelitian formal nanti, dan temuan yang sudah dirangkum bisa saja dipublikasikan atau dibagikan secara terbuka sebagai bagian dari itu. Tidak ada yang bisa mengidentifikasi Anda ikut terkirim. Kode Anda muncul di sini setelah pengiriman: simpan saja, dan kalau sewaktu-waktu Anda berubah pikiran, kirim pesan ke hello@aquaticrhythm.com dan jawaban Anda akan kami hapus.</p>
         <p class="ryr-share-cov-note" id="ryr-share-cov-note">Semua opsional, dan tidak satu pun mengubah refleksi di atas. Ini ada supaya jawaban bisa dikelompokkan dan dibandingkan nanti — hasil pada minggu keenam dan hasil pada tahun ketiga berarti hal yang berbeda, dan apa yang dilakukan akuariumnya sendiri justru bagian yang belum pernah ditanyakan alat ini.</p>
         <div class="ryr-share-cov">
           <label class="ryr-cov-field">
@@ -373,6 +377,8 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
           <input type="checkbox" id="ryr-share-consent">
           <span id="ryr-share-consent-label">Saya ingin membagikan jawaban dan hasil fase saya secara anonim untuk tujuan ini.</span>
         </label>
+        <input type="text" name="_gotcha" id="ryr-share-hp" class="ryr-hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;border:0">
+        <div class="cf-turnstile" id="ryr-turnstile" data-sitekey="0x4AAAAAAEqkEk-e5I_IxZxs" data-callback="ryrTurnstileReady" data-expired-callback="ryrTurnstileExpired" data-error-callback="ryrTurnstileExpired" data-theme="auto"></div>
         <button class="ryr-share-btn" id="ryr-share-btn" disabled>Bagikan kelima refleksi</button>
         <button type="button" class="ryr-share-dismiss" id="ryr-share-dismiss">Nanti saja</button>
         <p class="ryr-share-status" id="ryr-share-status" hidden></p>
@@ -1155,7 +1161,25 @@ reflect:function(ans){
 
 /* ═══ FLOW ═══ */
 var curQ=0,ans={},curRhythm=null;
-var RYR_FORMSPREE_ENDPOINT='https://formspree.io/f/xoeqleyo';
+var RYR_SUBMIT_ENDPOINT='https://api.aquaticrhythm.com/forms/rhythm-tracker';
+/* Turnstile solved-state — set by ryrTurnstileReady (the widget's
+   data-callback, §S12), read by both the button-enable check and the
+   submit handler. Starts false; Managed mode usually resolves within a
+   second or two of the modal opening, often invisibly. */
+var ryrTurnstileToken='';
+function ryrTurnstileReady(token){
+  ryrTurnstileToken=token;
+  var consent=document.getElementById('ryr-share-consent');
+  document.getElementById('ryr-share-btn').disabled=!(consent&&consent.checked&&ryrTurnstileToken);
+}
+/* Tokens expire (~5 min) and the modal can sit open longer than that while
+   a respondent reads or fills in the optional context fields — re-disable
+   rather than let a stale token reach the Worker and fail verification
+   silently from the respondent's point of view. */
+function ryrTurnstileExpired(){
+  ryrTurnstileToken='';
+  document.getElementById('ryr-share-btn').disabled=true;
+}
 /* Bump whenever item wording, the item set, scoring weights, thresholds, or
    the meaning of a stored option value changes — and ship the bump in the
    same commit as the change, since a version not recorded in the data is not
@@ -1576,7 +1600,7 @@ document.getElementById('ryr-begin-btn').addEventListener('click',function(){
   }
 })();
 document.getElementById('ryr-share-consent').addEventListener('change',function(){
-  document.getElementById('ryr-share-btn').disabled=!this.checked;
+  document.getElementById('ryr-share-btn').disabled=!(this.checked&&ryrTurnstileToken);
 });
 Array.prototype.forEach.call(document.querySelectorAll('.ryr-cov-select[data-field]'),function(el){
   el.addEventListener('change',ryrSaveTankContext);
@@ -1585,29 +1609,31 @@ ryrRestoreTankContext();
 document.getElementById('ryr-share-btn').addEventListener('click',function(){
   var btn=this;
   var consent=document.getElementById('ryr-share-consent');
-  if(!consent.checked)return;
+  if(!consent.checked||!ryrTurnstileToken)return;
   var statusEl=document.getElementById('ryr-share-status');
   btn.disabled=true;consent.disabled=true;
   btn.textContent="Mengirim…";
   var allAnswers=ryrGetAllAnswers();
   var progress=ryrGetProgress();
-  var fd=new FormData();
-  fd.append('_subject','Aquatic Rhythm — Rhythm Tracker reflection data (all five rhythms)');
-  fd.append('phases',JSON.stringify(progress));
-  fd.append('answers',JSON.stringify(allAnswers));
-  fd.append('lang',document.documentElement.lang);
-  fd.append('respondent_id',ryrRespondentId());
-  fd.append('instrument_version',RYR_INSTRUMENT_VERSION);
-  fd.append('submitted_at',new Date().toISOString());
-  fd.append('response_coding',JSON.stringify(ryrResponseCoding(allAnswers)));
   var ctx=ryrTankContext();
-  Object.keys(ctx).forEach(function(k){fd.append(k,ctx[k]);});
   var hist=ryrSubmissionHistory(),nowMs=Date.now(),nowIso=new Date(nowMs).toISOString();
-  fd.append('submission_index',String(hist.count+1));
-  fd.append('days_since_first',ryrDaysBetween(hist.first,nowMs));
-  fd.append('days_since_previous',ryrDaysBetween(hist.last,nowMs));
-  fd.append('answer_dates',JSON.stringify(ryrGetAnswerDates()));
-  fetch(RYR_FORMSPREE_ENDPOINT,{method:'POST',body:fd,headers:{Accept:'application/json'}})
+  var payload={
+    _gotcha:document.getElementById('ryr-share-hp').value,
+    turnstileToken:ryrTurnstileToken,
+    phases:progress,
+    answers:allAnswers,
+    lang:document.documentElement.lang,
+    respondent_id:ryrRespondentId(),
+    instrument_version:RYR_INSTRUMENT_VERSION,
+    submitted_at:nowIso,
+    response_coding:ryrResponseCoding(allAnswers),
+    submission_index:hist.count+1,
+    days_since_first:ryrDaysBetween(hist.first,nowMs),
+    days_since_previous:ryrDaysBetween(hist.last,nowMs),
+    answer_dates:ryrGetAnswerDates()
+  };
+  Object.keys(ctx).forEach(function(k){payload[k]=ctx[k];});
+  fetch(RYR_SUBMIT_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
     .then(function(res){
       if(res.ok){
         try{localStorage.setItem('ryr_share_sent_hash',JSON.stringify(allAnswers));}catch(e){}
@@ -1619,12 +1645,16 @@ document.getElementById('ryr-share-btn').addEventListener('click',function(){
         statusEl.textContent="Gagal mengirim — periksa koneksi Anda dan coba lagi.";
         statusEl.hidden=false;statusEl.classList.add('err');
         btn.textContent="Bagikan kelima refleksi";btn.disabled=false;consent.disabled=false;
+        if(typeof turnstile!=='undefined')try{turnstile.reset('ryr-turnstile');}catch(e){}
+        ryrTurnstileToken='';
       }
     })
     .catch(function(){
       statusEl.textContent="Gagal mengirim — periksa koneksi Anda dan coba lagi.";
       statusEl.hidden=false;statusEl.classList.add('err');
       btn.textContent="Bagikan kelima refleksi";btn.disabled=false;consent.disabled=false;
+      if(typeof turnstile!=='undefined')try{turnstile.reset('ryr-turnstile');}catch(e){}
+      ryrTurnstileToken='';
     });
 });
 document.getElementById('ryr-share-dismiss').addEventListener('click',function(){

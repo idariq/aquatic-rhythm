@@ -34,6 +34,10 @@
 <script>if(localStorage.getItem('ar_analytics_opt')==='1'){window['ga-disable-G-8MDN065WNW']=true}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8MDN065WNW"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8MDN065WNW');</script>
+<!-- Turnstile — docs/rhythm-tracker-instrument.md §S12. Verifies the share/
+     consent submission server-side before it reaches D1; see ryrTurnstileReady
+     below and worker/index.js's verifyTurnstile(). -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
 (function(){
   try{
@@ -281,7 +285,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       <div class="ryr-share" id="ryr-share" hidden>
         <p class="ryr-share-congrats" id="ryr-share-congrats">五つのリズム、すべて読み終えました。</p>
         <p class="ryr-share-text" id="ryr-share-text">ここまで、しっかり向き合ってくださいました。最後まで進めてくださり、ありがとうございます。よろしければ、ここで見えてきたこと、つまりあなたの回答と上記のフェーズの結果を共有していただけると、ARAの研究を前に進める助けになりますし、この先読む誰かのために、このツールがより良い問いを立てられるようにもなります。</p>
-        <p class="ryr-share-detail" id="ryr-share-detail">データは第三者のフォームサービスであるFormspreeを通じて送られ、それ以外の情報は一切含まれません。お名前もメールアドレスも不要で、五つの回答をまとめて読めるようランダムな識別コードだけが添えられます。これはまだ正式なデータセットでも、何かを証明するものでもない、正直な最初の一歩です。ここから育てていきたいのは、いずれ正式な研究の土台となる、最初の実像です。まとめられた結果は、その一環として公開・共有されることがあります。あなたを特定できる情報が一緒に送られることはありません。送信後、この場所にあなたのコードが表示されます。控えておいていただければ、もし気が変わったときは hello@aquaticrhythm.com までご連絡いただくことで、回答を削除いたします。</p>
+        <p class="ryr-share-detail" id="ryr-share-detail">データは第三者を介さず、私たち自身のサーバーに直接送られ、それ以外の情報は一切含まれません。お名前もメールアドレスも不要で、五つの回答をまとめて読めるようランダムな識別コードだけが添えられます。これはまだ正式なデータセットでも、何かを証明するものでもない、正直な最初の一歩です。ここから育てていきたいのは、いずれ正式な研究の土台となる、最初の実像です。まとめられた結果は、その一環として公開・共有されることがあります。あなたを特定できる情報が一緒に送られることはありません。送信後、この場所にあなたのコードが表示されます。控えておいていただければ、もし気が変わったときは hello@aquaticrhythm.com までご連絡いただくことで、回答を削除いたします。</p>
         <p class="ryr-share-cov-note" id="ryr-share-cov-note">すべて任意で、上の内省が変わることはありません。あとで回答をグループ分けして比べられるようにするためのもので、6週間目の結果と3年目の結果とでは意味が違いますし、水槽自体がどう振る舞ったかは、このツールがこれまで一度も尋ねてこなかった部分です。</p>
         <div class="ryr-share-cov">
           <label class="ryr-cov-field">
@@ -375,6 +379,8 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
           <input type="checkbox" id="ryr-share-consent">
           <span id="ryr-share-consent-label">この目的のために、自分の回答とフェーズの結果を匿名で共有します。</span>
         </label>
+        <input type="text" name="_gotcha" id="ryr-share-hp" class="ryr-hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;border:0">
+        <div class="cf-turnstile" id="ryr-turnstile" data-sitekey="0x4AAAAAAEqkEk-e5I_IxZxs" data-callback="ryrTurnstileReady" data-expired-callback="ryrTurnstileExpired" data-error-callback="ryrTurnstileExpired" data-theme="auto"></div>
         <button class="ryr-share-btn" id="ryr-share-btn" disabled>五つの内省をすべて共有する</button>
         <button type="button" class="ryr-share-dismiss" id="ryr-share-dismiss">またあとで</button>
         <p class="ryr-share-status" id="ryr-share-status" hidden></p>
@@ -1157,7 +1163,25 @@ reflect:function(ans){
 
 /* ═══ FLOW ═══ */
 var curQ=0,ans={},curRhythm=null;
-var RYR_FORMSPREE_ENDPOINT='https://formspree.io/f/xoeqleyo';
+var RYR_SUBMIT_ENDPOINT='https://api.aquaticrhythm.com/forms/rhythm-tracker';
+/* Turnstile solved-state — set by ryrTurnstileReady (the widget's
+   data-callback, §S12), read by both the button-enable check and the
+   submit handler. Starts false; Managed mode usually resolves within a
+   second or two of the modal opening, often invisibly. */
+var ryrTurnstileToken='';
+function ryrTurnstileReady(token){
+  ryrTurnstileToken=token;
+  var consent=document.getElementById('ryr-share-consent');
+  document.getElementById('ryr-share-btn').disabled=!(consent&&consent.checked&&ryrTurnstileToken);
+}
+/* Tokens expire (~5 min) and the modal can sit open longer than that while
+   a respondent reads or fills in the optional context fields — re-disable
+   rather than let a stale token reach the Worker and fail verification
+   silently from the respondent's point of view. */
+function ryrTurnstileExpired(){
+  ryrTurnstileToken='';
+  document.getElementById('ryr-share-btn').disabled=true;
+}
 /* Bump whenever item wording, the item set, scoring weights, thresholds, or
    the meaning of a stored option value changes — and ship the bump in the
    same commit as the change, since a version not recorded in the data is not
@@ -1578,7 +1602,7 @@ document.getElementById('ryr-begin-btn').addEventListener('click',function(){
   }
 })();
 document.getElementById('ryr-share-consent').addEventListener('change',function(){
-  document.getElementById('ryr-share-btn').disabled=!this.checked;
+  document.getElementById('ryr-share-btn').disabled=!(this.checked&&ryrTurnstileToken);
 });
 Array.prototype.forEach.call(document.querySelectorAll('.ryr-cov-select[data-field]'),function(el){
   el.addEventListener('change',ryrSaveTankContext);
@@ -1587,29 +1611,31 @@ ryrRestoreTankContext();
 document.getElementById('ryr-share-btn').addEventListener('click',function(){
   var btn=this;
   var consent=document.getElementById('ryr-share-consent');
-  if(!consent.checked)return;
+  if(!consent.checked||!ryrTurnstileToken)return;
   var statusEl=document.getElementById('ryr-share-status');
   btn.disabled=true;consent.disabled=true;
   btn.textContent="送信中…";
   var allAnswers=ryrGetAllAnswers();
   var progress=ryrGetProgress();
-  var fd=new FormData();
-  fd.append('_subject','Aquatic Rhythm — Rhythm Tracker reflection data (all five rhythms)');
-  fd.append('phases',JSON.stringify(progress));
-  fd.append('answers',JSON.stringify(allAnswers));
-  fd.append('lang',document.documentElement.lang);
-  fd.append('respondent_id',ryrRespondentId());
-  fd.append('instrument_version',RYR_INSTRUMENT_VERSION);
-  fd.append('submitted_at',new Date().toISOString());
-  fd.append('response_coding',JSON.stringify(ryrResponseCoding(allAnswers)));
   var ctx=ryrTankContext();
-  Object.keys(ctx).forEach(function(k){fd.append(k,ctx[k]);});
   var hist=ryrSubmissionHistory(),nowMs=Date.now(),nowIso=new Date(nowMs).toISOString();
-  fd.append('submission_index',String(hist.count+1));
-  fd.append('days_since_first',ryrDaysBetween(hist.first,nowMs));
-  fd.append('days_since_previous',ryrDaysBetween(hist.last,nowMs));
-  fd.append('answer_dates',JSON.stringify(ryrGetAnswerDates()));
-  fetch(RYR_FORMSPREE_ENDPOINT,{method:'POST',body:fd,headers:{Accept:'application/json'}})
+  var payload={
+    _gotcha:document.getElementById('ryr-share-hp').value,
+    turnstileToken:ryrTurnstileToken,
+    phases:progress,
+    answers:allAnswers,
+    lang:document.documentElement.lang,
+    respondent_id:ryrRespondentId(),
+    instrument_version:RYR_INSTRUMENT_VERSION,
+    submitted_at:nowIso,
+    response_coding:ryrResponseCoding(allAnswers),
+    submission_index:hist.count+1,
+    days_since_first:ryrDaysBetween(hist.first,nowMs),
+    days_since_previous:ryrDaysBetween(hist.last,nowMs),
+    answer_dates:ryrGetAnswerDates()
+  };
+  Object.keys(ctx).forEach(function(k){payload[k]=ctx[k];});
+  fetch(RYR_SUBMIT_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
     .then(function(res){
       if(res.ok){
         try{localStorage.setItem('ryr_share_sent_hash',JSON.stringify(allAnswers));}catch(e){}
@@ -1621,12 +1647,16 @@ document.getElementById('ryr-share-btn').addEventListener('click',function(){
         statusEl.textContent="送信できませんでした。接続を確認してもう一度お試しください。";
         statusEl.hidden=false;statusEl.classList.add('err');
         btn.textContent="五つの内省をすべて共有する";btn.disabled=false;consent.disabled=false;
+        if(typeof turnstile!=='undefined')try{turnstile.reset('ryr-turnstile');}catch(e){}
+        ryrTurnstileToken='';
       }
     })
     .catch(function(){
       statusEl.textContent="送信できませんでした。接続を確認してもう一度お試しください。";
       statusEl.hidden=false;statusEl.classList.add('err');
       btn.textContent="五つの内省をすべて共有する";btn.disabled=false;consent.disabled=false;
+      if(typeof turnstile!=='undefined')try{turnstile.reset('ryr-turnstile');}catch(e){}
+      ryrTurnstileToken='';
     });
 });
 document.getElementById('ryr-share-dismiss').addEventListener('click',function(){

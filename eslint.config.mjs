@@ -120,6 +120,7 @@ export default [
         Request: 'readonly',
         Headers: 'readonly',
         URL: 'readonly',
+        URLSearchParams: 'readonly',
         fetch: 'readonly',
         crypto: 'readonly',
         console: 'readonly'

@@ -79,6 +79,20 @@ Buat baseline rule berikut:
 > template dan aktifkan saat endpoint dipublikasikan. Jalur `/chat` di atas
 > **sudah live** — rule-nya harus dipasang sekarang, bukan ditunda.
 
+**Catatan 2026-09-06 — kuota rule di plan akun ini penuh.** Dashboard
+menunjukkan **Rate limiting rules: 1/1**, slot satu-satunya sudah dipakai
+rule `/chat` di atas, dan tombol tambah rule baru terkunci di balik
+"Upgrade plan". Template `/forms/*` di atas **sengaja tidak diaktifkan**
+untuk endpoint baru `api.aquaticrhythm.com/forms/rhythm-tracker`
+(`docs/rhythm-tracker-instrument.md` §S12) — bukan karena lupa, tapi karena
+endpoint itu tidak memanggil API berbayar (beda dari `/chat`, yang justru
+alasan rule-nya WAJIB), jadi risikonya bukan biaya yang membengkak melainkan
+baris sampah di database gratis. Lapisan pengganti yang dipakai: rate limit
+lunak in-Worker yang sudah ada, **Cloudflare Turnstile** (produk terpisah,
+tidak masuk kuota rate-limiting rules yang penuh ini), dan **Bot Fight
+Mode** (§3 di atas). Kalau nanti plan di-upgrade dan slot rule bertambah,
+`/forms/*` di atas tetap jadi kandidat pertama untuk diaktifkan.
+
 ### 5) DDoS protection always-on
 
 Masuk ke **Security -> DDoS**:

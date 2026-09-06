@@ -153,6 +153,12 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 .ryr-share-btn:not(:disabled):hover{background:var(--th-accent-soft);color:#fff}
 .ryr-share-status{font-size:var(--fs-xs);color:var(--th-ink-4);margin-top:.8rem;line-height:1.6}
 .ryr-share-code{font-size:var(--fs-xs);color:var(--th-ink-4);margin-top:.45rem;line-height:1.6;font-family:var(--mono,ui-monospace,SFMono-Regular,Menlo,monospace);word-break:break-all;user-select:all}
+.ryr-share-cov-note{font-size:var(--fs-xs);color:var(--th-ink-4);margin:1.1rem 0 .7rem;line-height:1.7;font-weight:300}
+.ryr-share-cov{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:1.1rem}
+.ryr-cov-field{display:flex;flex-direction:column;gap:.35rem;flex:1 1 11rem;min-width:0}
+.ryr-cov-label{font-size:var(--fs-2xs);letter-spacing:.12em;text-transform:uppercase;color:var(--th-ink-4)}
+.ryr-cov-select{width:100%;font-family:var(--sans);font-size:var(--fs-xs);color:var(--th-ink-2);background:var(--th-surface);border:1px solid var(--th-line);border-radius:2px;padding:.55rem .6rem;cursor:pointer}
+.ryr-cov-select:focus-visible{outline:2px solid var(--th-accent);outline-offset:1px}
 .ryr-share-status.err{color:rgba(255,190,175,.92)}
 .ryr-share-dismiss{display:none;font-size:var(--fs-xs);color:var(--th-ink-4);background:none;border:none;cursor:pointer;padding:.7rem 0 0;margin-left:.9rem;font-family:var(--sans);text-decoration:underline;transition:color .2s}
 .ryr-share-dismiss:hover{color:var(--th-ink-2)}
@@ -266,6 +272,33 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       <div class="ryr-share" id="ryr-share" hidden>
         <p class="ryr-share-congrats" id="ryr-share-congrats">All five rhythms, read.</p>
         <p class="ryr-share-text" id="ryr-share-text">That took real attention. Thank you for staying with it. If you're willing, sharing what you found here — your answers and the phase readings above — helps ARA research move forward, and helps this tool ask better questions for whoever reads next. It goes through Formspree, a third-party form service, with nothing else attached: no name, no email, just a random code so your five answers can be read as one set. This is early, honest groundwork — not a formal dataset, and not proof of anything yet. What it is meant to become is the first real picture behind a proper study later, and grouped findings from it may be published or shared openly as part of that. Nothing that could identify you travels with it. Your code appears here after you send: keep it, and if you change your mind at any point, write to hello@aquaticrhythm.com and we'll remove your answers.</p>
+        <p class="ryr-share-cov-note" id="ryr-share-cov-note">Both optional. They exist only so answers can be grouped — a reading at six weeks and a reading at three years mean different things.</p>
+        <div class="ryr-share-cov">
+          <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-volume-label">Tank volume</span>
+            <select class="ryr-cov-select" id="ryr-cov-volume">
+              <option value="">—</option>
+              <option value="lt20">&lt; 20 L</option>
+              <option value="20-60">20–60 L</option>
+              <option value="60-120">60–120 L</option>
+              <option value="120-250">120–250 L</option>
+              <option value="250-500">250–500 L</option>
+              <option value="gt500">&gt; 500 L</option>
+            </select>
+          </label>
+          <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-age-label">How long it's been running</span>
+            <select class="ryr-cov-select" id="ryr-cov-age">
+              <option value="">—</option>
+              <option value="lt1m">&lt; 1 month</option>
+              <option value="1-3m">1–3 months</option>
+              <option value="3-6m">3–6 months</option>
+              <option value="6-12m">6–12 months</option>
+              <option value="1-3y">1–3 years</option>
+              <option value="gt3y">&gt; 3 years</option>
+            </select>
+          </label>
+        </div>
         <label class="ryr-share-check">
           <input type="checkbox" id="ryr-share-consent">
           <span id="ryr-share-consent-label">I'd like to share my answers and phase readings anonymously for this purpose.</span>
@@ -1042,12 +1075,34 @@ var RYR_FORMSPREE_ENDPOINT='https://formspree.io/f/xoeqleyo';
    same commit as the change, since a version not recorded in the data is not
    a version. Layout, styling and translation of existing strings do not bump
    it. See docs/rhythm-tracker-instrument.md §S8. */
-var RYR_INSTRUMENT_VERSION='v1.1';
+var RYR_INSTRUMENT_VERSION='v1.2';
 var RYR_CODE_LABEL='Your code: ';
 /* GA opt-out is enforced at the page head via ga-disable-*, so these calls
    are already no-ops for anyone who turned analytics off in Settings. */
 function ryrTrack(name,params){
   try{if(typeof gtag==='function')gtag('event',name,params||{});}catch(e){}
+}
+/* Covariates (v1.2). Asked here rather than in the question flow so readers
+   who never share are not made to answer them, and placed above the consent
+   box so what is being consented to is visible. Both optional: an unanswered
+   select submits an empty string, which is distinguishable from any bucket.
+   Remembered locally so a respondent re-sending after changing an answer
+   doesn't have to re-pick them. */
+function ryrCovariates(){
+  return {
+    tank_volume:(document.getElementById('ryr-cov-volume')||{}).value||'',
+    tank_age:(document.getElementById('ryr-cov-age')||{}).value||''
+  };
+}
+function ryrSaveCovariates(){
+  try{localStorage.setItem('ryr_covariates',JSON.stringify(ryrCovariates()));}catch(e){}
+}
+function ryrRestoreCovariates(){
+  var c={};
+  try{c=JSON.parse(localStorage.getItem('ryr_covariates')||'{}');}catch(e){c={};}
+  var v=document.getElementById('ryr-cov-volume'),a=document.getElementById('ryr-cov-age');
+  if(v&&c.tank_volume)v.value=c.tank_volume;
+  if(a&&c.tank_age)a.value=c.tank_age;
 }
 /* Annotates which stored answers mean "premise doesn't apply" vs "no basis
    to answer", so the submitted data is self-describing and an analyst never
@@ -1140,6 +1195,8 @@ function ryrShareUIRefresh(){
   try{sentHash=localStorage.getItem('ryr_share_sent_hash');}catch(e){}
   var curHash=JSON.stringify(ryrGetAllAnswers());
   var codeEl=document.getElementById('ryr-share-code');
+  var covEls=[document.getElementById('ryr-cov-volume'),document.getElementById('ryr-cov-age')];
+  covEls.forEach(function(el){if(el)el.disabled=!!(sentHash&&sentHash===curHash);});
   if(sentHash&&sentHash===curHash){
     btn.textContent='Sent — thank you';
     btn.disabled=true;
@@ -1349,6 +1406,9 @@ document.getElementById('ryr-begin-btn').addEventListener('click',function(){
 document.getElementById('ryr-share-consent').addEventListener('change',function(){
   document.getElementById('ryr-share-btn').disabled=!this.checked;
 });
+document.getElementById('ryr-cov-volume').addEventListener('change',ryrSaveCovariates);
+document.getElementById('ryr-cov-age').addEventListener('change',ryrSaveCovariates);
+ryrRestoreCovariates();
 document.getElementById('ryr-share-btn').addEventListener('click',function(){
   var btn=this;
   var consent=document.getElementById('ryr-share-consent');
@@ -1367,6 +1427,9 @@ document.getElementById('ryr-share-btn').addEventListener('click',function(){
   fd.append('instrument_version',RYR_INSTRUMENT_VERSION);
   fd.append('submitted_at',new Date().toISOString());
   fd.append('response_coding',JSON.stringify(ryrResponseCoding(allAnswers)));
+  var cov=ryrCovariates();
+  fd.append('tank_volume',cov.tank_volume);
+  fd.append('tank_age',cov.tank_age);
   fetch(RYR_FORMSPREE_ENDPOINT,{method:'POST',body:fd,headers:{Accept:'application/json'}})
     .then(function(res){
       if(res.ok){

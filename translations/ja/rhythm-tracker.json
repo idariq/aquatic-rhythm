@@ -61,6 +61,17 @@
     "shareBtnSending": "送信中…",
     "shareBtnSent": "送信済み — ありがとうございます",
     "shareCodeLabel": "あなたのコード：",
+    "covariateNote": "どちらも任意です。回答をグループ分けするためだけのもので、6週間目の結果と3年目の結果とでは意味が違ってくるからです。",
+    "tankVolumeLabel": "水槽の容量",
+    "tankAgeLabel": "稼働してからの期間",
+    "tankAgeOptions": {
+      "lt1m": "1か月未満",
+      "1-3m": "1〜3か月",
+      "3-6m": "3〜6か月",
+      "6-12m": "6〜12か月",
+      "1-3y": "1〜3年",
+      "gt3y": "3年以上"
+    },
     "shareDismissBtn": "またあとで",
     "shareSuccessMsg": "共有済みです。回答が変わったら、いつでもここに戻ってきてください。",
     "shareErrorMsg": "送信できませんでした。接続を確認してもう一度お試しください。",

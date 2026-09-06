@@ -522,6 +522,15 @@ for (const lang of targetLangs) {
   h = h.replace("btn.textContent='Sending…';", `btn.textContent=${JSON.stringify(t.chrome.shareBtnSending)};`);
   h = h.replace("btn.textContent='Sent — thank you';", `btn.textContent=${JSON.stringify(t.chrome.shareBtnSent)};`);
   h = h.replace("var RYR_CODE_LABEL='Your code: ';", `var RYR_CODE_LABEL=${JSON.stringify(t.chrome.shareCodeLabel)};`);
+  // Covariates (v1.2). Volume buckets are numeric ("20–60 L") and stay as-is
+  // in every language; only the labels, the note, and the age buckets need
+  // translating.
+  h = replaceOnce(h, /(<p class="ryr-share-cov-note" id="ryr-share-cov-note">)[^<]*(<\/p>)/, (_, a, b) => `${a}${t.chrome.covariateNote}${b}`);
+  h = replaceOnce(h, /(<span class="ryr-cov-label" id="ryr-cov-volume-label">)[^<]*(<\/span>)/, (_, a, b) => `${a}${t.chrome.tankVolumeLabel}${b}`);
+  h = replaceOnce(h, /(<span class="ryr-cov-label" id="ryr-cov-age-label">)[^<]*(<\/span>)/, (_, a, b) => `${a}${t.chrome.tankAgeLabel}${b}`);
+  Object.entries(t.chrome.tankAgeOptions || {}).forEach(([val, label]) => {
+    h = replaceOnce(h, new RegExp(`(<option value="${val}">)[^<]*(</option>)`), (_, a, b) => `${a}${label}${b}`);
+  });
   h = h.replace("statusEl.textContent='Already shared. Come back here anytime if your answers change.';",
     `statusEl.textContent=${JSON.stringify(t.chrome.shareSuccessMsg)};`);
   h = h.replace(/statusEl\.textContent='Couldn\\'t send that — check your connection and try again\.';/g,

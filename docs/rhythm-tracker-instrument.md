@@ -3,7 +3,7 @@
 ## Internal Reference Document — Aquatic Rhythm
 
 **Instrument:** Rhythm Tracker (`articles/rhythm-tracker.html`)
-**Instrument version:** v1.1
+**Instrument version:** v1.2
 **Status:** Published and collecting opt-in data. Not validated.
 **Record started:** 2026-09-06
 
@@ -306,6 +306,8 @@ POST to `https://formspree.io/f/xoeqleyo` with four fields:
 | `instrument_version` | *(v1.1+)* e.g. `v1.1` |
 | `submitted_at` | *(v1.1+)* ISO 8601 timestamp |
 | `response_coding` | *(v1.1+)* per-item `not_applicable` / `no_basis` annotation |
+| `tank_volume` | *(v1.2+)* bucket, or empty string if not answered |
+| `tank_age` | *(v1.2+)* bucket, or empty string if not answered |
 
 Item-level raw responses are retained, which is correct and is what makes any
 future rescoring possible. `response_coding` makes the payload self-describing:
@@ -313,14 +315,14 @@ an analyst no longer has to know which option strings mean "couldn't answer".
 
 ### What is not transmitted
 
-**No covariates.** Tank volume and tank age are not collected. A Mature reading
-at six weeks and at three years mean different things; without these, the most
-obvious confound cannot be controlled. `cycle-status` captures tank age only
-very coarsely, and only for Water Rhythm. This is the next open action (S10).
+No demographics, no location, no free text, no experience level. Tank volume and
+tank age are collected from v1.2 (both optional, see S9).
 
 **Submissions made before v1.1** carry no version field and can only be
 identified by Formspree's own received-date. They must be treated as v1 by
-inference rather than by record.
+inference rather than by record. **v1.1 submissions** carry a version but no
+covariates; an absent `tank_volume` field distinguishes them from a v1.2
+submission where the respondent simply skipped the question (empty string).
 
 ### Anonymity
 
@@ -376,11 +378,14 @@ Ordered by how much they constrain what the data can support.
 6. **Arbitrary weights and thresholds.** (S4)
 7. **Non-uniform phase rule across rhythms.** Water uses a gated max-8 rule;
    others use max-10. Presented as comparable. (S4)
-8. **Missing data encoded as low ability.** (S4)
-9. **No instrument version or timestamp in stored data.** (S6)
-10. **No covariates.** (S6)
+8. ~~Missing data encoded as low ability.~~ Fixed in v1.1; still applies to v1
+   records.
+9. ~~No instrument version or timestamp in stored data.~~ Fixed in v1.1; v1
+   records remain unlabelled.
+10. ~~No covariates.~~ Fixed in v1.2 (optional, so coverage will be partial).
 11. **Response-order and social-desirability bias not controlled.** (S4)
-12. **No withdrawal mechanism.** (S6)
+12. ~~No withdrawal mechanism.~~ Fixed in v1.1; pre-v1.1 respondents were never
+    shown their code and remain unable to use it.
 
 ### What this data can support
 
@@ -405,6 +410,11 @@ A version bump is required when any of the following changes:
 - the set of items, or their order
 - scoring weights, phase thresholds, or the Water Rhythm gate
 - the meaning of any stored option value
+
+- any question added to or removed from what respondents are asked, **whether or
+  not it is scored** (added 2026-09-06 with the v1.2 covariates: the original
+  wording was written for scale items only, and a change to the administered
+  questionnaire deserves a version even when no scale item moves)
 
 A version bump is **not** required for: layout, styling, navigation, screen
 flow, translation of already-published strings, or anything else that leaves
@@ -480,6 +490,27 @@ offer a withdrawal route (see S6). Respondent code now shown after sending.
 respect the existing analytics opt-out, which is enforced at the page head via
 `ga-disable-*`, making the calls no-ops for anyone who turned it off.
 
+**v1.2 — 2026-09-06** — Covariates. **No scale item changed, and scoring is
+untouched.** Two optional questions were added — `tank_volume` (6 buckets,
+`< 20 L` … `> 500 L`, spanning the 20–500 L scope the framework works in) and
+`tank_age` (6 buckets, `< 1 month` … `> 3 years`).
+
+They are asked **inside the share modal**, not in the question flow, so readers
+who never share are not made to answer them, and they sit **above the consent
+checkbox** so what is being consented to is visible before consent is given.
+Both are optional; an unanswered select submits an empty string, which is
+distinguishable from every bucket. Selections are remembered in `localStorage`
+so a respondent re-sending after revising an answer does not have to re-pick.
+
+Why these two and not more: a phase reading at six weeks and at three years mean
+different things, and without volume and age the most obvious confound cannot be
+controlled at all. Everything beyond them was left out to keep the ask short.
+
+The version bump is conservative — under the S8 rules as originally written it
+was not strictly required, since no stored response value changed meaning. The
+rule was extended instead (see S8) so that any change to what respondents are
+asked earns a version, scored or not.
+
 ---
 
 ## S10: Open Actions
@@ -490,8 +521,8 @@ importance.
 1. ~~Ship `instrument_version` and a submission timestamp.~~ **Done in v1.1.**
 2. ~~Separate "don't know" / "not applicable" from low scores.~~ **Done in v1.1.**
 3. ~~Offer a withdrawal route in the consent text.~~ **Done in v1.1.**
-4. **Collect minimum covariates** — tank volume, tank age. Next up.
-5. **Build a hypothesis inventory.** Items are currently mapped to framework
+4. ~~Collect minimum covariates — tank volume, tank age.~~ **Done in v1.2.**
+5. **Build a hypothesis inventory.** Next up. Items are currently mapped to framework
    *sections* (descriptive content), not to testable propositions. Enumerate what
    ARA actually asserts that could later be tested, then check which of those any
    current item could ever give a signal about. Expect some assertions to have no

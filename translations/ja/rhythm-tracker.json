@@ -45,6 +45,7 @@
     "questionCloseLabel": "立ち止まって考えたい問い",
     "phaseNoteLabel": "このリズムの読み取り結果",
     "noteEnd": "この内省が扱うのは一つのリズムだけです。水槽は五つのリズムそれぞれで違う段階にあることがあります。これは全体像ではなく、その中の正直な一部分にすぎません。",
+    "ctaBackToPicker": "← 別のリズムを選ぶ",
     "restartBtn": "もう一度読む",
     "ctaFiveRhythms": "五つのリズムについて読む →",
     "ctaBackToTools": "← 実験＆ツールに戻る",

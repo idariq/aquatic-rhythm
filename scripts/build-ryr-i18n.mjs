@@ -546,10 +546,12 @@ for (const lang of targetLangs) {
   // paired rhythm's own result screen (`.ryr-ctx-inline` in
   // articles/rhythm-tracker.html, shown/hidden by `ryrShowInlineContext()`)
   // — see that function's neighbouring comment for which field pairs with
-  // which rhythm and why. All four inline blocks reuse one shared string,
+  // which rhythm and why. All inline blocks reuse one shared string,
   // `tc.inlineNote`, rather than one translation key each: the reassurance
   // ("optional, not sent unless you share") is identical in every spot, so
-  // one key avoids four translations that would only ever read the same.
+  // one key avoids per-block translations that would only ever read the
+  // same. v2.1 (same day) added a fifth block, `oxygen_testing`, pairing
+  // Water Rhythm with its own inline field for the first time.
   // Volume buckets are numeric ("20–60 L") and stay as-is in every language.
   // Everything else in the block is discovered from the translation file
   // rather than listed here: `labels` is keyed by the span's own id, and every
@@ -559,7 +561,7 @@ for (const lang of targetLangs) {
   const tc = t.chrome.tankContext || {};
   h = replaceOnce(h, /(<span class="ryr-picker-label" id="ryr-tank-context-label">)[^<]*(<\/span>)/, (_, a, b) => `${a}${tc.heading}${b}`);
   h = replaceOnce(h, /(<p class="ryr-share-cov-note" id="ryr-share-cov-note">)[^<]*(<\/p>)/, (_, a, b) => `${a}${tc.note}${b}`);
-  ['environmental', 'livestock', 'biological', 'keeper'].forEach((rhythmKey) => {
+  ['water', 'environmental', 'livestock', 'biological', 'keeper'].forEach((rhythmKey) => {
     h = replaceOnce(h, new RegExp(`(<p class="ryr-share-cov-note" id="ryr-ctx-${rhythmKey}-note">)[^<]*(</p>)`), (_, a, b) => `${a}${tc.inlineNote}${b}`);
   });
   Object.entries(tc.labels || {}).forEach(([id, label]) => {

@@ -2,7 +2,7 @@
 
 ## Internal Working Document — Aquatic Rhythm
 
-**For:** Rhythm Tracker v1.4
+**For:** Rhythm Tracker v2.1
 **Companions:** `docs/rhythm-tracker-instrument.md`, `docs/rhythm-tracker-hypothesis-inventory.md`
 **Written:** 2026-09-06 · **Not yet run**
 
@@ -105,7 +105,8 @@ hypothesis inventory, and each has a specific thing to listen for.
 | `oxygen-read` | Does it feel like a quiz with a right answer? If so, social-desirability pressure is distorting it — an open limitation (#11). |
 | Consent copy | Do they know what they are agreeing to? Ask them to say it back. Specifically: does anything reach a third party, could it be published, can they withdraw? |
 | `temp-check-freq` *(added v2.0)* | Does "how often do you check" read as clearly distinct from "how stable is it" (the item it replaced)? The split (`docs/rhythm-tracker-instrument.md` §S9/§S11) assumes people can separate a monitoring habit from a tank-state belief — check that assumption holds. |
-| `temp_swing` *(added v2.0)* | Since this one is unscored and asked once in the share modal rather than per rhythm, do respondents notice it's a different kind of question from the five-per-rhythm flow, or does it blur together with `tank_volume`/`tank_age`? |
+| `temp_swing` *(added v2.0, relocated v2.1)* | Since v2.1 this appears inline on Environmental's result screen, not in the share modal — do respondents notice it as a continuation of the rhythm they just answered, or does it still feel like a separate survey question dropped in? |
+| `oxygen_testing` *(added v2.1)* | Shown inline on Water's result screen. Does "tests dissolved oxygen directly" read as a real, recognisable practice, or does it sound like jargon borrowed from `oxygen-read`'s reflection text? A respondent should be able to answer this without having just answered `oxygen-read` correctly — check they are not conflating "I could reason about it" with "I test for it". |
 
 ---
 

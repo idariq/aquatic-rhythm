@@ -360,6 +360,20 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
         <p id="ryr-phase-text"></p>
       </div>
       <p class="ryr-note-end">Refleksi ini hanya mencakup satu ritme. Sebuah akuarium bisa berada di fase berbeda pada tiap-tiap dari lima ritmenya — ini bukan gambaran penuh, hanya satu bagian jujur darinya.</p>
+      <div class="ryr-ctx-inline" id="ryr-ctx-water" hidden>
+        <p class="ryr-share-cov-note" id="ryr-ctx-water-note">Opsional, dan tidak dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti.</p>
+        <div class="ryr-share-cov">
+          <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-oxygentest-label">Apakah Anda menguji oksigen terlarut secara langsung</span>
+            <select class="ryr-cov-select" id="ryr-cov-oxygentest" data-field="oxygen_testing">
+              <option value="">—</option>
+              <option value="o2-tested">Ya, dengan alat uji atau meteran khusus</option>
+              <option value="o2-aware-untested">Tidak, tapi sekarang saya jadi tahu ini penting</option>
+              <option value="o2-unaware-untested">Tidak, sebelum ini saya belum pernah memikirkannya</option>
+            </select>
+          </label>
+        </div>
+      </div>
       <div class="ryr-ctx-inline" id="ryr-ctx-environmental" hidden>
         <p class="ryr-share-cov-note" id="ryr-ctx-environmental-note">Opsional, dan tidak dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti.</p>
         <div class="ryr-share-cov">
@@ -1207,7 +1221,7 @@ function ryrTurnstileExpired(){
    same commit as the change, since a version not recorded in the data is not
    a version. Layout, styling and translation of existing strings do not bump
    it. See docs/rhythm-tracker-instrument.md §S8. */
-var RYR_INSTRUMENT_VERSION='v2.0';
+var RYR_INSTRUMENT_VERSION='v2.1';
 var RYR_REPROMPT_DAYS=60;
 var RYR_CODE_LABEL="Kode Anda: ";
 /* GA opt-out is enforced at the page head via ga-disable-*, so these calls
@@ -1231,8 +1245,15 @@ function ryrTrack(name,params){
       `stocking_change` with Livestock's bioload theme; `outcome_slip` with
       Biological's false-maturity/forgiveness theme; the other three with
       Keeper's capacity/intent theme) and is more legibly "about what you
-      just read" asked there than bundled upfront. Water has no paired
-      field and shows none.
+      just read" asked there than bundled upfront.
+
+   `oxygen_testing` (v2.1, same day) fills what was Water's gap: it asks
+   directly whether the respondent tests for dissolved oxygen, closing the
+   reasoning-vs-behaviour split the hypothesis inventory named for H-W3 —
+   the scored `oxygen-read` item tests how they'd *interpret* a gasping-fish
+   scenario, not whether they actually *test* for DO in practice. Paired
+   with Water Rhythm's result screen the same way the others pair with
+   theirs.
 
    Deliberately still optional and still unscored throughout, despite now
    being shown before/alongside specific rhythms rather than only to
@@ -1281,8 +1302,8 @@ function ryrRestoreTankContext(){
 }
 /* Which rhythm's result screen shows which inline context block — see the
    comment above ryrTankContext() for why each field is paired the way it
-   is. Water has no entry, so its result screen shows none. */
-var RYR_CTX_BY_RHYTHM={environmental:'ryr-ctx-environmental',livestock:'ryr-ctx-livestock',biological:'ryr-ctx-biological',keeper:'ryr-ctx-keeper'};
+   is. */
+var RYR_CTX_BY_RHYTHM={water:'ryr-ctx-water',environmental:'ryr-ctx-environmental',livestock:'ryr-ctx-livestock',biological:'ryr-ctx-biological',keeper:'ryr-ctx-keeper'};
 function ryrShowInlineContext(rhythm){
   Object.keys(RYR_CTX_BY_RHYTHM).forEach(function(k){
     document.getElementById(RYR_CTX_BY_RHYTHM[k]).hidden=(k!==rhythm);

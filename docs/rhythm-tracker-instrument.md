@@ -3,7 +3,7 @@
 ## Internal Reference Document — Aquatic Rhythm
 
 **Instrument:** Rhythm Tracker (`articles/rhythm-tracker.html`)
-**Instrument version:** v2.0 (live). See S11 for the design rationale, S9 for what shipped.
+**Instrument version:** v2.1 (live). See S11 for the design rationale, S9 for what shipped.
 **Status:** Published and collecting opt-in data. Not validated.
 **Record started:** 2026-09-06
 
@@ -421,6 +421,7 @@ note above)* with four fields:
 | `stocking_change` | *(v1.4+)* how stocking has changed, and whether noticed |
 | `life_change` | *(v1.4+)* disruption to keeper rhythm right now |
 | `temp_swing` | *(v2.0+)* how much temperature actually moves — split off `temp-stability`'s state-facet; see S9 |
+| `oxygen_testing` | *(v2.1+)* whether the respondent tests for dissolved oxygen directly — closes H-W3's reasoning-vs-behaviour gap; see S9 |
 | `submission_index` | *(v1.3+)* 1 for a first submission, 2 for a second, … |
 | `days_since_first` / `days_since_previous` | *(v1.3+)* empty on a first submission |
 | `answer_dates` | *(v1.3+)* when each rhythm was last answered |
@@ -743,6 +744,46 @@ already noted this is a measurement-quality pass, not a content pass. The one
 line in `docs/rhythm-tracker-hypothesis-inventory.md` §S5 that named
 `temp-stability` as a partial tank-state item is updated to reflect the
 split (see that document).
+
+**v2.1 — 2026-09-06** — Moved Formspree submission to a self-hosted
+Worker + D1 pipeline (§S12), split the tank-context block by theme so each
+field now appears alongside the rhythm it belongs to instead of all eight at
+once in the share modal (`tank_volume`/`tank_age` stayed on the rhythm-picker
+screen, asked before any rhythm is answered so respondents know the five
+rhythms they are about to answer describe one specific tank; the other six
+now sit inline on each rhythm's result screen, revealed only for the rhythm
+just completed), and added one new optional, unscored item: `oxygen_testing`
+(three options — tests dissolved oxygen directly, aware it matters but
+doesn't test it, or hasn't considered it — shown on Water's result screen).
+
+*Why this field*: the hypothesis inventory's H-W3 ("most hobbyists test
+nitrogen-cycle parameters but not dissolved oxygen") was only reachable via
+`oxygen-read`, a scored knowledge item that tests whether a respondent can
+reason about oxygen, not whether they actually test for it — a
+reasoning-vs-behaviour gap the inventory flagged as *partial*, not *direct*.
+`oxygen_testing` asks the behaviour directly, the same pattern
+`stocking_change`/`life_change` used in v1.4 for their gaps. It is Water's
+first context item — the four other rhythms already had one — which was
+incidental (no pre-existing field happened to be Water-themed), not a
+deliberate omission; this closes that gap rather than leaving Water alone
+by default.
+
+*Not scored*, for the same reason every other context item is not: this is
+a behaviour report, not a knowledge test, and folding it into Water's score
+would reward owning a dissolved-oxygen meter rather than reward alignment.
+
+**Verified**: `scripts/build-ryr-i18n.mjs` re-run for id/ja with no script
+change beyond adding `'water'` to the rhythm-key loop already generalised in
+v1.3/v1.4 — labels and options are discovered by span id and option value,
+not hardcoded. `npm run i18n:check` run twice showed identical diff-stats
+(idempotent). A Playwright walk of all five rhythms across en/id/ja confirmed
+the picker screen still shows exactly `tank_volume`/`tank_age`, each
+rhythm's result screen shows exactly its own inline context block (Water:
+`oxygen_testing` only), and the submitted payload carries every filled
+field including `oxygen_testing`. `worker/schema.sql` gained the column plus
+an `ALTER TABLE` migration line for the database created before v2.1 (the
+`CREATE TABLE IF NOT EXISTS` above it is a no-op against an existing table
+and will not add the column on its own).
 
 ---
 

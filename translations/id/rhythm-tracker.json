@@ -72,6 +72,7 @@
         "ryr-cov-tempswing-label": "Seberapa banyak suhu sebenarnya berubah",
     "ryr-cov-stocking-label": "Bagaimana isi tebaran berubah",
         "ryr-cov-life-label": "Ada yang mengganggu ritme Anda sekarang",
+        "ryr-cov-oxygentest-label": "Apakah Anda menguji oksigen terlarut secara langsung",
         "ryr-cov-slip-label": "Saat perawatan sempat kendur",
         "ryr-cov-intervene-label": "Turun tangan membenahi sesuatu, bulan lalu",
         "ryr-cov-intent-label": "Apakah ini ritme yang Anda niatkan"
@@ -103,6 +104,11 @@
           "life-short": "Gangguan singkat (beberapa hari sampai dua minggu)",
           "life-extended": "Gangguan panjang (berminggu sampai berbulan)",
           "life-permanent": "Waktu yang saya punya sudah berubah untuk seterusnya"
+        },
+        "oxygenTesting": {
+          "o2-tested": "Ya, dengan alat uji atau meteran khusus",
+          "o2-aware-untested": "Tidak, tapi sekarang saya jadi tahu ini penting",
+          "o2-unaware-untested": "Tidak, sebelum ini saya belum pernah memikirkannya"
         },
         "outcomeSlip": {
           "slip-held": "Tidak banyak berubah — akuariumnya bertahan",

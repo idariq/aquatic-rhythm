@@ -521,6 +521,7 @@ for (const lang of targetLangs) {
   h = h.replace(/textContent='Share all five reflections'/g, () => `textContent=${JSON.stringify(t.chrome.shareBtn)}`);
   h = h.replace("btn.textContent='Sending…';", `btn.textContent=${JSON.stringify(t.chrome.shareBtnSending)};`);
   h = h.replace("btn.textContent='Sent — thank you';", `btn.textContent=${JSON.stringify(t.chrome.shareBtnSent)};`);
+  h = h.replace("var RYR_CODE_LABEL='Your code: ';", `var RYR_CODE_LABEL=${JSON.stringify(t.chrome.shareCodeLabel)};`);
   h = h.replace("statusEl.textContent='Already shared. Come back here anytime if your answers change.';",
     `statusEl.textContent=${JSON.stringify(t.chrome.shareSuccessMsg)};`);
   h = h.replace(/statusEl\.textContent='Couldn\\'t send that — check your connection and try again\.';/g,

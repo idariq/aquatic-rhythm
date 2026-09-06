@@ -3,7 +3,7 @@
 ## Internal Reference Document — Aquatic Rhythm
 
 **Instrument:** Rhythm Tracker (`articles/rhythm-tracker.html`)
-**Instrument version:** v1
+**Instrument version:** v1.1
 **Status:** Published and collecting opt-in data. Not validated.
 **Record started:** 2026-09-06
 
@@ -182,9 +182,11 @@ authoring time. They are neither derived from theory nor estimated from data,
 and no rationale was recorded for the specific numeric values. They should be
 treated as untested authoring conventions.
 
-### "Don't know" and "not applicable" are scored inconsistently
+### "Don't know" and "not applicable" — v1 behaviour, fixed in v1.1
 
-Responses expressing absence of knowledge or non-applicability score **0 in
+*This section describes v1. See "v1.1" in S9 for what replaced it.*
+
+Responses expressing absence of knowledge or non-applicability scored **0 in
 Water Rhythm** but **1 in the other four rhythms**:
 
 | Scored 0 (Water) | Scored 1 (other rhythms) |
@@ -196,13 +198,14 @@ Water Rhythm** but **1 in the other four rhythms**:
 | | `filter-check-date: new-tank` |
 | | `automation-reliance: no-automation` |
 
-Two separate problems are visible here. First, the inconsistency itself. Second
-and more important: **missing data is being encoded as low ability**. "I have
+Two separate problems were visible here. First, the inconsistency itself. Second
+and more important: **missing data was being encoded as low ability**. "I have
 never tested for this" and "I would do the wrong thing" are different states,
 and in v1 they are indistinguishable in the stored response and in the score.
-Any analysis of v1 data must treat these response values as missing, not as
-zeroes, and the affected items must be flagged as such at analysis time because
-the data itself does not carry the distinction.
+
+**Any analysis of v1 data (submissions with no `instrument_version` field) must
+still handle this manually** — the data itself does not carry the distinction.
+From v1.1 the submitted payload is self-describing; see S9.
 
 ### Response-option order
 
@@ -300,23 +303,24 @@ POST to `https://formspree.io/f/xoeqleyo` with four fields:
 | `answers` | raw option value per item, per rhythm |
 | `lang` | `en` / `id` / `ja` |
 | `respondent_id` | `crypto.randomUUID()`, persisted in `localStorage` |
+| `instrument_version` | *(v1.1+)* e.g. `v1.1` |
+| `submitted_at` | *(v1.1+)* ISO 8601 timestamp |
+| `response_coding` | *(v1.1+)* per-item `not_applicable` / `no_basis` annotation |
 
 Item-level raw responses are retained, which is correct and is what makes any
-future rescoring possible.
+future rescoring possible. `response_coding` makes the payload self-describing:
+an analyst no longer has to know which option strings mean "couldn't answer".
 
 ### What is not transmitted
 
-**No instrument version. No timestamp. No covariates.**
+**No covariates.** Tank volume and tank age are not collected. A Mature reading
+at six weeks and at three years mean different things; without these, the most
+obvious confound cannot be controlled. `cycle-status` captures tank age only
+very coarsely, and only for Water Rhythm. This is the next open action (S10).
 
-- **Version.** v1 data carries no marker identifying it as v1. The moment items
-  or weights change, prior and subsequent submissions become non-comparable with
-  no field distinguishing them. Records submitted before an
-  `instrument_version` field ships can only be identified by Formspree's own
-  received-date, and must be treated as v1 by inference rather than by record.
-- **Covariates.** Tank volume and tank age are not collected. A Mature reading
-  at six weeks and at three years mean different things; without these, the most
-  obvious confound cannot be controlled. `cycle-status` captures tank age only
-  very coarsely, and only for Water Rhythm.
+**Submissions made before v1.1** carry no version field and can only be
+identified by Formspree's own received-date. They must be treated as v1 by
+inference rather than by record.
 
 ### Anonymity
 
@@ -331,10 +335,15 @@ storage), the fallback identifier is regenerated per call and is not stable.
 
 ### Withdrawal
 
-**There is no withdrawal mechanism.** A respondent cannot retract a submission,
-and no route to request deletion is offered in the consent text. In principle a
-respondent holds their own `respondent_id` and could supply it to request
-removal, but this is neither stated to them nor implemented.
+*(v1.1)* After a successful send, the respondent's `respondent_id` is displayed
+to them, and the consent text tells them to keep it and write to
+`hello@aquaticrhythm.com` to have their answers removed. Since the identifier is
+random and held only by them, supplying it is the only way a submission can be
+located — which is also why the code has to be shown for the route to work.
+
+**In v1 there was no withdrawal mechanism at all**, and pre-v1.1 respondents were
+never shown their code. Their submissions are effectively unwithdrawable unless
+they still have the original browser profile (the id persists in `localStorage`).
 
 ### Ethics posture
 
@@ -420,6 +429,57 @@ Published without pretesting or validation. Data collected from 2026-09-04
 carries no version field; treat all pre-`instrument_version` submissions as v1
 by inference.
 
+**v1.1 — 2026-09-06** — Data-integrity release. **No item wording changed and no
+item was added or removed.** The version bump is for the scoring and payload
+changes below, which alter what a stored record means.
+
+*Payload* — added `instrument_version`, `submitted_at`, and `response_coding`.
+The last annotates each answer as `not_applicable` or `no_basis` where it is
+one, so the data no longer requires outside knowledge to interpret.
+
+*Response coding* — the two kinds of "I can't answer that" are now separated:
+
+- **`not_applicable`** (6 responses: `testing-habit:too-new`,
+  `substrate-clean:not-applicable`, `recovery-awareness:never-happened`,
+  `hardscape-moves:no-hardscape`, `filter-check-date:new-tank`,
+  `automation-reliance:no-automation`) — the item's premise does not hold for
+  this setup. Now **excluded from both the score and the maximum**, so nobody is
+  scored on something their tank cannot exhibit.
+- **`no_basis`** (13 responses, e.g. `oxygen-read:no-idea`,
+  `temp-stability:unsure-swings`) — the respondent doesn't know or hasn't
+  noticed. **Still scored**, because not knowing genuinely is the low end of a
+  knowledge or awareness item, but now flagged in the data so analysis can
+  separate "didn't know" from "knew and chose otherwise".
+
+*Phase rule* — phases are now computed from the **proportion** of applicable
+items rather than a raw total, which is what makes exclusion possible. The
+ratios are unchanged (0.7 / 0.4; Water 0.75 behind its unchanged cycle gate).
+
+**Verified behaviour change.** All 5,120 possible answer combinations (4^5 × 5
+rhythms) were compared against a reference implementation of v1:
+
+- **0 mismatches** among combinations containing no `not_applicable` response —
+  for those respondents v1.1 is exactly v1.
+- Of the 1,408 combinations that do contain one: 1,145 unchanged, 259 moved
+  down a phase, 4 moved up.
+
+The downward movement is the intended correction, not a regression. v1 granted a
+flat 1-of-2 (50%) for a non-applicable item, which sits above most respondents'
+actual mean, so it inflated. Excluding the item instead scores the respondent on
+their own mean across items that do apply. The 4 upward cases are all Water
+Rhythm with the self-contradictory pair `cycle-status:established` (stable for
+months) plus `testing-habit:too-new` (too new for a routine).
+
+*Consent* — widened to state that the work is intended as groundwork for a later
+formal study and that grouped findings may be published or shared openly, and to
+offer a withdrawal route (see S6). Respondent code now shown after sending.
+
+*Funnel instrumentation* — GA events `ryr_rhythm_complete`,
+`ryr_all_five_complete`, `ryr_share_prompted`, `ryr_share_submitted`,
+`ryr_share_dismissed`, so completion and opt-in rates can be measured. These
+respect the existing analytics opt-out, which is enforced at the page head via
+`ga-disable-*`, making the calls no-ops for anyone who turned it off.
+
 ---
 
 ## S10: Open Actions
@@ -427,18 +487,38 @@ by inference.
 Recorded here so they are not lost. Order reflects cost against consequence, not
 importance.
 
-1. **Ship `instrument_version` and a submission timestamp.** Cheap, and until it
-   ships every incoming record inherits limitation 9.
-2. **Separate "don't know" / "not applicable" from low scores** in both storage
-   and scoring, consistently across all five rhythms.
-3. **Collect minimum covariates** — tank volume, tank age.
-4. **Write operational construct definitions** per rhythm (S2), before any item
-   revision. Item revision without them repeats the original error.
-5. **Resolve the §S4.5 contradiction** — Keeper items are scored against a
+1. ~~Ship `instrument_version` and a submission timestamp.~~ **Done in v1.1.**
+2. ~~Separate "don't know" / "not applicable" from low scores.~~ **Done in v1.1.**
+3. ~~Offer a withdrawal route in the consent text.~~ **Done in v1.1.**
+4. **Collect minimum covariates** — tank volume, tank age. Next up.
+5. **Build a hypothesis inventory.** Items are currently mapped to framework
+   *sections* (descriptive content), not to testable propositions. Enumerate what
+   ARA actually asserts that could later be tested, then check which of those any
+   current item could ever give a signal about. Expect some assertions to have no
+   corresponding item — that gap is the finding, and it is a better basis for
+   revision than "improve the questions".
+6. **Write operational construct definitions** per rhythm (S2), derived from
+   item 5. Item revision without them repeats the original error.
+7. **Resolve the §S4.5 contradiction** — Keeper items are scored against a
    framework passage that disclaims correct answers.
-6. **Decide the instrument's shape.** The reflective surface and a measurement
+8. **Decide the instrument's shape.** The reflective surface and a measurement
    instrument pull in opposite directions. A two-layer design — uniform scored
    items carrying the measurement load, reflective vignettes retained for the
-   reader but explicitly unscored — preserves both. This decision governs items
-   4 and 5 and should be made before either.
-7. **Offer a withdrawal route** in the consent text.
+   reader but explicitly unscored — preserves both. Governs items 6 and 7.
+9. **Cognitive pretesting** with real aquarists. Under the exploratory purpose
+   this is the highest-value remaining step: if respondents systematically
+   misread an item, the resulting picture is a picture of misreading, and no
+   later analysis recovers it. Statistical work can wait; this cannot.
+
+### Purpose note (recorded 2026-09-06)
+
+The instrument is **not** intended to prove any claim. It is early groundwork so
+that a picture from real keepers exists by the time ARA is ready for formal
+testing. That framing dissolves the circularity problem in S7 (it only bites if
+validation is claimed) and defers the psychometric work — no factor analysis, no
+reliability estimate, no data-derived scoring model, no minimum sample size.
+
+It also inverts the priorities. Since the scores will be discarded and the **raw
+item responses** are the asset that carries forward, the operative rule for any
+future analysis is: **analyse items, never phases.** Phase labels are a reader
+-facing feature of the tool, not data.

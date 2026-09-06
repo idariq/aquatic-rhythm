@@ -75,7 +75,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
    #briefing pattern (covers the top nav entirely, content starts near
    the top rather than vertically centered in 100vh). */
 .ryr-intro{position:fixed;inset:0;z-index:500;background:var(--th-bg);display:flex;align-items:flex-start;justify-content:center;padding-top:max(4rem,env(safe-area-inset-top,4rem));padding-left:1.2rem;padding-right:1.2rem;padding-bottom:calc(56px + env(safe-area-inset-bottom,0px) + 1rem);overflow-y:auto;transition:opacity .5s}
-.ryr-intro-inner{max-width:620px;width:100%;margin:0 auto;padding:.5rem 0 2rem}
+.ryr-intro-inner{max-width:620px;width:100%;margin:0 auto;padding:.5rem clamp(1.2rem,4vw,2.5rem) 2rem}
 .ryr-eyebrow{display:block;font-size:var(--fs-xs);font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(157,191,154,.75);margin-bottom:1.4rem}
 .ryr-title{font-family:var(--serif);font-weight:300;font-size:clamp(2.4rem,5vw,3.8rem);color:var(--th-ink);line-height:1.06;margin-bottom:1.8rem}
 .ryr-title em{font-style:italic;color:var(--th-accent)}
@@ -166,6 +166,12 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 .ryr-link-reading{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;font-family:var(--sans);transition:color .25s}
 .ryr-link-reading:hover{color:var(--th-ink-2)}
 @media(max-width:600px){.ryr-opt-desc{display:none}}
+
+/* Lab page: drop the site bottom nav + Rhyssa fab so they don't overlap
+   the lab UI — same pattern as community-stress-lab/tank-simulator/
+   tank-builder (this file was missing it, unlike those three). */
+.bnav{display:none!important}
+.rh-fab{display:none!important}
 </style>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet"></noscript>

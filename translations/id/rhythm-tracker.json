@@ -64,7 +64,7 @@
     "shareCodeLabel": "Kode Anda: ",
     "tankContext": {
       "heading": "Tentang akuarium yang Anda refleksikan (opsional)",
-    "note": "Langsung lewati saja ke pemilihan ritme di bawah kalau Anda mau — semua ini tidak wajib. Kalau Anda punya lebih dari satu akuarium, mengisi ini membantu memastikan kelima ritme yang akan Anda baca memang tentang akuarium yang sama. Tidak ada yang dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti. Beberapa pertanyaan opsional serupa muncul di beberapa ritme tertentu di bawah, tempat pertanyaan itu memang relevan dengan apa yang baru saja Anda baca.",
+    "note": "Kalau Anda punya lebih dari satu akuarium, mengisi ini membantu memastikan kelima ritme yang akan Anda baca memang tentang akuarium yang sama. Tidak ada yang dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti. Beberapa pertanyaan opsional serupa muncul di beberapa ritme tertentu di bawah, tempat pertanyaan itu memang relevan dengan apa yang baru saja Anda baca.",
     "inlineNote": "Opsional, dan tidak dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti.",
       "labels": {
         "ryr-cov-volume-label": "Volume akuarium",

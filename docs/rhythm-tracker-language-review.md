@@ -95,3 +95,89 @@ Nothing in S2 has been applied to the shipped instrument. Two of the findings (S
 4. Re-run the existing verification discipline for any scored-item change: all 5,120 answer combinations against the reference implementation (per the pattern in every version note in §S9 of the instrument record), plus `npm run i18n:check` twice for idempotence.
 
 This document does not recommend a specific decision on 1–2; it surfaces what a close read found so the choice can be made deliberately rather than by default.
+
+---
+
+## S5: Full Item-by-Item Pass (all 25 scored items)
+
+Requested after S2–S4: a complete pass over every scored item's `text`, `sub`, and option `l`/`d` fields — not just the items already flagged — so nothing is left unreviewed. This also folds in a finding from the `opt-desc` mobile fix (shipped separately): now that `d` (the small italic detail line under each option) is visible on every screen size, an idiom sitting in an option's `l` is lower priority when its own `d` already restates the idea in plain words — the respondent isn't relying on the idiom alone anymore. That changes some priorities from S2: idioms inside `text`, `sub`, or `d` itself now matter more than idioms in `l` that are already glossed by their own `d`.
+
+Verdict legend: **KEKAL** = no change proposed. **UBAH** = concrete wording change proposed below, pending approval.
+
+### Water Rhythm
+
+1. **`cycle-status`** — KEKAL. Already reviewed in S2.1; the nitrite/nitrate risk is content, not wording, and is now in the pretest probe list instead.
+2. **`testing-habit`** — KEKAL. `d`'s "something regular I stick to" is a mild idiom but low-stakes and clear from context.
+3. **`trend-read`** — **UBAH** (sub). "The honest answer, not the textbook one" is pure rhetorical framing and doesn't help orient an ambiguous question ("compare it to" — to what?).
+   - Before: *"The honest answer, not the textbook one."*
+   - After: *"Not the answer you know you're supposed to give — whether you're comparing it to past readings, a target number, or nothing at all."*
+4. **`stable-response`** — **UBAH** (sub + `d` of `leave-stable`). Sub doesn't ground the deliberately generic "a parameter" in anything concrete; `d` stacks "chase" + "textbook" into one idiom-heavy sentence.
+   - Sub before: *"Picture it happening in your own tank right now."*
+   - Sub after: *"Picture one number — pH, temperature, hardness — sitting just outside what you've read is ideal, but holding steady there."*
+   - `d` (leave-stable) before: *"If it's not moving and nothing looks wrong, I don't chase the textbook number."*
+   - `d` (leave-stable) after: *"If it's not moving and nothing looks wrong, I don't try to force it toward what a guide says is ideal."*
+5. **`oxygen-read`** — **UBAH** (sub only). "First read" uses "read" as a colloquial noun.
+   - Before: *"What's your first read on what's happening?"*
+   - After: *"What's your first guess for what's happening?"*
+   - The `oxygen-aware` option label itself is deliberately technical (it's the fact being tested) — KEKAL, simplifying it would weaken the item.
+
+### Biological Rhythm
+
+6. **`biofilm-read`** — KEKAL. Clean throughout; the word "biofilm" is deliberately withheld from the question itself.
+7. **`substrate-clean`** — **UBAH** (text). "Gravel-vac-and-test routine" is a hyphen-chain naming a specific tool rather than describing the action.
+   - Before: *"How do you handle substrate cleaning — sand or soil, not the gravel-vac-and-test routine?"*
+   - After: *"How do you handle the substrate itself — sand or soil — separately from the vacuum-and-test routine you do at water changes?"*
+8. **`recovery-awareness`** — **UBAH** (`d` of `push-forward` only). `ease-back`'s and `push-forward`'s idioms in `l` ("ease back", "make up for lost time") are already unpacked plainly by their own `d` text, so those stay. But `push-forward`'s own `d` re-introduces an idiom.
+   - `d` (push-forward) before: *"I tend to compensate — extra feeding, extra additions — to get back on track quickly."*
+   - `d` (push-forward) after: *"I tend to compensate — extra feeding, extra additions — to return to normal as quickly as possible."*
+9. **`maturity-marker`** — **UBAH** (`l` and `d` of `resilience`). Two idioms stacked in the label itself, and the `d` reinforces with a third.
+   - `l` (resilience) before: *"It shrugs off small mistakes without much drama"*
+   - `l` (resilience) after: *"It absorbs small mistakes without much visible reaction"*
+   - `d` (resilience) before: *"A missed water change or an extra feeding doesn't visibly rattle it."*
+   - `d` (resilience) after: *"A missed water change or an extra feeding doesn't noticeably affect it."*
+10. **`filter-media`** — **UBAH** (`d` of `rarely-touch` only). "On my radar" is a widely-known idiom but still non-compositional.
+    - `d` (rarely-touch) before: *"Filter maintenance isn't really on my radar until something's clearly wrong."*
+    - `d` (rarely-touch) after: *"Filter maintenance isn't really something I think about until something's clearly wrong."*
+    - The car-filter analogy in `d` (replace-regularly) — KEKAL, per S2.4: low priority, sits in explanatory text only, and the option's own `l` ("Replace media on a regular schedule") is self-sufficient without it.
+
+### Environmental Rhythm
+
+11. **`light-schedule`** — **UBAH** (`l` of `by-feel-variable`). "A fair bit" is a British-leaning colloquialism for "quite a lot."
+    - `l` (by-feel-variable) before: *"By hand, and it varies a fair bit"*
+    - `l` (by-feel-variable) after: *"By hand, and it varies quite a lot"*
+12. **`light-consequence`** — KEKAL. "Dramatic symptom" is a literal use of "dramatic" (obvious/showy), not an idiom.
+13. **`hardscape-moves`** — KEKAL. "Hardscape" is kept deliberately as a hobby-wide loanword (S2.5); nothing else in this item flagged.
+14. **`flow-deadspots`** — **UBAH** (sub + `d` of `rarely-looks`). "Detritus" is jargon (S2.2); "out of sight, out of mind" is a full non-compositional idiom.
+    - Sub before: *"Where detritus tends to collect if flow doesn't reach it."*
+    - Sub after: *"Where waste tends to collect if flow doesn't reach it."*
+    - `d` (rarely-looks) before: *"Those spots mostly stay out of sight, out of mind."*
+    - `d` (rarely-looks) after: *"Those spots mostly stay unnoticed."*
+15. **`temp-check-freq`** — KEKAL. Clean throughout.
+
+### Livestock Rhythm
+
+16. **`observation-baseline`** — KEKAL. "Dramatic change" is literal, not idiomatic.
+17. **`preclinical-signs`** — **UBAH** (text). "Pallor" and "clamped fins" are more jargon-heavy than id/ja's own translations of the same signs (S2.3).
+    - Before: *"Reduced feeding interest, subtle colour pallor, resting in an unusual spot, mildly clamped fins — none of these confirm a problem on their own."*
+    - After: *"Reduced feeding interest, a slightly pale colour, resting in an unusual spot, fins held a little closer to the body than usual — none of these confirm a problem on their own."*
+18. **`stress-accumulation`** — KEKAL. "Dramatic symptom" again literal.
+19. **`new-addition-disruption`** — KEKAL. Sub ("The ones already there, not the newcomer") already does real clarifying work; nothing else flagged.
+20. **`behaviour-vs-chemistry`** — KEKAL. Clean throughout.
+
+### Keeper Rhythm
+
+21. **`wc-interval-awareness`** — KEKAL. "Crept longer" is the site's established creep metaphor (used deliberately elsewhere, e.g. capacity creep), not an accidental idiom; the quoted "when I get to it" in `d` is a deliberate colloquial quote representing how a respondent would actually phrase it, not a wording defect.
+22. **`filter-check-date`** — **UBAH** (text). "Impeller" is unglossed mechanical jargon in all three languages (S2.2).
+    - Before: *"When did you last actually check the filter — media, flow, impeller?"*
+    - After: *"When did you last actually check the filter — the media, the flow, the moving parts inside it?"*
+23. **`feeding-precision`** — **UBAH** (`l` of `estimated-variable`). Same "a fair bit" colloquialism as item 11.
+    - `l` (estimated-variable) before: *"Estimated, and it varies a fair bit"*
+    - `l` (estimated-variable) after: *"Estimated, and it varies quite a lot"*
+24. **`observation-quality`** — KEKAL. "Goes through your head" (sub) is mildly figurative but transparent and easy to picture; not flagged.
+25. **`automation-reliance`** — KEKAL. `set-and-forget`'s idiom lives only in the internal value name — the visible `l` text ("I set it up and mostly forget about it") already de-idioms it.
+
+### Tally
+
+**12 of 25 items UBAH** (all but 3 are single-sentence or single-word swaps; none change an option's stored value `v`, scoring logic, or the fact being asked — only the wording around it). **13 of 25 KEKAL.** Three items considered and deliberately left alone despite carrying a flagged term: `hardscape-moves` (loanword, hobby-wide convention), `filter-media`'s car-filter analogy (low-stakes, explanatory-only), and `wc-interval-awareness`'s "crept"/quoted colloquialism (both intentional, not accidental).
+
+Because no option value (`v`) changes and no scoring logic changes, existing v2.1 submissions remain valid and comparable after this batch — only the displayed wording changes, which is why this is a display-layer version bump (v2.2) rather than a break in the data.

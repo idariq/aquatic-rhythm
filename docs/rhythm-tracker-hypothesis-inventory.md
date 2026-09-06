@@ -30,6 +30,12 @@ predictions are committed to, and listing a claim as testable is not a plan to
 test it. It is an audit of what the framework asserts and what the current
 instrument can see.
 
+**Every coverage judgement here is about items, not phase labels.** An owner
+decision of 2026-09-06 settled that the Early / Developing / Mature label is a
+reader-facing reflective device rather than a measurement (instrument record,
+S1). Nothing in this document depends on the scoring rule being sound, and
+nothing in it should be read as evidence that it is.
+
 ---
 
 ## S2: Method

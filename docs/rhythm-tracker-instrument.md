@@ -49,6 +49,40 @@ Any claim built on this data must stay inside the boundary: *self-reported
 keeper practice mapped onto ARA constructs*. Not tank state, not outcomes, not
 evidence that alignment produces better tanks.
 
+### Settled 2026-09-06: phase labels are a reader-facing device, not data
+
+An explicit owner decision, recorded here because it governs how everything
+else in this file should be read.
+
+The Early / Developing / Mature label a respondent sees is **a reflective
+device**. The scoring rule behind it exists to produce a sensible, honest
+reflection for that person — not to estimate anything about their tank. It is
+not a measurement, and it is not offered as one.
+
+Three consequences, all binding on any future analysis:
+
+1. **Analyse items, never phases.** Raw item responses are the data. A phase
+   label is a function of author-assigned weights and thresholds that were never
+   derived from theory or estimated from data (S4); treating it as a variable
+   would give those arbitrary numbers the standing of a measurement.
+2. **`phases` in the payload is session metadata, not a tank measure.** It is
+   retained because it records *what the respondent was shown*, which may matter
+   for interpreting what they did next — whether seeing "Early" changed their
+   willingness to share, for instance. It does not record anything about the
+   tank.
+3. **The scale-quality problems in S3 and S4 stop being blockers.** Heterogeneous
+   item types, non-uniform thresholds, the Water Rhythm asymmetry — these would
+   be disqualifying for an instrument claiming measurement. For a reflective
+   device they are quality issues to improve when convenient, not defects that
+   invalidate the output.
+
+**What this decision defers rather than rejects.** A two-layer redesign — uniform
+scored items carrying a measurement load, reflective vignettes retained but
+explicitly unscored — remains the right move *if* the work ever turns toward
+formal instrument development. It is deferred because rebuilding the scoring now
+would be expensive, would change what readers see, and would be premature before
+the completion and opt-in rates are known. Revisit it then, not now.
+
 ---
 
 ## S2: Construct Basis
@@ -89,12 +123,19 @@ The framework introduces those questions with:
 
 > These questions do not have correct answers — they have honest answers.
 
-The instrument scores them 0/1/2 against author-keyed preferred responses. The
-scoring contradicts the stated intent of the source. This is not a transcription
-error; it is what happens when reflective prompts are reused as scale items
-without re-deriving them for that purpose. It should be resolved deliberately —
-either the Keeper items stop being scored, or they are rewritten as scale items
-that §S4.5 does not disclaim.
+The instrument scores them 0/1/2 against author-keyed preferred responses.
+
+**Resolved 2026-09-06 by the S1 decision.** The tension was between §S4.5's
+"honest answers, not correct ones" and a score presented as a *measurement*. Once
+the phase label is a reflective device rather than a measurement, that conflict
+largely dissolves: the Keeper items produce a reflection back to the person who
+answered, which is what §S4.5 intends them to do. The weights remain author
+judgements about what a useful reflection looks like, and are documented as such.
+
+What survives of the original concern: if the work ever moves to formal
+instrument development, these items cannot be carried over as scale items
+unchanged — §S4.5 disclaims exactly that use. Recorded here so the decision is
+not silently reversed later.
 
 ---
 
@@ -609,16 +650,19 @@ importance.
    dimension exist. Its S7 supersedes the ordering below for items 6-9.
 6. **Write operational construct definitions** per rhythm (S2), derived from
    item 5. Item revision without them repeats the original error.
-7. **Resolve the §S4.5 contradiction** — Keeper items are scored against a
-   framework passage that disclaims correct answers.
-8. **Decide the instrument's shape.** The reflective surface and a measurement
-   instrument pull in opposite directions. A two-layer design — uniform scored
-   items carrying the measurement load, reflective vignettes retained for the
-   reader but explicitly unscored — preserves both. Governs items 6 and 7.
+7. ~~Resolve the §S4.5 contradiction.~~ **Resolved 2026-09-06** by the S1
+   decision — see the note in S2.
+8. ~~Decide the instrument's shape.~~ **Decided 2026-09-06: stay reflective.**
+   Phase labels are a reader-facing device; analysis uses items only. The
+   two-layer redesign is deferred, not rejected (S1).
 9. **Cognitive pretesting** with real aquarists. Under the exploratory purpose
    this is the highest-value remaining step: if respondents systematically
    misread an item, the resulting picture is a picture of misreading, and no
    later analysis recovers it. Statistical work can wait; this cannot.
+   **Protocol written 2026-09-06** — `docs/rhythm-tracker-pretest-protocol.md`,
+   covering recruitment, probes, the eight items to probe specifically, what
+   counts as a finding, and the honest limits. Not yet run; running it needs
+   people, not code.
 
 ### Purpose note (recorded 2026-09-06)
 
@@ -632,3 +676,8 @@ It also inverts the priorities. Since the scores will be discarded and the **raw
 item responses** are the asset that carries forward, the operative rule for any
 future analysis is: **analyse items, never phases.** Phase labels are a reader
 -facing feature of the tool, not data.
+
+That rule was an inference from the purpose when it was first written here. It
+is now a settled owner decision with its own consequences — see **S1, "phase
+labels are a reader-facing device, not data"**, which is the authoritative
+statement and supersedes this paragraph where they differ.

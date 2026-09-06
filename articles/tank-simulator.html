@@ -2258,6 +2258,10 @@ function render(){
 
   var pp=document.getElementById('btn-pp');
   if(ended){pp.disabled=true;pp.style.opacity='.3';}
+
+  /* render() is the one place the engine calls after every state change, so
+     it is the only hook that cannot fall out of step with S. */
+  tsimSave();
 }
 
 function showEnd(type){
@@ -2380,6 +2384,9 @@ function startLoop(){
 
 function reset(){
   running=false;subCount=0;
+  /* Starting over discards the saved run — otherwise a reload would drop the
+     player back into the game they just abandoned. */
+  tsimInGame=false;tsimClear();
   if(subTimer){clearInterval(subTimer);subTimer=null;}
   S={day:1,nh3:0,no2:0,no3:0,fish:0,plants:0,ammSource:0,bacA:0,bacB:0,cycleOk:false,dead:false,won:false,stress:0,wc:0,totalWc:0,fishless:CFG.method==='fishless',fishHealth:100,daysSinceFed:0,feedCount:0,spikeDay:0,spikeType:'',warned:{},heater:true,filter:true,seeded:false,temp:26,light:2,algae:0,stableDays:0,prevNh3:0,prevNo2:0,prevNo3:0};
   document.getElementById('log').innerHTML='<div class="le"><span class="ld">Day 1</span><span>Tank set up. Ready to begin cycling.</span></div>';
@@ -2453,7 +2460,7 @@ function beginGame(){
   var feedBtn=document.getElementById('act-feed');
   if(feedBtn)feedBtn.disabled=S.fishless;
   if(CFG.plants==='yes')S.plants=2;
-  running=true;initStars();startLoop();
+  running=true;tsimInGame=true;initStars();startLoop();
   initFishCanvas();animFish();
   render();updateGuide();
   setTimeout(function(){
@@ -2475,6 +2482,68 @@ document.getElementById('btn-pp').addEventListener('click',function(){
   running=!running;
   var btn=this;btn.textContent=running?'⏸ Pause':'▶ Resume';btn.classList.toggle('paused',!running);
 });
+/* ── RUN PERSISTENCE ─────────────────────────────────────────────────────
+   A cycle run is a multi-week playthrough held entirely in memory. Before
+   this, a stray back-swipe on a phone — or a closed tab, or a crash — threw
+   the whole run away with nothing to recover it. Checked 2026-09-06: back
+   from gameplay left the page outright.
+
+   The fix is persistence rather than a history guard. Trapping the back
+   button would stop the exit without giving the player anywhere to go, and
+   a back press that visibly does nothing reads as broken. Saving the run
+   means leaving is simply no longer destructive — which is also worth having
+   on its own, for a tool people put twenty minutes into.
+
+   Saved: CFG (the setup choices), S (the whole engine state), and the log
+   HTML, which is narrative the player has accumulated and cannot be derived
+   from S. Everything else on screen is rebuilt by render() from S. */
+var TSIM_SAVE_KEY='tsim_run_v1';
+var tsimInGame=false;
+function tsimSave(){
+  if(!tsimInGame)return;
+  try{
+    var logEl=document.getElementById('log');
+    localStorage.setItem(TSIM_SAVE_KEY,JSON.stringify({
+      v:1,cfg:CFG,s:S,log:logEl?logEl.innerHTML:''
+    }));
+  }catch(e){}
+}
+function tsimClear(){try{localStorage.removeItem(TSIM_SAVE_KEY);}catch(e){}}
+function tsimLoad(){
+  try{
+    var raw=localStorage.getItem(TSIM_SAVE_KEY);
+    if(!raw)return null;
+    var d=JSON.parse(raw);
+    if(!d||d.v!==1||!d.s||typeof d.s.day!=='number')return null;
+    /* A finished run is not resumed — the player saw its ending, and dropping
+       them back into a dead tank would be worse than a clean start. */
+    if(d.s.dead||d.s.won)return null;
+    return d;
+  }catch(e){return null;}
+}
+(function tsimRestore(){
+  var d=tsimLoad();
+  if(!d)return;
+  CFG=d.cfg||CFG;
+  S=d.s;
+  var logEl=document.getElementById('log');
+  if(logEl&&d.log)logEl.innerHTML=d.log;
+  var b=document.getElementById('briefing');
+  if(b){b.style.opacity='0';b.style.pointerEvents='none';b.style.display='none';}
+  document.getElementById('ov-setup').classList.add('hide');
+  document.getElementById('ov-brief').classList.add('hide');
+  tsimInGame=true;
+  /* Resumed paused on purpose: the loop would otherwise start advancing days
+     while the player is still working out where they left off. startLoop()
+     already gates on `running`, so starting it here is safe. */
+  running=false;
+  initStars();startLoop();
+  initFishCanvas();animFish();
+  render();updateGuide();
+  var pp=document.getElementById('btn-pp');
+  if(pp){pp.textContent='▶ Resume';pp.classList.add('paused');}
+})();
+
 document.getElementById('btn-restart').addEventListener('click',function(){
   if(subTimer){clearInterval(subTimer);subTimer=null;}
   reset();

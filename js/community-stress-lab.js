@@ -1727,6 +1727,46 @@
       renderBottombar();
       lastLaneLevel = result.laneLevel;
       syncVisualLoop();
+      cslSave();
+    }
+
+    /* Session persistence. The lab held the stocking list only in memory, so a
+       stray back-swipe on a phone threw away whatever the visitor had built up
+       — confirmed 2026-09-06, back left the page outright with three species
+       added. Persisting is the fix rather than trapping the back button:
+       leaving simply stops being destructive, and the list is worth keeping
+       across visits anyway.
+
+       refresh() is the single place every mutation funnels through — add,
+       remove, count change, volume change — so saving there cannot fall out
+       of step with `picks`. */
+    var CSL_SAVE_KEY = 'csl_session_v1';
+    function cslSave() {
+      try {
+        localStorage.setItem(CSL_SAVE_KEY, JSON.stringify({
+          v: 1,
+          vol: parseInt(volumeEl.value, 10) || 60,
+          picks: picks.map(function (p) { return { id: p.id, count: p.count }; })
+        }));
+      } catch (e) { /* private mode, blocked storage — the lab still works */ }
+    }
+    function cslRestore() {
+      try {
+        var raw = localStorage.getItem(CSL_SAVE_KEY);
+        if (!raw) return;
+        var d = JSON.parse(raw);
+        if (!d || d.v !== 1) return;
+        if (typeof d.vol === 'number' && volumeEl) volumeEl.value = String(d.vol);
+        if (!Array.isArray(d.picks)) return;
+        /* Filter against the loaded pack: the species file is versioned, and a
+           pick saved before an id was removed would otherwise reach the rules
+           engine as an unknown species. Caps are re-applied for the same
+           reason — they may have tightened since the session was saved. */
+        picks = d.picks
+          .filter(function (p) { return p && p.id && speciesById[p.id]; })
+          .map(function (p) { return { id: p.id, count: Math.max(1, p.count | 0) }; })
+          .slice(0, SAFETY_CAPS.species);
+      } catch (e) { picks = []; }
     }
 
     function renderLanes(laneLevel) {
@@ -1991,6 +2031,7 @@
           speciesById[speciesList[i].id] = speciesList[i];
         }
         setStatus('');
+        cslRestore();
         refresh();
       })
       .catch(function () {

@@ -276,11 +276,11 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       <div class="ryr-share" id="ryr-share" hidden>
         <p class="ryr-share-congrats" id="ryr-share-congrats">五つのリズム、すべて読み終えました。</p>
         <p class="ryr-share-text" id="ryr-share-text">ここまで、しっかり向き合ってくださいました。最後まで進めてくださり、ありがとうございます。よろしければ、ここで見えてきたこと、つまりあなたの回答と上記のフェーズの結果を共有していただけると、ARAの研究を前に進める助けになりますし、この先読む誰かのために、このツールがより良い問いを立てられるようにもなります。データは第三者のフォームサービスであるFormspreeを通じて送られ、それ以外の情報は一切含まれません。お名前もメールアドレスも不要で、五つの回答をまとめて読めるようランダムな識別コードだけが添えられます。これはまだ正式なデータセットでも、何かを証明するものでもない、正直な最初の一歩です。ここから育てていきたいのは、いずれ正式な研究の土台となる、最初の実像です。まとめられた結果は、その一環として公開・共有されることがあります。あなたを特定できる情報が一緒に送られることはありません。送信後、この場所にあなたのコードが表示されます。控えておいていただければ、もし気が変わったときは hello@aquaticrhythm.com までご連絡いただくことで、回答を削除いたします。</p>
-        <p class="ryr-share-cov-note" id="ryr-share-cov-note">どちらも任意です。回答をグループ分けするためだけのもので、6週間目の結果と3年目の結果とでは意味が違ってくるからです。</p>
+        <p class="ryr-share-cov-note" id="ryr-share-cov-note">すべて任意で、上の内省が変わることはありません。あとで回答をグループ分けして比べられるようにするためのもので、6週間目の結果と3年目の結果とでは意味が違いますし、水槽自体がどう振る舞ったかは、このツールがこれまで一度も尋ねてこなかった部分です。</p>
         <div class="ryr-share-cov">
           <label class="ryr-cov-field">
             <span class="ryr-cov-label" id="ryr-cov-volume-label">水槽の容量</span>
-            <select class="ryr-cov-select" id="ryr-cov-volume">
+            <select class="ryr-cov-select" id="ryr-cov-volume" data-field="tank_volume">
               <option value="">—</option>
               <option value="lt20">&lt; 20 L</option>
               <option value="20-60">20–60 L</option>
@@ -292,7 +292,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
           </label>
           <label class="ryr-cov-field">
             <span class="ryr-cov-label" id="ryr-cov-age-label">稼働してからの期間</span>
-            <select class="ryr-cov-select" id="ryr-cov-age">
+            <select class="ryr-cov-select" id="ryr-cov-age" data-field="tank_age">
               <option value="">—</option>
               <option value="lt1m">1か月未満</option>
               <option value="1-3m">1〜3か月</option>
@@ -300,6 +300,37 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
               <option value="6-12m">6〜12か月</option>
               <option value="1-3y">1〜3年</option>
               <option value="gt3y">3年以上</option>
+            </select>
+          </label>
+          <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-slip-label">世話が滞ったとき</span>
+            <select class="ryr-cov-select" id="ryr-cov-slip" data-field="outcome_slip">
+              <option value="">—</option>
+              <option value="slip-held">大きな変化はなく、持ちこたえました</option>
+              <option value="slip-settled">小さな変化はあったが自然に収まりました</option>
+              <option value="slip-needed-help">手を入れて立て直す必要がありました</option>
+              <option value="slip-not-yet">まだ滞ったことがないので分かりません</option>
+            </select>
+          </label>
+          <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-intervene-label">先月、手を入れて直した回数</span>
+            <select class="ryr-cov-select" id="ryr-cov-intervene" data-field="outcome_intervention">
+              <option value="">—</option>
+              <option value="int-none">一度もなく、そのまま動いていました</option>
+              <option value="int-once">1回</option>
+              <option value="int-few">数回</option>
+              <option value="int-most-weeks">ほぼ毎週</option>
+              <option value="int-too-new">新しすぎて判断できません</option>
+            </select>
+          </label>
+          <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-intent-label">これは意図しているリズムですか</span>
+            <select class="ryr-cov-select" id="ryr-cov-intent" data-field="care_intent">
+              <option value="">—</option>
+              <option value="intent-chosen">はい。自分で選んだリズムです</option>
+              <option value="intent-drifted">おおむねそうですが、ずれてきています</option>
+              <option value="intent-circumstances">いいえ。状況に押される形になっています</option>
+              <option value="intent-intensive">今は意図的に集中して手をかけている時期です</option>
             </select>
           </label>
         </div>
@@ -1079,34 +1110,77 @@ var RYR_FORMSPREE_ENDPOINT='https://formspree.io/f/xoeqleyo';
    same commit as the change, since a version not recorded in the data is not
    a version. Layout, styling and translation of existing strings do not bump
    it. See docs/rhythm-tracker-instrument.md §S8. */
-var RYR_INSTRUMENT_VERSION='v1.2';
+var RYR_INSTRUMENT_VERSION='v1.3';
+var RYR_REPROMPT_DAYS=60;
 var RYR_CODE_LABEL="あなたのコード：";
 /* GA opt-out is enforced at the page head via ga-disable-*, so these calls
    are already no-ops for anyone who turned analytics off in Settings. */
 function ryrTrack(name,params){
   try{if(typeof gtag==='function')gtag('event',name,params||{});}catch(e){}
 }
-/* Covariates (v1.2). Asked here rather than in the question flow so readers
-   who never share are not made to answer them, and placed above the consent
-   box so what is being consented to is visible. Both optional: an unanswered
-   select submits an empty string, which is distinguishable from any bucket.
-   Remembered locally so a respondent re-sending after changing an answer
-   doesn't have to re-pick them. */
-function ryrCovariates(){
-  return {
-    tank_volume:(document.getElementById('ryr-cov-volume')||{}).value||'',
-    tank_age:(document.getElementById('ryr-cov-age')||{}).value||''
-  };
+/* Tank context: covariates (v1.2) plus outcome and intent items (v1.3).
+   Asked here rather than in the question flow so readers who never share are
+   not made to answer them, and placed above the consent box so what is being
+   consented to is visible. All optional: an unanswered select submits an empty
+   string, distinguishable from every bucket. Remembered locally so a
+   respondent re-sending after revising an answer doesn't have to re-pick.
+
+   NONE OF THESE FEED SCORING, and they must not. The outcome items exist to
+   give the ecological claims something to be checked against; scoring a
+   respondent on them would fold the outcome back into the predictor and
+   recreate exactly the circularity the instrument record warns about.
+
+   Collected from the DOM by [data-field], not from a list here — a hardcoded
+   field list is the drift point that lets a new question be added to the
+   markup and silently never transmitted. */
+function ryrTankContext(){
+  var out={};
+  Array.prototype.forEach.call(document.querySelectorAll('.ryr-cov-select[data-field]'),function(el){
+    out[el.getAttribute('data-field')]=el.value||'';
+  });
+  return out;
 }
-function ryrSaveCovariates(){
-  try{localStorage.setItem('ryr_covariates',JSON.stringify(ryrCovariates()));}catch(e){}
+function ryrSaveTankContext(){
+  try{localStorage.setItem('ryr_tank_context',JSON.stringify(ryrTankContext()));}catch(e){}
 }
-function ryrRestoreCovariates(){
+function ryrRestoreTankContext(){
   var c={};
-  try{c=JSON.parse(localStorage.getItem('ryr_covariates')||'{}');}catch(e){c={};}
-  var v=document.getElementById('ryr-cov-volume'),a=document.getElementById('ryr-cov-age');
-  if(v&&c.tank_volume)v.value=c.tank_volume;
-  if(a&&c.tank_age)a.value=c.tank_age;
+  try{
+    c=JSON.parse(localStorage.getItem('ryr_tank_context')
+      ||localStorage.getItem('ryr_covariates')||'{}'); // v1.2 key, still honoured
+  }catch(e){c={};}
+  Array.prototype.forEach.call(document.querySelectorAll('.ryr-cov-select[data-field]'),function(el){
+    var v=c[el.getAttribute('data-field')];
+    if(v)el.value=v;
+  });
+}
+/* Repeat submission (v1.3). A single snapshot cannot show a sequence, and
+   every pathway claim in the framework is about sequence. The respondent id
+   already links submissions; these fields say where in a series each one
+   sits, so a second reading months later is analysable as a second reading
+   rather than as an unrelated record. */
+function ryrSubmissionHistory(){
+  var h={count:0,first:'',last:''};
+  try{
+    h.count=parseInt(localStorage.getItem('ryr_submission_count')||'0',10)||0;
+    h.first=localStorage.getItem('ryr_first_submitted_at')||'';
+    h.last=localStorage.getItem('ryr_last_submitted_at')||'';
+  }catch(e){}
+  return h;
+}
+function ryrDaysBetween(iso,now){
+  if(!iso)return '';
+  var t=Date.parse(iso);
+  if(isNaN(t))return '';
+  return String(Math.max(0,Math.round((now-t)/86400000)));
+}
+function ryrRecordSubmission(nowIso){
+  try{
+    var h=ryrSubmissionHistory();
+    localStorage.setItem('ryr_submission_count',String(h.count+1));
+    if(!h.first)localStorage.setItem('ryr_first_submitted_at',nowIso);
+    localStorage.setItem('ryr_last_submitted_at',nowIso);
+  }catch(e){}
 }
 /* Annotates which stored answers mean "premise doesn't apply" vs "no basis
    to answer", so the submitted data is self-describing and an analyst never
@@ -1164,6 +1238,25 @@ function ryrSetAllAnswers(key,answers){
     localStorage.setItem('ryr_all_answers',JSON.stringify(all));
   }catch(e){}
 }
+/* Per-rhythm answer dates (v1.3). A returning respondent may revise one
+   rhythm and share, carrying four readings that are months older in the same
+   submission. Without this the whole set looks equally fresh. Recording when
+   each rhythm was actually answered makes mixed freshness a visible fact in
+   the data instead of a hidden one — and it is what lets a rhythm be tracked
+   individually over time, which is the point of inviting people back. */
+function ryrGetAnswerDates(){
+  try{
+    var raw=localStorage.getItem('ryr_answer_dates');
+    return raw?JSON.parse(raw):{};
+  }catch(e){return {};}
+}
+function ryrSetAnswerDate(key,iso){
+  try{
+    var d=ryrGetAnswerDates();
+    d[key]=iso;
+    localStorage.setItem('ryr_answer_dates',JSON.stringify(d));
+  }catch(e){}
+}
 function ryrShareModalShow(){
   var shareEl=document.getElementById('ryr-share');
   // #ryr-share normally lives inside #ryr-picker-screen so it sits quietly
@@ -1180,7 +1273,14 @@ function ryrShareModalShow(){
   document.getElementById('ryr-share-backdrop').hidden=false;
   try{localStorage.setItem('ryr_share_prompted','1');}catch(e){}
 }
+/* "Maybe later" has to mean later. The v1.3 repeat-prompt condition stays true
+   for the rest of a session once met, so without this the modal would re-open
+   after every single rhythm the respondent completes. Session-scoped on
+   purpose, not persisted: a genuine return visit months later should still be
+   able to prompt. */
+var ryrPromptSuppressed=false;
 function ryrShareModalDismiss(){
+  ryrPromptSuppressed=true;
   var shareEl=document.getElementById('ryr-share');
   shareEl.classList.remove('ryr-share-modal-active');
   document.getElementById('ryr-share-backdrop').hidden=true;
@@ -1199,13 +1299,13 @@ function ryrShareUIRefresh(){
   try{sentHash=localStorage.getItem('ryr_share_sent_hash');}catch(e){}
   var curHash=JSON.stringify(ryrGetAllAnswers());
   var codeEl=document.getElementById('ryr-share-code');
-  var covEls=[document.getElementById('ryr-cov-volume'),document.getElementById('ryr-cov-age')];
-  covEls.forEach(function(el){if(el)el.disabled=!!(sentHash&&sentHash===curHash);});
+  var locked=!!(sentHash&&sentHash===curHash);
+  Array.prototype.forEach.call(document.querySelectorAll('.ryr-cov-select[data-field]'),function(el){el.disabled=locked;});
   if(sentHash&&sentHash===curHash){
     btn.textContent="送信済み — ありがとうございます";
     btn.disabled=true;
     consent.checked=false;consent.disabled=true;
-    statusEl.hidden=false;statusEl.textContent="共有済みです。回答が変わったら、いつでもここに戻ってきてください。";
+    statusEl.hidden=false;statusEl.textContent="共有済みです。ありがとうございます。数か月後にもう一度読み直し、その二回目を送っていただけると、今回だけのときよりずっと大きな意味を持ちます。変化が見えるからです。一度きりの記録では、それは分かりません。";
     statusEl.classList.remove('err');
     // Shown only after sending: without the code, the withdrawal route
     // promised in the consent text can't actually be used.
@@ -1229,10 +1329,26 @@ function ryrShareCheckpoint(){
     try{localStorage.setItem('ryr_five_tracked','1');}catch(e){}
   }
   try{alreadyPrompted=!!localStorage.getItem('ryr_share_prompted');}catch(e){}
-  if(allDone&&!alreadyPrompted){
-    ryrTrack('ryr_share_prompted',{});
+  if(!allDone||ryrPromptSuppressed)return;
+  if(!alreadyPrompted){
+    ryrTrack('ryr_share_prompted',{reason:'first'});
     ryrShareModalShow();
+    return;
   }
+  // Re-prompt a returning respondent, but only on a genuinely new reading and
+  // only after a long gap — a second reading months later is what turns a
+  // snapshot into a sequence. Deliberately conservative: changed answers alone
+  // are not enough, or this would nag anyone revising a rhythm the same week.
+  var sentHash=null,last='';
+  try{
+    sentHash=localStorage.getItem('ryr_share_sent_hash');
+    last=localStorage.getItem('ryr_last_submitted_at')||'';
+  }catch(e){}
+  if(!sentHash||sentHash===JSON.stringify(ryrGetAllAnswers()))return;
+  var gap=ryrDaysBetween(last,Date.now());
+  if(gap===''||parseInt(gap,10)<RYR_REPROMPT_DAYS)return;
+  ryrTrack('ryr_share_prompted',{reason:'repeat'});
+  ryrShareModalShow();
 }
 function ryrRenderChart(slotId){
   var progress=ryrGetProgress();
@@ -1373,6 +1489,7 @@ function showResult(){
   document.getElementById('ryr-phase-text').textContent=ref.phase;
   ryrSetProgress(curRhythm,ref.phaseLabel);
   ryrSetAllAnswers(curRhythm,ans);
+  ryrSetAnswerDate(curRhythm,new Date().toISOString());
   ryrRenderChart('ryr-chart-svg-slot');
   ryrTrack('ryr_rhythm_complete',{rhythm:curRhythm,completed_count:Object.keys(ryrGetProgress()).length});
   ryrShareCheckpoint();
@@ -1410,9 +1527,10 @@ document.getElementById('ryr-begin-btn').addEventListener('click',function(){
 document.getElementById('ryr-share-consent').addEventListener('change',function(){
   document.getElementById('ryr-share-btn').disabled=!this.checked;
 });
-document.getElementById('ryr-cov-volume').addEventListener('change',ryrSaveCovariates);
-document.getElementById('ryr-cov-age').addEventListener('change',ryrSaveCovariates);
-ryrRestoreCovariates();
+Array.prototype.forEach.call(document.querySelectorAll('.ryr-cov-select[data-field]'),function(el){
+  el.addEventListener('change',ryrSaveTankContext);
+});
+ryrRestoreTankContext();
 document.getElementById('ryr-share-btn').addEventListener('click',function(){
   var btn=this;
   var consent=document.getElementById('ryr-share-consent');
@@ -1431,14 +1549,19 @@ document.getElementById('ryr-share-btn').addEventListener('click',function(){
   fd.append('instrument_version',RYR_INSTRUMENT_VERSION);
   fd.append('submitted_at',new Date().toISOString());
   fd.append('response_coding',JSON.stringify(ryrResponseCoding(allAnswers)));
-  var cov=ryrCovariates();
-  fd.append('tank_volume',cov.tank_volume);
-  fd.append('tank_age',cov.tank_age);
+  var ctx=ryrTankContext();
+  Object.keys(ctx).forEach(function(k){fd.append(k,ctx[k]);});
+  var hist=ryrSubmissionHistory(),nowMs=Date.now(),nowIso=new Date(nowMs).toISOString();
+  fd.append('submission_index',String(hist.count+1));
+  fd.append('days_since_first',ryrDaysBetween(hist.first,nowMs));
+  fd.append('days_since_previous',ryrDaysBetween(hist.last,nowMs));
+  fd.append('answer_dates',JSON.stringify(ryrGetAnswerDates()));
   fetch(RYR_FORMSPREE_ENDPOINT,{method:'POST',body:fd,headers:{Accept:'application/json'}})
     .then(function(res){
       if(res.ok){
         try{localStorage.setItem('ryr_share_sent_hash',JSON.stringify(allAnswers));}catch(e){}
-        ryrTrack('ryr_share_submitted',{});
+        ryrRecordSubmission(nowIso);
+        ryrTrack('ryr_share_submitted',{submission_index:hist.count+1});
         ryrShareModalDismiss();
         ryrShareUIRefresh();
       }else{

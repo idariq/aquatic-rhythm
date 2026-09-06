@@ -1869,8 +1869,91 @@ var cvs,ctx,tick=0,animFrame=null;
 var _biCurrentEq=null,_biCurrentBrand=null;
 var _biCarouselIdx=0,_biCarouselSlides=[],_biCarouselResizeHandler=null;
 
+/* ═══ SETUP PERSISTENCE ═══
+   The builder held the whole setup (tank size, equipment, livestock,
+   plants, hardscape) in memory only. Checked 2026-09-06, following the
+   same audit that found tank-simulator and community-stress-lab losing
+   their session on back: a single hardware back press here, with no
+   overlay open, left the page outright and discarded a build of two
+   species plus a tank-size change with nothing to recover it.
+
+   Same fix as those two, for the same reason a history guard is wrong
+   here too: this is one continuous page, not a wizard with a "previous
+   screen" to return to, so trapping back would swallow the press without
+   giving the keeper anywhere to go. Persisting means leaving is simply no
+   longer destructive.
+
+   Only stock/plants/hardscape KEYS (+ qty for stock) are stored, not the
+   cloned item objects ph2Active actually holds — those are re-hydrated
+   from ECOSYSTEM on restore via tbLookupItem(). Storing the full clones
+   would duplicate species-database entries into localStorage on every
+   save, and would silently keep a stale copy if that entry's prose or
+   fields were later corrected in ECOSYSTEM. A key that no longer exists
+   there (data pruned or renamed since the save) is dropped rather than
+   restored partially. */
+var TB_SAVE_KEY='tb_setup_v1';
+function tbLookupItem(cat,k){
+  if(cat==='stock')return ECOSYSTEM.FISH[k]||ECOSYSTEM.INVERTEBRATES[k];
+  if(cat==='plants')return ECOSYSTEM.PLANTS[k];
+  if(cat==='hard')return ECOSYSTEM.HARDSCAPE[k];
+  return null;
+}
+function tbSave(){
+  try{
+    localStorage.setItem(TB_SAVE_KEY,JSON.stringify({
+      v:1,
+      tankLiters:tankLiters,
+      active:active,
+      selectedBrands:selectedBrands,
+      stock:Object.keys(ph2Active.stock).map(function(k){return{k:k,qty:ph2Active.stock[k]._qty};}),
+      plants:Object.keys(ph2Active.plants),
+      hard:Object.keys(ph2Active.hard)
+    }));
+  }catch(e){}
+}
+function tbClear(){try{localStorage.removeItem(TB_SAVE_KEY);}catch(e){}}
+function tbRestore(){
+  try{
+    var raw=localStorage.getItem(TB_SAVE_KEY);
+    if(!raw)return false;
+    var d=JSON.parse(raw);
+    if(!d||d.v!==1)return false;
+    if(typeof d.tankLiters==='number')tankLiters=d.tankLiters;
+    if(d.active&&typeof d.active==='object')active=d.active;
+    if(d.selectedBrands&&typeof d.selectedBrands==='object')selectedBrands=d.selectedBrands;
+    (d.stock||[]).forEach(function(e){
+      var item=tbLookupItem('stock',e.k);
+      if(!item)return;
+      var cl=Object.assign({},item);
+      cl._qty=e.qty||item.min_school||1;
+      ph2Active.stock[e.k]=cl;
+    });
+    (d.plants||[]).forEach(function(k){
+      var item=tbLookupItem('plants',k);
+      if(item)ph2Active.plants[k]=Object.assign({},item);
+    });
+    (d.hard||[]).forEach(function(k){
+      var item=tbLookupItem('hard',k);
+      if(item)ph2Active.hard[k]=Object.assign({},item);
+    });
+    return !!(Object.keys(active).length||Object.keys(ph2Active.stock).length||
+      Object.keys(ph2Active.plants).length||Object.keys(ph2Active.hard).length);
+  }catch(e){return false;}
+}
+
 /* ═══ INIT ═══ */
 window.addEventListener('load',function(){
+  /* A save with actual content skips the briefing — the same reasoning as
+     tank-simulator's restore: the builder underneath is already fully
+     rendered and interactive, and #briefing (position:fixed;inset:0) would
+     otherwise force a returning keeper to dismiss an intro screen they have
+     already seen before they can even look at the setup they came back to
+     resume. An empty/no-op save (nothing built yet) leaves it showing. */
+  var tbHadSave=tbRestore();
+  if(tbHadSave){
+    var b0=document.getElementById('briefing');
+    if(b0)b0.style.display='none';
+  }
   cvs=document.getElementById('tank-canvas');
   if(cvs)ctx=cvs.getContext('2d');
   szCvs(); updateRhythms(); scheduleRedraw();
@@ -1949,6 +2032,14 @@ window.addEventListener('load',function(){
     buildFilterSelects(); buildAllGrids(); updateRackStates(); updateRhythms();
     updateSubmitBtn(); checkAnimNeeded(); scheduleRedraw();
     updateCompatStrip();
+    /* Last, not first: updateRackStates() above already calls tbSave() as
+       part of its normal every-mutation hook, which would otherwise
+       immediately overwrite an earlier tbClear() with a fresh (empty)
+       save one statement later. Functionally harmless either way — an
+       empty save restores to the same defaults as no save at all — but
+       calling it last means the key is actually gone rather than merely
+       equivalent, which is what "Reset" should mean. */
+    tbClear();
   });
 
   /* Report */
@@ -2031,6 +2122,20 @@ window.addEventListener('load',function(){
       if(window.innerWidth>680)closeAllDropdowns();
     },200);
   });
+
+  /* Restored `active`/`selectedBrands` above are plain data — the .eq-item
+     DOM elements are static markup already in the page, not rebuilt per
+     mutation the way ph2-cards are, so their .active class and brand-choice
+     text need this one manual sync pass. Everything else that reads active/
+     ph2Active/tankLiters (rhythm bars, compat strip, summary bar, submit
+     button, canvas) is refreshed generically by the calls below, the same
+     set every mutation handler already calls after changing state. */
+  Object.keys(active).forEach(function(id){
+    var el=document.querySelector('[data-eq="'+id+'"]');
+    if(el)el.classList.add('active');
+    updateEqChoice(id,selectedBrands[id]||'');
+  });
+  updateRackStates();updateRhythms();updateSubmitBtn();checkAnimNeeded();scheduleRedraw();updateCompatStrip();
 });
 
 /* ═══ TAB SWITCH ═══ */
@@ -2241,6 +2346,7 @@ function updateRackStates(){
     if(!active[id]&&s==='conflict')item.classList.add('disabled');
     if(!active[id]&&s==='sizeWarn')item.classList.add('size-warn');
   });
+  tbSave();
 }
 
 /* ═══ DROPDOWN ═══ */
@@ -2799,6 +2905,7 @@ function showEcoAddSheet(k,item,cat,onChange){
 function updateEcoState(){
   updateRhythms();
   updateCompatStrip();updateSubmitBtn();checkAnimNeeded();scheduleRedraw();
+  tbSave();
 }
 
 /* ═══ COMPAT STRIP ═══ */

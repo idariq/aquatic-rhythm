@@ -4,8 +4,8 @@
 
 **Companion to:** `docs/rhythm-tracker-instrument.md`
 **Source of claims:** `docs/ARA-framework-v2.md` (v2.0)
-**Instrument assessed:** Rhythm Tracker v1.4 (25 scored items + 7 unscored context items)
-**Last revised:** 2026-09-06 — coverage re-scored after v1.3 and v1.4 (see S9, S10)
+**Instrument assessed:** Rhythm Tracker v2.0 (25 scored items + 8 unscored context items)
+**Last revised:** 2026-09-06 — S5's tank-state item count updated for v2.0's `temp-stability` split (coverage table itself last re-scored after v1.3/v1.4, see S9, S10 — v2.0 changed scoring mechanics, not hypothesis coverage)
 **Written:** 2026-09-06
 
 ---
@@ -260,7 +260,13 @@ The mismatch is not a shortage of items. It is that **the instrument and the
 framework are about different things.**
 
 Of the 25 scored items, at most two ask about the state of the tank
-(`cycle-status`, and `temp-stability` partly). The remaining 23 ask about the
+(`cycle-status`, and `temp-stability` partly). *(Updated for v2.0,
+2026-09-06: `temp-stability`'s state-facet moved to the unscored `temp_swing`
+context item — `docs/rhythm-tracker-instrument.md` §S9/§S11 — so its scored
+replacement, `temp-check-freq`, asks about checking frequency, a keeper
+practice, not tank state. `cycle-status` is now the only scored item
+describing the tank rather than the keeper, sharpening the count below from
+23-of-25 to 24-of-25.)* The remaining 23 ask about the
 keeper — their habits, knowledge, beliefs, and attention. The framework,
 meanwhile, is overwhelmingly a set of claims about how aquarium *systems* behave
 over time. **v1.3 does not change this**: the three new context items sit

@@ -67,7 +67,8 @@
       "labels": {
         "ryr-cov-volume-label": "Volume akuarium",
         "ryr-cov-age-label": "Sudah berapa lama berjalan",
-        "ryr-cov-stocking-label": "Bagaimana isi tebaran berubah",
+        "ryr-cov-tempswing-label": "Seberapa banyak suhu sebenarnya berubah",
+    "ryr-cov-stocking-label": "Bagaimana isi tebaran berubah",
         "ryr-cov-life-label": "Ada yang mengganggu ritme Anda sekarang",
         "ryr-cov-slip-label": "Saat perawatan sempat kendur",
         "ryr-cov-intervene-label": "Turun tangan membenahi sesuatu, bulan lalu",
@@ -81,6 +82,12 @@
           "6-12m": "6–12 bulan",
           "1-3y": "1–3 tahun",
           "gt3y": "> 3 tahun"
+        },
+        "tempSwing": {
+          "temp-barely": "Nyaris tidak berubah, sejauh yang saya tahu",
+          "temp-mild": "Sedikit berubah, tapi tidak drastis",
+          "temp-noticeable": "Berubah-ubah dalam jumlah yang cukup terasa",
+          "temp-unsure": "Saya sungguh tidak tahu"
         },
         "stockingChange": {
           "stock-same": "Sama seperti rencana, atau diubah dengan sengaja",
@@ -604,29 +611,29 @@
           ]
         },
         {
-          "id": "temp-stability",
-          "text": "Seberapa banyak suhu akuarium Anda sebenarnya berubah-ubah dari hari ke hari?",
-          "sub": "Perkiraan jujur terbaik Anda, entah Anda mengukurnya atau tidak.",
+          "id": "temp-check-freq",
+          "text": "Seberapa sering Anda benar-benar memeriksa suhu akuarium?",
+          "sub": "Bukan apa yang ditunjukkan termometer sekarang — seberapa sering Anda benar-benar melihatnya.",
           "opts": [
             {
-              "v": "stable-monitored",
-              "l": "Nyaris tidak berubah — saya cek dan hasilnya stabil",
-              "d": "Heater dan termometer bekerja dengan baik, dan saya cukup sering memeriksanya untuk tahu itu."
+              "v": "checks-often",
+              "l": "Cukup sering untuk langsung menyadari perubahan",
+              "d": "Hampir setiap hari — ini bagian dari rutinitas saya."
             },
             {
-              "v": "stable-assumed",
-              "l": "Kemungkinan stabil, meski saya tidak sering mengecek",
-              "d": "Saya percaya pada peralatannya, tapi tidak bisa memastikan kapan terakhir kali saya konfirmasi."
+              "v": "checks-occasionally",
+              "l": "Sesekali, tanpa rutinitas yang ketat",
+              "d": "Saya kadang memeriksa, tapi tidak terjadwal."
             },
             {
-              "v": "noticeable-swings",
-              "l": "Berubah-ubah dalam jumlah yang cukup terasa",
-              "d": "Suhu ruangan, peralatan, atau hal lain membuatnya berubah-ubah lebih dari sedikit."
+              "v": "rarely-checks",
+              "l": "Jarang, kalau pernah",
+              "d": "Ini bukan sesuatu yang benar-benar saya periksa."
             },
             {
-              "v": "unsure-swings",
-              "l": "Saya sungguh tidak tahu",
-              "d": "Tidak ada termometer di akuarium, atau saya tidak pernah mengeceknya."
+              "v": "no-thermometer",
+              "l": "Saya tidak punya cara untuk memeriksanya",
+              "d": "Belum ada termometer di akuarium saat ini."
             }
           ]
         }
@@ -662,11 +669,11 @@
           "rarely-looks": "Jarang memeriksa di balik hardscape atau di sudut-sudut berarti titik mati punya ruang untuk berkembang tanpa disadari. Aliran yang tidak merata menciptakan persis kantong-kantong seperti ini, oksigen rendah, penumpukan detritus, dan itu masalah Environmental Rhythm yang nyata, bukan sekadar soal tampilan.",
           "never-considered": "Belum pernah mempertimbangkan distribusi aliran sebagai variabel tersendiri adalah hal yang umum. Kebanyakan perhatian tertuju pada apakah filternya menyala, bukan ke mana sebenarnya alirannya sampai. Sudut-sudut dan ruang di balik hardscape yang tinggi adalah tempat aliran paling sering gagal menjangkau."
         },
-        "tmp": {
-          "stable-monitored": "Memeriksa cukup sering untuk benar-benar memastikan kestabilan, bukan sekadar mengasumsikannya, adalah bentuk pengelolaan suhu yang lebih lengkap. Kestabilan itu sendiri yang menjadi tujuan. Ikan dan komunitas mikroba beradaptasi dengan kondisi yang konsisten dan tertekan oleh fluktuasi, prinsip yang sama seperti pada kimia air.",
-          "stable-assumed": "Mempercayai peralatan tanpa sering mengecek adalah kebiasaan yang wajar, tapi itu berarti pergeseran perlahan, heater yang mulai melemah, ruangan yang jadi lebih dingin, bisa tidak disadari untuk sementara waktu. Sesekali memeriksa mengubah asumsi menjadi kepastian yang sebenarnya.",
-          "noticeable-swings": "Suhu yang berubah-ubah dalam jumlah yang terasa adalah sinyal Environmental Rhythm yang nyata, bukan sekadar variasi latar belakang. Ikan beradaptasi dengan kondisi yang konsisten. Fluktuasinya sendiri, lebih dari angka pastinya, yang cenderung menyebabkan stres.",
-          "unsure-swings": "Tidak tahu seberapa banyak suhu sebenarnya berubah berarti variabel ini saat ini tidak punya titik acuan, dan itu layak diselesaikan, karena fluktuasi suhu adalah salah satu sumber stres kronis yang paling sering luput dari perhatian."
+        "tcf": {
+          "checks-often": "Memeriksa suhu cukup sering untuk langsung menyadari perubahan adalah bentuk pengelolaan suhu yang lebih lengkap. Ikan dan komunitas mikroba beradaptasi dengan kondisi yang konsisten dan tertekan oleh fluktuasi — prinsip yang sama seperti pada kimia air — dan pergeseran perlahan hanya akan terlihat oleh orang yang benar-benar memperhatikannya.",
+          "checks-occasionally": "Memeriksa sesekali, tanpa rutinitas yang ketat, biasanya cukup untuk menangkap perubahan drastis, tapi bisa melewatkan pergeseran yang perlahan — heater yang mulai melemah atau ruangan yang jadi lebih dingin jarang terlihat dari satu kali pemeriksaan saja. Sesekali memeriksa sudah cukup wajar; sedikit lebih teratur akan menutup celah itu.",
+          "rarely-checks": "Jarang memeriksa suhu berarti pergeseran perlahan punya banyak ruang untuk luput dari perhatian. Ikan beradaptasi dengan kondisi yang konsisten dan tertekan oleh fluktuasi itu sendiri, lebih dari angka pastinya — dan itu justru yang akan tertangkap lebih awal lewat pemeriksaan sesekali.",
+          "no-thermometer": "Tanpa termometer di akuarium, tidak ada cara untuk memastikan kestabilan suhu. Menambahkan satu yang sederhana pun sudah berharga — fluktuasi suhu adalah salah satu sumber stres kronis yang paling sering luput dari perhatian, dan saat ini variabel ini sama sekali belum punya titik acuan."
         },
         "closing": {
           "early": "Bagian mana dari lingkungan akuarium ini yang belum pernah Anda perlakukan sebagai sesuatu yang benar-benar dibaca oleh penghuninya?",

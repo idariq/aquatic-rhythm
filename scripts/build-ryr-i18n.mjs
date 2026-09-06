@@ -240,22 +240,31 @@ function extractEnglish(enHtml) {
     ['wipe-immediately', 'full-clean-routine', 'back-to-normal', 'unsure-marker', 'tap-water-rinse'],
     'zero-readings-not-mature');
 
+  // v2 (docs/rhythm-tracker-instrument.md §S11): temp-stability -> renamed
+  // temp-check-freq, and its option values changed (its state-facet moved to
+  // the unscored temp_swing context item, outside this rhythm entirely).
   en.rhythms.environmental = extractGeneric('environmental',
-    ['light-schedule', 'light-consequence', 'hardscape-moves', 'flow-deadspots', 'temp-stability'],
-    ['lit', 'con', 'hsc', 'flw', 'tmp'],
-    ['timer', 'chronic-stress-aware', 'rarely-once-set', 'checks-regularly', 'stable-monitored'],
-    ['by-feel-consistent', 'algae-only', 'frequent-aesthetic', 'notices-eventually', 'stable-assumed'],
-    ['by-feel-variable', 'no-real-effect', 'occasional-reason', 'rarely-looks', 'noticeable-swings'],
-    ['rarely-tracked', 'not-sure', 'no-hardscape', 'never-considered', 'unsure-swings'],
+    ['light-schedule', 'light-consequence', 'hardscape-moves', 'flow-deadspots', 'temp-check-freq'],
+    ['lit', 'con', 'hsc', 'flw', 'tcf'],
+    ['timer', 'chronic-stress-aware', 'rarely-once-set', 'checks-regularly', 'checks-often'],
+    ['by-feel-consistent', 'algae-only', 'frequent-aesthetic', 'notices-eventually', 'checks-occasionally'],
+    ['by-feel-variable', 'no-real-effect', 'occasional-reason', 'rarely-looks', 'rarely-checks'],
+    ['rarely-tracked', 'not-sure', 'no-hardscape', 'never-considered', 'no-thermometer'],
     'frequent-aesthetic-not-mature',
-    ['timer', 'algae-only', 'occasional-reason', 'notices-eventually', 'stable-assumed']);
+    ['timer', 'algae-only', 'occasional-reason', 'notices-eventually', 'checks-occasionally']);
 
+  // v2 (§S11): stress-accumulation's dev/special-title combo values swapped
+  // (fine-if-no-symptom <-> unsure-cumulative) so the "developing" combo still
+  // lands in Developing now that preclinical-signs and behaviour-vs-chemistry
+  // (both NOM) no longer contribute to score/max — see reflect() in the
+  // source file. Every option value still appears exactly once across the
+  // four combo rows, so per-option paragraph extraction is unaffected.
   en.rhythms.livestock = extractGeneric('livestock',
     ['observation-baseline', 'preclinical-signs', 'stress-accumulation', 'new-addition-disruption', 'behaviour-vs-chemistry'],
     ['obs', 'pre', 'acc', 'add', 'beh'],
     ['yes-know-baseline', 'watch-pattern', 'chronic-cumulative', 'expects-disruption', 'watch-animals-first'],
-    ['dont-know-individuals', 'immediate-treatment', 'unsure-cumulative', 'havent-considered', 'wait-and-see'],
-    ['maybe-eventually', 'dismiss-single', 'fine-if-no-symptom', 'no-real-disruption', 'test-water-first'],
+    ['dont-know-individuals', 'immediate-treatment', 'fine-if-no-symptom', 'havent-considered', 'wait-and-see'],
+    ['maybe-eventually', 'dismiss-single', 'unsure-cumulative', 'no-real-disruption', 'test-water-first'],
     ['only-dramatic', 'wouldnt-notice', 'one-cause-only', 'only-newcomer-stressed', 'check-equipment-first'],
     'immediate-treatment-not-mature');
 

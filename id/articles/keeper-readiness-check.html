@@ -458,6 +458,30 @@ function showIntro(){
   document.getElementById('kyr-screen').style.display='none';
   document.getElementById('kyr-result').style.display='none';
 }
+/* Phone/browser back used to leave the tool outright from anywhere inside it:
+   every screen here is a div toggled with JS, so there was no history entry to
+   step back through. Same defect, and the same fix, as rhythm-tracker (PR #599).
+
+   One guard entry is pushed when the questions are entered. The first back
+   press — hardware, or the in-app control via kyrReturnToIntro — returns to the
+   intro instead of exiting; a second press from the intro (unguarded) leaves
+   the page normally, so this is not a back-button trap. Re-arms next time the
+   questions are entered. */
+var kyrHistoryArmed=false;
+function kyrArmHistoryGuard(){
+  if(kyrHistoryArmed)return;
+  kyrHistoryArmed=true;
+  history.pushState({kyrGuard:true},'',location.href);
+}
+function kyrReturnToIntro(){
+  if(kyrHistoryArmed){history.back();}else{showIntro();}
+}
+window.addEventListener('popstate',function(){
+  if(kyrHistoryArmed){
+    kyrHistoryArmed=false;
+    showIntro();
+  }
+});
 function showQ(i){
   document.getElementById('kyr-intro').style.display='none';
   document.getElementById('kyr-screen').style.display='block';
@@ -483,7 +507,11 @@ function showQ(i){
   var nb=document.getElementById('kyr-btn-next');
   nb.classList.toggle('active',!!ans[q.id]);
   nb.textContent=i<Q.length-1?'Berikutnya →':'Lihat refleksi →';
-  document.getElementById('kyr-btn-back').style.visibility=i===0?'hidden':'visible';
+  // Was hidden on Q1, which left the click handler's "curQ===0 -> intro"
+  // branch unreachable by tap: a visibility:hidden element takes no clicks.
+  // Now that back from Q1 has a working destination, keep it visible
+  // throughout. (Same latent bug as rhythm-tracker, PR #599.)
+  document.getElementById('kyr-btn-back').style.visibility='visible';
   window.scrollTo({top:0,behavior:'auto'});
   drawCvs(i+(ans[q.id]?1:0),ans);
 }
@@ -501,16 +529,19 @@ function showResult(){
   if(pn&&pt&&ref.phase){pn.style.display='block';pt.textContent=ref.phase;}
   window.scrollTo({top:0,behavior:'auto'});
 }
-document.getElementById('kyr-begin-btn').addEventListener('click',function(){showQ(0);});
+document.getElementById('kyr-begin-btn').addEventListener('click',function(){
+  showQ(0);
+  kyrArmHistoryGuard();
+});
 document.getElementById('kyr-btn-next').addEventListener('click',function(){
   if(!this.classList.contains('active'))return;
   if(curQ<Q.length-1)showQ(curQ+1);else showResult();
 });
 document.getElementById('kyr-btn-back').addEventListener('click',function(){
-  if(curQ>0)showQ(curQ-1);else showIntro();
+  if(curQ>0)showQ(curQ-1);else kyrReturnToIntro();
 });
 document.getElementById('kyr-btn-restart').addEventListener('click',function(){
-  ans={};ST={tending:null,response:null,role:null,imagination:null,slowness:null,loss:null,success:null};showIntro();
+  ans={};ST={tending:null,response:null,role:null,imagination:null,slowness:null,loss:null,success:null};kyrReturnToIntro();
 });
 window.addEventListener('resize',function(){
   if(document.getElementById('kyr-screen').style.display!=='none')

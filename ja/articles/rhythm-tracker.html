@@ -97,7 +97,10 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 .ryr-rcard.ryr-soon:hover{background:var(--th-surface-2);border-color:var(--th-accent-border);transform:none}
 .ryr-rcard.ryr-soon .ryr-rcard-tag{color:var(--th-ink-5)}
 .ryr-picker-label{font-size:var(--fs-2xs);letter-spacing:.2em;text-transform:uppercase;color:var(--th-ink-5);display:block;margin-bottom:.9rem}
-.ryr-begin{font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;background:var(--th-accent);color:var(--th-accent-ink);border:1px solid var(--th-accent-border);padding:.82rem 2.2rem;border-radius:2px;cursor:pointer;transition:background .25s,transform .2s;display:none;align-items:center;gap:.5rem;font-family:var(--sans)}
+.ryr-begin{font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;background:var(--th-accent);color:var(--th-accent-ink);border:1px solid var(--th-accent-border);padding:.82rem 2.2rem;border-radius:2px;cursor:pointer;transition:background .25s,transform .2s;display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans)}
+.ryr-begin:hover{background:rgba(110,165,155,.95);transform:translateY(-1px)}
+#ryr-picker-screen{display:none}
+#ryr-picker-screen .ryr-chart-wrap{margin-top:.5rem}
 
 /* QUESTION */
 #ryr-screen{display:none;padding:3.5rem clamp(1.5rem,5vw,3rem) 6rem}
@@ -215,6 +218,18 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       </div>
       <p class="ryr-body" id="ryr-body-2">それぞれのリズムは、同時に違う段階にあることもあります。フィルターは十分に成熟していても、照明のスケジュールを変えたのはまだ一週間前かもしれません。今すぐ一つのリズムを確認してすぐに答えを得ることもできますし、後で戻ってきて全体像を組み立てていくこともできます。順番通りに進める必要はなく、ここで採点されるものは何もありません。</p>
       <p class="ryr-note">五つのリズムはすべて、この下からすぐに始められます。最後に得られるのは、ARAフレームワークに基づいた内省であり、診断でも、競うためのスコアでもありません。</p>
+      <button type="button" class="ryr-begin" id="ryr-begin-btn">リズムを選ぶ <span>→</span></button>
+    </div>
+  </div>
+
+  <div id="ryr-picker-screen" class="ryr-intro">
+    <div class="ryr-intro-inner">
+      <span class="ryr-eyebrow">Aquatic Rhythm Lab</span>
+      <div class="ryr-chart-wrap">
+        <span class="ryr-chart-eyebrow" id="ryr-picker-chart-eyebrow">五つのリズム全体で</span>
+        <div id="ryr-picker-chart-slot"></div>
+        <p class="ryr-chart-hint" id="ryr-picker-chart-hint">空いているリズムをタップすると、そのまま確認を始められます。どこから始めても構いません。</p>
+      </div>
       <span class="ryr-picker-label">読み解くリズムを選ぶ</span>
       <div class="ryr-picker">
         <button type="button" class="ryr-rcard" id="ryr-pick-water">
@@ -976,7 +991,7 @@ function ryrSetProgress(key,phase){
     localStorage.setItem('ryr_progress',JSON.stringify(p));
   }catch(e){}
 }
-function ryrRenderChart(){
+function ryrRenderChart(slotId){
   var progress=ryrGetProgress();
   var cx=110,cy=110,R=80;
   var rings=[];
@@ -1012,18 +1027,11 @@ function ryrRenderChart(){
     : '';
   var svg='<svg viewBox="0 0 220 220" class="ryr-chart-svg" role="img" aria-label="Progress across the five rhythms">'
     +rings.join('')+poly+spokes.join('')+markers.join('')+labels.join('')+'</svg>';
-  var slot=document.getElementById('ryr-chart-svg-slot');
+  var slot=document.getElementById(slotId||'ryr-chart-svg-slot');
   slot.innerHTML=svg;
   slot.querySelectorAll('[data-rhythm]').forEach(function(el){
     el.addEventListener('click',function(){startRhythm(el.getAttribute('data-rhythm'));});
   });
-}
-function showIntro(){
-  var intro=document.getElementById('ryr-intro');
-  intro.style.display='flex';
-  intro.style.opacity='1';
-  document.getElementById('ryr-screen').style.display='none';
-  document.getElementById('ryr-result').style.display='none';
 }
 function hideIntro(){
   var intro=document.getElementById('ryr-intro');
@@ -1031,10 +1039,26 @@ function hideIntro(){
   intro.style.opacity='0';
   setTimeout(function(){intro.style.display='none';intro.style.opacity='1';},500);
 }
+function showPicker(){
+  document.getElementById('ryr-intro').style.display='none';
+  document.getElementById('ryr-screen').style.display='none';
+  document.getElementById('ryr-result').style.display='none';
+  var picker=document.getElementById('ryr-picker-screen');
+  picker.style.display='flex';
+  picker.style.opacity='1';
+  ryrRenderChart('ryr-picker-chart-slot');
+}
+function hidePicker(){
+  var picker=document.getElementById('ryr-picker-screen');
+  if(picker.style.display==='none')return;
+  picker.style.opacity='0';
+  setTimeout(function(){picker.style.display='none';picker.style.opacity='1';},500);
+}
 function startRhythm(key){
   curRhythm=key;ans={};
   document.getElementById('ryr-q-rhythm').textContent=RHYTHMS[key].name;
   hideIntro();
+  hidePicker();
   showQ(0);
 }
 function showQ(i){
@@ -1076,7 +1100,7 @@ function showResult(){
   document.getElementById('ryr-phase-text').textContent=ref.phase;
   lastRef=ref;
   ryrSetProgress(curRhythm,ref.phaseLabel);
-  ryrRenderChart();
+  ryrRenderChart('ryr-chart-svg-slot');
   var shareBtn=document.getElementById('ryr-share-btn');
   var shareConsent=document.getElementById('ryr-share-consent');
   var shareStatus=document.getElementById('ryr-share-status');
@@ -1096,11 +1120,21 @@ document.getElementById('ryr-btn-next').addEventListener('click',function(){
   if(curQ<Q.length-1)showQ(curQ+1);else showResult();
 });
 document.getElementById('ryr-btn-back').addEventListener('click',function(){
-  if(curQ>0)showQ(curQ-1);else showIntro();
+  if(curQ>0)showQ(curQ-1);else showPicker();
 });
 document.getElementById('ryr-btn-restart').addEventListener('click',function(){
-  ans={};showIntro();
+  ans={};showPicker();
 });
+document.getElementById('ryr-begin-btn').addEventListener('click',function(){
+  hideIntro();
+  showPicker();
+});
+(function(){
+  if(Object.keys(ryrGetProgress()).length>0){
+    document.getElementById('ryr-intro').style.display='none';
+    showPicker();
+  }
+})();
 document.getElementById('ryr-share-consent').addEventListener('change',function(){
   document.getElementById('ryr-share-btn').disabled=!this.checked;
 });

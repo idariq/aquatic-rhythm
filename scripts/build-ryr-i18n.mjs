@@ -466,6 +466,17 @@ for (const lang of targetLangs) {
   h = replaceOnce(h, /(<p class="ryr-note">)[^<]*(<\/p>)/, (_, a, b) => `${a}${intro.note}${b}`);
   h = replaceOnce(h, /(<span class="ryr-picker-label">)[^<]*(<\/span>)/, (_, a, b) => `${a}${intro.pickerLabel}${b}`);
   h = h.replace(/(<span class="ryr-rcard-tag">)5 questions →(<\/span>)/g, (_, a, b) => `${a}${intro.cardTagQuestions}${b}`);
+  h = replaceOnce(h, /(<button type="button" class="ryr-begin" id="ryr-begin-btn">)[^<]*(<span)/, (_, a, b) => `${a}${intro.beginBtn} ${b}`);
+  // Picker screen's own chart eyebrow/hint — a separate copy of the same
+  // chart chrome shown on the result screen (rhythm-tracker.html's
+  // #ryr-picker-screen, added when the picker was split out of the intro
+  // so progress stays visible while choosing). Distinct ids from the
+  // result screen's (ryr-chart-eyebrow/ryr-chart-hint below) since
+  // replaceOnce is id-anchored and both copies share the same English text
+  // — reuses the same t.chrome.chartEyebrow/chartHint values rather than
+  // introducing a duplicate translation key.
+  h = replaceOnce(h, /(<span class="ryr-chart-eyebrow" id="ryr-picker-chart-eyebrow">)[^<]*(<\/span>)/, (_, a, b) => `${a}${t.chrome.chartEyebrow}${b}`);
+  h = replaceOnce(h, /(<p class="ryr-chart-hint" id="ryr-picker-chart-hint">)[^<]*(<\/p>)/, (_, a, b) => `${a}${t.chrome.chartHint}${b}`);
 
   // 11. Question screen + result screen chrome
   h = replaceOnce(h, /(<button class="ryr-btn-back" id="ryr-btn-back">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.backBtn}${b}`);

@@ -522,16 +522,24 @@ for (const lang of targetLangs) {
   h = h.replace("btn.textContent='Sending…';", `btn.textContent=${JSON.stringify(t.chrome.shareBtnSending)};`);
   h = h.replace("btn.textContent='Sent — thank you';", `btn.textContent=${JSON.stringify(t.chrome.shareBtnSent)};`);
   h = h.replace("var RYR_CODE_LABEL='Your code: ';", `var RYR_CODE_LABEL=${JSON.stringify(t.chrome.shareCodeLabel)};`);
-  // Covariates (v1.2). Volume buckets are numeric ("20–60 L") and stay as-is
-  // in every language; only the labels, the note, and the age buckets need
-  // translating.
-  h = replaceOnce(h, /(<p class="ryr-share-cov-note" id="ryr-share-cov-note">)[^<]*(<\/p>)/, (_, a, b) => `${a}${t.chrome.covariateNote}${b}`);
-  h = replaceOnce(h, /(<span class="ryr-cov-label" id="ryr-cov-volume-label">)[^<]*(<\/span>)/, (_, a, b) => `${a}${t.chrome.tankVolumeLabel}${b}`);
-  h = replaceOnce(h, /(<span class="ryr-cov-label" id="ryr-cov-age-label">)[^<]*(<\/span>)/, (_, a, b) => `${a}${t.chrome.tankAgeLabel}${b}`);
-  Object.entries(t.chrome.tankAgeOptions || {}).forEach(([val, label]) => {
-    h = replaceOnce(h, new RegExp(`(<option value="${val}">)[^<]*(</option>)`), (_, a, b) => `${a}${label}${b}`);
+  // Tank context block (covariates v1.2, outcome + intent items v1.3).
+  // Volume buckets are numeric ("20–60 L") and stay as-is in every language.
+  // Everything else in the block is discovered from the translation file
+  // rather than listed here: `labels` is keyed by the span's own id, and every
+  // group under `options` is keyed by the option's own value (values are unique
+  // across the block). Adding a question later needs markup plus a JSON key —
+  // no edit to this script, which is where a hardcoded list would rot.
+  const tc = t.chrome.tankContext || {};
+  h = replaceOnce(h, /(<p class="ryr-share-cov-note" id="ryr-share-cov-note">)[^<]*(<\/p>)/, (_, a, b) => `${a}${tc.note}${b}`);
+  Object.entries(tc.labels || {}).forEach(([id, label]) => {
+    h = replaceOnce(h, new RegExp(`(<span class="ryr-cov-label" id="${id}">)[^<]*(</span>)`), (_, a, b) => `${a}${label}${b}`);
   });
-  h = h.replace("statusEl.textContent='Already shared. Come back here anytime if your answers change.';",
+  Object.values(tc.options || {}).forEach((group) => {
+    Object.entries(group).forEach(([value, label]) => {
+      h = replaceOnce(h, new RegExp(`(<option value="${value}">)[^<]*(</option>)`), (_, a, b) => `${a}${label}${b}`);
+    });
+  });
+  h = h.replace("statusEl.textContent='Already shared — thank you. If you read these again in a few months, sending that second reading is worth more than this one alone: it shows change, which a single snapshot cannot.';",
     `statusEl.textContent=${JSON.stringify(t.chrome.shareSuccessMsg)};`);
   h = h.replace(/statusEl\.textContent='Couldn\\'t send that — check your connection and try again\.';/g,
     () => `statusEl.textContent=${JSON.stringify(t.chrome.shareErrorMsg)};`);

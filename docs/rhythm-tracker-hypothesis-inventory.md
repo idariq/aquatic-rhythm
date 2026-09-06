@@ -4,7 +4,8 @@
 
 **Companion to:** `docs/rhythm-tracker-instrument.md`
 **Source of claims:** `docs/ARA-framework-v2.md` (v2.0)
-**Instrument assessed:** Rhythm Tracker v1.2 (25 items)
+**Instrument assessed:** Rhythm Tracker v1.3 (25 scored items + 5 unscored context items)
+**Last revised:** 2026-09-06 — coverage re-scored after v1.3 (see S9)
 **Written:** 2026-09-06
 
 ---
@@ -71,12 +72,13 @@ Legend for the **Tracker** column:
 | id | Claim | Kind | Tracker | Item |
 |---|---|---|---|---|
 | H-F1 | "Keeper behaviour is a variable in the system. When keeper rhythm changes, system rhythm changes." | ecological | none | — |
-| H-F2 | A system in alignment "is more stable and requires less active management than a system that is technically correct but ecologically misaligned" | ecological | none | — |
+| H-F2 | A system in alignment "is more stable and requires less active management than a system that is technically correct but ecologically misaligned" | ecological | partial | `outcome_intervention` *(v1.3)* |
 | H-F3 | "Most chronic aquarium problems are expressions of misalignment, not technical failure" | ecological (prevalence) | none | — |
 | H-F4 | "Living systems do best when their needs arrive consistently and incrementally" | ecological | none | — |
 | H-F5 | Technology-neutrality: a low-tech and a high-tech system "may both be aligned"; equipment is "evaluated relationally, not ideologically" | ecological (null) | partial | `automation-reliance` |
 
-H-F2 is the framework's central claim. Nothing in the instrument reaches it.
+H-F2 is the framework's central claim. Before v1.3 nothing in the instrument
+reached it at all; `outcome_intervention` now gives it a first, weak handle.
 
 ### S3.2: Water Rhythm (S3.1)
 
@@ -140,10 +142,10 @@ is not a coincidence: the Keeper items were operationalised directly from S4.5.
 | H-P2 | "The second week often produces the highest ammonia and nitrite peaks" | ecological (quantitative) | none | — |
 | H-P3 | New keepers "intervene heavily at exactly the moment when stability and patience are most needed" | **descriptive** | partial | `stable-response` (asks about a stable-but-off parameter, not an Early-Phase peak) |
 | H-P4 | Mature Phase signs: stable ≥6 months, settled animals, recovery without intervention, visible biological depth | ecological (criteria) | partial | `maturity-marker` (belief about markers, not the markers themselves) |
-| H-P5 | A false-mature tank "will often fail unexpectedly when stocking is increased, when the keeper's rhythm changes, or when a disruption occurs" | ecological | none | — |
-| H-P6 | False vs genuine maturity "is difficult to assess with test kits… better read through the system's response to disruption" | ecological | partial | `maturity-marker` |
+| H-P5 | A false-mature tank "will often fail unexpectedly when stocking is increased, when the keeper's rhythm changes, or when a disruption occurs" | ecological | partial | `outcome_slip` *(v1.3)* |
+| H-P6 | False vs genuine maturity "is difficult to assess with test kits… better read through the system's response to disruption" | ecological | **direct** | `outcome_slip` *(v1.3)* — asks exactly what the system did after a slip |
 | H-P7 | Phase regression is recoverable, and "the biology… can re-establish more quickly the second time" | ecological | none | — |
-| H-P8 | Ecological forgiveness is "built gradually, through consistent, modest care sustained over months and years"; episodic care never develops it | ecological | partial | `maturity-marker: resilience` |
+| H-P8 | Ecological forgiveness is "built gradually, through consistent, modest care sustained over months and years"; episodic care never develops it | ecological | **direct** | `outcome_slip` *(v1.3)* — measures forgiveness as recovery behaviour, not as a belief about maturity |
 
 **On H-P8.** Forgiveness is what S5.7 says *defines* genuine Mature Phase, and
 the only item near it asks what the respondent *believes* marks maturity — not
@@ -157,7 +159,7 @@ directly to any future attempt to measure it here.
 
 | id | Claim | Kind | Tracker | Item |
 |---|---|---|---|---|
-| H-A1 | "A tank in alignment tends toward stability without active effort" | ecological | none | — |
+| H-A1 | "A tank in alignment tends toward stability without active effort" | ecological | partial | `outcome_intervention` *(v1.3)* |
 | H-A2 | *Timing before Technique* — "the same action carries different ecological consequences at different moments" | ecological | partial | `stable-response` |
 | H-A3 | *Capacity before Ambition* — "a system that survives realistic keeper behaviour is more ecologically valuable than one that thrives only under ideal conditions" | normative + ecological | none | — |
 | H-A4 | *Consistency before Intensity* — "a 20% water change every week produces a more stable chemical environment than a 50% water change once a month, even at identical total volume replaced" | ecological (quantitative) | none | — |
@@ -198,31 +200,41 @@ are the framework's causal model, and are the least reachable part of it.
 
 ## S4: Coverage
 
-**58 claims inventoried.** By what the current instrument can see:
+**58 claims inventoried.** By what the instrument can see, before and after the
+v1.3 outcome items:
 
-| | Count | |
+| | v1.2 | v1.3 |
 |---|---|---|
-| **direct** | 5 | H-W4, H-B1, H-K2, H-K3, H-K4 |
-| **partial** | 25 | |
-| **none** | 28 | |
+| **direct** | 5 | **7** |
+| **partial** | 25 | 26 |
+| **none** | 28 | **25** |
 
-By kind:
+By kind, at v1.3:
 
 | Kind | Total | direct | partial | none |
 |---|---|---|---|---|
-| Descriptive-empirical (about keepers) | 10 | **5** | 4 | 1 |
-| Ecological-empirical (about systems) | 48 | **0** | 21 | 27 |
+| Descriptive-empirical (about keepers) | 10 | 5 | 4 | 1 |
+| Ecological-empirical (about systems) | 48 | **2** | 22 | 24 |
 
-That table is the finding.
+The two ecological claims now reached directly are H-P6 and H-P8 — false
+maturity and ecological forgiveness — both via `outcome_slip`, which asks what
+the system did after care slipped rather than what the keeper believes about
+maturity. That is the whole of the change: three claims moved off *none*, two
+moved up to *direct*, and 24 ecological claims remain unreachable.
 
 *(Counts verified programmatically against the tables above, not by hand — the
 id, kind and coverage columns are parsed and tallied, so they stay checkable as
 the inventory grows.)*
 
-**All five claims the tracker reaches directly are claims about keepers. Zero of
-the 48 ecological claims are directly reachable.** The 21 marked *partial* are
-partial in the same direction every time: the item measures what the keeper
-*believes, notices, or intends*, where the claim is about what the *system does*.
+**Before v1.3, all five claims the tracker reached directly were claims about
+keepers, and zero of the 48 ecological claims were directly reachable.** The
+*partial* rows were partial in the same direction every time: the item measured
+what the keeper *believes, notices, or intends*, where the claim is about what
+the *system does*.
+
+v1.3 breaks that pattern in two places but does not undo it. 24 ecological
+claims still have no signal at all, and most of the rest are still read through
+the keeper rather than the system.
 
 Put the other way round: on its own territory — what keepers know and do — the
 instrument does well, reaching 9 of 10 descriptive claims at least partially.
@@ -233,25 +245,39 @@ different target from the one the framework's claims sit on.
 
 ## S5: The Structural Gap
 
+*Written against v1.2. v1.3 addressed the first two consequences partially and
+the third not at all; the changes are marked inline.*
+
 The mismatch is not a shortage of items. It is that **the instrument and the
 framework are about different things.**
 
-Of 25 items, at most two ask about the state of the tank (`cycle-status`, and
-`temp-stability` partly). The remaining 23 ask about the keeper — their habits,
-knowledge, beliefs, and attention. The framework, meanwhile, is overwhelmingly a
-set of claims about how aquarium *systems* behave over time.
+Of the 25 scored items, at most two ask about the state of the tank
+(`cycle-status`, and `temp-stability` partly). The remaining 23 ask about the
+keeper — their habits, knowledge, beliefs, and attention. The framework,
+meanwhile, is overwhelmingly a set of claims about how aquarium *systems* behave
+over time. **v1.3 does not change this**: the three new context items sit
+outside the scored set, so the instrument proper is still 23-of-25 about the
+keeper.
 
 Three specific consequences:
 
 **No outcome variable exists.** Nothing collected says whether the tank is doing
 well. Without that, every ecological claim is unreachable in principle, however
 many items are added — a survey of practice cannot show that the practice works.
+**Partly addressed in v1.3** by `outcome_slip` and `outcome_intervention`. Both
+are self-reported and retrospective, which is weak evidence for an outcome; the
+difference they make is between *no* signal and *some*, not between weak and
+strong. `outcome_slip` in particular asks a respondent to recall and classify a
+past recovery, which is exactly the after-the-fact reasoning S5.7 of the
+framework warns against — see the note on H-P8.
 
 **No time dimension exists.** Every claim in S3.9, and most in S3.7, is about
 sequence: X drifts, then Y appears, then Z becomes visible. A single
-cross-sectional snapshot cannot see a sequence. `respondent_id` already makes
-repeat submissions linkable, so this gap is the cheapest of the three to close —
-but nothing currently invites a respondent back.
+cross-sectional snapshot cannot see a sequence. **Plumbing added in v1.3**:
+`submission_index`, `days_since_first`, `days_since_previous`, per-rhythm
+`answer_dates`, and a return invitation. But plumbing is not data — until repeat
+submissions actually accumulate, every sequence claim stays unreachable, and
+none of the S3.9 rows moved.
 
 **Belief is being measured where behaviour is claimed.** `maturity-marker` asks
 what the respondent thinks marks maturity; H-P4 is about what actually marks it.
@@ -295,16 +321,11 @@ biological depth). A well-read keeper with a young tank can score Mature.
 
 Ordered by how much they change what the data can support, not by cost.
 
-1. **Add an outcome measure, however crude.** Without one, no ecological claim
-   is reachable and the instrument can only ever describe keepers. Even a few
-   self-reported items — has the tank had a loss in the last 3 months, has it
-   needed intervention, does it absorb a missed water change (H-P8) — would move
-   the whole S3 table. Self-report is weak evidence for outcomes, and that
-   limitation must be carried explicitly; it is still the difference between
-   *some* signal and *none*.
-2. **Invite repeat submission.** The identifier already supports it. A second
-   reading months later converts a snapshot into the beginnings of a sequence,
-   which is what every pathway claim needs.
+1. ~~Add an outcome measure, however crude.~~ **Done in v1.3** — `outcome_slip`
+   and `outcome_intervention`, both optional and unscored. A mortality item was
+   considered and deliberately left out (see S9).
+2. ~~Invite repeat submission.~~ **Plumbing done in v1.3**; the data itself does
+   not exist yet and will take months to accumulate.
 3. **Add stocking and life-change items.** The two largest content holes, both
    load-bearing in the framework.
 4. **Convert belief items to behaviour items where the claim is about
@@ -312,9 +333,9 @@ Ordered by how much they change what the data can support, not by cost.
    tank absorb a missed water change*. (Both are paraphrases of an item's intent,
    not quotations.) This is a rewrite of existing items rather than an addition,
    and it directly addresses the most common defect in S5.
-5. **Add an intent question.** One item asking whether the current pattern is
-   deliberate would stop the instrument from scoring down exactly the keepers
-   the framework goes out of its way to protect.
+5. ~~Add an intent question.~~ **Done in v1.3** — `care_intent`, including an
+   option for a deliberately intensive phase. It is recorded, not scored, so it
+   flags the carve-out for analysis without changing anyone's reflection.
 6. **Leave the quantitative ecological claims alone.** H-A4, H-P1, H-P2, H-W5,
    H-A8, H-X9 are tank experiments, not survey questions. They belong in a
    different study and should not distort this instrument.
@@ -345,3 +366,38 @@ All matched, allowing for case changes where a quote is embedded mid-sentence.
 Re-run that check after editing this file — a paraphrase in quotation marks is
 exactly the error the check exists to catch, and it caught one on the first
 pass.
+
+---
+
+## S9: v1.3 — What Changed and What It Bought
+
+Three optional, **unscored** context items were added to the share step, plus
+the plumbing for repeat submission. Scoring was not touched: an exhaustive
+re-run of all 5,120 answer combinations against the v1 reference produced 0
+mismatches, confirming the outcome items feed nothing.
+
+| Item | Reaches | Why unscored |
+|---|---|---|
+| `outcome_slip` | H-P6, H-P8 (**direct**), H-P5 | It is the outcome. Scoring it would fold the outcome into the predictor and rebuild the circularity the instrument record warns about. |
+| `outcome_intervention` | H-F2, H-A1 | Same. |
+| `care_intent` | the S6 intent threat | Intent is a control variable, not a virtue. |
+
+**A mortality item was considered and left out.** It would be the most concrete
+outcome available, and it was rejected on two grounds: ARA's claims are about
+stability and resilience rather than mortality, so loss is a blunt proxy for
+what the framework actually asserts; and the site's own position (`grief-
+without-a-mistake`) is that a loss is not evidence of a mistake, which an audit-
+shaped question would quietly contradict. This is a scoping decision, not an
+oversight — if a later study needs a hard outcome, this is the obvious first
+place to revisit, and the reasoning above is what would have to be traded away.
+
+**What the repeat plumbing records.** `submission_index`, `days_since_first`,
+`days_since_previous`, and per-rhythm `answer_dates`. The last of these exists
+because a returning respondent may revise one rhythm and share all five, four of
+which are months old. Without dates that submission looks uniformly fresh;
+with them, mixed freshness is a visible fact rather than a hidden one.
+
+**What it did not buy.** No S3.9 pathway row moved, and 24 ecological claims
+remain at *none*. Stocking and life-change items (S7 item 3) were not added.
+The belief-for-behaviour substitution (S7 item 4) is untouched — the three new
+items sit alongside the 25, they do not fix them.

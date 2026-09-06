@@ -3,7 +3,7 @@
 ## Internal Reference Document — Aquatic Rhythm
 
 **Instrument:** Rhythm Tracker (`articles/rhythm-tracker.html`)
-**Instrument version:** v1.2
+**Instrument version:** v1.3
 **Status:** Published and collecting opt-in data. Not validated.
 **Record started:** 2026-09-06
 
@@ -308,6 +308,12 @@ POST to `https://formspree.io/f/xoeqleyo` with four fields:
 | `response_coding` | *(v1.1+)* per-item `not_applicable` / `no_basis` annotation |
 | `tank_volume` | *(v1.2+)* bucket, or empty string if not answered |
 | `tank_age` | *(v1.2+)* bucket, or empty string if not answered |
+| `outcome_slip` | *(v1.3+)* what the system did after care slipped |
+| `outcome_intervention` | *(v1.3+)* times the keeper had to step in, last month |
+| `care_intent` | *(v1.3+)* whether the current pattern is deliberate |
+| `submission_index` | *(v1.3+)* 1 for a first submission, 2 for a second, … |
+| `days_since_first` / `days_since_previous` | *(v1.3+)* empty on a first submission |
+| `answer_dates` | *(v1.3+)* when each rhythm was last answered |
 
 Item-level raw responses are retained, which is correct and is what makes any
 future rescoring possible. `response_coding` makes the payload self-describing:
@@ -511,6 +517,48 @@ was not strictly required, since no stored response value changed meaning. The
 rule was extended instead (see S8) so that any change to what respondents are
 asked earns a version, scored or not.
 
+**v1.3 — 2026-09-06** — Outcome measures and repeat submission. **No scored item
+changed and scoring was not touched** — verified by re-running all 5,120 answer
+combinations against the v1 reference, 0 mismatches.
+
+*Three optional, unscored context items* joined the tank-context block:
+`outcome_slip` (what the system did after care slipped), `outcome_intervention`
+(times the keeper stepped in last month), and `care_intent` (whether the current
+pattern is deliberate, including an option for a deliberately intensive phase).
+
+They are recorded and never scored, deliberately. Scoring an outcome would fold
+it back into the predictor and rebuild exactly the circularity S1 warns about;
+scoring intent would penalise the competition aquascaper and the breeder that
+§S4.1 and §S5.6 of the framework explicitly protect.
+
+Effect on what the data can support, re-scored in the hypothesis inventory: two
+ecological claims became directly reachable (H-P6 false maturity, H-P8
+ecological forgiveness, both via `outcome_slip`), three moved off *none*. 24
+ecological claims remain unreachable. A mortality item was considered and left
+out; the reasoning is recorded in the inventory's S9.
+
+*Repeat submission* — `submission_index`, `days_since_first`,
+`days_since_previous`, and per-rhythm `answer_dates` were added, and the
+after-sending message now invites a second reading months later. The share
+prompt, previously once-ever, now also re-appears for a returning respondent,
+but only when the answers have genuinely changed **and** at least
+`RYR_REPROMPT_DAYS` (60) have passed since their last submission. Dismissing it
+suppresses it for the rest of that page session — without that, the re-prompt
+condition stays true and the modal would re-open after every rhythm completed.
+
+`answer_dates` exists because a returning respondent may revise one rhythm and
+share all five, four of which are months old. Without dates that submission
+looks uniformly fresh. This is the same principle as `response_coding` in v1.1:
+make the awkward fact visible in the data rather than leave it to be
+reconstructed.
+
+**Limitation carried forward.** Both outcome items are self-reported and
+retrospective. `outcome_slip` in particular asks a respondent to recall and
+classify a past recovery — which is close to the after-the-fact reasoning §S5.7
+of the framework warns about when it says forgiveness must be classified by
+criteria set *before* a disturbance. It is a first handle on the claim, not a
+measurement of it.
+
 ---
 
 ## S10: Open Actions
@@ -522,6 +570,7 @@ importance.
 2. ~~Separate "don't know" / "not applicable" from low scores.~~ **Done in v1.1.**
 3. ~~Offer a withdrawal route in the consent text.~~ **Done in v1.1.**
 4. ~~Collect minimum covariates — tank volume, tank age.~~ **Done in v1.2.**
+   Outcome measures, intent, and repeat-submission plumbing followed in v1.3.
 5. ~~Build a hypothesis inventory.~~ **Done** —
    `docs/rhythm-tracker-hypothesis-inventory.md`, 58 claims. The gap turned out
    to be structural rather than a matter of missing items: all 5 claims the

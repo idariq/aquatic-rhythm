@@ -66,6 +66,8 @@
       "labels": {
         "ryr-cov-volume-label": "Volume akuarium",
         "ryr-cov-age-label": "Sudah berapa lama berjalan",
+        "ryr-cov-stocking-label": "Bagaimana isi tebaran berubah",
+        "ryr-cov-life-label": "Ada yang mengganggu ritme Anda sekarang",
         "ryr-cov-slip-label": "Saat perawatan sempat kendur",
         "ryr-cov-intervene-label": "Turun tangan membenahi sesuatu, bulan lalu",
         "ryr-cov-intent-label": "Apakah ini ritme yang Anda niatkan"
@@ -78,6 +80,19 @@
           "6-12m": "6–12 bulan",
           "1-3y": "1–3 tahun",
           "gt3y": "> 3 tahun"
+        },
+        "stockingChange": {
+          "stock-same": "Sama seperti rencana, atau diubah dengan sengaja",
+          "stock-grew-aware": "Bertambah seiring waktu, dan saya menyadarinya",
+          "stock-grew-unnoticed": "Bertambah lebih banyak daripada yang saya kira",
+          "stock-reduced": "Sudah dikurangi",
+          "stock-too-new": "Terlalu baru untuk ditanyakan"
+        },
+        "lifeChange": {
+          "life-none": "Tidak — ini periode yang normal",
+          "life-short": "Gangguan singkat (beberapa hari sampai dua minggu)",
+          "life-extended": "Gangguan panjang (berminggu sampai berbulan)",
+          "life-permanent": "Waktu yang saya punya sudah berubah untuk seterusnya"
         },
         "outcomeSlip": {
           "slip-held": "Tidak banyak berubah — akuariumnya bertahan",

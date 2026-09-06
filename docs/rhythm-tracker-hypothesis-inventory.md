@@ -4,8 +4,8 @@
 
 **Companion to:** `docs/rhythm-tracker-instrument.md`
 **Source of claims:** `docs/ARA-framework-v2.md` (v2.0)
-**Instrument assessed:** Rhythm Tracker v1.3 (25 scored items + 5 unscored context items)
-**Last revised:** 2026-09-06 — coverage re-scored after v1.3 (see S9)
+**Instrument assessed:** Rhythm Tracker v1.4 (25 scored items + 7 unscored context items)
+**Last revised:** 2026-09-06 — coverage re-scored after v1.3 and v1.4 (see S9, S10)
 **Written:** 2026-09-06
 
 ---
@@ -129,7 +129,7 @@ reached it at all; `outcome_intervention` now gives it a first, weak handle.
 | H-K5 | "Automation executes but does not observe"; a keeper relying on it "must observe with greater intentionality, not less" | ecological | partial | `automation-reliance` |
 | H-K6 | Manual schedule assessment "undercounts" the capacity of keepers with maintained automation | **descriptive** | partial | `automation-reliance` |
 | H-K7 | Every tank has a minimum viable care level, below which "the system begins to drift" | ecological | none | — |
-| H-K8 | Life changes disrupt keeper rhythm; overcorrection on return "can destabilise a system that has equilibrated around the reduced inputs" | ecological | none | — |
+| H-K8 | Life changes disrupt keeper rhythm; overcorrection on return "can destabilise a system that has equilibrated around the reduced inputs" | ecological | partial | `life_change` *(v1.4)* — reaches the disruption, not the overcorrection |
 
 H-K2/K3/K4 are the strongest instrument–claim fit in the whole framework. This
 is not a coincidence: the Keeper items were operationalised directly from S4.5.
@@ -161,7 +161,7 @@ directly to any future attempt to measure it here.
 |---|---|---|---|---|
 | H-A1 | "A tank in alignment tends toward stability without active effort" | ecological | partial | `outcome_intervention` *(v1.3)* |
 | H-A2 | *Timing before Technique* — "the same action carries different ecological consequences at different moments" | ecological | partial | `stable-response` |
-| H-A3 | *Capacity before Ambition* — "a system that survives realistic keeper behaviour is more ecologically valuable than one that thrives only under ideal conditions" | normative + ecological | none | — |
+| H-A3 | *Capacity before Ambition* — "a system that survives realistic keeper behaviour is more ecologically valuable than one that thrives only under ideal conditions" | normative + ecological | partial | `stocking_change` *(v1.4)* |
 | H-A4 | *Consistency before Intensity* — "a 20% water change every week produces a more stable chemical environment than a 50% water change once a month, even at identical total volume replaced" | ecological (quantitative) | none | — |
 | H-A5 | *Observation before Correction* — premature action "frequently produces more disruption than the signal that prompted it" | ecological | partial | `stable-response: multiple-fixes` |
 | H-A6 | **Cross-rhythm buffering** — "a system with one weak rhythm may remain stable if the other four are strong. A system where all five are under pressure simultaneously has no cross-rhythm buffer" | ecological | partial | the five-rhythm profile itself |
@@ -184,7 +184,7 @@ is missing is the other half: an outcome to check the profile against.
 |---|---|---|---|---|
 | H-X1 | Slow drift: Keeper → Water → Livestock, over weeks to months | ecological (causal) | none | — |
 | H-X2 | Environmental instability → immune depletion → apparent-sudden disease | ecological (causal) | none | — |
-| H-X3 | Biological overload → self-reinforcing drift → lost resilience | ecological (causal) | none | — |
+| H-X3 | Biological overload → self-reinforcing drift → lost resilience | ecological (causal) | partial | `stocking_change` *(v1.4)* — reaches stocking creep, the common route in, not the drift it claims to cause |
 | H-X4 | False maturity → crisis on disruption | ecological (causal) | none | — |
 | H-X5 | Social disruption → aggression/avoidance → stress, misread as disease | ecological (causal) | none | — |
 | H-X6 | Diatoms are normal in months 1–4 and "typically recede naturally" | ecological | none | — |
@@ -203,18 +203,18 @@ are the framework's causal model, and are the least reachable part of it.
 **58 claims inventoried.** By what the instrument can see, before and after the
 v1.3 outcome items:
 
-| | v1.2 | v1.3 |
-|---|---|---|
-| **direct** | 5 | **7** |
-| **partial** | 25 | 26 |
-| **none** | 28 | **25** |
+| | v1.2 | v1.3 | v1.4 |
+|---|---|---|---|
+| **direct** | 5 | **7** | 7 |
+| **partial** | 25 | 26 | **29** |
+| **none** | 28 | **25** | **22** |
 
-By kind, at v1.3:
+By kind, at v1.4:
 
 | Kind | Total | direct | partial | none |
 |---|---|---|---|---|
 | Descriptive-empirical (about keepers) | 10 | 5 | 4 | 1 |
-| Ecological-empirical (about systems) | 48 | **2** | 22 | 24 |
+| Ecological-empirical (about systems) | 48 | **2** | 25 | 21 |
 
 The two ecological claims now reached directly are H-P6 and H-P8 — false
 maturity and ecological forgiveness — both via `outcome_slip`, which asks what
@@ -232,9 +232,11 @@ keepers, and zero of the 48 ecological claims were directly reachable.** The
 what the keeper *believes, notices, or intends*, where the claim is about what
 the *system does*.
 
-v1.3 breaks that pattern in two places but does not undo it. 24 ecological
-claims still have no signal at all, and most of the rest are still read through
-the keeper rather than the system.
+v1.3 breaks that pattern in two places and v1.4 narrows it further, but neither
+undoes it. **21 ecological claims still have no signal at all**, and most of the
+rest are still read through the keeper rather than the system. The 7 direct hits
+are unchanged since v1.3: v1.4 moved three claims off *none*, it did not make
+any newly reachable in full.
 
 Put the other way round: on its own territory — what keepers know and do — the
 instrument does well, reaching 9 of 10 descriptive claims at least partially.
@@ -326,8 +328,7 @@ Ordered by how much they change what the data can support, not by cost.
    considered and deliberately left out (see S9).
 2. ~~Invite repeat submission.~~ **Plumbing done in v1.3**; the data itself does
    not exist yet and will take months to accumulate.
-3. **Add stocking and life-change items.** The two largest content holes, both
-   load-bearing in the framework.
+3. ~~Add stocking and life-change items.~~ **Done in v1.4**, both unscored (S10).
 4. **Convert belief items to behaviour items where the claim is about
    behaviour.** In shape: from *what do you think marks maturity* to *does your
    tank absorb a missed water change*. (Both are paraphrases of an item's intent,
@@ -401,3 +402,41 @@ with them, mixed freshness is a visible fact rather than a hidden one.
 remain at *none*. Stocking and life-change items (S7 item 3) were not added.
 The belief-for-behaviour substitution (S7 item 4) is untouched — the three new
 items sit alongside the 25, they do not fix them.
+
+---
+
+## S10: v1.4 — Stocking and Life Change
+
+The two content holes named in S6 were the framework's most load-bearing absent
+variables. Both are now asked, both **unscored**, in the same context block as
+the v1.3 items.
+
+| Item | Reaches | Shape |
+|---|---|---|
+| `stocking_change` | H-X3, H-A3, and feeds H-P5 | Deliberately mirrors `wc-interval-awareness`: a *grown-and-I-knew* / *grown-more-than-I-realised* split. That aware-vs-unnoticed distinction is the instrument's single strongest existing fit (H-K3), and stocking creep is described in S8.2 in the same terms as capacity creep. |
+| `life_change` | H-K8, and the S6 mid-disruption threat | Four options mapped onto S4.4's own three categories (short-term, extended, permanent) plus a *normal stretch* baseline. |
+
+**Why stocking is asked as change rather than as level.** Self-reported
+stocking density is close to meaningless without species, adult size and
+filtration — "eight fish" says nothing on its own. What the framework actually
+claims is about *creep*: "additions over time, each individually reasonable"
+(S8.2). Asking the question the framework's claim is about, rather than the
+question that sounds more quantitative, keeps the item honest about what it can
+support.
+
+**What `life_change` fixes and what it does not.** It resolves the S6 threat
+that a keeper mid-disruption is scored as though their current rhythm were their
+settled one — that is now a recorded fact rather than an invisible confound. It
+does **not** reach the second half of H-K8, the claim that overcorrecting on
+return "can destabilise a system that has equilibrated around the reduced
+inputs". That would need a follow-up after the disruption ends, which is what
+the repeat-submission plumbing exists for.
+
+**Coverage effect:** three claims moved off *none* (H-K8, H-A3, H-X3 — the first
+pathway row ever to move). No new direct hits. 21 ecological claims remain
+unreachable.
+
+**Confirmation that the v1.3 i18n refactor was worth it:** these two items
+needed markup and translation keys only. `scripts/build-ryr-i18n.mjs` was not
+edited, because it discovers labels by span id and options by option value. The
+hardcoded list that would have needed updating no longer exists.

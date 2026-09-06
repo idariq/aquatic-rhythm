@@ -104,6 +104,8 @@ hypothesis inventory, and each has a specific thing to listen for.
 | `observation-quality` | Is *reading* vs *checking* vs *glancing* a distinction they recognise, or one only the framework makes? |
 | `oxygen-read` | Does it feel like a quiz with a right answer? If so, social-desirability pressure is distorting it — an open limitation (#11). |
 | Consent copy | Do they know what they are agreeing to? Ask them to say it back. Specifically: does anything reach a third party, could it be published, can they withdraw? |
+| `temp-check-freq` *(added v2.0)* | Does "how often do you check" read as clearly distinct from "how stable is it" (the item it replaced)? The split (`docs/rhythm-tracker-instrument.md` §S9/§S11) assumes people can separate a monitoring habit from a tank-state belief — check that assumption holds. |
+| `temp_swing` *(added v2.0)* | Since this one is unscored and asked once in the share modal rather than per rhythm, do respondents notice it's a different kind of question from the five-per-rhythm flow, or does it blur together with `tank_volume`/`tank_age`? |
 
 ---
 

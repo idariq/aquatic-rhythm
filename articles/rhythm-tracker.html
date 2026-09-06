@@ -305,6 +305,16 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
             </select>
           </label>
           <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-tempswing-label">How much temperature actually moves</span>
+            <select class="ryr-cov-select" id="ryr-cov-tempswing" data-field="temp_swing">
+              <option value="">—</option>
+              <option value="temp-barely">Barely at all, as far as I can tell</option>
+              <option value="temp-mild">A little, but nothing dramatic</option>
+              <option value="temp-noticeable">It swings a noticeable amount</option>
+              <option value="temp-unsure">I honestly wouldn't know</option>
+            </select>
+          </label>
+          <label class="ryr-cov-field">
             <span class="ryr-cov-label" id="ryr-cov-stocking-label">How the stocking has changed</span>
             <select class="ryr-cov-select" id="ryr-cov-stocking" data-field="stocking_change">
               <option value="">—</option>
@@ -430,7 +440,8 @@ var RYR_NOT_APPLICABLE={
   'recovery-awareness':['never-happened'],
   'hardscape-moves':['no-hardscape'],
   'filter-check-date':['new-tank'],
-  'automation-reliance':['no-automation']
+  'automation-reliance':['no-automation'],
+  'temp-check-freq':['no-thermometer']
 };
 /* NO BASIS — the respondent doesn't know, hasn't noticed, or hasn't
    considered it. These still score, because not knowing genuinely is the
@@ -445,7 +456,6 @@ var RYR_NO_BASIS={
   'maturity-marker':['unsure-marker'],
   'light-consequence':['not-sure'],
   'flow-deadspots':['never-considered'],
-  'temp-stability':['unsure-swings'],
   'preclinical-signs':['wouldnt-notice'],
   'new-addition-disruption':['havent-considered'],
   'wc-interval-awareness':['not-sure'],
@@ -522,10 +532,13 @@ reflect:function(ans){
   var cyc=ans['cycle-status'], test=ans['testing-habit'], trend=ans['trend-read'];
   var resp=ans['stable-response'], o2=ans['oxygen-read'];
 
+  /* v2 (docs/rhythm-tracker-instrument.md §S11): stable-response is NOM —
+     four qualitatively different response strategies, not a degree — so it
+     is excluded from score/max entirely rather than summed alongside the
+     ORD/KNOW items below. It still gets its own reflection paragraph. */
   var t={score:0,max:0};
   ryrTally(t,'testing-habit',test,['routine'],['reactive']);
   ryrTally(t,'trend-read',trend,['history'],['ideal-number']);
-  ryrTally(t,'stable-response',resp,['leave-stable'],['nudge-toward-ideal']);
   ryrTally(t,'oxygen-read',o2,['oxygen-aware'],['disease-assume','ammonia-assume']);
 
   var phase;
@@ -652,10 +665,12 @@ reflect:function(ans){
   var bio=ans['biofilm-read'], sub=ans['substrate-clean'], rec=ans['recovery-awareness'];
   var mat=ans['maturity-marker'], med=ans['filter-media'];
 
+  /* v2 (§S11): substrate-clean and recovery-awareness are NOM — genuinely
+     different practice strategies (spot-clean/never-touch aren't a "more/
+     less" pair; ease-back/resume/compensate aren't either), so both are
+     excluded from score/max. Their reflection paragraphs are unchanged. */
   var t={score:0,max:0};
   ryrTally(t,'biofilm-read',bio,['leave-it'],['worried-contamination','never-noticed']);
-  ryrTally(t,'substrate-clean',sub,['spot-clean'],['never-touch']);
-  ryrTally(t,'recovery-awareness',rec,['ease-back'],['back-to-normal']);
   ryrTally(t,'maturity-marker',mat,['resilience'],['time-elapsed','zero-readings']);
   ryrTally(t,'filter-media',med,['rinse-tank-water'],['rarely-touch','replace-regularly']);
 
@@ -769,26 +784,31 @@ RHYTHMS.environmental={name:'Environmental Rhythm',questions:[
      {v:'rarely-looks', l:'I rarely look back there', d:'Those spots mostly stay out of sight, out of mind.'},
      {v:'never-considered', l:'I hadn\'t thought about flow reaching different spots unevenly', d:'This isn\'t something I\'ve considered before.'}
    ]},
-  {id:'temp-stability',
-   text:'How much does your tank\'s temperature actually move around day to day?',
-   sub:'Best honest estimate, whether or not you measure it.',
+  {id:'temp-check-freq',
+   text:'How often do you actually check your tank\'s temperature?',
+   sub:'Not what the thermometer shows right now — how often you actually look.',
    opts:[
-     {v:'stable-monitored', l:'Barely at all — I check it and it holds steady', d:'A heater and thermometer doing their job, and I look often enough to know.'},
-     {v:'stable-assumed', l:'Probably stable, though I don\'t check often', d:'I trust the equipment, but I couldn\'t say the last time I confirmed it.'},
-     {v:'noticeable-swings', l:'It swings a noticeable amount', d:'Room temperature, equipment, or something else moves it around more than a little.'},
-     {v:'unsure-swings', l:'I honestly wouldn\'t know', d:'No thermometer in the tank, or I don\'t check it.'}
+     {v:'checks-often', l:'Often enough to catch a change quickly', d:'Daily, or close to it — it\'s part of my routine.'},
+     {v:'checks-occasionally', l:'Occasionally, without a strict routine', d:'I look sometimes, just not on any schedule.'},
+     {v:'rarely-checks', l:'Hardly ever, if at all', d:'It\'s not really something I check.'},
+     {v:'no-thermometer', l:'I don\'t have a way to check', d:'No thermometer in the tank right now.'}
    ]}
 ],
 reflect:function(ans){
   var lit=ans['light-schedule'], con=ans['light-consequence'], hsc=ans['hardscape-moves'];
-  var flw=ans['flow-deadspots'], tmp=ans['temp-stability'];
+  var flw=ans['flow-deadspots'], tcf=ans['temp-check-freq'];
 
+  /* v2 (§S11): temp-stability split into a scored ORD item (this one, how
+     often temperature is actually checked — a monitoring-diligence fact)
+     and an unscored context item, temp_swing (how much it actually moves —
+     a tank-state fact), asked once in the share modal alongside tank_volume
+     and tank_age rather than per rhythm. The old item conflated both. */
   var t={score:0,max:0};
   ryrTally(t,'light-schedule',lit,['timer'],['by-feel-consistent']);
   ryrTally(t,'light-consequence',con,['chronic-stress-aware'],['algae-only']);
   ryrTally(t,'hardscape-moves',hsc,['rarely-once-set'],['occasional-reason']);
   ryrTally(t,'flow-deadspots',flw,['checks-regularly'],['notices-eventually']);
-  ryrTally(t,'temp-stability',tmp,['stable-monitored'],['stable-assumed']);
+  ryrTally(t,'temp-check-freq',tcf,['checks-often'],['checks-occasionally']);
 
   var phase=ryrPhaseFrom(t);
 
@@ -840,14 +860,14 @@ reflect:function(ans){
     paras.push('Not having considered flow distribution as its own variable is common — most attention goes to whether the filter is running, not where its output actually reaches. Corners and the space behind tall hardscape are where flow most often fails to arrive.');
   }
 
-  if(tmp==='stable-monitored'){
-    paras.push('Checking often enough to actually confirm stability, rather than assuming it, is the more complete version of temperature management. Stability itself is the goal — fish and microbial communities adapt to consistent conditions and are stressed by fluctuation, the same principle that applies to water chemistry.');
-  } else if(tmp==='stable-assumed'){
-    paras.push('Trusting the equipment without checking often is a reasonable default, but it means a slow drift — a failing heater, a room that\'s gotten colder — could go unnoticed for a while. An occasional check turns an assumption into an actual confirmation.');
-  } else if(tmp==='noticeable-swings'){
-    paras.push('A temperature that swings a noticeable amount is a real environmental rhythm signal, not just background variation. Fish adapt to consistent conditions; it\'s the fluctuation itself, more than the exact number, that tends to cause stress.');
+  if(tcf==='checks-often'){
+    paras.push('Checking temperature often enough to catch a change quickly is the more complete version of temperature management. Fish and microbial communities adapt to consistent conditions and are stressed by fluctuation — the same principle that applies to water chemistry — and a slow drift only shows up to someone actually looking for it.');
+  } else if(tcf==='checks-occasionally'){
+    paras.push('Checking now and then, without a strict routine, will usually catch a dramatic swing but can miss a slow one — a failing heater or a room that\'s gotten colder rarely announces itself in a single check. An occasional look is a reasonable default; a slightly more regular one closes the gap.');
+  } else if(tcf==='rarely-checks'){
+    paras.push('Rarely checking temperature means a slow drift has plenty of room to go unnoticed. Fish adapt to consistent conditions and are stressed by fluctuation itself, more than by the exact number — which is exactly the kind of thing an occasional check would catch early.');
   } else {
-    paras.push('Not knowing how much temperature actually moves means this variable currently has no baseline, which is worth closing — temperature swings are one of the more common overlooked sources of chronic stress.');
+    paras.push('Without a thermometer in the tank, there\'s no way to confirm stability one way or the other. Worth adding even a basic one — temperature swings are one of the more commonly overlooked sources of chronic stress, and right now this variable has no baseline at all.');
   }
 
   var closing;
@@ -914,12 +934,15 @@ reflect:function(ans){
   var obs=ans['observation-baseline'], pre=ans['preclinical-signs'], acc=ans['stress-accumulation'];
   var add=ans['new-addition-disruption'], beh=ans['behaviour-vs-chemistry'];
 
+  /* v2 (§S11): preclinical-signs and behaviour-vs-chemistry are NOM —
+     preclinical-signs' aligned answer sits between two opposite failure
+     modes (under- and over-responding), which a single score axis cannot
+     represent; behaviour-vs-chemistry is a priority choice, not a belief
+     with a right/wrong answer. Both excluded from score/max. */
   var t={score:0,max:0};
   ryrTally(t,'observation-baseline',obs,['yes-know-baseline'],['maybe-eventually']);
-  ryrTally(t,'preclinical-signs',pre,['watch-pattern'],['dismiss-single']);
   ryrTally(t,'stress-accumulation',acc,['chronic-cumulative'],['unsure-cumulative']);
   ryrTally(t,'new-addition-disruption',add,['expects-disruption'],['no-real-disruption']);
-  ryrTally(t,'behaviour-vs-chemistry',beh,['watch-animals-first'],['test-water-first','check-equipment-first']);
 
   var phase=ryrPhaseFrom(t);
 
@@ -1045,12 +1068,15 @@ reflect:function(ans){
   var wc=ans['wc-interval-awareness'], fc=ans['filter-check-date'], fd=ans['feeding-precision'];
   var obq=ans['observation-quality'], auto=ans['automation-reliance'];
 
+  /* v2 (§S11): wc-interval-awareness and automation-reliance are NOM — four
+     distinct state-plus-awareness/stance combinations each, not a degree —
+     so both are excluded from score/max despite wc-interval-awareness being
+     the instrument's strongest existing fit to a framework claim (H-K2/K3).
+     Their reflection paragraphs are unchanged. */
   var t={score:0,max:0};
-  ryrTally(t,'wc-interval-awareness',wc,['same-or-decided'],['drifted-aware','drifted-unnoticed']);
   ryrTally(t,'filter-check-date',fc,['recent-known'],['know-but-a-while']);
   ryrTally(t,'feeding-precision',fd,['measured'],['estimated-consistent']);
   ryrTally(t,'observation-quality',obq,['reading'],['checking']);
-  ryrTally(t,'automation-reliance',auto,['trust-but-verify'],[]);
 
   var phase=ryrPhaseFrom(t);
 
@@ -1133,7 +1159,7 @@ var RYR_FORMSPREE_ENDPOINT='https://formspree.io/f/xoeqleyo';
    same commit as the change, since a version not recorded in the data is not
    a version. Layout, styling and translation of existing strings do not bump
    it. See docs/rhythm-tracker-instrument.md §S8. */
-var RYR_INSTRUMENT_VERSION='v1.4';
+var RYR_INSTRUMENT_VERSION='v2.0';
 var RYR_REPROMPT_DAYS=60;
 var RYR_CODE_LABEL='Your code: ';
 /* GA opt-out is enforced at the page head via ga-disable-*, so these calls

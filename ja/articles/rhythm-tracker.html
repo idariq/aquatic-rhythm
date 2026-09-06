@@ -309,6 +309,16 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
             </select>
           </label>
           <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-tempswing-label">実際どのくらい温度が変動するか</span>
+            <select class="ryr-cov-select" id="ryr-cov-tempswing" data-field="temp_swing">
+              <option value="">—</option>
+              <option value="temp-barely">ほとんど変わらないと感じている</option>
+              <option value="temp-mild">少し変わるが、大きくはない</option>
+              <option value="temp-noticeable">かなりの幅で変動している</option>
+              <option value="temp-unsure">正直、分かりません</option>
+            </select>
+          </label>
+          <label class="ryr-cov-field">
             <span class="ryr-cov-label" id="ryr-cov-stocking-label">生体の数の変化</span>
             <select class="ryr-cov-select" id="ryr-cov-stocking" data-field="stocking_change">
               <option value="">—</option>
@@ -434,7 +444,8 @@ var RYR_NOT_APPLICABLE={
   'recovery-awareness':['never-happened'],
   'hardscape-moves':['no-hardscape'],
   'filter-check-date':['new-tank'],
-  'automation-reliance':['no-automation']
+  'automation-reliance':['no-automation'],
+  'temp-check-freq':['no-thermometer']
 };
 /* NO BASIS — the respondent doesn't know, hasn't noticed, or hasn't
    considered it. These still score, because not knowing genuinely is the
@@ -449,7 +460,6 @@ var RYR_NO_BASIS={
   'maturity-marker':['unsure-marker'],
   'light-consequence':['not-sure'],
   'flow-deadspots':['never-considered'],
-  'temp-stability':['unsure-swings'],
   'preclinical-signs':['wouldnt-notice'],
   'new-addition-disruption':['havent-considered'],
   'wc-interval-awareness':['not-sure'],
@@ -526,10 +536,13 @@ reflect:function(ans){
   var cyc=ans['cycle-status'], test=ans['testing-habit'], trend=ans['trend-read'];
   var resp=ans['stable-response'], o2=ans['oxygen-read'];
 
+  /* v2 (docs/rhythm-tracker-instrument.md §S11): stable-response is NOM —
+     four qualitatively different response strategies, not a degree — so it
+     is excluded from score/max entirely rather than summed alongside the
+     ORD/KNOW items below. It still gets its own reflection paragraph. */
   var t={score:0,max:0};
   ryrTally(t,'testing-habit',test,['routine'],['reactive']);
   ryrTally(t,'trend-read',trend,['history'],['ideal-number']);
-  ryrTally(t,'stable-response',resp,['leave-stable'],['nudge-toward-ideal']);
   ryrTally(t,'oxygen-read',o2,['oxygen-aware'],['disease-assume','ammonia-assume']);
 
   var phase;
@@ -656,10 +669,12 @@ reflect:function(ans){
   var bio=ans['biofilm-read'], sub=ans['substrate-clean'], rec=ans['recovery-awareness'];
   var mat=ans['maturity-marker'], med=ans['filter-media'];
 
+  /* v2 (§S11): substrate-clean and recovery-awareness are NOM — genuinely
+     different practice strategies (spot-clean/never-touch aren't a "more/
+     less" pair; ease-back/resume/compensate aren't either), so both are
+     excluded from score/max. Their reflection paragraphs are unchanged. */
   var t={score:0,max:0};
   ryrTally(t,'biofilm-read',bio,['leave-it'],['worried-contamination','never-noticed']);
-  ryrTally(t,'substrate-clean',sub,['spot-clean'],['never-touch']);
-  ryrTally(t,'recovery-awareness',rec,['ease-back'],['back-to-normal']);
   ryrTally(t,'maturity-marker',mat,['resilience'],['time-elapsed','zero-readings']);
   ryrTally(t,'filter-media',med,['rinse-tank-water'],['rarely-touch','replace-regularly']);
 
@@ -773,26 +788,31 @@ RHYTHMS.environmental={name:'Environmental Rhythm',questions:[
      {v:'rarely-looks', l:'あまりそこを見ません', d:'そうした場所はたいてい視界に入らないままです。'},
      {v:'never-considered', l:'水流が場所によって偏ることを考えたことがありませんでした', d:'これまで意識したことがない点です。'}
    ]},
-  {id:'temp-stability',
-   text:'水槽の水温は、実際どのくらい日によって変動していますか。',
-   sub:'測っているかどうかにかかわらず、正直な感覚での見積もりです。',
+  {id:'temp-check-freq',
+   text:'水槽の温度は、実際どのくらいの頻度で確認していますか。',
+   sub:'今の温度計の数値ではなく、実際にどのくらいの頻度で見ているかです。',
    opts:[
-     {v:'stable-monitored', l:'ほとんど変わらない。確認しても安定している', d:'ヒーターと温度計がきちんと働いていて、確認する頻度も十分あります。'},
-     {v:'stable-assumed', l:'おそらく安定しているはず。あまり確認はしていない', d:'機材は信頼していますが、最後に確認したのがいつかは分かりません。'},
-     {v:'noticeable-swings', l:'かなりの幅で変動している', d:'室温や機材など、何かの影響で少なからず変わります。'},
-     {v:'unsure-swings', l:'正直、分かりません', d:'水槽用の温度計がない、あるいは確認していません。'}
+     {v:'checks-often', l:'変化にすぐ気づける頻度で確認している', d:'ほぼ毎日、あるいはそれに近い頻度で、日課の一部になっています。'},
+     {v:'checks-occasionally', l:'決まった習慣はなく、たまに確認する', d:'時々見ますが、スケジュールがあるわけではありません。'},
+     {v:'rarely-checks', l:'ほとんど、あるいは一度も確認しない', d:'実際にはあまり確認していません。'},
+     {v:'no-thermometer', l:'確認する手段がない', d:'今、水槽用の温度計がありません。'}
    ]}
 ],
 reflect:function(ans){
   var lit=ans['light-schedule'], con=ans['light-consequence'], hsc=ans['hardscape-moves'];
-  var flw=ans['flow-deadspots'], tmp=ans['temp-stability'];
+  var flw=ans['flow-deadspots'], tcf=ans['temp-check-freq'];
 
+  /* v2 (§S11): temp-stability split into a scored ORD item (this one, how
+     often temperature is actually checked — a monitoring-diligence fact)
+     and an unscored context item, temp_swing (how much it actually moves —
+     a tank-state fact), asked once in the share modal alongside tank_volume
+     and tank_age rather than per rhythm. The old item conflated both. */
   var t={score:0,max:0};
   ryrTally(t,'light-schedule',lit,['timer'],['by-feel-consistent']);
   ryrTally(t,'light-consequence',con,['chronic-stress-aware'],['algae-only']);
   ryrTally(t,'hardscape-moves',hsc,['rarely-once-set'],['occasional-reason']);
   ryrTally(t,'flow-deadspots',flw,['checks-regularly'],['notices-eventually']);
-  ryrTally(t,'temp-stability',tmp,['stable-monitored'],['stable-assumed']);
+  ryrTally(t,'temp-check-freq',tcf,['checks-often'],['checks-occasionally']);
 
   var phase=ryrPhaseFrom(t);
 
@@ -844,14 +864,14 @@ reflect:function(ans){
     paras.push('水流の分布をひとつの変数として意識したことがないのはよくあることです。多くの関心はフィルターが動いているかどうかに向かい、その水流が実際どこまで届いているかには向きません。角や背の高いハードスケープの裏側は、水流がもっとも届きにくい場所です。');
   }
 
-  if(tmp==='stable-monitored'){
-    paras.push('安定していると仮定するのではなく、実際に確認できるほどの頻度で確かめることは、より完全な温度管理の形です。安定性そのものが目標であり、魚や微生物の群れは一定した条件に適応し、変動によってストレスを受けます。これは水質と同じ原則です。');
-  } else if(tmp==='stable-assumed'){
-    paras.push('あまり確認せずに機材を信頼するのは無理のない選択ですが、ヒーターの弱まりや部屋の温度低下といった緩やかな変化が、しばらく気づかれないままになる可能性があります。たまに確認するだけで、仮定は実際の確認に変わります。');
-  } else if(tmp==='noticeable-swings'){
-    paras.push('はっきり感じられるほど温度が変動することは、単なる背景の揺らぎではなく、環境リズムの本当のサインです。魚は一定した条件に適応するものであり、ストレスを引き起こすのは正確な数値そのものより、その変動自体であることが多いのです。');
+  if(tcf==='checks-often'){
+    paras.push('変化にすぐ気づけるほどの頻度で温度を確認することは、より完全な温度管理の形です。魚や微生物の群れは一定した条件に適応し、変動によってストレスを受けます。これは水質と同じ原則であり、緩やかな変化は実際に注意を払っている人にしか見えてきません。');
+  } else if(tcf==='checks-occasionally'){
+    paras.push('決まった習慣はなくても、たまに確認していれば大きな変動には気づけますが、緩やかな変化は見逃しがちです。ヒーターの弱まりや部屋の温度低下は、一度の確認だけでは分からないことがほとんどです。たまの確認でも十分な出発点ですが、もう少し規則的にすれば、その隙間は埋まります。');
+  } else if(tcf==='rarely-checks'){
+    paras.push('温度をほとんど確認しないと、緩やかな変化に気づかれないまま進む余地が大きくなります。魚は一定した条件に適応するものであり、ストレスを引き起こすのは正確な数値そのものより変動自体であることが多いのです。だからこそ、たまの確認が早期発見につながります。');
   } else {
-    paras.push('温度が実際どれくらい動いているか分からないということは、この変数に今、比較する基準がないということです。これは埋めておく価値があります。温度の変動は、見過ごされがちな慢性的ストレスの原因の中でも特によくあるものだからです。');
+    paras.push('水槽用の温度計がなければ、安定しているかどうかを確かめる手段がありません。簡単なものでも一つ加える価値はあります。温度の変動は見過ごされがちな慢性的ストレスの原因の一つであり、今のところこの変数には基準となるものが何もありません。');
   }
 
   var closing;
@@ -918,12 +938,15 @@ reflect:function(ans){
   var obs=ans['observation-baseline'], pre=ans['preclinical-signs'], acc=ans['stress-accumulation'];
   var add=ans['new-addition-disruption'], beh=ans['behaviour-vs-chemistry'];
 
+  /* v2 (§S11): preclinical-signs and behaviour-vs-chemistry are NOM —
+     preclinical-signs' aligned answer sits between two opposite failure
+     modes (under- and over-responding), which a single score axis cannot
+     represent; behaviour-vs-chemistry is a priority choice, not a belief
+     with a right/wrong answer. Both excluded from score/max. */
   var t={score:0,max:0};
   ryrTally(t,'observation-baseline',obs,['yes-know-baseline'],['maybe-eventually']);
-  ryrTally(t,'preclinical-signs',pre,['watch-pattern'],['dismiss-single']);
   ryrTally(t,'stress-accumulation',acc,['chronic-cumulative'],['unsure-cumulative']);
   ryrTally(t,'new-addition-disruption',add,['expects-disruption'],['no-real-disruption']);
-  ryrTally(t,'behaviour-vs-chemistry',beh,['watch-animals-first'],['test-water-first','check-equipment-first']);
 
   var phase=ryrPhaseFrom(t);
 
@@ -1049,12 +1072,15 @@ reflect:function(ans){
   var wc=ans['wc-interval-awareness'], fc=ans['filter-check-date'], fd=ans['feeding-precision'];
   var obq=ans['observation-quality'], auto=ans['automation-reliance'];
 
+  /* v2 (§S11): wc-interval-awareness and automation-reliance are NOM — four
+     distinct state-plus-awareness/stance combinations each, not a degree —
+     so both are excluded from score/max despite wc-interval-awareness being
+     the instrument's strongest existing fit to a framework claim (H-K2/K3).
+     Their reflection paragraphs are unchanged. */
   var t={score:0,max:0};
-  ryrTally(t,'wc-interval-awareness',wc,['same-or-decided'],['drifted-aware','drifted-unnoticed']);
   ryrTally(t,'filter-check-date',fc,['recent-known'],['know-but-a-while']);
   ryrTally(t,'feeding-precision',fd,['measured'],['estimated-consistent']);
   ryrTally(t,'observation-quality',obq,['reading'],['checking']);
-  ryrTally(t,'automation-reliance',auto,['trust-but-verify'],[]);
 
   var phase=ryrPhaseFrom(t);
 
@@ -1137,7 +1163,7 @@ var RYR_FORMSPREE_ENDPOINT='https://formspree.io/f/xoeqleyo';
    same commit as the change, since a version not recorded in the data is not
    a version. Layout, styling and translation of existing strings do not bump
    it. See docs/rhythm-tracker-instrument.md §S8. */
-var RYR_INSTRUMENT_VERSION='v1.4';
+var RYR_INSTRUMENT_VERSION='v2.0';
 var RYR_REPROMPT_DAYS=60;
 var RYR_CODE_LABEL="あなたのコード：";
 /* GA opt-out is enforced at the page head via ga-disable-*, so these calls

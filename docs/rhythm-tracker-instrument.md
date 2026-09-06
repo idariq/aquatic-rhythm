@@ -3,7 +3,7 @@
 ## Internal Reference Document — Aquatic Rhythm
 
 **Instrument:** Rhythm Tracker (`articles/rhythm-tracker.html`)
-**Instrument version:** v1.4 (live). v2 structure drafted, not implemented — see S11.
+**Instrument version:** v2.0 (live). See S11 for the design rationale, S9 for what shipped.
 **Status:** Published and collecting opt-in data. Not validated.
 **Record started:** 2026-09-06
 
@@ -169,7 +169,7 @@ wording alone.
 | Environmental | `light-consequence` | domain knowledge |
 | Environmental | `hardscape-moves` | behavioural frequency |
 | Environmental | `flow-deadspots` | attention practice |
-| Environmental | `temp-stability` | monitoring practice |
+| Environmental | `temp-stability` *(v1 only — split into `temp-check-freq` + unscored `temp_swing` in v2, see S9/S11)* | monitoring practice |
 | Livestock | `observation-baseline` | self-reported capability |
 | Livestock | `preclinical-signs` | situational judgment |
 | Livestock | `stress-accumulation` | conceptual knowledge |
@@ -190,6 +190,14 @@ scale score in the psychometric sense. No internal-consistency statistic
 ---
 
 ## S4: Scoring Model (v1, as implemented)
+
+**This section describes v1–v1.4. Superseded 2026-09-06 by v2 — see S9's v2.0
+entry and S11.** In v2, NOM-typed items (S11.2) are excluded from score/max
+entirely rather than weighted 2/1/0 like everything else, which changes the
+maximum for Biological, Livestock and Keeper (10 → 6 each; Environmental
+stays 10, none of its items are NOM). The mechanism below — weights keyed to
+option values, one preferred response scores 2 — is unchanged for whichever
+items remain scored; what changed is which items participate at all.
 
 Scoring lives in each rhythm's `reflect()` function. Weights are keyed to option
 values: a preferred response scores 2, a partially-aligned response scores 1,
@@ -354,6 +362,7 @@ POST to `https://formspree.io/f/xoeqleyo` with four fields:
 | `care_intent` | *(v1.3+)* whether the current pattern is deliberate |
 | `stocking_change` | *(v1.4+)* how stocking has changed, and whether noticed |
 | `life_change` | *(v1.4+)* disruption to keeper rhythm right now |
+| `temp_swing` | *(v2.0+)* how much temperature actually moves — split off `temp-stability`'s state-facet; see S9 |
 | `submission_index` | *(v1.3+)* 1 for a first submission, 2 for a second, … |
 | `days_since_first` / `days_since_previous` | *(v1.3+)* empty on a first submission |
 | `answer_dates` | *(v1.3+)* when each rhythm was last answered |
@@ -630,6 +639,53 @@ unreachable.
 labels by span id and options by option value, a generalisation made in v1.3
 specifically so the next question would not require touching it.
 
+**v2.0 — 2026-09-06** — Type-aware scoring, per S11. Two changes, both
+version-bump-worthy under S8 (an item added; scoring meaning changed):
+
+*Scoring* — every item tagged NOM in S11.2 (`stable-response`,
+`substrate-clean`, `recovery-awareness`, `preclinical-signs`,
+`behaviour-vs-chemistry`, `wc-interval-awareness`, `automation-reliance`) is
+now excluded from score and max entirely, rather than weighted 2/1/0 like
+every other item regardless of type (v1's actual defect, S3/S7). They keep
+their per-item reflection paragraphs — nothing a respondent reads changed
+except the item below. Consequence: Biological, Livestock and Keeper's
+maximum drops from 10 to 6 (3 scored items each); Environmental is unaffected
+(none of its 5 items are NOM); Water's max is unaffected by this change
+specifically (`stable-response` was already the only NOM item there, dropping
+its max from 8 to 6) — the gate and thresholds (0.7/0.4 ratios) are otherwise
+untouched, since the phase rule already worked on proportions, not raw
+totals, from v1.1 onward.
+
+*Item split* — `temp-stability` conflated a tank-state fact (how much
+temperature actually moves) with a keeper-practice fact (how often it's
+checked), per S11.2's callout. Split into `temp-check-freq` (scored, ORD —
+replaces `temp-stability` as Environmental's fifth item, same slot, same
+scoring role) and `temp_swing` (new, unscored, asked once in the share modal
+alongside `tank_volume`/`tank_age` rather than per rhythm). `temp-check-freq`
+codes `no-thermometer` as `not_applicable` (S6's response-coding scheme) —
+"no way to check" is a premise failure, not a low score, matching
+`hardscape-moves:no-hardscape`'s treatment.
+
+**Verified**: `scripts/build-ryr-i18n.mjs`'s per-rhythm answer combinations
+(used to extract exact shipped strings for id/ja substitution) assert each
+combo lands in its intended phase bucket — Livestock's combo needed
+recalibrating (swapping which combo row supplies `stress-accumulation`'s
+`fine-if-no-symptom` vs `unsure-cumulative`) once `preclinical-signs` and
+`behaviour-vs-chemistry` stopped contributing to its score; Biological's and
+Keeper's combos held without changes. A Playwright check confirmed NOM-item
+answers no longer move a rhythm's phase (varying `stable-response`,
+`substrate-clean`+`recovery-awareness`, `preclinical-signs`+
+`behaviour-vs-chemistry`, and `wc-interval-awareness`+`automation-reliance`
+against otherwise-Mature answers left every phase at Mature), and that the
+new `temp-check-freq` item and `temp_swing` field render correctly in en/id/ja
+with no console errors or 404s.
+
+**What this does not change**: no hypothesis-inventory coverage — S11.4
+already noted this is a measurement-quality pass, not a content pass. The one
+line in `docs/rhythm-tracker-hypothesis-inventory.md` §S5 that named
+`temp-stability` as a partial tank-state item is updated to reflect the
+split (see that document).
+
 ---
 
 ## S10: Open Actions
@@ -648,9 +704,8 @@ importance.
    instrument reaches directly are about *keepers*, and **0 of the 48 ecological
    claims are directly reachable**, because no outcome variable and no time
    dimension exist. Its S7 supersedes the ordering below for items 6-9.
-6. **Write operational construct definitions** per rhythm (S2), derived from
-   item 5. Item revision without them repeats the original error.
-   **Drafted 2026-09-06** — see S11.1.
+6. ~~Write operational construct definitions~~ per rhythm (S2), derived from
+   item 5. **Done 2026-09-06** — see S11.1; implemented as v2.0 scoring (S9).
 7. ~~Resolve the §S4.5 contradiction.~~ **Resolved 2026-09-06** by the S1
    decision — see the note in S2.
 8. ~~Decide the instrument's shape.~~ **Decided 2026-09-06: stay reflective.**
@@ -671,6 +726,10 @@ importance.
    unchanged, so the original eight flagged items plus whatever S11.2's
    `temp-stability` split produces remain the actual pretest scope — the
    re-scoping changed *when* to run it, not how much there is to test.
+   **v2.0 shipped 2026-09-06** (S9) with the split's actual text
+   (`temp-check-freq`, `temp_swing`) — add both to
+   `docs/rhythm-tracker-pretest-protocol.md`'s §S5 probe table alongside the
+   original eight before running it. Still not yet run.
 
 ### Purpose note (recorded 2026-09-06)
 
@@ -694,14 +753,15 @@ statement and supersedes this paragraph where they differ.
 
 ## S11: v2 Instrument Structure — Design Proposal (2026-09-06)
 
-**Status: draft, not implemented.** Nothing below has touched
-`articles/rhythm-tracker.html` or `scripts/build-ryr-i18n.mjs`. This section
-exists to satisfy the sequencing S10 already committed to: item 6 requires
-construct definitions before item revision, and the 2026-09-06 owner decision
-ties cognitive pretesting to whatever draft comes out of this section rather
-than to the live v1.4 items (S10 item 9). It covers all 25 scored items, per
-owner decision on the same date, rather than only the eight items the pretest
-protocol had already flagged.
+**Status: implemented as v2.0 (2026-09-06).** S11.6 steps 1–3 are done — the
+scoring rewrite and the `temp-stability` split described below shipped in the
+same session; see S9's v2.0 entry for exactly what changed and how it was
+verified. What remains open is S11.6 step 2's pretest and step 4's
+reader-facing decision (S11.3's note) — both still require people, not code.
+This section is kept as the design record; read it alongside S9 for the
+as-shipped detail. It covers all 25 scored items, per owner decision on the
+same date, rather than only the eight items the pretest protocol had already
+flagged.
 
 ### S11.1: Operational Construct Definitions
 
@@ -907,13 +967,24 @@ not before), not how much of the instrument it needs to cover.
    options; `wc-interval-awareness`'s claim is categorical, not a matter of
    degree. Construct definitions and the type table now stand without open
    judgment calls.
-2. Write and pretest the `temp-stability` split (the only new respondent-
-   facing text this section produces), alongside the eight items already in
-   `docs/rhythm-tracker-pretest-protocol.md`.
-3. Rewrite each rhythm's `reflect()` function to tag items by S11.2 type and
-   compute the three S11.3 figures, replacing the uniform weighted sum.
+2. ~~Write~~ the `temp-stability` split. **Done 2026-09-06** (S9) — text
+   written, translated, and shipped. **Pretest still outstanding** — the
+   split's new text (`temp-check-freq` + `temp_swing`) should be added to
+   `docs/rhythm-tracker-pretest-protocol.md`'s probe list alongside the
+   original eight items; still needs people, not code.
+3. ~~Rewrite each rhythm's `reflect()` function~~ to exclude NOM items from
+   score/max. **Done 2026-09-06** (S9) — implemented as exclusion, not as the
+   three-figure S11.3 report (see step 4's note on why).
 4. Decide, at implementation time, what the single reader-facing phase
-   reflection is computed from (S11.3's reader-facing note).
-5. Version bump to v2 per S8 (an item added, a scoring model changed);
-   `instrument_version` in the payload, i18n rebuild via
-   `scripts/build-ryr-i18n.mjs`, and a new S9 change-log entry.
+   reflection is computed from (S11.3's reader-facing note). **Resolved by
+   the v2.0 implementation**: it stayed the existing single phase number,
+   now computed from ORD+KNOW items only (NOM excluded) — the minimal change
+   that fixes the type-blending defect without adding new UI. The fuller
+   three-figure report (Practice Consistency / Strategy Profile / Knowledge
+   Accuracy) remains available to a later *analysis* pass over the raw
+   stored `answers`, using S11.2's type table — it does not require any
+   further change to the live instrument, since raw per-item answers were
+   already being collected.
+5. ~~Version bump to v2 per S8~~ **Done 2026-09-06** — `v2.0`,
+   `instrument_version` ships in the same commit, i18n rebuilt via
+   `scripts/build-ryr-i18n.mjs`, S9 change-log entry written.

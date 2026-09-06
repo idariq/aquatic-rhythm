@@ -3,7 +3,7 @@
 ## Internal Reference Document — Aquatic Rhythm
 
 **Instrument:** Rhythm Tracker (`articles/rhythm-tracker.html`)
-**Instrument version:** v1.4
+**Instrument version:** v1.4 (live). v2 structure drafted, not implemented — see S11.
 **Status:** Published and collecting opt-in data. Not validated.
 **Record started:** 2026-09-06
 
@@ -650,6 +650,7 @@ importance.
    dimension exist. Its S7 supersedes the ordering below for items 6-9.
 6. **Write operational construct definitions** per rhythm (S2), derived from
    item 5. Item revision without them repeats the original error.
+   **Drafted 2026-09-06** — see S11.1.
 7. ~~Resolve the §S4.5 contradiction.~~ **Resolved 2026-09-06** by the S1
    decision — see the note in S2.
 8. ~~Decide the instrument's shape.~~ **Decided 2026-09-06: stay reflective.**
@@ -663,6 +664,13 @@ importance.
    covering recruitment, probes, the eight items to probe specifically, what
    counts as a finding, and the honest limits. Not yet run; running it needs
    people, not code.
+   **Re-scoped 2026-09-06** — owner decision: pretest the v2 draft (S11), not
+   the live v1.4 wording, since v1.4 items scheduled for replacement would
+   waste the pretest budget on text about to be discarded. S11.5 finds this
+   costs less than it sounds: most item text carries forward into v2
+   unchanged, so the original eight flagged items plus whatever S11.2's
+   `temp-stability` split produces remain the actual pretest scope — the
+   re-scoping changed *when* to run it, not how much there is to test.
 
 ### Purpose note (recorded 2026-09-06)
 
@@ -681,3 +689,215 @@ That rule was an inference from the purpose when it was first written here. It
 is now a settled owner decision with its own consequences — see **S1, "phase
 labels are a reader-facing device, not data"**, which is the authoritative
 statement and supersedes this paragraph where they differ.
+
+---
+
+## S11: v2 Instrument Structure — Design Proposal (2026-09-06)
+
+**Status: draft, not implemented.** Nothing below has touched
+`articles/rhythm-tracker.html` or `scripts/build-ryr-i18n.mjs`. This section
+exists to satisfy the sequencing S10 already committed to: item 6 requires
+construct definitions before item revision, and the 2026-09-06 owner decision
+ties cognitive pretesting to whatever draft comes out of this section rather
+than to the live v1.4 items (S10 item 9). It covers all 25 scored items, per
+owner decision on the same date, rather than only the eight items the pretest
+protocol had already flagged.
+
+### S11.1: Operational Construct Definitions
+
+The gap this closes: the framework defines each rhythm conceptually (S2) but
+never states what counts as *evidence* of a given phase within it. Without
+that, item revision has nothing to revise against except intuition — the same
+failure mode that produced v1. One paragraph per rhythm, derived from the
+phase criteria in `docs/ARA-framework-v2.md` §S5.1–S5.3 applied to each
+rhythm's own §S3.x material.
+
+**Water Rhythm.** Phase is not the parameter reading itself but the keeper's
+relationship to it: whether readings are tracked as trajectory or read as
+isolated snapshots (§S3.1), whether a stable-but-published-suboptimal reading
+is tolerated rather than chased, and whether dissolved oxygen is recognised as
+a distinct, undertested variable. Cycle-completion status is a system fact,
+not a facet of this construct — it is the gate in front of it (S4). Observable
+facets: testing regularity; trend- vs snapshot-based interpretation; tolerance
+for stable-suboptimal readings; recognition of the DO/surface-gasping signal.
+
+**Biological Rhythm.** Phase is the tank's microbial depth (§S2.4, §S3.2) and
+whether keeper habits protect or disrupt it. Genuine Mature Phase is what
+§S5.7 names ecological forgiveness — demonstrated recovery from an ordinary
+lapse, not clean test-kit numbers (the false-maturity trap, §S5.5). Observable
+facets: reading biofilm as construction rather than contamination; substrate
+handling that avoids disturbing a developing community; post-disruption
+recovery behaviour; the keeper's own belief about what maturity consists of;
+filter-media handling that preserves rather than resets the bacterial colony.
+
+**Environmental Rhythm.** Phase is whether light, flow, hardscape and
+temperature are managed as ecological infrastructure or left as background
+(§S3.3). Observable facets: photoperiod consistency; recognition of irregular
+light as a chronic-stress source, not a cosmetic one; restraint around
+rearranging established hardscape; attention to flow dead-spots; *confirmed*
+rather than assumed temperature stability.
+
+**Livestock Rhythm.** Phase is how early and how completely behavioural
+signals are read before they surface elsewhere — the framework's claim that
+behaviour precedes physiology precedes measurable chemistry (§S3.4, H-L1).
+Observable facets: knowledge of an individual animal's baseline; response to
+one preclinical sign (watching for a pattern, neither ignoring nor
+overtreating it); belief in cumulative sub-threshold stress; expectation that
+a new addition disrupts the whole existing community, not just the newcomer;
+behaviour checked before water chemistry.
+
+**Keeper Rhythm.** Phase is the keeper's honesty about their actual, not
+intended, pattern of care — this scale operationalises the §S4.5
+self-assessment tool almost verbatim. Observable facets: awareness of
+water-change-interval drift; knowledge of the last filter check; feeding
+precision; quality of daily observation (reading vs glancing); whether
+automation is verified or left unattended.
+
+### S11.2: Item Type Reclassification — all 25 items
+
+S3/S4's finding was that 25 items of at least three measurement types were
+summed into one score. The fix is not one uniform format for all 25 — it is
+naming the types and treating each on its own terms.
+
+| Type | Meaning | Treatment |
+|---|---|---|
+| **STATE/GATE** | describes the tank, not the keeper | unchanged, unscored (S4) |
+| **NOM** | discrete strategies with no natural more/less axis | reported as a response distribution, never summed |
+| **ORD** | a genuine low-to-high axis (frequency, precision, recency) | candidate for explicit ranked anchors |
+| **KNOW** | one framework-keyed correct answer; other options are wrong beliefs, not "less aligned" ones | reported as an accuracy rate, never a degree |
+
+| Rhythm | Item | v1 type (S3) | v2 type | Note |
+|---|---|---|---|---|
+| Water | `cycle-status` | factual system state (gate) | STATE/GATE | outside the taxonomy by design |
+| Water | `testing-habit` | behavioural frequency | ORD | routine>reactive>rarely is a clean frequency axis; `too-new` is N/A, not a fourth degree |
+| Water | `trend-read` | interpretive strategy | ORD | trajectory>ideal-number>no-comparison is a genuine trend-literacy axis (§S3.1); `unsure` is N/A |
+| Water | `stable-response` | situational judgment | NOM | four qualitatively different response strategies; `would-research` and `multiple-fixes` score identically in v1 despite being opposite in impulsivity — a sign this was never one axis |
+| Water | `oxygen-read` | domain knowledge | KNOW | `oxygen-aware` is the framework's stated correct read (§S3.1, §S9.2); the rest are wrong causal attributions |
+| Biological | `biofilm-read` | judgment + knowledge | KNOW | `leave-it` is factually correct — biofilm is not contamination; the hybrid label in S3 resolves to KNOW outright |
+| Biological | `substrate-clean` | behavioural practice | NOM | `spot-clean` and `never-touch` are both endorsed by the framework's own text as roughly equally protective — no clean monotonic order, so v1 scoring one above the other is a scoring-convention artifact, not a construct fact |
+| Biological | `recovery-awareness` | situational judgment | NOM | three genuinely different post-disruption strategies (ease back / resume / compensate), not degrees of one variable |
+| Biological | `maturity-marker` | conceptual knowledge | KNOW | `resilience` is the framework's named correct answer (§S5.7); `zero-readings`/`time-elapsed` are the false-maturity trap named explicitly wrong (§S5.5) — the hypothesis inventory's paradigm belief-item (H-P4) |
+| Biological | `filter-media` | behavioural practice | KNOW | one factually protective method (tank-water rinse); the other two are factually damaging to the colony, not merely less aligned |
+| Environmental | `light-schedule` | behavioural practice | ORD | timer>by-feel-consistent>by-feel-variable>rarely-tracked is a clean consistency axis |
+| Environmental | `light-consequence` | domain knowledge | KNOW | `chronic-stress-aware` is the framework's stated consequence (§S3.3); `algae-only` is true-but-incomplete, the rest are absent/wrong beliefs |
+| Environmental | `hardscape-moves` | behavioural frequency | ORD | rarely>occasional>frequent is a clean frequency axis; `no-hardscape` is N/A |
+| Environmental | `flow-deadspots` | attention practice | ORD | checks-regularly>notices-eventually>rarely-looks>never-considered is a clean attention-frequency axis |
+| Environmental | `temp-stability` | monitoring practice | **split** | conflates two constructs: actual temperature stability (a system-state fact) and monitoring diligence (a keeper-practice fact) — see callout below |
+| Livestock | `observation-baseline` | self-reported capability | ORD | yes>maybe>only-dramatic>dont-track is a clean noticing-capability axis |
+| Livestock | `preclinical-signs` | situational judgment | NOM | the aligned answer (`watch-pattern`) sits in the *middle*; `dismiss-single` and `immediate-treatment` are opposite failure directions, and `wouldnt-notice` is a separate detection-failure axis — see callout below |
+| Livestock | `stress-accumulation` | conceptual knowledge | KNOW | `chronic-cumulative` is the borrowed physiology claim (H-L2) asserted as fact; the other three are named wrong beliefs |
+| Livestock | `new-addition-disruption` | expectation / knowledge | KNOW | `expects-disruption` is the framework's stated fact about social geometry (§S3.4, H-L3); the rest are wrong expectations |
+| Livestock | `behaviour-vs-chemistry` | prioritisation strategy | NOM | four different first-checks; the framework does name a claimed correct sequence (H-L1, borrowed), which pulls toward KNOW, but the item asks for the respondent's own habit rather than a factual belief — the one item where the NOM/KNOW line is genuinely arguable |
+| Keeper | `wc-interval-awareness` | self-monitoring / recall | NOM | four distinct state-plus-awareness combinations, not a frequency — the instrument's strongest existing fit to a framework claim (H-K2/K3); lowest priority for any wording change |
+| Keeper | `filter-check-date` | self-monitoring / recall | ORD | recent>a-while>no-idea is a clean recency axis; `new-tank` is N/A |
+| Keeper | `feeding-precision` | behavioural practice | ORD | measured>estimated-consistent>estimated-variable>not-tracked is a clean precision axis |
+| Keeper | `observation-quality` | self-reported attention quality | ORD | reading>checking>glancing>rarely-look is a clean attention-quality axis |
+| Keeper | `automation-reliance` | practice + stance | NOM | `trust-but-verify` and `set-and-forget` are different stances toward the same practice, not different amounts of it; `no-automation` is N/A |
+
+**Callout — `temp-stability` should split into two items.** A keeper can have
+a genuinely stable tank they never check, or an unstable one they check
+constantly; the current four options collapse both facts onto one axis.
+Proposed v2: one STATE item (how much the temperature actually moves, best
+honest estimate — a system fact) and one ORD item (how often it is actually
+checked — a monitoring-diligence fact), mirroring the existing separation
+between `cycle-status` (state) and the rest of Water Rhythm (practice).
+
+**Callout — `preclinical-signs` cannot be forced onto a single Likert axis.**
+The aligned response sits between two opposite failure modes
+(under-responding and over-responding), with a third, orthogonal
+detection-failure option (`wouldnt-notice`) alongside them. A frequency-style
+scale has no way to place "correct" in its middle without inventing a false
+low-to-high order the framework does not claim. This is the clearest case in
+the instrument of an item that must stay NOM.
+
+**Callout — `substrate-clean`'s options are not monotonic.** `never-touch`
+is not "less aligned" than `spot-clean`; the framework text treats both as
+acceptable, differing mainly in how actively detritus is managed. Scoring
+`spot-clean` above `never-touch`, as v1 does, encodes an order the framework
+never asserts.
+
+### S11.3: v2 Scoring / Reporting Model
+
+Replace the blended per-rhythm 0–10 (0–8 for Water, behind its gate) sum with
+three separate, type-pure figures per rhythm:
+
+- **Practice Consistency** — each ORD item reported on its own ranked scale.
+  Not collapsed into one composite number across items with different
+  anchors unless a later step establishes they share a common latent trait —
+  not assumed here.
+- **Strategy Profile** — the response distribution across that rhythm's NOM
+  items, reported as frequencies per option, never summed into a score. This
+  is descriptive, and it is where a future typology (which strategies
+  co-occur) could eventually come from — a later exploratory step, not
+  something the instrument itself needs to compute.
+- **Knowledge Accuracy** — percentage of that rhythm's KNOW items answered
+  with the framework-keyed response.
+
+**Reader-facing note.** This restructures the analysis layer; it does not by
+itself require changing what a respondent sees. S1's "stay reflective"
+decision survives either way — the existing single Early/Developing/Mature
+reflection could continue to be computed from a simplified version of the
+same logic, or from Practice Consistency and Knowledge Accuracy alone (NOM
+items have no scored "correct" direction to contribute to a single number).
+Which of those the reader sees is an implementation-time decision, not fixed
+here.
+
+### S11.4: What This Does Not Change
+
+- The `cycle-status` gate (S4) is untouched.
+- No scored item is removed, and no new scored item is added except the
+  `temp-stability` split. Hypothesis-inventory coverage is unaffected — this
+  is a measurement-quality pass, not a content pass. Closing coverage gaps
+  (H-A6 cross-rhythm buffering, the S8 pathway claims) is a separate,
+  later decision.
+- The seven unscored context items (`tank_volume`, `tank_age`, `outcome_slip`,
+  `outcome_intervention`, `care_intent`, `stocking_change`, `life_change`) are
+  untouched — they were never part of the type-blending problem.
+- The belief-for-behaviour substitution the hypothesis inventory names in its
+  S7 item 4 (e.g. rewriting `maturity-marker` from *what do you think marks
+  maturity* to *does your tank absorb a missed water change*) is a different,
+  later revision track. Typing an item correctly as KNOW does not by itself
+  convert it to a behaviour item — the two should not be conflated into one
+  pass.
+
+### S11.5: Does Any of This Actually Require New Wording?
+
+Checked against the type table in S11.2: **mostly no.** Every item tagged ORD
+already has a clean, narratively-encoded rank order in its existing four
+options (see the "clean … axis" notes above) — the fix is tagging that order
+explicitly in the scoring code (a ranked-anchor array per item, replacing the
+uniform 2/1/0 weight-key mechanism every item currently shares regardless of
+type), not rewriting respondent-facing text. Items tagged NOM keep their
+existing wording outright — the change is in how their responses are
+aggregated (S11.3), not in the item itself.
+
+The one item that needs new text is `temp-stability`'s split (S11.2 callout).
+Everything else is a scoring-code and reporting change.
+
+**This revises the plan agreed earlier in this session.** The original
+framing — restructure all 25 items, then pretest the result — assumed a
+wording rewrite large enough to justify deferring the pretest until it was
+done. Checked against actual item text, that assumption does not hold: the
+rewrite is one new item, not twenty-five. The pretest's scope is therefore
+still what `docs/rhythm-tracker-pretest-protocol.md` already named — the
+eight originally flagged items — plus whatever wording the `temp-stability`
+split produces. The re-scoping in S10 item 9 changed *when* the pretest runs
+(after this section's construct definitions and type table are confirmed,
+not before), not how much of the instrument it needs to cover.
+
+### S11.6: Sequencing From Here
+
+1. Owner review of S11.1 and S11.2 — in particular the two flagged judgment
+   calls (`behaviour-vs-chemistry`'s NOM/KNOW line; whether
+   `wc-interval-awareness` should stay NOM given it is the strongest existing
+   framework fit).
+2. Write and pretest the `temp-stability` split (the only new respondent-
+   facing text this section produces), alongside the eight items already in
+   `docs/rhythm-tracker-pretest-protocol.md`.
+3. Rewrite each rhythm's `reflect()` function to tag items by S11.2 type and
+   compute the three S11.3 figures, replacing the uniform weighted sum.
+4. Decide, at implementation time, what the single reader-facing phase
+   reflection is computed from (S11.3's reader-facing note).
+5. Version bump to v2 per S8 (an item added, a scoring model changed);
+   `instrument_version` in the payload, i18n rebuild via
+   `scripts/build-ryr-i18n.mjs`, and a new S9 change-log entry.

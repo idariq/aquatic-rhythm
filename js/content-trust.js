@@ -22,7 +22,14 @@
   // right after the existing .brief-btn CTA, so every tool user encounters
   // it at least once. Regular articles have no .brief-inner and keep the
   // original #bnav-anchored placement.
-  var briefInner = document.querySelector('.brief-inner');
+  //
+  // rhythm-tracker.html has its own #ryr-intro overlay built independently
+  // of the .brief-inner tools (position:fixed;inset:0 with its own
+  // internally-scrolling .ryr-intro-inner) — the SAME hidden-behind-the-
+  // overlay bug applies there too, since it wasn't recognised as a tool
+  // page and fell through to the #bnav-anchored branch. Found 2026-09-06
+  // (user report: rhythm-tracker was the only tool missing this section).
+  var briefInner = document.querySelector('.brief-inner') || document.querySelector('.ryr-intro-inner');
   var isToolPage = !!briefInner;
 
   // Was hardcoded English on every locale (bug found 2026-08-18, user video) —

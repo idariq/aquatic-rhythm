@@ -155,6 +155,12 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 .ryr-share-btn:not(:disabled):hover{background:var(--th-accent-soft);color:#fff}
 .ryr-share-status{font-size:var(--fs-xs);color:var(--th-ink-4);margin-top:.8rem;line-height:1.6}
 .ryr-share-code{font-size:var(--fs-xs);color:var(--th-ink-4);margin-top:.45rem;line-height:1.6;font-family:var(--mono,ui-monospace,SFMono-Regular,Menlo,monospace);word-break:break-all;user-select:all}
+.ryr-share-cov-note{font-size:var(--fs-xs);color:var(--th-ink-4);margin:1.1rem 0 .7rem;line-height:1.7;font-weight:300}
+.ryr-share-cov{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:1.1rem}
+.ryr-cov-field{display:flex;flex-direction:column;gap:.35rem;flex:1 1 11rem;min-width:0}
+.ryr-cov-label{font-size:var(--fs-2xs);letter-spacing:.12em;text-transform:uppercase;color:var(--th-ink-4)}
+.ryr-cov-select{width:100%;font-family:var(--sans);font-size:var(--fs-xs);color:var(--th-ink-2);background:var(--th-surface);border:1px solid var(--th-line);border-radius:2px;padding:.55rem .6rem;cursor:pointer}
+.ryr-cov-select:focus-visible{outline:2px solid var(--th-accent);outline-offset:1px}
 .ryr-share-status.err{color:rgba(255,190,175,.92)}
 .ryr-share-dismiss{display:none;font-size:var(--fs-xs);color:var(--th-ink-4);background:none;border:none;cursor:pointer;padding:.7rem 0 0;margin-left:.9rem;font-family:var(--sans);text-decoration:underline;transition:color .2s}
 .ryr-share-dismiss:hover{color:var(--th-ink-2)}
@@ -270,6 +276,33 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       <div class="ryr-share" id="ryr-share" hidden>
         <p class="ryr-share-congrats" id="ryr-share-congrats">五つのリズム、すべて読み終えました。</p>
         <p class="ryr-share-text" id="ryr-share-text">ここまで、しっかり向き合ってくださいました。最後まで進めてくださり、ありがとうございます。よろしければ、ここで見えてきたこと、つまりあなたの回答と上記のフェーズの結果を共有していただけると、ARAの研究を前に進める助けになりますし、この先読む誰かのために、このツールがより良い問いを立てられるようにもなります。データは第三者のフォームサービスであるFormspreeを通じて送られ、それ以外の情報は一切含まれません。お名前もメールアドレスも不要で、五つの回答をまとめて読めるようランダムな識別コードだけが添えられます。これはまだ正式なデータセットでも、何かを証明するものでもない、正直な最初の一歩です。ここから育てていきたいのは、いずれ正式な研究の土台となる、最初の実像です。まとめられた結果は、その一環として公開・共有されることがあります。あなたを特定できる情報が一緒に送られることはありません。送信後、この場所にあなたのコードが表示されます。控えておいていただければ、もし気が変わったときは hello@aquaticrhythm.com までご連絡いただくことで、回答を削除いたします。</p>
+        <p class="ryr-share-cov-note" id="ryr-share-cov-note">どちらも任意です。回答をグループ分けするためだけのもので、6週間目の結果と3年目の結果とでは意味が違ってくるからです。</p>
+        <div class="ryr-share-cov">
+          <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-volume-label">水槽の容量</span>
+            <select class="ryr-cov-select" id="ryr-cov-volume">
+              <option value="">—</option>
+              <option value="lt20">&lt; 20 L</option>
+              <option value="20-60">20–60 L</option>
+              <option value="60-120">60–120 L</option>
+              <option value="120-250">120–250 L</option>
+              <option value="250-500">250–500 L</option>
+              <option value="gt500">&gt; 500 L</option>
+            </select>
+          </label>
+          <label class="ryr-cov-field">
+            <span class="ryr-cov-label" id="ryr-cov-age-label">稼働してからの期間</span>
+            <select class="ryr-cov-select" id="ryr-cov-age">
+              <option value="">—</option>
+              <option value="lt1m">1か月未満</option>
+              <option value="1-3m">1〜3か月</option>
+              <option value="3-6m">3〜6か月</option>
+              <option value="6-12m">6〜12か月</option>
+              <option value="1-3y">1〜3年</option>
+              <option value="gt3y">3年以上</option>
+            </select>
+          </label>
+        </div>
         <label class="ryr-share-check">
           <input type="checkbox" id="ryr-share-consent">
           <span id="ryr-share-consent-label">この目的のために、自分の回答とフェーズの結果を匿名で共有します。</span>
@@ -1046,12 +1079,34 @@ var RYR_FORMSPREE_ENDPOINT='https://formspree.io/f/xoeqleyo';
    same commit as the change, since a version not recorded in the data is not
    a version. Layout, styling and translation of existing strings do not bump
    it. See docs/rhythm-tracker-instrument.md §S8. */
-var RYR_INSTRUMENT_VERSION='v1.1';
+var RYR_INSTRUMENT_VERSION='v1.2';
 var RYR_CODE_LABEL="あなたのコード：";
 /* GA opt-out is enforced at the page head via ga-disable-*, so these calls
    are already no-ops for anyone who turned analytics off in Settings. */
 function ryrTrack(name,params){
   try{if(typeof gtag==='function')gtag('event',name,params||{});}catch(e){}
+}
+/* Covariates (v1.2). Asked here rather than in the question flow so readers
+   who never share are not made to answer them, and placed above the consent
+   box so what is being consented to is visible. Both optional: an unanswered
+   select submits an empty string, which is distinguishable from any bucket.
+   Remembered locally so a respondent re-sending after changing an answer
+   doesn't have to re-pick them. */
+function ryrCovariates(){
+  return {
+    tank_volume:(document.getElementById('ryr-cov-volume')||{}).value||'',
+    tank_age:(document.getElementById('ryr-cov-age')||{}).value||''
+  };
+}
+function ryrSaveCovariates(){
+  try{localStorage.setItem('ryr_covariates',JSON.stringify(ryrCovariates()));}catch(e){}
+}
+function ryrRestoreCovariates(){
+  var c={};
+  try{c=JSON.parse(localStorage.getItem('ryr_covariates')||'{}');}catch(e){c={};}
+  var v=document.getElementById('ryr-cov-volume'),a=document.getElementById('ryr-cov-age');
+  if(v&&c.tank_volume)v.value=c.tank_volume;
+  if(a&&c.tank_age)a.value=c.tank_age;
 }
 /* Annotates which stored answers mean "premise doesn't apply" vs "no basis
    to answer", so the submitted data is self-describing and an analyst never
@@ -1144,6 +1199,8 @@ function ryrShareUIRefresh(){
   try{sentHash=localStorage.getItem('ryr_share_sent_hash');}catch(e){}
   var curHash=JSON.stringify(ryrGetAllAnswers());
   var codeEl=document.getElementById('ryr-share-code');
+  var covEls=[document.getElementById('ryr-cov-volume'),document.getElementById('ryr-cov-age')];
+  covEls.forEach(function(el){if(el)el.disabled=!!(sentHash&&sentHash===curHash);});
   if(sentHash&&sentHash===curHash){
     btn.textContent="送信済み — ありがとうございます";
     btn.disabled=true;
@@ -1353,6 +1410,9 @@ document.getElementById('ryr-begin-btn').addEventListener('click',function(){
 document.getElementById('ryr-share-consent').addEventListener('change',function(){
   document.getElementById('ryr-share-btn').disabled=!this.checked;
 });
+document.getElementById('ryr-cov-volume').addEventListener('change',ryrSaveCovariates);
+document.getElementById('ryr-cov-age').addEventListener('change',ryrSaveCovariates);
+ryrRestoreCovariates();
 document.getElementById('ryr-share-btn').addEventListener('click',function(){
   var btn=this;
   var consent=document.getElementById('ryr-share-consent');
@@ -1371,6 +1431,9 @@ document.getElementById('ryr-share-btn').addEventListener('click',function(){
   fd.append('instrument_version',RYR_INSTRUMENT_VERSION);
   fd.append('submitted_at',new Date().toISOString());
   fd.append('response_coding',JSON.stringify(ryrResponseCoding(allAnswers)));
+  var cov=ryrCovariates();
+  fd.append('tank_volume',cov.tank_volume);
+  fd.append('tank_age',cov.tank_age);
   fetch(RYR_FORMSPREE_ENDPOINT,{method:'POST',body:fd,headers:{Accept:'application/json'}})
     .then(function(res){
       if(res.ok){

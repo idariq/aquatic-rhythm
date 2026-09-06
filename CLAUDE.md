@@ -1154,7 +1154,7 @@ apa pun (companion dah tiada) — guna dict `RH_SHEET` swadaya dlm skrip
 build slug tu sendiri, salin field drpd `build-i18n.mjs`'s `RH_SHEET`
 utk konsisten kandungan.
 
-## Pengetahuan Rhyssa (`worker/knowledge.js`) — TIGA lapisan sync MANUAL, tiada pipeline auto
+## Pengetahuan Rhyssa (`worker/knowledge.js`) — TIGA lapisan; (2)→(3) kini BERPAGAR
 
 Kandungan kerangka ARA wujud di **TIGA tempat berasingan**, tiada skrip build
 yg hubungkan mereka automatik (beza drpd `translations/*.json` → HTML
@@ -1170,25 +1170,44 @@ biasa, yg ada pipeline `build-*-i18n.mjs`):
    disuntik ke system prompt) & **dibakar masa deploy Worker** — BUKAN
    dibaca "live" drpd laman semasa pengguna chat. Nota kepala fail tu
    sendiri kata "sourced from docs/ at build time... update these
-   constants if the docs change" — arahan MANUAL utk manusia/ejen,
-   bukan skrip yg jalan sendiri (beza drpd `worker/article-index.js`
-   yg DIJANA oleh `scripts/build-worker-knowledge.mjs`).
+   constants if the docs change" — salinan VERBATIM drpd (2), disalin
+   tangan (beza drpd `worker/article-index.js` yg DIJANA oleh
+   `scripts/build-worker-knowledge.mjs`).
 
-**WAJIB**: lepas ubah kandungan ARA di (1), semak & selaraskan (2) DAN
-(3) dlm PR/commit yg SAMA — jangan anggap salah satu akan "ikut sendiri".
-Disahkan drift boleh berlaku sunyi (ditemui 2026-08-21: paragraf skop
-marine/reef dikemas kini di (1) tapi tertinggal di (2)/(3) sehingga
-disemak khusus) — Rhyssa akan terus bagi jawapan berdasarkan pengetahuan
-LAPUK kpd pengguna walau laman sendiri dah betul, sehingga (3) turut
-dikemas kini & Worker di-deploy semula (`worker/**` berubah → auto-deploy
-via `.github/workflows/deploy-worker.yml`).
+**(2)→(3) KINI DIPAGAR OLEH GATE** — `scripts/check-worker-knowledge.mjs`,
+dijalankan dlm `npm run check` (juga `npm run worker:check` sendirian).
+Ia bandingkan `ARA_FRAMEWORK`/`ARA_PSYCHOLOGY` dgn kedua-dua fail
+`docs/ARA-*.md` & GAGAL (exit 1) bila hanyut, tunjuk baris pertama yg
+berbeza. `--fix` menulis semula pemalar tu drpd docs (idempoten).
+Jadi drift (2)→(3) tak boleh lagi lepas senyap-senyap.
+
+**(1)→(2) MASIH pertimbangan manusia.** Prosa laman ditulis utk pembaca,
+bukan disalin, jadi tiada gate boleh sahkannya. Gate hijau TIDAK bermakna
+laman & docs bersetuju — cuma docs & Rhyssa bersetuju. Lepas ubah
+kandungan ARA di (1), MASIH wajib semak (2) dlm PR yg sama.
+
+**Kenapa gate ni wujud**: drift dah berlaku DUA KALI, kedua-duanya sunyi.
+(a) 2026-08-21 — paragraf skop marine/reef dikemas kini di (1) tapi
+tertinggal di (2)/(3). (b) 2026-08-28 — PR #483 & #484 menyunting
+`docs/ARA-psychology-foundations.md` (longgarkan peraturan sumber; tambah
+Prinsip 7 "Convention is not the enemy") tanpa menyentuh worker; ditemui
+2026-09-06, iaitu **9 hari** Rhyssa menjawab pengguna sebenar tanpa
+Prinsip 7 — tepat pagar yg menghalangnya mengkarikaturkan penjaga yg ikut
+checklist/jadual ketat. Kegagalan ni SUNYI scr sifatnya: worker tetap
+bina, tetap deploy, tetap menjawab. Hanya perbandingan boleh menangkapnya.
+
+Bila (3) dikemas kini, Worker auto-deploy (`worker/**` berubah →
+`.github/workflows/deploy-worker.yml`), jadi pembetulan sampai kpd
+pengguna sebaik PR di-merge.
 
 ## Semakan Sebelum Commit
 
 - `npm run check` (`check:syntax` + `test` [Node test runner,
   `tests/*.test.mjs`] + `lint` [ESLint `js/`/`scripts/`/`worker/`/
-  `tests/`] + `check-prose.mjs --errors`) — mesti 0 ralat (amaran
-  `no-unused-vars` dsb. ditoleransi, byk pre-existing).
+  `tests/`] + `check-prose.mjs --errors` + `check-worker-knowledge.mjs`)
+  — mesti 0 ralat (amaran `no-unused-vars` dsb. ditoleransi, byk
+  pre-existing). Langkah terakhir memagar sync `docs/ARA-*.md` →
+  `worker/knowledge.js`; rujuk §"Pengetahuan Rhyssa".
 - `npm run i18n:check` — jalankan DUA kali, diff-stat mesti SAMA
   (idempoten) sblm commit; selepas commit patut kosong.
 - `npm run prose:check` (`scripts/check-prose.mjs`) — **DUA tahap

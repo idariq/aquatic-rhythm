@@ -836,22 +836,43 @@ i18n:check` run twice showed identical diff-stats (idempotent). A Playwright
 walk across en/id/ja confirmed the picker screen, per-rhythm inline context
 blocks, and submission payload are all unaffected by the wording change.
 
-**Same-day addendum, not a further version bump**: `oxygen_testing` moved
-again, from an inline block on Water's result screen (where it had lived
-since v2.1) to an in-flow, optional sixth step shown immediately after
+**Same-day addendum, not a further version bump** (in two steps): `oxygen_testing`
+first moved from an inline block on Water's result screen (where it had
+lived since v2.1) to an in-flow, optional sixth step shown immediately after
 Water's 5th question, before the result — new `#ryr-optstep-screen`, styled
 identically to a real question so it carries the same visual weight instead
 of being a small field easy to miss below a long reflection. `Continue` is
 active without a selection, unlike a scored question's `Next`, and choosing
 to skip is treated as a real, valid answer rather than a blocked state.
-`RYR_CTX_BY_RHYTHM` no longer has a `water` entry — it is the only rhythm
-whose one context field is asked before its result rather than alongside it.
-No wording, option value, or scoring changed, so — per the same relocation
-logic v2.1's own picker/result split used — this did not need a version
-bump. Two new chrome strings (`continueBtn`, `optionalStepLabel`) were added
-for the new screen's controls, translated independently rather than reusing
-`nextBtn`'s text, since "Continue" reads differently from "Next" when
-nothing after it is mandatory.
+
+The owner then asked for the identical treatment on the other four rhythms'
+context fields once Water's version proved the pattern out. All six
+remaining fields (`temp_swing`, `stocking_change`, `outcome_slip`,
+`life_change`, `outcome_intervention`, `care_intent`) moved the same way,
+each into its own `.ryr-optstep-fields` group inside the same shared
+`#ryr-optstep-screen` (one group visible at a time, matching `curRhythm` —
+`showOptStep()`). Keeper's group carries all three of its fields together
+under one short generic heading ("A little more, about how things have
+been") rather than reusing a single field's own label as the big heading
+the way the other four rhythms do, since Keeper's context was already three
+questions, not one. The old `.ryr-ctx-inline`/`RYR_CTX_BY_RHYTHM`/
+`ryrShowInlineContext()` mechanism is gone entirely — no rhythm has a
+context field on its result screen any more; every one of them is asked
+in-flow, before the result, not alongside it.
+
+No wording, option value, or scoring changed in either step, so — per the
+same relocation logic v2.1's own picker/result split used — neither needed
+a version bump. Two new chrome strings (`continueBtn`, `optionalStepLabel`)
+were added for the new screen's shared controls, translated independently
+rather than reusing `nextBtn`'s text, since "Continue" reads differently
+from "Next" when nothing after it is mandatory; a third (`optionalStepLabel`
+key `ryr-optstep-keeper-heading`, reusing the existing `tc.labels`
+generic-by-id substitution mechanism) covers Keeper's group heading.
+Verified the same way as the first step: `npm run check` (0 errors),
+`npm run i18n:check` run twice (identical diff-stats), and a Playwright walk
+answering all five rhythms across en/id/ja confirming each opt-step shows
+exactly its own field(s), Continue works with and without a selection, and
+the final submission payload carries all seven now-in-flow context values.
 
 ---
 

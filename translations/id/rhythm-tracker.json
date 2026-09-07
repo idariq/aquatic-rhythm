@@ -77,7 +77,8 @@
         "ryr-cov-oxygentest-label": "Apakah Anda menguji oksigen terlarut secara langsung",
         "ryr-cov-slip-label": "Saat perawatan sempat kendur",
         "ryr-cov-intervene-label": "Turun tangan membenahi sesuatu, bulan lalu",
-        "ryr-cov-intent-label": "Apakah ini ritme yang Anda niatkan"
+        "ryr-cov-intent-label": "Apakah ini ritme yang Anda niatkan",
+        "ryr-optstep-keeper-heading": "Sedikit lagi, tentang bagaimana keadaannya belakangan ini"
       },
       "options": {
         "tankAge": {

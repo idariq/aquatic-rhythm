@@ -949,6 +949,54 @@ Playwright pass confirming both buttons' text across en/id/ja, the new
 sub-line content and its `ryr-q-sub` class, and that the full opt-step and
 submission flow are otherwise unaffected.
 
+**Sixth same-week pass — one real bug, two UI-balance fixes, all found by
+the owner from a screen recording**:
+
+1. **Bug, not cosmetic**: the pentagon chart on a rhythm's result screen
+   showed the just-finished rhythm as still empty (dashed/pending) right
+   after finishing it — it only appeared filled after some later screen
+   change forced a redraw. Root cause: the `showResult()`/`renderResult()`
+   split introduced with the "view a saved result" fix (§S9 above,
+   earlier this week) left `ryrRenderChart()` inside `renderResult()`,
+   which `showResult()` calls *before* it saves progress
+   (`ryrSetProgress()`) — so the chart's first-ever render for a rhythm
+   read stale, pre-completion progress. Revisiting an already-completed
+   rhythm was never affected (progress was already saved from its
+   original completion), which is why this shipped unnoticed — only a
+   rhythm's very first completion showed it. Fixed by computing `ref` and
+   calling `ryrSetProgress`/`ryrSetAllAnswers`/`ryrSetAnswerDate` in
+   `showResult()` *before* calling `renderResult()`, not after — the
+   `.reflect(ans)` call is a pure function, so computing it once in each
+   of the two functions costs nothing but a second cheap call, no shared
+   state.
+2. **"Read it again" went to the picker screen, not to Q1**: it cleared
+   the rhythm's saved progress and called `ryrReturnToPicker()`, requiring
+   a second tap on the same rhythm's card to actually restart it. Fixed to
+   call `showQ(0)` directly — "Read it again" now means retake this
+   rhythm right now; "Choose another rhythm" beside it is still the one
+   that returns to the picker.
+3. **"Read it again" visually read as the recommended action**: it alone
+   used `.ryr-btn-restart` (bordered, boxed) while the other three actions
+   in the same row (`Choose another rhythm`, `Read about all five
+   rhythms`, `Back to Labs & Tools`) were plain `.ryr-link-reading` text.
+   A redo action standing out more than "move forward" or "choose
+   something else" is exactly backwards. Restyled to the same
+   `ryr-link-reading ryr-btn-link` classes as `Choose another rhythm`, and
+   the now-unused `.ryr-btn-restart`/`.ryr-btn-restart:hover` CSS rules
+   were removed. The build script's substitution for this button's text
+   was changed to match by id only (same generalisation already applied
+   elsewhere) so the class change didn't need a second script edit.
+
+None of the three touched any item wording, option value, or scoring — (1)
+is a data-ordering bug fix, (2) and (3) are interaction/visual fixes — so
+no version bump. Verified: `npm run check` (0 errors), `npm run i18n:check`
+run twice (identical diff-stats), and a Playwright pass confirming, across
+en/id/ja: `ryr_progress` and the pentagon's dashed-node count are correct
+immediately after a rhythm's first-ever completion (4 dashed, not 5, right
+after finishing one); "Read it again" lands on Q1 of the same rhythm with
+the picker screen not shown; and the restart button's class now matches
+"Choose another rhythm" exactly.
+
 ---
 
 ## S10: Open Actions

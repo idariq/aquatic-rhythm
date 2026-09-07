@@ -197,7 +197,7 @@
         {
           "id": "trend-read",
           "text": "Saat hasil ujian keluar, Anda sebenarnya membandingkannya dengan apa?",
-          "sub": "Jawaban jujur, bukan jawaban buku teks.",
+          "sub": "Bukan jawaban yang menurut Anda seharusnya diberikan — entah Anda membandingkannya dengan hasil-hasil sebelumnya, angka target, atau tidak dengan apa pun.",
           "opts": [
             {
               "v": "history",
@@ -224,12 +224,12 @@
         {
           "id": "stable-response",
           "text": "Satu parameter berada sedikit di luar rentang \"ideal\" — tapi sudah stabil di situ selama berminggu-minggu. Apa yang Anda lakukan?",
-          "sub": "Bayangkan ini terjadi di akuarium Anda sendiri, sekarang.",
+          "sub": "Bayangkan satu angka — pH, suhu, kesadahan — berada sedikit di luar rentang yang menurut bacaan Anda ideal, tapi bertahan stabil di situ.",
           "opts": [
             {
               "v": "leave-stable",
               "l": "Biarkan saja — stabil ya stabil",
-              "d": "Kalau tidak bergerak dan tidak ada yang terlihat salah, saya tidak mengejar angka buku teks."
+              "d": "Kalau tidak bergerak dan tidak ada yang terlihat salah, saya tidak berusaha memaksanya ke angka yang menurut panduan ideal."
             },
             {
               "v": "nudge-toward-ideal",
@@ -411,8 +411,8 @@
           "opts": [
             {
               "v": "resilience",
-              "l": "Ia bisa mengatasi kesalahan kecil tanpa banyak drama",
-              "d": "Telat mengganti air atau memberi pakan berlebih sedikit tidak sampai mengguncangnya."
+              "l": "Ia menyerap kesalahan kecil tanpa reaksi yang terlihat jelas",
+              "d": "Telat mengganti air atau memberi pakan berlebih sedikit tidak sampai memengaruhinya secara terlihat."
             },
             {
               "v": "zero-readings",
@@ -485,7 +485,7 @@
           "never-happened": "Belum pernah menghadapi gangguan sungguhan berarti ini belum pernah teruji, dan itu wajar saja. Layak diingat untuk saat itu terjadi nanti: setelah pengobatan, lonjakan yang parah, atau pembersihan filter menyeluruh, akuarium akan berperilaku seperti fase yang lebih awal untuk sementara, dan perawatan yang disesuaikan dengan itu adalah yang sebenarnya mengembalikannya ke kondisi semula."
         },
         "mat": {
-          "resilience": "Menyebut ketahanan, telat mengganti air atau memberi pakan berlebih sedikit yang tidak sampai mengguncang akuarium, sebagai tanda kedalaman sesungguhnya sangat dekat dengan definisi ARA. Ecological forgiveness, kemampuan menyerap ketidakkonsistenan kecil penjaga tanpa berujung pada ketidakstabilan, adalah wujud sebenarnya dari Mature Phase yang genuine. Itu hal yang berbeda dari sekadar angka yang bersih.",
+          "resilience": "Menyebut ketahanan, telat mengganti air atau memberi pakan berlebih sedikit yang tidak sampai memengaruhi akuarium secara terlihat, sebagai tanda kedalaman sesungguhnya sangat dekat dengan definisi ARA. Ecological forgiveness, kemampuan menyerap ketidakkonsistenan kecil penjaga tanpa berujung pada ketidakstabilan, adalah wujud sebenarnya dari Mature Phase yang genuine. Itu hal yang berbeda dari sekadar angka yang bersih.",
           "zero-readings": "Membaca amonia dan nitrit nol sebagai bukti kematangan adalah bentuk paling umum dari sebuah jebakan nyata: false maturity. Sebuah akuarium bisa memiliki angka yang bersih secara kasat mata tanpa pernah benar-benar mengembangkan kedalaman ekologis dari Mature Phase yang genuine, sering kali karena diberi bibit bakteri secara besar-besaran, atau sekadar sudah berjalan lama tanpa banyak beban biologis yang mengujinya. Angka yang bersih memang perlu. Tapi itu saja tidak cukup.",
           "time-elapsed": "Menunjuk pada waktu yang sudah berlalu masuk akal secara intuitif, tapi waktu saja tidak menjamin kedalaman. Sebuah akuarium bisa berjalan setahun tanpa pernah benar-benar diuji, tanpa penghuni, tanpa banyak beban biologis, dan tetap tidak memiliki ketahanan yang lahir dari riwayat nyata menghadapi tekanan dan pulih darinya. Usia adalah kondisi awal menuju kedalaman, bukan buktinya.",
           "unsure-marker": "Tidak punya jawaban jelas soal apa yang membedakan 'lulus ujian' dari 'benar-benar dalam' adalah jawaban yang jujur. Kebanyakan penjaga akuarium memang belum pernah diminta menarik garis itu. Singkatnya: itu soal ketahanan, bukan angka. Sistem yang matang menyerap telat mengganti air atau hari yang kurang ideal tanpa banyak drama. Sistem yang hanya terlihat baik dalam kondisi sempurna belum benar-benar diuji."
@@ -594,7 +594,7 @@
         {
           "id": "flow-deadspots",
           "text": "Sudut-sudut, dan ruang di balik hardscape yang tinggi — seberapa besar perhatian yang didapat bagian-bagian itu?",
-          "sub": "Tempat detritus biasanya menumpuk kalau aliran air tidak sampai ke situ.",
+          "sub": "Tempat kotoran biasanya menumpuk kalau aliran air tidak sampai ke situ.",
           "opts": [
             {
               "v": "checks-regularly",
@@ -672,9 +672,9 @@
           "no-hardscape": "Tanpa banyak hardscape tetap, gangguan jenis ini tidak berlaku dengan cara yang sama. Meski begitu, prinsip yang sama tetap berlaku pada struktur apa pun yang ada: begitu hewan-hewan memetakannya, perlakukan sebagai sesuatu yang fungsional, bukan sekadar visual."
         },
         "flw": {
-          "checks-regularly": "Sengaja memeriksa sudut-sudut dan ruang di balik hardscape yang tinggi lebih maju dari kebanyakan rutinitas. Aliran yang tidak merata menciptakan titik mati di mana detritus menumpuk dan oksigen menjadi rendah, masalah yang tetap tidak terlihat justru karena berada di luar garis pandang utama.",
+          "checks-regularly": "Sengaja memeriksa sudut-sudut dan ruang di balik hardscape yang tinggi lebih maju dari kebanyakan rutinitas. Aliran yang tidak merata menciptakan titik mati di mana kotoran menumpuk dan oksigen menjadi rendah, masalah yang tetap tidak terlihat justru karena berada di luar garis pandang utama.",
           "notices-eventually": "Menyadari penumpukan cepat atau lambat, meski tanpa rutinitas khusus, tetap lebih baik dari tidak sama sekali. Tapi titik mati di balik hardscape atau di sudut cenderung menumpuk diam-diam untuk sementara waktu sebelum cukup terlihat untuk disadari dengan sendirinya.",
-          "rarely-looks": "Jarang memeriksa di balik hardscape atau di sudut-sudut berarti titik mati punya ruang untuk berkembang tanpa disadari. Aliran yang tidak merata menciptakan persis kantong-kantong seperti ini, oksigen rendah, penumpukan detritus, dan itu masalah Environmental Rhythm yang nyata, bukan sekadar soal tampilan.",
+          "rarely-looks": "Jarang memeriksa di balik hardscape atau di sudut-sudut berarti titik mati punya ruang untuk berkembang tanpa disadari. Aliran yang tidak merata menciptakan persis kantong-kantong seperti ini, oksigen rendah, penumpukan kotoran, dan itu masalah Environmental Rhythm yang nyata, bukan sekadar soal tampilan.",
           "never-considered": "Belum pernah mempertimbangkan distribusi aliran sebagai variabel tersendiri adalah hal yang umum. Kebanyakan perhatian tertuju pada apakah filternya menyala, bukan ke mana sebenarnya alirannya sampai. Sudut-sudut dan ruang di balik hardscape yang tinggi adalah tempat aliran paling sering gagal menjangkau."
         },
         "tcf": {
@@ -913,7 +913,7 @@
         },
         {
           "id": "filter-check-date",
-          "text": "Kapan terakhir kali Anda benar-benar memeriksa filter — media, aliran, impeller?",
+          "text": "Kapan terakhir kali Anda benar-benar memeriksa filter — media, aliran, bagian yang bergerak di dalamnya?",
           "sub": "Tanggal atau kerangka waktu yang sungguhan, bukan perkiraan yang baru Anda buat sekarang.",
           "opts": [
             {

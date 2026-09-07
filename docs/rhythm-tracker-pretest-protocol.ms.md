@@ -2,7 +2,7 @@
 
 ## Dokumen Kerja Dalaman — Aquatic Rhythm
 
-**Untuk:** Rhythm Tracker v2.1
+**Untuk:** Rhythm Tracker v2.2
 **Dokumen berkaitan:** `docs/rhythm-tracker-instrument.md`, `docs/rhythm-tracker-hypothesis-inventory.md`, `docs/rhythm-tracker-language-review.md`
 **Ditulis:** 2026-09-06 · **Belum dijalankan**
 

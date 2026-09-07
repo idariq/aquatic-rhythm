@@ -836,6 +836,23 @@ i18n:check` run twice showed identical diff-stats (idempotent). A Playwright
 walk across en/id/ja confirmed the picker screen, per-rhythm inline context
 blocks, and submission payload are all unaffected by the wording change.
 
+**Same-day addendum, not a further version bump**: `oxygen_testing` moved
+again, from an inline block on Water's result screen (where it had lived
+since v2.1) to an in-flow, optional sixth step shown immediately after
+Water's 5th question, before the result — new `#ryr-optstep-screen`, styled
+identically to a real question so it carries the same visual weight instead
+of being a small field easy to miss below a long reflection. `Continue` is
+active without a selection, unlike a scored question's `Next`, and choosing
+to skip is treated as a real, valid answer rather than a blocked state.
+`RYR_CTX_BY_RHYTHM` no longer has a `water` entry — it is the only rhythm
+whose one context field is asked before its result rather than alongside it.
+No wording, option value, or scoring changed, so — per the same relocation
+logic v2.1's own picker/result split used — this did not need a version
+bump. Two new chrome strings (`continueBtn`, `optionalStepLabel`) were added
+for the new screen's controls, translated independently rather than reusing
+`nextBtn`'s text, since "Continue" reads differently from "Next" when
+nothing after it is mandatory.
+
 ---
 
 ## S10: Open Actions

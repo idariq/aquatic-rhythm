@@ -899,6 +899,27 @@ proving no separate translation work was needed), click-to-select,
 click-again-to-clear, and restore-after-reload all behave correctly across
 en/id/ja.
 
+**Fourth same-week pass, again no version bump**: the 25 scored questions'
+answer buttons dropped their second line (`opt.d`, a longer rationale or
+example under each `opt.l` label) — 100 options across four screens made
+the question screen look busy, per the owner's report. Before removing
+anything, every one of the 100 `opt.l` labels was individually reviewed
+against its own `opt.d` to check the label alone still reads as a complete
+answer; none needed rewording — the labels were already written as
+self-sufficient statements, with `opt.d` mostly restating the same choice
+in first person or adding an illustrative example rather than carrying
+information the label omitted. `opt.d` itself was left in place in
+`RHYTHMS` (removing 100 fields precisely, across three languages, for a
+change that is display-only was judged not worth the risk of a mechanical
+edit slipping) — only `showQ()`'s rendering changed, so it no longer
+builds the `.ryr-opt-desc` span, and the now-dead `.ryr-opt-desc` CSS rule
+was removed. No wording was added, removed, or changed on any of the 100
+labels, so this is presentation-only, same as the two passes above.
+Verified: `npm run check` (0 errors), `npm run i18n:check` run twice
+(identical diff-stats), and a Playwright regression across en/id/ja
+confirming the opt-step (previous pass) and full five-rhythm submission
+flow are both unaffected.
+
 ---
 
 ## S10: Open Actions

@@ -545,7 +545,7 @@ RHYTHMS.water={name:'Water Rhythm',questions:[
    ]},
   {id:'trend-read',
    text:'Saat hasil ujian keluar, Anda sebenarnya membandingkannya dengan apa?',
-   sub:'Jawaban jujur, bukan jawaban buku teks.',
+   sub:'Bukan jawaban yang menurut Anda seharusnya diberikan — entah Anda membandingkannya dengan hasil-hasil sebelumnya, angka target, atau tidak dengan apa pun.',
    opts:[
      {v:'history', l:'Beberapa hasil sebelumnya — saya memperhatikan arahnya', d:'Satu angka yang naik selama tiga minggu berarti lain bagi saya dibanding angka yang sama muncul sekali saja.'},
      {v:'ideal-number', l:'Angka yang seharusnya saya capai', d:'Saya bandingkan dengan apa yang dikatakan bagan atau artikel sebagai ideal.'},
@@ -554,9 +554,9 @@ RHYTHMS.water={name:'Water Rhythm',questions:[
    ]},
   {id:'stable-response',
    text:'Satu parameter berada sedikit di luar rentang "ideal" — tapi sudah stabil di situ selama berminggu-minggu. Apa yang Anda lakukan?',
-   sub:'Bayangkan ini terjadi di akuarium Anda sendiri, sekarang.',
+   sub:'Bayangkan satu angka — pH, suhu, kesadahan — berada sedikit di luar rentang yang menurut bacaan Anda ideal, tapi bertahan stabil di situ.',
    opts:[
-     {v:'leave-stable', l:'Biarkan saja — stabil ya stabil', d:'Kalau tidak bergerak dan tidak ada yang terlihat salah, saya tidak mengejar angka buku teks.'},
+     {v:'leave-stable', l:'Biarkan saja — stabil ya stabil', d:'Kalau tidak bergerak dan tidak ada yang terlihat salah, saya tidak berusaha memaksanya ke angka yang menurut panduan ideal.'},
      {v:'nudge-toward-ideal', l:'Coba dorong perlahan menuju angka ideal', d:'Meski sudah stabil, saya lebih suka kalau sesuai dengan rentang yang pernah saya baca.'},
      {v:'multiple-fixes', l:'Coba beberapa cara sekaligus untuk memperbaikinya', d:'Melihat angka yang tidak beres membuat saya ingin bertindak, bukan menunggu.'},
      {v:'would-research', l:'Berhenti dulu dan cari tahu sebelum bertindak', d:'Saya tidak akan bertindak sebelum paham kenapa angkanya begitu.'}
@@ -689,7 +689,7 @@ RHYTHMS.biological={name:'Biological Rhythm',questions:[
    text:'Apa yang benar-benar menunjukkan bahwa sebuah akuarium punya kedalaman biologis sesungguhnya, bukan sekadar angka yang bagus?',
    sub:'Bukan jawaban buku teks. Apa yang secara pribadi akan Anda tunjuk.',
    opts:[
-     {v:'resilience', l:'Ia bisa mengatasi kesalahan kecil tanpa banyak drama', d:'Telat mengganti air atau memberi pakan berlebih sedikit tidak sampai mengguncangnya.'},
+     {v:'resilience', l:'Ia menyerap kesalahan kecil tanpa reaksi yang terlihat jelas', d:'Telat mengganti air atau memberi pakan berlebih sedikit tidak sampai memengaruhinya secara terlihat.'},
      {v:'zero-readings', l:'Amonia dan nitrit terbaca nol', d:'Kalau kedua angka itu bersih, saya akan menyebutnya matang.'},
      {v:'time-elapsed', l:'Waktu yang sudah berlalu cukup lama', d:'Usia sebenarnya hal utama yang akan saya tunjuk.'},
      {v:'unsure-marker', l:'Jujur, saya tidak tahu cara menilainya', d:'Saya belum pernah memikirkan apa yang membedakan \'lulus ujian\' dari \'benar-benar dalam\'.'}
@@ -758,7 +758,7 @@ reflect:function(ans){
   }
 
   if(mat==='resilience'){
-    paras.push('Menyebut ketahanan, telat mengganti air atau memberi pakan berlebih sedikit yang tidak sampai mengguncang akuarium, sebagai tanda kedalaman sesungguhnya sangat dekat dengan definisi ARA. Ecological forgiveness, kemampuan menyerap ketidakkonsistenan kecil penjaga tanpa berujung pada ketidakstabilan, adalah wujud sebenarnya dari Mature Phase yang genuine. Itu hal yang berbeda dari sekadar angka yang bersih.');
+    paras.push('Menyebut ketahanan, telat mengganti air atau memberi pakan berlebih sedikit yang tidak sampai memengaruhi akuarium secara terlihat, sebagai tanda kedalaman sesungguhnya sangat dekat dengan definisi ARA. Ecological forgiveness, kemampuan menyerap ketidakkonsistenan kecil penjaga tanpa berujung pada ketidakstabilan, adalah wujud sebenarnya dari Mature Phase yang genuine. Itu hal yang berbeda dari sekadar angka yang bersih.');
   } else if(mat==='zero-readings'){
     paras.push('Membaca amonia dan nitrit nol sebagai bukti kematangan adalah bentuk paling umum dari sebuah jebakan nyata: false maturity. Sebuah akuarium bisa memiliki angka yang bersih secara kasat mata tanpa pernah benar-benar mengembangkan kedalaman ekologis dari Mature Phase yang genuine, sering kali karena diberi bibit bakteri secara besar-besaran, atau sekadar sudah berjalan lama tanpa banyak beban biologis yang mengujinya. Angka yang bersih memang perlu. Tapi itu saja tidak cukup.');
   } else if(mat==='time-elapsed'){
@@ -820,7 +820,7 @@ RHYTHMS.environmental={name:'Environmental Rhythm',questions:[
    ]},
   {id:'flow-deadspots',
    text:'Sudut-sudut, dan ruang di balik hardscape yang tinggi — seberapa besar perhatian yang didapat bagian-bagian itu?',
-   sub:'Tempat detritus biasanya menumpuk kalau aliran air tidak sampai ke situ.',
+   sub:'Tempat kotoran biasanya menumpuk kalau aliran air tidak sampai ke situ.',
    opts:[
      {v:'checks-regularly', l:'Saya periksa secara khusus, secara rutin', d:'Saya tahu itu titik yang biasanya terlewat aliran air, jadi saya sengaja memeriksanya.'},
      {v:'notices-eventually', l:'Saya akan sadar kalau ada yang menumpuk, cepat atau lambat', d:'Bukan pemeriksaan rutin, tapi tidak akan luput selamanya.'},
@@ -894,11 +894,11 @@ reflect:function(ans){
   }
 
   if(flw==='checks-regularly'){
-    paras.push('Sengaja memeriksa sudut-sudut dan ruang di balik hardscape yang tinggi lebih maju dari kebanyakan rutinitas. Aliran yang tidak merata menciptakan titik mati di mana detritus menumpuk dan oksigen menjadi rendah, masalah yang tetap tidak terlihat justru karena berada di luar garis pandang utama.');
+    paras.push('Sengaja memeriksa sudut-sudut dan ruang di balik hardscape yang tinggi lebih maju dari kebanyakan rutinitas. Aliran yang tidak merata menciptakan titik mati di mana kotoran menumpuk dan oksigen menjadi rendah, masalah yang tetap tidak terlihat justru karena berada di luar garis pandang utama.');
   } else if(flw==='notices-eventually'){
     paras.push('Menyadari penumpukan cepat atau lambat, meski tanpa rutinitas khusus, tetap lebih baik dari tidak sama sekali. Tapi titik mati di balik hardscape atau di sudut cenderung menumpuk diam-diam untuk sementara waktu sebelum cukup terlihat untuk disadari dengan sendirinya.');
   } else if(flw==='rarely-looks'){
-    paras.push('Jarang memeriksa di balik hardscape atau di sudut-sudut berarti titik mati punya ruang untuk berkembang tanpa disadari. Aliran yang tidak merata menciptakan persis kantong-kantong seperti ini, oksigen rendah, penumpukan detritus, dan itu masalah Environmental Rhythm yang nyata, bukan sekadar soal tampilan.');
+    paras.push('Jarang memeriksa di balik hardscape atau di sudut-sudut berarti titik mati punya ruang untuk berkembang tanpa disadari. Aliran yang tidak merata menciptakan persis kantong-kantong seperti ini, oksigen rendah, penumpukan kotoran, dan itu masalah Environmental Rhythm yang nyata, bukan sekadar soal tampilan.');
   } else {
     paras.push('Belum pernah mempertimbangkan distribusi aliran sebagai variabel tersendiri adalah hal yang umum. Kebanyakan perhatian tertuju pada apakah filternya menyala, bukan ke mana sebenarnya alirannya sampai. Sudut-sudut dan ruang di balik hardscape yang tinggi adalah tempat aliran paling sering gagal menjangkau.');
   }
@@ -1071,7 +1071,7 @@ RHYTHMS.keeper={name:'Keeper Rhythm',questions:[
      {v:'not-sure', l:'Saya tidak bisa memastikan selang waktunya sekarang', d:'Saya melakukannya \'kalau sempat\' alih-alih mengikuti selang tertentu.'}
    ]},
   {id:'filter-check-date',
-   text:'Kapan terakhir kali Anda benar-benar memeriksa filter — media, aliran, impeller?',
+   text:'Kapan terakhir kali Anda benar-benar memeriksa filter — media, aliran, bagian yang bergerak di dalamnya?',
    sub:'Tanggal atau kerangka waktu yang sungguhan, bukan perkiraan yang baru Anda buat sekarang.',
    opts:[
      {v:'recent-known', l:'Saya tahu kira-kira kapan, dan itu baru-baru ini', d:'Ini bagian dari rutinitas yang benar-benar saya lacak.'},
@@ -1220,7 +1220,7 @@ function ryrTurnstileExpired(){
    same commit as the change, since a version not recorded in the data is not
    a version. Layout, styling and translation of existing strings do not bump
    it. See docs/rhythm-tracker-instrument.md §S8. */
-var RYR_INSTRUMENT_VERSION='v2.1';
+var RYR_INSTRUMENT_VERSION='v2.2';
 var RYR_REPROMPT_DAYS=60;
 var RYR_CODE_LABEL="Kode Anda: ";
 /* GA opt-out is enforced at the page head via ga-disable-*, so these calls

@@ -2,7 +2,7 @@
 
 ## Internal Working Document — Aquatic Rhythm
 
-**For:** Rhythm Tracker v2.1
+**For:** Rhythm Tracker v2.2
 **Companions:** `docs/rhythm-tracker-instrument.md`, `docs/rhythm-tracker-hypothesis-inventory.md`, `docs/rhythm-tracker-language-review.md`
 **Written:** 2026-09-06 · **Not yet run**
 

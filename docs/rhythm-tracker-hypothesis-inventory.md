@@ -4,7 +4,7 @@
 
 **Companion to:** `docs/rhythm-tracker-instrument.md`
 **Source of claims:** `docs/ARA-framework-v2.md` (v2.0)
-**Instrument assessed:** Rhythm Tracker v2.1 (25 scored items + 9 unscored context items)
+**Instrument assessed:** Rhythm Tracker v2.2 (25 scored items + 9 unscored context items)
 **Last revised:** 2026-09-06 — H-W3 moved from partial to direct for v2.1's `oxygen_testing` item (see S11); S5's tank-state item count previously updated for v2.0's `temp-stability` split (see S9, S10)
 **Written:** 2026-09-06
 

@@ -3,7 +3,7 @@
 ## Internal Reference Document — Aquatic Rhythm
 
 **Instrument:** Rhythm Tracker (`articles/rhythm-tracker.html`)
-**Instrument version:** v2.1 (live). See S11 for the design rationale, S9 for what shipped.
+**Instrument version:** v2.2 (live). See S11 for the design rationale, S9 for what shipped.
 **Status:** Published and collecting opt-in data. Not validated.
 **Record started:** 2026-09-06
 
@@ -784,6 +784,57 @@ field including `oxygen_testing`. `worker/schema.sql` gained the column plus
 an `ALTER TABLE` migration line for the database created before v2.1 (the
 `CREATE TABLE IF NOT EXISTS` above it is a no-op against an existing table
 and will not add the column on its own).
+
+**v2.2 — 2026-09-06** — Wording-only clarity pass, per the full item-by-item
+review in `docs/rhythm-tracker-language-review.md` §S5. **No item was added
+or removed, no option's stored value (`v`) changed, and no scoring or phase
+logic changed** — this is a display-layer release under §S8's "any change to
+what respondents are asked earns a version, scored or not," not a scoring
+release, so it did not need the 5,120-combination re-verification that v1.1
+and v2.0 required for that reason.
+
+12 of the 25 scored items had their `text`, `sub`, or an option's `l`/`d`
+reworded, all in service of two goals: removing English idioms unlikely to
+land with non-native readers (`textbook`/`chase`, `shrugs off ... without
+much drama`, `make up for lost time`, `on my radar`, `a fair bit`, `out of
+sight, out of mind`), and replacing three jargon terms — `impeller`,
+`detritus`, and `pallor`/`clamped fins` — that all three languages had kept
+as unglossed loanwords or overly clinical vocabulary where a plainer word
+does the same job. Directly-tied reflect-text occurrences of the same
+replaced word were updated alongside each option for consistency (e.g.
+`detritus`→`waste` in `flow-deadspots`'s two result paragraphs, not just its
+sub-text); occurrences in *other*, more loosely-related content (the
+`without much drama` in Biological's Mature-phase closing text, `detritus`
+in `substrate-clean`'s own reflect) were deliberately left alone as outside
+this pass's scope.
+
+A second, related principle from §S5: since `opt-desc` (the `d` field) is
+now visible on every screen size (mobile fix above), an idiom sitting only
+in an option's `l` is lower priority when its own `d` already restates the
+idea plainly — `ease-back`/`push-forward` in `recovery-awareness` kept their
+idiomatic `l` for this reason, since their `d` text already explains them in
+plain terms.
+
+**id/ja were not translated from the new English 1:1** — each of the 12
+items' id/ja counterparts was checked independently first, and several
+needed no change at all because the original translation had already avoided
+the English-specific idiom (`oxygen-read`'s "first read", `substrate-clean`'s
+"gravel-vac", `filter-media`'s "on my radar", and `preclinical-signs`'s
+"pallor"/"clamped fins" were all already plain in both id and ja before this
+release). Where a translation *did* carry the same problem independently —
+`textbook number` calques in both id (`angka buku teks`) and ja (`模範数値`),
+`detritus`/`デトリタス` as untranslated loanwords, `impeller`/`インペラー`
+likewise, and id's own `drama`/`mengguncang` (rattle) in `maturity-marker` —
+it was reworded to plain id/ja separately, not machine-translated from the
+new English string.
+
+**Verified**: `node scripts/build-ryr-i18n.mjs` produced the same 398
+substitutions as v2.1 (structural parity — no item/option added or removed,
+only existing string content changed). `npm run check` — 0 errors, including
+the id/ja jargon-drift gate in `check-prose.mjs --errors`. `npm run
+i18n:check` run twice showed identical diff-stats (idempotent). A Playwright
+walk across en/id/ja confirmed the picker screen, per-rhythm inline context
+blocks, and submission payload are all unaffected by the wording change.
 
 ---
 

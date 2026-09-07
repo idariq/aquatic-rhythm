@@ -543,7 +543,7 @@ RHYTHMS.water={name:'Water Rhythm',questions:[
    ]},
   {id:'trend-read',
    text:'When a reading comes back, what do you actually compare it to?',
-   sub:'The honest answer, not the textbook one.',
+   sub:'Not the answer you know you\'re supposed to give — whether you\'re comparing it to past readings, a target number, or nothing at all.',
    opts:[
      {v:'history', l:'The last few readings — I\'m watching the direction', d:'One number rising over three weeks means something different to me than the same number appearing once.'},
      {v:'ideal-number', l:'The number I\'m supposed to be at', d:'I check it against what a chart or article says is ideal.'},
@@ -552,16 +552,16 @@ RHYTHMS.water={name:'Water Rhythm',questions:[
    ]},
   {id:'stable-response',
    text:'A parameter has sat slightly outside the "ideal" range — but it\'s been steady there for weeks. What do you do?',
-   sub:'Picture it happening in your own tank right now.',
+   sub:'Picture one number — pH, temperature, hardness — sitting just outside what you\'ve read is ideal, but holding steady there.',
    opts:[
-     {v:'leave-stable', l:'Leave it — steady is steady', d:'If it\'s not moving and nothing looks wrong, I don\'t chase the textbook number.'},
+     {v:'leave-stable', l:'Leave it — steady is steady', d:'If it\'s not moving and nothing looks wrong, I don\'t try to force it toward what a guide says is ideal.'},
      {v:'nudge-toward-ideal', l:'Try to nudge it toward the ideal number', d:'Even if it\'s stable, I\'d rather it match the range I\'ve read about.'},
      {v:'multiple-fixes', l:'Try a few things at once to fix it', d:'Seeing an off number makes me want to act, not wait.'},
      {v:'would-research', l:'Stop and research before doing anything', d:'I wouldn\'t act until I understood why it\'s sitting there.'}
    ]},
   {id:'oxygen-read',
    text:'Fish are gathered near the surface, breathing heavily, early in the morning.',
-   sub:'What\'s your first read on what\'s happening?',
+   sub:'What\'s your first guess for what\'s happening?',
    opts:[
      {v:'oxygen-aware', l:'Low dissolved oxygen — overnight plant respiration or weak surface flow', d:'This pattern, at this time of day, points to oxygen before anything else.'},
      {v:'disease-assume', l:'Something\'s wrong with the fish — a possible illness', d:'My first instinct is to look at the animal, not the water.'},
@@ -666,7 +666,7 @@ RHYTHMS.biological={name:'Biological Rhythm',questions:[
      {v:'never-noticed', l:'I haven\'t really noticed this happening', d:'Can\'t say I\'ve paid attention to this specifically.'}
    ]},
   {id:'substrate-clean',
-   text:'How do you handle substrate cleaning — sand or soil, not the gravel-vac-and-test routine?',
+   text:'How do you handle the substrate itself — sand or soil — separately from the vacuum-and-test routine you do at water changes?',
    sub:'Think about what actually happens, not what you think should.',
    opts:[
      {v:'spot-clean', l:'Spot-clean, leave most of it undisturbed', d:'I stir or vacuum only the areas that visibly need it.'},
@@ -680,14 +680,14 @@ RHYTHMS.biological={name:'Biological Rhythm',questions:[
    opts:[
      {v:'ease-back', l:'Ease back toward Early-Phase caution for a while', d:'Fewer additions, more watching, lower expectations until things settle.'},
      {v:'back-to-normal', l:'Go straight back to the normal routine', d:'Once the acute problem is handled, I treat the tank as it was before.'},
-     {v:'push-forward', l:'Push forward to make up for lost time', d:'I tend to compensate — extra feeding, extra additions — to get back on track quickly.'},
+     {v:'push-forward', l:'Push forward to make up for lost time', d:'I tend to compensate — extra feeding, extra additions — to return to normal as quickly as possible.'},
      {v:'never-happened', l:'This hasn\'t come up for me yet', d:'No disruption like this has happened in this tank so far.'}
    ]},
   {id:'maturity-marker',
    text:'What would actually tell you a tank has real biological depth — not just good numbers?',
    sub:'Not the textbook answer. What you\'d personally point to.',
    opts:[
-     {v:'resilience', l:'It shrugs off small mistakes without much drama', d:'A missed water change or an extra feeding doesn\'t visibly rattle it.'},
+     {v:'resilience', l:'It absorbs small mistakes without much visible reaction', d:'A missed water change or an extra feeding doesn\'t noticeably affect it.'},
      {v:'zero-readings', l:'Ammonia and nitrite reading zero', d:'If those two numbers are clean, I\'d call it mature.'},
      {v:'time-elapsed', l:'Enough time has simply passed', d:'Age is really the main thing I\'d point to.'},
      {v:'unsure-marker', l:'Honestly, I wouldn\'t know how to tell', d:'I haven\'t thought about what separates “passes the test” from “actually deep.”'}
@@ -697,7 +697,7 @@ RHYTHMS.biological={name:'Biological Rhythm',questions:[
    sub:'The actual habit, not the ideal one.',
    opts:[
      {v:'rinse-tank-water', l:'Rinse gently in old tank water, keep most of the media', d:'I try to preserve as much of the bacterial colony as I can.'},
-     {v:'rarely-touch', l:'Rarely think about it until flow drops', d:'Filter maintenance isn\'t really on my radar until something\'s clearly wrong.'},
+     {v:'rarely-touch', l:'Rarely think about it until flow drops', d:'Filter maintenance isn\'t really something I think about until something\'s clearly wrong.'},
      {v:'tap-water-rinse', l:'Rinse thoroughly under tap water', d:'I want it properly clean, so I rinse it well under the tap.'},
      {v:'replace-regularly', l:'Replace media on a regular schedule', d:'New media on a routine, like changing a car filter.'}
    ]}
@@ -756,7 +756,7 @@ reflect:function(ans){
   }
 
   if(mat==='resilience'){
-    paras.push('Naming resilience — a missed water change or an extra feeding not visibly rattling the tank — as the real marker of depth is close to how ARA defines it. Ecological forgiveness, the capacity to absorb small keeper inconsistencies without cascading into instability, is what genuine Mature Phase actually looks like. It\'s a different thing from clean numbers.');
+    paras.push('Naming resilience — a missed water change or an extra feeding not noticeably affecting the tank — as the real marker of depth is close to how ARA defines it. Ecological forgiveness, the capacity to absorb small keeper inconsistencies without cascading into instability, is what genuine Mature Phase actually looks like. It\'s a different thing from clean numbers.');
   } else if(mat==='zero-readings'){
     paras.push('Reading zero ammonia and zero nitrite as proof of maturity is the single most common version of a real trap: false maturity. A tank can hold clean numbers by surface indicators while never developing the ecological depth of genuine Mature Phase, often because it was heavily seeded or has simply run a long time without much biological load to test it. Clean numbers are necessary. They\'re not sufficient on their own.');
   } else if(mat==='time-elapsed'){
@@ -795,7 +795,7 @@ RHYTHMS.environmental={name:'Environmental Rhythm',questions:[
    opts:[
      {v:'timer', l:'On a timer, same hours every day', d:'The schedule doesn\'t depend on whether I remember.'},
      {v:'by-feel-consistent', l:'By hand, but I\'m pretty consistent about timing', d:'No timer, but I\'ve kept it close to the same hours without one.'},
-     {v:'by-feel-variable', l:'By hand, and it varies a fair bit', d:'Some days it\'s on for hours longer or shorter than others.'},
+     {v:'by-feel-variable', l:'By hand, and it varies quite a lot', d:'Some days it\'s on for hours longer or shorter than others.'},
      {v:'rarely-tracked', l:'Honestly, I don\'t really track it', d:'Lights go on and off whenever I happen to notice.'}
    ]},
   {id:'light-consequence',
@@ -818,7 +818,7 @@ RHYTHMS.environmental={name:'Environmental Rhythm',questions:[
    ]},
   {id:'flow-deadspots',
    text:'Corners, and the space behind tall hardscape — how much attention do those spots get?',
-   sub:'Where detritus tends to collect if flow doesn\'t reach it.',
+   sub:'Where waste tends to collect if flow doesn\'t reach it.',
    opts:[
      {v:'checks-regularly', l:'I check them specifically, on a routine', d:'I know those are the spots flow tends to miss, so I look there deliberately.'},
      {v:'notices-eventually', l:'I notice if something builds up, eventually', d:'Not a routine check, but it doesn\'t go unnoticed forever.'},
@@ -892,11 +892,11 @@ reflect:function(ans){
   }
 
   if(flw==='checks-regularly'){
-    paras.push('Deliberately checking corners and the space behind tall hardscape is ahead of most routines. Uneven flow creates dead spots where detritus accumulates and oxygen runs low — problems that stay invisible exactly because they\'re out of the main sightline.');
+    paras.push('Deliberately checking corners and the space behind tall hardscape is ahead of most routines. Uneven flow creates dead spots where waste accumulates and oxygen runs low — problems that stay invisible exactly because they\'re out of the main sightline.');
   } else if(flw==='notices-eventually'){
     paras.push('Catching buildup eventually, even without a deliberate routine, is better than never — but dead spots behind hardscape or in corners tend to accumulate quietly for a while before anything is visible enough to notice on its own.');
   } else if(flw==='rarely-looks'){
-    paras.push('Rarely checking behind hardscape or in corners means dead spots have room to develop unnoticed. Uneven flow creates exactly these pockets — low oxygen, detritus buildup — and they\'re a genuine environmental rhythm problem, not just a cosmetic one.');
+    paras.push('Rarely checking behind hardscape or in corners means dead spots have room to develop unnoticed. Uneven flow creates exactly these pockets — low oxygen, waste buildup — and they\'re a genuine environmental rhythm problem, not just a cosmetic one.');
   } else {
     paras.push('Not having considered flow distribution as its own variable is common — most attention goes to whether the filter is running, not where its output actually reaches. Corners and the space behind tall hardscape are where flow most often fails to arrive.');
   }
@@ -935,7 +935,7 @@ RHYTHMS.livestock={name:'Livestock Rhythm',questions:[
      {v:'dont-know-individuals', l:'Honestly, I don\'t track individual fish that closely', d:'I watch the tank more than any one animal.'}
    ]},
   {id:'preclinical-signs',
-   text:'Reduced feeding interest, subtle colour pallor, resting in an unusual spot, mildly clamped fins — none of these confirm a problem on their own. What do you do when you spot ONE of them?',
+   text:'Reduced feeding interest, a slightly pale colour, resting in an unusual spot, fins held a little closer to the body than usual — none of these confirm a problem on their own. What do you do when you spot ONE of them?',
    sub:'Be honest about your actual first move.',
    opts:[
      {v:'watch-pattern', l:'Note it and watch for a pattern over the next day or two', d:'One sign isn\'t a verdict, but it\'s worth tracking.'},
@@ -1008,11 +1008,11 @@ reflect:function(ans){
   if(pre==='watch-pattern'){
     paras.push('Noting a single sign and watching for a pattern, rather than reacting to it alone, matches exactly how these signals are meant to be read. None of them individually confirms a problem — persistence over a day or two, or several signs together, is what actually turns a maybe into something worth acting on.');
   } else if(pre==='immediate-treatment'){
-    paras.push('Reaching for treatment at the first sign is understandable, but a single subtle signal — reduced feeding interest, mild pallor, a clamped fin — isn\'t meant to be read alone. Acting on it in isolation risks treating for the wrong thing before the pattern has actually shown itself.');
+    paras.push('Reaching for treatment at the first sign is understandable, but a single subtle signal — reduced feeding interest, a slightly pale colour, a fin held close to the body — isn\'t meant to be read alone. Acting on it in isolation risks treating for the wrong thing before the pattern has actually shown itself.');
   } else if(pre==='dismiss-single'){
     paras.push('Not reacting to a single subtle sign is reasonable on its own — these signals genuinely don\'t confirm anything individually. The only risk is if the same instinct carries forward once a second or third sign joins it; that\'s the point these signals are actually meant to be read together.');
   } else {
-    paras.push('These signals are genuinely subtle by design — reduced feeding interest, faint pallor, a slightly unusual resting spot. Not catching them isn\'t unusual. Knowing they exist as a category is often the first step toward noticing them at all.');
+    paras.push('These signals are genuinely subtle by design — reduced feeding interest, a faint paleness, a slightly unusual resting spot. Not catching them isn\'t unusual. Knowing they exist as a category is often the first step toward noticing them at all.');
   }
 
   if(acc==='chronic-cumulative'){
@@ -1069,7 +1069,7 @@ RHYTHMS.keeper={name:'Keeper Rhythm',questions:[
      {v:'not-sure', l:'I couldn\'t say what the actual interval is right now', d:'I do it "when I get to it" rather than on any interval.'}
    ]},
   {id:'filter-check-date',
-   text:'When did you last actually check the filter — media, flow, impeller?',
+   text:'When did you last actually check the filter — the media, the flow, the moving parts inside it?',
    sub:'A real date or timeframe, not an estimate you\'re generating right now.',
    opts:[
      {v:'recent-known', l:'I know roughly when, and it was recent', d:'It\'s part of a routine I actually track.'},
@@ -1083,7 +1083,7 @@ RHYTHMS.keeper={name:'Keeper Rhythm',questions:[
    opts:[
      {v:'measured', l:'Measured — a set amount, fairly consistent', d:'I have a specific quantity in mind and stick close to it.'},
      {v:'estimated-consistent', l:'Estimated, but I\'m consistent about it', d:'A pinch, roughly the same each time, just not measured precisely.'},
-     {v:'estimated-variable', l:'Estimated, and it varies a fair bit', d:'Sometimes more, sometimes less, depending on the day.'},
+     {v:'estimated-variable', l:'Estimated, and it varies quite a lot', d:'Sometimes more, sometimes less, depending on the day.'},
      {v:'not-tracked', l:'I haven\'t really thought about it in these terms', d:'Feeding happens; I couldn\'t describe the amount with any precision.'}
    ]},
   {id:'observation-quality',
@@ -1154,7 +1154,7 @@ reflect:function(ans){
   } else if(fd==='estimated-consistent'){
     paras.push('Estimating consistently, even without a precise measurement, still gives the tank something reliable to adapt to. The risk with estimation isn\'t the lack of precision — it\'s when the estimate itself starts moving without anyone deciding it should.');
   } else if(fd==='estimated-variable'){
-    paras.push('An amount that varies a fair bit day to day is one of the quieter forms of drift: an estimated rather than measured feeding amount is named directly as a capacity-creep indicator, and variability on top of estimation compounds it further.');
+    paras.push('An amount that varies quite a lot day to day is one of the quieter forms of drift: an estimated rather than measured feeding amount is named directly as a capacity-creep indicator, and variability on top of estimation compounds it further.');
   } else {
     paras.push('Not having language for the amount at all makes it hard to notice if it\'s drifting, which is exactly the condition capacity creep needs to go unrecognised. A rough number, even approximate, gives future reference something to compare against.');
   }
@@ -1218,7 +1218,7 @@ function ryrTurnstileExpired(){
    same commit as the change, since a version not recorded in the data is not
    a version. Layout, styling and translation of existing strings do not bump
    it. See docs/rhythm-tracker-instrument.md §S8. */
-var RYR_INSTRUMENT_VERSION='v2.1';
+var RYR_INSTRUMENT_VERSION='v2.2';
 var RYR_REPROMPT_DAYS=60;
 var RYR_CODE_LABEL='Your code: ';
 /* GA opt-out is enforced at the page head via ga-disable-*, so these calls

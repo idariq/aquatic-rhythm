@@ -3,9 +3,9 @@
 ## Internal Reference Document — Aquatic Rhythm
 
 **Companion to:** `docs/rhythm-tracker-instrument.md`, `docs/rhythm-tracker-pretest-protocol.md`
-**Instrument reviewed:** Rhythm Tracker v2.1 (25 scored items across 5 rhythms + 9 unscored context items)
+**Instrument reviewed:** Rhythm Tracker v2.1 (25 scored items across 5 rhythms + 9 unscored context items) at the time of this review
 **Written:** 2026-09-06
-**Status:** Desk review. Not yet actioned — findings below are candidates for the author to accept, reject, or defer.
+**Status:** §S5's full 12-item revision proposal was approved and shipped as v2.2 (see `docs/rhythm-tracker-instrument.md` §S9) — this document is a historical record of the review that produced it, not an open proposal.
 
 ---
 
@@ -85,16 +85,16 @@ Tank volume/age, `temp_swing`, `stocking_change`, `outcome_slip`, `outcome_inter
 
 ---
 
-## S4: What To Do With This
+## S4: What To Do With This (superseded by S5 — kept for the historical record)
 
-Nothing in S2 has been applied to the shipped instrument. Two of the findings (S2.2, S2.3) are concrete wording changes to scored-item text/sub-text — under §S8 of `docs/rhythm-tracker-instrument.md`, **any change to what respondents are asked earns a version bump, scored or not**, so acting on them means a v2.2 release, not a silent edit. Given that, the natural path is:
+At the time this section was written, nothing in S2 had been applied yet. Two of the findings (S2.2, S2.3) were concrete wording changes to scored-item text/sub-text — under §S8 of `docs/rhythm-tracker-instrument.md`, **any change to what respondents are asked earns a version bump, scored or not**, so acting on them meant a v2.2 release, not a silent edit. The plan laid out here was:
 
 1. Decide which of S2.2/S2.3's suggested rewordings (if any) to accept — they can be adjusted, not just accepted verbatim.
 2. If any are accepted, batch them into one version bump rather than one per item, the same way v1.3 and v1.4 each bundled several related additions.
 3. Add `cycle-status` (S2.1) to `docs/rhythm-tracker-pretest-protocol.md` §S5's probe list regardless of whether any wording changes — that finding can only really be resolved by watching a real person read the item aloud.
-4. Re-run the existing verification discipline for any scored-item change: all 5,120 answer combinations against the reference implementation (per the pattern in every version note in §S9 of the instrument record), plus `npm run i18n:check` twice for idempotence.
+4. Re-run the existing verification discipline for any scored-item change: `npm run i18n:check` twice for idempotence, and — for a scoring change specifically — all 5,120 answer combinations against the reference implementation.
 
-This document does not recommend a specific decision on 1–2; it surfaces what a close read found so the choice can be made deliberately rather than by default.
+All four happened: item 3 was done immediately (see `pretest-protocol.md` §S5); items 1–2 were resolved by the full item-by-item pass in S5 below, approved in full (all 12 UBAH items), and shipped as v2.2. Item 4's combination re-check was correctly judged unnecessary once it was confirmed no option value or scoring logic changed (S5's tally notes this explicitly) — only `npm run i18n:check` (×2, idempotent) and a Playwright regression were needed.
 
 ---
 
@@ -102,7 +102,7 @@ This document does not recommend a specific decision on 1–2; it surfaces what 
 
 Requested after S2–S4: a complete pass over every scored item's `text`, `sub`, and option `l`/`d` fields — not just the items already flagged — so nothing is left unreviewed. This also folds in a finding from the `opt-desc` mobile fix (shipped separately): now that `d` (the small italic detail line under each option) is visible on every screen size, an idiom sitting in an option's `l` is lower priority when its own `d` already restates the idea in plain words — the respondent isn't relying on the idiom alone anymore. That changes some priorities from S2: idioms inside `text`, `sub`, or `d` itself now matter more than idioms in `l` that are already glossed by their own `d`.
 
-Verdict legend: **KEKAL** = no change proposed. **UBAH** = concrete wording change proposed below, pending approval.
+Verdict legend: **KEKAL** = no change. **UBAH** = wording change, approved in full and shipped as v2.2 (see `docs/rhythm-tracker-instrument.md` §S9).
 
 ### Water Rhythm
 

@@ -1413,6 +1413,16 @@ function ryrSetAnswerDate(key,iso){
     localStorage.setItem('ryr_answer_dates',JSON.stringify(d));
   }catch(e){}
 }
+// Explicit "read it again" for one rhythm: clears its saved phase/answers/
+// date so the picker shows it as unanswered again and startRhythm() goes
+// back to Q1 instead of re-showing the old saved result.
+function ryrClearRhythmProgress(key){
+  try{
+    var p=ryrGetProgress();delete p[key];localStorage.setItem('ryr_progress',JSON.stringify(p));
+    var a=ryrGetAllAnswers();delete a[key];localStorage.setItem('ryr_all_answers',JSON.stringify(a));
+    var d=ryrGetAnswerDates();delete d[key];localStorage.setItem('ryr_answer_dates',JSON.stringify(d));
+  }catch(e){}
+}
 function ryrShareModalShow(){
   var shareEl=document.getElementById('ryr-share');
   // #ryr-share normally lives inside #ryr-picker-screen so it sits quietly
@@ -1529,13 +1539,13 @@ function ryrRenderChart(slotId){
     if(phase){
       polyPts.push(mx.toFixed(1)+','+my.toFixed(1));
       if(isCurrent)markers.push('<circle cx="'+mx.toFixed(1)+'" cy="'+my.toFixed(1)+'" r="10" fill="'+RYR_PHASE_COLOR[phase]+'" fill-opacity=".22"/>');
-      markers.push('<circle cx="'+mx.toFixed(1)+'" cy="'+my.toFixed(1)+'" r="6" fill="'+RYR_PHASE_COLOR[phase]+'" stroke="'+RYR_PHASE_COLOR[phase]+'"/>');
+      markers.push('<circle data-rhythm="'+key+'" cx="'+mx.toFixed(1)+'" cy="'+my.toFixed(1)+'" r="6" fill="'+RYR_PHASE_COLOR[phase]+'" stroke="'+RYR_PHASE_COLOR[phase]+'" style="cursor:pointer"/>');
     } else {
       markers.push('<circle class="ryr-chart-node" data-rhythm="'+key+'" cx="'+mx.toFixed(1)+'" cy="'+my.toFixed(1)+'" r="7" fill="var(--th-surface)" stroke="var(--th-ink-4)" stroke-width="1.5" stroke-dasharray="2,2" style="cursor:pointer"/>');
     }
     var label=RHYTHMS[key].name.replace(' Rhythm','');
     var anchor=Math.cos(a)>0.3?'start':Math.cos(a)<-0.3?'end':'middle';
-    labels.push('<text class="'+(phase?'':'ryr-chart-label-pending')+'"'+(phase?'':' data-rhythm="'+key+'" style="cursor:pointer"')+' x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" text-anchor="'+anchor+'" dominant-baseline="middle">'+label+'</text>');
+    labels.push('<text class="'+(phase?'':'ryr-chart-label-pending')+'" data-rhythm="'+key+'" style="cursor:pointer" x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" text-anchor="'+anchor+'" dominant-baseline="middle">'+label+'</text>');
   });
   var poly = polyPts.length>1
     ? '<polygon points="'+polyPts.join(' ')+'" fill="var(--th-accent)" fill-opacity=".08" stroke="var(--th-accent)" stroke-width="1.5"/>'
@@ -1571,6 +1581,15 @@ function hidePicker(){
   setTimeout(function(){picker.style.display='none';picker.style.opacity='1';},500);
 }
 function startRhythm(key){
+  var saved=ryrGetAllAnswers()[key];
+  if(saved&&Object.keys(saved).length===RHYTHMS[key].questions.length){
+    curRhythm=key;ans=saved;
+    hideIntro();
+    hidePicker();
+    renderResult();
+    ryrArmHistoryGuard();
+    return;
+  }
   curRhythm=key;ans={};
   document.getElementById('ryr-q-rhythm').textContent=RHYTHMS[key].name;
   hideIntro();
@@ -1633,7 +1652,14 @@ function showQ(i){
   document.getElementById('ryr-btn-back').style.visibility='visible';
   window.scrollTo({top:0,behavior:'auto'});
 }
-function showResult(){
+// Pure rendering of the result screen from curRhythm/ans — no storage writes,
+// no analytics. Used both for a freshly-finished rhythm (via showResult,
+// below) and for re-opening an already-completed rhythm's saved result from
+// the picker (via startRhythm/viewSavedResult) — the latter must not re-fire
+// completion tracking or overwrite ryr_answer_dates with "now" just because
+// someone tapped in to look, or a mere view would corrupt the funnel
+// analytics and the freshness data v1.3 added answer_dates to protect.
+function renderResult(){
   document.getElementById('ryr-screen').style.display='none';
   document.getElementById('ryr-result').style.display='block';
   var ref=RHYTHMS[curRhythm].reflect(ans);
@@ -1644,13 +1670,17 @@ function showResult(){
   document.getElementById('ryr-closing-q').textContent=ref.closing;
   document.getElementById('ryr-phase-text').textContent=ref.phase;
   ryrShowInlineContext(curRhythm);
+  ryrRenderChart('ryr-chart-svg-slot');
+  window.scrollTo({top:0,behavior:'auto'});
+  return ref;
+}
+function showResult(){
+  var ref=renderResult();
   ryrSetProgress(curRhythm,ref.phaseLabel);
   ryrSetAllAnswers(curRhythm,ans);
   ryrSetAnswerDate(curRhythm,new Date().toISOString());
-  ryrRenderChart('ryr-chart-svg-slot');
   ryrTrack('ryr_rhythm_complete',{rhythm:curRhythm,completed_count:Object.keys(ryrGetProgress()).length});
   ryrShareCheckpoint();
-  window.scrollTo({top:0,behavior:'auto'});
 }
 document.getElementById('ryr-pick-water').addEventListener('click',function(){startRhythm('water');});
 document.getElementById('ryr-pick-biological').addEventListener('click',function(){startRhythm('biological');});
@@ -1666,6 +1696,7 @@ document.getElementById('ryr-btn-back').addEventListener('click',function(){
   if(curQ>0)showQ(curQ-1);else ryrReturnToPicker();
 });
 document.getElementById('ryr-btn-restart').addEventListener('click',function(){
+  ryrClearRhythmProgress(curRhythm);
   ans={};ryrReturnToPicker();
 });
 document.getElementById('ryr-btn-to-picker').addEventListener('click',function(){

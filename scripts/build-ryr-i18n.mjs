@@ -490,6 +490,13 @@ for (const lang of targetLangs) {
   // 11. Question screen + result screen chrome
   h = replaceOnce(h, /(<button class="ryr-btn-back" id="ryr-btn-back">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.backBtn}${b}`);
   h = replaceOnce(h, /(<button class="ryr-btn-next" id="ryr-btn-next">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.nextBtn}${b}`);
+  // Water's in-flow optional step (v2.2, #ryr-optstep-screen) has its own
+  // back/continue buttons, separate ids from the ones above — "Continue"
+  // rather than "Next" since nothing after it is mandatory the way a scored
+  // question is.
+  h = replaceOnce(h, /(<button class="ryr-btn-back" id="ryr-optstep-back">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.backBtn}${b}`);
+  h = replaceOnce(h, /(<button class="ryr-btn-next active" id="ryr-optstep-continue">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.continueBtn}${b}`);
+  h = replaceOnce(h, /(<span class="ryr-q-num">)Optional(<\/span>)/, (_, a, b) => `${a}${t.chrome.optionalStepLabel}${b}`);
   // Runtime JS also rewrites this button's text every time a question
   // renders (showQ()'s ternary) — same class of bug as the eyebrow above:
   // the static swap only covers the pre-JS markup.
@@ -554,10 +561,18 @@ for (const lang of targetLangs) {
   // Water Rhythm with its own inline field for the first time.
   // Volume buckets are numeric ("20–60 L") and stay as-is in every language.
   // Everything else in the block is discovered from the translation file
-  // rather than listed here: `labels` is keyed by the span's own id, and every
-  // group under `options` is keyed by the option's own value (values are unique
-  // across the block). Adding a question later needs markup plus a JSON key —
-  // no edit to this script, which is where a hardcoded list would rot.
+  // rather than listed here: `labels` is keyed by the element's own id, and
+  // every group under `options` is keyed by the option's own value (values
+  // are unique across the block). Adding a question later needs markup plus
+  // a JSON key — no edit to this script, which is where a hardcoded list
+  // would rot.
+  //
+  // The `labels` substitution matches by id only, not by a specific tag or
+  // class — Water's oxygen_testing field moved in-flow (v2.2) as an `<h2
+  // class="ryr-q-text">` heading rather than the `<span class="ryr-cov-label">`
+  // every other field uses, since it needed the visual weight of a real
+  // question, not a small field label. Matching by id alone means either
+  // shape (or any future one) is picked up without this script caring which.
   const tc = t.chrome.tankContext || {};
   h = replaceOnce(h, /(<span class="ryr-picker-label" id="ryr-tank-context-label">)[^<]*(<\/span>)/, (_, a, b) => `${a}${tc.heading}${b}`);
   h = replaceOnce(h, /(<p class="ryr-share-cov-note" id="ryr-share-cov-note">)[^<]*(<\/p>)/, (_, a, b) => `${a}${tc.note}${b}`);
@@ -565,7 +580,7 @@ for (const lang of targetLangs) {
     h = replaceOnce(h, new RegExp(`(<p class="ryr-share-cov-note" id="ryr-ctx-${rhythmKey}-note">)[^<]*(</p>)`), (_, a, b) => `${a}${tc.inlineNote}${b}`);
   });
   Object.entries(tc.labels || {}).forEach(([id, label]) => {
-    h = replaceOnce(h, new RegExp(`(<span class="ryr-cov-label" id="${id}">)[^<]*(</span>)`), (_, a, b) => `${a}${label}${b}`);
+    h = replaceOnce(h, new RegExp(`(id="${id}">)[^<]*`), (_, a) => `${a}${label}`);
   });
   Object.values(tc.options || {}).forEach((group) => {
     Object.entries(group).forEach(([value, label]) => {

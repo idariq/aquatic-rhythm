@@ -360,21 +360,21 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
         <h2 class="ryr-q-text" id="ryr-cov-oxygentest-label">溶存酸素を直接測定していますか</h2>
         <p class="ryr-share-cov-note" id="ryr-ctx-water-note">任意です。後で内省を共有することを選ばない限り、どこにも送信されません。</p>
         <div class="ryr-share-cov">
-          <label class="ryr-cov-field">
+          <div class="ryr-cov-field">
             <select class="ryr-cov-select" id="ryr-cov-oxygentest" data-field="oxygen_testing">
               <option value="">—</option>
               <option value="o2-tested">はい、専用の測定器や試薬で測っています</option>
               <option value="o2-aware-untested">いいえ、でも今回初めてその存在を知りました</option>
               <option value="o2-unaware-untested">いいえ、これまで考えたこともありませんでした</option>
             </select>
-          </label>
+          </div>
         </div>
       </div>
       <div class="ryr-optstep-fields" id="ryr-optstep-biological" hidden>
         <h2 class="ryr-q-text" id="ryr-cov-slip-label">世話が滞ったとき</h2>
         <p class="ryr-share-cov-note" id="ryr-ctx-biological-note">任意です。後で内省を共有することを選ばない限り、どこにも送信されません。</p>
         <div class="ryr-share-cov">
-          <label class="ryr-cov-field">
+          <div class="ryr-cov-field">
             <select class="ryr-cov-select" id="ryr-cov-slip" data-field="outcome_slip">
               <option value="">—</option>
               <option value="slip-held">大きな変化はなく、持ちこたえました</option>
@@ -382,14 +382,14 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
               <option value="slip-needed-help">手を入れて立て直す必要がありました</option>
               <option value="slip-not-yet">まだ滞ったことがないので分かりません</option>
             </select>
-          </label>
+          </div>
         </div>
       </div>
       <div class="ryr-optstep-fields" id="ryr-optstep-environmental" hidden>
         <h2 class="ryr-q-text" id="ryr-cov-tempswing-label">実際どのくらい温度が変動するか</h2>
         <p class="ryr-share-cov-note" id="ryr-ctx-environmental-note">任意です。後で内省を共有することを選ばない限り、どこにも送信されません。</p>
         <div class="ryr-share-cov">
-          <label class="ryr-cov-field">
+          <div class="ryr-cov-field">
             <select class="ryr-cov-select" id="ryr-cov-tempswing" data-field="temp_swing">
               <option value="">—</option>
               <option value="temp-barely">ほとんど変わらないと感じている</option>
@@ -397,14 +397,14 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
               <option value="temp-noticeable">かなりの幅で変動している</option>
               <option value="temp-unsure">正直、分かりません</option>
             </select>
-          </label>
+          </div>
         </div>
       </div>
       <div class="ryr-optstep-fields" id="ryr-optstep-livestock" hidden>
         <h2 class="ryr-q-text" id="ryr-cov-stocking-label">生体の数の変化</h2>
         <p class="ryr-share-cov-note" id="ryr-ctx-livestock-note">任意です。後で内省を共有することを選ばない限り、どこにも送信されません。</p>
         <div class="ryr-share-cov">
-          <label class="ryr-cov-field">
+          <div class="ryr-cov-field">
             <select class="ryr-cov-select" id="ryr-cov-stocking" data-field="stocking_change">
               <option value="">—</option>
               <option value="stock-same">計画どおり、または意図して変えました</option>
@@ -413,14 +413,14 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
               <option value="stock-reduced">減らしました</option>
               <option value="stock-too-new">新しすぎて当てはまりません</option>
             </select>
-          </label>
+          </div>
         </div>
       </div>
       <div class="ryr-optstep-fields" id="ryr-optstep-keeper" hidden>
         <h2 class="ryr-q-text" id="ryr-optstep-keeper-heading">最近の様子について、もう少しだけ</h2>
         <p class="ryr-share-cov-note" id="ryr-ctx-keeper-note">任意です。後で内省を共有することを選ばない限り、どこにも送信されません。</p>
         <div class="ryr-share-cov">
-          <label class="ryr-cov-field">
+          <div class="ryr-cov-field">
             <span class="ryr-cov-label" id="ryr-cov-life-label">今、リズムを乱しているもの</span>
             <select class="ryr-cov-select" id="ryr-cov-life" data-field="life_change">
               <option value="">—</option>
@@ -429,8 +429,8 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
               <option value="life-extended">長めの中断（数週間から数か月）</option>
               <option value="life-permanent">使える時間が今後ずっと変わりました</option>
             </select>
-          </label>
-          <label class="ryr-cov-field">
+          </div>
+          <div class="ryr-cov-field">
             <span class="ryr-cov-label" id="ryr-cov-intervene-label">先月、手を入れて直した回数</span>
             <select class="ryr-cov-select" id="ryr-cov-intervene" data-field="outcome_intervention">
               <option value="">—</option>
@@ -440,8 +440,8 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
               <option value="int-most-weeks">ほぼ毎週</option>
               <option value="int-too-new">新しすぎて判断できません</option>
             </select>
-          </label>
-          <label class="ryr-cov-field">
+          </div>
+          <div class="ryr-cov-field">
             <span class="ryr-cov-label" id="ryr-cov-intent-label">これは意図しているリズムですか</span>
             <select class="ryr-cov-select" id="ryr-cov-intent" data-field="care_intent">
               <option value="">—</option>
@@ -450,7 +450,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
               <option value="intent-circumstances">いいえ。状況に押される形になっています</option>
               <option value="intent-intensive">今は意図的に集中して手をかけている時期です</option>
             </select>
-          </label>
+          </div>
         </div>
       </div>
       <div class="ryr-nav">
@@ -1328,6 +1328,48 @@ function ryrRestoreTankContext(){
     if(v)el.value=v;
   });
 }
+/* Opt-step fields render as .ryr-opt buttons (same look as a scored
+   question) instead of the raw <select> — the select itself is kept, just
+   hidden, as the one source of truth for the field's options and value:
+   every option's label is read straight off its <option> textContent at
+   build time below, so the existing i18n pipeline (which only ever touches
+   <option> text, never these buttons) keeps working with no changes. This
+   also means ryrTankContext()/ryrSaveTankContext()/ryrRestoreTankContext()
+   above needed no changes either — they only ever look at the select's
+   .value, never at how it's displayed. Scoped to #ryr-optstep-screen only;
+   tank_volume/tank_age on the picker screen stay plain dropdowns. */
+function ryrBuildOptButtons(){
+  document.querySelectorAll('#ryr-optstep-screen .ryr-cov-select').forEach(function(select){
+    select.hidden=true;
+    var group=document.createElement('div');
+    group.className='ryr-options ryr-cov-opts';
+    Array.prototype.forEach.call(select.options,function(opt){
+      if(!opt.value)return; // the "—" placeholder: not clicking anything already means no answer
+      var btn=document.createElement('button');
+      btn.type='button';
+      btn.className='ryr-opt';
+      btn.dataset.value=opt.value;
+      btn.innerHTML='<span class="ryr-opt-label">'+opt.textContent+'</span>';
+      btn.addEventListener('click',function(){
+        var already=btn.classList.contains('selected');
+        Array.prototype.forEach.call(group.children,function(b){b.classList.remove('selected');});
+        select.value=already?'':opt.value; // clicking the selected option again clears it, since the field is optional
+        if(!already)btn.classList.add('selected');
+        select.dispatchEvent(new Event('change',{bubbles:true}));
+      });
+      group.appendChild(btn);
+    });
+    select.insertAdjacentElement('afterend',group);
+  });
+}
+function ryrSyncOptButtons(){
+  document.querySelectorAll('#ryr-optstep-screen .ryr-cov-opts').forEach(function(group){
+    var select=group.previousElementSibling;
+    Array.prototype.forEach.call(group.children,function(btn){
+      btn.classList.toggle('selected',btn.dataset.value===select.value);
+    });
+  });
+}
 /* Repeat submission (v1.3). A single snapshot cannot show a sequence, and
    every pathway claim in the framework is about sequence. The respondent id
    already links submissions; these fields say where in a series each one
@@ -1756,7 +1798,9 @@ document.getElementById('ryr-share-consent').addEventListener('change',function(
 Array.prototype.forEach.call(document.querySelectorAll('.ryr-cov-select[data-field]'),function(el){
   el.addEventListener('change',ryrSaveTankContext);
 });
+ryrBuildOptButtons();
 ryrRestoreTankContext();
+ryrSyncOptButtons();
 document.getElementById('ryr-share-btn').addEventListener('click',function(){
   var btn=this;
   var consent=document.getElementById('ryr-share-consent');

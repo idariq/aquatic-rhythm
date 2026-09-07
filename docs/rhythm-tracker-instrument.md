@@ -874,6 +874,31 @@ answering all five rhythms across en/id/ja confirming each opt-step shows
 exactly its own field(s), Continue works with and without a selection, and
 the final submission payload carries all seven now-in-flow context values.
 
+**Third same-week pass, same non-bump reasoning**: the opt-step's seven
+fields rendered as `<select>` dropdowns, inconsistent with the `.ryr-opt`
+button style every scored question already uses. `ryrBuildOptButtons()`
+now hides each `<select>` (`select.hidden=true`) and builds a sibling
+button group by reading the select's own `<option>` elements at runtime —
+so the select stays the one source of truth for a field's options and
+current value, and the existing i18n pipeline (which only ever substitutes
+`<option>` text, never touched these new buttons) needed no changes at all.
+`ryrTankContext()`/`ryrSaveTankContext()`/`ryrRestoreTankContext()` were
+untouched for the same reason — they only ever read/write `.value`.
+Clicking a button toggles it off again on a second click, since the field
+is optional and a respondent may want to back out of an accidental choice;
+`ryrSyncOptButtons()` re-applies the visual selected state after
+`ryrRestoreTankContext()` runs, so a field answered on an earlier visit
+shows its button already selected on return, not just the (hidden) select
+holding the right value. Scoped to `#ryr-optstep-screen` only —
+`tank_volume`/`tank_age` on the picker screen stay plain dropdowns, since
+that placement was never in question. Verified: `npm run check` (0
+errors), `npm run i18n:check` run twice (identical diff-stats), and a
+Playwright pass confirming each field's buttons carry the correctly
+translated option text (read straight off the live `<option>` elements,
+proving no separate translation work was needed), click-to-select,
+click-again-to-clear, and restore-after-reload all behave correctly across
+en/id/ja.
+
 ---
 
 ## S10: Open Actions

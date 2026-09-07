@@ -117,8 +117,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 .ryr-opt{display:block;width:100%;text-align:left;padding:.88rem 1.15rem;background:var(--th-surface-2);border:1px solid var(--th-accent-border);border-radius:2px;cursor:pointer;transition:background .2s,border-color .25s,transform .18s;font-family:var(--sans)}
 .ryr-opt:hover{background:var(--th-accent-soft);border-color:var(--th-accent);transform:translateX(3px)}
 .ryr-opt.selected{background:var(--th-surface-2);border-color:var(--th-accent)}
-.ryr-opt-label{font-size:var(--fs-sm-md);font-weight:400;color:var(--th-ink-2);display:block;margin-bottom:.16rem}
-.ryr-opt-desc{font-size:var(--fs-xs);color:var(--th-ink-4);line-height:1.52;font-style:italic;font-family:var(--serif)}
+.ryr-opt-label{font-size:var(--fs-sm-md);font-weight:400;color:var(--th-ink-2);display:block}
 .ryr-nav{display:flex;justify-content:space-between;align-items:center}
 .ryr-btn-next{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;background:var(--th-accent);color:var(--th-accent-ink);border:1px solid var(--th-accent-border);padding:.7rem 1.9rem;border-radius:2px;cursor:pointer;transition:background .25s,opacity .25s;font-family:var(--sans);opacity:.28;pointer-events:none}
 .ryr-btn-next.active{opacity:1;pointer-events:all}
@@ -1690,7 +1689,14 @@ function showQ(i){
   q.opts.forEach(function(opt){
     var btn=document.createElement('button');
     btn.className='ryr-opt'+(ans[q.id]===opt.v?' selected':'');
-    btn.innerHTML='<span class="ryr-opt-label">'+opt.l+'</span><span class="ryr-opt-desc">'+opt.d+'</span>';
+    // opt.d (each option's longer rationale/example) is deliberately not
+    // rendered — every opt.l was reviewed and confirmed to already stand on
+    // its own as a complete answer, and the site would otherwise fill four
+    // long italic sub-lines per question. opt.d is left in RHYTHMS purely as
+    // editorial reference (why the option means what it means), not because
+    // anything still reads it — see the comment at showOptStep() for the
+    // opt-step's own, unrelated buttons, which never had a description.
+    btn.innerHTML='<span class="ryr-opt-label">'+opt.l+'</span>';
     btn.addEventListener('click',function(){
       ans[q.id]=opt.v;
       oc.querySelectorAll('.ryr-opt').forEach(function(b){b.classList.remove('selected');});

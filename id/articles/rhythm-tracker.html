@@ -148,7 +148,6 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
 .ryr-phase-note{margin-top:1.6rem;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2)}
 .ryr-phase-note p{font-size:var(--fs-sm-md);font-weight:300;color:var(--th-ink-2);line-height:1.85;margin:0}
 .ryr-note-end{font-size:var(--fs-sm);color:var(--th-ink-4);line-height:1.7;margin-top:2.5rem;font-style:italic;font-family:var(--serif)}
-.ryr-ctx-inline{margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
 .ryr-share{margin-top:2rem;padding:1.4rem 1.6rem;border:1px solid var(--th-line);background:var(--th-surface-2);border-radius:4px}
 .ryr-share-congrats{font-family:var(--serif);font-style:italic;font-weight:300;font-size:var(--fs-lg);color:var(--th-ink);line-height:1.4;margin-bottom:.9rem}
 .ryr-share-text{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.75;margin-bottom:.9rem}
@@ -339,60 +338,56 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       </div>
     </div>
   </div>
-  <!-- One optional, unscored step shown in-flow after Water's 5 questions
-       (moved here from a small inline field on the result screen — it was
-       too easy to miss there). Only Water has one of these for now; scoped
-       deliberately to this one field rather than generalised into a
-       per-rhythm mechanism no other rhythm currently needs. Continue is
+  <!-- One optional, unscored step shown in-flow after each rhythm's 5
+       questions and before its result (moved here from a small inline field
+       on the result screen — it was too easy to miss there, per the owner's
+       report after v2.2 shipped it for Water only). Generalised to all five
+       rhythms since Water's version proved out the pattern. Continue is
        always active since a skip is a valid, real answer, not a blocked
-       state like an unanswered scored question. -->
+       state like an unanswered scored question. Exactly one of the five
+       `.ryr-optstep-fields` groups below is shown at a time, matching
+       curRhythm — see showOptStep(). Keeper's group carries three fields
+       (its context was already three questions, not one), so it gets a
+       short generic heading instead of reusing a single field's own label
+       the way the other four do. -->
   <div id="ryr-optstep-screen">
     <div class="ryr-wrap">
-      <span class="ryr-q-rhythm">Water Rhythm</span>
+      <span class="ryr-q-rhythm" id="ryr-optstep-rhythm">Water Rhythm</span>
       <span class="ryr-q-num">Opsional</span>
-      <h2 class="ryr-q-text" id="ryr-cov-oxygentest-label">Apakah Anda menguji oksigen terlarut secara langsung</h2>
-      <p class="ryr-share-cov-note" id="ryr-ctx-water-note">Opsional, dan tidak dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti.</p>
-      <div class="ryr-share-cov">
-        <label class="ryr-cov-field">
-          <select class="ryr-cov-select" id="ryr-cov-oxygentest" data-field="oxygen_testing">
-            <option value="">—</option>
-            <option value="o2-tested">Ya, dengan alat uji atau meteran khusus</option>
-            <option value="o2-aware-untested">Tidak, tapi sekarang saya jadi tahu ini penting</option>
-            <option value="o2-unaware-untested">Tidak, sebelum ini saya belum pernah memikirkannya</option>
-          </select>
-        </label>
+      <div class="ryr-optstep-fields" id="ryr-optstep-water">
+        <h2 class="ryr-q-text" id="ryr-cov-oxygentest-label">Apakah Anda menguji oksigen terlarut secara langsung</h2>
+        <p class="ryr-share-cov-note" id="ryr-ctx-water-note">Opsional, dan tidak dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti.</p>
+        <div class="ryr-share-cov">
+          <label class="ryr-cov-field">
+            <select class="ryr-cov-select" id="ryr-cov-oxygentest" data-field="oxygen_testing">
+              <option value="">—</option>
+              <option value="o2-tested">Ya, dengan alat uji atau meteran khusus</option>
+              <option value="o2-aware-untested">Tidak, tapi sekarang saya jadi tahu ini penting</option>
+              <option value="o2-unaware-untested">Tidak, sebelum ini saya belum pernah memikirkannya</option>
+            </select>
+          </label>
+        </div>
       </div>
-      <div class="ryr-nav">
-        <button class="ryr-btn-back" id="ryr-optstep-back">← Kembali</button>
-        <button class="ryr-btn-next active" id="ryr-optstep-continue">Lanjutkan →</button>
+      <div class="ryr-optstep-fields" id="ryr-optstep-biological" hidden>
+        <h2 class="ryr-q-text" id="ryr-cov-slip-label">Saat perawatan sempat kendur</h2>
+        <p class="ryr-share-cov-note" id="ryr-ctx-biological-note">Opsional, dan tidak dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti.</p>
+        <div class="ryr-share-cov">
+          <label class="ryr-cov-field">
+            <select class="ryr-cov-select" id="ryr-cov-slip" data-field="outcome_slip">
+              <option value="">—</option>
+              <option value="slip-held">Tidak banyak berubah — akuariumnya bertahan</option>
+              <option value="slip-settled">Ada perubahan kecil yang mereda sendiri</option>
+              <option value="slip-needed-help">Saya harus turun tangan memulihkannya</option>
+              <option value="slip-not-yet">Perawatan belum pernah kendur, jadi saya belum tahu</option>
+            </select>
+          </label>
+        </div>
       </div>
-    </div>
-  </div>
-  <div id="ryr-result">
-    <div class="ryr-result-wrap">
-      <span class="ryr-result-eyebrow" id="ryr-result-eyebrow">Water Rhythm — refleksi Anda</span>
-      <div class="ryr-chart-wrap">
-        <span class="ryr-chart-eyebrow" id="ryr-chart-eyebrow">Di seluruh lima ritme</span>
-        <div id="ryr-chart-svg-slot"></div>
-        <p class="ryr-chart-hint" id="ryr-chart-hint">Ketuk salah satu ritme yang masih kosong untuk mulai memeriksanya juga — tidak ada urutan yang harus diikuti di sini.</p>
-      </div>
-      <h2 class="ryr-result-title" id="ryr-result-title"></h2>
-      <div class="ryr-reflection" id="ryr-reflection"></div>
-      <div class="ryr-divider"></div>
-      <div class="ryr-q-close">
-        <span class="ryr-q-close-label">Pertanyaan untuk direnungkan</span>
-        <p id="ryr-closing-q"></p>
-      </div>
-      <div class="ryr-phase-note" id="ryr-phase-note">
-        <span class="ryr-q-close-label">Tahap ritme ini</span>
-        <p id="ryr-phase-text"></p>
-      </div>
-      <p class="ryr-note-end">Refleksi ini hanya mencakup satu ritme. Sebuah akuarium bisa berada di fase berbeda pada tiap-tiap dari lima ritmenya — ini bukan gambaran penuh, hanya satu bagian jujur darinya.</p>
-      <div class="ryr-ctx-inline" id="ryr-ctx-environmental" hidden>
+      <div class="ryr-optstep-fields" id="ryr-optstep-environmental" hidden>
+        <h2 class="ryr-q-text" id="ryr-cov-tempswing-label">Seberapa banyak suhu sebenarnya berubah</h2>
         <p class="ryr-share-cov-note" id="ryr-ctx-environmental-note">Opsional, dan tidak dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti.</p>
         <div class="ryr-share-cov">
           <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-tempswing-label">Seberapa banyak suhu sebenarnya berubah</span>
             <select class="ryr-cov-select" id="ryr-cov-tempswing" data-field="temp_swing">
               <option value="">—</option>
               <option value="temp-barely">Nyaris tidak berubah, sejauh yang saya tahu</option>
@@ -403,11 +398,11 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
           </label>
         </div>
       </div>
-      <div class="ryr-ctx-inline" id="ryr-ctx-livestock" hidden>
+      <div class="ryr-optstep-fields" id="ryr-optstep-livestock" hidden>
+        <h2 class="ryr-q-text" id="ryr-cov-stocking-label">Bagaimana isi tebaran berubah</h2>
         <p class="ryr-share-cov-note" id="ryr-ctx-livestock-note">Opsional, dan tidak dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti.</p>
         <div class="ryr-share-cov">
           <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-stocking-label">Bagaimana isi tebaran berubah</span>
             <select class="ryr-cov-select" id="ryr-cov-stocking" data-field="stocking_change">
               <option value="">—</option>
               <option value="stock-same">Sama seperti rencana, atau diubah dengan sengaja</option>
@@ -419,22 +414,8 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
           </label>
         </div>
       </div>
-      <div class="ryr-ctx-inline" id="ryr-ctx-biological" hidden>
-        <p class="ryr-share-cov-note" id="ryr-ctx-biological-note">Opsional, dan tidak dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti.</p>
-        <div class="ryr-share-cov">
-          <label class="ryr-cov-field">
-            <span class="ryr-cov-label" id="ryr-cov-slip-label">Saat perawatan sempat kendur</span>
-            <select class="ryr-cov-select" id="ryr-cov-slip" data-field="outcome_slip">
-              <option value="">—</option>
-              <option value="slip-held">Tidak banyak berubah — akuariumnya bertahan</option>
-              <option value="slip-settled">Ada perubahan kecil yang mereda sendiri</option>
-              <option value="slip-needed-help">Saya harus turun tangan memulihkannya</option>
-              <option value="slip-not-yet">Perawatan belum pernah kendur, jadi saya belum tahu</option>
-            </select>
-          </label>
-        </div>
-      </div>
-      <div class="ryr-ctx-inline" id="ryr-ctx-keeper" hidden>
+      <div class="ryr-optstep-fields" id="ryr-optstep-keeper" hidden>
+        <h2 class="ryr-q-text" id="ryr-optstep-keeper-heading">Sedikit lagi, tentang bagaimana keadaannya belakangan ini</h2>
         <p class="ryr-share-cov-note" id="ryr-ctx-keeper-note">Opsional, dan tidak dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti.</p>
         <div class="ryr-share-cov">
           <label class="ryr-cov-field">
@@ -470,6 +451,32 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
           </label>
         </div>
       </div>
+      <div class="ryr-nav">
+        <button class="ryr-btn-back" id="ryr-optstep-back">← Kembali</button>
+        <button class="ryr-btn-next active" id="ryr-optstep-continue">Lanjutkan →</button>
+      </div>
+    </div>
+  </div>
+  <div id="ryr-result">
+    <div class="ryr-result-wrap">
+      <span class="ryr-result-eyebrow" id="ryr-result-eyebrow">Water Rhythm — refleksi Anda</span>
+      <div class="ryr-chart-wrap">
+        <span class="ryr-chart-eyebrow" id="ryr-chart-eyebrow">Di seluruh lima ritme</span>
+        <div id="ryr-chart-svg-slot"></div>
+        <p class="ryr-chart-hint" id="ryr-chart-hint">Ketuk salah satu ritme yang masih kosong untuk mulai memeriksanya juga — tidak ada urutan yang harus diikuti di sini.</p>
+      </div>
+      <h2 class="ryr-result-title" id="ryr-result-title"></h2>
+      <div class="ryr-reflection" id="ryr-reflection"></div>
+      <div class="ryr-divider"></div>
+      <div class="ryr-q-close">
+        <span class="ryr-q-close-label">Pertanyaan untuk direnungkan</span>
+        <p id="ryr-closing-q"></p>
+      </div>
+      <div class="ryr-phase-note" id="ryr-phase-note">
+        <span class="ryr-q-close-label">Tahap ritme ini</span>
+        <p id="ryr-phase-text"></p>
+      </div>
+      <p class="ryr-note-end">Refleksi ini hanya mencakup satu ritme. Sebuah akuarium bisa berada di fase berbeda pada tiap-tiap dari lima ritmenya — ini bukan gambaran penuh, hanya satu bagian jujur darinya.</p>
       <div class="ryr-actions">
         <button type="button" class="ryr-link-reading ryr-btn-link" id="ryr-btn-to-picker">← Pilih ritme lain</button>
         <button class="ryr-btn-restart" id="ryr-btn-restart">Baca lagi</button>
@@ -1245,45 +1252,46 @@ function ryrTrack(name,params){
 }
 /* Tank context: covariates (v1.2) plus outcome and intent items (v1.3).
    Originally one block in the share modal (asked only after all five
-   rhythms, right above consent). Split across two locations 2026-09-06:
+   rhythms, right above consent). Moved twice since:
 
-   1. `tank_volume`/`tank_age` stay on the picker screen, ahead of the
-      rhythm cards — pure tank facts that don't depend on having read any
-      rhythm, and the fix for a multi-tank keeper otherwise having no cue
-      that all five rhythms should be about the same tank.
-   2. `temp_swing`/`stocking_change`/`outcome_slip`/`life_change`/
-      `outcome_intervention`/`care_intent` moved to inline blocks on the
-      specific rhythm's OWN result screen (`.ryr-ctx-inline`,
-      `ryrShowInlineContext()` below) — each is thematically paired with
-      that rhythm (`temp_swing` with Environmental's `temp-check-freq`;
-      `stocking_change` with Livestock's bioload theme; `outcome_slip` with
-      Biological's false-maturity/forgiveness theme; the other three with
-      Keeper's capacity/intent theme) and is more legibly "about what you
-      just read" asked there than bundled upfront.
+   1. (2026-09-06) `tank_volume`/`tank_age` moved to the picker screen,
+      ahead of the rhythm cards — pure tank facts that don't depend on
+      having read any rhythm, and the fix for a multi-tank keeper otherwise
+      having no cue that all five rhythms should be about the same tank.
+      `temp_swing`/`stocking_change`/`outcome_slip`/`life_change`/
+      `outcome_intervention`/`care_intent` moved to inline blocks on each
+      field's thematically-paired rhythm's OWN result screen (`temp_swing`
+      with Environmental's `temp-check-freq`; `stocking_change` with
+      Livestock's bioload theme; `outcome_slip` with Biological's
+      false-maturity/forgiveness theme; the other three with Keeper's
+      capacity/intent theme). `oxygen_testing` (v2.1, same day) joined
+      Water's result screen the same way, closing the reasoning-vs-behaviour
+      split the hypothesis inventory named for H-W3 (the scored `oxygen-read`
+      item tests how a respondent would *interpret* a gasping-fish scenario,
+      not whether they actually *test* for DO in practice).
 
-   `oxygen_testing` (v2.1, same day) fills what was Water's gap: it asks
-   directly whether the respondent tests for dissolved oxygen, closing the
-   reasoning-vs-behaviour split the hypothesis inventory named for H-W3 —
-   the scored `oxygen-read` item tests how they'd *interpret* a gasping-fish
-   scenario, not whether they actually *test* for DO in practice. Originally
-   paired with Water Rhythm's result screen the same way the others pair
-   with theirs; moved in-flow instead as `#ryr-optstep-screen` (see
-   `showOptStep()` below) after the owner found it too easy to miss as a
-   small field below a long reflection. It is the only context field asked
-   before a rhythm's result rather than alongside it — `RYR_CTX_BY_RHYTHM`
-   has no `water` entry any more because of this, not by omission.
+   2. (v2.2, same week) ALL SIX fields moved again, from those inline
+      result-screen blocks to an in-flow, optional step shown right after
+      each rhythm's 5th question and before its result — `#ryr-optstep-screen`
+      (see `showOptStep()` below), one `.ryr-optstep-fields` group per
+      rhythm. Water's oxygen_testing made this move first, alone; the owner
+      then asked for the same treatment on the other four once it proved the
+      small-field-on-the-result-screen placement was too easy to miss. The
+      old `.ryr-ctx-inline`/`RYR_CTX_BY_RHYTHM`/`ryrShowInlineContext()`
+      mechanism this replaced is gone — no context field lives on a result
+      screen any more.
 
    Deliberately still optional and still unscored throughout, despite now
-   being shown before/alongside specific rhythms rather than only to
-   respondents who reach the share step: filling any of these in is a
-   private aid to the respondent's own consistency, not a data-collection
-   ask — nothing here is transmitted unless the respondent separately opts
-   in and sends at the end, exactly as before. An unanswered select submits
-   an empty string, distinguishable from every bucket. Remembered locally
-   (one shared `ryr_tank_context` object regardless of which screen a field
-   lives on) so a respondent re-sending after revising an answer doesn't
-   have to re-pick, and so a field answered on one visit still has its value
-   when its rhythm's result screen is viewed again later.
+   being asked mid-flow rather than only to respondents who reach the share
+   step: filling any of these in is a private aid to the respondent's own
+   consistency, not a data-collection ask — nothing here is transmitted
+   unless the respondent separately opts in and sends at the end, exactly as
+   before. An unanswered select submits an empty string, distinguishable
+   from every bucket. Remembered locally (one shared `ryr_tank_context`
+   object regardless of which screen a field lives on) so a respondent
+   re-sending after revising an answer doesn't have to re-pick, and so a
+   field answered on one visit still has its value when its rhythm is
+   attempted again later.
 
    NONE OF THESE FEED SCORING, and they must not. The outcome items exist to
    give the ecological claims something to be checked against; scoring a
@@ -1293,10 +1301,10 @@ function ryrTrack(name,params){
    Collected from the DOM by [data-field], not from a list here — a hardcoded
    field list is the drift point that lets a new question be added to the
    markup and silently never transmitted. This also means it does not matter
-   that most `.ryr-ctx-inline` blocks sit `hidden` at any given moment: a
-   hidden field's current value is still read (and still restored on page
-   load), only its own visibility depends on which rhythm's result is
-   showing. */
+   that four of the five `.ryr-optstep-fields` groups sit `hidden` at any
+   given moment: a hidden field's current value is still read (and still
+   restored on page load), only its own visibility depends on which rhythm's
+   opt-step is showing. */
 function ryrTankContext(){
   var out={};
   Array.prototype.forEach.call(document.querySelectorAll('.ryr-cov-select[data-field]'),function(el){
@@ -1316,18 +1324,6 @@ function ryrRestoreTankContext(){
   Array.prototype.forEach.call(document.querySelectorAll('.ryr-cov-select[data-field]'),function(el){
     var v=c[el.getAttribute('data-field')];
     if(v)el.value=v;
-  });
-}
-/* Which rhythm's result screen shows which inline context block — see the
-   comment above ryrTankContext() for why each field is paired the way it
-   is. */
-// 'water' deliberately absent: its one context field (oxygen_testing) moved
-// in-flow after Water's 5th question (see #ryr-optstep-screen) instead of
-// living inline on the result screen like the other rhythms' fields.
-var RYR_CTX_BY_RHYTHM={environmental:'ryr-ctx-environmental',livestock:'ryr-ctx-livestock',biological:'ryr-ctx-biological',keeper:'ryr-ctx-keeper'};
-function ryrShowInlineContext(rhythm){
-  Object.keys(RYR_CTX_BY_RHYTHM).forEach(function(k){
-    document.getElementById(RYR_CTX_BY_RHYTHM[k]).hidden=(k!==rhythm);
   });
 }
 /* Repeat submission (v1.3). A single snapshot cannot show a sequence, and
@@ -1690,7 +1686,6 @@ function renderResult(){
   ref.paras.forEach(function(p){var el=document.createElement('p');el.textContent=p;re.appendChild(el);});
   document.getElementById('ryr-closing-q').textContent=ref.closing;
   document.getElementById('ryr-phase-text').textContent=ref.phase;
-  ryrShowInlineContext(curRhythm);
   ryrRenderChart('ryr-chart-svg-slot');
   window.scrollTo({top:0,behavior:'auto'});
   return ref;
@@ -1703,8 +1698,16 @@ function showResult(){
   ryrTrack('ryr_rhythm_complete',{rhythm:curRhythm,completed_count:Object.keys(ryrGetProgress()).length});
   ryrShareCheckpoint();
 }
+// Every rhythm has exactly one optional-step field group (Keeper's holds
+// three fields, the other four hold one each — see the markup comment
+// above #ryr-optstep-screen). Toggle by id rather than keep a second map
+// alongside RYR_AXIS_ORDER: 'ryr-optstep-'+key matches every group's id.
 function showOptStep(){
   document.getElementById('ryr-screen').style.display='none';
+  document.querySelectorAll('.ryr-optstep-fields').forEach(function(el){
+    el.hidden=(el.id!=='ryr-optstep-'+curRhythm);
+  });
+  document.getElementById('ryr-optstep-rhythm').textContent=RHYTHMS[curRhythm].name;
   document.getElementById('ryr-optstep-screen').style.display='block';
   window.scrollTo({top:0,behavior:'auto'});
 }
@@ -1716,9 +1719,7 @@ document.getElementById('ryr-pick-keeper').addEventListener('click',function(){s
 document.getElementById('ryr-btn-next').addEventListener('click',function(){
   if(!this.classList.contains('active'))return;
   var Q=RHYTHMS[curRhythm].questions;
-  if(curQ<Q.length-1)showQ(curQ+1);
-  else if(curRhythm==='water')showOptStep();
-  else showResult();
+  if(curQ<Q.length-1)showQ(curQ+1);else showOptStep();
 });
 document.getElementById('ryr-btn-back').addEventListener('click',function(){
   if(curQ>0)showQ(curQ-1);else ryrReturnToPicker();

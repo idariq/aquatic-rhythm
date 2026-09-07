@@ -920,6 +920,35 @@ Verified: `npm run check` (0 errors), `npm run i18n:check` run twice
 confirming the opt-step (previous pass) and full five-rhythm submission
 flow are both unaffected.
 
+**Fifth same-week pass, two owner corrections to the opt-step**: (1) the
+5th scored question's advance button said "See reflection", but clicking
+it lands on the opt-step, not the result — the opt-step's own button, which
+actually does lead to the result, still said "Continue". Fixed by swapping
+which of the two already-existing chrome strings each button uses: the 5th
+question's button now reads "Continue" (`t.chrome.continueBtn`) and the
+opt-step's own advance button now reads "See reflection"
+(`t.chrome.seeReflectionBtn`) — no new strings needed, both existed since
+the button-style pass above. (2) each opt-step's `.ryr-q-sub` line
+(previously `.ryr-share-cov-note`) had repeated a shared "optional, not
+sent unless you share" reassurance under the "OPTIONAL" eyebrow — the
+eyebrow already says that, so the line was restating something already
+said, in the exact slot a real question uses for an actual clarification.
+Replaced with five genuine, field-specific clarifying sentences (new
+`tc.optstepSub` translation object, one key per rhythm, matched by id the
+same way `tc.labels` is) — e.g. Water's now distinguishes "knowing oxygen
+matters" from "having actually measured it", matching the same honesty-
+framing style scored-question subs already use. The general "nothing is
+sent unless you share" promise is not lost — it is still said once, up
+front, in the picker screen's own tank-context note, which is what made
+five more repeats of it redundant in the first place. The now-unused
+`tc.inlineNote` key was removed from both translation files rather than
+left dead, since removing one shared key is a one-line, low-risk cleanup
+(unlike the 100-field `opt.d` case above). Verified: `npm run check` (0
+errors), `npm run i18n:check` run twice (identical diff-stats), and a
+Playwright pass confirming both buttons' text across en/id/ja, the new
+sub-line content and its `ryr-q-sub` class, and that the full opt-step and
+submission flow are otherwise unaffected.
+
 ---
 
 ## S10: Open Actions

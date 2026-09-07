@@ -491,17 +491,19 @@ for (const lang of targetLangs) {
   h = replaceOnce(h, /(<button class="ryr-btn-back" id="ryr-btn-back">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.backBtn}${b}`);
   h = replaceOnce(h, /(<button class="ryr-btn-next" id="ryr-btn-next">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.nextBtn}${b}`);
   // Water's in-flow optional step (v2.2, #ryr-optstep-screen) has its own
-  // back/continue buttons, separate ids from the ones above — "Continue"
-  // rather than "Next" since nothing after it is mandatory the way a scored
-  // question is.
+  // back/continue buttons, separate ids from the ones above. Its own advance
+  // button says "See reflection" — it is the one that actually leads there
+  // now — while the 5th scored question's own button says "Continue"
+  // instead of "See reflection", since clicking it lands on the opt-step,
+  // not the result (owner correction, same week the opt-step shipped).
   h = replaceOnce(h, /(<button class="ryr-btn-back" id="ryr-optstep-back">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.backBtn}${b}`);
-  h = replaceOnce(h, /(<button class="ryr-btn-next active" id="ryr-optstep-continue">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.continueBtn}${b}`);
+  h = replaceOnce(h, /(<button class="ryr-btn-next active" id="ryr-optstep-continue">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.seeReflectionBtn}${b}`);
   h = replaceOnce(h, /(<span class="ryr-q-num">)Optional(<\/span>)/, (_, a, b) => `${a}${t.chrome.optionalStepLabel}${b}`);
   // Runtime JS also rewrites this button's text every time a question
   // renders (showQ()'s ternary) — same class of bug as the eyebrow above:
   // the static swap only covers the pre-JS markup.
-  h = h.replace("nb.textContent=i<Q.length-1?'Next →':'See reflection →';",
-    `nb.textContent=i<Q.length-1?${JSON.stringify(t.chrome.nextBtn)}:${JSON.stringify(t.chrome.seeReflectionBtn)};`);
+  h = h.replace("nb.textContent=i<Q.length-1?'Next →':'Continue →';",
+    `nb.textContent=i<Q.length-1?${JSON.stringify(t.chrome.nextBtn)}:${JSON.stringify(t.chrome.continueBtn)};`);
   h = replaceOnce(h, /(<span class="ryr-result-eyebrow" id="ryr-result-eyebrow">)Water Rhythm — your reflection(<\/span>)/,
     (_, a, b) => `${a}Water Rhythm${t.chrome.resultEyebrowSuffix}${b}`);
   h = replaceOnce(h, /(<span class="ryr-chart-eyebrow" id="ryr-chart-eyebrow">)[^<]*(<\/span>)/, (_, a, b) => `${a}${t.chrome.chartEyebrow}${b}`);
@@ -549,16 +551,20 @@ for (const lang of targetLangs) {
   // field ids/values did not, so nothing else below needed touching.
   //
   // Split further the same day: `tank_volume`/`tank_age` stayed on the
-  // picker screen; the other six moved again, to inline blocks on each
-  // paired rhythm's own result screen (`.ryr-ctx-inline` in
-  // articles/rhythm-tracker.html, shown/hidden by `ryrShowInlineContext()`)
-  // — see that function's neighbouring comment for which field pairs with
-  // which rhythm and why. All inline blocks reuse one shared string,
-  // `tc.inlineNote`, rather than one translation key each: the reassurance
-  // ("optional, not sent unless you share") is identical in every spot, so
-  // one key avoids per-block translations that would only ever read the
-  // same. v2.1 (same day) added a fifth block, `oxygen_testing`, pairing
-  // Water Rhythm with its own inline field for the first time.
+  // picker screen; the other six moved again, then again — first to inline
+  // blocks on each paired rhythm's own result screen, then (v2.2) in-flow
+  // as `#ryr-optstep-screen`'s five `.ryr-optstep-fields` groups (see the
+  // markup comment there for the full history). Each group's `.ryr-q-sub`
+  // line used to reuse one shared string, `tc.inlineNote` ("optional, not
+  // sent unless you share"), on the reasoning that the reassurance was
+  // identical everywhere so one key beat five translations that would only
+  // ever read the same. The owner corrected this: the "OPTIONAL" eyebrow
+  // above it already says that, so the sub-line was repeating something the
+  // reader had just read, in the exact slot a real question uses for an
+  // actual clarification. `tc.optstepSub` (one key per rhythm, keyed the
+  // same as `RYR_OPTSTEP_BY_RHYTHM`) replaced it with a genuine clarifying
+  // sentence per field instead — matched by id only, same reasoning as
+  // `tc.labels` below.
   // Volume buckets are numeric ("20–60 L") and stay as-is in every language.
   // Everything else in the block is discovered from the translation file
   // rather than listed here: `labels` is keyed by the element's own id, and
@@ -576,8 +582,8 @@ for (const lang of targetLangs) {
   const tc = t.chrome.tankContext || {};
   h = replaceOnce(h, /(<span class="ryr-picker-label" id="ryr-tank-context-label">)[^<]*(<\/span>)/, (_, a, b) => `${a}${tc.heading}${b}`);
   h = replaceOnce(h, /(<p class="ryr-share-cov-note" id="ryr-share-cov-note">)[^<]*(<\/p>)/, (_, a, b) => `${a}${tc.note}${b}`);
-  ['water', 'environmental', 'livestock', 'biological', 'keeper'].forEach((rhythmKey) => {
-    h = replaceOnce(h, new RegExp(`(<p class="ryr-share-cov-note" id="ryr-ctx-${rhythmKey}-note">)[^<]*(</p>)`), (_, a, b) => `${a}${tc.inlineNote}${b}`);
+  Object.entries(tc.optstepSub || {}).forEach(([rhythmKey, sub]) => {
+    h = replaceOnce(h, new RegExp(`(id="ryr-ctx-${rhythmKey}-note">)[^<]*`), (_, a) => `${a}${sub}`);
   });
   Object.entries(tc.labels || {}).forEach(([id, label]) => {
     h = replaceOnce(h, new RegExp(`(id="${id}">)[^<]*`), (_, a) => `${a}${label}`);

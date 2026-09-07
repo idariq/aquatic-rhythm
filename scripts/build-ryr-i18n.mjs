@@ -518,7 +518,7 @@ for (const lang of targetLangs) {
   h = replaceOnce(h, /(<span class="ryr-q-close-label">)Where this rhythm reads(<\/span>)/, (_, a, b) => `${a}${t.chrome.phaseNoteLabel}${b}`);
   h = replaceOnce(h, /(<p class="ryr-note-end">)[^<]*(<\/p>)/, (_, a, b) => `${a}${t.chrome.noteEnd}${b}`);
   h = replaceOnce(h, /(<button type="button" class="ryr-link-reading ryr-btn-link" id="ryr-btn-to-picker">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.ctaBackToPicker}${b}`);
-  h = replaceOnce(h, /(<button class="ryr-btn-restart" id="ryr-btn-restart">)[^<]*(<\/button>)/, (_, a, b) => `${a}${t.chrome.restartBtn}${b}`);
+  h = replaceOnce(h, /(id="ryr-btn-restart">)[^<]*/, (_, a) => `${a}${t.chrome.restartBtn}`);
   h = replaceOnce(h, /(data-cta="water_rhythm_to_five_rhythms">)Read about all five rhythms →(<\/a>)/, (_, a, b) => `${a}${t.chrome.ctaFiveRhythms}${b}`);
   h = replaceOnce(h, /(<a href="\/tools" class="ryr-link-reading">)← Back to Labs &amp; Tools(<\/a>)/, (_, a, b) => `${a}${t.chrome.ctaBackToTools}${b}`);
 

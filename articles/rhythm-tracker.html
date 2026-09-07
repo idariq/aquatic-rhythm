@@ -346,14 +346,23 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
        curRhythm — see showOptStep(). Keeper's group carries three fields
        (its context was already three questions, not one), so it gets a
        short generic heading instead of reusing a single field's own label
-       the way the other four do. -->
+       the way the other four do.
+
+       Each group's `.ryr-q-sub` line is a genuine clarifying sentence, the
+       same job a scored question's own sub does — NOT a restatement of
+       "this is optional", which the "OPTIONAL" eyebrow above already says
+       once. It used to repeat a shared "optional, not sent unless you
+       share" reassurance per rhythm (the general version of that promise is
+       still said once, up front, in the picker screen's own tank-context
+       note) until the owner pointed out the eyebrow already covers it and
+       asked for a real explanation in its place instead. -->
   <div id="ryr-optstep-screen">
     <div class="ryr-wrap">
       <span class="ryr-q-rhythm" id="ryr-optstep-rhythm">Water Rhythm</span>
       <span class="ryr-q-num">Optional</span>
       <div class="ryr-optstep-fields" id="ryr-optstep-water">
         <h2 class="ryr-q-text" id="ryr-cov-oxygentest-label">Do you test for dissolved oxygen directly</h2>
-        <p class="ryr-share-cov-note" id="ryr-ctx-water-note">Optional, and not sent anywhere unless you choose to share your reflection later.</p>
+        <p class="ryr-q-sub" id="ryr-ctx-water-note">Not whether you know oxygen matters — whether you've actually measured it, with a test or meter.</p>
         <div class="ryr-share-cov">
           <div class="ryr-cov-field">
             <select class="ryr-cov-select" id="ryr-cov-oxygentest" data-field="oxygen_testing">
@@ -367,7 +376,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       </div>
       <div class="ryr-optstep-fields" id="ryr-optstep-biological" hidden>
         <h2 class="ryr-q-text" id="ryr-cov-slip-label">When care has slipped</h2>
-        <p class="ryr-share-cov-note" id="ryr-ctx-biological-note">Optional, and not sent anywhere unless you choose to share your reflection later.</p>
+        <p class="ryr-q-sub" id="ryr-ctx-biological-note">Not a hypothetical — think of an actual stretch when care slipped.</p>
         <div class="ryr-share-cov">
           <div class="ryr-cov-field">
             <select class="ryr-cov-select" id="ryr-cov-slip" data-field="outcome_slip">
@@ -382,7 +391,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       </div>
       <div class="ryr-optstep-fields" id="ryr-optstep-environmental" hidden>
         <h2 class="ryr-q-text" id="ryr-cov-tempswing-label">How much temperature actually moves</h2>
-        <p class="ryr-share-cov-note" id="ryr-ctx-environmental-note">Optional, and not sent anywhere unless you choose to share your reflection later.</p>
+        <p class="ryr-q-sub" id="ryr-ctx-environmental-note">Across a normal week — not a one-off heater failure or power cut.</p>
         <div class="ryr-share-cov">
           <div class="ryr-cov-field">
             <select class="ryr-cov-select" id="ryr-cov-tempswing" data-field="temp_swing">
@@ -397,7 +406,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       </div>
       <div class="ryr-optstep-fields" id="ryr-optstep-livestock" hidden>
         <h2 class="ryr-q-text" id="ryr-cov-stocking-label">How the stocking has changed</h2>
-        <p class="ryr-share-cov-note" id="ryr-ctx-livestock-note">Optional, and not sent anywhere unless you choose to share your reflection later.</p>
+        <p class="ryr-q-sub" id="ryr-ctx-livestock-note">Since the tank was set up, not just the last few weeks.</p>
         <div class="ryr-share-cov">
           <div class="ryr-cov-field">
             <select class="ryr-cov-select" id="ryr-cov-stocking" data-field="stocking_change">
@@ -413,7 +422,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       </div>
       <div class="ryr-optstep-fields" id="ryr-optstep-keeper" hidden>
         <h2 class="ryr-q-text" id="ryr-optstep-keeper-heading">A little more, about how things have been</h2>
-        <p class="ryr-share-cov-note" id="ryr-ctx-keeper-note">Optional, and not sent anywhere unless you choose to share your reflection later.</p>
+        <p class="ryr-q-sub" id="ryr-ctx-keeper-note">Answer whichever of these actually applies — it's fine to leave any of them blank.</p>
         <div class="ryr-share-cov">
           <div class="ryr-cov-field">
             <span class="ryr-cov-label" id="ryr-cov-life-label">Anything disrupting your rhythm now</span>
@@ -450,7 +459,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       </div>
       <div class="ryr-nav">
         <button class="ryr-btn-back" id="ryr-optstep-back">← Back</button>
-        <button class="ryr-btn-next active" id="ryr-optstep-continue">Continue →</button>
+        <button class="ryr-btn-next active" id="ryr-optstep-continue">See reflection →</button>
       </div>
     </div>
   </div>
@@ -1705,7 +1714,7 @@ function showQ(i){
   });
   var nb=document.getElementById('ryr-btn-next');
   nb.classList.toggle('active',!!ans[q.id]);
-  nb.textContent=i<Q.length-1?'Next →':'See reflection →';
+  nb.textContent=i<Q.length-1?'Next →':'Continue →';
   // Was hidden on Q1 (nothing to step back to within the same rhythm) —
   // but that left the click handler's "curQ===0 -> picker" branch
   // permanently unreachable by click/tap, since a visibility:hidden

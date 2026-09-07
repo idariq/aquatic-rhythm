@@ -350,14 +350,23 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
        curRhythm — see showOptStep(). Keeper's group carries three fields
        (its context was already three questions, not one), so it gets a
        short generic heading instead of reusing a single field's own label
-       the way the other four do. -->
+       the way the other four do.
+
+       Each group's `.ryr-q-sub` line is a genuine clarifying sentence, the
+       same job a scored question's own sub does — NOT a restatement of
+       "this is optional", which the "OPTIONAL" eyebrow above already says
+       once. It used to repeat a shared "optional, not sent unless you
+       share" reassurance per rhythm (the general version of that promise is
+       still said once, up front, in the picker screen's own tank-context
+       note) until the owner pointed out the eyebrow already covers it and
+       asked for a real explanation in its place instead. -->
   <div id="ryr-optstep-screen">
     <div class="ryr-wrap">
       <span class="ryr-q-rhythm" id="ryr-optstep-rhythm">Water Rhythm</span>
       <span class="ryr-q-num">任意</span>
       <div class="ryr-optstep-fields" id="ryr-optstep-water">
         <h2 class="ryr-q-text" id="ryr-cov-oxygentest-label">溶存酸素を直接測定していますか</h2>
-        <p class="ryr-share-cov-note" id="ryr-ctx-water-note">任意です。後で内省を共有することを選ばない限り、どこにも送信されません。</p>
+        <p class="ryr-q-sub" id="ryr-ctx-water-note">酸素が大切だと知っているかどうかではなく、実際に測ったことがあるかどうかです。</p>
         <div class="ryr-share-cov">
           <div class="ryr-cov-field">
             <select class="ryr-cov-select" id="ryr-cov-oxygentest" data-field="oxygen_testing">
@@ -371,7 +380,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       </div>
       <div class="ryr-optstep-fields" id="ryr-optstep-biological" hidden>
         <h2 class="ryr-q-text" id="ryr-cov-slip-label">世話が滞ったとき</h2>
-        <p class="ryr-share-cov-note" id="ryr-ctx-biological-note">任意です。後で内省を共有することを選ばない限り、どこにも送信されません。</p>
+        <p class="ryr-q-sub" id="ryr-ctx-biological-note">仮定の話ではなく、実際に世話が滞ったときのことを思い浮かべてください。</p>
         <div class="ryr-share-cov">
           <div class="ryr-cov-field">
             <select class="ryr-cov-select" id="ryr-cov-slip" data-field="outcome_slip">
@@ -386,7 +395,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       </div>
       <div class="ryr-optstep-fields" id="ryr-optstep-environmental" hidden>
         <h2 class="ryr-q-text" id="ryr-cov-tempswing-label">実際どのくらい温度が変動するか</h2>
-        <p class="ryr-share-cov-note" id="ryr-ctx-environmental-note">任意です。後で内省を共有することを選ばない限り、どこにも送信されません。</p>
+        <p class="ryr-q-sub" id="ryr-ctx-environmental-note">ヒーターの故障や停電など、一時的な出来事は除いて、普段の一週間で考えてください。</p>
         <div class="ryr-share-cov">
           <div class="ryr-cov-field">
             <select class="ryr-cov-select" id="ryr-cov-tempswing" data-field="temp_swing">
@@ -401,7 +410,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       </div>
       <div class="ryr-optstep-fields" id="ryr-optstep-livestock" hidden>
         <h2 class="ryr-q-text" id="ryr-cov-stocking-label">生体の数の変化</h2>
-        <p class="ryr-share-cov-note" id="ryr-ctx-livestock-note">任意です。後で内省を共有することを選ばない限り、どこにも送信されません。</p>
+        <p class="ryr-q-sub" id="ryr-ctx-livestock-note">水槽を立ち上げてからのことです。ここ数週間だけの話ではありません。</p>
         <div class="ryr-share-cov">
           <div class="ryr-cov-field">
             <select class="ryr-cov-select" id="ryr-cov-stocking" data-field="stocking_change">
@@ -417,7 +426,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       </div>
       <div class="ryr-optstep-fields" id="ryr-optstep-keeper" hidden>
         <h2 class="ryr-q-text" id="ryr-optstep-keeper-heading">最近の様子について、もう少しだけ</h2>
-        <p class="ryr-share-cov-note" id="ryr-ctx-keeper-note">任意です。後で内省を共有することを選ばない限り、どこにも送信されません。</p>
+        <p class="ryr-q-sub" id="ryr-ctx-keeper-note">当てはまるものだけ答えてください。残りは空欄のままで構いません。</p>
         <div class="ryr-share-cov">
           <div class="ryr-cov-field">
             <span class="ryr-cov-label" id="ryr-cov-life-label">今、リズムを乱しているもの</span>
@@ -454,7 +463,7 @@ nav:not(.bnav) .nlinks,nav:not(.bnav) .nbg{display:none}
       </div>
       <div class="ryr-nav">
         <button class="ryr-btn-back" id="ryr-optstep-back">← 戻る</button>
-        <button class="ryr-btn-next active" id="ryr-optstep-continue">続ける →</button>
+        <button class="ryr-btn-next active" id="ryr-optstep-continue">内省を見る →</button>
       </div>
     </div>
   </div>
@@ -1709,7 +1718,7 @@ function showQ(i){
   });
   var nb=document.getElementById('ryr-btn-next');
   nb.classList.toggle('active',!!ans[q.id]);
-  nb.textContent=i<Q.length-1?"次へ →":"内省を見る →";
+  nb.textContent=i<Q.length-1?"次へ →":"続ける →";
   // Was hidden on Q1 (nothing to step back to within the same rhythm) —
   // but that left the click handler's "curQ===0 -> picker" branch
   // permanently unreachable by click/tap, since a visibility:hidden

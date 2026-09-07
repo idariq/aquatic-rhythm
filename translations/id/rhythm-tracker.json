@@ -67,7 +67,13 @@
     "tankContext": {
       "heading": "Tentang akuarium yang Anda refleksikan (opsional)",
     "note": "Kalau Anda punya lebih dari satu akuarium, mengisi ini membantu memastikan kelima ritme yang akan Anda baca memang tentang akuarium yang sama. Tidak ada yang dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti. Beberapa pertanyaan opsional serupa muncul di beberapa ritme tertentu di bawah, tempat pertanyaan itu memang relevan dengan apa yang baru saja Anda baca.",
-    "inlineNote": "Opsional, dan tidak dikirim ke mana pun kecuali Anda memilih untuk membagikan refleksi Anda nanti.",
+    "optstepSub": {
+      "water": "Bukan soal tahu oksigen itu penting — tapi apakah Anda benar-benar sudah mengukurnya, dengan alat uji atau meteran.",
+      "biological": "Bukan andaian — bayangkan satu masa nyata saat perawatan benar-benar sempat kendur.",
+      "environmental": "Selama seminggu biasa — bukan saat heater rusak atau listrik padam sesekali.",
+      "livestock": "Sejak akuarium pertama kali disiapkan, bukan cuma beberapa minggu terakhir.",
+      "keeper": "Jawab yang mana pun yang berlaku bagi Anda — sisanya boleh dilewati begitu saja."
+    },
       "labels": {
         "ryr-cov-volume-label": "Volume akuarium",
         "ryr-cov-age-label": "Sudah berapa lama berjalan",

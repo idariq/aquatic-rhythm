@@ -111,6 +111,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}
 .art-footer a:hover{color:var(--th-accent)}
 
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
+
 .art-intro{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
 /* mobile art-intro height override (fix-art-intro-mobile-height.mjs) */
 @media(max-width:720px){.art-intro{min-height:auto;align-items:flex-start;padding-top:calc(68px + 1.75rem)}}
@@ -286,6 +292,16 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <a href="/id/articles/ara-full-framework" class="btn-ar" data-analytics-event="cta_rwww_ara" data-cta="ara_full_framework">Kerangka ARA →</a>
       <a href="/id/articles/learning-to-read-not-fix" class="btn-ar" data-analytics-event="cta_rwww_read" data-cta="learning_to_read_not_fix">Belajar Membaca, Bukan Belajar Memperbaiki →</a>
       <a href="/id/articles/caring-without-guilt" class="btn-ar" data-analytics-event="cta_rwww_guilt" data-cta="caring_without_guilt">Merawat Tanpa Rasa Bersalah →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">Bacaan lanjut</span>
+      <ul>
+        <li>Chen, Z. et al. (2020). The evolutionary origin and domestication history of goldfish (<em>Carassius auratus</em>). <em>PNAS</em>, 117(47).</li>
+        <li>Ng, C. (2016). The ornamental freshwater fish trade in Malaysia. <em>UTAR Sains Journal</em>, 2(4).</li>
+        <li>Feldman, A. C. (2022). <em>Staging the Ocean: The Emergence of the Aquarium in Victorian England</em> [Master's thesis, City University of New York].</li>
+        <li>Granata, S. (2021). <em>The Victorian Aquarium: Literary Discussions on Nature, Culture, and Science</em>. Manchester University Press.</li>
+      </ul>
     </div>
 
     <div class="art-footer">

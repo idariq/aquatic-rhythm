@@ -89,6 +89,20 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+/* VISUAL BLOCK */
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 1rem .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-slider-row{display:flex;align-items:center;gap:.7rem;max-width:420px;margin:.5rem auto}
+.vis-slider-row span{font-size:var(--fs-2xs);letter-spacing:.1em;text-transform:uppercase;color:var(--th-ink-4);white-space:nowrap}
+.vis-slider{flex:1;accent-color:var(--th-accent);cursor:pointer}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -242,6 +256,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Semua konsekuensi ini terhubung ke satu input: lebih banyak makanan dari yang bisa diproses biologi tank secara real time.</p>
     </div>
 
+    <!-- VISUAL: Drag the feeding amount — one input, four downstream readings moving together -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:230px"></canvas>
+    </div>
+
     <div class="hn">
       <span class="hn-label">Satu kebiasaan, banyak gejala</span>
       <p>Pemberian makan berlebihan adalah kebiasaan yang terus-menerus membebani kualitas air. Nitrat yang naik, air yang keruh, dan alga yang makin cepat semuanya bacaan dari beban itu. Menelusuri kembali ke sumbernya sering membawa ke rutinitas pemberian makan sebelum membawa ke tempat lain.</p>
@@ -317,6 +336,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -335,6 +355,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -342,6 +363,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -365,6 +387,197 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same pattern
+   as NTS_STRINGS/ntsT(), PHK_STRINGS/phkT(), NKR_STRINGS/nkrT(),
+   FM_STRINGS/fmT(), TWC_STRINGS/twcT(), CC_STRINGS/ccT(),
+   AFM_STRINGS/afmT(), LSD_STRINGS/lsdT(), GHKH_STRINGS/ghkhT(),
+   BB_STRINGS/bbT(), SDA_STRINGS/sdaT(), APN_STRINGS/apnT(),
+   WMC_STRINGS/wmcT(), and HCG_STRINGS/hcgT() in the other article
+   widgets. This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep OFA_STRINGS.en/.id/.ja key sets
+   identical when editing. */
+var OFA_STRINGS = {
+  en: {
+    v2_sliderLabel: 'Feeding amount', v2_calibrated: 'Calibrated (2–3 min)',
+    v2_nitrate: 'Nitrate', v2_cloudiness: 'Cloudiness',
+    v2_algae: 'Algae', v2_filterFlow: 'Flow',
+    v2_hint: 'drag to see what one input changes downstream',
+    v2_cap0: 'Feeding matches what the tank can process — nothing left over to decompose.',
+    v2_cap1: 'A little extra most days starts to add up quietly.',
+    v2_cap2: 'Uneaten food is now a steady load — nitrate, cloudiness, and algae all read it.',
+    v2_cap3: "This is what steady overfeeding actually looks like from the water's side."
+  },
+  id: {
+    v2_sliderLabel: 'Jumlah makanan', v2_calibrated: 'Kalibrasi (2–3 minit)',
+    v2_nitrate: 'Nitrat', v2_cloudiness: 'Kekeruhan',
+    v2_algae: 'Algae', v2_filterFlow: 'Aliran',
+    v2_hint: 'seret utk lihat apa yg berubah drpd satu input',
+    v2_cap0: 'Pemberian makan sepadan dgn apa yg tangki boleh proses — tiada baki utk reput.',
+    v2_cap1: 'Sikit lebih setiap hari mula terkumpul senyap-senyap.',
+    v2_cap2: 'Makanan tak dimakan kini beban tetap — nitrat, kekeruhan, & algae semua membacanya.',
+    v2_cap3: 'Inilah rupa pemberian makan berlebihan berterusan drpd sudut pandang air.'
+  },
+  ja: {
+    v2_sliderLabel: '給餌量', v2_calibrated: '適量（2〜3分）',
+    v2_nitrate: '硝酸塩', v2_cloudiness: '濁り',
+    v2_algae: '藻類', v2_filterFlow: '水流',
+    v2_hint: 'ドラッグすると、一つの入力が下流で何を変えるかがわかる',
+    v2_cap0: '給餌量は水槽が処理できる範囲に収まっている — 分解されずに残るものはない。',
+    v2_cap1: '毎日の少しの多めが静かに積み重なり始める。',
+    v2_cap2: '食べ残しが今や恒常的な負荷になっている — 硝酸塩、濁り、藻類すべてがそれを反映する。',
+    v2_cap3: 'これが、餌の与えすぎが水の側から見て実際にどう見えるかということ。'
+  }
+};
+function ofaT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = OFA_STRINGS[lang] || OFA_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : OFA_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/new-tank-syndrome.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Drag a single feeding-amount slider — a mechanic new to
+   this site's widgets (a continuous range input, not discrete buttons)
+   because the article's own point in this module is that ONE input
+   (how much food goes in) drives FOUR separate downstream readings at
+   once (nitrate, cloudiness, algae, filter flow) — a fan-out, not a
+   scenario pick. 100 on the slider is the article's own calibration
+   ("what disappears in two to three minutes"); above that, the excess
+   drives all four bars by illustrative fixed curves — not lab-precise
+   ppm/flow modelling. ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var value = 100; /* 50-200, 100 = calibrated */
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div class="vc-label"><span>' + ofaT('v2_sliderLabel') + '</span></div>'
+    +'<div class="vis-slider-row"><span>' + ofaT('v2_calibrated') + '</span>'
+    +'<input type="range" class="vis-slider" id="ofa-slider" min="50" max="200" step="1" value="100"></div>'
+    +'<div class="vc-hint">' + ofaT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  var slider = document.getElementById('ofa-slider');
+  slider.addEventListener('input', function(){ value = parseInt(slider.value, 10); draw(); });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var excess = Math.max(0, value - 100) / 100; /* 0..1 */
+    var nitrate = excess * 100;
+    var cloudiness = Math.min(100, excess * 140);
+    var algae = Math.max(0, excess - 0.2) * 125;
+    var filterFlow = 100 - excess * 70;
+
+    /* Caption band at the top */
+    var capKey = value <= 100 ? 'v2_cap0' : (value <= 130 ? 'v2_cap1' : (value <= 170 ? 'v2_cap2' : 'v2_cap3'));
+    var cap = ofaT(capKey);
+    ctx.font = 'italic 300 12px Fraunces,serif';
+    ctx.fillStyle = vcInk(.65);
+    ctx.textAlign = 'center';
+    var capY = 18, capMaxW = W - 24, capLine = '';
+    cap.split(' ').forEach(function(w){
+      var test = capLine + (capLine?' ':'') + w;
+      if (ctx.measureText(test).width > capMaxW && capLine) { ctx.fillText(capLine, W/2, capY); capLine = w; capY += 15; }
+      else capLine = test;
+    });
+    if (capLine) ctx.fillText(capLine, W/2, capY);
+    ctx.textAlign = 'left';
+
+    var pL = 30, pR = 12, pT = capY + 16, pB = 32;
+    var gW = W - pL - pR, gH = H - pT - pB;
+
+    /* Grid */
+    [0,50,100].forEach(function(v){
+      var y = pT + gH - (v/100)*gH;
+      ctx.strokeStyle = vcInk(.06); ctx.lineWidth = 1; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(pL,y); ctx.lineTo(pL+gW,y); ctx.stroke();
+      ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+      ctx.fillStyle = vcInk(.5);
+      ctx.fillText(v, 3, y+3);
+    });
+
+    /* Axis */
+    ctx.strokeStyle = vcInk(.1); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pL,pT); ctx.lineTo(pL,pT+gH); ctx.lineTo(pL+gW,pT+gH); ctx.stroke();
+
+    var bars = [
+      { key:'nitrate',     val: nitrate,     labelKey:'v2_nitrate',     col:'rgba(224,100,60,0.85)' },
+      { key:'cloudiness',  val: cloudiness,  labelKey:'v2_cloudiness',  col:'rgba(150,175,190,0.85)' },
+      { key:'algae',       val: algae,       labelKey:'v2_algae',       col:'rgba(95,203,134,0.85)' },
+      { key:'filterFlow',  val: filterFlow,  labelKey:'v2_filterFlow',  col:'rgba(61,214,232,0.85)' }
+    ];
+    var n = bars.length, slot = gW / n, barW = slot * 0.5;
+    bars.forEach(function(b, i){
+      var x = pL + slot*i + (slot-barW)/2;
+      var y = pT + gH - (b.val/100)*gH;
+      ctx.fillStyle = b.col;
+      ctx.fillRect(x, y, barW, gH - (y-pT));
+      ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+      ctx.fillStyle = vcInk(.6);
+      ctx.textAlign = 'center';
+      ctx.fillText(ofaT(b.labelKey), pL + slot*i + slot/2, pT+gH+16);
+      ctx.textAlign = 'left';
+    });
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
+
+/* Resize handler only — canvases init via startLearning()/goMod(). */
+window.addEventListener('resize', function(){
+  if (canvases[currentMod]) setTimeout(function(){ canvases[currentMod](); }, 50);
+});
 
 </script>
 

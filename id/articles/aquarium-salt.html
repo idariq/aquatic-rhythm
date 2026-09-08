@@ -88,6 +88,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .btn-ar:hover{color:var(--th-accent);border-color:var(--th-accent-border)}
 .art-footer{margin-top:4rem;padding-top:1.6rem;border-top:1px solid var(--th-line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}.art-footer a:hover{color:var(--th-accent)}
+
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
 .art-intro{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
 .art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
 .art-intro .art-hero-figure{margin-bottom:0}
@@ -210,8 +216,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">Tiga peran nyata.<br><em>Bukan selusin yang diminta orang.</em></h2>
     <div class="mod-body">
       <p>Ikan yang stres — akibat cedera, perjalanan yang kasar, atau penurunan mendadak kualitas air — menghabiskan energi nyata untuk menjaga keseimbangan garam internalnya tetap stabil melawan air di sekelilingnya. Kenaikan salinitas akuarium yang ringan dan sementara mempersempit jarak itu, memberi ikan yang sedang lemah lebih sedikit kerja internal selama ia pulih. Dukungan osmotik ini nyata. Tapi sifatnya juga sementara — jembatan, bukan perawatan tetap.</p>
-      <p>Saat terjadi lonjakan selama cycling, klorida yang terlarut bersaing dengan nitrit untuk jalur penyerapan yang sama di insang ikan, jadi menjaga kadar garam sedang bisa menumpulkan efek racun nitrit sementara koloni bakteri kedua mengejar ketertinggalannya. Pemelihara masih memakai teknik ini untuk satu situasi — lonjakan nitrit yang sedang aktif, bukan bahan tambahan permanen.</p>
-      <p>Pada kepekatan yang dipertahankan, garam juga bisa memperpendek fase berenang bebas beberapa parasit eksternal, termasuk ich — tapi itu perlu dosis terapeutik yang sungguhan, umumnya disebut sekitar satu sampai tiga sendok teh per galon, dipertahankan selama sepuluh sampai empat belas hari dan biasanya dibarengi kenaikan suhu ke kisaran 26–30°C (79–86°F). Sejumput yang ditambahkan di setiap ganti air tidak mencapai kepekatan itu, apalagi durasinya. Ia cuma diam di situ.</p>
+      <p>Saat terjadi lonjakan selama cycling, klorida yang terlarut bersaing dengan nitrit untuk jalur pengangkutan anion yang sama di insang — sel klorida yang juga menyerap nitrit — jadi menjaga kadar garam sedang bisa menumpulkan efek racun nitrit sementara koloni bakteri kedua mengejar ketertinggalannya. Seberapa besar perlindungan itu sebenarnya bergantung pada spesies, ukuran ikan, dan rasio klorida yang sudah ada di air terhadap nitrit yang sedang melonjak, dan cara ini tidak berbuat apa-apa pada nitritnya sendiri. Pemelihara masih memakai teknik ini untuk satu situasi — lonjakan nitrit yang sedang aktif, sambil membereskan penyebabnya, bukan bahan tambahan permanen.</p>
+      <p>Pada kepekatan yang cukup tinggi dan cukup lama, garam juga bisa memperpendek fase berenang bebas beberapa parasit eksternal, termasuk ich. Tidak ada satu angka sendok teh per galon yang berlaku aman untuk semua spesies di sini — penelitian yang diterbitkan berbeda cukup jauh menurut spesies dan ukuran ikan, dan dosis yang pas untuk satu penghuni tangki bisa membuat stres atau membunuh penghuni lain yang berbagi air yang sama. Sejumput yang ditambahkan di setiap ganti air tidak mencapai kepekatan atau durasi yang dibutuhkan perawatan sungguhan. Ia cuma diam di situ.</p>
     </div>
 
     <div class="pq">
@@ -269,6 +275,17 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <a href="/id/articles/clamped-fins-fin-rot" class="btn-ar" data-analytics-event="cta_salt_finrot" data-cta="clamped_fins_fin_rot">Sirip Terlipat dan Fin Rot →</a>
       <a href="/id/articles/learning-to-read-not-fix" class="btn-ar" data-analytics-event="cta_salt_learning" data-cta="learning_to_read_not_fix">Belajar Membaca, Bukan Belajar Memperbaiki →</a>
       <a href="/id/articles/ara-full-framework" class="btn-ar" data-analytics-event="cta_salt_ara" data-cta="ara_full_framework">Kerangka ARA →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">Bacaan lanjut</span>
+      <ul>
+        <li>Lewis, W. M., Jr., &amp; Morris, D. P. (1986). Toxicity of nitrite to fish: A review. <em>Transactions of the American Fisheries Society</em>, 115(2), 183–195.</li>
+        <li>Svobodová, Z., Máchová, J., &amp; Poleszczuk, G. (2005). Nitrite poisoning of fish in aquaculture facilities with recirculating water. <em>Acta Veterinaria Brno</em>, 74, 129–137.</li>
+        <li>Garcia, L. O., Becker, A. G., Copatti, C. E., Baldisserotto, B., &amp; Radünz Neto, J. (2007). Salt in the food and water as a supportive therapy for <em>Ichthyophthirius multifiliis</em> infestation on silver catfish, <em>Rhamdia quelen</em>, fingerlings. <em>Journal of the World Aquaculture Society</em>, 38(1), 1–11.</li>
+        <li>Mifsud, C., Rowland, S. J., &amp; Read, P. (2003). Use of common salt to treat ichthyophthiriasis in Australian warmwater fishes. <em>North American Journal of Aquaculture</em>, 65(2), 124–127.</li>
+        <li>Larcombe, E., Alexander, M. E., Snellgrove, D., Henriquez, F. L., &amp; Sloman, K. A. (2025). Current disease treatments for the ornamental pet fish trade and their associated problems. <em>Reviews in Aquaculture</em>, 17(1), e12948.</li>
+      </ul>
     </div>
 
     <div class="art-footer">

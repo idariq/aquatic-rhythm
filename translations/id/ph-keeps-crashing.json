@@ -5,6 +5,7 @@
         "sourceFile": "articles/ph-keeps-crashing.html",
         "status": "ready"
     },
+    "sourcesLabel": "Bacaan lanjut",
     "head": {
         "title": "Kenapa pH Terus Anjlok — Aquatic Rhythm",
         "description": "pH bisa anjlok tiba-tiba di tank yang kelihatan benar-benar stabil sehari sebelumnya. Apa sebenarnya yang dilindungi KH, kenapa ia diam-diam habis, dan cara memperbaiki anjlok pH tanpa mengejutkan tank untuk kedua kalinya.",
@@ -48,7 +49,7 @@
             "titleHtml": "KH adalah buffernya.<br><em>pH cuma yang dilindunginya.</em>",
             "body": [
                 "Yang menjaga pH tetap stabil adalah kesadahan karbonat, atau KH — ukuran seberapa banyak asam yang bisa diserap air sebelum pH benar-benar bergeser. Anggap saja sebagai bantalan: selama KH di atas nol, asam yang masuk diserap bantalan itu, bukan langsung menggeser pH. Begitu KH mencapai nol, tidak ada lagi yang tersisa untuk menyerap asam berikutnya, dan pH turun cepat — sering kali dalam semalam.",
-                "<strong>Nitrifikasi sendiri menghasilkan asam.</strong> Bakteri yang sama yang mengubah amonia jadi nitrat menghabiskan KH sebagai hasil sampingan dari proses itu. Tank yang padat penghuni dengan siklus nitrogen yang sehat terus-menerus menghabiskan buffer-nya sendiri, ada atau tidak ada yang menambahkan sesuatu yang asam.",
+                "<strong>Nitrifikasi sendiri menghasilkan asam.</strong> Bakteri yang sama yang mengubah amonia jadi nitrat melepaskan ion hidrogen saat melakukannya, dan KH-lah yang menetralkan ion-ion itu sebelum sempat menggeser pH. Tank yang padat penghuni dengan siklus nitrogen yang sehat terus-menerus menghabiskan buffer-nya sendiri, ada atau tidak ada yang menambahkan sesuatu yang asam.",
                 "<strong>Air sumber yang lunak sejak awal cuma punya sedikit buffer.</strong> Air RO, air hujan, atau air keran yang secara alami lunak di beberapa daerah membawa KH nyaris nol sejak awal. Tidak ada bantalan untuk dihabiskan sejak awal.",
                 "<strong>Tanin kayu apung dan CO2 injeksi</strong> sama-sama mendorong ke arah asam juga. Di tank berbunga tanaman dengan CO2 injeksi, efek itu bertambah bersamaan dengan KH yang sudah dihabiskan siklus nitrogen."
             ],

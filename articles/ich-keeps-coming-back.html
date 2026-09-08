@@ -111,6 +111,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}
 .art-footer a:hover{color:var(--th-accent)}
 
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
+
 .art-intro{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
 .art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
 .art-intro .art-hero-figure{margin-bottom:0}
@@ -219,7 +225,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">Why treatment <em>alone doesn't work</em></h2>
     <div class="mod-body">
       <p>Ich (<em>Ichthyophthirius multifiliis</em>) is a parasite that most experienced keepers have dealt with. The frustrating part is not the first outbreak — it is the return. Treatment works: heat, salt, and medication all clear the free-swimming stage effectively. But keepers who experience recurring ich are often addressing the same symptom repeatedly without addressing what made the fish vulnerable in the first place.</p>
-      <p>Ich is everywhere. It exists at low levels in most aquariums, most of the time. Fish that are healthy and unstressed have immune responses that suppress it. Ich becomes visible — white spots, flashing behaviour — when fish are suppressed enough that the parasite can establish. This is the biological reality that explains recurrence: if the tank returns to the same stressful conditions after clearing an outbreak, the parasite returns when the immune system is suppressed again.</p>
+      <p>Ich (<em>Ichthyophthirius multifiliis</em>) needs a live fish to complete its life cycle — it can't simply sit dormant in a tank waiting for a chance. Most recurrences trace back to a source: a new fish, plant, or piece of decor that carried it in, or a few free-swimming parasites that survived an incomplete first treatment. What chronic stress changes is how well a fish's immune system fights off that exposure once it happens — a fish that survived a previous outbreak usually builds real protective immunity, while a chronically stressed one is far more likely to develop a visible infection from an exposure a healthier tank would shrug off. That's the biological reality that explains recurrence: return the tank to the same stressful conditions, and the next exposure is more likely to turn into another outbreak.</p>
       <p>The cycle continues not because the treatment was inadequate but because the underlying conditions that allowed the parasite to gain a foothold were never changed. The drift that produced the first outbreak continues to produce subsequent ones.</p>
     </div>
 
@@ -238,13 +244,13 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-eyebrow"><span class="mod-num">02 / 04</span><span class="mod-tag">A Livestock Rhythm signal</span></div>
     <h2 class="mod-title">Ich as a <em>Livestock Rhythm signal</em></h2>
     <div class="mod-body">
-      <p>In ARA, an ich outbreak is a Livestock Rhythm signal — it is the tank's way of making visible a stress that was already present. The signal is not the ich itself but what the ich reveals: that the fish in this tank have been under sufficient chronic stress to allow a normally suppressed parasite to proliferate.</p>
-      <p>The ARA question after an ich outbreak is not only "how do I clear the spots?" It is: "what is suppressing the immune response of my fish?" Several stressors commonly predispose tanks to ich outbreaks, each in a distinct way:</p>
+      <p>In ARA, an ich outbreak is a Livestock Rhythm signal — it is the tank's way of making visible a stress that was already present. The signal is not the ich itself but what the ich reveals: that the fish in this tank have been under enough chronic stress that an exposure a healthier tank would likely have fought off instead turned into a visible infection.</p>
+      <p>The ARA question after an ich outbreak is not only "how do I clear the spots?" It is: "what compromised my fish's ability to fight this off, and where did the exposure actually come from?" Several stressors commonly predispose tanks to ich outbreaks, each in a distinct way:</p>
       <p><strong>Temperature instability</strong> — the most common overlooked cause. A heater that cycles, a room that changes temperature seasonally, or a tank placed near a window can create daily temperature swings that chronically stress fish without producing a test-kit-readable problem. The misalignment is invisible until the Livestock Rhythm reveals it.</p>
       <p><strong>Overcrowding</strong> — too many fish produces ongoing aggression, competition for food, and elevated background ammonia from bioload. All of these are chronic stressors that suppress immunity over weeks. The keeper rhythm may have been consistent, but the tank's carrying capacity has been exceeded.</p>
       <p><strong>New fish introduction without quarantine</strong> — introducing new fish without a quarantine period is the most direct route for ich introduction. But even quarantined fish introduced to a stressed tank can trigger an outbreak in fish that were already compromised. The introduction becomes the visible trigger; the existing suppression is the underlying cause.</p>
-      <p><strong>Post-water-change shock</strong> — large, infrequent water changes with significantly different temperature or chemistry can trigger ich outbreaks in the days following. The change itself stresses the fish, and a population of ich that was suppressed briefly finds the immune window it needed.</p>
-      <p><strong>Elevated nitrate over time</strong> — not the emergency of ammonia or nitrite, but chronic high nitrate above 40–50 ppm suppresses immune function in many fish over months. A tank where water changes have slipped is a tank where fish are chronically stressed in a way that standard test results may obscure until the Livestock Rhythm signals it.</p>
+      <p><strong>Post-water-change shock</strong> — large, infrequent water changes with significantly different temperature or chemistry can trigger ich outbreaks in the days following. The change itself stresses the fish, making them more vulnerable to any ich lingering from an incomplete earlier treatment, or freshly introduced around the same time.</p>
+      <p><strong>Elevated nitrate over time</strong> — not the emergency of ammonia or nitrite, but nitrate that's been creeping up for weeks is a sign of accumulating chronic stress even before it reaches any single "danger" number, and the concentration that actually matters varies by species and by how the reading is measured. A tank where water changes have slipped is a tank where fish are chronically stressed in a way that standard test results may obscure until the Livestock Rhythm signals it.</p>
     </div>
 
     <div class="hn">
@@ -266,7 +272,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>The first step after clearing an ich outbreak is observation, not immediate change. List what you know: when did the outbreak appear? What changed in the two to four weeks before it? New fish? New food? Seasonal temperature change? Room temperature shift? A large water change? A filter cleaning?</p>
       <p>Once the most likely recent change is identified, that is the pressure to address. If nothing changed externally, the next question is what has been accumulating: has the cleaning routine slipped? Is the tank overcrowded relative to what it was six months ago — fish grow? Is the heater still working accurately, not just "the light is on" but measured with a separate thermometer?</p>
       <p>Get a second thermometer and log tank temperature at the same time each day for one week. Temperature instability shows up in this log far more often than keepers expect — a swing of two or three degrees across a day can be enough to suppress immune function chronically without ever looking like an obvious problem. The keeper rhythm felt consistent; the thermal environment had been drifting.</p>
-      <p>Also test nitrate, not just ammonia and nitrite. A nitrate reading above 40 ppm in a community tank with recurring ich is nearly always part of the picture. It will not appear as an emergency on a test kit, but it is the kind of background misalignment that the Livestock Rhythm will eventually surface.</p>
+      <p>Also test nitrate, not just ammonia and nitrite. Rising or persistently elevated nitrate in a community tank with recurring ich is often part of the picture, even though no single cutoff applies safely across every species and test method. It will not appear as an emergency on a test kit, but it is the kind of background misalignment that the Livestock Rhythm will eventually surface.</p>
     </div>
 
     <div class="pq">
@@ -319,6 +325,17 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <a href="/articles/fish-hiding-what-does-it-mean" class="btn-ar" data-analytics-event="cta_ich_hiding" data-cta="fish_hiding">My Fish Are Hiding →</a>
       <a href="/articles/ara-full-framework" class="btn-ar" data-analytics-event="cta_ich_ara" data-cta="ara_page">Aquatic Rhythm Alignment →</a>
       <a href="/rhyssa" class="btn-ar" data-analytics-event="cta_ich_rhyssa" data-cta="rhyssa">Rhyssa →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">Further reading</span>
+      <ul>
+        <li>Hines, R. S., &amp; Spira, D. T. (1998). <em>Ichthyophthirius multifiliis</em>: A model of cutaneous infection and immunity in fishes. <em>Immunological Reviews</em>, 166, 163–178.</li>
+        <li>Nielsen, M. E., Buchmann, K., &amp; Jørgensen, R. J. (2013). Immunity to <em>Ichthyophthirius</em> infections in fish: A synopsis. <em>Developmental and Comparative Immunology</em>, 41(2), 243–252.</li>
+        <li>Nowak, B. F., &amp; LaPatra, S. E. (2015). Epizootiology of <em>Ichthyophthirius multifiliis</em> infections in fish: A review. <em>Journal of Fish Diseases</em>, 38(2), 97–109.</li>
+        <li>Wang, X., Sun, G., Feng, S., et al. (2021). Conjoint applications of meta-analysis and bioinformatic data toward understanding the effect of nitrate on fish. <em>Aquaculture</em>, 545, 737221.</li>
+        <li>Xing, Y., Wang, J., Wang, L., et al. (2021). Effects of chronic nitrate exposure on the intestinal morphology, immune status, barrier function, and microbiota of juvenile turbot (<em>Scophthalmus maximus</em>). <em>Ecotoxicology and Environmental Safety</em>, 208, 111571.</li>
+      </ul>
     </div>
 
     <div class="art-footer">

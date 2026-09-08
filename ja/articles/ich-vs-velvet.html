@@ -88,6 +88,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .btn-ar:hover{color:var(--th-accent);border-color:var(--th-accent-border)}
 .art-footer{margin-top:4rem;padding-top:1.6rem;border-top:1px solid var(--th-line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}.art-footer a:hover{color:var(--th-accent)}
+
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
 .art-intro{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
 .art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
 .art-intro .art-hero-figure{margin-bottom:0}
@@ -236,7 +242,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-body">
       <p>ほかの何かをする前に、暗くした部屋で懐中電灯チェックを行ってください。これが二つを見分けるもっとも確実な方法であり、数分しかかかりません。</p>
       <p>呼吸の苦しさにも注目してください。ベルベット病のほうが白点病よりえらに強く影響する傾向があるので、明らかに呼吸が重く速い場合は、懐中電灯で確認する前からベルベット病のほうにわずかに傾きます。</p>
-      <p>白点病の生活環は水温によって速くなったり遅くなったりし、これは治療のタイミングに関わってきます。ベルベット病は同じような水温依存の周期をたどりません。これも、片方向けに作られた治療がもう片方には確実に効かない理由の一つです。</p>
+      <p>どちらの寄生虫も、魚に付着し、離れて繁殖し、自由遊泳ステージを放って新しい魚を探すという同じ周期をたどり、どちらも水温によって速くなったり遅くなったりします。違うのは、それぞれの種ごとの具体的な速さと治療のタイミングであって、水温が関係するかどうかではありません。これも、片方に合わせて時期を決めた治療がもう片方には確実に効かない理由の一つです。</p>
     </div>
 
     <div class="hn">
@@ -274,6 +280,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <a href="/ja/articles/fish-flashing-scratching" class="btn-ar" data-analytics-event="cta_ichvelvet_flashing" data-cta="fish_flashing">魚が体をこすりつけるのはなぜ？ →</a>
       <a href="/ja/articles/ara-full-framework" class="btn-ar" data-analytics-event="cta_ichvelvet_ara" data-cta="ara_page">ARAフレームワーク →</a>
       <a href="/rhyssa" class="btn-ar" data-analytics-event="cta_ichvelvet_rhyssa" data-cta="rhyssa">Rhyssaに聞く →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">参考文献</span>
+      <ul>
+        <li>Nowak, B. F., &amp; LaPatra, S. E. (2015). Epizootiology of <em>Ichthyophthirius multifiliis</em> infections in fish: A review. <em>Journal of Fish Diseases</em>, 38(2), 97–109.</li>
+        <li>Shinn, A. P., et al. (2015). <em>Ichthyophthirius multifiliis</em> (white spot) infections in fish. Southern Regional Aquaculture Center Publication No. 476.</li>
+      </ul>
     </div>
 
     <div class="art-footer">

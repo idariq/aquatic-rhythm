@@ -88,6 +88,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .btn-ar:hover{color:var(--th-accent);border-color:var(--th-accent-border)}
 .art-footer{margin-top:4rem;padding-top:1.6rem;border-top:1px solid var(--th-line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}.art-footer a:hover{color:var(--th-accent)}
+
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
 .art-intro{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
 .art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
 .art-intro .art-hero-figure{margin-bottom:0}
@@ -213,7 +219,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">KH adalah buffernya.<br><em>pH cuma yang dilindunginya.</em></h2>
     <div class="mod-body">
       <p>Yang menjaga pH tetap stabil adalah kesadahan karbonat, atau KH — ukuran seberapa banyak asam yang bisa diserap air sebelum pH benar-benar bergeser. Anggap saja sebagai bantalan: selama KH di atas nol, asam yang masuk diserap bantalan itu, bukan langsung menggeser pH. Begitu KH mencapai nol, tidak ada lagi yang tersisa untuk menyerap asam berikutnya, dan pH turun cepat — sering kali dalam semalam.</p>
-      <p><strong>Nitrifikasi sendiri menghasilkan asam.</strong> Bakteri yang sama yang mengubah amonia jadi nitrat menghabiskan KH sebagai hasil sampingan dari proses itu. Tank yang padat penghuni dengan siklus nitrogen yang sehat terus-menerus menghabiskan buffer-nya sendiri, ada atau tidak ada yang menambahkan sesuatu yang asam.</p>
+      <p><strong>Nitrifikasi sendiri menghasilkan asam.</strong> Bakteri yang sama yang mengubah amonia jadi nitrat melepaskan ion hidrogen saat melakukannya, dan KH-lah yang menetralkan ion-ion itu sebelum sempat menggeser pH. Tank yang padat penghuni dengan siklus nitrogen yang sehat terus-menerus menghabiskan buffer-nya sendiri, ada atau tidak ada yang menambahkan sesuatu yang asam.</p>
       <p><strong>Air sumber yang lunak sejak awal cuma punya sedikit buffer.</strong> Air RO, air hujan, atau air keran yang secara alami lunak di beberapa daerah membawa KH nyaris nol sejak awal. Tidak ada bantalan untuk dihabiskan sejak awal.</p>
       <p><strong>Tanin kayu apung dan CO2 injeksi</strong> sama-sama mendorong ke arah asam juga. Di tank berbunga tanaman dengan CO2 injeksi, efek itu bertambah bersamaan dengan KH yang sudah dihabiskan siklus nitrogen.</p>
     </div>
@@ -272,6 +278,13 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <a href="/id/articles/how-often-water-changes" class="btn-ar" data-analytics-event="cta_phcrash_waterchanges" data-cta="how_often_water_changes">Seberapa sering ganti air? →</a>
       <a href="/id/articles/ara-full-framework" class="btn-ar" data-analytics-event="cta_phcrash_ara" data-cta="ara_page">Kerangka ARA →</a>
       <a href="/rhyssa" class="btn-ar" data-analytics-event="cta_phcrash_rhyssa" data-cta="rhyssa">Tanya Rhyssa →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">Bacaan lanjut</span>
+      <ul>
+        <li>United States Environmental Protection Agency. (2002). Nitrification. In <em>Onsite Wastewater Treatment Systems Manual</em>. U.S. Environmental Protection Agency.</li>
+      </ul>
     </div>
 
     <div class="art-footer">

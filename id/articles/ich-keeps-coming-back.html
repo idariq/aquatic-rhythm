@@ -111,6 +111,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}
 .art-footer a:hover{color:var(--th-accent)}
 
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
+
 .art-intro{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
 .art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
 .art-intro .art-hero-figure{margin-bottom:0}
@@ -219,7 +225,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">Ich hilang.<br><em>Tapi kondisi yang memberinya jalan masih ada.</em></h2>
     <div class="mod-body">
       <p>Ich (Ichthyophthirius multifiliis) adalah parasit yang hampir semua pemelihara berpengalaman pernah hadapi. Bagian yang menjengkelkan bukan wabah pertama — tapi kembalinya. Pengobatan efektif: panas, garam, dan obat semuanya membersihkan tahap berenang bebas dengan efektif. Tapi pemelihara yang mengalami ich berulang sering menangani gejala yang sama berulang kali tanpa mengatasi apa yang membuat ikan rentan.</p>
-      <p>Ich ada hampir di mana-mana dalam lingkungan akuarium sebagai parasit tingkat rendah. Sistem imun ikan yang sehat dan tidak stres biasanya menjaganya pada tingkat yang tidak menghasilkan wabah yang terlihat. Ini menjadi masalah yang terlihat ketika stres menekan fungsi imun ikan cukup untuk membiarkan parasit berkembang biak lebih cepat dari pertahanan alami mereka yang bisa mengelolanya.</p>
+      <p>Ich (Ichthyophthirius multifiliis) butuh ikan hidup untuk menyelesaikan siklus hidupnya — parasit ini tidak bisa begitu saja diam tersembunyi di tangki menunggu kesempatan. Kebanyakan kasus berulang berasal dari satu sumber: ikan, tumbuhan, atau dekorasi baru yang membawanya masuk, atau segelintir parasit yang selamat dari pengobatan pertama yang tidak tuntas. Yang berubah akibat stres kronis adalah seberapa baik sistem imun ikan melawan paparan itu begitu terjadi — ikan yang selamat dari wabah sebelumnya biasanya membangun imunitas pelindung yang nyata, sementara ikan yang stres kronis jauh lebih mungkin berkembang jadi infeksi yang terlihat dari paparan yang sama, yang di tangki sehat mungkin tidak berbekas.</p>
       <p>Implikasi praktisnya: ich berulang bukan kegagalan teknik pengobatan. Ini adalah sinyal bahwa stres di tank yang memungkinkan wabah pertama masih hadir. Membersihkan bintik untuk keempat kalinya tanpa mengatasi stres itu adalah menunggu untuk kelima kalinya.</p>
     </div>
 
@@ -238,13 +244,13 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-eyebrow"><span class="mod-num">02 / 04</span><span class="mod-tag">Ich sebagai sinyal Livestock Rhythm</span></div>
     <h2 class="mod-title">Ich adalah sinyal.<br><em>Bukan masalah itu sendiri.</em></h2>
     <div class="mod-body">
-      <p>Dalam ARA, wabah ich adalah sinyal Livestock Rhythm — cara tank mengekspresikan stres yang sudah hadir. Sinyalnya bukan ich itu sendiri tapi apa yang ich ungkapkan: bahwa ikan di tank ini berada di bawah stres kronis yang cukup untuk membiarkan parasit yang biasanya tertekan berkembang biak.</p>
-      <p>Pertanyaan ARA setelah wabah ich bukan hanya 'bagaimana cara menghilangkan bintik?' Melainkan 'stres apa di tank ini yang cukup tinggi untuk memungkinkan ini terjadi, dan apakah masih hadir?'</p>
+      <p>Dalam ARA, wabah ich adalah sinyal Livestock Rhythm — cara tangki mengekspresikan stres yang sudah hadir. Sinyalnya bukan ich itu sendiri tapi apa yang ich ungkapkan: bahwa ikan di tangki ini berada di bawah stres kronis yang cukup, sehingga paparan yang mestinya bisa dilawan tangki yang lebih sehat justru berkembang jadi infeksi yang terlihat.</p>
+      <p>Pertanyaan ARA setelah wabah ich bukan hanya 'bagaimana cara menghilangkan bintik?' Melainkan 'apa yang melemahkan kemampuan ikan saya melawan ini, dan dari mana sebenarnya paparannya berasal?'</p>
       <p><strong>Ketidakstabilan suhu</strong> — penyebab yang paling sering terlewat. Heater yang naik-turun, suhu ruangan yang berubah mengikut musim, atau tank yang diletakkan dekat jendela bisa menciptakan fluktuasi suhu harian yang membuat ikan stres kronis tanpa memunculkan masalah yang bisa terbaca test kit. Ketidakselarasan ini tidak kelihatan sampai Livestock Rhythm mengungkapkannya.</p>
       <p><strong>Populasi terlalu padat</strong> — terlalu banyak ikan menghasilkan agresi yang terus-menerus, persaingan makanan, dan kenaikan amonia latar akibat bioload. Semua ini adalah stresor kronis yang menekan imunitas selama berminggu-minggu. Keeper Rhythm mungkin sudah konsisten, tapi kapasitas tampung tank sudah terlampaui.</p>
       <p><strong>Ikan baru masuk tanpa karantina</strong> — jalur paling langsung untuk parasit ich masuk ke tank. Tapi bahkan ikan yang sudah dikarantina pun, kalau dimasukkan ke tank yang sedang stres, bisa memicu wabah pada ikan yang sebenarnya sudah lemah lebih dulu. Penambahan ikan jadi pemicu yang kelihatan; penekanan imun yang sudah ada sebelumnya adalah penyebab sebenarnya.</p>
-      <p><strong>Guncangan pasca ganti air</strong> — ganti air besar yang jarang dilakukan, dengan suhu atau kimia air yang jauh berbeda, bisa memicu wabah ich dalam beberapa hari setelahnya. Perubahan itu sendiri membuat ikan stres, dan populasi ich yang tadinya tertekan menemukan celah imun yang dibutuhkannya.</p>
-      <p><strong>Nitrat tinggi berkepanjangan</strong> — bukan kondisi darurat seperti amonia atau nitrit, tapi nitrat kronis di atas 40–50 ppm menekan fungsi imun banyak ikan selama berbulan-bulan. Tank yang jadwal ganti airnya mulai molor adalah tank yang ikannya stres kronis dengan cara yang mungkin tidak terlihat pada hasil tes standar — sampai Livestock Rhythm memberi sinyal.</p>
+      <p><strong>Guncangan pasca ganti air</strong> — ganti air besar yang jarang dilakukan, dengan suhu atau kimia air yang jauh berbeda, bisa memicu wabah ich dalam beberapa hari setelahnya. Perubahan itu sendiri membuat ikan stres, membuatnya lebih rentan terhadap ich yang masih tersisa dari pengobatan sebelumnya yang tidak tuntas, atau yang baru masuk sekitar waktu yang sama.</p>
+      <p><strong>Nitrat tinggi berkepanjangan</strong> — bukan kondisi darurat seperti amonia atau nitrit, tapi nitrat yang terus naik selama berminggu-minggu adalah tanda stres kronis yang menumpuk, bahkan sebelum mencapai angka 'bahaya' tertentu, dan konsentrasi yang sebenarnya berpengaruh berbeda-beda menurut spesies dan cara pembacaannya diukur. Tangki yang jadwal ganti airnya mulai molor adalah tangki yang ikannya stres kronis dengan cara yang mungkin tidak terlihat pada hasil tes standar — sampai Livestock Rhythm memberi sinyal.</p>
     </div>
 
     <div class="hn">
@@ -319,6 +325,17 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <a href="/id/articles/fish-hiding-what-does-it-mean" class="btn-ar" data-analytics-event="cta_ich_hiding" data-cta="fish_hiding">Parameter ok tapi ikan mati →</a>
       <a href="/id/articles/ara-full-framework" class="btn-ar" data-analytics-event="cta_ich_ara" data-cta="ara_page">Ikan saya bersembunyi →</a>
       <a href="/rhyssa" class="btn-ar" data-analytics-event="cta_ich_rhyssa" data-cta="rhyssa">Tanya Rhyssa →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">Bacaan lanjut</span>
+      <ul>
+        <li>Hines, R. S., &amp; Spira, D. T. (1998). <em>Ichthyophthirius multifiliis</em>: A model of cutaneous infection and immunity in fishes. <em>Immunological Reviews</em>, 166, 163–178.</li>
+        <li>Nielsen, M. E., Buchmann, K., &amp; Jørgensen, R. J. (2013). Immunity to <em>Ichthyophthirius</em> infections in fish: A synopsis. <em>Developmental and Comparative Immunology</em>, 41(2), 243–252.</li>
+        <li>Nowak, B. F., &amp; LaPatra, S. E. (2015). Epizootiology of <em>Ichthyophthirius multifiliis</em> infections in fish: A review. <em>Journal of Fish Diseases</em>, 38(2), 97–109.</li>
+        <li>Wang, X., Sun, G., Feng, S., et al. (2021). Conjoint applications of meta-analysis and bioinformatic data toward understanding the effect of nitrate on fish. <em>Aquaculture</em>, 545, 737221.</li>
+        <li>Xing, Y., Wang, J., Wang, L., et al. (2021). Effects of chronic nitrate exposure on the intestinal morphology, immune status, barrier function, and microbiota of juvenile turbot (<em>Scophthalmus maximus</em>). <em>Ecotoxicology and Environmental Safety</em>, 208, 111571.</li>
+      </ul>
     </div>
 
     <div class="art-footer">

@@ -761,16 +761,7 @@ body.ar-reduce-motion #driftwood-layer{opacity:0!important;transition:opacity .5
 }
 
 /* ── READING PAGE CATEGORIES ── */
-.rd-cat{margin-bottom:2.5rem}
-/* Divider between categories — needed because a category with more than
-   RD_PAGE_SIZE cards ends in a sticky .rd-page-dots pill (js/ui.js's
-   paginateReadingCards()) that, once unstuck, settled right against the
-   next category's eyebrow with only .rd-cat's old .5rem margin between
-   them — read as belonging to the next category instead of closing out
-   the previous one. Not scoped to the dots case specifically: every
-   category boundary gets the same rule, dots or not, so the line always
-   means "new category" rather than only appearing some of the time. */
-.rd-cat + .rd-cat{border-top:1px solid var(--th-line);padding-top:2.5rem}
+.rd-cat{margin-bottom:.5rem}
 .rd-swipe-clip{overflow-x:hidden}
 .rd-cat-header{margin-bottom:1.8rem}
 .rd-cat-label{display:inline-block;font-size:var(--fs-xs);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--th-accent);border-bottom:1px solid var(--th-accent-border);padding-bottom:.3rem;margin-bottom:.7rem}

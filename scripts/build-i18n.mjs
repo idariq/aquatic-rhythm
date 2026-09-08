@@ -672,6 +672,14 @@ function buildArticle(slug, lang, t) {
     return match;
   });
 
+  // ── 9b. "Further reading" sources label (id-based match, tag/class-agnostic
+  // per CLAUDE.md's generalized-id-match convention) — the citation entries
+  // themselves (author, year, title) are bibliographic and stay identical
+  // across languages, so only this heading needs translation. ──────────────
+  if (t.sourcesLabel) {
+    h = h.replace(/(id="art-sources-label">)[^<]*/, (_, a) => `${a}${t.sourcesLabel}`);
+  }
+
   // ── 10. Article footer — scoped to art-footer to avoid touching nav links ──
   // Some articles repeat an art-footer block per module, so replace ALL occurrences.
   if (t.footer) {

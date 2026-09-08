@@ -75,6 +75,22 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-title em{font-style:italic;color:var(--th-accent)}
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}.mod-body strong{font-weight:400;color:var(--th-ink)}.mod-body em{font-style:italic;color:var(--th-ink-3)}
+
+/* VISUAL BLOCK */
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn:disabled{opacity:.4;cursor:default}
+.vis-btn-s{color:var(--th-ink-4);border-color:var(--th-ink-5)}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 .hn{margin:2rem 0;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2);position:relative}
@@ -224,6 +240,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p><strong>Driftwood tannins and injected CO2</strong> both push in the acidic direction too. In a planted tank running injected CO2, that effect compounds with whatever KH the nitrogen cycle is already consuming.</p>
     </div>
 
+    <!-- VISUAL: Tap to add days — KH depletes while pH looks unchanged -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:200px"></canvas>
+    </div>
+
     <div class="pq">
       <p>"pH doesn't crash because something acidic was added. It crashes because the thing quietly protecting it finally ran out."</p>
     </div>
@@ -299,6 +320,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -317,6 +339,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -324,6 +347,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -347,6 +371,202 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same pattern
+   as NTS_STRINGS/ntsT() in articles/new-tank-syndrome.html. This script
+   block is copied byte-for-byte into id/articles + ja/articles by
+   build-i18n.mjs, so the runtime lang check is what actually localises
+   the widget — keep PHK_STRINGS.en/.id/.ja key sets identical when
+   editing. */
+var PHK_STRINGS = {
+  en: {
+    v2_full: 'buffer full, pH steady',
+    v2_thinning: 'buffer thinning, pH still steady',
+    v2_nearlyGone: 'buffer almost gone, pH still looks normal',
+    v2_crashed: 'buffer exhausted — pH has crashed',
+    v2_advBtn: '+ Add a day',
+    v2_resetBtn: 'Reset',
+    v2_hint: "watch KH deplete while pH looks unchanged, until it isn't"
+  },
+  id: {
+    v2_full: 'buffer penuh, pH stabil',
+    v2_thinning: 'buffer mulai menipis, pH masih stabil',
+    v2_nearlyGone: 'buffer hampir habis, pH masih terlihat normal',
+    v2_crashed: 'buffer habis — pH sudah jatuh',
+    v2_advBtn: '+ Tambah satu hari',
+    v2_resetBtn: 'Ulangi',
+    v2_hint: 'perhatikan KH menipis sementara pH terlihat tidak berubah, sampai tiba-tiba berubah'
+  },
+  ja: {
+    v2_full: 'バッファーは十分、pHは安定',
+    v2_thinning: 'バッファーが減り始めている、pHはまだ安定',
+    v2_nearlyGone: 'バッファーがほぼ尽きている、pHはまだ正常に見える',
+    v2_crashed: 'バッファーが尽きた — pHが急落した',
+    v2_advBtn: '+ 1日進める',
+    v2_resetBtn: 'リセット',
+    v2_hint: 'KHが減っていく一方でpHは変わらないように見える様子を見てみましょう'
+  }
+};
+function phkT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = PHK_STRINGS[lang] || PHK_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : PHK_STRINGS.en[key]) || '';
+}
+/* Day phrasing does not share one word order across languages — ja counts
+   number-first ("N日目"), id/en are word-first ("Hari N"/"Day N"). Mirrors
+   ntsDay() in articles/new-tank-syndrome.html. */
+function phkDay(n) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  if (lang === 'ja') return n + '日目';
+  if (lang === 'id') return 'Hari ' + n;
+  return 'Day ' + n;
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/new-tank-syndrome.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Tap to add days — KH depletes while pH looks unchanged,
+   until the buffer actually runs out. Deliberately simplified/illustrative
+   math (linear KH depletion, sharp pH drop only in the last 15% of
+   runway) — the point is the shape of the pattern (flat, then a cliff),
+   not lab-accurate titration curves. ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var day = 0, maxDay = 35;
+  var khStart = 6;
+  var kh = khStart, ph = 7.4;
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div class="vc-label"><span id="phk-day">' + phkDay(0) + ' — ' + phkT('v2_full') + '</span></div>'
+    +'<div style="display:flex;gap:.6rem;align-items:center;justify-content:center;margin:.5rem 0">'
+    +'<button class="vis-btn" id="phk-adv">' + phkT('v2_advBtn') + '</button>'
+    +'<button class="vis-btn vis-btn-s" id="phk-reset">' + phkT('v2_resetBtn') + '</button></div>'
+    +'<div class="vc-hint">' + phkT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  var advBtn = document.getElementById('phk-adv');
+  var resetBtn = document.getElementById('phk-reset');
+  var dayLabel = document.getElementById('phk-day');
+
+  function khToPh(khVal) {
+    var ratio = Math.max(0, khVal) / khStart;
+    if (ratio > 0.15) return 7.4;
+    var t = 1 - (ratio / 0.15);
+    return 7.4 - t * 2.0;
+  }
+
+  function statusKey() {
+    var ratio = kh / khStart;
+    if (kh <= 0) return 'v2_crashed';
+    if (ratio > 0.6) return 'v2_full';
+    if (ratio > 0.25) return 'v2_thinning';
+    return 'v2_nearlyGone';
+  }
+
+  function getDayLabel() { return phkDay(day) + ' — ' + phkT(statusKey()); }
+
+  function advance() {
+    if (day >= maxDay) return;
+    day++;
+    kh = Math.max(0, kh - khStart / maxDay);
+    ph = khToPh(kh);
+    dayLabel.textContent = getDayLabel();
+    draw();
+    if (kh <= 0) advBtn.disabled = true;
+  }
+
+  function reset() {
+    day = 0; kh = khStart; ph = 7.4;
+    advBtn.disabled = false;
+    dayLabel.textContent = getDayLabel();
+    draw();
+  }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var crashed = kh <= 0;
+    var barH = H*.52, barY = 14, barW = (W-40)/2;
+    var bars = [
+      { label:'KH', val: kh, max: khStart, min: 0, unit:' dKH', col:'rgba(80,180,220,' },
+      { label:'pH', val: ph, max: 7.6, min: 5.2, unit:'', col: crashed ? 'rgba(220,90,70,' : 'rgba(80,200,120,' }
+    ];
+    bars.forEach(function(b,i){
+      var bx = 16 + i*(barW+16);
+      var frac = (b.val - b.min) / (b.max - b.min);
+      var fillH = Math.max(0, Math.min(1, frac)) * barH;
+      ctx.fillStyle = vcInk(.07); ctx.fillRect(bx, barY, barW, barH);
+      if (fillH > 0) { ctx.fillStyle = b.col+'0.6)'; ctx.fillRect(bx, barY+barH-fillH, barW, fillH); }
+      ctx.font='300 11px Work Sans,system-ui,sans-serif'; ctx.textAlign='center';
+      ctx.fillStyle = b.col+'0.85)'; ctx.fillText(b.label, bx+barW/2, barY+barH+18);
+      ctx.font='400 14px Work Sans,system-ui,sans-serif';
+      ctx.fillStyle = vcInk(.75);
+      var valY = barY+barH-fillH-10; if (valY < barY+16) valY = barY+16;
+      ctx.fillText(b.val.toFixed(1)+b.unit, bx+barW/2, valY);
+      ctx.textAlign='left';
+    });
+  }
+
+  advBtn.addEventListener('click', advance);
+  resetBtn.addEventListener('click', reset);
+
+  vcRedraws.cv2 = draw;
+  dayLabel.textContent = getDayLabel();
+  draw();
+};
+
+/* Resize handler only — canvas 2 also (re)inits on entering module 2
+   via goMod(). */
+window.addEventListener('resize', function(){
+  if (canvases[currentMod]) setTimeout(function(){ canvases[currentMod](); }, 50);
+});
 
 </script>
 

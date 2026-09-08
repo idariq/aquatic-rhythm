@@ -89,6 +89,20 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+/* VISUAL BLOCK */
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -242,6 +256,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Penghobi yang mengalami masalah setelah membersihkan filter sering mengaitkannya dengan pembersihan yang dilakukan 'di waktu yang salah' atau dengan penyakit. Penyebab sebenarnya lebih sederhana: air yang digunakan untuk membersihkan telah menghancurkan biologi. Solusinya sama sederhananya: selalu bilas media filter dalam air yang diambil dari akuarium saat sesi ganti air. Air akuarium tidak mengandung klorin, suhu sesuai, dan sudah mengandung senyawa yang bakteri butuhkan. Bilasan lembut dalam ember air akuarium membuang kotoran yang terjebak tanpa mengganggu koloni.</p>
     </div>
 
+    <!-- VISUAL: Toggle rinse water — tap water kills a share of the colony, tank water leaves it intact -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="hn">
       <span class="hn-label">Filter itu juga hidup</span>
       <p>Koloni bakteri di filter Anda sama-sama bagian hidup dari akuarium seperti ikan dan tanaman. Mengelola filter berarti membaca kondisi koloni itu: kapan ia sudah stabil, kapan perlu dirawat, dan jenis perawatan apa yang menjaga versus mengganggu ia.</p>
@@ -337,6 +356,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 5;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -355,6 +375,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -362,6 +383,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -385,6 +407,203 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same pattern
+   as NTS_STRINGS/ntsT(), PHK_STRINGS/phkT(), NKR_STRINGS/nkrT(),
+   FM_STRINGS/fmT(), TWC_STRINGS/twcT(), and CC_STRINGS/ccT() in the
+   other article widgets. This script block is copied byte-for-byte into
+   id/articles + ja/articles by build-i18n.mjs, so the runtime lang check
+   is what actually localises the widget — keep AFM_STRINGS.en/.id/.ja
+   key sets identical when editing. */
+var AFM_STRINGS = {
+  en: {
+    v2_toggleTap: 'Rinsed in tap water',
+    v2_toggleTank: 'Rinsed in tank water',
+    v2_hint: 'same filter, same colony — only the rinse water differs',
+    v2_captionTap: 'Chlorine kills a share of the colony — ammonia climbs for several days before the survivors catch up.',
+    v2_captionTank: 'The colony stays intact — ammonia barely moves, because nothing needed to recover.',
+    daysAxis: 'Days since cleaning →',
+    yAxisLabel: 'NH₃'
+  },
+  id: {
+    v2_toggleTap: 'Dibilas air paip',
+    v2_toggleTank: 'Dibilas air akuarium',
+    v2_hint: 'penapis sama, koloni sama — cuma air bilasan yang berbeza',
+    v2_captionTap: 'Klorin bunuh sebahagian koloni — amonia naik selama beberapa hari sebelum bakteria yang terselamat memulih.',
+    v2_captionTank: 'Koloni kekal utuh — amonia nyaris tak bergerak, sbb tiada apa yang perlu dipulihkan.',
+    daysAxis: 'Hari sejak dibersihkan →',
+    yAxisLabel: 'NH₃'
+  },
+  ja: {
+    v2_toggleTap: '水道水ですすぐ',
+    v2_toggleTank: '水槽の水ですすぐ',
+    v2_hint: '同じフィルター、同じコロニー — 違うのはすすぐ水だけ',
+    v2_captionTap: '塩素がコロニーの一部を殺す — 生き残った菌が追いつくまで、アンモニアは数日間上がり続ける。',
+    v2_captionTank: 'コロニーはそのまま保たれる — 回復すべきものが何もないので、アンモニアはほとんど動かない。',
+    daysAxis: '掃除からの日数 →',
+    yAxisLabel: 'NH₃'
+  }
+};
+function afmT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = AFM_STRINGS[lang] || AFM_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : AFM_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/new-tank-syndrome.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle rinse water — tap water vs tank water, same filter,
+   same colony. Tap water kills a share of the nitrifying bacteria, so
+   ammonia climbs for several days before the survivors catch back up.
+   Tank water leaves the colony intact, so the line stays close to flat.
+   Deliberately simplified/illustrative math (fixed rise/decay curve,
+   not lab-accurate ammonia kinetics) — the point is the shape of
+   "disrupted and recovering" versus "never disrupted," not precise ppm
+   modelling. ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var totalDays = 10, maxV = 2.0;
+  var mode = 'tap'; /* tap | tank */
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="afm-tap">' + afmT('v2_toggleTap') + '</button>'
+    +'<button class="vis-btn" id="afm-tank">' + afmT('v2_toggleTank') + '</button></div>'
+    +'<div class="vc-hint">' + afmT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('afm-tap').className = 'vis-btn' + (m==='tap' ? ' vis-btn-active' : '');
+    document.getElementById('afm-tank').className = 'vis-btn' + (m==='tank' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('afm-tap').addEventListener('click', function(){ setMode('tap'); });
+  document.getElementById('afm-tank').addEventListener('click', function(){ setMode('tank'); });
+
+  function tapVal(day) {
+    if (day <= 4) return 1.5 * (day / 4);
+    return 1.5 * Math.exp(-(day - 4) / 3);
+  }
+  function tankVal(day) { return 0.05; }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 30, pR = 12, pT = 18, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB;
+    function px(d) { return pL + (d/totalDays)*gW; }
+    function py(v) { return pT + gH - (v/maxV)*gH; }
+
+    /* Grid */
+    [0,0.5,1,1.5,2].forEach(function(v){
+      var y = py(v);
+      ctx.strokeStyle = vcInk(.06); ctx.lineWidth = 1; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(pL,y); ctx.lineTo(pL+gW,y); ctx.stroke();
+      ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+      ctx.fillStyle = vcInk(.5);
+      ctx.fillText(v, 3, y+3);
+    });
+
+    /* Axes */
+    ctx.strokeStyle = vcInk(.1); ctx.lineWidth = 1; ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(pL,pT); ctx.lineTo(pL,pT+gH); ctx.lineTo(pL+gW,pT+gH); ctx.stroke();
+    ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+    ctx.fillStyle = vcInk(.5);
+    [0,2,4,6,8,10].forEach(function(d){
+      ctx.fillText(d, px(d)-3, pT+gH+14);
+    });
+    ctx.fillText(afmT('daysAxis'), pL+gW-72, pT+gH+28);
+    ctx.save(); ctx.translate(4, pT+8); ctx.fillText(afmT('yAxisLabel'), 0, 0); ctx.restore();
+
+    /* Draw both curves faintly, highlight selected */
+    [
+      { key:'tap',  fn: tapVal,  col: 'rgba(224,100,60,'  },
+      { key:'tank', fn: tankVal, col: 'rgba(95,203,134,'  }
+    ].forEach(function(s){
+      var active = s.key === mode;
+      ctx.strokeStyle = s.col + (active ? '0.9' : '0.18') + ')';
+      ctx.lineWidth = active ? 2 : 1;
+      ctx.beginPath();
+      for (var d = 0; d <= totalDays; d += 0.2) {
+        var v = Math.min(maxV, s.fn(d));
+        var x = px(d), y = py(v);
+        if (d === 0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    });
+
+    /* Caption */
+    var cap = mode==='tap' ? afmT('v2_captionTap') : afmT('v2_captionTank');
+    ctx.font = 'italic 300 12px Fraunces,serif';
+    ctx.fillStyle = vcInk(.6);
+    ctx.textAlign = 'center';
+    var words = cap.split(' '), line = '', y = H-28, maxW = W-24;
+    words.forEach(function(w){
+      var test = line + (line?' ':'') + w;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y); line = w; y += 15; }
+      else line = test;
+    });
+    if (line) ctx.fillText(line, W/2, y);
+    ctx.textAlign = 'left';
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
+
+/* Resize handler only — canvases init via startLearning()/goMod(). */
+window.addEventListener('resize', function(){
+  if (canvases[currentMod]) setTimeout(function(){ canvases[currentMod](); }, 50);
+});
 
 </script>
 

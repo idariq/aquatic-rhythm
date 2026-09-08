@@ -168,6 +168,10 @@
             {
                 "label": "Kehidupan penjaga",
                 "desc": "Identitas, kesedihan, perbandingan, dan hubungan jujur antara penjaga, akuarium, dan orang-orang yang berbagi ruangan dengan keduanya."
+            },
+            {
+                "label": "Di Seluruh Dunia",
+                "desc": "Cara orang memelihara ikan berbeda-beda tergantung dari sudut mana Anda melihatnya — sejarah, tradisi, dan hal-hal yang sudah lama diketahui bagian lain dari hobi ini."
             }
         ],
         "cards": {
@@ -437,6 +441,10 @@
             "the-purchase-you-didnt-mention": {
                 "title": "Barang yang Dibeli Diam-Diam<br><em>Bukan benar-benar bohong. Cuma sesuatu yang tidak pernah sempat Anda ceritakan.</em>",
                 "desc": "Kenapa menyembunyikan satu pembelian terasa berbeda dari berbohong soal itu, dan cara menutup jaraknya sebelum orang lain menemukannya lebih dulu."
+            },
+            "reading-water-without-the-words": {
+                "title": "Membaca Air Sebelum Ada Istilahnya<br><em>Istilahnya baru datang belakangan, di setiap tradisi yang akhirnya punya satu.</em>",
+                "desc": "Jauh sebelum ada ilmu kimia untuk itu, penjaga ikan di Cina, Malaysia, dan Inggris sudah membaca tangki mereka dengan baik. Apa arti sejarah itu bagi apa yang sebenarnya dibutuhkan untuk memahami sebuah tangki."
             },
             "the-tank-your-partner-didnt-choose": {
                 "title": "Tangki yang Bukan Pilihan Pasangan Anda<br><em>Bukan soal mereka tidak suka ikannya. Soalnya, tidak ada yang bertanya dulu.</em>",

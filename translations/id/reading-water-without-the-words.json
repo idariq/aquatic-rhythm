@@ -1,0 +1,95 @@
+{
+  "_meta": {
+    "slug": "reading-water-without-the-words",
+    "lang": "id",
+    "sourceFile": "articles/reading-water-without-the-words.html",
+    "status": "ready"
+  },
+  "head": {
+    "title": "Membaca Air Sebelum Ada Istilahnya — Aquatic Rhythm",
+    "description": "Jauh sebelum ada ilmu kimia untuk itu, penjaga ikan di Cina, Malaysia, dan Inggris sudah membaca tangki mereka dengan baik. Apa arti sejarah itu bagi apa yang sebenarnya dibutuhkan untuk memahami sebuah tangki.",
+    "ogTitle": "Membaca Air Sebelum Ada Istilahnya",
+    "ogDescription": "Istilahnya baru datang belakangan, di setiap tradisi yang akhirnya punya satu."
+  },
+  "intro": {
+    "eyebrow": "Semua level",
+    "titleHtml": "Membaca Air<br><em>Sebelum Ada Istilahnya</em>",
+    "subtitle": "Istilahnya baru datang belakangan, di setiap tradisi yang akhirnya punya satu.",
+    "texts": [
+      "Di sebuah halaman rumah di Hangzhou, jauh sebelum ada nama untuk amonia, seseorang berjongkok di samping mangkuk keramik dangkal dan menambah airnya sedikit demi sedikit, sekadar mengandalkan pengamatan. Ikan di dalamnya sudah ia kenali dari cara berenangnya di air yang tenang. Orang-orang seperti dia sudah memelihara ikan dengan cara itu, dalam mangkuk seperti itu, jauh lebih lama daripada catatan tertulis mana pun tentang praktik ini bisa membuktikan. Tak seorang pun di halaman itu punya test kit. Tak seorang pun membutuhkannya untuk tahu airnya sudah pas.",
+      "Coba tanya apakah seseorang benar-benar paham tangkinya, dan buktinya biasanya sama saja: bisakah ia menyebut siklus nitrogen, membaca grafik parameter, bicara dalam satuan ppm. Itu satu cara untuk menunjukkannya. Itu bukan satu-satunya cara, dan di sebagian besar tradisi yang jadi akar hobi ini, itu bahkan bukan cara yang pertama."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~7 menit",
+    "metaLevel": "Semua level",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Cina, sekitar 1.000 tahun",
+      "titleHtml": "Seribu tahun <em>sebelum ilmu kimia</em>",
+      "body": [
+        "Ikan mas berasal dari ikan mas crucian, ikan sungai biasa berwarna abu-abu kecokelatan. Ikan bersisik merah pertama tercatat pada masa Dinasti Jin, sekitar tahun 265 hingga 420 Masehi — sebuah keanehan, dipelihara karena penampilannya, bukan karena manfaatnya. Pada masa Dinasti Tang, ikan dengan warna yang disukai orang sudah sengaja dipelihara di kolam hias. Pada masa Dinasti Song, satu varietas kuning bahkan begitu erat dikaitkan dengan keluarga kerajaan sampai rakyat biasa dilarang memeliharanya.",
+        "Semua pemilihan itu sama sekali tidak melibatkan biokimia, karena biokimia sebagai cara memahami air memang belum ada. Yang ada adalah orang-orang yang mengamati ikan cukup teliti, lintas generasi, untuk menyadari satu mutasi warna, memutuskan itu penting, lalu terus memilihnya dengan sengaja. Itu keterampilan sungguhan. Ia berjalan hampir seribu tahun sebelum ada satu pun istilah untuk nitrogen.",
+        "Tradisi bekas terbuka yang lahir dari situ masih dipraktikkan hari ini, dengan nama gǔ fǎ yǎng yú — kira-kira berarti \"cara lama memelihara ikan\". Nama ini merujuk pada ikan yang dipelihara dalam wadah dangkal tanpa tutup, dengan sangat sedikit peralatan mekanis. Detail persisnya, bagaimana rutinnya berjalan sehari-hari, belum banyak didokumentasikan di luar komunitas yang mempraktikkannya. Yang pasti, tradisi ini masih hidup, diturunkan dengan cara yang sama seperti selalu diajarkan: dengan menonton orang lain melakukannya lebih dulu."
+      ],
+      "pullQuote": "Pembiakan selektif untuk warna dan makna berjalan hampir seribu tahun sebelum siapa pun memahami kimia di baliknya. Ikannya datang lebih dulu. Istilahnya menyusul belakangan.",
+      "prevBtn": "← Intro",
+      "nextBtn": "Ladang Tanpa Alat Ukur"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Malaysia, masa kini",
+      "titleHtml": "Ladang <em>tanpa satu pun alat ukur</em>",
+      "body": [
+        "Malaysia mengekspor ikan hias lebih banyak daripada hampir semua negara lain di dunia — bernilai lebih dari RM450 juta setahun, mendekati sepersepuluh dari seluruh perdagangan ikan hias global. Kunjungi sebagian besar ladang di balik angka itu, dan di luar operasi arwana, sulit menemukan alat ukur oksigen terlarut atau pH. Bukan karena ikannya tidak penting. Karena ladang itu memang tidak pernah butuh alat itu untuk berjalan.",
+        "Yang menggantikan alat ukur adalah rutinitas: jam makan yang sama, jadwal ganti air yang sama, seseorang yang sudah mengamati kolam-kolam itu setiap hari selama bertahun-tahun dan bisa merasakan ada yang tidak beres sebelum itu muncul sebagai angka. Pengetahuan itu berpindah dari tangan ke tangan, bukan lewat buku panduan. Pengetahuan itu nyata, dan menopang industri yang sama sekali tidak kecil.",
+        "Tapi ada batasnya, dan mengakui tradisi ini secara jujur berarti mengakui itu juga. Tanpa alat ukur, sebagian masalah tetap tak terlihat sampai muncul sebagai kerusakan nyata pada ikan — biaya yang mudah luput dari perhatian ketika metode yang sama sudah berjalan bertahun-tahun. Mengamati menangkap sebagian besar hal yang penting. Ia tidak menangkap semuanya, dan mengetahui di mana batas itu berada juga bagian dari membaca dengan baik, dalam tradisi mana pun. Tapi ladang yang mengirim ikan ke seluruh dunia hanya bermodalkan perhatian dan kebiasaan bukan bukti ketidaktahuan. Itu resolusi berbeda dari keterampilan yang sama."
+      ],
+      "hintLabel": "Kaitannya di sini",
+      "hintText": [
+        "Anggapan bahwa membaca tangki dengan mata telanjang adalah keterampilan yang lebih rendah dibanding membaca test strip sering muncul dalam cara hobi ini bicara tentang dirinya sendiri. <a href=\"/id/articles/learning-to-read-not-fix\" style=\"color:var(--th-accent);text-decoration:none\">Belajar Membaca, Bukan Belajar Memperbaiki</a> mengajukan argumen serupa dari sudut berbeda: kompetensinya tidak pernah benar-benar soal alat apa yang ada di tangan."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Ruang Tamu di Inggris"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Inggris, dekade 1850-an",
+      "titleHtml": "Ruang tamu <em>sebelum jadi ekosistem</em>",
+      "body": [
+        "Tradisi yang akhirnya melahirkan seluruh kosakata pH, nitrat, dan jadwal dosis pun tidak dimulai sebagai alat ekologi. Akuarium pertama yang masuk ke ruang tamu Inggris pada dekade 1850-an dijual sebagai perabot dan tontonan — keingintahuan yang sedang tren, terkesan ilmiah, lebih untuk dipamerkan daripada dikelola sebagai sistem. Sejarawan yang meneliti masa itu mencatat bahwa buku panduan zaman itu justru lebih banyak mengajarkan cara menikmati tangki daripada cara menjalankannya, jauh sebelum \"menjalankannya\" berarti seperti sekarang.",
+        "Ini penting untuk direnungkan, karena pola yang sama sering dianggap sebagai sesuatu yang khas Asia, atau khas pra-ilmiah, ketika muncul dalam mangkuk ikan mas. Padahal dalam tradisi yang justru melahirkan kosakata kimia hobi ini, polanya persis sama: makna dan tampilan datang lebih dulu, mekanismenya menyusul, setelah cukup banyak orang cukup lama mengamati sampai ingin tahu alasannya.",
+        "Jadi garis yang sering ditarik orang — satu tradisi membaca lewat insting, tradisi lain membaca lewat alat — sebenarnya tidak mencerminkan dari mana tradisi-tradisi itu bermula. Semuanya bermula dengan mengamati sesuatu dan memutuskan itu penting. Yang berbeda hanya seberapa lama kosakatanya baru menyusul."
+      ],
+      "pullQuote": "Tradisi yang akhirnya memberi hobi ini kosakata kimianya sendiri dimulai dengan cara yang sama seperti tradisi lain mana pun — mengamati sesuatu, memutuskan itu penting, lalu menyusun kata-katanya setelah pengamatan itu sudah berjalan cukup lama.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Apa yang Sebenarnya Dibaca"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Hari ini",
+      "titleHtml": "Apa yang sebenarnya <em>dibaca sejak awal</em>",
+      "body": [
+        "Semua ini bukan argumen menentang test kit. Alat yang baik menangkap hal-hal yang luput dari mata, dan bagian sebelumnya sudah jujur soal batas mengamati saja. Intinya lebih sempit: penjaga yang rutin menguji air setiap minggu dan penjaga yang belum pernah punya test kit bisa sama-sama membaca tangkinya dengan baik, atau sama-sama membacanya dengan buruk. Alat di tangan mereka tidak menentukan yang mana.",
+        "Yang sebenarnya membedakan keduanya sama di setiap tradisi yang dibahas di sini — apakah respons makan diperhatikan, apakah rutinitas bertahan, apakah perubahan kecil tertangkap sebelum jadi besar. Kimia memberi kata-kata untuk itu. Kimia tidak pernah jadi inti persoalannya, dan bahkan bukan bahasa pertama yang ditemukan orang untuknya.",
+        "Kembali ke halaman rumah di Hangzhou itu. Menggoda untuk menyebut orang yang berjongkok di samping mangkuk itu sebagai \"belum ilmiah\", satu langkah sebelum pemahaman sesungguhnya tiba. Itu membalik urutannya. Membaca datang lebih dulu. Ia datang lebih dulu di hampir semua tempat ini pernah dicoba, jauh sebelum ada kata-kata untuk menjelaskan kenapa itu berhasil."
+      ],
+      "hintLabel": "Kaitannya di sini",
+      "hintText": [
+        "Kerangka situs ini sendiri bersandar pada gagasan yang sama. <a href=\"/id/articles/ara-full-framework\" style=\"color:var(--th-accent);text-decoration:none\">Lima ritme</a> adalah kosakata untuk membaca tangki dengan baik. Bukan pengganti dari kegiatan membacanya itu sendiri."
+      ],
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Kerangka ARA →" },
+    { "text": "Belajar Membaca, Bukan Belajar Memperbaiki →" },
+    { "text": "Merawat Tanpa Rasa Bersalah →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

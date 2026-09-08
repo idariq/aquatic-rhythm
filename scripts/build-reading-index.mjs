@@ -91,6 +91,7 @@ const SLUG_ORDER = [
   'reading-the-five-rhythms',
   'when-hobby-stops-feeling-good',
   'caring-without-guilt',
+  'reading-water-without-the-words',
 ];
 
 // UI strings per language

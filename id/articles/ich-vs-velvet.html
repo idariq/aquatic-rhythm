@@ -88,6 +88,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .btn-ar:hover{color:var(--th-accent);border-color:var(--th-accent-border)}
 .art-footer{margin-top:4rem;padding-top:1.6rem;border-top:1px solid var(--th-line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}.art-footer a:hover{color:var(--th-accent)}
+
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
 .art-intro{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
 .art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
 .art-intro .art-hero-figure{margin-bottom:0}
@@ -234,7 +240,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-body">
       <p>Jalankan tes senter di ruangan gelap sebelum melakukan hal lain. Ini cara paling diandalkan untuk membedakan keduanya, dan cuma butuh beberapa menit.</p>
       <p>Perhatikan seberapa berat napasnya. Velvet cenderung memukul insang lebih keras dibanding ich, jadi gerakan insang yang jelas lebih berat atau lebih cepat sedikit condong ke velvet, bahkan sebelum senter memastikannya.</p>
-      <p>Siklus hidup ich juga melambat atau mempercepat mengikuti suhu, yang penting untuk pengaturan waktu perawatan. Velvet tidak mengikuti siklus bergantung suhu yang sama — sebagian alasan kenapa perawatan yang dibuat untuk satu tidak bekerja diandalkan pada yang lain.</p>
+      <p>Kedua parasit ini melewati siklus yang sama: menempel di ikan, lepas untuk berkembang biak, lalu melepaskan tahap berenang bebas yang harus menemukan ikan baru — dan keduanya melambat atau mempercepat mengikuti suhu. Yang berbeda adalah kecepatan spesifik dan jendela waktu perawatan masing-masing spesies, bukan soal suhu berpengaruh atau tidak, dan ini sebagian alasan kenapa perawatan yang diatur waktunya untuk satu tidak bekerja diandalkan pada yang lain.</p>
     </div>
 
     <div class="hn">
@@ -272,6 +278,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <a href="/id/articles/fish-flashing-scratching" class="btn-ar" data-analytics-event="cta_ichvelvet_flashing" data-cta="fish_flashing">Kenapa Ikan Saya Menggosokkan Badan? →</a>
       <a href="/id/articles/ara-full-framework" class="btn-ar" data-analytics-event="cta_ichvelvet_ara" data-cta="ara_page">Kerangka ARA →</a>
       <a href="/rhyssa" class="btn-ar" data-analytics-event="cta_ichvelvet_rhyssa" data-cta="rhyssa">Tanya Rhyssa →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">Bacaan lanjut</span>
+      <ul>
+        <li>Nowak, B. F., &amp; LaPatra, S. E. (2015). Epizootiology of <em>Ichthyophthirius multifiliis</em> infections in fish: A review. <em>Journal of Fish Diseases</em>, 38(2), 97–109.</li>
+        <li>Shinn, A. P., et al. (2015). <em>Ichthyophthirius multifiliis</em> (white spot) infections in fish. Southern Regional Aquaculture Center Publication No. 476.</li>
+      </ul>
     </div>
 
     <div class="art-footer">

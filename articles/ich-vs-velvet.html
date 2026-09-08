@@ -88,6 +88,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .btn-ar:hover{color:var(--th-accent);border-color:var(--th-accent-border)}
 .art-footer{margin-top:4rem;padding-top:1.6rem;border-top:1px solid var(--th-line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}.art-footer a:hover{color:var(--th-accent)}
+
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
 .art-intro{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
 .art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
 .art-intro .art-hero-figure{margin-bottom:0}
@@ -234,7 +240,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-body">
       <p>Run the flashlight test in a darkened room before doing anything else. It's the single most reliable way to tell these two apart, and it costs nothing but a couple of minutes.</p>
       <p>Note how laboured the breathing is. Velvet tends to hit the gills harder than ich does, so noticeably heavier or faster gill movement leans slightly toward velvet, even before the flashlight confirms it.</p>
-      <p>Ich's life cycle also slows down or speeds up with temperature, which matters for how treatment gets timed. Velvet doesn't follow the same temperature-dependent cycle — part of why a treatment built for one doesn't reliably work on the other.</p>
+      <p>Both parasites move through a cycle of attaching to the fish, dropping off to reproduce, and releasing a free-swimming stage that has to find a new fish — and both speed up or slow down with temperature. What differs is the specific pace and treatment window for each species, not whether temperature matters at all, which is part of why a treatment timed for one doesn't reliably work on the other.</p>
     </div>
 
     <div class="hn">
@@ -272,6 +278,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <a href="/articles/fish-flashing-scratching" class="btn-ar" data-analytics-event="cta_ichvelvet_flashing" data-cta="fish_flashing">Why Is My Fish Flashing? →</a>
       <a href="/articles/ara-full-framework" class="btn-ar" data-analytics-event="cta_ichvelvet_ara" data-cta="ara_page">The ARA Framework →</a>
       <a href="/rhyssa" class="btn-ar" data-analytics-event="cta_ichvelvet_rhyssa" data-cta="rhyssa">Ask Rhyssa →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">Further reading</span>
+      <ul>
+        <li>Nowak, B. F., &amp; LaPatra, S. E. (2015). Epizootiology of <em>Ichthyophthirius multifiliis</em> infections in fish: A review. <em>Journal of Fish Diseases</em>, 38(2), 97–109.</li>
+        <li>Shinn, A. P., et al. (2015). <em>Ichthyophthirius multifiliis</em> (white spot) infections in fish. Southern Regional Aquaculture Center Publication No. 476.</li>
+      </ul>
     </div>
 
     <div class="art-footer">

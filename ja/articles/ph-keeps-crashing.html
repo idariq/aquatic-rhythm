@@ -88,6 +88,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .btn-ar:hover{color:var(--th-accent);border-color:var(--th-accent-border)}
 .art-footer{margin-top:4rem;padding-top:1.6rem;border-top:1px solid var(--th-line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}.art-footer a:hover{color:var(--th-accent)}
+
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
 .art-intro{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
 .art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
 .art-intro .art-hero-figure{margin-bottom:0}
@@ -215,7 +221,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">KHが緩衝材です。<br><em>pHはそれが守っているものにすぎません。</em></h2>
     <div class="mod-body">
       <p>pHを安定させているのは炭酸塩硬度、いわゆるKHです。これは、pHが実際に動き出す前に水がどれだけの酸を吸収できるかを示す指標です。クッションのようなものだと考えてください。KHがゼロより大きいあいだは、入ってくる酸がそのクッションに吸収され、pHを直接動かしません。KHがゼロになると、次の酸を吸収するものが何も残らず、pHは急速に下がります。多くの場合、一晩のうちに。</p>
-      <p><strong>硝化そのものが酸を生み出します。</strong> アンモニアを硝酸塩に変えるのと同じバクテリアが、その過程の副産物としてKHを消費します。健全な窒素循環が働いている、生体数の多い水槽は、酸性のものを何も加えていなくても、常に自分自身の緩衝力を使い減らしています。</p>
+      <p><strong>硝化そのものが酸を生み出します。</strong> アンモニアを硝酸塩に変えるのと同じバクテリアが、その過程で水素イオンを放出し、KHはそのイオンがpHを動かす前に中和する役割を果たします。健全な窒素循環が働いている、生体数の多い水槽は、酸性のものを何も加えていなくても、常に自分自身の緩衝力を使い減らしています。</p>
       <p><strong>もともと軟らかい水源は、最初から緩衝力がほとんどありません。</strong> RO水や雨水、あるいは一部の地域の自然に軟らかい水道水は、最初からKHがほぼゼロです。そもそも使い減らすクッションが存在しません。</p>
       <p><strong>流木のタンニンやCO2添加</strong>も、どちらも酸性側に働きます。CO2を添加しているプランテッドタンクでは、この効果が、窒素循環がすでに消費しているKHにさらに重なります。</p>
     </div>
@@ -274,6 +280,13 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <a href="/ja/articles/how-often-water-changes" class="btn-ar" data-analytics-event="cta_phcrash_waterchanges" data-cta="how_often_water_changes">換水の頻度はどのくらい？ →</a>
       <a href="/ja/articles/ara-full-framework" class="btn-ar" data-analytics-event="cta_phcrash_ara" data-cta="ara_page">ARAフレームワーク →</a>
       <a href="/rhyssa" class="btn-ar" data-analytics-event="cta_phcrash_rhyssa" data-cta="rhyssa">Rhyssaに聞く →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">参考文献</span>
+      <ul>
+        <li>United States Environmental Protection Agency. (2002). Nitrification. In <em>Onsite Wastewater Treatment Systems Manual</em>. U.S. Environmental Protection Agency.</li>
+      </ul>
     </div>
 
     <div class="art-footer">

@@ -86,6 +86,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .btn-prev{font-size:var(--fs-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--th-ink-4);background:none;border:none;cursor:pointer;transition:color .25s;padding:0}.btn-prev:hover{color:var(--th-ink-2)}
 .btn-ar{display:inline-block;text-decoration:none;font-size:var(--fs-xs);font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);border:1px solid var(--th-line);padding:.8rem 2rem;border-radius:2px;transition:color .25s,border-color .25s}
 .btn-ar:hover{color:var(--th-accent);border-color:var(--th-accent-border)}
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
 .art-footer{margin-top:4rem;padding-top:1.6rem;border-top:1px solid var(--th-line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}.art-footer a:hover{color:var(--th-accent)}
 .art-intro{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
@@ -273,6 +278,15 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <a href="/id/articles/betta-fish-behaviour" class="btn-ar" data-analytics-event="cta_colour_betta" data-cta="betta_behaviour">Perilaku Betta →</a>
       <a href="/id/articles/ara-full-framework" class="btn-ar" data-analytics-event="cta_colour_ara" data-cta="ara_page">Kerangka ARA →</a>
       <a href="/rhyssa" class="btn-ar" data-analytics-event="cta_colour_rhyssa" data-cta="rhyssa">Tanya Rhyssa →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">Bacaan lanjut</span>
+      <ul>
+        <li>Fujii, R. (2000). The regulation of motile activity in fish chromatophores. <em>Pigment Cell Research</em>, 13(5), 300–319.</li>
+        <li>Goda, M., McGuigan, N., Horsch, A., et al. (2012). A fluorescent chromatophore changes the level of fluorescence in a reef fish. <em>Proceedings of the Royal Society B: Biological Sciences</em>, 279(1740), 3219–3226.</li>
+        <li>Bagnara, J. T., &amp; Hadley, M. E. (1973). <em>Chromatophores and Color Change: The Comparative Physiology of Animal Pigmentation</em>. Prentice-Hall.</li>
+      </ul>
     </div>
 
     <div class="art-footer">

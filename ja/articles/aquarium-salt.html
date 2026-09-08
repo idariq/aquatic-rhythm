@@ -88,6 +88,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .btn-ar:hover{color:var(--th-accent);border-color:var(--th-accent-border)}
 .art-footer{margin-top:4rem;padding-top:1.6rem;border-top:1px solid var(--th-line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}.art-footer a:hover{color:var(--th-accent)}
+
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
 .art-intro{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
 .art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
 .art-intro .art-hero-figure{margin-bottom:0}
@@ -212,8 +218,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">本当の役割は3つ。<br><em>求められる十数の役割ではない。</em></h2>
     <div class="mod-body">
       <p>怪我や輸送のストレス、水質の急な悪化などでダメージを受けた魚は、まわりの水に対して体内の塩分バランスを保つために多くのエネルギーを使います。水槽の塩分をわずかに、一時的に上げることでその差を縮め、回復中の魚の負担を減らせます。浸透圧サポートは本物です。ただし一時的なものでもあります。橋渡しであって、常用の治療法ではありません。</p>
-      <p>サイクリング中にアンモニアや亜硝酸が急上昇したとき、水に溶けた塩化物イオンが魚のエラで亜硝酸と同じ吸収経路を奪い合うため、適度な塩分濃度を保つことで、2つ目のバクテリアコロニーが追いつくまでのあいだ亜硝酸の毒性を鈍らせることができます。飼育者が今もこの方法を使うのは一つの場面に限られます。進行中の亜硝酸スパイクに対してであり、恒久的な添加物としてではありません。</p>
-      <p>濃度を維持し続ければ、塩は白点病を含むいくつかの外部寄生虫の遊泳期を短くすることもできます。ただしそれには本物の治療用量が必要です。よく言われるのはガロンあたり小さじ1〜3杯を10〜14日間維持し、水温を26〜30℃（79〜86°F）に上げて併用する方法です。水換えのたびに一つまみ加える程度では、その濃度にも期間にも届きません。ただそこにあるだけです。</p>
+      <p>サイクリング中にアンモニアや亜硝酸が急上昇したとき、水に溶けた塩化物イオンは、亜硝酸も取り込むエラの塩化物細胞という同じイオン輸送経路を奪い合います。そのため適度な塩分濃度を保つことで、2つ目のバクテリアコロニーが追いつくまでのあいだ亜硝酸の毒性を鈍らせることができます。その効果がどれほどのものかは、魚種や体格、すでに水中にある塩化物と急上昇している亜硝酸の比率によって変わり、亜硝酸そのものを減らすわけではありません。飼育者が今もこの方法を使うのは一つの場面に限られます。進行中の亜硝酸スパイクに対して、原因そのものへの対処と併せて使うのであって、恒久的な添加物としてではありません。</p>
+      <p>十分な濃度を十分な期間保てば、塩は白点病を含むいくつかの外部寄生虫の遊泳期を短くすることもできます。ここには、どの種にも安全に当てはまる「ガロンあたり小さじ何杯」という単一の数字はありません。発表されている治療法は魚種や体格によって大きく異なり、ある生体に合わせた用量が、同じ水を共有する別の生体にはストレスや死につながることもあります。水換えのたびに一つまみ加える程度では、本物の治療に必要な濃度にも期間にも届きません。ただそこにあるだけです。</p>
     </div>
 
     <div class="pq">
@@ -271,6 +277,17 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <a href="/ja/articles/clamped-fins-fin-rot" class="btn-ar" data-analytics-event="cta_salt_finrot" data-cta="clamped_fins_fin_rot">ヒレたたみと尾ぐされ病 →</a>
       <a href="/ja/articles/learning-to-read-not-fix" class="btn-ar" data-analytics-event="cta_salt_learning" data-cta="learning_to_read_not_fix">直すことではなく、読むことを学ぶ →</a>
       <a href="/ja/articles/ara-full-framework" class="btn-ar" data-analytics-event="cta_salt_ara" data-cta="ara_full_framework">ARAフレームワーク →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">参考文献</span>
+      <ul>
+        <li>Lewis, W. M., Jr., &amp; Morris, D. P. (1986). Toxicity of nitrite to fish: A review. <em>Transactions of the American Fisheries Society</em>, 115(2), 183–195.</li>
+        <li>Svobodová, Z., Máchová, J., &amp; Poleszczuk, G. (2005). Nitrite poisoning of fish in aquaculture facilities with recirculating water. <em>Acta Veterinaria Brno</em>, 74, 129–137.</li>
+        <li>Garcia, L. O., Becker, A. G., Copatti, C. E., Baldisserotto, B., &amp; Radünz Neto, J. (2007). Salt in the food and water as a supportive therapy for <em>Ichthyophthirius multifiliis</em> infestation on silver catfish, <em>Rhamdia quelen</em>, fingerlings. <em>Journal of the World Aquaculture Society</em>, 38(1), 1–11.</li>
+        <li>Mifsud, C., Rowland, S. J., &amp; Read, P. (2003). Use of common salt to treat ichthyophthiriasis in Australian warmwater fishes. <em>North American Journal of Aquaculture</em>, 65(2), 124–127.</li>
+        <li>Larcombe, E., Alexander, M. E., Snellgrove, D., Henriquez, F. L., &amp; Sloman, K. A. (2025). Current disease treatments for the ornamental pet fish trade and their associated problems. <em>Reviews in Aquaculture</em>, 17(1), e12948.</li>
+      </ul>
     </div>
 
     <div class="art-footer">

@@ -111,6 +111,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}
 .art-footer a:hover{color:var(--th-accent)}
 
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
+
 .art-intro{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
 .art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
 .art-intro .art-hero-figure{margin-bottom:0}
@@ -221,7 +227,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">白い点は消えた。<br><em>でも、侵入を許した条件はまだある。</em></h2>
     <div class="mod-body">
       <p>白点病（Ichthyophthirius multifiliis）は、経験豊富な飼育者のほとんどが経験してきた寄生虫です。厄介なのは最初の発生ではなく、再発です。治療は効果的で、加温、塩、薬はどれも遊走子（自由遊泳ステージ）を効果的に除去します。でも、繰り返し白点病を経験する飼育者は、最初に魚を脆弱にした原因に対処することなく、同じ症状に何度も対処しているのが常です。</p>
-      <p>白点病はどこにでもいます。ほとんどの水槽環境に、ほとんどの時間、低レベルの寄生虫として存在しています。健康でストレスのない魚の免疫応答は通常それを抑制しています。魚が寄生虫の繁殖を自然な防御で管理できないほどに抑圧されたとき、白い点やフラッシング行動として見える問題になります。</p>
+      <p>白点病（Ichthyophthirius multifiliis）は生きた魚がいなければ生活環を完了できません。水槽の中でじっと隠れて機会を待つようなことはできない寄生虫です。再発の多くは、はっきりした発生源にたどれます。新しく入れた魚や水草、装飾品が持ち込んだ場合や、以前の不完全な治療で生き残った少数の自由遊泳ステージが残っていた場合です。慢性的なストレスによって変わるのは、そうした暴露が実際に起きたときに魚の免疫がどれだけそれと戦えるかです。以前の発生を乗り越えた魚は本物の防御免疫を獲得することが多い一方で、慢性的にストレスを受けている魚は、健康な水槽なら問題にならないはずの同じ暴露から、目に見える感染症を発症しやすくなります。</p>
       <p>実践的な示唆：白点病の再発は治療技術の失敗ではありません。最初の発生を可能にした水槽内のストレスがまだ存在しているというシグナルです。4回目に点を除去しても、そのストレスに対処しなければ5回目を待つだけです。</p>
     </div>
 
@@ -240,13 +246,13 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <div class="mod-eyebrow"><span class="mod-num">02 / 04</span><span class="mod-tag">白点病をLivestock Rhythmのシグナルとして読む</span></div>
     <h2 class="mod-title">白点病はシグナルです。<br><em>問題そのものではない。</em></h2>
     <div class="mod-body">
-      <p>ARAでは、白点病の発生はLivestock Rhythm（生体リズム）のシグナルです。すでに存在していたストレスを可視化する水槽の方法だと言えます。シグナルは白点病そのものではなく、白点病が明かすこと、つまりこの水槽の魚は、通常は抑制されている寄生虫が増殖するのを許すほどの慢性的なストレスを受けているという事実です。</p>
-      <p>白点病発生後のARAの問いは「どうやって点を除去するか？」だけではありません。「私の魚の免疫応答を抑制しているものは何か？」です。いくつかのストレス源が白点病の発生を起こしやすくします、それぞれ独特の方法で：</p>
+      <p>ARAでは、白点病の発生はLivestock Rhythm（生体リズム）のシグナルです。すでに存在していたストレスを可視化する水槽の方法だと言えます。シグナルは白点病そのものではなく、白点病が明かすこと、つまりこの水槽の魚が十分な慢性的ストレスを受けていたために、より健康な水槽なら退けられたはずの暴露が、目に見える感染症に変わってしまったという事実です。</p>
+      <p>白点病発生後のARAの問いは「どうやって点を除去するか？」だけではありません。「何が私の魚の抵抗力を弱めたのか、そしてその暴露は実際どこから来たのか？」です。いくつかのストレス源が白点病の発生を起こしやすくします、それぞれ独特の方法で：</p>
       <p><strong>水温の不安定</strong>は、最もよく見落とされる原因です。サイクルするヒーター、季節によって変わる室温、窓の近くに置かれた水槽は、テストキットで読み取れる問題を生じさせないまま魚を慢性的にストレスにさらす毎日の水温変動を作り出すことがあります。不整合はLivestock Rhythmが示すまで見えません。</p>
       <p><strong>過密</strong>は、多すぎる魚が継続的な攻撃、食物の競争、生体負荷による背景アンモニアの上昇をもたらす状態です。これらはすべて、数週間にわたって免疫を抑制する慢性的なストレスです。Keeper Rhythmは一貫していたかもしれないが、水槽のキャパシティを超えていた。</p>
       <p><strong>検疫なしでの新魚導入</strong>は、白点病導入の最も直接的な経路です。でも、検疫済みの魚でも、すでにストレスを受けている水槽に導入されると、既に弱っていた魚の発生を引き起こすことがあります。導入が目に見えるきっかけになり、既存の抑圧が根本的な原因です。</p>
-      <p><strong>水換え後のショック</strong>もあります。水温や水質が大きく異なる大規模で不規則な水換えは、その後数日間に白点病の発生を引き起こすことがあります。変化自体が魚にストレスを与え、抑制されていた白点病の個体群が必要な免疫の窓を見つけます。</p>
-      <p><strong>時間をかけた高硝酸塩</strong>も見落とされがちです。アンモニアや亜硝酸塩の緊急事態ではありませんが、40〜50 ppm以上の慢性的な高硝酸塩は、多くの魚で数ヶ月にわたって免疫機能を抑制します。水換えが滞っている水槽は、標準的なテスト結果には現れないがLivestock Rhythmがシグナルを発するまでに魚を慢性的にストレスにさらしている水槽です。</p>
+      <p><strong>水換え後のショック</strong>もあります。水温や水質が大きく異なる大規模で不規則な水換えは、その後数日間に白点病の発生を引き起こすことがあります。変化自体が魚にストレスを与え、以前の不完全な治療から残っていた白点病や、ちょうど同じ頃に新しく持ち込まれた白点病に対して、魚をより無防備にします。</p>
+      <p><strong>時間をかけた高硝酸塩</strong>も見落とされがちです。アンモニアや亜硝酸塩の緊急事態ではありませんが、何週間もかけてじわじわ上昇する硝酸塩は、ひとつの「危険な数字」に達する前から、慢性的なストレスが積み重なっているサインです。実際にどの濃度が問題になるかは魚種や測定方法によって変わります。水換えが滞っている水槽は、標準的なテスト結果には現れないがLivestock Rhythmがシグナルを発するまでに魚を慢性的にストレスにさらしている水槽です。</p>
     </div>
 
     <div class="hn">
@@ -268,7 +274,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>白点病の発生を除去した後の最初のステップは観察であり、即座の変化ではありません。知っていることをリストアップしてください。発生はいつ現れたか？その前の2〜4週間で何が変わったか？新しい魚？新しいエサ？季節的な水温変化？室温の変化？大きな水換え？フィルター掃除？</p>
       <p>最も可能性の高い最近の変化が特定できたら、それが対処すべき原因です。外部的な変化が特定できない場合は、蓄積しているものに目を向けてください。掃除のルーティンが滞っていないか？水槽は6ヶ月前と比較して魚が成長したことで過密になっていないか？ヒーターはまだ正確に機能しているか、「ランプがついている」だけでなく、別の温度計で実際に測定したことがあるか？</p>
       <p>2本目の温度計を用意して、1週間毎日同じ時間に水槽温度を記録してください。水温の不安定性は飼育者が予想するよりはるかに頻繁にこのログに現れます。1日の間に2〜3度の変動は、明らかな問題に見えなくても慢性的に免疫機能を抑制するのに十分です。Keeper Rhythmは一貫していた；熱環境がドリフト（ずれ）ていたのです。</p>
-      <p>アンモニアと亜硝酸塩だけでなく硝酸塩も検査してください。繰り返し白点病が出るコミュニティ水槽での40 ppm超の硝酸塩の読み取りは、ほぼ常に状況の一部です。テストキットでは緊急事態として現れませんが、Livestock Rhythmがやがてシグナルを発するような背景の不整合です。</p>
+      <p>アンモニアと亜硝酸塩だけでなく硝酸塩も検査してください。繰り返し白点病が出るコミュニティ水槽で硝酸塩が上昇し続けている、あるいは高いまま推移していることは、種や測定方法によって当てはまる単一の基準値はないものの、状況の一部であることがよくあります。テストキットでは緊急事態として現れませんが、Livestock Rhythmがやがてシグナルを発するような背景の不整合です。</p>
     </div>
 
     <div class="pq">
@@ -321,6 +327,17 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <a href="/ja/articles/fish-hiding-what-does-it-mean" class="btn-ar" data-analytics-event="cta_ich_hiding" data-cta="fish_hiding">パラメーターは正常なのに魚が死ぬ →</a>
       <a href="/ja/articles/ara-full-framework" class="btn-ar" data-analytics-event="cta_ich_ara" data-cta="ara_page">魚が隠れているのはなぜ？ →</a>
       <a href="/rhyssa" class="btn-ar" data-analytics-event="cta_ich_rhyssa" data-cta="rhyssa">Rhyssaに聞く →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">参考文献</span>
+      <ul>
+        <li>Hines, R. S., &amp; Spira, D. T. (1998). <em>Ichthyophthirius multifiliis</em>: A model of cutaneous infection and immunity in fishes. <em>Immunological Reviews</em>, 166, 163–178.</li>
+        <li>Nielsen, M. E., Buchmann, K., &amp; Jørgensen, R. J. (2013). Immunity to <em>Ichthyophthirius</em> infections in fish: A synopsis. <em>Developmental and Comparative Immunology</em>, 41(2), 243–252.</li>
+        <li>Nowak, B. F., &amp; LaPatra, S. E. (2015). Epizootiology of <em>Ichthyophthirius multifiliis</em> infections in fish: A review. <em>Journal of Fish Diseases</em>, 38(2), 97–109.</li>
+        <li>Wang, X., Sun, G., Feng, S., et al. (2021). Conjoint applications of meta-analysis and bioinformatic data toward understanding the effect of nitrate on fish. <em>Aquaculture</em>, 545, 737221.</li>
+        <li>Xing, Y., Wang, J., Wang, L., et al. (2021). Effects of chronic nitrate exposure on the intestinal morphology, immune status, barrier function, and microbiota of juvenile turbot (<em>Scophthalmus maximus</em>). <em>Ecotoxicology and Environmental Safety</em>, 208, 111571.</li>
+      </ul>
     </div>
 
     <div class="art-footer">

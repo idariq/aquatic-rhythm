@@ -88,6 +88,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .btn-ar:hover{color:var(--th-accent);border-color:var(--th-accent-border)}
 .art-footer{margin-top:4rem;padding-top:1.6rem;border-top:1px solid var(--th-line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}.art-footer a:hover{color:var(--th-accent)}
+
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
 .art-intro{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem clamp(1.5rem,5vw,3rem) 5rem;position:relative;transition:opacity .4s ease}
 .art-intro .art-intro-stack{padding:0;margin-bottom:clamp(1.75rem,4vw,2.35rem)}
 .art-intro .art-hero-figure{margin-bottom:0}
@@ -210,8 +216,8 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">Three real jobs.<br><em>Not the dozen it gets asked for.</em></h2>
     <div class="mod-body">
       <p>A fish under stress — from an injury, a rough transport, or a sudden drop in water quality — spends real energy keeping its internal salt balance stable against the surrounding water. A mild, temporary rise in tank salinity narrows that gap, giving a compromised fish less internal work while it recovers. Osmotic support is real. It's also short-term — a bridge, not a standing treatment.</p>
-      <p>During a cycling spike, dissolved chloride competes with nitrite for the same uptake pathway in a fish's gills, so holding a modest salt level can blunt nitrite's toxicity while the second bacterial colony catches up. Keepers still use this technique for one situation — an active nitrite spike, not a permanent additive.</p>
-      <p>Held at a sustained concentration, salt can also shorten the free-swimming stage of a few external parasites, ich among them — but that needs a genuine therapeutic dose, commonly cited around one to three teaspoons per gallon, held for ten to fourteen days and usually paired with raised temperature in the 79–86°F (26–30°C) range. A pinch added at every water change reaches neither that concentration nor that duration. It just sits there.</p>
+      <p>During a cycling spike, dissolved chloride competes with nitrite for the same anion-transport pathway at the gill — the chloride cells that also take up nitrite — so holding a modest salt level can blunt nitrite's toxicity while the second bacterial colony catches up. How much protection that actually buys depends on species, fish size, and the ratio of chloride already in the water to the nitrite spiking it, and it does nothing to the nitrite itself. Keepers still use this technique for one situation — an active nitrite spike, alongside fixing whatever's driving it, not a permanent additive.</p>
+      <p>Held at a high enough concentration for long enough, salt can also shorten the free-swimming stage of a few external parasites, ich among them. There's no single teaspoon-per-gallon number that applies safely across species here — published treatments differ meaningfully by fish species and size, and a dose sized for one community member can stress or kill a different one sharing the same water. A pinch added at every water change reaches none of the concentration or duration a real treatment needs. It just sits there.</p>
     </div>
 
     <div class="pq">
@@ -269,6 +275,17 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <a href="/articles/clamped-fins-fin-rot" class="btn-ar" data-analytics-event="cta_salt_finrot" data-cta="clamped_fins_fin_rot">Clamped Fins and Fin Rot →</a>
       <a href="/articles/learning-to-read-not-fix" class="btn-ar" data-analytics-event="cta_salt_learning" data-cta="learning_to_read_not_fix">Learning to Read, Not Learning to Fix →</a>
       <a href="/articles/ara-full-framework" class="btn-ar" data-analytics-event="cta_salt_ara" data-cta="ara_full_framework">The ARA Framework →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">Further reading</span>
+      <ul>
+        <li>Lewis, W. M., Jr., &amp; Morris, D. P. (1986). Toxicity of nitrite to fish: A review. <em>Transactions of the American Fisheries Society</em>, 115(2), 183–195.</li>
+        <li>Svobodová, Z., Máchová, J., &amp; Poleszczuk, G. (2005). Nitrite poisoning of fish in aquaculture facilities with recirculating water. <em>Acta Veterinaria Brno</em>, 74, 129–137.</li>
+        <li>Garcia, L. O., Becker, A. G., Copatti, C. E., Baldisserotto, B., &amp; Radünz Neto, J. (2007). Salt in the food and water as a supportive therapy for <em>Ichthyophthirius multifiliis</em> infestation on silver catfish, <em>Rhamdia quelen</em>, fingerlings. <em>Journal of the World Aquaculture Society</em>, 38(1), 1–11.</li>
+        <li>Mifsud, C., Rowland, S. J., &amp; Read, P. (2003). Use of common salt to treat ichthyophthiriasis in Australian warmwater fishes. <em>North American Journal of Aquaculture</em>, 65(2), 124–127.</li>
+        <li>Larcombe, E., Alexander, M. E., Snellgrove, D., Henriquez, F. L., &amp; Sloman, K. A. (2025). Current disease treatments for the ornamental pet fish trade and their associated problems. <em>Reviews in Aquaculture</em>, 17(1), e12948.</li>
+      </ul>
     </div>
 
     <div class="art-footer">

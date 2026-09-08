@@ -5,6 +5,7 @@
         "sourceFile": "articles/ich-vs-velvet.html",
         "status": "ready"
     },
+    "sourcesLabel": "Bacaan lanjut",
     "head": {
         "title": "Ich atau Velvet? — Aquatic Rhythm",
         "description": "Bintik putih dan debu emas bisa terlihat nyaris identik sekilas, tapi keduanya parasit berbeda yang butuh obat berbeda. Cara membedakannya dengan satu cek sederhana sebelum mengobati yang salah.",
@@ -62,7 +63,7 @@
             "body": [
                 "Jalankan tes senter di ruangan gelap sebelum melakukan hal lain. Ini cara paling diandalkan untuk membedakan keduanya, dan cuma butuh beberapa menit.",
                 "Perhatikan seberapa berat napasnya. Velvet cenderung memukul insang lebih keras dibanding ich, jadi gerakan insang yang jelas lebih berat atau lebih cepat sedikit condong ke velvet, bahkan sebelum senter memastikannya.",
-                "Siklus hidup ich juga melambat atau mempercepat mengikuti suhu, yang penting untuk pengaturan waktu perawatan. Velvet tidak mengikuti siklus bergantung suhu yang sama — sebagian alasan kenapa perawatan yang dibuat untuk satu tidak bekerja diandalkan pada yang lain."
+                "Kedua parasit ini melewati siklus yang sama: menempel di ikan, lepas untuk berkembang biak, lalu melepaskan tahap berenang bebas yang harus menemukan ikan baru — dan keduanya melambat atau mempercepat mengikuti suhu. Yang berbeda adalah kecepatan spesifik dan jendela waktu perawatan masing-masing spesies, bukan soal suhu berpengaruh atau tidak, dan ini sebagian alasan kenapa perawatan yang diatur waktunya untuk satu tidak bekerja diandalkan pada yang lain."
             ],
             "hintLabel": "Kedua penyakit ini layak dapat tank karantina kalau memungkinkan",
             "hintText": [

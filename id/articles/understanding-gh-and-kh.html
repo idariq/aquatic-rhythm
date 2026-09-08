@@ -75,6 +75,17 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-title em{font-style:italic;color:var(--th-accent)}
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}.mod-body strong{font-weight:400;color:var(--th-ink)}.mod-body em{font-style:italic;color:var(--th-ink-3)}
+/* VISUAL BLOCK */
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 .hn{margin:2rem 0;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2);position:relative}
@@ -242,6 +253,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>GH tinggi dengan KH rendah, GH rendah dengan KH tinggi, keduanya tinggi, keduanya rendah — keempat kombinasi ini terjadi di air keran sungguhan. Menguji cuma satu dan menganggap itu memberi tahu yang lain justru melewatkan kasus-kasus yang paling sering bikin bingung.</p>
     </div>
 
+    <!-- VISUAL: Tap a water type — a point lands in one of four GH×KH quadrants -->
+    <div class="vis-block">
+      <canvas id="cv3" style="width:100%;height:240px"></canvas>
+    </div>
+
     <div class="mod-next">
       <button class="btn-prev" onclick="goMod(2)">← Kembali</button>
       <button class="btn-next" onclick="goMod(4)">Respons yang selaras <span>→</span></button>
@@ -285,6 +301,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -303,6 +320,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -310,6 +328,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -333,6 +352,234 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same pattern
+   as NTS_STRINGS/ntsT(), PHK_STRINGS/phkT(), NKR_STRINGS/nkrT(),
+   FM_STRINGS/fmT(), TWC_STRINGS/twcT(), CC_STRINGS/ccT(),
+   AFM_STRINGS/afmT(), and LSD_STRINGS/lsdT() in the other article
+   widgets. This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep GHKH_STRINGS.en/.id/.ja key sets
+   identical when editing. */
+var GHKH_STRINGS = {
+  en: {
+    v3_btnSoft: 'Soft tap water',
+    v3_btnHard: 'Hard tap water',
+    v3_btnShrimp: 'Shrimp remineraliser',
+    v3_btnCoral: 'Crushed coral',
+    v3_hint: 'tap a water type to see where it lands on both scales at once',
+    axisGH: 'GH →',
+    axisKH: 'KH ↑',
+    v3_capSoft: "Low GH and low KH together — common in soft tap water or after RO. Fine for soft-water species, but there's very little buffer if pH starts to drift.",
+    v3_capHard: 'High GH and high KH together — typical hard tap water. Great for hard-water species, and pH stays steady on its own.',
+    v3_capShrimp: "GH raised for the shrimp. KH barely moved. The minerals are there — the pH buffer isn't.",
+    v3_capCoral: 'KH raised without much GH. pH holds steady, but soft-water species still lack the minerals they actually need.'
+  },
+  id: {
+    v3_btnSoft: 'Air paip lembut',
+    v3_btnHard: 'Air paip keras',
+    v3_btnShrimp: 'Remineraliser udang',
+    v3_btnCoral: 'Karang hancur',
+    v3_hint: 'tekan satu jenis air utk lihat kedudukannya pd kedua-dua skala serentak',
+    axisGH: 'GH →',
+    axisKH: 'KH ↑',
+    v3_capSoft: 'GH rendah & KH rendah bersama — biasa dlm air paip lembut atau lepas RO. Sesuai utk spesies air lembut, tapi hampir tiada penampan kalau pH mula melencong.',
+    v3_capHard: 'GH tinggi & KH tinggi bersama — air paip keras yg biasa. Sesuai utk spesies air keras, & pH kekal stabil dgn sendirinya.',
+    v3_capShrimp: 'GH dinaikkan utk udang. KH nyaris tak bergerak. Mineral tu ada — penampan pH tiada.',
+    v3_capCoral: 'KH dinaikkan tanpa banyak GH. pH kekal stabil, tapi spesies air lembut tetap kekurangan mineral yg sebenarnya diperlukan.'
+  },
+  ja: {
+    v3_btnSoft: '軟水の水道水',
+    v3_btnHard: '硬水の水道水',
+    v3_btnShrimp: 'エビ用リミネラライザー',
+    v3_btnCoral: '砕いたサンゴ',
+    v3_hint: '水のタイプをタップすると、両方の数値上の位置が同時にわかる',
+    axisGH: 'GH →',
+    axisKH: 'KH ↑',
+    v3_capSoft: 'GHもKHも低い組み合わせ — 軟水の水道水やRO水後によく見られる。軟水系の生体には適しているが、pHが動き始めたときの緩衝はほとんどない。',
+    v3_capHard: 'GHもKHも高い組み合わせ — 典型的な硬水の水道水。硬水系の生体に適しており、pHは自然と安定する。',
+    v3_capShrimp: 'エビのためにGHを上げた。KHはほとんど動いていない。ミネラルはあるが、pHの緩衝はない。',
+    v3_capCoral: 'GHをほとんど上げずにKHを上げた。pHは安定するが、軟水系の生体が本当に必要とするミネラルはまだ不足している。'
+  }
+};
+function ghkhT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = GHKH_STRINGS[lang] || GHKH_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : GHKH_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/new-tank-syndrome.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Tap a water type — a point moves on a GH×KH grid, split
+   into four quadrants by a dashed midline on each axis. This is
+   deliberately NOT a time-series chart like the other article widgets —
+   the article's own point (§"Four combinations, not two") is that GH
+   and KH are two INDEPENDENT scales, not one number or a before/after,
+   so a 2D position is the honest shape for it. Illustrative fixed
+   sample values (not real test results) chosen to land cleanly in each
+   of the four quadrants and match the mechanisms described in the
+   surrounding text (shrimp remineraliser raises GH not KH; crushed
+   coral raises KH not GH). ── */
+canvases[3] = function() {
+  stopAnim('cv3');
+  var c = resizeCanvas('cv3'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var maxV = 20, mid = 8;
+  var samples = {
+    soft:   { gh: 3,  kh: 2,  btn: 'v3_btnSoft',   cap: 'v3_capSoft',   col: 'rgba(95,203,134,0.9)'  },
+    hard:   { gh: 16, kh: 14, btn: 'v3_btnHard',   cap: 'v3_capHard',   col: 'rgba(61,214,232,0.9)'  },
+    shrimp: { gh: 14, kh: 2,  btn: 'v3_btnShrimp', cap: 'v3_capShrimp', col: 'rgba(224,100,60,0.9)'  },
+    coral:  { gh: 4,  kh: 12, btn: 'v3_btnCoral',  cap: 'v3_capCoral',  col: 'rgba(200,170,80,0.9)'  }
+  };
+  var order = ['soft','hard','shrimp','coral'];
+  var mode = 'soft';
+  var dot = { gh: samples.soft.gh, kh: samples.soft.kh };
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  var btnsHtml = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">';
+  order.forEach(function(key){
+    btnsHtml += '<button class="vis-btn' + (key==='soft' ? ' vis-btn-active' : '') + '" id="ghkh-' + key + '">' + ghkhT(samples[key].btn) + '</button>';
+  });
+  btnsHtml += '</div>';
+  ctrl.innerHTML = btnsHtml + '<div class="vc-hint">' + ghkhT('v3_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  order.forEach(function(key){
+    document.getElementById('ghkh-' + key).addEventListener('click', function(){ setMode(key); });
+  });
+
+  function setMode(m) {
+    if (m === mode) return;
+    mode = m;
+    order.forEach(function(key){
+      document.getElementById('ghkh-' + key).className = 'vis-btn' + (key===m ? ' vis-btn-active' : '');
+    });
+    animateTo(samples[m].gh, samples[m].kh);
+  }
+
+  function animateTo(targetGh, targetKh) {
+    stopAnim('cv3');
+    var startGh = dot.gh, startKh = dot.kh, start = null, duration = 450;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min(1, (ts - start) / duration);
+      var ease = 1 - Math.pow(1-p, 3);
+      dot.gh = startGh + (targetGh - startGh) * ease;
+      dot.kh = startKh + (targetKh - startKh) * ease;
+      draw();
+      if (p < 1) { animFrames.cv3 = requestAnimationFrame(step); }
+    }
+    animFrames.cv3 = requestAnimationFrame(step);
+  }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 32, pR = 16, pT = 16, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB;
+    function px(v) { return pL + (v/maxV)*gW; }
+    function py(v) { return pT + gH - (v/maxV)*gH; }
+
+    /* Grid */
+    [0,4,8,12,16,20].forEach(function(v){
+      var x = px(v), y = py(v);
+      ctx.strokeStyle = vcInk(.06); ctx.lineWidth = 1; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(x,pT); ctx.lineTo(x,pT+gH); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(pL,y); ctx.lineTo(pL+gW,y); ctx.stroke();
+    });
+
+    /* Quadrant midlines */
+    ctx.strokeStyle = 'rgba(143,166,174,.6)'; ctx.lineWidth = 1.3; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(px(mid),pT); ctx.lineTo(px(mid),pT+gH); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(pL,py(mid)); ctx.lineTo(pL+gW,py(mid)); ctx.stroke();
+    ctx.setLineDash([]);
+
+    /* Axes */
+    ctx.strokeStyle = vcInk(.15); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pL,pT); ctx.lineTo(pL,pT+gH); ctx.lineTo(pL+gW,pT+gH); ctx.stroke();
+    ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+    ctx.fillStyle = vcInk(.5);
+    [0,10,20].forEach(function(v){ ctx.fillText(v, px(v)-3, pT+gH+14); });
+    [0,10,20].forEach(function(v){ ctx.fillText(v, 6, py(v)+3); });
+    ctx.fillText(ghkhT('axisGH'), pL+gW-30, pT+gH+28);
+    ctx.save(); ctx.translate(4, pT+2); ctx.rotate(0); ctx.fillText(ghkhT('axisKH'), 0, 0); ctx.restore();
+
+    /* Dot */
+    var x = px(dot.gh), y = py(dot.kh);
+    ctx.fillStyle = samples[mode].col;
+    ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI*2); ctx.fill();
+    ctx.strokeStyle = vcInk(.4); ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI*2); ctx.stroke();
+
+    /* Caption */
+    var cap = ghkhT(samples[mode].cap);
+    ctx.font = 'italic 300 12px Fraunces,serif';
+    ctx.fillStyle = vcInk(.6);
+    ctx.textAlign = 'center';
+    var words = cap.split(' '), line = '', ly = H-30, maxW = W-24;
+    words.forEach(function(w){
+      var test = line + (line?' ':'') + w;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, ly); line = w; ly += 15; }
+      else line = test;
+    });
+    if (line) ctx.fillText(line, W/2, ly);
+    ctx.textAlign = 'left';
+  }
+
+  vcRedraws.cv3 = draw;
+  draw();
+};
+
+/* Resize handler only — canvases init via startLearning()/goMod(). */
+window.addEventListener('resize', function(){
+  if (canvases[currentMod]) setTimeout(function(){ canvases[currentMod](); }, 50);
+});
 
 </script>
 

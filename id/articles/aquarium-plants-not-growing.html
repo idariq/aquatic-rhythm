@@ -89,6 +89,20 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+/* VISUAL BLOCK */
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -254,6 +268,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Hubungan antara cahaya, CO2, dan nutrisi bekerja seperti hukum minimum Liebig — batas dalam rantai pertumbuhan adalah apa yang membatasi, terlepas dari berapa banyak yang lain Anda tambahkan. Menambah nutrisi ke akuarium yang terbatas cahaya tidak membantu pertumbuhan tanaman; itu hanya menyuburkan alga. Diagnosa dengan benar dulu sebelum menambahkan apa pun.</p>
     </div>
 
+    <!-- VISUAL: Tap a factor to cycle its level — growth follows the LOWEST one, not the average -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:230px"></canvas>
+    </div>
+
     <div class="hn">
       <span class="hn-label">Tempat pertama untuk diperiksa</span>
       <p>Segala yang dialami tanaman sebagai lingkungannya — bukan hanya kimia air, tetapi siklus cahaya, stabilitas suhu, ketersediaan CO2, dan struktur fisik — membentuk cara ia tumbuh. Tanaman bagian dari gambaran itu, bukan terpisah. Ketika pertumbuhan tanaman jadi sinyalnya, lingkungan fisik hampir selalu tempat pertama untuk diperiksa.</p>
@@ -330,6 +349,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -348,6 +368,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -355,6 +376,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -378,6 +400,220 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same pattern
+   as NTS_STRINGS/ntsT(), PHK_STRINGS/phkT(), NKR_STRINGS/nkrT(),
+   FM_STRINGS/fmT(), TWC_STRINGS/twcT(), CC_STRINGS/ccT(),
+   AFM_STRINGS/afmT(), LSD_STRINGS/lsdT(), GHKH_STRINGS/ghkhT(),
+   BB_STRINGS/bbT(), and SDA_STRINGS/sdaT() in the other article
+   widgets. This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep APN_STRINGS.en/.id/.ja key sets
+   identical when editing. */
+var APN_STRINGS = {
+  en: {
+    v2_light: 'Light', v2_nutrients: 'Nutrients', v2_co2: 'CO2', v2_growth: 'Growth',
+    v2_low: 'Low', v2_med: 'Medium', v2_high: 'High',
+    v2_resetBtn: 'Reset',
+    v2_hint: 'tap a factor to cycle its level — growth follows the lowest one',
+    v2_capLight: "Growth is capped by light. More nutrients or CO2 won't help until light improves.",
+    v2_capNutrients: "Growth is capped by nutrients. More light or CO2 won't help until nutrients improve.",
+    v2_capCo2: "Growth is capped by CO2. More light or nutrients won't help until CO2 improves.",
+    v2_capNone: "All three are matched — growth isn't being held back by any single factor."
+  },
+  id: {
+    v2_light: 'Cahaya', v2_nutrients: 'Nutrien', v2_co2: 'CO2', v2_growth: 'Pertumbuhan',
+    v2_low: 'Rendah', v2_med: 'Sederhana', v2_high: 'Tinggi',
+    v2_resetBtn: 'Ulang',
+    v2_hint: 'tekan satu faktor utk pusing tahapnya — pertumbuhan ikut yg paling rendah',
+    v2_capLight: 'Pertumbuhan dihadkan oleh cahaya. Lebih nutrien atau CO2 takkan membantu sehingga cahaya diperbaiki.',
+    v2_capNutrients: 'Pertumbuhan dihadkan oleh nutrien. Lebih cahaya atau CO2 takkan membantu sehingga nutrien diperbaiki.',
+    v2_capCo2: 'Pertumbuhan dihadkan oleh CO2. Lebih cahaya atau nutrien takkan membantu sehingga CO2 diperbaiki.',
+    v2_capNone: 'Ketiga-tiganya sepadan — pertumbuhan tak dihadkan oleh mana-mana faktor tunggal.'
+  },
+  ja: {
+    v2_light: '光', v2_nutrients: '栄養', v2_co2: 'CO2', v2_growth: '成長',
+    v2_low: '低い', v2_med: '中程度', v2_high: '高い',
+    v2_resetBtn: 'リセット',
+    v2_hint: '要素をタップしてレベルを切り替える — 成長は一番低いものに従う',
+    v2_capLight: '成長は光によって制限されている。光が改善されるまで、栄養やCO2を増やしても効果はない。',
+    v2_capNutrients: '成長は栄養によって制限されている。栄養が改善されるまで、光やCO2を増やしても効果はない。',
+    v2_capCo2: '成長はCO2によって制限されている。CO2が改善されるまで、光や栄養を増やしても効果はない。',
+    v2_capNone: '3つとも釣り合っている — 成長は単一の要素によって制限されていない。'
+  }
+};
+function apnT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = APN_STRINGS[lang] || APN_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : APN_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/new-tank-syndrome.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Tap a factor to cycle its level (Low/Medium/High) — this
+   is NOT a time-series like the other article widgets, it's a limiting-
+   factor diagram (Liebig's law of the minimum): Growth is the MINIMUM
+   of the three inputs, not their average, matching the article's own
+   point that more of one input doesn't compensate for a shortfall in
+   another (§"Light, nutrients, and the rhythm they need" — "Adding
+   more fertiliser to a plant struggling because of inconsistent light
+   doesn't resolve the misalignment"). Illustrative levels, not a model
+   of any specific plant species' real requirements. ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var levels = { light: 0, nutrients: 0, co2: 0 }; /* 0=Low, 1=Med, 2=High */
+  var order = ['light','nutrients','co2'];
+  var levelLabels = ['v2_low','v2_med','v2_high'];
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  var btnsHtml = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">';
+  order.forEach(function(key){
+    btnsHtml += '<button class="vis-btn" id="apn-' + key + '"></button>';
+  });
+  btnsHtml += '<button class="vis-btn" id="apn-reset">' + apnT('v2_resetBtn') + '</button></div>';
+  ctrl.innerHTML = btnsHtml + '<div class="vc-hint">' + apnT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function labelFor(key) {
+    return apnT('v2_' + key) + ': ' + apnT(levelLabels[levels[key]]);
+  }
+  function refreshButtons() {
+    order.forEach(function(key){ document.getElementById('apn-' + key).textContent = labelFor(key); });
+  }
+  order.forEach(function(key){
+    document.getElementById('apn-' + key).addEventListener('click', function(){
+      levels[key] = (levels[key] + 1) % 3;
+      refreshButtons();
+      draw();
+    });
+  });
+  document.getElementById('apn-reset').addEventListener('click', function(){
+    order.forEach(function(key){ levels[key] = 0; });
+    refreshButtons();
+    draw();
+  });
+  refreshButtons();
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 30, pR = 12, pT = 18, pB = 58;
+    var gW = W - pL - pR, gH = H - pT - pB;
+
+    /* Grid */
+    [0,50,100].forEach(function(v){
+      var y = pT + gH - (v/100)*gH;
+      ctx.strokeStyle = vcInk(.06); ctx.lineWidth = 1; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(pL,y); ctx.lineTo(pL+gW,y); ctx.stroke();
+      ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+      ctx.fillStyle = vcInk(.5);
+      ctx.fillText(v, 3, y+3);
+    });
+
+    /* Axis */
+    ctx.strokeStyle = vcInk(.1); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pL,pT); ctx.lineTo(pL,pT+gH); ctx.lineTo(pL+gW,pT+gH); ctx.stroke();
+
+    var minLevel = Math.min(levels.light, levels.nutrients, levels.co2);
+    var limiter = order.filter(function(k){ return levels[k] === minLevel; })[0];
+    var allEqual = levels.light === levels.nutrients && levels.nutrients === levels.co2;
+
+    var bars = order.concat(['growth']);
+    var n = bars.length, slot = gW / n, barW = slot * 0.55;
+    bars.forEach(function(key, i){
+      var val = key === 'growth' ? minLevel : levels[key];
+      var h = (val + 1) / 3 * 100;
+      var x = pL + slot*i + (slot-barW)/2;
+      var y = pT + gH - (h/100)*gH;
+      var isLimiter = key === 'growth' ? false : (key === limiter && !allEqual);
+      if (key === 'growth') {
+        ctx.fillStyle = 'rgba(95,203,134,0.9)';
+      } else {
+        ctx.fillStyle = isLimiter ? 'rgba(224,100,60,0.9)' : 'rgba(61,214,232,0.55)';
+      }
+      ctx.fillRect(x, y, barW, gH - (y-pT));
+      if (isLimiter) {
+        ctx.strokeStyle = 'rgba(224,100,60,1)'; ctx.lineWidth = 1.5;
+        ctx.strokeRect(x, y, barW, gH - (y-pT));
+      }
+      ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+      ctx.fillStyle = vcInk(.6);
+      ctx.textAlign = 'center';
+      ctx.fillText(apnT('v2_' + key), pL + slot*i + slot/2, pT+gH+16);
+      ctx.textAlign = 'left';
+    });
+
+    /* Caption */
+    var cap = allEqual ? apnT('v2_capNone') : apnT('v2_cap' + limiter.charAt(0).toUpperCase() + limiter.slice(1));
+    ctx.font = 'italic 300 12px Fraunces,serif';
+    ctx.fillStyle = vcInk(.6);
+    ctx.textAlign = 'center';
+    var words = cap.split(' '), line = '', y2 = H-30, maxW = W-24;
+    words.forEach(function(w){
+      var test = line + (line?' ':'') + w;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y2); line = w; y2 += 15; }
+      else line = test;
+    });
+    if (line) ctx.fillText(line, W/2, y2);
+    ctx.textAlign = 'left';
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
+
+/* Resize handler only — canvases init via startLearning()/goMod(). */
+window.addEventListener('resize', function(){
+  if (canvases[currentMod]) setTimeout(function(){ canvases[currentMod](); }, 50);
+});
 
 </script>
 

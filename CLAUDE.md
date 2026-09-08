@@ -898,6 +898,100 @@ peristiwa) — `two-years-one-tank` lahir pd sapaan 23.4/1k, CV 0.57,
 konkrit 42.5/1k tanpa lulusan pembetulan. Kalau draf naratif keluar
 rendah konkrit, ia belum jadi naratif; ia masih esei bersamaran.
 
+### Keluarga KETUJUH — Around the World (dibuka PR #637, kategori Reading baharu)
+
+Berbeza drpd Keluarga 1-6 (yg semuanya variasi SUARA/hubungan penulis-
+pembaca tentang TANGKI PEMBACA SENDIRI), "Around the World" ialah jenis
+kandungan yg berbeza dari segi fungsi, bukan setakat nada: esei sejarah/
+budaya tentang tradisi hobi merentas dunia, bukan panduan/refleksi
+tentang tangki pembaca. Dibuka susulan kajian epistemik justice kertas
+akademik Hazim (rujuk §"Pengetahuan Rhyssa" & sync v2.2 ARA) yg
+didorong user selepas perbincangan ttg kertas "Ritma yang Tidak
+Bernama". 3 artikel setakat ni: `reading-water-without-the-words`
+(China/Malaysia/England — membaca tanpa vokabular kimia),
+`leaving-it-alone-four-different-ways` (Walstad/Amano/MACI/Botanical
+Method — 4 bentuk restraint berbeza), `upstream-of-the-aquarium`
+(Project Piaba, Rio Negro Brazil — ikan bawa sejarah sosio-ekologi).
+
+**Ciri unik yg ubah keperluan penulisan**: SATU-SATUNYA kandungan di
+laman ni yg bawa bahagian "Further reading" (citation akademik gaya
+APA ringkas) — 84+ artikel lain sengaja berpegang pd falsafah "hobby
+consensus and field observation" (`js/content-trust.js`) TANPA
+citation apparatus. Ini bukan sekadar hiasan tambahan; ia BERUBAH
+disiplin penulisan drpd artikel biasa:
+
+- **Dakwaan sejarah/angka WAJIB disahkan sumber sebelum ditulis**,
+  bukan dikarang drpd ingatan/andaian am — beza drpd artikel biasa yg
+  boleh berpijak pd "field observation" generik. Proses kerja: senarai
+  carian spesifik → user cari sumber sebenar → saya nilai tahap
+  keyakinan (peer-review/institusi > tesis/monograf > laman
+  komuniti/hobi) → HANYA guna tahap terendah sbg "bukti wujud
+  pertikaian", bukan sbg citation utama (ikut disiplin §2 kertas
+  epistemik asal).
+- **JANGAN cipta citation utk dakwaan yg tak disahkan** — Botanical
+  Method (`leaving-it-alone-four-different-ways`) sengaja TIADA
+  rujukan dlm "Further reading" sbb tiada sumber institusi/akademik
+  ditemui; label terus dlm teks sbg "amalan komuniti kontemporari,
+  bukan kaedah disahkan" drpd paksa citation lemah.
+  Sebaliknya, `upstream-of-the-aquarium` guna 5 rujukan sbb kesemuanya
+  benar-benar dipetik utk dakwaan spesifik dlm teks.
+- **Angka sejarah WAJIB date-stamped, jangan tersirat sbg status
+  semasa** — ditemui bila kajian sumber user dedah anggaran Chao &
+  Prang (1997) ialah snapshot pertengahan 1990-an, BUKAN keadaan
+  perdagangan Piaba hari ini (yg sebenarnya merosot 40-50%+ sejak tu).
+  Corak sama: Amano BUKAN "low-maintenance" (tetap tukar air ~1/3
+  seminggu), Walstad BUKAN "tiada tukar air selama-lamanya" — kedua²
+  pembetulan penting yg kalau silap jadi nasihat berbahaya kpd
+  pembaca, bukan sekadar salah gaya penulisan.
+- **Jgn pilih SATU angka bila sumber bercanggah** (cth. kadar
+  kematian pengangkutan ikan: 3-5% Project Piaba vs angka lebih
+  tinggi sumber lain) — nyatakan sbg julat bergantung konteks
+  (spesies/pengendalian/tempoh), bukan angka universal.
+
+**Bibliografi KEKAL sama merentas bahasa** (nama pengarang/tajuk/tahun
+tak diterjemah, konvensyen antarabangsa) — CUMA label bahagian
+("Further reading"/"Bacaan lanjut"/"参考文献") perlu terjemah.
+`scripts/build-i18n.mjs` dpt peraturan substitusi baharu khusus utk
+ni: `#art-sources-label` (id-based match, tag/class-agnostic ikut
+konvensyen generalized-id-match sedia ada), kunci JSON top-level
+`sourcesLabel` per bahasa.
+
+**WAJIB setiap modul ada `hn` box sambung balik ke artikel
+praktikal SEDIA ADA laman** (`learning-to-read-not-fix`,
+`ara-full-framework`, `new-tank-syndrome`, & artikel "Around the
+World" lain) — ni yg pastikan kategori ni rasa sebahagian laman,
+bukan esei luar ditampal. Tanpa disiplin ni, kandungan sejarah/budaya
+generik boleh berdiri sendiri tanpa kaitan dgn kerangka ARA/tangki
+pembaca — corak yg sama dgn kepentingan `localizeArticleLinks()` bagi
+pautan (§Senibina), cuma di sini utk KAITAN TEMATIK bukan URL.
+
+**Diplomasi terpakai penuh** (rujuk §"Diplomasi thd produk/rutin
+komersial" bawah) — semua 3 artikel bandingkan tradisi tanpa
+mengisytiharkan satu lebih sah drpd yg lain; `leaving-it-alone-
+four-different-ways` malah eksplisit label setiap tradisi ikut
+mekanisme SEBENAR (bukan taraf), & `upstream-of-the-aquarium` tolak
+binari "liar vs ternak lebih beretika" scr eksplisit.
+
+**Teknikal — kategori (`rd-cat`) BUKAN tag**: "Around the World"
+dilaksana sbg rd-cat KE-4 (bukan tag/pill tambahan pd kad sedia ada)
+di `index.html`'s pg-reading, sepadan keputusan user yg nak "bahagian
+baharu" bukan label. **AWAS pemisah antara kategori**: `.rd-cat`
+BUKAN sibling terus antara satu sama lain dlm DOM sedia ada — ada
+`<div style="height:1px;background:linear-gradient(to
+right,transparent,rgba(139,189,210,.1),transparent);margin:3.5rem
+0"></div>` LITERAL antara setiap rd-cat sedia ada. PR #638 cuba CSS
+`.rd-cat + .rd-cat{border-top}` (combinator sibling) & ia HANYA
+terpakai pd sempadan "Around the World" (satu²nya yg jadi sibling
+terus, sbb takde div gradient di depannya) — hasilnya gaya jadi TAK
+KONSISTEN drpd sempadan lain, tepat kebalikan tujuan. Dibetulkan PR
+#639 dgn salin div gradient LITERAL yg sama, bukan cipta gaya baharu.
+**Bila tambah kategori ke-5 di masa depan**: letak div gradient tu
+sblm `<!-- CATEGORY N -->` baharu, jgn sentuh CSS `.rd-cat`.
+`translations/homepage/id.json`/`ja.json`'s `reading.categories[]`
+array MESTI kekal 1:1 ikut turutan dgn rd-cat dlm HTML (susunan
+sepadan posisi, bukan nama) — `build_reading()` guna `iter()` scr
+posisi utk label/desc setiap kategori.
+
 ## Diplomasi thd produk/rutin komersial — JANGAN jadi radikal spt MACI (audit 2026-09-04)
 
 Audit dicetuskan drpd bandingan `docs/ARA-framework-v2.docx` dgn MACI

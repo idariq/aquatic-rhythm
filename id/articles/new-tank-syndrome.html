@@ -135,6 +135,12 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}
 .art-footer a:hover{color:var(--th-accent)}
 
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
+
 /* VISUAL CONTROLS */
 .vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
 .vc-label{text-align:center;margin-bottom:.4rem}
@@ -371,7 +377,7 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
     <div class="mod-eyebrow"><span class="mod-num">02 / 07</span><span class="mod-tag">Amonia</span></div>
     <h2 class="mod-title">Bakteri adalah<br><em>satu-satunya jawaban.</em></h2>
     <div class="mod-body">
-      <p>Ikan bisa terlihat stres sangat cepat di akuarium baru. Sisa metabolisme dan sisa makanan terurai menjadi amonia — yang beracun bahkan pada konsentrasi rendah. Beban ini bisa naik sebelum pemelihara melihat lonjakan signifikan di test kit.</p>
+      <p>Ikan bisa terlihat stres sangat cepat di akuarium baru. Sisa metabolisme dan sisa makanan terurai menjadi amonia. Bentuk yang benar-benar membahayakan ikan, amonia tak terionisasi (NH₃), mengambil porsi lebih besar dari angka itu pada pH lebih tinggi dan suhu lebih hangat — jadi angka yang sama di test kit membawa risiko lebih besar di akuarium bertanaman yang basa dibanding di akuarium berair lunak dan asam. Beban ini bisa naik sebelum pemelihara melihat lonjakan signifikan di test kit.</p>
       <p>Akuarium yang sudah matang memproses amonia hampir seketika, tetapi akuarium baru belum memiliki kapasitas biologis itu. Sistem konversi masih dalam proses pembangunan. Sampai saat itu tiba, amonia menumpuk — dan ikan merasakan tekanannya lebih dulu, sebelum angka di test kit berubah.</p>
     </div>
 
@@ -524,7 +530,7 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
     <h2 class="mod-title">Akuarium menemukan<br><em>ritmenya sendiri.</em></h2>
     <div class="mod-body">
       <p>Di awal, rasanya seperti akuarium tidak akan pernah stabil. Kemajuan berjalan lambat dan mudah terlewatkan hari demi hari. Ketidakpastian ini membuat banyak pemelihara meragukan prosesnya.</p>
-      <p>Antara minggu keempat dan kedelapan, fungsi koloni biasanya mulai stabil. Amonia bertahan mendekati nol, nitrit menghilang, dan perilaku ikan kembali normal. Sistem mendapatkan ketahanan dan mulai bisa pulih dari gangguan kecil.</p>
+      <p>Fungsi koloni biasanya mulai stabil setelah beberapa minggu, meski tidak ada jadwal tetap minggu-keempat-hingga-minggu-kedelapan yang berlaku sama untuk setiap akuarium — inokulasi, suhu, pH, alkalinitas, oksigen, dan seberapa banyak amonia yang harus diproses koloni semuanya menggeser waktunya. Amonia bertahan mendekati nol, nitrit menghilang, dan perilaku ikan kembali normal begitu sistemnya sampai ke sana. Sistem mendapatkan ketahanan dan mulai bisa pulih dari gangguan kecil.</p>
     </div>
 
     <!-- VISUAL 5: Day 1 to Day 30 -->
@@ -536,14 +542,13 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
       <p>Inilah saatnya beralih dari mode darurat ke perawatan berbasis ritme. Lanjutkan perawatan rutin, hindari gangguan besar, dan bangun konsistensi yang perlahan. Anda tidak mengejar kesempurnaan — Anda membangun sistem hidup yang bisa mengoreksi dirinya sendiri.</p>
     </div>
 
-
     <div class="hn">
       <span class="hn-label">Tekanannya nyata; menyalahkan diri tidak beralasan</span>
       <p>Melihat ikan berjuang selama proses cycling menghasilkan tekanan tertentu — perasaan bahwa Anda pasti melakukan sesuatu yang salah, meski sudah mengikuti semua saran yang ada. Perasaan itu layak diakui. Tapi itu tidak mencerminkan kompetensi Anda sebagai pemelihara: setiap tangki melewati fase biologis ini, siapa pun yang merawatnya. Belajar duduk dengan pengamatan, bukan langsung berintervensi, adalah salah satu keterampilan yang lebih sulit dalam hobi ini — dan fase inilah biasanya tempat pemelihara pertama kali mempraktikkannya.</p>
     </div>
     <div class="hn">
       <span class="hn-label">Perspektif Aquatic Rhythm</span>
-      <p>New tank syndrome justru jadi pelajaran pertama yang sesungguhnya dalam hobi ini, bukan hambatan — perbedaan antara sinyal yang membutuhkan respons dan sinyal yang hanya butuh ruang untuk selesai dengan sendirinya.</p>
+      <p>New tank syndrome justru jadi pelajaran pertama yang sesungguhnya dalam hobi ini, bukan hambatan — perbedaan antara sinyal yang membutuhkan respons dan sinyal yang hanya butuh ruang untuk selesai dengan sendirinya. Usia akuarium di sini cuma petunjuk kontekstual soal kemungkinan kematangan koloni, bukan buktinya; <a href="/id/articles/false-maturity" style="color:var(--th-accent);text-decoration:none">Kematangan Palsu</a> membahas seperti apa jarak itu bisa terlihat begitu akuarium sudah melewati fase awal ini.</p>
     </div>
 
     <div class="pq" style="margin-top:2rem">
@@ -557,6 +562,17 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
     <div class="pq" style="margin-top:1.5rem">
       <p><strong>Langkah terbaik berikutnya:</strong> Buka Tank Cycle Simulator dan jalankan satu siklus <em>fishless</em> hingga <em>Stabil ✓</em> muncul. Fokus pada tren amonia/nitrit selama 3 hari berturut-turut, bukan pada satu bacaan saja.</p>
       <a href="/id/articles/tank-simulator" class="art-back-link" data-analytics-event="cta_new_tank_next_action" data-cta="new_tank_simulator" style="font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;color:rgba(61,214,232,.74);text-decoration:none;display:inline-block;margin-top:.4rem">Buka simulator →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">Bacaan lanjut</span>
+      <ul>
+        <li>Hovanec, T. A., &amp; DeLong, E. F. (1996). Comparative analysis of nitrifying bacteria associated with freshwater and marine aquaria. <em>Applied and Environmental Microbiology</em>, 62(8), 2888–2896.</li>
+        <li>Hovanec, T. A., Taylor, L. T., Blakis, A., &amp; DeLong, E. F. (1998). Nitrospira-like bacteria associated with nitrite oxidation in freshwater aquaria. <em>Applied and Environmental Microbiology</em>, 64(1), 258–264.</li>
+        <li>Fowler, S. J., et al. (2024). Comammox Nitrospira among dominant ammonia oxidizers within aquarium biofilter microbial communities. <em>Applied and Environmental Microbiology</em>, 90, e00104-24.</li>
+        <li>United States Environmental Protection Agency. (2013). <em>Aquatic Life Ambient Water Quality Criteria for Ammonia — Freshwater</em>.</li>
+        <li>Keene, J. L., Noakes, D. L. G., Moccia, R. D., &amp; Soto, C. G. (1999). The acute and chronic toxicity of un-ionized ammonia to rainbow trout. <em>Aquaculture</em>, 180(1–2), 1–15.</li>
+      </ul>
     </div>
 
     <div class="mod-next" style="margin-top:1.5rem">
@@ -669,7 +685,7 @@ var NTS_STRINGS = {
     v2_resetBtn: 'Reset',
     v2_hint: 'watch how all three parameters change over time',
     v3_nitrosomonas: 'Nitrosomonas',
-    v3_nitrobacterNitrospira: 'Nitrobacter / Nitrospira',
+    v3_nitrobacterNitrospira: 'Nitrospira',
     v3_both: 'Both',
     v3_descA: 'NH₃ → NO₂ · Arrives first, converts ammonia into nitrite',
     v3_descB: 'NO₂ → NO₃ · Arrives after, converts nitrite into nitrate',
@@ -723,7 +739,7 @@ var NTS_STRINGS = {
     v2_resetBtn: 'Ulangi',
     v2_hint: 'perhatikan bagaimana ketiga parameter berubah seiring waktu',
     v3_nitrosomonas: 'Nitrosomonas',
-    v3_nitrobacterNitrospira: 'Nitrobacter / Nitrospira',
+    v3_nitrobacterNitrospira: 'Nitrospira',
     v3_both: 'Keduanya',
     v3_descA: 'NH₃ → NO₂ · Muncul lebih dulu, mengubah amonia menjadi nitrit',
     v3_descB: 'NO₂ → NO₃ · Muncul setelahnya, mengubah nitrit menjadi nitrat',
@@ -777,7 +793,7 @@ var NTS_STRINGS = {
     v2_resetBtn: 'リセット',
     v2_hint: '3つのパラメーターが時間とともにどう変化するか見てみましょう',
     v3_nitrosomonas: 'Nitrosomonas',
-    v3_nitrobacterNitrospira: 'Nitrobacter / Nitrospira',
+    v3_nitrobacterNitrospira: 'Nitrospira',
     v3_both: '両方',
     v3_descA: 'NH₃ → NO₂ · 最初に現れ、アンモニアを亜硝酸に変える',
     v3_descB: 'NO₂ → NO₃ · あとから現れ、亜硝酸を硝酸塩に変える',

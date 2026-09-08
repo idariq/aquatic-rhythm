@@ -75,6 +75,17 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-title em{font-style:italic;color:var(--th-accent)}
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}.mod-body strong{font-weight:400;color:var(--th-ink)}.mod-body em{font-style:italic;color:var(--th-ink-3)}
+/* VISUAL BLOCK */
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 .hn{margin:2rem 0;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2);position:relative}
@@ -214,6 +225,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Bahkan botol yang bekerja persis seperti yang dijanjikan — kultur hidup sungguhan, berhasil ditambahkan ke air — tetap butuh waktu berhari-hari hingga berminggu-minggu agar populasi awal itu tumbuh sampai ukuran yang benar-benar dibutuhkan oleh limbah akuarium yang sudah terisi ikan. "Instan" menggambarkan tindakan menuangnya. Ia memang tak pernah bisa menggambarkan biologinya.</p>
     </div>
 
+    <!-- VISUAL: Toggle label claim vs real bacterial growth curve -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="pq">
       <p>Sebuah botol bisa menambahkan bakteri ke air dalam sedetik. Ia tidak bisa menambahkan jumlah populasi yang dibutuhkan akuarium yang sudah terisi. Hanya waktu dan sumber amonia yang bisa melakukan itu.</p>
     </div>
@@ -282,6 +298,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -300,6 +317,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -307,6 +325,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -330,6 +349,205 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same pattern
+   as NTS_STRINGS/ntsT(), PHK_STRINGS/phkT(), NKR_STRINGS/nkrT(),
+   FM_STRINGS/fmT(), TWC_STRINGS/twcT(), CC_STRINGS/ccT(),
+   AFM_STRINGS/afmT(), LSD_STRINGS/lsdT(), and GHKH_STRINGS/ghkhT() in
+   the other article widgets. This script block is copied byte-for-byte
+   into id/articles + ja/articles by build-i18n.mjs, so the runtime lang
+   check is what actually localises the widget — keep BB_STRINGS.en/
+   .id/.ja key sets identical when editing. */
+var BB_STRINGS = {
+  en: {
+    v2_toggleLabel: 'As advertised (instant)',
+    v2_toggleReal: 'Actual bacterial growth',
+    v2_hint: 'same starter culture, same tank — only the timeline is invented or real',
+    v2_captionLabel: "The label says ready on day one. The colony needed for a full stock isn't there yet — it hasn't had time to grow.",
+    v2_captionReal: 'A real culture needs days to weeks to multiply to the size a stocked tank actually requires — slow at first, then catching up.',
+    daysAxis: 'Days →',
+    yAxisLabel: 'Colony'
+  },
+  id: {
+    v2_toggleLabel: 'Ikut label (segera)',
+    v2_toggleReal: 'Pertumbuhan bakteria sebenar',
+    v2_hint: 'kultur permulaan sama, akuarium sama — cuma garis masa yg direka atau sebenar',
+    v2_captionLabel: 'Label kata sedia hari pertama. Koloni yg diperlukan utk stok penuh belum wujud — ia belum sempat membiak.',
+    v2_captionReal: 'Kultur sebenar perlukan berhari-hari hingga berminggu utk membiak ke saiz yg benar-benar diperlukan tangki berstok — perlahan mulanya, kemudian memulih.',
+    daysAxis: 'Hari →',
+    yAxisLabel: 'Koloni'
+  },
+  ja: {
+    v2_toggleLabel: 'ラベルどおり（即時）',
+    v2_toggleReal: '実際のバクテリアの成長',
+    v2_hint: '同じスターター培養、同じ水槽 — 違うのは架空か実際かのタイムラインだけ',
+    v2_captionLabel: 'ラベルは初日から準備完了だと言う。フル飼育数に必要なコロニーはまだ存在しない — 増える時間がなかっただけ。',
+    v2_captionReal: '実際の培養がフル飼育数に必要な規模まで増えるには数日から数週間かかる — 最初はゆっくり、その後追いつく。',
+    daysAxis: '日数 →',
+    yAxisLabel: 'コロニー'
+  }
+};
+function bbT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = BB_STRINGS[lang] || BB_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : BB_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/new-tank-syndrome.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle "as advertised" (a flat line at full colony size
+   from day zero) against "actual bacterial growth" (a logistic S-curve
+   — slow at first, then catching up, then levelling off as the colony
+   approaches what the tank's bioload requires). The S-curve is
+   deliberately a different shape from every other article widget's
+   curve (flat/rise-decay/sawtooth/staircase/bars/quadrant-jump) because
+   the underlying claim is different too: this isn't a disruption or a
+   toggle between two ongoing states, it's a population catching up to
+   a fixed target over time. Illustrative logistic model (not a specific
+   product's real growth data) — the point is the SHAPE of "slow, then
+   catching up," not lab-precise population counts. ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var totalDays = 14, maxV = 100;
+  var mode = 'label'; /* label | real */
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="bb-label">' + bbT('v2_toggleLabel') + '</button>'
+    +'<button class="vis-btn" id="bb-real">' + bbT('v2_toggleReal') + '</button></div>'
+    +'<div class="vc-hint">' + bbT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('bb-label').className = 'vis-btn' + (m==='label' ? ' vis-btn-active' : '');
+    document.getElementById('bb-real').className = 'vis-btn' + (m==='real' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('bb-label').addEventListener('click', function(){ setMode('label'); });
+  document.getElementById('bb-real').addEventListener('click', function(){ setMode('real'); });
+
+  function labelVal() { return 100; }
+  function realVal(day) {
+    var r = 0.7, A = 99;
+    return 100 / (1 + A * Math.exp(-r * day));
+  }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 30, pR = 12, pT = 18, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB;
+    function px(d) { return pL + (d/totalDays)*gW; }
+    function py(v) { return pT + gH - (v/maxV)*gH; }
+
+    /* Grid */
+    [0,25,50,75,100].forEach(function(v){
+      var y = py(v);
+      ctx.strokeStyle = vcInk(.06); ctx.lineWidth = 1; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(pL,y); ctx.lineTo(pL+gW,y); ctx.stroke();
+      ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+      ctx.fillStyle = vcInk(.5);
+      ctx.fillText(v, 3, y+3);
+    });
+
+    /* Axes */
+    ctx.strokeStyle = vcInk(.1); ctx.lineWidth = 1; ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(pL,pT); ctx.lineTo(pL,pT+gH); ctx.lineTo(pL+gW,pT+gH); ctx.stroke();
+    ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+    ctx.fillStyle = vcInk(.5);
+    [0,4,8,12,14].forEach(function(d){ ctx.fillText(d, px(d)-3, pT+gH+14); });
+    ctx.fillText(bbT('daysAxis'), pL+gW-42, pT+gH+28);
+    ctx.save(); ctx.translate(4, pT+8); ctx.fillText(bbT('yAxisLabel'), 0, 0); ctx.restore();
+
+    /* Draw both curves faintly, highlight selected */
+    [
+      { key:'label', fn: function(d){ return labelVal(); }, col: 'rgba(224,100,60,'  },
+      { key:'real',  fn: realVal,                            col: 'rgba(95,203,134,'  }
+    ].forEach(function(s){
+      var active = s.key === mode;
+      ctx.strokeStyle = s.col + (active ? '0.9' : '0.18') + ')';
+      ctx.lineWidth = active ? 2 : 1;
+      ctx.beginPath();
+      for (var d = 0; d <= totalDays; d += 0.2) {
+        var v = Math.min(maxV, s.fn(d));
+        var x = px(d), y = py(v);
+        if (d === 0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    });
+
+    /* Caption */
+    var cap = mode==='label' ? bbT('v2_captionLabel') : bbT('v2_captionReal');
+    ctx.font = 'italic 300 12px Fraunces,serif';
+    ctx.fillStyle = vcInk(.6);
+    ctx.textAlign = 'center';
+    var words = cap.split(' '), line = '', y2 = H-28, maxW = W-24;
+    words.forEach(function(w){
+      var test = line + (line?' ':'') + w;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y2); line = w; y2 += 15; }
+      else line = test;
+    });
+    if (line) ctx.fillText(line, W/2, y2);
+    ctx.textAlign = 'left';
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
+
+/* Resize handler only — canvases init via startLearning()/goMod(). */
+window.addEventListener('resize', function(){
+  if (canvases[currentMod]) setTimeout(function(){ canvases[currentMod](); }, 50);
+});
 
 </script>
 

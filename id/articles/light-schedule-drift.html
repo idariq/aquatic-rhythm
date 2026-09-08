@@ -75,6 +75,17 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-title em{font-style:italic;color:var(--th-accent)}
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}.mod-body strong{font-weight:400;color:var(--th-ink)}.mod-body em{font-style:italic;color:var(--th-ink-3)}
+/* VISUAL BLOCK */
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 .hn{margin:2rem 0;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2);position:relative}
@@ -217,6 +228,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Ikan juga terpengaruh, dengan cara yang lebih diam. Banyak spesies memakai transisi cahaya sebagai isyarat perilaku harian normal, dan jadwal yang tidak menentu menghilangkan sinyal yang seharusnya bisa mereka andalkan.</p>
     </div>
 
+    <!-- VISUAL: Toggle timer vs manual — same weekly average, very different day-to-day consistency -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="pq">
       <p>Jarang sekali jumlah jamnya yang menyebabkan masalah. Yang menyebabkan masalah adalah tidak tahu, dari satu hari ke hari berikutnya, angka itu akan jadi berapa.</p>
     </div>
@@ -285,6 +301,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -303,6 +320,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -310,6 +328,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -333,6 +352,197 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same pattern
+   as NTS_STRINGS/ntsT(), PHK_STRINGS/phkT(), NKR_STRINGS/nkrT(),
+   FM_STRINGS/fmT(), TWC_STRINGS/twcT(), CC_STRINGS/ccT(), and
+   AFM_STRINGS/afmT() in the other article widgets. This script block is
+   copied byte-for-byte into id/articles + ja/articles by build-i18n.mjs,
+   so the runtime lang check is what actually localises the widget — keep
+   LSD_STRINGS.en/.id/.ja key sets identical when editing. */
+var LSD_STRINGS = {
+  en: {
+    v2_toggleFixed: 'Timer (fixed)',
+    v2_toggleManual: 'Manual (varies)',
+    v2_hint: 'same weekly average — only the day-to-day consistency differs',
+    v2_captionFixed: 'Every day reads the same. Plants and fish get a rhythm they can actually predict.',
+    v2_captionManual: 'The average looks fine on paper. Day to day, nothing about it is predictable.',
+    daysAxis: 'Day →',
+    yAxisLabel: 'Hours'
+  },
+  id: {
+    v2_toggleFixed: 'Pemasa (tetap)',
+    v2_toggleManual: 'Manual (berubah-ubah)',
+    v2_hint: 'purata mingguan sama — cuma konsistensi harian yang berbeza',
+    v2_captionFixed: 'Setiap hari sama. Tumbuhan & ikan dapat ritma yang benar-benar boleh diramal.',
+    v2_captionManual: 'Purata nampak elok di atas kertas. Tapi hari ke hari, tiada apa yang boleh diramal.',
+    daysAxis: 'Hari →',
+    yAxisLabel: 'Jam'
+  },
+  ja: {
+    v2_toggleFixed: 'タイマー（固定）',
+    v2_toggleManual: '手動（変動あり）',
+    v2_hint: '週の平均は同じ — 違うのは日ごとの一貫性だけ',
+    v2_captionFixed: '毎日同じ。水草も魚も、実際に予測できるリズムを得られる。',
+    v2_captionManual: '平均は紙の上では悪くない。でも日々は何も予測できない。',
+    daysAxis: '日 →',
+    yAxisLabel: '時間'
+  }
+};
+function lsdT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = LSD_STRINGS[lang] || LSD_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : LSD_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/new-tank-syndrome.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle timer vs manual — a week of daily light-on hours as
+   bars. Both scenarios average to almost the same weekly total (~8h/day)
+   — the fixed array of "manual" values is deliberately chosen to land
+   close to that same average, so the only thing the toggle actually
+   changes is day-to-day consistency, not the total light the tank gets.
+   That's the article's own point: the average looking fine on paper
+   doesn't mean the rhythm is fine. Illustrative fixed values, not a
+   model of any specific tank. ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var days = 7, maxV = 12, avg = 8;
+  var fixed = [8,8,8,8,8,8,8];
+  var manual = [6,9,7,11,6,10,8];
+  var mode = 'fixed'; /* fixed | manual */
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="lsd-fixed">' + lsdT('v2_toggleFixed') + '</button>'
+    +'<button class="vis-btn" id="lsd-manual">' + lsdT('v2_toggleManual') + '</button></div>'
+    +'<div class="vc-hint">' + lsdT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('lsd-fixed').className = 'vis-btn' + (m==='fixed' ? ' vis-btn-active' : '');
+    document.getElementById('lsd-manual').className = 'vis-btn' + (m==='manual' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('lsd-fixed').addEventListener('click', function(){ setMode('fixed'); });
+  document.getElementById('lsd-manual').addEventListener('click', function(){ setMode('manual'); });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 26, pR = 12, pT = 18, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB;
+    var vals = mode === 'fixed' ? fixed : manual;
+    var barW = gW / days * 0.55;
+    var slot = gW / days;
+
+    /* Grid */
+    [0,4,8,12].forEach(function(v){
+      var y = pT + gH - (v/maxV)*gH;
+      ctx.strokeStyle = vcInk(.06); ctx.lineWidth = 1; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(pL,y); ctx.lineTo(pL+gW,y); ctx.stroke();
+      ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+      ctx.fillStyle = vcInk(.5);
+      ctx.fillText(v, 3, y+3);
+    });
+
+    /* Axes */
+    ctx.strokeStyle = vcInk(.1); ctx.lineWidth = 1; ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(pL,pT); ctx.lineTo(pL,pT+gH); ctx.lineTo(pL+gW,pT+gH); ctx.stroke();
+    ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+    ctx.fillStyle = vcInk(.5);
+    for (var i = 0; i < days; i++) {
+      ctx.fillText(i+1, pL + slot*i + slot/2 - 3, pT+gH+14);
+    }
+    ctx.fillText(lsdT('daysAxis'), pL+gW-24, pT+gH+28);
+    ctx.save(); ctx.translate(4, pT+8); ctx.fillText(lsdT('yAxisLabel'), 0, 0); ctx.restore();
+
+    /* Average reference line */
+    var yAvg = pT + gH - (avg/maxV)*gH;
+    ctx.strokeStyle = 'rgba(143,166,174,.7)'; ctx.lineWidth = 1.5; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(pL, yAvg); ctx.lineTo(pL+gW, yAvg); ctx.stroke();
+    ctx.setLineDash([]);
+
+    /* Bars */
+    ctx.fillStyle = mode === 'fixed' ? 'rgba(95,203,134,0.85)' : 'rgba(224,100,60,0.85)';
+    vals.forEach(function(v, i) {
+      var x = pL + slot*i + (slot-barW)/2;
+      var y = pT + gH - (v/maxV)*gH;
+      ctx.fillRect(x, y, barW, gH - (y-pT));
+    });
+
+    /* Caption */
+    var cap = mode==='fixed' ? lsdT('v2_captionFixed') : lsdT('v2_captionManual');
+    ctx.font = 'italic 300 12px Fraunces,serif';
+    ctx.fillStyle = vcInk(.6);
+    ctx.textAlign = 'center';
+    var words = cap.split(' '), line = '', y2 = H-28, maxW = W-24;
+    words.forEach(function(w){
+      var test = line + (line?' ':'') + w;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y2); line = w; y2 += 15; }
+      else line = test;
+    });
+    if (line) ctx.fillText(line, W/2, y2);
+    ctx.textAlign = 'left';
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
+
+/* Resize handler only — canvases init via startLearning()/goMod(). */
+window.addEventListener('resize', function(){
+  if (canvases[currentMod]) setTimeout(function(){ canvases[currentMod](); }, 50);
+});
 
 </script>
 

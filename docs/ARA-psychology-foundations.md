@@ -227,6 +227,18 @@ This is the keeper ARA is designed for — and, more precisely, the keeper that 
 
 ---
 
+## Limitations: Western Academic Grounding and Epistemological Assumptions *(added 2026-09-08, synced from the framework document's v2.2 update)*
+
+The four foundations above are documented in this order because they are the four traditions this framework's author could trace with confidence — they do not exhaust the range of legitimate keeper psychology, and stating that plainly here is required by the same "no shame, no false authority" ethic the rest of this document asks content to uphold.
+
+**The literature is Western.** ART, self-compassion research, SDT, and biophilia scholarship are all rooted in Western academic psychology. Fish-keeping exists within a far broader range of cultural relationships than these four traditions describe. In East Asian traditions, koi and goldfish carry deep associations with prosperity, longevity, and aesthetic refinement that predate and sit outside any of the psychological mechanisms documented above. In many communities, fish are kept as part of religious practice, family tradition, or cultural identity, each with its own internal coherence and care logic. These are legitimate keeper orientations, not deviations from a psychological norm this document happens to describe — the gap is in this document's literature base, not in those keepers.
+
+**A related but separate limitation sits underneath the psychological one: an epistemological assumption about what counts as "understanding a tank."** Even where ARA is explicitly technology-neutral — a low-tech and a high-tech system may both be aligned — that neutrality has not, by itself, addressed whether the framework still treats formally measured, chemically named parameters as the reference language for demonstrating that a keeper understands their system. Historical evidence argues this assumption is not a simple East-West split: goldfish were selectively bred in China for colour and social meaning for over a millennium before any biochemical understanding of aquatic systems existed (Chen et al., 2020), and the Victorian aquarium in England emerged as a status object and vehicle for aesthetic instruction before it became an ecological tool, with period manuals teaching readers how to enjoy a tank as much as how to run one (Feldman, 2022; Granata, 2021). Calibrating a keeper's rhythm to meaning rather than to measured biology is not a deviation unique to one tradition — it recurs early in most fishkeeping traditions examined so far. The practical implication for content and tools: prefer behavioural indicators (routine stability, response to visible stress, water-change frequency) that a keeper managing an open-vessel or low-technology system can read as readily as a keeper fluent in chemical parameter language. An instrument or article that only makes sense to the latter reproduces the very assumption this limitation identifies.
+
+This is documented in more depth, with full citations, in `docs/ARA-framework-v2.md` (S10.5) and in the source academic paper. It is recorded here because it bears directly on how "Principles for ARA Content and Language" below should be read: Principle 7 ("Convention is not the enemy") already guards against treating rule-following keepers as naive; this limitation asks the same question one layer down — treating a keeper's own descriptive language for their tank as evidence of understanding, not the vocabulary they happen to use to express it.
+
+---
+
 ## Principles for ARA Content and Language
 
 Derived from these four foundations, the following principles govern how ARA content should be written:

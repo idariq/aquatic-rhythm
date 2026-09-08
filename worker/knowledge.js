@@ -114,6 +114,12 @@ ARA does not require keepers to track this complexity. But it informs why the fr
 
 The practical implication: biological rhythm cannot be read by nitrogen cycle testing alone. It requires reading the system's overall behaviour — how stable it is, how it recovers from disruption, how the animals within it thrive over time.
 
+### S2.5: A Family of Restraint-Oriented Traditions *(added from the 2026 academic paper, v2.2)*
+
+ARA structures and names an orientation the author believes reflects a widely shared sensibility within the hobby, particularly the nature aquarium tradition — patience, incremental maturation, and trust in biological processes, across both low-tech and high-tech expressions. This is an impression drawn from practice and community observation, not a documented claim, and it does not make the orientation universal. Systems with genuinely narrow tolerances (ultra-low-nutrient reef systems keeping sensitive SPS coral, where a day's delay can be lethal rather than merely developmental) and acute medical situations (where active, immediate intervention is the aligned response) sit outside what a patience-oriented lens is designed to serve.
+
+This orientation sits within a recognisable family of restraint-oriented hobbyist traditions that predate ARA. The Walstad Method (Diana Walstad's low-tech, self-sustaining planted-aquarium approach) and the Nature Aquarium tradition (Takashi Amano's patience-and-maturation-over-intervention philosophy) are established examples any experienced freshwater keeper is likely to know, and both were part of the practitioner context ARA emerged from. MACI (Marco de Acuario de Circuito Integrado, developed independently in Spanish by Riveiro de la Peña) shares a similar restraint-oriented philosophy, but was encountered separately from — and after — ARA's own development. It is noted here as further evidence that this sensibility recurs across the hobby, not as a source ARA drew upon.
+
 ---
 
 ## S3: The Five Ecological Rhythms
@@ -270,6 +276,8 @@ The Early Phase is characterised by biological fragility. The nitrogen-processin
 The Early Phase cycle typically completes in three to eight weeks in an uncycled setup, faster in a seeded setup. The appropriate keeper role during this phase is to create stable conditions (consistent temperature, consistent lighting, minimal disturbance) and observe rather than intervene.
 
 **Critical windows within Early Phase.** The first two weeks are the most volatile. The second week often produces the highest ammonia and nitrite peaks. Many new keepers, alarmed by rising parameter readings, intervene heavily at exactly the moment when stability and patience are most needed. Understanding that these peaks are biologically normal — and that acting on them can extend the cycle rather than shorten it — is one of the most practically valuable things a keeper can understand about Early Phase.
+
+**Fish may arrive already carrying stress** *(added from the 2026 academic paper, v2.2)*. The sensitivity Early Phase describes may not originate solely within the tank. Fish frequently arrive already carrying a physiological history shaped by the commercial supply chain — water quality and pathogen exposure have been documented to shift across multiple stages between wholesaler and retailer before a fish is ever sold (Vanderzwalmen et al., 2021). Some of what Early Phase attributes to a fish adjusting to a new system may partly reflect recovery from that prior transit stress instead. This is an open interpretive possibility, not a confirmed mechanism — no data was found on domestic post-purchase mortality timing that would allow the two to be distinguished. Practically, it argues for the same aligned response either way: patience and minimal intervention during the first weeks, whether the fish is adjusting, recovering, or both.
 
 ### S5.2: Developing Phase
 
@@ -548,6 +556,16 @@ ARA recognises a wide range of keeper capacity as legitimate. A keeper who can m
 
 The framework does not hold opinions about tank size, stocking choices, species preferences, or keeping styles, except where those choices create direct animal welfare concerns (extreme overcrowding, incompatible species kept together knowingly, conditions incompatible with species' physiological requirements). Within the wide space of legitimate keeping choices, the framework's role is to help keepers read their specific systems, not to prescribe what those systems should be.
 
+### S10.5: Epistemological Assumptions *(added from the 2026 academic paper, v2.2)*
+
+A related limitation sits underneath culture rather than beside it. ARA's technology-neutral stance — that a low-tech and a high-tech system may both be aligned — does not, by itself, address whether the framework still treats formally measured, chemically named parameters as the reference language for demonstrating that a keeper understands their system.
+
+Historical evidence suggests this assumption does not track a simple East-West divide. Goldfish were selectively bred for colour and social meaning in China for over a millennium before any biochemical understanding of aquatic systems existed (Chen et al., 2020). Western fishkeeping shows a parallel pattern: the Victorian aquarium emerged as a status object and a vehicle for aesthetic instruction before it functioned as an ecological tool, with period manuals teaching readers how to enjoy a tank as much as how to run one (Feldman, 2022; Granata, 2021). Read together, these histories suggest that calibrating a keeper's rhythm to meaning rather than to measured biology is not a deviation from some neutral scientific baseline unique to one tradition — it is a pattern present early in most fishkeeping traditions examined so far.
+
+ARA has not yet distinguished, in its own diagnostic language, between the absence of formal technical vocabulary and the absence of a functioning practice. The practical implication for instrument design (the self-assessment tool in S4.5, and any future structured instrument) is to favour behavioural indicators — water-change frequency, response to visible signs of stress, routine stability — that can be read equally by a keeper managing an open-vessel or low-technology system and one managing an instrumented, high-technology one. An instrument that only makes sense to keepers fluent in chemical parameter language would reproduce the very assumption this limitation identifies.
+
+This sits alongside the Western-literature limitation documented for the psychological foundations in S11.5 and its companion document — the same underlying pattern, described from an epistemological angle rather than a psychological one.
+
 ---
 
 ## S11: ARA as a Living Framework
@@ -597,7 +615,14 @@ Post-v2.0 additions (synced from website content):
 - S8's pathway maps reframed from fixed "domain-to-domain" routes to illustrative, non-exhaustive examples, per the paper's own framing, and rewritten in rhythm terms consistent with S7's retitling
 - Two appendices present in the 2024/2025 paper (a preliminary Phase Assessment Guide / Domain Friction Checklist / Pre-Intervention Reasoning Template, and a marine/reef structural translation guide) do not appear in the 2026 restructure; this document never carried appendix content of its own, so no change was needed here
 
-What has not changed: the five ecological rhythms, the three-phase system, the alignment vs control distinction, the foundational assumptions, the style-agnostic and non-prescriptive character of the framework. What has changed since the last sync: the seven domains no longer exist as a separate layer above the five rhythms (see 2026-08-25 sync above).
+2026-09-08 sync (v2.2 academic paper update, same DOI):
+- A new family-of-traditions note added as S2.5, naming the Walstad Method (Walstad, 1999) and the Nature Aquarium tradition (Amano, 1994) as established restraint-oriented traditions predating ARA, alongside MACI (Riveiro de la Peña, 2026) — a similarly restraint-oriented framework developed independently and in Spanish, encountered by ARA's author only after ARA's own development and noted as convergent evidence, not a source drawn upon
+- Early Phase (S5.1) gained a paragraph noting fish may arrive already carrying supply-chain physiological history (Vanderzwalmen et al., 2021) — what Early Phase attributes to adjustment to a new system may partly be recovery from prior transit stress, an open interpretive possibility rather than a confirmed mechanism
+- A new limitation, S10.5 Epistemological Assumptions, acknowledges that ARA's technology-neutral stance does not by itself address whether formally measured, chemically named parameters remain the framework's implicit reference language for demonstrating that a keeper understands their system — grounded in goldfish domestication history (Chen et al., 2020) and Victorian aquarium history (Feldman, 2022; Granata, 2021), both showing that meaning-calibrated rhythm predates biochemical understanding in traditions on both sides of an assumed East-West divide
+- A new S11.6 Data Governance and the Companion Site states the ethical handling of any future opt-in self-report data the site collects (e.g. via Rhythm Tracker) — exploratory groundwork only, not evidence for the framework's central claims
+- New citations added: Amano (1994), Chen et al. (2020), Feldman (2022), Granata (2021), Riveiro de la Peña (2026), Vanderzwalmen et al. (2021), Walstad (1999)
+
+What has not changed: the five ecological rhythms, the three-phase system, the alignment vs control distinction, the foundational assumptions, the style-agnostic and non-prescriptive character of the framework. What has changed since the last sync: two new limitations (S10.5) and a new practical section (S11.6) were added, alongside the family-of-traditions note (S2.5) and the supply-chain history note (S5.1) — see the 2026-09-08 sync above.
 
 The framework aspires to become more useful with each version — not by becoming more prescriptive, but by more accurately describing what actually happens in living systems and what keepers can do to participate in those systems well.
 
@@ -614,11 +639,20 @@ ARA's structure — the observation practice, the rejection of shame, the compet
 
 These foundations explain why ARA is a distinguishable approach from technical aquarium frameworks — not just in what it says about ecology, but in what it understands about the keeper.
 
+### S11.6: Data Governance and the Companion Site *(added from the 2026 academic paper, v2.2)*
+
+The practical companion site (aquaticrhythm.com) may, over time, invite visitors to voluntarily contribute reflective self-report data — for example through tools such as Rhythm Tracker — on an explicit opt-in basis, with the purpose disclosed at the point of collection rather than added afterward. This is stated plainly here because the site is a real point of contact between the framework and the people who use it, and that contact carries a data-governance responsibility even when collection is informal.
+
+Any data gathered this way is exploratory groundwork toward future instrument refinement, not a representative sample and not evidence for the framework's central relational claims (S7.2 of the companion research agenda). Visitors who opt in are self-selected toward people already engaged enough with the framework to seek it out — exactly the kind of sampling bias that cannot support causal or correlational claims. Its value is upstream: sharpening which questions a future instrument should ask, and demonstrating genuine engagement to prospective collaborators, not downstream confirmation of any claim in this document.
+
+Formal hypothesis testing, should it occur, still requires the collaborative, ethically reviewed research design described in the framework's research agenda. Informally contributed site data does not substitute for that process, and any future use of such data in published research would itself be subject to ethical review at that time, regardless of how informally it was first collected.
+
 ---
 
 *Harun, M. N. H. (2026). Aquatic Rhythm Alignment (ARA): A literacy framework for human-maintained closed aquatic micro-ecosystems. OSF. https://doi.org/10.17605/OSF.IO/CKJF2*
 *Version 2.0 — Companion: ARA-psychology-foundations.md*
-*aquaticrhythm.com*`;
+*aquaticrhythm.com*
+`;
 
 export const ARA_PSYCHOLOGY = `# ARA Psychological Foundations
 ## Internal Reference Document — Aquatic Rhythm, 2025
@@ -846,6 +880,18 @@ Together, they explain a keeper who:
 - Experiences the tank as a living relationship worth sustaining (biophilia)
 
 This is the keeper ARA is designed for — and, more precisely, the keeper that ARA is designed to *produce* through its framing and approach.
+
+---
+
+## Limitations: Western Academic Grounding and Epistemological Assumptions *(added 2026-09-08, synced from the framework document's v2.2 update)*
+
+The four foundations above are documented in this order because they are the four traditions this framework's author could trace with confidence — they do not exhaust the range of legitimate keeper psychology, and stating that plainly here is required by the same "no shame, no false authority" ethic the rest of this document asks content to uphold.
+
+**The literature is Western.** ART, self-compassion research, SDT, and biophilia scholarship are all rooted in Western academic psychology. Fish-keeping exists within a far broader range of cultural relationships than these four traditions describe. In East Asian traditions, koi and goldfish carry deep associations with prosperity, longevity, and aesthetic refinement that predate and sit outside any of the psychological mechanisms documented above. In many communities, fish are kept as part of religious practice, family tradition, or cultural identity, each with its own internal coherence and care logic. These are legitimate keeper orientations, not deviations from a psychological norm this document happens to describe — the gap is in this document's literature base, not in those keepers.
+
+**A related but separate limitation sits underneath the psychological one: an epistemological assumption about what counts as "understanding a tank."** Even where ARA is explicitly technology-neutral — a low-tech and a high-tech system may both be aligned — that neutrality has not, by itself, addressed whether the framework still treats formally measured, chemically named parameters as the reference language for demonstrating that a keeper understands their system. Historical evidence argues this assumption is not a simple East-West split: goldfish were selectively bred in China for colour and social meaning for over a millennium before any biochemical understanding of aquatic systems existed (Chen et al., 2020), and the Victorian aquarium in England emerged as a status object and vehicle for aesthetic instruction before it became an ecological tool, with period manuals teaching readers how to enjoy a tank as much as how to run one (Feldman, 2022; Granata, 2021). Calibrating a keeper's rhythm to meaning rather than to measured biology is not a deviation unique to one tradition — it recurs early in most fishkeeping traditions examined so far. The practical implication for content and tools: prefer behavioural indicators (routine stability, response to visible stress, water-change frequency) that a keeper managing an open-vessel or low-technology system can read as readily as a keeper fluent in chemical parameter language. An instrument or article that only makes sense to the latter reproduces the very assumption this limitation identifies.
+
+This is documented in more depth, with full citations, in \`docs/ARA-framework-v2.md\` (S10.5) and in the source academic paper. It is recorded here because it bears directly on how "Principles for ARA Content and Language" below should be read: Principle 7 ("Convention is not the enemy") already guards against treating rule-following keepers as naive; this limitation asks the same question one layer down — treating a keeper's own descriptive language for their tank as evidence of understanding, not the vocabulary they happen to use to express it.
 
 ---
 

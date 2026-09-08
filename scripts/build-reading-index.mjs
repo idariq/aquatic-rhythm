@@ -94,6 +94,7 @@ const SLUG_ORDER = [
   'reading-water-without-the-words',
   'leaving-it-alone-four-different-ways',
   'upstream-of-the-aquarium',
+  'bred-for-color-bred-for-a-fight',
 ];
 
 // UI strings per language

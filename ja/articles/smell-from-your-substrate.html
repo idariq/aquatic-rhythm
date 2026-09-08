@@ -75,6 +75,17 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-title em{font-style:italic;color:var(--th-accent)}
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}.mod-body strong{font-weight:400;color:var(--th-ink)}.mod-body em{font-style:italic;color:var(--th-ink-3)}
+/* VISUAL BLOCK */
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 .hn{margin:2rem 0;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2);position:relative}
@@ -239,6 +250,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>重要なのは規模の違いです。ときどきかき乱される小さなポケットは自己制御的で、ほとんど無害です。長い時間をかけて大きくなったポケットが一気に放出される場合は、すばやく対応する価値があるパターンです。</p>
     </div>
 
+    <!-- VISUAL: Build up a pocket by waiting, then disturb it — the longer the wait, the bigger the release -->
+    <div class="vis-block">
+      <canvas id="cv3" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="hn">
       <span class="hn-label">大量放出が起きた直後は</span>
       <p>その後一時間ほど魚をよく観察し、呼吸が苦しそう、泳ぎ方がおかしい、大きな底床のかく乱の直後に普段と違ってぐったりしているなど、何か様子がおかしければすぐに部分換水をしてください。一時的に水面の攪拌を強めることも、水中への酸素補給を早めるのに役立ちます。</p>
@@ -287,6 +303,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -305,6 +322,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -312,6 +330,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -335,6 +354,195 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same pattern
+   as NTS_STRINGS/ntsT(), PHK_STRINGS/phkT(), NKR_STRINGS/nkrT(),
+   FM_STRINGS/fmT(), TWC_STRINGS/twcT(), CC_STRINGS/ccT(),
+   AFM_STRINGS/afmT(), LSD_STRINGS/lsdT(), GHKH_STRINGS/ghkhT(),
+   BB_STRINGS/bbT(), SDA_STRINGS/sdaT(), APN_STRINGS/apnT(),
+   WMC_STRINGS/wmcT(), HCG_STRINGS/hcgT(), OFA_STRINGS/ofaT(), and
+   MFD_STRINGS/mfdT() in the other article widgets. This script block is
+   copied byte-for-byte into id/articles + ja/articles by build-i18n.mjs,
+   so the runtime lang check is what actually localises the widget — keep
+   SUB_STRINGS.en/.id/.ja key sets identical when editing. */
+var SUB_STRINGS = {
+  en: {
+    v3_advBtn: '+ Advance a week',
+    v3_disturbBtn: 'Disturb now (vacuum)',
+    v3_hint: 'wait longer between disturbances, and the release gets bigger',
+    v3_yAxis: 'Pocket size',
+    v3_capBuilding: 'Undisturbed, the sealed pocket keeps growing quietly.',
+    v3_capSmallRelease: 'A small, frequent disturbance — self-limiting and mostly harmless.',
+    v3_capBigRelease: "A pocket left to grow for a long time — the version worth responding to quickly once it's finally released."
+  },
+  id: {
+    v3_advBtn: '+ Lompat seminggu',
+    v3_disturbBtn: 'Usik sekarang (vacuum)',
+    v3_hint: 'makin lama tak diusik, makin besar lepasannya',
+    v3_yAxis: 'Saiz poket',
+    v3_capBuilding: 'Tak diusik, poket tertutup ni terus membesar senyap-senyap.',
+    v3_capSmallRelease: 'Gangguan kecil & kerap — bersifat mengehadkan diri & selalunya tak berbahaya.',
+    v3_capBigRelease: 'Poket yg dibiarkan membesar lama — versi yg patut disikapi segera bila akhirnya terlepas.'
+  },
+  ja: {
+    v3_advBtn: '+ 1週間進める',
+    v3_disturbBtn: '今かき混ぜる（掃除）',
+    v3_hint: 'かき混ぜずに長く放置するほど、放出も大きくなる',
+    v3_yAxis: 'ポケットの大きさ',
+    v3_capBuilding: '手をつけなければ、密閉されたポケットは静かに大きくなり続ける。',
+    v3_capSmallRelease: '小さく頻繁な攪拌 — 自己制限的でほとんど無害。',
+    v3_capBigRelease: '長期間放置されたポケット — 最終的に放出されたとき、すぐに対応すべき種類のもの。'
+  }
+};
+function subT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = SUB_STRINGS[lang] || SUB_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : SUB_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/new-tank-syndrome.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Build-then-release — a mechanic new to this site's
+   widgets. "+ Advance a week" grows a sealed pocket (a saturating
+   curve, not linear — it's illustrative, not a measured H2S
+   accumulation rate). "Disturb now" releases whatever size the pocket
+   had reached and resets it to zero, exactly like a gravel vac
+   breaking the seal. The whole point is comparing releases: disturb
+   often and the release stays small every time; wait a long time and
+   the SAME action releases something much bigger. That's the article's
+   own point in this module (small-and-frequent vs. big-and-sudden) and
+   its Module 4 pull quote, made interactive instead of just stated. ── */
+canvases[3] = function() {
+  stopAnim('cv3');
+  var c = resizeCanvas('cv3'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var weeksSince = 0;
+  var releaseFlash = null; /* {size} when a disturb just happened, cleared after a short delay */
+  var releaseTimer = null;
+
+  function pocketAt(w) { return 100 * (1 - Math.exp(-w/8)); }
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="sub-adv">' + subT('v3_advBtn') + '</button>'
+    +'<button class="vis-btn" id="sub-disturb">' + subT('v3_disturbBtn') + '</button></div>'
+    +'<div class="vc-hint">' + subT('v3_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  document.getElementById('sub-adv').addEventListener('click', function() {
+    weeksSince = Math.min(30, weeksSince + 1);
+    releaseFlash = null;
+    if (releaseTimer) { clearTimeout(releaseTimer); releaseTimer = null; }
+    draw();
+  });
+  document.getElementById('sub-disturb').addEventListener('click', function() {
+    var size = pocketAt(weeksSince);
+    releaseFlash = { size: size };
+    weeksSince = 0;
+    draw();
+    if (releaseTimer) clearTimeout(releaseTimer);
+    releaseTimer = setTimeout(function(){ releaseFlash = null; releaseTimer = null; draw(); }, 900);
+  });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 30, pR = 12, pT = 18, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB;
+
+    /* Grid */
+    [0,50,100].forEach(function(v){
+      var y = pT + gH - (v/100)*gH;
+      ctx.strokeStyle = vcInk(.06); ctx.lineWidth = 1; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(pL,y); ctx.lineTo(pL+gW,y); ctx.stroke();
+      ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+      ctx.fillStyle = vcInk(.5);
+      ctx.fillText(v, 3, y+3);
+    });
+
+    /* Axis */
+    ctx.strokeStyle = vcInk(.1); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pL,pT); ctx.lineTo(pL,pT+gH); ctx.lineTo(pL+gW,pT+gH); ctx.stroke();
+    ctx.save(); ctx.translate(4, pT+8); ctx.font = '300 10px Work Sans,system-ui,sans-serif'; ctx.fillStyle = vcInk(.5); ctx.fillText(subT('v3_yAxis'), 0, 0); ctx.restore();
+
+    var barW = gW * 0.28;
+    var barX = pL + gW/2 - barW/2;
+    var val = releaseFlash ? releaseFlash.size : pocketAt(weeksSince);
+    var y = pT + gH - (val/100)*gH;
+    ctx.fillStyle = releaseFlash ? 'rgba(224,100,60,0.95)' : 'rgba(200,170,80,0.85)';
+    ctx.fillRect(barX, y, barW, gH - (y-pT));
+
+    /* Caption */
+    var cap = releaseFlash
+      ? (releaseFlash.size < 50 ? subT('v3_capSmallRelease') : subT('v3_capBigRelease'))
+      : subT('v3_capBuilding');
+    ctx.font = 'italic 300 12px Fraunces,serif';
+    ctx.fillStyle = vcInk(.6);
+    ctx.textAlign = 'center';
+    var words = cap.split(' '), line = '', ly = H-28, maxW = W-24;
+    words.forEach(function(w){
+      var test = line + (line?' ':'') + w;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, ly); line = w; ly += 15; }
+      else line = test;
+    });
+    if (line) ctx.fillText(line, W/2, ly);
+    ctx.textAlign = 'left';
+  }
+
+  vcRedraws.cv3 = draw;
+  draw();
+};
+
+/* Resize handler only — canvases init via startLearning()/goMod(). */
+window.addEventListener('resize', function(){
+  if (canvases[currentMod]) setTimeout(function(){ canvases[currentMod](); }, 50);
+});
 
 </script>
 

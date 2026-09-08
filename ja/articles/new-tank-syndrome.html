@@ -135,6 +135,12 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}
 .art-footer a:hover{color:var(--th-accent)}
 
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
+
 /* VISUAL CONTROLS */
 .vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
 .vc-label{text-align:center;margin-bottom:.4rem}
@@ -373,7 +379,7 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
     <div class="mod-eyebrow"><span class="mod-num">02 / 07</span><span class="mod-tag">アンモニア</span></div>
     <h2 class="mod-title">水の中で、<br><em>何かが作られている。</em></h2>
     <div class="mod-body">
-      <p>新しい水槽では、魚はすぐにストレスを示すことがあります。エサの食べ残しや排泄物が分解されて<strong>アンモニア</strong>が発生します。これは微量でも毒性があります。そしてその濃度は、テストキットで明確な数値として出る前に、すでに上昇し始めていることがあります。</p>
+      <p>新しい水槽では、魚はすぐにストレスを示すことがあります。エサの食べ残しや排泄物が分解されて<strong>アンモニア</strong>が発生します。魚に実際に害を与えるのは非電離アンモニア(NH₃)で、pHが高く水温が高いほど、その割合は総アンモニアの中で大きくなります。つまり、同じ数値でも、水草を育てているアルカリ性の水槽のほうが、軟水で酸性の水槽より実際のリスクは高くなります。その濃度は、テストキットで明確な数値として出る前に、すでに上昇し始めていることがあります。</p>
       <p>成熟した水槽であれば、アンモニアはほぼ発生と同時に処理されます。でも、新しい水槽にはまだその生物学的なキャパシティがない。アンモニアを分解するシステムがまだできていないのです。だから蓄積し、魚はあなたが気づくよりも早くその影響を受けます。</p>
     </div>
 
@@ -526,7 +532,7 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
     <h2 class="mod-title">水槽は、<br><em>自分のリズムを見つける。</em></h2>
     <div class="mod-body">
       <p>初期の段階では、水槽が永遠に安定しないように感じることがあります。変化は少しずつで、日々の経過では見えにくい。その不確かさが、多くの飼育者をプロセスへの疑念に向かわせます。</p>
-      <p>4〜8週目あたりで、バクテリアのコロニーは通常安定してきます。アンモニアがほぼゼロに保たれ、亜硝酸が下がり、魚の行動が落ち着いてきます。システムは安定し始め、小さな変化を受け止める余裕が生まれてきます。</p>
+      <p>コロニーの働きは、通常は数週間かけて安定していきますが、すべての水槽に当てはまる「4週目から8週目」という決まった期間はありません。種となる菌の量、水温、pH、アルカリ度、溶存酸素、そしてコロニーが処理しなければならないアンモニアの量によって、タイミングは変わります。システムがそこに達すれば、アンモニアはほぼゼロに保たれ、亜硝酸は下がり、魚の行動も落ち着いてきます。システムは安定し始め、小さな変化を受け止める余裕が生まれてきます。</p>
     </div>
 
     <!-- VISUAL 5: Day 1 to Day 30 -->
@@ -538,14 +544,13 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
       <p>緊急モードからリズムケアへの移行です。日常のメンテナンスを続け、大きな混乱を避け、ゆっくりと一貫性を築いてください。目指すのは完璧さではなく、自己修正できる生きたシステムです。</p>
     </div>
 
-
     <div class="hn">
       <span class="hn-label">その苦しさは本物です。でも自分を責める必要はありません</span>
       <p>サイクリング中に魚が苦しむのを見るのは、独特のつらさを生みます——見つけられる限りのアドバイスに従っていても、何か間違ったことをしているに違いないという感覚です。それは認める価値のある感覚です。ただ、それはあなたの飼育者としての力量を示すものではありません。どの水槽も、世話をしているのが誰であれ、この生物学的な段階を通過します。介入したい衝動を抑えて観察に徹することは、この趣味の中でも難しいスキルのひとつであり、たいていの飼育者が最初にそれを練習するのがこの段階です。</p>
     </div>
     <div class="hn">
       <span class="hn-label">Aquatic Rhythmの視点</span>
-      <p>ニュータンクシンドロームは、アクアリウムへの障壁というより、最初の本当のレッスンです。対応が必要なシグナルと、ただ解決するための空間を必要とするシグナルの違いを、教えてくれるのです。</p>
+      <p>ニュータンクシンドロームは、アクアリウムへの障壁というより、最初の本当のレッスンです。対応が必要なシグナルと、ただ解決するための空間を必要とするシグナルの違いを、教えてくれるのです。水槽の経過日数は、コロニーがどれくらい成熟していそうかを示す状況証拠にすぎず、証明にはなりません。<a href="/ja/articles/false-maturity" style="color:var(--th-accent);text-decoration:none">False Maturity</a>は、この初期段階を過ぎたあとにその差がどんな形で現れるかを扱っています。</p>
     </div>
 
     <div class="pq" style="margin-top:2rem">
@@ -559,6 +564,17 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
     <div class="pq" style="margin-top:1.5rem">
       <p><strong>次にやること：</strong>Tank Cycle Simulatorを開いて、<em>Stable ✓</em>が表示されるまでフィッシュレスサイクルを走らせてみてください。1回の数値ではなく、3日連続のアンモニア・亜硝酸のトレンドに注目して。</p>
       <a href="/ja/articles/tank-simulator" class="art-back-link" data-analytics-event="cta_new_tank_next_action" data-cta="new_tank_simulator" style="font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;color:rgba(61,214,232,.74);text-decoration:none;display:inline-block;margin-top:.4rem">シミュレーターを開く →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">参考文献</span>
+      <ul>
+        <li>Hovanec, T. A., &amp; DeLong, E. F. (1996). Comparative analysis of nitrifying bacteria associated with freshwater and marine aquaria. <em>Applied and Environmental Microbiology</em>, 62(8), 2888–2896.</li>
+        <li>Hovanec, T. A., Taylor, L. T., Blakis, A., &amp; DeLong, E. F. (1998). Nitrospira-like bacteria associated with nitrite oxidation in freshwater aquaria. <em>Applied and Environmental Microbiology</em>, 64(1), 258–264.</li>
+        <li>Fowler, S. J., et al. (2024). Comammox Nitrospira among dominant ammonia oxidizers within aquarium biofilter microbial communities. <em>Applied and Environmental Microbiology</em>, 90, e00104-24.</li>
+        <li>United States Environmental Protection Agency. (2013). <em>Aquatic Life Ambient Water Quality Criteria for Ammonia — Freshwater</em>.</li>
+        <li>Keene, J. L., Noakes, D. L. G., Moccia, R. D., &amp; Soto, C. G. (1999). The acute and chronic toxicity of un-ionized ammonia to rainbow trout. <em>Aquaculture</em>, 180(1–2), 1–15.</li>
+      </ul>
     </div>
 
     <div class="mod-next" style="margin-top:1.5rem">
@@ -671,7 +687,7 @@ var NTS_STRINGS = {
     v2_resetBtn: 'Reset',
     v2_hint: 'watch how all three parameters change over time',
     v3_nitrosomonas: 'Nitrosomonas',
-    v3_nitrobacterNitrospira: 'Nitrobacter / Nitrospira',
+    v3_nitrobacterNitrospira: 'Nitrospira',
     v3_both: 'Both',
     v3_descA: 'NH₃ → NO₂ · Arrives first, converts ammonia into nitrite',
     v3_descB: 'NO₂ → NO₃ · Arrives after, converts nitrite into nitrate',
@@ -725,7 +741,7 @@ var NTS_STRINGS = {
     v2_resetBtn: 'Ulangi',
     v2_hint: 'perhatikan bagaimana ketiga parameter berubah seiring waktu',
     v3_nitrosomonas: 'Nitrosomonas',
-    v3_nitrobacterNitrospira: 'Nitrobacter / Nitrospira',
+    v3_nitrobacterNitrospira: 'Nitrospira',
     v3_both: 'Keduanya',
     v3_descA: 'NH₃ → NO₂ · Muncul lebih dulu, mengubah amonia menjadi nitrit',
     v3_descB: 'NO₂ → NO₃ · Muncul setelahnya, mengubah nitrit menjadi nitrat',
@@ -779,7 +795,7 @@ var NTS_STRINGS = {
     v2_resetBtn: 'リセット',
     v2_hint: '3つのパラメーターが時間とともにどう変化するか見てみましょう',
     v3_nitrosomonas: 'Nitrosomonas',
-    v3_nitrobacterNitrospira: 'Nitrobacter / Nitrospira',
+    v3_nitrobacterNitrospira: 'Nitrospira',
     v3_both: '両方',
     v3_descA: 'NH₃ → NO₂ · 最初に現れ、アンモニアを亜硝酸に変える',
     v3_descB: 'NO₂ → NO₃ · あとから現れ、亜硝酸を硝酸塩に変える',

@@ -135,6 +135,12 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
 .art-footer a{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-4);text-decoration:none;transition:color .3s}
 .art-footer a:hover{color:var(--th-accent)}
 
+.art-sources{margin-top:2.8rem;padding-top:1.4rem;border-top:1px solid var(--th-line)}
+.art-sources-label{display:block;font-size:var(--fs-2xs);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--th-ink-4);margin-bottom:.8rem}
+.art-sources ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.art-sources li{font-size:var(--fs-sm);font-weight:300;color:var(--th-ink-3);line-height:1.65}
+.art-sources li em{font-style:italic}
+
 /* VISUAL CONTROLS */
 .vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
 .vc-label{text-align:center;margin-bottom:.4rem}
@@ -371,7 +377,7 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
     <div class="mod-eyebrow"><span class="mod-num">02 / 07</span><span class="mod-tag">Ammonia</span></div>
     <h2 class="mod-title">Something is building<br><em>in the water.</em></h2>
     <div class="mod-body">
-      <p>Fish can look stressed very quickly in a new tank. Waste and leftover food break down into <strong>ammonia</strong>, which is toxic even at low concentration. That load can rise before the keeper sees obvious test spikes.</p>
+      <p>Fish can look stressed very quickly in a new tank. Waste and leftover food break down into <strong>ammonia</strong>. The form that actually harms fish, un-ionised ammonia (NH₃), makes up a bigger share of that reading at a higher pH and warmer temperature — so the same test-kit number carries more risk in a planted, alkaline tank than in a soft, acidic one. That load can rise before the keeper sees obvious test spikes.</p>
       <p>Mature tanks process ammonia almost immediately, but new tanks do not yet have that biological capacity. The conversion system is still being built. Until then, ammonia accumulates and fish feel the stress first.</p>
     </div>
 
@@ -527,7 +533,7 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
     <h2 class="mod-title">The tank finds<br><em>its own rhythm.</em></h2>
     <div class="mod-body">
       <p>Early on, it can feel like the tank will never settle. Progress is gradual and easy to miss day to day. That uncertainty makes many keepers doubt the process.</p>
-      <p>Between roughly week four and week eight, colony function usually becomes steady. Ammonia stays near zero, nitrite fades, and fish behaviour normalises. The system gains resilience and can recover from small disturbances.</p>
+      <p>Colony function usually becomes steady after several weeks, though no fixed week-four-to-week-eight timetable holds for every tank — inoculation, temperature, pH, alkalinity, oxygen, and how much ammonia the colony is being asked to process all shift the timing. Ammonia stays near zero, nitrite fades, and fish behaviour normalises once the system gets there. The system gains resilience and can recover from small disturbances.</p>
     </div>
 
     <!-- VISUAL 5: Day 1 to Day 30 -->
@@ -539,14 +545,13 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
       <p>Transition from emergency mode to rhythm care. Keep routine maintenance, avoid major disruptions, and build slow consistency. You are not aiming for perfection, just a living system that can self-correct.</p>
     </div>
 
-
     <div class="hn">
       <span class="hn-label">The distress is real; the self-blame isn't warranted</span>
       <p>Watching fish struggle during cycling produces a specific kind of distress — the sense that you must be doing something wrong, even while following every piece of advice you could find. That deserves acknowledgment. What it doesn't track is your competence as a keeper: every tank passes through this biological phase, regardless of who's tending it. Learning to sit with observation instead of reaching to intervene is one of the harder skills in this hobby, and this phase is usually where keepers first practice it.</p>
     </div>
     <div class="hn">
       <span class="hn-label">Aquatic Rhythm perspective</span>
-      <p>New tank syndrome ends up being the hobby's first real lesson, not an obstacle to it — the difference between a signal that needs a response and one that simply needs room to resolve on its own.</p>
+      <p>New tank syndrome ends up being the hobby's first real lesson, not an obstacle to it — the difference between a signal that needs a response and one that simply needs room to resolve on its own. Tank age is a contextual clue about likely colony maturity here, not proof of it; <a href="/articles/false-maturity" style="color:var(--th-accent);text-decoration:none">False Maturity</a> covers what that gap can look like once a tank has moved past this early phase.</p>
     </div>
 
     <div class="pq" style="margin-top:2rem">
@@ -560,6 +565,17 @@ canvas.vis-canvas{display:block;width:100%;border-radius:3px}
     <div class="pq" style="margin-top:1.5rem">
       <p><strong>Next best action:</strong> Open the Tank Cycle Simulator and run one <em>fishless</em> cycle until <em>Stable ✓</em> appears. Focus on ammonia/nitrite trends for 3 consecutive days, not a single reading.</p>
       <a href="/articles/tank-simulator" class="art-back-link" data-analytics-event="cta_new_tank_next_action" data-cta="new_tank_simulator" style="font-size:var(--fs-xs);letter-spacing:.16em;text-transform:uppercase;color:rgba(61,214,232,.74);text-decoration:none;display:inline-block;margin-top:.4rem">Open simulator →</a>
+    </div>
+
+    <div class="art-sources">
+      <span class="art-sources-label" id="art-sources-label">Further reading</span>
+      <ul>
+        <li>Hovanec, T. A., &amp; DeLong, E. F. (1996). Comparative analysis of nitrifying bacteria associated with freshwater and marine aquaria. <em>Applied and Environmental Microbiology</em>, 62(8), 2888–2896.</li>
+        <li>Hovanec, T. A., Taylor, L. T., Blakis, A., &amp; DeLong, E. F. (1998). Nitrospira-like bacteria associated with nitrite oxidation in freshwater aquaria. <em>Applied and Environmental Microbiology</em>, 64(1), 258–264.</li>
+        <li>Fowler, S. J., et al. (2024). Comammox Nitrospira among dominant ammonia oxidizers within aquarium biofilter microbial communities. <em>Applied and Environmental Microbiology</em>, 90, e00104-24.</li>
+        <li>United States Environmental Protection Agency. (2013). <em>Aquatic Life Ambient Water Quality Criteria for Ammonia — Freshwater</em>.</li>
+        <li>Keene, J. L., Noakes, D. L. G., Moccia, R. D., &amp; Soto, C. G. (1999). The acute and chronic toxicity of un-ionized ammonia to rainbow trout. <em>Aquaculture</em>, 180(1–2), 1–15.</li>
+      </ul>
     </div>
 
     <div class="mod-next" style="margin-top:1.5rem">
@@ -672,7 +688,7 @@ var NTS_STRINGS = {
     v2_resetBtn: 'Reset',
     v2_hint: 'watch how all three parameters change over time',
     v3_nitrosomonas: 'Nitrosomonas',
-    v3_nitrobacterNitrospira: 'Nitrobacter / Nitrospira',
+    v3_nitrobacterNitrospira: 'Nitrospira',
     v3_both: 'Both',
     v3_descA: 'NH₃ → NO₂ · Arrives first, converts ammonia into nitrite',
     v3_descB: 'NO₂ → NO₃ · Arrives after, converts nitrite into nitrate',
@@ -726,7 +742,7 @@ var NTS_STRINGS = {
     v2_resetBtn: 'Ulangi',
     v2_hint: 'perhatikan bagaimana ketiga parameter berubah seiring waktu',
     v3_nitrosomonas: 'Nitrosomonas',
-    v3_nitrobacterNitrospira: 'Nitrobacter / Nitrospira',
+    v3_nitrobacterNitrospira: 'Nitrospira',
     v3_both: 'Keduanya',
     v3_descA: 'NH₃ → NO₂ · Muncul lebih dulu, mengubah amonia menjadi nitrit',
     v3_descB: 'NO₂ → NO₃ · Muncul setelahnya, mengubah nitrit menjadi nitrat',
@@ -780,7 +796,7 @@ var NTS_STRINGS = {
     v2_resetBtn: 'リセット',
     v2_hint: '3つのパラメーターが時間とともにどう変化するか見てみましょう',
     v3_nitrosomonas: 'Nitrosomonas',
-    v3_nitrobacterNitrospira: 'Nitrobacter / Nitrospira',
+    v3_nitrobacterNitrospira: 'Nitrospira',
     v3_both: '両方',
     v3_descA: 'NH₃ → NO₂ · 最初に現れ、アンモニアを亜硝酸に変える',
     v3_descB: 'NO₂ → NO₃ · あとから現れ、亜硝酸を硝酸塩に変える',

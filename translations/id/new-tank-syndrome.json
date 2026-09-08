@@ -5,6 +5,7 @@
         "sourceFile": "articles/new-tank-syndrome.html",
         "status": "ready"
     },
+    "sourcesLabel": "Bacaan lanjut",
     "head": {
         "title": "New Tank Syndrome — Apa yang Sebenarnya Terjadi — Aquatic Rhythm",
         "description": "Air keruh, ikan stres, bacaan parameter naik-turun. Anda tidak melakukan kesalahan apa pun. Panduan ini menjelaskan apa yang sedang dibangun sistem, mengapa kesabaran adalah jawaban yang tepat, dan apa yang sebaiknya dilakukan.",
@@ -48,7 +49,7 @@
             "tag": "Amonia",
             "titleHtml": "Bakteri adalah<br><em>satu-satunya jawaban.</em>",
             "body": [
-                "Ikan bisa terlihat stres sangat cepat di akuarium baru. Sisa metabolisme dan sisa makanan terurai menjadi amonia — yang beracun bahkan pada konsentrasi rendah. Beban ini bisa naik sebelum pemelihara melihat lonjakan signifikan di test kit.",
+                "Ikan bisa terlihat stres sangat cepat di akuarium baru. Sisa metabolisme dan sisa makanan terurai menjadi amonia. Bentuk yang benar-benar membahayakan ikan, amonia tak terionisasi (NH₃), mengambil porsi lebih besar dari angka itu pada pH lebih tinggi dan suhu lebih hangat — jadi angka yang sama di test kit membawa risiko lebih besar di akuarium bertanaman yang basa dibanding di akuarium berair lunak dan asam. Beban ini bisa naik sebelum pemelihara melihat lonjakan signifikan di test kit.",
                 "Akuarium yang sudah matang memproses amonia hampir seketika, tetapi akuarium baru belum memiliki kapasitas biologis itu. Sistem konversi masih dalam proses pembangunan. Sampai saat itu tiba, amonia menumpuk — dan ikan merasakan tekanannya lebih dulu, sebelum angka di test kit berubah.",
                 "Perlakukan perilaku ikan sebagai sinyal awal. Napas di permukaan, bersembunyi, sirip yang menempel ke tubuh, dan perubahan warna adalah petunjuk bermakna — bukan kejadian acak. Respons yang tepat adalah manajemen yang tenang dan konsisten, sambil membiarkan siklus berkembang."
             ],
@@ -136,7 +137,7 @@
             "titleHtml": "Akuarium menemukan<br><em>ritmenya sendiri.</em>",
             "body": [
                 "Di awal, rasanya seperti akuarium tidak akan pernah stabil. Kemajuan berjalan lambat dan mudah terlewatkan hari demi hari. Ketidakpastian ini membuat banyak pemelihara meragukan prosesnya.",
-                "Antara minggu keempat dan kedelapan, fungsi koloni biasanya mulai stabil. Amonia bertahan mendekati nol, nitrit menghilang, dan perilaku ikan kembali normal. Sistem mendapatkan ketahanan dan mulai bisa pulih dari gangguan kecil.",
+                "Fungsi koloni biasanya mulai stabil setelah beberapa minggu, meski tidak ada jadwal tetap minggu-keempat-hingga-minggu-kedelapan yang berlaku sama untuk setiap akuarium — inokulasi, suhu, pH, alkalinitas, oksigen, dan seberapa banyak amonia yang harus diproses koloni semuanya menggeser waktunya. Amonia bertahan mendekati nol, nitrit menghilang, dan perilaku ikan kembali normal begitu sistemnya sampai ke sana. Sistem mendapatkan ketahanan dan mulai bisa pulih dari gangguan kecil.",
                 "Inilah saatnya beralih dari mode darurat ke perawatan berbasis ritme. Lanjutkan perawatan rutin, hindari gangguan besar, dan bangun konsistensi yang perlahan. Anda tidak mengejar kesempurnaan — Anda membangun sistem hidup yang bisa mengoreksi dirinya sendiri."
             ],
             "pullQuote": "ARA menyebut ini sebagai <strong>pengampunan ekologis</strong> — kemampuan sistem hidup untuk menyerap ketidakseimbangan kecil dan kembali ke keseimbangan tanpa intervensi dari pemelihara. Bakteri cuma sebagian dari apa yang dibangun akuarium baru selama Early Phase; sisanya adalah pengampunan yang akan melindungi semua yang Anda tambahkan nantinya.",
@@ -151,7 +152,7 @@
             ],
             "hintLabel2": "Perspektif Aquatic Rhythm",
             "hintText2": [
-                "New tank syndrome justru jadi pelajaran pertama yang sesungguhnya dalam hobi ini, bukan hambatan — perbedaan antara sinyal yang membutuhkan respons dan sinyal yang hanya butuh ruang untuk selesai dengan sendirinya."
+                "New tank syndrome justru jadi pelajaran pertama yang sesungguhnya dalam hobi ini, bukan hambatan — perbedaan antara sinyal yang membutuhkan respons dan sinyal yang hanya butuh ruang untuk selesai dengan sendirinya. Usia akuarium di sini cuma petunjuk kontekstual soal kemungkinan kematangan koloni, bukan buktinya; <a href=\"/id/articles/false-maturity\" style=\"color:var(--th-accent);text-decoration:none\">Kematangan Palsu</a> membahas seperti apa jarak itu bisa terlihat begitu akuarium sudah melewati fase awal ini."
             ],
             "prevBtn": "← Kembali"
         }

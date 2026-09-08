@@ -89,6 +89,20 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+/* VISUAL BLOCK */
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -238,6 +252,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>None of this makes a high-tech tank more "automatic" once it's dialled in. It asks for more precise attention across more variables, on a schedule with less room to slip, than a low-tech tank ever does. That isn't a criticism of the style. It's the actual shape of the commitment, stated plainly instead of implied by a finished photo.</p>
     </div>
 
+    <!-- VISUAL: Tap a task to see the low-tech vs high-tech frequency gap, and what it actually means -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:230px"></canvas>
+    </div>
+
     <div class="pq">
       <p>"A high-tech tank doesn't reduce how often a keeper needs to show up. It raises how precisely they need to, across more things, at the same time."</p>
     </div>
@@ -297,6 +316,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -315,6 +335,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -322,6 +343,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -345,6 +367,208 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same pattern
+   as NTS_STRINGS/ntsT(), PHK_STRINGS/phkT(), NKR_STRINGS/nkrT(),
+   FM_STRINGS/fmT(), TWC_STRINGS/twcT(), CC_STRINGS/ccT(),
+   AFM_STRINGS/afmT(), LSD_STRINGS/lsdT(), GHKH_STRINGS/ghkhT(),
+   BB_STRINGS/bbT(), SDA_STRINGS/sdaT(), APN_STRINGS/apnT(), and
+   WMC_STRINGS/wmcT() in the other article widgets. This script block is
+   copied byte-for-byte into id/articles + ja/articles by build-i18n.mjs,
+   so the runtime lang check is what actually localises the widget — keep
+   HCG_STRINGS.en/.id/.ja key sets identical when editing. */
+var HCG_STRINGS = {
+  en: {
+    v2_taskCo2: 'CO2', v2_taskDosing: 'Dosing', v2_taskTrimming: 'Trimming',
+    v2_lowtech: 'Low-tech', v2_hightech: 'High-tech',
+    v2_hint: 'tap a task to see what the difference actually means',
+    yAxisLabel: 'Frequency',
+    v2_capCo2: 'CO2 needs daily reading and adjustment — not a one-time setup. Low-tech skips this input entirely.',
+    v2_capDosing: "A fast-growing high-tech tank needs nutrients replaced on a near-daily schedule. Low-tech can top up whenever it's convenient.",
+    v2_capTrimming: 'Carpeting and stem plants under strong light and CO2 can need trimming weekly. Low-tech plants might go a month between trims.'
+  },
+  id: {
+    v2_taskCo2: 'CO2', v2_taskDosing: 'Dos', v2_taskTrimming: 'Memangkas',
+    v2_lowtech: 'Low-tech', v2_hightech: 'High-tech',
+    v2_hint: 'tekan satu tugasan utk lihat apa maksud perbezaannya',
+    yAxisLabel: 'Kekerapan',
+    v2_capCo2: 'CO2 perlu dibaca & dilaraskan setiap hari — bukan persediaan sekali sahaja. Low-tech langsung tak perlukan input ni.',
+    v2_capDosing: 'Tangki high-tech yg membesar pantas perlukan nutrien digantikan pd jadual hampir setiap hari. Low-tech boleh tambah bila-bila masa yg senang.',
+    v2_capTrimming: 'Tumbuhan karpet & batang di bawah cahaya kuat & CO2 mungkin perlu dipangkas setiap minggu. Tumbuhan low-tech mungkin tahan sebulan antara pangkasan.'
+  },
+  ja: {
+    v2_taskCo2: 'CO2', v2_taskDosing: '添加', v2_taskTrimming: 'トリミング',
+    v2_lowtech: 'ローテック', v2_hightech: 'ハイテック',
+    v2_hint: 'タスクをタップすると、違いが実際に何を意味するかがわかる',
+    yAxisLabel: '頻度',
+    v2_capCo2: 'CO2は毎日の確認と調整が必要 — 一度きりの設置では済まない。ローテックはこの要素自体が不要。',
+    v2_capDosing: '成長の速いハイテック水槽は、ほぼ毎日のペースで栄養素を補充する必要がある。ローテックは都合の良いときに足せばよい。',
+    v2_capTrimming: '強い光とCO2の下でのカーペットプランツや有茎草は、毎週トリミングが必要になることがある。ローテックの水草は1か月トリミングなしでも平気なことがある。'
+  }
+};
+function hcgT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = HCG_STRINGS[lang] || HCG_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : HCG_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/new-tank-syndrome.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Tap a task to highlight it — a grouped bar comparison
+   (low-tech vs high-tech), always fully visible, not a toggle between
+   states. Unlike the toggle widgets elsewhere on this site, the data
+   here isn't a scenario the reader picks; it's a fixed comparison
+   drawn straight from the article's own claims (§"More inputs, not
+   more forgiveness"). Tapping a task just brings up what that specific
+   gap means, so the interaction is selection-for-explanation rather
+   than changing what's shown. Illustrative relative frequencies, not
+   a dosing/trimming schedule to follow literally — and deliberately
+   neutral in framing (neither bar is "better"), matching the
+   article's own refusal to rank low-tech against high-tech. ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var tasks = [
+    { key: 'co2',      low: 0,    high: 7, labelKey: 'v2_taskCo2',      capKey: 'v2_capCo2' },
+    { key: 'dosing',   low: 1,    high: 6, labelKey: 'v2_taskDosing',   capKey: 'v2_capDosing' },
+    { key: 'trimming', low: 0.25, high: 1, labelKey: 'v2_taskTrimming', capKey: 'v2_capTrimming' }
+  ];
+  var maxV = 7;
+  var selected = 'co2';
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  var btnsHtml = '<div class="vc-label"><span><span style="color:#5FCB86">●</span> ' + hcgT('v2_lowtech') + '&nbsp;&nbsp;&nbsp;<span style="color:#3DD6E8">●</span> ' + hcgT('v2_hightech') + '</span></div>'
+    +'<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">';
+  tasks.forEach(function(t){
+    btnsHtml += '<button class="vis-btn' + (t.key==='co2' ? ' vis-btn-active' : '') + '" id="hcg-' + t.key + '">' + hcgT(t.labelKey) + '</button>';
+  });
+  btnsHtml += '</div>';
+  ctrl.innerHTML = btnsHtml + '<div class="vc-hint">' + hcgT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  tasks.forEach(function(t){
+    document.getElementById('hcg-' + t.key).addEventListener('click', function(){
+      selected = t.key;
+      tasks.forEach(function(t2){
+        document.getElementById('hcg-' + t2.key).className = 'vis-btn' + (t2.key===selected ? ' vis-btn-active' : '');
+      });
+      draw();
+    });
+  });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 30, pR = 12, pT = 18, pB = 58;
+    var gW = W - pL - pR, gH = H - pT - pB;
+
+    /* Grid */
+    [0,3.5,7].forEach(function(v){
+      var y = pT + gH - (v/maxV)*gH;
+      ctx.strokeStyle = vcInk(.06); ctx.lineWidth = 1; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(pL,y); ctx.lineTo(pL+gW,y); ctx.stroke();
+      ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+      ctx.fillStyle = vcInk(.5);
+      ctx.fillText(v, 3, y+3);
+    });
+
+    /* Axis */
+    ctx.strokeStyle = vcInk(.1); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pL,pT); ctx.lineTo(pL,pT+gH); ctx.lineTo(pL+gW,pT+gH); ctx.stroke();
+    ctx.save(); ctx.translate(4, pT+8); ctx.font = '300 10px Work Sans,system-ui,sans-serif'; ctx.fillStyle = vcInk(.5); ctx.fillText(hcgT('yAxisLabel'), 0, 0); ctx.restore();
+
+    var n = tasks.length, slot = gW / n, pairW = slot * 0.6, barW = pairW * 0.42, gap = pairW * 0.16;
+    tasks.forEach(function(t, i){
+      var isSel = t.key === selected;
+      var groupX = pL + slot*i + (slot-pairW)/2;
+      var alphaLow = isSel ? '0.9' : '0.3', alphaHigh = isSel ? '0.9' : '0.3';
+
+      var yLow = pT + gH - (t.low/maxV)*gH;
+      ctx.fillStyle = 'rgba(95,203,134,' + alphaLow + ')';
+      ctx.fillRect(groupX, yLow, barW, gH - (yLow-pT));
+
+      var yHigh = pT + gH - (t.high/maxV)*gH;
+      ctx.fillStyle = 'rgba(61,214,232,' + alphaHigh + ')';
+      ctx.fillRect(groupX + barW + gap, yHigh, barW, gH - (yHigh-pT));
+
+      ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+      ctx.fillStyle = isSel ? vcInk(.85) : vcInk(.45);
+      ctx.textAlign = 'center';
+      ctx.fillText(hcgT(t.labelKey), pL + slot*i + slot/2, pT+gH+16);
+      ctx.textAlign = 'left';
+    });
+
+    /* Caption for the selected task */
+    var selTask = tasks.filter(function(t){ return t.key === selected; })[0];
+    var cap = hcgT(selTask.capKey);
+    ctx.font = 'italic 300 12px Fraunces,serif';
+    ctx.fillStyle = vcInk(.6);
+    ctx.textAlign = 'center';
+    var words = cap.split(' '), line = '', y2 = H-32, maxW = W-24;
+    words.forEach(function(w){
+      var test = line + (line?' ':'') + w;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y2); line = w; y2 += 15; }
+      else line = test;
+    });
+    if (line) ctx.fillText(line, W/2, y2);
+    ctx.textAlign = 'left';
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
+
+/* Resize handler only — canvases init via startLearning()/goMod(). */
+window.addEventListener('resize', function(){
+  if (canvases[currentMod]) setTimeout(function(){ canvases[currentMod](); }, 50);
+});
 
 </script>
 

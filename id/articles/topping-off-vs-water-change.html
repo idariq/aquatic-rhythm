@@ -75,6 +75,17 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-title em{font-style:italic;color:var(--th-accent)}
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}.mod-body strong{font-weight:400;color:var(--th-ink)}.mod-body em{font-style:italic;color:var(--th-ink-3)}
+/* VISUAL BLOCK */
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 .hn{margin:2rem 0;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2);position:relative}
@@ -217,6 +228,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Ganti air sungguhan bekerja berbeda. Mengeluarkan sebagian air yang ada secara fisik membawa keluar sebagian penumpukan terlarut itu dari tank sepenuhnya, sebelum air baru masuk kembali. Itulah langkah yang dilewati menambah air penguapan.</p>
     </div>
 
+    <!-- VISUAL: Toggle top-off-only vs with-water-changes — one line climbs unbounded, the other resets on a rhythm -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="pq">
       <p>Menambah air penguapan menjawab "apakah tanknya penuh," bukan "apakah airnya bersih." Itu pertanyaan berbeda, dan cuma satu yang sebenarnya jadi tujuan ganti air.</p>
     </div>
@@ -285,6 +301,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -303,6 +320,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -310,6 +328,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -333,6 +352,203 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same pattern
+   as NTS_STRINGS/ntsT(), PHK_STRINGS/phkT(), NKR_STRINGS/nkrT(), and
+   FM_STRINGS/fmT() in the other article widgets. This script block is
+   copied byte-for-byte into id/articles + ja/articles by build-i18n.mjs,
+   so the runtime lang check is what actually localises the widget — keep
+   TWC_STRINGS.en/.id/.ja key sets identical when editing. */
+var TWC_STRINGS = {
+  en: {
+    v2_toggleTopOff: 'Top off only',
+    v2_toggleChanges: 'With water changes',
+    v2_hint: 'same evaporation, same daily buildup — only one routine exports it',
+    v2_captionTopOff: "Nothing is ever removed — the buildup keeps climbing, even though the tank always looks full.",
+    v2_captionChanges: "The same buildup happens, but each water change exports a share of it — the level resets instead of climbing.",
+    yAxis: 'Buildup',
+    daysAxis: 'Days →'
+  },
+  id: {
+    v2_toggleTopOff: 'Cuma topping off',
+    v2_toggleChanges: 'Dengan ganti air',
+    v2_hint: 'penguapan sama, penumpukan harian sama — cuma satu rutin yang mengeluarkannya',
+    v2_captionTopOff: 'Tidak ada yang pernah dikeluarkan — penumpukannya terus naik, walau akuarium selalu terlihat penuh.',
+    v2_captionChanges: 'Penumpukan yang sama tetap terjadi, tapi setiap ganti air mengeluarkan sebagiannya — levelnya reset, bukan terus naik.',
+    yAxis: 'Penumpukan',
+    daysAxis: 'Hari →'
+  },
+  ja: {
+    v2_toggleTopOff: 'トッピングオフのみ',
+    v2_toggleChanges: '換水も行う',
+    v2_hint: '蒸発も日々の蓄積も同じ — それを排出するのは片方の習慣だけ',
+    v2_captionTopOff: '何も排出されない — 水槽はいつも満杯に見えても、蓄積は上がり続ける。',
+    v2_captionChanges: '同じように蓄積は起きるが、換水のたびにその一部が排出される — 上がり続ける代わりに、その都度リセットされる。',
+    yAxis: '蓄積',
+    daysAxis: '日数 →'
+  }
+};
+function twcT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = TWC_STRINGS[lang] || TWC_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : TWC_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/new-tank-syndrome.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle top-off-only vs with-water-changes. Both scenarios
+   accumulate dissolved buildup at the identical daily rate (evaporation
+   concentrates what's already there; ongoing bioload keeps adding more)
+   — the ONLY difference modelled is whether anything is ever exported.
+   Top-off-only never resets, so the line is deliberately drawn climbing
+   toward the top of the chart with no ceiling. With-water-changes resets
+   on a fixed weekly rhythm, well below it. Deliberately simplified/
+   illustrative math (linear accumulation, unitless relative buildup —
+   not a specific ppm/GH model) — the point is the shape of "climbs
+   forever" versus "resets on a rhythm," not lab-accurate chemistry. ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var totalDays = 35, maxV = 110;
+  var mode = 'topoff'; /* topoff | changes */
+  var base = 20, rate = 2.2;
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="twc-topoff">' + twcT('v2_toggleTopOff') + '</button>'
+    +'<button class="vis-btn" id="twc-changes">' + twcT('v2_toggleChanges') + '</button></div>'
+    +'<div class="vc-hint">' + twcT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('twc-topoff').className = 'vis-btn' + (m==='topoff' ? ' vis-btn-active' : '');
+    document.getElementById('twc-changes').className = 'vis-btn' + (m==='changes' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('twc-topoff').addEventListener('click', function(){ setMode('topoff'); });
+  document.getElementById('twc-changes').addEventListener('click', function(){ setMode('changes'); });
+
+  function topOffVal(day) { return base + rate * day; }
+  function changesVal(day) { return base + rate * (day % 7); }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 30, pR = 12, pT = 18, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB;
+
+    /* Grid */
+    [0,25,50,75,100].forEach(function(v){
+      var y = pT + gH - (v/maxV)*gH;
+      ctx.strokeStyle = vcInk(.06);
+      ctx.lineWidth = 1; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(pL,y); ctx.lineTo(pL+gW,y); ctx.stroke();
+      ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+      ctx.fillStyle = vcInk(.5);
+      ctx.fillText(v, 3, y+3);
+    });
+
+    /* Axes */
+    ctx.strokeStyle = vcInk(.1); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pL,pT); ctx.lineTo(pL,pT+gH); ctx.lineTo(pL+gW,pT+gH); ctx.stroke();
+    ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+    ctx.fillStyle = vcInk(.5);
+    [0,7,14,21,28,35].forEach(function(d){
+      ctx.fillText(d, pL+(d/totalDays)*gW-4, pT+gH+14);
+    });
+    ctx.fillText(twcT('daysAxis'), pL+gW-30, pT+gH+28);
+    ctx.save(); ctx.translate(6, pT+8); ctx.fillText(twcT('yAxis'), 0, 0); ctx.restore();
+
+    /* Draw both curves faintly, highlight selected */
+    [
+      { key:'topoff',  fn: topOffVal,  col: 'rgba(224,100,60,'  },
+      { key:'changes', fn: changesVal, col: 'rgba(95,203,134,'  }
+    ].forEach(function(s){
+      var active = s.key === mode;
+      ctx.strokeStyle = s.col + (active ? '0.9' : '0.18') + ')';
+      ctx.lineWidth = active ? 2 : 1;
+      ctx.beginPath();
+      for (var d = 0; d <= totalDays; d++) {
+        var v = Math.min(maxV, s.fn(d));
+        var x = pL + (d/totalDays)*gW;
+        var y = pT + gH - (v/maxV)*gH;
+        if (s.key === 'changes' && d>0 && d%7===0) { ctx.stroke(); ctx.beginPath(); }
+        if (d===0 || (s.key==='changes' && d%7===0)) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    });
+
+    /* Caption */
+    var cap = mode==='topoff' ? twcT('v2_captionTopOff') : twcT('v2_captionChanges');
+    ctx.font = 'italic 300 12px Fraunces,serif';
+    ctx.fillStyle = vcInk(.6);
+    ctx.textAlign = 'center';
+    var words = cap.split(' '), line = '', y = H-28, maxW = W-24;
+    words.forEach(function(w){
+      var test = line + (line?' ':'') + w;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y); line = w; y += 15; }
+      else line = test;
+    });
+    if (line) ctx.fillText(line, W/2, y);
+    ctx.textAlign = 'left';
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
+
+/* Resize handler only — canvases init via startLearning()/goMod(). */
+window.addEventListener('resize', function(){
+  if (canvases[currentMod]) setTimeout(function(){ canvases[currentMod](); }, 50);
+});
 
 </script>
 

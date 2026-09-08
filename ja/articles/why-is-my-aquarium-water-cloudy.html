@@ -89,6 +89,20 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+/* VISUAL BLOCK */
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -259,6 +273,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p><strong>黄色または茶色の濁り</strong>は、流木、枯れ葉、または特定の底砂から溶け出すタンニンです。これは完全に無害です。多くの魚種は自然にタンニンが豊富な水で生き生きとしています。色が気になるなら活性炭で取り除けますが、生態学的に行動する理由はありません。</p>
     </div>
 
+    <!-- VISUAL: Toggle cloudiness type — three different causes, three different resolution timelines -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="hn">
       <span class="hn-label">Aquatic Rhythmのノート</span>
       <p>濁りの種類はそれぞれ、アクティブになっている異なる生態学的リズムから来ています。白は生物リズム。緑は環境リズム。茶色は水槽内の素材からの化学物質。種類を読み取ることで、行動すべきか、待つべきか、それとも観察するだけでいいかを判断できます。</p>
@@ -351,6 +370,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -369,6 +389,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -376,6 +397,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -399,6 +421,213 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same pattern
+   as NTS_STRINGS/ntsT(), PHK_STRINGS/phkT(), NKR_STRINGS/nkrT(),
+   FM_STRINGS/fmT(), TWC_STRINGS/twcT(), CC_STRINGS/ccT(),
+   AFM_STRINGS/afmT(), LSD_STRINGS/lsdT(), GHKH_STRINGS/ghkhT(),
+   BB_STRINGS/bbT(), SDA_STRINGS/sdaT(), and APN_STRINGS/apnT() in the
+   other article widgets. This script block is copied byte-for-byte into
+   id/articles + ja/articles by build-i18n.mjs, so the runtime lang
+   check is what actually localises the widget — keep WMC_STRINGS.en/
+   .id/.ja key sets identical when editing. */
+var WMC_STRINGS = {
+  en: {
+    v2_btnWhite: 'White (bacterial)',
+    v2_btnGreen: 'Green (algae)',
+    v2_btnBrown: 'Brown (tannins)',
+    v2_hint: 'same cloudy tank, three different causes — three different timelines',
+    daysAxis: 'Days →',
+    yAxisLabel: 'Cloudiness',
+    v2_capWhite: 'A bacterial bloom — cloudy at first, then clears on its own over one to two weeks as bacteria settle onto surfaces.',
+    v2_capGreen: 'Suspended algae — clears in five to seven days once light or feeding is reduced.',
+    v2_capBrown: "Tannins from driftwood or leaves — harmless, and it doesn't resolve on its own. Activated carbon clears it in a day or two if you want it gone."
+  },
+  id: {
+    v2_btnWhite: 'Putih (bakteria)',
+    v2_btnGreen: 'Hijau (algae)',
+    v2_btnBrown: 'Perang (tanin)',
+    v2_hint: 'akuarium keruh yg sama, tiga punca berbeza — tiga garis masa berbeza',
+    daysAxis: 'Hari →',
+    yAxisLabel: 'Kekeruhan',
+    v2_capWhite: 'Ledakan bakteria — keruh mulanya, kemudian jernih sendiri dlm satu hingga dua minggu selagi bakteria menetap pd permukaan.',
+    v2_capGreen: 'Algae terapung — jernih dlm lima hingga tujuh hari sebaik cahaya atau pemberian makan dikurangkan.',
+    v2_capBrown: 'Tanin drpd kayu terapung atau daun — tak berbahaya, & tak jernih dgn sendirinya. Karbon aktif jernihkan dlm sehari dua kalau nak dibuang.'
+  },
+  ja: {
+    v2_btnWhite: '白（バクテリア）',
+    v2_btnGreen: '緑（藻類）',
+    v2_btnBrown: '茶色（タンニン）',
+    v2_hint: '同じ濁った水槽でも、原因が違えば経過も違う',
+    daysAxis: '日数 →',
+    yAxisLabel: '濁り',
+    v2_capWhite: 'バクテリアの大量発生 — 最初は濁るが、バクテリアが表面に定着するにつれて1〜2週間で自然に澄んでいく。',
+    v2_capGreen: '浮遊藻類 — 照明や給餌を減らせば5〜7日で澄んでいく。',
+    v2_capBrown: '流木や落ち葉からのタンニン — 無害で、自然には消えない。取り除きたければ活性炭で1〜2日で澄む。'
+  }
+};
+function wmcT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = WMC_STRINGS[lang] || WMC_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : WMC_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/new-tank-syndrome.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle cloudiness type — THREE options (a first for this
+   site's widgets; every prior toggle widget had two), because the
+   article's own point is that three genuinely different mechanisms
+   produce "cloudy water," each with its own timeline: white clears in
+   1-2 weeks as bacteria settle onto surfaces, green clears in 5-7 days
+   once light/feeding is adjusted, brown just doesn't resolve on its
+   own at all (it's not a process running its course, it's chemistry
+   that stays put until carbon is added or it's left alone).
+   Deliberately simplified/illustrative curves — not lab-precise
+   turbidity readings. ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var totalDays = 16, maxV = 100;
+  var mode = 'white'; /* white | green | brown */
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="wmc-white">' + wmcT('v2_btnWhite') + '</button>'
+    +'<button class="vis-btn" id="wmc-green">' + wmcT('v2_btnGreen') + '</button>'
+    +'<button class="vis-btn" id="wmc-brown">' + wmcT('v2_btnBrown') + '</button></div>'
+    +'<div class="vc-hint">' + wmcT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    ['white','green','brown'].forEach(function(key){
+      document.getElementById('wmc-' + key).className = 'vis-btn' + (key===m ? ' vis-btn-active' : '');
+    });
+    draw();
+  }
+  document.getElementById('wmc-white').addEventListener('click', function(){ setMode('white'); });
+  document.getElementById('wmc-green').addEventListener('click', function(){ setMode('green'); });
+  document.getElementById('wmc-brown').addEventListener('click', function(){ setMode('brown'); });
+
+  function whiteVal(d) { return 90 * Math.exp(-d/5); }
+  function greenVal(d) { return 60 * Math.exp(-d/2.2); }
+  function brownVal(d) { return 35; }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 30, pR = 12, pT = 18, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB;
+    function px(d) { return pL + (d/totalDays)*gW; }
+    function py(v) { return pT + gH - (v/maxV)*gH; }
+
+    /* Grid */
+    [0,25,50,75,100].forEach(function(v){
+      var y = py(v);
+      ctx.strokeStyle = vcInk(.06); ctx.lineWidth = 1; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(pL,y); ctx.lineTo(pL+gW,y); ctx.stroke();
+      ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+      ctx.fillStyle = vcInk(.5);
+      ctx.fillText(v, 3, y+3);
+    });
+
+    /* Axes */
+    ctx.strokeStyle = vcInk(.1); ctx.lineWidth = 1; ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(pL,pT); ctx.lineTo(pL,pT+gH); ctx.lineTo(pL+gW,pT+gH); ctx.stroke();
+    ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+    ctx.fillStyle = vcInk(.5);
+    [0,4,8,12,16].forEach(function(d){ ctx.fillText(d, px(d)-3, pT+gH+14); });
+    ctx.fillText(wmcT('daysAxis'), pL+gW-44, pT+gH+28);
+    ctx.save(); ctx.translate(4, pT+8); ctx.fillText(wmcT('yAxisLabel'), 0, 0); ctx.restore();
+
+    /* Draw all three curves faintly, highlight selected */
+    [
+      { key:'white', fn: whiteVal, col: 'rgba(150,175,190,'  },
+      { key:'green', fn: greenVal, col: 'rgba(95,203,134,'   },
+      { key:'brown', fn: brownVal, col: 'rgba(180,130,70,'   }
+    ].forEach(function(s){
+      var active = s.key === mode;
+      ctx.strokeStyle = s.col + (active ? '0.9' : '0.16') + ')';
+      ctx.lineWidth = active ? 2 : 1;
+      ctx.beginPath();
+      for (var d = 0; d <= totalDays; d += 0.2) {
+        var v = Math.max(0, Math.min(maxV, s.fn(d)));
+        var x = px(d), y = py(v);
+        if (d === 0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    });
+
+    /* Caption */
+    var cap = mode==='white' ? wmcT('v2_capWhite') : (mode==='green' ? wmcT('v2_capGreen') : wmcT('v2_capBrown'));
+    ctx.font = 'italic 300 12px Fraunces,serif';
+    ctx.fillStyle = vcInk(.6);
+    ctx.textAlign = 'center';
+    var words = cap.split(' '), line = '', y2 = H-28, maxW = W-24;
+    words.forEach(function(w){
+      var test = line + (line?' ':'') + w;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y2); line = w; y2 += 15; }
+      else line = test;
+    });
+    if (line) ctx.fillText(line, W/2, y2);
+    ctx.textAlign = 'left';
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
+
+/* Resize handler only — canvases init via startLearning()/goMod(). */
+window.addEventListener('resize', function(){
+  if (canvases[currentMod]) setTimeout(function(){ canvases[currentMod](); }, 50);
+});
 
 </script>
 

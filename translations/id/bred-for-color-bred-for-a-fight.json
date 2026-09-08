@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "slug": "bred-for-color-bred-for-a-fight",
+    "lang": "id",
+    "sourceFile": "articles/bred-for-color-bred-for-a-fight.html",
+    "status": "ready"
+  },
+  "sourcesLabel": "Bacaan lanjut",
+  "head": {
+    "title": "Diternak untuk Warna, Diternak untuk Bertarung — Aquatic Rhythm",
+    "description": "Betta splendens dan medaka Jepang nyaris tidak mirip nenek moyang liar mereka. Apa yang dikatakan riset genomik terbaru tentang alasan mereka dibiakkan, dan apa sebenarnya yang ditinggalkan seleksi itu.",
+    "ogTitle": "Diternak untuk Warna, Diternak untuk Bertarung",
+    "ogDescription": "Betta splendens dan medaka Jepang nyaris tidak mirip nenek moyang liar mereka. Genetika kini bisa menjelaskan sebabnya."
+  },
+  "intro": {
+    "eyebrow": "Semua level",
+    "titleHtml": "Diternak untuk Warna,<br><em>Diternak untuk Bertarung</em>",
+    "subtitle": "Betta splendens dan medaka Jepang nyaris tidak mirip nenek moyang liar mereka. Genetika kini bisa menjelaskan sebabnya — dan dua alasan itu nyaris tidak punya kesamaan.",
+    "texts": [
+      "Kibaskan betta pelan-pelan di depan cermin di sebuah toko ikan, dan dalam dua detik akan terlihat jelas inti dari hewan ini: sirip terkembang lebar, insang mengembang, siap melawan sesuatu yang sebenarnya tidak ada di sana. Beberapa ribu kilometer jauhnya, semangkuk medaka melayang di bawah cahaya lampu tumbuh yang tidak pernah dibutuhkan ikan liar mana pun. Kedua hewan ini sudah nyaris tidak mirip bentuk asalnya. Keduanya adalah hasil pembiakan selektif yang berlangsung berabad-abad, di dua negara berbeda, untuk dua alasan yang nyaris berlawanan.",
+      "Cara biasa membahas ini meratakan semuanya jadi satu gagasan — 'pembiakan selektif', seolah selalu bekerja dengan cara yang sama menuju hasil yang serupa. Padahal tidak. Kajian genomik yang terbit beberapa tahun terakhir kini bisa menunjukkan bagian genom masing-masing ikan mana yang benar-benar menyimpan sejarah seleksi itu, dan bagian mana dari cerita populer soal itu yang ternyata tidak bertahan begitu diperiksa."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~7 menit",
+    "metaLevel": "Semua level",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Thailand, abad ke-18–19",
+      "titleHtml": "Diternak untuk <em>bertarung</em>",
+      "body": [
+        "Reaksi di depan cermin itu bukan keunikan kepribadian yang kebetulan ada pada satu ikan tertentu. Itu sifat yang sengaja dipilih manusia selama berabad-abad, sementara warna dan bentuk siripnya kebanyakan cuma efek sampingan.",
+        "Menurut lembaga penelitian perikanan nasional Thailand, betta dibiakkan khusus untuk meningkatkan agresivitas demi pertandingan adu ikan dan perjudian yang menyertainya, dengan catatan awal paling jelas soal popularitasnya berasal dari era Thonburi, 1767 hingga 1782. Menjelang abad ke-18 dan ke-19, pertarungan antara dua betta jantan sudah jadi hiburan yang meluas di seluruh Thailand, melibatkan ikan tangkapan liar maupun ikan hasil ternakan, bukan cuma stok ternakan saja.",
+        "Sekitar 1830, Raja Rama III mengirim spesimen hidup kepada naturalis Denmark, Theodor Cantor, yang kemudian memberi spesies ini deskripsi ilmiah resmi pertamanya. Peran budaya ikan ini di Thailand dan masuknya ke ilmu pengetahuan Barat datang lewat jalur yang sama — bukan dua cerita terpisah yang kebetulan melibatkan hewan yang sama."
+      ],
+      "pullQuote": "Betta tidak dibiakkan demi warnanya lebih dulu. Warna apa pun yang muncul, ia datang menempel pada ikan yang terutama dipilih karena mau bertarung.",
+      "prevBtn": "← Intro",
+      "nextBtn": "Apa yang Diingat Genom"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Kajian genomik, 2022",
+      "titleHtml": "Apa yang <em>diingat genom</em>",
+      "body": [
+        "Dua tim peneliti menerbitkan perbandingan genom penuh betta ternakan dan liar pada 2022, di jurnal yang sama, hanya berjarak beberapa bulan. Salah satunya memperkirakan garis keturunan hias berpisah dari populasi liar sekitar 700 generasi lalu — angka yang diambil dari perbedaan genetik, bukan kalender. Angka ini mendukung sejarah penjinakan sekurang-kurangnya beberapa abad, bahkan mungkin lebih lama, tanpa memastikan satu tanggal pasti yang bisa dikutip sebagai fakta baku.",
+        "Kajian yang sama juga mempersulit soal asal-usul ikan ternakan ini. <em>Betta splendens</em> liar berasal dari Thailand tengah dan cekungan Sungai Mekong hilir, tapi genom garis ternakan modern menunjukkan tanda hibridisasi yang jelas dengan spesies liar kerabat dekatnya, termasuk <em>Betta imbellis</em> dan <em>Betta mahachaiensis</em>. Betta yang dijual di toko ikan hari ini bukan keturunan satu populasi liar yang murni. Ia campuran, dibentuk oleh generasi peternak yang menyilangkan ikan apa pun yang membawa mereka lebih dekat ke apa yang mereka inginkan.",
+        "Tim kedua memetakan sifat mana yang benar-benar punya alamat genetik yang bisa dilacak. Sirip panjang mengarah ke wilayah yang mengandung gen <em>kcnj15</em>. Ukuran tubuh raksasa, sirip dada mirip telinga gajah yang disebut 'Dumbo', dan pola warna masing-masing punya tanda genetiknya sendiri. Agresivitas tidak. Sifat ini dikendalikan banyak gen yang bekerja bersama, dan tidak ada satu pun 'gen pertarungan' tunggal yang muncul dalam data — jadi sifat yang paling ingin dicapai peternak sejak awal justru yang paling sulit ditunjuk pada satu kromosom."
+      ],
+      "hintLabel": "Kaitannya di sini",
+      "hintText": [
+        "Situs ini sudah lama memperlakukan perilaku ikan sebagai sesuatu yang layak dibaca dengan cermat, bukan diringkas jadi satu penyebab tunggal. <a href=\"/id/articles/fish-hiding-what-does-it-mean\" style=\"color:var(--th-accent);text-decoration:none\">Ikan Saya Bersembunyi — Apa Artinya?</a> membahas apa yang bisa dan tidak bisa diceritakan satu perilaku dengan sendirinya — kehati-hatian yang ternyata berlaku juga di tingkat genetik."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Dua Abad, Tujuh Ratus Warna"
+    },
+    {
+      "id": "mod-3",
+      "tag": "Jepang, 1835 hingga sekarang",
+      "titleHtml": "Dua abad, <em>tujuh ratus warna</em>",
+      "body": [
+        "Saat peternak Thailand memilih betta untuk bertarung, seleksi jenis lain sedang bekerja diam-diam pada ikan yang jauh lebih kecil di belahan dunia lain. Kalau pernah memelihara medaka di bawah cahaya lampu tumbuh, tidak ada satu pun di tangki itu yang masih dekat dengan ikan liar — dan sudah begitu sejak lama. Medaka Jepang sudah dipelihara sebagai ikan hias sejak setidaknya era Edo, abad ke-17, dan pada 1835 seorang cendekiawan bernama Mōri Baien sudah mencatat tiga bentuk berbeda yang ia amati: bentuk liar, varietas oranye-merah, dan varietas putih.",
+        "Dua abad pembiakan selektif mengubah tiga bentuk tercatat itu jadi sesuatu yang jauh lebih besar. Sebuah kajian genomik tahun 2026 mengambil sampel 181 medaka dari 86 galur hias yang diakui dan mencatat 34 sifat teramati yang berbeda di antaranya, mencakup warna, struktur sisik, bentuk mata, bentuk sirip, dan bentuk tubuh. Para peneliti memperkirakan lebih dari dua ratus tahun seleksi telah menghasilkan lebih dari 700 galur hias secara keseluruhan.",
+        "Angka itu mudah tertukar dengan angka lain. Program Sumber Daya Biologi Nasional Jepang memelihara koleksi hidup lebih dari 600 galur medaka, tapi angka itu menggambarkan sumber daya penelitian, bukan sumber daya hias — mencakup populasi liar, spesies kerabat dekat, galur murni laboratorium, mutan, dan ikan hasil rekayasa genetik untuk keperluan sains, bukan penghobi. Tujuh ratus lebih galur hias dan enam ratus lebih galur penelitian adalah dua hitungan berbeda untuk dua hal berbeda. Menyamakan keduanya membuat cerita ini salah sejak awal."
+      ],
+      "pullQuote": "Tiga bentuk, dicatat tangan pada 1835. Lebih dari tujuh ratus, dikatalogkan mesin pengurut gen dua abad kemudian. Tidak ada yang merencanakan skala itu. Ia menumpuk, satu pilihan pembiakan demi satu pilihan pembiakan.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Dua Alasan Berbeda untuk Membiakkan Ikan"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Hari ini",
+      "titleHtml": "Dua alasan berbeda <em>untuk membiakkan ikan</em>",
+      "body": [
+        "Pembiakan medaka tidak melambat. Asosiasi akuakultur Jepang sendiri mencatat pembiakan medaka mutan non-liar berkembang pesat di kalangan penghobi sejak awal 2000-an, dan media Jepang sejak itu meliput pasar yang terbentuk: galur dengan sisik 'glitter' berkilau, tubuh tembus pandang, dan warna albino, sebagian pasangan terjual seharga setara lebih dari seratus dolar, dengan minat yang dilaporkan naik lagi selama pandemi. Anggap liputan itu sebagai bukti sebuah tren memang ada, bukan hitungan pasti berapa banyak orang yang benar-benar terlibat — belum ada kajian akademik yang mengukur besar komunitasnya.",
+        "Letakkan kedua ikan ini berdampingan dan sebuah pola terlihat, meski belum ada satu kajian pun yang membuat perbandingan ini secara langsung — ini sintesis analitik dari dua kumpulan riset terpisah, bukan simpulan dari salah satunya. Medaka dipilih berdasarkan penampilannya, generasi demi generasi, selama lebih dari dua abad, dan genomnya sebagian besar kooperatif: sifat-sifat berbeda bisa dipetakan ke wilayah genetik yang berbeda dan bisa dilacak. Betta dipilih pertama-tama berdasarkan cara bertarungnya, dengan warna dan bentuk sirip ikut terbawa sebagai efek sampingan yang terlihat, dan sifat yang paling diinginkan peternak justru menolak untuk berada di satu gen saja. Dua alasan berbeda untuk membiakkan ikan meninggalkan dua jenis catatan genetik yang sangat berbeda.",
+        "Apa pun yang ada di tangki sendiri sekarang membawa versi dari semua ini. Bentuk sirip, pola warna, temperamen yang terasa bawaan — tidak satu pun muncul secara kebetulan, dan tidak satu pun benar-benar pilihan ikan itu sendiri. Semuanya adalah jejak yang masih terlihat dari keputusan orang lain, kadang berabad-abad lalu, karena alasan yang tidak banyak berkaitan dengan apa yang paling mudah bagi penjaga hari ini."
+      ],
+      "hintLabel": "Kaitannya di sini",
+      "hintText": [
+        "Situs ini sudah pernah membahas bagaimana pilihan-pilihan kecil menumpuk jadi sesuatu yang tidak pernah benar-benar direncanakan siapa pun, satu alat tambahan atau satu minggu terlewat pada satu waktu. <a href=\"/id/articles/capacity-creep\" style=\"color:var(--th-accent);text-decoration:none\">Erosi Kapasitas</a> membahas seperti apa itu dalam satu tangki, bukan dua abad catatan pembiakan."
+      ],
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "Erosi Kapasitas →" },
+    { "text": "Ikan Saya Bersembunyi — Apa Artinya? →" },
+    { "text": "Hulu dari Akuarium →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

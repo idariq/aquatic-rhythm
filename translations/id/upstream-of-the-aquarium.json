@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "slug": "upstream-of-the-aquarium",
+    "lang": "id",
+    "sourceFile": "articles/upstream-of-the-aquarium.html",
+    "status": "ready"
+  },
+  "sourcesLabel": "Bacaan lanjut",
+  "head": {
+    "title": "Hulu dari Akuarium — Aquatic Rhythm",
+    "description": "Jauh sebelum sampai ke tangki, seekor ikan sudah dibentuk oleh sungai, sebuah rumah tangga, dan pasar. Apa yang diajarkan kebangkitan dan kemerosotan sebuah perikanan Brasil tentang perdebatan tangkapan liar lawan ternakan.",
+    "ogTitle": "Hulu dari Akuarium",
+    "ogDescription": "Jauh sebelum sampai ke tangki, seekor ikan sudah dibentuk oleh sungai, sebuah rumah tangga, dan pasar."
+  },
+  "intro": {
+    "eyebrow": "Semua level",
+    "titleHtml": "Hulu dari<br><em>Akuarium</em>",
+    "subtitle": "Jauh sebelum sampai ke tangki, seekor ikan sudah dibentuk oleh sungai, sebuah rumah tangga, dan pasar.",
+    "texts": [
+      "Seekor cardinal tetra berkelip merah dan biru di bawah cahaya akuarium, melakukan persis apa yang dilakukan cardinal tetra: berenang berkelompok, memantulkan cahaya, memberi warna khas pada tangki bertanaman. Hampir tidak ada apa pun pada ikan itu di dalam tangki yang menunjukkan asal-usulnya yang sebenarnya. Entah di mana di hulu, sebelum sampai ke kantong plastik di kedai ikan, ada satu bentangan sungai air hitam tertentu di Amazon Brasil, seorang nelayan dengan jaring buatan tangan, sebuah rumah tangga yang sebagian pendapatannya bergantung pada tangkapan itu, dan sebuah pasar yang sudah menyusut selama bertahun-tahun. Tidak satu pun dari sejarah itu terlihat di dalam tangki. Semuanya membentuk ikan itu jauh sebelum ia sampai ke sana.",
+      "Cara biasa perkara ini dibicarakan adalah satu pertanyaan tunggal: lebih etiskah membeli ikan tangkapan liar atau ikan ternakan? Pertanyaan itu mengandaikan satu jawaban bisa menyelesaikan persoalannya. Padahal tidak. Sebuah perikanan di cekungan Rio Negro, Brasil, sudah menghabiskan tiga dekade menunjukkan betapa baiknya perdagangan tangkapan liar bisa selaras dengan konservasi, sekaligus betapa mudahnya keselarasan itu runtuh karena alasan yang sama sekali tidak berkaitan dengan ekologi."
+    ],
+    "metaModules": "4 modul",
+    "metaTime": "~8 menit",
+    "metaLevel": "Semua level",
+    "cta": "Mulai membaca"
+  },
+  "modules": [
+    {
+      "id": "mod-1",
+      "tag": "Rio Negro, Brasil, pertengahan 1990-an",
+      "titleHtml": "Dua puluh juta <em>ikan setahun</em>",
+      "body": [
+        "Pada pertengahan 1990-an, peneliti Ning Labbish Chao dan George Prang memperkirakan hampir 20 juta ikan hias hidup diekspor setiap tahun dari kawasan pertengahan Rio Negro, Brasil, menghasilkan lebih dari USD 2 juta bagi ekonomi setempat dan menyumbang lebih dari 60 persen pendapatan kotamadya di wilayah yang diteliti. Sebuah monograf susulan mencatat nilai ekspor tahun 1998 sedikit di atas USD 2,2 juta dan memperkirakan sekurang-kurangnya 10.000 penduduk Amazon terlibat dalam sebagian dari perdagangan itu.",
+        "Satu spesies menanggung sebagian besar beban itu. Catatan pelabuhan Barcelos antara April 1998 hingga Desember 2008, dianalisis kemudian oleh Institut Penelitian Amazon Nasional Brasil, mencatat 376,7 juta ikan hias dikirim sepanjang dekade itu — rata-rata sekitar 35,5 juta setahun. Cardinal tetra, <em>Paracheirodon axelrodi</em>, menyumbang 86 persen darinya. Sisanya — rummy-nose tetra, green neon, hatchetfish, <em>Apistogramma</em>, pencilfish, beberapa spesies lele — membentuk 14 persen yang tersisa, tersebar di puluhan spesies lain.",
+        "Angka-angka ini bersifat historis, terikat pada tahun dan catatan tertentu, bukan gambaran perdagangan seperti sekarang. Yang ditunjukkannya adalah skala: selama beberapa tahun, satu sistem sungai dan satu ikan kecil menopang ekonomi ekspor yang cukup besar untuk berarti bagi seluruh kotamadya — bukan sebagai kegiatan sampingan, tetapi sebagai salah satu sumber pendapatan utamanya."
+      ],
+      "pullQuote": "Untuk perikanan yang dibangun di atas tangkapan ikan liar, satu spesies mengerjakan hampir semuanya. Cardinal tetra bukan catatan kaki dalam perdagangan ini. Ia adalah sebagian besarnya.",
+      "prevBtn": "← Intro",
+      "nextBtn": "Cara Ikan Sebenarnya Ditangkap"
+    },
+    {
+      "id": "mod-2",
+      "tag": "Barcelos",
+      "titleHtml": "Cara ikan <em>sebenarnya ditangkap</em>",
+      "body": [
+        "\"Alat tangkap berdampak rendah, dioperasikan secara manual\" meremehkan seperti apa sebenarnya ini di lapangan. Sebuah kajian tahun 2020 terhadap 89 nelayan hias dan tradisional di Barcelos mendokumentasikan alat spesifik yang digunakan: <em>rapiché</em>, jaring celup besar yang dioperasikan dari kano di sepanjang tepi aliran air hitam; <em>cacuri</em>, perangkap anyaman tradisional; <em>puçá</em>, jaring tangan sederhana; <em>talha</em> dan <em>zagaia</em>, yang lebih jarang digunakan. Rapiché paling umum digunakan dengan selisih jelas, dipakai oleh sekitar 44 persen nelayan perkotaan dan 42 persen nelayan pedesaan yang disurvei.",
+        "Penangkapan ikan ini terjadi di tempat-tempat spesifik yang tidak menarik perhatian — aliran <em>igarapé</em>, danau dataran banjir, tepi sungai, dan hutan <em>igapó</em> yang tergenang musiman — menggunakan galah sepanjang kira-kira empat meter dengan jaring terpasang di ujungnya, dioperasikan dari kano di air yang terlalu dangkal atau terlalu terhalang cabang tenggelam untuk perahu yang lebih besar. Semua ini tidak memerlukan peralatan impor atau rantai pasokannya sendiri. Yang diperlukan adalah mengetahui persis di mana cardinal tetra berkumpul, pada musim apa, di air yang berubah karakter mengikuti musim.",
+        "Itu adalah bentuk keahlian yang pernah dibahas situs ini dalam konteks berbeda: membaca sebuah sistem cukup teliti, lewat pengulangan yang cukup, untuk mengetahui di mana dan kapan sesuatu akan benar, tanpa kosakata kimia yang menyertainya. Di sini keahlian itu diterapkan pada sungai, bukan tangki. Keterampilan dasarnya tetap sama."
+      ],
+      "hintLabel": "Kaitannya di sini",
+      "hintText": [
+        "Ini bukan kali pertama situs ini menelusuri bagaimana asal-usul seekor ikan membentuk makna sebenarnya dari merawatnya. <a href=\"/id/articles/reading-water-without-the-words\" style=\"color:var(--th-accent);text-decoration:none\">Membaca Air Sebelum Ada Istilahnya</a> menelusuri benang serupa lewat tradisi berbasis pengamatan di Cina, Malaysia, dan Inggris."
+      ],
+      "prevBtn": "← Kembali",
+      "nextBtn": "Insentif yang Tak Terjamin"
+    },
+    {
+      "id": "mod-3",
+      "tag": "2000-an–2010-an",
+      "titleHtml": "Insentif <em>yang tak terjamin</em>",
+      "body": [
+        "Argumen untuk perikanan ini selalu bertumpu pada insentif: jika pendapatan sebuah rumah tangga bergantung pada sungai sehat yang menghasilkan ikan sehat, rumah tangga itu punya alasan langsung untuk melindungi sungai, bukan membukanya jadi lahan pertanian atau mengurasnya demi keuntungan jangka pendek. Logika itu cukup bertahan pada 1990-an dan 2000-an untuk didokumentasikan, diterbitkan, dan dikutip sebagai contoh nyata konservasi lewat mata pencarian, bukan lewat pembatasan semata.",
+        "Tapi logika itu tidak bertahan stabil. Perdagangan lewat Barcelos dilaporkan menurun sekitar 40 hingga 50 persen dalam beberapa tahun terakhir, didorong oleh persaingan dari ikan ternakan berkualitas lebih tinggi, tingginya kematian ikan tangkapan liar selama pengiriman, dan kualitas ekspor yang tidak konsisten — bukan karena kekurangan ikan di sungai. Satu tinjauan industri, yang sebaiknya dibaca sebagai indikator dan bukan data pasti, menyebut penurunan itu lebih tajam lagi: dari 56,6 juta ikan diekspor pada 2000 menjadi 6,4 juta pada 2014.",
+        "Sebuah kajian sosioekologi terhadap perikanan yang sama menemukan sesuatu yang layak direnungkan langsung: perikanan ini secara prinsip bisa saja berkelanjutan secara ekologis dan sosial, dan tetap menyusut, karena program bantuan tunai, peluang kerja lain, dan perubahan pasar memberi rumah tangga alasan nyata untuk lebih jarang menangkap ikan — alasan yang sama sekali tidak berkaitan dengan apakah sungai itu masih sanggup menopang perdagangannya. Insentif hanya berarti selama orang benar-benar bisa hidup darinya. Begitu ada yang membayar lebih baik, atau lebih pasti, insentif itu tidak bisa membantah."
+      ],
+      "pullQuote": "Sebuah perikanan bisa sehat secara ekologis dan tetap menyusut, karena alasan orang berhenti menangkap ikan jarang sekali murni alasan ekologis.",
+      "prevBtn": "← Kembali",
+      "nextBtn": "Apa yang Dibawa Seekor Ikan"
+    },
+    {
+      "id": "mod-4",
+      "tag": "Hari ini",
+      "titleHtml": "Apa yang <em>dibawa seekor ikan</em>",
+      "body": [
+        "Semua ini pun tidak menyelesaikan soal angka kematian, dan lebih baik jujur soal itu daripada memilih angka yang kedengarannya paling enak. Perkiraan untuk perdagangan ini berkisar dari angka yang dilaporkan Project Piaba sendiri, 3 hingga 5 persen selama penyimpanan dan pengiriman, hingga angka beberapa kali lebih tinggi yang dikutip di tempat lain untuk kondisi penanganan yang sebanding. Angka sebenarnya bagi pengiriman tertentu hari ini bergantung pada spesies, cara penanganan, pengemasan, dan lama perjalanan — bukan pada pihak mana yang dipilih penjaga dalam perdebatan liar-lawan-ternak.",
+        "Sebuah kajian terpisah terhadap rantai pasokan komersial yang memasok pasar Inggris, mengikuti ikan dari pedagang grosir hingga pengecer, menemukan bahwa kimia air dan paparan patogen berubah secara terukur di setiap tahap, jauh sebelum seekor ikan terjual. Itu bukti untuk sebuah prinsip umum, bukan hanya khas Rio Negro: kondisi ikan pada hari pertama di tangki baru mencerminkan perjalanan yang sudah dimulai jauh sebelum penjaga terlibat.",
+        "Jadi versi jujur dari ini bukan \"tangkapan liar lebih etis\" atau \"ikan ternakan lebih aman.\" Versi jujurnya lebih sempit dan lebih tidak nyaman daripada keduanya. Seekor ikan tiba membawa sebuah sungai, keterampilan seorang nelayan, ekonomi sebuah rumah tangga, jalur pengangkutan, dan suasana pasar saat itu — semuanya tidak terlihat di dalam tangki. Meringkas semua itu jadi satu label di label harga selalu akan kehilangan sebagian besar ceritanya."
+      ],
+      "hintLabel": "Kaitannya di sini",
+      "hintText": [
+        "Kerangka situs ini sendiri sudah memperlakukan minggu pertama seekor ikan baru sebagian sebagai persoalan pemulihan, bukan sekadar penyesuaian. <a href=\"/id/articles/new-tank-syndrome\" style=\"color:var(--th-accent);text-decoration:none\">New Tank Syndrome</a> membahas seperti apa itu dalam praktiknya."
+      ],
+      "prevBtn": "← Kembali"
+    }
+  ],
+  "relatedLinks": [
+    { "text": "New Tank Syndrome →" },
+    { "text": "Membaca Air Sebelum Ada Istilahnya →" },
+    { "text": "Membiarkannya, Empat Cara Berbeda →" }
+  ],
+  "footer": {
+    "allArticles": "← Semua artikel",
+    "araLink": "Aquatic Rhythm Alignment"
+  }
+}

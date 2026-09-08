@@ -89,6 +89,20 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+/* VISUAL BLOCK */
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -224,6 +238,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>だから生体がいる水槽では硝酸塩は上がり続けます。それは、機能しているどのシステムでも自然な出力です。問うべきは「なぜ硝酸塩が上がるのか」ではありません。問うべきは「予想より速く上がっているのか、そしてそれはなぜか」です。</p>
     </div>
 
+    <!-- VISUAL: Toggle stocking/plant profile — same weekly water change, different curves -->
+    <div class="vis-block">
+      <canvas id="cv1" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="pq">
       <p>硝酸塩はアンモニアのように問題をシグナルするわけではありません。最後に水換えをしてから、ゆっくりと一貫して蓄積したものをシグナルするのです。</p>
     </div>
@@ -323,6 +342,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -341,6 +361,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -348,6 +369,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -361,6 +383,7 @@ function startLearning() {
   var first = document.getElementById('mod-1');
   if (first) { first.classList.add('active'); setTimeout(function(){ first.classList.add('visible'); }, 30); }
   updateDots();
+  if (canvases[1]) setTimeout(function(){ canvases[1](); }, 150);
 }
 
 function updateDots() {
@@ -371,6 +394,203 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same pattern
+   as NTS_STRINGS/ntsT() in articles/new-tank-syndrome.html and
+   PHK_STRINGS/phkT() in articles/ph-keeps-crashing.html. This script
+   block is copied byte-for-byte into id/articles + ja/articles by
+   build-i18n.mjs, so the runtime lang check is what actually localises
+   the widget — keep NKR_STRINGS.en/.id/.ja key sets identical when
+   editing. */
+var NKR_STRINGS = {
+  en: {
+    v1_heavy: 'Heavy, no plants',
+    v1_light: 'Light, planted',
+    v1_hint: 'same weekly water change, two different tanks',
+    v1_captionHeavy: 'More load, no uptake — nitrate climbs fast and hits a high peak before each change.',
+    v1_captionLight: 'Less load, plants absorbing nitrate — the same weekly rhythm keeps it low the whole time.',
+    daysAxis: 'Days →'
+  },
+  id: {
+    v1_heavy: 'Padat, tanpa tanaman',
+    v1_light: 'Jarang, bertanaman',
+    v1_hint: 'jadwal ganti air mingguan sama, dua akuarium berbeda',
+    v1_captionHeavy: 'Beban lebih besar, tanpa penyerapan — nitrat naik cepat dan mencapai puncak tinggi sebelum setiap ganti air.',
+    v1_captionLight: 'Beban lebih kecil, tanaman menyerap nitrat — jadwal mingguan yang sama menjaganya tetap rendah sepanjang waktu.',
+    daysAxis: 'Hari →'
+  },
+  ja: {
+    v1_heavy: '過密、水草なし',
+    v1_light: '少なめ、水草あり',
+    v1_hint: '同じ毎週の水換えでも、水槽が違えば結果も違う',
+    v1_captionHeavy: '負荷が大きく、吸収するものがない — 硝酸塩は急上昇し、次の水換え前に高いピークに達する。',
+    v1_captionLight: '負荷が小さく、水草が硝酸塩を吸収する — 同じ毎週のリズムでも、ずっと低いまま保たれる。',
+    daysAxis: '日数 →'
+  }
+};
+function nkrT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = NKR_STRINGS[lang] || NKR_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : NKR_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/new-tank-syndrome.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle stocking/plant profile — the same weekly water
+   change produces a very different sawtooth depending on load and
+   plant uptake. Deliberately simplified/illustrative math (linear
+   accumulation, reset on a fixed 7-day rhythm) — the point is the
+   shape of the two curves against a shared 40 ppm reference line, not
+   lab-accurate load modelling. ── */
+canvases[1] = function() {
+  stopAnim('cv1');
+  var c = resizeCanvas('cv1'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var totalDays = 28;
+  var mode = 'heavy'; /* heavy | light */
+
+  var scenarios = {
+    heavy: { base: 15, rate: 7,   col: 'rgba(220,100,60,'  },
+    light: { base: 8,  rate: 1.5, col: 'rgba(80,200,120,'  }
+  };
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="nkr-heavy">' + nkrT('v1_heavy') + '</button>'
+    +'<button class="vis-btn" id="nkr-light">' + nkrT('v1_light') + '</button></div>'
+    +'<div class="vc-hint">' + nkrT('v1_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('nkr-heavy').className = 'vis-btn' + (m==='heavy' ? ' vis-btn-active' : '');
+    document.getElementById('nkr-light').className = 'vis-btn' + (m==='light' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('nkr-heavy').addEventListener('click', function(){ setMode('heavy'); });
+  document.getElementById('nkr-light').addEventListener('click', function(){ setMode('light'); });
+
+  function valueAt(day, s) {
+    var dayInCycle = day % 7;
+    return s.base + s.rate * dayInCycle;
+  }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 34, pR = 12, pT = 18, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB, maxV = 80;
+
+    /* Grid + 40ppm reference line */
+    [0,20,40,60,80].forEach(function(v){
+      var y = pT + gH - (v/maxV)*gH;
+      ctx.strokeStyle = v===40 ? 'rgba(220,80,60,.28)' : vcInk(.06);
+      ctx.lineWidth = 1; ctx.setLineDash(v===40 ? [3,4] : []);
+      ctx.beginPath(); ctx.moveTo(pL,y); ctx.lineTo(pL+gW,y); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+      ctx.fillStyle = v===40 ? 'rgba(220,80,60,.7)' : vcInk(.5);
+      ctx.fillText(v, 4, y+3);
+    });
+
+    /* Axes */
+    ctx.strokeStyle = vcInk(.1); ctx.lineWidth = 1; ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(pL,pT); ctx.lineTo(pL,pT+gH); ctx.lineTo(pL+gW,pT+gH); ctx.stroke();
+    ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+    ctx.fillStyle = vcInk(.5);
+    [0,7,14,21,28].forEach(function(d){
+      ctx.fillText(d, pL+(d/totalDays)*gW-4, pT+gH+14);
+    });
+    ctx.fillText(nkrT('daysAxis'), pL+gW-30, pT+gH+28);
+    ctx.save(); ctx.translate(10, pT+8); ctx.fillText('NO₃', 0, 0); ctx.restore();
+
+    /* Draw both curves faintly, highlight selected */
+    Object.keys(scenarios).forEach(function(key){
+      var s = scenarios[key];
+      var active = key === mode;
+      ctx.strokeStyle = s.col + (active ? '0.85' : '0.18') + ')';
+      ctx.lineWidth = active ? 2 : 1;
+      ctx.beginPath();
+      for (var d = 0; d <= totalDays; d++) {
+        var v = Math.min(maxV, valueAt(d, s));
+        var x = pL + (d/totalDays)*gW;
+        var y = pT + gH - (v/maxV)*gH;
+        /* break the line at each reset so it reads as a sawtooth, not a diagonal */
+        if (d>0 && d%7===0) { ctx.stroke(); ctx.beginPath(); }
+        if (d===0 || d%7===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    });
+
+    /* Caption */
+    var cap = mode==='heavy' ? nkrT('v1_captionHeavy') : nkrT('v1_captionLight');
+    ctx.font = 'italic 300 12px Fraunces,serif';
+    ctx.fillStyle = vcInk(.6);
+    ctx.textAlign = 'center';
+    var words = cap.split(' '), line = '', y = H-28, maxW = W-24;
+    words.forEach(function(w){
+      var test = line + (line?' ':'') + w;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y); line = w; y += 15; }
+      else line = test;
+    });
+    if (line) ctx.fillText(line, W/2, y);
+    ctx.textAlign = 'left';
+  }
+
+  vcRedraws.cv1 = draw;
+  draw();
+};
+
+/* Resize handler only — canvases init via startLearning()/goMod(). */
+window.addEventListener('resize', function(){
+  if (canvases[currentMod]) setTimeout(function(){ canvases[currentMod](); }, 50);
+});
 
 </script>
 

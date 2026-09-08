@@ -89,6 +89,21 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+/* VISUAL BLOCK */
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
+.vis-btn:disabled{opacity:.5;cursor:default}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -271,6 +286,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Udang merespons stresor dengan jeda. Mereka tidak mati seketika — mereka melemah selama beberapa minggu. Ini berarti penyebabnya hampir selalu lebih awal dari yang tampak. Keeper Rhythm yang penting di sini adalah kebiasaan mencatat perubahan kecil sebelum tampak pada koloni.</p>
     </div>
 
+    <!-- VISUAL: Tap to advance a week — one change, weeks before the decline becomes visible -->
+    <div class="vis-block">
+      <canvas id="cv3" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="pq">
       <p>Udang tidak merespons apa yang terjadi hari ini. Mereka merespons apa yang terakumulasi selama dua minggu terakhir.</p>
     </div>
@@ -329,6 +349,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -347,6 +368,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -354,6 +376,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -377,6 +400,218 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same pattern
+   as NTS_STRINGS/ntsT(), PHK_STRINGS/phkT(), NKR_STRINGS/nkrT(),
+   FM_STRINGS/fmT(), TWC_STRINGS/twcT(), CC_STRINGS/ccT(),
+   AFM_STRINGS/afmT(), LSD_STRINGS/lsdT(), GHKH_STRINGS/ghkhT(), and
+   BB_STRINGS/bbT() in the other article widgets. This script block is
+   copied byte-for-byte into id/articles + ja/articles by build-i18n.mjs,
+   so the runtime lang check is what actually localises the widget — keep
+   SDA_STRINGS.en/.id/.ja key sets identical when editing. */
+var SDA_STRINGS = {
+  en: {
+    v3_advBtn: '+ Advance a week',
+    v3_resetBtn: 'Reset',
+    v3_hint: 'one change, weeks before it shows',
+    v3_markerLabel: 'change happens',
+    v3_yAxis: 'Health',
+    v3_weeksAxis: 'Weeks →',
+    v3_cap0: "The change already happened — health hasn't moved yet.",
+    v3_cap1: "Still nothing to see on the shrimp. The lag hasn't caught up yet.",
+    v3_cap2: 'Only now does the decline become visible — weeks after the actual cause.'
+  },
+  id: {
+    v3_advBtn: '+ Lompat seminggu',
+    v3_resetBtn: 'Ulang',
+    v3_hint: 'satu perubahan, berminggu-minggu sebelum ia kelihatan',
+    v3_markerLabel: 'perubahan berlaku',
+    v3_yAxis: 'Kesihatan',
+    v3_weeksAxis: 'Minggu →',
+    v3_cap0: 'Perubahan tu dah berlaku — kesihatan belum bergerak lagi.',
+    v3_cap1: 'Masih tiada apa pd udang. Lag tu belum sampai lagi.',
+    v3_cap2: 'Baru sekarang kemerosotan kelihatan — berminggu-minggu selepas punca sebenar.'
+  },
+  ja: {
+    v3_advBtn: '+ 1週間進める',
+    v3_resetBtn: 'リセット',
+    v3_hint: '変化は一つ、見えるまでに何週間もかかる',
+    v3_markerLabel: '変化が起きる',
+    v3_yAxis: '健康度',
+    v3_weeksAxis: '週 →',
+    v3_cap0: '変化はすでに起きている — 健康度はまだ動いていない。',
+    v3_cap1: 'エビにはまだ何も現れていない。遅れがまだ追いついていない。',
+    v3_cap2: '今になってようやく衰退が見える — 実際の原因から何週間も経っている。'
+  }
+};
+function sdaT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = SDA_STRINGS[lang] || SDA_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : SDA_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/new-tank-syndrome.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Tap to advance a week — a single stressor event (marked at
+   week 1) is followed by a flat, unchanged shrimp-health line for
+   several weeks before it finally starts declining. This is the
+   article's own lag claim (§"Reading water trends, not moments") made
+   visible: nothing on the health line moves for a while, then it does,
+   well after the event that actually caused it. Deliberately simplified
+   /illustrative math (fixed flat-then-decay curve, unitless "health"
+   index) — the point is the SIZE of the gap between cause and visible
+   effect, not a specific species' real physiology. ── */
+canvases[3] = function() {
+  stopAnim('cv3');
+  var c = resizeCanvas('cv3'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var totalWeeks = 8, maxV = 100, changeWeek = 1, lagWeeks = 3;
+  var week = 0;
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div class="vc-label"><span>' + sdaT('v3_yAxis') + '</span></div>'
+    +'<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="sda-adv">' + sdaT('v3_advBtn') + '</button>'
+    +'<button class="vis-btn" id="sda-reset">' + sdaT('v3_resetBtn') + '</button></div>'
+    +'<div class="vc-hint">' + sdaT('v3_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  var advBtn = document.getElementById('sda-adv');
+  var resetBtn = document.getElementById('sda-reset');
+  advBtn.addEventListener('click', function() {
+    if (week < totalWeeks) { week++; draw(); }
+    if (week >= totalWeeks) advBtn.disabled = true;
+  });
+  resetBtn.addEventListener('click', function() {
+    week = 0;
+    advBtn.disabled = false;
+    draw();
+  });
+
+  function healthAt(w) {
+    if (w <= changeWeek + lagWeeks) return 100;
+    var t = w - (changeWeek + lagWeeks);
+    return Math.max(8, 100 * Math.exp(-t * 0.35));
+  }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 30, pR = 12, pT = 18, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB;
+    function px(w) { return pL + (w/totalWeeks)*gW; }
+    function py(v) { return pT + gH - (v/maxV)*gH; }
+
+    /* Grid */
+    [0,25,50,75,100].forEach(function(v){
+      var y = py(v);
+      ctx.strokeStyle = vcInk(.06); ctx.lineWidth = 1; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(pL,y); ctx.lineTo(pL+gW,y); ctx.stroke();
+      ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+      ctx.fillStyle = vcInk(.5);
+      ctx.fillText(v, 3, y+3);
+    });
+
+    /* Axes */
+    ctx.strokeStyle = vcInk(.1); ctx.lineWidth = 1; ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(pL,pT); ctx.lineTo(pL,pT+gH); ctx.lineTo(pL+gW,pT+gH); ctx.stroke();
+    ctx.font = '300 10px Work Sans,system-ui,sans-serif';
+    ctx.fillStyle = vcInk(.5);
+    for (var w = 0; w <= totalWeeks; w += 2) { ctx.fillText(w, px(w)-3, pT+gH+14); }
+    ctx.fillText(sdaT('v3_weeksAxis'), pL+gW-44, pT+gH+28);
+
+    /* Change marker */
+    var xC = px(changeWeek);
+    ctx.strokeStyle = 'rgba(224,100,60,.55)'; ctx.setLineDash([3,4]); ctx.lineWidth = 1.3;
+    ctx.beginPath(); ctx.moveTo(xC,pT); ctx.lineTo(xC,pT+gH); ctx.stroke();
+    ctx.setLineDash([]);
+    if (xC <= pL + gW) {
+      ctx.font = 'italic 300 10px Fraunces,serif';
+      ctx.fillStyle = 'rgba(224,100,60,.75)';
+      ctx.fillText(sdaT('v3_markerLabel'), xC + 4, pT + 12);
+    }
+
+    /* Health line, revealed up to current week */
+    ctx.strokeStyle = 'rgba(95,203,134,0.9)'; ctx.lineWidth = 2;
+    ctx.beginPath();
+    for (var d = 0; d <= week; d += 0.2) {
+      var v = healthAt(d);
+      var x = px(d), y = py(v);
+      if (d === 0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.lineTo(px(week), py(healthAt(week)));
+    ctx.stroke();
+
+    /* Caption */
+    var capKey = week < changeWeek + lagWeeks ? 'v3_cap0' : (week < changeWeek + lagWeeks + 2 ? 'v3_cap1' : 'v3_cap2');
+    var cap = sdaT(capKey);
+    ctx.font = 'italic 300 12px Fraunces,serif';
+    ctx.fillStyle = vcInk(.6);
+    ctx.textAlign = 'center';
+    var words = cap.split(' '), line = '', y2 = H-28, maxW = W-24;
+    words.forEach(function(w2){
+      var test = line + (line?' ':'') + w2;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y2); line = w2; y2 += 15; }
+      else line = test;
+    });
+    if (line) ctx.fillText(line, W/2, y2);
+    ctx.textAlign = 'left';
+  }
+
+  vcRedraws.cv3 = draw;
+  draw();
+};
+
+/* Resize handler only — canvases init via startLearning()/goMod(). */
+window.addEventListener('resize', function(){
+  if (canvases[currentMod]) setTimeout(function(){ canvases[currentMod](); }, 50);
+});
 
 </script>
 

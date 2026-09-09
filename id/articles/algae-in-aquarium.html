@@ -89,6 +89,19 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -279,6 +292,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Satu catatan penting: jangan ubah banyak hal sekaligus. Kalau Anda kurangi fotoperiode, tambah tanaman, dan ubah pemberian makan semuanya dalam minggu yang sama, Anda tidak akan tahu apa yang berhasil — dan mungkin malah mengganggu sistem lebih jauh. Satu perubahan, diamati dari waktu ke waktu, memberi Anda umpan balik yang jelas.</p>
     </div>
 
+    <!-- VISUAL: Toggle 7-8h/10+h photoperiod — same static risk curve, different marker position -->
+    <div class="vis-block">
+      <canvas id="cv3" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="pq">
       <p>Tujuannya bukan tank tanpa alga. Melainkan tank di mana kondisinya tidak lagi secara konsisten berpihak pada alga yang mengungguli semua hal lain yang tumbuh di sana.</p>
     </div>
@@ -333,6 +351,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -351,6 +370,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -358,6 +378,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -381,6 +402,192 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as ANF_STRINGS/anfT() in articles/adding-new-fish.html.
+   This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep AIA_STRINGS.en/.id/.ja key
+   sets identical when editing. */
+var AIA_STRINGS = {
+  en: {
+    v3_short: '7–8h photoperiod',
+    v3_long: '10+h photoperiod',
+    v3_hint: 'same tank, same plants — only the light duration differs',
+    v3_captionShort: 'At 7–8 hours, most planted tanks sit well below the point where algae reliably outcompetes plants for the available light.',
+    v3_captionLong: 'Past about 9–10 hours, the same tank crosses into the range where algae has more light than the plants can use — exactly the gap algae fills.',
+    hoursAxis: 'Photoperiod (hours/day) →',
+    v3_risk: 'Algae risk'
+  },
+  id: {
+    v3_short: 'Fotoperiode 7–8 jam',
+    v3_long: 'Fotoperiode 10+ jam',
+    v3_hint: 'akuarium sama, tanaman sama — hanya durasi cahaya yang berbeda',
+    v3_captionShort: 'Pada 7–8 jam, sebagian besar akuarium bertanaman berada jauh di bawah titik di mana alga bisa mengalahkan tanaman dalam memperebutkan cahaya yang tersedia.',
+    v3_captionLong: 'Melewati sekitar 9–10 jam, akuarium yang sama memasuki rentang di mana alga punya lebih banyak cahaya daripada yang bisa dipakai tanaman — persis celah yang diisi alga.',
+    hoursAxis: 'Fotoperiode (jam/hari) →',
+    v3_risk: 'Risiko alga'
+  },
+  ja: {
+    v3_short: '照明時間 7〜8時間',
+    v3_long: '照明時間 10時間以上',
+    v3_hint: '同じ水槽、同じ水草 — 違うのは照明時間だけ',
+    v3_captionShort: '7〜8時間なら、ほとんどの水草水槽は、コケが利用可能な光をめぐって水草に勝ってしまう地点よりずっと手前にとどまる。',
+    v3_captionLong: 'およそ9〜10時間を超えると、同じ水槽でも、水草が使いきれないほどの光をコケが手に入れる範囲に入ってしまう — それがまさにコケが埋める隙間だ。',
+    hoursAxis: '照明時間(時間/日) →',
+    v3_risk: 'コケのリスク'
+  }
+};
+function aiaT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = AIA_STRINGS[lang] || AIA_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : AIA_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/adding-new-fish.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle 7-8h/10+h photoperiod — a static dose-response
+   curve (algae risk rising with photoperiod length, logistic shape
+   centred around 9 hours) with a marker that jumps between two
+   preset photoperiod choices. This is a PARAMETER-response curve
+   rather than a time-series — unlike every other widget in this
+   Tier-1 batch, the x-axis here is hours of light per day, not days
+   or weeks. Deliberately simplified/illustrative math (one logistic
+   curve on an arbitrary 0-100 risk scale) — the point is where a
+   given photoperiod choice sits relative to the danger zone, not a
+   precise photobiology model. Mirrors this module's own line: "If
+   the lights are running 10 or more hours, try 7–8 hours." ── */
+canvases[3] = function() {
+  stopAnim('cv3');
+  var c = resizeCanvas('cv3'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var minH = 4, maxH = 14;
+  var mode = 'short'; /* short | long */
+  var markers = { short: 7.5, long: 10.5 };
+
+  function riskAt(hours) {
+    return 100 / (1 + Math.exp(-(hours - 9) * 1.2));
+  }
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="aia-short">' + aiaT('v3_short') + '</button>'
+    +'<button class="vis-btn" id="aia-long">' + aiaT('v3_long') + '</button></div>'
+    +'<div class="vc-hint">' + aiaT('v3_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('aia-short').className = 'vis-btn' + (m==='short' ? ' vis-btn-active' : '');
+    document.getElementById('aia-long').className = 'vis-btn' + (m==='long' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('aia-short').addEventListener('click', function(){ setMode('short'); });
+  document.getElementById('aia-long').addEventListener('click', function(){ setMode('long'); });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 34, pR = 12, pT = 18, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB, maxV = 100;
+
+    /* Grid */
+    [0,25,50,75,100].forEach(function(v){
+      var y = pT + gH - (v/maxV)*gH;
+      ctx.strokeStyle = vcInk(.08); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(pL, y); ctx.lineTo(pL+gW, y); ctx.stroke();
+      ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(v, pL-6, y+3);
+    });
+
+    /* The static risk curve, always visible for context */
+    ctx.strokeStyle = vcInk(.4); ctx.lineWidth = 1.6; ctx.beginPath();
+    for (var h=minH; h<=maxH; h+=0.2) {
+      var v = riskAt(h);
+      var x = pL + ((h-minH)/(maxH-minH))*gW, y = pT + gH - (v/maxV)*gH;
+      if (h===minH) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+
+    /* Marker at the active photoperiod choice */
+    var col = mode === 'short' ? 'rgba(80,200,120,' : 'rgba(220,100,60,';
+    var hm = markers[mode], vm = riskAt(hm);
+    var xm = pL + ((hm-minH)/(maxH-minH))*gW, ym = pT + gH - (vm/maxV)*gH;
+    ctx.strokeStyle = vcInk(.25); ctx.lineWidth = 1; ctx.setLineDash([3,3]);
+    ctx.beginPath(); ctx.moveTo(xm, pT); ctx.lineTo(xm, pT+gH); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = col + '1)'; ctx.beginPath(); ctx.arc(xm,ym,4.5,0,Math.PI*2); ctx.fill();
+
+    /* X-axis label */
+    ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(aiaT('hoursAxis'), pL+gW/2, H-8);
+    ctx.save();
+    ctx.translate(12, pT+gH/2); ctx.rotate(-Math.PI/2);
+    ctx.fillStyle = vcInk(.35); ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(aiaT('v3_risk'), 0, 0);
+    ctx.restore();
+
+    /* Caption */
+    var cap = mode === 'short' ? aiaT('v3_captionShort') : aiaT('v3_captionLong');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv3 = draw;
+  draw();
+};
 
 </script>
 

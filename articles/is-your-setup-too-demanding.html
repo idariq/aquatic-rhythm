@@ -75,6 +75,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-title em{font-style:italic;color:var(--th-accent)}
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}.mod-body strong{font-weight:400;color:var(--th-ink)}.mod-body em{font-style:italic;color:var(--th-ink-3)}
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 .hn{margin:2rem 0;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2);position:relative}
@@ -218,6 +230,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p><strong>High bioload relative to tank size.</strong> A heavily stocked tank has less buffer for any delay at all, so the whole setup becomes less forgiving of an inconsistent schedule, even before anything else is added.</p>
     </div>
 
+    <!-- VISUAL: Tap any combination on/off — watch demand stack -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:240px"></canvas>
+    </div>
+
     <div class="pq">
       <p>"Each of these choices raises what the tank needs from every single week, not just what it needs once. That's what makes them multipliers rather than one-time costs."</p>
     </div>
@@ -286,6 +303,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -304,6 +322,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -311,6 +330,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -334,6 +354,183 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as MVC_STRINGS/mvcT() in articles/minimum-viable-care.html.
+   This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep ISD_STRINGS.en/.id/.ja key
+   sets identical when editing. */
+var ISD_STRINGS = {
+  en: {
+    v2_co2: 'CO2 injection',
+    v2_dosing: 'Precise dosing',
+    v2_species: 'Sensitive species',
+    v2_bioload: 'High bioload',
+    v2_hint: 'tap any combination on or off — watch how fast they add up',
+    v2_demand: 'Weekly demand',
+    v2_captionBelow: 'Still fits an ordinary week — even a busy one would not break this.',
+    v2_captionAbove: 'This many multipliers stacked — a normal busy week now has real room to go wrong.'
+  },
+  id: {
+    v2_co2: 'Injeksi CO2',
+    v2_dosing: 'Dosis presisi',
+    v2_species: 'Spesies sensitif',
+    v2_bioload: 'Beban bio tinggi',
+    v2_hint: 'ketuk kombinasi apa pun untuk menyala/mati — lihat betapa cepat semuanya menumpuk',
+    v2_demand: 'Tuntutan mingguan',
+    v2_captionBelow: 'Masih sesuai untuk minggu biasa — bahkan minggu yang sibuk pun tidak akan menjatuhkannya.',
+    v2_captionAbove: 'Sebanyak ini pengganda menumpuk — minggu sibuk biasa kini punya ruang nyata untuk jadi salah.'
+  },
+  ja: {
+    v2_co2: 'CO2添加',
+    v2_dosing: '精密な添加',
+    v2_species: '繊細な種',
+    v2_bioload: '高い生体負荷',
+    v2_hint: 'どの組み合わせでもタップしてオン/オフ — どれだけ早く積み重なるか見てみましょう',
+    v2_demand: '週ごとの負担',
+    v2_captionBelow: '普通の一週間にはまだ収まる — 忙しい週でもこれなら崩れない。',
+    v2_captionAbove: 'これだけの要因が重なると — いつもの忙しい週にも、本当にうまくいかなくなる余地が生まれる。'
+  }
+};
+function isdT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = ISD_STRINGS[lang] || ISD_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : ISD_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/minimum-viable-care.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Tap any combination of four chips on or off — NOT a
+   single-choice toggle like every other widget so far, but an
+   independent multi-select (each chip can be on or off in any
+   combination). A demand bar grows as more chips are active, with a
+   dashed threshold marking "still fits an ordinary week." This is the
+   FIRST multi-select widget in the whole rollout — it directly
+   dramatises this module's own claim that each addition "makes sense
+   in isolation" but the demands stack. Mirrors this module's own
+   line: "Each of these choices raises what the tank needs from every
+   single week ... That's what makes them multipliers rather than
+   one-time costs." ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+
+  var chips = [
+    { key: 'v2_co2',     demand: 25, active: false },
+    { key: 'v2_dosing',  demand: 20, active: false },
+    { key: 'v2_species', demand: 20, active: false },
+    { key: 'v2_bioload', demand: 20, active: false }
+  ];
+  var baseline = 15, threshold = 50, maxV = 100;
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  var chipsHtml = chips.map(function(ch, i){
+    return '<button class="vis-btn" id="isd-chip-' + i + '">' + isdT(ch.key) + '</button>';
+  }).join('');
+  ctrl.innerHTML = '<div style="display:flex;gap:.35rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    + chipsHtml + '</div>'
+    +'<div class="vc-hint">' + isdT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  chips.forEach(function(ch, i){
+    document.getElementById('isd-chip-' + i).addEventListener('click', function(){
+      ch.active = !ch.active;
+      this.className = 'vis-btn' + (ch.active ? ' vis-btn-active' : '');
+      draw();
+    });
+  });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var total = baseline + chips.reduce(function(s,ch){ return s + (ch.active ? ch.demand : 0); }, 0);
+    var below = total <= threshold;
+    var col = below ? 'rgba(80,200,120,' : 'rgba(220,100,60,';
+
+    var barX = W*0.5 - 30, barW = 60, pT = 26, pB = 40;
+    var barH = H - pT - pB;
+
+    ctx.fillStyle = vcInk(.06);
+    ctx.fillRect(barX, pT, barW, barH);
+
+    var filledH = Math.min(total/maxV, 1) * barH;
+    ctx.fillStyle = col + '.75)';
+    ctx.fillRect(barX, pT + barH - filledH, barW, filledH);
+    ctx.strokeStyle = col + '1)'; ctx.lineWidth = 1.4;
+    ctx.strokeRect(barX, pT, barW, barH);
+
+    var yThresh = pT + barH - (threshold/maxV)*barH;
+    ctx.strokeStyle = vcInk(.4); ctx.lineWidth = 1; ctx.setLineDash([4,3]);
+    ctx.beginPath(); ctx.moveTo(barX-70, yThresh); ctx.lineTo(barX+barW+70, yThresh); ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.fillStyle = vcInk(.6); ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(Math.round(total), barX+barW/2, pT - 8);
+    ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif';
+    ctx.fillText(isdT('v2_demand'), barX+barW/2, H-14);
+
+    var cap = below ? isdT('v2_captionBelow') : isdT('v2_captionAbove');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
 
 </script>
 

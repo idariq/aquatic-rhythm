@@ -89,6 +89,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -253,6 +265,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Tidak satu pun dari ini salah. Masing-masing punya desain akuarium yang sesuai dan mendukungnya. Ketidakselarasan antara ritme pemelihara dan desain akuarium itulah yang memicu drift yang dialami kebanyakan pemelihara — bukan sesi yang terlewat secara individu.</p>
     </div>
 
+    <!-- VISUAL: Toggle between the four keeper rhythms — same month, four honest patterns -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="mod-body">
     </div>
 
@@ -331,6 +348,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -349,6 +367,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -356,6 +375,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -379,6 +399,196 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as CFT_STRINGS/cftT() in articles/community-fish-tank.html.
+   This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep AMR_STRINGS.en/.id/.ja key
+   sets identical when editing. */
+var AMR_STRINGS = {
+  en: {
+    v2_episodic: 'Episodic',
+    v2_irregular: 'Irregular',
+    v2_incremental: 'Incremental',
+    v2_low: 'Low-engagement',
+    v2_hint: 'the same 30 days — four honest patterns, none of them wrong',
+    v2_captionEpisodic: 'Bursts of attention, then a gap — intense while it lasts, quiet in between.',
+    v2_captionIrregular: 'No fixed interval — care happens, just not on a calendar.',
+    v2_captionIncremental: 'Small actions spread evenly — the cycle completes in pieces, not one session.',
+    v2_captionLow: 'Occasional touches — sparse days, real time between them.',
+    daysAxis: 'Days →'
+  },
+  id: {
+    v2_episodic: 'Episodik',
+    v2_irregular: 'Tidak teratur',
+    v2_incremental: 'Bertahap',
+    v2_low: 'Keterlibatan rendah',
+    v2_hint: '30 hari yang sama — empat pola yang jujur, tidak ada yang salah',
+    v2_captionEpisodic: 'Ledakan perhatian, lalu jeda — intens selama berlangsung, tenang di antaranya.',
+    v2_captionIrregular: 'Tidak ada interval tetap — perawatan tetap terjadi, hanya saja tidak sesuai kalender.',
+    v2_captionIncremental: 'Tindakan kecil tersebar merata — siklusnya selesai secara bertahap, bukan dalam satu sesi.',
+    v2_captionLow: 'Sentuhan sesekali — hari yang jarang, dengan jeda waktu yang nyata di antaranya.',
+    daysAxis: 'Hari →'
+  },
+  ja: {
+    v2_episodic: '突発型',
+    v2_irregular: '不定期型',
+    v2_incremental: '少量頻繁型',
+    v2_low: '低関与型',
+    v2_hint: '同じ30日間 — 四つの正直なパターン、どれも間違いではない',
+    v2_captionEpisodic: '集中して取り組んでは間が空く — 取り組むときは集中的、その間は静か。',
+    v2_captionIrregular: '決まった間隔はない — お世話はちゃんと起きているが、カレンダー通りではないだけ。',
+    v2_captionIncremental: '小さな作業が均等に広がっている — 一回のセッションではなく、少しずつサイクルが完成する。',
+    v2_captionLow: 'たまに手をかける — 日数は少ないが、その間には確かな時間がある。',
+    daysAxis: '日 →'
+  }
+};
+function amrT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = AMR_STRINGS[lang] || AMR_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : AMR_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/community-fish-tank.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle between the four keeper rhythms — an event
+   timeline (tick marks for maintenance sessions across a 30-day
+   month), one pattern per rhythm type. Episodic: two 3-day bursts
+   with a long gap between. Irregular: scattered, no fixed spacing
+   (fixed-seed pseudo-random). Incremental: evenly spaced every ~3
+   days. Low-engagement: two sparse sessions across the whole month.
+   Deliberately non-judgemental — this module explicitly says "none
+   of these are wrong," so no pattern is drawn as better than another,
+   only different in shape. Mirrors this module's own line: "The four
+   ARA keeper rhythm types are ... honest descriptions of how people
+   actually engage with their tanks over time." ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var mode = 'episodic';
+
+  var patterns = {
+    episodic:    [1,2,3, 19,20,21],
+    irregular:   [2,6,7,13,17,18,24,29],
+    incremental: [2,5,8,11,14,17,20,23,26,29],
+    low:         [6,22]
+  };
+  var col = 'rgba(97,181,221,';
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.35rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="amr-episodic">' + amrT('v2_episodic') + '</button>'
+    +'<button class="vis-btn" id="amr-irregular">' + amrT('v2_irregular') + '</button>'
+    +'<button class="vis-btn" id="amr-incremental">' + amrT('v2_incremental') + '</button>'
+    +'<button class="vis-btn" id="amr-low">' + amrT('v2_low') + '</button></div>'
+    +'<div class="vc-hint">' + amrT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  var btnIds = { episodic: 'amr-episodic', irregular: 'amr-irregular', incremental: 'amr-incremental', low: 'amr-low' };
+  function setMode(m) {
+    mode = m;
+    Object.keys(btnIds).forEach(function(k){
+      document.getElementById(btnIds[k]).className = 'vis-btn' + (k===m ? ' vis-btn-active' : '');
+    });
+    draw();
+  }
+  Object.keys(btnIds).forEach(function(k){
+    document.getElementById(btnIds[k]).addEventListener('click', function(){ setMode(k); });
+  });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 20, pR = 20, pT = 40, pB = 46;
+    var gW = W - pL - pR;
+    var midY = pT + (H-pT-pB)/2;
+
+    [0,10,20,30].forEach(function(d){
+      var x = pL + (d/30)*gW;
+      ctx.strokeStyle = vcInk(.1); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(x, pT); ctx.lineTo(x, H-pB); ctx.stroke();
+      ctx.fillStyle = vcInk(.4); ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(d, x, pT - 10);
+    });
+
+    ctx.strokeStyle = vcInk(.2); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pL, midY); ctx.lineTo(pL+gW, midY); ctx.stroke();
+
+    patterns[mode].forEach(function(d){
+      var x = pL + (d/30)*gW;
+      ctx.beginPath();
+      ctx.moveTo(x, midY - 16);
+      ctx.lineTo(x, midY + 16);
+      ctx.strokeStyle = col + '.9)'; ctx.lineWidth = 2;
+      ctx.stroke();
+    });
+
+    ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(amrT('daysAxis'), pL+gW/2, H-8);
+
+    var capKey = { episodic:'v2_captionEpisodic', irregular:'v2_captionIrregular', incremental:'v2_captionIncremental', low:'v2_captionLow' }[mode];
+    var cap = amrT(capKey);
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
 
 </script>
 

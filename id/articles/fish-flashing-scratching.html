@@ -75,6 +75,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-title em{font-style:italic;color:var(--th-accent)}
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}.mod-body strong{font-weight:400;color:var(--th-ink)}.mod-body em{font-style:italic;color:var(--th-ink-3)}
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 .hn{margin:2rem 0;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2);position:relative}
@@ -201,6 +213,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Apakah ini satu ikan atau beberapa? Satu ikan yang sesekali menggosok badan biasanya bukan apa-apa. Beberapa ikan menggosok badan dalam satu atau dua hari yang sama hampir selalu menunjuk ke sesuatu yang dialami bersama — air itu sendiri, bukan satu ikan tertentu.</p>
     </div>
 
+    <!-- VISUAL: Toggle occasional/frequent — the same 24 hours, different event count -->
+    <div class="vis-block">
+      <canvas id="cv1" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="mod-next">
       <button class="btn-prev" onclick="goIntro()">← Intro</button>
       <button class="btn-next" onclick="goMod(2)">Apa yang sebenarnya menyebabkannya <span>→</span></button>
@@ -286,6 +303,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -304,6 +322,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -311,6 +330,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -323,6 +343,7 @@ function startLearning() {
   window.scrollTo({ top: 0, behavior: 'auto' });
   var first = document.getElementById('mod-1');
   if (first) { first.classList.add('active'); setTimeout(function(){ first.classList.add('visible'); }, 30); }
+  if (canvases[1]) setTimeout(function(){ canvases[1](); }, 150);
   updateDots();
 }
 
@@ -334,6 +355,186 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as DTW_STRINGS/dtwT() in
+   articles/dropsy-when-treatment-isnt-working.html. This script block
+   is copied byte-for-byte into id/articles + ja/articles by
+   build-i18n.mjs, so the runtime lang check is what actually
+   localises the widget — keep FFS_STRINGS.en/.id/.ja key sets
+   identical when editing. */
+var FFS_STRINGS = {
+  en: {
+    v1_occasional: 'Occasional',
+    v1_frequent: 'Frequent',
+    v1_hint: 'the same 24 hours, a different number of flashes',
+    v1_captionOccasional: 'A couple of times today — close to background noise, the kind of scratch any fish does now and then.',
+    v1_captionFrequent: 'Dozens of times today — this is the pattern worth reading, not the single flash.',
+    hoursAxis: 'Hours →'
+  },
+  id: {
+    v1_occasional: 'Sesekali',
+    v1_frequent: 'Sering',
+    v1_hint: '24 jam yang sama, jumlah gesekan yang berbeda',
+    v1_captionOccasional: 'Beberapa kali hari ini — nyaris seperti kebisingan latar, gesekan yang wajar dilakukan ikan sesekali.',
+    v1_captionFrequent: 'Puluhan kali hari ini — inilah pola yang layak dibaca, bukan gesekan tunggalnya.',
+    hoursAxis: 'Jam →'
+  },
+  ja: {
+    v1_occasional: 'たまに',
+    v1_frequent: '頻繁に',
+    v1_hint: '同じ24時間、体擦りの回数が違う',
+    v1_captionOccasional: '今日は数回だけ — 背景ノイズに近く、どんな魚もたまにする程度の体擦り。',
+    v1_captionFrequent: '今日は何十回も — 読み取る価値があるのは一度の体擦りではなく、このパターンだ。',
+    hoursAxis: '時間 →'
+  }
+};
+function ffsT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = FFS_STRINGS[lang] || FFS_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : FFS_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/dropsy-when-treatment-isnt-working.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle occasional/frequent — NOT a value chart, an event
+   timeline. A 24-hour axis carries a tick mark for each flash event,
+   generated with a fixed seed so the pattern is stable across
+   re-renders. Occasional: ~3 sparse ticks. Frequent: ~35 ticks,
+   visibly dense. Deliberately a count/frequency illustration — this
+   is the diagnostic dimension this module actually asks about ("is
+   it happening once a day, or every few minutes?"), not a parameter
+   trend. Mirrors this module's own line: "is it happening once a
+   day, or every few minutes?" ── */
+canvases[1] = function() {
+  stopAnim('cv1');
+  var c = resizeCanvas('cv1'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var mode = 'occasional'; /* occasional | frequent */
+
+  function mulberry32(seed) {
+    return function() {
+      seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+      var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="ffs-occ">' + ffsT('v1_occasional') + '</button>'
+    +'<button class="vis-btn" id="ffs-freq">' + ffsT('v1_frequent') + '</button></div>'
+    +'<div class="vc-hint">' + ffsT('v1_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('ffs-occ').className = 'vis-btn' + (m==='occasional' ? ' vis-btn-active' : '');
+    document.getElementById('ffs-freq').className = 'vis-btn' + (m==='frequent' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('ffs-occ').addEventListener('click', function(){ setMode('occasional'); });
+  document.getElementById('ffs-freq').addEventListener('click', function(){ setMode('frequent'); });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 20, pR = 20, pT = 40, pB = 46;
+    var gW = W - pL - pR;
+    var midY = pT + (H-pT-pB)/2;
+
+    /* Hour gridlines every 6 hours */
+    [0,6,12,18,24].forEach(function(h){
+      var x = pL + (h/24)*gW;
+      ctx.strokeStyle = vcInk(.1); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(x, pT); ctx.lineTo(x, H-pB); ctx.stroke();
+      ctx.fillStyle = vcInk(.4); ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(h + 'h', x, pT - 10);
+    });
+
+    /* Baseline */
+    ctx.strokeStyle = vcInk(.2); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pL, midY); ctx.lineTo(pL+gW, midY); ctx.stroke();
+
+    var col = mode === 'occasional' ? 'rgba(80,200,120,' : 'rgba(220,100,60,';
+    var count = mode === 'occasional' ? 3 : 35;
+    var rnd = mulberry32(mode === 'occasional' ? 7 : 21);
+    for (var i=0; i<count; i++) {
+      var h = rnd() * 24;
+      var x = pL + (h/24)*gW;
+      ctx.beginPath();
+      ctx.moveTo(x, midY - 14);
+      ctx.lineTo(x, midY + 14);
+      ctx.strokeStyle = col + '.85)'; ctx.lineWidth = 1.6;
+      ctx.stroke();
+    }
+
+    /* X-axis label */
+    ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(ffsT('hoursAxis'), pL+gW/2, H-8);
+
+    /* Caption */
+    var cap = mode === 'occasional' ? ffsT('v1_captionOccasional') : ffsT('v1_captionFrequent');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv1 = draw;
+  draw();
+};
 
 </script>
 

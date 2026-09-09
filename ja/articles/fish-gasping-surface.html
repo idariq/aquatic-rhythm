@@ -89,6 +89,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -246,6 +258,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>整合のとれた対応は、パクパクが起きる前から始まっています。活発な水面の動きを維持すること、フィルターをきれいに保つこと、季節に対して相対的なオーバーストッキングを避けること(冬に問題なかった水槽でも、夏には生体負荷を減らす必要があるかもしれません)、そしてフィルターの流量低下を早期の指標として見ることです。</p>
     </div>
 
+    <!-- VISUAL: Toggle one factor/all factors combined — same threshold, stacked deductions -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="hn">
       <span class="hn-label">突然ではなく、ドリフトだった</span>
       <p>溶存酸素は、水槽が維持している継続的な物理条件のひとつです。酸素低下という出来事は、ひとつの読み取り結果にすぎません。条件が魚の許容範囲を超えてドリフトした、ということです。その出来事自体が突然だったわけではありません。ドリフトが、徐々に進んでいたのです。</p>
@@ -301,6 +318,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 3;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -319,6 +337,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -326,6 +345,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -349,6 +369,215 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as SCL_STRINGS/sclT() in
+   articles/sudden-colour-loss-fish.html. This script block is copied
+   byte-for-byte into id/articles + ja/articles by build-i18n.mjs, so
+   the runtime lang check is what actually localises the widget —
+   keep FGS_STRINGS.en/.id/.ja key sets identical when editing. */
+var FGS_STRINGS = {
+  en: {
+    v2_single: 'One factor',
+    v2_combined: 'All factors combined',
+    v2_hint: 'each factor alone rarely reaches the line — together, they do',
+    v2_captionSingle: 'Warm water alone rarely drops oxygen far — comfortably above where fish start struggling.',
+    v2_captionCombined: 'The same factors stacked together — none dramatic alone, but crossing the line as a group.',
+    v2_threshold: 'gasping threshold',
+    v2_oxygen: 'Dissolved oxygen',
+    v2_fTemp: 'Warm water',
+    v2_fAlgae: 'Overnight respiration',
+    v2_fBioload: 'Bioload',
+    v2_fFlow: 'Slowed flow'
+  },
+  id: {
+    v2_single: 'Satu faktor',
+    v2_combined: 'Semua faktor sekaligus',
+    v2_hint: 'satu faktor sendirian jarang mencapai garis batas — digabung, ia mencapainya',
+    v2_captionSingle: 'Air hangat saja jarang menurunkan oksigen jauh — masih nyaman di atas titik ikan mulai kesulitan.',
+    v2_captionCombined: 'Faktor yang sama, ditumpuk bersama — tidak ada yang dramatis sendirian, tapi bersama-sama melewati garis batas.',
+    v2_threshold: 'ambang megap-megap',
+    v2_oxygen: 'Oksigen terlarut',
+    v2_fTemp: 'Air hangat',
+    v2_fAlgae: 'Respirasi semalam',
+    v2_fBioload: 'Beban bio',
+    v2_fFlow: 'Aliran melambat'
+  },
+  ja: {
+    v2_single: '要因ひとつ',
+    v2_combined: 'すべての要因が重なる',
+    v2_hint: '一つの要因だけでは限界線に届きにくい — 重なると届く',
+    v2_captionSingle: '暖かい水だけでは酸素はそれほど下がらない — 魚が苦しみ始める水準まではまだ余裕がある。',
+    v2_captionCombined: '同じ要因が重なると — 一つひとつは劇的でなくても、まとまると限界線を超えてしまう。',
+    v2_threshold: '酸欠の限界線',
+    v2_oxygen: '溶存酸素',
+    v2_fTemp: '暖かい水',
+    v2_fAlgae: '夜間の呼吸',
+    v2_fBioload: '生体負荷',
+    v2_fFlow: '流れの低下'
+  }
+};
+function fgsT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = FGS_STRINGS[lang] || FGS_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : FGS_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/sudden-colour-loss-fish.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle one-factor/all-factors — NOT a line chart, a
+   stacked threshold bar. A vertical bar starts at a baseline oxygen
+   level (100, arbitrary units) and is drawn down to the remaining
+   level after subtracting the active factors' deductions, with a
+   dashed "gasping threshold" line at 45. In "one factor" mode only
+   warm water is active (small deduction, stays well above the line).
+   In "all factors combined" mode, all four factors from this module's
+   own text are active and their deductions stack, crossing below the
+   threshold. Deliberately simplified/illustrative numbers — the point
+   is that no single factor is dramatic, but the sum is. Mirrors this
+   module's own line: "Each factor individually may not produce
+   gasping. Combined, they can drop dissolved oxygen below the
+   tolerance threshold." ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var mode = 'single'; /* single | combined */
+
+  var factors = [
+    { key: 'v2_fTemp',    deduct: 18 },
+    { key: 'v2_fAlgae',   deduct: 15 },
+    { key: 'v2_fBioload', deduct: 12 },
+    { key: 'v2_fFlow',    deduct: 20 }
+  ];
+  var baseline = 100, threshold = 45;
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="fgs-single">' + fgsT('v2_single') + '</button>'
+    +'<button class="vis-btn" id="fgs-combined">' + fgsT('v2_combined') + '</button></div>'
+    +'<div class="vc-hint">' + fgsT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('fgs-single').className = 'vis-btn' + (m==='single' ? ' vis-btn-active' : '');
+    document.getElementById('fgs-combined').className = 'vis-btn' + (m==='combined' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('fgs-single').addEventListener('click', function(){ setMode('single'); });
+  document.getElementById('fgs-combined').addEventListener('click', function(){ setMode('combined'); });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var active = mode === 'single' ? [factors[0]] : factors;
+    var totalDeduct = active.reduce(function(s,f){ return s+f.deduct; }, 0);
+    var remaining = baseline - totalDeduct;
+
+    var barX = W*0.28, barW = Math.min(W*0.22, 60);
+    var pT = 30, pB = 56;
+    var barH = H - pT - pB;
+    var below = remaining < threshold;
+    var col = below ? 'rgba(220,100,60,' : 'rgba(80,200,120,';
+
+    /* Bar background (full scale) */
+    ctx.fillStyle = vcInk(.06);
+    ctx.fillRect(barX, pT, barW, barH);
+
+    /* Filled remaining oxygen */
+    var filledH = (remaining/baseline) * barH;
+    ctx.fillStyle = col + '.75)';
+    ctx.fillRect(barX, pT + barH - filledH, barW, filledH);
+    ctx.strokeStyle = col + '1)'; ctx.lineWidth = 1.4;
+    ctx.strokeRect(barX, pT, barW, barH);
+
+    /* Threshold dashed line */
+    var yThresh = pT + barH - (threshold/baseline)*barH;
+    ctx.strokeStyle = vcInk(.4); ctx.lineWidth = 1; ctx.setLineDash([4,3]);
+    ctx.beginPath(); ctx.moveTo(barX-8, yThresh); ctx.lineTo(barX+barW+130, yThresh); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = vcInk(.5); ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(fgsT('v2_threshold'), barX+barW+8, yThresh-4);
+
+    /* Value label above bar */
+    ctx.fillStyle = vcInk(.6); ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(Math.round(remaining), barX+barW/2, pT - 8);
+
+    /* Active factor list to the right */
+    ctx.textAlign = 'left'; ctx.font = '9px sans-serif';
+    factors.forEach(function(f, i){
+      var isActive = active.indexOf(f) !== -1;
+      var y = pT + 16 + i*18;
+      ctx.fillStyle = isActive ? (col + '1)') : vcInk(.25);
+      ctx.fillText((isActive ? '● ' : '○ ') + fgsT(f.key), barX+barW+8, y);
+    });
+
+    /* Bottom label */
+    ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(fgsT('v2_oxygen'), barX+barW/2, H-16);
+
+    /* Caption */
+    var cap = mode === 'single' ? fgsT('v2_captionSingle') : fgsT('v2_captionCombined');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
 
 </script>
 

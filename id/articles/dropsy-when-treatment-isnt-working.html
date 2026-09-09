@@ -89,6 +89,19 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -244,6 +257,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Perbedaan ini penting karena merawat ikan tahap lanjut dengan urgensi dan harapan yang sama seperti ikan tahap awal bisa memperpanjang prosesnya tanpa benar-benar mengubah ke mana ia berakhir. Ini dua situasi berbeda, dan keduanya butuh respons yang berbeda — bukan respons yang sama, dicoba lebih keras.</p>
     </div>
 
+    <!-- VISUAL: Toggle early/late — the same condition read at two different stages -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="pq">
       <p>Dropsy tak menguji seberapa keras sebuah perawatan dicoba. Ia menguji seberapa banyak fungsi organ yang masih tersisa sebelum perawatan itu dimulai.</p>
     </div>
@@ -312,6 +330,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -330,6 +349,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -337,6 +357,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -360,6 +381,176 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as CEF_STRINGS/cefT() in articles/cloudy-eyes-fish.html.
+   This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep DTW_STRINGS.en/.id/.ja key
+   sets identical when editing. Kept deliberately plain/clinical in
+   tone (no playful framing) given the subject matter of this article
+   — see CLAUDE.md's tone-family guidance for reflective content. */
+var DTW_STRINGS = {
+  en: {
+    v2_early: 'Early',
+    v2_late: 'Late',
+    v2_hint: 'the same condition, read at two different stages',
+    v2_captionEarly: 'Mild swelling, scales still mostly flat — this is the stage where a structured treatment attempt is reasonable.',
+    v2_captionLate: 'Full pinecone scales, a curved spine — sources describe organ damage as extensive and recovery as rare at this stage, regardless of what is tried.'
+  },
+  id: {
+    v2_early: 'Awal',
+    v2_late: 'Lanjut',
+    v2_hint: 'kondisi yang sama, dibaca pada dua tahap berbeda',
+    v2_captionEarly: 'Bengkak ringan, sisik masih sebagian besar rata — ini tahap di mana upaya pengobatan terstruktur masuk akal.',
+    v2_captionLate: 'Sisik "pinecone" penuh, tulang punggung melengkung — sumber menggambarkan kerusakan organ sebagai luas dan pemulihan sebagai jarang terjadi pada tahap ini, apa pun yang dicoba.'
+  },
+  ja: {
+    v2_early: '初期',
+    v2_late: '進行期',
+    v2_hint: '同じ症状を、二つの異なる段階で見る',
+    v2_captionEarly: '軽い腫れで、鱗はまだほぼ平ら — この段階なら、体系立てた治療を試みる意味がある。',
+    v2_captionLate: '松かさ状に開いた鱗、曲がった背骨 — この段階では、何を試しても臓器の損傷は広範囲で回復はまれだと資料は伝えている。'
+  }
+};
+function dtwT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = DTW_STRINGS[lang] || DTW_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : DTW_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/cloudy-eyes-fish.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle early/late — a body-shape diagram, not a chart.
+   A fish silhouette is drawn along a spine curve; small triangular
+   "scale" marks are placed along the body outline, standing out from
+   the body at an angle that increases with stage. Early: a nearly
+   straight spine, scales close to flat. Late: a visibly bowed spine
+   and scales standing out at a pronounced angle (the "pinecone"
+   look). Deliberately plain and clinical — this is a stage-reading
+   aid, not a gamified comparison, given the subject matter. Mirrors
+   this module's own line: "mild swelling, scales still mostly flat"
+   versus "full pinecone scales, a curved spine." ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var mode = 'early'; /* early | late */
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="dtw-early">' + dtwT('v2_early') + '</button>'
+    +'<button class="vis-btn" id="dtw-late">' + dtwT('v2_late') + '</button></div>'
+    +'<div class="vc-hint">' + dtwT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('dtw-early').className = 'vis-btn' + (m==='early' ? ' vis-btn-active' : '');
+    document.getElementById('dtw-late').className = 'vis-btn' + (m==='late' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('dtw-early').addEventListener('click', function(){ setMode('early'); });
+  document.getElementById('dtw-late').addEventListener('click', function(){ setMode('late'); });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var cx = W/2, cy = H/2;
+    var bodyW = Math.min(W*0.55, 220), bodyH = Math.min(H*0.42, 90);
+    var bow = mode === 'late' ? bodyH*0.28 : bodyH*0.04;
+    var scaleAngle = mode === 'late' ? 0.62 : 0.08;
+    var col = mode === 'early' ? 'rgba(80,200,120,' : 'rgba(220,100,60,';
+
+    /* Body outline — a simple ellipse with a slight vertical bow applied via scale/translate */
+    ctx.save();
+    ctx.translate(cx, cy + bow*0.15);
+    ctx.beginPath();
+    ctx.ellipse(0, 0, bodyW/2, bodyH/2 + bow, 0, 0, Math.PI*2);
+    ctx.fillStyle = vcLight() ? 'rgba(180,170,150,.4)' : 'rgba(120,110,95,.38)';
+    ctx.fill();
+    ctx.strokeStyle = col + '.85)'; ctx.lineWidth = 1.6; ctx.stroke();
+    ctx.restore();
+
+    /* Scale marks around the body, standing out at scaleAngle */
+    var rows = 3, cols = 9;
+    for (var r=0; r<rows; r++) {
+      var ry = cy + (r - (rows-1)/2) * (bodyH*0.5);
+      for (var col2=0; col2<cols; col2++) {
+        var t = col2/(cols-1);
+        var sx = cx + (t*2-1) * (bodyW*0.42);
+        var baseLen = 5;
+        var len = baseLen + scaleAngle*10;
+        var dx = Math.sin(scaleAngle) * len;
+        var dy = -Math.cos(scaleAngle) * len;
+        ctx.beginPath();
+        ctx.moveTo(sx, ry);
+        ctx.lineTo(sx + dx*0.4, ry + dy);
+        ctx.strokeStyle = col + '.75)'; ctx.lineWidth = 1.3; ctx.stroke();
+      }
+    }
+
+    /* Caption */
+    var cap = mode === 'early' ? dtwT('v2_captionEarly') : dtwT('v2_captionLate');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
 
 </script>
 

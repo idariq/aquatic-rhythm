@@ -89,6 +89,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -244,6 +256,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p><strong>Territory and zone overlap:</strong> Fish that need the same physical space will compete for it even if they never visibly fight. Cichlids that are nominally "peaceful" will establish territories that stress other bottom-dwellers. Too many fish of the same mid-water species creates a crowd that none of them can escape.</p>
       <p><strong>Feeding competition:</strong> Fast fish eat before slow fish. Messy eaters cloud the water with particles that stress fish with sensitive gills. Surface feeders out-compete mid-column feeders. If one species always has round, full bellies and another always looks thin, the feeding dynamic is likely the pressure driving it.</p>
       <p><strong>Size disparity over time:</strong> Fish grow. A 2cm juvenile and a 6cm juvenile are compatible today. At 4cm and 12cm, one is a predator and one is prey. Stocking a community tank based on current size rather than adult size is one of the most common causes of community breakdown six months in.</p>
+    </div>
+
+    <!-- VISUAL: Step through months — matched adult size vs a predator/prey mismatch -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+    </div>
+
+    <div class="mod-body">
       <p><strong>Activity level mismatch:</strong> A highly active, fast-moving schooling fish (danios, barbs) creates a hyperactive environment that stresses slow, deliberate fish (bettas, gouramis, many catfish). The active fish aren't doing anything wrong — they are just creating an ecological pace that the slower fish find persistently aversive.</p>
     </div>
 
@@ -327,6 +347,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -345,6 +366,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -352,6 +374,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -375,6 +398,192 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as BFB_STRINGS/bfbT() in articles/betta-fish-behaviour.html.
+   This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep CFT_STRINGS.en/.id/.ja key
+   sets identical when editing. */
+var CFT_STRINGS = {
+  en: {
+    v2_matched: 'Matched adult size',
+    v2_mismatch: 'Predator/prey mismatch',
+    v2_advance: '+2 months →',
+    v2_reset: 'Reset',
+    v2_hint: 'the same two 2cm juveniles today — watch them grow',
+    v2_month: 'Month',
+    v2_captionMatched: 'Both fish reach a similar adult size — still sharing the same space comfortably six months on.',
+    v2_captionMismatch: 'Compatible as juveniles, but the gap keeps widening — six months in, one is now a predator-sized threat to the other.'
+  },
+  id: {
+    v2_matched: 'Ukuran dewasa serupa',
+    v2_mismatch: 'Tidak cocok predator/mangsa',
+    v2_advance: '+2 bulan →',
+    v2_reset: 'Ulang',
+    v2_hint: 'dua juvenil 2cm yang sama hari ini — perhatikan mereka tumbuh',
+    v2_month: 'Bulan',
+    v2_captionMatched: 'Kedua ikan mencapai ukuran dewasa yang serupa — masih berbagi ruang yang sama dengan nyaman enam bulan kemudian.',
+    v2_captionMismatch: 'Cocok sebagai juvenil, tapi jaraknya terus melebar — enam bulan kemudian, satu kini menjadi ancaman sebesar predator bagi yang lain.'
+  },
+  ja: {
+    v2_matched: '成魚サイズが近い',
+    v2_mismatch: '捕食者と被食者のミスマッチ',
+    v2_advance: '+2ヶ月 →',
+    v2_reset: 'リセット',
+    v2_hint: '今日は同じ2cmの幼魚2匹 — 成長を見てみましょう',
+    v2_month: 'ヶ月目',
+    v2_captionMatched: '両方とも似たような成魚サイズに達する — 6ヶ月後も同じ空間を無理なく共有できている。',
+    v2_captionMismatch: '幼魚のころは相性が良かったが、差はどんどん広がる — 6ヶ月後には、一方がもう一方にとって捕食者サイズの脅威になっている。'
+  }
+};
+function cftT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = CFT_STRINGS[lang] || CFT_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : CFT_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/betta-fish-behaviour.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle matched/mismatch + step months with a button —
+   NOT a chart, two fish silhouettes drawn to scale. Both start at
+   2cm. In "matched" mode both grow to a similar adult size (~8cm) by
+   month 6. In "mismatch" mode one grows to 12cm (predator-sized)
+   while the other only reaches 4cm (still prey-sized), so the two
+   silhouettes visibly diverge as the month marker advances.
+   Deliberately simplified/illustrative growth curves — the point is
+   that the SAME starting pair can look identical today and diverge
+   completely by month six, which a compatibility chart checked only
+   once would never catch. Mirrors this module's own line: "A 2cm
+   juvenile and a 6cm juvenile are compatible today. At 4cm and 12cm,
+   one is a predator and one is prey." ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var mode = 'matched'; /* matched | mismatch */
+  var month = 0;
+  var maxMonth = 6;
+
+  function sizeA(m) { return 2 + (m/maxMonth) * (mode === 'matched' ? 6 : 10); }
+  function sizeB(m) { return 2 + (m/maxMonth) * (mode === 'matched' ? 6 : 2); }
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="cft-matched">' + cftT('v2_matched') + '</button>'
+    +'<button class="vis-btn" id="cft-mismatch">' + cftT('v2_mismatch') + '</button></div>'
+    +'<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.3rem 0">'
+    +'<button class="vis-btn" id="cft-advance">' + cftT('v2_advance') + '</button>'
+    +'<button class="vis-btn" id="cft-reset">' + cftT('v2_reset') + '</button></div>'
+    +'<div class="vc-hint">' + cftT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('cft-matched').className = 'vis-btn' + (m==='matched' ? ' vis-btn-active' : '');
+    document.getElementById('cft-mismatch').className = 'vis-btn' + (m==='mismatch' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('cft-matched').addEventListener('click', function(){ setMode('matched'); });
+  document.getElementById('cft-mismatch').addEventListener('click', function(){ setMode('mismatch'); });
+  document.getElementById('cft-advance').addEventListener('click', function(){ month = Math.min(month+2, maxMonth); draw(); });
+  document.getElementById('cft-reset').addEventListener('click', function(){ month = 0; draw(); });
+
+  function drawFish(cx, cy, lenPx, col) {
+    var h = lenPx*0.42;
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, lenPx/2, h/2, 0, 0, Math.PI*2);
+    ctx.fillStyle = col + '.35)';
+    ctx.fill();
+    ctx.strokeStyle = col + '.9)'; ctx.lineWidth = 1.6; ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx - lenPx/2, cy);
+    ctx.lineTo(cx - lenPx/2 - h*0.55, cy - h*0.45);
+    ctx.lineTo(cx - lenPx/2 - h*0.55, cy + h*0.45);
+    ctx.closePath();
+    ctx.fillStyle = col + '.35)'; ctx.fill();
+    ctx.strokeStyle = col + '.9)'; ctx.lineWidth = 1.6; ctx.stroke();
+  }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pxPerCm = Math.min(W*0.045, 16);
+    var aLen = sizeA(month) * pxPerCm;
+    var bLen = sizeB(month) * pxPerCm;
+    var baseY = H/2 + 10;
+
+    drawFish(W*0.35, baseY, aLen, 'rgba(220,100,60,');
+    drawFish(W*0.68, baseY, bLen, 'rgba(80,200,120,');
+
+    ctx.fillStyle = vcInk(.55); ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(sizeA(month).toFixed(1) + 'cm', W*0.35, baseY + Math.max(aLen,bLen)*0.42 + 18);
+    ctx.fillText(sizeB(month).toFixed(1) + 'cm', W*0.68, baseY + Math.max(aLen,bLen)*0.42 + 18);
+
+    ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(cftT('v2_month') + ' ' + month, W-12, 22);
+
+    /* Caption */
+    var cap = mode === 'matched' ? cftT('v2_captionMatched') : cftT('v2_captionMismatch');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
 
 </script>
 

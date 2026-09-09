@@ -75,6 +75,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-title em{font-style:italic;color:var(--th-accent)}
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}.mod-body strong{font-weight:400;color:var(--th-ink)}.mod-body em{font-style:italic;color:var(--th-ink-3)}
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 .hn{margin:2rem 0;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2);position:relative}
@@ -242,6 +254,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">時間と周囲の様子のほうが、<br><em>色そのものより重要です。</em></h2>
     <div class="mod-body">
       <p>どんな色の変化に対しても最も役立つ問いは、それがどれくらい続くかです。明らかに驚くような出来事の直後に現れ、一、二時間で消えていく変化は、ほぼ確実に驚愕反応です。魚が落ち着くのを待つ以外、何もする必要はありません。はっきりした引き金もないのに丸一日以上続く変化は、一時的なものではなく、何か持続的なことを示しています。</p>
+    </div>
+
+    <!-- VISUAL: Step through hours — the fish's own colour recovering, or not -->
+    <div class="vis-block">
+      <canvas id="cv3" style="width:100%;height:220px"></canvas>
+    </div>
+
+    <div class="mod-body">
       <p>色だけでは全体像がわからないことが多いので、それと一緒に何が起きているかを確認してください。魚はいつもどおり餌を食べていますか。いつもの元気さで水槽全体を使って泳いでいますか。ヒレは無傷でたたまれていませんか。色の変化がこうしたほかの変化を伴っている場合、色だけよりも強いサインです。水質、病気、あるいは攻撃性が原因である可能性を、より明確に示しています。</p>
       <p>ほかに何を観察していても、アンモニア、亜硝酸塩、硝酸塩、水温は検査してください。水質は持続的な色の変化の最も一般的な原因のひとつであり、最も早く肯定または否定できるものでもあります。</p>
     </div>
@@ -303,6 +323,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -321,6 +342,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -328,6 +350,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -351,6 +374,206 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as FFS_STRINGS/ffsT() in
+   articles/fish-flashing-scratching.html. This script block is
+   copied byte-for-byte into id/articles + ja/articles by
+   build-i18n.mjs, so the runtime lang check is what actually
+   localises the widget — keep SCL_STRINGS.en/.id/.ja key sets
+   identical when editing. */
+var SCL_STRINGS = {
+  en: {
+    v3_fright: 'Brief fright',
+    v3_sustained: 'Sustained stress',
+    v3_advance: '+2 hours →',
+    v3_reset: 'Reset',
+    v3_hint: 'the same starting fade — watch the colour itself, not a chart',
+    v3_hour: 'Hour',
+    v3_captionFright: 'Back to normal colour within an hour or two — a brief startle, nothing more.',
+    v3_captionSustained: 'Still faded a full day later — that duration is what separates a startle from something ongoing.'
+  },
+  id: {
+    v3_fright: 'Kaget sesaat',
+    v3_sustained: 'Stres berkelanjutan',
+    v3_advance: '+2 jam →',
+    v3_reset: 'Ulang',
+    v3_hint: 'pudar awal yang sama — perhatikan warnanya sendiri, bukan carta',
+    v3_hour: 'Jam',
+    v3_captionFright: 'Kembali ke warna normal dalam satu-dua jam — sekadar kaget sesaat, tidak lebih.',
+    v3_captionSustained: 'Masih pudar sehari penuh kemudian — durasi itulah yang membedakan kaget sesaat dari sesuatu yang berkelanjutan.'
+  },
+  ja: {
+    v3_fright: '一時的な驚き',
+    v3_sustained: '持続的なストレス',
+    v3_advance: '+2時間 →',
+    v3_reset: 'リセット',
+    v3_hint: '最初の色あせは同じ — グラフではなく色そのものを見てください',
+    v3_hour: '時間目',
+    v3_captionFright: '1〜2時間で通常の色に戻る — ただの一時的な驚きで、それ以上ではない。',
+    v3_captionSustained: '丸一日経ってもまだ色あせたまま — その持続時間こそが、一時的な驚きと持続的な問題を分ける違いだ。'
+  }
+};
+function sclT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = SCL_STRINGS[lang] || SCL_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : SCL_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/fish-flashing-scratching.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+function lerp(a,b,t){ return a+(b-a)*t; }
+
+/* ── VISUAL: Step through hours with a button — NOT a line chart, a
+   colour-recovery illustration. A fish silhouette's own fill colour
+   is interpolated between a faded/pale tone and a normal vivid tone,
+   driven directly by the recovery fraction at the current hour
+   marker. Fright: fast exponential recovery (short half-life), fully
+   settled within ~2 hours. Sustained stress: very slow recovery,
+   still visibly faded a full day later. Deliberately shows the
+   colour itself changing rather than plotting a value — the subject
+   of this module IS colour, so the widget renders it directly.
+   Mirrors this module's own line: "A shift that appears right after
+   an obvious startling event and fades within an hour or two ... A
+   shift that persists for a full day or longer ... points toward
+   something ongoing." ── */
+canvases[3] = function() {
+  stopAnim('cv3');
+  var c = resizeCanvas('cv3'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var mode = 'fright'; /* fright | sustained */
+  var hour = 0;
+  var maxHour = 24;
+
+  function recoveryFrac(h, m) {
+    var halfLife = m === 'fright' ? 0.5 : 40;
+    return 1 - Math.exp(-h / halfLife);
+  }
+
+  var faded = [200, 195, 185];
+  var normal = [225, 130, 55];
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="scl-fright">' + sclT('v3_fright') + '</button>'
+    +'<button class="vis-btn" id="scl-sustained">' + sclT('v3_sustained') + '</button></div>'
+    +'<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.3rem 0">'
+    +'<button class="vis-btn" id="scl-advance">' + sclT('v3_advance') + '</button>'
+    +'<button class="vis-btn" id="scl-reset">' + sclT('v3_reset') + '</button></div>'
+    +'<div class="vc-hint">' + sclT('v3_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('scl-fright').className = 'vis-btn' + (m==='fright' ? ' vis-btn-active' : '');
+    document.getElementById('scl-sustained').className = 'vis-btn' + (m==='sustained' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('scl-fright').addEventListener('click', function(){ setMode('fright'); });
+  document.getElementById('scl-sustained').addEventListener('click', function(){ setMode('sustained'); });
+  document.getElementById('scl-advance').addEventListener('click', function(){ hour = Math.min(hour+2, maxHour); draw(); });
+  document.getElementById('scl-reset').addEventListener('click', function(){ hour = 0; draw(); });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var frac = recoveryFrac(hour, mode);
+    var r = lerp(faded[0], normal[0], frac);
+    var g = lerp(faded[1], normal[1], frac);
+    var b = lerp(faded[2], normal[2], frac);
+    var fishCol = 'rgb(' + Math.round(r) + ',' + Math.round(g) + ',' + Math.round(b) + ')';
+
+    var cx = W/2, cy = H/2 - 4;
+    var bw = Math.min(W*0.5, 200), bh = Math.min(H*0.34, 78);
+
+    /* Body */
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, bw/2, bh/2, 0, 0, Math.PI*2);
+    ctx.fillStyle = fishCol;
+    ctx.fill();
+    ctx.strokeStyle = vcInk(.2); ctx.lineWidth = 1; ctx.stroke();
+
+    /* Tail */
+    ctx.beginPath();
+    ctx.moveTo(cx - bw/2, cy);
+    ctx.lineTo(cx - bw/2 - bh*0.55, cy - bh*0.45);
+    ctx.lineTo(cx - bw/2 - bh*0.55, cy + bh*0.45);
+    ctx.closePath();
+    ctx.fillStyle = fishCol;
+    ctx.fill();
+    ctx.strokeStyle = vcInk(.2); ctx.lineWidth = 1; ctx.stroke();
+
+    /* Eye */
+    ctx.beginPath();
+    ctx.arc(cx + bw*0.28, cy - bh*0.08, bh*0.09, 0, Math.PI*2);
+    ctx.fillStyle = vcInk(.7);
+    ctx.fill();
+
+    /* Hour readout */
+    ctx.fillStyle = vcInk(.45); ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(sclT('v3_hour') + ' ' + hour, W-12, 22);
+
+    /* Caption */
+    var cap = mode === 'fright' ? sclT('v3_captionFright') : sclT('v3_captionSustained');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv3 = draw;
+  draw();
+};
 
 </script>
 

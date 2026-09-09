@@ -89,6 +89,19 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -231,6 +244,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p><strong>pH and KH stability across time.</strong> A single pH reading can look fine even if pH crashes at night, common in planted tanks without CO2 buffering, or drifts significantly between water changes. A snapshot reading and a stable reading are different things.</p>
     </div>
 
+    <!-- VISUAL: Toggle daily-test-log/full-day-monitoring — same tank, same swing -->
+    <div class="vis-block">
+      <canvas id="cv1" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="pq">
       <p>Parameters measure the water at the moment you test it. Your fish are measuring the water all day, every day. Those are different things.</p>
     </div>
@@ -359,6 +377,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -377,6 +396,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -384,6 +404,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -396,6 +417,7 @@ function startLearning() {
   window.scrollTo({ top: 0, behavior: 'auto' });
   var first = document.getElementById('mod-1');
   if (first) { first.classList.add('active'); setTimeout(function(){ first.classList.add('visible'); }, 30); }
+  if (canvases[1]) setTimeout(function(){ canvases[1](); }, 150);
   updateDots();
 }
 
@@ -407,6 +429,212 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as WFD_STRINGS/wfdT() in articles/white-fuzz-driftwood.html.
+   This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep PPFD_STRINGS.en/.id/.ja key
+   sets identical when editing. */
+var PPFD_STRINGS = {
+  en: {
+    v1_testkit: 'Daily test log (9am)',
+    v1_actual: 'What is actually happening',
+    v1_hint: 'same tank, same swing — only how often you look differs',
+    v1_captionTestkit: 'Same test, same time, three days running — the log looks steady. That is not because the water is steady.',
+    v1_captionActual: 'The full picture shows what the daily test never catches: a swing of several degrees, every single day.',
+    hoursAxis: 'Hours →',
+    v1_temp: 'Temp (°C)'
+  },
+  id: {
+    v1_testkit: 'Log tes harian (jam 9 pagi)',
+    v1_actual: 'Apa yang sebenarnya terjadi',
+    v1_hint: 'akuarium sama, fluktuasi sama — hanya seberapa sering Anda memeriksa yang berbeda',
+    v1_captionTestkit: 'Tes yang sama, jam yang sama, tiga hari berturut-turut — catatannya terlihat stabil. Itu bukan karena airnya stabil.',
+    v1_captionActual: 'Gambaran penuhnya menunjukkan apa yang tak pernah tertangkap oleh tes harian: fluktuasi beberapa derajat, setiap hari.',
+    hoursAxis: 'Jam →',
+    v1_temp: 'Suhu (°C)'
+  },
+  ja: {
+    v1_testkit: '毎日の検査記録(朝9時)',
+    v1_actual: '実際に起きていること',
+    v1_hint: '同じ水槽、同じ変動 — 違うのはどれくらいの頻度で見ているかだけ',
+    v1_captionTestkit: '同じ検査、同じ時間、3日連続 — 記録は安定して見える。それは水が安定しているからではない。',
+    v1_captionActual: '全体像を見ると、毎日の検査では絶対に捉えられないものが分かる — 毎日数度も変動しているのだ。',
+    hoursAxis: '時間 →',
+    v1_temp: '水温(°C)'
+  }
+};
+function ppfdT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = PPFD_STRINGS[lang] || PPFD_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : PPFD_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/white-fuzz-driftwood.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle daily-test-log/what's-actually-happening — the
+   SAME underlying temperature swing (a repeating daily sine curve,
+   peak mid-afternoon, trough overnight) plotted across 3 days. In the
+   "daily test log" view, only the 9am sample each day is drawn,
+   producing a nearly flat line because 9am always lands at roughly
+   the same point in the daily cycle. In the "actual" view, the full
+   continuous curve is drawn, showing the real swing the single daily
+   test never catches. Deliberately simplified/illustrative math (one
+   sine wave, arbitrary °C scale) — the point is that a stable-looking
+   LOG is not the same as a stable TANK, not a precise thermal model.
+   Mirrors this module's own line: "Parameters measure the water at
+   the moment you test it. Your fish are measuring the water all day,
+   every day." ── */
+canvases[1] = function() {
+  stopAnim('cv1');
+  var c = resizeCanvas('cv1'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var totalHours = 72; /* 3 days */
+  var mode = 'testkit'; /* testkit | actual */
+
+  function tempAt(hour) {
+    return 25 + 2.2 * Math.sin((hour - 15) * (2*Math.PI/24));
+  }
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="ppfd-testkit">' + ppfdT('v1_testkit') + '</button>'
+    +'<button class="vis-btn" id="ppfd-actual">' + ppfdT('v1_actual') + '</button></div>'
+    +'<div class="vc-hint">' + ppfdT('v1_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('ppfd-testkit').className = 'vis-btn' + (m==='testkit' ? ' vis-btn-active' : '');
+    document.getElementById('ppfd-actual').className = 'vis-btn' + (m==='actual' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('ppfd-testkit').addEventListener('click', function(){ setMode('testkit'); });
+  document.getElementById('ppfd-actual').addEventListener('click', function(){ setMode('actual'); });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 34, pR = 12, pT = 18, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB, minV = 22, maxV = 28;
+
+    /* Grid */
+    [22,24,26,28].forEach(function(v){
+      var y = pT + gH - ((v-minV)/(maxV-minV))*gH;
+      ctx.strokeStyle = vcInk(.08); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(pL, y); ctx.lineTo(pL+gW, y); ctx.stroke();
+      ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(v, pL-6, y+3);
+    });
+
+    /* Day boundary markers */
+    [24,48].forEach(function(h){
+      var x = pL + (h/totalHours)*gW;
+      ctx.strokeStyle = vcInk(.12); ctx.lineWidth = 1; ctx.setLineDash([2,3]);
+      ctx.beginPath(); ctx.moveTo(x, pT); ctx.lineTo(x, pT+gH); ctx.stroke();
+      ctx.setLineDash([]);
+    });
+
+    var col = mode === 'testkit' ? 'rgba(80,200,120,' : 'rgba(220,100,60,';
+
+    if (mode === 'actual') {
+      ctx.strokeStyle = col + '.95)'; ctx.lineWidth = 2; ctx.beginPath();
+      for (var h=0; h<=totalHours; h+=0.5) {
+        var v = tempAt(h);
+        var x = pL + (h/totalHours)*gW, y = pT + gH - ((v-minV)/(maxV-minV))*gH;
+        if (h===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    } else {
+      /* Only the 9am sample each day, connected + marked */
+      var sampleHours = [9, 33, 57];
+      ctx.strokeStyle = col + '.85)'; ctx.lineWidth = 2; ctx.setLineDash([5,3]);
+      ctx.beginPath();
+      sampleHours.forEach(function(h,i){
+        var v = tempAt(h);
+        var x = pL + (h/totalHours)*gW, y = pT + gH - ((v-minV)/(maxV-minV))*gH;
+        if (i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      });
+      ctx.stroke();
+      ctx.setLineDash([]);
+      sampleHours.forEach(function(h){
+        var v = tempAt(h);
+        var x = pL + (h/totalHours)*gW, y = pT + gH - ((v-minV)/(maxV-minV))*gH;
+        ctx.fillStyle = col + '1)'; ctx.beginPath(); ctx.arc(x,y,3.5,0,Math.PI*2); ctx.fill();
+      });
+    }
+
+    /* X-axis label */
+    ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(ppfdT('hoursAxis'), pL+gW/2, H-8);
+    ctx.save();
+    ctx.translate(12, pT+gH/2); ctx.rotate(-Math.PI/2);
+    ctx.fillStyle = vcInk(.35); ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(ppfdT('v1_temp'), 0, 0);
+    ctx.restore();
+
+    /* Caption */
+    var cap = mode === 'testkit' ? ppfdT('v1_captionTestkit') : ppfdT('v1_captionActual');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv1 = draw;
+  draw();
+};
 
 </script>
 

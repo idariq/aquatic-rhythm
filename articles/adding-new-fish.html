@@ -89,6 +89,19 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -268,6 +281,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>New fish not eating for the first two to three days is normal — they are stressed and orienting. Not eating past five to seven days warrants attention. Observe before acting. Most disruptions resolve without intervention if the keeper rhythm (feeding, water changes) remains consistent during the window.</p>
     </div>
 
+    <!-- VISUAL: Toggle settling/not-settling — same disruption at day 0, different day-7-onward -->
+    <div class="vis-block">
+      <canvas id="cv3" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="pq">
       <p>"The disruption window asks one thing of the keeper: consistency. Keeping the feeding schedule, lighting, and water change rhythm stable through this period is the highest-value thing to do — the biology is already working hard without any new variables added."</p>
     </div>
@@ -321,6 +339,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -339,6 +358,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -346,6 +366,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -369,6 +390,207 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as PPFD_STRINGS/ppfdT() in
+   articles/perfect-parameters-fish-dying.html. This script block is
+   copied byte-for-byte into id/articles + ja/articles by
+   build-i18n.mjs, so the runtime lang check is what actually
+   localises the widget — keep ANF_STRINGS.en/.id/.ja key sets
+   identical when editing. */
+var ANF_STRINGS = {
+  en: {
+    v3_settling: 'Settling (normal)',
+    v3_notSettling: 'Not settling',
+    v3_hint: 'same disruption at day 0 — what happens after day 7 differs',
+    v3_captionSettling: 'By day 7, the signal is already fading toward baseline on its own — this is the disruption window doing what it is supposed to do.',
+    v3_captionNotSettling: 'Still elevated well past day 7 — this is the kind of pattern the module says is worth a closer look, not more waiting.',
+    daysAxis: 'Days since introduction →',
+    v3_day7: 'day 7',
+    v3_signal: 'Disruption signal'
+  },
+  id: {
+    v3_settling: 'Mereda (normal)',
+    v3_notSettling: 'Tidak mereda',
+    v3_hint: 'gangguan awal sama di hari 0 — yang beda adalah apa yang terjadi setelah hari ke-7',
+    v3_captionSettling: 'Pada hari ke-7, sinyalnya sudah mulai memudar dengan sendirinya menuju garis dasar — ini persis yang seharusnya terjadi selama masa gangguan.',
+    v3_captionNotSettling: 'Masih tinggi jauh melewati hari ke-7 — ini pola yang menurut modul ini layak diperhatikan lebih dekat, bukan sekadar ditunggu lagi.',
+    daysAxis: 'Hari sejak pengenalan →',
+    v3_day7: 'hari ke-7',
+    v3_signal: 'Sinyal gangguan'
+  },
+  ja: {
+    v3_settling: '落ち着く(正常)',
+    v3_notSettling: '落ち着かない',
+    v3_hint: '0日目の混乱は同じ — 違うのは7日目以降に何が起こるか',
+    v3_captionSettling: '7日目までに、シグナルはすでに自然と基準値へ向かって薄れ始めている — これはこの混乱期がまさに果たすべき役割どおりだ。',
+    v3_captionNotSettling: '7日目を過ぎてもまだ高いまま — このモジュールが「もっと待つのではなく、よく見るべきパターン」と言っているのはこれだ。',
+    daysAxis: '導入からの日数 →',
+    v3_day7: '7日目',
+    v3_signal: '混乱シグナル'
+  }
+};
+function anfT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = ANF_STRINGS[lang] || ANF_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : ANF_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/perfect-parameters-fish-dying.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle settling/not-settling — both scenarios start at
+   the same peak disruption level on day 0, but decay at very
+   different rates: the "settling" curve fades quickly toward baseline
+   (an exponential decay with a short half-life), the "not settling"
+   curve decays far more slowly and is still clearly elevated at day
+   14. Deliberately simplified/illustrative math (a single combined
+   "disruption signal" on an arbitrary 0-100 scale, standing in for
+   chasing/hiding/ammonia together) — the point is the SHAPE of a
+   normal resolution versus a stalled one, not a precise behavioural
+   model. Mirrors this module's own repeated day-5-to-7 threshold for
+   "warrants attention." ── */
+canvases[3] = function() {
+  stopAnim('cv3');
+  var c = resizeCanvas('cv3'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var totalDays = 14;
+  var mode = 'settling'; /* settling | notSettling */
+
+  function valueAt(day, m) {
+    if (m === 'settling') return 20 + 80 * Math.exp(-day/4);
+    return 20 + 80 * Math.exp(-day/10);
+  }
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="anf-settling">' + anfT('v3_settling') + '</button>'
+    +'<button class="vis-btn" id="anf-notsettling">' + anfT('v3_notSettling') + '</button></div>'
+    +'<div class="vc-hint">' + anfT('v3_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('anf-settling').className = 'vis-btn' + (m==='settling' ? ' vis-btn-active' : '');
+    document.getElementById('anf-notsettling').className = 'vis-btn' + (m==='notSettling' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('anf-settling').addEventListener('click', function(){ setMode('settling'); });
+  document.getElementById('anf-notsettling').addEventListener('click', function(){ setMode('notSettling'); });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 34, pR = 12, pT = 18, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB, maxV = 100;
+
+    /* Grid */
+    [0,25,50,75,100].forEach(function(v){
+      var y = pT + gH - (v/maxV)*gH;
+      ctx.strokeStyle = vcInk(.08); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(pL, y); ctx.lineTo(pL+gW, y); ctx.stroke();
+      ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(v, pL-6, y+3);
+    });
+
+    /* Baseline reference at 20 */
+    var yBase = pT + gH - (20/maxV)*gH;
+    ctx.strokeStyle = vcInk(.25); ctx.lineWidth = 1; ctx.setLineDash([4,3]);
+    ctx.beginPath(); ctx.moveTo(pL, yBase); ctx.lineTo(pL+gW, yBase); ctx.stroke();
+    ctx.setLineDash([]);
+
+    /* Day 7 marker */
+    var x7 = pL + (7/totalDays)*gW;
+    ctx.strokeStyle = vcInk(.3); ctx.lineWidth = 1; ctx.setLineDash([3,3]);
+    ctx.beginPath(); ctx.moveTo(x7, pT); ctx.lineTo(x7, pT+gH); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = vcInk(.45); ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(anfT('v3_day7'), x7, pT - 6);
+
+    /* Curve for active scenario */
+    var col = mode === 'settling' ? 'rgba(80,200,120,' : 'rgba(220,100,60,';
+    ctx.strokeStyle = col + '.95)'; ctx.lineWidth = 2.2; ctx.beginPath();
+    for (var d=0; d<=totalDays; d+=0.25) {
+      var v = valueAt(d, mode);
+      var x = pL + (d/totalDays)*gW, y = pT + gH - (v/maxV)*gH;
+      if (d===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+
+    /* End-point marker */
+    var vEnd = valueAt(totalDays, mode);
+    var xEnd = pL+gW, yEnd = pT + gH - (vEnd/maxV)*gH;
+    ctx.fillStyle = col + '1)'; ctx.beginPath(); ctx.arc(xEnd,yEnd,3.5,0,Math.PI*2); ctx.fill();
+
+    /* X-axis label */
+    ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(anfT('daysAxis'), pL+gW/2, H-8);
+    ctx.save();
+    ctx.translate(12, pT+gH/2); ctx.rotate(-Math.PI/2);
+    ctx.fillStyle = vcInk(.35); ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(anfT('v3_signal'), 0, 0);
+    ctx.restore();
+
+    /* Caption */
+    var cap = mode === 'settling' ? anfT('v3_captionSettling') : anfT('v3_captionNotSettling');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv3 = draw;
+  draw();
+};
 
 </script>
 

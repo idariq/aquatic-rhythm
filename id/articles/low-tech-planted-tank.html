@@ -83,6 +83,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
 .mod-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,4.5vw,3rem);color:var(--th-ink);line-height:1.1;margin-bottom:1.4rem}
 .mod-title em{font-style:italic;color:var(--th-accent)}
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}
@@ -247,6 +259,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p><strong>Tanaman yang mengungkap ketakselarasan di low-tech</strong> (Glossostigma, HC Cuba, kebanyakan karpet latar depan): Tanaman ini butuh CO2 dan cahaya tinggi untuk tetap hidup. Dalam kondisi low-tech, mereka merosot perlahan dan menimbulkan masalah alga karena melepaskan nutrisi saat membusuk — ketaksesuaian yang saling menumpuk, bukan sekadar ketiadaan pertumbuhan.</p>
     </div>
 
+    <!-- VISUAL: Tap a plant group — see where it sits on demand vs forgiveness -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:270px"></canvas>
+    </div>
+
     <div class="pq">
       <p>Cantik bukan pertanyaan yang layak ditanyakan soal tanaman. Yang layak ditanyakan: apakah ia masih hidup dalam tiga bulan dengan perawatan yang benar-benar bisa Anda berikan.</p>
     </div>
@@ -328,6 +345,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -346,6 +364,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -353,6 +372,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -376,6 +396,208 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as TYOT_STRINGS/tyotT() in articles/two-years-one-tank.html.
+   This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep LTP_STRINGS.en/.id/.ja key
+   sets identical when editing. Plant-category names match the terms
+   used in this article's own (recently corrected) module 2 body —
+   not re-derived independently. */
+var LTP_STRINGS = {
+  en: {
+    v1_hint: 'tap a plant group and see where it actually sits',
+    v1_btnRhizome: 'Rhizome',
+    v1_btnStem: 'Low-demand stem',
+    v1_btnFloating: 'Floating',
+    v1_btnCarpet: 'Carpet (high-demand)',
+    v1_xAxis: 'Needs CO2 / high light →',
+    v1_yAxis: 'Tolerates inconsistent care ↑',
+    v1_capRhizome: 'Anubias, Java Fern, Bucephalandra — barely needs a routine at all. One of the most aligned choices for a keeper whose rhythm has long gaps between maintenance.',
+    v1_capStem: 'Hygrophila, Limnophila, Vallisneria — grows well under moderate light without CO2, and forgives an occasional missed dose.',
+    v1_capFloating: 'Salvinia, Frogbit, Duckweed — self-regulating, absorbs excess nutrients directly. Very low-tech friendly.',
+    v1_capCarpet: 'Glossostigma, HC Cuba — needs CO2 and high light to survive. In low-tech conditions it declines slowly and feeds algae as it decays.'
+  },
+  id: {
+    v1_hint: 'ketuk satu kelompok tanaman dan lihat di mana posisinya sebenarnya',
+    v1_btnRhizome: 'Rhizoma',
+    v1_btnStem: 'Batang berkebutuhan rendah',
+    v1_btnFloating: 'Apung',
+    v1_btnCarpet: 'Karpet (berkebutuhan tinggi)',
+    v1_xAxis: 'Butuh CO2 / cahaya tinggi →',
+    v1_yAxis: 'Tahan perawatan tak konsisten ↑',
+    v1_capRhizome: 'Anubias, Java Fern, Bucephalandra — nyaris tidak butuh rutinitas sama sekali. Salah satu pilihan paling selaras untuk penghobi yang ritmenya punya jeda perawatan panjang.',
+    v1_capStem: 'Hygrophila, Limnophila, Vallisneria — tumbuh baik di cahaya sedang tanpa CO2, dan memaafkan sesekali dosis pupuk yang terlewat.',
+    v1_capFloating: 'Salvinia, Frogbit, Duckweed — mengatur diri sendiri, menyerap kelebihan nutrisi langsung. Sangat cocok untuk low-tech.',
+    v1_capCarpet: 'Glossostigma, HC Cuba — butuh CO2 dan cahaya tinggi untuk bertahan hidup. Dalam kondisi low-tech, ia merosot perlahan dan memicu alga saat membusuk.'
+  },
+  ja: {
+    v1_hint: 'タップして、それぞれの水草が実際どこに位置するか見てみましょう',
+    v1_btnRhizome: '根茎植物',
+    v1_btnStem: '要求の低いステム植物',
+    v1_btnFloating: '浮草',
+    v1_btnCarpet: 'カーペット系（要求が高い）',
+    v1_xAxis: 'CO2・高光量が必要 →',
+    v1_yAxis: '不一貫な世話に耐える ↑',
+    v1_capRhizome: 'アヌビアス、ミクロソリウム、ブセファランドラ — ほとんどルーティンを必要としません。メンテナンスの間隔が長くなりがちな飼育者のリズムに、もっとも整合した選択のひとつです。',
+    v1_capStem: 'ハイグロフィラ、リムノフィラ、バリスネリア — CO2なしでも中程度の光量でよく育ち、施肥をときどき忘れても許容します。',
+    v1_capFloating: 'サルビニア、フロッグビット、ウキクサ — 自己調整的で、余分な栄養を直接吸収します。ローテクにとても向いています。',
+    v1_capCarpet: 'グロッソスティグマ、HC Cuba — 生き続けるにはCO2と高光量が必要です。ローテクの環境では徐々に衰え、枯れながらコケを招きます。'
+  }
+};
+function ltpT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = LTP_STRINGS[lang] || LTP_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : LTP_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/two-years-one-tank.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: A 2D quadrant scatter — demand (x) vs tolerance for
+   inconsistent care (y) — the FIRST scatter/quadrant plot in the
+   rollout (every prior widget used a single axis: a bar, line, curve,
+   dial, or timeline). The four plant groups this module describes
+   land in genuinely different corners of the same two questions this
+   module keeps asking — "how much does it need" and "how much will it
+   forgive" — so plotting them together, rather than as four separate
+   paragraphs, lets the reader see the pattern the module is making
+   directly instead of inferring it. A diagonal background gradient
+   (soft green top-left, soft amber bottom-right) echoes the "aligned
+   choice" vs "compounding misalignment" language the module itself
+   uses, without any point being marked as simply "bad." ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+
+  var groups = [
+    { key: 'rhizome',  btn: 'v1_btnRhizome',  cap: 'v1_capRhizome',  x: 15, y: 85 },
+    { key: 'stem',     btn: 'v1_btnStem',     cap: 'v1_capStem',     x: 40, y: 55 },
+    { key: 'floating', btn: 'v1_btnFloating', cap: 'v1_capFloating', x: 10, y: 75 },
+    { key: 'carpet',   btn: 'v1_btnCarpet',   cap: 'v1_capCarpet',   x: 90, y: 15 }
+  ];
+  var active = 0;
+
+  var wrap = c.parentElement;
+  var existingCtrl = wrap.querySelector('.vis-ctrl');
+  if (existingCtrl) existingCtrl.remove();
+  var existingCap = wrap.querySelector('.vc-caption');
+  if (existingCap) existingCap.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  var btnsHtml = groups.map(function(g, i){
+    return '<button class="vis-btn' + (i === 0 ? ' vis-btn-active' : '') + '" id="ltp-btn-' + i + '">' + ltpT(g.btn) + '</button>';
+  }).join('');
+  ctrl.innerHTML = '<div style="display:flex;gap:.3rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    + btnsHtml + '</div>'
+    + '<div class="vc-hint">' + ltpT('v1_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  groups.forEach(function(g, i){
+    document.getElementById('ltp-btn-' + i).addEventListener('click', function(){
+      active = i;
+      groups.forEach(function(gg, ii){
+        document.getElementById('ltp-btn-' + ii).className = 'vis-btn' + (ii === i ? ' vis-btn-active' : '');
+      });
+      draw();
+    });
+  });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pX0 = 46, pX1 = W - 20, pY0 = 20, pY1 = H - 48;
+    var xFor = function(v){ return pX0 + (v/100)*(pX1-pX0); };
+    var yFor = function(v){ return pY1 - (v/100)*(pY1-pY0); };
+
+    var grad = ctx.createLinearGradient(pX0, pY0, pX1, pY1);
+    if (vcLight()) {
+      grad.addColorStop(0, 'rgba(120,190,120,.18)');
+      grad.addColorStop(1, 'rgba(230,175,60,.16)');
+    } else {
+      grad.addColorStop(0, 'rgba(110,190,120,.14)');
+      grad.addColorStop(1, 'rgba(230,175,60,.12)');
+    }
+    ctx.fillStyle = grad;
+    ctx.fillRect(pX0, pY0, pX1-pX0, pY1-pY0);
+
+    ctx.strokeStyle = vcInk(.28); ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(pX0, pY0); ctx.lineTo(pX0, pY1); ctx.lineTo(pX1, pY1); ctx.stroke();
+
+    ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif';
+    ctx.textAlign = 'center'; ctx.fillText(ltpT('v1_xAxis'), (pX0+pX1)/2, H-14);
+    ctx.save();
+    ctx.translate(14, (pY0+pY1)/2); ctx.rotate(-Math.PI/2);
+    ctx.textAlign = 'center'; ctx.fillText(ltpT('v1_yAxis'), 0, 0);
+    ctx.restore();
+
+    groups.forEach(function(g, i){
+      var gx = xFor(g.x), gy = yFor(g.y), isActive = (i === active);
+      ctx.beginPath(); ctx.arc(gx, gy, isActive ? 7 : 4.5, 0, Math.PI*2);
+      ctx.fillStyle = isActive ? 'rgba(61,214,232,.95)' : vcInk(.35);
+      ctx.fill();
+      if (isActive) {
+        ctx.strokeStyle = vcLight() ? 'rgba(255,255,255,.9)' : 'rgba(4,18,26,.9)';
+        ctx.lineWidth = 1.6; ctx.stroke();
+      }
+    });
+
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = ltpT(groups[active].cap);
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
 
 </script>
 

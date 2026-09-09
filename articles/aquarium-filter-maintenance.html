@@ -258,7 +258,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <!-- VISUAL: Toggle rinse water — tap water kills a share of the colony, tank water leaves it intact -->
     <div class="vis-block">
-      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+      <canvas id="cv2" style="width:100%;height:262px"></canvas>
     </div>
 
     <div class="hn">
@@ -427,7 +427,6 @@ var AFM_STRINGS = {
     v2_hint: 'same filter, same colony — only the rinse water differs',
     v2_captionTap: 'Chlorine kills a share of the colony — ammonia climbs for several days before the survivors catch up.',
     v2_captionTank: 'The colony stays intact — ammonia barely moves, because nothing needed to recover.',
-    daysAxis: 'Days since cleaning →',
     yAxisLabel: 'NH₃'
   },
   id: {
@@ -436,7 +435,6 @@ var AFM_STRINGS = {
     v2_hint: 'penapis sama, koloni sama — cuma air bilasan yang berbeza',
     v2_captionTap: 'Klorin bunuh sebahagian koloni — amonia naik selama beberapa hari sebelum bakteria yang terselamat memulih.',
     v2_captionTank: 'Koloni kekal utuh — amonia nyaris tak bergerak, sbb tiada apa yang perlu dipulihkan.',
-    daysAxis: 'Hari sejak dibersihkan →',
     yAxisLabel: 'NH₃'
   },
   ja: {
@@ -445,7 +443,6 @@ var AFM_STRINGS = {
     v2_hint: '同じフィルター、同じコロニー — 違うのはすすぐ水だけ',
     v2_captionTap: '塩素がコロニーの一部を殺す — 生き残った菌が追いつくまで、アンモニアは数日間上がり続ける。',
     v2_captionTank: 'コロニーはそのまま保たれる — 回復すべきものが何もないので、アンモニアはほとんど動かない。',
-    daysAxis: '掃除からの日数 →',
     yAxisLabel: 'NH₃'
   }
 };
@@ -538,7 +535,7 @@ canvases[2] = function() {
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
 
-    var pL = 30, pR = 12, pT = 18, pB = 46;
+    var pL = 30, pR = 12, pT = 18, pB = 88;
     var gW = W - pL - pR, gH = H - pT - pB;
     function px(d) { return pL + (d/totalDays)*gW; }
     function py(v) { return pT + gH - (v/maxV)*gH; }
@@ -561,8 +558,7 @@ canvases[2] = function() {
     [0,2,4,6,8,10].forEach(function(d){
       ctx.fillText(d, px(d)-3, pT+gH+14);
     });
-    ctx.fillText(afmT('daysAxis'), pL+gW-72, pT+gH+28);
-    ctx.save(); ctx.translate(4, pT+8); ctx.fillText(afmT('yAxisLabel'), 0, 0); ctx.restore();
+    ctx.save(); ctx.translate(4, 11); ctx.fillText(afmT('yAxisLabel'), 0, 0); ctx.restore();
 
     /* Draw both curves faintly, highlight selected */
     [
@@ -586,9 +582,12 @@ canvases[2] = function() {
     ctx.font = 'italic 300 12px Fraunces,serif';
     ctx.fillStyle = vcInk(.6);
     ctx.textAlign = 'center';
-    var words = cap.split(' '), line = '', y = H-28, maxW = W-24;
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', y = pT+gH+40, maxW = W-24;
     words.forEach(function(w){
-      var test = line + (line?' ':'') + w;
+      var test = line + (line?wsep:'') + w;
       if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y); line = w; y += 15; }
       else line = test;
     });

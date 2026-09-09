@@ -252,7 +252,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <!-- VISUAL: Tap a tank type — three reserve-depletion curves at genuinely different rates -->
     <div class="vis-block">
-      <canvas id="cv3" style="width:100%;height:220px"></canvas>
+      <canvas id="cv3" style="width:100%;height:262px"></canvas>
     </div>
 
     <div class="hn">
@@ -374,7 +374,7 @@ var MFD_STRINGS = {
   en: {
     v3_btnHightech: 'High-tech', v3_btnPlanted: 'Heavily planted', v3_btnLowtech: 'Low-tech',
     v3_hint: 'tap a tank type to see how fast its reserve actually runs out',
-    daysAxis: 'Days →', yAxisLabel: 'Reserve',
+    yAxisLabel: 'Reserve',
     v3_capHightech: 'CO2-injected, high-light tanks feel it soonest — a missed dose can show up in days, not weeks.',
     v3_capPlanted: 'More plant mass draws down the same reserve faster, even without CO2 or intense light.',
     v3_capLowtech: 'Slower growth means lower demand — a missed week or two often passes without any visible effect at all.'
@@ -382,7 +382,7 @@ var MFD_STRINGS = {
   id: {
     v3_btnHightech: 'High-tech', v3_btnPlanted: 'Bertanaman lebat', v3_btnLowtech: 'Low-tech',
     v3_hint: 'tekan satu jenis tangki utk lihat sepantas mana rizabnya habis',
-    daysAxis: 'Hari →', yAxisLabel: 'Rizab',
+    yAxisLabel: 'Rizab',
     v3_capHightech: 'Tangki high-tech, cahaya kuat & CO2 rasa kesannya paling awal — dos terlepas boleh nampak dlm hitungan hari, bukan minggu.',
     v3_capPlanted: 'Lebih banyak jisim tumbuhan menyedut rizab yg sama lebih pantas, walau tanpa CO2 atau cahaya kuat.',
     v3_capLowtech: 'Pertumbuhan lebih perlahan bermakna permintaan lebih rendah — satu dua minggu terlepas selalunya berlalu tanpa kesan yg kelihatan.'
@@ -390,7 +390,7 @@ var MFD_STRINGS = {
   ja: {
     v3_btnHightech: 'ハイテック', v3_btnPlanted: '水草が密な水槽', v3_btnLowtech: 'ローテック',
     v3_hint: 'タンクの種類をタップすると、蓄えが実際どれだけ早く尽きるかがわかる',
-    daysAxis: '日数 →', yAxisLabel: '蓄え',
+    yAxisLabel: '蓄え',
     v3_capHightech: 'CO2添加・強光の水槽が最も早く影響を受ける — 添加忘れは数週間ではなく数日で現れることがある。',
     v3_capPlanted: '水草の量が多いほど、同じ蓄えでもより早く消費される。CO2や強光がなくても同じこと。',
     v3_capLowtech: '成長が遅い分、必要量も少ない — 1〜2週間の添加忘れは目に見える影響なく過ぎることが多い。'
@@ -489,7 +489,7 @@ canvases[3] = function() {
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
 
-    var pL = 30, pR = 12, pT = 18, pB = 46;
+    var pL = 30, pR = 12, pT = 18, pB = 88;
     var gW = W - pL - pR, gH = H - pT - pB;
     function px(d) { return pL + (d/totalDays)*gW; }
     function py(v) { return pT + gH - (v/maxV)*gH; }
@@ -510,8 +510,7 @@ canvases[3] = function() {
     ctx.font = '300 10px Work Sans,system-ui,sans-serif';
     ctx.fillStyle = vcInk(.5);
     [0,7,14,21].forEach(function(d){ ctx.fillText(d, px(d)-3, pT+gH+14); });
-    ctx.fillText(mfdT('daysAxis'), pL+gW-42, pT+gH+28);
-    ctx.save(); ctx.translate(4, pT+8); ctx.fillText(mfdT('yAxisLabel'), 0, 0); ctx.restore();
+    ctx.save(); ctx.translate(4, 11); ctx.fillText(mfdT('yAxisLabel'), 0, 0); ctx.restore();
 
     /* Deficiency threshold */
     ctx.strokeStyle = 'rgba(224,100,60,.4)'; ctx.setLineDash([3,4]); ctx.lineWidth = 1.2;
@@ -538,9 +537,12 @@ canvases[3] = function() {
     ctx.font = 'italic 300 12px Fraunces,serif';
     ctx.fillStyle = vcInk(.6);
     ctx.textAlign = 'center';
-    var words = cap.split(' '), line = '', y2 = H-28, maxW = W-24;
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', y2 = pT+gH+40, maxW = W-24;
     words.forEach(function(w){
-      var test = line + (line?' ':'') + w;
+      var test = line + (line?wsep:'') + w;
       if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y2); line = w; y2 += 15; }
       else line = test;
     });

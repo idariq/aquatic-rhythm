@@ -240,7 +240,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <!-- VISUAL: Toggle stocking/plant profile — same weekly water change, different curves -->
     <div class="vis-block">
-      <canvas id="cv1" style="width:100%;height:220px"></canvas>
+      <canvas id="cv1" style="width:100%;height:262px"></canvas>
     </div>
 
     <div class="pq">
@@ -413,24 +413,21 @@ var NKR_STRINGS = {
     v1_light: 'Light, planted',
     v1_hint: 'same weekly water change, two different tanks',
     v1_captionHeavy: 'More load, no uptake — nitrate climbs fast and hits a high peak before each change.',
-    v1_captionLight: 'Less load, plants absorbing nitrate — the same weekly rhythm keeps it low the whole time.',
-    daysAxis: 'Days →'
+    v1_captionLight: 'Less load, plants absorbing nitrate — the same weekly rhythm keeps it low the whole time.'
   },
   id: {
     v1_heavy: 'Padat, tanpa tanaman',
     v1_light: 'Jarang, bertanaman',
     v1_hint: 'jadwal ganti air mingguan sama, dua akuarium berbeda',
     v1_captionHeavy: 'Beban lebih besar, tanpa penyerapan — nitrat naik cepat dan mencapai puncak tinggi sebelum setiap ganti air.',
-    v1_captionLight: 'Beban lebih kecil, tanaman menyerap nitrat — jadwal mingguan yang sama menjaganya tetap rendah sepanjang waktu.',
-    daysAxis: 'Hari →'
+    v1_captionLight: 'Beban lebih kecil, tanaman menyerap nitrat — jadwal mingguan yang sama menjaganya tetap rendah sepanjang waktu.'
   },
   ja: {
     v1_heavy: '過密、水草なし',
     v1_light: '少なめ、水草あり',
     v1_hint: '同じ毎週の水換えでも、水槽が違えば結果も違う',
     v1_captionHeavy: '負荷が大きく、吸収するものがない — 硝酸塩は急上昇し、次の水換え前に高いピークに達する。',
-    v1_captionLight: '負荷が小さく、水草が硝酸塩を吸収する — 同じ毎週のリズムでも、ずっと低いまま保たれる。',
-    daysAxis: '日数 →'
+    v1_captionLight: '負荷が小さく、水草が硝酸塩を吸収する — 同じ毎週のリズムでも、ずっと低いまま保たれる。'
   }
 };
 function nkrT(key) {
@@ -524,7 +521,7 @@ canvases[1] = function() {
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
 
-    var pL = 34, pR = 12, pT = 18, pB = 46;
+    var pL = 34, pR = 12, pT = 18, pB = 88;
     var gW = W - pL - pR, gH = H - pT - pB, maxV = 80;
 
     /* Grid + 40ppm reference line */
@@ -547,8 +544,7 @@ canvases[1] = function() {
     [0,7,14,21,28].forEach(function(d){
       ctx.fillText(d, pL+(d/totalDays)*gW-4, pT+gH+14);
     });
-    ctx.fillText(nkrT('daysAxis'), pL+gW-30, pT+gH+28);
-    ctx.save(); ctx.translate(10, pT+8); ctx.fillText('NO₃', 0, 0); ctx.restore();
+    ctx.save(); ctx.translate(10, 11); ctx.fillText('NO₃', 0, 0); ctx.restore();
 
     /* Draw both curves faintly, highlight selected */
     Object.keys(scenarios).forEach(function(key){
@@ -573,9 +569,12 @@ canvases[1] = function() {
     ctx.font = 'italic 300 12px Fraunces,serif';
     ctx.fillStyle = vcInk(.6);
     ctx.textAlign = 'center';
-    var words = cap.split(' '), line = '', y = H-28, maxW = W-24;
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', y = pT+gH+40, maxW = W-24;
     words.forEach(function(w){
-      var test = line + (line?' ':'') + w;
+      var test = line + (line?wsep:'') + w;
       if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y); line = w; y += 15; }
       else line = test;
     });

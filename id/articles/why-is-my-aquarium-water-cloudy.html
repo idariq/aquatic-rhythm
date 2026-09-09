@@ -273,7 +273,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <!-- VISUAL: Toggle cloudiness type — three different causes, three different resolution timelines -->
     <div class="vis-block">
-      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+      <canvas id="cv2" style="width:100%;height:274px"></canvas>
     </div>
 
     <div class="hn">
@@ -440,7 +440,6 @@ var WMC_STRINGS = {
     v2_btnGreen: 'Green (algae)',
     v2_btnBrown: 'Brown (tannins)',
     v2_hint: 'same cloudy tank, three different causes — three different timelines',
-    daysAxis: 'Days →',
     yAxisLabel: 'Cloudiness',
     v2_capWhite: 'A bacterial bloom — cloudy at first, then clears on its own over one to two weeks as bacteria settle onto surfaces.',
     v2_capGreen: 'Suspended algae — clears in five to seven days once light or feeding is reduced.',
@@ -451,7 +450,6 @@ var WMC_STRINGS = {
     v2_btnGreen: 'Hijau (algae)',
     v2_btnBrown: 'Perang (tanin)',
     v2_hint: 'akuarium keruh yg sama, tiga punca berbeza — tiga garis masa berbeza',
-    daysAxis: 'Hari →',
     yAxisLabel: 'Kekeruhan',
     v2_capWhite: 'Ledakan bakteria — keruh mulanya, kemudian jernih sendiri dlm satu hingga dua minggu selagi bakteria menetap pd permukaan.',
     v2_capGreen: 'Algae terapung — jernih dlm lima hingga tujuh hari sebaik cahaya atau pemberian makan dikurangkan.',
@@ -462,7 +460,6 @@ var WMC_STRINGS = {
     v2_btnGreen: '緑（藻類）',
     v2_btnBrown: '茶色（タンニン）',
     v2_hint: '同じ濁った水槽でも、原因が違えば経過も違う',
-    daysAxis: '日数 →',
     yAxisLabel: '濁り',
     v2_capWhite: 'バクテリアの大量発生 — 最初は濁るが、バクテリアが表面に定着するにつれて1〜2週間で自然に澄んでいく。',
     v2_capGreen: '浮遊藻類 — 照明や給餌を減らせば5〜7日で澄んでいく。',
@@ -561,7 +558,7 @@ canvases[2] = function() {
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
 
-    var pL = 30, pR = 12, pT = 18, pB = 46;
+    var pL = 30, pR = 12, pT = 18, pB = 100;
     var gW = W - pL - pR, gH = H - pT - pB;
     function px(d) { return pL + (d/totalDays)*gW; }
     function py(v) { return pT + gH - (v/maxV)*gH; }
@@ -582,8 +579,7 @@ canvases[2] = function() {
     ctx.font = '300 10px Work Sans,system-ui,sans-serif';
     ctx.fillStyle = vcInk(.5);
     [0,4,8,12,16].forEach(function(d){ ctx.fillText(d, px(d)-3, pT+gH+14); });
-    ctx.fillText(wmcT('daysAxis'), pL+gW-44, pT+gH+28);
-    ctx.save(); ctx.translate(4, pT+8); ctx.fillText(wmcT('yAxisLabel'), 0, 0); ctx.restore();
+    ctx.save(); ctx.translate(4, 11); ctx.fillText(wmcT('yAxisLabel'), 0, 0); ctx.restore();
 
     /* Draw all three curves faintly, highlight selected */
     [
@@ -608,9 +604,12 @@ canvases[2] = function() {
     ctx.font = 'italic 300 12px Fraunces,serif';
     ctx.fillStyle = vcInk(.6);
     ctx.textAlign = 'center';
-    var words = cap.split(' '), line = '', y2 = H-28, maxW = W-24;
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', y2 = pT+gH+40, maxW = W-24;
     words.forEach(function(w){
-      var test = line + (line?' ':'') + w;
+      var test = line + (line?wsep:'') + w;
       if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y2); line = w; y2 += 15; }
       else line = test;
     });

@@ -525,8 +525,11 @@ canvases[2] = function() {
     ctx.fillStyle = vcInk(.65);
     ctx.textAlign = 'center';
     var capY = 18, capMaxW = W - 24, capLine = '';
-    cap.split(' ').forEach(function(w){
-      var test = capLine + (capLine?' ':'') + w;
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var capUnits = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    capUnits.forEach(function(w){
+      var test = capLine + (capLine?wsep:'') + w;
       if (ctx.measureText(test).width > capMaxW && capLine) { ctx.fillText(capLine, W/2, capY); capLine = w; capY += 15; }
       else capLine = test;
     });

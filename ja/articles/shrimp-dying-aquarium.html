@@ -290,7 +290,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <!-- VISUAL: Tap to advance a week — one change, weeks before the decline becomes visible -->
     <div class="vis-block">
-      <canvas id="cv3" style="width:100%;height:220px"></canvas>
+      <canvas id="cv3" style="width:100%;height:262px"></canvas>
     </div>
 
     <div class="pq">
@@ -422,7 +422,6 @@ var SDA_STRINGS = {
     v3_hint: 'one change, weeks before it shows',
     v3_markerLabel: 'change happens',
     v3_yAxis: 'Health',
-    v3_weeksAxis: 'Weeks →',
     v3_cap0: "The change already happened — health hasn't moved yet.",
     v3_cap1: "Still nothing to see on the shrimp. The lag hasn't caught up yet.",
     v3_cap2: 'Only now does the decline become visible — weeks after the actual cause.'
@@ -433,7 +432,6 @@ var SDA_STRINGS = {
     v3_hint: 'satu perubahan, berminggu-minggu sebelum ia kelihatan',
     v3_markerLabel: 'perubahan berlaku',
     v3_yAxis: 'Kesihatan',
-    v3_weeksAxis: 'Minggu →',
     v3_cap0: 'Perubahan tu dah berlaku — kesihatan belum bergerak lagi.',
     v3_cap1: 'Masih tiada apa pd udang. Lag tu belum sampai lagi.',
     v3_cap2: 'Baru sekarang kemerosotan kelihatan — berminggu-minggu selepas punca sebenar.'
@@ -444,7 +442,6 @@ var SDA_STRINGS = {
     v3_hint: '変化は一つ、見えるまでに何週間もかかる',
     v3_markerLabel: '変化が起きる',
     v3_yAxis: '健康度',
-    v3_weeksAxis: '週 →',
     v3_cap0: '変化はすでに起きている — 健康度はまだ動いていない。',
     v3_cap1: 'エビにはまだ何も現れていない。遅れがまだ追いついていない。',
     v3_cap2: '今になってようやく衰退が見える — 実際の原因から何週間も経っている。'
@@ -544,7 +541,7 @@ canvases[3] = function() {
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
 
-    var pL = 30, pR = 12, pT = 18, pB = 46;
+    var pL = 30, pR = 12, pT = 18, pB = 88;
     var gW = W - pL - pR, gH = H - pT - pB;
     function px(w) { return pL + (w/totalWeeks)*gW; }
     function py(v) { return pT + gH - (v/maxV)*gH; }
@@ -565,7 +562,6 @@ canvases[3] = function() {
     ctx.font = '300 10px Work Sans,system-ui,sans-serif';
     ctx.fillStyle = vcInk(.5);
     for (var w = 0; w <= totalWeeks; w += 2) { ctx.fillText(w, px(w)-3, pT+gH+14); }
-    ctx.fillText(sdaT('v3_weeksAxis'), pL+gW-44, pT+gH+28);
 
     /* Change marker */
     var xC = px(changeWeek);
@@ -595,9 +591,12 @@ canvases[3] = function() {
     ctx.font = 'italic 300 12px Fraunces,serif';
     ctx.fillStyle = vcInk(.6);
     ctx.textAlign = 'center';
-    var words = cap.split(' '), line = '', y2 = H-28, maxW = W-24;
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', y2 = pT+gH+40, maxW = W-24;
     words.forEach(function(w2){
-      var test = line + (line?' ':'') + w2;
+      var test = line + (line?wsep:'') + w2;
       if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y2); line = w2; y2 += 15; }
       else line = test;
     });

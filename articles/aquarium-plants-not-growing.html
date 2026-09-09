@@ -274,7 +274,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <!-- VISUAL: Tap a factor to cycle its level — growth follows the LOWEST one, not the average -->
     <div class="vis-block">
-      <canvas id="cv2" style="width:100%;height:230px"></canvas>
+      <canvas id="cv2" style="width:100%;height:260px"></canvas>
     </div>
 
     <div class="hn">
@@ -560,7 +560,7 @@ canvases[2] = function() {
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
 
-    var pL = 30, pR = 12, pT = 18, pB = 58;
+    var pL = 30, pR = 12, pT = 18, pB = 88;
     var gW = W - pL - pR, gH = H - pT - pB;
 
     /* Grid */
@@ -611,9 +611,12 @@ canvases[2] = function() {
     ctx.font = 'italic 300 12px Fraunces,serif';
     ctx.fillStyle = vcInk(.6);
     ctx.textAlign = 'center';
-    var words = cap.split(' '), line = '', y2 = H-30, maxW = W-24;
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', y2 = pT+gH+40, maxW = W-24;
     words.forEach(function(w){
-      var test = line + (line?' ':'') + w;
+      var test = line + (line?wsep:'') + w;
       if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y2); line = w; y2 += 15; }
       else line = test;
     });

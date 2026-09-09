@@ -232,7 +232,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <!-- VISUAL: Toggle timer vs manual — same weekly average, very different day-to-day consistency -->
     <div class="vis-block">
-      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+      <canvas id="cv2" style="width:100%;height:262px"></canvas>
     </div>
 
     <div class="pq">
@@ -374,7 +374,6 @@ var LSD_STRINGS = {
     v2_hint: 'same weekly average — only the day-to-day consistency differs',
     v2_captionFixed: 'Every day reads the same. Plants and fish get a rhythm they can actually predict.',
     v2_captionManual: 'The average looks fine on paper. Day to day, nothing about it is predictable.',
-    daysAxis: 'Day →',
     yAxisLabel: 'Hours'
   },
   id: {
@@ -383,7 +382,6 @@ var LSD_STRINGS = {
     v2_hint: 'purata mingguan sama — cuma konsistensi harian yang berbeza',
     v2_captionFixed: 'Setiap hari sama. Tumbuhan & ikan dapat ritma yang benar-benar boleh diramal.',
     v2_captionManual: 'Purata nampak elok di atas kertas. Tapi hari ke hari, tiada apa yang boleh diramal.',
-    daysAxis: 'Hari →',
     yAxisLabel: 'Jam'
   },
   ja: {
@@ -392,7 +390,6 @@ var LSD_STRINGS = {
     v2_hint: '週の平均は同じ — 違うのは日ごとの一貫性だけ',
     v2_captionFixed: '毎日同じ。水草も魚も、実際に予測できるリズムを得られる。',
     v2_captionManual: '平均は紙の上では悪くない。でも日々は何も予測できない。',
-    daysAxis: '日 →',
     yAxisLabel: '時間'
   }
 };
@@ -481,7 +478,7 @@ canvases[2] = function() {
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
 
-    var pL = 26, pR = 12, pT = 18, pB = 46;
+    var pL = 26, pR = 12, pT = 18, pB = 88;
     var gW = W - pL - pR, gH = H - pT - pB;
     var vals = mode === 'fixed' ? fixed : manual;
     var barW = gW / days * 0.55;
@@ -505,8 +502,7 @@ canvases[2] = function() {
     for (var i = 0; i < days; i++) {
       ctx.fillText(i+1, pL + slot*i + slot/2 - 3, pT+gH+14);
     }
-    ctx.fillText(lsdT('daysAxis'), pL+gW-24, pT+gH+28);
-    ctx.save(); ctx.translate(4, pT+8); ctx.fillText(lsdT('yAxisLabel'), 0, 0); ctx.restore();
+    ctx.save(); ctx.translate(4, 11); ctx.fillText(lsdT('yAxisLabel'), 0, 0); ctx.restore();
 
     /* Average reference line */
     var yAvg = pT + gH - (avg/maxV)*gH;
@@ -527,9 +523,12 @@ canvases[2] = function() {
     ctx.font = 'italic 300 12px Fraunces,serif';
     ctx.fillStyle = vcInk(.6);
     ctx.textAlign = 'center';
-    var words = cap.split(' '), line = '', y2 = H-28, maxW = W-24;
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', y2 = pT+gH+40, maxW = W-24;
     words.forEach(function(w){
-      var test = line + (line?' ':'') + w;
+      var test = line + (line?wsep:'') + w;
       if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y2); line = w; y2 += 15; }
       else line = test;
     });

@@ -257,7 +257,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <!-- VISUAL: Tap a water type — a point lands in one of four GH×KH quadrants -->
     <div class="vis-block">
-      <canvas id="cv3" style="width:100%;height:240px"></canvas>
+      <canvas id="cv3" style="width:100%;height:284px"></canvas>
     </div>
 
     <div class="mod-next">
@@ -375,7 +375,6 @@ var GHKH_STRINGS = {
     v3_btnShrimp: 'Shrimp remineraliser',
     v3_btnCoral: 'Crushed coral',
     v3_hint: 'tap a water type to see where it lands on both scales at once',
-    axisGH: 'GH →',
     axisKH: 'KH ↑',
     v3_capSoft: "Low GH and low KH together — common in soft tap water or after RO. Fine for soft-water species, but there's very little buffer if pH starts to drift.",
     v3_capHard: 'High GH and high KH together — typical hard tap water. Great for hard-water species, and pH stays steady on its own.',
@@ -388,7 +387,6 @@ var GHKH_STRINGS = {
     v3_btnShrimp: 'Remineraliser udang',
     v3_btnCoral: 'Karang hancur',
     v3_hint: 'tekan satu jenis air utk lihat kedudukannya pd kedua-dua skala serentak',
-    axisGH: 'GH →',
     axisKH: 'KH ↑',
     v3_capSoft: 'GH rendah & KH rendah bersama — biasa dlm air paip lembut atau lepas RO. Sesuai utk spesies air lembut, tapi hampir tiada penampan kalau pH mula melencong.',
     v3_capHard: 'GH tinggi & KH tinggi bersama — air paip keras yg biasa. Sesuai utk spesies air keras, & pH kekal stabil dgn sendirinya.',
@@ -401,7 +399,6 @@ var GHKH_STRINGS = {
     v3_btnShrimp: 'エビ用リミネラライザー',
     v3_btnCoral: '砕いたサンゴ',
     v3_hint: '水のタイプをタップすると、両方の数値上の位置が同時にわかる',
-    axisGH: 'GH →',
     axisKH: 'KH ↑',
     v3_capSoft: 'GHもKHも低い組み合わせ — 軟水の水道水やRO水後によく見られる。軟水系の生体には適しているが、pHが動き始めたときの緩衝はほとんどない。',
     v3_capHard: 'GHもKHも高い組み合わせ — 典型的な硬水の水道水。硬水系の生体に適しており、pHは自然と安定する。',
@@ -523,7 +520,7 @@ canvases[3] = function() {
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
 
-    var pL = 32, pR = 16, pT = 16, pB = 46;
+    var pL = 32, pR = 16, pT = 16, pB = 90;
     var gW = W - pL - pR, gH = H - pT - pB;
     function px(v) { return pL + (v/maxV)*gW; }
     function py(v) { return pT + gH - (v/maxV)*gH; }
@@ -549,8 +546,7 @@ canvases[3] = function() {
     ctx.fillStyle = vcInk(.5);
     [0,10,20].forEach(function(v){ ctx.fillText(v, px(v)-3, pT+gH+14); });
     [0,10,20].forEach(function(v){ ctx.fillText(v, 6, py(v)+3); });
-    ctx.fillText(ghkhT('axisGH'), pL+gW-30, pT+gH+28);
-    ctx.save(); ctx.translate(4, pT+2); ctx.rotate(0); ctx.fillText(ghkhT('axisKH'), 0, 0); ctx.restore();
+    ctx.save(); ctx.translate(4, 11); ctx.rotate(0); ctx.fillText(ghkhT('axisKH'), 0, 0); ctx.restore();
 
     /* Dot */
     var x = px(dot.gh), y = py(dot.kh);
@@ -564,9 +560,12 @@ canvases[3] = function() {
     ctx.font = 'italic 300 12px Fraunces,serif';
     ctx.fillStyle = vcInk(.6);
     ctx.textAlign = 'center';
-    var words = cap.split(' '), line = '', ly = H-30, maxW = W-24;
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', ly = pT+gH+38, maxW = W-24;
     words.forEach(function(w){
-      var test = line + (line?' ':'') + w;
+      var test = line + (line?wsep:'') + w;
       if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, ly); line = w; ly += 15; }
       else line = test;
     });

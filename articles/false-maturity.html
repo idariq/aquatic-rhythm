@@ -280,7 +280,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <!-- VISUAL: Trigger a disruption — two tanks read identically flat, then diverge on impact -->
     <div class="vis-block">
-      <canvas id="cv3" style="width:100%;height:220px"></canvas>
+      <canvas id="cv3" style="width:100%;height:262px"></canvas>
     </div>
 
     <div class="mod-next">
@@ -399,8 +399,7 @@ var FM_STRINGS = {
     v3_mature: 'Genuinely mature',
     v3_falseMature: 'False-mature',
     v3_captionBefore: 'Both tanks read identically — zero ammonia, day after day.',
-    v3_captionAfter: 'Same disruption. The mature tank barely moves. The false-mature tank spikes — and takes days longer to settle.',
-    daysAxis: 'Days →'
+    v3_captionAfter: 'Same disruption. The mature tank barely moves. The false-mature tank spikes — and takes days longer to settle.'
   },
   id: {
     v3_triggerBtn: 'Picu gangguan',
@@ -409,8 +408,7 @@ var FM_STRINGS = {
     v3_mature: 'Benar-benar matang',
     v3_falseMature: 'Matang semu',
     v3_captionBefore: 'Kedua akuarium terbaca identik — amonia nol, hari demi hari.',
-    v3_captionAfter: 'Gangguan yang sama. Akuarium yang benar-benar matang nyaris tidak bergerak. Akuarium yang matang semu melonjak — dan butuh waktu lebih lama untuk mereda.',
-    daysAxis: 'Hari →'
+    v3_captionAfter: 'Gangguan yang sama. Akuarium yang benar-benar matang nyaris tidak bergerak. Akuarium yang matang semu melonjak — dan butuh waktu lebih lama untuk mereda.'
   },
   ja: {
     v3_triggerBtn: '負荷をかける',
@@ -419,8 +417,7 @@ var FM_STRINGS = {
     v3_mature: '本当に成熟',
     v3_falseMature: '見せかけの成熟',
     v3_captionBefore: 'どちらの水槽も同じに見える — アンモニアはずっとゼロのまま。',
-    v3_captionAfter: '同じ負荷でも反応はまったく違う。本当に成熟した水槽はほとんど動じない。見せかけの成熟した水槽は急上昇し、落ち着くまでに何日も余計にかかる。',
-    daysAxis: '日数 →'
+    v3_captionAfter: '同じ負荷でも反応はまったく違う。本当に成熟した水槽はほとんど動じない。見せかけの成熟した水槽は急上昇し、落ち着くまでに何日も余計にかかる。'
   }
 };
 function fmT(key) {
@@ -540,7 +537,7 @@ canvases[3] = function() {
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
 
-    var pL = 30, pR = 12, pT = 18, pB = 46;
+    var pL = 30, pR = 12, pT = 18, pB = 88;
     var gW = W - pL - pR, gH = H - pT - pB;
 
     /* Grid */
@@ -562,8 +559,7 @@ canvases[3] = function() {
     [0,7,14].forEach(function(d){
       ctx.fillText(d, pL+(d/totalDays)*gW-3, pT+gH+14);
     });
-    ctx.fillText(fmT('daysAxis'), pL+gW-30, pT+gH+28);
-    ctx.save(); ctx.translate(6, pT+8); ctx.fillText('NH₃', 0, 0); ctx.restore();
+    ctx.save(); ctx.translate(6, 11); ctx.fillText('NH₃', 0, 0); ctx.restore();
 
     /* Disruption marker */
     var xD = pL + (disruptDay/totalDays)*gW;
@@ -595,9 +591,12 @@ canvases[3] = function() {
     ctx.font = 'italic 300 12px Fraunces,serif';
     ctx.fillStyle = vcInk(.6);
     ctx.textAlign = 'center';
-    var words = cap.split(' '), line = '', y = H-28, maxW = W-24;
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', y = pT+gH+40, maxW = W-24;
     words.forEach(function(w){
-      var test = line + (line?' ':'') + w;
+      var test = line + (line?wsep:'') + w;
       if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y); line = w; y += 15; }
       else line = test;
     });

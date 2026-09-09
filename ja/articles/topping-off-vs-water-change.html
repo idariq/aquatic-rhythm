@@ -232,7 +232,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <!-- VISUAL: Toggle top-off-only vs with-water-changes — one line climbs unbounded, the other resets on a rhythm -->
     <div class="vis-block">
-      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+      <canvas id="cv2" style="width:100%;height:262px"></canvas>
     </div>
 
     <div class="pq">
@@ -373,8 +373,7 @@ var TWC_STRINGS = {
     v2_hint: 'same evaporation, same daily buildup — only one routine exports it',
     v2_captionTopOff: "Nothing is ever removed — the buildup keeps climbing, even though the tank always looks full.",
     v2_captionChanges: "The same buildup happens, but each water change exports a share of it — the level resets instead of climbing.",
-    yAxis: 'Buildup',
-    daysAxis: 'Days →'
+    yAxis: 'Buildup'
   },
   id: {
     v2_toggleTopOff: 'Cuma topping off',
@@ -382,8 +381,7 @@ var TWC_STRINGS = {
     v2_hint: 'penguapan sama, penumpukan harian sama — cuma satu rutin yang mengeluarkannya',
     v2_captionTopOff: 'Tidak ada yang pernah dikeluarkan — penumpukannya terus naik, walau akuarium selalu terlihat penuh.',
     v2_captionChanges: 'Penumpukan yang sama tetap terjadi, tapi setiap ganti air mengeluarkan sebagiannya — levelnya reset, bukan terus naik.',
-    yAxis: 'Penumpukan',
-    daysAxis: 'Hari →'
+    yAxis: 'Penumpukan'
   },
   ja: {
     v2_toggleTopOff: 'トッピングオフのみ',
@@ -391,8 +389,7 @@ var TWC_STRINGS = {
     v2_hint: '蒸発も日々の蓄積も同じ — それを排出するのは片方の習慣だけ',
     v2_captionTopOff: '何も排出されない — 水槽はいつも満杯に見えても、蓄積は上がり続ける。',
     v2_captionChanges: '同じように蓄積は起きるが、換水のたびにその一部が排出される — 上がり続ける代わりに、その都度リセットされる。',
-    yAxis: '蓄積',
-    daysAxis: '日数 →'
+    yAxis: '蓄積'
   }
 };
 function twcT(key) {
@@ -484,7 +481,7 @@ canvases[2] = function() {
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
 
-    var pL = 30, pR = 12, pT = 18, pB = 46;
+    var pL = 30, pR = 12, pT = 18, pB = 88;
     var gW = W - pL - pR, gH = H - pT - pB;
 
     /* Grid */
@@ -506,8 +503,7 @@ canvases[2] = function() {
     [0,7,14,21,28,35].forEach(function(d){
       ctx.fillText(d, pL+(d/totalDays)*gW-4, pT+gH+14);
     });
-    ctx.fillText(twcT('daysAxis'), pL+gW-30, pT+gH+28);
-    ctx.save(); ctx.translate(6, pT+8); ctx.fillText(twcT('yAxis'), 0, 0); ctx.restore();
+    ctx.save(); ctx.translate(6, 11); ctx.fillText(twcT('yAxis'), 0, 0); ctx.restore();
 
     /* Draw both curves faintly, highlight selected */
     [
@@ -533,9 +529,12 @@ canvases[2] = function() {
     ctx.font = 'italic 300 12px Fraunces,serif';
     ctx.fillStyle = vcInk(.6);
     ctx.textAlign = 'center';
-    var words = cap.split(' '), line = '', y = H-28, maxW = W-24;
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', y = pT+gH+40, maxW = W-24;
     words.forEach(function(w){
-      var test = line + (line?' ':'') + w;
+      var test = line + (line?wsep:'') + w;
       if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y); line = w; y += 15; }
       else line = test;
     });

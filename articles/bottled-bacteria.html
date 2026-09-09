@@ -227,7 +227,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <!-- VISUAL: Toggle label claim vs real bacterial growth curve -->
     <div class="vis-block">
-      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+      <canvas id="cv2" style="width:100%;height:262px"></canvas>
     </div>
 
     <div class="pq">
@@ -370,7 +370,6 @@ var BB_STRINGS = {
     v2_hint: 'same starter culture, same tank — only the timeline is invented or real',
     v2_captionLabel: "The label says ready on day one. The colony needed for a full stock isn't there yet — it hasn't had time to grow.",
     v2_captionReal: 'A real culture needs days to weeks to multiply to the size a stocked tank actually requires — slow at first, then catching up.',
-    daysAxis: 'Days →',
     yAxisLabel: 'Colony'
   },
   id: {
@@ -379,7 +378,6 @@ var BB_STRINGS = {
     v2_hint: 'kultur permulaan sama, akuarium sama — cuma garis masa yg direka atau sebenar',
     v2_captionLabel: 'Label kata sedia hari pertama. Koloni yg diperlukan utk stok penuh belum wujud — ia belum sempat membiak.',
     v2_captionReal: 'Kultur sebenar perlukan berhari-hari hingga berminggu utk membiak ke saiz yg benar-benar diperlukan tangki berstok — perlahan mulanya, kemudian memulih.',
-    daysAxis: 'Hari →',
     yAxisLabel: 'Koloni'
   },
   ja: {
@@ -388,7 +386,6 @@ var BB_STRINGS = {
     v2_hint: '同じスターター培養、同じ水槽 — 違うのは架空か実際かのタイムラインだけ',
     v2_captionLabel: 'ラベルは初日から準備完了だと言う。フル飼育数に必要なコロニーはまだ存在しない — 増える時間がなかっただけ。',
     v2_captionReal: '実際の培養がフル飼育数に必要な規模まで増えるには数日から数週間かかる — 最初はゆっくり、その後追いつく。',
-    daysAxis: '日数 →',
     yAxisLabel: 'コロニー'
   }
 };
@@ -484,7 +481,7 @@ canvases[2] = function() {
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
 
-    var pL = 30, pR = 12, pT = 18, pB = 46;
+    var pL = 30, pR = 12, pT = 18, pB = 88;
     var gW = W - pL - pR, gH = H - pT - pB;
     function px(d) { return pL + (d/totalDays)*gW; }
     function py(v) { return pT + gH - (v/maxV)*gH; }
@@ -505,8 +502,7 @@ canvases[2] = function() {
     ctx.font = '300 10px Work Sans,system-ui,sans-serif';
     ctx.fillStyle = vcInk(.5);
     [0,4,8,12,14].forEach(function(d){ ctx.fillText(d, px(d)-3, pT+gH+14); });
-    ctx.fillText(bbT('daysAxis'), pL+gW-42, pT+gH+28);
-    ctx.save(); ctx.translate(4, pT+8); ctx.fillText(bbT('yAxisLabel'), 0, 0); ctx.restore();
+    ctx.save(); ctx.translate(4, 11); ctx.fillText(bbT('yAxisLabel'), 0, 0); ctx.restore();
 
     /* Draw both curves faintly, highlight selected */
     [
@@ -530,9 +526,12 @@ canvases[2] = function() {
     ctx.font = 'italic 300 12px Fraunces,serif';
     ctx.fillStyle = vcInk(.6);
     ctx.textAlign = 'center';
-    var words = cap.split(' '), line = '', y2 = H-28, maxW = W-24;
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', y2 = pT+gH+40, maxW = W-24;
     words.forEach(function(w){
-      var test = line + (line?' ':'') + w;
+      var test = line + (line?wsep:'') + w;
       if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y2); line = w; y2 += 15; }
       else line = test;
     });

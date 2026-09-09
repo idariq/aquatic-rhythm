@@ -241,7 +241,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
     <!-- VISUAL: Tap-to-add drift steps — a staircase pulling away from the planned baseline -->
     <div class="vis-block">
-      <canvas id="cv1" style="width:100%;height:220px"></canvas>
+      <canvas id="cv1" style="width:100%;height:270px"></canvas>
     </div>
 
     <div class="pq">
@@ -415,7 +415,6 @@ var CC_STRINGS = {
     v1_cap1: "Ten days doesn't feel that different from seven. Nothing went wrong, so it becomes the new normal.",
     v1_cap2: "Two weeks now looks routine — compared to last month, nothing's changed.",
     v1_cap3: 'A year of small, defensible steps — and the gap between plan and practice is now a whole rhythm wide.',
-    monthsAxis: 'Months →',
     yAxisLabel: 'Days'
   },
   id: {
@@ -428,7 +427,6 @@ var CC_STRINGS = {
     v1_cap1: 'Sepuluh hari tak terasa jauh beza drpd tujuh. Tiada apa-apa jadi masalah, jadi ia jadi normal baharu.',
     v1_cap2: 'Dua minggu kini terasa rutin — dibandingkan bulan lepas, tiada apa yang berubah.',
     v1_cap3: 'Setahun langkah kecil yang munasabah — dan jurang antara rancangan & amalan kini seluas satu ritma penuh.',
-    monthsAxis: 'Bulan →',
     yAxisLabel: 'Hari'
   },
   ja: {
@@ -441,7 +439,6 @@ var CC_STRINGS = {
     v1_cap1: '10日は7日とそれほど変わらない気がする。何も問題は起きなかったので、それが新しい標準になる。',
     v1_cap2: '2週間はもう普通に感じる — 先月と比べれば、何も変わっていない。',
     v1_cap3: '1年分の小さな、正当化できる一歩一歩 — 予定と実際の差は、いまやリズム一つ分まるごと開いている。',
-    monthsAxis: '月 →',
     yAxisLabel: '日'
   }
 };
@@ -533,7 +530,7 @@ canvases[1] = function() {
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
 
-    var pL = 28, pR = 12, pT = 18, pB = 46;
+    var pL = 28, pR = 12, pT = 18, pB = 96;
     var gW = W - pL - pR, gH = H - pT - pB;
     function px(m) { return pL + (m/totalMonths)*gW; }
     function py(v) { return pT + gH - (v/maxV)*gH; }
@@ -553,8 +550,7 @@ canvases[1] = function() {
     ctx.beginPath(); ctx.moveTo(pL,pT); ctx.lineTo(pL,pT+gH); ctx.lineTo(pL+gW,pT+gH); ctx.stroke();
     ctx.font = '300 10px Work Sans,system-ui,sans-serif';
     ctx.fillStyle = vcInk(.5);
-    ctx.fillText(ccT('monthsAxis'), pL+gW-42, pT+gH+28);
-    ctx.save(); ctx.translate(4, pT+8); ctx.fillText(ccT('yAxisLabel'), 0, 0); ctx.restore();
+    ctx.save(); ctx.translate(4, 11); ctx.fillText(ccT('yAxisLabel'), 0, 0); ctx.restore();
 
     /* Planned baseline — dashed flat line at 7 */
     ctx.strokeStyle = 'rgba(143,166,174,.7)'; ctx.lineWidth = 1.5; ctx.setLineDash([4,4]);
@@ -585,9 +581,12 @@ canvases[1] = function() {
     ctx.font = 'italic 300 12px Fraunces,serif';
     ctx.fillStyle = vcInk(.6);
     ctx.textAlign = 'center';
-    var words = cap.split(' '), line = '', y = H-28, maxW = W-24;
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', y = pT+gH+34, maxW = W-24;
     words.forEach(function(w){
-      var test = line + (line?' ':'') + w;
+      var test = line + (line?wsep:'') + w;
       if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y); line = w; y += 15; }
       else line = test;
     });

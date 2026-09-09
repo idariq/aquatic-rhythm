@@ -75,6 +75,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-title em{font-style:italic;color:var(--th-accent)}
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}.mod-body strong{font-weight:400;color:var(--th-ink)}.mod-body em{font-style:italic;color:var(--th-ink-3)}
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 .hn{margin:2rem 0;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2);position:relative}
@@ -208,6 +220,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>いい知らせもあります。十分に広い範囲で見れば、水換えの<em>一貫性</em>のほうが、正確な頻度や量よりも重要です。定期的に少量の水換えを行う水槽は、たとえ月間の交換量合計が同じでも、不規則に大量交換を行う水槽より、ほぼ常に良い状態を保てます。</p>
     </div>
 
+    <!-- VISUAL: Toggle weekly-small/monthly-large — same total volume, different swing -->
+    <div class="vis-block">
+      <canvas id="cv1" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="mod-next">
       <button class="btn-prev" onclick="goIntro()">← イントロ</button>
       <button class="btn-next" onclick="goMod(2)">水換えが実際にしていること <span>→</span></button>
@@ -315,6 +332,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -333,6 +351,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -340,6 +359,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -353,6 +373,7 @@ function startLearning() {
   var first = document.getElementById('mod-1');
   if (first) { first.classList.add('active'); setTimeout(function(){ first.classList.add('visible'); }, 30); }
   updateDots();
+  if (canvases[1]) setTimeout(function(){ canvases[1](); }, 150);
 }
 
 function updateDots() {
@@ -363,6 +384,188 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as MWC_STRINGS/mwcT() in articles/missed-water-change.html.
+   This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep HOWC_STRINGS.en/.id/.ja key
+   sets identical when editing. */
+var HOWC_STRINGS = {
+  en: {
+    v1_weekly: 'Small, weekly',
+    v1_monthly: 'Large, monthly',
+    v1_hint: 'same total volume replaced over 28 days, different rhythm',
+    v1_captionWeekly: 'Frequent small changes keep the swing tight — the system stays inside a narrow, predictable band.',
+    v1_captionMonthly: 'Same tank, same total volume replaced — but one big change lets the load climb far higher before it is cut back.',
+    v1_zone: 'comfortable range',
+    daysAxis: 'Days →'
+  },
+  id: {
+    v1_weekly: 'Kecil, mingguan',
+    v1_monthly: 'Besar, bulanan',
+    v1_hint: 'total volume yang diganti sama selama 28 hari, ritme berbeda',
+    v1_captionWeekly: 'Ganti air kecil yang sering menjaga fluktuasi tetap kecil — sistem tetap berada dalam rentang yang sempit dan dapat diprediksi.',
+    v1_captionMonthly: 'Akuarium yang sama, total volume yang diganti sama — tapi satu kali ganti besar membuat beban naik jauh lebih tinggi sebelum akhirnya diturunkan.',
+    v1_zone: 'rentang nyaman',
+    daysAxis: 'Hari →'
+  },
+  ja: {
+    v1_weekly: '少量・毎週',
+    v1_monthly: '大量・毎月',
+    v1_hint: '28日間の合計換水量は同じ、リズムが違うだけ',
+    v1_captionWeekly: '少量の換水を頻繁に行うと、変動の幅が小さく保たれる — システムは狭く予測しやすい範囲にとどまる。',
+    v1_captionMonthly: '同じ水槽、同じ合計換水量 — でも一度の大きな換水では、下げられるまでに負荷がずっと高く積み上がってしまう。',
+    v1_zone: '快適な範囲',
+    daysAxis: '日数 →'
+  }
+};
+function howcT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = HOWC_STRINGS[lang] || HOWC_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : HOWC_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/missed-water-change.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle weekly-small/monthly-large — the SAME underlying
+   daily accumulation rate (same tank, same bioload, same feeding),
+   only the reset frequency differs: every 7 days for the weekly
+   scenario, once every 28 days for the monthly one. Deliberately
+   simplified/illustrative math (linear accumulation, reset on a fixed
+   cycle) — the point is the shape/amplitude of the swing produced by
+   frequency alone, not lab-accurate load modelling. Mirrors this
+   module's own claim: "a tank that receives small, regular water
+   changes will almost always outperform ... even if the total volume
+   replaced per month is the same." ── */
+canvases[1] = function() {
+  stopAnim('cv1');
+  var c = resizeCanvas('cv1'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var totalDays = 28;
+  var mode = 'weekly'; /* weekly | monthly */
+
+  var scenarios = {
+    weekly:  { cycle: 7,  col: 'rgba(80,200,120,'  },
+    monthly: { cycle: 28, col: 'rgba(220,100,60,'  }
+  };
+  var base = 5, rate = 1.6;
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="howc-weekly">' + howcT('v1_weekly') + '</button>'
+    +'<button class="vis-btn" id="howc-monthly">' + howcT('v1_monthly') + '</button></div>'
+    +'<div class="vc-hint">' + howcT('v1_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('howc-weekly').className = 'vis-btn' + (m==='weekly' ? ' vis-btn-active' : '');
+    document.getElementById('howc-monthly').className = 'vis-btn' + (m==='monthly' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('howc-weekly').addEventListener('click', function(){ setMode('weekly'); });
+  document.getElementById('howc-monthly').addEventListener('click', function(){ setMode('monthly'); });
+
+  function valueAt(day, s) { return base + rate * (day % s.cycle); }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 34, pR = 12, pT = 18, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB, maxV = 60;
+
+    /* Shaded "comfortable range" zone, 0-15 */
+    var yZoneTop = pT + gH - (15/maxV)*gH;
+    ctx.fillStyle = vcInk(.06);
+    ctx.fillRect(pL, yZoneTop, gW, pT+gH-yZoneTop);
+    ctx.fillStyle = vcInk(.35); ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(howcT('v1_zone'), pL+4, yZoneTop+10);
+
+    /* Grid */
+    [0,15,30,45,60].forEach(function(v){
+      var y = pT + gH - (v/maxV)*gH;
+      ctx.strokeStyle = vcInk(.08); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(pL, y); ctx.lineTo(pL+gW, y); ctx.stroke();
+      ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(v, pL-6, y+3);
+    });
+
+    /* Curve for active scenario */
+    var s = scenarios[mode];
+    ctx.strokeStyle = s.col + '.95)'; ctx.lineWidth = 2.2; ctx.beginPath();
+    for (var d=0; d<=totalDays; d+=0.25) {
+      var v = Math.min(valueAt(d,s), maxV);
+      var x = pL + (d/totalDays)*gW, y = pT + gH - (v/maxV)*gH;
+      if (d===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+
+    /* X-axis label */
+    ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(howcT('daysAxis'), pL+gW/2, H-8);
+
+    /* Caption */
+    var cap = mode === 'weekly' ? howcT('v1_captionWeekly') : howcT('v1_captionMonthly');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv1 = draw;
+  draw();
+};
 
 </script>
 

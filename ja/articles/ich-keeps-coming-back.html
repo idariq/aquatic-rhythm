@@ -89,6 +89,19 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -231,6 +244,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>実践的な示唆：白点病の再発は治療技術の失敗ではありません。最初の発生を可能にした水槽内のストレスがまだ存在しているというシグナルです。4回目に点を除去しても、そのストレスに対処しなければ5回目を待つだけです。</p>
     </div>
 
+    <!-- VISUAL: Toggle treat-only/treat-and-fix — same first outbreak, different aftermath -->
+    <div class="vis-block">
+      <canvas id="cv1" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="pq">
       <p>白点病が戻ってくるのは治療が失敗したからではありません。それが住んでいる水槽が変わらなかったからです。</p>
     </div>
@@ -352,6 +370,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -370,6 +389,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -377,6 +397,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -389,6 +410,7 @@ function startLearning() {
   window.scrollTo({ top: 0, behavior: 'auto' });
   var first = document.getElementById('mod-1');
   if (first) { first.classList.add('active'); setTimeout(function(){ first.classList.add('visible'); }, 30); }
+  if (canvases[1]) setTimeout(function(){ canvases[1](); }, 150);
   updateDots();
 }
 
@@ -400,6 +422,199 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as HOWC_STRINGS/howcT() in
+   articles/how-often-water-changes.html. This script block is copied
+   byte-for-byte into id/articles + ja/articles by build-i18n.mjs, so
+   the runtime lang check is what actually localises the widget — keep
+   IKB_STRINGS.en/.id/.ja key sets identical when editing. */
+var IKB_STRINGS = {
+  en: {
+    v1_treatOnly: 'Treat symptom only',
+    v1_treatFix: 'Treat + fix the stress',
+    v1_hint: 'same first outbreak, same treatment — what happens after differs',
+    v1_captionOnly: 'Each outbreak clears with treatment, but the same stress is still there, so it comes back — again and again.',
+    v1_captionFix: 'The first outbreak clears the same way, but once the stress behind it is addressed, there is nothing left to bring it back.',
+    weeksAxis: 'Weeks →',
+    severity: 'severity'
+  },
+  id: {
+    v1_treatOnly: 'Obati gejala saja',
+    v1_treatFix: 'Obati + atasi stresnya',
+    v1_hint: 'wabah pertama sama, pengobatan sama — yang beda apa yang terjadi sesudahnya',
+    v1_captionOnly: 'Tiap wabah reda dengan pengobatan, tapi stres yang sama masih ada, jadi ich kembali lagi — berulang kali.',
+    v1_captionFix: 'Wabah pertama reda dengan cara yang sama, tapi begitu stres di baliknya diatasi, tidak ada lagi yang membuatnya kembali.',
+    weeksAxis: 'Minggu →',
+    severity: 'tingkat keparahan'
+  },
+  ja: {
+    v1_treatOnly: '症状だけ治療',
+    v1_treatFix: '治療 + ストレスの原因も解消',
+    v1_hint: '最初の発症も治療も同じ — 違うのはその後どうなるか',
+    v1_captionOnly: '発症のたびに治療で治まるが、同じストレスがまだそこにあるので、何度でも再発する。',
+    v1_captionFix: '最初の発症は同じように治まるが、その裏にあるストレスを解消すれば、もう再発する理由がなくなる。',
+    weeksAxis: '週 →',
+    severity: '重症度'
+  }
+};
+function ikbT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = IKB_STRINGS[lang] || IKB_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : IKB_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/how-often-water-changes.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle treat-only/treat-and-fix — the same first outbreak
+   (a Gaussian bump around day 5) clears with treatment either way.
+   In the treat-only scenario, the underlying stress is untouched, so
+   the same shape of outbreak recurs around week 5 and week 9. In the
+   treat-and-fix scenario, only the first bump appears. Deliberately
+   simplified/illustrative math (summed Gaussian pulses on an
+   arbitrary 0-100 severity scale) — the point is the recurring SHAPE
+   of relapse versus a single resolved event, not a clinical model.
+   Mirrors this module's own line: "the tank it lives in didn't
+   change." ── */
+canvases[1] = function() {
+  stopAnim('cv1');
+  var c = resizeCanvas('cv1'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var totalDays = 70; /* 10 weeks */
+  var mode = 'only'; /* only | fix */
+
+  var events = {
+    only: [5, 33, 58],
+    fix:  [5]
+  };
+  var colors = { only: 'rgba(220,100,60,', fix: 'rgba(80,200,120,' };
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="ikb-only">' + ikbT('v1_treatOnly') + '</button>'
+    +'<button class="vis-btn" id="ikb-fix">' + ikbT('v1_treatFix') + '</button></div>'
+    +'<div class="vc-hint">' + ikbT('v1_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('ikb-only').className = 'vis-btn' + (m==='only' ? ' vis-btn-active' : '');
+    document.getElementById('ikb-fix').className = 'vis-btn' + (m==='fix' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('ikb-only').addEventListener('click', function(){ setMode('only'); });
+  document.getElementById('ikb-fix').addEventListener('click', function(){ setMode('fix'); });
+
+  function valueAt(day, ev) {
+    var total = 0, sigma = 3.2;
+    ev.forEach(function(center){
+      var dx = day - center;
+      total += 85 * Math.exp(-(dx*dx)/(2*sigma*sigma));
+    });
+    return Math.min(total, 100);
+  }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 34, pR = 12, pT = 18, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB, maxV = 100;
+
+    /* Grid */
+    [0,25,50,75,100].forEach(function(v){
+      var y = pT + gH - (v/maxV)*gH;
+      ctx.strokeStyle = vcInk(.08); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(pL, y); ctx.lineTo(pL+gW, y); ctx.stroke();
+      ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(v, pL-6, y+3);
+    });
+    ctx.save();
+    ctx.translate(12, pT+gH/2); ctx.rotate(-Math.PI/2);
+    ctx.fillStyle = vcInk(.35); ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(ikbT('severity'), 0, 0);
+    ctx.restore();
+
+    /* Curve for active scenario */
+    var ev = events[mode];
+    ctx.strokeStyle = colors[mode] + '.95)'; ctx.lineWidth = 2.2; ctx.beginPath();
+    for (var d=0; d<=totalDays; d+=0.5) {
+      var v = valueAt(d, ev);
+      var x = pL + (d/totalDays)*gW, y = pT + gH - (v/maxV)*gH;
+      if (d===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+
+    /* Dot at each outbreak peak */
+    ev.forEach(function(center){
+      var x = pL + (center/totalDays)*gW, y = pT + gH - (85/maxV)*gH;
+      ctx.fillStyle = colors[mode] + '1)'; ctx.beginPath(); ctx.arc(x,y,3.2,0,Math.PI*2); ctx.fill();
+    });
+
+    /* X-axis label */
+    ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(ikbT('weeksAxis'), pL+gW/2, H-8);
+
+    /* Caption */
+    var cap = mode === 'only' ? ikbT('v1_captionOnly') : ikbT('v1_captionFix');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv1 = draw;
+  draw();
+};
 
 </script>
 

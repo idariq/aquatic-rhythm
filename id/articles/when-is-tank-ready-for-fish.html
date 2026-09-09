@@ -89,6 +89,19 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -229,6 +242,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Kondisi dan lintasan biologi hidup dalam akuarium lebih dari sekadar siklus nitrogen — ia termasuk seluruh komunitas mikroba dan tanaman. Akuarium dengan siklus nitrogen yang stabil tapi tidak ada biofilm bermanfaat di kaca, tidak ada mikrofauna, tidak ada biologi substrat yang terbentuk — sudah bersiklus tapi belum matang sepenuhnya. Komunitas sekunder ini memerlukan waktu lebih lama untuk terbentuk dibanding siklus nitrogen, dan ia penting.</p>
     </div>
 
+    <!-- VISUAL: Step through days — the cycle finishes fast, biological depth lags far behind -->
+    <div class="vis-block">
+      <canvas id="cv1" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="mod-next">
       <button class="btn-prev" onclick="goIntro()">← Intro</button>
       <button class="btn-next" onclick="goMod(2)">Membaca transisi <span>→</span></button>
@@ -328,6 +346,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -346,6 +365,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -353,6 +373,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -365,6 +386,7 @@ function startLearning() {
   window.scrollTo({ top: 0, behavior: 'auto' });
   var first = document.getElementById('mod-1');
   if (first) { first.classList.add('active'); setTimeout(function(){ first.classList.add('visible'); }, 30); }
+  if (canvases[1]) setTimeout(function(){ canvases[1](); }, 150);
   updateDots();
 }
 
@@ -376,6 +398,200 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as IKB_STRINGS/ikbT() in articles/ich-keeps-coming-back.html.
+   This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep WITF_STRINGS.en/.id/.ja key
+   sets identical when editing. */
+var WITF_STRINGS = {
+  en: {
+    v1_advance: '+5 days →',
+    v1_reset: 'Reset',
+    v1_hint: 'step forward and watch the gap between the two lines',
+    v1_cycle: 'Nitrogen cycle',
+    v1_depth: 'Biological depth',
+    v1_day: 'Day',
+    v1_captionGap: 'The cycle already reads "done." The rest of the biology is still barely getting started.',
+    v1_captionCloser: 'The gap has narrowed — this is closer to what a tank that is actually ready looks like.',
+    daysAxis: 'Days since setup →'
+  },
+  id: {
+    v1_advance: '+5 hari →',
+    v1_reset: 'Ulang',
+    v1_hint: 'majukan langkah dan perhatikan jarak antara dua garis',
+    v1_cycle: 'Siklus nitrogen',
+    v1_depth: 'Kedalaman biologis',
+    v1_day: 'Hari',
+    v1_captionGap: 'Siklus sudah terbaca "selesai." Sisa biologinya baru saja dimulai.',
+    v1_captionCloser: 'Jaraknya sudah menyempit — ini lebih dekat dengan tampilan akuarium yang benar-benar siap.',
+    daysAxis: 'Hari sejak akuarium disiapkan →'
+  },
+  ja: {
+    v1_advance: '+5日 →',
+    v1_reset: 'リセット',
+    v1_hint: '日数を進めて、2本の線の差を見てみましょう',
+    v1_cycle: '窒素サイクル',
+    v1_depth: '生物学的な深み',
+    v1_day: '日目',
+    v1_captionGap: 'サイクルはすでに「完了」と表示されている。しかし、それ以外の生物相はまだほとんど始まったばかりだ。',
+    v1_captionCloser: '差が縮まってきた — これが本当に「準備ができた」水槽の姿に近い。',
+    daysAxis: 'セットアップからの日数 →'
+  }
+};
+function witfT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = WITF_STRINGS[lang] || WITF_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : WITF_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/ich-keeps-coming-back.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Step through days with a button — two curves plotted at
+   once (nitrogen cycle completeness, and broader biological depth),
+   with a marker the keeper advances 5 days at a time. The cycle curve
+   rises fast and plateaus near day 20; the biological-depth curve
+   rises far more slowly and is still well below it by day 40.
+   Deliberately simplified/illustrative math (two different-rate
+   saturating curves on an arbitrary 0-100% scale) — the point is the
+   SIZE of the gap between "cycled" and "ready" at any given day, not
+   a precise biological model. Mirrors the article's own framing:
+   "'Cycled' is a number. Ready is something else." ── */
+canvases[1] = function() {
+  stopAnim('cv1');
+  var c = resizeCanvas('cv1'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var totalDays = 40;
+  var day = 0;
+
+  function cyclePct(d) { return 100 * (1 - Math.exp(-d/5)); }
+  function depthPct(d) { return 100 * (1 - Math.exp(-d/40)); }
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn" id="witf-advance">' + witfT('v1_advance') + '</button>'
+    +'<button class="vis-btn" id="witf-reset">' + witfT('v1_reset') + '</button></div>'
+    +'<div class="vc-hint">' + witfT('v1_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  document.getElementById('witf-advance').addEventListener('click', function(){
+    day = Math.min(day + 5, totalDays); draw();
+  });
+  document.getElementById('witf-reset').addEventListener('click', function(){
+    day = 0; draw();
+  });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 34, pR = 12, pT = 18, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB, maxV = 100;
+
+    /* Grid */
+    [0,25,50,75,100].forEach(function(v){
+      var y = pT + gH - (v/maxV)*gH;
+      ctx.strokeStyle = vcInk(.08); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(pL, y); ctx.lineTo(pL+gW, y); ctx.stroke();
+      ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(v, pL-6, y+3);
+    });
+
+    /* Two full curves, drawn faint (context), full length regardless of day marker */
+    [{fn:cyclePct, col:'rgba(80,200,120,'}, {fn:depthPct, col:'rgba(220,100,60,'}].forEach(function(s){
+      ctx.strokeStyle = s.col + '.9)'; ctx.lineWidth = 2; ctx.beginPath();
+      for (var d=0; d<=totalDays; d+=0.5) {
+        var v = s.fn(d);
+        var x = pL + (d/totalDays)*gW, y = pT + gH - (v/maxV)*gH;
+        if (d===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    });
+
+    /* Day marker + dots on each curve at current day */
+    var xm = pL + (day/totalDays)*gW;
+    ctx.strokeStyle = vcInk(.3); ctx.lineWidth = 1; ctx.setLineDash([3,3]);
+    ctx.beginPath(); ctx.moveTo(xm, pT); ctx.lineTo(xm, pT+gH); ctx.stroke();
+    ctx.setLineDash([]);
+    [{fn:cyclePct, col:'rgba(80,200,120,'}, {fn:depthPct, col:'rgba(220,100,60,'}].forEach(function(s){
+      var v = s.fn(day);
+      var y = pT + gH - (v/maxV)*gH;
+      ctx.fillStyle = s.col + '1)'; ctx.beginPath(); ctx.arc(xm,y,3.5,0,Math.PI*2); ctx.fill();
+    });
+
+    /* X-axis label */
+    ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(witfT('daysAxis'), pL+gW/2, H-8);
+
+    /* Legend + day readout */
+    ctx.textAlign = 'left'; ctx.font = '9px sans-serif';
+    ctx.fillStyle = 'rgba(80,200,120,1)'; ctx.fillText('● ' + witfT('v1_cycle'), pL, pT+10);
+    ctx.fillStyle = 'rgba(220,100,60,1)'; ctx.fillText('● ' + witfT('v1_depth'), pL, pT+22);
+    ctx.fillStyle = vcInk(.5); ctx.textAlign = 'right';
+    ctx.fillText(witfT('v1_day') + ' ' + Math.round(day), pL+gW, pT+10);
+
+    /* Caption */
+    var gap = cyclePct(day) - depthPct(day);
+    var cap = gap > 30 ? witfT('v1_captionGap') : witfT('v1_captionCloser');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv1 = draw;
+  draw();
+};
 
 </script>
 

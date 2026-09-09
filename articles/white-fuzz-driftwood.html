@@ -75,6 +75,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-title em{font-style:italic;color:var(--th-accent)}
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}.mod-body strong{font-weight:400;color:var(--th-ink)}.mod-body em{font-style:italic;color:var(--th-ink-3)}
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 .hn{margin:2rem 0;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2);position:relative}
@@ -217,6 +229,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Because it's feeding on a finite supply, the growth follows a predictable arc. It appears within the first couple of weeks, often looks its most dramatic somewhere in that window, then thins out and disappears on its own as the wood's easily accessible sugars get consumed.</p>
     </div>
 
+    <!-- VISUAL: Toggle left-alone/scrubbed — same wood, same starting sugars -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="pq">
       <p>"The fuzz isn't a sign the wood is contaminating the tank. It's a sign the tank's biology found something to eat — which is closer to a working system than a failing one."</p>
     </div>
@@ -285,6 +302,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -303,6 +321,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -310,6 +329,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -333,6 +353,197 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as SSE_STRINGS/sseT() in
+   articles/snails-suddenly-everywhere.html. This script block is
+   copied byte-for-byte into id/articles + ja/articles by
+   build-i18n.mjs, so the runtime lang check is what actually
+   localises the widget — keep WFD_STRINGS.en/.id/.ja key sets
+   identical when editing. */
+var WFD_STRINGS = {
+  en: {
+    v2_alone: 'Left alone',
+    v2_scrubbed: 'Scrubbed off',
+    v2_hint: 'same wood, same starting sugars — scrubbing does not skip the process',
+    v2_captionAlone: 'One arc, start to finish — the fuzz rises, peaks, and fades on its own timeline.',
+    v2_captionScrubbed: 'Scrubbing clears the visible fuzz for a few days, but the same sugars are still there — so it regrows and runs a second arc before finishing.',
+    daysAxis: 'Days →',
+    v2_coverage: 'Coverage'
+  },
+  id: {
+    v2_alone: 'Dibiarkan saja',
+    v2_scrubbed: 'Disikat bersih',
+    v2_hint: 'kayu yang sama, gula awal yang sama — menyikat tidak melewatkan prosesnya',
+    v2_captionAlone: 'Satu lengkung, dari awal sampai akhir — kapas putihnya naik, memuncak, lalu memudar dengan sendirinya.',
+    v2_captionScrubbed: 'Menyikat menghilangkan kapas putih yang terlihat selama beberapa hari, tapi gula yang sama masih ada di sana — jadi ia tumbuh lagi dan menjalani lengkung kedua sebelum benar-benar selesai.',
+    daysAxis: 'Hari →',
+    v2_coverage: 'Cakupan'
+  },
+  ja: {
+    v2_alone: 'そのまま放置',
+    v2_scrubbed: 'こすり落とす',
+    v2_hint: '同じ流木、同じ最初の糖分 — こすってもプロセスは飛ばせない',
+    v2_captionAlone: 'ひとつの弧を最初から最後まで — 白い綿は増え、ピークに達し、自然に薄れていく。',
+    v2_captionScrubbed: 'こすると数日は見た目の白い綿は消えるが、同じ糖分がまだそこに残っているため、再び生えてきて、完全に終わる前にもう一度弧を描く。',
+    daysAxis: '日数 →',
+    v2_coverage: '被覆率'
+  }
+};
+function wfdT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = WFD_STRINGS[lang] || WFD_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : WFD_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/snails-suddenly-everywhere.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle left-alone/scrubbed — a single Gaussian rise-
+   and-fall arc (finite sugar supply) versus the same first arc cut
+   short by a scrub at day 12, followed by a second, smaller regrowth
+   arc. Deliberately simplified/illustrative math (Gaussian bumps on
+   an arbitrary 0-100 coverage scale) — the point is that scrubbing
+   does not shorten the total timeline, not a precise biofilm model.
+   Mirrors this article's own line: "scrubbing... can undo something
+   that was actually working in the wood's favour," and module 3's
+   "the fuzz almost always regrows within a few days after being
+   removed." ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var totalDays = 35;
+  var mode = 'alone'; /* alone | scrubbed */
+
+  function gauss(x, center, sigma, amp) {
+    var dx = x - center;
+    return amp * Math.exp(-(dx*dx)/(2*sigma*sigma));
+  }
+  function valueAt(day, m) {
+    if (m === 'alone') return gauss(day, 10, 6, 90);
+    if (day < 12) return gauss(day, 10, 4, 90);
+    return gauss(day - 12, 6, 3, 65);
+  }
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="wfd-alone">' + wfdT('v2_alone') + '</button>'
+    +'<button class="vis-btn" id="wfd-scrubbed">' + wfdT('v2_scrubbed') + '</button></div>'
+    +'<div class="vc-hint">' + wfdT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('wfd-alone').className = 'vis-btn' + (m==='alone' ? ' vis-btn-active' : '');
+    document.getElementById('wfd-scrubbed').className = 'vis-btn' + (m==='scrubbed' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('wfd-alone').addEventListener('click', function(){ setMode('alone'); });
+  document.getElementById('wfd-scrubbed').addEventListener('click', function(){ setMode('scrubbed'); });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 34, pR = 12, pT = 18, pB = 46;
+    var gW = W - pL - pR, gH = H - pT - pB, maxV = 100;
+
+    /* Grid */
+    [0,25,50,75,100].forEach(function(v){
+      var y = pT + gH - (v/maxV)*gH;
+      ctx.strokeStyle = vcInk(.08); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(pL, y); ctx.lineTo(pL+gW, y); ctx.stroke();
+      ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(v, pL-6, y+3);
+    });
+    ctx.save();
+    ctx.translate(12, pT+gH/2); ctx.rotate(-Math.PI/2);
+    ctx.fillStyle = vcInk(.35); ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(wfdT('v2_coverage'), 0, 0);
+    ctx.restore();
+
+    /* Scrub marker */
+    if (mode === 'scrubbed') {
+      var x12 = pL + (12/totalDays)*gW;
+      ctx.strokeStyle = vcInk(.3); ctx.lineWidth = 1; ctx.setLineDash([3,3]);
+      ctx.beginPath(); ctx.moveTo(x12, pT); ctx.lineTo(x12, pT+gH); ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    /* Curve for active scenario */
+    var col = mode === 'alone' ? 'rgba(80,200,120,' : 'rgba(220,100,60,';
+    ctx.strokeStyle = col + '.95)'; ctx.lineWidth = 2.2; ctx.beginPath();
+    for (var d=0; d<=totalDays; d+=0.4) {
+      var v = valueAt(d, mode);
+      var x = pL + (d/totalDays)*gW, y = pT + gH - (v/maxV)*gH;
+      if (d===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+
+    /* X-axis label */
+    ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(wfdT('daysAxis'), pL+gW/2, H-8);
+
+    /* Caption */
+    var cap = mode === 'alone' ? wfdT('v2_captionAlone') : wfdT('v2_captionScrubbed');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
 
 </script>
 

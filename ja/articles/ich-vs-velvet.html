@@ -75,6 +75,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-title em{font-style:italic;color:var(--th-accent)}
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}.mod-body strong{font-weight:400;color:var(--th-ink)}.mod-body em{font-style:italic;color:var(--th-ink-3)}
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 .hn{margin:2rem 0;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2);position:relative}
@@ -225,6 +237,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>もっともはっきり見分ける方法は懐中電灯チェックです。水槽と部屋の照明を消し、懐中電灯を低く、ほぼ平行に近い角度で魚に当てます。この光の下で、白点病はくっきりとした白い粒のまま見えます。ベルベット病は、体全体にきらめく金粉のような膜として浮かび上がります。</p>
     </div>
 
+    <!-- VISUAL: Toggle ich/velvet — discrete spots vs a fine continuous dusting -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="pq">
       <p>白点病はばらばらの点の集まりです。ベルベット病は膜です。その違いがそのまま診断であり、懐中電灯があれば二分ほどで確認できます。</p>
     </div>
@@ -302,6 +319,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -320,6 +338,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -327,6 +346,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -350,6 +370,199 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as AIA_STRINGS/aiaT() in articles/algae-in-aquarium.html.
+   This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep IVV_STRINGS.en/.id/.ja key
+   sets identical when editing. */
+var IVV_STRINGS = {
+  en: {
+    v2_ich: 'Ich',
+    v2_velvet: 'Velvet',
+    v2_hint: 'the same patch of skin, two different infections',
+    v2_captionIch: 'Distinct, separate spots — you could count them one at a time.',
+    v2_captionVelvet: 'A fine, continuous dusting — no single spot to count, just a coating.'
+  },
+  id: {
+    v2_ich: 'Ich',
+    v2_velvet: 'Velvet',
+    v2_hint: 'bagian kulit yang sama, dua infeksi berbeda',
+    v2_captionIch: 'Bintik-bintik terpisah dan jelas — bisa dihitung satu per satu.',
+    v2_captionVelvet: 'Lapisan tipis dan menerus — tidak ada bintik tunggal untuk dihitung, hanya lapisan debu.'
+  },
+  ja: {
+    v2_ich: '白点病',
+    v2_velvet: 'ベルベット病',
+    v2_hint: '同じ皮膚の部分、違う感染症',
+    v2_captionIch: 'はっきりと分かれた点 — 一つずつ数えられる。',
+    v2_captionVelvet: '細かく途切れのない粉状の膜 — 数えられる点ではなく、覆いのようなもの。'
+  }
+};
+function ivvT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = IVV_STRINGS[lang] || IVV_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : IVV_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/algae-in-aquarium.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle ich/velvet — NOT a chart. A patch of "skin" is
+   rendered as a base oval, then stippled with either a small number
+   of well-separated circular spots (ich) or hundreds of tiny,
+   densely-packed dots forming a continuous fine texture (velvet).
+   A fixed random seed keeps both draws visually stable across
+   re-renders. Deliberately a texture illustration, not a data chart
+   — this is the one Tier-2 diagnostic-comparison article where the
+   distinguishing signal is genuinely visual (pattern density), not a
+   trend over time or a parameter response. Mirrors this module's own
+   line: "Ich is a scattering of individual spots. Velvet is a
+   coating." ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var mode = 'ich'; /* ich | velvet */
+
+  /* Simple seeded PRNG so both patterns look the same every render */
+  function mulberry32(seed) {
+    return function() {
+      seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+      var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="ivv-ich">' + ivvT('v2_ich') + '</button>'
+    +'<button class="vis-btn" id="ivv-velvet">' + ivvT('v2_velvet') + '</button></div>'
+    +'<div class="vc-hint">' + ivvT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('ivv-ich').className = 'vis-btn' + (m==='ich' ? ' vis-btn-active' : '');
+    document.getElementById('ivv-velvet').className = 'vis-btn' + (m==='velvet' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('ivv-ich').addEventListener('click', function(){ setMode('ich'); });
+  document.getElementById('ivv-velvet').addEventListener('click', function(){ setMode('velvet'); });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var cx = W/2, cy = H/2, rx = Math.min(W*0.42, 200), ry = Math.min(H*0.36, 80);
+
+    /* Base "skin" oval */
+    ctx.save();
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI*2);
+    ctx.fillStyle = vcLight() ? 'rgba(180,170,150,.55)' : 'rgba(120,110,95,.5)';
+    ctx.fill();
+    ctx.clip();
+
+    if (mode === 'ich') {
+      var rnd = mulberry32(42);
+      var spots = [];
+      var attempts = 0;
+      while (spots.length < 20 && attempts < 2000) {
+        attempts++;
+        var x = cx + (rnd()*2-1)*rx, y = cy + (rnd()*2-1)*ry;
+        var ok = true;
+        for (var i=0; i<spots.length; i++) {
+          var dx = spots[i][0]-x, dy = spots[i][1]-y;
+          if (Math.sqrt(dx*dx+dy*dy) < 16) { ok = false; break; }
+        }
+        if (ok) spots.push([x,y]);
+      }
+      spots.forEach(function(p){
+        ctx.beginPath();
+        ctx.arc(p[0], p[1], 3.2, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(245,245,240,.95)';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(0,0,0,.15)'; ctx.lineWidth = .5; ctx.stroke();
+      });
+    } else {
+      var rnd2 = mulberry32(99);
+      for (var n=0; n<650; n++) {
+        var x2 = cx + (rnd2()*2-1)*rx, y2 = cy + (rnd2()*2-1)*ry;
+        ctx.beginPath();
+        ctx.arc(x2, y2, 0.9, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(205,165,60,.7)';
+        ctx.fill();
+      }
+    }
+    ctx.restore();
+
+    /* Outline the skin patch */
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI*2);
+    ctx.strokeStyle = vcInk(.2); ctx.lineWidth = 1; ctx.stroke();
+
+    /* Caption */
+    var cap = mode === 'ich' ? ivvT('v2_captionIch') : ivvT('v2_captionVelvet');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
 
 </script>
 

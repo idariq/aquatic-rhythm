@@ -89,6 +89,19 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -223,6 +236,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Jika CO2 diinjeksikan, hentikan injeksi segera. Jika Anda mencurigai kontaminan kimia (detergen, insektisida dari ruangan sebelah, obat yang overdosis), ganti air yang lebih besar mungkin diperlukan — tapi lakukan secara bertahap, bukan sekaligus.</p>
     </div>
 
+    <!-- VISUAL: Tap an ammonia reading — watch which response threshold activates -->
+    <div class="vis-block">
+      <canvas id="cv1" style="width:100%;height:230px"></canvas>
+    </div>
+
     <div class="pq">
       <p>Dalam crash, naluri adalah untuk bertindak. Respons yang tepat adalah membaca — dan bertindak berdasarkan apa yang bacaan katakan, bukan dorongan panik semata.</p>
     </div>
@@ -349,6 +367,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 5;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -367,6 +386,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -374,6 +394,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -387,6 +408,7 @@ function startLearning() {
   var first = document.getElementById('mod-1');
   if (first) { first.classList.add('active'); setTimeout(function(){ first.classList.add('visible'); }, 30); }
   updateDots();
+  if (canvases[1]) setTimeout(function(){ canvases[1](); }, 150);
 }
 
 function updateDots() {
@@ -397,6 +419,189 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as ATV_STRINGS/atvT() in articles/aquarium-travel-vacation.html.
+   This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep TCR_STRINGS.en/.id/.ja key
+   sets identical when editing. */
+var TCR_STRINGS = {
+  en: {
+    v1_hint: 'tap a reading and watch which response threshold activates',
+    v1_ppmLabel: 'Ammonia',
+    v1_btn0: '0 ppm',
+    v1_btn1: '1 ppm',
+    v1_btn2: '2 ppm',
+    v1_btn4: '4 ppm',
+    v1_btn6: '6 ppm',
+    v1_capNormal: 'Not yet in failure range — hold, retest in two hours.',
+    v1_capFailure: 'Biological system likely failed — a 20–25% water change, then retest in two hours.',
+    v1_capEmergency: 'Above the emergency threshold — a 50%+ change is warranted now.'
+  },
+  id: {
+    v1_hint: 'ketuk satu bacaan dan lihat respons mana yang diaktifkan',
+    v1_ppmLabel: 'Amonia',
+    v1_btn0: '0 ppm',
+    v1_btn1: '1 ppm',
+    v1_btn2: '2 ppm',
+    v1_btn4: '4 ppm',
+    v1_btn6: '6 ppm',
+    v1_capNormal: 'Belum masuk julat kegagalan — tahan dulu, uji semula dua jam lagi.',
+    v1_capFailure: 'Sistem biologi kemungkinan gagal — tukar air 20–25%, kemudian uji semula dua jam lagi.',
+    v1_capEmergency: 'Melebihi ambang kecemasan — tukar air 50%+ wajar sekarang.'
+  },
+  ja: {
+    v1_hint: '数値をタップして、どの対応が発動するか見てみましょう',
+    v1_ppmLabel: 'アンモニア',
+    v1_btn0: '0 ppm',
+    v1_btn1: '1 ppm',
+    v1_btn2: '2 ppm',
+    v1_btn4: '4 ppm',
+    v1_btn6: '6 ppm',
+    v1_capNormal: 'まだ機能不全の範囲ではありません — 様子を見て、2時間後に再検査してください。',
+    v1_capFailure: '生物学的システムが機能不全に陥っている可能性があります — 20〜25%の換水後、2時間後に再検査してください。',
+    v1_capEmergency: '緊急しきい値を超えています — 今すぐ50%以上の換水が必要です。'
+  }
+};
+function tcrT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = TCR_STRINGS[lang] || TCR_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : TCR_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/aquarium-travel-vacation.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: A semicircular dial gauge with a needle — the FIRST radial
+   gauge in the rollout (every prior widget used a linear bar, line, or
+   curve). Five preset ammonia readings (0/1/2/4/6 ppm) move the needle
+   across three colored zones matching this module's own two thresholds:
+   "above 2 ppm... biological system has failed" and "unless ammonia is
+   above 4 ppm... a large emergency change." The reader taps a reading
+   and watches which threshold — and which recommended response —
+   actually activates, rather than having to hold both numbers in
+   their head while reading in a panic. ── */
+canvases[1] = function() {
+  stopAnim('cv1');
+  var c = resizeCanvas('cv1'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var maxV = 6;
+  var value = 0;
+  var presets = [0, 1, 2, 4, 6];
+
+  var wrap = c.parentElement;
+  var existingCtrl = wrap.querySelector('.vis-ctrl');
+  if (existingCtrl) existingCtrl.remove();
+  var existingCap = wrap.querySelector('.vc-caption');
+  if (existingCap) existingCap.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  var btnsHtml = presets.map(function(p, i){
+    return '<button class="vis-btn' + (p === 0 ? ' vis-btn-active' : '') + '" id="tcr-btn-' + i + '">' + tcrT('v1_btn' + p) + '</button>';
+  }).join('');
+  ctrl.innerHTML = '<div style="display:flex;gap:.35rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    + btnsHtml + '</div>'
+    + '<div class="vc-hint">' + tcrT('v1_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  presets.forEach(function(p, i){
+    document.getElementById('tcr-btn-' + i).addEventListener('click', function(){
+      value = p;
+      presets.forEach(function(pp, ii){
+        document.getElementById('tcr-btn-' + ii).className = 'vis-btn' + (ii === i ? ' vis-btn-active' : '');
+      });
+      draw();
+    });
+  });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var cx = W/2, cy = 118, r = Math.min(W*0.34, 88);
+
+    var zones = [[0,2,'rgba(80,200,120,.85)'], [2,4,'rgba(230,175,60,.85)'], [4,6,'rgba(220,90,60,.85)']];
+    zones.forEach(function(z){
+      var a0 = Math.PI + (z[0]/maxV)*Math.PI, a1 = Math.PI + (z[1]/maxV)*Math.PI;
+      ctx.beginPath(); ctx.arc(cx, cy, r, a0, a1, false);
+      ctx.strokeStyle = z[2]; ctx.lineWidth = 14; ctx.lineCap = 'butt'; ctx.stroke();
+    });
+
+    ctx.textBaseline = 'middle';
+    [0,2,4,6].forEach(function(tv){
+      var a = Math.PI + (tv/maxV)*Math.PI;
+      var tx = cx + Math.cos(a)*(r+16), ty = cy + Math.sin(a)*(r+16);
+      ctx.fillStyle = vcInk(.5); ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(tv+'', tx, ty);
+    });
+
+    var a = Math.PI + (value/maxV)*Math.PI;
+    var nx = cx + Math.cos(a)*(r-6), ny = cy + Math.sin(a)*(r-6);
+    ctx.strokeStyle = vcInk(.85); ctx.lineWidth = 2.2;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(nx, ny); ctx.stroke();
+    ctx.fillStyle = vcInk(.85); ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI*2); ctx.fill();
+
+    ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'center';
+    ctx.fillStyle = vcInk(.5); ctx.font = '9px sans-serif';
+    ctx.fillText(tcrT('v1_ppmLabel'), cx, H-34);
+    ctx.fillStyle = vcInk(.85); ctx.font = '13px sans-serif';
+    ctx.fillText(value + ' ppm', cx, H-16);
+
+    var key = value < 2 ? 'v1_capNormal' : (value < 4 ? 'v1_capFailure' : 'v1_capEmergency');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = tcrT(key);
+  }
+
+  vcRedraws.cv1 = draw;
+  draw();
+};
 
 </script>
 

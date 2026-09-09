@@ -156,7 +156,7 @@ test('ARA observation page (s5) includes false-signal taxonomy examples', () => 
     'White biofilm on hardscape',
     'Post-water-change behaviour',
     'Early-morning surface breathing',
-    'Panic window',
+    'Settling period',
   ]) {
     assert.ok(s5.includes(sig), `false-signal taxonomy missing: ${sig}`);
   }

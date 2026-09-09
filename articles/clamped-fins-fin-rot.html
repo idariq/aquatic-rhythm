@@ -75,6 +75,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-title em{font-style:italic;color:var(--th-accent)}
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}.mod-body strong{font-weight:400;color:var(--th-ink)}.mod-body em{font-style:italic;color:var(--th-ink-3)}
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 .hn{margin:2rem 0;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2);position:relative}
@@ -237,6 +249,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Watch for aggression too. A dominant tankmate chasing and nipping a subordinate fish produces damage that can be mistaken for infection, and no amount of medication fixes a problem that's actually behavioural.</p>
     </div>
 
+    <!-- VISUAL: Step through days — same fin edge each day vs a receding, ragged edge -->
+    <div class="vis-block">
+      <canvas id="cv3" style="width:100%;height:220px"></canvas>
+    </div>
+
     <div class="hn">
       <span class="hn-label">Why the photo matters more than it seems</span>
       <p>Fin rot's progression is often too slow to notice by eye alone from one day to the next — the change becomes obvious only in hindsight. A same-angle photo taken daily turns a gradual drift you might rationalise away into a comparison you can't argue with.</p>
@@ -286,6 +303,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -304,6 +322,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -311,6 +330,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -334,6 +354,200 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as IVV_STRINGS/ivvT() in articles/ich-vs-velvet.html. This
+   script block is copied byte-for-byte into id/articles + ja/articles
+   by build-i18n.mjs, so the runtime lang check is what actually
+   localises the widget — keep CFR_STRINGS.en/.id/.ja key sets
+   identical when editing. */
+var CFR_STRINGS = {
+  en: {
+    v3_stress: 'Stress (intact)',
+    v3_finrot: 'Fin rot (progressing)',
+    v3_advance: '+1 day →',
+    v3_reset: 'Reset',
+    v3_hint: 'same fin, day zero to day three',
+    v3_day: 'Day',
+    v3_captionStress: 'Same edge, day after day — the shape does not change, even though the fish is clearly uncomfortable.',
+    v3_captionFinrot: 'A little shorter and more ragged each day — that direction is the difference stress alone never shows.'
+  },
+  id: {
+    v3_stress: 'Stres (utuh)',
+    v3_finrot: 'Busuk sirip (berkembang)',
+    v3_advance: '+1 hari →',
+    v3_reset: 'Ulang',
+    v3_hint: 'sirip yang sama, hari nol sampai hari ketiga',
+    v3_day: 'Hari',
+    v3_captionStress: 'Tepi yang sama, hari demi hari — bentuknya tidak berubah, meski ikan jelas tidak nyaman.',
+    v3_captionFinrot: 'Sedikit lebih pendek dan compang-camping tiap hari — arah perubahan itulah yang tidak pernah ditunjukkan oleh stres saja.'
+  },
+  ja: {
+    v3_stress: 'ストレス(無傷)',
+    v3_finrot: '尾ぐされ病(進行中)',
+    v3_advance: '+1日 →',
+    v3_reset: 'リセット',
+    v3_hint: '同じヒレ、0日目から3日目まで',
+    v3_day: '日目',
+    v3_captionStress: '何日経っても同じ縁 — 魚は明らかに不快そうでも、形は変わらない。',
+    v3_captionFinrot: '日ごとに少しずつ短く、ぼろぼろになっていく — その方向性こそ、ストレスだけでは絶対に見られない違いだ。'
+  }
+};
+function cfrT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = CFR_STRINGS[lang] || CFR_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : CFR_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/ich-vs-velvet.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle stress/fin-rot + step a day marker (0-3) — NOT a
+   chart, a shape illustration. A fin is drawn as a filled arc anchored
+   at a "body" edge; in the stress scenario the outer edge radius and
+   its light natural waviness never change with the day counter; in
+   the fin-rot scenario the radius shrinks and the edge gets
+   progressively more jagged (seeded per-day noise) as the day advances.
+   Deliberately simplified/illustrative — the point is the DIRECTION
+   of change (none vs progressive), which is the whole diagnostic this
+   module teaches, not an anatomically precise fin render. Mirrors
+   this module's own line: "If the edges are unchanged, you're most
+   likely looking at stress. If they're visibly more ragged or
+   shorter, that's genuine progression." ── */
+canvases[3] = function() {
+  stopAnim('cv3');
+  var c = resizeCanvas('cv3'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var mode = 'stress'; /* stress | finrot */
+  var day = 0;
+
+  function mulberry32(seed) {
+    return function() {
+      seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+      var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="cfr-stress">' + cfrT('v3_stress') + '</button>'
+    +'<button class="vis-btn" id="cfr-finrot">' + cfrT('v3_finrot') + '</button></div>'
+    +'<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.3rem 0">'
+    +'<button class="vis-btn" id="cfr-advance">' + cfrT('v3_advance') + '</button>'
+    +'<button class="vis-btn" id="cfr-reset">' + cfrT('v3_reset') + '</button></div>'
+    +'<div class="vc-hint">' + cfrT('v3_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('cfr-stress').className = 'vis-btn' + (m==='stress' ? ' vis-btn-active' : '');
+    document.getElementById('cfr-finrot').className = 'vis-btn' + (m==='finrot' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('cfr-stress').addEventListener('click', function(){ setMode('stress'); });
+  document.getElementById('cfr-finrot').addEventListener('click', function(){ setMode('finrot'); });
+  document.getElementById('cfr-advance').addEventListener('click', function(){ day = Math.min(day+1, 3); draw(); });
+  document.getElementById('cfr-reset').addEventListener('click', function(){ day = 0; draw(); });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var anchorX = W*0.28, anchorY = H/2;
+    var baseR = Math.min(W*0.42, 170);
+    var shrink = mode === 'finrot' ? (1 - 0.13*day) : 1;
+    var jagAmp = mode === 'finrot' ? day * 5.5 : 0;
+    var rnd = mulberry32(1000 + day*17);
+
+    ctx.beginPath();
+    ctx.moveTo(anchorX, anchorY - baseR*0.5);
+    var steps = 40;
+    for (var i=0; i<=steps; i++) {
+      var t = i/steps; /* 0..1 along the fin edge */
+      var ang = (-0.5 + t) * Math.PI * 0.85;
+      var r = baseR * shrink * (0.72 + 0.28*Math.cos(t*Math.PI));
+      var jag = jagAmp * (rnd()*2-1) * (0.3 + 0.7*Math.sin(t*Math.PI));
+      var x = anchorX + Math.cos(ang) * (r + jag);
+      var y = anchorY + Math.sin(ang) * (r*0.55 + jag*0.5);
+      ctx.lineTo(x, y);
+    }
+    ctx.lineTo(anchorX, anchorY + baseR*0.5);
+    ctx.closePath();
+
+    var col = mode === 'stress' ? 'rgba(80,200,120,' : 'rgba(220,100,60,';
+    ctx.fillStyle = col + '.28)';
+    ctx.fill();
+    ctx.strokeStyle = col + '.9)'; ctx.lineWidth = 2; ctx.stroke();
+
+    /* Body block, drawn over the fin's anchored edge */
+    ctx.fillStyle = vcLight() ? 'rgba(180,170,150,.7)' : 'rgba(120,110,95,.65)';
+    ctx.fillRect(0, anchorY - baseR*0.62, anchorX+2, baseR*1.24);
+
+    /* Day readout */
+    ctx.fillStyle = vcInk(.45); ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(cfrT('v3_day') + ' ' + day, W-12, 22);
+
+    /* Caption */
+    var cap = mode === 'stress' ? cfrT('v3_captionStress') : cfrT('v3_captionFinrot');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv3 = draw;
+  draw();
+};
 
 </script>
 

@@ -89,6 +89,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -252,6 +264,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Perilaku paling baik dibaca dengan membandingkannya dengan baseline ikan itu sendiri — bukan dengan standar generik tentang apa yang betta "seharusnya" lakukan. Betta yang secara alami pemalu dan selalu pendiam tidak menunjukkan masalah. Betta yang sebelumnya aktif dan kini pendiam — itulah yang perlu diperhatikan. Sinyalnya adalah perubahan, bukan sifatnya.</p>
     </div>
 
+    <!-- VISUAL: Toggle content/stressed — the same seven signals, read on two different days -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:260px"></canvas>
+    </div>
+
     <div class="mod-next">
       <button class="btn-prev" onclick="goMod(1)">← Kembali</button>
       <button class="btn-next" onclick="goMod(3)">Penyebab umum masalah betta <span>→</span></button>
@@ -325,6 +342,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -343,6 +361,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -350,6 +369,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -373,6 +393,222 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as FWM_STRINGS/fwmT() in
+   articles/fish-hiding-what-does-it-mean.html. This script block is
+   copied byte-for-byte into id/articles + ja/articles by
+   build-i18n.mjs, so the runtime lang check is what actually
+   localises the widget — keep BFB_STRINGS.en/.id/.ja key sets
+   identical when editing. */
+var BFB_STRINGS = {
+  en: {
+    v2_content: 'Content betta',
+    v2_stressed: 'Stressed betta',
+    v2_hint: 'the same seven signals, read on two different days',
+    v2_captionContent: 'Every signal reading normal — bubble-nest building is a bonus, not a requirement, but everything else lines up.',
+    v2_captionStressed: 'Multiple signals flagged at once — this is a stronger reading than any single one alone.',
+    v2_activity: 'Activity',
+    v2_fins: 'Fins',
+    v2_colour: 'Colour',
+    v2_breathing: 'Breathing',
+    v2_appetite: 'Appetite',
+    v2_flaring: 'Flaring',
+    v2_bubbleNest: 'Bubble nest',
+    v2_activeOk: 'active, exploring', v2_activeBad: 'resting near bottom',
+    v2_finsOk: 'open, flowing', v2_finsBad: 'clamped tight',
+    v2_colourOk: 'vivid', v2_colourBad: 'faded',
+    v2_breathingOk: 'occasional surface visits', v2_breathingBad: 'frequent gasping',
+    v2_appetiteOk: 'eating readily', v2_appetiteBad: 'refusing food',
+    v2_flaringOk: 'occasional, brief', v2_flaringBad: 'constant, frantic',
+    v2_bubbleOk: 'building sometimes', v2_bubbleNeutral: 'none right now'
+  },
+  id: {
+    v2_content: 'Cupang tenang',
+    v2_stressed: 'Cupang stres',
+    v2_hint: 'tujuh sinyal yang sama, dibaca pada dua hari berbeda',
+    v2_captionContent: 'Semua sinyal terbaca normal — membangun sarang gelembung itu bonus, bukan keharusan, tapi yang lain semuanya sejalan.',
+    v2_captionStressed: 'Beberapa sinyal ditandai sekaligus — ini bacaan yang lebih kuat drpd satu sinyal saja.',
+    v2_activity: 'Aktivitas',
+    v2_fins: 'Sirip',
+    v2_colour: 'Warna',
+    v2_breathing: 'Napas',
+    v2_appetite: 'Nafsu makan',
+    v2_flaring: 'Mengembang',
+    v2_bubbleNest: 'Sarang gelembung',
+    v2_activeOk: 'aktif, menjelajah', v2_activeBad: 'diam di dasar',
+    v2_finsOk: 'terbuka, mengalir', v2_finsBad: 'terkatup rapat',
+    v2_colourOk: 'cerah', v2_colourBad: 'pudar',
+    v2_breathingOk: 'sesekali ke permukaan', v2_breathingBad: 'sering megap-megap',
+    v2_appetiteOk: 'makan dengan lahap', v2_appetiteBad: 'menolak makanan',
+    v2_flaringOk: 'sesekali, singkat', v2_flaringBad: 'terus-menerus, panik',
+    v2_bubbleOk: 'kadang membangun', v2_bubbleNeutral: 'belum ada saat ini'
+  },
+  ja: {
+    v2_content: '満ち足りたベタ',
+    v2_stressed: 'ストレスのあるベタ',
+    v2_hint: '同じ7つのシグナルを、違う日に読む',
+    v2_captionContent: 'すべてのシグナルが正常 — 泡巣作りはあればうれしいおまけであって必須ではないが、それ以外はすべてそろっている。',
+    v2_captionStressed: '複数のシグナルが同時に出ている — これは単独のシグナルより強い読み取りだ。',
+    v2_activity: '活動量',
+    v2_fins: 'ヒレ',
+    v2_colour: '体色',
+    v2_breathing: '呼吸',
+    v2_appetite: '食欲',
+    v2_flaring: 'フレアリング',
+    v2_bubbleNest: '泡巣',
+    v2_activeOk: '活発に泳ぎ回る', v2_activeBad: '底でじっとしている',
+    v2_finsOk: '開いて流れるよう', v2_finsBad: 'ぴったり閉じている',
+    v2_colourOk: '鮮やか', v2_colourBad: '色あせている',
+    v2_breathingOk: 'たまに水面へ', v2_breathingBad: '頻繁にあえいでいる',
+    v2_appetiteOk: 'よく食べる', v2_appetiteBad: '餌を拒否',
+    v2_flaringOk: 'たまに、短く', v2_flaringBad: '絶え間なく、必死に',
+    v2_bubbleOk: 'たまに作る', v2_bubbleNeutral: '今はなし'
+  }
+};
+function bfbT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = BFB_STRINGS[lang] || BFB_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : BFB_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/fish-hiding-what-does-it-mean.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle content/stressed — NOT a chart, a signal
+   checklist/dashboard. The seven behaviours this module covers are
+   listed as rows, each with a status dot and a short current-state
+   label. In "content" mode every row reads its positive state (bubble
+   nest is neutral-positive, not required). In "stressed" mode every
+   row reads its flagged state. This is the FIRST dashboard-style
+   widget in the whole rollout — every other widget plots a single
+   metric; this one deliberately shows several signals read together,
+   which is this module's own point: read the whole pattern, not one
+   behaviour in isolation. Mirrors this module's own line: "The signal
+   is change, not trait" and the fact that seven distinct behaviours
+   are catalogued as a set. ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var mode = 'content'; /* content | stressed */
+
+  var rows = [
+    { label: 'v2_activity',   ok: 'v2_activeOk',    bad: 'v2_activeBad' },
+    { label: 'v2_fins',       ok: 'v2_finsOk',       bad: 'v2_finsBad' },
+    { label: 'v2_colour',     ok: 'v2_colourOk',     bad: 'v2_colourBad' },
+    { label: 'v2_breathing',  ok: 'v2_breathingOk',  bad: 'v2_breathingBad' },
+    { label: 'v2_appetite',   ok: 'v2_appetiteOk',   bad: 'v2_appetiteBad' },
+    { label: 'v2_flaring',    ok: 'v2_flaringOk',    bad: 'v2_flaringBad' },
+    { label: 'v2_bubbleNest', ok: 'v2_bubbleOk',     bad: 'v2_bubbleNeutral', neutral: true }
+  ];
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="bfb-content">' + bfbT('v2_content') + '</button>'
+    +'<button class="vis-btn" id="bfb-stressed">' + bfbT('v2_stressed') + '</button></div>'
+    +'<div class="vc-hint">' + bfbT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('bfb-content').className = 'vis-btn' + (m==='content' ? ' vis-btn-active' : '');
+    document.getElementById('bfb-stressed').className = 'vis-btn' + (m==='stressed' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('bfb-content').addEventListener('click', function(){ setMode('content'); });
+  document.getElementById('bfb-stressed').addEventListener('click', function(){ setMode('stressed'); });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pT = 14, rowH = (H - pT - 10) / rows.length;
+    var dotX = 26, labelX = 44, stateX = Math.min(W*0.5, 190);
+
+    rows.forEach(function(r, i){
+      var y = pT + i*rowH + rowH/2;
+      var flagged = mode === 'stressed' && !r.neutral;
+      var dotCol = r.neutral ? vcInk(.35) : (flagged ? 'rgba(220,100,60,1)' : 'rgba(80,200,120,1)');
+
+      ctx.beginPath();
+      ctx.arc(dotX, y, 4.5, 0, Math.PI*2);
+      ctx.fillStyle = dotCol;
+      ctx.fill();
+
+      ctx.fillStyle = vcInk(.75); ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+      ctx.fillText(bfbT(r.label), labelX, y+3);
+
+      var stateKey = flagged ? r.bad : r.ok;
+      ctx.fillStyle = flagged ? 'rgba(220,100,60,.9)' : vcInk(.5);
+      ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+      ctx.fillText(bfbT(stateKey), stateX, y+3);
+
+      if (i>0) {
+        ctx.strokeStyle = vcInk(.06); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(10, pT+i*rowH); ctx.lineTo(W-10, pT+i*rowH); ctx.stroke();
+      }
+    });
+
+    /* Caption */
+    var cap = mode === 'content' ? bfbT('v2_captionContent') : bfbT('v2_captionStressed');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
 
 </script>
 

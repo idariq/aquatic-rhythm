@@ -89,6 +89,19 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-body strong{font-weight:400;color:var(--th-ink)}
 .mod-body em{font-style:italic;color:var(--th-ink-3)}
 
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
+
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 
@@ -222,6 +235,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Apa yang sebenarnya bisa jadi masalah: kegagalan peralatan (pompa filter rusak, pemanas rusak, siklus lampu terganggu) dan kehabisan makanan jika lebih dari tujuh hari. Risiko pertama tidak bisa diprediksi — risiko kedua bisa ditangani.</p>
     </div>
 
+    <!-- VISUAL: Step through a week away — essentials stay flat, feeding barely moves -->
+    <div class="vis-block">
+      <canvas id="cv1" style="width:100%;height:240px"></canvas>
+    </div>
+
     <div class="pq">
       <p>Akuarium yang stabil dengan filter, pemanas, dan timer lampu yang berfungsi bisa bertahan sendiri selama seminggu tanpa penghobi. Biologi sudah tahu apa yang perlu dilakukan.</p>
     </div>
@@ -302,6 +320,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -320,6 +339,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -327,6 +347,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -340,6 +361,7 @@ function startLearning() {
   var first = document.getElementById('mod-1');
   if (first) { first.classList.add('active'); setTimeout(function(){ first.classList.add('visible'); }, 30); }
   updateDots();
+  if (canvases[1]) setTimeout(function(){ canvases[1](); }, 150);
 }
 
 function updateDots() {
@@ -350,6 +372,206 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as ISD_STRINGS/isdT() in articles/is-your-setup-too-demanding.html.
+   This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep ATV_STRINGS.en/.id/.ja key
+   sets identical when editing. */
+var ATV_STRINGS = {
+  en: {
+    v1_advance: 'Advance a day →',
+    v1_reset: 'Reset',
+    v1_hint: 'step through a week away and watch what actually changes',
+    v1_essentialsLabel: 'Heater · Filter · Light',
+    v1_essentialsStatus: 'Running normally',
+    v1_feedLabel: 'Feeding',
+    v1_feedStage0: 'Well fed, no visible change',
+    v1_feedStage1: 'Slightly thinner, more eager to eat',
+    v1_feedStage2: 'Still healthy — not starving'
+  },
+  id: {
+    v1_advance: 'Maju satu hari →',
+    v1_reset: 'Ulang',
+    v1_hint: 'majukan hari demi hari dan lihat apa yang benar-benar berubah',
+    v1_essentialsLabel: 'Heater · Filter · Lampu',
+    v1_essentialsStatus: 'Berjalan normal',
+    v1_feedLabel: 'Pemberian makan',
+    v1_feedStage0: 'Kenyang, tidak ada perubahan berarti',
+    v1_feedStage1: 'Sedikit lebih kurus, lebih bersemangat makan',
+    v1_feedStage2: 'Masih sehat — bukan kelaparan'
+  },
+  ja: {
+    v1_advance: '1日進める →',
+    v1_reset: 'リセット',
+    v1_hint: '1日ずつ進めて、実際に何が変わるか見てみましょう',
+    v1_essentialsLabel: 'ヒーター・フィルター・照明',
+    v1_essentialsStatus: '通常どおり稼働',
+    v1_feedLabel: '給餌',
+    v1_feedStage0: '満腹、目立った変化なし',
+    v1_feedStage1: '少し痩せて、食欲が増す',
+    v1_feedStage2: 'まだ健康 — 飢えてはいない'
+  }
+};
+function atvT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = ATV_STRINGS[lang] || ATV_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : ATV_STRINGS.en[key]) || '';
+}
+/* Day-count label — ja counts day-number-first ("N日目"), unlike en/id's
+   word-first "Day N"/"Hari N". Branched explicitly per CLAUDE.md's
+   "AWAS — susunan tatabahasa TIDAK universal" warning, not concatenated
+   through a single shared template. */
+function atvDayLabel(n) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  if (lang === 'ja') return n + '日目';
+  if (lang === 'id') return 'Hari ' + n;
+  return 'Day ' + n;
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/is-your-setup-too-demanding.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Two parallel horizontal status bars, not a single chart —
+   the FIRST twin-gauge-contrast widget in the rollout. One bar (Heater
+   · Filter · Light) stays completely flat and full at every day. The
+   other (Feeding) barely moves across a full week. Advancing the day
+   only ever nudges the feeding marker one zone over three; it never
+   touches the essentials bar at all. This directly dramatises the
+   module's own reframe: "the anxiety about fish during travel is
+   disproportionately about food" — the widget lets the reader watch
+   the imbalance for themselves rather than just read the claim. ── */
+canvases[1] = function() {
+  stopAnim('cv1');
+  var c = resizeCanvas('cv1'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var maxDay = 7;
+  var day = 0;
+
+  function stageFor(d) { if (d <= 2) return 0; if (d <= 5) return 1; return 2; }
+
+  var wrap = c.parentElement;
+  var existingCtrl = wrap.querySelector('.vis-ctrl');
+  if (existingCtrl) existingCtrl.remove();
+  var existingCap = wrap.querySelector('.vc-caption');
+  if (existingCap) existingCap.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.5rem;justify-content:center;margin:.45rem 0">'
+    + '<button class="vis-btn" id="atv-advance">' + atvT('v1_advance') + '</button>'
+    + '<button class="vis-btn" id="atv-reset">' + atvT('v1_reset') + '</button></div>'
+    + '<div class="vc-hint">' + atvT('v1_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  document.getElementById('atv-advance').addEventListener('click', function(){
+    day = Math.min(day + 1, maxDay); draw();
+  });
+  document.getElementById('atv-reset').addEventListener('click', function(){
+    day = 0; draw();
+  });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 22, pR = 22, barW = W - pL - pR, barH = 16;
+    var y1 = 40, y2 = 128;
+
+    /* Row 1 — essentials: flat, full, unchanging regardless of day */
+    ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillStyle = vcInk(.6);
+    ctx.fillText(atvT('v1_essentialsLabel'), pL, y1 - 10);
+    ctx.textAlign = 'right';
+    ctx.fillStyle = 'rgba(80,200,120,.95)';
+    ctx.fillText(atvT('v1_essentialsStatus'), pL + barW, y1 - 10);
+
+    ctx.fillStyle = vcInk(.06);
+    ctx.fillRect(pL, y1, barW, barH);
+    ctx.fillStyle = 'rgba(80,200,120,.65)';
+    ctx.fillRect(pL, y1, barW, barH);
+    ctx.strokeStyle = 'rgba(80,200,120,1)'; ctx.lineWidth = 1.2;
+    ctx.strokeRect(pL, y1, barW, barH);
+
+    /* Row 2 — feeding: a three-zone track, marker nudges one zone at a time */
+    ctx.textAlign = 'left'; ctx.fillStyle = vcInk(.6);
+    ctx.fillText(atvT('v1_feedLabel'), pL, y2 - 10);
+    ctx.textAlign = 'right'; ctx.fillStyle = vcInk(.45);
+    ctx.fillText(atvDayLabel(day), pL + barW, y2 - 10);
+
+    ctx.fillStyle = vcInk(.06);
+    ctx.fillRect(pL, y2, barW, barH);
+    ctx.strokeStyle = vcInk(.22); ctx.lineWidth = 1;
+    for (var i = 1; i < 3; i++) {
+      var xd = pL + (barW/3)*i;
+      ctx.beginPath(); ctx.moveTo(xd, y2); ctx.lineTo(xd, y2 + barH); ctx.stroke();
+    }
+    ctx.strokeStyle = vcInk(.3);
+    ctx.strokeRect(pL, y2, barW, barH);
+
+    var stage = stageFor(day);
+    var zoneW = barW / 3;
+    var mx = pL + zoneW*stage + zoneW/2;
+    var my = y2 + barH/2;
+    ctx.fillStyle = 'rgba(61,214,232,.92)';
+    ctx.beginPath(); ctx.arc(mx, my, 6, 0, Math.PI*2); ctx.fill();
+    ctx.strokeStyle = vcLight() ? 'rgba(255,255,255,.9)' : 'rgba(4,18,26,.9)';
+    ctx.lineWidth = 1.5; ctx.stroke();
+
+    var stageKeys = ['v1_feedStage0', 'v1_feedStage1', 'v1_feedStage2'];
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = atvT(stageKeys[stage]);
+  }
+
+  vcRedraws.cv1 = draw;
+  draw();
+};
 
 </script>
 

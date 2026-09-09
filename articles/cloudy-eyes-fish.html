@@ -75,6 +75,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 .mod-title em{font-style:italic;color:var(--th-accent)}
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}.mod-body strong{font-weight:400;color:var(--th-ink)}.mod-body em{font-style:italic;color:var(--th-ink-3)}
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 .pq{margin:2.4rem 0;padding:1.6rem 2rem;border-left:2px solid var(--th-accent-border);background:var(--th-accent-soft)}
 .pq p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.7vw,1.15rem);color:var(--th-ink-2);line-height:1.85;margin:0}
 .hn{margin:2rem 0;padding:1.4rem 1.8rem;border:1px solid var(--th-line);background:var(--th-surface-2);position:relative}
@@ -234,6 +246,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">What else is happening<br><em>tells you more than the eye alone.</em></h2>
     <div class="mod-body">
       <p>Start with the count: one eye or both? One eye, especially with no other symptoms, points toward physical injury. Both eyes together points toward water quality or, less often, a systemic infection.</p>
+    </div>
+
+    <!-- VISUAL: Toggle one eye/both eyes clouded — which pattern points where -->
+    <div class="vis-block">
+      <canvas id="cv3" style="width:100%;height:220px"></canvas>
+    </div>
+
+    <div class="mod-body">
       <p>Check for other symptoms next. Clamped fins, reduced appetite, unusual hiding, or reddened skin near the eye all suggest something more than a simple scratch. A cloudy eye with no other changes at all is the mildest version of this signal.</p>
       <p>Test ammonia, nitrite, and pH regardless of what else you see. Water quality is one of the most common drivers of both-eye cloudiness, and it's also the fastest thing to confirm or rule out.</p>
     </div>
@@ -286,6 +306,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -304,6 +325,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -311,6 +333,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -334,6 +357,183 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as CFR_STRINGS/cfrT() in articles/clamped-fins-fin-rot.html.
+   This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep CEF_STRINGS.en/.id/.ja key
+   sets identical when editing. */
+var CEF_STRINGS = {
+  en: {
+    v3_one: 'One eye',
+    v3_both: 'Both eyes',
+    v3_hint: 'the same fish, two different patterns',
+    v3_captionOne: 'One eye clouded, the other clear — this pattern usually points to physical injury, not water quality.',
+    v3_captionBoth: 'Both eyes clouded evenly — this pattern usually points to water quality, and is worth testing before anything else.'
+  },
+  id: {
+    v3_one: 'Satu mata',
+    v3_both: 'Kedua mata',
+    v3_hint: 'ikan yang sama, dua pola berbeda',
+    v3_captionOne: 'Satu mata keruh, yang lain jernih — pola ini biasanya menunjuk ke cedera fisik, bukan kualitas air.',
+    v3_captionBoth: 'Kedua mata keruh secara merata — pola ini biasanya menunjuk ke kualitas air, dan layak diuji sebelum yang lain.'
+  },
+  ja: {
+    v3_one: '片目',
+    v3_both: '両目',
+    v3_hint: '同じ魚、違うパターン',
+    v3_captionOne: '片目だけ濁り、もう片方は澄んでいる — このパターンはたいてい水質ではなく物理的な傷を示している。',
+    v3_captionBoth: '両目とも均等に濁っている — このパターンはたいてい水質を示しており、他の何よりも先に検査する価値がある。'
+  }
+};
+function cefT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = CEF_STRINGS[lang] || CEF_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : CEF_STRINGS.en[key]) || '';
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/clamped-fins-fin-rot.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: Toggle one-eye/both-eyes — NOT a chart, a simple
+   symmetric face diagram. A stylised fish head (rounded rectangle)
+   carries two eye circles; a "clear" eye shows a dark pupil on a pale
+   iris, a "clouded" eye is overlaid with a hazy white-grey radial
+   gradient obscuring the pupil. Deliberately a static diagram, not a
+   trend — this is a which-pattern-means-what reference, matching the
+   ich-vs-velvet/clamped-fins texture-illustration widgets earlier in
+   this Tier-2 batch but using a THIRD distinct visual form (a
+   symmetric diagram, not an organic blob or a scattered texture).
+   Mirrors this module's own line: "One eye ... points toward physical
+   injury. Both eyes together points toward water quality." ── */
+canvases[3] = function() {
+  stopAnim('cv3');
+  var c = resizeCanvas('cv3'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var mode = 'one'; /* one | both */
+
+  var wrap = c.parentElement;
+  var existing = wrap.querySelector('.vis-ctrl');
+  if (existing) existing.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    +'<button class="vis-btn vis-btn-active" id="cef-one">' + cefT('v3_one') + '</button>'
+    +'<button class="vis-btn" id="cef-both">' + cefT('v3_both') + '</button></div>'
+    +'<div class="vc-hint">' + cefT('v3_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('cef-one').className = 'vis-btn' + (m==='one' ? ' vis-btn-active' : '');
+    document.getElementById('cef-both').className = 'vis-btn' + (m==='both' ? ' vis-btn-active' : '');
+    draw();
+  }
+  document.getElementById('cef-one').addEventListener('click', function(){ setMode('one'); });
+  document.getElementById('cef-both').addEventListener('click', function(){ setMode('both'); });
+
+  function drawEye(cx, cy, r, cloudy) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI*2);
+    ctx.fillStyle = vcLight() ? 'rgba(220,235,240,.95)' : 'rgba(30,55,65,.9)';
+    ctx.fill();
+    ctx.strokeStyle = vcInk(.3); ctx.lineWidth = 1.2; ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(cx, cy, r*0.42, 0, Math.PI*2);
+    ctx.fillStyle = vcInk(.85);
+    ctx.fill();
+
+    if (cloudy) {
+      var g = ctx.createRadialGradient(cx, cy, r*0.15, cx, cy, r);
+      g.addColorStop(0, 'rgba(235,235,225,.95)');
+      g.addColorStop(1, 'rgba(235,235,225,.55)');
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI*2);
+      ctx.fillStyle = g;
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(220,100,60,.6)'; ctx.lineWidth = 1.6; ctx.stroke();
+    } else {
+      ctx.strokeStyle = 'rgba(80,200,120,.6)'; ctx.lineWidth = 1.6;
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2); ctx.stroke();
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var cx = W/2, cy = H/2 - 6;
+    var headW = Math.min(W*0.6, 260), headH = Math.min(H*0.62, 140);
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, headW/2, headH/2, 0, 0, Math.PI*2);
+    ctx.fillStyle = vcLight() ? 'rgba(180,170,150,.45)' : 'rgba(120,110,95,.4)';
+    ctx.fill();
+    ctx.strokeStyle = vcInk(.15); ctx.lineWidth = 1; ctx.stroke();
+
+    var eyeR = headH*0.19;
+    var eyeOffsetX = headW*0.19;
+    var leftCloudy = true; /* left eye always the "affected" one for reference */
+    var rightCloudy = mode === 'both';
+    drawEye(cx - eyeOffsetX, cy, eyeR, leftCloudy);
+    drawEye(cx + eyeOffsetX, cy, eyeR, rightCloudy);
+
+    /* Caption */
+    var cap = mode === 'one' ? cefT('v3_captionOne') : cefT('v3_captionBoth');
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv3 = draw;
+  draw();
+};
 
 </script>
 

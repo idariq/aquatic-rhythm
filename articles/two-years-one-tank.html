@@ -83,6 +83,18 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 
 .mod-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,4.5vw,3rem);color:var(--th-ink);line-height:1.1;margin-bottom:1.4rem}
 .mod-title em{font-style:italic;color:var(--th-accent)}
+.vis-block{margin:2.4rem 0;border-radius:3px;overflow:hidden;position:relative;background:rgba(4,22,32,.8);border:1px solid rgba(61,214,232,.20)}
+@media(prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+}
+:root[data-theme="light"] .vis-block{background:var(--th-accent-soft);border-color:var(--th-accent-border)}
+.vis-ctrl{padding:.65rem 0 .3rem;background:transparent}
+.vc-label{text-align:center;margin-bottom:.4rem}
+.vc-label span{font-family:var(--serif);font-style:italic;font-size:var(--fs-sm-md);color:var(--th-ink-3);line-height:1.5}
+.vc-hint{text-align:center;font-size:var(--fs-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--th-ink-5);margin-top:.35rem}
+.vis-btn{font-size:var(--fs-xs);font-weight:400;letter-spacing:.1em;text-transform:uppercase;background:var(--th-surface-2);color:var(--th-ink-2);border:1px solid var(--th-accent-border);border-radius:2px;padding:.38rem .85rem;cursor:pointer;transition:all .2s}
+.vis-btn:hover{background:var(--th-accent-soft);color:var(--th-ink);border-color:var(--th-accent)}
+.vis-btn-active{background:var(--th-surface-2)!important;color:var(--th-accent)!important;border-color:var(--th-accent)!important}
 
 .mod-body p{font-size:var(--fs-base);font-weight:300;color:var(--th-ink-2);line-height:1.95;margin-bottom:1.2rem}
 .mod-body p:last-child{margin-bottom:0}
@@ -278,6 +290,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>The drift in months ten to twelve is <a href="/articles/capacity-creep" style="color:var(--th-accent);text-decoration:none">capacity creep</a>, and the buffer that shows up by month eighteen is what ARA calls ecological forgiveness. Neither is unusual. Both are easier to recognise once you have seen where they sit in a tank's actual timeline.</p>
     </div>
 
+    <!-- VISUAL: The whole 24 months as one timeline — tap a milestone to revisit it -->
+    <div class="vis-block">
+      <canvas id="cv4" style="width:100%;height:240px"></canvas>
+    </div>
+
     <div class="mod-next" style="margin-top:1.5rem">
       <button class="btn-prev" onclick="goMod(3)">← Back</button>
     </div>
@@ -301,6 +318,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
 <script>
 var totalMods = 4;
 var currentMod = 1;
+var canvases = {};
 
 function goIntro() {
   var mod = document.getElementById('mod-' + currentMod);
@@ -319,6 +337,7 @@ function goIntro() {
 function goMod(n) {
   var prev = document.getElementById('mod-' + currentMod);
   if (prev) { prev.classList.remove('visible'); setTimeout(function(){ prev.classList.remove('active'); }, 300); }
+  stopAnim('cv' + currentMod);
   currentMod = n;
   window.scrollTo({ top: 0, behavior: 'auto' });
   var next = document.getElementById('mod-' + n);
@@ -326,6 +345,7 @@ function goMod(n) {
   next.classList.add('active');
   setTimeout(function() { next.classList.add('visible'); }, 30);
   updateDots();
+  if (canvases[n]) { setTimeout(function(){ canvases[n](); }, 80); }
 }
 
 function startLearning() {
@@ -349,6 +369,205 @@ function updateDots() {
 }
 
 (function(){ updateDots(); })();
+
+/* ═══════════════════════════════════════
+   CANVAS VISUAL — user controlled
+═══════════════════════════════════════ */
+
+/* i18n — runtime string table for the canvas widget UI/labels below.
+   Selected from document.documentElement.lang at draw time, same
+   pattern as AQS_STRINGS/aqsT() in articles/aquarium-salt.html.
+   This script block is copied byte-for-byte into id/articles +
+   ja/articles by build-i18n.mjs, so the runtime lang check is what
+   actually localises the widget — keep TYOT_STRINGS.en/.id/.ja key
+   sets identical when editing. Term choices (kematangan palsu / erosi
+   kapasitas / ecological forgiveness left untranslated) match the
+   established terms already used in this article's own translated
+   "Where this connects" boxes — not re-derived independently. */
+var TYOT_STRINGS = {
+  en: {
+    v1_hint: 'tap a month and see what the tank was actually doing',
+    v1_capM0: 'Filled, planted, first ammonia dose. Day one of a story nobody looks back at.',
+    v1_capM3: "Looks established. There's room, so a second group of fish goes in. The first quiet mistake, and nothing dramatic enough happens to teach it.",
+    v1_capM8: 'Finished-looking. Every reading sits where it should. This is false maturity — the appearance, without the buffer.',
+    v1_capM12: 'A fish dies. Nitrate reads 40 or higher — it had been climbing for two months, invisible from the inside. This is capacity creep.',
+    v1_capM18: "Away nine days, fed twice. Nothing is wrong. This is the buffer month eight didn't have — ecological forgiveness.",
+    v1_capM24: "Stable, unremarkable, never posted anywhere. This is what it looks like when it's going well.",
+    v1_tagFalseMaturity: 'False maturity',
+    v1_tagCapacityCreep: 'Capacity creep',
+    v1_tagForgiveness: 'Ecological forgiveness'
+  },
+  id: {
+    v1_hint: 'ketuk satu bulan dan lihat apa yang sebenarnya sedang terjadi pada tangki',
+    v1_capM0: 'Baru diisi, ditanam, dosis amonia pertama dimulai. Hari pertama dari cerita yang jarang dilihat kembali.',
+    v1_capM3: 'Sudah terlihat mapan. Masih ada ruang, jadi kelompok ikan kedua ditambahkan. Kesalahan kecil pertama, dan tidak ada yang cukup dramatis untuk jadi pelajaran.',
+    v1_capM8: 'Terlihat selesai. Semua bacaan berada di tempat yang seharusnya. Inilah kematangan palsu — penampilannya ada, cadangannya belum.',
+    v1_capM12: 'Seekor ikan mati. Nitrat terbaca 40 ke atas — sudah naik selama dua bulan, tak terlihat dari dalam. Inilah erosi kapasitas.',
+    v1_capM18: 'Pergi sembilan hari, diberi makan dua kali. Tidak ada yang salah. Inilah cadangan yang belum dimiliki bulan kedelapan — ecological forgiveness.',
+    v1_capM24: 'Stabil, biasa saja, tidak pernah diunggah ke mana pun. Beginilah rupanya ketika semuanya berjalan baik.',
+    v1_tagFalseMaturity: 'Kematangan palsu',
+    v1_tagCapacityCreep: 'Erosi kapasitas',
+    v1_tagForgiveness: 'Ecological forgiveness'
+  },
+  ja: {
+    v1_hint: '月をタップして、水槽が実際に何をしていたか見てみましょう',
+    v1_capM0: '水を入れ、植栽し、最初のアンモニア添加。誰も振り返らない物語の1日目です。',
+    v1_capM3: '落ち着いて見える。まだ余裕があるから、2つ目の魚のグループを入れる。最初の小さな失敗 — 教訓になるほど劇的なことは何も起きません。',
+    v1_capM8: '完成して見える。すべての数値が正常です。これが見せかけの成熟 — 見た目はあっても、まだ蓄えがない状態です。',
+    v1_capM12: '魚が1匹死ぬ。硝酸塩は40以上 — 2か月かけて上がり続けていた、内側からは見えない変化です。これがキャパシティの侵食です。',
+    v1_capM18: '9日間家を空け、2回だけ餌をもらう。何も問題はありません。これが8か月目にはなかった蓄え — ecological forgivenessです。',
+    v1_capM24: '安定していて、地味で、どこにも投稿されない。うまくいっているときの姿とは、こういうものです。',
+    v1_tagFalseMaturity: '見せかけの成熟',
+    v1_tagCapacityCreep: 'キャパシティの侵食',
+    v1_tagForgiveness: 'Ecological forgiveness'
+  }
+};
+function tyotT(key) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  var table = TYOT_STRINGS[lang] || TYOT_STRINGS.en;
+  return (table[key] !== undefined ? table[key] : TYOT_STRINGS.en[key]) || '';
+}
+/* Month-count label — ja counts number-first ("Nか月目"), matching this
+   article's own prose ("8か月目あたり"), unlike en/id's word-first
+   "Month N"/"Bulan N". Branched explicitly per CLAUDE.md's "AWAS —
+   susunan tatabahasa TIDAK universal" warning. */
+function tyotMonthLabel(n) {
+  var lang = (document.documentElement.lang || 'en').split('-')[0];
+  if (lang === 'ja') return n + 'か月目';
+  if (lang === 'id') return 'Bulan ' + n;
+  return 'Month ' + n;
+}
+
+/* Theme-aware canvas colors — re-fire on theme toggle so an open module
+   updates live. Mirrors vcLight()/vcInk()/vcBg()/vcRedraws in
+   articles/aquarium-salt.html. */
+function vcLight(){
+  var d = document.documentElement.getAttribute('data-theme');
+  if (d === 'light') return true;
+  if (d === 'dark') return false;
+  return window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches;
+}
+function vcInk(a){ return vcLight() ? 'rgba(35,36,32,'+a+')' : 'rgba(235,240,236,'+a+')'; }
+function vcBg(ctx,W,H){
+  var g = ctx.createLinearGradient(0,0,0,H);
+  if (vcLight()) { g.addColorStop(0,'rgba(230,242,244,.97)'); g.addColorStop(1,'rgba(210,233,238,.98)'); }
+  else { g.addColorStop(0,'rgba(4,22,34,.95)'); g.addColorStop(1,'rgba(2,12,20,.98)'); }
+  return g;
+}
+var vcRedraws = {};
+(function(){
+  function fireRedraw(){ Object.keys(vcRedraws).forEach(function(k){ try{ vcRedraws[k](); }catch(e){} }); }
+  var mq = window.matchMedia && matchMedia('(prefers-color-scheme: light)');
+  if (mq && mq.addEventListener) mq.addEventListener('change', fireRedraw);
+  new MutationObserver(fireRedraw).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+})();
+
+function resizeCanvas(id) {
+  var c = document.getElementById(id);
+  if (!c) return null;
+  c.width = c.parentElement.offsetWidth;
+  c.height = parseInt(c.style.height) || 160;
+  return c;
+}
+
+var animFrames = {};
+function stopAnim(id) {
+  if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
+}
+
+/* ── VISUAL: The whole 24-month arc as one horizontal timeline with six
+   tappable milestones (0/3/8/12/18/24) — a recap tool, not a diagnostic
+   one, which is why it sits at the end of the article rather than
+   inside a single module. Deliberately calm and non-alarmist (a single
+   accent-colored progress line and dot, no red/amber zones) to match
+   this article's own reflective register — it is the FIRST widget in
+   the rollout built for a narrative piece rather than a how-to guide.
+   Tapping month 8, 12, or 18 also surfaces the concept tag this
+   article's own "Where this connects" boxes name for that point, so
+   the reader can revisit the whole arc — and where each concept sits
+   in it — in under a minute. ── */
+canvases[4] = function() {
+  stopAnim('cv4');
+  var c = resizeCanvas('cv4'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var milestones = [0, 3, 8, 12, 18, 24];
+  var month = 0;
+
+  var wrap = c.parentElement;
+  var existingCtrl = wrap.querySelector('.vis-ctrl');
+  if (existingCtrl) existingCtrl.remove();
+  var existingCap = wrap.querySelector('.vc-caption');
+  if (existingCap) existingCap.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  var btnsHtml = milestones.map(function(m, i){
+    return '<button class="vis-btn' + (m === 0 ? ' vis-btn-active' : '') + '" id="tyot-btn-' + i + '">' + m + '</button>';
+  }).join('');
+  ctrl.innerHTML = '<div style="display:flex;gap:.3rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    + btnsHtml + '</div>'
+    + '<div class="vc-hint">' + tyotT('v1_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  milestones.forEach(function(m, i){
+    document.getElementById('tyot-btn-' + i).addEventListener('click', function(){
+      month = m;
+      milestones.forEach(function(mm, ii){
+        document.getElementById('tyot-btn-' + ii).className = 'vis-btn' + (ii === i ? ' vis-btn-active' : '');
+      });
+      draw();
+    });
+  });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pad = 36, lineY = 118;
+    var x0 = pad, x1 = W - pad;
+    var xFor = function(m){ return x0 + (m/24)*(x1-x0); };
+
+    ctx.strokeStyle = vcInk(.16); ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x0, lineY); ctx.lineTo(x1, lineY); ctx.stroke();
+
+    ctx.strokeStyle = 'rgba(61,214,232,.8)'; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.moveTo(x0, lineY); ctx.lineTo(xFor(month), lineY); ctx.stroke();
+
+    milestones.forEach(function(m){
+      var x = xFor(m), active = (m === month);
+      ctx.beginPath(); ctx.arc(x, lineY, active ? 6 : 4, 0, Math.PI*2);
+      ctx.fillStyle = active ? 'rgba(61,214,232,.95)' : vcInk(.3);
+      ctx.fill();
+      if (active) {
+        ctx.strokeStyle = vcLight() ? 'rgba(255,255,255,.9)' : 'rgba(4,18,26,.9)';
+        ctx.lineWidth = 1.5; ctx.stroke();
+      }
+      ctx.fillStyle = vcInk(.45); ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(m+'', x, lineY+20);
+    });
+
+    ctx.fillStyle = vcInk(.8); ctx.font = '13px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(tyotMonthLabel(month), W/2, lineY-48);
+
+    var tagKey = month === 8 ? 'v1_tagFalseMaturity' : (month === 12 ? 'v1_tagCapacityCreep' : (month === 18 ? 'v1_tagForgiveness' : null));
+    if (tagKey) {
+      ctx.fillStyle = 'rgba(61,214,232,.85)'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('— ' + tyotT(tagKey) + ' —', W/2, lineY-28);
+    }
+
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = tyotT('v1_capM' + month);
+  }
+
+  vcRedraws.cv4 = draw;
+  draw();
+};
 
 </script>
 

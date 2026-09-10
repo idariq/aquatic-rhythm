@@ -280,6 +280,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
     <h2 class="mod-title">上昇の速度は<br><em>情報だ。</em></h2>
     <div class="mod-body">
       <p>硝酸塩が予想より速く上がっているとき、有用な問いは「何が変わったか」です。速い蓄積を促す要因は主に四つあります。より多くの魚、あるいはより大きな魚がより多くのフンを生み出すこと、エサの頻度が上がったこと、水草密度が減少したこと（水草が取り除かれた、溶けた、成長しなくなったなど）、そして水換えの頻度が減ったことです。</p>
+    </div>
+
+    <!-- VISUAL: Tap what changed — watch the accumulation rate stack -->
+    <div class="vis-block">
+      <canvas id="cv3" style="width:100%;height:230px"></canvas>
+    </div>
+
+    <div class="mod-body">
       <p>これらのどれも変わっていないのに硝酸塩がまだ速く上がっているなら、フィルターのメンテナンスが必要かもしれません — 詰まったフィルターはバクテリアのコロニーに水を通す効率が落ち、硝酸塩の処理能力が下がることがあります。ですがより多い場合、原因は緩やかなものです。魚が成長した、給餌量が少し増えた、水草が枯れて植え替えられなかった。水槽はメンテナンスでは追跡できない小さな変化を積み重ね、その数値がやがて蓄積したドリフトを浮かび上がらせたのです。</p>
       <p>毎回の水換え後に硝酸塩を測定し、それを四週間連続で続けると、シンプルなトレンドが見えてきます。軽い飼育密度の水槽で、水換え後5日で硝酸塩が40ppmまで戻るなら、それは負荷の問題です。飼育密度の高い水槽で14日かかるなら、その負荷に対しては想定範囲内です。トレンドは、あなたのメンテナンスのリズムが水槽の生物学的な状態に合っているか、それとも生物学的な状態が静かにリズムを追い越してしまったかを教えてくれます。</p>
     </div>
@@ -413,21 +421,48 @@ var NKR_STRINGS = {
     v1_light: 'Light, planted',
     v1_hint: 'same weekly water change, two different tanks',
     v1_captionHeavy: 'More load, no uptake — nitrate climbs fast and hits a high peak before each change.',
-    v1_captionLight: 'Less load, plants absorbing nitrate — the same weekly rhythm keeps it low the whole time.'
+    v1_captionLight: 'Less load, plants absorbing nitrate — the same weekly rhythm keeps it low the whole time.',
+    v3_hint: 'tap what changed — watch the accumulation rate stack',
+    v3_chipFish: 'More/larger fish',
+    v3_chipFeeding: 'Higher feeding rate',
+    v3_chipPlants: 'Reduced plant density',
+    v3_chipWc: 'Reduced water-change frequency',
+    v3_rateLabel: 'Accumulation rate',
+    v3_capLow: "Climbing at the expected background rate — nothing here needs tracing back yet.",
+    v3_capMod: 'A bit faster than expected — usually one clear thing changed.',
+    v3_capHigh: 'Several drivers stacking at once — this is the quiet compounding drift the trend picture is built to catch.'
   },
   id: {
     v1_heavy: 'Padat, tanpa tanaman',
     v1_light: 'Jarang, bertanaman',
     v1_hint: 'jadwal ganti air mingguan sama, dua akuarium berbeda',
     v1_captionHeavy: 'Beban lebih besar, tanpa penyerapan — nitrat naik cepat dan mencapai puncak tinggi sebelum setiap ganti air.',
-    v1_captionLight: 'Beban lebih kecil, tanaman menyerap nitrat — jadwal mingguan yang sama menjaganya tetap rendah sepanjang waktu.'
+    v1_captionLight: 'Beban lebih kecil, tanaman menyerap nitrat — jadwal mingguan yang sama menjaganya tetap rendah sepanjang waktu.',
+    v3_hint: 'ketuk apa yang berubah — lihat laju penumpukan bertambah',
+    v3_chipFish: 'Ikan lebih banyak/besar',
+    v3_chipFeeding: 'Frekuensi pemberian makan meningkat',
+    v3_chipPlants: 'Kepadatan tanaman berkurang',
+    v3_chipWc: 'Frekuensi ganti air berkurang',
+    v3_rateLabel: 'Laju penumpukan',
+    v3_capLow: 'Menumpuk pada laju latar belakang yang diharapkan — belum ada yang perlu ditelusuri.',
+    v3_capMod: 'Sedikit lebih cepat dari yang diharapkan — biasanya satu hal jelas yang berubah.',
+    v3_capHigh: 'Beberapa pendorong menumpuk sekaligus — inilah drift senyap yang dirancang untuk ditangkap oleh gambaran tren.'
   },
   ja: {
     v1_heavy: '過密、水草なし',
     v1_light: '少なめ、水草あり',
     v1_hint: '同じ毎週の水換えでも、水槽が違えば結果も違う',
     v1_captionHeavy: '負荷が大きく、吸収するものがない — 硝酸塩は急上昇し、次の水換え前に高いピークに達する。',
-    v1_captionLight: '負荷が小さく、水草が硝酸塩を吸収する — 同じ毎週のリズムでも、ずっと低いまま保たれる。'
+    v1_captionLight: '負荷が小さく、水草が硝酸塩を吸収する — 同じ毎週のリズムでも、ずっと低いまま保たれる。',
+    v3_hint: '変わったことをタップして、蓄積速度が積み上がる様子を見てみましょう',
+    v3_chipFish: '魚が増えた・大きくなった',
+    v3_chipFeeding: '給餌頻度が増えた',
+    v3_chipPlants: '水草密度が減った',
+    v3_chipWc: '水換えの頻度が減った',
+    v3_rateLabel: '蓄積速度',
+    v3_capLow: '想定される背景レベルの速度で蓄積している — まだ何も遡って調べる必要はありません。',
+    v3_capMod: '想定より少し速い — たいてい何か一つ、はっきりした変化があります。',
+    v3_capHigh: '複数の要因が同時に積み重なっている — これがトレンドの記録で捉えようとしている、静かに複合するドリフトです。'
   }
 };
 function nkrT(key) {
@@ -583,6 +618,92 @@ canvases[1] = function() {
   }
 
   vcRedraws.cv1 = draw;
+  draw();
+};
+
+/* ── VISUAL: Four independently-toggleable drivers feeding a single
+   accumulation-rate bar — the same multi-select-into-demand-bar shape
+   as articles/is-your-setup-too-demanding.html's canvases[2], reused
+   deliberately because it is the right fit for this exact claim (each
+   driver "makes sense in isolation" but stacks), not picked for
+   novelty. Distinct from Module 1's canvases[1], which compares two
+   FIXED tank profiles over a week; this one lets the reader build up
+   their OWN tank's combination of drivers from this module's own
+   four-item list. ── */
+canvases[3] = function() {
+  stopAnim('cv3');
+  var c = resizeCanvas('cv3'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+
+  var drivers = [
+    { key:'fish',     label:'v3_chipFish',     demand: 20, active: false },
+    { key:'feeding',  label:'v3_chipFeeding',  demand: 20, active: false },
+    { key:'plants',   label:'v3_chipPlants',   demand: 18, active: false },
+    { key:'wc',       label:'v3_chipWc',       demand: 22, active: false }
+  ];
+  var baseline = 20, maxV = 100;
+
+  var wrap = c.parentElement;
+  var existingCtrl = wrap.querySelector('.vis-ctrl');
+  if (existingCtrl) existingCtrl.remove();
+  var existingCap = wrap.querySelector('.vc-caption');
+  if (existingCap) existingCap.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  var chipsHtml = drivers.map(function(d, i){
+    return '<button class="vis-btn" id="nkr3-chip-' + i + '">' + nkrT(d.label) + '</button>';
+  }).join('');
+  ctrl.innerHTML = '<div style="display:flex;gap:.35rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    + chipsHtml + '</div>'
+    + '<div class="vc-hint">' + nkrT('v3_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  drivers.forEach(function(d, i){
+    document.getElementById('nkr3-chip-' + i).addEventListener('click', function(){
+      d.active = !d.active;
+      this.className = 'vis-btn' + (d.active ? ' vis-btn-active' : '');
+      draw();
+    });
+  });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var total = baseline + drivers.reduce(function(s,d){ return s + (d.active ? d.demand : 0); }, 0);
+    var col = total <= 40 ? 'rgba(80,200,120,' : (total <= 70 ? 'rgba(220,160,40,' : 'rgba(220,100,60,');
+
+    var barX = W*0.5 - 30, barW = 60, pT = 26, pB = 40;
+    var barH = H - pT - pB;
+
+    ctx.fillStyle = vcInk(.06);
+    ctx.fillRect(barX, pT, barW, barH);
+
+    var filledH = Math.min(total/maxV, 1) * barH;
+    ctx.fillStyle = col + '.75)';
+    ctx.fillRect(barX, pT + barH - filledH, barW, filledH);
+    ctx.strokeStyle = col + '1)'; ctx.lineWidth = 1.4;
+    ctx.strokeRect(barX, pT, barW, barH);
+
+    ctx.fillStyle = vcInk(.6); ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(Math.round(total), barX+barW/2, pT - 8);
+    ctx.fillStyle = vcInk(.4); ctx.font = '9px sans-serif';
+    ctx.fillText(nkrT('v3_rateLabel'), barX+barW/2, H-14);
+
+    var capKey = total <= 40 ? 'v3_capLow' : (total <= 70 ? 'v3_capMod' : 'v3_capHigh');
+    var cap = nkrT(capKey);
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = cap;
+  }
+
+  vcRedraws.cv3 = draw;
   draw();
 };
 

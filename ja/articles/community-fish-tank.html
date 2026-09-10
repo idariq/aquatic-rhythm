@@ -294,6 +294,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>水槽が過密になっている — 深刻というほどではないものの、どの魚も逃げ込める中立地帯がない程度には過密です。</p>
     </div>
 
+    <!-- VISUAL: Tap a pressure — see what it looks like and how to fix it -->
+    <div class="vis-block">
+      <canvas id="cv3" style="width:100%;height:300px"></canvas>
+    </div>
+
     <div class="pq">
       <p>1週間の観察は、相性チャートと水質検査を合わせたよりも、コミュニティ水槽について多くのことを明らかにします。</p>
     </div>
@@ -421,7 +426,19 @@ var CFT_STRINGS = {
     v2_hint: 'the same two 2cm juveniles today — watch them grow',
     v2_month: 'Month',
     v2_captionMatched: 'Both fish reach a similar adult size — still sharing the same space comfortably six months on.',
-    v2_captionMismatch: 'Compatible as juveniles, but the gap keeps widening — six months in, one is now a predator-sized threat to the other.'
+    v2_captionMismatch: 'Compatible as juveniles, but the gap keeps widening — six months in, one is now a predator-sized threat to the other.',
+    v3_hint: 'tap a pressure and see what it actually looks like',
+    v3_btnMismatch: 'Species mismatch',
+    v3_btnDensity: 'Stocking density',
+    v3_btnIndividual: 'Single individual',
+    v3_findingLabel: "What you'd see",
+    v3_fixLabel: 'The fix',
+    v3_findMismatch: "A species listed as community-safe isn't working with this specific combination — individual temperament and tank size change the dynamic.",
+    v3_fixMismatch: "Rehome the specific individual or species, not the whole approach — the chart wasn't wrong, this combination just isn't working.",
+    v3_findDensity: 'The tank is overstocked — not catastrophically, but enough that no fish has neutral territory to withdraw to.',
+    v3_fixDensity: 'Rehome a few individuals or reduce the total count. Territory, not a stocking number, is the actual pressure.',
+    v3_findIndividual: 'One fish, often a single male of an otherwise peaceful species, is doing all the chasing.',
+    v3_fixIndividual: 'Remove or rehome that one individual — the rest of the tank usually settles within days.'
   },
   id: {
     v2_matched: 'Ukuran dewasa serupa',
@@ -431,7 +448,19 @@ var CFT_STRINGS = {
     v2_hint: 'dua juvenil 2cm yang sama hari ini — perhatikan mereka tumbuh',
     v2_month: 'Bulan',
     v2_captionMatched: 'Kedua ikan mencapai ukuran dewasa yang serupa — masih berbagi ruang yang sama dengan nyaman enam bulan kemudian.',
-    v2_captionMismatch: 'Cocok sebagai juvenil, tapi jaraknya terus melebar — enam bulan kemudian, satu kini menjadi ancaman sebesar predator bagi yang lain.'
+    v2_captionMismatch: 'Cocok sebagai juvenil, tapi jaraknya terus melebar — enam bulan kemudian, satu kini menjadi ancaman sebesar predator bagi yang lain.',
+    v3_hint: 'ketuk satu tekanan dan lihat rupanya yang sebenarnya',
+    v3_btnMismatch: 'Ketidakcocokan spesies',
+    v3_btnDensity: 'Kepadatan stok',
+    v3_btnIndividual: 'Satu individu',
+    v3_findingLabel: 'Yang akan terlihat',
+    v3_fixLabel: 'Perbaikannya',
+    v3_findMismatch: 'Spesies yang tercantum sebagai aman untuk komunitas ternyata tidak cocok dengan kombinasi spesifik ini — temperamen individu dan ukuran akuarium mengubah dinamikanya.',
+    v3_fixMismatch: 'Pindahkan individu atau spesies yang spesifik itu, bukan seluruh pendekatan — tabelnya tidak salah, kombinasi ini saja yang tidak cocok.',
+    v3_findDensity: 'Akuarium kelebihan stok — tidak sampai bencana, tapi cukup membuat tidak ada ikan yang punya wilayah netral untuk mengundurkan diri.',
+    v3_fixDensity: 'Pindahkan beberapa individu atau kurangi jumlah total. Wilayah, bukan angka stok, adalah tekanan sebenarnya.',
+    v3_findIndividual: 'Satu ikan, sering kali satu jantan dari spesies yang sebenarnya damai, melakukan semua pengejaran itu.',
+    v3_fixIndividual: 'Pindahkan atau keluarkan individu itu saja — sisa akuarium biasanya reda dalam beberapa hari.'
   },
   ja: {
     v2_matched: '成魚サイズが近い',
@@ -441,7 +470,19 @@ var CFT_STRINGS = {
     v2_hint: '今日は同じ2cmの幼魚2匹 — 成長を見てみましょう',
     v2_month: 'ヶ月目',
     v2_captionMatched: '両方とも似たような成魚サイズに達する — 6ヶ月後も同じ空間を無理なく共有できている。',
-    v2_captionMismatch: '幼魚のころは相性が良かったが、差はどんどん広がる — 6ヶ月後には、一方がもう一方にとって捕食者サイズの脅威になっている。'
+    v2_captionMismatch: '幼魚のころは相性が良かったが、差はどんどん広がる — 6ヶ月後には、一方がもう一方にとって捕食者サイズの脅威になっている。',
+    v3_hint: 'プレッシャーをタップして、実際どんな様子か見てみましょう',
+    v3_btnMismatch: '種のミスマッチ',
+    v3_btnDensity: '過密度',
+    v3_btnIndividual: '特定の個体',
+    v3_findingLabel: '実際に見られること',
+    v3_fixLabel: '対処法',
+    v3_findMismatch: '「コミュニティ向けに安全」とされる種が、この特定の組み合わせではうまくいっていない — 個体の気質と水槽サイズが力学を変えている。',
+    v3_fixMismatch: '個体か種を移動させる — アプローチ全体を変える必要はない。チャートが間違っていたのではなく、この組み合わせがうまくいかないだけ。',
+    v3_findDensity: '水槽が過密になっている — 深刻というほどではないが、どの魚も逃げ込める中立地帯がない程度には過密。',
+    v3_fixDensity: '数匹を移動させるか、総数を減らす。実際の圧力は飼育数そのものではなく、縄張りにある。',
+    v3_findIndividual: '1匹の魚 — 多くの場合、本来は温和な種のオス — がすべての追い回しをしている。',
+    v3_fixIndividual: 'その1匹を移動させる — 残りの水槽はたいてい数日で落ち着く。'
   }
 };
 function cftT(key) {
@@ -584,6 +625,94 @@ canvases[2] = function() {
   }
 
   vcRedraws.cv2 = draw;
+  draw();
+};
+
+/* ── VISUAL: Tap a pressure — a two-block text card (what you'd see /
+   the fix), not a chart. Mirrors the "situation → verdict" family
+   introduced in articles/aquarium-filter-maintenance.html's canvases[3],
+   but here the payload is a diagnosis-and-remedy pair rather than a
+   single verdict word, since this module's three pressures each need
+   a concrete finding AND a concrete fix, not just a judgment call. ── */
+canvases[3] = function() {
+  stopAnim('cv3');
+  var c = resizeCanvas('cv3'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+
+  var pressures = [
+    { key:'mismatch',   btn:'v3_btnMismatch',   find:'v3_findMismatch',   fix:'v3_fixMismatch' },
+    { key:'density',    btn:'v3_btnDensity',    find:'v3_findDensity',    fix:'v3_fixDensity' },
+    { key:'individual', btn:'v3_btnIndividual', find:'v3_findIndividual', fix:'v3_fixIndividual' }
+  ];
+  var active = 0;
+
+  var wrap = c.parentElement;
+  var existingCtrl = wrap.querySelector('.vis-ctrl');
+  if (existingCtrl) existingCtrl.remove();
+  var existingCap = wrap.querySelector('.vc-caption');
+  if (existingCap) existingCap.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  var btnsHtml = pressures.map(function(p, i){
+    return '<button class="vis-btn' + (i === 0 ? ' vis-btn-active' : '') + '" id="cft3-btn-' + i + '">' + cftT(p.btn) + '</button>';
+  }).join('');
+  ctrl.innerHTML = '<div style="display:flex;gap:.3rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    + btnsHtml + '</div>'
+    + '<div class="vc-hint">' + cftT('v3_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  pressures.forEach(function(p, i){
+    document.getElementById('cft3-btn-' + i).addEventListener('click', function(){
+      active = i;
+      pressures.forEach(function(pp, ii){
+        document.getElementById('cft3-btn-' + ii).className = 'vis-btn' + (ii === i ? ' vis-btn-active' : '');
+      });
+      draw();
+    });
+  });
+
+  function wrapText(text, x, y, maxW, lineH) {
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(text) : text.split(' ');
+    var line = '', cy = y;
+    words.forEach(function(w){
+      var test = line + (line?wsep:'') + w;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, x, cy); line = w; cy += lineH; }
+      else line = test;
+    });
+    if (line) { ctx.fillText(line, x, cy); cy += lineH; }
+    return cy;
+  }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var p = pressures[active];
+    var padX = 18, maxW = W - padX*2;
+    ctx.textAlign = 'left';
+
+    var y = 26;
+    ctx.font = '9px sans-serif'; ctx.fillStyle = 'rgba(220,140,60,.9)';
+    ctx.fillText(cftT('v3_findingLabel').toUpperCase(), padX, y);
+    y += 18;
+    ctx.font = 'italic 300 12px Fraunces,serif'; ctx.fillStyle = vcInk(.72);
+    y = wrapText(cftT(p.find), padX, y, maxW, 17);
+
+    y += 14;
+    ctx.strokeStyle = vcInk(.1); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(padX, y-8); ctx.lineTo(W-padX, y-8); ctx.stroke();
+
+    ctx.font = '9px sans-serif'; ctx.fillStyle = 'rgba(61,214,232,.95)';
+    ctx.fillText(cftT('v3_fixLabel').toUpperCase(), padX, y);
+    y += 18;
+    ctx.font = 'italic 300 12px Fraunces,serif'; ctx.fillStyle = vcInk(.72);
+    wrapText(cftT(p.fix), padX, y, maxW, 17);
+  }
+
+  vcRedraws.cv3 = draw;
   draw();
 };
 

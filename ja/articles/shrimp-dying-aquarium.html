@@ -267,6 +267,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p><strong>ニュータンクシンドロームのタイミングの問題。</strong>サイクルが完了していない、あるいは完了したばかりの水槽にエビを入れることは、エビの死因として最も多い単一の原因です。エビを追加する前に、窒素サイクルが本当に安定している必要があります。「今日はアンモニアがゼロだった」というだけでは足りません。</p>
     </div>
 
+    <!-- VISUAL: Tap a cause — see how fast it actually kills -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:230px"></canvas>
+    </div>
+
     <div class="hn">
       <span class="hn-label">変わった一つのことを探す</span>
       <p>エビコロニーが減少しているとき、つい、すべてを一度にテストしてすべてを一度に変えたくなります。しかしそれはたいてい間違った対応です。違う水道水での大きな水換えを一回、新しい肥料をひとつ、薬品の変更をひとつ、これらのどれかが唯一の原因になり得ます。減少が始まる直前に最後に何が変わったかを探してみましょう。それがたいてい答えです。</p>
@@ -424,7 +429,22 @@ var SDA_STRINGS = {
     v3_yAxis: 'Health',
     v3_cap0: "The change already happened — health hasn't moved yet.",
     v3_cap1: "Still nothing to see on the shrimp. The lag hasn't caught up yet.",
-    v3_cap2: 'Only now does the decline become visible — weeks after the actual cause.'
+    v3_cap2: 'Only now does the decline become visible — weeks after the actual cause.',
+    v2_hint: 'tap a cause and see how fast it actually kills',
+    v2_btnTds: 'TDS creep',
+    v2_btnGh: 'GH/KH instability',
+    v2_btnCopper: 'Copper',
+    v2_btnTemp: 'Temperature swing',
+    v2_btnAmmonia: 'Ammonia/nitrite peaks',
+    v2_btnNts: 'New tank timing',
+    v2_badgeChronic: 'Chronic — weeks',
+    v2_badgeAcute: 'Acute — days',
+    v2_findTds: 'Minerals concentrate as water evaporates. Shrimp stress, stop breeding, then start dying one or two at a time.',
+    v2_findGh: "A mismatch between tank water and the shrimp's natural mineral range forces constant osmotic work that should cost nothing.",
+    v2_findCopper: 'Invisible and lethal to invertebrates — a single dosed product can collapse a colony within days.',
+    v2_findTemp: 'Not the temperature itself but the daily swing — narrow-tolerance ectotherms absorb it until it compounds over weeks.',
+    v2_findAmmonia: 'Shrimp show ammonia stress earlier than fish — frantic surface swimming is a chemistry signal, not personality.',
+    v2_findNts: 'Adding shrimp before the cycle is genuinely stable — not just reading zero today — is the single most common cause of new shrimp dying.'
   },
   id: {
     v3_advBtn: '+ Lompat seminggu',
@@ -434,7 +454,22 @@ var SDA_STRINGS = {
     v3_yAxis: 'Kesihatan',
     v3_cap0: 'Perubahan tu dah berlaku — kesihatan belum bergerak lagi.',
     v3_cap1: 'Masih tiada apa pd udang. Lag tu belum sampai lagi.',
-    v3_cap2: 'Baru sekarang kemerosotan kelihatan — berminggu-minggu selepas punca sebenar.'
+    v3_cap2: 'Baru sekarang kemerosotan kelihatan — berminggu-minggu selepas punca sebenar.',
+    v2_hint: 'ketuk satu penyebab dan lihat seberapa cepat ia benar-benar membunuh',
+    v2_btnTds: 'TDS creep',
+    v2_btnGh: 'Ketidakstabilan GH/KH',
+    v2_btnCopper: 'Tembaga',
+    v2_btnTemp: 'Fluktuasi suhu',
+    v2_btnAmmonia: 'Lonjakan amonia/nitrit',
+    v2_btnNts: 'Masalah New Tank Syndrome',
+    v2_badgeChronic: 'Kronis — berminggu-minggu',
+    v2_badgeAcute: 'Akut — berhari-hari',
+    v2_findTds: 'Mineral terkonsentrasi seiring air menguap. Udang stres, berhenti berkembang biak, lalu mulai mati satu-dua ekor pada satu waktu.',
+    v2_findGh: 'Ketidaksesuaian antara air akuarium dan rentang mineral alami udang memaksa kerja osmotik terus-menerus yang seharusnya tidak perlu terjadi.',
+    v2_findCopper: 'Tidak terlihat dan mematikan bagi invertebrata — satu dosis produk saja bisa meruntuhkan koloni dalam hitungan hari.',
+    v2_findTemp: 'Bukan suhunya sendiri, tapi fluktuasinya — hewan berdarah dingin dengan toleransi sempit menahannya sampai menumpuk berminggu-minggu.',
+    v2_findAmmonia: 'Udang menunjukkan stres amonia lebih awal dari ikan — berenang panik di dekat permukaan adalah sinyal kimia, bukan kepribadian.',
+    v2_findNts: 'Memasukkan udang sebelum siklus benar-benar stabil — bukan sekadar terbaca nol hari ini — adalah penyebab tunggal paling umum kematian udang baru.'
   },
   ja: {
     v3_advBtn: '+ 1週間進める',
@@ -444,7 +479,22 @@ var SDA_STRINGS = {
     v3_yAxis: '健康度',
     v3_cap0: '変化はすでに起きている — 健康度はまだ動いていない。',
     v3_cap1: 'エビにはまだ何も現れていない。遅れがまだ追いついていない。',
-    v3_cap2: '今になってようやく衰退が見える — 実際の原因から何週間も経っている。'
+    v3_cap2: '今になってようやく衰退が見える — 実際の原因から何週間も経っている。',
+    v2_hint: '原因をタップして、実際どれだけ速く命を奪うか見てみましょう',
+    v2_btnTds: 'TDSクリープ',
+    v2_btnGh: 'GH・KHの不安定',
+    v2_btnCopper: '銅',
+    v2_btnTemp: '温度の変動',
+    v2_btnAmmonia: 'アンモニア・亜硝酸塩',
+    v2_btnNts: 'ニュータンクシンドローム',
+    v2_badgeChronic: '慢性 — 週単位',
+    v2_badgeAcute: '急性 — 日単位',
+    v2_findTds: '水が蒸発するにつれミネラルが濃縮されます。エビはストレスを受け、繁殖をやめ、やがて一匹、二匹と死んでいきます。',
+    v2_findGh: '水槽の水とエビ本来のミネラル範囲のミスマッチが、本来不要なはずの浸透圧調整を常に強いてしまいます。',
+    v2_findCopper: '目に見えず、無脊椎動物には致死的です — 一度の添加だけで、数日でコロニーが崩壊することがあります。',
+    v2_findTemp: '問題は温度そのものではなく、日々の変動幅です — 耐性の狭い変温動物は、それを数週間かけて蓄積していきます。',
+    v2_findAmmonia: 'エビは魚より早くアンモニアストレスの兆候を示します — 水面でのパニック泳ぎは化学的なサインであり、性格ではありません。',
+    v2_findNts: 'サイクルが本当に安定する前にエビを入れること — 今日ゼロと出ただけで判断すること — が、新しいエビが死ぬ最も多い原因です。'
   }
 };
 function sdaT(key) {
@@ -489,6 +539,99 @@ var animFrames = {};
 function stopAnim(id) {
   if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
 }
+
+/* ── VISUAL: Tap a cause — a badge shows how fast it actually kills
+   (chronic over weeks vs acute within days) plus a one-line finding.
+   Mirrors the "situation → verdict badge" family from
+   articles/aquarium-filter-maintenance.html's canvases[3], reused here
+   because sorting six causes by TIMESCALE — not just by name — is
+   exactly what a reader with a declining colony needs to triage first:
+   whether they have days or weeks to find the answer. Distinct from
+   Module 3's canvases[3], which shows the LAG between one specific
+   change and when it becomes visible, not a comparison across causes. ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+
+  var causes = [
+    { key:'tds',     btn:'v2_btnTds',     find:'v2_findTds',     pace:'chronic' },
+    { key:'gh',      btn:'v2_btnGh',      find:'v2_findGh',      pace:'chronic' },
+    { key:'copper',  btn:'v2_btnCopper',  find:'v2_findCopper',  pace:'acute' },
+    { key:'temp',    btn:'v2_btnTemp',    find:'v2_findTemp',    pace:'chronic' },
+    { key:'ammonia', btn:'v2_btnAmmonia', find:'v2_findAmmonia', pace:'acute' },
+    { key:'nts',     btn:'v2_btnNts',     find:'v2_findNts',     pace:'acute' }
+  ];
+  var active = 0;
+
+  var wrap = c.parentElement;
+  var existingCtrl = wrap.querySelector('.vis-ctrl');
+  if (existingCtrl) existingCtrl.remove();
+  var existingCap = wrap.querySelector('.vc-caption');
+  if (existingCap) existingCap.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  var btnsHtml = causes.map(function(cs, i){
+    return '<button class="vis-btn' + (i === 0 ? ' vis-btn-active' : '') + '" id="sda2-btn-' + i + '">' + sdaT(cs.btn) + '</button>';
+  }).join('');
+  ctrl.innerHTML = '<div style="display:flex;gap:.3rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    + btnsHtml + '</div>'
+    + '<div class="vc-hint">' + sdaT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  causes.forEach(function(cs, i){
+    document.getElementById('sda2-btn-' + i).addEventListener('click', function(){
+      active = i;
+      causes.forEach(function(cc, ii){
+        document.getElementById('sda2-btn-' + ii).className = 'vis-btn' + (ii === i ? ' vis-btn-active' : '');
+      });
+      draw();
+    });
+  });
+
+  var paceCol = { chronic: 'rgba(220,140,60,', acute: 'rgba(220,90,60,' };
+  var paceKey = { chronic: 'v2_badgeChronic', acute: 'v2_badgeAcute' };
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var cs = causes[active];
+    var col = paceCol[cs.pace];
+
+    var badgeW = Math.min(200, W*0.62), badgeH = 42;
+    var badgeX = (W-badgeW)/2, badgeY = 24;
+    ctx.fillStyle = col + '.16)';
+    ctx.fillRect(badgeX, badgeY, badgeW, badgeH);
+    ctx.strokeStyle = col + '0.9)'; ctx.lineWidth = 1.4;
+    ctx.strokeRect(badgeX, badgeY, badgeW, badgeH);
+    ctx.fillStyle = col + '1)';
+    ctx.font = 'bold 14px Work Sans,system-ui,sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(sdaT(paceKey[cs.pace]), W/2, badgeY + badgeH/2);
+    ctx.textBaseline = 'alphabetic';
+
+    var cap = sdaT(cs.find);
+    ctx.font = 'italic 300 12px Fraunces,serif';
+    ctx.fillStyle = vcInk(.62);
+    ctx.textAlign = 'center';
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', y = badgeY + badgeH + 30, maxW = W-28;
+    words.forEach(function(w){
+      var test = line + (line?wsep:'') + w;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y); line = w; y += 17; }
+      else line = test;
+    });
+    if (line) ctx.fillText(line, W/2, y);
+    ctx.textAlign = 'left';
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
 
 /* ── VISUAL: Tap to advance a week — a single stressor event (marked at
    week 1) is followed by a flat, unchanged shrimp-health line for

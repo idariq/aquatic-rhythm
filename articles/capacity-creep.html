@@ -288,6 +288,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>Is my feeding amount measured, or has it become a guess? And when I look at the tank now, am I reading it, or just glancing to confirm nothing's obviously wrong?</p>
     </div>
 
+    <!-- VISUAL: Tap the ones that are honestly true right now -->
+    <div class="vis-block">
+      <canvas id="cv3" style="width:100%;height:190px"></canvas>
+    </div>
+
     <div class="mod-body" style="margin-top:1.8rem">
       <p>That last question matters more than it looks. Observation is where most keepers first notice something has shifted, and it's also where the drift usually starts. A two-minute glance replaces what used to be a few unhurried minutes of actually watching the tank. This connects to <a href="/articles/minimum-viable-care" style="color:var(--th-accent);text-decoration:none">Minimum Viable Care</a>, the specific, honest floor of what a given tank needs to stay in ecological health. That floor is different for every setup, and it doesn't move just because a keeper's schedule has gotten busier.</p>
       <p>Knowing that floor is what makes the four questions useful rather than anxiety-inducing. A tank with light stocking and heavy planting may have real slack in its minimum viable care. A tank running near its biological limits may have almost none. The same eighteen-day water change interval can be a non-event on one tank and a slow-motion problem on another. That's exactly why "am I still doing okay" is the wrong question. "What does this specific tank actually need" is the right one.</p>
@@ -413,7 +418,16 @@ var CC_STRINGS = {
     v1_cap1: "Ten days doesn't feel that different from seven. Nothing went wrong, so it becomes the new normal.",
     v1_cap2: "Two weeks now looks routine — compared to last month, nothing's changed.",
     v1_cap3: 'A year of small, defensible steps — and the gap between plan and practice is now a whole rhythm wide.',
-    yAxisLabel: 'Days'
+    yAxisLabel: 'Days',
+    v3_q1: 'Water-change interval has extended without deciding to',
+    v3_q2: "Don't actually know the date of my last filter check",
+    v3_q3: 'Feeding amount has become a rough guess',
+    v3_q4: "I'm glancing at the tank, not really watching it",
+    v3_hint: 'tap the ones that are honestly true right now',
+    v3_countLabel: 'signals',
+    v3_cap0: "None of these ring true right now — that's a good sign, not proof of anything.",
+    v3_cap12: "One or two showing up is normal. It's worth noticing, not panicking about.",
+    v3_cap34: 'Several at once is the pattern this article is naming — worth a closer look at what your tank actually needs.'
   },
   id: {
     v1_addBtn: '+ Tambah minggu sibuk',
@@ -425,7 +439,16 @@ var CC_STRINGS = {
     v1_cap1: 'Sepuluh hari tak terasa jauh beza drpd tujuh. Tiada apa-apa jadi masalah, jadi ia jadi normal baharu.',
     v1_cap2: 'Dua minggu kini terasa rutin — dibandingkan bulan lepas, tiada apa yang berubah.',
     v1_cap3: 'Setahun langkah kecil yang munasabah — dan jurang antara rancangan & amalan kini seluas satu ritma penuh.',
-    yAxisLabel: 'Hari'
+    yAxisLabel: 'Hari',
+    v3_q1: 'Jadwal ganti air memanjang tanpa keputusan sengaja',
+    v3_q2: 'Tidak benar-benar tahu tanggal pemeriksaan filter terakhir',
+    v3_q3: 'Jumlah pemberian makan jadi perkiraan kasar',
+    v3_q4: 'Saya sekadar melirik akuarium, bukan benar-benar mengamati',
+    v3_hint: 'ketuk yang benar-benar terjadi sekarang',
+    v3_countLabel: 'sinyal',
+    v3_cap0: 'Tidak satu pun yang benar sekarang — itu tanda baik, bukan bukti apa pun.',
+    v3_cap12: 'Satu atau dua muncul itu wajar. Layak diperhatikan, tidak perlu dikhawatirkan berlebihan.',
+    v3_cap34: 'Beberapa sekaligus adalah pola yang disebut artikel ini — layak diperiksa lebih dekat apa yang benar-benar dibutuhkan akuarium Anda.'
   },
   ja: {
     v1_addBtn: '+ 忙しい週を追加',
@@ -437,7 +460,16 @@ var CC_STRINGS = {
     v1_cap1: '10日は7日とそれほど変わらない気がする。何も問題は起きなかったので、それが新しい標準になる。',
     v1_cap2: '2週間はもう普通に感じる — 先月と比べれば、何も変わっていない。',
     v1_cap3: '1年分の小さな、正当化できる一歩一歩 — 予定と実際の差は、いまやリズム一つ分まるごと開いている。',
-    yAxisLabel: '日'
+    yAxisLabel: '日',
+    v3_q1: '水換えの間隔が、決めたわけでもないのに延びている',
+    v3_q2: '最後にフィルターを点検した日を実は覚えていない',
+    v3_q3: '餌の量がだいたいの見当になっている',
+    v3_q4: '水槽をちゃんと見ているのではなく、ただ眺めているだけ',
+    v3_hint: '今の自分に本当に当てはまるものをタップしましょう',
+    v3_countLabel: 'サイン',
+    v3_cap0: '今のところ、どれも当てはまりません — それは良い兆候です。',
+    v3_cap12: '1つか2つ当てはまるのはよくあることです。気に留める程度でいい。',
+    v3_cap34: '何個も同時に当てはまるのが、この記事が指摘しているパターンです — 水槽が本当に必要としているものを見直す価値があります。'
   }
 };
 function ccT(key) {
@@ -593,6 +625,96 @@ canvases[1] = function() {
   }
 
   vcRedraws.cv1 = draw;
+  draw();
+};
+
+/* ── VISUAL: Four independently-toggleable questions — the FIRST
+   discrete lit/unlit indicator row in the rollout (every prior
+   multi-select widget, e.g. articles/is-your-setup-too-demanding.html,
+   used a continuous bar fill). A row of four boxes lights up one at a
+   time as the reader taps what's honestly true right now, with a plain
+   count and a caption that shifts at 0 / 1-2 / 3-4 — deliberately not
+   framed as a score or a pass/fail test, matching this module's own
+   "these aren't a pass-or-fail test" line. Distinct from Module 1's
+   canvases[1], which shows drift accumulating over TIME; this one is a
+   single honest snapshot of where the reader stands right now. ── */
+canvases[3] = function() {
+  stopAnim('cv3');
+  var c = resizeCanvas('cv3'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+
+  var qs = [
+    { key:'q1', btn:'v3_q1', active:false },
+    { key:'q2', btn:'v3_q2', active:false },
+    { key:'q3', btn:'v3_q3', active:false },
+    { key:'q4', btn:'v3_q4', active:false }
+  ];
+
+  var wrap = c.parentElement;
+  var existingCtrl = wrap.querySelector('.vis-ctrl');
+  if (existingCtrl) existingCtrl.remove();
+  var existingCap = wrap.querySelector('.vc-caption');
+  if (existingCap) existingCap.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  var btnsHtml = qs.map(function(q, i){
+    return '<button class="vis-btn" id="cc3-btn-' + i + '" style="text-align:left;white-space:normal">' + ccT(q.btn) + '</button>';
+  }).join('');
+  ctrl.innerHTML = '<div style="display:flex;flex-direction:column;gap:.35rem;margin:.45rem 0">'
+    + btnsHtml + '</div>'
+    + '<div class="vc-hint">' + ccT('v3_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  qs.forEach(function(q, i){
+    document.getElementById('cc3-btn-' + i).addEventListener('click', function(){
+      q.active = !q.active;
+      this.className = 'vis-btn' + (q.active ? ' vis-btn-active' : '');
+      draw();
+    });
+  });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var count = qs.filter(function(q){ return q.active; }).length;
+
+    var boxSize = 26, gap = 14, totalW = boxSize*4 + gap*3;
+    var startX = W/2 - totalW/2, y = 26;
+    for (var i = 0; i < 4; i++) {
+      var x = startX + i*(boxSize+gap);
+      var lit = i < count;
+      ctx.fillStyle = lit ? 'rgba(220,140,60,.55)' : vcInk(.06);
+      ctx.fillRect(x, y, boxSize, boxSize);
+      ctx.strokeStyle = lit ? 'rgba(220,140,60,.9)' : vcInk(.2);
+      ctx.lineWidth = 1.3;
+      ctx.strokeRect(x, y, boxSize, boxSize);
+    }
+
+    ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillStyle = vcInk(.6);
+    ctx.fillText(count + ' / 4 ' + ccT('v3_countLabel'), W/2, y + boxSize + 22);
+
+    var capKey = count === 0 ? 'v3_cap0' : (count <= 2 ? 'v3_cap12' : 'v3_cap34');
+    var cap = ccT(capKey);
+    ctx.font = 'italic 300 12px Fraunces,serif';
+    ctx.fillStyle = vcInk(.62);
+    ctx.textAlign = 'center';
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', ly = y + boxSize + 44, maxW = W-28;
+    words.forEach(function(w){
+      var test = line + (line?wsep:'') + w;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, ly); line = w; ly += 17; }
+      else line = test;
+    });
+    if (line) ctx.fillText(line, W/2, ly);
+    ctx.textAlign = 'left';
+  }
+
+  vcRedraws.cv3 = draw;
   draw();
 };
 

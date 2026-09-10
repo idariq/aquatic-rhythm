@@ -257,6 +257,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>The third path is skipping or rushing the Early Phase itself. That might mean a tank seeded so heavily at setup that the cycle completes almost immediately, or a tank left running fishless for a year with no biological load to respond to. In both cases, the tank arrives at "zero ammonia, zero nitrite" without ever going through the developmental process that normally produces that result.</p>
     </div>
 
+    <!-- VISUAL: Tap a path — the reading stays clean while depth stays low -->
+    <div class="vis-block">
+      <canvas id="cv2" style="width:100%;height:230px"></canvas>
+    </div>
+
     <div class="hn">
       <span class="hn-label">None of these are mistakes on their own</span>
       <p>Heavy filtration, frequent water changes, and careful fishless cycling are all legitimate techniques. False maturity isn't a punishment for using them. It's what can happen when they're relied on so completely that the tank never needs to develop its own depth alongside them.</p>
@@ -399,7 +404,17 @@ var FM_STRINGS = {
     v3_mature: 'Genuinely mature',
     v3_falseMature: 'False-mature',
     v3_captionBefore: 'Both tanks read identically — zero ammonia, day after day.',
-    v3_captionAfter: 'Same disruption. The mature tank barely moves. The false-mature tank spikes — and takes days longer to settle.'
+    v3_captionAfter: 'Same disruption. The mature tank barely moves. The false-mature tank spikes — and takes days longer to settle.',
+    v2_hint: 'tap a path and compare what the test kit shows to what actually got built',
+    v2_pathFilter: 'Light stock + heavy filter',
+    v2_pathWc: 'Frequent, large water changes',
+    v2_pathSkip: 'Skipped the Early Phase',
+    v2_readingLabel: 'Test kit reading',
+    v2_depthLabel: 'Biological depth',
+    v2_matureLabel: 'Genuine maturity',
+    v2_capFilter: 'An oversized filter processes waste so efficiently the biology never needs to build its own depth.',
+    v2_capWc: 'Diluting nitrate before it accumulates also strips the inputs deeper biology develops in response to.',
+    v2_capSkip: 'Zero ammonia arrives without ever going through the developmental process that normally produces it.'
   },
   id: {
     v3_triggerBtn: 'Picu gangguan',
@@ -408,7 +423,17 @@ var FM_STRINGS = {
     v3_mature: 'Benar-benar matang',
     v3_falseMature: 'Matang semu',
     v3_captionBefore: 'Kedua akuarium terbaca identik — amonia nol, hari demi hari.',
-    v3_captionAfter: 'Gangguan yang sama. Akuarium yang benar-benar matang nyaris tidak bergerak. Akuarium yang matang semu melonjak — dan butuh waktu lebih lama untuk mereda.'
+    v3_captionAfter: 'Gangguan yang sama. Akuarium yang benar-benar matang nyaris tidak bergerak. Akuarium yang matang semu melonjak — dan butuh waktu lebih lama untuk mereda.',
+    v2_hint: 'ketuk satu jalur dan bandingkan apa yang ditunjukkan test kit dengan apa yang sebenarnya terbentuk',
+    v2_pathFilter: 'Stok ringan + filter besar',
+    v2_pathWc: 'Ganti air besar yang sering',
+    v2_pathSkip: 'Melompati Early Phase',
+    v2_readingLabel: 'Bacaan test kit',
+    v2_depthLabel: 'Kedalaman biologis',
+    v2_matureLabel: 'Kematangan sejati',
+    v2_capFilter: 'Filter yang berlebihan memproses limbah begitu efisien hingga biologi tidak pernah perlu membangun kedalamannya sendiri.',
+    v2_capWc: 'Mengencerkan nitrat sebelum menumpuk juga menghilangkan input yang direspons biologi yang lebih dalam untuk berkembang.',
+    v2_capSkip: 'Amonia nol tercapai tanpa pernah melewati proses perkembangan yang biasanya menghasilkannya.'
   },
   ja: {
     v3_triggerBtn: '負荷をかける',
@@ -417,7 +442,17 @@ var FM_STRINGS = {
     v3_mature: '本当に成熟',
     v3_falseMature: '見せかけの成熟',
     v3_captionBefore: 'どちらの水槽も同じに見える — アンモニアはずっとゼロのまま。',
-    v3_captionAfter: '同じ負荷でも反応はまったく違う。本当に成熟した水槽はほとんど動じない。見せかけの成熟した水槽は急上昇し、落ち着くまでに何日も余計にかかる。'
+    v3_captionAfter: '同じ負荷でも反応はまったく違う。本当に成熟した水槽はほとんど動じない。見せかけの成熟した水槽は急上昇し、落ち着くまでに何日も余計にかかる。',
+    v2_hint: 'ルートをタップして、テストキットの数値と実際に築かれたものを比べてみましょう',
+    v2_pathFilter: '少ない魚 + 過剰なフィルター',
+    v2_pathWc: '頻繁で大量の水換え',
+    v2_pathSkip: 'Early Phaseを飛ばす',
+    v2_readingLabel: 'テストキットの数値',
+    v2_depthLabel: '生物学的な深み',
+    v2_matureLabel: '本物の成熟',
+    v2_capFilter: '過剰なフィルターが廃棄物をあまりに効率よく処理するため、生態系は自らの深みを築く必要がありません。',
+    v2_capWc: '硝酸塩が蓄積する前に薄めることは、より深い生態系が反応して発達するはずの材料も取り除いてしまいます。',
+    v2_capSkip: 'アンモニアがゼロになっても、それを本来生み出すはずの発達過程を一度も経ていません。'
   }
 };
 function fmT(key) {
@@ -462,6 +497,109 @@ var animFrames = {};
 function stopAnim(id) {
   if (animFrames[id]) { cancelAnimationFrame(animFrames[id]); animFrames[id] = null; }
 }
+
+/* ── VISUAL: Tap a path — two horizontal bars, one that stays clean and
+   one that stays low, no matter which path is selected. This directly
+   dramatises this article's central metaphor — a test kit reading vs
+   actual biological depth — the same twin-gauge contrast pattern used
+   in articles/aquarium-travel-vacation.html, reused deliberately here
+   because it is the right shape for this exact claim, not a new form
+   for its own sake. A dashed reference line marks where a genuinely
+   mature tank's depth would sit, so the reader can see how far below
+   it all three shortcuts land. ── */
+canvases[2] = function() {
+  stopAnim('cv2');
+  var c = resizeCanvas('cv2'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+
+  var paths = [
+    { key:'filter', btn:'v2_pathFilter', cap:'v2_capFilter', depth: 20 },
+    { key:'wc',     btn:'v2_pathWc',     cap:'v2_capWc',     depth: 15 },
+    { key:'skip',   btn:'v2_pathSkip',   cap:'v2_capSkip',   depth: 10 }
+  ];
+  var active = 0;
+
+  var wrap = c.parentElement;
+  var existingCtrl = wrap.querySelector('.vis-ctrl');
+  if (existingCtrl) existingCtrl.remove();
+  var existingCap = wrap.querySelector('.vc-caption');
+  if (existingCap) existingCap.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  var btnsHtml = paths.map(function(p, i){
+    return '<button class="vis-btn' + (i === 0 ? ' vis-btn-active' : '') + '" id="fm2-btn-' + i + '">' + fmT(p.btn) + '</button>';
+  }).join('');
+  ctrl.innerHTML = '<div style="display:flex;gap:.3rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    + btnsHtml + '</div>'
+    + '<div class="vc-hint">' + fmT('v2_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  paths.forEach(function(p, i){
+    document.getElementById('fm2-btn-' + i).addEventListener('click', function(){
+      active = i;
+      paths.forEach(function(pp, ii){
+        document.getElementById('fm2-btn-' + ii).className = 'vis-btn' + (ii === i ? ' vis-btn-active' : '');
+      });
+      draw();
+    });
+  });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var pL = 22, pR = 22, barW = W - pL - pR, barH = 16;
+    var y1 = 40, y2 = 128;
+    var maxV = 100, matureRef = 80;
+    var path = paths[active];
+
+    ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillStyle = vcInk(.6);
+    ctx.fillText(fmT('v2_readingLabel'), pL, y1 - 10);
+    ctx.textAlign = 'right';
+    ctx.fillStyle = 'rgba(80,200,120,.95)';
+    ctx.fillText('95%', pL + barW, y1 - 10);
+
+    ctx.fillStyle = vcInk(.06);
+    ctx.fillRect(pL, y1, barW, barH);
+    ctx.fillStyle = 'rgba(80,200,120,.65)';
+    ctx.fillRect(pL, y1, barW * .95, barH);
+    ctx.strokeStyle = 'rgba(80,200,120,1)'; ctx.lineWidth = 1.2;
+    ctx.strokeRect(pL, y1, barW, barH);
+
+    ctx.textAlign = 'left'; ctx.fillStyle = vcInk(.6);
+    ctx.fillText(fmT('v2_depthLabel'), pL, y2 - 10);
+    ctx.textAlign = 'right'; ctx.fillStyle = vcInk(.45);
+    ctx.fillText(path.depth + '%', pL + barW, y2 - 10);
+
+    ctx.fillStyle = vcInk(.06);
+    ctx.fillRect(pL, y2, barW, barH);
+    ctx.fillStyle = 'rgba(220,140,60,.6)';
+    ctx.fillRect(pL, y2, barW * (path.depth/maxV), barH);
+    ctx.strokeStyle = vcInk(.3); ctx.lineWidth = 1;
+    ctx.strokeRect(pL, y2, barW, barH);
+
+    var refX = pL + barW * (matureRef/maxV);
+    ctx.strokeStyle = 'rgba(61,214,232,.85)'; ctx.lineWidth = 1.3; ctx.setLineDash([4,3]);
+    ctx.beginPath(); ctx.moveTo(refX, y2-6); ctx.lineTo(refX, y2+barH+6); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(61,214,232,.9)'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(fmT('v2_matureLabel'), refX, y2+barH+18);
+
+    var capEl = wrap.querySelector('.vc-caption');
+    if (!capEl) {
+      capEl = document.createElement('div');
+      capEl.className = 'vc-caption';
+      capEl.style.cssText = 'padding:.5rem 1rem 1rem;font-size:var(--fs-xs);color:var(--th-ink-4);text-align:center;line-height:1.6';
+      wrap.appendChild(capEl);
+    }
+    capEl.textContent = fmT(path.cap);
+  }
+
+  vcRedraws.cv2 = draw;
+  draw();
+};
 
 /* ── VISUAL: Trigger a disruption — both tanks read as one flat, identical
    line for the first week, since on the numbers alone they're

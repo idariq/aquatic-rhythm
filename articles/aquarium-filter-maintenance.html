@@ -282,6 +282,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>The instinct to clean because time has passed is less useful than reading the actual filter state.</p>
     </div>
 
+    <!-- VISUAL: Tap a situation — see whether it calls for waiting or cleaning -->
+    <div class="vis-block">
+      <canvas id="cv3" style="width:100%;height:210px"></canvas>
+    </div>
+
     <div class="pq">
       <p>"A filter that is working — passing water freely, in a stable tank — is doing its job. The impulse to clean it because it 'has been a while' is a Keeper Rhythm signal, not a tank signal."</p>
     </div>
@@ -300,6 +305,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--th-wa
       <p>The method that preserves the bacterial colony while removing mechanical waste: remove filter media one section at a time, not all at once; rinse each piece gently in a bucket of water taken from the tank during that session's water change; squeeze sponges once or twice to remove trapped debris, not repeatedly; do not scrub ceramic or bio-media — a gentle rinse is sufficient; replace cleaned media before moving to the next piece; replacing all media at once removes the biological capacity the colony needs to re-establish — work through sections instead.</p>
       <p>If you are replacing old media with new media (sponge that has finally disintegrated, ceramic that has cracked), run old and new media simultaneously for four to six weeks before removing the old piece entirely. The old media seeds the new with bacteria. Removing old media immediately leaves the new piece bare and your filter significantly under-capacity.</p>
       <p>This is also why the advice to "replace filter cartridges monthly" — common in the instructions for branded hang-on filters — can destabilise established tanks. The cartridge is the biological media. Replacing it monthly is a slow way of repeatedly partially cycling a tank. That's not a mistake on your part — it's the instruction printed on the box, and following it is what any careful keeper would do. The manufacturer just wrote that schedule for the filter's moving parts, not for the colony living inside it.</p>
+    </div>
+
+    <!-- VISUAL: Step through the section-by-section cleaning sequence -->
+    <div class="vis-block">
+      <canvas id="cv4" style="width:100%;height:230px"></canvas>
     </div>
 
     <div class="hn">
@@ -427,7 +437,35 @@ var AFM_STRINGS = {
     v2_hint: 'same filter, same colony — only the rinse water differs',
     v2_captionTap: 'Chlorine kills a share of the colony — ammonia climbs for several days before the survivors catch up.',
     v2_captionTank: 'The colony stays intact — ammonia barely moves, because nothing needed to recover.',
-    yAxisLabel: 'NH₃'
+    yAxisLabel: 'NH₃',
+    v3_sitNewFish: 'New fish added (<4 weeks ago)',
+    v3_sitTreatment: 'Mid or just after treatment',
+    v3_sitTemp: 'Recent temperature swings',
+    v3_sitYoung: 'Filter <3 months, flowing freely',
+    v3_sitClogged: 'Flow reduced, sponge compacted',
+    v3_verdictWait: 'Wait',
+    v3_verdictNotYet: 'Not yet',
+    v3_verdictCleanNow: 'Time to clean',
+    v3_reasonNewFish: 'The colony is still adjusting to the extra bioload — cleaning now removes capacity exactly when more is needed.',
+    v3_reasonTreatment: 'Many medications already killed bacteria alongside the pathogen. Cleaning on top of that compounds the disruption.',
+    v3_reasonTemp: 'Bacterial growth is temperature-dependent — a colony that just weathered a swing may already be suppressed.',
+    v3_reasonYoung: "A filter flowing freely under three months old almost certainly doesn't need cleaning yet — let it keep building.",
+    v3_reasonClogged: 'Reduced flow and a compacted sponge are mechanical signals worth acting on — this is what actually needs servicing.',
+    v3_hint: 'tap a situation and see what it actually calls for',
+    v4_step1: 'Remove one section',
+    v4_step1Detail: 'Take out a single piece of media — sponge, ceramic, whatever is due — and leave the rest of the filter untouched.',
+    v4_step2: 'Rinse in tank water',
+    v4_step2Detail: "Swirl it gently in a bucket of water taken from the tank during this session's water change — never tap water.",
+    v4_step3: 'Squeeze once or twice',
+    v4_step3Detail: 'Enough to release trapped debris. Repeated squeezing strips more of the colony than it needs to.',
+    v4_step4: "Don't scrub ceramic",
+    v4_step4Detail: 'Ceramic rings and bio-media just need a gentle rinse — scrubbing removes the biofilm that does the actual work.',
+    v4_step5: 'Replace, then move on',
+    v4_step5Detail: 'Put the cleaned piece back before touching the next section — the colony is never fully out of the filter at once.',
+    v4_prev: '← Prev',
+    v4_next: 'Next →',
+    v4_hint: 'one section at a time — never all of them together',
+    v4_sectionLabel: 'Section'
   },
   id: {
     v2_toggleTap: 'Dibilas air paip',
@@ -435,7 +473,35 @@ var AFM_STRINGS = {
     v2_hint: 'penapis sama, koloni sama — cuma air bilasan yang berbeza',
     v2_captionTap: 'Klorin bunuh sebahagian koloni — amonia naik selama beberapa hari sebelum bakteria yang terselamat memulih.',
     v2_captionTank: 'Koloni kekal utuh — amonia nyaris tak bergerak, sbb tiada apa yang perlu dipulihkan.',
-    yAxisLabel: 'NH₃'
+    yAxisLabel: 'NH₃',
+    v3_sitNewFish: 'Ikan baru ditambahkan (<4 minggu lalu)',
+    v3_sitTreatment: 'Sedang atau baru selesai pengobatan',
+    v3_sitTemp: 'Suhu baru saja tidak stabil',
+    v3_sitYoung: 'Filter <3 bulan, mengalir lancar',
+    v3_sitClogged: 'Aliran berkurang, spons memadat',
+    v3_verdictWait: 'Tunggu',
+    v3_verdictNotYet: 'Belum perlu',
+    v3_verdictCleanNow: 'Waktunya bersihkan',
+    v3_reasonNewFish: 'Koloni masih menyesuaikan diri dengan beban bio tambahan — membersihkan sekarang menghilangkan kapasitas tepat saat lebih banyak dibutuhkan.',
+    v3_reasonTreatment: 'Banyak obat sudah membunuh bakteri bersama patogennya. Membersihkan filter di atas itu memperbesar gangguan yang sudah ada.',
+    v3_reasonTemp: 'Pertumbuhan bakteri bergantung pada suhu — koloni yang baru melewati gejolak suhu mungkin sudah tertekan.',
+    v3_reasonYoung: 'Filter yang mengalir lancar dan berusia di bawah tiga bulan hampir pasti belum perlu dibersihkan — biarkan ia terus berkembang.',
+    v3_reasonClogged: 'Aliran berkurang dan spons memadat adalah sinyal mekanis yang layak ditindaklanjuti — inilah yang benar-benar perlu diservis.',
+    v3_hint: 'ketuk satu situasi dan lihat apa yang sebenarnya dibutuhkan',
+    v4_step1: 'Keluarkan satu bagian',
+    v4_step1Detail: 'Ambil satu keping media saja — spons, keramik, apa pun yang perlu dibersihkan — dan biarkan sisa filter tidak tersentuh.',
+    v4_step2: 'Bilas dengan air akuarium',
+    v4_step2Detail: 'Aduk perlahan dalam ember berisi air yang diambil dari akuarium saat ganti air sesi ini — jangan pernah air keran.',
+    v4_step3: 'Peras satu atau dua kali',
+    v4_step3Detail: 'Cukup untuk melepaskan kotoran yang terjebak. Memeras berulang kali menghilangkan lebih banyak koloni dari yang diperlukan.',
+    v4_step4: 'Jangan gosok keramik',
+    v4_step4Detail: 'Cincin keramik dan bio-media hanya perlu dibilas perlahan — menggosok menghilangkan biofilm yang benar-benar bekerja.',
+    v4_step5: 'Pasang kembali, lalu lanjut',
+    v4_step5Detail: 'Pasang kembali keping yang sudah dibersihkan sebelum menyentuh bagian berikutnya — koloni tidak pernah sepenuhnya keluar dari filter sekaligus.',
+    v4_prev: '← Sebelumnya',
+    v4_next: 'Berikutnya →',
+    v4_hint: 'satu bagian dalam satu waktu — jangan sekaligus semua',
+    v4_sectionLabel: 'Bagian'
   },
   ja: {
     v2_toggleTap: '水道水ですすぐ',
@@ -443,7 +509,35 @@ var AFM_STRINGS = {
     v2_hint: '同じフィルター、同じコロニー — 違うのはすすぐ水だけ',
     v2_captionTap: '塩素がコロニーの一部を殺す — 生き残った菌が追いつくまで、アンモニアは数日間上がり続ける。',
     v2_captionTank: 'コロニーはそのまま保たれる — 回復すべきものが何もないので、アンモニアはほとんど動かない。',
-    yAxisLabel: 'NH₃'
+    yAxisLabel: 'NH₃',
+    v3_sitNewFish: '新しい魚を追加した（4週間以内）',
+    v3_sitTreatment: '治療中、または治療直後',
+    v3_sitTemp: '最近、水温が不安定だった',
+    v3_sitYoung: 'フィルターが3ヶ月未満で、水流は良好',
+    v3_sitClogged: '水流が弱まり、スポンジが目詰まりしている',
+    v3_verdictWait: '待つ',
+    v3_verdictNotYet: 'まだ不要',
+    v3_verdictCleanNow: '掃除のタイミング',
+    v3_reasonNewFish: 'コロニーはまだ増えた生体負荷に適応している最中です — 今掃除すると、いちばん必要な時に処理能力を奪うことになります。',
+    v3_reasonTreatment: '多くの薬剤は病原体と一緒にバクテリアも殺しています。その上さらに掃除すると、負担が重なります。',
+    v3_reasonTemp: 'バクテリアの増殖は水温に左右されます — 水温の乱れを経たばかりのコロニーは、すでに弱っているかもしれません。',
+    v3_reasonYoung: '設置から3ヶ月未満で水流が良好なフィルターは、ほぼ確実にまだ掃除の必要はありません — そのまま育たせましょう。',
+    v3_reasonClogged: '水流の低下とスポンジの目詰まりは、対応する価値のある機械的なサインです — これこそ本当にメンテナンスが必要な状態です。',
+    v3_hint: '状況をタップして、実際に何が必要か見てみましょう',
+    v4_step1: '一区画だけ取り出す',
+    v4_step1Detail: 'スポンジやセラミックなど、必要な部分をひとつだけ取り出し、フィルターの残りには触れません。',
+    v4_step2: '水槽の水ですすぐ',
+    v4_step2Detail: '今回の水換えで取った水槽の水をバケツに入れ、そっと振り洗いします — 水道水は絶対に使いません。',
+    v4_step3: '1〜2回だけ絞る',
+    v4_step3Detail: '詰まった汚れが取れる程度で十分です。何度も絞ると、必要以上にコロニーを失います。',
+    v4_step4: 'セラミックはこすらない',
+    v4_step4Detail: 'セラミックリングやバイオメディアはそっとすすぐだけで十分です — こすると、実際に働いているバイオフィルムが失われます。',
+    v4_step5: '戻してから次へ',
+    v4_step5Detail: '次の区画に触れる前に、掃除した部分を元に戻します — コロニーが一度にすべてフィルターから離れることはありません。',
+    v4_prev: '← 戻る',
+    v4_next: '次へ →',
+    v4_hint: '一度に一区画だけ — 全部いっぺんには絶対しない',
+    v4_sectionLabel: '区画'
   }
 };
 function afmT(key) {
@@ -596,6 +690,190 @@ canvases[2] = function() {
   }
 
   vcRedraws.cv2 = draw;
+  draw();
+};
+
+/* ── VISUAL: Tap a situation — a badge shows the verdict (wait / not
+   yet / time to clean) with the reason, instead of a chart. This is
+   the FIRST "situation → verdict badge" widget in the rollout — every
+   prior widget plotted a chart, gauge, or scatter; this one dramatises
+   a binary-ish judgment call instead of a continuous quantity, matching
+   this module's own point that "the timing of filter cleaning matters
+   as much as the method." ── */
+canvases[3] = function() {
+  stopAnim('cv3');
+  var c = resizeCanvas('cv3'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+
+  var situations = [
+    { key:'newfish',   sit:'v3_sitNewFish',   verdict:'wait',     reason:'v3_reasonNewFish' },
+    { key:'treatment', sit:'v3_sitTreatment', verdict:'wait',     reason:'v3_reasonTreatment' },
+    { key:'temp',      sit:'v3_sitTemp',      verdict:'wait',     reason:'v3_reasonTemp' },
+    { key:'young',     sit:'v3_sitYoung',     verdict:'notyet',   reason:'v3_reasonYoung' },
+    { key:'clogged',   sit:'v3_sitClogged',   verdict:'cleannow', reason:'v3_reasonClogged' }
+  ];
+  var active = 0;
+
+  var wrap = c.parentElement;
+  var existingCtrl = wrap.querySelector('.vis-ctrl');
+  if (existingCtrl) existingCtrl.remove();
+  var existingCap = wrap.querySelector('.vc-caption');
+  if (existingCap) existingCap.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  var btnsHtml = situations.map(function(s, i){
+    return '<button class="vis-btn' + (i === 0 ? ' vis-btn-active' : '') + '" id="afm3-btn-' + i + '">' + afmT(s.sit) + '</button>';
+  }).join('');
+  ctrl.innerHTML = '<div style="display:flex;gap:.3rem;flex-wrap:wrap;justify-content:center;margin:.45rem 0">'
+    + btnsHtml + '</div>'
+    + '<div class="vc-hint">' + afmT('v3_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  situations.forEach(function(s, i){
+    document.getElementById('afm3-btn-' + i).addEventListener('click', function(){
+      active = i;
+      situations.forEach(function(ss, ii){
+        document.getElementById('afm3-btn-' + ii).className = 'vis-btn' + (ii === i ? ' vis-btn-active' : '');
+      });
+      draw();
+    });
+  });
+
+  var verdictCol = {
+    wait: 'rgba(220,140,60,',
+    notyet: 'rgba(80,200,120,',
+    cleannow: 'rgba(61,214,232,'
+  };
+  var verdictKey = {
+    wait: 'v3_verdictWait',
+    notyet: 'v3_verdictNotYet',
+    cleannow: 'v3_verdictCleanNow'
+  };
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    var s = situations[active];
+    var col = verdictCol[s.verdict];
+
+    var badgeW = Math.min(220, W*0.68), badgeH = 46;
+    var badgeX = (W-badgeW)/2, badgeY = 24;
+    ctx.fillStyle = col + '.16)';
+    ctx.fillRect(badgeX, badgeY, badgeW, badgeH);
+    ctx.strokeStyle = col + '0.9)'; ctx.lineWidth = 1.4;
+    ctx.strokeRect(badgeX, badgeY, badgeW, badgeH);
+    ctx.fillStyle = col + '1)';
+    ctx.font = 'bold 15px Work Sans,system-ui,sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(afmT(verdictKey[s.verdict]), W/2, badgeY + badgeH/2);
+    ctx.textBaseline = 'alphabetic';
+
+    var cap = afmT(s.reason);
+    ctx.font = 'italic 300 12px Fraunces,serif';
+    ctx.fillStyle = vcInk(.62);
+    ctx.textAlign = 'center';
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', y = badgeY + badgeH + 32, maxW = W-28;
+    words.forEach(function(w){
+      var test = line + (line?wsep:'') + w;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y); line = w; y += 17; }
+      else line = test;
+    });
+    if (line) ctx.fillText(line, W/2, y);
+    ctx.textAlign = 'left';
+  }
+
+  vcRedraws.cv3 = draw;
+  draw();
+};
+
+/* ── VISUAL: Step through the 5-part cleaning sequence — a vertical
+   stack of "filter sections" with only the current step's section
+   highlighted, reinforcing the module's core instruction ("one section
+   at a time, not all at once") visually rather than just in prose.
+   FIRST procedural stepper in the rollout — every prior stepper
+   advanced a day/month/reading, not a fixed sequence of instructions. ── */
+canvases[4] = function() {
+  stopAnim('cv4');
+  var c = resizeCanvas('cv4'); if (!c) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+
+  var steps = [
+    { title:'v4_step1', detail:'v4_step1Detail' },
+    { title:'v4_step2', detail:'v4_step2Detail' },
+    { title:'v4_step3', detail:'v4_step3Detail' },
+    { title:'v4_step4', detail:'v4_step4Detail' },
+    { title:'v4_step5', detail:'v4_step5Detail' }
+  ];
+  var stepIdx = 0;
+
+  var wrap = c.parentElement;
+  var existingCtrl = wrap.querySelector('.vis-ctrl');
+  if (existingCtrl) existingCtrl.remove();
+  var existingCap = wrap.querySelector('.vc-caption');
+  if (existingCap) existingCap.remove();
+  var ctrl = document.createElement('div');
+  ctrl.className = 'vis-ctrl';
+  ctrl.innerHTML = '<div class="vc-label"><span id="afm4-lbl"></span></div>'
+    + '<div style="display:flex;gap:.5rem;justify-content:center;margin:.45rem 0">'
+    + '<button class="vis-btn" id="afm4-prev">' + afmT('v4_prev') + '</button>'
+    + '<button class="vis-btn" id="afm4-next">' + afmT('v4_next') + '</button></div>'
+    + '<div class="vc-hint">' + afmT('v4_hint') + '</div>';
+  wrap.appendChild(ctrl);
+
+  var lbl = document.getElementById('afm4-lbl');
+  document.getElementById('afm4-prev').addEventListener('click', function(){
+    stepIdx = Math.max(0, stepIdx - 1); draw();
+  });
+  document.getElementById('afm4-next').addEventListener('click', function(){
+    stepIdx = Math.min(steps.length - 1, stepIdx + 1); draw();
+  });
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = vcBg(ctx,W,H); ctx.fillRect(0,0,W,H);
+
+    lbl.textContent = afmT('v4_sectionLabel') + ' ' + (stepIdx+1) + ' / ' + steps.length;
+
+    var stackW = 76, stackX = W/2 - stackW/2, stackY = 14, stackH = 96;
+    var sectionH = stackH / steps.length;
+    for (var i = 0; i < steps.length; i++) {
+      var sy = stackY + i*sectionH;
+      var isCurrent = i === stepIdx;
+      ctx.fillStyle = isCurrent ? 'rgba(61,214,232,.28)' : vcInk(.06);
+      ctx.fillRect(stackX, sy+1.5, stackW, sectionH-3);
+      if (isCurrent) {
+        ctx.strokeStyle = 'rgba(61,214,232,.9)'; ctx.lineWidth = 1.6;
+        ctx.strokeRect(stackX, sy+1.5, stackW, sectionH-3);
+      }
+    }
+
+    ctx.font = 'bold 13px Work Sans,system-ui,sans-serif';
+    ctx.fillStyle = vcInk(.85); ctx.textAlign = 'center';
+    ctx.fillText(afmT(steps[stepIdx].title), W/2, stackY + stackH + 24);
+
+    var cap = afmT(steps[stepIdx].detail);
+    ctx.font = 'italic 300 11px Fraunces,serif';
+    ctx.fillStyle = vcInk(.58);
+    var wlang = (document.documentElement.lang || 'en').split('-')[0];
+    var wsep = wlang === 'ja' ? '' : ' ';
+    var words = wlang === 'ja' ? Array.from(cap) : cap.split(' ');
+    var line = '', y = stackY + stackH + 44, maxW = W-28;
+    words.forEach(function(w){
+      var test = line + (line?wsep:'') + w;
+      if (ctx.measureText(test).width > maxW && line) { ctx.fillText(line, W/2, y); line = w; y += 15; }
+      else line = test;
+    });
+    if (line) ctx.fillText(line, W/2, y);
+    ctx.textAlign = 'left';
+  }
+
+  vcRedraws.cv4 = draw;
   draw();
 };
 
